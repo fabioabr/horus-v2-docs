@@ -11,6 +11,7 @@
     "eyebrow": "Maind Horus / Horus v2",
     "hero_title": "O Horus v2, do produto à arquitetura.",
     "footer": "Maind Horus · Horus v2 · documento interno",
+    "header_links": false,
     "logo": "media/horus-claro.svg",
     "logo_light": "media/horus-escuro.svg",
     "nav_button": "Comece aqui"

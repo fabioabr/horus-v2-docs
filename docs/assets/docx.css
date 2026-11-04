@@ -48,6 +48,28 @@
 .dx-pagina-doc .documentation_info [id] { scroll-margin-top: 67px; } /* a barra da página tem 47 px */
 .dx-pagina-doc .doc_documentation_area { padding-bottom: 30px; }
 .dx-pagina-doc .doc-container { padding-top: 18px; }
+/* O menu de tópicos fica fixo por CSS (sticky), e a página não tem margem lateral: o menu encosta à esquerda.
+   O KbDoc o trocava por position:fixed ao rolar, com outra largura, outro topo e outro espaçamento: o menu saltava
+   e escapava da coluna. Aqui o estado é um só, rolando ou não. A barra fixa da página tem 47 px. */
+/* overflow:hidden do .body_wrapper cria um contêiner de rolagem, e o sticky passa a valer só dentro dele (não gruda na
+   janela); clip corta do mesmo jeito sem criá-lo. O topo, o corpo e o rodapé ocupam a largura toda: o KbDoc prende o topo e
+   o corpo em 990 px entre 992 e 1199 px. */
+.dx-pagina-doc .body_wrapper { overflow: clip; }
+.dx-pagina-doc .menu_one .container-fluid, .dx-pagina-doc .onepage_doc_area .container-fluid { max-width: 100%; }
+@media (min-width: 992px) {
+  .dx-pagina-doc .doc_documentation_area > .container-fluid { padding-left: 0; padding-right: 0; }
+  .dx-pagina-doc .doc-container > .doc-sidebar { align-self: stretch; } /* a coluna tem a altura da página: o sticky corre por ela */
+  .dx-pagina-doc .doc_left_sidebarlist,
+  .dx-pagina-doc .sticky_menu .doc_documentation_area.body_fixed .doc_left_sidebarlist {
+    position: sticky; top: 57px; width: auto; height: auto; max-height: calc(100vh - 67px);
+    overflow-y: auto; margin-right: 0; padding-top: 0;
+  }
+}
+/* Entre 992 e 1199 px o KbDoc dá 24% à coluna do menu e 83% ao texto: passa de 100%, e o texto desce para baixo do menu. */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .dx-pagina-doc .doc-container > .doc-sidebar { flex: 0 0 20%; max-width: 20%; }
+  .dx-pagina-doc .doc-container > .col-lg-10 { flex: 0 0 80%; max-width: 80%; }
+}
 /* O menu de tópicos, compacto: os espaços 30% menores que os de antes; as fontes do menu não mudam. */
 .dx-pagina-doc .doc_left_sidebarlist .nav_title { padding: 6px 10px; margin-bottom: 3px; }
 .dx-pagina-doc.onepage-doc .nav-sidebar .nav-item { margin-top: 2px; }

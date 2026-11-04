@@ -2,16 +2,21 @@
 <p>O objetivo é explicitar para quem o Horus existe, quais problemas resolve, que valor entrega e quais escolhas devem orientar seu desenvolvimento.</p>
 <p>Início deste trabalho: 30/10/2026.</p>
 <h3 id="pasta-v2-documentos">Documentos</h3>
-<p>Esta pasta é o <strong>espaço de desenho do Horus v2</strong> e vai virar um repositório próprio (<a href="#d-140"><code>D-140</code></a>). A estrutura (<a href="#d-144"><code>D-144</code></a>, <a href="#d-142"><code>D-142</code></a>):</p>
-<pre class="snippets"><code class="language-none" data-lang="none">produto v2/
-├── README.md          ← este índice
-├── .claude/skills/    ← as skills do PO (product-owner-horus) e do arquiteto
-└── docs/
-    ├── leitura/       ← a documentação de leitura: a visão geral e uma página por mf, em linguagem simples (o PO)
-    └── raw/           ← o inventário, fonte da leitura
-        ├── produto/       ← visão, decisões e mapa de produto (o PO)
-        ├── arquitetura/   ← as decisões de tecnologia e a estratégia para atingir os objetivos (o arquiteto)
-        └── backlog/       ← as atividades (épicos, histórias e tasks), depois da arquitetura (o dono com um agilista)
+<p>Este repositório (<code>horus-v2-docs</code>) guarda <strong>toda a documentação do Horus v2</strong>: os documentos em Markdown e o <strong>portal HTML</strong> feito
+a partir deles, publicado com o GitHub Pages. O código da v2 mora no repositório <code>horus-v2</code> (privado) (<a href="#d-140"><code>D-140</code></a>). A estrutura (<a href="#d-144"><code>D-144</code></a>, <a href="#d-142"><code>D-142</code></a>):</p>
+<pre class="snippets"><code class="language-none" data-lang="none">horus-v2-docs/
+├── README.md              ← este índice
+├── docs/
+│   ├── leitura/           ← a documentação de leitura: a visão geral e uma página por mf, em linguagem simples (o PO)
+│   ├── raw/               ← o inventário, fonte da leitura
+│   │   ├── produto/           ← visão, decisões e mapa de produto (o PO)
+│   │   ├── arquitetura/       ← as decisões de tecnologia e a estratégia para atingir os objetivos (o arquiteto)
+│   │   └── backlog/           ← as atividades (épicos, histórias e tasks), depois da arquitetura (o dono com um agilista)
+│   ├── marca/             ← os logos do Horus, que o conversor copia para o portal
+│   └── *.html, assets/, media/   ← o portal pronto, que o GitHub Pages serve (gerado: não se edita à mão)
+├── fontes/                ← a origem do portal: docx.json, os fragmentos HTML de content/, os diagramas de media/ e a galeria modelos-mf/
+└── ferramentas/
+    └── montar_fontes.py   ← o conversor: Markdown → fontes do portal
 </code></pre><p>Os documentos de produto:</p>
 <div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de A pasta da v2"><table class="table table_shortcode"><thead><tr>
 <th scope="col">Documento</th>
@@ -60,7 +65,13 @@
 <td>Em uso</td>
 </tr>
 </tbody>
-</table></div><h3 id="pasta-v2-organizacao-dos-proximos-documentos">Organização dos próximos documentos</h3>
+</table></div><h3 id="pasta-v2-como-o-portal-e-feito">Como o portal é feito</h3>
+<p>Os fragmentos de <code>fontes/</code> são <strong>gerados</strong> a partir dos Markdown de <code>docs/leitura/</code> e <code>docs/raw/</code> (editar um à mão se perde na próxima
+montagem), e o portal de <code>docs/</code> é gerado das fontes com o plugin DocX. Mude o Markdown e monte de novo, da raiz deste repositório:</p>
+<pre class="snippets"><code class="language-none" data-lang="none">python ferramentas/montar_fontes.py . fontes &lt;caminho do mermaid.min.js&gt;               # Markdown → fontes
+python &lt;plugin docx&gt;/scripts/docx.py gerar --config fontes/docx.json --saida docs       # fontes → portal
+python &lt;plugin docx&gt;/scripts/docx.py validar --site docs                                # confere o portal
+</code></pre><h3 id="pasta-v2-organizacao-dos-proximos-documentos">Organização dos próximos documentos</h3>
 <p>Os temas serão aprofundados conforme avançarmos nas conversas. Cada documento deve deixar claras as hipóteses, as decisões tomadas e as questões que continuam em aberto, com a data da última atualização.</p>
 <p>Este índice será atualizado à medida que novos documentos forem criados. A numeração dos arquivos organiza a leitura; a prioridade de desenvolvimento será definida durante a discussão de produto.</p>
 <h3 id="pasta-v2-ponto-de-partida">Ponto de partida</h3>

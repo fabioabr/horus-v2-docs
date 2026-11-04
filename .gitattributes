@@ -2,3 +2,8 @@
 # git não pode converter fim de linha (core.autocrlf=true é o padrão nas máquinas Windows deste projeto), senão o
 # gerador acusaria "edição local" num clone limpo.
 docs/** -text
+# Os Markdown (a fonte do site) são texto de verdade: ficam em LF, e o conversor lê o mesmo conteúdo em qualquer máquina.
+docs/leitura/**/*.md text eol=lf
+docs/raw/**/*.md text eol=lf
+README.md text eol=lf
+ferramentas/*.py text eol=lf

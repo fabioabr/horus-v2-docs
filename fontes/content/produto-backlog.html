@@ -413,7 +413,7 @@ Situação: proposta | decidida | substituída por D-nnn | revogada · Data: dd/
 <tr>
 <td><strong>A. Mover o inventário para <code>docs/raw/</code></strong></td>
 <td><code>docs/raw/</code> com o produto, a arquitetura e o backlog; <code>docs/leitura/</code> ao lado. Era a recomendação.</td>
-<td>✅ Escolhida pelo dono. Pró: fica óbvio o que ler primeiro. Contra: mudam os caminhos das skills, do <code>README.md</code> e do conversor do portal.</td>
+<td>✅ Escolhida pelo dono. Pró: fica óbvio o que ler primeiro. Contra: mudam os caminhos das skills, do <a href="#pasta-v2"><code>README.md</code></a> e do conversor do portal.</td>
 </tr>
 <tr>
 <td>B. Manter o inventário e somar <code>docs/leitura/</code></td>
@@ -424,7 +424,7 @@ Situação: proposta | decidida | substituída por D-nnn | revogada · Data: dd/
 </table></div><p><strong>Consequências:</strong></p>
 <ul>
 <li>A página de leitura nunca decide: sai do inventário e diz de onde saiu. Quando uma decisão muda o que uma mf faz ou como ela é, a página dela é reescrita no mesmo trabalho.</li>
-<li>A skill do PO ganhou a seção “Documentação de leitura”, e o modelo da página de mf fica em <code>docs/leitura/mfs/_modelo.md</code>.</li>
+<li>A skill do PO ganhou a seção “Documentação de leitura”, e o modelo da página de mf fica em <a href="https://github.com/fabioabr/horus-v2-docs/blob/main/docs/leitura/mfs/_modelo.md"><code>docs/leitura/mfs/_modelo.md</code></a>.</li>
 <li>Nos textos antigos do inventário, as menções a <code>docs/produto/</code>, <code>docs/arquitetura/</code> e <code>docs/backlog/</code> da v2 passam a valer como <code>docs/raw/…</code>; as entradas antigas não se reescrevem.</li>
 <li>⚠️ A mudança das pastas ainda não foi feita (03/11/2026): a sessão em que o dono decidiu roda dentro de <code>docs/arquitetura/</code>, e o Windows não deixa mover uma pasta em uso. O roteiro <code>docs/mover_para_raw.py</code> faz a mudança e acerta os caminhos; roda numa sessão aberta fora dessas pastas.
 <ul>
@@ -458,7 +458,7 @@ Situação: proposta | decidida | substituída por D-nnn | revogada · Data: dd/
 <p><strong>Reabrir quando:</strong> o dono quiser que a arquitetura e as atividades andem juntas.</p>
 <h4 id="d-141">D-141 · A estrutura da pasta da v2: a documentação em docs/, por disciplina, e as skills junto</h4>
 <p>Situação: ⚪ substituída por D-144 · Data: 02/11/2026 · Versão: geral</p>
-<p><strong>Decisão:</strong> a pasta da v2 se organiza assim: <code>README.md</code> na raiz; <code>.claude/skills/</code> com as skills do PO e do arquiteto; e <code>docs/</code> com três pastas, <code>produto/</code> (os documentos de produto), <code>arquitetura/</code> (software, infraestrutura, dados, segurança, integrações e decisões técnicas) e <code>backlog/</code> (cada mf desdobrada em épicos, histórias e tasks).</p>
+<p><strong>Decisão:</strong> a pasta da v2 se organiza assim: <a href="#pasta-v2"><code>README.md</code></a> na raiz; <code>.claude/skills/</code> com as skills do PO e do arquiteto; e <code>docs/</code> com três pastas, <code>produto/</code> (os documentos de produto), <code>arquitetura/</code> (software, infraestrutura, dados, segurança, integrações e decisões técnicas) e <code>backlog/</code> (cada mf desdobrada em épicos, histórias e tasks).</p>
 <p><strong>Contexto:</strong> segunda dúvida do PO ao criar a skill do arquiteto, aberta pela <a href="#d-140"><code>D-140</code></a>.</p>
 <p><strong>Opções avaliadas:</strong></p>
 <div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 6 de Backlog estratégico"><table class="table table_shortcode"><thead><tr>
@@ -730,7 +730,7 @@ Situação: proposta | decidida | substituída por D-nnn | revogada · Data: dd/
 </table></div><p><strong>Por que esta:</strong> quem ler os documentos não confunde a entrega nova com o produto de hoje. O que se abre mão é um nome que não sugira o tamanho da entrega.</p>
 <p><strong>Consequências:</strong></p>
 <ul>
-<li>Como na renumeração das mfs (<a href="#d-100"><code>D-100</code></a>), as citações foram trocadas em todos os documentos, e o conteúdo das decisões não mudou. O documento <code>05-v1-consolidada.md</code> passou a <code>05-v2.0-consolidada.md</code>.</li>
+<li>Como na renumeração das mfs (<a href="#d-100"><code>D-100</code></a>), as citações foram trocadas em todos os documentos, e o conteúdo das decisões não mudou. O documento <code>05-v1-consolidada.md</code> passou a <a href="#produto-v20"><code>05-v2.0-consolidada.md</code></a>.</li>
 <li>Ficam com os nomes antigos só a <a href="#d-134"><code>D-134</code></a> e esta decisão, que precisam deles para explicar a troca.</li>
 <li>A skill do PO continua usando “V1” no sentido genérico de “primeira versão” de um produto, e não como nome de entrega do Horus.</li>
 </ul>
