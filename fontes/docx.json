@@ -18,8 +18,122 @@
   },
   "portal": {
     "macros": {
-      "title": "Macro funcionalidades",
+      "title": "Visão e macro funcionalidades",
       "groups": [
+        {
+          "label": "Visão",
+          "text": "O que é o Horus, em 9 passos: o conteúdo do Comece aqui.",
+          "items": [
+            {
+              "code": "01",
+              "title": "O que é o Horus",
+              "summary": "Um chat de análise: pergunte do jeito que fala e receba gráfico, tabela, indicador ou texto, com a fonte de cada número.",
+              "href": "visao-geral.html#visao-geral-o-que-e-o-horus",
+              "links": [
+                {
+                  "label": "Ler",
+                  "href": "#visao-geral-o-que-e-o-horus"
+                }
+              ]
+            },
+            {
+              "code": "02",
+              "title": "Para quem",
+              "summary": "O gestor de área, o executivo e o comprador.",
+              "href": "visao-geral.html#visao-geral-para-quem",
+              "links": [
+                {
+                  "label": "Ler",
+                  "href": "#visao-geral-para-quem"
+                }
+              ]
+            },
+            {
+              "code": "03",
+              "title": "Que problemas resolve",
+              "summary": "A pergunta de análise na hora, a investigação do porquê e o aviso quando algo muda.",
+              "href": "visao-geral.html#visao-geral-que-problemas-resolve",
+              "links": [
+                {
+                  "label": "Ler",
+                  "href": "#visao-geral-que-problemas-resolve"
+                }
+              ]
+            },
+            {
+              "code": "04",
+              "title": "Como funciona, em grandes linhas",
+              "summary": "Do dado ligado ao aviso que chega sozinho, em seis passos.",
+              "href": "visao-geral.html#visao-geral-como-funciona-em-grandes-linhas",
+              "links": [
+                {
+                  "label": "Ler",
+                  "href": "#visao-geral-como-funciona-em-grandes-linhas"
+                }
+              ]
+            },
+            {
+              "code": "05",
+              "title": "As macro funcionalidades",
+              "summary": "As 19 mf: cada uma entrega um valor inteiro a alguém, e elas se agrupam em camadas.",
+              "href": "visao-geral.html#visao-geral-as-macro-funcionalidades",
+              "links": [
+                {
+                  "label": "Ler",
+                  "href": "#visao-geral-as-macro-funcionalidades"
+                }
+              ]
+            },
+            {
+              "code": "06",
+              "title": "As entregas: v2.0 e v2.1",
+              "summary": "A v2.0 sai inteira, de uma vez, em SaaS; a v2.1 reúne o que ficou fora dela.",
+              "href": "visao-geral.html#visao-geral-as-entregas-v20-e-v21",
+              "links": [
+                {
+                  "label": "Ler",
+                  "href": "#visao-geral-as-entregas-v20-e-v21"
+                }
+              ]
+            },
+            {
+              "code": "07",
+              "title": "Como o Horus é entregue",
+              "summary": "Marca branca, uma versão só em SaaS ou on-premises e várias organizações por instância.",
+              "href": "visao-geral.html#visao-geral-como-o-horus-e-entregue",
+              "links": [
+                {
+                  "label": "Ler",
+                  "href": "#visao-geral-como-o-horus-e-entregue"
+                }
+              ]
+            },
+            {
+              "code": "08",
+              "title": "O que o Horus não é",
+              "summary": "Só lê: não altera nada, não arruma os dados, não inventa número e não decide por você.",
+              "href": "visao-geral.html#visao-geral-o-que-o-horus-nao-e",
+              "links": [
+                {
+                  "label": "Ler",
+                  "href": "#visao-geral-o-que-o-horus-nao-e"
+                }
+              ]
+            },
+            {
+              "code": "09",
+              "title": "Para saber mais",
+              "summary": "Os documentos que aprofundam a visão: o norte do produto, os temas, a v2.0 consolidada e mais.",
+              "href": "visao-geral.html#visao-geral-para-saber-mais",
+              "links": [
+                {
+                  "label": "Ler",
+                  "href": "#visao-geral-para-saber-mais"
+                }
+              ]
+            }
+          ]
+        },
         {
           "label": "v2.0",
           "text": "A primeira entrega: 17 macro funcionalidades.",

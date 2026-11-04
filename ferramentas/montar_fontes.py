@@ -603,6 +603,22 @@ def main() -> int:
         elif codigo in entra21:
             v21.append(cartao(codigo, nome, entra21[codigo], "extensão", extensao=True))
     novas = sum(1 for c in v21 if c["badge"] == "v2.1")
+    # A região "Visão" da entrada: um cartão por tópico da página "O Horus v2" (o Comece aqui). O resumo é escrito à mão: o
+    # primeiro parágrafo de cada tópico ("Três problemas, nesta ordem:") não serve de resumo. O id é o do tópico, sem o prefixo.
+    visao_topicos = [
+        ("o-que-e-o-horus", "O que é o Horus", "Um chat de análise: pergunte do jeito que fala e receba gráfico, tabela, indicador ou texto, com a fonte de cada número."),
+        ("para-quem", "Para quem", "O gestor de área, o executivo e o comprador."),
+        ("que-problemas-resolve", "Que problemas resolve", "A pergunta de análise na hora, a investigação do porquê e o aviso quando algo muda."),
+        ("como-funciona-em-grandes-linhas", "Como funciona, em grandes linhas", "Do dado ligado ao aviso que chega sozinho, em seis passos."),
+        ("as-macro-funcionalidades", "As macro funcionalidades", f"As {len(paginas_mf)} mf: cada uma entrega um valor inteiro a alguém, e elas se agrupam em camadas."),
+        ("as-entregas-v20-e-v21", "As entregas: v2.0 e v2.1", "A v2.0 sai inteira, de uma vez, em SaaS; a v2.1 reúne o que ficou fora dela."),
+        ("como-o-horus-e-entregue", "Como o Horus é entregue", "Marca branca, uma versão só em SaaS ou on-premises e várias organizações por instância."),
+        ("o-que-o-horus-nao-e", "O que o Horus não é", "Só lê: não altera nada, não arruma os dados, não inventa número e não decide por você."),
+        ("para-saber-mais", "Para saber mais", "Os documentos que aprofundam a visão: o norte do produto, os temas, a v2.0 consolidada e mais."),
+    ]
+    visao = [{"code": f"{n:02d}", "title": titulo, "summary": resumo, "href": f"visao-geral.html#visao-geral-{ident}",
+              "links": [{"label": "Ler", "href": f"#visao-geral-{ident}"}]}
+             for n, (ident, titulo, resumo) in enumerate(visao_topicos, 1)]
     config = {
         "schema_version": 1, "language": "pt-BR", "layout": "portal",
         "project": {
@@ -619,7 +635,8 @@ def main() -> int:
             "logo_light": "media/horus-escuro.svg",
             "nav_button": "Comece aqui",
         },
-        "portal": {"macros": {"title": "Macro funcionalidades", "groups": [
+        "portal": {"macros": {"title": "Visão e macro funcionalidades", "groups": [
+            {"label": "Visão", "text": f"O que é o Horus, em {len(visao)} passos: o conteúdo do Comece aqui.", "items": visao},
             {"label": "v2.0", "text": f"A primeira entrega: {len(v20)} macro funcionalidades.", "items": v20},
             {"label": "v2.1", "text": f"A segunda entrega: {novas} macro funcionalidades novas e {len(v21) - novas} extensões.", "items": v21},
         ]}},

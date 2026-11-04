@@ -177,6 +177,26 @@
     window.addEventListener('resize', () => { divisor.setAttribute('aria-valuemax', String(maximo())); aplicar(guardada()); });
   }
 
+  /* Entrada: Cartões | Lista. A escolha fica no localStorage e vale para as outras abas abertas (evento "storage"); o <head>
+     da entrada já aplicou a classe dx-lista antes da primeira pintura, e aqui só se acende o botão certo. */
+  const modos = $$('.dx-modo-btn');
+  if (modos.length) {
+    const CHAVE_MODO = 'docx-portal-modo';
+    const lerModo = () => {
+      try { return localStorage.getItem(CHAVE_MODO) === 'lista' ? 'lista' : 'cartoes'; } catch (_) { return 'cartoes'; }
+    };
+    const aplicarModo = modo => {
+      document.documentElement.classList.toggle('dx-lista', modo === 'lista');
+      modos.forEach(botao => botao.setAttribute('aria-pressed', String(botao.dataset.modo === modo)));
+    };
+    aplicarModo(lerModo());
+    modos.forEach(botao => botao.addEventListener('click', () => {
+      try { localStorage.setItem(CHAVE_MODO, botao.dataset.modo); } catch (_) { /* O modo vale nesta página. */ }
+      aplicarModo(botao.dataset.modo);
+    }));
+    window.addEventListener('storage', event => { if (event.key === CHAVE_MODO || event.key === null) aplicarModo(lerModo()); });
+  }
+
   /* Imprimir: um botão, e não um link javascript:. */
   $$('[data-print]').forEach(button => button.addEventListener('click', () => window.print()));
 })();

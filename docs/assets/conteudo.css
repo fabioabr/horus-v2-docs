@@ -498,6 +498,7 @@ body.dx-pagina-doc .documentation_info{line-height: 15.6px;font-size: 9.6px}
 .dx-pagina-doc .dx-ferramentas .doc_switch .tab-btn:is(.documentation_info *){font-size: 9.6px;line-height: 13.2px}
 .dx-pagina-doc .dx-faixa h1:is(.documentation_info *){font-size: 21.6px;line-height: 26.4px}
 .dx-pagina-doc .dx-faixa p:is(.documentation_info *){font-size: 9.6px;line-height: 15.6px}
+.dx-pagina-doc .dx-modo-btn:is(.documentation_info *){font-size: 9px;line-height: 12px}
 .dx-pagina-doc .dx-grupo-titulo h2:is(.documentation_info *){font-size: 15.6px;line-height: 19.2px}
 .dx-pagina-doc .dx-grupo-titulo p:is(.documentation_info *){font-size: 8.4px}
 .dx-pagina-doc .dx-macro-codigo:is(.documentation_info *){font-size: 8.4px}

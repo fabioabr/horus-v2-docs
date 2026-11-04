@@ -255,23 +255,64 @@ html.dx-arrastando, html.dx-arrastando * { cursor: col-resize !important; user-s
 .dx-faixa .banner_search_form { max-width: none; margin: 0; }
 .dx-faixa .banner_search_form .form-control { height: 56px; }
 
-/* As macro funcionalidades: cartões brancos, compactos, quatro por linha */
+/* A entrada: as regiões (Visão, v2.0, v2.1), compactas, quatro cartões por linha ou uma lista, a escolha de quem lê.
+   Os cartões são de vidro desfocado ("fumê"): azul-marinho translúcido sobre o fundo fixo, que passa borrado por trás
+   enquanto a página rola. O branco translúcido deixaria o texto branco ilegível sobre o ciano da esquerda do fundo (contraste
+   de uns 2:1); o fumê dá uns 5:1. Onde o navegador não desfoca, o cartão fica mais opaco. */
 .dx-macros { padding: 10px 0 10px; }
+/* O seletor Cartões | Lista (docx.js guarda a escolha no localStorage; o <head> a aplica antes da primeira pintura) */
+.dx-modo { display: flex; justify-content: flex-end; margin: 0 0 12px; }
+.dx-modo-btn { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; font-size: 11.25px; line-height: 15px; font-weight: 500; color: #fff; cursor: pointer;
+  background: rgba(8, 24, 52, .38); border: 1px solid rgba(255, 255, 255, .28); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); transition: background .2s, color .2s; }
+.dx-modo-btn + .dx-modo-btn { margin-left: -1px; }
+.dx-modo-btn:first-child { border-radius: var(--dx-raio) 0 0 var(--dx-raio); }
+.dx-modo-btn:last-child { border-radius: 0 var(--dx-raio) var(--dx-raio) 0; }
+.dx-modo-btn:hover { background: rgba(8, 24, 52, .55); }
+.dx-modo-btn[aria-pressed="true"] { background: #fff; color: #1d2746; border-color: #fff; }
+.dx-modo-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; position: relative; }
+.dx-modo-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
 .dx-grupo { margin-bottom: 30px; }
 .dx-grupo-titulo { display: flex; align-items: baseline; gap: 14px; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid rgba(255, 255, 255, .25); }
 .dx-grupo-titulo h2 { color: #fff; font-size: 19.5px; line-height: 24px; margin: 0; }
 .dx-grupo-titulo p { color: rgba(255, 255, 255, .75); font-size: 10.5px; margin: 0; }
 .dx-macros .row { margin-left: -8px; margin-right: -8px; }
 .dx-macros .row > [class*="col-"] { padding-left: 8px; padding-right: 8px; margin-bottom: 16px; }
-.dx-macro.doc_features_item_one { padding: 16px 18px; height: 100%; margin: 0; display: flex; flex-direction: column; box-shadow: 0 10px 30px 0 rgba(4, 73, 89, .12); border-radius: var(--dx-raio); }
+.dx-macro.doc_features_item_one { padding: 16px 18px; height: 100%; margin: 0; display: flex; flex-direction: column; border-radius: var(--dx-raio);
+  background: rgba(8, 24, 52, .38); border: 1px solid rgba(255, 255, 255, .22); box-shadow: 0 8px 32px 0 rgba(0, 0, 0, .18);
+  -webkit-backdrop-filter: blur(16px) saturate(140%); backdrop-filter: blur(16px) saturate(140%); transition: background .2s, border-color .2s, box-shadow .2s; }
+.dx-macro.doc_features_item_one:hover { background: rgba(8, 24, 52, .5); border-color: rgba(255, 255, 255, .38); box-shadow: 0 12px 36px 0 rgba(0, 0, 0, .24); }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .dx-macro.doc_features_item_one, .dx-macro.doc_features_item_one:hover { background: rgba(8, 24, 52, .78); }
+}
 .dx-macro-topo { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-.dx-macro-codigo { font-size: 10.5px; font-weight: 700; color: #10b3d6; letter-spacing: .3px; }
-.dx-macro-selo { font-size: 9px; font-weight: 500; color: #1d2746; background: #e6f6fa; border-radius: 3px; padding: 2px 8px; }
+.dx-macro-codigo { font-size: 10.5px; font-weight: 700; color: #7fe0f3; letter-spacing: .3px; }
+.dx-macro-selo { font-size: 9px; font-weight: 500; color: #fff; background: rgba(255, 255, 255, .16); border-radius: 3px; padding: 2px 8px; }
 .dx-macro h3 { font-size: 13.5px; line-height: 17.25px; margin-bottom: 6px; }
-.dx-macro p { font-size: 11.25px; line-height: 17.25px; margin-bottom: 10px; flex: 1; }
+.dx-macro h3, .dx-macro h3 a { color: #fff; }
+.dx-macro h3 a:hover, .dx-macro h3:hover { color: #7fe0f3; }
+.dx-macro p { font-size: 11.25px; line-height: 17.25px; margin-bottom: 10px; flex: 1; color: rgba(255, 255, 255, .82); }
 .dx-macro-links { display: flex; gap: 18px; flex-wrap: wrap; }
-.dx-macro-links .learn_btn { padding-top: 0; }
+.dx-macro-links .learn_btn { padding-top: 0; color: #fff; }
+.dx-macro-links .learn_btn:hover { color: #7fe0f3; }
 .dx-macro-links .learn_btn i { margin-left: 6px; }
+/* A lista: uma linha por item, no mesmo vidro: código, título, resumo, selo e links em colunas. O .dx-macro-topo some
+   (display: contents) para o código e o selo virarem colunas da linha. */
+html.dx-lista .dx-macros .row > [class*="col-"] { flex: 0 0 100%; max-width: 100%; margin-bottom: 8px; }
+html.dx-lista .dx-macro.doc_features_item_one { height: auto; display: grid; grid-template-columns: 64px minmax(180px, 1.1fr) minmax(0, 2.6fr) 96px 200px; align-items: center; column-gap: 18px; padding: 10px 18px; }
+html.dx-lista .dx-macro-topo { display: contents; }
+html.dx-lista .dx-macro-codigo { grid-column: 1; grid-row: 1; }
+html.dx-lista .dx-macro h3 { grid-column: 2; grid-row: 1; margin: 0; }
+html.dx-lista .dx-macro p { grid-column: 3; grid-row: 1; margin: 0; }
+html.dx-lista .dx-macro-selo { grid-column: 4; grid-row: 1; justify-self: start; }
+html.dx-lista .dx-macro-links { grid-column: 5; grid-row: 1; flex-wrap: nowrap; justify-content: flex-end; }
+/* As colunas têm larguras fixas (as duas últimas, também): sem isso cada linha calcularia as suas e as colunas não
+   alinhariam de uma região para a outra. Em telas estreitas a linha vira três: código, título e selo; o resumo; os links. */
+@media (max-width: 991px) {
+  html.dx-lista .dx-macro.doc_features_item_one { grid-template-columns: auto minmax(0, 1fr) auto; column-gap: 12px; row-gap: 4px; }
+  html.dx-lista .dx-macro p { grid-column: 1 / -1; grid-row: 2; }
+  html.dx-lista .dx-macro-selo { grid-column: 3; }
+  html.dx-lista .dx-macro-links { grid-column: 1 / -1; grid-row: 3; flex-wrap: wrap; justify-content: flex-start; }
+}
 
 /* Os documentos: um painel branco, as categorias em colunas */
 .dx-documentos { padding: 0 0 50px; }
