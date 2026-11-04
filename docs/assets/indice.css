@@ -31,9 +31,9 @@
 .dx-pagina-doc .dx-modelo-01 .dx-m01-rotulo h2 { color: var(--m01-muted); font-size: 11px; font-weight: 600; line-height: 1.5; letter-spacing: 1.1px; text-transform: uppercase; }
 .dx-pagina-doc .dx-modelo-01 .dx-m01-rotulo > span { font-size: 10px; color: var(--m01-muted); }
 .dx-pagina-doc .dx-modelo-01 .dx-m01-assuntos { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
-.dx-pagina-doc .dx-modelo-01 .dx-m01-assunto { display: flex; align-items: center; gap: 11px; min-width: 0; min-height: 76px; padding: 15px 13px; border: 1px solid var(--m01-line); border-radius: 7px; background: var(--m01-paper); transition: border-color .15s, background .15s; }
+.dx-pagina-doc .dx-modelo-01 .dx-m01-assunto { display: flex; align-items: center; gap: 11px; min-width: 0; min-height: 76px; padding: 15px 13px; border: 1px solid var(--m01-line); border-radius: var(--dx-raio); background: var(--m01-paper); transition: border-color .15s, background .15s; }
 .dx-pagina-doc .dx-modelo-01 .dx-m01-assunto:hover { background: var(--m01-hover); border-color: #8bd0dc; color: var(--m01-accent); }
-.dx-pagina-doc .dx-modelo-01 .dx-m01-icone { display: grid; place-items: center; width: 35px; height: 35px; flex-shrink: 0; color: var(--m01-accent); background: var(--m01-pale); border-radius: 7px; font-size: 16px; }
+.dx-pagina-doc .dx-modelo-01 .dx-m01-icone { display: grid; place-items: center; width: 35px; height: 35px; flex-shrink: 0; color: var(--m01-accent); background: var(--m01-pale); border-radius: var(--dx-raio); font-size: 16px; }
 .dx-pagina-doc .dx-modelo-01 .dx-m01-texto { flex: 1; min-width: 0; }
 .dx-pagina-doc .dx-modelo-01 .dx-m01-texto strong { display: block; font-size: 12px; line-height: 1.4; font-weight: 500; }
 .dx-pagina-doc .dx-modelo-01 .dx-m01-texto small { display: block; font-size: 10px; line-height: 1.5; color: var(--m01-muted); margin-top: 4px; }
@@ -45,7 +45,7 @@
 .dx-pagina-doc .dx-modelo-01 .dx-m01-cabecalho p { margin-top: 5px; color: var(--m01-muted); font-size: 11px; line-height: 1.5; }
 .dx-pagina-doc .dx-modelo-01 .dx-m01-total { flex-shrink: 0; padding: 5px 8px; border-radius: 4px; background: var(--m01-badge); color: var(--m01-muted); font-size: 10px; line-height: 1.5; }
 .dx-pagina-doc .dx-modelo-01 .dx-m01-grade { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
-.dx-pagina-doc .dx-modelo-01 .dx-m01-fonte { min-width: 0; border: 1px solid var(--m01-line); border-radius: 7px; padding: 10px 12px; background: var(--m01-paper); }
+.dx-pagina-doc .dx-modelo-01 .dx-m01-fonte { min-width: 0; border: 1px solid var(--m01-line); border-radius: var(--dx-raio); padding: 10px 12px; background: var(--m01-paper); }
 .dx-pagina-doc .dx-modelo-01 .dx-m01-fonte h3 { display: flex; align-items: center; gap: 8px; font-size: 12px; line-height: 1.5; font-weight: 500; margin-bottom: 5px; }
 .dx-pagina-doc .dx-modelo-01 .dx-m01-fonte h3 > i { font-size: 12px; color: var(--m01-muted); }
 .dx-pagina-doc .dx-modelo-01 .dx-m01-fonte h3 > span { flex: 1; min-width: 0; }

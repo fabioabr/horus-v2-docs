@@ -50,6 +50,9 @@
    dos itens do menu: ao tirar "Início" e "Documentos" (header_links: false) a barra passou a ter 40 px, e os 7 px que
    sobraram viraram uma faixa branca entre a barra e a página, no tema escuro. Agora a barra tem a altura declarada
    aqui. Abaixo de 992 px o menu vira o botão de abrir, que dá 54 px (min-height: o menu aberto cresce por cima). */
+/* O raio dos cantos dos blocos destacados (tabelas, alertas, código, diagramas, cartões e o painel do menu), numa medida só.
+   Eram 10 px nas tabelas e no painel e 6 e 7 px, soltos, nos cartões; vale a metade dos 10. */
+.dx-pagina-doc, .dx-portal { --dx-raio: 5px; }
 .dx-pagina-doc, .dx-portal { --dx-barra: 54px; }
 .dx-pagina-doc .menu_one, .dx-portal .menu_one { min-height: var(--dx-barra); }
 @media (min-width: 992px) {
@@ -60,9 +63,11 @@
    o rodapé de uma linha ficava com 80 px contra os 40 do topo. O texto fica centralizado na faixa; em telas estreitas, se
    quebrar em mais linhas, o rodapé cresce (min-height) em vez de cortar o texto. */
 .dx-pagina-doc .simple_footer, .dx-portal .simple_footer { display: flex; align-items: center; min-height: var(--dx-barra); padding-top: 0; padding-bottom: 0; }
-/* Tabelas com cantos arredondados: o contêiner da tabela (a que rola de lado, quando é larga) recorta o cabeçalho e a
-   última linha nos cantos; a tabela em si fica como está. */
-.dx-content .table-responsive { border-radius: 10px; }
+/* Cantos arredondados nos blocos destacados. A tabela é recortada pelo contêiner dela (o que rola de lado, quando é larga),
+   que recorta o cabeçalho e a última linha nos cantos; a tabela em si fica como está. O alerta (blockquote) mantém a faixa
+   de cor da esquerda, que acompanha a curva. */
+.dx-content .table-responsive, .dx-content blockquote, .dx-content .notice, .dx-content figure img,
+.dx-content pre[class*="language-"], .dx-content pre[class*="language-"] > code { border-radius: var(--dx-raio); }
 .dx-pagina-doc .documentation_info [id] { scroll-margin-top: calc(var(--dx-barra) + 20px); }
 .dx-pagina-doc .doc_documentation_area { padding-bottom: 30px; }
 .dx-pagina-doc .doc-container { padding-top: 18px; }
@@ -91,7 +96,7 @@
   .dx-pagina-doc .doc_left_sidebarlist,
   .dx-pagina-doc .sticky_menu .doc_documentation_area.body_fixed .doc_left_sidebarlist {
     display: flex; flex-direction: column; overflow: hidden; margin-left: 12px; padding: 8px;
-    background: #fff; border: 1px solid #e3e9ee; border-radius: 10px; box-shadow: 0 8px 28px rgba(20, 30, 50, .14);
+    background: #fff; border: 1px solid #e3e9ee; border-radius: var(--dx-raio); box-shadow: 0 8px 28px rgba(20, 30, 50, .14);
   }
   .body_dark.dx-pagina-doc .doc_left_sidebarlist,
   .body_dark.dx-pagina-doc .sticky_menu .doc_documentation_area.body_fixed .doc_left_sidebarlist {
@@ -254,7 +259,7 @@ html.dx-arrastando, html.dx-arrastando * { cursor: col-resize !important; user-s
 .dx-grupo-titulo p { color: rgba(255, 255, 255, .75); font-size: 10.5px; margin: 0; }
 .dx-macros .row { margin-left: -8px; margin-right: -8px; }
 .dx-macros .row > [class*="col-"] { padding-left: 8px; padding-right: 8px; margin-bottom: 16px; }
-.dx-macro.doc_features_item_one { padding: 16px 18px; height: 100%; margin: 0; display: flex; flex-direction: column; box-shadow: 0 10px 30px 0 rgba(4, 73, 89, .12); }
+.dx-macro.doc_features_item_one { padding: 16px 18px; height: 100%; margin: 0; display: flex; flex-direction: column; box-shadow: 0 10px 30px 0 rgba(4, 73, 89, .12); border-radius: var(--dx-raio); }
 .dx-macro-topo { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
 .dx-macro-codigo { font-size: 10.5px; font-weight: 700; color: #10b3d6; letter-spacing: .3px; }
 .dx-macro-selo { font-size: 9px; font-weight: 500; color: #1d2746; background: #e6f6fa; border-radius: 3px; padding: 2px 8px; }
@@ -266,7 +271,7 @@ html.dx-arrastando, html.dx-arrastando * { cursor: col-resize !important; user-s
 
 /* Os documentos: um painel branco, as categorias em colunas */
 .dx-documentos { padding: 0 0 50px; }
-.dx-painel { background: #fff; border-radius: 6px; box-shadow: 0 10px 30px 0 rgba(4, 73, 89, .12); padding: 26px 30px 6px; }
+.dx-painel { background: #fff; border-radius: var(--dx-raio); box-shadow: 0 10px 30px 0 rgba(4, 73, 89, .12); padding: 26px 30px 6px; }
 .dx-painel > h2 { font-size: 19.5px; line-height: 24px; margin-bottom: 18px; }
 .dx-painel .doc_tag_item { margin-bottom: 24px; }
 /* O título da categoria do KbDoc tem 45px de margem embaixo; no painel compacto, a lista encosta na linha */
