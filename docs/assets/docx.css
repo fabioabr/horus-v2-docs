@@ -50,12 +50,19 @@
    dos itens do menu: ao tirar "Início" e "Documentos" (header_links: false) a barra passou a ter 40 px, e os 7 px que
    sobraram viraram uma faixa branca entre a barra e a página, no tema escuro. Agora a barra tem a altura declarada
    aqui. Abaixo de 992 px o menu vira o botão de abrir, que dá 54 px (min-height: o menu aberto cresce por cima). */
-.dx-pagina-doc { --dx-barra: 54px; }
-.dx-pagina-doc .menu_one { min-height: var(--dx-barra); }
+.dx-pagina-doc, .dx-portal { --dx-barra: 54px; }
+.dx-pagina-doc .menu_one, .dx-portal .menu_one { min-height: var(--dx-barra); }
 @media (min-width: 992px) {
-  .dx-pagina-doc { --dx-barra: 40px; }
-  .dx-pagina-doc .menu_one { height: var(--dx-barra); }
+  .dx-pagina-doc, .dx-portal { --dx-barra: 40px; }
+  .dx-pagina-doc .menu_one, .dx-portal .menu_one { height: var(--dx-barra); }
 }
+/* O rodapé tem a altura do topo (a --dx-barra), na entrada e nas páginas. O KbDoc dava 30 px de espaço em cima e embaixo, e
+   o rodapé de uma linha ficava com 80 px contra os 40 do topo. O texto fica centralizado na faixa; em telas estreitas, se
+   quebrar em mais linhas, o rodapé cresce (min-height) em vez de cortar o texto. */
+.dx-pagina-doc .simple_footer, .dx-portal .simple_footer { display: flex; align-items: center; min-height: var(--dx-barra); padding-top: 0; padding-bottom: 0; }
+/* Tabelas com cantos arredondados: o contêiner da tabela (a que rola de lado, quando é larga) recorta o cabeçalho e a
+   última linha nos cantos; a tabela em si fica como está. */
+.dx-content .table-responsive { border-radius: 10px; }
 .dx-pagina-doc .documentation_info [id] { scroll-margin-top: calc(var(--dx-barra) + 20px); }
 .dx-pagina-doc .doc_documentation_area { padding-bottom: 30px; }
 .dx-pagina-doc .doc-container { padding-top: 18px; }
@@ -169,6 +176,9 @@ html.dx-arrastando, html.dx-arrastando * { cursor: col-resize !important; user-s
 .body_dark .table_shortcode tbody tr { background: #1e2028; }
 .body_dark .table_shortcode tbody tr:nth-child(odd) { background: #23252e; }
 .body_dark .table_shortcode tbody tr td { color: #c7c9d3; }
+/* A etiqueta da tabela chave/valor (o <th scope="row">): o ciano vivo do KbDoc (#10b3d6) grita sobre o fundo escuro. No
+   tema escuro vale o teal escuro dos cartões do índice (--m01-pale), com texto claro; no claro, o ciano segue. */
+.body_dark .table_shortcode tbody tr th { background: #1b414c; color: #dff4f9; }
 .body_dark blockquote:not(.notice) { background: #061f2f; }
 .body_dark .dx-macro-selo { background: #10333d; color: #c7eef7; }
 .body_dark code[class*="language-"], .body_dark pre[class*="language-"] { color: #d3d4d4; }
@@ -193,7 +203,8 @@ html.dx-arrastando, html.dx-arrastando * { cursor: col-resize !important; user-s
 @media (min-width: 992px) {
   .dx-portal .menu > .nav-item, .dx-pagina-doc .menu > .nav-item,
   .dx-portal .navbar_fixed.menu_one .menu > .nav-item, .dx-pagina-doc .navbar_fixed.menu_one .menu > .nav-item { padding-top: 14px; padding-bottom: 14px; }
-  /* Na página, os itens cabem na barra de --dx-barra (a linha do item tem 19 px), com ou sem o "Início" e o "Documentos". */
+  /* Na entrada e nas páginas, os itens cabem na barra de --dx-barra (a linha do item tem 19 px), com ou sem o "Início" e o "Documentos". */
+  .dx-portal .menu > .nav-item, .dx-portal .navbar_fixed.menu_one .menu > .nav-item,
   .dx-pagina-doc .menu > .nav-item, .dx-pagina-doc .navbar_fixed.menu_one .menu > .nav-item { padding-top: calc((var(--dx-barra) - 19px) / 2); padding-bottom: calc((var(--dx-barra) - 19px) / 2); }
 }
 .dx-portal .menu_one .navbar-brand img, .dx-pagina-doc .menu_one .navbar-brand img { max-height: 30px; width: auto; }
