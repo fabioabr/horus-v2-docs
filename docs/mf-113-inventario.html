@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A documentação de produto e de arquitetura do Horus v2: a visão, as decisões, a estratégia e como ele vai ser construído.">
+    <meta name="generator" content="DocX 0.2.1">
+    <link rel="shortcut icon" href="media/horus-claro.svg">
+    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/elagent-icon/style.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/font-awesome/css/all.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/niceselectpicker/nice-select.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/font-size/css/rvfs.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/animation/animate.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/tooltipster/css/tooltipster.bundle.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism-coy.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/magnify-pop/magnific-popup.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/css/style.css">
+    <link rel="stylesheet" href="assets/kbdoc/css/responsive.css">
+    <link rel="stylesheet" href="assets/docx.css">
+    <link rel="stylesheet" href="assets/conteudo.css">
+    <link rel="stylesheet" href="assets/indice.css">
+    <title>Conectores de Saída: o inventário — Horus v2</title>
+</head>
+<body class="doc full-width-doc sticky-nav-doc onepage-doc dx-pagina-doc" data-spy="scroll" data-target=".navbar" data-offset="-120">
+    <a class="sr-only sr-only-focusable dx-skip" href="#post">Pular para o conteúdo</a>
+    <div class="body_wrapper sticky_menu">
+        <nav class="navbar navbar-expand-lg menu_one" id="stickyTwo" aria-label="Navegação principal">
+            <div class="container-fluid pl-60 pr-60">
+                <a class="navbar-brand" href="index.html">
+                    <img src="media/horus-claro.svg" alt="Horus v2">
+                    <img src="media/horus-escuro.svg" alt="Horus v2">
+                </a>
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Abrir o menu">
+                    <span class="menu_toggle">
+                        <span class="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                        <span class="hamburger-cross">
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav menu ml-auto">
+<li class="nav-item"><a href="index.html" class="nav-link">Início</a></li>
+<li class="nav-item dropdown submenu mega_menu tab-demo active"><a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentos</a><i class="arrow_carrot-down_alt2 mobile_dropdown_icon" aria-hidden="true" data-toggle="dropdown"></i><ul class="dropdown-menu scroll"><li><div class="row"><div class="col-lg-5 tabHeader"><ul class="nav flex-column nav-pills" id="dx-menu" role="tablist" aria-orientation="vertical"><li class="nav-item active"><a class="nav-link active" id="dx-menu-1-tab" data-toggle="pill" href="#dx-menu-1" role="tab" aria-controls="dx-menu-1" aria-selected="true">Comece aqui</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-2-tab" data-toggle="pill" href="#dx-menu-2" role="tab" aria-controls="dx-menu-2" aria-selected="false">Produto</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-3-tab" data-toggle="pill" href="#dx-menu-3" role="tab" aria-controls="dx-menu-3" aria-selected="false">Arquitetura · visão e decisões</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-4-tab" data-toggle="pill" href="#dx-menu-4" role="tab" aria-controls="dx-menu-4" aria-selected="false">Arquitetura · construção</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-5-tab" data-toggle="pill" href="#dx-menu-5" role="tab" aria-controls="dx-menu-5" aria-selected="false">Arquitetura · operação</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-6-tab" data-toggle="pill" href="#dx-menu-6" role="tab" aria-controls="dx-menu-6" aria-selected="false">Arquitetura · conferência</a></li></ul></div><div class="col-lg-7"><div class="tab-content tabContent" id="dx-menu-conteudo"><div class="tab-pane fade active show" id="dx-menu-1" role="tabpanel" aria-labelledby="dx-menu-1-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="visao-geral.html">O Horus v2</a></li><li><a href="pasta-v2.html">A pasta da v2</a></li></ul></div><div class="text"><a href="visao-geral.html"><p>Abrir Comece aqui</p></a></div></div><div class="tab-pane fade" id="dx-menu-2" role="tabpanel" aria-labelledby="dx-menu-2-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="produto-temas.html">Temas da visão de produto</a></li><li><a href="produto-norte.html">Norte do produto</a></li><li><a href="produto-lacunas.html">Inventário de lacunas</a></li><li><a href="produto-mfs-hoje.html">Macro funcionalidades de hoje</a></li><li><a href="produto-v20.html">A v2.0 consolidada</a></li></ul><ul class="list-unstyled tab_list"><li><a href="produto-versoes.html">As versões, mf a mf</a></li><li><a href="produto-mapa.html">Mapa de objetivos e funcionalidades</a></li><li><a href="produto-backlog.html">Backlog estratégico</a></li><li><a href="backlog-atividades.html">Backlog de atividades</a></li></ul></div><div class="text"><a href="produto-temas.html"><p>Abrir Produto</p></a></div></div><div class="tab-pane fade" id="dx-menu-3" role="tabpanel" aria-labelledby="dx-menu-3-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura.html">A pasta da arquitetura</a></li><li><a href="arquitetura-01.html">01 · Estratégia da solução</a></li><li><a href="arquitetura-02.html">02 · Registro de decisões</a></li><li><a href="arquitetura-03.html">03 · Metas de qualidade</a></li></ul></div><div class="text"><a href="arquitetura.html"><p>Abrir Arquitetura · visão e decisões</p></a></div></div><div class="tab-pane fade" id="dx-menu-4" role="tabpanel" aria-labelledby="dx-menu-4-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-04.html">04 · Software</a></li><li><a href="arquitetura-05.html">05 · Motor de análise e IA</a></li><li><a href="arquitetura-06.html">06 · Dados</a></li><li><a href="arquitetura-07.html">07 · Segurança</a></li><li><a href="arquitetura-08.html">08 · Integrações</a></li></ul></div><div class="text"><a href="arquitetura-04.html"><p>Abrir Arquitetura · construção</p></a></div></div><div class="tab-pane fade" id="dx-menu-5" role="tabpanel" aria-labelledby="dx-menu-5-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-09.html">09 · Infraestrutura e ambientes</a></li><li><a href="arquitetura-10.html">10 · Publicação e operação</a></li><li><a href="arquitetura-11.html">11 · Observabilidade</a></li><li><a href="arquitetura-12.html">12 · Qualidade e testes</a></li><li><a href="arquitetura-13.html">13 · Custo de operação</a></li></ul></div><div class="text"><a href="arquitetura-09.html"><p>Abrir Arquitetura · operação</p></a></div></div><div class="tab-pane fade" id="dx-menu-6" role="tabpanel" aria-labelledby="dx-menu-6-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-14.html">14 · Conferência do produto</a></li></ul></div><div class="text"><a href="arquitetura-14.html"><p>Abrir Arquitetura · conferência</p></a></div></div></div></div></div></li></ul></li>
+                    </ul>
+                    <ul class="list-unstyled menu_social">
+                        <li class="search">
+                            <form action="#" class="search_form" role="search" data-search-form>
+                                <label class="sr-only" for="dx-search">Buscar na documentação</label>
+                                <input type="search" class="form-control" id="dx-search" placeholder="Buscar" autocomplete="off" data-search-input aria-describedby="dx-search-status" aria-controls="dx-search-results">
+                                <button type="submit" aria-label="Buscar"><i class="icon_search" aria-hidden="true"></i></button>
+                                <div class="dx-search-results" id="dx-search-results" data-search-results hidden></div>
+                            </form>
+                            <p class="sr-only" id="dx-search-status" role="status" data-search-status></p>
+                        </li>
+                    </ul>
+                    <div class="dx-ferramentas">
+
+
+                        <div id="font-switcher"><div id="rvfs-controllers" class="fontsize-controllers group"></div></div>
+                        <button type="button" class="print" data-print aria-label="Imprimir"><i class="icon_printer" aria-hidden="true"></i></button>
+                        <div class="doc_switch">
+                            <label for="something" class="tab-btn tab-btns"><i class="icon_lightbulb_alt" aria-hidden="true"></i><span class="sr-only">Tema claro</span></label>
+                            <input type="checkbox" name="something" id="something" class="tab_switcher" aria-label="Tema escuro">
+                            <label for="something" class="tab-btn"><i class="far fa-moon" aria-hidden="true"></i><span class="sr-only">Tema escuro</span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <section class="doc_documentation_area onepage_doc_area" id="sticky_doc">
+            <div class="overlay_bg"></div>
+            <div class="container-fluid pl-60 pr-60">
+                <div class="row doc-container">
+                    <div class="col-lg-2 doc_mobile_menu doc-sidebar display_none">
+                        <aside class="doc_left_sidebarlist" aria-label="Tópicos desta página">
+                            <h3 class="nav_title">Tópicos</h3>
+                            <div class="scroll">
+                                <ul class="list-unstyled nav-sidebar doc-nav">
+<li class="nav-item active"><a href="#mf-113-inventario-o-que-e" class="nav-link">O que é</a><ul class="list-unstyled dropdown_nav"><li class="nav-item"><a href="#mf-113-inventario-d-041" class="nav-link">Definição macro · D-041</a></li><li class="nav-item"><a href="#mf-113-inventario-produto-mfs-hoje" class="nav-link">Macro funcionalidades de hoje</a></li></ul><span class="icon"><i class="icon_plus" aria-hidden="true"></i><i class="icon_minus-06" aria-hidden="true"></i></span></li>
+<li class="nav-item"><a href="#mf-113-inventario-entregas" class="nav-link">Nas entregas</a><ul class="list-unstyled dropdown_nav"><li class="nav-item"><a href="#mf-113-inventario-produto-v20" class="nav-link">A v2.0 consolidada</a></li><li class="nav-item"><a href="#mf-113-inventario-produto-versoes" class="nav-link">As versões, mf a mf</a></li></ul><span class="icon"><i class="icon_plus" aria-hidden="true"></i><i class="icon_minus-06" aria-hidden="true"></i></span></li>
+<li class="nav-item"><a href="#mf-113-inventario-objetivos" class="nav-link">Objetivos</a><ul class="list-unstyled dropdown_nav"><li class="nav-item"><a href="#mf-113-inventario-produto-mapa" class="nav-link">Mapa de objetivos e funcionalidades</a></li></ul><span class="icon"><i class="icon_plus" aria-hidden="true"></i><i class="icon_minus-06" aria-hidden="true"></i></span></li>
+<li class="nav-item"><a href="#mf-113-inventario-decisoes-produto" class="nav-link">Decisões de produto</a><ul class="list-unstyled dropdown_nav"><li class="nav-item"><a href="#mf-113-inventario-produto-backlog-d" class="nav-link">Backlog estratégico · 22 decisões</a></li><li class="nav-item"><a href="#mf-113-inventario-produto-backlog" class="nav-link">Backlog estratégico · pendências</a></li></ul><span class="icon"><i class="icon_plus" aria-hidden="true"></i><i class="icon_minus-06" aria-hidden="true"></i></span></li>
+<li class="nav-item"><a href="#mf-113-inventario-arquitetura" class="nav-link">Arquitetura</a><ul class="list-unstyled dropdown_nav"><li class="nav-item"><a href="#mf-113-inventario-arquitetura-01" class="nav-link">01 · Estratégia da solução</a></li><li class="nav-item"><a href="#mf-113-inventario-arquitetura-04" class="nav-link">04 · Software</a></li></ul><span class="icon"><i class="icon_plus" aria-hidden="true"></i><i class="icon_minus-06" aria-hidden="true"></i></span></li>
+<li class="nav-item"><a href="#mf-113-inventario-decisoes-arquitetura" class="nav-link">Decisões de arquitetura</a><ul class="list-unstyled dropdown_nav"><li class="nav-item"><a href="#mf-113-inventario-arquitetura-02" class="nav-link">02 · Registro de decisões</a></li></ul><span class="icon"><i class="icon_plus" aria-hidden="true"></i><i class="icon_minus-06" aria-hidden="true"></i></span></li>
+<li class="nav-item"><a href="#mf-113-inventario-v1" class="nav-link">O que se reaproveita da v1</a><ul class="list-unstyled dropdown_nav"><li class="nav-item"><a href="#mf-113-inventario-arquitetura-14" class="nav-link">14 · Conferência do produto</a></li></ul><span class="icon"><i class="icon_plus" aria-hidden="true"></i><i class="icon_minus-06" aria-hidden="true"></i></span></li>
+<li class="nav-item"><a href="#mf-113-inventario-citada" class="nav-link">Também citada em</a></li>
+                                </ul>
+                            </div>
+                        </aside>
+                    </div>
+                    <div class="col-lg-10 col-md-12">
+                        <div class="documentation_info dx-pagina" id="post">
+                            <header class="dx-cabeca" id="mf-113-inventario">
+                                <nav class="dx-trilha" aria-label="Trilha"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Início</a></li><li class="breadcrumb-item">Inventário das mfs</li><li class="breadcrumb-item active" aria-current="page">Conectores de Saída: o inventário</li></ol></nav>
+                                
+                                <h1>Conectores de Saída: o inventário</h1>
+                                <p>Tudo o que os documentos do inventário dizem da MF-113, assunto por assunto.</p>
+                            </header>
+                            <div class="dx-modelo-01">
+<nav aria-labelledby="dx-m01-assuntos-titulo">
+<div class="dx-m01-rotulo"><h2 id="dx-m01-assuntos-titulo">Explore os assuntos</h2><span>8 seções</span></div>
+<div class="dx-m01-assuntos">
+<a class="dx-m01-assunto" href="#mf-113-inventario-o-que-e"><span class="dx-m01-icone"><i class="fas fa-book-open" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que é</strong><small>2 referências</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-113-inventario-entregas"><span class="dx-m01-icone"><i class="fas fa-box-open" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Nas entregas</strong><small>2 referências</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-113-inventario-objetivos"><span class="dx-m01-icone"><i class="fas fa-bullseye" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Objetivos</strong><small>1 referência</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-113-inventario-decisoes-produto"><span class="dx-m01-icone"><i class="fas fa-tasks" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Decisões de produto</strong><small>2 referências</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-113-inventario-arquitetura"><span class="dx-m01-icone"><i class="fas fa-layer-group" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Arquitetura</strong><small>2 referências</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-113-inventario-decisoes-arquitetura"><span class="dx-m01-icone"><i class="fas fa-project-diagram" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Decisões de arquitetura</strong><small>1 referência</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-113-inventario-v1"><span class="dx-m01-icone"><i class="fas fa-history" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que se reaproveita da v1</strong><small>1 referência</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-113-inventario-citada"><span class="dx-m01-icone"><i class="fas fa-link" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Também citada em</strong><small>Outras citações</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</div></nav>
+<section class="dx-m01-fontes" aria-labelledby="dx-m01-fontes-titulo">
+<header class="dx-m01-cabecalho"><div>
+<h2 id="dx-m01-fontes-titulo"><i class="fas fa-link" aria-hidden="true"></i><span>De onde vem</span></h2>
+<p>Referências que fundamentam esta funcionalidade</p></div>
+<span class="dx-m01-total">11 referências</span></header>
+<div class="dx-m01-grade">
+<section class="dx-m01-fonte"><h3><i class="fas fa-book-open" aria-hidden="true"></i><span>O que é</span><small aria-label="2 referências">2</small></h3><ul class="dx-m01-links"><li><a href="#mf-113-inventario-d-041"><span>Definição macro · D-041</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#mf-113-inventario-produto-mfs-hoje"><span>Macro funcionalidades de hoje</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li></ul></section>
+<section class="dx-m01-fonte"><h3><i class="fas fa-box-open" aria-hidden="true"></i><span>Nas entregas</span><small aria-label="2 referências">2</small></h3><ul class="dx-m01-links"><li><a href="#mf-113-inventario-produto-v20"><span>A v2.0 consolidada</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#mf-113-inventario-produto-versoes"><span>As versões, mf a mf</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li></ul></section>
+<section class="dx-m01-fonte"><h3><i class="fas fa-bullseye" aria-hidden="true"></i><span>Objetivos</span><small aria-label="1 referência">1</small></h3><ul class="dx-m01-links"><li><a href="#mf-113-inventario-produto-mapa"><span>Mapa de objetivos e funcionalidades</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li></ul></section>
+<section class="dx-m01-fonte"><h3><i class="fas fa-tasks" aria-hidden="true"></i><span>Decisões de produto</span><small aria-label="2 referências">2</small></h3><ul class="dx-m01-links"><li><a href="#mf-113-inventario-produto-backlog-d"><span>Backlog estratégico · 22 decisões</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#mf-113-inventario-produto-backlog"><span>Backlog estratégico · pendências</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li></ul></section>
+<section class="dx-m01-fonte"><h3><i class="fas fa-layer-group" aria-hidden="true"></i><span>Arquitetura</span><small aria-label="2 referências">2</small></h3><ul class="dx-m01-links"><li><a href="#mf-113-inventario-arquitetura-01"><span>01 · Estratégia da solução</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#mf-113-inventario-arquitetura-04"><span>04 · Software</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li></ul></section>
+<section class="dx-m01-fonte"><h3><i class="fas fa-project-diagram" aria-hidden="true"></i><span>Decisões de arquitetura</span><small aria-label="1 referência">1</small></h3><ul class="dx-m01-links"><li><a href="#mf-113-inventario-arquitetura-02"><span>02 · Registro de decisões</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li></ul></section>
+<section class="dx-m01-fonte"><h3><i class="fas fa-history" aria-hidden="true"></i><span>O que se reaproveita da v1</span><small aria-label="1 referência">1</small></h3><ul class="dx-m01-links"><li><a href="#mf-113-inventario-arquitetura-14"><span>14 · Conferência do produto</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li></ul></section>
+<section class="dx-m01-fonte"><h3><i class="fas fa-link" aria-hidden="true"></i><span>Também citada em</span><small aria-label="0 referências">—</small></h3><p class="dx-m01-vazio">Nenhuma referência listada no índice.</p></section>
+</div></section>
+</div>
+                            <div class="dx-content">
+<div class="doc-section dx-assunto"><h3 id="mf-113-inventario-o-que-e" data-dx-icone="book-open">O que é</h3><h4 id="mf-113-inventario-d-041">Definição macro · D-041</h4><p class="dx-fonte">No <a href="produto-backlog.html#d-041">Backlog estratégico, D-041</a>:</p><p>Situação: 🟢 decidida (confirmada pelo dono em 31/10/2026; entra na v2.0 pela <a href="produto-backlog.html#d-122"><code>D-122</code></a>, de 02/11/2026; os conectores da v2.0 são o e-mail e o WhatsApp, pela <a href="produto-backlog.html#d-124"><code>D-124</code></a>) · Data: 31/10/2026 · Versão: a pontuar</p>
+<p><strong>Decisão:</strong> a MF-113:Conectores de Saída fica definida assim. Com ela, a <code>P-010</code> se fechou.</p>
+<ul>
+<li><strong>Nome:</strong> MF-113:Conectores de Saída (mantido).</li>
+<li><strong>O que é:</strong> os canais que <strong>só transportam</strong> o que o Horus produz (e-mail, WhatsApp, Teams, Google Chat e outros) e <strong>só entregam a usuários do Horus</strong> (<a href="produto-backlog.html#d-035"><code>D-035</code></a>). O formato do que sai é o artefato, outra coisa.</li>
+<li><strong>Quem ganha:</strong> o owner da organização, que escolhe por onde a informação da empresa sai; os usuários, que recebem o resultado no canal onde já olham; o contratante com regras rígidas de segurança, que controla o que sai.</li>
+<li><strong>Decisão que passa a ser possível:</strong> levar o que o Horus produz (alertas, relatórios exportados…) até a pessoa, sem ela precisar abrir o Horus, com a empresa no controle dos canais.</li>
+<li><strong>Como se controla:</strong> só o owner da organização liga os conectores (<a href="produto-backlog.html#d-034"><code>D-034</code></a>); o usuário informa o próprio contato em cada canal, e o owner aprova ou deixa automático, com um interruptor por tipo (<a href="produto-backlog.html#d-038"><code>D-038</code></a>, <a href="produto-backlog.html#d-039"><code>D-039</code></a>); no modo “tudo dentro”, os conectores ficam bloqueados até o owner da instância liberar cada tipo (<a href="produto-backlog.html#d-040"><code>D-040</code></a>).</li>
+<li><strong>Prova de valor:</strong> o owner liga o conector do Teams uma vez, um agendamento envia o PDF de um board, e o usuário o recebe no Teams. Nenhum conector funciona sem o owner ligar, e no “tudo dentro” nenhum conector que leve informação para fora funciona até a instância liberar.</li>
+<li><strong>Retorno para o negócio:</strong> a informação chega sem ninguém ir buscá-la (o aviso, problema nº 3 do norte), e o contratante com regras de segurança aceita o produto porque controla o que sai.</li>
+<li><strong>O que não inclui:</strong> o formato e o conteúdo do que sai (o artefato, feito pelo agente, <a href="produto-backlog.html#d-035"><code>D-035</code></a>, <a href="produto-backlog.html#d-037"><code>D-037</code></a>); o agendamento (MF-114:Módulo de Agendamentos de Agentes); entregar a quem não é usuário do Horus (<a href="produto-backlog.html#d-035"><code>D-035</code></a>); agir sobre os sistemas da empresa (<a href="produto-backlog.html#d-022"><code>D-022</code></a>); quem pode usar cada conector, que é candidato a interruptor por grupo (<code>P-009</code>); a lista de conectores que entram em cada versão (a pontuar).</li>
+<li><strong>Depende de:</strong> a MF-114:Módulo de Agendamentos de Agentes e a MF-115:Agentes ativos, que chamam os conectores; a MF-102:Organizações, pessoas e papéis, para o perfil onde o usuário informa o contato e para o papel de owner; a MF-101:Administração da instância, onde o owner da instância libera os tipos no modo “tudo dentro”.</li>
+</ul>
+<p><strong>Contexto:</strong> reúne as <a href="produto-backlog.html#d-033"><code>D-033</code></a> a <a href="produto-backlog.html#d-040"><code>D-040</code></a>. A natureza, o controle e os interruptores vieram do dono; os campos “quem ganha”, “retorno”, “o que não inclui” e “depende de” foram propostos pelo PO e confirmados pelo dono. A leitura de que o <strong>usuário informa o próprio contato</strong> (<a href="produto-backlog.html#d-038"><code>D-038</code></a>) foi confirmada junto.</p>
+<p><strong>Hipóteses a validar:</strong> a saída por e-mail de hoje serve de ponto de partida (<code>P-008</code>, item f).</p>
+<p><strong>Reabrir quando:</strong> o arquiteto mostrar que algum campo não cabe como definido, ou um contratante exigir conectores diferentes por organização.</p>
+<h4 id="mf-113-inventario-produto-mfs-hoje">Macro funcionalidades de hoje</h4><p class="dx-fonte">Em <a href="produto-mfs-hoje.html#produto-mfs-hoje-tabela-de-conversao-da-numeracao">Tabela de conversão da numeração</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de MF-113 · Conectores de Saída"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Novo</th>
+<th scope="col">Mf</th>
+<th scope="col">01/11</th>
+<th scope="col">Original</th>
+<th scope="col">Camada</th>
+</tr>
+</thead><tbody><tr>
+<td><a href="mf-113.html"><code>MF-113</code></a></td>
+<td>Conectores de Saída</td>
+<td><code>MF-12</code></td>
+<td><code>MF-014</code></td>
+<td>📌 Acompanhar e avisar</td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="produto-mfs-hoje.html#produto-mfs-hoje-o-que-o-dono-ja-disse-sobre-cada-mf-31102026">O que o dono já disse sobre cada mf (31/10/2026)</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 2 de MF-113 · Conectores de Saída"><table class="table table_shortcode"><thead><tr>
+<th scope="col">MF</th>
+<th scope="col">Direção</th>
+<th scope="col">Onde está registrado</th>
+</tr>
+</thead><tbody><tr>
+<td>MF-111:Chat pelo WhatsApp (nova)</td>
+<td><strong>A criar</strong>: a pessoa conversa com o Horus pelo WhatsApp e vê o conteúdo da resposta como no chat. É uma via de entrada, diferente dos conectores de saída (MF-113). A própria pessoa liga o seu número ao perfil e o confirma com um código recebido no WhatsApp (<a href="produto-backlog.html#d-094"><code>D-094</code></a>). Tudo o que a pessoa pergunta pelo WhatsApp entra no histórico do app e pode ser continuado lá (<a href="produto-backlog.html#d-095"><code>D-095</code></a>). A resposta chega com texto, imagens e um link para abrir a resposta no app (<a href="produto-backlog.html#d-096"><code>D-096</code></a>). Cada organização usa o seu próprio número de WhatsApp, e pode autorizar o uso do número da Maind (<a href="produto-backlog.html#d-097"><code>D-097</code></a>). A pessoa tem tudo o que a conversa de análise oferece (<a href="produto-backlog.html#d-098"><code>D-098</code></a>). Só o owner liga o canal, só quem pergunta conversa, e o canal fica bloqueado em “tudo dentro” (<a href="produto-backlog.html#d-099"><code>D-099</code></a>). O nome e o número são proposta do PO</td>
+<td><a href="produto-backlog.html#d-084"><code>D-084</code></a> e <a href="produto-backlog.html#d-094"><code>D-094</code></a> a <a href="produto-backlog.html#d-098"><code>D-098</code></a> (a necessidade decidida; definição macro decidida na <a href="produto-backlog.html#d-099"><code>D-099</code></a>, <code>P-020</code> fechada)</td>
+</tr>
+<tr>
+<td>MF-113:Conectores de Saída (nova)</td>
+<td><strong>A criar</strong>: os conectores só transportam (e-mail, WhatsApp, Teams, Google Chat…) o que lhes entregam, e só a usuários do Horus; o formato (PDF, JSON…) é outra coisa, o artefato. Só o owner da organização liga os conectores; no modo “tudo dentro”, ficam bloqueados até o owner da instância liberar cada tipo. Hoje a única saída é o e-mail, dentro da MF-008 e da MF-101 (hipótese a confirmar pelo arquiteto)</td>
+<td><a href="produto-backlog.html#d-033"><code>D-033</code></a> a <a href="produto-backlog.html#d-035"><code>D-035</code></a> e <a href="produto-backlog.html#d-038"><code>D-038</code></a> a <a href="produto-backlog.html#d-041"><code>D-041</code></a> (definição macro decidida na <a href="produto-backlog.html#d-041"><code>D-041</code></a>; a <code>P-010</code> está fechada)</td>
+</tr>
+</tbody></table></div>
+</div><div class="doc-section dx-assunto"><h3 id="mf-113-inventario-entregas" data-dx-icone="box-open">Nas entregas</h3><h4 id="mf-113-inventario-produto-v20">A v2.0 consolidada</h4><p class="dx-fonte">A seção <a href="produto-v20.html#produto-v20-511-os-conectores-de-saida-mf-113conectores-de-saida">5.11 Os conectores de saída (MF-113:Conectores de Saída)</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 3 de MF-113 · Conectores de Saída"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Regra</th>
+<th scope="col">Decisão</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Os conectores <strong>só transportam</strong> o que o Horus produz e <strong>só entregam a usuários do Horus</strong> ✅</td>
+<td><a href="produto-backlog.html#d-035"><code>D-035</code></a>, <a href="produto-backlog.html#d-041"><code>D-041</code></a></td>
+</tr>
+<tr>
+<td><strong>Só o owner</strong> liga os conectores. Cada pessoa informa o próprio contato, e o owner aprova ou deixa automático ✅</td>
+<td><a href="produto-backlog.html#d-034"><code>D-034</code></a>, <a href="produto-backlog.html#d-038"><code>D-038</code></a>, <a href="produto-backlog.html#d-039"><code>D-039</code></a></td>
+</tr>
+<tr>
+<td>No modo &quot;tudo dentro&quot;, ficam bloqueados até a instância liberar ✅</td>
+<td><a href="produto-backlog.html#d-040"><code>D-040</code></a></td>
+</tr>
+<tr>
+<td>Na v2.0 entram o <strong>e-mail</strong> e o <strong>WhatsApp</strong> ✅. O de WhatsApp usa a mesma conta da organização que o chat 🔎; o Teams, o Google Chat e os outros vão para a v2.1 🔎</td>
+<td><a href="produto-backlog.html#d-097"><code>D-097</code></a>, <a href="produto-backlog.html#d-121"><code>D-121</code></a>, <a href="produto-backlog.html#d-124"><code>D-124</code></a></td>
+</tr>
+</tbody>
+</table></div><p class="dx-fonte">Em <a href="produto-v20.html#produto-v20-mf-a-mf-em-ordem-numerica-o-que-vem-na-v20-e-o-que-fica-no-backlog">Mf a mf, em ordem numérica: o que vem na v2.0 e o que fica no backlog</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 4 de MF-113 · Conectores de Saída"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Mf</th>
+<th scope="col">Nome</th>
+<th scope="col">Onde</th>
+<th scope="col">Na v2.0</th>
+<th scope="col">No backlog</th>
+<th scope="col">Decisão</th>
+</tr>
+</thead><tbody><tr>
+<td><a href="mf-113.html"><code>MF-113</code></a></td>
+<td>Conectores de Saída</td>
+<td>✅ v2.0</td>
+<td>nº 12 (o aviso), com o e-mail e o WhatsApp</td>
+<td>Os demais conectores, como Teams e Google Chat 🔎</td>
+<td><a href="produto-backlog.html#d-041"><code>D-041</code></a>, <a href="produto-backlog.html#d-122"><code>D-122</code></a>, <a href="produto-backlog.html#d-124"><code>D-124</code></a></td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="produto-v20.html#produto-v20-31-as-catorze-candidatas">3.1 As catorze candidatas</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 5 de MF-113 · Conectores de Saída"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Nº</th>
+<th scope="col">Candidata</th>
+<th scope="col">Mf</th>
+<th scope="col">Papel na v2.0</th>
+<th scope="col">Hoje (inventário)</th>
+<th scope="col">Definição</th>
+<th scope="col">Nota</th>
+</tr>
+</thead><tbody><tr>
+<td>12</td>
+<td>📤 <strong>Conectores de saída</strong></td>
+<td><a href="mf-113.html"><code>MF-113:Conectores de Saída</code></a></td>
+<td>Expande 🔎: traz o aviso. <strong>Entra por decisão do dono</strong>, abaixo do corte</td>
+<td>Hoje a única saída é o e-mail</td>
+<td><a href="produto-backlog.html#d-041"><code>D-041</code></a>, <a href="produto-backlog.html#d-122"><code>D-122</code></a>, <a href="produto-backlog.html#d-124"><code>D-124</code></a> (e-mail e WhatsApp)</td>
+<td>47</td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="produto-v20.html#produto-v20-4-a-prova-de-valor-passo-a-passo">4. A prova de valor, passo a passo</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 6 de MF-113 · Conectores de Saída"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Passo</th>
+<th scope="col">O que acontece</th>
+<th scope="col">Peça</th>
+</tr>
+</thead><tbody><tr>
+<td>9</td>
+<td>A Carla importa um .md com as perguntas da semana. Toda segunda, o agente consulta e analisa, e o agendamento entrega o PDF ao grupo &quot;Vendas Sul&quot; pelo conector de e-mail. Quando as vendas caem mais de 10%, chega um aviso</td>
+<td><a href="mf-115.html"><code>MF-115:Agentes ativos</code></a>, <a href="mf-114.html"><code>MF-114:Módulo de Agendamentos de Agentes</code></a>, <a href="mf-113.html"><code>MF-113:Conectores de Saída</code></a></td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="produto-v20.html#produto-v20-56-boards-e-relatorios-mf-112boards-e-relatorios">5.6 Boards e relatórios (MF-112:Boards e Relatórios)</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 7 de MF-113 · Conectores de Saída"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Regra</th>
+<th scope="col">Decisão</th>
+</tr>
+</thead><tbody><tr>
+<td>O <strong>PDF automático</strong> sai pelo agendamento (<a href="mf-114.html"><code>MF-114:Módulo de Agendamentos de Agentes</code></a>) e pelos conectores (<a href="mf-113.html"><code>MF-113:Conectores de Saída</code></a>), que entraram na v2.0 ✅</td>
+<td><a href="produto-backlog.html#d-058"><code>D-058</code></a>, <a href="produto-backlog.html#d-064"><code>D-064</code></a>, <a href="produto-backlog.html#d-122"><code>D-122</code></a></td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="produto-v20.html#produto-v20-7-como-as-pecas-dependem-umas-das-outras">7. Como as peças dependem umas das outras</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 8 de MF-113 · Conectores de Saída"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Peça</th>
+<th scope="col">Depende de</th>
+</tr>
+</thead><tbody><tr>
+<td><a href="mf-112.html"><code>MF-112:Boards e Relatórios</code></a></td>
+<td><a href="mf-102.html"><code>MF-102:Organizações, pessoas e papéis</code></a> (gestão, grupos e roles), <a href="mf-104.html"><code>MF-104:Conectar as fontes vivas</code></a>, <a href="mf-107.html"><code>MF-107:Perguntar aos dados em português</code></a> e <a href="mf-108.html"><code>MF-108:Respostas visuais</code></a>. Para o PDF automático, a <a href="mf-114.html"><code>MF-114:Módulo de Agendamentos de Agentes</code></a> e a <a href="mf-113.html"><code>MF-113:Conectores de Saída</code></a>, que entraram na v2.0 (<a href="produto-backlog.html#d-122"><code>D-122</code></a>)</td>
+</tr>
+<tr>
+<td><a href="mf-116.html"><code>MF-116:Auditoria</code></a></td>
+<td><a href="mf-112.html"><code>MF-112:Boards e Relatórios</code></a> (publicar e abrir) e <a href="mf-102.html"><code>MF-102:Organizações, pessoas e papéis</code></a> (owner e preferências). A <a href="mf-115.html"><code>MF-115:Agentes ativos</code></a>, a <a href="mf-114.html"><code>MF-114:Módulo de Agendamentos de Agentes</code></a> e a <a href="mf-113.html"><code>MF-113:Conectores de Saída</code></a>, para o que sai e por onde (<a href="produto-backlog.html#d-122"><code>D-122</code></a>)</td>
+</tr>
+<tr>
+<td><a href="mf-115.html"><code>MF-115:Agentes ativos</code></a></td>
+<td><a href="mf-105.html"><code>MF-105:IA sob controle da organização</code></a> (o modelo e o consumo), <a href="mf-104.html"><code>MF-104:Conectar as fontes vivas</code></a>, <a href="mf-107.html"><code>MF-107:Perguntar aos dados em português</code></a>, <a href="mf-108.html"><code>MF-108:Respostas visuais</code></a>, a <a href="mf-114.html"><code>MF-114:Módulo de Agendamentos de Agentes</code></a> e a <a href="mf-113.html"><code>MF-113:Conectores de Saída</code></a>. Hipóteses <code>p</code> e <code>q</code> da <code>P-008</code>: gerar os gráficos fora da tela e o ciclo controlado pelo modelo</td>
+</tr>
+<tr>
+<td><a href="mf-114.html"><code>MF-114:Módulo de Agendamentos de Agentes</code></a></td>
+<td><a href="mf-115.html"><code>MF-115:Agentes ativos</code></a>, <a href="mf-113.html"><code>MF-113:Conectores de Saída</code></a>, <a href="mf-112.html"><code>MF-112:Boards e Relatórios</code></a>, <a href="mf-102.html"><code>MF-102:Organizações, pessoas e papéis</code></a> (gestão e grupos). Hipótese <code>g</code>: a agenda de hoje como base</td>
+</tr>
+<tr>
+<td><a href="mf-113.html"><code>MF-113:Conectores de Saída</code></a></td>
+<td><a href="mf-115.html"><code>MF-115:Agentes ativos</code></a> e <a href="mf-114.html"><code>MF-114:Módulo de Agendamentos de Agentes</code></a>, que chamam os conectores; <a href="mf-102.html"><code>MF-102:Organizações, pessoas e papéis</code></a> (o contato no perfil e o papel de owner); <a href="mf-101.html"><code>MF-101:Administração da instância</code></a> (o &quot;tudo dentro&quot;). Hipótese <code>f</code>: a saída por e-mail de hoje como base</td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="produto-v20.html#produto-v20-a-leituras-que-sustentam-a-v20">A. Leituras que sustentam a v2.0</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 9 de MF-113 · Conectores de Saída"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Ref</th>
+<th scope="col">Decisão</th>
+<th scope="col">Leitura do PO</th>
+<th scope="col">Resultado</th>
+</tr>
+</thead><tbody><tr>
+<td><code>D-128.3</code></td>
+<td><a href="produto-backlog.html#d-128"><code>D-128</code></a></td>
+<td>O e-mail de aviso sai pelo <strong>envio de e-mail da instância</strong> (<a href="mf-101.html"><code>MF-101:Administração da instância</code></a>), como o convite e a recuperação de senha, e não pelo conector de e-mail que o owner liga (<a href="mf-113.html"><code>MF-113:Conectores de Saída</code></a>).</td>
+<td>✅ Confirmada</td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="produto-v20.html#produto-v20-b-leituras-do-whatsapp-e-da-auditoria">B. Leituras do WhatsApp e da Auditoria</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 10 de MF-113 · Conectores de Saída"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Ref</th>
+<th scope="col">Decisão</th>
+<th scope="col">Leitura do PO</th>
+<th scope="col">Resultado</th>
+</tr>
+</thead><tbody><tr>
+<td><code>D-084.3</code></td>
+<td><a href="produto-backlog.html#d-084"><code>D-084</code></a></td>
+<td>Os conectores de saída (MF-113) só transportam e só entregam a usuários do Horus (<a href="produto-backlog.html#d-035"><code>D-035</code></a>); o chat pelo WhatsApp é uma <strong>via de entrada</strong> e, portanto, outra coisa. Se vira parte da MF-113 ou fica separado, é decisão do dono na definição macro.</td>
+<td>✅ Confirmada</td>
+</tr>
+</tbody></table></div><h4 id="mf-113-inventario-produto-versoes">As versões, mf a mf</h4><p class="dx-fonte">Em <a href="produto-versoes.html#produto-versoes--v20-a-pergunta-na-hora-com-confianca-o-acompanhamento-e-o-aviso">🟢 v2.0: a pergunta na hora, com confiança, o acompanhamento e o aviso</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 11 de MF-113 · Conectores de Saída"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Mf</th>
+<th scope="col">Nome</th>
+<th scope="col">O que entra</th>
+<th scope="col">Nº</th>
+<th scope="col">Nota</th>
+<th scope="col">Decisão</th>
+</tr>
+</thead><tbody><tr>
+<td><a href="mf-113.html"><code>MF-113</code></a></td>
+<td>Conectores de Saída</td>
+<td>O carteiro: por onde o Horus entrega, só a usuários do Horus. Na v2.0, o e-mail e o WhatsApp</td>
+<td>12</td>
+<td>47 ✋</td>
+<td><a href="produto-backlog.html#d-041"><code>D-041</code></a>, <a href="produto-backlog.html#d-122"><code>D-122</code></a>, <a href="produto-backlog.html#d-124"><code>D-124</code></a></td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="produto-versoes.html#produto-versoes--v21-tudo-o-que-ficou-fora-da-v20">🟢 v2.1: tudo o que ficou fora da v2.0</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 12 de MF-113 · Conectores de Saída"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Mf</th>
+<th scope="col">Nome</th>
+<th scope="col">O que entra</th>
+<th scope="col">Nº</th>
+<th scope="col">Nota</th>
+<th scope="col">Decisão</th>
+</tr>
+</thead><tbody><tr>
+<td><a href="mf-113.html"><code>MF-113</code></a></td>
+<td>Conectores de Saída</td>
+<td>Os demais conectores, como Teams e Google Chat 🔎 (parte da nº 12)</td>
+<td>12</td>
+<td>—</td>
+<td><a href="produto-backlog.html#d-121"><code>D-121</code></a>, <a href="produto-backlog.html#d-124"><code>D-124</code></a></td>
+</tr>
+</tbody></table></div>
+</div><div class="doc-section dx-assunto"><h3 id="mf-113-inventario-objetivos" data-dx-icone="bullseye">Objetivos</h3><h4 id="mf-113-inventario-produto-mapa">Mapa de objetivos e funcionalidades</h4><p class="dx-fonte">Em <a href="produto-mapa.html#produto-mapa-3-os-objetivos-e-as-funcionalidades">3. Os objetivos e as funcionalidades</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 13 de MF-113 · Conectores de Saída"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Objetivo</th>
+<th scope="col">Mf</th>
+<th scope="col">Funcionalidade</th>
+<th scope="col">Nº</th>
+<th scope="col">Entrega</th>
+<th scope="col">Definição</th>
+</tr>
+</thead><tbody><tr>
+<td>O4</td>
+<td><a href="mf-113.html"><code>MF-113:Conectores de Saída</code></a></td>
+<td>O carteiro, com o e-mail e o WhatsApp</td>
+<td>12</td>
+<td>v2.0</td>
+<td><a href="produto-backlog.html#d-041"><code>D-041</code></a>, <a href="produto-backlog.html#d-124"><code>D-124</code></a></td>
+</tr>
+<tr>
+<td>O4</td>
+<td><a href="mf-113.html"><code>MF-113:Conectores de Saída</code></a></td>
+<td>Os demais conectores, como Teams e Google Chat 🔎</td>
+<td>parte da 12</td>
+<td>v2.1</td>
+<td><a href="produto-backlog.html#d-121"><code>D-121</code></a>, <a href="produto-backlog.html#d-124"><code>D-124</code></a></td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="produto-mapa.html#produto-mapa-5-o-que-a-v2-pode-reaproveitar-da-v1xx-">5. O que a v2 pode reaproveitar da v1.xx 🔎</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 14 de MF-113 · Conectores de Saída"><table class="table table_shortcode"><thead><tr>
+<th scope="col">O que a v1.xx tem</th>
+<th scope="col">Serve de partida para</th>
+</tr>
+</thead><tbody><tr>
+<td>A agenda e o envio por e-mail dos relatórios</td>
+<td>O4, a <a href="mf-114.html"><code>MF-114:Módulo de Agendamentos de Agentes</code></a> e a <a href="mf-113.html"><code>MF-113:Conectores de Saída</code></a> (<code>P-008</code>, f, g)</td>
+</tr>
+</tbody></table></div>
+</div><div class="doc-section dx-assunto"><h3 id="mf-113-inventario-decisoes-produto" data-dx-icone="tasks">Decisões de produto</h3><h4 id="mf-113-inventario-produto-backlog-d">Backlog estratégico · 22 decisões</h4><div class="table-responsive" tabindex="0" role="region" aria-label="Decisões de produto de MF-113 · Conectores de Saída"><table class="table table_shortcode"><thead><tr><th scope="col">Nº</th><th scope="col">Decisão</th><th scope="col">Situação</th><th scope="col">Versão</th></tr></thead><tbody><tr><td><a href="produto-backlog.html#d-128"><code>D-128</code></a></td><td>Quem reporta recebe um aviso automático de “recebido”, dentro do Horus e por e-mail</td><td>🟢 decidida</td><td>v2.0</td></tr><tr><td><a href="produto-backlog.html#d-124"><code>D-124</code></a></td><td>Os conectores de saída da v2.0 são o e-mail e o WhatsApp</td><td>🟢 decidida</td><td>v2.0</td></tr><tr><td><a href="produto-backlog.html#d-122"><code>D-122</code></a></td><td>O aviso entra na v2.0: a MF-115:Agentes ativos, a MF-114:Módulo de Agendamentos de Agentes e a MF-113:Conectores de Saída</td><td>🟢 decidida</td><td>v2.0</td></tr><tr><td><a href="produto-backlog.html#d-121"><code>D-121</code></a></td><td>Tudo o que ficou fora da v2.0 vai para a v2.1</td><td>🟢 decidida</td><td>v2.1</td></tr><tr><td><a href="produto-backlog.html#d-120"><code>D-120</code></a></td><td>O backlog dividido em versões: a v2.1 do porquê e da segurança corporativa, a v2.2 do aviso</td><td>⚪ substituída pela `D-121`</td><td>v2.1 e v2.2</td></tr><tr><td><a href="produto-backlog.html#d-119"><code>D-119</code></a></td><td>A MF-112:Boards e Relatórios, a MF-111:Chat pelo WhatsApp e a MF-116:Auditoria entram na v2.0</td><td>🟢 decidida</td><td>v2.0</td></tr><tr><td><a href="produto-backlog.html#d-114"><code>D-114</code></a></td><td>Definição macro das funcionalidades por role na MF-102:Organizações, pessoas e papéis</td><td>🟢 decidida</td><td>v2.0</td></tr><tr><td><a href="produto-backlog.html#d-110"><code>D-110</code></a></td><td>O owner liga e desliga, por role, tudo o que a conversa oferece, botão a botão</td><td>🟢 decidida</td><td>v2.0</td></tr><tr><td><a href="produto-backlog.html#d-099"><code>D-099</code></a></td><td>Definição macro da MF-111:Chat pelo WhatsApp</td><td>🟢 decidida</td><td>a pontuar</td></tr><tr><td><a href="produto-backlog.html#d-093"><code>D-093</code></a></td><td>Definição macro da MF-116:Auditoria</td><td>🟢 decidida</td><td>a pontuar</td></tr><tr><td><a href="produto-backlog.html#d-084"><code>D-084</code></a></td><td>Nova MF-111:Chat pelo WhatsApp, para conversar com o Horus pelo WhatsApp vendo o conteúdo como no chat</td><td>🟢 decidida</td><td>a pontuar</td></tr><tr><td><a href="produto-backlog.html#d-080"><code>D-080</code></a></td><td>Definição macro da MF-103:Licenças e planos</td><td>🟢 decidida</td><td>a pontuar</td></tr><tr><td><a href="produto-backlog.html#d-062"><code>D-062</code></a></td><td>Definição macro da MF-115:Agentes ativos</td><td>🟢 decidida</td><td>a pontuar</td></tr><tr><td><a href="produto-backlog.html#d-060"><code>D-060</code></a></td><td>Definição macro da MF-114:Módulo de Agendamentos de Agentes</td><td>🟢 decidida</td><td>a pontuar</td></tr><tr><td><a href="produto-backlog.html#d-058"><code>D-058</code></a></td><td>Definição macro da mf única de boards e relatórios</td><td>🟢 decidida</td><td>a pontuar</td></tr><tr><td><a href="produto-backlog.html#d-041"><code>D-041</code></a></td><td>Definição macro da MF-113:Conectores de Saída</td><td>🟢 decidida</td><td>a pontuar</td></tr><tr><td><a href="produto-backlog.html#d-039"><code>D-039</code></a></td><td>A aprovação do owner é um interruptor por tipo</td><td>🟢 decidida</td><td>a pontuar</td></tr><tr><td><a href="produto-backlog.html#d-037"><code>D-037</code></a></td><td>MF-114:Módulo de Agendamentos de Agentes: entre o agendamento e o artefato há sempre um agente</td><td>🟢 decidida</td><td>a pontuar</td></tr><tr><td><a href="produto-backlog.html#d-035"><code>D-035</code></a></td><td>Os conectores de saída só transportam; o formato (artefato) é outra coisa; e só entregam a usuários do Horus</td><td>🟢 decidida</td><td>a pontuar</td></tr><tr><td><a href="produto-backlog.html#d-034"><code>D-034</code></a></td><td>Só o owner da organização liga os conectores de saída</td><td>🟢 decidida</td><td>a pontuar</td></tr><tr><td><a href="produto-backlog.html#d-033"><code>D-033</code></a></td><td>Nova MF-113:Conectores de Saída, por onde o Horus entrega o que produz</td><td>🟢 decidida</td><td>a pontuar</td></tr><tr><td><a href="produto-backlog.html#d-020"><code>D-020</code></a></td><td>Nova MF-115:Agentes ativos, que extraem, analisam e avisam</td><td>🟢 decidida</td><td>a pontuar</td></tr></tbody></table></div><h4 id="mf-113-inventario-produto-backlog">Backlog estratégico · pendências</h4><p class="dx-fonte">Em <a href="produto-backlog.html#produto-backlog-fechados">Fechados</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 16 de MF-113 · Conectores de Saída"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Nº</th>
+<th scope="col">O que era</th>
+<th scope="col">Como fechou</th>
+<th scope="col">Em</th>
+</tr>
+</thead><tbody><tr>
+<td><code>I-014</code></td>
+<td>Como sai o PDF automático dos boards na v2.0, já que a <a href="mf-112.html"><code>MF-112</code></a> depende da <a href="mf-114.html"><code>MF-114</code></a> e da <a href="mf-113.html"><code>MF-113</code></a>, que estavam fora</td>
+<td>O dono trouxe para a v2.0 a <a href="mf-115.html"><code>MF-115:Agentes ativos</code></a>, a <a href="mf-114.html"><code>MF-114:Módulo de Agendamentos de Agentes</code></a> e a <a href="mf-113.html"><code>MF-113:Conectores de Saída</code></a> (<a href="produto-backlog.html#d-122"><code>D-122</code></a>): o PDF automático sai pelo agendador e pelos conectores da v2.0, com as regras novas</td>
+<td>02/11/2026</td>
+</tr>
+<tr>
+<td><code>P-010</code></td>
+<td>Definição macro da MF-113:Conectores de Saída</td>
+<td>O dono decidiu quem liga os conectores (<a href="produto-backlog.html#d-034"><code>D-034</code></a>), que eles só transportam e só entregam a usuários do Horus (<a href="produto-backlog.html#d-035"><code>D-035</code></a>), o interruptor de aprovação por tipo (<a href="produto-backlog.html#d-038"><code>D-038</code></a>, <a href="produto-backlog.html#d-039"><code>D-039</code></a>) e o encaixe com o “tudo dentro” (<a href="produto-backlog.html#d-040"><code>D-040</code></a>), e confirmou a definição completa (<a href="produto-backlog.html#d-041"><code>D-041</code></a>)</td>
+<td>31/10/2026</td>
+</tr>
+</tbody></table></div>
+</div><div class="doc-section dx-assunto"><h3 id="mf-113-inventario-arquitetura" data-dx-icone="layer-group">Arquitetura</h3><h4 id="mf-113-inventario-arquitetura-01">01 · Estratégia da solução</h4><p class="dx-fonte">Em <a href="arquitetura-01.html#arquitetura-01--v20-a-pergunta-na-hora-com-confianca-o-acompanhamento-e-o-aviso">🟢 v2.0: a pergunta na hora, com confiança, o acompanhamento e o aviso</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 17 de MF-113 · Conectores de Saída"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Campo</th>
+<th scope="col">O que diz</th>
+</tr>
+</thead><tbody><tr>
+<td>O que é trabalho novo</td>
+<td>A plataforma de pessoas, roles e assentos com o avaliador (<a href="mf-102.html"><code>MF-102</code></a>, <a href="mf-103.html"><code>MF-103</code></a>); o retorno do usuário, a web com link e data e a medida de autonomia (o problema nº 1); os dois canais novos (<a href="mf-110.html"><code>MF-110</code></a>, <a href="mf-111.html"><code>MF-111</code></a>); o editor único de boards e relatórios (<a href="mf-112.html"><code>MF-112</code></a>); o aviso inteiro (<a href="mf-113.html"><code>MF-113</code></a>, <a href="mf-114.html"><code>MF-114</code></a>, <a href="mf-115.html"><code>MF-115</code></a>); o rastro (<a href="mf-116.html"><code>MF-116</code></a>)</td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="arquitetura-01.html#arquitetura-01--v21-o-porque-e-as-empresas-mais-exigentes">🔵 v2.1: o porquê, e as empresas mais exigentes</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 18 de MF-113 · Conectores de Saída"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Campo</th>
+<th scope="col">O que diz</th>
+</tr>
+</thead><tbody><tr>
+<td>O que entra</td>
+<td>A investigação guiada (<a href="mf-119.html"><code>MF-119</code></a>), a segurança dos dados por pessoa inteira, trazida de volta do código da v1.xx e ligada ao login corporativo (<a href="mf-106.html"><code>MF-106</code></a>, as duas etapas, <a href="arquitetura-02.html#arq-090"><code>ARQ-090</code></a>), a marca completa (<a href="mf-101.html"><code>MF-101</code></a>), o Horus dentro da casa do contratante (<a href="mf-104.html"><code>MF-104</code></a>, <a href="mf-105.html"><code>MF-105</code></a>, <a href="mf-103.html"><code>MF-103</code></a>) e os outros conectores (<a href="mf-113.html"><code>MF-113</code></a>)</td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="arquitetura-01.html#arquitetura-01-3-como-cada-objetivo-e-atingido">3. Como cada objetivo é atingido</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 19 de MF-113 · Conectores de Saída"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Objetivo</th>
+<th scope="col">Mfs</th>
+<th scope="col">Como a arquitetura o atinge</th>
+<th scope="col">Decisões</th>
+<th scope="col">Detalhe</th>
+</tr>
+</thead><tbody><tr>
+<td><strong>O4</strong> 🔔 Ser avisado sem perguntar</td>
+<td><a href="mf-113.html"><code>MF-113</code></a>, <a href="mf-114.html"><code>MF-114</code></a>, <a href="mf-115.html"><code>MF-115</code></a></td>
+<td>A agenda dos relatórios da v1.xx serve de molde ao agendador único, que roda sobre a fila durável, no papel &quot;trabalhar&quot;. O agente é o motor em ciclo. Os conectores só transportam: o e-mail por SMTP e o WhatsApp pela conta da organização.</td>
+<td><a href="arquitetura-02.html#arq-004"><code>ARQ-004</code></a>, <a href="arquitetura-02.html#arq-005"><code>ARQ-005</code></a>, <a href="arquitetura-02.html#arq-006"><code>ARQ-006</code></a></td>
+<td>05, 08, 13</td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="arquitetura-01.html#arquitetura-01-4-as-19-mfs-uma-a-uma">4. As 19 mfs, uma a uma</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 20 de MF-113 · Conectores de Saída"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Mf</th>
+<th scope="col">Entrega</th>
+<th scope="col">Estratégia</th>
+<th scope="col">Da v1.xx</th>
+<th scope="col">Marco</th>
+<th scope="col">Detalhe</th>
+</tr>
+</thead><tbody><tr>
+<td><a href="mf-113.html"><code>MF-113:Conectores de Saída</code></a></td>
+<td>v2.0; Teams e outros na v2.1</td>
+<td>O conector só transporta (<a href="produto-backlog.html#d-035"><code>D-035</code></a>), sobre a fila: o e-mail pelo SMTP e o WhatsApp pela conta da <a href="mf-111.html"><code>MF-111:Chat pelo WhatsApp</code></a>. O contato de cada pessoa, com a aprovação do owner (<a href="produto-backlog.html#d-038"><code>D-038</code></a>, <a href="produto-backlog.html#d-039"><code>D-039</code></a>); bloqueados no &quot;tudo dentro&quot; (<a href="produto-backlog.html#d-040"><code>D-040</code></a>)</td>
+<td>Reaproveita o envio por SMTP e o ritmo de envio (<code>horus@318db52b:apps/server/Horus.Core/Email/</code>). Hoje o relatório agendado vai só a membros da organização, até 50 (<code>horus@318db52b:apps/server/Horus.Core/Relatorios/EntregaDeRelatorio.cs</code>)</td>
+<td>M6; M12</td>
+<td>08</td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="arquitetura-01.html#arquitetura-01-v20">v2.0</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 21 de MF-113 · Conectores de Saída"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Marco</th>
+<th scope="col">Fica de pé ao fim</th>
+<th scope="col">Mfs</th>
+<th scope="col">Depende de</th>
+</tr>
+</thead><tbody><tr>
+<td><strong>M6 · Avisar</strong></td>
+<td>Os conectores de e-mail e de WhatsApp, com o contato de cada pessoa e a aprovação. O agendador único rodando o PDF de um board ou um agente, com a permissão de quem criou, pausado no corte. Os agentes com instruções em texto ou .md, o ciclo controlado pelo modelo e o alerta rotulado com o nível. Tudo gravando no rastro e no custo</td>
+<td><a href="mf-113.html"><code>MF-113</code></a>, <a href="mf-114.html"><code>MF-114</code></a>, <a href="mf-115.html"><code>MF-115</code></a></td>
+<td>M4 (a conta de WhatsApp); M5 (o PDF do board)</td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="arquitetura-01.html#arquitetura-01-v21">v2.1</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 22 de MF-113 · Conectores de Saída"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Marco</th>
+<th scope="col">Fica de pé ao fim</th>
+<th scope="col">Mfs</th>
+<th scope="col">Depende de</th>
+</tr>
+</thead><tbody><tr>
+<td><strong>M12 · Os outros conectores</strong></td>
+<td>Teams, Google Chat e os outros, sobre o mesmo contrato de conector</td>
+<td><a href="mf-113.html"><code>MF-113</code></a> (parte)</td>
+<td>A v2.0</td>
+</tr>
+</tbody></table></div><h4 id="mf-113-inventario-arquitetura-04">04 · Software</h4><p class="dx-fonte">Em <a href="arquitetura-04.html#arquitetura-04--fundacao">🧱 Fundação</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 23 de MF-113 · Conectores de Saída"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Componente</th>
+<th scope="col">Responsabilidade</th>
+<th scope="col">Mfs</th>
+<th scope="col">Situação</th>
+</tr>
+</thead><tbody><tr>
+<td>Envio de e-mail</td>
+<td>O servidor de e-mail da instância e o ritmo de envio, por instância e por organização</td>
+<td><a href="mf-101.html"><code>MF-101</code></a>, <a href="mf-113.html"><code>MF-113</code></a></td>
+<td>♻️ <code>horus@318db52b:apps/server/Horus.Core/Email/</code></td>
+</tr>
+<tr>
+<td>Porta da Meta</td>
+<td>A conta de WhatsApp de cada organização (a própria ou a da Maind, <a href="produto-backlog.html#d-097"><code>D-097</code></a>), o recebimento das mensagens e o envio de texto, imagem e modelos aprovados</td>
+<td><a href="mf-111.html"><code>MF-111</code></a>, <a href="mf-113.html"><code>MF-113</code></a></td>
+<td>🆕 (documento 08)</td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="arquitetura-04.html#arquitetura-04--acompanhar-e-avisar">📌 Acompanhar e avisar</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 24 de MF-113 · Conectores de Saída"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Componente</th>
+<th scope="col">Responsabilidade</th>
+<th scope="col">Mfs</th>
+<th scope="col">Situação</th>
+</tr>
+</thead><tbody><tr>
+<td>Conectores de saída</td>
+<td>O e-mail e o WhatsApp; o contato de cada pessoa por conector e a aprovação do owner; o transporte do artefato e o registro de cada entrega (<a href="arquitetura-02.html#arq-022"><code>ARQ-022</code></a>)</td>
+<td><a href="mf-113.html"><code>MF-113</code></a></td>
+<td>🔧 o envio por SMTP; 🆕 o resto</td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="arquitetura-04.html#arquitetura-04-36-as-19-mfs-nos-modulos">3.6 As 19 mfs nos módulos</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 25 de MF-113 · Conectores de Saída"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Mf</th>
+<th scope="col">Módulo</th>
+<th scope="col">Componentes que a entregam</th>
+<th scope="col">Contratos que usa</th>
+</tr>
+</thead><tbody><tr>
+<td><a href="mf-113.html"><code>MF-113:Conectores de Saída</code></a></td>
+<td>Acompanhar e avisar</td>
+<td>Conectores; envio de e-mail e porta da Meta (Fundação)</td>
+<td>Artefato, registro do rastro</td>
+</tr>
+</tbody></table></div>
+</div><div class="doc-section dx-assunto"><h3 id="mf-113-inventario-decisoes-arquitetura" data-dx-icone="project-diagram">Decisões de arquitetura</h3><h4 id="mf-113-inventario-arquitetura-02">02 · Registro de decisões</h4><p class="dx-fonte">Em <a href="arquitetura-02.html#arquitetura-02-indice">Índice</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 26 de MF-113 · Conectores de Saída"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Nº</th>
+<th scope="col">Decisão</th>
+<th scope="col">Situação</th>
+<th scope="col">Quem decide</th>
+<th scope="col">Alcance</th>
+</tr>
+</thead><tbody><tr>
+<td><a href="arquitetura-02.html#arq-042"><code>ARQ-042</code></a></td>
+<td>A A14 da v1.xx e a liberação do gestor convivem pela regra do escopo único de cada board e de cada artefato</td>
+<td>🟢</td>
+<td>Arquiteto</td>
+<td><a href="mf-106.html"><code>MF-106</code></a>, <a href="mf-112.html"><code>MF-112</code></a>, <a href="mf-113.html"><code>MF-113</code></a>, <a href="mf-116.html"><code>MF-116</code></a></td>
+</tr>
+<tr>
+<td><a href="arquitetura-02.html#arq-046"><code>ARQ-046</code></a></td>
+<td>O e-mail da instância e o conector de e-mail saem pelo mesmo SMTP, num serviço transacional com o domínio autenticado; no SaaS, o Resend de hoje, num plano que caiba no envelope</td>
+<td>✅</td>
+<td>Dono</td>
+<td><a href="mf-101.html"><code>MF-101</code></a>, <a href="mf-113.html"><code>MF-113</code></a></td>
+</tr>
+<tr>
+<td><a href="arquitetura-02.html#arq-047"><code>ARQ-047</code></a></td>
+<td>O Horus chega ao WhatsApp pela API oficial na nuvem da Meta, direto, com a Maind como provedora de tecnologia e o cadastro incorporado</td>
+<td>🟡 hipótese de trabalho</td>
+<td>Dono</td>
+<td><a href="mf-111.html"><code>MF-111</code></a>, <a href="mf-113.html"><code>MF-113</code></a></td>
+</tr>
+<tr>
+<td><a href="arquitetura-02.html#arq-048"><code>ARQ-048</code></a></td>
+<td>A porta da Meta é a única peça que fala com a Meta: a entrada confere, grava e enfileira; a saída envia pela fila</td>
+<td>🟢</td>
+<td>Arquiteto</td>
+<td><a href="mf-111.html"><code>MF-111</code></a>, <a href="mf-113.html"><code>MF-113</code></a></td>
+</tr>
+<tr>
+<td><a href="arquitetura-02.html#arq-049"><code>ARQ-049</code></a></td>
+<td>Dentro da janela de 24 horas a resposta sai livre; fora dela, só por um catálogo fixo de modelos do Horus, criado em cada conta; o conector envia sempre por modelo</td>
+<td>🟢</td>
+<td>Arquiteto</td>
+<td><a href="mf-111.html"><code>MF-111</code></a>, <a href="mf-113.html"><code>MF-113</code></a></td>
+</tr>
+<tr>
+<td><a href="arquitetura-02.html#arq-050"><code>ARQ-050</code></a></td>
+<td>A conta de WhatsApp tem dono, a mensagem acha a organização pelo número, e a ligação do número é da pessoa na organização</td>
+<td>🟢</td>
+<td>Arquiteto</td>
+<td><a href="mf-111.html"><code>MF-111</code></a>, <a href="mf-113.html"><code>MF-113</code></a>, <a href="mf-102.html"><code>MF-102</code></a></td>
+</tr>
+</tbody></table></div>
+</div><div class="doc-section dx-assunto"><h3 id="mf-113-inventario-v1" data-dx-icone="history">O que se reaproveita da v1</h3><h4 id="mf-113-inventario-arquitetura-14">14 · Conferência do produto</h4><p class="dx-fonte">Em <a href="arquitetura-14.html#arquitetura-14-3-a-p-003-o-que-da-v1xx-se-reaproveita-mf-a-mf">3. A P-003: o que da v1.xx se reaproveita, mf a mf</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 27 de MF-113 · Conectores de Saída"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Mf</th>
+<th scope="col">♻️ Reaproveita</th>
+<th scope="col">🔧 Reescreve</th>
+<th scope="col">🆕 É novo</th>
+</tr>
+</thead><tbody><tr>
+<td><a href="mf-113.html"><code>MF-113:Conectores de Saída</code></a></td>
+<td>O envio por SMTP e o ritmo de envio</td>
+<td>O relatório agendado, como o primeiro caso do conector</td>
+<td>O conector de WhatsApp e o contato aprovado de cada pessoa</td>
+</tr>
+</tbody></table></div>
+</div><div class="doc-section dx-assunto"><h3 id="mf-113-inventario-citada" data-dx-icone="link">Também citada em</h3><ul><li><a href="produto-lacunas.html#produto-lacunas-candidatas-a-v20-lista-fechada-pelo-dono-em-01112026">Inventário de lacunas · Candidatas à v2.0 (lista fechada pelo dono em 01/11/2026)</a></li><li><a href="arquitetura-04.html#arquitetura-04-31-o-mapa-dos-modulos-arq-018">04 · Software · 3.1 O mapa dos módulos (ARQ-018)</a></li><li><a href="arquitetura-08.html">08 · Integrações</a></li><li><a href="arquitetura-08.html#arquitetura-08-33-o-whatsapp-e-a-meta-arq-047-a-arq-050">08 · Integrações · 3.3 O WhatsApp e a Meta (ARQ-047 a ARQ-050)</a></li></ul>
+</div>
+                            </div>
+                            <nav class="dx-vizinhas" aria-label="Páginas vizinhas"><a class="dx-anterior" href="mf-112-inventario.html"><i class="arrow_left" aria-hidden="true"></i>Boards e Relatórios: o inventário</a><a class="dx-proxima" href="mf-114-inventario.html">Módulo de Agendamentos de Agentes: o inventário<i class="arrow_right" aria-hidden="true"></i></a></nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="simple_footer">
+            <img class="leaf_right" src="assets/kbdoc/img/home_one/leaf_footter.png" alt="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p>Maind Horus · Horus v2 · documento interno · Revisado em 03/11/2026 · versão v2.0 em desenho, sem versão publicada</p>
+                    </div>
+                    <div class="col-lg-6 text-right">
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <a id="back-to-top" title="Voltar ao topo"></a>
+    <script src="assets/kbdoc/js/jquery-3.2.1.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/popper.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap-select.min.js"></script>
+    <script src="assets/kbdoc/js/parallaxie.js"></script>
+    <script src="assets/kbdoc/js/TweenMax.min.js"></script>
+    <script src="assets/kbdoc/js/anchor.js"></script>
+    <script src="assets/kbdoc/assets/wow/wow.min.js"></script>
+    <script src="assets/kbdoc/js/vendor/clipboard.min.js"></script>
+    <script src="assets/kbdoc/assets/prism/prism.js"></script>
+    <script src="assets/kbdoc/assets/niceselectpicker/jquery.nice-select.min.js"></script>
+    <script src="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="assets/kbdoc/assets/magnify-pop/jquery.magnific-popup.min.js"></script>
+    <script src="assets/kbdoc/assets/tooltipster/js/tooltipster.bundle.min.js"></script>
+    <script src="assets/kbdoc/assets/font-size/js/rv-jquery-fontsize-2.0.3.js"></script>
+    <script src="assets/kbdoc/js/onpage-menu.js"></script>
+    <script src="assets/kbdoc/js/main.js"></script>
+    <script src="assets/busca.js"></script>
+    <script src="assets/docx.js"></script>
+</body>
+</html>

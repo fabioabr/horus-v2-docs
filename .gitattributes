@@ -1,0 +1,4 @@
+# O site de `docs/` é saída do gerador (DocX): o manifesto `.docx-build.json` guarda o hash de cada arquivo, então o
+# git não pode converter fim de linha (core.autocrlf=true é o padrão nas máquinas Windows deste projeto), senão o
+# gerador acusaria "edição local" num clone limpo.
+docs/** -text

@@ -1,0 +1,815 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A documentação de produto e de arquitetura do Horus v2: a visão, as decisões, a estratégia e como ele vai ser construído.">
+    <meta name="generator" content="DocX 0.2.1">
+    <link rel="shortcut icon" href="media/horus-claro.svg">
+    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/elagent-icon/style.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/font-awesome/css/all.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/niceselectpicker/nice-select.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/font-size/css/rvfs.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/animation/animate.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/tooltipster/css/tooltipster.bundle.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism-coy.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/magnify-pop/magnific-popup.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/css/style.css">
+    <link rel="stylesheet" href="assets/kbdoc/css/responsive.css">
+    <link rel="stylesheet" href="assets/docx.css">
+    <link rel="stylesheet" href="assets/conteudo.css">
+    <link rel="stylesheet" href="assets/indice.css">
+    <title>05 · Motor de análise e IA — Horus v2</title>
+</head>
+<body class="doc full-width-doc sticky-nav-doc onepage-doc dx-pagina-doc" data-spy="scroll" data-target=".navbar" data-offset="-120">
+    <a class="sr-only sr-only-focusable dx-skip" href="#post">Pular para o conteúdo</a>
+    <div class="body_wrapper sticky_menu">
+        <nav class="navbar navbar-expand-lg menu_one" id="stickyTwo" aria-label="Navegação principal">
+            <div class="container-fluid pl-60 pr-60">
+                <a class="navbar-brand" href="index.html">
+                    <img src="media/horus-claro.svg" alt="Horus v2">
+                    <img src="media/horus-escuro.svg" alt="Horus v2">
+                </a>
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Abrir o menu">
+                    <span class="menu_toggle">
+                        <span class="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                        <span class="hamburger-cross">
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav menu ml-auto">
+<li class="nav-item"><a href="index.html" class="nav-link">Início</a></li>
+<li class="nav-item dropdown submenu mega_menu tab-demo active"><a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentos</a><i class="arrow_carrot-down_alt2 mobile_dropdown_icon" aria-hidden="true" data-toggle="dropdown"></i><ul class="dropdown-menu scroll"><li><div class="row"><div class="col-lg-5 tabHeader"><ul class="nav flex-column nav-pills" id="dx-menu" role="tablist" aria-orientation="vertical"><li class="nav-item active"><a class="nav-link active" id="dx-menu-1-tab" data-toggle="pill" href="#dx-menu-1" role="tab" aria-controls="dx-menu-1" aria-selected="true">Comece aqui</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-2-tab" data-toggle="pill" href="#dx-menu-2" role="tab" aria-controls="dx-menu-2" aria-selected="false">Produto</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-3-tab" data-toggle="pill" href="#dx-menu-3" role="tab" aria-controls="dx-menu-3" aria-selected="false">Arquitetura · visão e decisões</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-4-tab" data-toggle="pill" href="#dx-menu-4" role="tab" aria-controls="dx-menu-4" aria-selected="false">Arquitetura · construção</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-5-tab" data-toggle="pill" href="#dx-menu-5" role="tab" aria-controls="dx-menu-5" aria-selected="false">Arquitetura · operação</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-6-tab" data-toggle="pill" href="#dx-menu-6" role="tab" aria-controls="dx-menu-6" aria-selected="false">Arquitetura · conferência</a></li></ul></div><div class="col-lg-7"><div class="tab-content tabContent" id="dx-menu-conteudo"><div class="tab-pane fade active show" id="dx-menu-1" role="tabpanel" aria-labelledby="dx-menu-1-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="visao-geral.html">O Horus v2</a></li><li><a href="pasta-v2.html">A pasta da v2</a></li></ul></div><div class="text"><a href="visao-geral.html"><p>Abrir Comece aqui</p></a></div></div><div class="tab-pane fade" id="dx-menu-2" role="tabpanel" aria-labelledby="dx-menu-2-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="produto-temas.html">Temas da visão de produto</a></li><li><a href="produto-norte.html">Norte do produto</a></li><li><a href="produto-lacunas.html">Inventário de lacunas</a></li><li><a href="produto-mfs-hoje.html">Macro funcionalidades de hoje</a></li><li><a href="produto-v20.html">A v2.0 consolidada</a></li></ul><ul class="list-unstyled tab_list"><li><a href="produto-versoes.html">As versões, mf a mf</a></li><li><a href="produto-mapa.html">Mapa de objetivos e funcionalidades</a></li><li><a href="produto-backlog.html">Backlog estratégico</a></li><li><a href="backlog-atividades.html">Backlog de atividades</a></li></ul></div><div class="text"><a href="produto-temas.html"><p>Abrir Produto</p></a></div></div><div class="tab-pane fade" id="dx-menu-3" role="tabpanel" aria-labelledby="dx-menu-3-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura.html">A pasta da arquitetura</a></li><li><a href="arquitetura-01.html">01 · Estratégia da solução</a></li><li><a href="arquitetura-02.html">02 · Registro de decisões</a></li><li><a href="arquitetura-03.html">03 · Metas de qualidade</a></li></ul></div><div class="text"><a href="arquitetura.html"><p>Abrir Arquitetura · visão e decisões</p></a></div></div><div class="tab-pane fade" id="dx-menu-4" role="tabpanel" aria-labelledby="dx-menu-4-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-04.html">04 · Software</a></li><li><a href="arquitetura-05.html">05 · Motor de análise e IA</a></li><li><a href="arquitetura-06.html">06 · Dados</a></li><li><a href="arquitetura-07.html">07 · Segurança</a></li><li><a href="arquitetura-08.html">08 · Integrações</a></li></ul></div><div class="text"><a href="arquitetura-04.html"><p>Abrir Arquitetura · construção</p></a></div></div><div class="tab-pane fade" id="dx-menu-5" role="tabpanel" aria-labelledby="dx-menu-5-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-09.html">09 · Infraestrutura e ambientes</a></li><li><a href="arquitetura-10.html">10 · Publicação e operação</a></li><li><a href="arquitetura-11.html">11 · Observabilidade</a></li><li><a href="arquitetura-12.html">12 · Qualidade e testes</a></li><li><a href="arquitetura-13.html">13 · Custo de operação</a></li></ul></div><div class="text"><a href="arquitetura-09.html"><p>Abrir Arquitetura · operação</p></a></div></div><div class="tab-pane fade" id="dx-menu-6" role="tabpanel" aria-labelledby="dx-menu-6-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-14.html">14 · Conferência do produto</a></li></ul></div><div class="text"><a href="arquitetura-14.html"><p>Abrir Arquitetura · conferência</p></a></div></div></div></div></div></li></ul></li>
+                    </ul>
+                    <ul class="list-unstyled menu_social">
+                        <li class="search">
+                            <form action="#" class="search_form" role="search" data-search-form>
+                                <label class="sr-only" for="dx-search">Buscar na documentação</label>
+                                <input type="search" class="form-control" id="dx-search" placeholder="Buscar" autocomplete="off" data-search-input aria-describedby="dx-search-status" aria-controls="dx-search-results">
+                                <button type="submit" aria-label="Buscar"><i class="icon_search" aria-hidden="true"></i></button>
+                                <div class="dx-search-results" id="dx-search-results" data-search-results hidden></div>
+                            </form>
+                            <p class="sr-only" id="dx-search-status" role="status" data-search-status></p>
+                        </li>
+                    </ul>
+                    <div class="dx-ferramentas">
+
+
+                        <div id="font-switcher"><div id="rvfs-controllers" class="fontsize-controllers group"></div></div>
+                        <button type="button" class="print" data-print aria-label="Imprimir"><i class="icon_printer" aria-hidden="true"></i></button>
+                        <div class="doc_switch">
+                            <label for="something" class="tab-btn tab-btns"><i class="icon_lightbulb_alt" aria-hidden="true"></i><span class="sr-only">Tema claro</span></label>
+                            <input type="checkbox" name="something" id="something" class="tab_switcher" aria-label="Tema escuro">
+                            <label for="something" class="tab-btn"><i class="far fa-moon" aria-hidden="true"></i><span class="sr-only">Tema escuro</span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <section class="doc_documentation_area onepage_doc_area" id="sticky_doc">
+            <div class="overlay_bg"></div>
+            <div class="container-fluid pl-60 pr-60">
+                <div class="row doc-container">
+                    <div class="col-lg-2 doc_mobile_menu doc-sidebar display_none">
+                        <aside class="doc_left_sidebarlist" aria-label="Tópicos desta página">
+                            <h3 class="nav_title">Tópicos</h3>
+                            <div class="scroll">
+                                <ul class="list-unstyled nav-sidebar doc-nav">
+<li class="nav-item active"><a href="#arquitetura-05-1-o-que-o-motor-precisa-garantir" class="nav-link">1. O que o motor precisa garantir</a></li>
+<li class="nav-item"><a href="#arquitetura-05-2-as-decisoes" class="nav-link">2. As decisões</a></li>
+<li class="nav-item"><a href="#arquitetura-05-3-como-a-pergunta-vira-resposta" class="nav-link">3. Como a pergunta vira resposta</a><ul class="list-unstyled dropdown_nav"><li class="nav-item"><a href="#arquitetura-05-31-o-caminho-de-uma-pergunta" class="nav-link">3.1 O caminho de uma pergunta</a></li><li class="nav-item"><a href="#arquitetura-05-32-o-pedido-de-turno-e-o-que-sai-dele-arq-023-arq-024" class="nav-link">3.2 O pedido de turno e o que sai dele (ARQ-023, ARQ-024)</a></li><li class="nav-item"><a href="#arquitetura-05-33-as-etapas-uma-a-uma" class="nav-link">3.3 As etapas, uma a uma</a></li><li class="nav-item"><a href="#arquitetura-05-34-o-modelo-semantico" class="nav-link">3.4 O modelo semântico</a></li><li class="nav-item"><a href="#arquitetura-05-35-os-niveis-de-inferencia-arq-025" class="nav-link">3.5 Os níveis de inferência (ARQ-025)</a></li><li class="nav-item"><a href="#arquitetura-05-36-a-web-arq-026-arq-027-" class="nav-link">3.6 A web (ARQ-026, ARQ-027 ✅)</a></li><li class="nav-item"><a href="#arquitetura-05-37-a-analise-avancada" class="nav-link">3.7 A Análise avançada</a></li><li class="nav-item"><a href="#arquitetura-05-38-o-retorno-o-reporte-e-a-medida-arq-028-arq-029" class="nav-link">3.8 O retorno, o reporte e a medida (ARQ-028, ARQ-029)</a></li><li class="nav-item"><a href="#arquitetura-05-39-o-agente-arq-030" class="nav-link">3.9 O agente (ARQ-030)</a></li><li class="nav-item"><a href="#arquitetura-05-310-os-provedores-e-o-roteamento-por-funcao-arq-031" class="nav-link">3.10 Os provedores e o roteamento por função (ARQ-031)</a></li><li class="nav-item"><a href="#arquitetura-05-311-a-seguranca-por-pessoa-dentro-do-motor-arq-032" class="nav-link">3.11 A segurança por pessoa dentro do motor (ARQ-032)</a></li><li class="nav-item"><a href="#arquitetura-05-312-os-canais-vistos-do-motor" class="nav-link">3.12 Os canais, vistos do motor</a></li></ul><span class="icon"><i class="icon_plus" aria-hidden="true"></i><i class="icon_minus-06" aria-hidden="true"></i></span></li>
+<li class="nav-item"><a href="#arquitetura-05-4-o-que-vem-da-v1xx-e-o-que-nao-vem" class="nav-link">4. O que vem da v1.xx e o que não vem</a></li>
+<li class="nav-item"><a href="#arquitetura-05-5-os-riscos-e-o-que-falta-decidir" class="nav-link">5. Os riscos e o que falta decidir</a></li>
+                                </ul>
+                            </div>
+                        </aside>
+                    </div>
+                    <div class="col-lg-10 col-md-12">
+                        <div class="documentation_info dx-pagina" id="post">
+                            <header class="dx-cabeca" id="arquitetura-05">
+                                <nav class="dx-trilha" aria-label="Trilha"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Início</a></li><li class="breadcrumb-item">Arquitetura · construção</li><li class="breadcrumb-item active" aria-current="page">05 · Motor de análise e IA</li></ol></nav>
+                                
+                                <h1>05 · Motor de análise e IA</h1>
+                                <p>Como a pergunta vira resposta: o motor, o modelo semântico, a web, o agente e os provedores de IA.</p>
+                            </header>
+                            <div class="dx-modelo-01">
+<nav aria-labelledby="dx-m01-assuntos-titulo">
+<div class="dx-m01-rotulo"><h2 id="dx-m01-assuntos-titulo">Explore os assuntos</h2><span>5 seções</span></div>
+<div class="dx-m01-assuntos">
+<a class="dx-m01-assunto" href="#arquitetura-05-1-o-que-o-motor-precisa-garantir"><span class="dx-m01-icone"><i class="fas fa-file-alt" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>1. O que o motor precisa garantir</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#arquitetura-05-2-as-decisoes"><span class="dx-m01-icone"><i class="fas fa-file-alt" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>2. As decisões</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#arquitetura-05-3-como-a-pergunta-vira-resposta"><span class="dx-m01-icone"><i class="fas fa-file-alt" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>3. Como a pergunta vira resposta</strong><small>12 tópicos</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#arquitetura-05-4-o-que-vem-da-v1xx-e-o-que-nao-vem"><span class="dx-m01-icone"><i class="fas fa-file-alt" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>4. O que vem da v1.xx e o que não vem</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#arquitetura-05-5-os-riscos-e-o-que-falta-decidir"><span class="dx-m01-icone"><i class="fas fa-file-alt" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>5. Os riscos e o que falta decidir</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</div></nav>
+<section class="dx-m01-fontes" aria-labelledby="dx-m01-fontes-titulo">
+<header class="dx-m01-cabecalho"><div>
+<h2 id="dx-m01-fontes-titulo"><i class="fas fa-link" aria-hidden="true"></i><span>Tópicos</span></h2>
+</div>
+<span class="dx-m01-total">12 tópicos</span></header>
+<div class="dx-m01-grade">
+<section class="dx-m01-fonte"><h3><i class="fas fa-file-alt" aria-hidden="true"></i><span>3. Como a pergunta vira resposta</span><small aria-label="12 tópicos">12</small></h3><ul class="dx-m01-links"><li><a href="#arquitetura-05-31-o-caminho-de-uma-pergunta"><span>3.1 O caminho de uma pergunta</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#arquitetura-05-32-o-pedido-de-turno-e-o-que-sai-dele-arq-023-arq-024"><span>3.2 O pedido de turno e o que sai dele (ARQ-023, ARQ-024)</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#arquitetura-05-33-as-etapas-uma-a-uma"><span>3.3 As etapas, uma a uma</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#arquitetura-05-34-o-modelo-semantico"><span>3.4 O modelo semântico</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#arquitetura-05-35-os-niveis-de-inferencia-arq-025"><span>3.5 Os níveis de inferência (ARQ-025)</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#arquitetura-05-36-a-web-arq-026-arq-027-"><span>3.6 A web (ARQ-026, ARQ-027 ✅)</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#arquitetura-05-37-a-analise-avancada"><span>3.7 A Análise avançada</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#arquitetura-05-38-o-retorno-o-reporte-e-a-medida-arq-028-arq-029"><span>3.8 O retorno, o reporte e a medida (ARQ-028, ARQ-029)</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#arquitetura-05-3-como-a-pergunta-vira-resposta"><span>e mais 4</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li></ul></section>
+</div></section>
+</div>
+                            <div class="dx-content">
+<p>Situação: 🟢 escrito pelo arquiteto · dez decisões novas (<a href="arquitetura-02.html#arq-023"><code>ARQ-023</code></a> a <a href="arquitetura-02.html#arq-032"><code>ARQ-032</code></a>): nove 🟢 e uma ✅ do dono (<a href="arquitetura-02.html#arq-027"><code>ARQ-027</code></a>, em 03/11/2026) · seis itens a devolver ao PO (A-08 a A-13, no <a href="arquitetura-01.html">documento 01</a>, seção 9).</p>
+<p>Última atualização: 03/11/2026 (a segurança por pessoa fora da v2.0, pela <a href="arquitetura-02.html#arq-090"><code>ARQ-090</code></a> ✅; a pesquisa na web pela busca nativa da conexão, pela <a href="arquitetura-02.html#arq-027"><code>ARQ-027</code></a> ✅).</p>
+<p>Este documento diz <strong>como a pergunta vira resposta</strong>: o pedido de turno, as etapas do motor, o modelo semântico, os níveis de inferência, a web, a Análise avançada, o retorno e a medida, o agente, os provedores de IA com o roteamento por função e a segurança por pessoa dentro do motor. Os módulos em volta estão no <a href="arquitetura-04.html">documento 04</a>.</p>
+<ul>
+<li>O <strong>quê</strong> e o <strong>porquê</strong> são do produto (<a href="produto-backlog.html">backlog estratégico</a>, <a href="produto-v20.html">a v2.0 consolidada</a>). As decisões (<code>ARQ-nnn</code>) estão no <a href="arquitetura-02.html">registro</a>.</li>
+<li>O código da v1.xx se cita como <code>horus@318db52b:&lt;caminho&gt;</code>. As regras do repositório que este documento lê são <code>horus@318db52b:.claude/rules/llm/pontos-de-montagem-do-system.md</code>, <code>llm/conexoes-e-roteamento.md</code>, <code>seguranca/motor.md</code>, <code>seguranca/superficies.md</code> e <code>front/blocos-do-chat.md</code>. Nada foi executado, e nenhum modelo foi chamado.</li>
+</ul>
+<p>Legenda: 🟢 decidida pelo arquiteto · 🟡 proposta ao dono · 🔎 hipótese a confirmar · ♻️ vem da v1.xx · 🔧 vem e muda · 🆕 novo.</p>
+<div class="doc-section dx-assunto"><h3 id="arquitetura-05-1-o-que-o-motor-precisa-garantir">1. O que o motor precisa garantir</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de 05 · Motor de análise e IA"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Garantia</th>
+<th scope="col">Objetivos</th>
+<th scope="col">Decisões de produto</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>🔢 <strong>Os números vêm do banco.</strong> O modelo escreve a consulta e o plano; o servidor põe os números nos blocos. O palpite fica no texto e nunca entra num bloco</td>
+<td>O1, O2</td>
+<td><a href="produto-backlog.html#d-001"><code>D-001</code></a>; os invariantes da v1.xx (<code>horus@318db52b:CLAUDE.md</code>)</td>
+</tr>
+<tr>
+<td>👀 <strong>Só lê as fontes</strong></td>
+<td>O2</td>
+<td><a href="produto-backlog.html#d-001"><code>D-001</code></a>, <a href="produto-backlog.html#d-022"><code>D-022</code></a></td>
+</tr>
+<tr>
+<td>💬 <strong>A mesma conversa, com tudo o que ela oferece, em todo canal</strong></td>
+<td>O1</td>
+<td><a href="produto-backlog.html#d-088"><code>D-088</code></a>, <a href="produto-backlog.html#d-095"><code>D-095</code></a>, <a href="produto-backlog.html#d-098"><code>D-098</code></a>, <a href="produto-backlog.html#d-089"><code>D-089</code></a>, <a href="produto-backlog.html#d-099"><code>D-099</code></a></td>
+</tr>
+<tr>
+<td>🎚️ <strong>Os níveis de inferência</strong>: autorizados, somados pelas roles dentro do teto, livres no agente</td>
+<td>O1, O2</td>
+<td><a href="produto-backlog.html#d-001"><code>D-001</code></a>, <a href="produto-backlog.html#d-024"><code>D-024</code></a>, <a href="produto-backlog.html#d-110"><code>D-110</code></a>, <a href="produto-backlog.html#d-111"><code>D-111</code></a>, <a href="produto-backlog.html#d-114"><code>D-114</code></a></td>
+</tr>
+<tr>
+<td>🌐 <strong>A web com link e data</strong>; o fato em qualquer nível; a causa vinda de fora só a partir do nível 4</td>
+<td>O1, O2</td>
+<td><a href="produto-backlog.html#d-006"><code>D-006</code></a>, <a href="produto-backlog.html#d-130"><code>D-130</code></a>, <a href="produto-backlog.html#d-131"><code>D-131</code></a> e as leituras <code>D-130.1</code> e <code>D-130.2</code></td>
+</tr>
+<tr>
+<td>🛡️ <strong>Cada um vê só o que pode</strong>, e o gestor libera dentro do board e no artefato</td>
+<td>O2</td>
+<td><a href="produto-backlog.html#d-025"><code>D-025</code></a>, <a href="produto-backlog.html#d-026"><code>D-026</code></a>, <a href="produto-backlog.html#d-028"><code>D-028</code></a>, <a href="produto-backlog.html#d-054"><code>D-054</code></a>, <a href="produto-backlog.html#d-059"><code>D-059</code></a></td>
+</tr>
+<tr>
+<td>👍🏻 <strong>Toda resposta recebe retorno</strong>, e o reporte chega ao owner com a resposta guardada</td>
+<td>O1, O6</td>
+<td><a href="produto-backlog.html#d-005"><code>D-005</code></a>, <a href="produto-backlog.html#d-014"><code>D-014</code></a>, <a href="produto-backlog.html#d-127"><code>D-127</code></a>, <a href="produto-backlog.html#d-128"><code>D-128</code></a>, <a href="produto-backlog.html#d-129"><code>D-129</code></a> e a leitura <code>D-087.1</code></td>
+</tr>
+<tr>
+<td>📈 <strong>Toda pergunta de análise respondida conta</strong>, também a do popup limpa sem salvar</td>
+<td>O6</td>
+<td><a href="produto-backlog.html#d-004"><code>D-004</code></a>, <a href="produto-backlog.html#d-087"><code>D-087</code></a>, <a href="produto-backlog.html#d-133"><code>D-133</code></a></td>
+</tr>
+<tr>
+<td>🤖 <strong>O agente</strong>: instruções em texto, o que entendeu confirmado antes, o ciclo controlado pelo modelo, o fim por tipo de saída, o rótulo do nível, a permissão de quem criou</td>
+<td>O4</td>
+<td><a href="produto-backlog.html#d-061"><code>D-061</code></a> a <a href="produto-backlog.html#d-064"><code>D-064</code></a>, <a href="produto-backlog.html#d-060"><code>D-060</code></a>, <a href="produto-backlog.html#d-024"><code>D-024</code></a>, <a href="produto-backlog.html#d-022"><code>D-022</code></a></td>
+</tr>
+<tr>
+<td>🤝 <strong>A IA sob controle da organização</strong>: as conexões, o modelo por função, o modelo do agente e o custo</td>
+<td>O1, O7</td>
+<td><a href="produto-backlog.html#d-061"><code>D-061</code></a>, <a href="produto-backlog.html#d-062"><code>D-062</code></a>, <a href="produto-backlog.html#d-063"><code>D-063</code></a>; <a href="arquitetura-02.html#arq-017"><code>ARQ-017</code></a></td>
+</tr>
+<tr>
+<td>⏱️ <strong>&quot;Em segundos&quot; é comparação</strong>; o tempo se mede por etapa e por canal</td>
+<td>O1, O6</td>
+<td><a href="produto-backlog.html#d-125"><code>D-125</code></a>, <a href="produto-backlog.html#d-126"><code>D-126</code></a>; <a href="arquitetura-02.html#arq-013"><code>ARQ-013</code></a></td>
+</tr>
+<tr>
+<td>🧭 <strong>O modelo semântico é do time de dados</strong></td>
+<td>O1</td>
+<td><a href="produto-backlog.html#d-083"><code>D-083</code></a></td>
+</tr>
+</tbody>
+</table></div></div><div class="doc-section dx-assunto"><h3 id="arquitetura-05-2-as-decisoes">2. As decisões</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 2 de 05 · Motor de análise e IA"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Decisão</th>
+<th scope="col">O que decide</th>
+<th scope="col">Situação</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="arquitetura-02.html#arq-006"><code>ARQ-006</code></a></td>
+<td>Um motor só, chamado por todos os canais</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td><a href="arquitetura-02.html#arq-007"><code>ARQ-007</code></a></td>
+<td>A resposta visual se desenha uma vez e sai em tela, imagem e PDF</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td><a href="arquitetura-02.html#arq-013"><code>ARQ-013</code></a></td>
+<td>O tempo se mede por etapa e por canal</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td><strong><a href="arquitetura-02.html#arq-023"><code>ARQ-023</code></a></strong></td>
+<td><strong>O motor é um condutor de turno com etapas de contrato próprio, em duas operações: responder e reexecutar</strong></td>
+<td>🟢</td>
+</tr>
+<tr>
+<td><strong><a href="arquitetura-02.html#arq-024"><code>ARQ-024</code></a></strong></td>
+<td><strong>O turno não depende de quem o ouve: o app ouve ao vivo; o WhatsApp e o agente rodam na fila</strong></td>
+<td>🟢</td>
+</tr>
+<tr>
+<td><strong><a href="arquitetura-02.html#arq-025"><code>ARQ-025</code></a></strong></td>
+<td><strong>O nível de inferência vale em toda etapa que escreve prosa sobre dados ou sobre a web, e o servidor calcula o nível efetivo</strong></td>
+<td>🟢</td>
+</tr>
+<tr>
+<td><strong><a href="arquitetura-02.html#arq-026"><code>ARQ-026</code></a></strong></td>
+<td><strong>A web é uma etapa própria que devolve fatos com link e data, e o servidor separa o fato da causa</strong></td>
+<td>🟢</td>
+</tr>
+<tr>
+<td><strong><a href="arquitetura-02.html#arq-027"><code>ARQ-027</code></a></strong></td>
+<td><strong>A pesquisa na web usa a busca nativa do provedor da conexão de IA, com a saída para a web autorizada, e só a pergunta vai a ela; sem busca nativa, a opção não aparece no chat</strong></td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong><a href="arquitetura-02.html#arq-028"><code>ARQ-028</code></a></strong></td>
+<td><strong>O retorno pertence à resposta, e o reporte guarda uma cópia dela para o owner</strong></td>
+<td>🟢</td>
+</tr>
+<tr>
+<td><strong><a href="arquitetura-02.html#arq-029"><code>ARQ-029</code></a></strong></td>
+<td><strong>A pergunta respondida se conta no fecho de cada turno, com o desfecho e o canal, sem o conteúdo</strong></td>
+<td>🟢</td>
+</tr>
+<tr>
+<td><strong><a href="arquitetura-02.html#arq-030"><code>ARQ-030</code></a></strong></td>
+<td><strong>O agente é o motor em ciclo: o modelo do agente pergunta ao motor e fecha citando só o que o servidor calculou</strong></td>
+<td>🟢</td>
+</tr>
+<tr>
+<td><strong><a href="arquitetura-02.html#arq-031"><code>ARQ-031</code></a></strong></td>
+<td><strong>O roteamento por função continua, com três funções novas</strong></td>
+<td>🟢</td>
+</tr>
+<tr>
+<td><strong><a href="arquitetura-02.html#arq-032"><code>ARQ-032</code></a></strong></td>
+<td><strong>A segurança por pessoa entra no motor sem executor novo</strong></td>
+<td>🟢</td>
+</tr>
+</tbody>
+</table></div></div><div class="doc-section dx-assunto"><h3 id="arquitetura-05-3-como-a-pergunta-vira-resposta">3. Como a pergunta vira resposta</h3>
+<h4 id="arquitetura-05-31-o-caminho-de-uma-pergunta">3.1 O caminho de uma pergunta</h4>
+<figure><div class="lightbox_shortcode"><img src="media/arquitetura-05-diagrama-1.svg" width="928" height="2334" alt="Diagrama: 3.1 O caminho de uma pergunta"><a href="media/arquitetura-05-diagrama-1.svg" class="img_popup" aria-label="Ampliar o diagrama"><i class="icon_plus" aria-hidden="true"></i></a></div><figcaption>Diagrama de “3.1 O caminho de uma pergunta”. Selecione o “+” para ampliar.</figcaption></figure><p>A pesquisa na web começa junto com o turno e corre em paralelo com o Planejador e a consulta; quem a usa é a etapa que escreve a prosa depois de o dado existir. No modo dados, o Planejador continua sem web, pela razão medida na v1.xx: ele devolve um JSON estrito e escreve a prosa antes de a consulta rodar (<code>horus@318db52b:apps/server/Horus.Core/Chat/ChatEngine.cs</code>, o comentário &quot;SEM <code>WebSearch</code>, de propósito (2026-09-09)&quot;).</p>
+<h4 id="arquitetura-05-32-o-pedido-de-turno-e-o-que-sai-dele-arq-023-arq-024">3.2 O pedido de turno e o que sai dele (<code>ARQ-023</code>, <code>ARQ-024</code>)</h4>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 3 de 05 · Motor de análise e IA"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Parte</th>
+<th scope="col">O que leva</th>
+<th scope="col">Quem preenche</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Quem</strong></td>
+<td>A pessoa, a organização e em nome de quem o turno roda (a pessoa; o criador de um agente ou de um agendamento; o espaço da organização, conforme a A-11)</td>
+<td>O canal</td>
+</tr>
+<tr>
+<td><strong>Canal</strong></td>
+<td>App, Pergunta rápida, WhatsApp, board ou agente</td>
+<td>O canal</td>
+</tr>
+<tr>
+<td><strong>Conversa</strong></td>
+<td>A conversa (no popup, a conversa do popup; no agente, a da execução) e o histórico até o teto de hoje</td>
+<td>O canal</td>
+</tr>
+<tr>
+<td><strong>Pergunta</strong></td>
+<td>O texto, até o teto de hoje</td>
+<td>A pessoa, ou o modelo do agente</td>
+</tr>
+<tr>
+<td><strong>Escolhas</strong></td>
+<td>Os modos, o nível, a pesquisa na web, a Análise avançada, o modelo</td>
+<td>A pessoa, limitada pelas permissões efetivas</td>
+</tr>
+<tr>
+<td><strong>Permissões efetivas</strong></td>
+<td>Os botões ligados, o nível máximo e o tipo de assento, já somados (<a href="produto-backlog.html#d-111"><code>D-111</code></a>)</td>
+<td>O avaliador, nunca o canal</td>
+</tr>
+</tbody>
+</table></div><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 4 de 05 · Motor de análise e IA"><table class="table table_shortcode"><thead><tr>
+<th scope="col">O que sai</th>
+<th scope="col">Para quê</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Eventos do turno</strong>: início, etapa, fonte escolhida, texto, sugestões, fim e erro (os de hoje, <code>horus@318db52b:apps/server/Horus.Core/Chat/ChatStreamEvent.cs</code>), mais as <strong>fontes da web</strong></td>
+<td>O ouvinte do canal os traduz: a transmissão na tela, a mensagem no WhatsApp, a próxima volta no agente</td>
+</tr>
+<tr>
+<td><strong>A resposta gravada</strong>, antes do evento de fim</td>
+<td>A prosa, os blocos, a consulta e o plano, as fontes da web com link e data, o nível efetivo, o recorte de acesso e as chamadas ao modelo</td>
+</tr>
+<tr>
+<td><strong>O fecho do turno</strong></td>
+<td>O desfecho em categoria, o canal, o tempo por etapa e o custo (<a href="arquitetura-02.html#arq-013"><code>ARQ-013</code></a>, <a href="arquitetura-02.html#arq-017"><code>ARQ-017</code></a>, <a href="arquitetura-02.html#arq-029"><code>ARQ-029</code></a>)</td>
+</tr>
+</tbody>
+</table></div><p>A operação <strong>reexecutar</strong> recebe, no lugar da pergunta, a receita gravada (a consulta, o plano e os filtros) e devolve os blocos com os números de agora, pela mesma segurança e pelo mesmo materializador, sem gerar consulta nova. É o &quot;Filtrar&quot; da conversa e o recálculo dos cartões.</p>
+<h4 id="arquitetura-05-33-as-etapas-uma-a-uma">3.3 As etapas, uma a uma</h4>
+<p>As etapas vêm da v1.xx e só mudam de casa: o condutor as chama em sequência, e cada uma tem o seu contrato. Os pontos em que o servidor monta um system e chama um modelo, do terceiro ao décimo, estão descritos com o que mandam e o que nunca mandam em <code>horus@318db52b:.claude/rules/llm/pontos-de-montagem-do-system.md</code>, e continuam valendo.</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 5 de 05 · Motor de análise e IA"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Etapa</th>
+<th scope="col">Responsabilidade</th>
+<th scope="col">Chama modelo? (função)</th>
+<th scope="col">O que nunca manda ao modelo</th>
+<th scope="col">Da v1.xx</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Fontes e modo</td>
+<td>Resolve as fontes da conversa uma vez e decide o modo: dados (há banco), páginas (a fonte é de páginas) ou conversa (sem fonte)</td>
+<td>Não</td>
+<td>—</td>
+<td>♻️ <code>ChatEngine.SendAsync</code></td>
+</tr>
+<tr>
+<td>Segurança do turno</td>
+<td>Avalia o escopo de quem pergunta em cada fonte, tira a fonte que a pessoa não usa e monta as seções protegidas do Planejador</td>
+<td>Não</td>
+<td>Valor de claim em texto</td>
+<td>♻️ <code>horus@318db52b:apps/server/Horus.Core/Seguranca/Motor/MotorNoTurno.cs</code></td>
+</tr>
+<tr>
+<td>Triagem e resumo de fontes</td>
+<td>Escolhe as fontes que merecem o documento inteiro, nas conversas com muitas fontes</td>
+<td>Sim (<code>triagem-de-fontes</code>, <code>resumo-de-fontes</code>)</td>
+<td>Linhas do banco</td>
+<td>♻️ <code>horus@318db52b:apps/server/Horus.Core/Planner/TriagemDeFontes.cs</code>, <code>ResumoDeFontes.cs</code></td>
+</tr>
+<tr>
+<td>Planejador</td>
+<td>Escreve a consulta, o plano dos blocos e a prosa de abertura, antes de a consulta rodar</td>
+<td>Sim (<code>planejador</code>)</td>
+<td>Linhas do banco; a web</td>
+<td>♻️ <code>horus@318db52b:apps/server/Horus.Core/Planner/PlannerInstruction.cs</code>, <code>PlannerEnvelope.cs</code>; 🔧 sai a instrução de web, que hoje ele recebe sem poder pesquisar</td>
+</tr>
+<tr>
+<td>Workflow</td>
+<td>Monta o fluxo de um processo da seção <code>## Workflows</code> e o pinta sobre os números</td>
+<td>Sim (<code>planejamento-de-workflow</code>, <code>renderizacao-de-workflow</code>)</td>
+<td>Linhas cruas, o SQL, o documento inteiro (na pintura)</td>
+<td>♻️ <code>horus@318db52b:apps/server/Horus.Core/Planner/Workflow/</code></td>
+</tr>
+<tr>
+<td>Preparo protegido</td>
+<td>Para quem tem acesso restrito, protege a consulta pelas regras aprovadas, com os portões</td>
+<td>Sim (<code>reescritor-de-seguranca</code>, <code>verificador-de-seguranca</code>)</td>
+<td>Linhas, valores de claim, a pergunta</td>
+<td>♻️ <code>horus@318db52b:apps/server/Horus.Core/Seguranca/Motor/ProtecaoDeConsulta.cs</code></td>
+</tr>
+<tr>
+<td>Execução</td>
+<td>Roda a consulta no banco do cliente, pelo ponto único, com os tetos de 500 linhas e 30 segundos</td>
+<td>Não</td>
+<td>—</td>
+<td>♻️ <code>horus@318db52b:apps/server/Horus.Core/Seguranca/Motor/ExecucaoNoBanco.cs</code></td>
+</tr>
+<tr>
+<td>Reparo e gerador de plano</td>
+<td>Uma tentativa de consertar a consulta que falhou ou voltou vazia, e o plano novo para a consulta reparada</td>
+<td>Sim (<code>reparo-de-consulta</code>, <code>gerador-de-plano</code>)</td>
+<td>Linhas (no gerador)</td>
+<td>♻️ <code>horus@318db52b:apps/server/Horus.Core/Planner/ReparoDeConsulta.cs</code>, <code>GeradorDePlano.cs</code></td>
+</tr>
+<tr>
+<td>Materializador</td>
+<td>Põe os números do resultado nos blocos, pelo plano; a frase honesta quando não há o que mostrar</td>
+<td>Não</td>
+<td>—</td>
+<td>♻️ <code>horus@318db52b:apps/server/Horus.Core/Planner/Materializer.cs</code></td>
+</tr>
+<tr>
+<td>🆕 Pesquisa na web</td>
+<td>Busca os fatos de fora que a pergunta pede e devolve a lista estruturada (<a href="arquitetura-02.html#arq-026"><code>ARQ-026</code></a>)</td>
+<td>Sim (<code>pesquisa-na-web</code>, nova)</td>
+<td>Linhas do banco, valores de claim, o documento semântico (<a href="arquitetura-02.html#arq-027"><code>ARQ-027</code></a>)</td>
+<td>🆕; a busca de hoje é o <code>:online</code> do OpenRouter, dentro da leitura depois da consulta</td>
+</tr>
+<tr>
+<td>Leitura depois da consulta</td>
+<td>A Análise avançada: lê o resultado real (até 12.000 caracteres) e escreve a seção de leitura; recebe os fatos da web e o nível efetivo (<a href="arquitetura-02.html#arq-025"><code>ARQ-025</code></a>)</td>
+<td>Sim (<code>analise-avancada</code>)</td>
+<td>Mais que o teto do resultado; regras de segurança</td>
+<td>🔧 <code>horus@318db52b:apps/server/Horus.Core/Planner/AnalisePosConsulta.cs</code>: deixa de pesquisar e passa a receber o nível</td>
+</tr>
+<tr>
+<td>Apresentador</td>
+<td>Escreve a resposta no modo conversa e no modo páginas, com o protocolo dos blocos e o <code>meta</code>; recebe os fatos da web e o nível quando há fatos</td>
+<td>Sim (<code>resposta-conversa</code>, <code>resposta-web</code>)</td>
+<td>—</td>
+<td>♻️ <code>horus@318db52b:apps/server/Horus.Core/Prompts/PresenterInstruction.cs</code></td>
+</tr>
+<tr>
+<td>Montagem</td>
+<td>Junta a prosa, os blocos (no máximo dois), as fontes da web e o <code>meta</code>; tira cerca da prosa</td>
+<td>Não</td>
+<td>—</td>
+<td>♻️ <code>horus@318db52b:apps/server/Horus.Core/Chat/CercasDaTela.cs</code></td>
+</tr>
+<tr>
+<td>Gravação e fecho</td>
+<td>Grava a resposta antes do fim e fecha o turno com o desfecho, o tempo e o custo</td>
+<td>Não</td>
+<td>Conteúdo na telemetria</td>
+<td>🔧 <code>ConversationStore</code>, <code>UsoDoTurno</code>, <code>TiposDeEventoDeUso</code></td>
+</tr>
+</tbody>
+</table></div><h4 id="arquitetura-05-34-o-modelo-semantico">3.4 O modelo semântico</h4>
+<p>O modelo semântico continua como na v1.xx, e melhorá-lo é trabalho do time de dados (<a href="produto-backlog.html#d-083"><code>D-083</code></a>):</p>
+<ul>
+<li><strong>Um documento em markdown por fonte</strong>, até 20.000 caracteres, e até 160.000 somando as fontes de uma conversa (<code>horus@318db52b:apps/server/Horus.Core/Data/Connections/ConnectionCatalog.cs</code>, <code>Chat/ChatEngine.cs</code>). O documento cadastrado na fonte vence o arquivo.</li>
+<li><strong>Duas seções que o servidor lê</strong>, além do texto que vai ao Planejador: <code>## Colunas de tempo</code> (o que tem hora; o servidor não pergunta ao banco) e <code>## Workflows</code> (os processos que viram o sexto tipo de bloco) (<code>horus@318db52b:apps/server/Horus.Core/Planner/ColunasDeTempoDoSemantico.cs</code>, <code>Workflow/WorkflowsDoSemantico.cs</code>).</li>
+<li><strong>O teto de inferência é da fonte</strong>, e quem o define é o dono do dado (<code>ConnectionConfig.MaxInference</code>); o turno usa o menor teto das fontes da conversa. A leitura disso como &quot;o teto da organização&quot; foi ao PO (A-13).</li>
+<li><strong>O documento de segurança é outro</strong>, por base, e vira regras pelo compilador, com a aprovação do owner (Semântica de Segurança).</li>
+<li>As bases de demonstração trazem os modelos de referência (<code>horus@318db52b:data/mcdonalds/semantic/</code>, <code>data/frota/semantic/</code>) e são o banco de prova de cada mudança no prompt.</li>
+</ul>
+<p>Nada muda na forma do documento na v2.0. O que muda é quem o lê: os canais novos e o agente leem o mesmo documento pelo mesmo Planejador.</p>
+<h4 id="arquitetura-05-35-os-niveis-de-inferencia-arq-025">3.5 Os níveis de inferência (<code>ARQ-025</code>)</h4>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 6 de 05 · Motor de análise e IA"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Nível</th>
+<th scope="col">O que a prosa pode dizer</th>
+<th scope="col">O fato da web (<a href="produto-backlog.html#d-130"><code>D-130</code></a>, leitura <code>D-130.2</code>)</th>
+<th scope="col">A causa vinda de fora dos dados</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1 · Descritivo</td>
+<td>Só o que a consulta devolveu</td>
+<td>✅ Entra, com link e data</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>2 · Explicativo (padrão)</td>
+<td>Explica com os mecanismos que o documento semântico declara</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>3 · Comparativo</td>
+<td>Propõe causa ao alcance dos próprios dados, com a coluna que a testa na mesma consulta</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>4 · Hipótese de domínio</td>
+<td>Arrisca causa do conhecimento geral, num parágrafo rotulado</td>
+<td>✅</td>
+<td>✅ Rotulada como hipótese</td>
+</tr>
+<tr>
+<td>5 · Especulativo</td>
+<td>Especula, rotulado</td>
+<td>✅</td>
+<td>✅ Rotulada como especulação</td>
+</tr>
+</tbody>
+</table></div><p><strong>O nível efetivo de um turno</strong> é o menor entre o que a pessoa pediu, o maior que as roles dela liberam (<a href="produto-backlog.html#d-111"><code>D-111</code></a>; o owner não depende de roles, leitura da <a href="produto-backlog.html#d-114"><code>D-114</code></a>) e o teto das fontes. No agente, é o nível que o autor escolheu (<a href="produto-backlog.html#d-024"><code>D-024</code></a>). O servidor calcula, grava na resposta e manda a toda etapa que escreve prosa sobre dados ou sobre fatos da web.</p>
+<p><strong>Hoje, pela leitura do código:</strong></p>
+<ul>
+<li>O nível chega só ao Planejador (<code>horus@318db52b:apps/server/Horus.Core/Planner/InferenceLevel.cs</code>).</li>
+<li>A leitura depois da consulta, que é onde a web é buscada no modo dados, roda <strong>sem o nível</strong>: a instrução depende só de a Análise avançada e a pesquisa estarem ligadas (<code>horus@318db52b:apps/server/Horus.Core/Planner/AnalisePosConsulta.cs</code>, <code>Instrucao</code>). Com a pesquisa ligada, ela já compara número com número da web em qualquer nível, cita a fonte só no texto e não traz data.</li>
+<li>O modo conversa não pesquisa nada, e o modo páginas não recebe o nível (<code>ChatEngine.cs</code>, o modo texto e <code>ModoWebAsync</code>).</li>
+<li>O &quot;só do nível 4 em diante&quot; que o inventário registra é o título do botão (<code>horus@318db52b:apps/web/src/pages/analise/composerLogica.ts</code>, <code>tituloPesqWeb</code>) e a instrução de web do Planejador, que não pesquisa desde 09/09/2026. A correção do inventário foi ao PO (A-12).</li>
+</ul>
+<h4 id="arquitetura-05-36-a-web-arq-026-arq-027-">3.6 A web (<code>ARQ-026</code>, <code>ARQ-027</code> ✅)</h4>
+<p><strong>A escolha do dono</strong> (<a href="arquitetura-02.html#arq-027"><code>ARQ-027</code></a>, em 03/11/2026): a pesquisa usa a busca nativa do provedor da conexão de IA, ligando a saída para a web; o OpenRouter conta pelo <code>:online</code>. Sem busca nativa, como no Bedrock, a opção de pesquisa não aparece no chat. A pesquisa só roda no modo &quot;com serviços externos autorizados&quot; (<a href="produto-backlog.html#d-010"><code>D-010</code></a>) e com o modo web na role (<a href="produto-backlog.html#d-110"><code>D-110</code></a>, <a href="produto-backlog.html#d-131"><code>D-131</code></a>).</p>
+<figure><div class="lightbox_shortcode"><img src="media/arquitetura-05-diagrama-2.svg" width="2033" height="203" alt="Diagrama: 3.6 A web (ARQ-026, ARQ-027 ✅)"><a href="media/arquitetura-05-diagrama-2.svg" class="img_popup" aria-label="Ampliar o diagrama"><i class="icon_plus" aria-hidden="true"></i></a></div><figcaption>Diagrama de “3.6 A web (ARQ-026, ARQ-027 ✅)”. Selecione o “+” para ampliar.</figcaption></figure><ul>
+<li><strong>Quando roda:</strong> com a pesquisa ligada na conversa e o modo web na role da pessoa (<a href="produto-backlog.html#d-110"><code>D-110</code></a>, <a href="produto-backlog.html#d-131"><code>D-131</code></a>), em qualquer modo, inclusive o modo conversa, onde a web responde sozinha à pergunta de fora (o <a href="produto-norte.html">norte</a>). Nos canais: na conversa, no popup, no WhatsApp (o link e a data vão no texto, <a href="produto-backlog.html#d-131"><code>D-131</code></a>) e no agente.</li>
+<li><strong>O fato é do servidor; a frase é do modelo.</strong> O link vem da citação que o provedor devolve, e não do texto do modelo; a data, o servidor a lê na própria página, pelo leitor da v1.xx (<code>horus@318db52b:apps/server/Horus.Core/Web/WebReader.cs</code>), que só abre http e https e recusa destino interno (<code>Web/DestinoDeRede.cs</code>). Sem data na página, a fonte sai com o aviso de data não identificada (<a href="produto-backlog.html#d-006"><code>D-006</code></a>). A lista vai gravada com a resposta, e a tela a mostra separada da prosa.</li>
+<li><strong>A separação do fato e da causa</strong> (<code>P-008</code>, letra aa): o fato fica garantido pelo servidor, com link e data, em qualquer nível; a causa vinda de fora, abaixo do nível 4, é proibida pela instrução da etapa que escreve a prosa, e só a medição com a bateria mostra quanto o modelo respeita. A conferência depois da escrita tira da prosa todo link que não está na lista. A resposta da letra (aa) no documento 14 é ⚠️ viável com restrição: a parte do fato é garantida; a parte da causa depende do modelo e se mede.</li>
+<li><strong>O modo páginas</strong> (a fonte de páginas cadastradas, leitura <code>D-130.1</code>) ganha a mesma data, lida do mesmo jeito, se a fonte ficar no produto (A-04).</li>
+<li><strong>No cartão do board</strong> os fatos da web ficam com a data da resposta que o originou, e o recálculo não pesquisa de novo; no agente, cada execução pesquisa, porque cada execução é um turno. O comportamento do cartão foi ao PO (A-09).</li>
+</ul>
+<h4 id="arquitetura-05-37-a-analise-avancada">3.7 A Análise avançada</h4>
+<p>A Análise avançada continua sendo a leitura depois da consulta (<code>analise-avancada</code>, &quot;Ultrathink&quot; na tela): a única etapa que vê o resultado real, até 12.000 caracteres, e escreve a seção que corrige a prosa escrita antes da consulta. Na v2.0 ela muda em três pontos:</p>
+<ol>
+<li><strong>Deixa de pesquisar.</strong> Os fatos da web chegam prontos da pesquisa (<a href="arquitetura-02.html#arq-026"><code>ARQ-026</code></a>), e ela os confronta com os números.</li>
+<li><strong>Recebe o nível efetivo</strong> (<a href="arquitetura-02.html#arq-025"><code>ARQ-025</code></a>): abaixo do 4, aponta o que salta aos olhos e quantifica, sem causa de fora.</li>
+<li><strong>Roda em qualquer canal</strong>, dentro da role (<a href="produto-backlog.html#d-110"><code>D-110</code></a>, terceiro botão). No WhatsApp, quando demora, o canal avisa que está trabalhando (leitura <code>D-098.3</code>).</li>
+</ol>
+<p>O que não muda: o teto de caracteres, as notas das estranhezas dos gráficos, o &quot;NADA&quot; quando não há o que acrescentar, e a regra de que nada dela vira gráfico.</p>
+<h4 id="arquitetura-05-38-o-retorno-o-reporte-e-a-medida-arq-028-arq-029">3.8 O retorno, o reporte e a medida (<code>ARQ-028</code>, <code>ARQ-029</code>)</h4>
+<ul>
+<li><strong>O retorno</strong> (👍🏻, 👎🏻, 🚫) grava-se pela resposta, venha da tela, do popup ou do WhatsApp (leitura <code>D-096.2</code>). A pessoa pode trocar o próprio sinal, e vale o último; é o comportamento dos botões que a <a href="produto-backlog.html#d-005"><code>D-005</code></a> deixou ao arquiteto.</li>
+<li><strong>O reporte</strong> (🚫, com um dos três motivos da <a href="produto-backlog.html#d-127"><code>D-127</code></a>) cria, na organização da resposta, um registro com uma <strong>cópia da resposta</strong>: a pergunta, a prosa, os blocos, a consulta, a fonte, o nível, os modos, o modelo e o recorte de acesso. A cópia não depende da conversa e sobrevive à limpeza do popup e à exclusão da conversa (leitura <code>D-087.1</code>). Na mesma transação, a caixa de saída leva o &quot;recebido&quot; à área de avisos de quem reportou e, se a preferência dele permitir, ao e-mail da instância (<a href="produto-backlog.html#d-128"><code>D-128</code></a>, leitura <code>D-128.3</code>), e o reporte novo à área de avisos do owner (<a href="produto-backlog.html#d-014"><code>D-014</code></a>). Por quanto tempo a cópia fica é retenção, do dono, no documento 06.</li>
+<li><strong>A conversa do popup</strong> existe no servidor, porque o motor precisa do histórico, marcada como do popup e fora da lista do histórico; salvar a desmarca (leitura <code>D-086.2</code>); limpar a apaga de vez (leitura <code>D-086.4</code>), e ficam só o fato de uso, sem conteúdo, e a cópia do que foi reportado. É a resposta à letra (y) da <code>P-008</code>: ✅ viável.</li>
+<li><strong>A medida</strong>: o fecho de cada turno grava um fato de uso com o canal, o modo, o nível efetivo e o desfecho em categoria — respondida, ou não respondida por erro, por barrada da segurança ou porque o Horus disse que não consegue —, sem a pergunta e sem a resposta. A medida de autonomia (<a href="mf-117.html"><code>MF-117:Home da organização</code></a>) conta as respondidas da conversa, do popup e do WhatsApp (<a href="produto-backlog.html#d-133"><code>D-133</code></a>), e o retorno dá a qualidade. O agente fica fora da contagem, pela <a href="produto-backlog.html#d-133"><code>D-133</code></a>. Os casos de borda (a consulta sem linhas, o modo conversa sem fonte, a resposta barrada) foram ao PO (A-08).</li>
+<li><strong>Hoje:</strong> o fato <code>resposta</code> guarda só sucesso ou erro e as etapas, e o fato <code>pergunta</code> guarda o modo (<code>horus@318db52b:apps/server/Horus.Core/Uso/TiposDeEventoDeUso.cs</code>), por 400 dias. A letra (b) da <code>P-008</code> fica ⚠️ viável com restrição: os eventos servem, com o desfecho e o canal acrescentados.</li>
+</ul>
+<h4 id="arquitetura-05-39-o-agente-arq-030">3.9 O agente (<code>ARQ-030</code>)</h4>
+<figure><div class="lightbox_shortcode"><img src="media/arquitetura-05-diagrama-3.svg" width="2270" height="238" alt="Diagrama: 3.9 O agente (ARQ-030)"><a href="media/arquitetura-05-diagrama-3.svg" class="img_popup" aria-label="Ampliar o diagrama"><i class="icon_plus" aria-hidden="true"></i></a></div><figcaption>Diagrama de “3.9 O agente (ARQ-030)”. Selecione o “+” para ampliar.</figcaption></figure><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 7 de 05 · Motor de análise e IA"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Parte</th>
+<th scope="col">O que acontece</th>
+<th scope="col">O modelo vê</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Interpretação</strong></td>
+<td>O modelo do agente lê as instruções e devolve as perguntas de análise e a condição de aviso, em linguagem de quem perguntou; o autor confirma, e a interpretação confirmada fica gravada (<a href="produto-backlog.html#d-062"><code>D-062</code></a>)</td>
+<td>As instruções e a descrição das fontes que o criador pode usar</td>
+</tr>
+<tr>
+<td><strong>Ciclo</strong></td>
+<td>A cada volta, o modelo devolve a próxima ação em JSON: fazer uma pergunta ao motor, ou terminar. Cada pergunta é um turno inteiro do motor, com a segurança, o nível e a web do criador</td>
+<td>A interpretação confirmada e as respostas já recebidas: a prosa e os números dos blocos, até o mesmo teto da leitura depois da consulta</td>
+</tr>
+<tr>
+<td><strong>Fim</strong></td>
+<td>O JSON final traz, para cada tipo de saída do agendamento, o texto do agente, os blocos que ele escolhe pelos ids que o motor deu e se avisa. O servidor desenha (<a href="arquitetura-02.html#arq-007"><code>ARQ-007</code></a>) e entrega ao conector (<a href="arquitetura-02.html#arq-022"><code>ARQ-022</code></a>), com o rótulo do nível (<a href="produto-backlog.html#d-062"><code>D-062</code></a>)</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div><ul>
+<li><strong>Os números continuam do banco</strong>: o agente cita blocos pelos ids, e um bloco que ele não recebeu do motor não existe. A letra (q) da <code>P-008</code> fica ✅ viável, e a (p), pela <a href="arquitetura-02.html#arq-007"><code>ARQ-007</code></a>.</li>
+<li><strong>A permissão</strong>: em nome de quem criou, com as claims e as roles lidas na hora da execução (<a href="produto-backlog.html#d-060"><code>D-060</code></a>; a agenda de hoje já lê as claims &quot;agora&quot;, <code>horus@318db52b:apps/server/Horus.Core/Relatorios/EntregaDeRelatorio.cs</code>). O nível é o do autor, sem o teto da organização (<a href="produto-backlog.html#d-024"><code>D-024</code></a>); os modos e a web seguem as roles dele.</li>
+<li><strong>Os tetos técnicos por execução</strong> 🔎: até 8 perguntas ao motor, até 16 voltas do ciclo e até 15 minutos, a calibrar nas bases de demonstração. O que passa do teto termina como falha registrada, sem artefato parcial; o que o autor recebe nesse caso foi ao PO (A-10).</li>
+<li><strong>A condição de aviso é avaliada pelo modelo</strong>, sobre os números que o motor devolveu. Uma condição conferida pelo servidor (um número contra um limite) fica para quando o uso mostrar a necessidade.</li>
+</ul>
+<h4 id="arquitetura-05-310-os-provedores-e-o-roteamento-por-funcao-arq-031">3.10 Os provedores e o roteamento por função (<code>ARQ-031</code>)</h4>
+<p>Na v2.0, as funções da segurança por pessoa (o compilador, o reescritor e o verificador) saem com ela e voltam na v2.1 (<a href="arquitetura-02.html#arq-090"><code>ARQ-090</code></a>).</p>
+<p><strong>Vem inteiro:</strong> as conexões de IA da organização (OpenRouter e Amazon Bedrock), a curadoria dos pares modelo e fornecedor, o roteador, que resolve provedor, modelo e chave de cada chamada (<code>horus@318db52b:apps/server/Horus.Core/Llm/RoteadorDeIa.cs</code>), o consumo gravado por chamada e por resposta, o cache de prompt da organização e a regra de que o modelo nunca é trocado em silêncio (<code>horus@318db52b:.claude/rules/llm/conexoes-e-roteamento.md</code>).</p>
+<p><strong>As funções</strong>, de quinze para dezoito:</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 8 de 05 · Motor de análise e IA"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Grupo</th>
+<th scope="col">Funções</th>
+<th scope="col">Sem rota própria</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Responder</td>
+<td><code>resposta-conversa</code>, <code>resposta-web</code>, <code>analise-avancada</code></td>
+<td>O modelo da conversa</td>
+</tr>
+<tr>
+<td>Consultar dados</td>
+<td><code>planejador</code>, <code>reparo-de-consulta</code>, <code>gerador-de-plano</code>, <code>analise-avulsa</code>, <code>planejamento-de-workflow</code>, <code>renderizacao-de-workflow</code></td>
+<td>O modelo da conversa (na avulsa, o da tela)</td>
+</tr>
+<tr>
+<td>Apoio</td>
+<td><code>triagem-de-fontes</code>, <code>resumo-de-fontes</code>, <code>titulo-por-ia</code></td>
+<td>O modelo da conversa</td>
+</tr>
+<tr>
+<td>Segurança</td>
+<td><code>compilador-de-seguranca</code>, <code>reescritor-de-seguranca</code>, <code>verificador-de-seguranca</code></td>
+<td>Não rodam (<code>FuncoesDeIa.ExigeRotaPropria</code>)</td>
+</tr>
+<tr>
+<td>🆕 Agentes</td>
+<td><code>interpretacao-do-agente</code>, <code>ciclo-do-agente</code> (o modelo que o owner configura, <a href="produto-backlog.html#d-061"><code>D-061</code></a>)</td>
+<td>O modelo padrão da organização, que é obrigatório</td>
+</tr>
+<tr>
+<td>🆕 Web</td>
+<td><code>pesquisa-na-web</code></td>
+<td>Uma conexão cujo provedor tem busca nativa; sem nenhuma, a opção de pesquisa não aparece no chat (<a href="arquitetura-02.html#arq-027"><code>ARQ-027</code></a> ✅)</td>
+</tr>
+</tbody>
+</table></div><p><strong>O contrato do provedor</strong> continua &quot;transmite texto puro&quot;. Ganha um canal ao lado, como o do consumo: as <strong>citações</strong> que o provedor devolve (o link e o título), que hoje se descartam (o Bedrock as joga fora de propósito, <code>horus@318db52b:apps/server/Horus.Core/Llm/Bedrock/BedrockProvider.cs</code>; o OpenRouter não as lê). Só a pesquisa na web as usa.</p>
+<p><strong>O consumo</strong> ganha o canal e o agente em cada chamada, para o custo por organização e por componente (<a href="arquitetura-02.html#arq-017"><code>ARQ-017</code></a>); tudo continua só número e id.</p>
+<p><strong>O Bedrock não pesquisa na web</strong> (<code>horus@318db52b:apps/server/Horus.Core/Llm/FuncoesDeIa.cs</code>, <code>ProvedoresDeIa.BuscaNaWeb</code>). Por isso a organização que só usa o Bedrock fica sem a opção de pesquisa no chat (<a href="arquitetura-02.html#arq-027"><code>ARQ-027</code></a> ✅). A IA dentro da casa do contratante (o modo &quot;tudo dentro&quot;, <a href="produto-backlog.html#d-010"><code>D-010</code></a>) é um provedor novo da v2.1, e o fornecedor é do dono (documento 08).</p>
+<h4 id="arquitetura-05-311-a-seguranca-por-pessoa-dentro-do-motor-arq-032">3.11 A segurança por pessoa dentro do motor (<code>ARQ-032</code>)</h4>
+<p>⏭️ <strong>Vai para a v2.1</strong> (<a href="arquitetura-02.html#arq-090"><code>ARQ-090</code></a> ✅, decisão do dono em 03/11/2026): a segurança dos dados por pessoa sai do código da v2.0, e o que vem abaixo descreve como ela volta na v2.1. Na v2.0, toda consulta roda com os dados da organização inteira, pelo ponto único de execução, sem a reescrita nem a verificação.</p>
+<p><strong>Vem inteira</strong> a Semântica de Segurança da v1.xx, com as regras que o repositório registra (<code>horus@318db52b:.claude/rules/seguranca/motor.md</code>):</p>
+<ul>
+<li>O SQL gravado é o <strong>gabarito</strong>; a consulta protegida, com a regra dentro, é uma por fonte, gabarito e versão, a mesma para todas as pessoas.</li>
+<li><strong>As claims viajam só como parâmetro</strong> e nunca entram em texto de SQL, log, trace nem métrica.</li>
+<li><strong>Só o ponto único executa</strong> no banco do cliente, e as travas que leem o IL reprovam qualquer outro caminho.</li>
+<li><strong>Toda falha do motor fecha</strong>, com uma das frases fixas.</li>
+<li>O verificador é de <strong>família diferente</strong> do gerador real; a homologação do par vira aviso; a conferência diária roda sem modelo.</li>
+</ul>
+<p><strong>O que muda:</strong></p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 9 de 05 · Motor de análise e IA"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Ponto</th>
+<th scope="col">Hoje</th>
+<th scope="col">Na v2.0</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Quem chama o preparo protegido</td>
+<td>Quatro executores: o chat, o &quot;Filtrar&quot;, o recálculo e a análise avulsa</td>
+<td>As duas operações do motor, responder e reexecutar; todo canal novo passa por elas, e as travas listam as duas e a conferência diária</td>
+</tr>
+<tr>
+<td>Em nome de quem</td>
+<td>A pessoa; o autor do painel pessoal; o painel corporativo, com acesso total</td>
+<td>Acrescenta o criador do agendamento e do agente (<a href="produto-backlog.html#d-060"><code>D-060</code></a>) e o espaço da organização (A-11)</td>
+</tr>
+<tr>
+<td>O que sai por um conector</td>
+<td>A agenda pausa se algum dado saiu de cálculo restrito (a regra A14: o conteúdo calculado com restrição não vai a painel corporativo nem a uma lista; <code>horus@318db52b:.claude/rules/seguranca/superficies.md</code>)</td>
+<td>A liberação do gestor vale no board e no artefato (<a href="produto-backlog.html#d-054"><code>D-054</code></a>, <a href="produto-backlog.html#d-059"><code>D-059</code></a>); como a A14 convive com ela é do documento 07</td>
+</tr>
+<tr>
+<td>As camadas</td>
+<td>A Semântica de Segurança decide sozinha o que a pessoa vê</td>
+<td>É a terceira camada do avaliador (<a href="arquitetura-02.html#arq-008"><code>ARQ-008</code></a>), depois do tipo de assento e das roles</td>
+</tr>
+</tbody>
+</table></div><h4 id="arquitetura-05-312-os-canais-vistos-do-motor">3.12 Os canais, vistos do motor</h4>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 10 de 05 · Motor de análise e IA"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Canal</th>
+<th scope="col">Operação</th>
+<th scope="col">Papel</th>
+<th scope="col">Ouvinte</th>
+<th scope="col">O que entrega</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Tela de análise</td>
+<td>Responder</td>
+<td>Atender</td>
+<td>A transmissão por SSE de hoje; sair da tela corta a resposta, como hoje (<code>horus@318db52b:apps/web/src/pages/AnaliseConversaPage.vue</code>)</td>
+<td>A conversa ao vivo</td>
+</tr>
+<tr>
+<td>Pergunta rápida</td>
+<td>Responder</td>
+<td>Atender</td>
+<td>A mesma transmissão, guardada no estado do app: fechar o popup não corta (<a href="arquitetura-02.html#arq-020"><code>ARQ-020</code></a>, leitura <code>D-086.1</code>)</td>
+<td>A conversa ao vivo</td>
+</tr>
+<tr>
+<td>WhatsApp</td>
+<td>Responder</td>
+<td>Trabalhar, pela fila</td>
+<td>O adaptador do WhatsApp: a confirmação na hora, o &quot;trabalhando&quot; quando demora, a resposta gravada no fim</td>
+<td>Texto, imagem de cada bloco e o link (<a href="produto-backlog.html#d-096"><code>D-096</code></a>)</td>
+</tr>
+<tr>
+<td>Board</td>
+<td>Reexecutar (recálculo); Responder (análise avulsa)</td>
+<td>Atender</td>
+<td>A rota do board</td>
+<td>Os cartões</td>
+</tr>
+<tr>
+<td>Agente</td>
+<td>Responder, em ciclo</td>
+<td>Trabalhar</td>
+<td>O ciclo do agente</td>
+<td>O artefato (<a href="arquitetura-02.html#arq-022"><code>ARQ-022</code></a>)</td>
+</tr>
+<tr>
+<td>Investigação guiada (v2.1)</td>
+<td>Um modo novo do condutor</td>
+<td>—</td>
+<td>—</td>
+<td>Espera a <code>P-018</code></td>
+</tr>
+</tbody>
+</table></div></div><div class="doc-section dx-assunto"><h3 id="arquitetura-05-4-o-que-vem-da-v1xx-e-o-que-nao-vem">4. O que vem da v1.xx e o que não vem</h3>
+<p><strong>Vem como está:</strong></p>
+<ul>
+<li>O Planejador, o envelope, o materializador, o reparo, o gerador de plano, a triagem e o resumo de fontes, o workflow, as sugestões de próxima pergunta e o <code>meta</code> (<code>horus@318db52b:apps/server/Horus.Core/Planner/</code>).</li>
+<li>O Apresentador e as regras de formatação (<code>horus@318db52b:apps/server/Horus.Core/Prompts/</code>), com os cinco tipos que ele ensina; o sexto, o workflow, só nasce no modo dados.</li>
+<li>Os invariantes: o parser tolerante, os provedores em texto puro, no máximo dois blocos, o <code>meta</code> em toda resposta, a gravação antes do fim, a prosa do Planejador escrita antes do SQL e a ordem do prompt medida em 17/09/2026.</li>
+<li>A Semântica de Segurança, as conexões de IA, o roteador, o consumo e o cache de prompt.</li>
+<li>Os tetos de hoje (500 linhas e 30 segundos por consulta; 20.000 e 160.000 caracteres de documento; 60.000 de histórico; 12.000 de pergunta; 12.000 de resultado na leitura).</li>
+<li>O leitor de páginas e a guarda de rede.</li>
+</ul>
+<p><strong>Muda:</strong></p>
+<ul>
+<li>O <code>ChatEngine</code> (2.901 linhas) e a <code>AnaliseAvulsa</code> (1.031) viram o condutor e as etapas, movendo código sem reescrever prompt (<a href="arquitetura-02.html#arq-023"><code>ARQ-023</code></a>).</li>
+<li>O turno deixa de depender da conexão HTTP que o pediu (<a href="arquitetura-02.html#arq-024"><code>ARQ-024</code></a>).</li>
+<li>A web sai da leitura depois da consulta para uma etapa própria, com fatos estruturados, e a instrução de web sai do Planejador (<a href="arquitetura-02.html#arq-026"><code>ARQ-026</code></a>).</li>
+<li>O nível chega a toda etapa que escreve prosa (<a href="arquitetura-02.html#arq-025"><code>ARQ-025</code></a>).</li>
+<li>O contrato do provedor ganha o canal das citações; o roteador, três funções (<a href="arquitetura-02.html#arq-031"><code>ARQ-031</code></a>).</li>
+<li>O fecho do turno ganha o desfecho e o canal (<a href="arquitetura-02.html#arq-029"><code>ARQ-029</code></a>).</li>
+</ul>
+<p><strong>Sai:</strong></p>
+<ul>
+<li>A instrução de web do Planejador (<code>InferenceLevel.InstrucaoWeb</code> no system dele), que pede fontes que ele não tem como buscar.</li>
+<li>O campo de fontes da web no envelope do Planejador, sem data (<code>WebSource</code>, em <code>horus@318db52b:apps/server/Horus.Core/Planner/PlannerEnvelope.cs</code>), substituído pela lista de fatos.</li>
+<li>A citação da web como texto solto na prosa: hoje a leitura depois da consulta cita a fonte no meio do texto, e o front só destaca as marcas de citação que o provedor <code>claude-code</code> deixa, sem link (<code>horus@318db52b:apps/web/src/chat/citacoesDaWeb.ts</code>). A fonte passa a ser a lista de fatos.</li>
+</ul>
+</div><div class="doc-section dx-assunto"><h3 id="arquitetura-05-5-os-riscos-e-o-que-falta-decidir">5. Os riscos e o que falta decidir</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 11 de 05 · Motor de análise e IA"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Risco</th>
+<th scope="col">Por quê</th>
+<th scope="col">O que se faz</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>🧪 Mover o motor muda o prompt sem ninguém ver</td>
+<td>A ordem do system foi medida (bateria de 106 casos, 17/09/2026), e os prompts do motor de segurança estão presos a um hash</td>
+<td>O condutor chama as etapas com os mesmos textos, byte a byte; a bateria NL→SQL roda antes de cada marco, com o modelo falso no CI e com modelo real só com autorização do dono</td>
+</tr>
+<tr>
+<td>🌐 A causa de fora abaixo do nível 4 depende do modelo</td>
+<td>Só o fato é garantido pelo servidor</td>
+<td>A bateria mede; a conferência tira links fora da lista; reabrir a <a href="produto-backlog.html#d-130"><code>D-130</code></a> se o modelo não mantiver a separação (a própria <a href="produto-backlog.html#d-130"><code>D-130</code></a> prevê isso)</td>
+</tr>
+<tr>
+<td>🗓️ A data de publicação não está em toda página</td>
+<td>Muitas páginas não declaram a data</td>
+<td>O aviso de data não identificada é o comportamento esperado (<a href="produto-backlog.html#d-006"><code>D-006</code></a>), e não uma falha</td>
+</tr>
+<tr>
+<td>⏱️ A pesquisa acrescenta uma chamada</td>
+<td>Uma ida à web e a leitura das páginas citadas, por pergunta com a pesquisa ligada</td>
+<td>Corre em paralelo com o Planejador e a consulta; tem prazo próprio e, se não responde, a resposta sai sem fatos da web</td>
+</tr>
+<tr>
+<td>💸 O agente faz turnos inteiros</td>
+<td>Cada pergunta do ciclo é Planejador, consulta e leitura</td>
+<td>Os tetos por execução e o custo por agente (<a href="arquitetura-02.html#arq-017"><code>ARQ-017</code></a>, documento 13)</td>
+</tr>
+<tr>
+<td>🤖 A condição de aviso é do modelo</td>
+<td>Um modelo pode avisar sem motivo ou deixar de avisar</td>
+<td>O número que ele cita vem do bloco do motor; o rótulo do nível vai no alerta; a condição conferida pelo servidor fica como evolução</td>
+</tr>
+<tr>
+<td>📱 O WhatsApp e a Análise avançada</td>
+<td>A resposta pode demorar mais que a janela do canal</td>
+<td>O &quot;trabalhando&quot; e a entrega quando ficar pronta (leitura <code>D-098.3</code>); as janelas e o custo são do documento 08</td>
+</tr>
+<tr>
+<td>🔐 A A14 contra a liberação do gestor</td>
+<td>A regra da v1.xx impede o que a <a href="produto-backlog.html#d-054"><code>D-054</code></a> e a <a href="produto-backlog.html#d-059"><code>D-059</code></a> permitem</td>
+<td>Documento 07</td>
+</tr>
+</tbody>
+</table></div><p><strong>O que falta decidir:</strong></p>
+<ul>
+<li>🟡 Com o dono: nenhuma decisão deste documento.</li>
+<li>Ao PO: A-08 a A-13 (documento 01, seção 9).</li>
+<li>Documento 06: por quanto tempo ficam a cópia do reporte, os fatos da web gravados e as execuções dos agentes.</li>
+<li>Documento 07: a A14 e a liberação do gestor; as duas camadas de claims; em nome de quem roda o espaço da organização, depois da A-11.</li>
+<li>Documento 08: a porta da Meta e as janelas do WhatsApp; o provedor dentro de casa (v2.1).</li>
+<li>Documento 13: o custo da pesquisa e dos agentes por organização.</li>
+<li>Desenho, com o dono: o que a tela mostra quando a pesquisa não traz fato nenhum, e como a pessoa pede cada ajuste numa conversa de texto do WhatsApp (leitura <code>D-098.2</code>).</li>
+</ul>
+</div>
+                            </div>
+                            <nav class="dx-vizinhas" aria-label="Páginas vizinhas"><a class="dx-anterior" href="arquitetura-04.html"><i class="arrow_left" aria-hidden="true"></i>04 · Software</a><a class="dx-proxima" href="arquitetura-06.html">06 · Dados<i class="arrow_right" aria-hidden="true"></i></a></nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="simple_footer">
+            <img class="leaf_right" src="assets/kbdoc/img/home_one/leaf_footter.png" alt="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p>Maind Horus · Horus v2 · documento interno · Revisado em 03/11/2026 · versão v2.0 em desenho, sem versão publicada</p>
+                    </div>
+                    <div class="col-lg-6 text-right">
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <a id="back-to-top" title="Voltar ao topo"></a>
+    <script src="assets/kbdoc/js/jquery-3.2.1.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/popper.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap-select.min.js"></script>
+    <script src="assets/kbdoc/js/parallaxie.js"></script>
+    <script src="assets/kbdoc/js/TweenMax.min.js"></script>
+    <script src="assets/kbdoc/js/anchor.js"></script>
+    <script src="assets/kbdoc/assets/wow/wow.min.js"></script>
+    <script src="assets/kbdoc/js/vendor/clipboard.min.js"></script>
+    <script src="assets/kbdoc/assets/prism/prism.js"></script>
+    <script src="assets/kbdoc/assets/niceselectpicker/jquery.nice-select.min.js"></script>
+    <script src="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="assets/kbdoc/assets/magnify-pop/jquery.magnific-popup.min.js"></script>
+    <script src="assets/kbdoc/assets/tooltipster/js/tooltipster.bundle.min.js"></script>
+    <script src="assets/kbdoc/assets/font-size/js/rv-jquery-fontsize-2.0.3.js"></script>
+    <script src="assets/kbdoc/js/onpage-menu.js"></script>
+    <script src="assets/kbdoc/js/main.js"></script>
+    <script src="assets/busca.js"></script>
+    <script src="assets/docx.js"></script>
+</body>
+</html>

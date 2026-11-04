@@ -1,0 +1,171 @@
+<blockquote>
+<p><strong>Em uma frase:</strong> fazer a pergunta de negócio do jeito que se fala, ter o número na hora, com a origem à vista,
+e avisar quando a resposta parece errada.</p>
+</blockquote>
+<h3 id="mf-107-identificacao" data-dx-icone="id-card">Identificação</h3><div class="table-responsive" tabindex="0" role="region" aria-label="Identificação de MF-107 · Perguntar aos dados em português"><table class="table table_shortcode"><tbody><tr><th scope="row">Código</th><td>MF-107</td></tr><tr><th scope="row">Entrega</th><td>v2.0</td></tr><tr><th scope="row">Situação</th><td>definida</td></tr><tr><th scope="row">Camada</th><td>💬 Motor de análise</td></tr><tr><th scope="row">Objetivos</th><td>O1</td></tr><tr><th scope="row">Quem usa</th><td>owner da organização, gestor, membro full</td></tr><tr><th scope="row">Complexidade</th><td>média</td></tr><tr><th scope="row">Relacionadas</th><td><a href="#mf-102">Organizações, pessoas e papéis</a> (MF-102), <a href="#mf-104">Conectar as fontes vivas</a> (MF-104), <a href="#mf-105">IA sob controle da organização</a> (MF-105), <a href="#mf-108">Respostas visuais</a> (MF-108), <a href="#mf-109">A web como fonte</a> (MF-109), <a href="#mf-110">Pergunta rápida</a> (MF-110), <a href="#mf-111">Chat pelo WhatsApp</a> (MF-111), <a href="#mf-117">Home da organização</a> (MF-117)</td></tr><tr><th scope="row">Atualizado</th><td>03/11/2026</td></tr></tbody></table></div>
+<h3 data-dx-icone="compass" id="mf-107-o-que-e">O que é</h3>
+<p>É a <strong>conversa de análise</strong>: a tela em que a pessoa escreve uma pergunta de negócio em português e o Horus responde
+com os números dos bancos da empresa. Ela já existe; a v2.0 acrescenta o retorno sobre cada resposta e a contagem
+das perguntas respondidas.</p>
+<p>O Horus consulta as <strong>fontes de dados</strong>, os bancos ligados a ele, que ele só lê, e entende a pergunta pelo <strong>modelo
+semântico</strong> de cada fonte, o documento que diz o que a empresa chama de receita ou de margem. A resposta &quot;em
+segundos&quot; é uma comparação com o pedido ao time de dados, que às vezes leva dias, e não um cronômetro.</p>
+<blockquote>
+<p>📌 <strong>Exemplo:</strong> na reunião, a gestora Carla pergunta &quot;e se tirarmos as lojas do Sul, como fica a margem?&quot; e
+recebe o gráfico na hora. Semanas depois, um número lhe parece velho, e ela o reporta. O Marcos, owner da
+organização, quem cuida das pessoas e dos dados dela, acha a carga atrasada e a corrige.</p>
+</blockquote>
+<h3 data-dx-icone="star" id="mf-107-caracteristicas">Características</h3>
+<ul>
+<li><strong>Onde aparece:</strong> na conversa de análise, que também abre na Pergunta rápida (MF-110), no Chat pelo WhatsApp
+(MF-111), dentro dos boards e nos agentes.</li>
+<li><strong>Quem pergunta:</strong> o owner da organização, o gestor, que gere uma equipe, e o membro full, que pergunta e cria os
+próprios boards; o membro leitor só vê boards de outras pessoas.</li>
+<li><strong>Três modos:</strong> <strong>dados</strong>, que pergunta aos bancos; <strong>web</strong>, que lê páginas cadastradas como fonte (ver A web como
+fonte, MF-109); e <strong>conversa</strong>, sem fonte nenhuma.</li>
+<li><strong>Os números vêm do banco:</strong> o modelo de IA escreve a consulta e o texto, mas os números são os do resultado; sem
+dado, o Horus diz que não consegue.</li>
+<li><strong>Nível de inferência:</strong> cinco degraus de quanto a resposta pode ir além do número, do 1, que só descreve, ao 5,
+que especula com rótulo; o padrão é o 2, que explica.</li>
+<li><strong>Análise avançada e ferramentas:</strong> uma segunda leitura feita com o resultado na mão, sugestões de próxima
+pergunta, a consulta ao banco (o SQL) à vista e o download em CSV, imagem ou PDF.</li>
+<li><strong>Retorno em cada resposta:</strong> 👍🏻 Gostei, 👎🏻 Não gostei e 🚫 Reportar, em qualquer canal; vale o último sinal.</li>
+<li><strong>O reporte vai ao owner:</strong> com o motivo e uma cópia da resposta, que fica guardada mesmo se a conversa for apagada.</li>
+<li><strong>Quem configura:</strong> o owner liga e desliga cada botão da conversa nas roles, os pacotes de permissões que ele dá às
+pessoas, e quem tem várias roles soma o que elas liberam.</li>
+</ul>
+<h3 data-dx-icone="chart-line" id="mf-107-o-valor-que-gera">O valor que gera</h3>
+<ul>
+<li><strong>Para quem usa:</strong> decide na própria reunião, com o número na mão, e tem como apontar o erro.</li>
+<li><strong>Para a empresa que contrata o Horus:</strong> menos pedidos repetidos ao time de dados, a economia que o comprador paga,
+e as falhas dos dados achadas antes de uma reunião.</li>
+<li><strong>Para o Horus como produto:</strong> resolve o primeiro problema do produto e mede a qualidade das respostas, não só a
+quantidade.</li>
+</ul>
+<p><strong>Como vamos saber que funcionou:</strong> a Home da organização mostra quantas perguntas de análise o Horus conseguiu
+responder, goste a pessoa ou não, e a proporção de 👍🏻 e 👎🏻.</p>
+<h3 data-dx-icone="walking" id="mf-107-como-se-usa-no-horus">Como se usa no Horus</h3>
+<p><strong>Quem pergunta:</strong></p>
+<ol>
+<li>Abre a conversa, escolhe as fontes e escreve a pergunta.</li>
+<li>Se a role permitir, ajusta o modo, o nível, a Análise avançada e o modelo de IA.</li>
+<li>Recebe o texto e até dois blocos visuais, com a fonte à vista.</li>
+<li>Avalia; ao reportar, escolhe &quot;Os dados parecem errados ou desatualizados&quot;, &quot;O Horus entendeu ou calculou errado&quot;
+ou &quot;Outro motivo&quot;, e vê o aviso de &quot;recebido&quot; no Horus e, se o perfil permitir, no e-mail.</li>
+</ol>
+<p><strong>O owner da organização:</strong></p>
+<ol>
+<li>Define nas roles os botões que cada pessoa usa.</li>
+<li>Recebe o reporte separado pelo motivo, com a cópia da resposta.</li>
+<li>Corrige a carga de dados; ajustar o modelo semântico é com o time de dados.</li>
+</ol>
+<figure><div class="lightbox_shortcode"><img src="media/mf-107-diagrama-1.svg" width="1772" height="85" alt="Diagrama: Como se usa no Horus"><a href="media/mf-107-diagrama-1.svg" class="img_popup" aria-label="Ampliar o diagrama"><i class="icon_plus" aria-hidden="true"></i></a></div><figcaption>Diagrama de “Como se usa no Horus”. Selecione o “+” para ampliar.</figcaption></figure><h3 data-dx-icone="puzzle-piece" id="mf-107-grau-de-complexidade-media">Grau de complexidade: média</h3>
+<p>Quase tudo o que responde vem pronto da v1: a consulta, os números nos blocos, os níveis e a Análise avançada. São
+novos o retorno, o reporte e a contagem, e o motor se reorganiza para servir a todos os canais. Depende das roles e
+da área de avisos de Organizações, pessoas e papéis (MF-102); não é alta porque não mexe na segurança dos dados nem
+depende de terceiros.</p>
+<blockquote>
+<p>⚠️ É a leitura do PO a partir dos documentos de arquitetura. A estimativa de esforço é do arquiteto.</p>
+</blockquote>
+<h3 data-dx-icone="link" id="mf-107-macro-funcionalidades-relacionadas">Macro funcionalidades relacionadas</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de Perguntar aos dados em português"><table class="table table_shortcode"><thead><tr>
+<th scope="col">mf</th>
+<th scope="col">Como se relaciona</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Conectar as fontes vivas (MF-104)</td>
+<td><strong>depende de</strong>: sem fonte ligada e sem modelo semântico, não há o que perguntar</td>
+</tr>
+<tr>
+<td>IA sob controle da organização (MF-105)</td>
+<td><strong>depende de</strong>: o modelo de IA que escreve a consulta e o texto é o que a organização escolhe</td>
+</tr>
+<tr>
+<td>Organizações, pessoas e papéis (MF-102)</td>
+<td><strong>depende de</strong>: as roles limitam os botões, e a área de avisos recebe o reporte e o &quot;recebido&quot;</td>
+</tr>
+<tr>
+<td>Respostas visuais (MF-108)</td>
+<td><strong>complementa</strong>: dá forma à resposta, com gráficos, tabelas e indicadores</td>
+</tr>
+<tr>
+<td>A web como fonte (MF-109)</td>
+<td><strong>complementa</strong>: traz para a mesma resposta os fatos de fora, com link e data</td>
+</tr>
+<tr>
+<td>Pergunta rápida (MF-110) e Chat pelo WhatsApp (MF-111)</td>
+<td><strong>é a base de</strong>: os dois abrem esta mesma conversa, com o mesmo retorno</td>
+</tr>
+<tr>
+<td>Home da organização (MF-117)</td>
+<td><strong>é a base de</strong>: a contagem das respondidas e a proporção de 👍🏻 e 👎🏻 nascem aqui e aparecem lá</td>
+</tr>
+</tbody>
+</table></div><h3 data-dx-icone="ban" id="mf-107-o-que-ela-nao-faz">O que ela não faz</h3>
+<ul>
+<li><strong>Prometer um tempo</strong> em segundos ou em contrato, nem acelerar o banco do cliente.</li>
+<li><strong>Contar como respondida</strong> a pergunta que o Horus não conseguiu responder.</li>
+<li><strong>Responder a quem reportou:</strong> o aviso é só de &quot;recebido&quot;.</li>
+<li><strong>Investigar o porquê passo a passo:</strong> é a Investigação guiada (MF-119), na v2.1.</li>
+<li><strong>Limitar os dados por pessoa:</strong> na v2.0, toda pergunta vê os dados da organização inteira; o limite por pessoa é a
+Segurança dos dados por pessoa (MF-106), na v2.1.</li>
+</ul>
+<h3 data-dx-icone="hourglass-half" id="mf-107-ainda-a-decidir">Ainda a decidir</h3>
+<ul>
+<li><strong>O que conta como respondida</strong> quando a consulta volta vazia, a conversa responde sem fonte ou a resposta falha.</li>
+<li><strong>Até que nível cada um vai:</strong> a regra fala num limite da organização, mas hoje o limite é de cada fonte de dados.</li>
+<li><strong>Privacidade:</strong> se o owner continua lendo as conversas dos membros, como hoje, e se a pessoa é avisada.</li>
+</ul>
+<h3 data-dx-icone="book" id="mf-107-para-saber-mais">Para saber mais</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 2 de Perguntar aos dados em português"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Trecho do inventário</th>
+<th scope="col">O que traz</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>docs/raw/produto/04-macro-funcionalidades-de-hoje.md</code>, o mapa e a tabela de conversão</td>
+<td>O que a mf entrega hoje e a camada dela</td>
+</tr>
+<tr>
+<td><code>docs/raw/produto/02-norte-do-produto.md</code>, problemas, medidas e limites</td>
+<td>A pergunta na hora, a pergunta respondida e o &quot;só lê&quot;</td>
+</tr>
+<tr>
+<td><code>docs/raw/produto/05-v2.0-consolidada.md</code>, §1, §3, §4 e §5.4</td>
+<td>A mf na v2.0 (base herdada e candidatas nº 1 e nº 2), a prova de valor e as regras da conversa</td>
+</tr>
+<tr>
+<td><code>docs/raw/produto/backlog-estrategico.md</code></td>
+<td>A resposta em segundos (<a href="#d-125"><code>D-125</code></a>, <a href="#d-126"><code>D-126</code></a>); o retorno do usuário (<a href="#d-005"><code>D-005</code></a>, <a href="#d-014"><code>D-014</code></a>, <a href="#d-127"><code>D-127</code></a>, <a href="#d-128"><code>D-128</code></a>, <a href="#d-129"><code>D-129</code></a>); a pergunta respondida (<a href="#d-004"><code>D-004</code></a>); os botões por role e a soma (<a href="#d-110"><code>D-110</code></a>, <a href="#d-111"><code>D-111</code></a>); o &quot;só lê&quot; (<a href="#d-022"><code>D-022</code></a>); o modelo semântico com o time de dados (<a href="#d-083"><code>D-083</code></a>); a base herdada (<a href="#d-021"><code>D-021</code></a>)</td>
+</tr>
+<tr>
+<td><code>docs/raw/produto/03-inventario-de-lacunas.md</code>, linhas 1 a 9</td>
+<td>O que existe e o que falta no problema nº 1</td>
+</tr>
+<tr>
+<td><code>docs/raw/produto/06-versoes.md</code> e <code>07-mapa-de-objetivos-e-funcionalidades.md</code></td>
+<td>A mf na v2.0, no objetivo O1</td>
+</tr>
+<tr>
+<td><code>docs/raw/arquitetura/05-motor-de-analise-e-ia.md</code>, §3 e §4</td>
+<td>O caminho da pergunta, o motor único (<a href="#arq-006"><code>ARQ-006</code></a>, <a href="#arq-023"><code>ARQ-023</code></a>, <a href="#arq-024"><code>ARQ-024</code></a>), os níveis (<a href="#arq-025"><code>ARQ-025</code></a>), o retorno e o reporte (<a href="#arq-028"><code>ARQ-028</code></a>) e a contagem (<a href="#arq-029"><code>ARQ-029</code></a>)</td>
+</tr>
+<tr>
+<td><code>docs/raw/arquitetura/01-estrategia-da-solucao.md</code>, §4, e <code>04-software.md</code></td>
+<td>A estratégia da mf e as peças que a entregam</td>
+</tr>
+<tr>
+<td><code>docs/raw/arquitetura/06-dados.md</code> e <code>02-registro-de-decisoes.md</code>, <a href="#arq-035"><code>ARQ-035</code></a></td>
+<td>A guarda da cópia da resposta reportada</td>
+</tr>
+<tr>
+<td><code>docs/raw/arquitetura/02-registro-de-decisoes.md</code>, <a href="#arq-090"><code>ARQ-090</code></a></td>
+<td>A segurança dos dados por pessoa inteira na v2.1; na v2.0, os dados da organização inteira</td>
+</tr>
+<tr>
+<td><code>docs/raw/arquitetura/14-conferencia-do-produto.md</code>, §2 a §4</td>
+<td>O tempo ainda sem medida (<code>P-002</code>), o que se reaproveita (<code>P-003</code>) e os itens devolvidos ao PO: o que conta como respondida (A-08), o teto dos níveis (A-13), a privacidade (A-16), os botões fora da lista (A-24) e a <a href="#mf-106"><code>MF-106</code></a> na v2.1 (A-28)</td>
+</tr>
+</tbody>
+</table></div><p>📚 <a href="#mf-107-inventario">Tudo o que o inventário diz desta mf, assunto por assunto</a>.</p>

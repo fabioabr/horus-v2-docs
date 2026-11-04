@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A documentação de produto e de arquitetura do Horus v2: a visão, as decisões, a estratégia e como ele vai ser construído.">
+    <meta name="generator" content="DocX 0.2.1">
+    <link rel="shortcut icon" href="media/horus-claro.svg">
+    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/elagent-icon/style.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/font-awesome/css/all.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/niceselectpicker/nice-select.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/font-size/css/rvfs.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/animation/animate.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/tooltipster/css/tooltipster.bundle.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism-coy.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/magnify-pop/magnific-popup.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/css/style.css">
+    <link rel="stylesheet" href="assets/kbdoc/css/responsive.css">
+    <link rel="stylesheet" href="assets/docx.css">
+    <link rel="stylesheet" href="assets/conteudo.css">
+    <link rel="stylesheet" href="assets/indice.css">
+    <title>Respostas visuais: o inventário — Horus v2</title>
+</head>
+<body class="doc full-width-doc sticky-nav-doc onepage-doc dx-pagina-doc" data-spy="scroll" data-target=".navbar" data-offset="-120">
+    <a class="sr-only sr-only-focusable dx-skip" href="#post">Pular para o conteúdo</a>
+    <div class="body_wrapper sticky_menu">
+        <nav class="navbar navbar-expand-lg menu_one" id="stickyTwo" aria-label="Navegação principal">
+            <div class="container-fluid pl-60 pr-60">
+                <a class="navbar-brand" href="index.html">
+                    <img src="media/horus-claro.svg" alt="Horus v2">
+                    <img src="media/horus-escuro.svg" alt="Horus v2">
+                </a>
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Abrir o menu">
+                    <span class="menu_toggle">
+                        <span class="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                        <span class="hamburger-cross">
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav menu ml-auto">
+<li class="nav-item"><a href="index.html" class="nav-link">Início</a></li>
+<li class="nav-item dropdown submenu mega_menu tab-demo active"><a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentos</a><i class="arrow_carrot-down_alt2 mobile_dropdown_icon" aria-hidden="true" data-toggle="dropdown"></i><ul class="dropdown-menu scroll"><li><div class="row"><div class="col-lg-5 tabHeader"><ul class="nav flex-column nav-pills" id="dx-menu" role="tablist" aria-orientation="vertical"><li class="nav-item active"><a class="nav-link active" id="dx-menu-1-tab" data-toggle="pill" href="#dx-menu-1" role="tab" aria-controls="dx-menu-1" aria-selected="true">Comece aqui</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-2-tab" data-toggle="pill" href="#dx-menu-2" role="tab" aria-controls="dx-menu-2" aria-selected="false">Produto</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-3-tab" data-toggle="pill" href="#dx-menu-3" role="tab" aria-controls="dx-menu-3" aria-selected="false">Arquitetura · visão e decisões</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-4-tab" data-toggle="pill" href="#dx-menu-4" role="tab" aria-controls="dx-menu-4" aria-selected="false">Arquitetura · construção</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-5-tab" data-toggle="pill" href="#dx-menu-5" role="tab" aria-controls="dx-menu-5" aria-selected="false">Arquitetura · operação</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-6-tab" data-toggle="pill" href="#dx-menu-6" role="tab" aria-controls="dx-menu-6" aria-selected="false">Arquitetura · conferência</a></li></ul></div><div class="col-lg-7"><div class="tab-content tabContent" id="dx-menu-conteudo"><div class="tab-pane fade active show" id="dx-menu-1" role="tabpanel" aria-labelledby="dx-menu-1-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="visao-geral.html">O Horus v2</a></li><li><a href="pasta-v2.html">A pasta da v2</a></li></ul></div><div class="text"><a href="visao-geral.html"><p>Abrir Comece aqui</p></a></div></div><div class="tab-pane fade" id="dx-menu-2" role="tabpanel" aria-labelledby="dx-menu-2-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="produto-temas.html">Temas da visão de produto</a></li><li><a href="produto-norte.html">Norte do produto</a></li><li><a href="produto-lacunas.html">Inventário de lacunas</a></li><li><a href="produto-mfs-hoje.html">Macro funcionalidades de hoje</a></li><li><a href="produto-v20.html">A v2.0 consolidada</a></li></ul><ul class="list-unstyled tab_list"><li><a href="produto-versoes.html">As versões, mf a mf</a></li><li><a href="produto-mapa.html">Mapa de objetivos e funcionalidades</a></li><li><a href="produto-backlog.html">Backlog estratégico</a></li><li><a href="backlog-atividades.html">Backlog de atividades</a></li></ul></div><div class="text"><a href="produto-temas.html"><p>Abrir Produto</p></a></div></div><div class="tab-pane fade" id="dx-menu-3" role="tabpanel" aria-labelledby="dx-menu-3-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura.html">A pasta da arquitetura</a></li><li><a href="arquitetura-01.html">01 · Estratégia da solução</a></li><li><a href="arquitetura-02.html">02 · Registro de decisões</a></li><li><a href="arquitetura-03.html">03 · Metas de qualidade</a></li></ul></div><div class="text"><a href="arquitetura.html"><p>Abrir Arquitetura · visão e decisões</p></a></div></div><div class="tab-pane fade" id="dx-menu-4" role="tabpanel" aria-labelledby="dx-menu-4-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-04.html">04 · Software</a></li><li><a href="arquitetura-05.html">05 · Motor de análise e IA</a></li><li><a href="arquitetura-06.html">06 · Dados</a></li><li><a href="arquitetura-07.html">07 · Segurança</a></li><li><a href="arquitetura-08.html">08 · Integrações</a></li></ul></div><div class="text"><a href="arquitetura-04.html"><p>Abrir Arquitetura · construção</p></a></div></div><div class="tab-pane fade" id="dx-menu-5" role="tabpanel" aria-labelledby="dx-menu-5-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-09.html">09 · Infraestrutura e ambientes</a></li><li><a href="arquitetura-10.html">10 · Publicação e operação</a></li><li><a href="arquitetura-11.html">11 · Observabilidade</a></li><li><a href="arquitetura-12.html">12 · Qualidade e testes</a></li><li><a href="arquitetura-13.html">13 · Custo de operação</a></li></ul></div><div class="text"><a href="arquitetura-09.html"><p>Abrir Arquitetura · operação</p></a></div></div><div class="tab-pane fade" id="dx-menu-6" role="tabpanel" aria-labelledby="dx-menu-6-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-14.html">14 · Conferência do produto</a></li></ul></div><div class="text"><a href="arquitetura-14.html"><p>Abrir Arquitetura · conferência</p></a></div></div></div></div></div></li></ul></li>
+                    </ul>
+                    <ul class="list-unstyled menu_social">
+                        <li class="search">
+                            <form action="#" class="search_form" role="search" data-search-form>
+                                <label class="sr-only" for="dx-search">Buscar na documentação</label>
+                                <input type="search" class="form-control" id="dx-search" placeholder="Buscar" autocomplete="off" data-search-input aria-describedby="dx-search-status" aria-controls="dx-search-results">
+                                <button type="submit" aria-label="Buscar"><i class="icon_search" aria-hidden="true"></i></button>
+                                <div class="dx-search-results" id="dx-search-results" data-search-results hidden></div>
+                            </form>
+                            <p class="sr-only" id="dx-search-status" role="status" data-search-status></p>
+                        </li>
+                    </ul>
+                    <div class="dx-ferramentas">
+
+
+                        <div id="font-switcher"><div id="rvfs-controllers" class="fontsize-controllers group"></div></div>
+                        <button type="button" class="print" data-print aria-label="Imprimir"><i class="icon_printer" aria-hidden="true"></i></button>
+                        <div class="doc_switch">
+                            <label for="something" class="tab-btn tab-btns"><i class="icon_lightbulb_alt" aria-hidden="true"></i><span class="sr-only">Tema claro</span></label>
+                            <input type="checkbox" name="something" id="something" class="tab_switcher" aria-label="Tema escuro">
+                            <label for="something" class="tab-btn"><i class="far fa-moon" aria-hidden="true"></i><span class="sr-only">Tema escuro</span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <section class="doc_documentation_area onepage_doc_area" id="sticky_doc">
+            <div class="overlay_bg"></div>
+            <div class="container-fluid pl-60 pr-60">
+                <div class="row doc-container">
+                    <div class="col-lg-2 doc_mobile_menu doc-sidebar display_none">
+                        <aside class="doc_left_sidebarlist" aria-label="Tópicos desta página">
+                            <h3 class="nav_title">Tópicos</h3>
+                            <div class="scroll">
+                                <ul class="list-unstyled nav-sidebar doc-nav">
+<li class="nav-item active"><a href="#mf-108-inventario-o-que-e" class="nav-link">O que é</a><ul class="list-unstyled dropdown_nav"><li class="nav-item"><a href="#mf-108-inventario-produto-mfs-hoje" class="nav-link">Macro funcionalidades de hoje</a></li></ul><span class="icon"><i class="icon_plus" aria-hidden="true"></i><i class="icon_minus-06" aria-hidden="true"></i></span></li>
+<li class="nav-item"><a href="#mf-108-inventario-entregas" class="nav-link">Nas entregas</a><ul class="list-unstyled dropdown_nav"><li class="nav-item"><a href="#mf-108-inventario-produto-v20" class="nav-link">A v2.0 consolidada</a></li><li class="nav-item"><a href="#mf-108-inventario-produto-versoes" class="nav-link">As versões, mf a mf</a></li></ul><span class="icon"><i class="icon_plus" aria-hidden="true"></i><i class="icon_minus-06" aria-hidden="true"></i></span></li>
+<li class="nav-item"><a href="#mf-108-inventario-objetivos" class="nav-link">Objetivos</a><ul class="list-unstyled dropdown_nav"><li class="nav-item"><a href="#mf-108-inventario-produto-mapa" class="nav-link">Mapa de objetivos e funcionalidades</a></li></ul><span class="icon"><i class="icon_plus" aria-hidden="true"></i><i class="icon_minus-06" aria-hidden="true"></i></span></li>
+<li class="nav-item"><a href="#mf-108-inventario-decisoes-produto" class="nav-link">Decisões de produto</a><ul class="list-unstyled dropdown_nav"><li class="nav-item"><a href="#mf-108-inventario-produto-backlog-d" class="nav-link">Backlog estratégico · 7 decisões</a></li></ul><span class="icon"><i class="icon_plus" aria-hidden="true"></i><i class="icon_minus-06" aria-hidden="true"></i></span></li>
+<li class="nav-item"><a href="#mf-108-inventario-arquitetura" class="nav-link">Arquitetura</a><ul class="list-unstyled dropdown_nav"><li class="nav-item"><a href="#mf-108-inventario-arquitetura-01" class="nav-link">01 · Estratégia da solução</a></li><li class="nav-item"><a href="#mf-108-inventario-arquitetura-04" class="nav-link">04 · Software</a></li></ul><span class="icon"><i class="icon_plus" aria-hidden="true"></i><i class="icon_minus-06" aria-hidden="true"></i></span></li>
+<li class="nav-item"><a href="#mf-108-inventario-decisoes-arquitetura" class="nav-link">Decisões de arquitetura</a><ul class="list-unstyled dropdown_nav"><li class="nav-item"><a href="#mf-108-inventario-arquitetura-02" class="nav-link">02 · Registro de decisões</a></li></ul><span class="icon"><i class="icon_plus" aria-hidden="true"></i><i class="icon_minus-06" aria-hidden="true"></i></span></li>
+<li class="nav-item"><a href="#mf-108-inventario-v1" class="nav-link">O que se reaproveita da v1</a><ul class="list-unstyled dropdown_nav"><li class="nav-item"><a href="#mf-108-inventario-arquitetura-14" class="nav-link">14 · Conferência do produto</a></li></ul><span class="icon"><i class="icon_plus" aria-hidden="true"></i><i class="icon_minus-06" aria-hidden="true"></i></span></li>
+                                </ul>
+                            </div>
+                        </aside>
+                    </div>
+                    <div class="col-lg-10 col-md-12">
+                        <div class="documentation_info dx-pagina" id="post">
+                            <header class="dx-cabeca" id="mf-108-inventario">
+                                <nav class="dx-trilha" aria-label="Trilha"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Início</a></li><li class="breadcrumb-item">Inventário das mfs</li><li class="breadcrumb-item active" aria-current="page">Respostas visuais: o inventário</li></ol></nav>
+                                
+                                <h1>Respostas visuais: o inventário</h1>
+                                <p>Tudo o que os documentos do inventário dizem da MF-108, assunto por assunto.</p>
+                            </header>
+                            <div class="dx-modelo-01">
+<nav aria-labelledby="dx-m01-assuntos-titulo">
+<div class="dx-m01-rotulo"><h2 id="dx-m01-assuntos-titulo">Explore os assuntos</h2><span>7 seções</span></div>
+<div class="dx-m01-assuntos">
+<a class="dx-m01-assunto" href="#mf-108-inventario-o-que-e"><span class="dx-m01-icone"><i class="fas fa-book-open" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que é</strong><small>1 referência</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-108-inventario-entregas"><span class="dx-m01-icone"><i class="fas fa-box-open" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Nas entregas</strong><small>2 referências</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-108-inventario-objetivos"><span class="dx-m01-icone"><i class="fas fa-bullseye" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Objetivos</strong><small>1 referência</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-108-inventario-decisoes-produto"><span class="dx-m01-icone"><i class="fas fa-tasks" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Decisões de produto</strong><small>1 referência</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-108-inventario-arquitetura"><span class="dx-m01-icone"><i class="fas fa-layer-group" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Arquitetura</strong><small>2 referências</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-108-inventario-decisoes-arquitetura"><span class="dx-m01-icone"><i class="fas fa-project-diagram" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Decisões de arquitetura</strong><small>1 referência</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-108-inventario-v1"><span class="dx-m01-icone"><i class="fas fa-history" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que se reaproveita da v1</strong><small>1 referência</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</div></nav>
+<section class="dx-m01-fontes" aria-labelledby="dx-m01-fontes-titulo">
+<header class="dx-m01-cabecalho"><div>
+<h2 id="dx-m01-fontes-titulo"><i class="fas fa-link" aria-hidden="true"></i><span>De onde vem</span></h2>
+<p>Referências que fundamentam esta funcionalidade</p></div>
+<span class="dx-m01-total">9 referências</span></header>
+<div class="dx-m01-grade">
+<section class="dx-m01-fonte"><h3><i class="fas fa-book-open" aria-hidden="true"></i><span>O que é</span><small aria-label="1 referência">1</small></h3><ul class="dx-m01-links"><li><a href="#mf-108-inventario-produto-mfs-hoje"><span>Macro funcionalidades de hoje</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li></ul></section>
+<section class="dx-m01-fonte"><h3><i class="fas fa-box-open" aria-hidden="true"></i><span>Nas entregas</span><small aria-label="2 referências">2</small></h3><ul class="dx-m01-links"><li><a href="#mf-108-inventario-produto-v20"><span>A v2.0 consolidada</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#mf-108-inventario-produto-versoes"><span>As versões, mf a mf</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li></ul></section>
+<section class="dx-m01-fonte"><h3><i class="fas fa-bullseye" aria-hidden="true"></i><span>Objetivos</span><small aria-label="1 referência">1</small></h3><ul class="dx-m01-links"><li><a href="#mf-108-inventario-produto-mapa"><span>Mapa de objetivos e funcionalidades</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li></ul></section>
+<section class="dx-m01-fonte"><h3><i class="fas fa-tasks" aria-hidden="true"></i><span>Decisões de produto</span><small aria-label="1 referência">1</small></h3><ul class="dx-m01-links"><li><a href="#mf-108-inventario-produto-backlog-d"><span>Backlog estratégico · 7 decisões</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li></ul></section>
+<section class="dx-m01-fonte"><h3><i class="fas fa-layer-group" aria-hidden="true"></i><span>Arquitetura</span><small aria-label="2 referências">2</small></h3><ul class="dx-m01-links"><li><a href="#mf-108-inventario-arquitetura-01"><span>01 · Estratégia da solução</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#mf-108-inventario-arquitetura-04"><span>04 · Software</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li></ul></section>
+<section class="dx-m01-fonte"><h3><i class="fas fa-project-diagram" aria-hidden="true"></i><span>Decisões de arquitetura</span><small aria-label="1 referência">1</small></h3><ul class="dx-m01-links"><li><a href="#mf-108-inventario-arquitetura-02"><span>02 · Registro de decisões</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li></ul></section>
+<section class="dx-m01-fonte"><h3><i class="fas fa-history" aria-hidden="true"></i><span>O que se reaproveita da v1</span><small aria-label="1 referência">1</small></h3><ul class="dx-m01-links"><li><a href="#mf-108-inventario-arquitetura-14"><span>14 · Conferência do produto</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li></ul></section>
+</div></section>
+</div>
+                            <div class="dx-content">
+<div class="doc-section dx-assunto"><h3 id="mf-108-inventario-o-que-e" data-dx-icone="book-open">O que é</h3><h4 id="mf-108-inventario-produto-mfs-hoje">Macro funcionalidades de hoje</h4><p class="dx-fonte">Em <a href="produto-mfs-hoje.html#produto-mfs-hoje-o-mapa-12-macro-funcionalidades">O mapa: 12 macro funcionalidades</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de MF-108 · Respostas visuais"><table class="table table_shortcode"><thead><tr>
+<th scope="col">MF</th>
+<th scope="col">O que entrega hoje</th>
+<th scope="col">Situação</th>
+<th scope="col">Problema do norte que atende</th>
+</tr>
+</thead><tbody><tr>
+<td>🎨 <strong>MF-108:Respostas visuais</strong></td>
+<td>15 variantes de gráfico, tabela, KPI, mapa de calor, chaveamento e fluxo (workflow); no máximo 2 blocos por resposta; tema dos gráficos por organização</td>
+<td>✅</td>
+<td>nº 1 (é o valor central da promessa)</td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="produto-mfs-hoje.html#produto-mfs-hoje-tabela-de-conversao-da-numeracao">Tabela de conversão da numeração</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 2 de MF-108 · Respostas visuais"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Novo</th>
+<th scope="col">Mf</th>
+<th scope="col">01/11</th>
+<th scope="col">Original</th>
+<th scope="col">Camada</th>
+</tr>
+</thead><tbody><tr>
+<td><a href="mf-108.html"><code>MF-108</code></a></td>
+<td>Respostas visuais</td>
+<td><code>MF-02</code></td>
+<td><code>MF-002</code></td>
+<td>💬 Motor de análise</td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="produto-mfs-hoje.html#produto-mfs-hoje-os-tres-problemas-do-norte-contra-o-que-existe">Os três problemas do norte contra o que existe</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 3 de MF-108 · Respostas visuais"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Problema</th>
+<th scope="col">O que o Horus tem</th>
+<th scope="col">Situação</th>
+</tr>
+</thead><tbody><tr>
+<td>⚡ nº 1 · A pergunta de análise na hora</td>
+<td>MF-107:Perguntar aos dados em português, MF-108:Respostas visuais, MF-104:Conectar as fontes vivas e MF-109:A web como fonte</td>
+<td>✅ a base está de pé; faltam retorno do usuário, web completa e a medida de autonomia (ver <a href="produto-lacunas.html">inventário</a>). <em>A velocidade deixou de ser lacuna em 02/11/2026: &quot;em segundos&quot; é comparação com o pedido ao time de dados (<a href="produto-backlog.html#d-125"><code>D-125</code></a>)</em></td>
+</tr>
+</tbody></table></div>
+</div><div class="doc-section dx-assunto"><h3 id="mf-108-inventario-entregas" data-dx-icone="box-open">Nas entregas</h3><h4 id="mf-108-inventario-produto-v20">A v2.0 consolidada</h4><p class="dx-fonte">Em <a href="produto-v20.html#produto-v20-mf-a-mf-em-ordem-numerica-o-que-vem-na-v20-e-o-que-fica-no-backlog">Mf a mf, em ordem numérica: o que vem na v2.0 e o que fica no backlog</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 4 de MF-108 · Respostas visuais"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Mf</th>
+<th scope="col">Nome</th>
+<th scope="col">Onde</th>
+<th scope="col">Na v2.0</th>
+<th scope="col">No backlog</th>
+<th scope="col">Decisão</th>
+</tr>
+</thead><tbody><tr>
+<td><a href="mf-108.html"><code>MF-108</code></a></td>
+<td>Respostas visuais</td>
+<td>✅ v2.0</td>
+<td>Base herdada</td>
+<td>—</td>
+<td><a href="produto-backlog.html#d-021"><code>D-021</code></a></td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="produto-v20.html#produto-v20-32-a-base-herdada">3.2 A base herdada</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 5 de MF-108 · Respostas visuais"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Mf</th>
+<th scope="col">O que entrega hoje</th>
+</tr>
+</thead><tbody><tr>
+<td><a href="mf-108.html"><code>MF-108:Respostas visuais</code></a></td>
+<td>Quinze variantes de gráfico, tabela, KPI, mapa de calor, chaveamento e fluxo; no máximo dois blocos por resposta; tema dos gráficos por organização</td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="produto-v20.html#produto-v20-4-a-prova-de-valor-passo-a-passo">4. A prova de valor, passo a passo</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 6 de MF-108 · Respostas visuais"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Passo</th>
+<th scope="col">O que acontece</th>
+<th scope="col">Peça</th>
+</tr>
+</thead><tbody><tr>
+<td>5</td>
+<td>A resposta chega na hora, e não dias depois, como num pedido ao time de dados. Vem em gráfico, com a fonte à vista; o que veio da web traz link e data</td>
+<td><a href="mf-108.html"><code>MF-108:Respostas visuais</code></a>, <a href="mf-109.html"><code>MF-109:A web como fonte</code></a></td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="produto-v20.html#produto-v20-7-como-as-pecas-dependem-umas-das-outras">7. Como as peças dependem umas das outras</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 7 de MF-108 · Respostas visuais"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Peça</th>
+<th scope="col">Depende de</th>
+</tr>
+</thead><tbody><tr>
+<td><a href="mf-110.html"><code>MF-110:Pergunta rápida</code></a></td>
+<td><a href="mf-107.html"><code>MF-107:Perguntar aos dados em português</code></a>, <a href="mf-108.html"><code>MF-108:Respostas visuais</code></a>, <a href="mf-102.html"><code>MF-102:Organizações, pessoas e papéis</code></a> (roles e tipos de assento) e <a href="mf-103.html"><code>MF-103:Licenças e planos</code></a> (o leitor não pergunta)</td>
+</tr>
+<tr>
+<td><a href="mf-112.html"><code>MF-112:Boards e Relatórios</code></a></td>
+<td><a href="mf-102.html"><code>MF-102:Organizações, pessoas e papéis</code></a> (gestão, grupos e roles), <a href="mf-104.html"><code>MF-104:Conectar as fontes vivas</code></a>, <a href="mf-107.html"><code>MF-107:Perguntar aos dados em português</code></a> e <a href="mf-108.html"><code>MF-108:Respostas visuais</code></a>. Para o PDF automático, a <a href="mf-114.html"><code>MF-114:Módulo de Agendamentos de Agentes</code></a> e a <a href="mf-113.html"><code>MF-113:Conectores de Saída</code></a>, que entraram na v2.0 (<a href="produto-backlog.html#d-122"><code>D-122</code></a>)</td>
+</tr>
+<tr>
+<td><a href="mf-111.html"><code>MF-111:Chat pelo WhatsApp</code></a></td>
+<td><a href="mf-107.html"><code>MF-107:Perguntar aos dados em português</code></a>, <a href="mf-108.html"><code>MF-108:Respostas visuais</code></a> (o que vira imagem, hipótese <code>p</code> da <code>P-008</code>), <a href="mf-102.html"><code>MF-102:Organizações, pessoas e papéis</code></a> (roles, tipos de assento e o número no perfil), <a href="mf-103.html"><code>MF-103:Licenças e planos</code></a> (o leitor não pergunta) e <a href="mf-116.html"><code>MF-116:Auditoria</code></a>. Fora do produto: a conta de WhatsApp Business de cada organização e a aprovação na Meta</td>
+</tr>
+<tr>
+<td><a href="mf-115.html"><code>MF-115:Agentes ativos</code></a></td>
+<td><a href="mf-105.html"><code>MF-105:IA sob controle da organização</code></a> (o modelo e o consumo), <a href="mf-104.html"><code>MF-104:Conectar as fontes vivas</code></a>, <a href="mf-107.html"><code>MF-107:Perguntar aos dados em português</code></a>, <a href="mf-108.html"><code>MF-108:Respostas visuais</code></a>, a <a href="mf-114.html"><code>MF-114:Módulo de Agendamentos de Agentes</code></a> e a <a href="mf-113.html"><code>MF-113:Conectores de Saída</code></a>. Hipóteses <code>p</code> e <code>q</code> da <code>P-008</code>: gerar os gráficos fora da tela e o ciclo controlado pelo modelo</td>
+</tr>
+</tbody></table></div><h4 id="mf-108-inventario-produto-versoes">As versões, mf a mf</h4><p class="dx-fonte">Em <a href="produto-versoes.html#produto-versoes--v20-a-pergunta-na-hora-com-confianca-o-acompanhamento-e-o-aviso">🟢 v2.0: a pergunta na hora, com confiança, o acompanhamento e o aviso</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 8 de MF-108 · Respostas visuais"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Mf</th>
+<th scope="col">Nome</th>
+<th scope="col">O que entra</th>
+<th scope="col">Nº</th>
+<th scope="col">Nota</th>
+<th scope="col">Decisão</th>
+</tr>
+</thead><tbody><tr>
+<td><a href="mf-108.html"><code>MF-108</code></a></td>
+<td>Respostas visuais</td>
+<td>Base herdada</td>
+<td>—</td>
+<td>—</td>
+<td><a href="produto-backlog.html#d-021"><code>D-021</code></a></td>
+</tr>
+</tbody></table></div>
+</div><div class="doc-section dx-assunto"><h3 id="mf-108-inventario-objetivos" data-dx-icone="bullseye">Objetivos</h3><h4 id="mf-108-inventario-produto-mapa">Mapa de objetivos e funcionalidades</h4><p class="dx-fonte">Em <a href="produto-mapa.html#produto-mapa-3-os-objetivos-e-as-funcionalidades">3. Os objetivos e as funcionalidades</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 9 de MF-108 · Respostas visuais"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Objetivo</th>
+<th scope="col">Mf</th>
+<th scope="col">Funcionalidade</th>
+<th scope="col">Nº</th>
+<th scope="col">Entrega</th>
+<th scope="col">Definição</th>
+</tr>
+</thead><tbody><tr>
+<td>O1</td>
+<td><a href="mf-108.html"><code>MF-108:Respostas visuais</code></a></td>
+<td>Gráficos, tabelas, KPIs, mapa de calor, chaveamento e fluxo</td>
+<td>base</td>
+<td>v2.0</td>
+<td><a href="produto-backlog.html#d-021"><code>D-021</code></a></td>
+</tr>
+</tbody></table></div>
+</div><div class="doc-section dx-assunto"><h3 id="mf-108-inventario-decisoes-produto" data-dx-icone="tasks">Decisões de produto</h3><h4 id="mf-108-inventario-produto-backlog-d">Backlog estratégico · 7 decisões</h4><div class="table-responsive" tabindex="0" role="region" aria-label="Decisões de produto de MF-108 · Respostas visuais"><table class="table table_shortcode"><thead><tr><th scope="col">Nº</th><th scope="col">Decisão</th><th scope="col">Situação</th><th scope="col">Versão</th></tr></thead><tbody><tr><td><a href="produto-backlog.html#d-126"><code>D-126</code></a></td><td>Definição macro da candidata nº 1, a resposta em segundos na reunião (MF-107:Perguntar aos dados em português)</td><td>🟢 decidida</td><td>v2.0</td></tr><tr><td><a href="produto-backlog.html#d-105"><code>D-105</code></a></td><td>A v2.0 resolve o problema nº 1 com confiança e prova de valor</td><td>🟢 decidida</td><td>v2.0</td></tr><tr><td><a href="produto-backlog.html#d-099"><code>D-099</code></a></td><td>Definição macro da MF-111:Chat pelo WhatsApp</td><td>🟢 decidida</td><td>a pontuar</td></tr><tr><td><a href="produto-backlog.html#d-089"><code>D-089</code></a></td><td>Definição macro da MF-110:Pergunta rápida</td><td>🟢 decidida</td><td>a pontuar</td></tr><tr><td><a href="produto-backlog.html#d-062"><code>D-062</code></a></td><td>Definição macro da MF-115:Agentes ativos</td><td>🟢 decidida</td><td>a pontuar</td></tr><tr><td><a href="produto-backlog.html#d-058"><code>D-058</code></a></td><td>Definição macro da mf única de boards e relatórios</td><td>🟢 decidida</td><td>a pontuar</td></tr><tr><td><a href="produto-backlog.html#d-021"><code>D-021</code></a></td><td>As mfs que o dono não mencionou entram na v2.0 como base herdada</td><td>🟢 decidida</td><td>geral</td></tr></tbody></table></div>
+</div><div class="doc-section dx-assunto"><h3 id="mf-108-inventario-arquitetura" data-dx-icone="layer-group">Arquitetura</h3><h4 id="mf-108-inventario-arquitetura-01">01 · Estratégia da solução</h4><p class="dx-fonte">Em <a href="arquitetura-01.html#arquitetura-01-3-como-cada-objetivo-e-atingido">3. Como cada objetivo é atingido</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 11 de MF-108 · Respostas visuais"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Objetivo</th>
+<th scope="col">Mfs</th>
+<th scope="col">Como a arquitetura o atinge</th>
+<th scope="col">Decisões</th>
+<th scope="col">Detalhe</th>
+</tr>
+</thead><tbody><tr>
+<td><strong>O1</strong> ⚡ Perguntar e ter a resposta na hora</td>
+<td><a href="mf-107.html"><code>MF-107</code></a>, <a href="mf-108.html"><code>MF-108</code></a>, <a href="mf-104.html"><code>MF-104</code></a>, <a href="mf-109.html"><code>MF-109</code></a>, <a href="mf-105.html"><code>MF-105</code></a>, <a href="mf-110.html"><code>MF-110</code></a>, <a href="mf-111.html"><code>MF-111</code></a></td>
+<td>O motor da v1.xx, que já responde com os números do banco, vira o motor único e passa a servir o popup e o WhatsApp sem copiar regra. O retorno do usuário nasce no motor e vale em todo canal. A web entra com link e data em qualquer nível. O tempo se mede por etapa para achar onde ele vai, sem virar promessa (<a href="produto-backlog.html#d-125"><code>D-125</code></a>, <a href="produto-backlog.html#d-126"><code>D-126</code></a>).</td>
+<td><a href="arquitetura-02.html#arq-006"><code>ARQ-006</code></a>, <a href="arquitetura-02.html#arq-007"><code>ARQ-007</code></a>, <a href="arquitetura-02.html#arq-013"><code>ARQ-013</code></a></td>
+<td>05, 08, 03</td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="arquitetura-01.html#arquitetura-01-4-as-19-mfs-uma-a-uma">4. As 19 mfs, uma a uma</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 12 de MF-108 · Respostas visuais"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Mf</th>
+<th scope="col">Entrega</th>
+<th scope="col">Estratégia</th>
+<th scope="col">Da v1.xx</th>
+<th scope="col">Marco</th>
+<th scope="col">Detalhe</th>
+</tr>
+</thead><tbody><tr>
+<td><a href="mf-108.html"><code>MF-108:Respostas visuais</code></a></td>
+<td>v2.0</td>
+<td>Base herdada. O mesmo desenho vira imagem e PDF no servidor</td>
+<td>Reaproveita os seis tipos de bloco e as quinze variantes; os blocos portados não se editam (<code>horus@318db52b:.claude/rules/front/blocos-do-chat.md</code>)</td>
+<td>M3</td>
+<td>05</td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="arquitetura-01.html#arquitetura-01-v20">v2.0</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 13 de MF-108 · Respostas visuais"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Marco</th>
+<th scope="col">Fica de pé ao fim</th>
+<th scope="col">Mfs</th>
+<th scope="col">Depende de</th>
+</tr>
+</thead><tbody><tr>
+<td><strong>M3 · Motor</strong></td>
+<td>O motor único com o contrato de turno, usado pela conversa. O retorno com os três motivos, o reporte ao owner, o aviso de &quot;recebido&quot; e a resposta reportada guardada. A web com link e data em qualquer nível, separando o fato da causa. A contagem da pergunta respondida. As roles limitando os botões da conversa</td>
+<td><a href="mf-107.html"><code>MF-107</code></a>, <a href="mf-108.html"><code>MF-108</code></a>, <a href="mf-109.html"><code>MF-109</code></a></td>
+<td>M2</td>
+</tr>
+</tbody></table></div><h4 id="mf-108-inventario-arquitetura-04">04 · Software</h4><p class="dx-fonte">Em <a href="arquitetura-04.html#arquitetura-04--fundacao">🧱 Fundação</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 14 de MF-108 · Respostas visuais"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Componente</th>
+<th scope="col">Responsabilidade</th>
+<th scope="col">Mfs</th>
+<th scope="col">Situação</th>
+</tr>
+</thead><tbody><tr>
+<td>Desenho fora da tela</td>
+<td>Abre a montagem do front num navegador sem tela e devolve a imagem ou o PDF, com concorrência limitada (<a href="arquitetura-02.html#arq-007"><code>ARQ-007</code></a>)</td>
+<td><a href="mf-108.html"><code>MF-108</code></a>, <a href="mf-111.html"><code>MF-111</code></a>, <a href="mf-112.html"><code>MF-112</code></a>, <a href="mf-115.html"><code>MF-115</code></a></td>
+<td>🔧 <code>horus@318db52b:apps/server/Horus.Core/Relatorios/ImpressorDePdfChromium.cs</code>, <code>TokensDeRenderizacao.cs</code></td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="arquitetura-04.html#arquitetura-04--motor-de-analise">💬 Motor de análise</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 15 de MF-108 · Respostas visuais"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Componente</th>
+<th scope="col">Responsabilidade</th>
+<th scope="col">Mfs</th>
+<th scope="col">Situação</th>
+</tr>
+</thead><tbody><tr>
+<td>Etapas</td>
+<td>Triagem, Planejador, workflow, preparo protegido, reparo, gerador de plano, materializador, pesquisa na web, leitura depois da consulta, Apresentador e montagem</td>
+<td><a href="mf-107.html"><code>MF-107</code></a>, <a href="mf-108.html"><code>MF-108</code></a>, <a href="mf-109.html"><code>MF-109</code></a></td>
+<td>♻️ <code>horus@318db52b:apps/server/Horus.Core/Planner/</code>, <code>Prompts/</code>; 🆕 a pesquisa na web (<a href="arquitetura-02.html#arq-026"><code>ARQ-026</code></a>)</td>
+</tr>
+<tr>
+<td>Blocos da resposta</td>
+<td>O protocolo dos seis tipos, o parser tolerante e o materializador que põe os números do banco nos blocos</td>
+<td><a href="mf-108.html"><code>MF-108</code></a></td>
+<td>♻️ <code>horus@318db52b:apps/server/Horus.Core/Planner/Materializer.cs</code>, <code>Chat/BlocosUi.cs</code></td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="arquitetura-04.html#arquitetura-04-36-as-19-mfs-nos-modulos">3.6 As 19 mfs nos módulos</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 16 de MF-108 · Respostas visuais"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Mf</th>
+<th scope="col">Módulo</th>
+<th scope="col">Componentes que a entregam</th>
+<th scope="col">Contratos que usa</th>
+</tr>
+</thead><tbody><tr>
+<td><a href="mf-108.html"><code>MF-108:Respostas visuais</code></a></td>
+<td>Motor e front</td>
+<td>Blocos da resposta; blocos portados; desenho fora da tela</td>
+<td>Pedido de desenho</td>
+</tr>
+</tbody></table></div>
+</div><div class="doc-section dx-assunto"><h3 id="mf-108-inventario-decisoes-arquitetura" data-dx-icone="project-diagram">Decisões de arquitetura</h3><h4 id="mf-108-inventario-arquitetura-02">02 · Registro de decisões</h4><p class="dx-fonte">Em <a href="arquitetura-02.html#arquitetura-02-indice">Índice</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 17 de MF-108 · Respostas visuais"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Nº</th>
+<th scope="col">Decisão</th>
+<th scope="col">Situação</th>
+<th scope="col">Quem decide</th>
+<th scope="col">Alcance</th>
+</tr>
+</thead><tbody><tr>
+<td><a href="arquitetura-02.html#arq-007"><code>ARQ-007</code></a></td>
+<td>A resposta visual se desenha uma vez e se mostra em tela, imagem e PDF</td>
+<td>🟢</td>
+<td>Arquiteto</td>
+<td><a href="mf-108.html"><code>MF-108</code></a>, <a href="mf-111.html"><code>MF-111</code></a>, <a href="mf-112.html"><code>MF-112</code></a>, <a href="mf-115.html"><code>MF-115</code></a></td>
+</tr>
+</tbody></table></div>
+</div><div class="doc-section dx-assunto"><h3 id="mf-108-inventario-v1" data-dx-icone="history">O que se reaproveita da v1</h3><h4 id="mf-108-inventario-arquitetura-14">14 · Conferência do produto</h4><p class="dx-fonte">Em <a href="arquitetura-14.html#arquitetura-14-3-a-p-003-o-que-da-v1xx-se-reaproveita-mf-a-mf">3. A P-003: o que da v1.xx se reaproveita, mf a mf</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 18 de MF-108 · Respostas visuais"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Mf</th>
+<th scope="col">♻️ Reaproveita</th>
+<th scope="col">🔧 Reescreve</th>
+<th scope="col">🆕 É novo</th>
+</tr>
+</thead><tbody><tr>
+<td><a href="mf-108.html"><code>MF-108:Respostas visuais</code></a></td>
+<td>Os seis tipos de bloco e as quinze variantes, que não se editam</td>
+<td>—</td>
+<td>A imagem e o PDF pela mesma montagem, no servidor</td>
+</tr>
+</tbody></table></div>
+</div>
+                            </div>
+                            <nav class="dx-vizinhas" aria-label="Páginas vizinhas"><a class="dx-anterior" href="mf-107-inventario.html"><i class="arrow_left" aria-hidden="true"></i>Perguntar aos dados em português: o inventário</a><a class="dx-proxima" href="mf-109-inventario.html">A web como fonte: o inventário<i class="arrow_right" aria-hidden="true"></i></a></nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="simple_footer">
+            <img class="leaf_right" src="assets/kbdoc/img/home_one/leaf_footter.png" alt="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p>Maind Horus · Horus v2 · documento interno · Revisado em 03/11/2026 · versão v2.0 em desenho, sem versão publicada</p>
+                    </div>
+                    <div class="col-lg-6 text-right">
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <a id="back-to-top" title="Voltar ao topo"></a>
+    <script src="assets/kbdoc/js/jquery-3.2.1.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/popper.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap-select.min.js"></script>
+    <script src="assets/kbdoc/js/parallaxie.js"></script>
+    <script src="assets/kbdoc/js/TweenMax.min.js"></script>
+    <script src="assets/kbdoc/js/anchor.js"></script>
+    <script src="assets/kbdoc/assets/wow/wow.min.js"></script>
+    <script src="assets/kbdoc/js/vendor/clipboard.min.js"></script>
+    <script src="assets/kbdoc/assets/prism/prism.js"></script>
+    <script src="assets/kbdoc/assets/niceselectpicker/jquery.nice-select.min.js"></script>
+    <script src="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="assets/kbdoc/assets/magnify-pop/jquery.magnific-popup.min.js"></script>
+    <script src="assets/kbdoc/assets/tooltipster/js/tooltipster.bundle.min.js"></script>
+    <script src="assets/kbdoc/assets/font-size/js/rv-jquery-fontsize-2.0.3.js"></script>
+    <script src="assets/kbdoc/js/onpage-menu.js"></script>
+    <script src="assets/kbdoc/js/main.js"></script>
+    <script src="assets/busca.js"></script>
+    <script src="assets/docx.js"></script>
+</body>
+</html>

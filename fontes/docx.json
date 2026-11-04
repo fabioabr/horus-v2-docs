@@ -1,0 +1,1143 @@
+{
+  "schema_version": 1,
+  "language": "pt-BR",
+  "layout": "portal",
+  "project": {
+    "name": "Horus v2",
+    "description": "A documentação de produto e de arquitetura do Horus v2: a visão, as decisões, a estratégia e como ele vai ser construído.",
+    "version": "v2.0 em desenho, sem versão publicada",
+    "owner": "Maind Tech",
+    "updated": "2026-11-03",
+    "eyebrow": "Maind Horus / Horus v2",
+    "hero_title": "O Horus v2, do produto à arquitetura.",
+    "footer": "Maind Horus · Horus v2 · documento interno",
+    "logo": "media/horus-claro.svg",
+    "logo_light": "media/horus-escuro.svg",
+    "nav_button": "Comece aqui"
+  },
+  "portal": {
+    "macros": {
+      "title": "Macro funcionalidades",
+      "groups": [
+        {
+          "label": "v2.0",
+          "text": "A primeira entrega: 17 macro funcionalidades.",
+          "items": [
+            {
+              "code": "MF-101",
+              "title": "Administração da instância",
+              "summary": "Base herdada, com o painel dos assentos e sem o interruptor geral da segurança, que vai para a v2.1",
+              "badge": "v2.0 + v2.1",
+              "links": [
+                {
+                  "label": "Produto",
+                  "href": "#mf-101-inventario-o-que-e"
+                },
+                {
+                  "label": "Arquitetura",
+                  "href": "#mf-101-inventario-arquitetura"
+                }
+              ],
+              "id": "mf-101",
+              "source": "content/mf-101.html"
+            },
+            {
+              "code": "MF-102",
+              "title": "Organizações, pessoas e papéis",
+              "summary": "A gestão de pessoas inteira, com quarentena, grupos e roles; os grupos dinâmicos, só por papel, e a planilha, só para os convites em lote",
+              "badge": "v2.0",
+              "links": [
+                {
+                  "label": "Produto",
+                  "href": "#mf-102-inventario-o-que-e"
+                },
+                {
+                  "label": "Arquitetura",
+                  "href": "#mf-102-inventario-arquitetura"
+                }
+              ],
+              "id": "mf-102",
+              "source": "content/mf-102.html"
+            },
+            {
+              "code": "MF-103",
+              "title": "Licenças e planos",
+              "summary": "A cobrança por assentos, num plano só, no SaaS",
+              "badge": "v2.0 + v2.1",
+              "links": [
+                {
+                  "label": "Produto",
+                  "href": "#mf-103-inventario-o-que-e"
+                },
+                {
+                  "label": "Arquitetura",
+                  "href": "#mf-103-inventario-arquitetura"
+                }
+              ],
+              "id": "mf-103",
+              "source": "content/mf-103.html"
+            },
+            {
+              "code": "MF-104",
+              "title": "Conectar as fontes vivas",
+              "summary": "Base herdada, sem a fonte alcançar a rede interna",
+              "badge": "v2.0 + v2.1",
+              "links": [
+                {
+                  "label": "Produto",
+                  "href": "#mf-104-inventario-o-que-e"
+                },
+                {
+                  "label": "Arquitetura",
+                  "href": "#mf-104-inventario-arquitetura"
+                }
+              ],
+              "id": "mf-104",
+              "source": "content/mf-104.html"
+            },
+            {
+              "code": "MF-105",
+              "title": "IA sob controle da organização",
+              "summary": "Base herdada, sem o modo \"tudo dentro\"",
+              "badge": "v2.0 + v2.1",
+              "links": [
+                {
+                  "label": "Produto",
+                  "href": "#mf-105-inventario-o-que-e"
+                },
+                {
+                  "label": "Arquitetura",
+                  "href": "#mf-105-inventario-arquitetura"
+                }
+              ],
+              "id": "mf-105",
+              "source": "content/mf-105.html"
+            },
+            {
+              "code": "MF-107",
+              "title": "Perguntar aos dados em português",
+              "summary": "Base herdada; a resposta em segundos na reunião; o retorno do usuário (👍🏻, 👎🏻 e 🚫)",
+              "badge": "v2.0",
+              "links": [
+                {
+                  "label": "Produto",
+                  "href": "#mf-107-inventario-o-que-e"
+                },
+                {
+                  "label": "Arquitetura",
+                  "href": "#mf-107-inventario-arquitetura"
+                }
+              ],
+              "id": "mf-107",
+              "source": "content/mf-107.html"
+            },
+            {
+              "code": "MF-108",
+              "title": "Respostas visuais",
+              "summary": "Base herdada",
+              "badge": "v2.0",
+              "links": [
+                {
+                  "label": "Produto",
+                  "href": "#mf-108-inventario-o-que-e"
+                },
+                {
+                  "label": "Arquitetura",
+                  "href": "#mf-108-inventario-arquitetura"
+                }
+              ],
+              "id": "mf-108",
+              "source": "content/mf-108.html"
+            },
+            {
+              "code": "MF-109",
+              "title": "A web como fonte",
+              "summary": "Base herdada; a web como fonte viva completa, com link e data",
+              "badge": "v2.0",
+              "links": [
+                {
+                  "label": "Produto",
+                  "href": "#mf-109-inventario-o-que-e"
+                },
+                {
+                  "label": "Arquitetura",
+                  "href": "#mf-109-inventario-arquitetura"
+                }
+              ],
+              "id": "mf-109",
+              "source": "content/mf-109.html"
+            },
+            {
+              "code": "MF-110",
+              "title": "Pergunta rápida",
+              "summary": "Perguntar sem sair da tela, num botão flutuante",
+              "badge": "v2.0",
+              "links": [
+                {
+                  "label": "Produto",
+                  "href": "#mf-110-inventario-o-que-e"
+                },
+                {
+                  "label": "Arquitetura",
+                  "href": "#mf-110-inventario-arquitetura"
+                }
+              ],
+              "id": "mf-110",
+              "source": "content/mf-110.html"
+            },
+            {
+              "code": "MF-111",
+              "title": "Chat pelo WhatsApp",
+              "summary": "Conversar com o Horus pelo WhatsApp",
+              "badge": "v2.0",
+              "links": [
+                {
+                  "label": "Produto",
+                  "href": "#mf-111-inventario-o-que-e"
+                },
+                {
+                  "label": "Arquitetura",
+                  "href": "#mf-111-inventario-arquitetura"
+                }
+              ],
+              "id": "mf-111",
+              "source": "content/mf-111.html"
+            },
+            {
+              "code": "MF-112",
+              "title": "Boards e Relatórios",
+              "summary": "O redesenho inteiro, com o PDF automático pelo agendador e pelos conectores",
+              "badge": "v2.0",
+              "links": [
+                {
+                  "label": "Produto",
+                  "href": "#mf-112-inventario-o-que-e"
+                },
+                {
+                  "label": "Arquitetura",
+                  "href": "#mf-112-inventario-arquitetura"
+                }
+              ],
+              "id": "mf-112",
+              "source": "content/mf-112.html"
+            },
+            {
+              "code": "MF-113",
+              "title": "Conectores de Saída",
+              "summary": "O carteiro: por onde o Horus entrega, só a usuários do Horus. Na v2.0, o e-mail e o WhatsApp",
+              "badge": "v2.0 + v2.1",
+              "links": [
+                {
+                  "label": "Produto",
+                  "href": "#mf-113-inventario-o-que-e"
+                },
+                {
+                  "label": "Arquitetura",
+                  "href": "#mf-113-inventario-arquitetura"
+                }
+              ],
+              "id": "mf-113",
+              "source": "content/mf-113.html"
+            },
+            {
+              "code": "MF-114",
+              "title": "Módulo de Agendamentos de Agentes",
+              "summary": "O relógio: quando gerar e enviar",
+              "badge": "v2.0",
+              "links": [
+                {
+                  "label": "Produto",
+                  "href": "#mf-114-inventario-o-que-e"
+                },
+                {
+                  "label": "Arquitetura",
+                  "href": "#mf-114-inventario-arquitetura"
+                }
+              ],
+              "id": "mf-114",
+              "source": "content/mf-114.html"
+            },
+            {
+              "code": "MF-115",
+              "title": "Agentes ativos",
+              "summary": "O trabalhador de IA que extrai, analisa e avisa",
+              "badge": "v2.0",
+              "links": [
+                {
+                  "label": "Produto",
+                  "href": "#mf-115-inventario-o-que-e"
+                },
+                {
+                  "label": "Arquitetura",
+                  "href": "#mf-115-inventario-arquitetura"
+                }
+              ],
+              "id": "mf-115",
+              "source": "content/mf-115.html"
+            },
+            {
+              "code": "MF-116",
+              "title": "Auditoria",
+              "summary": "O rastro de quem entregou o quê e de quem abriu",
+              "badge": "v2.0",
+              "links": [
+                {
+                  "label": "Produto",
+                  "href": "#mf-116-inventario-o-que-e"
+                },
+                {
+                  "label": "Arquitetura",
+                  "href": "#mf-116-inventario-arquitetura"
+                }
+              ],
+              "id": "mf-116",
+              "source": "content/mf-116.html"
+            },
+            {
+              "code": "MF-117",
+              "title": "Home da organização",
+              "summary": "Base herdada; a medida de autonomia",
+              "badge": "v2.0",
+              "links": [
+                {
+                  "label": "Produto",
+                  "href": "#mf-117-inventario-o-que-e"
+                },
+                {
+                  "label": "Arquitetura",
+                  "href": "#mf-117-inventario-arquitetura"
+                }
+              ],
+              "id": "mf-117",
+              "source": "content/mf-117.html"
+            },
+            {
+              "code": "MF-118",
+              "title": "Bases de demonstração",
+              "summary": "Base herdada",
+              "badge": "v2.0",
+              "links": [
+                {
+                  "label": "Produto",
+                  "href": "#mf-118-inventario-o-que-e"
+                },
+                {
+                  "label": "Arquitetura",
+                  "href": "#mf-118-inventario-arquitetura"
+                }
+              ],
+              "id": "mf-118",
+              "source": "content/mf-118.html"
+            }
+          ]
+        },
+        {
+          "label": "v2.1",
+          "text": "A segunda entrega: 2 macro funcionalidades novas e 5 extensões.",
+          "items": [
+            {
+              "code": "MF-101",
+              "title": "Administração da instância",
+              "summary": "A marca completa do contratante: logo, nome e e-mail em todo o produto",
+              "badge": "extensão",
+              "links": [
+                {
+                  "label": "Produto",
+                  "href": "#mf-101-inventario-entregas"
+                },
+                {
+                  "label": "Arquitetura",
+                  "href": "#mf-101-inventario-arquitetura"
+                }
+              ],
+              "href": "#mf-101"
+            },
+            {
+              "code": "MF-103",
+              "title": "Licenças e planos",
+              "summary": "A ativação dos assentos no on-premises (parte da nº 5)",
+              "badge": "extensão",
+              "links": [
+                {
+                  "label": "Produto",
+                  "href": "#mf-103-inventario-entregas"
+                },
+                {
+                  "label": "Arquitetura",
+                  "href": "#mf-103-inventario-arquitetura"
+                }
+              ],
+              "href": "#mf-103"
+            },
+            {
+              "code": "MF-104",
+              "title": "Conectar as fontes vivas",
+              "summary": "A fonte alcançando a rede interna do contratante (parte da nº 5)",
+              "badge": "extensão",
+              "links": [
+                {
+                  "label": "Produto",
+                  "href": "#mf-104-inventario-entregas"
+                },
+                {
+                  "label": "Arquitetura",
+                  "href": "#mf-104-inventario-arquitetura"
+                }
+              ],
+              "href": "#mf-104"
+            },
+            {
+              "code": "MF-105",
+              "title": "IA sob controle da organização",
+              "summary": "O modo \"tudo dentro\", com a IA dentro de casa (parte da nº 5)",
+              "badge": "extensão",
+              "links": [
+                {
+                  "label": "Produto",
+                  "href": "#mf-105-inventario-entregas"
+                },
+                {
+                  "label": "Arquitetura",
+                  "href": "#mf-105-inventario-arquitetura"
+                }
+              ],
+              "href": "#mf-105"
+            },
+            {
+              "code": "MF-106",
+              "title": "Segurança dos dados por pessoa",
+              "summary": "As duas etapas: o acesso configurado dentro do Horus (veio da v2.0) e a segurança corporativa integrada, com o login corporativo e as roles pelo crachá. Com ela voltam os grupos por claims, a liberação de dados do gestor no board e o interruptor geral da segurança",
+              "badge": "v2.1",
+              "links": [
+                {
+                  "label": "Produto",
+                  "href": "#mf-106-inventario-o-que-e"
+                },
+                {
+                  "label": "Arquitetura",
+                  "href": "#mf-106-inventario-arquitetura"
+                }
+              ],
+              "id": "mf-106",
+              "source": "content/mf-106.html"
+            },
+            {
+              "code": "MF-113",
+              "title": "Conectores de Saída",
+              "summary": "Os demais conectores, como Teams e Google Chat 🔎 (parte da nº 12)",
+              "badge": "extensão",
+              "links": [
+                {
+                  "label": "Produto",
+                  "href": "#mf-113-inventario-entregas"
+                },
+                {
+                  "label": "Arquitetura",
+                  "href": "#mf-113-inventario-arquitetura"
+                }
+              ],
+              "href": "#mf-113"
+            },
+            {
+              "code": "MF-119",
+              "title": "Investigação guiada",
+              "summary": "Descobrir o porquê de uma mudança, passo a passo",
+              "badge": "v2.1",
+              "links": [
+                {
+                  "label": "Produto",
+                  "href": "#mf-119-inventario-o-que-e"
+                },
+                {
+                  "label": "Arquitetura",
+                  "href": "#mf-119-inventario-arquitetura"
+                }
+              ],
+              "id": "mf-119",
+              "source": "content/mf-119.html"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "assets": [
+    {
+      "source": "media/horus-claro.svg",
+      "target": "media/horus-claro.svg"
+    },
+    {
+      "source": "media/horus-escuro.svg",
+      "target": "media/horus-escuro.svg"
+    },
+    {
+      "source": "media/visao-geral-diagrama-1.svg",
+      "target": "media/visao-geral-diagrama-1.svg"
+    },
+    {
+      "source": "media/produto-mapa-diagrama-1.svg",
+      "target": "media/produto-mapa-diagrama-1.svg"
+    },
+    {
+      "source": "media/arquitetura-01-diagrama-1.svg",
+      "target": "media/arquitetura-01-diagrama-1.svg"
+    },
+    {
+      "source": "media/arquitetura-04-diagrama-1.svg",
+      "target": "media/arquitetura-04-diagrama-1.svg"
+    },
+    {
+      "source": "media/arquitetura-05-diagrama-1.svg",
+      "target": "media/arquitetura-05-diagrama-1.svg"
+    },
+    {
+      "source": "media/arquitetura-05-diagrama-2.svg",
+      "target": "media/arquitetura-05-diagrama-2.svg"
+    },
+    {
+      "source": "media/arquitetura-05-diagrama-3.svg",
+      "target": "media/arquitetura-05-diagrama-3.svg"
+    },
+    {
+      "source": "media/arquitetura-06-diagrama-1.svg",
+      "target": "media/arquitetura-06-diagrama-1.svg"
+    },
+    {
+      "source": "media/arquitetura-08-diagrama-1.svg",
+      "target": "media/arquitetura-08-diagrama-1.svg"
+    },
+    {
+      "source": "media/arquitetura-08-diagrama-2.svg",
+      "target": "media/arquitetura-08-diagrama-2.svg"
+    },
+    {
+      "source": "media/arquitetura-09-diagrama-1.svg",
+      "target": "media/arquitetura-09-diagrama-1.svg"
+    },
+    {
+      "source": "media/arquitetura-09-diagrama-2.svg",
+      "target": "media/arquitetura-09-diagrama-2.svg"
+    },
+    {
+      "source": "media/arquitetura-10-diagrama-1.svg",
+      "target": "media/arquitetura-10-diagrama-1.svg"
+    },
+    {
+      "source": "media/arquitetura-11-diagrama-1.svg",
+      "target": "media/arquitetura-11-diagrama-1.svg"
+    },
+    {
+      "source": "media/arquitetura-12-diagrama-1.svg",
+      "target": "media/arquitetura-12-diagrama-1.svg"
+    },
+    {
+      "source": "media/arquitetura-12-diagrama-2.svg",
+      "target": "media/arquitetura-12-diagrama-2.svg"
+    },
+    {
+      "source": "media/mf-101-diagrama-1.svg",
+      "target": "media/mf-101-diagrama-1.svg"
+    },
+    {
+      "source": "media/mf-102-diagrama-1.svg",
+      "target": "media/mf-102-diagrama-1.svg"
+    },
+    {
+      "source": "media/mf-103-diagrama-1.svg",
+      "target": "media/mf-103-diagrama-1.svg"
+    },
+    {
+      "source": "media/mf-104-diagrama-1.svg",
+      "target": "media/mf-104-diagrama-1.svg"
+    },
+    {
+      "source": "media/mf-105-diagrama-1.svg",
+      "target": "media/mf-105-diagrama-1.svg"
+    },
+    {
+      "source": "media/mf-106-diagrama-1.svg",
+      "target": "media/mf-106-diagrama-1.svg"
+    },
+    {
+      "source": "media/mf-107-diagrama-1.svg",
+      "target": "media/mf-107-diagrama-1.svg"
+    },
+    {
+      "source": "media/mf-108-diagrama-1.svg",
+      "target": "media/mf-108-diagrama-1.svg"
+    },
+    {
+      "source": "media/mf-109-diagrama-1.svg",
+      "target": "media/mf-109-diagrama-1.svg"
+    },
+    {
+      "source": "media/mf-110-diagrama-1.svg",
+      "target": "media/mf-110-diagrama-1.svg"
+    },
+    {
+      "source": "media/mf-111-diagrama-1.svg",
+      "target": "media/mf-111-diagrama-1.svg"
+    },
+    {
+      "source": "media/mf-112-diagrama-1.svg",
+      "target": "media/mf-112-diagrama-1.svg"
+    },
+    {
+      "source": "media/mf-113-diagrama-1.svg",
+      "target": "media/mf-113-diagrama-1.svg"
+    },
+    {
+      "source": "media/mf-114-diagrama-1.svg",
+      "target": "media/mf-114-diagrama-1.svg"
+    },
+    {
+      "source": "media/mf-115-diagrama-1.svg",
+      "target": "media/mf-115-diagrama-1.svg"
+    },
+    {
+      "source": "media/mf-116-diagrama-1.svg",
+      "target": "media/mf-116-diagrama-1.svg"
+    },
+    {
+      "source": "media/mf-117-diagrama-1.svg",
+      "target": "media/mf-117-diagrama-1.svg"
+    },
+    {
+      "source": "media/mf-118-diagrama-1.svg",
+      "target": "media/mf-118-diagrama-1.svg"
+    },
+    {
+      "source": "media/mf-119-diagrama-1.svg",
+      "target": "media/mf-119-diagrama-1.svg"
+    }
+  ],
+  "sections": [
+    {
+      "id": "visao-geral",
+      "title": "O Horus v2",
+      "summary": "O que o Horus v2 é, para quem, que problemas resolve, como funciona e as 19 macro funcionalidades.",
+      "category": "Comece aqui",
+      "source": "content/visao-geral.html"
+    },
+    {
+      "id": "pasta-v2",
+      "title": "A pasta da v2",
+      "summary": "Os documentos de visão e as decisões de produto do Horus v2, e como a pasta se organiza.",
+      "category": "Comece aqui",
+      "source": "content/pasta-v2.html"
+    },
+    {
+      "id": "produto-temas",
+      "title": "Temas da visão de produto",
+      "summary": "O propósito a validar e os temas que a visão do Horus precisa responder.",
+      "category": "Produto",
+      "source": "content/produto-temas.html"
+    },
+    {
+      "id": "produto-norte",
+      "title": "Norte do produto",
+      "summary": "Por que o Horus existe, para quem, o que promete e como saberemos que deu certo.",
+      "category": "Produto",
+      "source": "content/produto-norte.html"
+    },
+    {
+      "id": "produto-lacunas",
+      "title": "Inventário de lacunas",
+      "summary": "O que o norte afirma, comparado com o que o Horus faz hoje.",
+      "category": "Produto",
+      "source": "content/produto-lacunas.html"
+    },
+    {
+      "id": "produto-mfs-hoje",
+      "title": "Macro funcionalidades de hoje",
+      "summary": "O que o Horus já entrega hoje, em linguagem de valor.",
+      "category": "Produto",
+      "source": "content/produto-mfs-hoje.html"
+    },
+    {
+      "id": "produto-v20",
+      "title": "A v2.0 consolidada",
+      "summary": "O que a v2.0 é: o que entra, o que fica fora, as regras já decididas e os riscos.",
+      "category": "Produto",
+      "source": "content/produto-v20.html",
+      "featured": true
+    },
+    {
+      "id": "produto-versoes",
+      "title": "As versões, mf a mf",
+      "summary": "Uma tabela por versão, com as macro funcionalidades da v2.0 e da v2.1.",
+      "category": "Produto",
+      "source": "content/produto-versoes.html"
+    },
+    {
+      "id": "produto-mapa",
+      "title": "Mapa de objetivos e funcionalidades",
+      "summary": "Para cada objetivo do produto, as funcionalidades que o cumprem e a entrega de cada uma.",
+      "category": "Produto",
+      "source": "content/produto-mapa.html"
+    },
+    {
+      "id": "produto-backlog",
+      "title": "Backlog estratégico",
+      "summary": "O registro das decisões de produto: o que o Horus entrega, para quem e em que ordem.",
+      "category": "Produto",
+      "source": "content/produto-backlog.html"
+    },
+    {
+      "id": "backlog-atividades",
+      "title": "Backlog de atividades",
+      "summary": "Reservado aos épicos, às histórias e às tasks, que vêm depois da arquitetura.",
+      "category": "Produto",
+      "source": "content/backlog-atividades.html"
+    },
+    {
+      "id": "arquitetura",
+      "title": "A pasta da arquitetura",
+      "summary": "Os documentos do arquiteto de soluções, a situação de cada um e os números do registro.",
+      "category": "Arquitetura · visão e decisões",
+      "source": "content/arquitetura.html"
+    },
+    {
+      "id": "arquitetura-01",
+      "title": "01 · Estratégia da solução",
+      "summary": "Como o Horus v2 atinge os objetivos do produto: as entregas, os marcos e a fila do dono.",
+      "category": "Arquitetura · visão e decisões",
+      "source": "content/arquitetura-01.html",
+      "featured": true
+    },
+    {
+      "id": "arquitetura-02",
+      "title": "02 · Registro de decisões",
+      "summary": "As decisões de tecnologia, cada uma com quem decide, as opções e o porquê.",
+      "category": "Arquitetura · visão e decisões",
+      "source": "content/arquitetura-02.html",
+      "featured": true
+    },
+    {
+      "id": "arquitetura-03",
+      "title": "03 · Metas de qualidade",
+      "summary": "Disponibilidade, recuperação, volume, rapidez e custo por organização, e como se mede cada um.",
+      "category": "Arquitetura · visão e decisões",
+      "source": "content/arquitetura-03.html"
+    },
+    {
+      "id": "arquitetura-04",
+      "title": "04 · Software",
+      "summary": "Os módulos, os componentes e os contratos do servidor e do front.",
+      "category": "Arquitetura · construção",
+      "source": "content/arquitetura-04.html"
+    },
+    {
+      "id": "arquitetura-05",
+      "title": "05 · Motor de análise e IA",
+      "summary": "Como a pergunta vira resposta: o motor, o modelo semântico, a web, o agente e os provedores de IA.",
+      "category": "Arquitetura · construção",
+      "source": "content/arquitetura-05.html"
+    },
+    {
+      "id": "arquitetura-06",
+      "title": "06 · Dados",
+      "summary": "O que o Horus guarda, de quem é cada dado, como as organizações ficam separadas e por quanto tempo.",
+      "category": "Arquitetura · construção",
+      "source": "content/arquitetura-06.html"
+    },
+    {
+      "id": "arquitetura-07",
+      "title": "07 · Segurança",
+      "summary": "Quem entra, o que cada pessoa pode fazer e o que cada uma vê.",
+      "category": "Arquitetura · construção",
+      "source": "content/arquitetura-07.html"
+    },
+    {
+      "id": "arquitetura-08",
+      "title": "08 · Integrações",
+      "summary": "O e-mail, a Meta e o WhatsApp, os provedores de IA, os bancos dos clientes e a web.",
+      "category": "Arquitetura · construção",
+      "source": "content/arquitetura-08.html"
+    },
+    {
+      "id": "arquitetura-09",
+      "title": "09 · Infraestrutura e ambientes",
+      "summary": "Onde o Horus roda: a VPS da construção com o minikube, a produção real na nuvem e o on-premises.",
+      "category": "Arquitetura · operação",
+      "source": "content/arquitetura-09.html"
+    },
+    {
+      "id": "arquitetura-10",
+      "title": "10 · Publicação e operação",
+      "summary": "Como uma versão chega a uma instância, a cópia de segurança, o acesso e os incidentes.",
+      "category": "Arquitetura · operação",
+      "source": "content/arquitetura-10.html"
+    },
+    {
+      "id": "arquitetura-11",
+      "title": "11 · Observabilidade",
+      "summary": "O que se mede, quem é avisado e quando, e o que a telemetria nunca carrega.",
+      "category": "Arquitetura · operação",
+      "source": "content/arquitetura-11.html"
+    },
+    {
+      "id": "arquitetura-12",
+      "title": "12 · Qualidade e testes",
+      "summary": "Como cada publicação se prova antes de subir, sem chamar modelo de IA pago.",
+      "category": "Arquitetura · operação",
+      "source": "content/arquitetura-12.html"
+    },
+    {
+      "id": "arquitetura-13",
+      "title": "13 · Custo de operação",
+      "summary": "Quanto custa operar, por organização e por componente, e o orçamento da produção real.",
+      "category": "Arquitetura · operação",
+      "source": "content/arquitetura-13.html"
+    },
+    {
+      "id": "arquitetura-14",
+      "title": "14 · Conferência do produto",
+      "summary": "As respostas do arquiteto às pendências do PO, os itens a devolver e as verificações pendentes.",
+      "category": "Arquitetura · conferência",
+      "source": "content/arquitetura-14.html"
+    },
+    {
+      "id": "mf-101-inventario",
+      "title": "Administração da instância: o inventário",
+      "category": "Inventário das mfs",
+      "source": "content/mf-101-inventario.html",
+      "summary": "Tudo o que os documentos do inventário dizem da MF-101, assunto por assunto.",
+      "listed": false,
+      "topics": {
+        "title": "De onde vem",
+        "text": "Referências que fundamentam esta funcionalidade",
+        "unit": [
+          "referência",
+          "referências"
+        ],
+        "none": "Outras citações",
+        "empty": "Nenhuma referência listada no índice."
+      }
+    },
+    {
+      "id": "mf-102-inventario",
+      "title": "Organizações, pessoas e papéis: o inventário",
+      "category": "Inventário das mfs",
+      "source": "content/mf-102-inventario.html",
+      "summary": "Tudo o que os documentos do inventário dizem da MF-102, assunto por assunto.",
+      "listed": false,
+      "topics": {
+        "title": "De onde vem",
+        "text": "Referências que fundamentam esta funcionalidade",
+        "unit": [
+          "referência",
+          "referências"
+        ],
+        "none": "Outras citações",
+        "empty": "Nenhuma referência listada no índice."
+      }
+    },
+    {
+      "id": "mf-103-inventario",
+      "title": "Licenças e planos: o inventário",
+      "category": "Inventário das mfs",
+      "source": "content/mf-103-inventario.html",
+      "summary": "Tudo o que os documentos do inventário dizem da MF-103, assunto por assunto.",
+      "listed": false,
+      "topics": {
+        "title": "De onde vem",
+        "text": "Referências que fundamentam esta funcionalidade",
+        "unit": [
+          "referência",
+          "referências"
+        ],
+        "none": "Outras citações",
+        "empty": "Nenhuma referência listada no índice."
+      }
+    },
+    {
+      "id": "mf-104-inventario",
+      "title": "Conectar as fontes vivas: o inventário",
+      "category": "Inventário das mfs",
+      "source": "content/mf-104-inventario.html",
+      "summary": "Tudo o que os documentos do inventário dizem da MF-104, assunto por assunto.",
+      "listed": false,
+      "topics": {
+        "title": "De onde vem",
+        "text": "Referências que fundamentam esta funcionalidade",
+        "unit": [
+          "referência",
+          "referências"
+        ],
+        "none": "Outras citações",
+        "empty": "Nenhuma referência listada no índice."
+      }
+    },
+    {
+      "id": "mf-105-inventario",
+      "title": "IA sob controle da organização: o inventário",
+      "category": "Inventário das mfs",
+      "source": "content/mf-105-inventario.html",
+      "summary": "Tudo o que os documentos do inventário dizem da MF-105, assunto por assunto.",
+      "listed": false,
+      "topics": {
+        "title": "De onde vem",
+        "text": "Referências que fundamentam esta funcionalidade",
+        "unit": [
+          "referência",
+          "referências"
+        ],
+        "none": "Outras citações",
+        "empty": "Nenhuma referência listada no índice."
+      }
+    },
+    {
+      "id": "mf-106-inventario",
+      "title": "Segurança dos dados por pessoa: o inventário",
+      "category": "Inventário das mfs",
+      "source": "content/mf-106-inventario.html",
+      "summary": "Tudo o que os documentos do inventário dizem da MF-106, assunto por assunto.",
+      "listed": false,
+      "topics": {
+        "title": "De onde vem",
+        "text": "Referências que fundamentam esta funcionalidade",
+        "unit": [
+          "referência",
+          "referências"
+        ],
+        "none": "Outras citações",
+        "empty": "Nenhuma referência listada no índice."
+      }
+    },
+    {
+      "id": "mf-107-inventario",
+      "title": "Perguntar aos dados em português: o inventário",
+      "category": "Inventário das mfs",
+      "source": "content/mf-107-inventario.html",
+      "summary": "Tudo o que os documentos do inventário dizem da MF-107, assunto por assunto.",
+      "listed": false,
+      "topics": {
+        "title": "De onde vem",
+        "text": "Referências que fundamentam esta funcionalidade",
+        "unit": [
+          "referência",
+          "referências"
+        ],
+        "none": "Outras citações",
+        "empty": "Nenhuma referência listada no índice."
+      }
+    },
+    {
+      "id": "mf-108-inventario",
+      "title": "Respostas visuais: o inventário",
+      "category": "Inventário das mfs",
+      "source": "content/mf-108-inventario.html",
+      "summary": "Tudo o que os documentos do inventário dizem da MF-108, assunto por assunto.",
+      "listed": false,
+      "topics": {
+        "title": "De onde vem",
+        "text": "Referências que fundamentam esta funcionalidade",
+        "unit": [
+          "referência",
+          "referências"
+        ],
+        "none": "Outras citações",
+        "empty": "Nenhuma referência listada no índice."
+      }
+    },
+    {
+      "id": "mf-109-inventario",
+      "title": "A web como fonte: o inventário",
+      "category": "Inventário das mfs",
+      "source": "content/mf-109-inventario.html",
+      "summary": "Tudo o que os documentos do inventário dizem da MF-109, assunto por assunto.",
+      "listed": false,
+      "topics": {
+        "title": "De onde vem",
+        "text": "Referências que fundamentam esta funcionalidade",
+        "unit": [
+          "referência",
+          "referências"
+        ],
+        "none": "Outras citações",
+        "empty": "Nenhuma referência listada no índice."
+      }
+    },
+    {
+      "id": "mf-110-inventario",
+      "title": "Pergunta rápida: o inventário",
+      "category": "Inventário das mfs",
+      "source": "content/mf-110-inventario.html",
+      "summary": "Tudo o que os documentos do inventário dizem da MF-110, assunto por assunto.",
+      "listed": false,
+      "topics": {
+        "title": "De onde vem",
+        "text": "Referências que fundamentam esta funcionalidade",
+        "unit": [
+          "referência",
+          "referências"
+        ],
+        "none": "Outras citações",
+        "empty": "Nenhuma referência listada no índice."
+      }
+    },
+    {
+      "id": "mf-111-inventario",
+      "title": "Chat pelo WhatsApp: o inventário",
+      "category": "Inventário das mfs",
+      "source": "content/mf-111-inventario.html",
+      "summary": "Tudo o que os documentos do inventário dizem da MF-111, assunto por assunto.",
+      "listed": false,
+      "topics": {
+        "title": "De onde vem",
+        "text": "Referências que fundamentam esta funcionalidade",
+        "unit": [
+          "referência",
+          "referências"
+        ],
+        "none": "Outras citações",
+        "empty": "Nenhuma referência listada no índice."
+      }
+    },
+    {
+      "id": "mf-112-inventario",
+      "title": "Boards e Relatórios: o inventário",
+      "category": "Inventário das mfs",
+      "source": "content/mf-112-inventario.html",
+      "summary": "Tudo o que os documentos do inventário dizem da MF-112, assunto por assunto.",
+      "listed": false,
+      "topics": {
+        "title": "De onde vem",
+        "text": "Referências que fundamentam esta funcionalidade",
+        "unit": [
+          "referência",
+          "referências"
+        ],
+        "none": "Outras citações",
+        "empty": "Nenhuma referência listada no índice."
+      }
+    },
+    {
+      "id": "mf-113-inventario",
+      "title": "Conectores de Saída: o inventário",
+      "category": "Inventário das mfs",
+      "source": "content/mf-113-inventario.html",
+      "summary": "Tudo o que os documentos do inventário dizem da MF-113, assunto por assunto.",
+      "listed": false,
+      "topics": {
+        "title": "De onde vem",
+        "text": "Referências que fundamentam esta funcionalidade",
+        "unit": [
+          "referência",
+          "referências"
+        ],
+        "none": "Outras citações",
+        "empty": "Nenhuma referência listada no índice."
+      }
+    },
+    {
+      "id": "mf-114-inventario",
+      "title": "Módulo de Agendamentos de Agentes: o inventário",
+      "category": "Inventário das mfs",
+      "source": "content/mf-114-inventario.html",
+      "summary": "Tudo o que os documentos do inventário dizem da MF-114, assunto por assunto.",
+      "listed": false,
+      "topics": {
+        "title": "De onde vem",
+        "text": "Referências que fundamentam esta funcionalidade",
+        "unit": [
+          "referência",
+          "referências"
+        ],
+        "none": "Outras citações",
+        "empty": "Nenhuma referência listada no índice."
+      }
+    },
+    {
+      "id": "mf-115-inventario",
+      "title": "Agentes ativos: o inventário",
+      "category": "Inventário das mfs",
+      "source": "content/mf-115-inventario.html",
+      "summary": "Tudo o que os documentos do inventário dizem da MF-115, assunto por assunto.",
+      "listed": false,
+      "topics": {
+        "title": "De onde vem",
+        "text": "Referências que fundamentam esta funcionalidade",
+        "unit": [
+          "referência",
+          "referências"
+        ],
+        "none": "Outras citações",
+        "empty": "Nenhuma referência listada no índice."
+      }
+    },
+    {
+      "id": "mf-116-inventario",
+      "title": "Auditoria: o inventário",
+      "category": "Inventário das mfs",
+      "source": "content/mf-116-inventario.html",
+      "summary": "Tudo o que os documentos do inventário dizem da MF-116, assunto por assunto.",
+      "listed": false,
+      "topics": {
+        "title": "De onde vem",
+        "text": "Referências que fundamentam esta funcionalidade",
+        "unit": [
+          "referência",
+          "referências"
+        ],
+        "none": "Outras citações",
+        "empty": "Nenhuma referência listada no índice."
+      }
+    },
+    {
+      "id": "mf-117-inventario",
+      "title": "Home da organização: o inventário",
+      "category": "Inventário das mfs",
+      "source": "content/mf-117-inventario.html",
+      "summary": "Tudo o que os documentos do inventário dizem da MF-117, assunto por assunto.",
+      "listed": false,
+      "topics": {
+        "title": "De onde vem",
+        "text": "Referências que fundamentam esta funcionalidade",
+        "unit": [
+          "referência",
+          "referências"
+        ],
+        "none": "Outras citações",
+        "empty": "Nenhuma referência listada no índice."
+      }
+    },
+    {
+      "id": "mf-118-inventario",
+      "title": "Bases de demonstração: o inventário",
+      "category": "Inventário das mfs",
+      "source": "content/mf-118-inventario.html",
+      "summary": "Tudo o que os documentos do inventário dizem da MF-118, assunto por assunto.",
+      "listed": false,
+      "topics": {
+        "title": "De onde vem",
+        "text": "Referências que fundamentam esta funcionalidade",
+        "unit": [
+          "referência",
+          "referências"
+        ],
+        "none": "Outras citações",
+        "empty": "Nenhuma referência listada no índice."
+      }
+    },
+    {
+      "id": "mf-119-inventario",
+      "title": "Investigação guiada: o inventário",
+      "category": "Inventário das mfs",
+      "source": "content/mf-119-inventario.html",
+      "summary": "Tudo o que os documentos do inventário dizem da MF-119, assunto por assunto.",
+      "listed": false,
+      "topics": {
+        "title": "De onde vem",
+        "text": "Referências que fundamentam esta funcionalidade",
+        "unit": [
+          "referência",
+          "referências"
+        ],
+        "none": "Outras citações",
+        "empty": "Nenhuma referência listada no índice."
+      }
+    }
+  ]
+}

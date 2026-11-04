@@ -1,0 +1,120 @@
+<blockquote>
+<p><strong>Em uma frase:</strong> o painel de quem opera o Horus: a marca, os administradores, o e-mail do produto e os
+assentos, o uso e o custo de cada organização.</p>
+</blockquote>
+<h3 id="mf-101-identificacao" data-dx-icone="id-card">Identificação</h3><div class="table-responsive" tabindex="0" role="region" aria-label="Identificação de MF-101 · Administração da instância"><table class="table table_shortcode"><tbody><tr><th scope="row">Código</th><td>MF-101</td></tr><tr><th scope="row">Entrega</th><td>v2.0 + v2.1</td></tr><tr><th scope="row">Situação</th><td>em definição</td></tr><tr><th scope="row">Camada</th><td>🧱 Plataforma</td></tr><tr><th scope="row">Objetivos</th><td>O7, O8</td></tr><tr><th scope="row">Quem usa</th><td>owner da instância, administradores da instância</td></tr><tr><th scope="row">Complexidade</th><td>média</td></tr><tr><th scope="row">Relacionadas</th><td><a href="#mf-102">Organizações, pessoas e papéis</a> (MF-102), <a href="#mf-103">Licenças e planos</a> (MF-103), <a href="#mf-113">Conectores de Saída</a> (MF-113)</td></tr><tr><th scope="row">Atualizado</th><td>03/11/2026</td></tr></tbody></table></div>
+<h3 data-dx-icone="compass" id="mf-101-o-que-e">O que é</h3>
+<p>Uma instalação do Horus, a <strong>instância</strong>, serve várias <strong>organizações</strong>: cada setor de uma empresa, ou cada
+cliente, é uma organização. Quem responde pela instância inteira é o <strong>owner da instância</strong>, com os
+<strong>administradores da instância</strong>. No Horus contratado como serviço (SaaS), que roda na estrutura da Maind, esse
+papel é da Maind. Ele não se confunde com o <strong>owner da organização</strong>, que cuida das pessoas e dos dados de um setor.</p>
+<p>Hoje a administração guarda o nome e os logos do produto, o rodapé, os administradores e o envio de e-mail. Na
+v2.0, ganha o <strong>painel dos assentos</strong>. Um assento é uma vaga de uso contratada, de um tipo: owner, gestor, membro
+full ou membro leitor. No painel, a Maind libera as vagas de cada organização, acompanha o uso e o custo dela e
+corta o acesso de quem não paga. Na v2.1, a marca do contratante chega a todo o produto.</p>
+<blockquote>
+<p>📌 <strong>Exemplo:</strong> uma rede de lojas contrata o Horus para a área comercial, a organização do owner Marcos. No
+painel, a Maind libera o assento de owner grátis dele, 30 de membro full e 100 de membro leitor. No fim do mês, vê
+que a área respondeu 1.200 perguntas de análise e quanto gastou de IA, sem ler nenhuma conversa.</p>
+</blockquote>
+<h3 data-dx-icone="star" id="mf-101-caracteristicas">Características</h3>
+<ul>
+<li><strong>Quem usa:</strong> só o owner da instância e os administradores dele; o owner da organização cuida da dele nas
+Organizações, pessoas e papéis (MF-102).</li>
+<li><strong>A marca:</strong> o nome, os logos (claro e escuro) e o rodapé valem para todas as organizações. Na v2.1, o logo, o
+nome e o e-mail do contratante aparecem em todo o produto, inclusive no remetente.</li>
+<li><strong>O e-mail do produto:</strong> os convites, a recuperação de senha e os avisos da conta saem pelo e-mail da instância,
+e não pelos conectores que o owner da organização liga.</li>
+<li><strong>O painel dos assentos:</strong> mostra, por organização, quantos assentos de cada tipo estão liberados e ocupados. As
+regras dos assentos são das Licenças e planos (MF-103).</li>
+<li><strong>Liberar e cortar:</strong> só daqui se liberam e se desativam os assentos de uma organização, sem reduzir abaixo do
+ocupado e sem data de validade.</li>
+<li><strong>O uso e o custo:</strong> por organização, as perguntas respondidas, as execuções dos agentes (os trabalhos
+automáticos de IA) e o custo do mês, separado em IA, WhatsApp e número de e-mails.</li>
+<li><strong>O aviso de custo:</strong> a Maind é avisada quando uma organização passa de um limite que ela ajusta caso a caso.
+Nada se corta sozinho.</li>
+<li><strong>Só números:</strong> a administração não lê as conversas, os boards nem o rastro de organização nenhuma.</li>
+<li><strong>Sem escolha de plano:</strong> há um plano só, e o painel libera apenas assentos.</li>
+</ul>
+<h3 data-dx-icone="chart-line" id="mf-101-o-valor-que-gera">O valor que gera</h3>
+<ul>
+<li><strong>Para quem usa:</strong> a Maind cuida do acesso de cada cliente num lugar só e vê o custo antes da fatura de IA.</li>
+<li><strong>Para a empresa que contrata o Horus:</strong> recebe os assentos do contrato e, na v2.1, a própria marca no produto.</li>
+<li><strong>Para o Horus como produto:</strong> a cobrança por assento funciona desde o primeiro cliente, com o custo à vista.</li>
+</ul>
+<p><strong>Como vamos saber que funcionou:</strong> a Maind libera os assentos de uma organização nova e, no fim do mês, confere o
+uso e o custo dela no mesmo painel.</p>
+<h3 data-dx-icone="walking" id="mf-101-como-se-usa-no-horus">Como se usa no Horus</h3>
+<ol>
+<li>O owner da instância configura o nome, os logos e o rodapé.</li>
+<li>Combina os assentos com o cliente, fora do produto, e os libera no painel, tipo a tipo.</li>
+<li>O owner da organização convida pessoas dentro desse limite.</li>
+<li>Se a organização pede mais, libera; para reduzir, espera que ela desocupe os assentos.</li>
+<li>Acompanha o uso e o custo do mês e recebe o aviso de custo.</li>
+<li>Se o cliente deixa de pagar, desativa os assentos: tudo para, e as configurações ficam guardadas.</li>
+</ol>
+<figure><div class="lightbox_shortcode"><img src="media/mf-101-diagrama-1.svg" width="1648" height="187" alt="Diagrama: Como se usa no Horus"><a href="media/mf-101-diagrama-1.svg" class="img_popup" aria-label="Ampliar o diagrama"><i class="icon_plus" aria-hidden="true"></i></a></div><figcaption>Diagrama de “Como se usa no Horus”. Selecione o “+” para ampliar.</figcaption></figure><h3 data-dx-icone="puzzle-piece" id="mf-101-grau-de-complexidade-media">Grau de complexidade: média</h3>
+<p>A identidade da instância, os administradores, o envio de e-mail e as telas de administração vêm da v1 quase como
+estão. Novos são o painel dos assentos e o painel do uso, que junta os números de todas as organizações, porque
+cada uma passa a guardar os dados num banco próprio. De fora, depende só do serviço de e-mail que já se usa hoje.</p>
+<blockquote>
+<p>⚠️ É a leitura do PO a partir dos documentos de arquitetura. A estimativa de esforço é do arquiteto.</p>
+</blockquote>
+<h3 data-dx-icone="link" id="mf-101-macro-funcionalidades-relacionadas">Macro funcionalidades relacionadas</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de Administração da instância"><table class="table table_shortcode"><thead><tr>
+<th scope="col">mf</th>
+<th scope="col">Como se relaciona</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Organizações, pessoas e papéis (MF-102)</td>
+<td><strong>complementa</strong>: a administração cuida da instância e da marca; o owner da organização cuida das pessoas e das preferências dela.</td>
+</tr>
+<tr>
+<td>Licenças e planos (MF-103)</td>
+<td><strong>é a base de</strong>: o painel onde a Maind libera e corta os assentos é daqui; as regras deles são de lá.</td>
+</tr>
+<tr>
+<td>Conectores de Saída (MF-113)</td>
+<td><strong>complementa</strong>: o conector de e-mail usa o mesmo servidor de e-mail da instância; no modo &quot;tudo dentro&quot;, da v2.1, é a instância que libera cada tipo de conector.</td>
+</tr>
+</tbody>
+</table></div><h3 data-dx-icone="ban" id="mf-101-o-que-ela-nao-faz">O que ela não faz</h3>
+<ul>
+<li><strong>Cobrar:</strong> o preço, a fatura e o pagamento ficam com o comercial da Maind.</li>
+<li><strong>Consultar o rastro:</strong> o registro de quem abriu e entregou o quê é da Auditoria (MF-116), só do owner de cada
+organização.</li>
+<li><strong>Ligar a segurança dos dados por pessoa:</strong> ela volta na v2.1, com a Segurança dos dados por pessoa (MF-106), e
+o interruptor geral que a instância tem hoje vai junto.</li>
+<li><strong>Ativar assentos numa instalação na casa do cliente (on-premises):</strong> fica para a v2.1.</li>
+</ul>
+<h3 data-dx-icone="hourglass-half" id="mf-101-ainda-a-decidir">Ainda a decidir</h3>
+<ul>
+<li>Se o painel do uso e do custo fica nesta mf ou vira uma mf própria.</li>
+<li>Quem cria as organizações no SaaS: hoje, qualquer pessoa com login cria uma e vira owner dela.</li>
+<li>Se a administração publica um aviso a todas as pessoas, numa faixa no topo do app, antes de uma parada.</li>
+</ul>
+<h3 data-dx-icone="book" id="mf-101-para-saber-mais">Para saber mais</h3>
+<ul>
+<li><code>docs/raw/produto/04-macro-funcionalidades-de-hoje.md</code>: o mapa (o que a v1.xx entrega) e a tabela de conversão (a
+camada 🧱 Plataforma).</li>
+<li><code>docs/raw/produto/05-v2.0-consolidada.md</code>: §1 (mf a mf), §3.2 (a base herdada), §4 (o passo 1) e as leituras
+<strong>D-067.1</strong>, <strong>D-068.1</strong> e <strong>D-128.3</strong>.</li>
+<li><code>docs/raw/produto/06-versoes.md</code> e <code>docs/raw/produto/07-mapa-de-objetivos-e-funcionalidades.md</code>: o painel dos assentos
+na v2.0 (O7) e a marca completa na v2.1 (candidata nº 6, O8).</li>
+<li><code>docs/raw/produto/03-inventario-de-lacunas.md</code>: as linhas 11 (os dois owners), 12 (várias organizações) e 13 (a
+marca branca).</li>
+<li><code>docs/raw/produto/backlog-estrategico.md</code>: <strong>D-011</strong> (a marca: logo, e-mail e nome), <strong>D-013</strong> (os dois níveis de
+owner), <strong>D-008</strong> (várias organizações), <strong>D-021</strong> (a base herdada), <strong>D-067</strong>, <strong>D-068</strong>, <strong>D-076</strong> e <strong>D-077</strong>
+(o painel e quem libera), <strong>D-080</strong> e <strong>D-117</strong> (o painel sem seletor de plano), <strong>D-091</strong> (o rastro é do owner
+da organização), <strong>D-121</strong> (a marca completa na v2.1), <strong>D-128</strong> (o e-mail dos avisos).</li>
+<li><code>docs/raw/arquitetura/01-estrategia-da-solucao.md</code>: §4 (a linha da MF-101) e §6 (os marcos M1 e M9).</li>
+<li><code>docs/raw/arquitetura/02-registro-de-decisoes.md</code>: <strong>ARQ-017</strong> e <strong>ARQ-084</strong> (o uso e o custo no painel e o aviso à
+Maind), <strong>ARQ-046</strong> (o e-mail da instância), <strong>ARQ-010</strong> e <strong>ARQ-088</strong> (um banco por organização; a instância no
+banco mestre), <strong>ARQ-090</strong> (a segurança por pessoa na v2.1).</li>
+<li><code>docs/raw/arquitetura/04-software.md</code>: §3.2, os componentes Instância, Painel dos assentos e Envio de e-mail.</li>
+<li><code>docs/raw/arquitetura/06-dados.md</code> (o que é da instância) e <code>docs/raw/arquitetura/07-seguranca.md</code> §3.1 (o administrador
+não lê dado de organização).</li>
+<li><code>docs/raw/arquitetura/14-conferencia-do-produto.md</code>: §3 (o que se reaproveita) e §4 (<strong>A-02</strong>, <strong>A-21</strong> e <strong>A-29</strong>).</li>
+</ul>
+<p>📚 <a href="#mf-101-inventario">Tudo o que o inventário diz desta mf, assunto por assunto</a>.</p>

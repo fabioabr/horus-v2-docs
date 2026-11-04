@@ -1,0 +1,195 @@
+<p>Situação: 🔎 levantamento preliminar, recorte do <strong>problema nº 1</strong> (a pergunta de análise na hora) e dos pressupostos transversais.</p>
+<p>Última atualização: 02/11/2026.</p>
+<p>Este documento compara o que o <a href="#produto-norte">norte</a> afirma com o que o Horus faz hoje. Segue a <a href="#d-003"><code>D-003</code></a>: a diferença é uma <strong>lacuna a fechar</strong>, não um motivo para encolher o norte. Ele não decide quando nem como fechar cada lacuna: a ordem sai da composição das versões, e o como é do arquiteto de soluções.</p>
+<blockquote>
+<p>Os caminhos de código e de documento citados aqui (<code>apps/…</code>, <code>docs/produto/horus-visao-geral.md</code>, <code>.backlog/</code> e outros) são do <strong>repositório <code>horus</code>, a v1.xx</strong>, e não da pasta da v2 (<a href="#d-140"><code>D-140</code></a>).</p>
+</blockquote>
+<h3 id="produto-lacunas-como-este-levantamento-foi-feito">Como este levantamento foi feito</h3>
+<ul>
+<li>Busca no código de <code>apps/web</code> e <code>apps/server</code>, em 30/10/2026, e leitura do <code>CLAUDE.md</code> do repositório.</li>
+<li><strong>Não executei o produto nem medi tempos de resposta.</strong> O que está marcado como “não encontrei” significa que a busca não achou, e não que a prova da ausência foi feita.</li>
+<li>Cada linha precisa ser confirmada pelo arquiteto de soluções.</li>
+</ul>
+<p>Legenda: ✅ já existe · 🟡 existe em parte · ❌ não encontrei · ❓ não verificado.</p>
+<h3 id="produto-lacunas-problema-no-1-a-pergunta-de-analise-na-hora">Problema nº 1: a pergunta de análise na hora</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de Inventário de lacunas"><table class="table table_shortcode"><thead><tr>
+<th scope="col">#</th>
+<th scope="col">O que o norte pede</th>
+<th scope="col">O que o produto faz hoje</th>
+<th scope="col">Situação</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>O gestor faz uma pergunta de análise e recebe a resposta na hora</td>
+<td>Existe a conversa de análise (rota <code>/analise</code>), com motor de chat que responde em modo dados e em modo web</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>2</td>
+<td>A resposta vem por <strong>gráfico, texto ou os dois</strong>, com visual claro</td>
+<td>Os blocos de resposta são KPI, gráfico, tabela, mapa de calor e fluxo, com no máximo dois blocos por resposta</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A resposta chega em <strong>segundos</strong> (momento-âncora)</td>
+<td>Não medi o tempo de resposta</td>
+<td>❓</td>
+</tr>
+<tr>
+<td>4</td>
+<td>O nível de inferência autorizado pela organização</td>
+<td>Existem cinco níveis (descritivo, explicativo, comparativo, hipótese, especulativo), com padrão no nível 2</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>5</td>
+<td>A <strong>web como fonte viva</strong> em todos os usos</td>
+<td>O modo web existe; os fatos buscados entram com fonte citada só do nível 4 em diante (<code>composerLogica.ts</code>)</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Toda informação da web com <strong>link e data</strong>, ou aviso de data não identificada (<a href="#d-006"><code>D-006</code></a>)</td>
+<td>Não encontrei exigência de data de publicação nem o aviso de data não identificada</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Retorno do usuário: <strong>👍🏻 Gostei, 👎🏻 Não gostei, 🚫 Reportar</strong> (<a href="#d-005"><code>D-005</code></a>)</td>
+<td>Não encontrei botões de avaliação nas respostas do chat</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>8</td>
+<td>O reporte chega ao <strong>owner da organização</strong> (<a href="#d-014"><code>D-014</code></a>)</td>
+<td>Não existe o reporte; logo, não existe o encaminhamento</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Medida-norte: perguntas de análise respondidas sem chamado (<a href="#d-004"><code>D-004</code></a>)</td>
+<td>Existe uma leitura de uso por organização (<code>Uso/UsoDaOrg</code>); não confirmei se ela conta a “pergunta respondida” como definimos. O “sem chamado” depende do ponto de partida, que é pendência</td>
+<td>❓</td>
+</tr>
+</tbody>
+</table></div><h3 id="produto-lacunas-pressupostos-transversais">Pressupostos transversais</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 2 de Inventário de lacunas"><table class="table table_shortcode"><thead><tr>
+<th scope="col">#</th>
+<th scope="col">O que o norte pede</th>
+<th scope="col">O que o produto faz hoje</th>
+<th scope="col">Situação</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>10</td>
+<td><strong>Qualquer dispositivo</strong>: computador, celular e tablet (<a href="#d-002"><code>D-002</code></a>)</td>
+<td>Há regras de adaptação de tela espalhadas pelo front (66 ocorrências em 43 arquivos), inclusive no compositor e no cabeçalho da conversa; não testei em tela de celular ou tablet</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>Dois owners</strong>: da instância e da organização (<a href="#d-013"><code>D-013</code></a>)</td>
+<td>A área Administração (identidade, desempenho, segurança, homologações, administradores) e a área Organização (informações, bases, modelos, IA, gráficos, membros, segurança de acesso) já existem separadas</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>12</td>
+<td><strong>Várias organizações</strong> por instalação (<a href="#d-008"><code>D-008</code></a>)</td>
+<td>A lista de organizações (<code>/orgs</code>) e o layout próprio de cada organização existem</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>13</td>
+<td><strong>Marca branca</strong>: logo, nome e e-mail (<a href="#d-011"><code>D-011</code></a>)</td>
+<td>A tela Identidade configura nome, logos (claro e escuro) e rodapé, e vale para todas as organizações. O envio de e-mail existe e usa remetente de opções do servidor, mas não encontrei tela do owner da instância para o remetente</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>14</td>
+<td><strong>Entrega on-premises e SaaS</strong> (<a href="#d-007"><code>D-007</code></a>)</td>
+<td>Existe roteiro de publicação em servidor da Maind; não avaliei a instalação na infraestrutura do contratante</td>
+<td>❓</td>
+</tr>
+<tr>
+<td>15</td>
+<td><strong>A fonte da organização alcança a infraestrutura do contratante</strong> (consequência do on-premises)</td>
+<td>Por regra de segurança, a fonte cadastrada pela organização <strong>não alcança a rede interna</strong>; a saída existe só por configuração do servidor, que nunca vai aos ambientes publicados (<code>CLAUDE.md</code>)</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Modo <strong>“tudo dentro”</strong> para IA e web (<a href="#d-010"><code>D-010</code></a>)</td>
+<td>As conexões de IA aceitam só dois provedores externos (OpenRouter e Bedrock); não há provedor que rode dentro da infraestrutura do contratante</td>
+<td>❌</td>
+</tr>
+</tbody>
+</table></div><h3 id="produto-lacunas-o-que-salta-aos-olhos">O que salta aos olhos</h3>
+<ul>
+<li>✅ <strong>A base está de pé.</strong> A conversa de análise, os blocos visuais, os níveis de inferência, os dois níveis de owner e as várias organizações já existem.</li>
+<li>❌ <strong>O retorno do usuário não existe.</strong> É a lacuna mais clara do problema nº 1, e sem ele não há como medir a qualidade da resposta (<a href="#d-004"><code>D-004</code></a>, <a href="#d-005"><code>D-005</code></a>).</li>
+<li>⚠️ <strong>Para a mesma versão rodar em qualquer instância (<a href="#d-017"><code>D-017</code></a>)</strong>, faltam duas capacidades: a fonte alcançar a rede interna do contratante (linha 15) e a IA dentro da infraestrutura (linha 16). Não são uma escolha entre SaaS e on-premises; são requisitos do produto.</li>
+<li>❓ <strong>O tempo de resposta não está medido.</strong> Sem ele, a promessa da cena da reunião não tem número.</li>
+</ul>
+<h3 id="produto-lacunas-candidatas-a-v20-lista-fechada-pelo-dono-em-01112026">Candidatas à v2.0 (lista fechada pelo dono em 01/11/2026)</h3>
+<p>Macro funcionalidades (mf) que saíram das lacunas, em linguagem de cliente. As candidatas 1 a 6 vieram do inventário; as <strong>7 a 9 o dono acrescentou em 31/10/2026</strong>, ao ler o <a href="#produto-mfs-hoje">mapa das mfs de hoje</a> (<a href="#d-018"><code>D-018</code></a> a <a href="#d-020"><code>D-020</code></a>); a <strong>10 e a 11</strong> vieram do redesenho da MF-106:Segurança dos dados por pessoa (<a href="#d-025"><code>D-025</code></a>); a <strong>12 e a 13</strong> o dono acrescentou em 31/10/2026 (<a href="#d-033"><code>D-033</code></a>, <a href="#d-036"><code>D-036</code></a>); a <strong>14 e a 15</strong> o dono acrescentou em 31/10/2026, ao responder se faltava alguma (<a href="#d-065"><code>D-065</code></a>, <a href="#d-066"><code>D-066</code></a>, refinada pelas <a href="#d-067"><code>D-067</code></a> a <a href="#d-069"><code>D-069</code></a>); a <strong>16 e a 17</strong> o PO apontou como lacunas do norte e o dono incluiu em 01/11/2026 (<a href="#d-081"><code>D-081</code></a>, <a href="#d-082"><code>D-082</code></a>); a <strong>18</strong> o dono acrescentou em 01/11/2026 (<a href="#d-084"><code>D-084</code></a>). O dono fechou a lista com as 18 em 01/11/2026 (<a href="#d-103"><code>D-103</code></a>); ela foi pontuada com os pesos da <a href="#d-015"><code>D-015</code></a>, e a composição da v2.0 está decidida na <a href="#d-105"><code>D-105</code></a>.</p>
+<ol>
+<li>
+<p>⚡ <strong>Resposta em segundos na reunião:</strong> a velocidade medida e garantida. <em>(Corrigido pela <a href="#d-125"><code>D-125</code></a>, de 02/11/2026: “em segundos” é uma comparação com o pedido ao time de dados, que às vezes leva dias, e não um tempo garantido.)</em></p>
+</li>
+<li>
+<p>👍🏻 <strong>Retorno do usuário sobre a resposta:</strong> Gostei, Não gostei e Reportar, com o reporte indo ao owner da organização.</p>
+</li>
+<li>
+<p>🌐 <strong>A web como fonte viva completa:</strong> em todos os usos, com fonte e data.</p>
+</li>
+<li>
+<p>📈 <strong>Medida de autonomia:</strong> perguntas de análise respondidas e o saving da área de dados.</p>
+</li>
+<li>
+<p>🏢 <strong>Horus rodando dentro da infraestrutura do contratante:</strong> a fonte alcança a rede interna e a IA fica dentro de casa.</p>
+</li>
+<li>
+<p>🎨 <strong>Marca completa do contratante:</strong> logo, nome e e-mail.</p>
+</li>
+<li>
+<p>🤖 <strong>Agentes ativos que extraem, analisam e avisam</strong> (MF-115:Agentes ativos): agentes criados com instruções em texto, que extraem e analisam dados e entregam artefatos e alertas pelos conectores de saída, no horário do agendamento (<a href="#d-020"><code>D-020</code></a>, <a href="#d-022"><code>D-022</code></a>, <a href="#d-037"><code>D-037</code></a>, <a href="#d-061"><code>D-061</code></a>), com a interpretação configurada pelo usuário, inclusive o nível de inferência (<a href="#d-023"><code>D-023</code></a>, <a href="#d-024"><code>D-024</code></a>). Atende ao problema nº 3 do norte, o aviso. O dono a incluiu na v2.0, acima do corte da pontuação (<a href="#d-122"><code>D-122</code></a>).</p>
+</li>
+<li>
+<p>🧩 <strong>Boards e relatórios como uma coisa só</strong> (MF-112:Boards e Relatórios, que substitui a MF-006:Acompanhar em boards e a MF-008:Relatórios em PDF agendados): um editor único; todo board é vivo e pode ser impresso em PDF, de qualquer tamanho (<a href="#d-018"><code>D-018</code></a>, <a href="#d-057"><code>D-057</code></a>, <a href="#d-058"><code>D-058</code></a>). O dono a incluiu na v2.0, acima do corte da pontuação (<a href="#d-119"><code>D-119</code></a>).</p>
+</li>
+<li>
+<p>👥 <strong>Grupos de pessoas, estáticos e dinâmicos</strong> (melhora a MF-102:Organizações, pessoas e papéis): montados à mão ou por claims e papéis (<a href="#d-019"><code>D-019</code></a>; na v2.0, os dinâmicos só por papel, e por claims na v2.1, <a href="#d-145"><code>D-145</code></a>), criados pelos gestores, só com as pessoas que eles gerem (<a href="#d-049"><code>D-049</code></a>), ou pelo owner, para a organização inteira (<a href="#d-055"><code>D-055</code></a>), usados para permissão de acesso a boards, receber relatórios, destino de alertas e outros usos (<a href="#d-029"><code>D-029</code></a>). As funcionalidades do Horus, como o acesso à web, a Análise avançada e a escolha do modelo de IA no chat, são liberadas ou limitadas pelo owner por meio de roles (<a href="#d-050"><code>D-050</code></a>). O dono a incluiu na v2.0, com a gestão de pessoas inteira da <a href="#mf-102"><code>MF-102</code></a> (<a href="#d-108"><code>D-108</code></a>). O owner liga e desliga por role tudo o que a conversa oferece, botão a botão (<a href="#d-110"><code>D-110</code></a>). Quando a pessoa tem mais de uma role, vale a soma (<a href="#d-111"><code>D-111</code></a>). Quem não tem nenhuma role usa a role padrão da organização (<a href="#d-112"><code>D-112</code></a>). Uma role nova começa do zero ou como cópia de outra, à escolha do owner (<a href="#d-113"><code>D-113</code></a>). A definição completa está decidida na <a href="#d-114"><code>D-114</code></a>, e a <code>P-009</code> está fechada.</p>
+</li>
+<li>
+<p>🛡️ <strong>Acesso configurado dentro do Horus</strong> (etapa 1 da MF-106:Segurança dos dados por pessoa): o usuário define quem vê quais dados pelo documento semântico de segurança, para empresas sem controle próprio (<a href="#d-025"><code>D-025</code></a>). Vai para a v2.1, com a etapa 2 (<a href="#d-145"><code>D-145</code></a>).</p>
+</li>
+<li>
+<p>🔐 <strong>Segurança corporativa integrada</strong> (etapa 2 da MF-106:Segurança dos dados por pessoa): o Horus usa os controles de acesso das tecnologias de dados da empresa e reaproveita as claims e os papéis do token do IDP (<a href="#d-025"><code>D-025</code></a>). Quando também houver regra do Horus, as duas valem e vale a mais restritiva (<a href="#d-026"><code>D-026</code></a>). O IDP é ligado em cada organização, pelo owner da organização (<a href="#d-027"><code>D-027</code></a>).</p>
+</li>
+<li>
+<p>📤 <strong>Conectores de saída</strong> (MF-113:Conectores de Saída): os canais que só transportam o que o Horus produz (alertas, relatórios exportados…) e só a usuários do Horus, ligados pelo owner da organização (<a href="#d-033"><code>D-033</code></a>, <a href="#d-034"><code>D-034</code></a>, <a href="#d-035"><code>D-035</code></a>). O formato do que sai é outro assunto. Hoje a única saída é o e-mail. Atende ao problema nº 3 do norte, o aviso, e serve também à mf única de boards e relatórios. O dono a incluiu na v2.0, acima do corte da pontuação (<a href="#d-122"><code>D-122</code></a>).</p>
+</li>
+<li>
+<p>⏰ <strong>Módulo de agendamentos de agentes</strong> (MF-114:Módulo de Agendamentos de Agentes): um agendador único que decide quando gerar o PDF de um board ou executar um agente, no mesmo nível, e entrega o artefato (PDF, JSON…) por conectores aos destinos (<a href="#d-035"><code>D-035</code></a>, <a href="#d-036"><code>D-036</code></a>, <a href="#d-064"><code>D-064</code></a>). Todo agente usa IA (<a href="#d-063"><code>D-063</code></a>). Hoje só existe a agenda dos relatórios em PDF. O dono a incluiu na v2.0, acima do corte da pontuação (<a href="#d-122"><code>D-122</code></a>).</p>
+</li>
+<li>
+<p>💬 <strong>Pergunta rápida</strong> (MF-110:Pergunta rápida): um botão flutuante de chat que abre um popup para a pessoa fazer a pergunta sem sair da tela em que está, para um uso mais dinâmico das perguntas (<a href="#d-065"><code>D-065</code></a>). Atende ao problema nº 1 do norte. Pelo que a busca encontrou, hoje a pergunta só se faz na tela da conversa de análise (🔎 a confirmar com o arquiteto). O popup é um atalho para a conversa de análise e não sabe em que tela a pessoa está (<a href="#d-085"><code>D-085</code></a>). A conversa fica no popup, e a pessoa pode limpá-la e escolher salvar (<a href="#d-086"><code>D-086</code></a>). A pergunta limpa sem salvar conta na medida de autonomia e recebe retorno como as outras (<a href="#d-087"><code>D-087</code></a>). O popup traz tudo o que a conversa oferece (<a href="#d-088"><code>D-088</code></a>). A definição macro está decidida na <a href="#d-089"><code>D-089</code></a>.</p>
+</li>
+<li>
+<p>🎫 <strong>Licenças e planos</strong> (MF-103:Licenças e planos): a cobrança por quantidade de usuários e por plano (por exemplo, Básico, Gold e Diamond). Os assentos são liberados e desativados pelo administrador do SaaS num painel de controle, só no modo SaaS (o on-premises fica para depois); não há data de expiração no produto, porque a validade é assunto comercial; e a permissão dos usuários é desabilitada quando os assentos são desativados (<a href="#d-066"><code>D-066</code></a> a <a href="#d-068"><code>D-068</code></a>). Os assentos têm quatro tipos: owner, gestor, membro full (pergunta, cria boards e alertas) e membro leitor (só vê boards de outras pessoas); cada organização traz um assento de owner grátis (<a href="#d-123"><code>D-123</code></a>) (<a href="#d-069"><code>D-069</code></a>). Sem assento livre do tipo, a pessoa não entra até o administrador liberar mais (<a href="#d-070"><code>D-070</code></a>). O gestor cria o convite e escolhe o tipo de assento; o owner aprova; a aprovação envia o e-mail e reserva o assento por N dias, e depois o convite expira e o assento volta a ficar livre (<a href="#d-071"><code>D-071</code></a>). A troca do tipo de assento de quem já entrou segue o mesmo caminho: o gestor pede, o owner aprova, e precisa haver assento livre do tipo novo (<a href="#d-072"><code>D-072</code></a>). Quando alguém passa de full a leitor, o que ela criou (boards, alertas e agendamentos) vai para a área da organização, como quando o autor sai (<a href="#d-073"><code>D-073</code></a>). Quem acumula owner e gestor ocupa um assento só, o de owner (<a href="#d-074"><code>D-074</code></a>). Quando o administrador desativa os assentos, os agendamentos, alertas e agentes da organização também param, e as configurações ficam guardadas (<a href="#d-075"><code>D-075</code></a>). O painel não deixa reduzir os assentos de um tipo abaixo do que está ocupado; o owner libera antes (<a href="#d-076"><code>D-076</code></a>). O owner pede mais assentos fora do produto, por contato comercial com a Maind (<a href="#d-077"><code>D-077</code></a>). O owner define, nas preferências da organização, por quantos dias o assento fica reservado para um convite (<a href="#d-078"><code>D-078</code></a>). O membro leitor também recebe alertas e PDFs pelos conectores (<a href="#d-079"><code>D-079</code></a>). A definição macro está decidida na <a href="#d-080"><code>D-080</code></a>. Não atende a um dos três problemas do norte: sustenta o negócio da Maind. Não encontrei nada disso no produto de hoje (🔎 a confirmar com o arquiteto). O dono a incluiu na v2.0 inteira (<a href="#d-107"><code>D-107</code></a>). A v2.0 abre com um plano só, com todas as funcionalidades (<a href="#d-115"><code>D-115</code></a>); o preço em reais fica fora dos documentos de produto (<a href="#d-116"><code>D-116</code></a>); a definição dos planos está decidida na <a href="#d-117"><code>D-117</code></a>, e a <code>P-015</code> está fechada.</p>
+</li>
+<li>
+<p>🔍 <strong>Investigação guiada</strong> (MF-119:Investigação guiada): a pessoa vê que algo mudou e o Horus a leva, passo a passo, até o porquê (<a href="#d-081"><code>D-081</code></a>). Atende ao problema nº 2 do norte. Hoje a investigação só existe pela conversa, sem um caminho guiado (🔎 a confirmar com o arquiteto). A definição macro está na <code>P-018</code>.</p>
+</li>
+<li>
+<p>🧾 <strong>Auditoria</strong> (MF-116:Auditoria): o rastro de quem viu e de quem entregou o quê a quem (<a href="#d-082"><code>D-082</code></a>). Não atende a um dos três problemas do norte: sustenta a prova da confiança e a responsabilidade do gestor (<a href="#d-054"><code>D-054</code></a>). Não encontrei nada disso no produto de hoje (🔎 a confirmar com o arquiteto). O rastro registra as entregas e quem as abriu, e não o conteúdo (<a href="#d-090"><code>D-090</code></a>), e só o owner da organização o consulta (<a href="#d-091"><code>D-091</code></a>) e define por quantos dias ele fica guardado (<a href="#d-092"><code>D-092</code></a>). A definição macro está decidida na <a href="#d-093"><code>D-093</code></a>. O dono a incluiu na v2.0, acima do corte da pontuação (<a href="#d-119"><code>D-119</code></a>).</p>
+</li>
+<li>
+<p>📲 <strong>Chat pelo WhatsApp</strong> (MF-111:Chat pelo WhatsApp): a pessoa conversa com o Horus pelo WhatsApp e vê o conteúdo da resposta como no chat (<a href="#d-084"><code>D-084</code></a>). Atende ao problema nº 1 do norte e à promessa “informação na palma da mão”. Não encontrei nada de WhatsApp no produto de hoje, nem como entrada (🔎 a confirmar com o arquiteto). A própria pessoa liga o seu número ao perfil e o confirma com um código recebido no WhatsApp (<a href="#d-094"><code>D-094</code></a>). Tudo o que ela pergunta entra no histórico do app (<a href="#d-095"><code>D-095</code></a>). A resposta chega com texto, imagens e um link para abrir a resposta no app (<a href="#d-096"><code>D-096</code></a>). Cada organização usa o seu próprio número de WhatsApp, e pode autorizar o uso do número da Maind (<a href="#d-097"><code>D-097</code></a>). A pessoa tem tudo o que a conversa de análise oferece (<a href="#d-098"><code>D-098</code></a>). A definição macro está decidida na <a href="#d-099"><code>D-099</code></a>. O dono a incluiu na v2.0, acima do corte da pontuação (<a href="#d-119"><code>D-119</code></a>).</p>
+</li>
+</ol>
+<p>O PO apontou ainda uma terceira lacuna, a melhoria do modelo semântico (o assistente de modelagem e a lista de perguntas sem resposta), e o dono a deixou com o time de dados por enquanto (<a href="#d-083"><code>D-083</code></a>).</p>
+<h3 id="produto-lacunas-proximo-passo">Próximo passo</h3>
+<p>Este inventário cobre o problema nº 1 e os pressupostos. Ainda faltam os problemas nº 2 (a investigação) e nº 3 (o aviso). A ordem de fechamento das lacunas sai da composição das versões, pontuada contra o norte.</p>

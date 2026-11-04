@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A documentação de produto e de arquitetura do Horus v2: a visão, as decisões, a estratégia e como ele vai ser construído.">
+    <meta name="generator" content="DocX 0.2.1">
+    <link rel="shortcut icon" href="media/horus-claro.svg">
+    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/elagent-icon/style.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/font-awesome/css/all.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/niceselectpicker/nice-select.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/font-size/css/rvfs.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/animation/animate.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/tooltipster/css/tooltipster.bundle.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism-coy.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/magnify-pop/magnific-popup.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/css/style.css">
+    <link rel="stylesheet" href="assets/kbdoc/css/responsive.css">
+    <link rel="stylesheet" href="assets/docx.css">
+    <link rel="stylesheet" href="assets/conteudo.css">
+    <link rel="stylesheet" href="assets/indice.css">
+    <title>Norte do produto — Horus v2</title>
+</head>
+<body class="doc full-width-doc sticky-nav-doc onepage-doc dx-pagina-doc" data-spy="scroll" data-target=".navbar" data-offset="-120">
+    <a class="sr-only sr-only-focusable dx-skip" href="#post">Pular para o conteúdo</a>
+    <div class="body_wrapper sticky_menu">
+        <nav class="navbar navbar-expand-lg menu_one" id="stickyTwo" aria-label="Navegação principal">
+            <div class="container-fluid pl-60 pr-60">
+                <a class="navbar-brand" href="index.html">
+                    <img src="media/horus-claro.svg" alt="Horus v2">
+                    <img src="media/horus-escuro.svg" alt="Horus v2">
+                </a>
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Abrir o menu">
+                    <span class="menu_toggle">
+                        <span class="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                        <span class="hamburger-cross">
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav menu ml-auto">
+<li class="nav-item"><a href="index.html" class="nav-link">Início</a></li>
+<li class="nav-item dropdown submenu mega_menu tab-demo active"><a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentos</a><i class="arrow_carrot-down_alt2 mobile_dropdown_icon" aria-hidden="true" data-toggle="dropdown"></i><ul class="dropdown-menu scroll"><li><div class="row"><div class="col-lg-5 tabHeader"><ul class="nav flex-column nav-pills" id="dx-menu" role="tablist" aria-orientation="vertical"><li class="nav-item active"><a class="nav-link active" id="dx-menu-1-tab" data-toggle="pill" href="#dx-menu-1" role="tab" aria-controls="dx-menu-1" aria-selected="true">Comece aqui</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-2-tab" data-toggle="pill" href="#dx-menu-2" role="tab" aria-controls="dx-menu-2" aria-selected="false">Produto</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-3-tab" data-toggle="pill" href="#dx-menu-3" role="tab" aria-controls="dx-menu-3" aria-selected="false">Arquitetura · visão e decisões</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-4-tab" data-toggle="pill" href="#dx-menu-4" role="tab" aria-controls="dx-menu-4" aria-selected="false">Arquitetura · construção</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-5-tab" data-toggle="pill" href="#dx-menu-5" role="tab" aria-controls="dx-menu-5" aria-selected="false">Arquitetura · operação</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-6-tab" data-toggle="pill" href="#dx-menu-6" role="tab" aria-controls="dx-menu-6" aria-selected="false">Arquitetura · conferência</a></li></ul></div><div class="col-lg-7"><div class="tab-content tabContent" id="dx-menu-conteudo"><div class="tab-pane fade active show" id="dx-menu-1" role="tabpanel" aria-labelledby="dx-menu-1-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="visao-geral.html">O Horus v2</a></li><li><a href="pasta-v2.html">A pasta da v2</a></li></ul></div><div class="text"><a href="visao-geral.html"><p>Abrir Comece aqui</p></a></div></div><div class="tab-pane fade" id="dx-menu-2" role="tabpanel" aria-labelledby="dx-menu-2-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="produto-temas.html">Temas da visão de produto</a></li><li><a href="produto-norte.html">Norte do produto</a></li><li><a href="produto-lacunas.html">Inventário de lacunas</a></li><li><a href="produto-mfs-hoje.html">Macro funcionalidades de hoje</a></li><li><a href="produto-v20.html">A v2.0 consolidada</a></li></ul><ul class="list-unstyled tab_list"><li><a href="produto-versoes.html">As versões, mf a mf</a></li><li><a href="produto-mapa.html">Mapa de objetivos e funcionalidades</a></li><li><a href="produto-backlog.html">Backlog estratégico</a></li><li><a href="backlog-atividades.html">Backlog de atividades</a></li></ul></div><div class="text"><a href="produto-temas.html"><p>Abrir Produto</p></a></div></div><div class="tab-pane fade" id="dx-menu-3" role="tabpanel" aria-labelledby="dx-menu-3-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura.html">A pasta da arquitetura</a></li><li><a href="arquitetura-01.html">01 · Estratégia da solução</a></li><li><a href="arquitetura-02.html">02 · Registro de decisões</a></li><li><a href="arquitetura-03.html">03 · Metas de qualidade</a></li></ul></div><div class="text"><a href="arquitetura.html"><p>Abrir Arquitetura · visão e decisões</p></a></div></div><div class="tab-pane fade" id="dx-menu-4" role="tabpanel" aria-labelledby="dx-menu-4-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-04.html">04 · Software</a></li><li><a href="arquitetura-05.html">05 · Motor de análise e IA</a></li><li><a href="arquitetura-06.html">06 · Dados</a></li><li><a href="arquitetura-07.html">07 · Segurança</a></li><li><a href="arquitetura-08.html">08 · Integrações</a></li></ul></div><div class="text"><a href="arquitetura-04.html"><p>Abrir Arquitetura · construção</p></a></div></div><div class="tab-pane fade" id="dx-menu-5" role="tabpanel" aria-labelledby="dx-menu-5-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-09.html">09 · Infraestrutura e ambientes</a></li><li><a href="arquitetura-10.html">10 · Publicação e operação</a></li><li><a href="arquitetura-11.html">11 · Observabilidade</a></li><li><a href="arquitetura-12.html">12 · Qualidade e testes</a></li><li><a href="arquitetura-13.html">13 · Custo de operação</a></li></ul></div><div class="text"><a href="arquitetura-09.html"><p>Abrir Arquitetura · operação</p></a></div></div><div class="tab-pane fade" id="dx-menu-6" role="tabpanel" aria-labelledby="dx-menu-6-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-14.html">14 · Conferência do produto</a></li></ul></div><div class="text"><a href="arquitetura-14.html"><p>Abrir Arquitetura · conferência</p></a></div></div></div></div></div></li></ul></li>
+                    </ul>
+                    <ul class="list-unstyled menu_social">
+                        <li class="search">
+                            <form action="#" class="search_form" role="search" data-search-form>
+                                <label class="sr-only" for="dx-search">Buscar na documentação</label>
+                                <input type="search" class="form-control" id="dx-search" placeholder="Buscar" autocomplete="off" data-search-input aria-describedby="dx-search-status" aria-controls="dx-search-results">
+                                <button type="submit" aria-label="Buscar"><i class="icon_search" aria-hidden="true"></i></button>
+                                <div class="dx-search-results" id="dx-search-results" data-search-results hidden></div>
+                            </form>
+                            <p class="sr-only" id="dx-search-status" role="status" data-search-status></p>
+                        </li>
+                    </ul>
+                    <div class="dx-ferramentas">
+
+
+                        <div id="font-switcher"><div id="rvfs-controllers" class="fontsize-controllers group"></div></div>
+                        <button type="button" class="print" data-print aria-label="Imprimir"><i class="icon_printer" aria-hidden="true"></i></button>
+                        <div class="doc_switch">
+                            <label for="something" class="tab-btn tab-btns"><i class="icon_lightbulb_alt" aria-hidden="true"></i><span class="sr-only">Tema claro</span></label>
+                            <input type="checkbox" name="something" id="something" class="tab_switcher" aria-label="Tema escuro">
+                            <label for="something" class="tab-btn"><i class="far fa-moon" aria-hidden="true"></i><span class="sr-only">Tema escuro</span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <section class="doc_documentation_area onepage_doc_area" id="sticky_doc">
+            <div class="overlay_bg"></div>
+            <div class="container-fluid pl-60 pr-60">
+                <div class="row doc-container">
+                    <div class="col-lg-2 doc_mobile_menu doc-sidebar display_none">
+                        <aside class="doc_left_sidebarlist" aria-label="Tópicos desta página">
+                            <h3 class="nav_title">Tópicos</h3>
+                            <div class="scroll">
+                                <ul class="list-unstyled nav-sidebar doc-nav">
+<li class="nav-item active"><a href="#produto-norte--proposito" class="nav-link">🎯 Propósito</a></li>
+<li class="nav-item"><a href="#produto-norte--quem-atendemos-primeiro" class="nav-link">👥 Quem atendemos primeiro</a><ul class="list-unstyled dropdown_nav"><li class="nav-item"><a href="#produto-norte--momento-ancora" class="nav-link">📌 Momento-âncora</a></li></ul><span class="icon"><i class="icon_plus" aria-hidden="true"></i><i class="icon_minus-06" aria-hidden="true"></i></span></li>
+<li class="nav-item"><a href="#produto-norte--problemas-a-resolver-em-ordem" class="nav-link">🥇 Problemas a resolver, em ordem</a></li>
+<li class="nav-item"><a href="#produto-norte--promessa" class="nav-link">💬 Promessa</a></li>
+<li class="nav-item"><a href="#produto-norte--fontes" class="nav-link">🌐 Fontes</a></li>
+<li class="nav-item"><a href="#produto-norte--como-o-horus-e-entregue" class="nav-link">📦 Como o Horus é entregue</a></li>
+<li class="nav-item"><a href="#produto-norte--como-saberemos-que-deu-certo" class="nav-link">📈 Como saberemos que deu certo</a></li>
+<li class="nav-item"><a href="#produto-norte--o-que-o-horus-nao-e" class="nav-link">🚫 O que o Horus não é</a></li>
+<li class="nav-item"><a href="#produto-norte--lacunas-entre-o-norte-e-o-produto-de-hoje" class="nav-link">🧱 Lacunas entre o norte e o produto de hoje</a></li>
+<li class="nav-item"><a href="#produto-norte--pendencias-e-impasses" class="nav-link">🔎 Pendências e impasses</a></li>
+                                </ul>
+                            </div>
+                        </aside>
+                    </div>
+                    <div class="col-lg-10 col-md-12">
+                        <div class="documentation_info dx-pagina" id="post">
+                            <header class="dx-cabeca" id="produto-norte">
+                                <nav class="dx-trilha" aria-label="Trilha"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Início</a></li><li class="breadcrumb-item">Produto</li><li class="breadcrumb-item active" aria-current="page">Norte do produto</li></ol></nav>
+                                
+                                <h1>Norte do produto</h1>
+                                <p>Por que o Horus existe, para quem, o que promete e como saberemos que deu certo.</p>
+                            </header>
+                            <div class="dx-modelo-01">
+<nav aria-labelledby="dx-m01-assuntos-titulo">
+<div class="dx-m01-rotulo"><h2 id="dx-m01-assuntos-titulo">Explore os assuntos</h2><span>10 seções</span></div>
+<div class="dx-m01-assuntos">
+<a class="dx-m01-assunto" href="#produto-norte--proposito"><span class="dx-m01-icone"><i class="fas fa-file-alt" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>🎯 Propósito</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#produto-norte--quem-atendemos-primeiro"><span class="dx-m01-icone"><i class="fas fa-file-alt" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>👥 Quem atendemos primeiro</strong><small>1 tópico</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#produto-norte--problemas-a-resolver-em-ordem"><span class="dx-m01-icone"><i class="fas fa-file-alt" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>🥇 Problemas a resolver, em ordem</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#produto-norte--promessa"><span class="dx-m01-icone"><i class="fas fa-file-alt" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>💬 Promessa</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#produto-norte--fontes"><span class="dx-m01-icone"><i class="fas fa-file-alt" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>🌐 Fontes</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#produto-norte--como-o-horus-e-entregue"><span class="dx-m01-icone"><i class="fas fa-file-alt" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>📦 Como o Horus é entregue</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#produto-norte--como-saberemos-que-deu-certo"><span class="dx-m01-icone"><i class="fas fa-file-alt" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>📈 Como saberemos que deu certo</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#produto-norte--o-que-o-horus-nao-e"><span class="dx-m01-icone"><i class="fas fa-file-alt" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>🚫 O que o Horus não é</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#produto-norte--lacunas-entre-o-norte-e-o-produto-de-hoje"><span class="dx-m01-icone"><i class="fas fa-file-alt" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>🧱 Lacunas entre o norte e o produto de hoje</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#produto-norte--pendencias-e-impasses"><span class="dx-m01-icone"><i class="fas fa-file-alt" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>🔎 Pendências e impasses</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</div></nav>
+<section class="dx-m01-fontes" aria-labelledby="dx-m01-fontes-titulo">
+<header class="dx-m01-cabecalho"><div>
+<h2 id="dx-m01-fontes-titulo"><i class="fas fa-link" aria-hidden="true"></i><span>Tópicos</span></h2>
+</div>
+<span class="dx-m01-total">1 tópico</span></header>
+<div class="dx-m01-grade">
+<section class="dx-m01-fonte"><h3><i class="fas fa-file-alt" aria-hidden="true"></i><span>👥 Quem atendemos primeiro</span><small aria-label="1 tópico">1</small></h3><ul class="dx-m01-links"><li><a href="#produto-norte--momento-ancora"><span>📌 Momento-âncora</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li></ul></section>
+</div></section>
+</div>
+                            <div class="dx-content">
+<p>Situação: 🟢 decidido pelo dono em entrevista (decisão <a href="produto-backlog.html#d-001"><code>D-001</code></a> do <a href="produto-backlog.html">backlog estratégico</a>).</p>
+<p>Última atualização: 31/10/2026.</p>
+<p>Este documento diz <strong>para onde o Horus vai</strong>: por que existe, para quem, que problema resolve primeiro, o que promete e como saberemos que deu certo. Toda priorização e toda escolha entre caminhos é pontuada contra ele.</p>
+<blockquote>
+<p>🧭 <strong>O norte guia o produto, e não o contrário.</strong> Estamos dando um passo atrás para estruturar o crescimento do Horus. O produto de hoje é o ponto de partida: mostra o que já existe e quais são as lacunas até o norte, mas não limita o que o norte afirma (<a href="produto-backlog.html#d-003"><code>D-003</code></a>).</p>
+</blockquote>
+<div class="doc-section dx-assunto"><h3 id="produto-norte--proposito">🎯 Propósito</h3>
+<p>Dar <strong>autonomia</strong> a quem decide. A pessoa pergunta às <strong>fontes vivas</strong> — os dados da empresa e a web — e entende a resposta na hora, sem depender de ninguém.</p>
+<p>A autonomia traz dois ganhos, um para cada lado:</p>
+<ul>
+<li>🙋 <strong>Para quem usa:</strong> a sensação de poder sobre os dados da própria área.</li>
+<li>💰 <strong>Para quem paga:</strong> economia com o time que hoje monta dashboards sob encomenda.</li>
+</ul>
+<p>Também importam, mas em segundo plano: a <strong>confiança</strong> nos números, a <strong>produtividade</strong> da área de dados e a <strong>antecipação</strong> de problemas. Se fosse preciso escolher um só propósito, é a autonomia.</p>
+</div><div class="doc-section dx-assunto"><h3 id="produto-norte--quem-atendemos-primeiro">👥 Quem atendemos primeiro</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de Norte do produto"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Papel</th>
+<th scope="col">Quem é</th>
+<th scope="col">O que ganha</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>👔 <strong>Gestor de área</strong></td>
+<td>Gerente ou coordenador (vendas, financeiro, operações…) que hoje espera a área de dados montar o relatório.</td>
+<td>Responde sozinho, sem abrir chamado.</td>
+</tr>
+<tr>
+<td>🏢 <strong>Executivo</strong></td>
+<td>Diretor, CEO ou dono.</td>
+<td>Tem o número certo na hora, sem aprender ferramenta.</td>
+</tr>
+<tr>
+<td>💰 <strong>Comprador</strong></td>
+<td>Quem aprova e paga a contratação.</td>
+<td>Vê o saving com o time de montagem de dashboards.</td>
+</tr>
+</tbody>
+</table></div><p><strong>Quem contrata primeiro:</strong> a empresa que usa o Horus por dentro, para os próprios setores (cada setor, uma organização). A revenda a clientes vem depois (<a href="produto-backlog.html#d-009"><code>D-009</code></a>).</p>
+<h4 id="produto-norte--momento-ancora">📌 Momento-âncora</h4>
+<p>Reunião de resultado. O CEO pergunta: “e se tirarmos as lojas do Sul, como fica a margem?”. Hoje a resposta é “abro um chamado e te retorno amanhã”. Com o Horus, o gestor responde ali mesmo, na frente de todos.</p>
+<p>Consequências dessa cena:</p>
+<ul>
+<li>⏱️ A velocidade se mede em segundos, porque a pessoa está diante de todos.</li>
+<li>🛡️ Um número errado diante do CEO é pior que nenhum número; a confiança é condição da cena, não detalhe.</li>
+</ul>
+</div><div class="doc-section dx-assunto"><h3 id="produto-norte--problemas-a-resolver-em-ordem">🥇 Problemas a resolver, em ordem</h3>
+<ol>
+<li>⚡ <strong>A pergunta de análise na hora:</strong> surge uma dúvida de negócio e a resposta sai ali, em segundos.</li>
+<li>🔍 <strong>A investigação:</strong> a pessoa vê que algo mudou e descobre o porquê, aprofundando passo a passo.</li>
+<li>🔔 <strong>O aviso:</strong> o Horus avisa quando algo muda, sem ninguém perguntar.</li>
+</ol>
+<p>O <strong>acompanhamento recorrente</strong> (o mesmo relatório toda semana ou todo mês) não entra nesta ordem: será tratado quando decidirmos a funcionalidade de <strong>Board</strong>.</p>
+</div><div class="doc-section dx-assunto"><h3 id="produto-norte--promessa">💬 Promessa</h3>
+<p><strong>“Informação na palma da mão”</strong> (nome de trabalho; a redação final fica para o documento de posicionamento). Esta frase vive na <strong>comunicação comercial da Maind</strong>, voltada a quem contrata; dentro do produto, cada contratante usa a sua marca (<a href="produto-backlog.html#d-012"><code>D-012</code></a>).</p>
+<ul>
+<li>🎨 <strong>O visual faz parte da promessa.</strong> A forma como a resposta é construída, em texto ou gráfico, é o que dá conforto para entender o resultado. Visual não é enfeite nem limite: é valor central.</li>
+<li>🛡️ <strong>A prova é a confiança.</strong> Toda resposta identifica a fonte de cada informação, para a pessoa saber o que pode mostrar como fato da empresa e o que veio de fora.</li>
+<li>📱 <strong>Pressuposto: em qualquer dispositivo.</strong> A pessoa acessa o dado no computador, no celular ou no tablet, e a experiência se adapta a cada um (responsividade). Isso vale para todas as versões e não é uma funcionalidade a priorizar; como cada tela se comporta é assunto do arquiteto de soluções (<a href="produto-backlog.html#d-002"><code>D-002</code></a>).</li>
+</ul>
+</div><div class="doc-section dx-assunto"><h3 id="produto-norte--fontes">🌐 Fontes</h3>
+<p>O Horus é o chat de todas as <strong>fontes vivas</strong> que ajudam a decidir:</p>
+<ul>
+<li>🏦 <strong>Interna:</strong> os bancos de dados da organização.</li>
+<li>🌐 <strong>Externa:</strong> a pesquisa na web.</li>
+</ul>
+<p>A web serve a todos os usos: <strong>complementa</strong> os números da empresa (contexto de mercado), responde <strong>sozinha</strong> quando a pergunta é externa, serve de <strong>régua</strong> (benchmark) e <strong>ajuda a investigar</strong> o porquê de uma variação. O que é dado interno e o que é dado de fora nunca se confunde. Toda informação da web aparece com o <strong>link da fonte</strong> e a <strong>data de publicação</strong>; quando a data não puder ser identificada, o Horus avisa que não foi possível identificá-la (<a href="produto-backlog.html#d-006"><code>D-006</code></a>).</p>
+</div><div class="doc-section dx-assunto"><h3 id="produto-norte--como-o-horus-e-entregue">📦 Como o Horus é entregue</h3>
+<ul>
+<li>🏷️ <strong>Plataforma white label:</strong> pode levar a marca de quem a contrata (<a href="produto-backlog.html#d-007"><code>D-007</code></a>).</li>
+<li>🎨 <strong>A marca do contratante, no começo, é só logo, e-mail e nome;</strong> o tema fica para uma versão futura. As páginas institucional e de propaganda ficam apartadas do produto (<a href="produto-backlog.html#d-011"><code>D-011</code></a>).</li>
+<li>🧩 <strong>Uma versão só:</strong> a versão do produto é a mesma em SaaS e on-premises; a diferença está na instância (<a href="produto-backlog.html#d-017"><code>D-017</code></a>).</li>
+<li>🏢 <strong>Duas formas de entrega:</strong> <strong>on-premises</strong>, na infraestrutura do contratante, ou <strong>SaaS</strong>, na infraestrutura da Maind (<a href="produto-backlog.html#d-007"><code>D-007</code></a>).</li>
+<li>🎚️ <strong>O contratante escolhe o que sai da infraestrutura dele:</strong> a IA e a pesquisa web funcionam no modo <strong>“com serviços externos autorizados”</strong> (padrão) ou no modo <strong>“tudo dentro”</strong> (<a href="produto-backlog.html#d-010"><code>D-010</code></a>).</li>
+<li>🔑 <strong>Dois níveis de owner:</strong> o <strong>owner da instância</strong> configura a marca e o que vale para todas as organizações; o <strong>owner da organização (ou área)</strong> convida pessoas, configura preferências e cuida do que é da organização (<a href="produto-backlog.html#d-013"><code>D-013</code></a>).</li>
+<li>🗂️ <strong>Várias organizações por instalação:</strong> uma organização pode ser um cliente (B2B) ou um setor dentro de uma empresa (<a href="produto-backlog.html#d-008"><code>D-008</code></a>).</li>
+</ul>
+</div><div class="doc-section dx-assunto"><h3 id="produto-norte--como-saberemos-que-deu-certo">📈 Como saberemos que deu certo</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 2 de Norte do produto"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Medida</th>
+<th scope="col">Para quem</th>
+<th scope="col">O que mede</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>🙋 <strong>Perguntas de análise respondidas sem chamado</strong> (norte)</td>
+<td>Usuário</td>
+<td>A porcentagem das perguntas de análise que o gestor resolve sozinho, sem acionar a área de dados.</td>
+</tr>
+<tr>
+<td>💰 <strong>Saving da área de dados</strong></td>
+<td>Comprador</td>
+<td>Horas ou chamados que a área de dados deixou de atender.</td>
+</tr>
+</tbody>
+</table></div><p><strong>Pergunta de análise respondida</strong> é aquela em que o Horus consegue responder, com gráfico, texto ou os dois, independentemente da satisfação do usuário (<a href="produto-backlog.html#d-004"><code>D-004</code></a>). Se o Horus diz que não consegue, não conta. A qualidade da resposta é medida à parte, pelo retorno do usuário e pelos chamados que ainda chegam à área de dados.</p>
+<p><strong>Retorno do usuário (<a href="produto-backlog.html#d-005"><code>D-005</code></a>):</strong> cada resposta pode receber 👍🏻 Gostei, 👎🏻 Não gostei ou 🚫 Reportar. Ao reportar, a pessoa escolhe o que está reportando, e o <strong>owner da organização</strong> analisa uma possível falha no modelo semântico ou nos dados (<a href="produto-backlog.html#d-014"><code>D-014</code></a>).</p>
+<blockquote>
+<p>Exemplo: numa semana, os gestores fizeram 100 perguntas; 80 foram respondidas sem chamado. A autonomia é de 80%.</p>
+</blockquote>
+</div><div class="doc-section dx-assunto"><h3 id="produto-norte--o-que-o-horus-nao-e">🚫 O que o Horus não é</h3>
+<ul>
+<li>👀 <strong>Só lê as fontes.</strong> Nunca altera dados nem executa ações nos sistemas da empresa (pesquisar na web também é ler). Pode enviar alertas por canais de saída, como e-mail, WhatsApp ou Teams (<a href="produto-backlog.html#d-022"><code>D-022</code></a>); como isso funciona está em desenho (<code>P-007</code>).</li>
+<li>🧹 <strong>Não arruma os dados.</strong> Usa os dados como estão nos bancos conectados, sem limpar nem reconciliar.</li>
+</ul>
+<p>A decisão continua humana. O Horus trabalha com <strong>níveis de inferência autorizados pela organização</strong>: hoje são cinco — descritivo, explicativo, comparativo, hipótese e especulativo —, e quanto mais alto o nível, mais a resposta pode afirmar além do que está nos dados, sempre dizendo que é hipótese ou especulação. <strong>O agente ativo é a exceção:</strong> o usuário que o cria define o nível dele, sem o teto da organização (<a href="produto-backlog.html#d-024"><code>D-024</code></a>).</p>
+</div><div class="doc-section dx-assunto"><h3 id="produto-norte--lacunas-entre-o-norte-e-o-produto-de-hoje">🧱 Lacunas entre o norte e o produto de hoje</h3>
+<p>O levantamento completo está no <a href="produto-lacunas.html">inventário de lacunas</a>. O exemplo abaixo é a primeira lacuna identificada.</p>
+<p>O que o norte afirma e o produto atual ainda não faz. São entradas para o inventário e para o arquiteto de soluções, não motivo para encolher o norte.</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 3 de Norte do produto"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Lacuna</th>
+<th scope="col">Hoje</th>
+<th scope="col">O norte pede</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>A web como fonte viva em todos os usos</strong></td>
+<td>Abaixo do nível 4 de inferência, a pesquisa web só ajuda no vocabulário; os fatos buscados entram com fonte citada a partir do nível 4 (<code>composerLogica.ts</code>).</td>
+<td>A web complementa, responde, serve de régua e ajuda a investigar, com a fonte sempre à vista.</td>
+</tr>
+</tbody>
+</table></div></div><div class="doc-section dx-assunto"><h3 id="produto-norte--pendencias-e-impasses">🔎 Pendências e impasses</h3>
+<p>Ficam num lugar só, para não divergirem: a seção “Pendências e impasses” do <a href="produto-backlog.html">backlog estratégico</a>. Impasse em definição estratégica não é deixado para depois.</p>
+</div>
+                            </div>
+                            <nav class="dx-vizinhas" aria-label="Páginas vizinhas"><a class="dx-anterior" href="produto-temas.html"><i class="arrow_left" aria-hidden="true"></i>Temas da visão de produto</a><a class="dx-proxima" href="produto-lacunas.html">Inventário de lacunas<i class="arrow_right" aria-hidden="true"></i></a></nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="simple_footer">
+            <img class="leaf_right" src="assets/kbdoc/img/home_one/leaf_footter.png" alt="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p>Maind Horus · Horus v2 · documento interno · Revisado em 03/11/2026 · versão v2.0 em desenho, sem versão publicada</p>
+                    </div>
+                    <div class="col-lg-6 text-right">
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <a id="back-to-top" title="Voltar ao topo"></a>
+    <script src="assets/kbdoc/js/jquery-3.2.1.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/popper.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap-select.min.js"></script>
+    <script src="assets/kbdoc/js/parallaxie.js"></script>
+    <script src="assets/kbdoc/js/TweenMax.min.js"></script>
+    <script src="assets/kbdoc/js/anchor.js"></script>
+    <script src="assets/kbdoc/assets/wow/wow.min.js"></script>
+    <script src="assets/kbdoc/js/vendor/clipboard.min.js"></script>
+    <script src="assets/kbdoc/assets/prism/prism.js"></script>
+    <script src="assets/kbdoc/assets/niceselectpicker/jquery.nice-select.min.js"></script>
+    <script src="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="assets/kbdoc/assets/magnify-pop/jquery.magnific-popup.min.js"></script>
+    <script src="assets/kbdoc/assets/tooltipster/js/tooltipster.bundle.min.js"></script>
+    <script src="assets/kbdoc/assets/font-size/js/rv-jquery-fontsize-2.0.3.js"></script>
+    <script src="assets/kbdoc/js/onpage-menu.js"></script>
+    <script src="assets/kbdoc/js/main.js"></script>
+    <script src="assets/busca.js"></script>
+    <script src="assets/docx.js"></script>
+</body>
+</html>

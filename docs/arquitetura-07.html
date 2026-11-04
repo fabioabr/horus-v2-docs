@@ -1,0 +1,771 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A documentação de produto e de arquitetura do Horus v2: a visão, as decisões, a estratégia e como ele vai ser construído.">
+    <meta name="generator" content="DocX 0.2.1">
+    <link rel="shortcut icon" href="media/horus-claro.svg">
+    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/elagent-icon/style.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/font-awesome/css/all.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/niceselectpicker/nice-select.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/font-size/css/rvfs.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/animation/animate.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/tooltipster/css/tooltipster.bundle.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism-coy.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/magnify-pop/magnific-popup.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/css/style.css">
+    <link rel="stylesheet" href="assets/kbdoc/css/responsive.css">
+    <link rel="stylesheet" href="assets/docx.css">
+    <link rel="stylesheet" href="assets/conteudo.css">
+    <link rel="stylesheet" href="assets/indice.css">
+    <title>07 · Segurança — Horus v2</title>
+</head>
+<body class="doc full-width-doc sticky-nav-doc onepage-doc dx-pagina-doc" data-spy="scroll" data-target=".navbar" data-offset="-120">
+    <a class="sr-only sr-only-focusable dx-skip" href="#post">Pular para o conteúdo</a>
+    <div class="body_wrapper sticky_menu">
+        <nav class="navbar navbar-expand-lg menu_one" id="stickyTwo" aria-label="Navegação principal">
+            <div class="container-fluid pl-60 pr-60">
+                <a class="navbar-brand" href="index.html">
+                    <img src="media/horus-claro.svg" alt="Horus v2">
+                    <img src="media/horus-escuro.svg" alt="Horus v2">
+                </a>
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Abrir o menu">
+                    <span class="menu_toggle">
+                        <span class="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                        <span class="hamburger-cross">
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav menu ml-auto">
+<li class="nav-item"><a href="index.html" class="nav-link">Início</a></li>
+<li class="nav-item dropdown submenu mega_menu tab-demo active"><a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentos</a><i class="arrow_carrot-down_alt2 mobile_dropdown_icon" aria-hidden="true" data-toggle="dropdown"></i><ul class="dropdown-menu scroll"><li><div class="row"><div class="col-lg-5 tabHeader"><ul class="nav flex-column nav-pills" id="dx-menu" role="tablist" aria-orientation="vertical"><li class="nav-item active"><a class="nav-link active" id="dx-menu-1-tab" data-toggle="pill" href="#dx-menu-1" role="tab" aria-controls="dx-menu-1" aria-selected="true">Comece aqui</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-2-tab" data-toggle="pill" href="#dx-menu-2" role="tab" aria-controls="dx-menu-2" aria-selected="false">Produto</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-3-tab" data-toggle="pill" href="#dx-menu-3" role="tab" aria-controls="dx-menu-3" aria-selected="false">Arquitetura · visão e decisões</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-4-tab" data-toggle="pill" href="#dx-menu-4" role="tab" aria-controls="dx-menu-4" aria-selected="false">Arquitetura · construção</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-5-tab" data-toggle="pill" href="#dx-menu-5" role="tab" aria-controls="dx-menu-5" aria-selected="false">Arquitetura · operação</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-6-tab" data-toggle="pill" href="#dx-menu-6" role="tab" aria-controls="dx-menu-6" aria-selected="false">Arquitetura · conferência</a></li></ul></div><div class="col-lg-7"><div class="tab-content tabContent" id="dx-menu-conteudo"><div class="tab-pane fade active show" id="dx-menu-1" role="tabpanel" aria-labelledby="dx-menu-1-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="visao-geral.html">O Horus v2</a></li><li><a href="pasta-v2.html">A pasta da v2</a></li></ul></div><div class="text"><a href="visao-geral.html"><p>Abrir Comece aqui</p></a></div></div><div class="tab-pane fade" id="dx-menu-2" role="tabpanel" aria-labelledby="dx-menu-2-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="produto-temas.html">Temas da visão de produto</a></li><li><a href="produto-norte.html">Norte do produto</a></li><li><a href="produto-lacunas.html">Inventário de lacunas</a></li><li><a href="produto-mfs-hoje.html">Macro funcionalidades de hoje</a></li><li><a href="produto-v20.html">A v2.0 consolidada</a></li></ul><ul class="list-unstyled tab_list"><li><a href="produto-versoes.html">As versões, mf a mf</a></li><li><a href="produto-mapa.html">Mapa de objetivos e funcionalidades</a></li><li><a href="produto-backlog.html">Backlog estratégico</a></li><li><a href="backlog-atividades.html">Backlog de atividades</a></li></ul></div><div class="text"><a href="produto-temas.html"><p>Abrir Produto</p></a></div></div><div class="tab-pane fade" id="dx-menu-3" role="tabpanel" aria-labelledby="dx-menu-3-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura.html">A pasta da arquitetura</a></li><li><a href="arquitetura-01.html">01 · Estratégia da solução</a></li><li><a href="arquitetura-02.html">02 · Registro de decisões</a></li><li><a href="arquitetura-03.html">03 · Metas de qualidade</a></li></ul></div><div class="text"><a href="arquitetura.html"><p>Abrir Arquitetura · visão e decisões</p></a></div></div><div class="tab-pane fade" id="dx-menu-4" role="tabpanel" aria-labelledby="dx-menu-4-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-04.html">04 · Software</a></li><li><a href="arquitetura-05.html">05 · Motor de análise e IA</a></li><li><a href="arquitetura-06.html">06 · Dados</a></li><li><a href="arquitetura-07.html">07 · Segurança</a></li><li><a href="arquitetura-08.html">08 · Integrações</a></li></ul></div><div class="text"><a href="arquitetura-04.html"><p>Abrir Arquitetura · construção</p></a></div></div><div class="tab-pane fade" id="dx-menu-5" role="tabpanel" aria-labelledby="dx-menu-5-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-09.html">09 · Infraestrutura e ambientes</a></li><li><a href="arquitetura-10.html">10 · Publicação e operação</a></li><li><a href="arquitetura-11.html">11 · Observabilidade</a></li><li><a href="arquitetura-12.html">12 · Qualidade e testes</a></li><li><a href="arquitetura-13.html">13 · Custo de operação</a></li></ul></div><div class="text"><a href="arquitetura-09.html"><p>Abrir Arquitetura · operação</p></a></div></div><div class="tab-pane fade" id="dx-menu-6" role="tabpanel" aria-labelledby="dx-menu-6-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-14.html">14 · Conferência do produto</a></li></ul></div><div class="text"><a href="arquitetura-14.html"><p>Abrir Arquitetura · conferência</p></a></div></div></div></div></div></li></ul></li>
+                    </ul>
+                    <ul class="list-unstyled menu_social">
+                        <li class="search">
+                            <form action="#" class="search_form" role="search" data-search-form>
+                                <label class="sr-only" for="dx-search">Buscar na documentação</label>
+                                <input type="search" class="form-control" id="dx-search" placeholder="Buscar" autocomplete="off" data-search-input aria-describedby="dx-search-status" aria-controls="dx-search-results">
+                                <button type="submit" aria-label="Buscar"><i class="icon_search" aria-hidden="true"></i></button>
+                                <div class="dx-search-results" id="dx-search-results" data-search-results hidden></div>
+                            </form>
+                            <p class="sr-only" id="dx-search-status" role="status" data-search-status></p>
+                        </li>
+                    </ul>
+                    <div class="dx-ferramentas">
+
+
+                        <div id="font-switcher"><div id="rvfs-controllers" class="fontsize-controllers group"></div></div>
+                        <button type="button" class="print" data-print aria-label="Imprimir"><i class="icon_printer" aria-hidden="true"></i></button>
+                        <div class="doc_switch">
+                            <label for="something" class="tab-btn tab-btns"><i class="icon_lightbulb_alt" aria-hidden="true"></i><span class="sr-only">Tema claro</span></label>
+                            <input type="checkbox" name="something" id="something" class="tab_switcher" aria-label="Tema escuro">
+                            <label for="something" class="tab-btn"><i class="far fa-moon" aria-hidden="true"></i><span class="sr-only">Tema escuro</span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <section class="doc_documentation_area onepage_doc_area" id="sticky_doc">
+            <div class="overlay_bg"></div>
+            <div class="container-fluid pl-60 pr-60">
+                <div class="row doc-container">
+                    <div class="col-lg-2 doc_mobile_menu doc-sidebar display_none">
+                        <aside class="doc_left_sidebarlist" aria-label="Tópicos desta página">
+                            <h3 class="nav_title">Tópicos</h3>
+                            <div class="scroll">
+                                <ul class="list-unstyled nav-sidebar doc-nav">
+<li class="nav-item active"><a href="#arquitetura-07-1-o-que-o-tema-precisa-garantir" class="nav-link">1. O que o tema precisa garantir</a></li>
+<li class="nav-item"><a href="#arquitetura-07-2-as-decisoes" class="nav-link">2. As decisões</a></li>
+<li class="nav-item"><a href="#arquitetura-07-3-os-componentes-e-a-responsabilidade-de-cada-um" class="nav-link">3. Os componentes e a responsabilidade de cada um</a><ul class="list-unstyled dropdown_nav"><li class="nav-item"><a href="#arquitetura-07-31-o-login-e-a-sessao-arq-038" class="nav-link">3.1 O login e a sessão (ARQ-038)</a></li><li class="nav-item"><a href="#arquitetura-07-32-o-avaliador-por-dentro-papel-tipo-de-assento-roles-e-dados-arq-008-arq-039" class="nav-link">3.2 O avaliador por dentro: papel, tipo de assento, roles e dados (ARQ-008, ARQ-039)</a></li><li class="nav-item"><a href="#arquitetura-07-33-a-seguranca-dos-dados-por-pessoa-mf-106-as-duas-etapas" class="nav-link">3.3 A segurança dos dados por pessoa (MF-106, as duas etapas)</a></li><li class="nav-item"><a href="#arquitetura-07-34-em-nome-de-quem-arq-041" class="nav-link">3.4 Em nome de quem (ARQ-041)</a></li><li class="nav-item"><a href="#arquitetura-07-35-a-liberacao-do-gestor-e-a-a14-arq-042" class="nav-link">3.5 A liberação do gestor e a A14 (ARQ-042)</a></li><li class="nav-item"><a href="#arquitetura-07-36-a-lgpd" class="nav-link">3.6 A LGPD</a></li><li class="nav-item"><a href="#arquitetura-07-37-os-segredos-e-os-privilegios-arq-044-" class="nav-link">3.7 Os segredos e os privilégios (ARQ-044 ✅)</a></li><li class="nav-item"><a href="#arquitetura-07-38-os-componentes" class="nav-link">3.8 Os componentes</a></li></ul><span class="icon"><i class="icon_plus" aria-hidden="true"></i><i class="icon_minus-06" aria-hidden="true"></i></span></li>
+<li class="nav-item"><a href="#arquitetura-07-4-o-que-vem-da-v1xx-e-o-que-nao-vem" class="nav-link">4. O que vem da v1.xx e o que não vem</a></li>
+<li class="nav-item"><a href="#arquitetura-07-5-os-riscos-e-o-que-falta-decidir" class="nav-link">5. Os riscos e o que falta decidir</a></li>
+                                </ul>
+                            </div>
+                        </aside>
+                    </div>
+                    <div class="col-lg-10 col-md-12">
+                        <div class="documentation_info dx-pagina" id="post">
+                            <header class="dx-cabeca" id="arquitetura-07">
+                                <nav class="dx-trilha" aria-label="Trilha"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Início</a></li><li class="breadcrumb-item">Arquitetura · construção</li><li class="breadcrumb-item active" aria-current="page">07 · Segurança</li></ol></nav>
+                                
+                                <h1>07 · Segurança</h1>
+                                <p>Quem entra, o que cada pessoa pode fazer e o que cada uma vê.</p>
+                            </header>
+                            <div class="dx-modelo-01">
+<nav aria-labelledby="dx-m01-assuntos-titulo">
+<div class="dx-m01-rotulo"><h2 id="dx-m01-assuntos-titulo">Explore os assuntos</h2><span>5 seções</span></div>
+<div class="dx-m01-assuntos">
+<a class="dx-m01-assunto" href="#arquitetura-07-1-o-que-o-tema-precisa-garantir"><span class="dx-m01-icone"><i class="fas fa-file-alt" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>1. O que o tema precisa garantir</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#arquitetura-07-2-as-decisoes"><span class="dx-m01-icone"><i class="fas fa-file-alt" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>2. As decisões</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#arquitetura-07-3-os-componentes-e-a-responsabilidade-de-cada-um"><span class="dx-m01-icone"><i class="fas fa-file-alt" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>3. Os componentes e a responsabilidade de cada um</strong><small>8 tópicos</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#arquitetura-07-4-o-que-vem-da-v1xx-e-o-que-nao-vem"><span class="dx-m01-icone"><i class="fas fa-file-alt" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>4. O que vem da v1.xx e o que não vem</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#arquitetura-07-5-os-riscos-e-o-que-falta-decidir"><span class="dx-m01-icone"><i class="fas fa-file-alt" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>5. Os riscos e o que falta decidir</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</div></nav>
+<section class="dx-m01-fontes" aria-labelledby="dx-m01-fontes-titulo">
+<header class="dx-m01-cabecalho"><div>
+<h2 id="dx-m01-fontes-titulo"><i class="fas fa-link" aria-hidden="true"></i><span>Tópicos</span></h2>
+</div>
+<span class="dx-m01-total">8 tópicos</span></header>
+<div class="dx-m01-grade">
+<section class="dx-m01-fonte"><h3><i class="fas fa-file-alt" aria-hidden="true"></i><span>3. Os componentes e a responsabilidade de cada um</span><small aria-label="8 tópicos">8</small></h3><ul class="dx-m01-links"><li><a href="#arquitetura-07-31-o-login-e-a-sessao-arq-038"><span>3.1 O login e a sessão (ARQ-038)</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#arquitetura-07-32-o-avaliador-por-dentro-papel-tipo-de-assento-roles-e-dados-arq-008-arq-039"><span>3.2 O avaliador por dentro: papel, tipo de assento, roles e dados (ARQ-008, ARQ-039)</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#arquitetura-07-33-a-seguranca-dos-dados-por-pessoa-mf-106-as-duas-etapas"><span>3.3 A segurança dos dados por pessoa (MF-106, as duas etapas)</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#arquitetura-07-34-em-nome-de-quem-arq-041"><span>3.4 Em nome de quem (ARQ-041)</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#arquitetura-07-35-a-liberacao-do-gestor-e-a-a14-arq-042"><span>3.5 A liberação do gestor e a A14 (ARQ-042)</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#arquitetura-07-36-a-lgpd"><span>3.6 A LGPD</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#arquitetura-07-37-os-segredos-e-os-privilegios-arq-044-"><span>3.7 Os segredos e os privilégios (ARQ-044 ✅)</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#arquitetura-07-38-os-componentes"><span>3.8 Os componentes</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li></ul></section>
+</div></section>
+</div>
+                            <div class="dx-content">
+<p>Situação: 🟢 escrito pelo arquiteto · nove decisões novas (<a href="arquitetura-02.html#arq-038"><code>ARQ-038</code></a> a <a href="arquitetura-02.html#arq-045"><code>ARQ-045</code></a> e <a href="arquitetura-02.html#arq-090"><code>ARQ-090</code></a>): cinco 🟢, três ✅ do dono (<a href="arquitetura-02.html#arq-043"><code>ARQ-043</code></a>, <a href="arquitetura-02.html#arq-044"><code>ARQ-044</code></a> e <a href="arquitetura-02.html#arq-090"><code>ARQ-090</code></a>, em 03/11/2026) e uma 🟡 com o dono (<a href="arquitetura-02.html#arq-040"><code>ARQ-040</code></a>, adiada para a v2.1) · o alcance do espaço da organização (A-11) entra como hipótese de trabalho · dois itens a devolver ao PO (A-15 e A-16, no <a href="arquitetura-01.html">documento 01</a>, seção 9).</p>
+<p>Última atualização: 03/11/2026 (o anel na cópia fora do Horus e o segredo de prova, <a href="arquitetura-02.html#arq-086"><code>ARQ-086</code></a> e <a href="arquitetura-02.html#arq-087"><code>ARQ-087</code></a>; os segredos da instância nos Secrets do GitHub, pela <a href="arquitetura-02.html#arq-044"><code>ARQ-044</code></a> ✅; os boards e as claims de exemplo pelo semeador, <a href="arquitetura-02.html#arq-011"><code>ARQ-011</code></a> ✅ e <a href="arquitetura-02.html#arq-089"><code>ARQ-089</code></a>; a segurança dos dados por pessoa fora da v2.0, de volta na v2.1, pela <a href="arquitetura-02.html#arq-090"><code>ARQ-090</code></a> ✅; a busca na web pela conexão, <a href="arquitetura-02.html#arq-027"><code>ARQ-027</code></a> ✅; o aviso do registro da abertura num documento da organização, pela <a href="arquitetura-02.html#arq-043"><code>ARQ-043</code></a> ✅; os segredos nos Secrets do Kubernetes, pela <a href="arquitetura-02.html#arq-094"><code>ARQ-094</code></a>).</p>
+<p>Este documento diz <strong>quem entra, o que cada pessoa pode fazer e o que cada uma vê</strong>: o login e a sessão, os papéis, as roles e o tipo de assento dentro do avaliador de permissões, a quarentena e o corte, a segurança dos dados por pessoa nas duas etapas da <a href="mf-106.html"><code>MF-106:Segurança dos dados por pessoa</code></a>, a liberação de dados do gestor, em nome de quem cada coisa roda, a LGPD e os segredos. O que se guarda e por quanto tempo está no <a href="arquitetura-06.html">documento 06</a>.</p>
+<ul>
+<li>O <strong>quê</strong> e o <strong>porquê</strong> são do produto (<a href="produto-backlog.html">backlog estratégico</a>, <a href="produto-v20.html">a v2.0 consolidada</a>). As decisões (<code>ARQ-nnn</code>) estão no <a href="arquitetura-02.html">registro</a>.</li>
+<li>O código da v1.xx se cita como <code>horus@318db52b:&lt;caminho&gt;</code>. As regras de segurança do repositório lidas aqui são <code>horus@318db52b:.claude/rules/seguranca/motor.md</code>, <code>superficies.md</code>, <code>planilha.md</code> e <code>guarda-de-rede.md</code>. Nada foi executado, e nenhum modelo foi chamado.</li>
+<li>⚠️ A <code>D-138</code> e a <code>D-139</code> vêm sempre com o título curto: <code>D-138</code> (&quot;A v1.xx fecha como MVP no HML…&quot;) e <code>D-139</code> (&quot;Tabela de conversão das mfs…&quot;).</li>
+</ul>
+<p>Legenda: 🟢 decidida pelo arquiteto · 🟡 proposta ao dono · 🔎 hipótese a confirmar · ♻️ vem da v1.xx · 🔧 vem e muda · 🆕 novo.</p>
+<div class="doc-section dx-assunto"><h3 id="arquitetura-07-1-o-que-o-tema-precisa-garantir">1. O que o tema precisa garantir</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de 07 · Segurança"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Garantia</th>
+<th scope="col">Objetivos</th>
+<th scope="col">Decisões de produto</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>🔑 <strong>Só entra quem foi convidado</strong>, como hoje, e a sessão se revoga</td>
+<td>O7</td>
+<td><a href="produto-backlog.html#d-071"><code>D-071</code></a> (o convite do gestor, aprovado pelo owner), <a href="produto-backlog.html#d-108"><code>D-108</code></a>, <a href="produto-backlog.html#d-118"><code>D-118</code></a> (na v2.0, a pessoa entra como hoje)</td>
+</tr>
+<tr>
+<td>🎫 <strong>O tipo de assento vem antes de tudo</strong>, e sem assento livre a pessoa não entra</td>
+<td>O7</td>
+<td><a href="produto-backlog.html#d-069"><code>D-069</code></a>, <a href="produto-backlog.html#d-070"><code>D-070</code></a>, <a href="produto-backlog.html#d-074"><code>D-074</code></a>, <a href="produto-backlog.html#d-114"><code>D-114</code></a></td>
+</tr>
+<tr>
+<td>👥 <strong>O papel e a carteira decidem sobre quem se age</strong>; quem não tem gestor espera na quarentena</td>
+<td>O7</td>
+<td><a href="produto-backlog.html#d-042"><code>D-042</code></a>, <a href="produto-backlog.html#d-046"><code>D-046</code></a>, <a href="produto-backlog.html#d-047"><code>D-047</code></a>, <a href="produto-backlog.html#d-048"><code>D-048</code></a>, <a href="produto-backlog.html#d-049"><code>D-049</code></a>, <a href="produto-backlog.html#d-056"><code>D-056</code></a>, <a href="produto-backlog.html#d-059"><code>D-059</code></a></td>
+</tr>
+<tr>
+<td>🎛️ <strong>A role decide o que se usa</strong>, botão a botão, pela soma</td>
+<td>O7</td>
+<td><a href="produto-backlog.html#d-110"><code>D-110</code></a> a <a href="produto-backlog.html#d-114"><code>D-114</code></a></td>
+</tr>
+<tr>
+<td>🛡️ <strong>Cada um vê só o que pode</strong>, nas perguntas, em todo canal</td>
+<td>O2</td>
+<td><a href="produto-backlog.html#d-025"><code>D-025</code></a>, <a href="produto-backlog.html#d-026"><code>D-026</code></a>, <a href="produto-backlog.html#d-028"><code>D-028</code></a>, <a href="produto-backlog.html#d-053"><code>D-053</code></a></td>
+</tr>
+<tr>
+<td>📤 <strong>Só o gestor libera dados</strong>, dentro do board e no artefato, e a responsabilidade é dele</td>
+<td>O2, O3, O4</td>
+<td><a href="produto-backlog.html#d-051"><code>D-051</code></a>, <a href="produto-backlog.html#d-053"><code>D-053</code></a>, <a href="produto-backlog.html#d-054"><code>D-054</code></a>, <a href="produto-backlog.html#d-059"><code>D-059</code></a></td>
+</tr>
+<tr>
+<td>✂️ <strong>No corte, ninguém usa e nada roda</strong></td>
+<td>O7</td>
+<td><a href="produto-backlog.html#d-068"><code>D-068</code></a>, <a href="produto-backlog.html#d-075"><code>D-075</code></a></td>
+</tr>
+<tr>
+<td>🧾 <strong>O rastro prova quem entregou o quê a quem</strong>, e a pessoa sabe que a abertura é registrada</td>
+<td>O2</td>
+<td><a href="produto-backlog.html#d-090"><code>D-090</code></a> e a leitura <code>D-090.2</code>, <a href="produto-backlog.html#d-091"><code>D-091</code></a>, <a href="produto-backlog.html#d-093"><code>D-093</code></a></td>
+</tr>
+<tr>
+<td>🏛️ <strong>Na v2.1, o login e a segurança da empresa valem</strong>, com a regra mais restritiva</td>
+<td>O8</td>
+<td><a href="produto-backlog.html#d-025"><code>D-025</code></a>, <a href="produto-backlog.html#d-026"><code>D-026</code></a>, <a href="produto-backlog.html#d-027"><code>D-027</code></a>, <a href="produto-backlog.html#d-052"><code>D-052</code></a>, <a href="produto-backlog.html#d-118"><code>D-118</code></a></td>
+</tr>
+<tr>
+<td>🔒 <strong>Os segredos não saem da instância e não ficam legíveis</strong></td>
+<td>O2, O8</td>
+<td><a href="produto-backlog.html#d-001"><code>D-001</code></a>, <a href="produto-backlog.html#d-010"><code>D-010</code></a>, <a href="produto-backlog.html#d-017"><code>D-017</code></a></td>
+</tr>
+</tbody>
+</table></div></div><div class="doc-section dx-assunto"><h3 id="arquitetura-07-2-as-decisoes">2. As decisões</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 2 de 07 · Segurança"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Decisão</th>
+<th scope="col">O que decide</th>
+<th scope="col">Situação</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="arquitetura-02.html#arq-008"><code>ARQ-008</code></a></td>
+<td>As permissões se calculam num ponto só do servidor, em três camadas</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td><a href="arquitetura-02.html#arq-009"><code>ARQ-009</code></a></td>
+<td>O rastro é um registro só de acréscimo, fora da telemetria</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td><a href="arquitetura-02.html#arq-032"><code>ARQ-032</code></a></td>
+<td>A segurança por pessoa entra no motor sem executor novo</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td><strong><a href="arquitetura-02.html#arq-038"><code>ARQ-038</code></a></strong></td>
+<td><strong>O login e a sessão continuam os da v1.xx, e o login corporativo da v2.1 entra como mais um esquema externo, ligado por organização, na mesma sessão</strong></td>
+<td>🟢</td>
+</tr>
+<tr>
+<td><strong><a href="arquitetura-02.html#arq-039"><code>ARQ-039</code></a></strong></td>
+<td><strong>O avaliador lê quatro coisas, nesta ordem: o estado da organização e o tipo de assento, o papel e a carteira, as roles e, para os dados, o escopo; a quarentena e o corte são estados, e não exceções</strong></td>
+<td>🟢</td>
+</tr>
+<tr>
+<td><strong><a href="arquitetura-02.html#arq-040"><code>ARQ-040</code></a></strong></td>
+<td><strong>As claims ficam numa camada só, e a segurança dos dados por pessoa tem uma chave só por organização</strong></td>
+<td>🟡 adiada para a v2.1</td>
+</tr>
+<tr>
+<td><strong><a href="arquitetura-02.html#arq-090"><code>ARQ-090</code></a></strong></td>
+<td><strong>A segurança dos dados por pessoa sai do código da v2.0 e volta na v2.1, a partir do código da v1.xx; a guarda de rede e o ponto único de execução ficam</strong></td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong><a href="arquitetura-02.html#arq-041"><code>ARQ-041</code></a></strong></td>
+<td><strong>Em nome de quem cada coisa roda é uma lista fechada, decidida pela superfície: o escopo do autor só onde há liberação, e o acesso total só no board público da quarentena</strong></td>
+<td>🟢 (com a A-11 como hipótese)</td>
+</tr>
+<tr>
+<td><strong><a href="arquitetura-02.html#arq-042"><code>ARQ-042</code></a></strong></td>
+<td><strong>A A14 da v1.xx e a liberação do gestor convivem pela regra do escopo único: cada board e cada artefato são calculados num escopo só, e liberar é mostrar esse escopo a quem recebe, com o registro no rastro</strong></td>
+<td>🟢</td>
+</tr>
+<tr>
+<td><strong><a href="arquitetura-02.html#arq-043"><code>ARQ-043</code></a></strong></td>
+<td><strong>O aviso de que a abertura é registrada fica num documento da organização, em PDF, que o owner publica e que fica sempre disponível para download no Horus</strong></td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong><a href="arquitetura-02.html#arq-044"><code>ARQ-044</code></a></strong></td>
+<td><strong>Os segredos da instância vêm dos Secrets de cada ambiente do GitHub, e o CD os grava no arquivo de ambiente da máquina; o anel de chaves é cifrado por certificado, com uma cópia no cofre da Maind; cada banco tem um login sem poder de dono</strong></td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong><a href="arquitetura-02.html#arq-045"><code>ARQ-045</code></a></strong></td>
+<td><strong>Cada dado pessoal tem dono, finalidade e prazo num inventário junto do código, e um teste reprova o dado novo sem eles</strong></td>
+<td>🟢</td>
+</tr>
+</tbody>
+</table></div></div><div class="doc-section dx-assunto"><h3 id="arquitetura-07-3-os-componentes-e-a-responsabilidade-de-cada-um">3. Os componentes e a responsabilidade de cada um</h3>
+<h4 id="arquitetura-07-31-o-login-e-a-sessao-arq-038">3.1 O login e a sessão (<code>ARQ-038</code>)</h4>
+<p><strong>Vem como está:</strong></p>
+<ul>
+<li><strong>A senha</strong>, com o hash do ASP.NET Identity, e o <strong>login com o Google</strong>, pelo <code>sub</code> da conta (<code>horus@318db52b:apps/server/Horus.Core/Identity/IdentityEntities.cs</code>).</li>
+<li><strong>O cookie de sessão</strong> <code>horus_sessao</code>, só HTTP, <code>SameSite=Lax</code>, de 14 dias que se renovam com o uso e com um teto absoluto de 30 dias desde o login, <strong>revogável</strong>: a conta guarda a geração das sessões, e trocar a senha ou &quot;sair de todos&quot; derruba todo cookie anterior na requisição seguinte (<code>horus@318db52b:apps/server/Horus.Api/Program.cs</code>, o achado C-07).</li>
+<li><strong>O cadastro fechado</strong>: só cria conta quem tem convite para o próprio e-mail (por senha ou pelo Google), a instalação vazia (o primeiro administrador) e, por configuração, o cadastro aberto (<code>horus@318db52b:apps/server/Horus.Core/Identity/PortaDeCadastro.cs</code>). O convite segue o caminho da <a href="produto-backlog.html#d-071"><code>D-071</code></a>: o gestor cria, o owner aprova, e a aprovação envia o e-mail e reserva o assento.</li>
+<li><strong>O papel relido a cada pedido</strong>: tirar o poder de alguém vale no ato (<code>horus@318db52b:apps/server/Horus.Core/Identity/OrgScope.cs</code>).</li>
+<li><strong>O administrador da instância</strong> é outra pergunta, fora da organização: ele configura a instância e não lê dado de organização nenhuma sem ser membro dela (<code>horus@318db52b:apps/server/Horus.Api/Endpoints/AdminEndpoints.cs</code>). O rastro de uma organização é só do owner dela (<a href="produto-backlog.html#d-091"><code>D-091</code></a>, leitura <code>D-091.1</code>).</li>
+</ul>
+<p><strong>O que é novo na v2.0:</strong></p>
+<ul>
+<li><strong>O WhatsApp identifica pela ligação do número</strong>: a pessoa liga o número ao perfil no app e o confirma com o código que o Horus manda pelo WhatsApp (<a href="produto-backlog.html#d-094"><code>D-094</code></a>); a mensagem que chega é da pessoa ligada àquele número, e o turno roda no escopo dela. O número é uma credencial: um número liga-se a uma pessoa só, e sair da organização ou perder o assento o desliga (leituras <code>D-094.2</code> e <code>D-094.3</code>). O detalhe da porta da Meta é do documento 08.</li>
+<li><strong>O &quot;pode?&quot; de quem trabalha sozinho</strong>: o agendamento e o agente rodam &quot;como quem criou&quot;, com as permissões e as claims lidas na hora (<a href="produto-backlog.html#d-060"><code>D-060</code></a>; a agenda de hoje já lê as claims &quot;agora&quot;, <code>horus@318db52b:apps/server/Horus.Core/Relatorios/EntregaDeRelatorio.cs</code>).</li>
+</ul>
+<p><strong>Na v2.1, o login corporativo</strong> (<a href="produto-backlog.html#d-027"><code>D-027</code></a>, <a href="produto-backlog.html#d-118"><code>D-118</code></a>): o owner liga, na organização dele, o login da empresa, e quem entra por ele cai <strong>na mesma sessão</strong> do Horus, com a mesma revogação. As roles chegam pelo mapeamento dos campos do token que o owner configura (<a href="produto-backlog.html#d-052"><code>D-052</code></a>) e se gravam no cadastro a cada entrada; quem chega sem valor mapeado cai na role padrão (leitura <code>D-112.4</code>). Como uma pessoa pode estar em várias organizações e só algumas terem o login da empresa, entrar numa organização com login corporativo pede que a sessão tenha nascido por ele. O protocolo (OpenID Connect, que o ASP.NET Core já traz, ou outro que o cliente exija) se decide no documento 08, antes do M8.</p>
+<h4 id="arquitetura-07-32-o-avaliador-por-dentro-papel-tipo-de-assento-roles-e-dados-arq-008-arq-039">3.2 O avaliador por dentro: papel, tipo de assento, roles e dados (<code>ARQ-008</code>, <code>ARQ-039</code>)</h4>
+<p>O avaliador de permissões é a porta única do &quot;pode?&quot; (<a href="arquitetura-02.html#arq-008"><code>ARQ-008</code></a>). Por dentro, ele lê <strong>quatro coisas, nesta ordem</strong>, e a primeira que nega encerra a conta:</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 3 de 07 · Segurança"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Ordem</th>
+<th scope="col">O que lê</th>
+<th scope="col">O que decide</th>
+<th scope="col">Decisões</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td><strong>O estado da organização e o tipo de assento</strong></td>
+<td>Assentos cortados: ninguém da organização usa nada e o que roda sozinho para. O tipo de assento é o teto: o membro leitor só vê boards de outras pessoas e recebe artefatos; não pergunta, não cria, não liga número</td>
+<td><a href="produto-backlog.html#d-068"><code>D-068</code></a>, <a href="produto-backlog.html#d-069"><code>D-069</code></a>, <a href="produto-backlog.html#d-075"><code>D-075</code></a>, <a href="produto-backlog.html#d-079"><code>D-079</code></a>, <a href="produto-backlog.html#d-089"><code>D-089</code></a>, <a href="produto-backlog.html#d-114"><code>D-114</code></a></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>O papel e a carteira</strong></td>
+<td>Sobre quem a pessoa age: o owner sobre todos; o gestor sobre os que gere (abrir e desabilitar os boards deles, agendar para eles, montar grupos só com eles); o membro só sobre si. Quem não tem gestor está na <strong>quarentena</strong>: só o perfil e os boards públicos</td>
+<td><a href="produto-backlog.html#d-042"><code>D-042</code></a>, <a href="produto-backlog.html#d-044"><code>D-044</code></a>, <a href="produto-backlog.html#d-046"><code>D-046</code></a>, <a href="produto-backlog.html#d-047"><code>D-047</code></a>, <a href="produto-backlog.html#d-048"><code>D-048</code></a>, <a href="produto-backlog.html#d-049"><code>D-049</code></a>, <a href="produto-backlog.html#d-056"><code>D-056</code></a>, <a href="produto-backlog.html#d-059"><code>D-059</code></a></td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>As roles</strong></td>
+<td>O que a pessoa usa: os nove botões, pela soma, com a role padrão para quem não tem outra; o owner não depende de roles</td>
+<td><a href="produto-backlog.html#d-110"><code>D-110</code></a> a <a href="produto-backlog.html#d-114"><code>D-114</code></a>; os botões do WhatsApp e dos conectores pela <a href="produto-backlog.html#d-119"><code>D-119</code></a> e pela <a href="produto-backlog.html#d-122"><code>D-122</code></a></td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>O escopo dos dados</strong></td>
+<td>O que a pessoa vê em cada fonte, pela segurança dos dados por pessoa (3.3), e em nome de quem cada superfície roda (3.4)</td>
+<td><a href="produto-backlog.html#d-025"><code>D-025</code></a>, <a href="produto-backlog.html#d-026"><code>D-026</code></a>, <a href="produto-backlog.html#d-028"><code>D-028</code></a>, <a href="produto-backlog.html#d-053"><code>D-053</code></a>, <a href="produto-backlog.html#d-054"><code>D-054</code></a></td>
+</tr>
+</tbody>
+</table></div><ul>
+<li><strong>A quarentena e o corte são estados</strong>, guardados no vínculo e na organização, que o avaliador lê na ordem 1 e 2. Nenhuma rota trata &quot;está na quarentena?&quot; por conta própria.</li>
+<li><strong>O papel aceita uma combinação só</strong>: owner e gestor ao mesmo tempo (<a href="produto-backlog.html#d-048"><code>D-048</code></a>), num assento só, o de owner (<a href="produto-backlog.html#d-074"><code>D-074</code></a>). A organização aceita mais de um owner, como a v1.xx já aceita: ela recusa tirar o último (<code>horus@318db52b:apps/server/Horus.Core/Identity/OrgStore.cs</code>, <code>UltimoOwner</code>).</li>
+<li><strong>As permissões efetivas</strong> (os botões ligados, o nível máximo, os modos, o tipo de assento e o estado) se calculam por pedido, para a tela e para o motor, como o papel de hoje; nada se guarda entre pedidos.</li>
+<li><strong>A falha fecha</strong>: ação sem botão registrado, terceira camada sem registro ou leitura que falha respondem &quot;não pode&quot;, nunca &quot;pode&quot; (documento 04, seção 5).</li>
+<li><strong>A matriz de hoje vira a primeira tabela</strong> do avaliador: as 23 ações por papel (<code>horus@318db52b:apps/server/Horus.Core/Identity/PermissoesDaOrg.cs</code>) passam a ser a leitura 2, e o que nelas é botão da conversa passa às roles.</li>
+</ul>
+<h4 id="arquitetura-07-33-a-seguranca-dos-dados-por-pessoa-mf-106-as-duas-etapas">3.3 A segurança dos dados por pessoa (<code>MF-106</code>, as duas etapas)</h4>
+<p>⏭️ <strong>Vai para a v2.1</strong> (<a href="arquitetura-02.html#arq-090"><code>ARQ-090</code></a> ✅, decisão do dono em 03/11/2026): a segurança dos dados por pessoa sai do código da v2.0, e o que vem abaixo descreve como ela volta na v2.1. Na v2.0, toda consulta roda com os dados da organização inteira, e ficam só a guarda de rede, o ponto único de execução e o cofre das credenciais.</p>
+<p><strong>Etapa 1, na v2.0: a Semântica de Segurança da v1.xx, inteira</strong> (<a href="arquitetura-02.html#arq-032"><code>ARQ-032</code></a>). O owner escreve, por base, o documento de segurança; o compilador o transforma em regras, que o owner aprova; para quem tem acesso restrito, a consulta roda protegida, com as claims só como parâmetro, pelo ponto único de execução; toda falha fecha; as travas que leem o IL provam que nada chega ao banco do cliente por fora; a conferência diária roda sem modelo; o &quot;ver como&quot; e a caixa de revisão ficam como estão (<code>horus@318db52b:.claude/rules/seguranca/motor.md</code>, <code>superficies.md</code>). É a quarta leitura do avaliador.</p>
+<p><strong>As duas camadas de claims</strong> (pendência do documento 01). Pela leitura do código, a v1.xx tem duas chaves que, juntas, ligam a segurança por pessoa numa organização (<code>horus@318db52b:apps/server/Horus.Core/Seguranca/Motor/AvaliadorDeEscopo.cs</code>, a ordem &quot;Semântica na organização → acesso por claims → versão vigente → quem executa&quot;):</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 4 de 07 · Segurança"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Camada</th>
+<th scope="col">O que é</th>
+<th scope="col">Chave</th>
+<th scope="col">Desde</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>O acesso por claims</strong></td>
+<td>O esqueleto das claims da organização e os valores de cada pessoa; também a régua de &quot;quem abre&quot; o painel corporativo, por uma condição sobre claims</td>
+<td><code>Orgs.AcessoPorClaimsAtivo</code>, do owner</td>
+<td>05/10/2026 (<code>horus@318db52b:apps/server/Horus.Core/Migrations/20261005163007_AcessoADadosPorClaims.cs</code>)</td>
+</tr>
+<tr>
+<td><strong>A Semântica de Segurança</strong></td>
+<td>As regras por base, compiladas do documento de segurança, e o motor</td>
+<td>O interruptor geral da instância (o administrador: &quot;permitida&quot;) <strong>e</strong> a bandeira da organização (o owner)</td>
+<td>10/10/2026</td>
+</tr>
+</tbody>
+</table></div><p>A decisão <a href="arquitetura-02.html#arq-040"><code>ARQ-040</code></a> 🟡 propõe ao dono <strong>uma camada de claims e uma chave por organização</strong>: os valores de claim continuam num lugar só, lidos por um leitor só (o de hoje, com a simulação), e servem às regras e aos grupos dinâmicos (<a href="produto-backlog.html#d-019"><code>D-019</code></a>); a régua de &quot;quem abre&quot; por condição sobre claims sai, porque a v2.0 publica pelas quatro visibilidades (<a href="produto-backlog.html#d-042"><code>D-042</code></a>), e o &quot;Quem abre&quot; dos boards de exemplo vira, no semeador, um grupo dinâmico da organização (<a href="arquitetura-02.html#arq-089"><code>ARQ-089</code></a>, A-14); o interruptor geral da instância continua com o administrador.</p>
+<p><strong>Etapa 2, na v2.1: a segurança corporativa</strong> (M8; <a href="produto-backlog.html#d-025"><code>D-025</code></a>, <a href="produto-backlog.html#d-026"><code>D-026</code></a>, <a href="produto-backlog.html#d-027"><code>D-027</code></a>, <a href="produto-backlog.html#d-052"><code>D-052</code></a>):</p>
+<ul>
+<li><strong>As claims e as roles do token</strong>: o login corporativo (3.1) traz as claims e as roles, que o leitor de claims passa a espelhar ao lado das fixas, dadas pelo owner (a v1.xx já prevê: &quot;o espelhamento do JWT entra com o SSO&quot;, <code>horus@318db52b:apps/server/Horus.Core/Seguranca/ClaimsEfetivas.cs</code>).</li>
+<li><strong>Os controles das tecnologias de dados</strong>: a consulta passa a rodar, onde a tecnologia permite, com a identidade da pessoa na fonte, e a regra do Horus vai por cima. A &quot;mais restritiva&quot; (<a href="produto-backlog.html#d-026"><code>D-026</code></a>) sai sozinha: a fonte só devolve o que a empresa deixa, e o Horus ainda filtra.</li>
+<li>⚠️ <strong>O que a etapa 2 complica</strong>, para o M8: a execução deixa de se dividir entre pessoas com as mesmas claims (a chave do histórico ganha a identidade); a liberação do gestor (<a href="produto-backlog.html#d-054"><code>D-054</code></a>) passa a pedir que a consulta rode com a identidade dele na fonte, o que exige delegação pelo login da empresa; e explicar a quem pergunta por que um dado não aparece passa a ter duas origens (a letra (d) da <code>P-008</code>, documento 14).</li>
+</ul>
+<h4 id="arquitetura-07-34-em-nome-de-quem-arq-041">3.4 Em nome de quem (<code>ARQ-041</code>)</h4>
+<p>⏭️ <strong>Na v2.0, sem a segurança por pessoa</strong> (<a href="arquitetura-02.html#arq-090"><code>ARQ-090</code></a> ✅), o em nome de quem decide as permissões, e o escopo dos dados é sempre o da organização inteira; o escopo por pessoa, descrito abaixo, volta na v2.1.</p>
+<p><strong>A hipótese de trabalho da A-11</strong> (o alcance do espaço da organização, letra (o) da <code>P-008</code>), explícita, é a recomendação que o documento 01 já registra: <strong>o board do espaço da organização roda no escopo de quem o abre</strong>, porque o owner não é dono de dados (<a href="produto-backlog.html#d-048"><code>D-048</code></a>) e a liberação é do gestor (<a href="produto-backlog.html#d-054"><code>D-054</code></a>); <strong>os agendamentos e os agentes que vão para o espaço da organização ficam pausados</strong> até a transferência e depois rodam em nome de quem os recebeu (<a href="produto-backlog.html#d-060"><code>D-060</code></a>, <a href="produto-backlog.html#d-073"><code>D-073</code></a>). A <a href="arquitetura-02.html#arq-041"><code>ARQ-041</code></a> a completa com duas regras que ela não cobria, e que foram ao PO (A-15): o board de quem não libera, aberto por quem o supervisiona, e o envio do owner que não é gestor.</p>
+<p>A regra numa frase: <strong>um board mostra o escopo do autor só quando há liberação</strong> (o autor é gestor e quem abre está na visibilidade publicada); <strong>em qualquer outro caso, mostra o escopo de quem abre</strong>; <strong>o acesso total só existe no board público da quarentena</strong> (consequência da <a href="produto-backlog.html#d-048"><code>D-048</code></a>: &quot;segue a regra de hoje do corporativo&quot;).</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 5 de 07 · Segurança"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Superfície</th>
+<th scope="col">Em nome de quem</th>
+<th scope="col">De onde vem</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>A conversa, o popup, o WhatsApp, o &quot;Filtrar&quot;; o SQL, o CSV e &quot;continuar no chat&quot; a partir de um cartão</td>
+<td><strong>A pessoa</strong> que pergunta</td>
+<td><a href="produto-backlog.html#d-053"><code>D-053</code></a>, a fronteira do board da <a href="produto-backlog.html#d-058"><code>D-058</code></a></td>
+</tr>
+<tr>
+<td>Board de um <strong>gestor</strong> (ou do owner que acumula o papel), aberto pelo autor ou por quem está na visibilidade publicada</td>
+<td><strong>O autor</strong>: é a liberação</td>
+<td><a href="produto-backlog.html#d-051"><code>D-051</code></a>, <a href="produto-backlog.html#d-054"><code>D-054</code></a></td>
+</tr>
+<tr>
+<td>Board de um gestor aberto pelo owner sem estar na visibilidade (o acesso de abrir da <a href="produto-backlog.html#d-042"><code>D-042</code></a>)</td>
+<td>Quem abre 🔎</td>
+<td>A-15</td>
+</tr>
+<tr>
+<td>Board de um <strong>membro full</strong>, aberto por ele, pelo gestor dele ou pelo owner</td>
+<td>Quem abre 🔎</td>
+<td>A-15; só o gestor libera (<a href="produto-backlog.html#d-053"><code>D-053</code></a>)</td>
+</tr>
+<tr>
+<td>Board do <strong>espaço da organização</strong> (criado pelo owner ou herdado de quem saiu)</td>
+<td>Quem abre 🔎</td>
+<td>A-11</td>
+</tr>
+<tr>
+<td><strong>Board público da quarentena</strong></td>
+<td><strong>Acesso total</strong></td>
+<td>Consequência da <a href="produto-backlog.html#d-048"><code>D-048</code></a></td>
+</tr>
+<tr>
+<td>Agendamento ou agente de um <strong>gestor</strong></td>
+<td><strong>O criador</strong>, lido na hora; o artefato que vai a outros é a liberação</td>
+<td><a href="produto-backlog.html#d-059"><code>D-059</code></a>, <a href="produto-backlog.html#d-060"><code>D-060</code></a></td>
+</tr>
+<tr>
+<td>Agendamento ou agente de um <strong>membro full</strong></td>
+<td><strong>O criador</strong>, só para si</td>
+<td><a href="produto-backlog.html#d-059"><code>D-059</code></a></td>
+</tr>
+<tr>
+<td>Agendamento ou agente do <strong>owner que não é gestor</strong></td>
+<td><strong>Cada destinatário</strong>, no próprio escopo 🔎</td>
+<td>A-15; o owner entrega (<a href="produto-backlog.html#d-059"><code>D-059</code></a>), mas não é dono de dados (<a href="produto-backlog.html#d-048"><code>D-048</code></a>)</td>
+</tr>
+<tr>
+<td>Agendamento ou agente <strong>herdado</strong>, no espaço da organização</td>
+<td>Pausado; depois da transferência, quem o recebeu</td>
+<td><a href="produto-backlog.html#d-060"><code>D-060</code></a>, <a href="produto-backlog.html#d-073"><code>D-073</code></a></td>
+</tr>
+<tr>
+<td>O pré-aquecimento das consultas protegidas</td>
+<td>O sistema, com as claims do autor, sem executar</td>
+<td>♻️ <code>horus@318db52b:apps/server/Horus.Core/Seguranca/Motor/EmNomeDe.cs</code>, <code>Sistema</code></td>
+</tr>
+<tr>
+<td>A conferência diária</td>
+<td>Fora da lista: liga direto no ponto único, sem o avaliador</td>
+<td>♻️ <code>horus@318db52b:.claude/rules/seguranca/motor.md</code></td>
+</tr>
+</tbody>
+</table></div><p><strong>Por dentro</strong>, a lista de hoje (<code>EmNomeDe</code>: a pessoa, o painel corporativo com acesso total, o sistema) vira cinco formas: <strong>a pessoa</strong>, <strong>o autor que libera</strong> (com o board ou o artefato de onde vem a liberação), <strong>o criador do trabalho</strong>, <strong>o acesso total do board público</strong> e <strong>o sistema</strong>. O &quot;painel corporativo&quot; sai. Um pedido ao motor sem forma declarada não compila, e a forma que o avaliador não conhece fica bloqueada, como hoje. O escopo de cada forma se lê na hora, nunca se guarda.</p>
+<p><strong>A liberação termina quando o gestor sai.</strong> A saída apaga os valores de claim dele, na mesma transação (<code>horus@318db52b:apps/server/Horus.Core/Identity/OrgStore.cs</code>, <code>RemoveMemberAsync</code>), e o escopo dele deixa de existir. O board publicado que vai para o espaço da organização continua publicado (<a href="produto-backlog.html#d-045"><code>D-045</code></a>) e passa a mostrar o escopo de quem abre.</p>
+<p><strong>O envio no escopo de cada destinatário</strong> desenha um artefato por recorte de acesso, e não por pessoa: dois destinatários com as mesmas claims recebem o mesmo, como a execução de hoje já se divide entre quem tem os mesmos valores (<code>horus@318db52b:.claude/rules/seguranca/motor.md</code>, M8a). O contrato do artefato (<a href="arquitetura-02.html#arq-022"><code>ARQ-022</code></a>) passa a aceitar vários, um por recorte, na mesma rodada.</p>
+<h4 id="arquitetura-07-35-a-liberacao-do-gestor-e-a-a14-arq-042">3.5 A liberação do gestor e a A14 (<code>ARQ-042</code>)</h4>
+<p>⏭️ <strong>Vai para a v2.1</strong> (<a href="arquitetura-02.html#arq-090"><code>ARQ-090</code></a> ✅, decisão do dono em 03/11/2026): a segurança dos dados por pessoa sai do código da v2.0, e o que vem abaixo descreve como ela volta na v2.1.</p>
+<p><strong>A colisão.</strong> A regra A14 da v1.xx diz que o conteúdo calculado com restrição não vai a painel corporativo nem a uma lista (<code>horus@318db52b:.claude/rules/seguranca/superficies.md</code>, &quot;O cartão trazido e a A14&quot;): o fixar e o repuxar num corporativo respondem 409, a promoção de um painel com cartão restrito é recusada, e a agenda de relatório do gestor restrito <strong>pausa</strong> (&quot;o conteúdo calculado com restrição não vai para uma lista de e-mail&quot;, <code>horus@318db52b:apps/server/Horus.Core/Relatorios/EntregaDeRelatorio.cs</code>). A <a href="produto-backlog.html#d-054"><code>D-054</code></a> e a <a href="produto-backlog.html#d-059"><code>D-059</code></a> mandam o contrário para o gestor: o board publicado e o artefato enviado levam o que ele vê, por cima até das travas da empresa, e a responsabilidade é dele.</p>
+<p><strong>Por que a A14 existia.</strong> O painel corporativo da v1.xx roda com acesso total para quem o abre (<code>EmNomeDe.PainelCorporativo</code>). Um cartão calculado no escopo restrito de alguém, dentro dele, misturaria dois escopos no mesmo painel: o número restrito ao lado dos números da rede, e a prosa restrita sobrevivendo ao recálculo com acesso total. A lista de e-mail tinha o mesmo problema: um escopo restrito entregue a quem o gestor não escolheu como responsável.</p>
+<p><strong>Como as duas convivem: a regra do escopo único.</strong></p>
+<ol>
+<li><strong>Cada board e cada artefato são calculados num escopo só</strong>, o que a 3.4 dá para aquela superfície e aquela pessoa. Todo cartão, todo texto, todo PDF e todo recálculo do board saem desse escopo.</li>
+<li><strong>A conferência de procedência da v1.xx se generaliza.</strong> Hoje ela compara o bloco gravado com o escopo de quem olha no painel pessoal, e a marca &quot;calculado com restrição&quot; barra o corporativo. Na v2.0, ela compara o bloco gravado com o escopo do board para quem olha: o bloco de outro escopo sai &quot;em revisão&quot; e é recalculado no escopo certo; o que não se recalcula sai &quot;não disponível&quot;. Nunca se mostra o número de um escopo dentro de um board de outro.</li>
+<li><strong>A A14 continua inteira no único lugar com acesso total</strong>: o board público da quarentena. Marcar um board como público, com cartão de procedência restrita ou com a marca, é recusado até o cartão ser recalculado ou tirado, como a promoção de hoje.</li>
+<li><strong>Liberar é mostrar o escopo do autor a quem recebe</strong>, e só existe onde a 3.4 diz &quot;o autor&quot;: o gestor que publica (<a href="produto-backlog.html#d-051"><code>D-051</code></a>, <a href="produto-backlog.html#d-054"><code>D-054</code></a>) e o gestor que agenda para outros (<a href="produto-backlog.html#d-059"><code>D-059</code></a>). O membro full não publica (<a href="produto-backlog.html#d-042"><code>D-042</code></a>) e agenda só para si (<a href="produto-backlog.html#d-059"><code>D-059</code></a>): o conteúdo restrito dele nunca vai a outra pessoa, que é o que restava da A14 para ele.</li>
+<li><strong>A agenda do gestor não pausa mais por restrição.</strong> A pausa da A14 vira a regra de quem agenda para quem, no avaliador (<a href="produto-backlog.html#d-059"><code>D-059</code></a>).</li>
+<li><strong>Toda liberação grava no rastro, na mesma transação</strong>: a publicação (quem, com que visibilidade, quando, <a href="produto-backlog.html#d-058"><code>D-058</code></a>) e cada entrega de artefato por destino (<a href="produto-backlog.html#d-090"><code>D-090</code></a>), com a marca de que houve liberação e o <strong>recorte de acesso</strong> do autor naquele cálculo (as claims que a consulta protegida cita, com os valores, como a faixa &quot;Resposta limitada aos dados que você pode ver: regiao Sul.&quot; de hoje, §16 A104). É o que deixa o owner responder &quot;quem recebeu o board de vendas com os dados do Sul?&quot; (a prova de valor da <a href="produto-backlog.html#d-093"><code>D-093</code></a>). O recorte fica no banco da aplicação, como hoje; nunca vai a log, trace nem métrica.</li>
+<li><strong>A fronteira do board</strong> (<a href="produto-backlog.html#d-058"><code>D-058</code></a>): ver o SQL, baixar o CSV de um cartão e continuar no chat rodam no escopo de quem pede, pela operação &quot;reexecutar&quot; do motor, e o SQL segue o corte de hoje para quem tem restrição.</li>
+<li><strong>A cópia da resposta reportada</strong> (<a href="arquitetura-02.html#arq-028"><code>ARQ-028</code></a>) só o owner lê (<a href="produto-backlog.html#d-014"><code>D-014</code></a>), com o recorte de acesso de quem reportou.</li>
+</ol>
+<h4 id="arquitetura-07-36-a-lgpd">3.6 A LGPD</h4>
+<p>A qualificação jurídica (quem é controlador, quem é operador, o contrato com cada cliente) é do jurídico da Maind. A arquitetura garante o que se segue.</p>
+<p><strong>O que sai da instância, e para onde:</strong></p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 6 de 07 · Segurança"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Destino</th>
+<th scope="col">O que vai</th>
+<th scope="col">Quando</th>
+<th scope="col">Quem autoriza</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Provedores de IA (OpenRouter, Amazon Bedrock)</td>
+<td>A pergunta, o documento semântico, o SQL, o histórico até 60.000 caracteres e, na leitura depois da consulta, até 12.000 caracteres do resultado do banco do cliente; no agente, a prosa e os números dos blocos</td>
+<td>Toda resposta com modelo</td>
+<td>A organização, pela conexão de IA dela, no modo &quot;com serviços externos autorizados&quot; (<a href="produto-backlog.html#d-010"><code>D-010</code></a>)</td>
+</tr>
+<tr>
+<td>A busca na web</td>
+<td>Só a pergunta (<a href="arquitetura-02.html#arq-027"><code>ARQ-027</code></a> ✅)</td>
+<td>Com a pesquisa ligada</td>
+<td>A role (<a href="produto-backlog.html#d-110"><code>D-110</code></a>)</td>
+</tr>
+<tr>
+<td>A Meta (WhatsApp)</td>
+<td>As mensagens, o texto da resposta e as imagens dos blocos</td>
+<td>No canal e no conector de WhatsApp</td>
+<td>O owner, que liga o canal (<a href="produto-backlog.html#d-097"><code>D-097</code></a>, <a href="produto-backlog.html#d-099"><code>D-099</code></a>)</td>
+</tr>
+<tr>
+<td>O servidor de e-mail</td>
+<td>Os convites, os avisos e os artefatos entregues por e-mail</td>
+<td>Nos envios</td>
+<td>A instância (o envio) e o owner (o conector, <a href="produto-backlog.html#d-034"><code>D-034</code></a>)</td>
+</tr>
+<tr>
+<td>O Google</td>
+<td>O login</td>
+<td>Quando a pessoa entra pelo Google</td>
+<td>A pessoa</td>
+</tr>
+</tbody>
+</table></div><p>⚠️ O resultado do banco do cliente que vai ao modelo na leitura depois da consulta pode conter dado pessoal da base do cliente (um nome de funcionário, um CPF numa tabela). É dado que sai do país quando o provedor está fora dele. O modo &quot;tudo dentro&quot; da v2.1 (<a href="produto-backlog.html#d-010"><code>D-010</code></a>) é a resposta para quem não aceita isso; até lá, o contrato do cliente precisa dizer que esse trecho sai.</p>
+<p><strong>O que a arquitetura garante:</strong></p>
+<ul>
+<li><strong>Minimização</strong>: o Horus guarda os blocos, e não as linhas do cliente (<a href="arquitetura-02.html#arq-033"><code>ARQ-033</code></a>); a telemetria nunca carrega conteúdo de conversa nem pessoa como rótulo; o rastro não guarda conteúdo (<a href="produto-backlog.html#d-090"><code>D-090</code></a>); os valores de claim só viajam como parâmetro e nunca vão a SQL, log, trace nem métrica.</li>
+<li><strong>Finalidade e prazo</strong>: cada dado pessoal tem dono, finalidade e prazo no <strong>inventário dos dados</strong> (<a href="arquitetura-02.html#arq-045"><code>ARQ-045</code></a>), e a faxina aplica o prazo (<a href="arquitetura-02.html#arq-035"><code>ARQ-035</code></a>, documento 06).</li>
+<li><strong>Segurança</strong>: o isolamento entre organizações (<a href="arquitetura-02.html#arq-010"><code>ARQ-010</code></a>, <a href="arquitetura-02.html#arq-034"><code>ARQ-034</code></a>), a cifra dos segredos (3.7), a sessão revogável e o rastro.</li>
+<li><strong>Transparência</strong>: o aviso de que a abertura é registrada (<a href="arquitetura-02.html#arq-043"><code>ARQ-043</code></a> ✅); o aviso de privacidade da instância, que não existe hoje, foi ao PO (A-16).</li>
+<li><strong>Direitos do titular</strong>: a pessoa vê e corrige o próprio perfil; a saída da organização apaga o vínculo, as claims, o número e os contatos (documento 06). O pedido de exclusão da própria conta não existe na v1.xx e foi ao PO (A-16), junto com a leitura das conversas dos membros pelo owner, que a v1.xx permite (<code>horus@318db52b:apps/server/Horus.Core/Identity/PermissoesDaOrg.cs</code>, <code>VerConversasDaOrg</code>, decisão do dono de 22/09/2026).</li>
+<li><strong>Incidente</strong>: o que se faz e quem avisa (a organização, a ANPD) é do documento 10.</li>
+</ul>
+<p><strong>O aviso de que a abertura é registrada</strong> (leitura <code>D-090.2</code>, <a href="arquitetura-02.html#arq-043"><code>ARQ-043</code></a> ✅): a decisão do dono, em 03/11/2026, é um documento da organização, em PDF, que o owner da organização publica e que fica sempre disponível para download no Horus; a frase do registro entra nele, e o board e o relatório não ganham linha nova. Onde o documento fica, o texto padrão e a ciência no primeiro acesso foram ao PO (A-30).</p>
+<h4 id="arquitetura-07-37-os-segredos-e-os-privilegios-arq-044-">3.7 Os segredos e os privilégios (<code>ARQ-044</code> ✅)</h4>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 7 de 07 · Segurança"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Segredo</th>
+<th scope="col">Onde vive hoje</th>
+<th scope="col">Na v2.0</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>O anel de chaves do Data Protection</strong>, que abre as credenciais das fontes, as chaves de IA, as credenciais do Bedrock, os tokens de convite e o selo das versões de segurança, cada um com o seu propósito (<code>horus@318db52b:apps/server/Horus.Core/Data/Connections/CofreDeCredencial.cs</code>, <code>Llm/CofreDeChaveDeProvider.cs</code>, <code>Identity/CofreDeConvite.cs</code>, <code>Llm/Bedrock/CofreDeCredencialDoBedrock.cs</code>, <code>Seguranca/Semantica/SeloDaVersao.cs</code>)</td>
+<td>No diretório de dados, <strong>sem cifra própria</strong> (<code>horus@318db52b:apps/server/Horus.Api/Program.cs</code>, <code>PersistKeysToFileSystem</code> sem <code>ProtectKeysWith…</code>)</td>
+<td>Cifrado por um certificado guardado fora do diretório de dados, que o CD instala a partir de um Secret do ambiente, com uma cópia no cofre da Maind, porque o GitHub não deixa ler um Secret de volta; o anel e o certificado se guardam separados, como pede o contrato da cópia (<a href="arquitetura-02.html#arq-087"><code>ARQ-087</code></a>), e a cópia do diretório sozinha não abre nada; a cada subida, o anel precisa abrir o segredo de prova do banco (<a href="arquitetura-02.html#arq-087"><code>ARQ-087</code></a>). Ganha um propósito novo: a credencial da conta da Meta de cada organização</td>
+</tr>
+<tr>
+<td><strong>A configuração com segredos</strong>: a cadeia do Postgres, o SMTP, o segredo do Google, as cadeias das bases de demonstração</td>
+<td><code>/etc/horus/api.env</code>, só do root (600), lido pelo systemd; a API roda como o usuário <code>horus</code> (<code>horus@318db52b:infra/vps/provisionar-base.sh</code>)</td>
+<td>Os Secrets do Kubernetes da instância, gravados pelo CD a partir dos Secrets do ambiente de cada instância no GitHub, a cada publicação (<a href="arquitetura-02.html#arq-044"><code>ARQ-044</code></a>, <a href="arquitetura-02.html#arq-094"><code>ARQ-094</code></a>), mais a senha do certificado; no contratante, a TI dele os preenche; os segredos do login corporativo de cada organização (v2.1) ficam no cofre, por organização, e não no arquivo</td>
+</tr>
+<tr>
+<td><strong>O login do banco da aplicação</strong></td>
+<td>O dono do banco do container, que é superusuário</td>
+<td>Um login sem privilégio de dono em cada banco, só com leitura e escrita nas tabelas: o do mestre e o de cada organização, este só no banco dela (<a href="arquitetura-02.html#arq-010"><code>ARQ-010</code></a>); o das migrações, só no passo da publicação (<a href="arquitetura-02.html#arq-036"><code>ARQ-036</code></a>); e o de provisionamento, que só cria banco e login (<a href="arquitetura-02.html#arq-088"><code>ARQ-088</code></a>)</td>
+</tr>
+<tr>
+<td><strong>As credenciais das fontes</strong></td>
+<td>Cifradas no cofre; o Horus confere se são só de leitura (<a href="produto-backlog.html#d-001"><code>D-001</code></a>)</td>
+<td>Iguais</td>
+</tr>
+<tr>
+<td><strong>Os segredos da publicação</strong> (a chave SSH da VPS)</td>
+<td>Nos ambientes do GitHub (<code>horus@318db52b:infra/github/</code>)</td>
+<td>Iguais, ao lado dos segredos da instância, que passam a morar ali também; só o workflow de publicação, nos executores hospedados do GitHub, os alcança, e nunca o executor do CI na VPS (<a href="arquitetura-02.html#arq-082"><code>ARQ-082</code></a>)</td>
+</tr>
+</tbody>
+</table></div><ul>
+<li><strong>Nenhum segredo no repositório</strong>, como hoje (as credenciais vivem fora dele e fora do systemd, no arquivo de ambiente: <code>horus@318db52b:infra/vps/provisionar-base.sh</code>), e nenhum segredo em claro no banco. A v2.0 acrescenta ao CI uma varredura que reprova segredo escrito no repositório (documento 12).</li>
+<li><strong>A rotação</strong>: o Data Protection troca a chave de trabalho a cada 90 dias e guarda as antigas para abrir o que já foi cifrado; o certificado, a senha do banco e o segredo do Google trocam pelo Secret do ambiente e por uma publicação nova (documento 10). Perder o anel ou o certificado é perder todas as credenciais das organizações: por isso o anel entra na cópia da instância (<a href="arquitetura-02.html#arq-087"><code>ARQ-087</code></a>), e o certificado tem uma cópia no cofre da Maind.</li>
+<li><strong>A conta do GitHub guarda os segredos de todas as instâncias da Maind</strong>: segundo fator e poucas pessoas com acesso de administrador ao repositório (<a href="arquitetura-02.html#arq-066"><code>ARQ-066</code></a>) 🔎; a proteção dos ambientes (a restrição à <code>main</code> e a aprovação de outra pessoa) é a V-16.</li>
+<li><strong>A guarda de rede continua</strong> (<code>horus@318db52b:.claude/rules/seguranca/guarda-de-rede.md</code>): a fonte da organização não alcança a rede interna, e a saída da guarda nunca vai ao <code>api.env</code> do HML nem da PRD.</li>
+</ul>
+<h4 id="arquitetura-07-38-os-componentes">3.8 Os componentes</h4>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 8 de 07 · Segurança"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Componente</th>
+<th scope="col">Módulo</th>
+<th scope="col">Responsabilidade</th>
+<th scope="col">Situação</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Sessão e login</td>
+<td>Plataforma</td>
+<td>Senha, Google, cookie revogável, cadastro fechado; na v2.1, o login corporativo por organização</td>
+<td>♻️ <code>horus@318db52b:apps/server/Horus.Api/Sessao.cs</code>, <code>Horus.Core/Identity/</code></td>
+</tr>
+<tr>
+<td>Ligação do número de WhatsApp</td>
+<td>Canais</td>
+<td>Liga o número ao perfil com código e o desliga na saída</td>
+<td>🆕 (documento 08)</td>
+</tr>
+<tr>
+<td>Avaliador de permissões</td>
+<td>Plataforma</td>
+<td>As quatro leituras, as permissões efetivas, a falha fechada</td>
+<td>🔧 <code>horus@318db52b:apps/server/Horus.Core/Identity/PermissoesDaOrg.cs</code></td>
+</tr>
+<tr>
+<td>Leitor de claims</td>
+<td>Dados e IA</td>
+<td>O único que lê os valores de claim, com a simulação do owner; na v2.1, espelha o token</td>
+<td>♻️ <code>horus@318db52b:apps/server/Horus.Core/Seguranca/LeitorDeClaimsComSimulacao.cs</code></td>
+</tr>
+<tr>
+<td>Avaliador de escopo</td>
+<td>Dados e IA</td>
+<td>O escopo de cada forma de &quot;em nome de quem&quot; em cada fonte</td>
+<td>🔧 <code>horus@318db52b:apps/server/Horus.Core/Seguranca/Motor/AvaliadorDeEscopo.cs</code>, <code>EmNomeDe.cs</code></td>
+</tr>
+<tr>
+<td>Motor da Semântica de Segurança</td>
+<td>Dados e IA</td>
+<td>O preparo protegido, o ponto único de execução, as travas, a conferência diária</td>
+<td>♻️ <code>horus@318db52b:apps/server/Horus.Core/Seguranca/Motor/</code></td>
+</tr>
+<tr>
+<td>Corte do que sai</td>
+<td>Acompanhar e avisar</td>
+<td>A conferência de procedência de cada cartão contra o escopo do board para quem olha</td>
+<td>🔧 <code>horus@318db52b:apps/server/Horus.Core/Seguranca/Superficies/CorteDoQueSai.cs</code></td>
+</tr>
+<tr>
+<td>Registro do rastro</td>
+<td>Plataforma</td>
+<td>A publicação, a liberação com o recorte, cada entrega e cada abertura</td>
+<td>🆕 (<a href="arquitetura-02.html#arq-009"><code>ARQ-009</code></a>)</td>
+</tr>
+<tr>
+<td>Cofre</td>
+<td>Fundação</td>
+<td>Cifra e abre os segredos de cada organização, um propósito por segredo</td>
+<td>♻️ ASP.NET Core Data Protection</td>
+</tr>
+<tr>
+<td>Inventário dos dados</td>
+<td>Fundação</td>
+<td>Dono, categoria, finalidade e prazo de cada dado (<a href="arquitetura-02.html#arq-045"><code>ARQ-045</code></a>)</td>
+<td>🆕</td>
+</tr>
+</tbody>
+</table></div></div><div class="doc-section dx-assunto"><h3 id="arquitetura-07-4-o-que-vem-da-v1xx-e-o-que-nao-vem">4. O que vem da v1.xx e o que não vem</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 9 de 07 · Segurança"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Peça da v1.xx</th>
+<th scope="col">Destino</th>
+<th scope="col">Por quê</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>O login por senha e pelo Google, o cookie revogável e o cadastro fechado</td>
+<td>♻️ Ficam</td>
+<td><a href="arquitetura-02.html#arq-038"><code>ARQ-038</code></a></td>
+</tr>
+<tr>
+<td>A matriz de 23 ações e três papéis fixos</td>
+<td>🔧 Vira a leitura do papel no avaliador; os botões da conversa vão às roles</td>
+<td><a href="arquitetura-02.html#arq-039"><code>ARQ-039</code></a></td>
+</tr>
+<tr>
+<td>A Semântica de Segurança inteira, com as travas, a conferência diária, a simulação e a caixa de revisão</td>
+<td>♻️ Fica, como a quarta leitura do avaliador</td>
+<td><a href="arquitetura-02.html#arq-032"><code>ARQ-032</code></a></td>
+</tr>
+<tr>
+<td>A chave &quot;acesso por claims&quot; e a bandeira da Semântica, separadas</td>
+<td>🔧 Viram uma chave por organização, se o dono aprovar</td>
+<td><a href="arquitetura-02.html#arq-040"><code>ARQ-040</code></a> 🟡</td>
+</tr>
+<tr>
+<td>A régua de &quot;quem abre&quot; o painel corporativo por condição sobre claims</td>
+<td>❌ Sai: a publicação usa as quatro visibilidades, e a condição dos boards de exemplo vira um grupo dinâmico no semeador</td>
+<td><a href="arquitetura-02.html#arq-040"><code>ARQ-040</code></a>, <a href="arquitetura-02.html#arq-089"><code>ARQ-089</code></a>, A-14</td>
+</tr>
+<tr>
+<td>O &quot;em nome de quem&quot; com o painel corporativo de acesso total</td>
+<td>🔧 Vira a lista de cinco formas; o acesso total fica só no board público da quarentena</td>
+<td><a href="arquitetura-02.html#arq-041"><code>ARQ-041</code></a></td>
+</tr>
+<tr>
+<td>A A14: o 409 no corporativo, a recusa da promoção e a pausa da agenda do gestor restrito</td>
+<td>🔧 A conferência de procedência vale em todo board; a recusa fica no board público; a pausa da agenda sai, pela <a href="produto-backlog.html#d-059"><code>D-059</code></a></td>
+<td><a href="arquitetura-02.html#arq-042"><code>ARQ-042</code></a></td>
+</tr>
+<tr>
+<td>O recorte de acesso gravado com o selo (§16 A104)</td>
+<td>♻️ Fica, e vai também ao rastro da liberação</td>
+<td><a href="arquitetura-02.html#arq-042"><code>ARQ-042</code></a></td>
+</tr>
+<tr>
+<td>A leitura das conversas de todos os membros pelo owner</td>
+<td>♻️ Fica como está até o PO decidir</td>
+<td>A-16</td>
+</tr>
+<tr>
+<td>O anel de chaves sem cifra própria e o login do banco como superusuário</td>
+<td>❌ Saem</td>
+<td><a href="arquitetura-02.html#arq-044"><code>ARQ-044</code></a> ✅</td>
+</tr>
+<tr>
+<td>A guarda de rede</td>
+<td>♻️ Fica</td>
+<td><code>horus@318db52b:.claude/rules/seguranca/guarda-de-rede.md</code></td>
+</tr>
+</tbody>
+</table></div><p><strong>A conferência das letras da <code>P-008</code> que este documento toca</strong> (a resposta final é do documento 14):</p>
+<ul>
+<li><strong>(c)</strong> O que a <a href="mf-106.html"><code>MF-106</code></a> cobre da etapa 1: ✅ tudo — as claims, o documento de segurança compilado, o motor, a simulação e a revisão. Da etapa 2, nada (não há SSO nem identidade na fonte).</li>
+<li><strong>(e)</strong> Os grupos generalizam o &quot;Quem abre&quot;: ⚠️ viável com restrição — a condição sobre claims vira um grupo dinâmico da organização (<a href="produto-backlog.html#d-019"><code>D-019</code></a>, <a href="produto-backlog.html#d-055"><code>D-055</code></a>), e as pessoas escolhidas, &quot;Pessoas específicas&quot;; a combinação das duas numa visibilidade só é do PO (A-14).</li>
+<li><strong>(h)</strong> O painel corporativo roda com acesso total e o pessoal no escopo do autor: ✅ confirmado (<code>horus@318db52b:apps/server/Horus.Core/Seguranca/Motor/EmNomeDe.cs</code>, <code>DoPainel</code>).</li>
+<li><strong>(k)</strong> Acumular owner e gestor, e a organização dona de boards: ⚠️ viável com restrição — hoje cada pessoa tem um papel só e todo painel tem um criador; a combinação e o espaço da organização são novos (<a href="arquitetura-02.html#arq-039"><code>ARQ-039</code></a>, <a href="arquitetura-02.html#arq-041"><code>ARQ-041</code></a>).</li>
+<li><strong>(m)</strong> O cadastro guarda o que as roles carregam: ⚠️ hoje não há roles no cadastro; elas nascem na v2.0; o mapeamento do token é da v2.1.</li>
+<li><strong>(o)</strong> O alcance do espaço da organização e dos agendamentos do owner: ⚠️ viável, com a hipótese da 3.4 à espera do PO (A-11 e A-15).</li>
+<li><strong>(t)</strong> Mais de um owner e os quatro tipos de assento: ✅ mais de um owner já existe; os tipos de assento são novos.</li>
+<li><strong>(w)</strong> Registrar quem viu e quem entregou o quê sem conteúdo: ✅ viável, no banco da aplicação, fora da telemetria (<a href="arquitetura-02.html#arq-009"><code>ARQ-009</code></a>).</li>
+</ul>
+</div><div class="doc-section dx-assunto"><h3 id="arquitetura-07-5-os-riscos-e-o-que-falta-decidir">5. Os riscos e o que falta decidir</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 10 de 07 · Segurança"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Risco</th>
+<th scope="col">Por quê</th>
+<th scope="col">O que se faz</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>🔐 Reescrever as travas do motor</td>
+<td>O &quot;em nome de quem&quot; muda de três para cinco formas e os executores, de quatro para duas operações</td>
+<td>As travas que leem o IL listam as formas novas, e a bateria do <code>Horus.Evals</code> roda antes de cada marco, sem modelo pago (documento 12)</td>
+</tr>
+<tr>
+<td>📉 Os boards de exemplo mudam de escopo</td>
+<td>Na v1.xx, o painel corporativo mostra a rede inteira a quem o abre; no espaço da organização, cada um vê o seu escopo</td>
+<td>O semeador grava os boards de exemplo no espaço da organização (<a href="arquitetura-02.html#arq-089"><code>ARQ-089</code></a>), e o PO confirma o que a vitrine mostra (A-14)</td>
+</tr>
+<tr>
+<td>📨 O envio do owner em vários recortes custa mais</td>
+<td>Um artefato por recorte de acesso, em vez de um só</td>
+<td>O desenho fora da tela já tem concorrência limitada (<a href="arquitetura-02.html#arq-007"><code>ARQ-007</code></a>); a hipótese espera o PO (A-15)</td>
+</tr>
+<tr>
+<td>🔑 Perder o certificado é perder o anel</td>
+<td>O certificado passa a ser a chave das chaves</td>
+<td>O certificado e o anel vão separados à cópia fora da máquina, e a volta é ensaiada (documento 10)</td>
+</tr>
+<tr>
+<td>📱 O número de WhatsApp é uma credencial</td>
+<td>Quem tem o celular pergunta como a pessoa</td>
+<td>O código na ligação, o desligamento na saída e, a decidir com o produto no documento 08, o desligamento no &quot;sair de todos&quot;</td>
+</tr>
+<tr>
+<td>🌍 O resultado do cliente vai ao modelo</td>
+<td>Até 12.000 caracteres por leitura, a provedores fora do país</td>
+<td>O contrato do cliente e o modo &quot;tudo dentro&quot; da v2.1 (<a href="produto-backlog.html#d-010"><code>D-010</code></a>)</td>
+</tr>
+<tr>
+<td>🧑‍⚖️ A pessoa não sabe o que se guarda dela</td>
+<td>Não há aviso de privacidade, e o owner lê as conversas</td>
+<td>A-16 com o PO</td>
+</tr>
+<tr>
+<td>🔢 Sem segundo fator na v2.0</td>
+<td>A TI de um cliente pode exigir</td>
+<td>A v2.1 traz o login da empresa, que tem o segundo fator dela (<a href="produto-backlog.html#d-118"><code>D-118</code></a>)</td>
+</tr>
+</tbody>
+</table></div><p><strong>O que falta decidir:</strong></p>
+<ul>
+<li>🟡 Com o dono: <a href="arquitetura-02.html#arq-040"><code>ARQ-040</code></a> (a chave única, adiada para a v2.1).</li>
+<li>Ao PO: A-11 (aqui como hipótese de trabalho), A-14 (os painéis corporativos de hoje), A-15 (o escopo onde não há liberação) e A-16 (a LGPD).</li>
+<li>Documento 08: o protocolo do login corporativo (v2.1) e o desligamento do número de WhatsApp.</li>
+<li>Documento 10: a rotação dos segredos, o incidente e a comunicação à ANPD.</li>
+<li>Documento 12: as travas do motor com as cinco formas, o teste de cada leitura do avaliador e o teste do escopo único em cada superfície.</li>
+</ul>
+</div>
+                            </div>
+                            <nav class="dx-vizinhas" aria-label="Páginas vizinhas"><a class="dx-anterior" href="arquitetura-06.html"><i class="arrow_left" aria-hidden="true"></i>06 · Dados</a><a class="dx-proxima" href="arquitetura-08.html">08 · Integrações<i class="arrow_right" aria-hidden="true"></i></a></nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="simple_footer">
+            <img class="leaf_right" src="assets/kbdoc/img/home_one/leaf_footter.png" alt="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p>Maind Horus · Horus v2 · documento interno · Revisado em 03/11/2026 · versão v2.0 em desenho, sem versão publicada</p>
+                    </div>
+                    <div class="col-lg-6 text-right">
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <a id="back-to-top" title="Voltar ao topo"></a>
+    <script src="assets/kbdoc/js/jquery-3.2.1.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/popper.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap-select.min.js"></script>
+    <script src="assets/kbdoc/js/parallaxie.js"></script>
+    <script src="assets/kbdoc/js/TweenMax.min.js"></script>
+    <script src="assets/kbdoc/js/anchor.js"></script>
+    <script src="assets/kbdoc/assets/wow/wow.min.js"></script>
+    <script src="assets/kbdoc/js/vendor/clipboard.min.js"></script>
+    <script src="assets/kbdoc/assets/prism/prism.js"></script>
+    <script src="assets/kbdoc/assets/niceselectpicker/jquery.nice-select.min.js"></script>
+    <script src="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="assets/kbdoc/assets/magnify-pop/jquery.magnific-popup.min.js"></script>
+    <script src="assets/kbdoc/assets/tooltipster/js/tooltipster.bundle.min.js"></script>
+    <script src="assets/kbdoc/assets/font-size/js/rv-jquery-fontsize-2.0.3.js"></script>
+    <script src="assets/kbdoc/js/onpage-menu.js"></script>
+    <script src="assets/kbdoc/js/main.js"></script>
+    <script src="assets/busca.js"></script>
+    <script src="assets/docx.js"></script>
+</body>
+</html>

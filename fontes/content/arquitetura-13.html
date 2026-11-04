@@ -1,0 +1,1017 @@
+<p>Situação: 🟢 escrito pelo arquiteto · três decisões novas (<a href="#arq-083"><code>ARQ-083</code></a> a <a href="#arq-085"><code>ARQ-085</code></a>): uma 🟢, uma ✅ do dono (<a href="#arq-084"><code>ARQ-084</code></a>, o custo fixo da Maind e os valores iniciais do aviso de custo, em 03/11/2026) e uma 🟡 com o dono (<a href="#arq-085"><code>ARQ-085</code></a>, o orçamento de operação) · quase todo número aqui é estimativa 🔎, com a fonte ao lado · três verificações novas (V-15, o custo real por função na PRD; V-17, a forma do plantão; V-18, os modelos do Bedrock que processam em São Paulo), no <a href="#arquitetura-14">documento 14</a>.</p>
+<p>Última atualização: 03/11/2026 (a homologação da v2 na máquina da PRD, pela <a href="#arq-055"><code>ARQ-055</code></a>, sem máquina própria; a cópia de segurança fora do Horus, pela <a href="#arq-086"><code>ARQ-086</code></a>, sem a máquina de cópias; nenhuma instância é produção real, pela <a href="#arq-056"><code>ARQ-056</code></a>: o plantão e a sonda só com a primeira produção real; o CI na VPS de hoje até a primeira produção real, pela <a href="#arq-082"><code>ARQ-082</code></a> ✅; o envelope, <a href="#arq-016"><code>ARQ-016</code></a> ✅; uma stack por máquina, <a href="#arq-069"><code>ARQ-069</code></a> ✅; o e-mail no plano gratuito até a primeira produção real, pela <a href="#arq-046"><code>ARQ-046</code></a> ✅; as funções da segurança só na v2.1, pela <a href="#arq-090"><code>ARQ-090</code></a> ✅; o custo no painel do owner da instância, pela <a href="#arq-017"><code>ARQ-017</code></a> ✅; o custo fixo da Maind, sem rateio no produto, pela <a href="#arq-084"><code>ARQ-084</code></a> ✅; a pesquisa na web pela busca nativa da conexão, <a href="#arq-027"><code>ARQ-027</code></a> ✅; a bateria com modelo real, pela <a href="#arq-081"><code>ARQ-081</code></a> ✅; a produção real numa nuvem pública com Kubernetes, pela <a href="#arq-092"><code>ARQ-092</code></a> ✅: o orçamento dela se refaz com a nuvem escolhida; o Kubernetes gerenciado e o Postgres gerenciado na produção real, pela <a href="#arq-093"><code>ARQ-093</code></a> ✅; a sonda de fora num serviço de outro provedor, pela <a href="#arq-070"><code>ARQ-070</code></a> ✅; o plantão fora do horário comercial, pela <a href="#arq-071"><code>ARQ-071</code></a> ✅; o preço da nuvem da produção real, pela V-19, e o orçamento refeito, na <a href="#arq-085"><code>ARQ-085</code></a> 🟡; a escolha da nuvem adiada pelo dono, com a solução sem ficar presa a ela, pela <a href="#arq-096"><code>ARQ-096</code></a> ✅).</p>
+<p>Este documento diz <strong>quanto custa operar o Horus v2, por organização e por componente</strong>: a IA, por função e por modelo, partindo do que a v1.xx mede hoje; o WhatsApp, pela tabela da Meta; o e-mail; as máquinas; a cópia da instância SaaS, que fica fora do Horus, e as máquinas por hora; a sonda de fora e a observabilidade; o CI; e o plantão. Parte das metas do <a href="#arquitetura-03">documento 03</a> (o envelope da <a href="#arq-016"><code>ARQ-016</code></a> e a medida do custo da <a href="#arq-017"><code>ARQ-017</code></a>). Ele <strong>não</strong> diz o preço que a Maind cobra: o preço em reais fica fora dos documentos (<a href="#d-116"><code>D-116</code></a>, <code>P-022</code>), e de quem é cada custo no SaaS é o impasse A-03.</p>
+<ul>
+<li>O <strong>quê</strong> e o <strong>porquê</strong> são do produto (<a href="#produto-backlog">backlog estratégico</a>). As decisões (<code>ARQ-nnn</code>) estão no <a href="#arquitetura-02">registro</a>.</li>
+<li>O código e os documentos da v1.xx se citam como <code>horus@318db52b:&lt;caminho&gt;</code>. Nada foi executado e nenhum modelo foi chamado. Os preços públicos foram consultados na web em <strong>02/11/2026</strong> (os das cópias no provedor das VPS, em 03/11/2026), e cada um traz a página de onde veio; os da Meta, os da OpenRouter e os do GitHub mudam com frequência e precisam ser reconferidos na contratação.</li>
+<li><strong>As faixas.</strong> Todo valor que depende de uso é uma faixa 🔎, montada com os tamanhos medidos na v1.xx e com os preços públicos. O câmbio usado para mostrar reais é <strong>cerca de R$ 5,15 por dólar</strong> 🔎, a proporção que a própria tabela da Meta em reais usa (a utilidade a R$ 0,0350 e a US$ 0,0068).</li>
+<li>Nenhum host, endereço de IP ou domínio aparece aqui.</li>
+</ul>
+<p>Legenda: 🟢 decidida pelo arquiteto · 🟡 proposta ao dono · 🔎 estimativa ou hipótese a confirmar · ♻️ vem da v1.xx · 🔧 vem e muda · 🆕 novo.</p>
+<h3 id="arquitetura-13-1-o-que-o-tema-precisa-garantir">1. O que o tema precisa garantir</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de 13 · Custo de operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Garantia</th>
+<th scope="col">Objetivos</th>
+<th scope="col">Decisões</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>💸 <strong>A Maind sabe quanto cada organização custa, por componente, antes da fatura</strong></td>
+<td>O6, O7</td>
+<td><a href="#arq-017"><code>ARQ-017</code></a> ✅; <a href="#d-062"><code>D-062</code></a>, <a href="#d-063"><code>D-063</code></a> (todo agente usa IA, e o consumo entra no custo da organização)</td>
+</tr>
+<tr>
+<td>🧮 <strong>O custo se mede pelo registro do Horus, e não pelo painel do provedor</strong></td>
+<td>O6</td>
+<td><a href="#arq-017"><code>ARQ-017</code></a>, <a href="#arq-072"><code>ARQ-072</code></a>; a análise das métricas da v1.xx (60% das chamadas &quot;sem organização&quot; no painel do provedor)</td>
+</tr>
+<tr>
+<td>🚫 <strong>Sem corte automático:</strong> o owner controla o custo pelo modelo que escolhe e pela aprovação de criar agentes</td>
+<td>O7</td>
+<td><a href="#d-061"><code>D-061</code></a>, <a href="#d-062"><code>D-062</code></a>, <a href="#d-114"><code>D-114</code></a></td>
+</tr>
+<tr>
+<td>📱 <strong>O custo do WhatsApp segue a categoria que a Meta cobra</strong>, na conta da organização ou na da Maind</td>
+<td>O1, O4</td>
+<td><a href="#d-097"><code>D-097</code></a>, <a href="#d-124"><code>D-124</code></a>; <a href="#arq-047"><code>ARQ-047</code></a> 🟡, <a href="#arq-049"><code>ARQ-049</code></a></td>
+</tr>
+<tr>
+<td>📦 <strong>O envelope do primeiro ano cabe num orçamento conhecido</strong>, e se sabe o que cresce com o uso</td>
+<td>O1, O3, O4, O7</td>
+<td><a href="#arq-016"><code>ARQ-016</code></a> ✅; <a href="#d-115"><code>D-115</code></a> (o plano único), <a href="#d-117"><code>D-117</code></a>, <a href="#d-123"><code>D-123</code></a> (o assento de owner grátis)</td>
+</tr>
+<tr>
+<td>🧾 <strong>O preço fica fora; o custo, dentro</strong></td>
+<td>O7</td>
+<td><a href="#d-116"><code>D-116</code></a> (o preço em reais fora dos documentos de produto), <code>P-022</code></td>
+</tr>
+</tbody>
+</table></div><h3 id="arquitetura-13-2-as-decisoes">2. As decisões</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 2 de 13 · Custo de operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Decisão</th>
+<th scope="col">O que decide</th>
+<th scope="col">Situação</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#arq-016"><code>ARQ-016</code></a></td>
+<td>O envelope do primeiro ano: 30 organizações, 2.000 assentos, 500 pessoas que perguntam, 3.000 perguntas por dia útil, 1.000 execuções de agente e 1.500 mensagens de WhatsApp por dia</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><a href="#arq-017"><code>ARQ-017</code></a></td>
+<td>O custo por organização e por componente, no painel do owner da instância, com o aviso acima de um limiar e sem corte</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><a href="#arq-031"><code>ARQ-031</code></a></td>
+<td>O consumo de cada chamada leva a função, o canal e o agente</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td><strong><a href="#arq-083"><code>ARQ-083</code></a></strong></td>
+<td><strong>O custo de IA de cada chamada é o que o provedor informa; sem ele, o Horus estima pelo preço público do modelo e marca a estimativa</strong></td>
+<td>🟢</td>
+</tr>
+<tr>
+<td><strong><a href="#arq-084"><code>ARQ-084</code></a></strong></td>
+<td><strong>O custo fixo é da Maind e não se rateia entre as organizações no produto; o aviso de custo começa com valores padrão que a Maind ajusta por organização</strong></td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong><a href="#arq-085"><code>ARQ-085</code></a></strong></td>
+<td><strong>O orçamento de operação: a produção real na Google Cloud, os outros serviços nos planos já escolhidos e a VPS da construção, numa faixa mensal revista a cada trimestre contra as faturas</strong></td>
+<td>🟡</td>
+</tr>
+</tbody>
+</table></div><h3 id="arquitetura-13-3-os-componentes-e-quanto-custa-cada-um">3. Os componentes e quanto custa cada um</h3>
+<h4 id="arquitetura-13-31-como-o-custo-se-mede-arq-017-arq-083-">3.1 Como o custo se mede (<code>ARQ-017</code>, <code>ARQ-083</code> 🟢)</h4>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 3 de 13 · Custo de operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Componente</th>
+<th scope="col">O que se registra</th>
+<th scope="col">Onde nasce o número</th>
+<th scope="col">Desde</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>IA</strong></td>
+<td>Cada chamada: a organização, a pessoa, a conversa, a função, o provedor, o modelo, o fornecedor, os tokens de entrada, de saída e do cache, e o custo em dólar; na v2, também o canal e o agente</td>
+<td>O custo que o provedor informa na chamada (<code>horus@318db52b:apps/server/Horus.Core/Data/ConsumoDeIaEntity.cs</code>, gravado em lote por <code>horus@318db52b:apps/server/Horus.Api/GravadorDeConsumoDeIa.cs</code>)</td>
+<td>♻️ 29/09/2026; 🔧 o canal, o agente e a estimativa</td>
+</tr>
+<tr>
+<td><strong>WhatsApp</strong></td>
+<td>Cada mensagem enviada: a conta (da organização ou da Maind), a categoria que a Meta cobra e o desfecho</td>
+<td>O aviso de status da Meta (<a href="#arq-048"><code>ARQ-048</code></a>)</td>
+<td>🆕</td>
+</tr>
+<tr>
+<td><strong>E-mail</strong></td>
+<td>Cada envio aceito, por uso (recuperação, aviso, convite, conector)</td>
+<td>O envio da instância</td>
+<td>🔧 hoje só o ritmo</td>
+</tr>
+<tr>
+<td><strong>Infraestrutura</strong></td>
+<td>A fatura de cada serviço do mês</td>
+<td>O orçamento da <a href="#arq-085"><code>ARQ-085</code></a>, da Maind, sem rateio entre as organizações (<a href="#arq-084"><code>ARQ-084</code></a>)</td>
+<td>🆕</td>
+</tr>
+</tbody>
+</table></div><p><strong>A chamada sem custo informado</strong> (<a href="#arq-083"><code>ARQ-083</code></a>). Hoje o custo fica nulo quando o provedor não o informa, e o painel soma só o que veio, marcando o total como &quot;parcial&quot; (<code>horus@318db52b:apps/server/Horus.Core/Data/PainelDaOrg.cs</code>). O <strong>Bedrock nunca informa</strong>: toda chamada dele grava o custo nulo (<code>horus@318db52b:apps/server/Horus.Core/Llm/Bedrock/BedrockProvider.cs</code>), e uma organização só com o Bedrock apareceria sem custo nenhum. Na v2.0:</p>
+<ul>
+<li><strong>Sem o custo do provedor, o Horus estima</strong> pelos tokens da própria chamada e pelo preço público do modelo, e marca a linha como <strong>estimada</strong>. No OpenRouter, o preço vem do catálogo de modelos que a v1.xx já lê, com cache de uma hora (<code>horus@318db52b:apps/server/Horus.Core/Llm/CatalogoOpenRouter.cs</code>); no Bedrock, de uma tabela de preço por modelo e região, ao lado da tabela de capacidades que já existe (<code>CapacidadesDoBedrock.cs</code>), atualizada a cada pacote.</li>
+<li><strong>A conferência do mês</strong> compara a soma do registro com a conta do provedor: os créditos do OpenRouter e o gasto do Cost Explorer no Bedrock, que a v1.xx já lê (o Cost Explorer cobra US$ 0,01 por pedido, e o resumo dele fica seis horas em cache: <code>horus@318db52b:apps/server/Horus.Core/Llm/Bedrock/ResumoDoBedrock.cs</code>; preço na <a href="https://aws.amazon.com/aws-cost-management/aws-cost-explorer/pricing/">página do AWS Cost Explorer</a>, consultada em 02/11/2026).</li>
+<li><strong>A taxa do OpenRouter sobre a compra de créditos</strong> (5,5% no plano Standard e 8% no Business; sem taxa na chave própria até US$ 25.000 por mês, <a href="https://openrouter.ai/pricing">openrouter.ai/pricing</a>, consultada em 02/11/2026) não aparece no custo da chamada: ela entra na conferência do mês, sobre o total.</li>
+</ul>
+<h4 id="arquitetura-13-32-a-ia-por-funcao-e-por-modelo">3.2 A IA, por função e por modelo</h4>
+<p><strong>O que a v1.xx mediu</strong> (todas com o Claude Sonnet, pelo OpenRouter):</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 4 de 13 · Custo de operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Data</th>
+<th scope="col">O que se mediu</th>
+<th scope="col">Número</th>
+<th scope="col">Fonte</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>17/09/2026</td>
+<td>Uma rodada da bateria NL→SQL, 106 perguntas</td>
+<td>US$ 5,49, cerca de <strong>US$ 0,052 por pergunta</strong> só no Planejador</td>
+<td><code>horus@318db52b:docs/superpowers/specs/2026-09-17-filtro-perdido-na-janela-design.md</code> §4</td>
+</tr>
+<tr>
+<td>03/10/2026</td>
+<td>Seis rodadas da mesma bateria, com o Sonnet 5.5, no nível 2</td>
+<td>636 chamadas e US$ 42,70: cerca de <strong>US$ 0,067 por pergunta</strong></td>
+<td><code>horus@318db52b:docs/superpowers/specs/2026-10-03-resposta-e-raciocinio-medicao.md</code></td>
+</tr>
+<tr>
+<td>03/10/2026</td>
+<td>O Planejador, chamada a chamada</td>
+<td>Cerca de <strong>US$ 0,061 por chamada</strong> (10 chamadas, US$ 0,61)</td>
+<td><code>horus@318db52b:docs/superpowers/plans/2026-10-06-card-de-workflow.md</code></td>
+</tr>
+<tr>
+<td>03/10/2026</td>
+<td>O tamanho de um segundo turno</td>
+<td>49.141 tokens de entrada; a resposta bruta, cerca de mil tokens; mediana de 20,8 segundos</td>
+<td><code>…-medicao.md</code>; <code>horus@318db52b:docs/superpowers/specs/2026-10-03-resposta-e-raciocinio-critica/critica-llm.md</code></td>
+</tr>
+<tr>
+<td>06/10/2026</td>
+<td>A estimativa do workflow</td>
+<td>A primeira pergunta de fluxo entre US$ 0,12 e 0,14 (Sonnet) e entre 0,20 e 0,23 (Opus); a seguinte, com cache, US$ 0,06 e 0,11; a troca de período, US$ 0,01 a 0,03</td>
+<td><code>horus@318db52b:docs/superpowers/plans/2026-10-06-card-de-workflow.md</code></td>
+</tr>
+<tr>
+<td>04 a 09/09/2026</td>
+<td>O cache de prompt</td>
+<td>O acerto subiu de 32% para 84% depois de tirar o nível e a web da parte estável</td>
+<td><code>horus@318db52b:docs/produto/chat-interno/chat-por-dentro.html</code></td>
+</tr>
+</tbody>
+</table></div><p><strong>Os preços públicos</strong> (por milhão de tokens, no OpenRouter, consultados em 02/11/2026 na API pública de modelos que alimenta <a href="https://openrouter.ai/models">openrouter.ai/models</a>; os endpoints regionais custam 10% a mais):</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 5 de 13 · Custo de operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Classe</th>
+<th scope="col">Modelo de referência</th>
+<th scope="col">Entrada</th>
+<th scope="col">Saída</th>
+<th scope="col">Leitura do cache</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Topo</strong></td>
+<td>Claude Opus 5.5</td>
+<td>4,00</td>
+<td>20,00</td>
+<td>0,20</td>
+</tr>
+<tr>
+<td><strong>Médio</strong> (o medido na v1.xx)</td>
+<td>Claude Sonnet 5.5</td>
+<td>2,00</td>
+<td>10,00</td>
+<td>0,10</td>
+</tr>
+<tr>
+<td><strong>Médio</strong></td>
+<td>GPT-6 Sol</td>
+<td>2,00</td>
+<td>10,00</td>
+<td>0,20</td>
+</tr>
+<tr>
+<td><strong>Rápido</strong></td>
+<td>Gemini 3.8 Flash</td>
+<td>0,75</td>
+<td>3,75</td>
+<td>0,075</td>
+</tr>
+<tr>
+<td><strong>Barato</strong></td>
+<td>Gemini 3.5 Flash Lite</td>
+<td>0,30</td>
+<td>2,50</td>
+<td>0,03</td>
+</tr>
+<tr>
+<td><strong>Mínimo</strong></td>
+<td>GPT-6 Luna; Claude Haiku 5.5</td>
+<td>0,10</td>
+<td>0,50</td>
+<td>0,01</td>
+</tr>
+</tbody>
+</table></div><p><strong>A pesquisa na web</strong> (<a href="#arq-027"><code>ARQ-027</code></a> ✅): o motor padrão do OpenRouter custa <strong>US$ 0,007 por pesquisa</strong>, com até 10 resultados, e o padrão é 5; a busca nativa de cada fabricante, cerca de US$ 0,01; os tokens dos resultados se cobram à parte (<a href="https://openrouter.ai/docs/guides/features/web-search">documentação da pesquisa na web do OpenRouter</a>, consultada em 02/11/2026). A v1.xx não escolhe o número de resultados (<code>horus@318db52b:apps/server/Horus.Core/Llm/OpenRouterProvider.cs</code>).</p>
+<p><strong>O custo por função</strong> 🔎, por chamada, a partir dos tetos e dos tamanhos de entrada da v1.xx (<code>horus@318db52b:apps/server/Horus.Core/Llm/FuncoesDeIa.cs</code>, <code>Chat/ChatEngine.cs</code>, <code>Planner/</code>) e dos preços acima:</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 6 de 13 · Custo de operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Função</th>
+<th scope="col">Quando roda</th>
+<th scope="col">Tamanho típico 🔎</th>
+<th scope="col">Classe média</th>
+<th scope="col">Classe mínima</th>
+<th scope="col">Classe topo</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>planejador</code></td>
+<td>Toda pergunta com fonte</td>
+<td>11.500 a 49.000 tokens de entrada, parte do system no cache; cerca de mil de saída</td>
+<td>US$ 0,03 a 0,07 (medido: 0,05 a 0,07)</td>
+<td>US$ 0,002 a 0,004</td>
+<td>US$ 0,07 a 0,14</td>
+</tr>
+<tr>
+<td><code>analise-avancada</code></td>
+<td>Com a Análise avançada ou a web ligadas</td>
+<td>De 6.000 a 10.000 de entrada (o resultado vai até 12.000 caracteres); até 2.000 de saída</td>
+<td>US$ 0,02 a 0,04</td>
+<td>US$ 0,001 a 0,002</td>
+<td>US$ 0,05 a 0,08</td>
+</tr>
+<tr>
+<td>🆕 <code>pesquisa-na-web</code></td>
+<td>Com a pesquisa ligada</td>
+<td>A pergunta e os resultados, cerca de 5.000 de entrada; mil de saída</td>
+<td>US$ 0,02 a 0,03, com a pesquisa</td>
+<td>US$ 0,008</td>
+<td>US$ 0,05</td>
+</tr>
+<tr>
+<td><code>reparo-de-consulta</code> e <code>gerador-de-plano</code></td>
+<td>Quando a consulta falha ou volta vazia, de 10% a 20% das perguntas 🔎</td>
+<td>O documento e o SQL; o system do Planejador</td>
+<td>US$ 0,03 a 0,05 cada</td>
+<td>US$ 0,002</td>
+<td>US$ 0,06 a 0,10</td>
+</tr>
+<tr>
+<td><code>resposta-conversa</code></td>
+<td>A conversa sem fonte</td>
+<td>O histórico, até 60.000 caracteres</td>
+<td>US$ 0,02 a 0,05</td>
+<td>US$ 0,001 a 0,003</td>
+<td>US$ 0,04 a 0,10</td>
+</tr>
+<tr>
+<td><code>planejamento-</code> e <code>renderizacao-de-workflow</code></td>
+<td>A pergunta de fluxo</td>
+<td>Medido na estimativa de 06/10</td>
+<td>US$ 0,06 a 0,07 juntas</td>
+<td>US$ 0,004</td>
+<td>US$ 0,11</td>
+</tr>
+<tr>
+<td><code>triagem-</code>, <code>resumo-de-fontes</code>, <code>titulo-por-ia</code></td>
+<td>Raras ou curtas</td>
+<td>Até 300 tokens de saída no título</td>
+<td>Menos de US$ 0,01</td>
+<td>Menos de US$ 0,001</td>
+<td>Menos de US$ 0,02</td>
+</tr>
+<tr>
+<td><code>reescritor-</code> e <code>verificador-de-seguranca</code></td>
+<td>Só na v2.1 (<a href="#arq-090"><code>ARQ-090</code></a>): uma vez por consulta protegida nova (fonte, gabarito e versão), e não por pergunta: a protegida é a mesma para todas as pessoas e se reaproveita</td>
+<td>Até 30.000 caracteres de regras e SQL; até 8.000 tokens de saída</td>
+<td>US$ 0,04 a 0,15 por consulta protegida nova</td>
+<td>US$ 0,003</td>
+<td>US$ 0,08 a 0,30</td>
+</tr>
+<tr>
+<td><code>compilador-de-seguranca</code></td>
+<td>Quando o owner compila o documento de segurança de uma base</td>
+<td>Até 20.000 tokens de saída</td>
+<td>US$ 0,10 a 0,30 por compilação</td>
+<td>—</td>
+<td>US$ 0,20 a 0,60</td>
+</tr>
+<tr>
+<td>🆕 <code>interpretacao-do-agente</code></td>
+<td>Quando o autor cria ou muda as instruções</td>
+<td>As instruções e as fontes</td>
+<td>US$ 0,01 a 0,05 por agente</td>
+<td>Menos de US$ 0,005</td>
+<td>US$ 0,03 a 0,10</td>
+</tr>
+<tr>
+<td>🆕 <code>ciclo-do-agente</code></td>
+<td>Cada volta do ciclo, até 16 (<a href="#arq-030"><code>ARQ-030</code></a>)</td>
+<td>A interpretação e as respostas já recebidas</td>
+<td>US$ 0,01 a 0,03 por volta</td>
+<td>Menos de US$ 0,002</td>
+<td>US$ 0,02 a 0,06</td>
+</tr>
+</tbody>
+</table></div><p><strong>O custo por pergunta e por execução</strong> 🔎, com a classe média em todas as funções:</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 7 de 13 · Custo de operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">O que</th>
+<th scope="col">Composição</th>
+<th scope="col">Faixa 🔎</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Pergunta de dados</td>
+<td>O Planejador, e o reparo de vez em quando</td>
+<td>US$ 0,04 a 0,08</td>
+</tr>
+<tr>
+<td>Pergunta de dados com a Análise avançada</td>
+<td>Mais a leitura depois da consulta</td>
+<td>US$ 0,07 a 0,11</td>
+</tr>
+<tr>
+<td>Pergunta de dados com a web</td>
+<td>Mais a pesquisa e a leitura</td>
+<td>US$ 0,10 a 0,14</td>
+</tr>
+<tr>
+<td>Pergunta sem fonte</td>
+<td>A resposta da conversa, com ou sem a web</td>
+<td>US$ 0,02 a 0,08</td>
+</tr>
+<tr>
+<td><strong>A pergunta média do envelope</strong></td>
+<td>A mistura dos modos</td>
+<td><strong>US$ 0,05 a 0,15</strong></td>
+</tr>
+<tr>
+<td><strong>Uma execução de agente</strong></td>
+<td>De 2 a 4 perguntas ao motor e de 3 a 6 voltas, tipicamente</td>
+<td><strong>US$ 0,15 a 0,60</strong></td>
+</tr>
+<tr>
+<td>O teto técnico de uma execução</td>
+<td>8 perguntas e 16 voltas (<a href="#arq-030"><code>ARQ-030</code></a>)</td>
+<td>Cerca de US$ 1,70 no máximo</td>
+</tr>
+</tbody>
+</table></div><p>Com a classe mínima, os mesmos números caem de 15 a 25 vezes; com a classe topo, dobram. <strong>O modelo que o owner escolhe para cada função é a maior alavanca de custo do produto</strong> (<a href="#d-061"><code>D-061</code></a>, <a href="#mf-105"><code>MF-105:IA sob controle da organização</code></a>).</p>
+<p><strong>No envelope do primeiro ano</strong> (<a href="#arq-016"><code>ARQ-016</code></a>), com a classe média 🔎:</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 8 de 13 · Custo de operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Uso</th>
+<th scope="col">Volume por mês 🔎</th>
+<th scope="col">Custo por mês 🔎</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Perguntas de análise</td>
+<td>3.000 por dia útil, cerca de 66.000</td>
+<td>US$ 3.300 a 9.900</td>
+</tr>
+<tr>
+<td>Execuções de agente</td>
+<td>1.000 por dia útil, cerca de 22.000</td>
+<td>US$ 3.300 a 13.200</td>
+</tr>
+<tr>
+<td><strong>A IA da instância</strong></td>
+<td></td>
+<td><strong>US$ 6.600 a 23.100</strong> (R$ 34 mil a 119 mil)</td>
+</tr>
+<tr>
+<td><strong>Por organização</strong> (1/30)</td>
+<td></td>
+<td><strong>US$ 220 a 770</strong></td>
+</tr>
+<tr>
+<td><strong>Por pessoa que pergunta</strong> (1/500)</td>
+<td>132 perguntas e 44 execuções</td>
+<td><strong>US$ 13 a 46</strong></td>
+</tr>
+<tr>
+<td><strong>Por membro leitor</strong></td>
+<td>Só recebe artefatos</td>
+<td>Perto de zero de IA</td>
+</tr>
+</tbody>
+</table></div><p>O exemplo da <a href="#d-133"><code>D-133</code></a> (1.200 perguntas por mês numa organização) dá de US$ 60 a 180 por mês só em perguntas. <strong>Os agentes podem custar tanto quanto a conversa, ou mais</strong>, porque cada execução faz várias perguntas inteiras ao motor; o teto técnico por execução (<a href="#arq-030"><code>ARQ-030</code></a>) é o que limita o pior caso, já que o produto deixou o teto de custo de fora (<a href="#d-062"><code>D-062</code></a>, <a href="#d-114"><code>D-114</code></a>).</p>
+<p><strong>O Bedrock e o dado no país</strong> ⚠️: pela documentação da Anthropic consultada em 02/11/2026, o Claude no Bedrock na região de São Paulo só existe pelo <strong>endpoint global</strong>, sem acréscimo de preço; o endpoint regional custa 10% a mais e não existe na América do Sul (<a href="https://platform.claude.com/docs/build-with-claude/claude-in-amazon-bedrock">Claude in Amazon Bedrock</a>; <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/global-cross-region-inference.html">AWS, Global cross-Region inference</a>). Para os modelos Claude, escolher São Paulo <strong>não mantém o processamento no país</strong>. Isso corrige a hipótese 🔎 do documento 08 (3.4) e da <a href="#arq-051"><code>ARQ-051</code></a>, e foi à A-16 e à verificação V-18.</p>
+<h4 id="arquitetura-13-33-o-whatsapp-arq-047-a-arq-050">3.3 O WhatsApp (<code>ARQ-047</code> a <code>ARQ-050</code>)</h4>
+<p><strong>A tabela da Meta para o Brasil</strong>, por mensagem entregue (consultada em 02/11/2026):</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 9 de 13 · Custo de operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Categoria</th>
+<th scope="col">Preço</th>
+<th scope="col">Fonte</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Utilidade</strong> (o aviso do agente, o PDF de um agendamento, o &quot;sua resposta ficou pronta&quot;)</td>
+<td><strong>US$ 0,0068</strong>, ou R$ 0,0350 na cobrança em reais</td>
+<td>A <a href="https://developers.facebook.com/docs/whatsapp/pricing">página de preços da Meta</a> (&quot;Meta's current rate for utility and authentication messages to users in Brazil&quot;); o valor em reais, pela <a href="https://chatmaxima.com/whatsapp-api-pricing/brazil/">ChatMaxima</a>, que cita o rate card da Meta vigente em 01/10/2026</td>
+</tr>
+<tr>
+<td><strong>Autenticação</strong> (o código de ligação do número)</td>
+<td><strong>US$ 0,0068</strong>, ou R$ 0,0350</td>
+<td>Idem</td>
+</tr>
+<tr>
+<td><strong>Marketing</strong></td>
+<td>US$ 0,0625, ou R$ 0,3217 🔎</td>
+<td>Só fontes de terceiros (<a href="https://whautomate.com/whatsapp-business-api-pricing-brazil">Whautomate</a>, ChatMaxima); bate com a tabela da Gallabox de 01/10/2026 menos a margem dela</td>
+</tr>
+<tr>
+<td><strong>Serviço</strong> (o que o Horus responde dentro da janela de 24 horas: o texto, as imagens, o &quot;trabalhando&quot;)</td>
+<td><strong>Grátis até 1.000 mensagens por número por mês</strong>; da 1.001ª em diante, cerca de US$ 0,0068 🔎</td>
+<td>A página de preços da Meta (a franquia, vigente desde 01/10/2026); o preço acima dela, por terceiros</td>
+</tr>
+<tr>
+<td>As faixas de desconto por volume (utilidade e autenticação)</td>
+<td>De 5% a 25% sobre a tabela; os volumes de corte não foram encontrados</td>
+<td>ChatMaxima</td>
+</tr>
+</tbody>
+</table></div><p><strong>O que mudou desde o documento 08</strong> ⚠️: até 30/09/2026, o modelo de utilidade entregue dentro de uma janela aberta e as mensagens de serviço eram grátis; <strong>desde 01/10/2026</strong>, o modelo de utilidade é cobrado também dentro da janela, e as mensagens de serviço só são grátis até 1.000 por número por mês (<a href="https://developers.facebook.com/docs/whatsapp/pricing">página de preços da Meta</a>). A Meta também passou a faturar as contas do Brasil em reais desde 01/07/2026, e as contas em outra moeda precisam migrar até 30/06/2027. A decisão da <a href="#arq-049"><code>ARQ-049</code></a> (o conector envia sempre por modelo) continua, pela previsibilidade da entrega, mas o custo dela deixa de ser zero dentro da janela: cada aviso custa US$ 0,0068 em qualquer caso. O documento 08 (3.3) e a <a href="#arq-049"><code>ARQ-049</code></a> ganharam a nota.</p>
+<p><strong>Os outros limites públicos</strong> (a V-04 e a V-13, respondidas em parte): o corpo de um modelo vai até 1.024 caracteres, e a mensagem de texto livre, até 4.096 (<a href="https://developers.facebook.com/documentation/business-messaging/whatsapp/templates/components">componentes dos modelos</a>; <a href="https://developers.facebook.com/documentation/business-messaging/whatsapp/messages/text-messages">mensagens de texto</a>); a notificação sem resposta é reenviada, com frequência decrescente, por até sete dias (<a href="https://developers.facebook.com/docs/whatsapp/cloud-api/guides/set-up-webhooks">webhooks</a>); o teto de mensagens iniciadas é do <strong>portfólio de negócio</strong>, e não do número (250, 2.000, 10.000, 100.000 ou ilimitado), e a mudança dele chega por notificação (<a href="https://developers.facebook.com/docs/whatsapp/messaging-limits">messaging limits</a>); tudo consultado em 02/11/2026.</p>
+<p><strong>No envelope do primeiro ano</strong> 🔎 (1.500 mensagens por dia, cerca de 40.000 por mês):</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 10 de 13 · Custo de operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Mensagem</th>
+<th scope="col">Parcela 🔎</th>
+<th scope="col">Por mês 🔎</th>
+<th scope="col">Custo por mês 🔎</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>As respostas dentro da janela (serviço)</td>
+<td>70%</td>
+<td>28.000</td>
+<td>Contas das organizações: de zero a US$ 30, porque cada número tem a franquia de 1.000; só a conta da Maind: cerca de US$ 180</td>
+</tr>
+<tr>
+<td>Os avisos de agente e os PDFs (utilidade)</td>
+<td>25%</td>
+<td>10.000</td>
+<td>US$ 68</td>
+</tr>
+<tr>
+<td>Os códigos de ligação (autenticação)</td>
+<td>Poucos</td>
+<td>100 a 500</td>
+<td>Até US$ 3,40</td>
+</tr>
+<tr>
+<td><strong>O WhatsApp da instância</strong></td>
+<td></td>
+<td></td>
+<td><strong>US$ 70 a 250</strong></td>
+</tr>
+<tr>
+<td>Se a Meta classificar o aviso do agente como marketing (A-19)</td>
+<td></td>
+<td>10.000</td>
+<td>Cerca de US$ 560 a mais: o aviso passa de US$ 68 a US$ 625</td>
+</tr>
+</tbody>
+</table></div><p><strong>Quem paga</strong> (A-03): na conta da organização, a organização paga à Meta, pelo meio de pagamento da conta dela; na conta da Maind, a Maind paga, e o registro dá a parte de cada organização, porque os envios pela conta da Maind são uma das medidas com a organização como rótulo (<a href="#arq-073"><code>ARQ-073</code></a>). <strong>Por organização</strong>, no envelope: de US$ 2 a 8 por mês 🔎, ou até US$ 30 se o aviso virar marketing.</p>
+<h4 id="arquitetura-13-34-o-e-mail-arq-046-">3.4 O e-mail (<code>ARQ-046</code> ✅)</h4>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 11 de 13 · Custo de operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Plano do serviço de hoje</th>
+<th scope="col">Preço por mês</th>
+<th scope="col">O que inclui</th>
+<th scope="col">Fonte</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Gratuito</td>
+<td>US$ 0</td>
+<td>3.000 por mês, <strong>100 por dia</strong>, 3 domínios</td>
+<td><a href="https://resend.com/pricing">resend.com/pricing</a>, consultada em 02/11/2026</td>
+</tr>
+<tr>
+<td>Pro</td>
+<td>US$ 20 (50 mil por mês) ou US$ 35 (100 mil)</td>
+<td>Sem teto diário; excedente a US$ 0,90 por mil; 10 domínios</td>
+<td>Idem</td>
+</tr>
+<tr>
+<td>Scale</td>
+<td>A partir de US$ 90 (100 mil)</td>
+<td>Até 1.000 domínios; o IP dedicado por US$ 30</td>
+<td>Idem</td>
+</tr>
+</tbody>
+</table></div><p>Cada mensagem vai até <strong>40 MB, com os anexos</strong> já codificados (<a href="https://resend.com/docs/dashboard/emails/attachments">anexos no Resend</a>): é o teto que a A-19 usa para o PDF que não cabe. No envelope, cerca de 2.000 e-mails por dia útil (documento 08, 3.2) dão uns 44.000 por mês: <strong>o plano gratuito não serve</strong>, e o Pro de 100 mil (US$ 35) cabe com folga 🔎. <strong>Por organização:</strong> cerca de US$ 1 por mês 🔎. A marca completa da v2.1, com o domínio de cada contratante, pede o Pro (10 domínios) ou o Scale. O plano da conta da Maind é a V-02.</p>
+<h4 id="arquitetura-13-35-as-maquinas-arq-055-e-arq-056-">3.5 As máquinas (<code>ARQ-055</code> e <code>ARQ-056</code> ✅)</h4>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 12 de 13 · Custo de operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Máquina</th>
+<th scope="col">Para quê</th>
+<th scope="col">Custo por mês 🔎</th>
+<th scope="col">Fonte</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>A da PRD</strong> (8 vCPU, 32 GB, 400 GB)</td>
+<td>A PRD SaaS, com os dois papéis na v2.0; até a v2.0, também o HML da v1.xx; a homologação da v2, desde o M0 (<a href="#arq-055"><code>ARQ-055</code></a>); os dois bancos, as bases de demonstração e a observabilidade</td>
+<td><strong>R$ 120 a 260</strong> (US$ 26 a 50): R$ 119,99 no contrato de 24 meses, e R$ 259,99 na renovação</td>
+<td>A tabela pública do provedor das VPS de hoje (o plano de 8 vCPU e 32 GB da Hostinger), consultada em 02/11/2026</td>
+</tr>
+<tr>
+<td><strong>A segunda VPS</strong></td>
+<td>A instância dedicada de um cliente</td>
+<td>A mesma faixa; 🔎 é um custo daquele contrato, e não do SaaS</td>
+<td>Idem</td>
+</tr>
+</tbody>
+</table></div><p><strong>A homologação da v2 não custa máquina</strong> (<a href="#arq-055"><code>ARQ-055</code></a> ✅): ela é uma terceira instância na máquina da PRD. Se o uso medido com ela de pé chegar ao gatilho da troca (V-07; documento 09, 3.3), a máquina maior entra neste orçamento. O provisionamento do zero de uma máquina se prova numa máquina por hora antes do M7 (3.7).</p>
+<p>A máquina é o menor custo por pessoa: dividida pelos 2.000 assentos do envelope, a da PRD sai a menos de R$ 0,15 por assento por mês 🔎. <strong>A troca para uma máquina maior</strong> (os gatilhos do documento 09, 3.3) muda pouco a conta.</p>
+<p><strong>A licença do SQL Server das bases de demonstração</strong> (<a href="#arq-059"><code>ARQ-059</code></a> ✅, uma base só para todas as instâncias): o Developer não custa nada, e o Express, a primeira alternativa se a V-05 disser que o Developer não cabe, também não. Só a terceira opção, o Standard licenciado por núcleo, teria custo, e ele não está orçado aqui: entra nesta seção se a V-05 levar a ela.</p>
+<h4 id="arquitetura-13-36-a-copia-da-instancia-saas-fora-do-horus-arq-086-">3.6 A cópia da instância SaaS, fora do Horus (<code>ARQ-086</code> ✅)</h4>
+<p>O Horus não faz a cópia de segurança: cada dono de instância a configura na infra dele (<a href="#arq-086"><code>ARQ-086</code></a>). Na instância SaaS, a dona é a Maind, e o ponto de partida é a cópia do próprio provedor das VPS. O custo entra aqui como custo de operar a instância SaaS, e não do produto.</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 13 de 13 · Custo de operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">O que</th>
+<th scope="col">Por mês 🔎</th>
+<th scope="col">O que guarda</th>
+<th scope="col">Fonte</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>A cópia semanal da máquina inteira</strong></td>
+<td>Já vem no plano</td>
+<td>As duas últimas semanas</td>
+<td>As páginas de ajuda do provedor das VPS de hoje, consultadas em 03/11/2026</td>
+</tr>
+<tr>
+<td><strong>A cópia diária da máquina inteira</strong></td>
+<td>De US$ 6 a 12, à parte (as páginas divergem)</td>
+<td>As duas últimas diárias, que não se apagam à mão</td>
+<td>Idem</td>
+</tr>
+<tr>
+<td><strong>Uma máquina pequena só de cópias</strong> (1 a 2 vCPU, 4 a 8 GB, 50 a 100 GB de disco), se a Maind quiser perder menos que um dia</td>
+<td>R$ 30 a 90 (US$ 6 a 18): o plano de entrada sai a US$ 6,49 por mês no contrato de 24 meses e a US$ 11,99 sem ele</td>
+<td>A cópia do banco por dia e o registro contínuo, pelo prazo que a infra escolher</td>
+<td>A página de planos do provedor, em dólar, e um levantamento de terceiros em reais, consultados em 03/11/2026</td>
+</tr>
+</tbody>
+</table></div><p><strong>O volume</strong> 🔎: hoje o banco tem 59 MB; no fim do primeiro ano, de 15 a 40 GB. A cópia do provedor leva a máquina inteira, e o preço da diária segue o plano da máquina, e não o volume 🔎. A máquina de cópias, se entrar, começa com o disco de 100 GB e se revê pelo gatilho da troca de máquina (documento 09, 3.3).</p>
+<p>O armazenamento de objetos de outro provedor sairia de US$ 1 a 6 por mês (a tabela da AWS em São Paulo, consultada em 02/11/2026). Fica registrado para a infra de uma instância que queira as cópias fora do provedor da máquina.</p>
+<h4 id="arquitetura-13-37-as-maquinas-por-hora">3.7 As máquinas por hora</h4>
+<p>O ensaio da volta é da infra de cada instância (<a href="#arq-086"><code>ARQ-086</code></a>): na SaaS, ele pode restaurar o banco e o anel numa instância de prova da máquina da PRD, <strong>sem máquina nova</strong>. O provisionamento do zero de uma máquina, que a homologação na VPS de hoje não prova (<a href="#arq-055"><code>ARQ-055</code></a>), se prova numa máquina por hora antes do M7. A conferência da volta do Horus (<a href="#arq-087"><code>ARQ-087</code></a>) se prova no CI, sem máquina. Quando um ensaio precisar de máquina própria, uma máquina por hora sai de US$ 2 a 4 por ensaio, de 4 a 6 horas 🔎, num provedor com essa cobrança; no provedor das VPS, que cobra por mês, seria um mês do plano.</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 14 de 13 · Custo de operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">O que</th>
+<th scope="col">Preço por hora</th>
+<th scope="col">Fonte</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>AWS EC2, 8 vCPU e 32 GB, em São Paulo</td>
+<td>US$ 0,64 🔎</td>
+<td>Terceiros (DoiT, aws-pricing.com), consultados em 02/11/2026</td>
+</tr>
+<tr>
+<td>Uma máquina de 8 vCPU e 32 GB num provedor com cobrança por hora (DigitalOcean)</td>
+<td>US$ 0,375</td>
+<td><a href="https://www.digitalocean.com/pricing/droplets">digitalocean.com/pricing/droplets</a>, consultada em 02/11/2026</td>
+</tr>
+</tbody>
+</table></div><p>O pacote numa máquina sem saída, antes do M10, custa o mesmo que um ensaio numa máquina por hora.</p>
+<h4 id="arquitetura-13-38-a-sonda-de-fora-e-a-observabilidade-arq-069--e-arq-070-">3.8 A sonda de fora e a observabilidade (<code>ARQ-069</code> ✅ e <code>ARQ-070</code> ✅)</h4>
+<p><strong>A conta da sonda</strong> 🔎: três instâncias (a PRD, a segunda VPS e a homologação) conferidas a cada minuto, de duas regiões, e três sinais de vida por instância (a stack, o papel &quot;trabalhar&quot; e a faxina) dão 3 conferências de saúde e 9 sinais de vida; a cópia de cada instância pode mandar o seu, se a infra dela quiser (<a href="#arq-086"><code>ARQ-086</code></a>).</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 15 de 13 · Custo de operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Serviço</th>
+<th scope="col">O que serve</th>
+<th scope="col">Preço por mês</th>
+<th scope="col">Fonte</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>UptimeRobot Team</td>
+<td>100 monitores a cada 30 segundos, com sinais de vida e várias regiões; relatório mensal por e-mail</td>
+<td>US$ 41 (US$ 35 no anual)</td>
+<td><a href="https://uptimerobot.com/pricing/">uptimerobot.com/pricing</a>, consultada em 02/11/2026</td>
+</tr>
+<tr>
+<td>Better Stack</td>
+<td>A licença de quem atende, US$ 34; 10 monitores e sinais de vida grátis, e mais 10 sinais de vida por US$ 20; relatório de disponibilidade</td>
+<td>Cerca de US$ 54 🔎</td>
+<td><a href="https://betterstack.com/pricing">betterstack.com/pricing</a>, consultada em 02/11/2026</td>
+</tr>
+<tr>
+<td>Grafana Cloud Synthetic Monitoring</td>
+<td>Cobra por execução: as 259.200 do mês passam do plano gratuito</td>
+<td>Cerca de US$ 99 🔎, sem sinais de vida</td>
+<td><a href="https://grafana.com/pricing/">grafana.com/pricing</a>, consultada em 02/11/2026</td>
+</tr>
+</tbody>
+</table></div><p>O plano gratuito do UptimeRobot confere a cada 5 minutos e não tem sinal de vida, e por isso não cumpre a <a href="#arq-070"><code>ARQ-070</code></a>. <strong>A sonda: de US$ 40 a 60 por mês</strong> 🔎 (a V-12).</p>
+<p><strong>A observabilidade</strong> não tem licença: a stack é de código aberto e roda em cada máquina (<a href="#arq-069"><code>ARQ-069</code></a>). O custo dela é a memória: os 4 GB da stack são cerca de um oitavo da máquina da PRD, uns R$ 15 a 33 por mês 🔎, já dentro do custo da máquina. O Broadcast do OpenRouter não cobra nada.</p>
+<h4 id="arquitetura-13-39-o-ci-e-a-bateria-com-modelo-real-arq-081--e-arq-082-">3.9 O CI e a bateria com modelo real (<code>ARQ-081</code> ✅ e <code>ARQ-082</code> ✅)</h4>
+<p><strong>Até a primeira produção real, o CI roda num executor próprio na VPS de hoje e não custa nada por minuto</strong> (<a href="#arq-082"><code>ARQ-082</code></a>, a escolha do dono em 03/11/2026). A conta abaixo é a dos executores hospedados do GitHub, que entram com a primeira produção real.</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 16 de 13 · Custo de operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Item</th>
+<th scope="col">Preço</th>
+<th scope="col">Fonte</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Os minutos do Actions, executor Linux padrão</td>
+<td><strong>US$ 0,006 por minuto</strong>, desde 01/01/2026</td>
+<td><a href="https://docs.github.com/en/billing/concepts/product-billing/github-actions">Cobrança do GitHub Actions</a>, consultada em 02/11/2026</td>
+</tr>
+<tr>
+<td>O que cada plano inclui em repositório privado</td>
+<td>Free: US$ 12 por mês de computação (cerca de 2.000 minutos Linux); Team: US$ 18 (cerca de 3.000); Enterprise: US$ 300</td>
+<td>Idem</td>
+</tr>
+<tr>
+<td>Os artefatos e os Packages</td>
+<td>US$ 0,25 por GB por mês, acima do incluído</td>
+<td>Idem</td>
+</tr>
+<tr>
+<td>As versões publicadas (onde fica o pacote)</td>
+<td>Cada arquivo abaixo de 2 GiB, até 1.000 por versão, sem teto total</td>
+<td><a href="https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases">Sobre as versões no GitHub</a>, consultada em 02/11/2026</td>
+</tr>
+<tr>
+<td>O executor próprio</td>
+<td>Sem taxa: a de US$ 0,002 por minuto foi adiada sem data</td>
+<td>A página de cobrança do Actions</td>
+</tr>
+</tbody>
+</table></div><p><strong>O uso</strong> 🔎: com 2 a 4 pessoas no time, cerca de 15 execuções por dia útil (os pedidos de mudança e as entradas na <code>main</code>), de 50 a 120 minutos cobrados cada uma (as etapas em paralelo somam minutos) dão de 15.000 a 40.000 minutos por mês: <strong>de US$ 75 a 225 por mês</strong>, menos o que o plano inclui. O pacote nas versões publicadas não paga armazenamento.</p>
+<p><strong>A bateria com modelo real</strong> (<a href="#arq-081"><code>ARQ-081</code></a>), uma vez por marco que muda o que vai ao modelo: de US$ 5,49 a 7 por rodada de 106 casos (3.2), três rodadas de cada lado, <strong>de US$ 33 a 45 por comparação</strong> 🔎; nos oito marcos da v2.0, de US$ 300 a 700 no total 🔎, cada rodada autorizada pelo dono. A conta de ensaio da Meta no M4 e a prova do Bedrock no M2 custam poucos dólares cada.</p>
+<h4 id="arquitetura-13-310-o-plantao-arq-071-">3.10 O plantão (<code>ARQ-071</code> ✅)</h4>
+<p>A classe de alertas que acorda alguém a qualquer hora (<a href="#arq-071"><code>ARQ-071</code></a>) pede uma pessoa de sobreaviso fora do horário comercial. <strong>A regra de referência é a CLT:</strong> a hora de sobreaviso vale um terço da hora normal, numa escala de até 24 horas (art. 244, § 2º, <a href="https://www.planalto.gov.br/ccivil_03/decreto-lei/del5452.htm">Decreto-lei nº 5.452/1943</a>); a Súmula 428 do TST estende o sobreaviso a quem fica à distância, controlado por meios telemáticos, aguardando o chamado (redação de 14/09/2012, Res. 185/2012); e a hora em que a pessoa é chamada e trabalha se paga como hora extra, com 50% a mais, pela jurisprudência 🔎. A forma (empregado, rodízio, outro arranjo) é da Maind, com o jurídico (V-17).</p>
+<p><strong>A conta</strong> 🔎: o horário comercial da decisão do dono vai das 10h às 17h, todos os dias (49 horas por semana), e sobram cerca de 515 horas de sobreaviso por mês. Para quem ganha de R$ 8.000 a 15.000 por mês (220 horas), um terço da hora sobre 515 horas dá de <strong>R$ 6.200 a 11.700 por mês</strong>, antes dos encargos; com os encargos de um empregado, de R$ 10.000 a 20.000 🔎. Um rodízio entre duas ou mais pessoas divide a escala, mas não as horas, e não muda o total. <strong>Por organização</strong> (1/30), de R$ 200 a 670 por mês 🔎.</p>
+<p><strong>O plantão é o maior custo fixo da operação</strong>, maior que as máquinas, as cópias, a sonda, o e-mail e o CI somados. As alavancas: ampliar o horário comercial em que o alerta espera (das 8h às 22h, por exemplo, reduz as horas de sobreaviso quase à metade); acordar alguém só no S1 (<a href="#arq-068"><code>ARQ-068</code></a>); ou contratar o primeiro atendimento fora. Cada uma é decisão do dono, dentro da <a href="#arq-085"><code>ARQ-085</code></a>.</p>
+<h4 id="arquitetura-13-311-a-soma-por-organizacao-e-por-componente">3.11 A soma, por organização e por componente</h4>
+<p><strong>No envelope do primeiro ano</strong> (30 organizações, 2.000 assentos, 500 pessoas que perguntam), com a classe média de modelo 🔎:</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 17 de 13 · Custo de operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Componente</th>
+<th scope="col">Quem paga hoje</th>
+<th scope="col">A instância, por mês 🔎</th>
+<th scope="col">Por organização, por mês 🔎</th>
+<th scope="col">Cresce com</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>IA da conversa</strong></td>
+<td>A conta da conexão de IA da organização (A-03)</td>
+<td>US$ 3.300 a 9.900</td>
+<td>US$ 110 a 330</td>
+<td>As perguntas e o modelo escolhido</td>
+</tr>
+<tr>
+<td><strong>IA dos agentes</strong></td>
+<td>Idem</td>
+<td>US$ 3.300 a 13.200</td>
+<td>US$ 110 a 440</td>
+<td>As execuções, as perguntas por execução e o modelo do agente</td>
+</tr>
+<tr>
+<td><strong>WhatsApp</strong></td>
+<td>A organização, na conta dela; a Maind, na conta da Maind (A-03)</td>
+<td>US$ 70 a 250</td>
+<td>US$ 2 a 8</td>
+<td>As respostas fora da franquia e os avisos</td>
+</tr>
+<tr>
+<td><strong>E-mail</strong></td>
+<td>A Maind</td>
+<td>US$ 35</td>
+<td>Cerca de US$ 1</td>
+<td>Os avisos e os PDFs</td>
+</tr>
+<tr>
+<td><strong>Máquina</strong> (a da PRD, com a homologação)</td>
+<td>A Maind</td>
+<td>US$ 25 a 50</td>
+<td>US$ 1 a 2</td>
+<td>A troca de máquina, pelos gatilhos</td>
+</tr>
+<tr>
+<td><strong>Cópia da instância SaaS</strong> (fora do Horus)</td>
+<td>A Maind, dona da instância</td>
+<td>De nada a US$ 12</td>
+<td>Menos de US$ 1</td>
+<td>O plano do provedor</td>
+</tr>
+<tr>
+<td><strong>Sonda</strong></td>
+<td>A Maind</td>
+<td>US$ 40 a 60</td>
+<td>US$ 1 a 2</td>
+<td>O número de instâncias</td>
+</tr>
+<tr>
+<td><strong>Observabilidade</strong></td>
+<td>A Maind, dentro da máquina</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>CI</strong></td>
+<td>A Maind; até a primeira produção real, na VPS de hoje, sem custo</td>
+<td>US$ 75 a 225</td>
+<td>US$ 3 a 8</td>
+<td>O ritmo do time, e não o uso</td>
+</tr>
+<tr>
+<td><strong>Plantão</strong></td>
+<td>A Maind</td>
+<td>R$ 6.200 a 20.000</td>
+<td>R$ 200 a 670</td>
+<td>A forma do plantão, e não o uso</td>
+</tr>
+</tbody>
+</table></div><p>Nas linhas do custo fixo (as máquinas, a cópia, a sonda, o e-mail, o CI e o plantão), a coluna &quot;por organização&quot; é só uma média para o comercial: o produto não rateia o fixo (<a href="#arq-084"><code>ARQ-084</code></a>).</p>
+<p><strong>O que salta aos olhos:</strong></p>
+<ul>
+<li><strong>A IA é quase todo o custo variável</strong>, e a parte dos agentes pode passar a da conversa. Quem paga a conta da IA (A-03) é a pergunta comercial que mais pesa.</li>
+<li><strong>O custo fixo de ferramentas e máquinas é pequeno por assento</strong>: de R$ 5.160 a 6.300 por mês para a produção real, com a nuvem sob demanda 🔎, cerca de US$ 940 a 1.150. Dividido pelos 2.000 assentos, menos de US$ 0,60 por assento.</li>
+<li><strong>O plantão é o maior custo fixo</strong>, e não cresce com o uso: no primeiro cliente pesa muito por assento, e no envelope cheio pesa pouco.</li>
+<li><strong>O custo por assento muda com o tipo</strong>: a pessoa que pergunta custa de US$ 13 a 46 por mês de IA 🔎, e o membro leitor, quase nada. É um dado para o preço por tipo de assento (<code>P-022</code>), que fica fora dos documentos (<a href="#d-116"><code>D-116</code></a>).</li>
+</ul>
+<h4 id="arquitetura-13-312-o-aviso-de-custo-arq-084-">3.12 O aviso de custo (<code>ARQ-084</code> ✅)</h4>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 18 de 13 · Custo de operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Ponto</th>
+<th scope="col">Proposta</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>O custo fixo</strong></td>
+<td>Da Maind, e não se rateia entre as organizações no produto (<a href="#arq-084"><code>ARQ-084</code></a>): como a Maind o cobre é assunto comercial e financeiro, fora dos documentos (<a href="#d-116"><code>D-116</code></a>). A IA e o WhatsApp pela conta da Maind vão direto à organização, pelo registro (3.1); o e-mail conta em número de envios</td>
+</tr>
+<tr>
+<td><strong>O limiar do mês, padrão</strong> 🔎</td>
+<td>US$ 30 por assento que pergunta (owner, gestor e membro full), ajustável pela Maind em cada organização; uma organização de 20 pessoas que perguntam avisa acima de US$ 600 no mês</td>
+</tr>
+<tr>
+<td><strong>O sinal da semana</strong></td>
+<td>A semana acima do dobro da média das quatro anteriores (<a href="#arq-017"><code>ARQ-017</code></a>), só acima de US$ 20 na semana, para a organização pequena não avisar por centavos</td>
+</tr>
+<tr>
+<td><strong>O sinal da execução</strong> 🔎</td>
+<td>Uma execução de agente acima de US$ 2: é o teto técnico estourado ou um modelo caro escolhido sem querer</td>
+</tr>
+<tr>
+<td><strong>Quem é avisado</strong></td>
+<td>A Maind, pela classe do horário comercial (<a href="#arq-071"><code>ARQ-071</code></a>); nunca acorda ninguém. O que o owner recebe é a A-22</td>
+</tr>
+<tr>
+<td><strong>O que não faz</strong></td>
+<td>Não corta nada (<a href="#d-062"><code>D-062</code></a>, <a href="#d-114"><code>D-114</code></a>)</td>
+</tr>
+</tbody>
+</table></div><h4 id="arquitetura-13-313-o-orcamento-de-operacao-da-v20-arq-085-">3.13 O orçamento de operação da v2.0 (<code>ARQ-085</code> 🟡)</h4>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 19 de 13 · Custo de operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Item</th>
+<th scope="col">Plano recomendado</th>
+<th scope="col">Por mês 🔎</th>
+<th scope="col">Decisão</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>VPS de hoje</td>
+<td>O plano de 8 vCPU e 32 GB do provedor de hoje, no contrato longo, com a v1.xx, a homologação da v2 e a v2.0 da construção (<a href="#arq-065"><code>ARQ-065</code></a>)</td>
+<td>R$ 120 a 260</td>
+<td><a href="#arq-055"><code>ARQ-055</code></a>, <a href="#arq-056"><code>ARQ-056</code></a></td>
+</tr>
+<tr>
+<td>Cópia da instância SaaS</td>
+<td>Fora do Horus, na infra da instância: a semanal do provedor das VPS, no plano, ou a diária, à parte (V-09)</td>
+<td>De nada a R$ 62</td>
+<td><a href="#arq-086"><code>ARQ-086</code></a></td>
+</tr>
+<tr>
+<td>Nuvem da produção real</td>
+<td>A Google Cloud: o GKE regional e o Cloud SQL Enterprise com alta disponibilidade, em São Paulo, já com a cópia do Postgres (V-19), a partir da primeira produção real</td>
+<td>US$ 767 sob demanda (R$ 4.214); US$ 634 com o compromisso de um ano (R$ 3.482)</td>
+<td><a href="#arq-085"><code>ARQ-085</code></a>, <a href="#arq-093"><code>ARQ-093</code></a></td>
+</tr>
+<tr>
+<td>Sonda</td>
+<td>Um plano com conferência a cada minuto, duas regiões, sinais de vida e relatório mensal (V-12)</td>
+<td>US$ 40 a 60</td>
+<td><a href="#arq-070"><code>ARQ-070</code></a></td>
+</tr>
+<tr>
+<td>E-mail</td>
+<td>O Pro de 100 mil do serviço de hoje (V-02), a partir da primeira produção real; até lá, o gratuito</td>
+<td>US$ 35</td>
+<td><a href="#arq-046"><code>ARQ-046</code></a></td>
+</tr>
+<tr>
+<td>CI</td>
+<td>Os executores hospedados, no plano do GitHub da Maind (V-16), a partir da primeira produção real; até lá, o executor na VPS de hoje</td>
+<td>US$ 75 a 225</td>
+<td><a href="#arq-082"><code>ARQ-082</code></a></td>
+</tr>
+<tr>
+<td>Bateria com modelo real</td>
+<td>Por marco, autorizada a cada rodada</td>
+<td>US$ 33 a 45 por comparação, fora do mês</td>
+<td><a href="#arq-081"><code>ARQ-081</code></a></td>
+</tr>
+<tr>
+<td>Plantão</td>
+<td>A forma com o jurídico (V-17)</td>
+<td>R$ 6.200 a 20.000</td>
+<td><a href="#arq-071"><code>ARQ-071</code></a></td>
+</tr>
+<tr>
+<td><strong>Total sem o plantão</strong></td>
+<td></td>
+<td><strong>R$ 5.160 a 6.300</strong> com a nuvem sob demanda; R$ 4.430 a 5.570 com o compromisso; fora os impostos do faturamento</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Total com o plantão</strong></td>
+<td></td>
+<td><strong>R$ 11.360 a 26.300</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table></div><p>A faixa se revê a cada trimestre contra as faturas, e qualquer item que passe do dobro do previsto volta ao dono.</p>
+<p><strong>Até a primeira produção real</strong>, nenhuma instância precisa do plantão nem da sonda de fora (<a href="#arq-056"><code>ARQ-056</code></a>: todas as instâncias de hoje são de teste, pelo dono, em 03/11/2026). O CI roda na VPS de hoje (<a href="#arq-082"><code>ARQ-082</code></a>), o e-mail fica no plano gratuito (<a href="#arq-046"><code>ARQ-046</code></a>), e o mês fica na máquina e na cópia, de R$ 120 a 330 🔎.</p>
+<p><strong>Na primeira produção real</strong>, a PRD sai da VPS e vai para um Kubernetes gerenciado, com o Postgres gerenciado da mesma nuvem (<a href="#arq-092"><code>ARQ-092</code></a> ✅, <a href="#arq-093"><code>ARQ-093</code></a> ✅). A V-19 comparou a mesma forma nas três nuvens, em São Paulo: 3 nós de 2 vCPU e 8 GB, um por zona; o Postgres 17 de 2 vCPU e 8 GB com a espera noutra zona, 100 GB e as cópias de 7 dias; a entrada HTTPS, o NAT e 100 GB de saída. Por mês 🔎, pela PTAX de R$ 5,4935:</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 20 de 13 · Custo de operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Nuvem</th>
+<th scope="col">Sob demanda</th>
+<th scope="col">Com o compromisso de um ano</th>
+<th scope="col">O que pesa</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Google Cloud</strong> (o GKE regional e o Cloud SQL Enterprise HA)</td>
+<td>US$ 767 (R$ 4.214)</td>
+<td>US$ 634 (R$ 3.482)</td>
+<td>A operação mais simples, com o balanceador, o certificado e o NAT integrados; no modo Autopilot, por volta de US$ 711; a saída mais cara, sem franquia</td>
+</tr>
+<tr>
+<td><strong>AWS</strong> (o EKS e o RDS Multi-AZ)</td>
+<td>US$ 890 (R$ 4.890)</td>
+<td>US$ 642 (R$ 3.528)</td>
+<td>Mais peças para operar no cluster; o NAT a US$ 81 por mês</td>
+</tr>
+<tr>
+<td><strong>Azure</strong> (o AKS Standard e o Flexible Server)</td>
+<td>US$ 891 (R$ 4.897)</td>
+<td>US$ 623 (R$ 3.424)</td>
+<td>A espera do Postgres noutra zona está bloqueada para servidores novos em Brazil South, e não cumpre a <a href="#arq-093"><code>ARQ-093</code></a> hoje</td>
+</tr>
+</tbody>
+</table></div><p>As três dão 99,95% no plano de controle e têm o Postgres 17. Os números não têm os impostos do faturamento no Brasil. Fontes, consultadas em 03/11/2026: cloud.google.com/kubernetes-engine/pricing e cloud.google.com/sql/pricing; os arquivos de preço da AWS para sa-east-1 (EKS, EC2, RDS, ELB e NAT); a API de preços da Azure para brazilsouth (prices.azure.com) e a tabela de regiões do Flexible Server (learn.microsoft.com/azure/postgresql/flexible-server/overview); a PTAX do Banco Central. O dono adiou a escolha para a primeira produção real, com a regra de não ficar preso à nuvem (<a href="#arq-096"><code>ARQ-096</code></a> ✅): a proposta (<a href="#arq-085"><code>ARQ-085</code></a> 🟡) continua a Google Cloud, mas a entrada e o certificado passam a ser do cluster em qualquer nuvem, e o compromisso de um ano só entra com a decisão do dono. A VPS de hoje continua no orçamento, com a construção e as instâncias de teste.</p>
+<h4 id="arquitetura-13-314-os-componentes">3.14 Os componentes</h4>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 21 de 13 · Custo de operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Componente</th>
+<th scope="col">Módulo</th>
+<th scope="col">Responsabilidade</th>
+<th scope="col">Situação</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Registro do consumo de IA</td>
+<td>Dados e IA</td>
+<td>Grava cada chamada, com a função, o canal e o agente; estima e marca a que veio sem custo</td>
+<td>🔧 <code>horus@318db52b:apps/server/Horus.Api/GravadorDeConsumoDeIa.cs</code></td>
+</tr>
+<tr>
+<td>Tabela de preços</td>
+<td>Dados e IA</td>
+<td>O preço público de cada modelo: o catálogo do OpenRouter e a tabela do Bedrock</td>
+<td>🔧 <code>CatalogoOpenRouter.cs</code>; 🆕 a tabela do Bedrock</td>
+</tr>
+<tr>
+<td>Registro das mensagens da Meta</td>
+<td>Fundação</td>
+<td>A categoria e o desfecho de cada mensagem, por conta</td>
+<td>🆕 (<a href="#arq-048"><code>ARQ-048</code></a>)</td>
+</tr>
+<tr>
+<td>Conferência do mês</td>
+<td>Dados e IA</td>
+<td>Compara o registro com a conta do provedor</td>
+<td>🔧 o resumo da conexão de hoje</td>
+</tr>
+<tr>
+<td>Medidas do custo</td>
+<td>Fundação</td>
+<td>O custo do dia por organização e componente, para o aviso (<a href="#arq-072"><code>ARQ-072</code></a>)</td>
+<td>🆕</td>
+</tr>
+<tr>
+<td>Orçamento e rateio</td>
+<td>Fora do produto</td>
+<td>As faturas do mês, da Maind, sem rateio</td>
+<td>🆕 (<a href="#arq-084"><code>ARQ-084</code></a>, <a href="#arq-085"><code>ARQ-085</code></a>)</td>
+</tr>
+</tbody>
+</table></div><h3 id="arquitetura-13-4-o-que-vem-da-v1xx-e-o-que-nao-vem">4. O que vem da v1.xx e o que não vem</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 22 de 13 · Custo de operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Peça da v1.xx</th>
+<th scope="col">Destino</th>
+<th scope="col">Por quê</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>O custo gravado por chamada, com o valor do provedor</td>
+<td>♻️ Fica</td>
+<td><a href="#arq-017"><code>ARQ-017</code></a></td>
+</tr>
+<tr>
+<td>O custo nulo quando o provedor não informa, e o Bedrock sempre nulo</td>
+<td>🔧 Vira a estimativa marcada</td>
+<td><a href="#arq-083"><code>ARQ-083</code></a></td>
+</tr>
+<tr>
+<td>O painel do provedor e o Broadcast como medida do custo</td>
+<td>🔧 Ficam como conferência; a medida é o registro do Horus</td>
+<td><a href="#arq-017"><code>ARQ-017</code></a>, <a href="#arq-069"><code>ARQ-069</code></a></td>
+</tr>
+<tr>
+<td>O Cost Explorer no resumo da conexão</td>
+<td>♻️ Fica, com o cache de seis horas</td>
+<td><a href="#arq-083"><code>ARQ-083</code></a></td>
+</tr>
+<tr>
+<td>O cache de prompt por organização</td>
+<td>♻️ Fica: é o que deixa o Planejador perto dos US$ 0,06 por pergunta</td>
+<td><a href="#arq-031"><code>ARQ-031</code></a></td>
+</tr>
+<tr>
+<td>O consumo sem prazo</td>
+<td>🔧 Passa a 25 meses</td>
+<td><a href="#arq-035"><code>ARQ-035</code></a> ✅</td>
+</tr>
+<tr>
+<td>A falta de medida do WhatsApp, do e-mail e da infraestrutura por organização</td>
+<td>❌ Sai</td>
+<td><a href="#arq-017"><code>ARQ-017</code></a>, <a href="#arq-084"><code>ARQ-084</code></a></td>
+</tr>
+</tbody>
+</table></div><h3 id="arquitetura-13-5-os-riscos-e-o-que-falta-decidir">5. Os riscos e o que falta decidir</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 23 de 13 · Custo de operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Risco</th>
+<th scope="col">Por quê</th>
+<th scope="col">O que se faz</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>🤖 <strong>Os agentes custam mais que a conversa</strong></td>
+<td>Cada execução faz várias perguntas inteiras, e o produto não tem teto de custo</td>
+<td>O teto técnico por execução (<a href="#arq-030"><code>ARQ-030</code></a>), o sinal da execução (<a href="#arq-084"><code>ARQ-084</code></a>) e o modelo do agente escolhido pelo owner (<a href="#d-061"><code>D-061</code></a>)</td>
+</tr>
+<tr>
+<td>📈 <strong>Os preços dos modelos mudam</strong></td>
+<td>O OpenRouter e os fabricantes mudam a tabela, e um modelo novo pode custar o dobro</td>
+<td>O custo é o que o provedor informa na chamada; a tabela se atualiza a cada pacote; a conferência do mês pega a diferença</td>
+</tr>
+<tr>
+<td>📱 <strong>A Meta muda a tabela</strong></td>
+<td>Quatro atualizações em 2026, e a cobrança da utilidade dentro da janela desde 01/10/2026</td>
+<td>A tabela reconferida no M4 (V-04); o registro por categoria (3.3)</td>
+</tr>
+<tr>
+<td>🏷️ <strong>O aviso do agente vira marketing</strong></td>
+<td>A categoria é da Meta</td>
+<td>Cerca de US$ 560 a mais por mês no envelope; a A-19</td>
+</tr>
+<tr>
+<td>🧑‍🚒 <strong>O plantão pesa no primeiro cliente</strong></td>
+<td>É fixo e não cresce com o uso</td>
+<td>As alavancas de 3.10; a V-17</td>
+</tr>
+<tr>
+<td>💱 <strong>O câmbio</strong></td>
+<td>Quase todo custo variável é em dólar, e o cartão internacional paga imposto</td>
+<td>A conferência do mês em reais; a cobrança da Meta em reais desde 01/07/2026</td>
+</tr>
+<tr>
+<td>🔎 <strong>O envelope é hipótese</strong></td>
+<td>Os volumes saem de exemplos do produto (<a href="#arq-016"><code>ARQ-016</code></a>)</td>
+<td>O custo por unidade (por pergunta, por execução, por mensagem) vale qualquer que seja o volume; a V-15 dá o primeiro número real</td>
+</tr>
+<tr>
+<td>🌍 <strong>O Bedrock em São Paulo não guarda o dado no país</strong></td>
+<td>Os modelos Claude só têm o endpoint global ali</td>
+<td>A A-16 e a V-18; o &quot;tudo dentro&quot; da v2.1 (<a href="#d-010"><code>D-010</code></a>) para quem exige</td>
+</tr>
+</tbody>
+</table></div><p><strong>O que falta decidir:</strong></p>
+<ul>
+<li>🟡 Com o dono: <a href="#arq-085"><code>ARQ-085</code></a> (o orçamento de operação, com a forma do plantão).</li>
+<li>O impasse <strong>A-03</strong> (de quem é cada custo no SaaS), com o PO e o dono: este documento mostra que a IA é quase todo o custo variável.</li>
+<li>As verificações <strong>V-15</strong> (o custo real por função na PRD), <strong>V-16</strong> (o plano do GitHub), <strong>V-17</strong> (a forma do plantão) e <strong>V-18</strong> (os modelos do Bedrock que processam em São Paulo), além das que já estavam abertas e mexem no custo: V-02, V-07, V-09 e V-12.</li>
+</ul>

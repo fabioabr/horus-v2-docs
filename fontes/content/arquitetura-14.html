@@ -1,0 +1,960 @@
+<p>Situação: 🟢 vivo · escrito pelo arquiteto em 02/11/2026 · a <code>P-008</code> inteira respondida: 14 ✅ viáveis, 13 ⚠️ viáveis com restrição e nenhuma ❌ · a <code>P-002</code> e a <code>P-003</code> conferidas · 30 itens a devolver ao PO (A-01 a A-30), sem número <code>P-nnn</code> nem <code>I-nnn</code> · 19 verificações pendentes (V-01 a V-19), duas delas já respondidas em parte pela documentação pública.</p>
+<p>Última atualização: 03/11/2026 (a cópia de segurança fora do Horus, <a href="#arq-086"><code>ARQ-086</code></a>: a V-09, a V-10 e a A-06 refeitas; a V-07 refeita pela escolha do dono na <a href="#arq-055"><code>ARQ-055</code></a>; a V-05 e a V-12 passam à primeira produção real, pela <a href="#arq-056"><code>ARQ-056</code></a>; o item 12 com um banco por organização, <a href="#arq-010"><code>ARQ-010</code></a> ✅; a V-16 dividida pela <a href="#arq-082"><code>ARQ-082</code></a> ✅; a A-01 sem objeto e a A-14 e a A-21 reduzidas, pela <a href="#arq-011"><code>ARQ-011</code></a> ✅; a V-02 dividida pela <a href="#arq-046"><code>ARQ-046</code></a> ✅; a A-27, a tela das preferências de guarda, pela <a href="#arq-035"><code>ARQ-035</code></a> ✅; a A-28, a <a href="#mf-106"><code>MF-106</code></a> inteira na v2.1, pela <a href="#arq-090"><code>ARQ-090</code></a> ✅; a A-29, o painel do uso da instância, pela <a href="#arq-017"><code>ARQ-017</code></a> ✅; a A-03 reduzida, pela <a href="#arq-084"><code>ARQ-084</code></a> ✅; a A-30, o documento da organização, pela <a href="#arq-043"><code>ARQ-043</code></a> ✅; a V-19, o preço da produção real nas nuvens, pela <a href="#arq-093"><code>ARQ-093</code></a>, ainda como proposta; a V-07 com o minikube e a swap, e a V-19 só com o Kubernetes gerenciado, pela <a href="#arq-093"><code>ARQ-093</code></a> ✅; a A-21 e a V-07 com a v2.0 num subdomínio, ao lado da v1.xx, pela <a href="#arq-065"><code>ARQ-065</code></a> ✅; a V-19 respondida em parte, com o preço das três nuvens).</p>
+<p>Este documento é a resposta do arquiteto às três pendências que o backlog estratégico deixou com ele: a <code>P-008</code> (as vinte e sete hipóteses técnicas do PO), a <code>P-002</code> (o inventário de lacunas e o tempo de resposta) e a <code>P-003</code> (o que da v1.xx se reaproveita, mf a mf). Ele também consolida, num lugar só, o que a arquitetura devolve ao PO e as verificações que ficaram pendentes nas máquinas e nos fornecedores.</p>
+<ul>
+<li>O <strong>quê</strong> e o <strong>porquê</strong> são do produto (<a href="#produto-backlog">backlog estratégico</a>, <a href="#produto-lacunas">inventário de lacunas</a>, <a href="#produto-mfs-hoje">mapa das mfs de hoje</a>). As decisões de arquitetura (<code>ARQ-nnn</code>) estão no <a href="#arquitetura-02">registro</a>; a estratégia, no <a href="#arquitetura-01">documento 01</a>.</li>
+<li>O código da v1.xx se cita como <code>horus@318db52b:&lt;caminho&gt;</code> (a <code>main</code> do repositório <code>horus</code>). Nada foi executado, nenhum modelo foi chamado e nenhuma máquina foi acessada: a conferência é de leitura do código e dos documentos.</li>
+<li>⚠️ <strong>O backlog do PO está congelado</strong>, e tem uma colisão de números a resolver (duas <code>D-138</code> e duas <code>D-139</code>). Por isso nenhum item da seção 4 ganha número <code>P-nnn</code> ou <code>I-nnn</code>: o PO numera quando descongelar. A <code>D-138</code> e a <code>D-139</code> vêm sempre com o título curto: <code>D-138</code> (&quot;A v1.xx fecha como MVP no HML…&quot;) e <code>D-139</code> (&quot;No MVP da v1.xx, as seis peças…&quot;) são do MVP; <code>D-138</code> (&quot;O número novo das mfs tem três dígitos…&quot;) e <code>D-139</code> (&quot;Tabela de conversão das mfs…&quot;) são da numeração.</li>
+</ul>
+<p>Legenda: ✅ viável · ⚠️ viável com restrição · ❌ inviável · 🔎 hipótese a confirmar · 🛑 impasse · 🕓 pendência.</p>
+<h3 id="arquitetura-14-1-a-p-008-as-vinte-e-sete-hipoteses-tecnicas">1. A <code>P-008</code>: as vinte e sete hipóteses técnicas</h3>
+<p><strong>O resumo:</strong> nenhuma hipótese é inviável. Catorze são viáveis como o produto as escreveu; treze são viáveis com uma restrição ao produto, e cada restrição já está num item da seção 4 ou numa decisão do registro. As restrições mais pesadas são quatro: o alcance de dados do espaço da organização, que é um impasse (letra o, A-11, com a conversão dos painéis de hoje na A-14); o WhatsApp, que depende da aprovação da Maind na Meta antes do M4 e tem custo por mensagem iniciada (letra x, <a href="#arq-047"><code>ARQ-047</code></a>, documento 13); a separação entre o fato da web e a causa, em que só o fato é garantido pelo servidor e a causa depende do modelo (letra aa, <a href="#arq-026"><code>ARQ-026</code></a>); e a etapa 2 da segurança, que só alcança os controles de acesso de uma tecnologia quando ela aceita a identidade da pessoa (letras c e d, A-25).</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de 14 · Conferência do produto"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Letra</th>
+<th scope="col">A hipótese do PO</th>
+<th scope="col">Resposta</th>
+<th scope="col">Evidência na v1.xx</th>
+<th scope="col">A restrição ao produto</th>
+<th scope="col">Onde se resolve</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>(a)</strong></td>
+<td>O editor de relatórios comporta o que o board faz hoje (<a href="#d-018"><code>D-018</code></a>)</td>
+<td>⚠️</td>
+<td>O relatório de hoje é feito de páginas A4 numa grade de 12 colunas, até 50 páginas e 40 regiões por página, com <strong>três tipos de região</strong> (gráfico, KPI e texto), e cada região de dado só fica pronta quando o gestor aprova a receita (<code>horus@318db52b:apps/server/Horus.Core/Relatorios/RelatorioEntities.cs</code>, <code>EstadoDoRelatorio</code>, <code>LimitesDeRelatorio</code>). O board tem grade livre, páginas, apresentação em laço, cartões que se recalculam, filtros e o &quot;Quem abre&quot; (<code>horus@318db52b:apps/server/Horus.Core/Data/BoardStore.cs</code>, <code>RecalculadorDeBoard.cs</code>)</td>
+<td>O editor de hoje <strong>não comporta</strong> o board: faltam os outros tipos de bloco (tabela, mapa de calor, chaveamento e fluxo), o tamanho livre, a apresentação, os filtros e o recálculo vivo. O editor único é trabalho novo sobre os dois, com a impressão pela mesma montagem. A região escrita por descrição, com aprovação, só o relatório tem, e a regra do editor único foi ao PO</td>
+<td><a href="#arq-007"><code>ARQ-007</code></a>; documento 01, §5 e M5; <strong>A-23</strong></td>
+</tr>
+<tr>
+<td><strong>(b)</strong></td>
+<td>Os eventos de uso da <a href="#mf-117"><code>MF-117:Home da organização</code></a> servem à medida de autonomia</td>
+<td>⚠️</td>
+<td>O fato <code>resposta</code> guarda só sucesso ou erro, a duração e o tempo de cada etapa; o fato <code>pergunta</code> guarda o modo; nenhum diz o canal (<code>horus@318db52b:apps/server/Horus.Core/Uso/TiposDeEventoDeUso.cs</code>), e a leitura da Home os conta por organização (<code>horus@318db52b:apps/server/Horus.Core/Uso/UsoDaOrg.Leituras.cs</code>)</td>
+<td>Servem, com o desfecho em categoria e o canal acrescentados no fecho do turno. O que conta como respondida nos casos de borda é do PO</td>
+<td><a href="#arq-029"><code>ARQ-029</code></a>; <strong>A-08</strong></td>
+</tr>
+<tr>
+<td><strong>(c)</strong></td>
+<td>O que a <a href="#mf-106"><code>MF-106:Segurança dos dados por pessoa</code></a> já cobre de cada etapa da <a href="#d-025"><code>D-025</code></a></td>
+<td>⚠️</td>
+<td><em>(03/11/2026: a <a href="#mf-106"><code>MF-106</code></a> inteira foi para a v2.1, e o código dela sai da v2.0, <a href="#arq-090"><code>ARQ-090</code></a>.)</em> A etapa 1 está inteira: as claims, o documento de segurança compilado em regras, o motor, o reescritor, o verificador, a simulação, a caixa de revisão, a homologação e a conferência diária (<code>horus@318db52b:apps/server/Horus.Core/Seguranca/</code>, 85 arquivos). Da etapa 2, nada: as claims do login corporativo só estão previstas (&quot;o espelhamento do JWT entra com o SSO&quot;, <code>horus@318db52b:apps/server/Horus.Core/Seguranca/ClaimsEfetivas.cs</code>), e a consulta roda com a credencial da fonte, e não com a identidade da pessoa (<code>horus@318db52b:apps/server/Horus.Core/Seguranca/Motor/ExecucaoNoBanco.cs</code>)</td>
+<td>A etapa 1 vem como está. A etapa 2 (v2.1, M8) depende do login corporativo e, para os controles das tecnologias de dados, de cada tecnologia aceitar a identidade da pessoa na consulta 🔎; onde não aceitar, vale só a regra do Horus</td>
+<td><a href="#arq-032"><code>ARQ-032</code></a>, <a href="#arq-054"><code>ARQ-054</code></a>; documento 07, 3.3; <strong>A-25</strong></td>
+</tr>
+<tr>
+<td><strong>(d)</strong></td>
+<td>Calcular e explicar o &quot;vale a mais restritiva&quot; quando as duas fontes de regra divergem (<a href="#d-026"><code>D-026</code></a>)</td>
+<td>⚠️</td>
+<td>Hoje só existe a regra do Horus, e ela se explica pela faixa &quot;Resposta limitada aos dados que você pode ver&quot;, gravada com o recorte de acesso de cada resposta (<code>horus@318db52b:apps/server/Horus.Core/Seguranca/Semantica/RecorteDeAcesso.cs</code>, §16 A104)</td>
+<td><strong>Calcular</strong> é viável por construção: a fonte devolve só o que a empresa deixa, e o Horus filtra por cima. <strong>Explicar</strong> só vale para a parte do Horus: o banco devolve menos linhas sem dizer por quê. O que a pessoa lê quando a regra da empresa esconde um dado foi ao PO</td>
+<td>Documento 07, 3.3; <strong>A-25</strong></td>
+</tr>
+<tr>
+<td><strong>(e)</strong></td>
+<td>Os grupos generalizam o &quot;Quem abre&quot; que o board corporativo já tem (<a href="#d-029"><code>D-029</code></a>)</td>
+<td>⚠️</td>
+<td>O &quot;Quem abre&quot; de hoje é uma condição sobre claims mais uma lista de pessoas (<code>horus@318db52b:apps/server/Horus.Core/Seguranca/Superficies/QuemAbreOPainel.cs</code>)</td>
+<td>A condição vira um grupo dinâmico da organização, e a lista, &quot;Pessoas específicas&quot;; juntar as duas numa visibilidade só é do PO</td>
+<td><a href="#arq-040"><code>ARQ-040</code></a>; <strong>A-14</strong></td>
+</tr>
+<tr>
+<td><strong>(f)</strong></td>
+<td>A saída por e-mail de hoje serve de ponto de partida aos conectores, e para quem o relatório vai (<a href="#d-033"><code>D-033</code></a>, <a href="#d-035"><code>D-035</code></a>)</td>
+<td>✅</td>
+<td>O relatório agendado vai <strong>só a membros da organização</strong>, conferidos na hora da rodada, <strong>até 50</strong> destinatários, e a agenda pausa quando nenhum continua na organização (<code>horus@318db52b:apps/server/Horus.Core/Relatorios/EntregaDeRelatorio.cs</code>, <code>AgendaDeRelatorio.cs</code>); o envio sai por SMTP (<code>horus@318db52b:apps/server/Horus.Core/Email/EnviadorSmtp.cs</code>)</td>
+<td>Nenhuma: já entrega só a usuários do Horus. Vira o primeiro caso do conector de e-mail; a pausa pela regra A14 sai, e o PDF que não cabe no anexo é a A-19</td>
+<td><a href="#arq-022"><code>ARQ-022</code></a>, <a href="#arq-042"><code>ARQ-042</code></a>, <a href="#arq-046"><code>ARQ-046</code></a></td>
+</tr>
+<tr>
+<td><strong>(g)</strong></td>
+<td>A agenda do relatório em PDF serve de base ao agendador único (<a href="#d-036"><code>D-036</code></a>)</td>
+<td>✅</td>
+<td>A vigia da agenda roda de minuto em minuto e reivindica cada rodada por uma atualização condicional no banco, o que impede a rodada em dobro (<code>horus@318db52b:apps/server/Horus.Api/VigiaDeAgendaDeRelatorios.cs</code>, <code>horus@318db52b:apps/server/Horus.Core/Relatorios/AgendaDeRelatorio.cs</code>)</td>
+<td>Nenhuma: é o molde do agendador sobre a fila durável, que acrescenta o agente, a pausa por organização no corte e a drenagem na troca de versão</td>
+<td><a href="#arq-005"><code>ARQ-005</code></a>, <a href="#arq-063"><code>ARQ-063</code></a></td>
+</tr>
+<tr>
+<td><strong>(h)</strong></td>
+<td>O painel corporativo roda com acesso total e o pessoal no escopo do autor</td>
+<td>✅</td>
+<td>Confirmado (<code>horus@318db52b:apps/server/Horus.Core/Seguranca/Motor/EmNomeDe.cs</code>, <code>DoPainel</code>)</td>
+<td>Na v2.0 a regra muda: o escopo do autor só onde há liberação, e o acesso total só no board público da quarentena</td>
+<td><a href="#arq-041"><code>ARQ-041</code></a>, <a href="#arq-042"><code>ARQ-042</code></a></td>
+</tr>
+<tr>
+<td><strong>(i)</strong></td>
+<td>O que muda no código ao tirar do owner a edição do painel corporativo e criar o &quot;desabilitar&quot; (<a href="#d-043"><code>D-043</code></a>)</td>
+<td>✅</td>
+<td>Escrever num painel corporativo e mudar quem o vê são ações só do owner (<code>horus@318db52b:apps/server/Horus.Core/Identity/PermissoesDaOrg.cs</code>, <code>EditarPainelCorporativo</code>, <code>MudarVisibilidadeDePainel</code>); o corporativo é uma marca do board, e o estado &quot;desabilitado&quot; não existe (<code>horus@318db52b:apps/server/Horus.Core/Data/BoardEntities.cs</code>, <code>Corporativo</code>)</td>
+<td>Nenhuma à regra: escrever vira &quot;só o autor&quot; no avaliador, o espaço da organização ganha um dono, e &quot;desabilitado&quot; vira um estado que a tela, o recálculo, o PDF e o agendador leem, avisados pelo evento &quot;board desabilitado&quot;. Os painéis corporativos de hoje perdem o editor na conversão</td>
+<td><a href="#arq-039"><code>ARQ-039</code></a>, <a href="#arq-019"><code>ARQ-019</code></a>; documento 04, 3.3; <strong>A-01</strong>, <strong>A-14</strong></td>
+</tr>
+<tr>
+<td><strong>(j)</strong></td>
+<td>O convite e a planilha comportam a indicação do gestor, e dá para ter a quarentena (<a href="#d-047"><code>D-047</code></a>)</td>
+<td>✅</td>
+<td>O convite já é nominal, com o e-mail, o papel, a validade e o número de usos (<code>horus@318db52b:apps/server/Horus.Core/Identity/IdentityEntities.cs</code>, <code>OrgInviteEntity</code>); a planilha cria os convites na mesma transação dos valores de claim (<code>horus@318db52b:apps/server/Horus.Core/Seguranca/Planilha/ImportacaoDePlanilhaStore.cs</code>); a quarentena não existe</td>
+<td>Nenhuma: o convite ganha o gestor e o tipo de assento; o link e o QR são outro jeito de entregar o mesmo convite; a quarentena é um estado do vínculo, lido pelo avaliador</td>
+<td><a href="#arq-039"><code>ARQ-039</code></a></td>
+</tr>
+<tr>
+<td><strong>(k)</strong></td>
+<td>Um usuário acumula owner e gestor, e a organização é dona de boards num espaço próprio (<a href="#d-048"><code>D-048</code></a>)</td>
+<td>⚠️</td>
+<td>Hoje cada pessoa tem um papel só por organização (<code>horus@318db52b:apps/server/Horus.Core/Identity/IdentityEntities.cs</code>, <code>OrgMemberEntity.Role</code>) e todo painel tem um criador; mais de um owner já existe (<code>horus@318db52b:apps/server/Horus.Core/Identity/OrgStore.cs</code>, <code>UltimoOwner</code>)</td>
+<td>A combinação owner e gestor e o espaço da organização são novos; com que alcance de dados o espaço roda é a letra (o)</td>
+<td><a href="#arq-039"><code>ARQ-039</code></a>, <a href="#arq-041"><code>ARQ-041</code></a></td>
+</tr>
+<tr>
+<td><strong>(l)</strong></td>
+<td>A matriz de permissões comporta roles que o owner configura, botão a botão, com a soma, a role padrão e a cópia (<a href="#d-050"><code>D-050</code></a>, <a href="#d-110"><code>D-110</code></a> a <a href="#d-113"><code>D-113</code></a>)</td>
+<td>⚠️</td>
+<td>A matriz tem 23 ações e três papéis fixos, escritos no código, e nenhum controle da conversa está nela: todo membro usa todos (<code>horus@318db52b:apps/server/Horus.Core/Identity/PermissoesDaOrg.cs</code>)</td>
+<td>A matriz não comporta roles, mas vira a leitura do papel no avaliador, e as roles nascem como a terceira leitura, com a soma, a padrão e a cópia. A lista dos sete interruptores da <a href="#d-110"><code>D-110</code></a> confere com a tela, mais os do WhatsApp e dos conectores (nove ao todo); a conversa tem dois controles que a lista não nomeia, e isso foi ao PO</td>
+<td><a href="#arq-008"><code>ARQ-008</code></a>, <a href="#arq-039"><code>ARQ-039</code></a>; <strong>A-24</strong></td>
+</tr>
+<tr>
+<td><strong>(m)</strong></td>
+<td>O cadastro guarda o que as roles e as claims do login corporativo carregam (<a href="#d-052"><code>D-052</code></a>, <a href="#d-118"><code>D-118</code></a>)</td>
+<td>⚠️</td>
+<td>O cadastro não tem role nem campo de login corporativo (<code>horus@318db52b:apps/server/Horus.Core/Identity/IdentityEntities.cs</code>); as claims da segurança moram à parte, por vínculo</td>
+<td>Na v2.0, as roles são novas e o owner as atribui no cadastro (<a href="#d-118"><code>D-118</code></a>); o mapeamento dos campos do token é do M8</td>
+<td><a href="#arq-038"><code>ARQ-038</code></a>, <a href="#arq-054"><code>ARQ-054</code></a></td>
+</tr>
+<tr>
+<td><strong>(n)</strong></td>
+<td>Todo board, de qualquer tamanho, pode ser impresso em PDF pela mesma montagem (<a href="#d-057"><code>D-057</code></a>)</td>
+<td>⚠️</td>
+<td>O PDF do relatório e o da resposta já saem do Chromium sem tela, que abre uma rota do próprio front (<code>horus@318db52b:apps/server/Horus.Core/Relatorios/ImpressorDePdfChromium.cs</code>, <code>GeradorDePdfDeRelatorio.cs</code>, <code>PdfDaResposta.cs</code>); o board não tem PDF hoje</td>
+<td>A mesma montagem imprime qualquer tamanho. Como um board grande vira PDF (uma página ou várias), que a <a href="#d-057"><code>D-057</code></a> deixou de fora, e a legibilidade de uma página muito maior que a folha foram ao PO; o PDF que passa do teto de anexo do canal é a A-19</td>
+<td><a href="#arq-007"><code>ARQ-007</code></a>; <strong>A-23</strong>, <strong>A-19</strong></td>
+</tr>
+<tr>
+<td><strong>(o)</strong></td>
+<td>Com que alcance de dados rodam os boards da organização e os agendamentos do owner (<a href="#d-048"><code>D-048</code></a>, <a href="#d-059"><code>D-059</code></a>)</td>
+<td>⚠️</td>
+<td>Hoje o painel corporativo roda com acesso total (<code>horus@318db52b:apps/server/Horus.Core/Seguranca/Motor/EmNomeDe.cs</code>, <code>PainelCorporativo</code>)</td>
+<td>A hipótese de trabalho: o board do espaço da organização no escopo de quem abre; o envio do owner que não é gestor no escopo de cada destinatário; os herdados pausados até a transferência. É impasse do PO</td>
+<td><a href="#arq-041"><code>ARQ-041</code></a>; <strong>A-11</strong>, <strong>A-15</strong></td>
+</tr>
+<tr>
+<td><strong>(p)</strong></td>
+<td>Renderizar gráficos em segundo plano, com as mesmas bibliotecas do front (<a href="#d-061"><code>D-061</code></a>)</td>
+<td>✅</td>
+<td>O mesmo impressor do PDF da resposta e do relatório (<code>horus@318db52b:apps/server/Horus.Core/Relatorios/ImpressorDePdfChromium.cs</code>)</td>
+<td>Nenhuma: a imagem e o PDF são a própria tela, no papel &quot;trabalhar&quot;, com concorrência limitada (hoje, dois PDFs ao mesmo tempo)</td>
+<td><a href="#arq-007"><code>ARQ-007</code></a>, <a href="#arq-095"><code>ARQ-095</code></a></td>
+</tr>
+<tr>
+<td><strong>(q)</strong></td>
+<td>O ciclo controlado pelo modelo, com o JSON final por tipo de saída, cabe na IA por função (<a href="#d-061"><code>D-061</code></a>)</td>
+<td>✅</td>
+<td>O roteador resolve provedor, modelo e chave por função (<code>horus@318db52b:apps/server/Horus.Core/Llm/RoteadorDeIa.cs</code>, <code>FuncoesDeIa.cs</code>)</td>
+<td>Nenhuma ao produto: o agente pergunta ao motor e cita só os blocos que o servidor calculou, com tetos técnicos por execução 🔎 (8 perguntas, 16 voltas, 15 minutos). O que o autor recebe quando a execução falha é do PO</td>
+<td><a href="#arq-030"><code>ARQ-030</code></a>, <a href="#arq-031"><code>ARQ-031</code></a>; <strong>A-10</strong></td>
+</tr>
+<tr>
+<td><strong>(r)</strong></td>
+<td>O motor responde de um popup, em qualquer tela, com todos os controles da conversa (<a href="#d-065"><code>D-065</code></a>, <a href="#d-088"><code>D-088</code></a>)</td>
+<td>✅</td>
+<td>O compositor e o cartão da resposta só existem na página da conversa (<code>horus@318db52b:apps/web/src/pages/AnaliseConversaPage.vue</code>, 714 linhas)</td>
+<td>Nenhuma: a conversa vira um componente só, e a transmissão do popup fica no estado do app</td>
+<td><a href="#arq-020"><code>ARQ-020</code></a></td>
+</tr>
+<tr>
+<td><strong>(s)</strong></td>
+<td>O produto guarda os assentos, confere contra as pessoas, desabilita e pausa no corte, pelo painel da instância (<a href="#d-066"><code>D-066</code></a> a <a href="#d-068"><code>D-068</code></a>, <a href="#d-075"><code>D-075</code></a>)</td>
+<td>✅</td>
+<td>Não existe nada de assento, licença ou plano no servidor</td>
+<td>Viável como peça nova da Plataforma: o painel dos assentos, os quatro tipos e o evento &quot;assentos cortados&quot;, que pausa pela fila tudo o que roda sozinho. Só no SaaS; o on-premises espera a <code>P-016</code></td>
+<td><a href="#arq-005"><code>ARQ-005</code></a>, <a href="#arq-019"><code>ARQ-019</code></a>, <a href="#arq-039"><code>ARQ-039</code></a></td>
+</tr>
+<tr>
+<td><strong>(t)</strong></td>
+<td>Mais de um owner e os quatro tipos de assento (<a href="#d-069"><code>D-069</code></a>)</td>
+<td>✅</td>
+<td>Mais de um owner já existe, e a organização recusa tirar o último (<code>horus@318db52b:apps/server/Horus.Core/Identity/OrgStore.cs</code>, <code>UltimoOwner</code>)</td>
+<td>Nenhuma: os tipos de assento são a primeira leitura do avaliador</td>
+<td><a href="#arq-039"><code>ARQ-039</code></a></td>
+</tr>
+<tr>
+<td><strong>(u)</strong></td>
+<td>O gestor cria o convite, com aprovação do owner, reserva do assento por N dias e a troca de tipo pelo mesmo fluxo (<a href="#d-071"><code>D-071</code></a>, <a href="#d-072"><code>D-072</code></a>)</td>
+<td>✅</td>
+<td>Hoje só o owner convida (<code>horus@318db52b:apps/server/Horus.Core/Identity/PermissoesDaOrg.cs</code>, <code>Convidar</code>); o convite já tem validade (<code>OrgInviteEntity.ExpiresAt</code>)</td>
+<td>Nenhuma: o pedido, a aprovação, a reserva pelo prazo da <a href="#d-078"><code>D-078</code></a> e a troca de tipo passam pelo avaliador, e o fim da reserva é um trabalho da fila</td>
+<td><a href="#arq-005"><code>ARQ-005</code></a>, <a href="#arq-039"><code>ARQ-039</code></a></td>
+</tr>
+<tr>
+<td><strong>(v)</strong></td>
+<td>O motor decompõe uma variação nas partes que mais a explicam e guia a pessoa passo a passo (<a href="#d-081"><code>D-081</code></a>)</td>
+<td>⚠️</td>
+<td>Não existe: a investigação é só a conversa, com as sugestões, a Análise avançada e os níveis 3 e 4 (<code>horus@318db52b:apps/server/Horus.Core/Chat/ChatEngine.cs</code>, <code>horus@318db52b:apps/server/Horus.Core/Planner/AnalisePosConsulta.cs</code>)</td>
+<td>Viável como um modo do motor, com os números do banco por dimensão; depende das dimensões que o documento semântico declara (<a href="#d-083"><code>D-083</code></a>) e da definição macro (<code>P-018</code>). v2.1, M11</td>
+<td><a href="#arq-006"><code>ARQ-006</code></a>, <a href="#arq-023"><code>ARQ-023</code></a></td>
+</tr>
+<tr>
+<td><strong>(w)</strong></td>
+<td>Registrar quem viu e quem entregou o quê sem guardar conteúdo (<a href="#d-082"><code>D-082</code></a>)</td>
+<td>✅</td>
+<td>A trilha de eventos de segurança, com 29 tipos, é o molde (<code>horus@318db52b:apps/server/Horus.Core/Seguranca/SegurancaEntities.cs</code>); a abertura de board já é um fato de uso, mas sem transação com a entrega e com prazo de 400 dias (<code>TiposDeEventoDeUso.BoardAberto</code>)</td>
+<td>Nenhuma: o rastro é um registro só de acréscimo, no banco da aplicação, gravado na transação da entrega e da abertura, e a telemetria segue sem conteúdo</td>
+<td><a href="#arq-009"><code>ARQ-009</code></a>, <a href="#arq-073"><code>ARQ-073</code></a></td>
+</tr>
+<tr>
+<td><strong>(x)</strong></td>
+<td>O WhatsApp de ponta a ponta, nas duas contas, com o custo e as janelas, e as mensagens que o Horus inicia (<a href="#d-084"><code>D-084</code></a>, <a href="#d-097"><code>D-097</code></a>, <a href="#d-098"><code>D-098</code></a>, <a href="#d-124"><code>D-124</code></a>)</td>
+<td>⚠️</td>
+<td>Não existe nada de WhatsApp</td>
+<td>Viável, com quatro restrições: a Maind aprovada na Meta antes do M4; tudo o que o Horus inicia sai por modelo aprovado e tem custo próprio, e, desde 01/10/2026, também as respostas dentro da janela passam a custar acima de 1.000 por número por mês; a conta da Maind divide teto e qualidade entre as organizações, e a pessoa em duas organizações fica sem regra; o aviso do agente precisa caber num modelo</td>
+<td><a href="#arq-047"><code>ARQ-047</code></a> a <a href="#arq-050"><code>ARQ-050</code></a>; documento 08, 3.3; documento 13, 3.3; <strong>A-17</strong> a <strong>A-19</strong></td>
+</tr>
+<tr>
+<td><strong>(y)</strong></td>
+<td>Contar a pergunta respondida sem guardar a conversa descartada, e guardar a resposta reportada (<a href="#d-087"><code>D-087</code></a>)</td>
+<td>✅</td>
+<td>O fato de uso não guarda conteúdo (<code>horus@318db52b:apps/server/Horus.Core/Uso/TiposDeEventoDeUso.cs</code>)</td>
+<td>Nenhuma: a conversa do popup vive no servidor até ser salva ou limpa; a limpeza deixa só o fato e a cópia do reporte</td>
+<td><a href="#arq-028"><code>ARQ-028</code></a>, <a href="#arq-029"><code>ARQ-029</code></a></td>
+</tr>
+<tr>
+<td><strong>(z)</strong></td>
+<td>A área de avisos na conta e a preferência de receber por e-mail (<a href="#d-128"><code>D-128</code></a>)</td>
+<td>✅</td>
+<td>Não existe: o sininho saiu da tela &quot;até haver notificação de verdade&quot; (<code>horus@318db52b:apps/web/src/layout/HeaderApp.vue</code>); o e-mail da instância existe (<code>horus@318db52b:apps/server/Horus.Core/Email/EnviadorSmtp.cs</code>)</td>
+<td>Nenhuma: nasce na Plataforma, no M1, com a preferência, e o aviso sai pela caixa de saída</td>
+<td><a href="#arq-012"><code>ARQ-012</code></a>, <a href="#arq-019"><code>ARQ-019</code></a>, <a href="#arq-046"><code>ARQ-046</code></a></td>
+</tr>
+<tr>
+<td><strong>(aa)</strong></td>
+<td>Separar o fato da web, em qualquer nível, da causa de fora, só a partir do nível 4 (<a href="#d-130"><code>D-130</code></a>)</td>
+<td>⚠️</td>
+<td>Hoje a leitura depois da consulta busca na web sem receber o nível, cita a fonte só no texto e sem data (<code>horus@318db52b:apps/server/Horus.Core/Planner/AnalisePosConsulta.cs</code>); o leitor de páginas existe (<code>horus@318db52b:apps/server/Horus.Core/Web/WebReader.cs</code>)</td>
+<td>O fato fica garantido pelo servidor, com link e data; a causa abaixo do nível 4 depende da instrução ao modelo e se mede pela bateria, a cada marco</td>
+<td><a href="#arq-025"><code>ARQ-025</code></a>, <a href="#arq-026"><code>ARQ-026</code></a>, <a href="#arq-081"><code>ARQ-081</code></a></td>
+</tr>
+</tbody>
+</table></div><p><strong>A contagem:</strong> ✅ (f), (g), (h), (i), (j), (p), (q), (r), (s), (t), (u), (w), (y) e (z): catorze. ⚠️ (a), (b), (c), (d), (e), (k), (l), (m), (n), (o), (v), (x) e (aa): treze. ❌ nenhuma.</p>
+<h3 id="arquitetura-14-2-a-p-002-o-inventario-de-lacunas-linha-a-linha">2. A <code>P-002</code>: o inventário de lacunas, linha a linha</h3>
+<p>O inventário foi feito pelo PO em 30/10/2026 sobre a <code>origin/main</code> (<code>c4ade983</code>), e esta conferência lê a <code>main</code> em <code>318db52b</code>. Cada linha fica confirmada ou corrigida; as correções foram ao PO como um item só (A-26), ao lado da A-12, que já corrigia a web.</p>
+<p><strong>O tempo de resposta não está medido.</strong> A medida por etapa, modo e canal da <a href="#arq-013"><code>ARQ-013</code></a> ainda não rodou: ela é do M0, sobre as bases de demonstração e com o modelo falso, e o tempo com modelo real só se mede com a autorização do dono e o custo declarado antes. O único número de hoje é o da análise das métricas da PRD, entre 31/08 e 10/09/2026: nas 41 respostas medidas até o primeiro texto, nenhuma chegou em até 5 segundos, e 27,6% passaram de 30 segundos (<code>horus@318db52b:docs/produto/observabilidade/analise-metricas.html</code> §4 e §6), num histograma que para nos 30 segundos. <strong>Um achado desta conferência:</strong> a v1.xx já grava, em cada resposta, a duração e o tempo de cada etapa (a triagem, o planejamento, a execução, o reparo, a materialização e a leitura depois da consulta: <code>horus@318db52b:apps/server/Horus.Core/Uso/TiposDeEventoDeUso.cs</code>, <code>EtapasDaResposta</code>). Uma leitura agregada desses números na PRD, sem conteúdo e sem chamar modelo, dá a primeira medida real por etapa, de graça: é a verificação <strong>V-14</strong>.</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 2 de 14 · Conferência do produto"><table class="table table_shortcode"><thead><tr>
+<th scope="col">#</th>
+<th scope="col">O que o norte pede</th>
+<th scope="col">O que o inventário diz</th>
+<th scope="col">Conferência</th>
+<th scope="col">Evidência</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1</td>
+<td>A resposta na hora</td>
+<td>✅ A conversa de análise existe</td>
+<td>✅ Confirmada, nos modos dados, páginas da web e conversa</td>
+<td><code>horus@318db52b:apps/server/Horus.Core/Chat/ChatEngine.cs</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Gráfico, texto ou os dois</td>
+<td>✅ KPI, gráfico, tabela, mapa de calor e fluxo, até dois blocos</td>
+<td>✅ Confirmada, com uma <strong>correção</strong>: os tipos são <strong>seis</strong>, e falta o chaveamento; o gráfico tem quinze variantes</td>
+<td><code>horus@318db52b:.claude/rules/front/blocos-do-chat.md</code>; <code>horus@318db52b:apps/web/src/chat/</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>A resposta em segundos</td>
+<td>❓ Não medido</td>
+<td>❓ <strong>Continua sem medida</strong>: a da <a href="#arq-013"><code>ARQ-013</code></a> ainda não rodou; o número de hoje é só o do primeiro texto, nas 41 respostas de setembro; os tempos por etapa já gravados dão a primeira medida (V-14)</td>
+<td>Acima</td>
+</tr>
+<tr>
+<td>4</td>
+<td>O nível de inferência autorizado</td>
+<td>✅ Cinco níveis, padrão no 2</td>
+<td>✅ Confirmada; o teto é de cada fonte, definido por quem é dono do dado, e o turno usa o menor (A-13)</td>
+<td><code>horus@318db52b:apps/server/Horus.Core/Planner/InferenceLevel.cs</code>, <code>Data/Connections/ConnectionCatalog.cs</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td>A web em todos os usos</td>
+<td>🟡 Fonte citada só do nível 4 em diante</td>
+<td>🟡 <strong>Corrigida</strong> pela A-12: com a pesquisa ligada, a leitura depois da consulta já busca em qualquer nível; o modo conversa não pesquisa; o &quot;nível 4&quot; é o título do botão</td>
+<td><code>horus@318db52b:apps/server/Horus.Core/Planner/AnalisePosConsulta.cs</code>, <code>apps/web/src/pages/analise/composerLogica.ts</code></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Link e data, ou o aviso de data não identificada (<a href="#d-006"><code>D-006</code></a>)</td>
+<td>❌</td>
+<td>❌ Confirmada: a fonte vai só no texto, sem link estruturado e sem data</td>
+<td>Idem</td>
+</tr>
+<tr>
+<td>7</td>
+<td>👍🏻, 👎🏻 e 🚫 (<a href="#d-005"><code>D-005</code></a>)</td>
+<td>❌</td>
+<td>❌ Confirmada: nenhum botão de retorno nas respostas</td>
+<td><code>horus@318db52b:apps/web/src/pages/analise/CartaoResposta.vue</code></td>
+</tr>
+<tr>
+<td>8</td>
+<td>O reporte ao owner (<a href="#d-014"><code>D-014</code></a>)</td>
+<td>❌</td>
+<td>❌ Confirmada</td>
+<td>—</td>
+</tr>
+<tr>
+<td>9</td>
+<td>A pergunta respondida sem chamado (<a href="#d-004"><code>D-004</code></a>)</td>
+<td>❓</td>
+<td>🟡 <strong>Corrigida para &quot;existe em parte&quot;</strong>: os fatos <code>pergunta</code> e <code>resposta</code> existem por 400 dias, mas a resposta diz só sucesso ou erro, sem o desfecho da <a href="#d-004"><code>D-004</code></a> e sem o canal (letra b)</td>
+<td><code>horus@318db52b:apps/server/Horus.Core/Uso/TiposDeEventoDeUso.cs</code>, <code>UsoDaOrg.Leituras.cs</code></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Qualquer dispositivo (<a href="#d-002"><code>D-002</code></a>)</td>
+<td>🟡 Regras de adaptação espalhadas, sem teste em celular</td>
+<td>🟡 Confirmada: a arquitetura também não executou o produto; a prova em tela de celular entra no ponta a ponta (documento 12)</td>
+<td><code>horus@318db52b:apps/web/src/</code></td>
+</tr>
+<tr>
+<td>11</td>
+<td>Dois owners (<a href="#d-013"><code>D-013</code></a>)</td>
+<td>✅</td>
+<td>✅ Confirmada</td>
+<td><code>horus@318db52b:apps/web/src/pages/admin/</code>, <code>apps/web/src/pages/org/</code></td>
+</tr>
+<tr>
+<td>12</td>
+<td>Várias organizações (<a href="#d-008"><code>D-008</code></a>)</td>
+<td>✅</td>
+<td>✅ Confirmada; o isolamento entre elas é manual hoje, e na v2 cada uma tem o seu banco (<a href="#arq-010"><code>ARQ-010</code></a> ✅)</td>
+<td><code>horus@318db52b:apps/server/Horus.Core/Identity/OrgScope.cs</code></td>
+</tr>
+<tr>
+<td>13</td>
+<td>Marca branca: logo, nome e e-mail (<a href="#d-011"><code>D-011</code></a>)</td>
+<td>🟡 Sem tela para o remetente</td>
+<td>🟡 Confirmada: o remetente vem só da configuração do servidor</td>
+<td><code>horus@318db52b:apps/server/Horus.Core/Email/OpcoesDeEmail.cs</code></td>
+</tr>
+<tr>
+<td>14</td>
+<td>On-premises e SaaS (<a href="#d-007"><code>D-007</code></a>)</td>
+<td>❓</td>
+<td>🟡 <strong>Corrigida para &quot;existe em parte&quot;</strong>: o roteiro publica numa segunda VPS, só com a PRD, e o provisionamento do zero existe; mas a publicação compila na máquina, o que não serve a um contratante sem internet (<a href="#arq-094"><code>ARQ-094</code></a>, <a href="#arq-060"><code>ARQ-060</code></a>)</td>
+<td><code>horus@318db52b:infra/github/ambientes.yml</code>, <code>infra/vps/provisionar-base.sh</code>, <code>infra/redeploy.sh</code></td>
+</tr>
+<tr>
+<td>15</td>
+<td>A fonte alcança a rede interna do contratante</td>
+<td>❌</td>
+<td>❌ Confirmada: a guarda de rede recusa endereço interno, e a saída nunca vai aos ambientes publicados</td>
+<td><code>horus@318db52b:apps/server/Horus.Core/Data/Connections/GuardaDeRede.cs</code>, <code>.claude/rules/seguranca/guarda-de-rede.md</code></td>
+</tr>
+<tr>
+<td>16</td>
+<td>O modo &quot;tudo dentro&quot; (<a href="#d-010"><code>D-010</code></a>)</td>
+<td>❌ Só OpenRouter e Bedrock</td>
+<td>❌ Confirmada, com um acréscimo: há também o provedor falso dos testes e o <code>claude-code</code>, só do desenvolvimento; nenhum roda dentro de casa na produção</td>
+<td><code>horus@318db52b:apps/server/Horus.Core/Llm/MockLlmProvider.cs</code>, <code>ClaudeCodeProvider.cs</code></td>
+</tr>
+</tbody>
+</table></div><p><strong>As candidatas que o inventário marcou &quot;a confirmar com o arquiteto&quot;:</strong></p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 3 de 14 · Conferência do produto"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Candidata</th>
+<th scope="col">O que o inventário diz</th>
+<th scope="col">Conferência</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>12 · Conectores de saída</td>
+<td>Hoje a única saída é o e-mail</td>
+<td>✅ Confirmada: o convite, a recuperação de senha e o relatório agendado, pelo SMTP (<code>horus@318db52b:apps/server/Horus.Core/Email/</code>)</td>
+</tr>
+<tr>
+<td>13 · Agendamentos</td>
+<td>Só existe a agenda dos relatórios em PDF</td>
+<td>✅ Confirmada (letra g)</td>
+</tr>
+<tr>
+<td>14 · Pergunta rápida</td>
+<td>A pergunta só se faz na tela da conversa</td>
+<td>🟡 <strong>Corrigida</strong>: também se pergunta na análise customizada do board, que vira cartão e não guarda conversa (<code>horus@318db52b:apps/web/src/pages/board/AnaliseCustomizada.vue</code>, <code>apps/server/Horus.Core/Planner/AnaliseAvulsa.cs</code>); fora dessas duas telas, não</td>
+</tr>
+<tr>
+<td>15 · Licenças e planos</td>
+<td>Nada disso existe</td>
+<td>✅ Confirmada (letra s)</td>
+</tr>
+<tr>
+<td>16 · Investigação guiada</td>
+<td>Só pela conversa</td>
+<td>✅ Confirmada (letra v)</td>
+</tr>
+<tr>
+<td>17 · Auditoria</td>
+<td>Nada disso existe</td>
+<td>🟡 <strong>Corrigida para &quot;existe em parte&quot;</strong>: a abertura de board já é um fato de uso, e a trilha de segurança é o molde; o rastro das entregas não existe (letra w)</td>
+</tr>
+<tr>
+<td>18 · WhatsApp</td>
+<td>Nada existe</td>
+<td>✅ Confirmada (letra x)</td>
+</tr>
+</tbody>
+</table></div><h3 id="arquitetura-14-3-a-p-003-o-que-da-v1xx-se-reaproveita-mf-a-mf">3. A <code>P-003</code>: o que da v1.xx se reaproveita, mf a mf</h3>
+<p>O mapa das mfs de hoje fica <strong>confirmado</strong> como a referência do que a v1.xx tem (<a href="#d-134"><code>D-134</code></a>), com três correções pequenas que foram ao PO na A-26: a <a href="#mf-109"><code>MF-109</code></a> pesquisa só na leitura depois da consulta do modo dados; a <a href="#mf-107"><code>MF-107</code></a> também pergunta pela análise customizada do board; e a abertura de board já é um fato de uso. O detalhe de cada linha, com os caminhos do código, está no <a href="#arquitetura-01">documento 01</a>, seção 4 (mf a mf) e seção 5 (camada a camada); a regra geral é a <a href="#arq-002"><code>ARQ-002</code></a>: o código vem inteiro, com o histórico e os testes, e cada mf decide o destino de cada peça.</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 4 de 14 · Conferência do produto"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Mf</th>
+<th scope="col">♻️ Reaproveita</th>
+<th scope="col">🔧 Reescreve</th>
+<th scope="col">🆕 É novo</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#mf-101"><code>MF-101:Administração da instância</code></a></td>
+<td>A identidade, os administradores, o envio de e-mail, o interruptor geral da segurança e as telas de administração</td>
+<td>—</td>
+<td>O painel dos assentos; na v2.1, a marca completa no remetente</td>
+</tr>
+<tr>
+<td><a href="#mf-102"><code>MF-102:Organizações, pessoas e papéis</code></a></td>
+<td>As organizações, a sessão, os convites nominais por e-mail, link e QR, o Google, a recuperação de senha, a foto e a planilha</td>
+<td>A matriz de 23 ações e três papéis, que vira a leitura do papel no avaliador</td>
+<td>A carteira do gestor, a quarentena, o convite do gestor com aprovação, os grupos, as roles e a área de avisos</td>
+</tr>
+<tr>
+<td><a href="#mf-103"><code>MF-103:Licenças e planos</code></a></td>
+<td>—</td>
+<td>—</td>
+<td>Tudo: os quatro tipos de assento, a reserva, a troca, a contagem e o corte</td>
+</tr>
+<tr>
+<td><a href="#mf-104"><code>MF-104:Conectar as fontes vivas</code></a></td>
+<td>Os cinco conectores, o túnel SSH, a guarda de rede, o cofre, o cache de execução e o modelo semântico por fonte</td>
+<td>O acesso sob o filtro por organização; a fonte do arquivo sem organização declarada passa a ser de nenhuma</td>
+<td>Na v2.1, a rede interna do contratante. O Athena e a fonte de páginas web esperam o PO (A-04)</td>
+</tr>
+<tr>
+<td><a href="#mf-105"><code>MF-105:IA sob controle da organização</code></a></td>
+<td>As conexões, o roteador, as quinze funções, a curadoria e o consumo por chamada</td>
+<td>—</td>
+<td>Três funções (as duas do agente e a pesquisa na web) e o custo por componente; na v2.1, o provedor de dentro de casa</td>
+</tr>
+<tr>
+<td><a href="#mf-106"><code>MF-106:Segurança dos dados por pessoa</code></a></td>
+<td><em>(Na v2.1, <a href="#arq-090"><code>ARQ-090</code></a>.)</em> A Semântica de Segurança inteira, com as travas, a bateria e a conferência diária</td>
+<td>As duas chaves de claims numa só (<a href="#arq-040"><code>ARQ-040</code></a>), as cinco formas de &quot;em nome de quem&quot; e a A14 como escopo único</td>
+<td>Na v2.1, o login corporativo e os controles das tecnologias</td>
+</tr>
+<tr>
+<td><a href="#mf-107"><code>MF-107:Perguntar aos dados em português</code></a></td>
+<td>O Planejador, o materializador, o reparo, os níveis, o Apresentador, a Análise avançada e a transmissão</td>
+<td>O <code>ChatEngine</code> (2.901 linhas) e a <code>AnaliseAvulsa</code> (1.031), em torno do condutor do turno</td>
+<td>O retorno, o reporte, o desfecho de cada turno e o nível em toda etapa que escreve prosa</td>
+</tr>
+<tr>
+<td><a href="#mf-108"><code>MF-108:Respostas visuais</code></a></td>
+<td>Os seis tipos de bloco e as quinze variantes, que não se editam</td>
+<td>—</td>
+<td>A imagem e o PDF pela mesma montagem, no servidor</td>
+</tr>
+<tr>
+<td><a href="#mf-109"><code>MF-109:A web como fonte</code></a></td>
+<td>O <code>:online</code> do OpenRouter e o leitor de páginas</td>
+<td>A web sai da leitura depois da consulta para uma etapa própria</td>
+<td>Os fatos com link e data, em todo modo e canal</td>
+</tr>
+<tr>
+<td><a href="#mf-110"><code>MF-110:Pergunta rápida</code></a></td>
+<td>O compositor e o cartão da resposta, como componente</td>
+<td>A página da conversa (714 linhas), separada em componente</td>
+<td>O popup e a conversa do popup</td>
+</tr>
+<tr>
+<td><a href="#mf-111"><code>MF-111:Chat pelo WhatsApp</code></a></td>
+<td>—</td>
+<td>—</td>
+<td>Tudo: a porta da Meta, a ligação do número, o canal</td>
+</tr>
+<tr>
+<td><a href="#mf-112"><code>MF-112:Boards e Relatórios</code></a></td>
+<td>O recalculador de cartões, a apresentação, o &quot;Quem abre&quot;, o editor de relatórios e o impressor de PDF</td>
+<td>Os dois editores em um (letra a), os painéis corporativos como o espaço da organização</td>
+<td>Publicar nas quatro visibilidades, desabilitar, o PDF de todo board</td>
+</tr>
+<tr>
+<td><a href="#mf-113"><code>MF-113:Conectores de Saída</code></a></td>
+<td>O envio por SMTP e o ritmo de envio</td>
+<td>O relatório agendado, como o primeiro caso do conector</td>
+<td>O conector de WhatsApp e o contato aprovado de cada pessoa</td>
+</tr>
+<tr>
+<td><a href="#mf-114"><code>MF-114:Módulo de Agendamentos de Agentes</code></a></td>
+<td>A reivindicação das rodadas da agenda</td>
+<td>A agenda dos relatórios, sobre a fila durável</td>
+<td>O agente como coisa agendada e a pausa no corte</td>
+</tr>
+<tr>
+<td><a href="#mf-115"><code>MF-115:Agentes ativos</code></a></td>
+<td>—</td>
+<td>—</td>
+<td>Tudo, sobre o motor em ciclo</td>
+</tr>
+<tr>
+<td><a href="#mf-116"><code>MF-116:Auditoria</code></a></td>
+<td>A trilha de segurança como molde</td>
+<td>—</td>
+<td>O rastro e a consulta do owner</td>
+</tr>
+<tr>
+<td><a href="#mf-117"><code>MF-117:Home da organização</code></a></td>
+<td>Os fatos de uso, o catálogo de indicadores e a grade editável</td>
+<td>O fato da resposta, com o desfecho e o canal</td>
+<td>A medida de autonomia e a qualidade em todos os canais</td>
+</tr>
+<tr>
+<td><a href="#mf-118"><code>MF-118:Bases de demonstração</code></a></td>
+<td>Os geradores determinísticos, a ingestão contínua e a conferência</td>
+<td>—</td>
+<td>Os cenários das provas de valor da v2.0</td>
+</tr>
+<tr>
+<td><a href="#mf-119"><code>MF-119:Investigação guiada</code></a></td>
+<td>A conversa, as sugestões e a Análise avançada como ponto de partida</td>
+<td>—</td>
+<td>O modo de investigação (v2.1, espera a <code>P-018</code>)</td>
+</tr>
+</tbody>
+</table></div><p><strong>O que está previsto e não construído</strong>, segundo o mapa, fica assim na v2: o Athena responder e a tela de redes privadas esperam o PO (A-04) e ficam fora da v2.0 (<a href="#arq-052"><code>ARQ-052</code></a>); o assistente de modelagem fica com o time de dados (<a href="#d-083"><code>D-083</code></a>); os outros provedores de IA saem do código (<a href="#arq-051"><code>ARQ-051</code></a>); o filtro de período com hora e o board em container único seguem no MVP da v1.xx e chegam à v2 pelo código (<a href="#arq-002"><code>ARQ-002</code></a>).</p>
+<p><strong>A conclusão para a <a href="#arq-002"><code>ARQ-002</code></a>:</strong> a maior parte do código vem e muda de casa, sem reescrita; as reescritas se concentram no motor (o condutor do turno), nos dois editores de board e relatório e na matriz de permissões. Nada aqui reabre a <a href="#arq-002"><code>ARQ-002</code></a>.</p>
+<h3 id="arquitetura-14-4-a-devolver-ao-po">4. A devolver ao PO</h3>
+<p>O backlog estratégico está congelado, e por isso os itens ficam aqui, com o número provisório A-nn, para o PO consolidar quando descongelar. <strong>O tipo e o responsável são propostas do arquiteto:</strong> o responsável é o dono em toda decisão de produto; nas duas correções de documento (A-12 e A-26) e na conferência das citações (A-07), é o PO, que só confirma com o dono. Quando o PO numerar, cada item vira uma <code>P-nnn</code> (pendência) ou um <code>I-nnn</code> (impasse), com a origem abaixo.</p>
+<p><strong>A contagem:</strong> 30 itens: 4 impasses (A-02, A-03, A-04 e A-11), 25 pendências e um sem objeto (A-01, desde 03/11/2026). Dos 30, 22 vieram das rodadas anteriores (A-01 a A-22, antes na seção 9 do documento 01), 4 nasceram na rodada de 02/11/2026 (A-23 a A-26) e 4 em 03/11/2026 (A-27 a A-30).</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 5 de 14 · Conferência do produto"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Nº</th>
+<th scope="col">Tipo proposto</th>
+<th scope="col">Responsável proposto</th>
+<th scope="col">O que é</th>
+<th scope="col">Origem</th>
+<th scope="col">Decisões de produto tocadas</th>
+<th scope="col">Trava</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>A-01</strong></td>
+<td>⚪ Sem objeto</td>
+<td>Dono</td>
+<td><strong>As regras de conversão das organizações de hoje.</strong> <em>(03/11/2026: sem clientes, a v2.0 nasce numa instância nova e não converte os dados da v1.xx, <a href="#arq-011"><code>ARQ-011</code></a> ✅; as pessoas da Maind recebem convite novo, e os membros de exemplo vêm do semeador com papel, assento, gestor e roles definidos nos arquivos, <a href="#arq-089"><code>ARQ-089</code></a>. O texto abaixo fica como registro.)</em> Ao atualizar a instância, cada pessoa precisa de um gestor, de um tipo de assento e de roles, e cada board, de um autor. Sem regra, todo membro de hoje cai na quarentena, porque a v1.xx não tem carteira de gestor (<a href="#d-047"><code>D-047</code></a>), e ninguém entra sem assento livre do tipo (<a href="#d-070"><code>D-070</code></a>). Faltam: quem passa a gerir os membros de hoje; que tipo de assento cada papel de hoje ocupa; de quem passam a ser os boards corporativos, que o owner edita hoje e deixará de editar (<a href="#d-043"><code>D-043</code></a>, <a href="#d-048"><code>D-048</code></a>); e o que acontece com os relatórios agendados de hoje</td>
+<td><a href="#arq-011"><code>ARQ-011</code></a>, <a href="#arq-036"><code>ARQ-036</code></a></td>
+<td><a href="#d-043"><code>D-043</code></a>, <a href="#d-047"><code>D-047</code></a>, <a href="#d-048"><code>D-048</code></a>, <a href="#d-060"><code>D-060</code></a>, <a href="#d-069"><code>D-069</code></a>, <a href="#d-070"><code>D-070</code></a>, <a href="#d-112"><code>D-112</code></a></td>
+<td>M1</td>
+</tr>
+<tr>
+<td><strong>A-02</strong></td>
+<td>🛑 Impasse</td>
+<td>Dono</td>
+<td><strong>Quem cria organizações no SaaS.</strong> Hoje qualquer pessoa logada cria uma organização e vira owner dela (<code>horus@318db52b:apps/server/Horus.Api/Endpoints/OrgEndpoints.cs</code>). A <a href="#d-123"><code>D-123</code></a> supõe que, no SaaS, quem cria é a Maind, e com o assento de owner grátis por organização isso precisa virar regra</td>
+<td><a href="#arq-008"><code>ARQ-008</code></a>, <a href="#arq-039"><code>ARQ-039</code></a></td>
+<td><a href="#d-067"><code>D-067</code></a>, <a href="#d-068"><code>D-068</code></a>, <a href="#d-123"><code>D-123</code></a></td>
+<td>M1</td>
+</tr>
+<tr>
+<td><strong>A-03</strong></td>
+<td>🛑 Impasse</td>
+<td>Dono</td>
+<td><strong>De quem é cada custo no SaaS.</strong> <em>(03/11/2026: o custo fixo do SaaS é da Maind, e cobri-lo é assunto comercial e financeiro, <a href="#arq-084"><code>ARQ-084</code></a> ✅; fica a IA e o WhatsApp.)</em> A chave de IA é da conexão de cada organização: a conta do provedor é do cliente ou da Maind? Com o número da Maind no WhatsApp (<a href="#d-097"><code>D-097</code></a>), quem paga as mensagens da Meta? O plano único por assento (<a href="#d-115"><code>D-115</code></a>) só precisa cobrir o que a Maind paga <em>(Acrescentado nesta rodada:)</em> o documento 13 mostra o tamanho de cada parcela: no envelope do primeiro ano, a IA é quase todo o custo variável, de US$ 220 a 770 por organização por mês 🔎, e a conta da Maind no WhatsApp custa de US$ 70 a 250 por mês para a instância</td>
+<td><a href="#arq-017"><code>ARQ-017</code></a>, <a href="#arq-084"><code>ARQ-084</code></a>, <a href="#arq-085"><code>ARQ-085</code></a></td>
+<td><a href="#d-062"><code>D-062</code></a>, <a href="#d-097"><code>D-097</code></a>, <a href="#d-115"><code>D-115</code></a>, <a href="#d-116"><code>D-116</code></a></td>
+<td>M2 (o custo por componente); M4 (a conta da Maind)</td>
+</tr>
+<tr>
+<td><strong>A-04</strong></td>
+<td>🛑 Impasse</td>
+<td>Dono</td>
+<td><strong>As duas fontes que o MVP tira da tela.</strong> A fonte de páginas web, em que o modo web da <a href="#mf-109"><code>MF-109:A web como fonte</code></a> se apoia (leitura <code>D-130.1</code>: &quot;o modo web, que lê as páginas cadastradas&quot;), e o AWS Athena, que hoje só cadastra, saem da tela no MVP (<code>D-139</code> &quot;No MVP da v1.xx, as seis peças…&quot;), mas a v2.0 as conta na base herdada (<a href="#d-021"><code>D-021</code></a>; <a href="#produto-v20">a v2.0 consolidada</a>, §3.2). A v2.0 as traz terminadas, ou fica sem elas?</td>
+<td><a href="#arq-052"><code>ARQ-052</code></a> (levantamento da v1.xx)</td>
+<td><a href="#d-021"><code>D-021</code></a>, <a href="#d-130"><code>D-130</code></a>, <a href="#d-131"><code>D-131</code></a>, <code>D-138</code> &quot;A v1.xx fecha como MVP no HML…&quot;, <code>D-139</code> &quot;No MVP da v1.xx, as seis peças…&quot;</td>
+<td>M2</td>
+</tr>
+<tr>
+<td><strong>A-05</strong></td>
+<td>🕓 Pendência</td>
+<td>Dono</td>
+<td><strong>O registro do rastro vem antes das mfs que gravam nele.</strong> A tabela de conversão manda reabrir &quot;quando o arquiteto mostrar uma dependência que inverta a ordem de duas mfs&quot; (<code>D-139</code> &quot;Tabela de conversão das mfs…&quot;). O registro da <a href="#mf-116"><code>MF-116:Auditoria</code></a> nasce no M1, antes da <a href="#mf-111"><code>MF-111:Chat pelo WhatsApp</code></a> e das <a href="#mf-112"><code>MF-112:Boards e Relatórios</code></a> a <a href="#mf-115"><code>MF-115:Agentes ativos</code></a>; a consulta continua no fim (M7). O arquiteto recomenda não renumerar: a dependência é de uma peça, e não da mf inteira</td>
+<td><a href="#arq-012"><code>ARQ-012</code></a></td>
+<td><a href="#d-137"><code>D-137</code></a>, <code>D-139</code> &quot;Tabela de conversão das mfs…&quot;</td>
+<td>M1</td>
+</tr>
+<tr>
+<td><strong>A-06</strong></td>
+<td>🕓 Pendência</td>
+<td>Dono</td>
+<td><strong>Cópia de segurança e testes antes de publicar, já no MVP.</strong> A v1.xx em produção não tem rotina de cópia de segurança do banco da aplicação nem um CI que rode os testes antes de publicar. A frente 4 do MVP, &quot;a operação que sustenta o HML&quot;, pode querer incluir as duas, porque elas protegem as organizações que já estão no ar <em>(Acrescentado nesta rodada:)</em> o CI da <a href="#arq-076"><code>ARQ-076</code></a> serve à PRD da v1.xx como está, e a cópia, que é da infra de cada instância (<a href="#arq-086"><code>ARQ-086</code></a>), a Maind pode ligar na PRD de hoje sem mudar o produto <em>(03/11/2026:)</em> o dono informou que nenhuma instância de hoje é produção real (<a href="#arq-056"><code>ARQ-056</code></a>), o que tira a urgência</td>
+<td><a href="#arq-076"><code>ARQ-076</code></a>, <a href="#arq-086"><code>ARQ-086</code></a></td>
+<td><code>D-138</code> &quot;A v1.xx fecha como MVP no HML…&quot;</td>
+<td>O MVP, antes do M0</td>
+</tr>
+<tr>
+<td><strong>A-07</strong></td>
+<td>🕓 Pendência</td>
+<td>PO</td>
+<td><strong>Qual decisão sustenta o &quot;SaaS primeiro&quot;.</strong> A <a href="#d-016"><code>D-016</code></a> está ⚪ substituída pela <a href="#d-017"><code>D-017</code></a>, mas os documentos de produto a citam como a decisão do SaaS primeiro (<a href="#produto-v20">a v2.0 consolidada</a>, §1; <a href="#produto-versoes">as versões</a>), e esta arquitetura a cita do mesmo jeito. Confirmar se a <a href="#d-016"><code>D-016</code></a> vale nessa parte ou se o SaaS primeiro mora noutra decisão</td>
+<td><a href="#arq-011"><code>ARQ-011</code></a>, <a href="#arq-055"><code>ARQ-055</code></a> (conferência das citações)</td>
+<td><a href="#d-016"><code>D-016</code></a>, <a href="#d-017"><code>D-017</code></a>, <a href="#d-105"><code>D-105</code></a></td>
+<td>Nenhum (documental)</td>
+</tr>
+<tr>
+<td><strong>A-08</strong></td>
+<td>🕓 Pendência</td>
+<td>Dono</td>
+<td><strong>Os casos de borda da &quot;pergunta de análise respondida&quot;.</strong> O motor conta a resposta no fecho do turno, por categoria, e precisa saber onde ficam: (1) a consulta que volta sem linhas, quando o Horus diz que não há dados no recorte; (2) a pergunta no modo conversa, sem fonte, que o modelo responde sozinho, com ou sem fatos da web; (3) a resposta barrada pela segurança, com a frase de &quot;não disponível&quot;; (4) a consulta que falhou e o reparo não salvou, explicada em prosa. O arquiteto recomenda contar só a resposta com bloco ou com prosa sobre dados ou sobre fatos da web, e não contar o vazio, a barrada, o erro e a conversa sem dado nem web</td>
+<td><a href="#arq-029"><code>ARQ-029</code></a></td>
+<td><a href="#d-004"><code>D-004</code></a>, <a href="#d-087"><code>D-087</code></a>, <a href="#d-133"><code>D-133</code></a></td>
+<td>M3</td>
+</tr>
+<tr>
+<td><strong>A-09</strong></td>
+<td>🕓 Pendência</td>
+<td>Dono</td>
+<td><strong>Os fatos da web no cartão do board.</strong> A leitura confirmada da <a href="#d-131"><code>D-131</code></a> põe a web &quot;nos cartões dos boards&quot;. O recálculo de um cartão não chama modelo (só o fluxo do workflow chama), e pesquisar de novo a cada recálculo custaria uma busca por cartão e por abertura. O arquiteto recomenda que o cartão guarde os fatos da resposta que o originou, com a data à vista, sem pesquisar de novo, e que o agente pesquise a cada execução, porque cada execução é um turno do motor</td>
+<td><a href="#arq-026"><code>ARQ-026</code></a></td>
+<td><a href="#d-131"><code>D-131</code></a>, <a href="#d-057"><code>D-057</code></a>, <a href="#d-058"><code>D-058</code></a></td>
+<td>M5</td>
+</tr>
+<tr>
+<td><strong>A-10</strong></td>
+<td>🕓 Pendência</td>
+<td>Dono</td>
+<td><strong>O que acontece quando uma execução de agente ou uma rodada de agendamento falha.</strong> A falha pode ser do banco do cliente, do provedor de IA ou do teto técnico de uma execução (8 perguntas, 16 voltas e 15 minutos, <a href="#arq-030"><code>ARQ-030</code></a>). Hoje a agenda dos relatórios pausa e avisa o gestor por e-mail com uma frase fixa (<code>horus@318db52b:apps/server/Horus.Core/Relatorios/EntregaDeRelatorio.cs</code>). O arquiteto recomenda que nada seja entregue aos destinatários (nenhum artefato pela metade), que o autor receba um aviso na área de avisos, com o e-mail conforme a preferência (<a href="#d-128"><code>D-128</code></a>), e que o agendamento siga na próxima rodada, sem pausar</td>
+<td><a href="#arq-030"><code>ARQ-030</code></a>, <a href="#arq-022"><code>ARQ-022</code></a></td>
+<td><a href="#d-060"><code>D-060</code></a>, <a href="#d-062"><code>D-062</code></a>, <a href="#d-128"><code>D-128</code></a></td>
+<td>M6</td>
+</tr>
+<tr>
+<td><strong>A-11</strong></td>
+<td>🛑 Impasse</td>
+<td>Dono</td>
+<td><strong>Com que alcance de dados roda o espaço da organização</strong> (letra o da <code>P-008</code>). Os boards, os agendamentos e os agentes que vão para o espaço da organização (de quem sai ou passa a leitor) perdem o autor, e o owner não é dono de dados (<a href="#d-048"><code>D-048</code></a>). O motor roda tanto em nome de uma pessoa quanto com acesso total, como o painel corporativo da v1.xx. O arquiteto recomenda que o board do espaço da organização rode no escopo de quem o abre (cada um vê o que pode, porque a liberação é do gestor, <a href="#d-054"><code>D-054</code></a>) e que os agendamentos e agentes fiquem pausados até a transferência (<a href="#d-060"><code>D-060</code></a>), passando então a rodar em nome de quem os recebeu</td>
+<td><a href="#arq-032"><code>ARQ-032</code></a>, <a href="#arq-041"><code>ARQ-041</code></a></td>
+<td><a href="#d-044"><code>D-044</code></a>, <a href="#d-048"><code>D-048</code></a>, <a href="#d-054"><code>D-054</code></a>, <a href="#d-059"><code>D-059</code></a>, <a href="#d-060"><code>D-060</code></a>, <a href="#d-073"><code>D-073</code></a></td>
+<td>M5</td>
+</tr>
+<tr>
+<td><strong>A-12</strong></td>
+<td>🕓 Pendência</td>
+<td>PO</td>
+<td><strong>Corrigir o inventário de lacunas sobre a web</strong> (linhas 5 e 6, e a linha da web na tabela do norte). Pela leitura do código, no modo dados com a pesquisa ligada, a leitura depois da consulta já busca e compara números da web em qualquer nível, porque o nível não chega a ela, e cita a fonte só no texto, sem data (<code>horus@318db52b:apps/server/Horus.Core/Planner/AnalisePosConsulta.cs</code>); o modo conversa não pesquisa nada; e o &quot;só do nível 4 em diante&quot; é o título do botão (<code>horus@318db52b:apps/web/src/pages/analise/composerLogica.ts</code>) e a instrução de um Planejador que não pesquisa desde 09/09/2026. A definição da <a href="#d-131"><code>D-131</code></a> continua certa; o retrato do &quot;hoje&quot; é que muda</td>
+<td><a href="#arq-025"><code>ARQ-025</code></a>, <a href="#arq-026"><code>ARQ-026</code></a> (levantamento da v1.xx)</td>
+<td><a href="#d-130"><code>D-130</code></a>, <a href="#d-131"><code>D-131</code></a>; <code>P-002</code></td>
+<td>Nenhum (documental)</td>
+</tr>
+<tr>
+<td><strong>A-13</strong></td>
+<td>🕓 Pendência</td>
+<td>Dono</td>
+<td><strong>O que é &quot;o teto da organização&quot; dos níveis de inferência.</strong> A <a href="#d-111"><code>D-111</code></a> e a leitura da <a href="#d-110"><code>D-110</code></a> dizem que a role limita os níveis &quot;dentro do teto da organização&quot;. Na v1.xx o teto é de cada fonte, definido por quem é dono do dado, e o turno usa o menor teto das fontes da conversa (<code>horus@318db52b:apps/server/Horus.Core/Data/Connections/ConnectionCatalog.cs</code>, <code>MaxInference</code>). O arquiteto recomenda ler &quot;o teto da organização&quot; como o teto das fontes dela, sem configuração nova</td>
+<td><a href="#arq-025"><code>ARQ-025</code></a></td>
+<td><a href="#d-001"><code>D-001</code></a>, <a href="#d-110"><code>D-110</code></a>, <a href="#d-111"><code>D-111</code></a>, <a href="#d-114"><code>D-114</code></a></td>
+<td>M3</td>
+</tr>
+<tr>
+<td><strong>A-14</strong></td>
+<td>🕓 Pendência</td>
+<td>Dono</td>
+<td><strong>O que os painéis corporativos de hoje viram na v2.0</strong> (complementa a A-01). <em>(03/11/2026: sem conversão, <a href="#arq-011"><code>ARQ-011</code></a> ✅, fica só o que os boards de exemplo mostram no semeador: a hipótese é o espaço da organização, publicados, <a href="#arq-089"><code>ARQ-089</code></a> 🔎; os itens sobre os painéis, as agendas e o rastro de hoje perdem o objeto.)</em> (1) Hoje o painel corporativo é da organização e roda com acesso total; a recomendação é que ele vá para o espaço da organização (<a href="#d-048"><code>D-048</code></a>), publicado. (2) A régua de &quot;quem abre&quot; de hoje é uma condição sobre claims mais uma lista de pessoas (<code>horus@318db52b:apps/server/Horus.Core/Seguranca/Superficies/QuemAbreOPainel.cs</code>), e as quatro visibilidades da <a href="#d-042"><code>D-042</code></a> não têm par para a condição; a recomendação é que a condição vire um grupo dinâmico da organização com a mesma regra (<a href="#d-019"><code>D-019</code></a>, <a href="#d-055"><code>D-055</code></a>), a lista vire &quot;Pessoas específicas&quot; e o painel sem regra vire &quot;Todos&quot;; falta dizer se uma publicação pode juntar um grupo e pessoas. (3) No espaço da organização, o board passa a mostrar o escopo de quem abre (A-11): quem tem restrição passa a ver menos do que vê hoje nesses painéis, e a recomendação é avisar os owners antes da conversão. (4) As agendas de relatório que a A14 pausou porque o gestor tinha acesso restrito (<code>horus@318db52b:apps/server/Horus.Core/Relatorios/EntregaDeRelatorio.cs</code>) poderiam voltar a enviar como liberação do gestor (<a href="#d-059"><code>D-059</code></a>); a recomendação é que voltem pausadas, e o gestor as religa. (5) O rastro começa vazio no dia da conversão, sem as aberturas de antes</td>
+<td><a href="#arq-036"><code>ARQ-036</code></a>, <a href="#arq-040"><code>ARQ-040</code></a>, <a href="#arq-042"><code>ARQ-042</code></a></td>
+<td><a href="#d-019"><code>D-019</code></a>, <a href="#d-042"><code>D-042</code></a>, <a href="#d-048"><code>D-048</code></a>, <a href="#d-054"><code>D-054</code></a>, <a href="#d-055"><code>D-055</code></a>, <a href="#d-059"><code>D-059</code></a>, <a href="#d-090"><code>D-090</code></a></td>
+<td>M1 (a conversão); M5</td>
+</tr>
+<tr>
+<td><strong>A-15</strong></td>
+<td>🕓 Pendência</td>
+<td>Dono</td>
+<td><strong>O escopo dos boards e dos envios em que não há liberação</strong> (complementa a A-11, que trata do espaço da organização). (1) O board de um membro full, que o gestor dele e o owner abrem (<a href="#d-042"><code>D-042</code></a>): hoje o painel pessoal mostra a quem o abre o que o autor vê; como só o gestor libera (<a href="#d-053"><code>D-053</code></a>, <a href="#d-054"><code>D-054</code></a>), o arquiteto recomenda que esse board mostre o escopo de quem abre. O mesmo vale para o board de um gestor aberto pelo owner sem estar na visibilidade publicada. (2) O agendamento e o agente criados pelo owner que não acumula o papel de gestor: o owner entrega dados a outras pessoas (<a href="#d-059"><code>D-059</code></a>), mas não é dono de dados (<a href="#d-048"><code>D-048</code></a>), e a <a href="#d-059"><code>D-059</code></a> deixou de fora esse alcance. O arquiteto recomenda que o artefato saia no escopo de cada destinatário, um por recorte de acesso; a alternativa é o escopo do owner, que vê a fonte inteira, o que seria uma liberação sem gestor responsável. (3) A liberação termina quando o gestor sai: a saída apaga os valores de claim dele, e o board publicado que vai para o espaço da organização (<a href="#d-045"><code>D-045</code></a>) passa a mostrar o escopo de quem abre</td>
+<td><a href="#arq-041"><code>ARQ-041</code></a></td>
+<td><a href="#d-042"><code>D-042</code></a>, <a href="#d-045"><code>D-045</code></a>, <a href="#d-048"><code>D-048</code></a>, <a href="#d-053"><code>D-053</code></a>, <a href="#d-054"><code>D-054</code></a>, <a href="#d-059"><code>D-059</code></a>, <a href="#d-060"><code>D-060</code></a></td>
+<td>M5 e M6</td>
+</tr>
+<tr>
+<td><strong>A-16</strong></td>
+<td>🕓 Pendência</td>
+<td>Dono</td>
+<td><strong>O que a pessoa sabe e o que pode pedir (LGPD).</strong> (1) O produto não tem aviso de privacidade: nenhuma tela fala do que se guarda, por quanto tempo, nem do que sai para os provedores de IA, a Meta e o servidor de e-mail. (2) Na v1.xx, o owner lê as conversas de todos os membros da organização (<code>horus@318db52b:apps/server/Horus.Core/Identity/PermissoesDaOrg.cs</code>, <code>VerConversasDaOrg</code>, decisão do dono de 22/09/2026); nenhuma decisão da v2 a confirma nem diz se a pessoa é avisada. (3) Não existe o pedido de exclusão da própria conta (um direito do titular na LGPD, art. 18), nem o que acontece com as conversas, os boards (o espaço da organização, <a href="#d-044"><code>D-044</code></a>) e o rastro (<a href="#d-093"><code>D-093</code></a>) de quem o pede. (4) As conversas de quem sai da organização ficam com ela, como hoje (<a href="#arq-035"><code>ARQ-035</code></a>). O arquiteto recomenda um aviso de privacidade da instância, com o texto do contratante, que nasce do inventário dos dados (<a href="#arq-045"><code>ARQ-045</code></a>) e traz a linha da abertura registrada (<a href="#arq-043"><code>ARQ-043</code></a>); que a leitura do owner continue e apareça nesse aviso; e a exclusão da conta a pedido, que apaga a conta e os vínculos, leva os boards ao espaço da organização e mantém o rastro até o prazo do owner <em>(Acrescentado nesta rodada:)</em> (5) o Claude no Bedrock da região de São Paulo só existe pelo endpoint global, e escolher São Paulo não mantém o dado no país (documento 13, 3.2; V-18); a organização que exige o dado no país só o tem no &quot;tudo dentro&quot; da v2.1 (<a href="#d-010"><code>D-010</code></a>), e o aviso de privacidade e o contrato precisam dizer isso</td>
+<td><a href="#arq-035"><code>ARQ-035</code></a>, <a href="#arq-043"><code>ARQ-043</code></a>, <a href="#arq-045"><code>ARQ-045</code></a>, <a href="#arq-051"><code>ARQ-051</code></a></td>
+<td><a href="#d-014"><code>D-014</code></a>, <a href="#d-044"><code>D-044</code></a>, <a href="#d-090"><code>D-090</code></a>, <a href="#d-091"><code>D-091</code></a>, <a href="#d-092"><code>D-092</code></a>, <a href="#d-093"><code>D-093</code></a></td>
+<td>M7 (antes da primeira organização paga)</td>
+</tr>
+<tr>
+<td><strong>A-17</strong></td>
+<td>🕓 Pendência</td>
+<td>Dono</td>
+<td><strong>O número de WhatsApp da pessoa: um número, dois usos, e a conta da Maind.</strong> (1) O contato do conector de WhatsApp (<a href="#d-038"><code>D-038</code></a>) e o número ligado da conversa (<a href="#d-094"><code>D-094</code></a>) são números separados ou o mesmo? O membro leitor não conversa (leitura <code>D-094.1</code>), mas recebe artefatos pelos conectores (<a href="#d-079"><code>D-079</code></a>). O arquiteto recomenda um número só por pessoa em cada organização, confirmado pelo mesmo código, que serve à conversa para quem pode perguntar e ao conector com a aprovação do owner; o leitor confirma o número só para receber. (2) Com o número da Maind, o Horus acha a organização pelo número de quem escreve (leitura <code>D-097.2</code>); a pessoa que está em duas organizações que autorizaram o número da Maind fica sem regra. O arquiteto recomenda que, no número da Maind, um número fique ligado a uma organização por vez, e ligá-lo noutra o mova, com aviso à pessoa. (3) As notificações de um número da Meta vão a um destino só, e por isso o número da Maind serve só à instância SaaS da Maind: a organização de uma instância dedicada também usa o número próprio, como a leitura <code>D-097.3</code> já diz do on-premises</td>
+<td><a href="#arq-050"><code>ARQ-050</code></a></td>
+<td><a href="#d-038"><code>D-038</code></a>, <a href="#d-079"><code>D-079</code></a>, <a href="#d-094"><code>D-094</code></a>, <a href="#d-097"><code>D-097</code></a></td>
+<td>M4</td>
+</tr>
+<tr>
+<td><strong>A-18</strong></td>
+<td>🕓 Pendência</td>
+<td>Dono</td>
+<td><strong>O que a pessoa recebe pelo WhatsApp quando não pode conversar, o corte e o &quot;sair de todos&quot;.</strong> (1) A mensagem de um número que não está ligado a ninguém; (2) a da pessoa da organização cortada, na quarentena, com assento de membro leitor ou com uma role sem o botão do WhatsApp (leitura <code>D-119.1</code>). O arquiteto recomenda uma resposta fixa por caso, sem dado nenhum, que aponta para o app, e nenhum turno; (3) no corte, a ligação do número fica guardada e desligada e volta com os assentos, lendo o &quot;o número é desligado&quot; da leitura <code>D-094.3</code> junto com o &quot;tudo fica guardado&quot; da leitura <code>D-075.3</code>; (4) o &quot;sair de todos&quot; da conta desliga também o número, porque o número é uma credencial: quem tem o celular pergunta como a pessoa. O arquiteto recomenda desligar, e a pessoa liga de novo com um código</td>
+<td><a href="#arq-050"><code>ARQ-050</code></a>, <a href="#arq-038"><code>ARQ-038</code></a></td>
+<td><a href="#d-075"><code>D-075</code></a>, <a href="#d-094"><code>D-094</code></a>, <a href="#d-099"><code>D-099</code></a>, <a href="#d-110"><code>D-110</code></a>, <a href="#d-119"><code>D-119</code></a></td>
+<td>M4</td>
+</tr>
+<tr>
+<td><strong>A-19</strong></td>
+<td>🕓 Pendência</td>
+<td>Dono</td>
+<td><strong>O que cabe em cada canal de saída.</strong> (1) O board de qualquer tamanho (<a href="#d-057"><code>D-057</code></a>) pode gerar um PDF maior que o teto de anexo do serviço de e-mail ou de documento do WhatsApp. O arquiteto recomenda que o artefato que não cabe não seja entregue naquele canal, nunca cortado, e que o autor seja avisado, como na A-10; (2) fora da janela de 24 horas, o aviso do agente pelo WhatsApp só sai por modelo aprovado, e o texto do agente entra numa variável com teto de caracteres. O arquiteto recomenda que o aviso pelo WhatsApp leve o nome do agente, o rótulo do nível (<a href="#d-062"><code>D-062</code></a>), um texto curto, a imagem ou o PDF e o link para o app, e que o texto longo fique no PDF e no app; (3) a Meta decide a categoria de cada modelo, e se ela classificar o aviso do agente como marketing o custo de cada aviso sobe (liga-se à A-03)</td>
+<td><a href="#arq-049"><code>ARQ-049</code></a>, <a href="#arq-046"><code>ARQ-046</code></a></td>
+<td><a href="#d-035"><code>D-035</code></a>, <a href="#d-057"><code>D-057</code></a>, <a href="#d-062"><code>D-062</code></a>, <a href="#d-064"><code>D-064</code></a>, <a href="#d-124"><code>D-124</code></a></td>
+<td>M6</td>
+</tr>
+<tr>
+<td><strong>A-20</strong></td>
+<td>🕓 Pendência</td>
+<td>Dono</td>
+<td><strong>Quem entra pelo login da empresa, na v2.1.</strong> (1) A pessoa que chega pelo login da empresa sem convite: hoje só entra quem foi convidado (<a href="#d-071"><code>D-071</code></a>), e a <a href="#d-118"><code>D-118</code></a> deixa o login corporativo para a etapa 2. O arquiteto recomenda manter o convite, e o login da empresa só autentica; a alternativa é a entrada automática na quarentena, que precisa de um assento livre (<a href="#d-070"><code>D-070</code></a>); (2) quando a role do cadastro e a do token discordam, o que a <a href="#d-052"><code>D-052</code></a> deixou de fora. O arquiteto recomenda que, na organização com o login da empresa, valha o token, e quem chega sem valor mapeado caia na role padrão (a consequência da <a href="#d-118"><code>D-118</code></a> sobre a leitura da <a href="#d-112"><code>D-112</code></a>); (3) quem sai da empresa: a sessão do Horus dura até 30 dias (<a href="#arq-038"><code>ARQ-038</code></a>). O arquiteto recomenda que a sessão nascida pelo login da empresa se confirme com ele a cada 8 horas 🔎, o que pede à pessoa entrar de novo quando a empresa a desliga</td>
+<td><a href="#arq-054"><code>ARQ-054</code></a>, <a href="#arq-038"><code>ARQ-038</code></a></td>
+<td><a href="#d-027"><code>D-027</code></a>, <a href="#d-052"><code>D-052</code></a>, <a href="#d-070"><code>D-070</code></a>, <a href="#d-071"><code>D-071</code></a>, <a href="#d-112"><code>D-112</code></a>, <a href="#d-118"><code>D-118</code></a></td>
+<td>M8</td>
+</tr>
+<tr>
+<td><strong>A-21</strong></td>
+<td>🕓 Pendência</td>
+<td>Dono</td>
+<td><strong>Como a instância fala com todas as pessoas quando ela para.</strong> (1) A abertura da v2.0 é num subdomínio próprio, ao lado da v1.xx, sem janela (<a href="#arq-065"><code>ARQ-065</code></a> ✅, em 03/11/2026), e as manutenções seguintes podem ter uma janela; o produto não tem um aviso da instância a todas as pessoas, só a área de avisos de cada conta (<a href="#d-128"><code>D-128</code></a>), que nasce no M1. (2) Durante uma troca ou uma janela, quem abre o app hoje vê a tela de entrada funcionando e as respostas falhando, porque o Nginx segue servindo o front com a API parada (<code>horus@318db52b:infra/README.md</code>, &quot;Sintoma que engana&quot;). (3) Num incidente, os owners das organizações afetadas precisam saber (<a href="#arq-068"><code>ARQ-068</code></a>), e, no incidente com dado pessoal, o controlador pode precisar falar com as pessoas; numa volta de pane com outro endereço de saída, os owners precisam liberar o endereço novo nos bancos deles. O arquiteto recomenda que o administrador da instância (<a href="#d-013"><code>D-013</code></a>) publique um aviso da instância, com a data, a hora e o texto, que aparece como uma faixa no topo do app para todos e vai por e-mail aos owners, pelo e-mail da instância; que, durante uma manutenção, a página com a hora de volta substitua o app; e que uma página pública do estado da instância fique fora da v2.0</td>
+<td><a href="#arq-065"><code>ARQ-065</code></a>, <a href="#arq-068"><code>ARQ-068</code></a></td>
+<td><a href="#d-013"><code>D-013</code></a>, <a href="#d-109"><code>D-109</code></a>, <a href="#d-128"><code>D-128</code></a></td>
+<td>M7</td>
+</tr>
+<tr>
+<td><strong>A-22</strong></td>
+<td>🕓 Pendência</td>
+<td>Dono</td>
+<td><strong>Quem fica sabendo quando um serviço da organização para</strong> (complementa a A-10). A chave de IA recusada pelo provedor (inválida ou sem crédito), a conta de WhatsApp da organização com a nota de qualidade rebaixada, o teto de mensagens atingido ou a conta bloqueada, a fonte que deixou de conectar (por exemplo, depois de uma troca de máquina com outro endereço de saída, <a href="#arq-056"><code>ARQ-056</code></a>) e o e-mail do conector recusado pelo servidor. Hoje a pessoa vê a falha do serviço na resposta, e o owner só sabe se alguém contar; a Maind vê a contagem na telemetria, quase sempre sem a organização como rótulo (<a href="#arq-073"><code>ARQ-073</code></a>), e quem resolve é a organização, porque a chave, a conta e a fonte são dela (<a href="#mf-105"><code>MF-105:IA sob controle da organização</code></a>, <a href="#d-034"><code>D-034</code></a>, <a href="#d-097"><code>D-097</code></a>). O arquiteto recomenda um aviso ao owner da organização na área de avisos, e por e-mail conforme a preferência (<a href="#d-128"><code>D-128</code></a>), uma vez por dia por causa, sem conteúdo, com o caminho para a tela da conexão</td>
+<td><a href="#arq-072"><code>ARQ-072</code></a>, <a href="#arq-071"><code>ARQ-071</code></a></td>
+<td><a href="#d-034"><code>D-034</code></a>, <a href="#d-097"><code>D-097</code></a>, <a href="#d-128"><code>D-128</code></a></td>
+<td>M2 (a IA e as fontes); M4 (o WhatsApp)</td>
+</tr>
+<tr>
+<td><strong>A-23</strong> 🆕</td>
+<td>🕓 Pendência</td>
+<td>Dono</td>
+<td><strong>O editor único: como um board grande vira PDF, e a região escrita por descrição.</strong> (1) A <a href="#d-057"><code>D-057</code></a> deixou de fora como um board grande vira PDF (uma página só ou várias). A montagem num navegador sem tela imprime qualquer tamanho (<a href="#arq-007"><code>ARQ-007</code></a>), mas uma página muito maior que a folha não se lê no papel. O arquiteto recomenda que o PDF siga as páginas que o board já tem, uma folha por página, sem nunca cortar um cartão entre duas folhas, e que a página maior que a folha se reduza para caber, com um aviso ao autor quando a redução passar de um limite 🔎. (2) Hoje o relatório nasce de regiões escritas por descrição, e cada região de dado só fica pronta quando o gestor aprova a receita, que nunca vai ao navegador (<code>horus@318db52b:apps/server/Horus.Core/Relatorios/RelatorioEntities.cs</code>); o cartão do board nasce de uma resposta já calculada, sem aprovação. O editor único precisa de uma regra só, e o arquiteto recomenda que o cartão escrito por descrição mostre o resultado ao autor antes de salvar, e que salvar seja a aprovação, sem um estado à parte</td>
+<td><a href="#arq-007"><code>ARQ-007</code></a>, <a href="#arq-022"><code>ARQ-022</code></a> (letras a e n da <code>P-008</code>)</td>
+<td><a href="#d-018"><code>D-018</code></a>, <a href="#d-057"><code>D-057</code></a>, <a href="#d-058"><code>D-058</code></a></td>
+<td>M5</td>
+</tr>
+<tr>
+<td><strong>A-24</strong> 🆕</td>
+<td>🕓 Pendência</td>
+<td>Dono</td>
+<td><strong>A lista dos interruptores da <a href="#d-110"><code>D-110</code></a> contra a tela.</strong> Ela confere com a conversa de hoje (os três modos, os níveis, a Análise avançada, o modelo, ver o SQL e baixar), mais a Pergunta rápida, que é nova; com os botões do WhatsApp e dos conectores (<a href="#d-119"><code>D-119</code></a>, <a href="#d-122"><code>D-122</code></a>), são nove. A conversa tem dois controles que a lista não nomeia: <strong>fixar a resposta num board</strong> (<code>horus@318db52b:apps/web/src/pages/analise/FixarEmBoard.vue</code>) e <strong>escolher as fontes da conversa</strong> (<code>horus@318db52b:apps/web/src/pages/analise/EscolhaDeFontes.vue</code>). O arquiteto recomenda que fixar siga o tipo de assento, como criar um board (o membro leitor não fixa, <a href="#d-069"><code>D-069</code></a>), sem interruptor próprio, e que escolher as fontes não vire interruptor, porque a fonte que a pessoa usa já se limita pela segurança dos dados (<a href="#d-056"><code>D-056</code></a>)</td>
+<td><a href="#arq-039"><code>ARQ-039</code></a> (letra l da <code>P-008</code>)</td>
+<td><a href="#d-056"><code>D-056</code></a>, <a href="#d-069"><code>D-069</code></a>, <a href="#d-089"><code>D-089</code></a>, <a href="#d-110"><code>D-110</code></a>, <a href="#d-114"><code>D-114</code></a>, <a href="#d-119"><code>D-119</code></a>, <a href="#d-122"><code>D-122</code></a></td>
+<td>M1</td>
+</tr>
+<tr>
+<td><strong>A-25</strong> 🆕</td>
+<td>🕓 Pendência</td>
+<td>Dono</td>
+<td><strong>O que a pessoa lê quando a regra da empresa esconde um dado (v2.1).</strong> Na etapa 2, a &quot;mais restritiva&quot; (<a href="#d-026"><code>D-026</code></a>) sai por construção, mas o Horus só explica a parte dele (a faixa &quot;Resposta limitada aos dados que você pode ver&quot;, <code>horus@318db52b:apps/server/Horus.Core/Seguranca/Semantica/RecorteDeAcesso.cs</code>), porque o banco devolve menos linhas sem dizer por quê. O arquiteto recomenda que, na organização com a etapa 2 ligada, a faixa diga qual regra do Horus limitou e acrescente uma frase fixa de que os controles de acesso da empresa também valem; e que a fonte cuja tecnologia não aceite a identidade da pessoa fique só com a regra do Horus, com o owner avisado ao ligar o login da empresa</td>
+<td><a href="#arq-054"><code>ARQ-054</code></a>, <a href="#arq-032"><code>ARQ-032</code></a> (letras c e d da <code>P-008</code>)</td>
+<td><a href="#d-025"><code>D-025</code></a>, <a href="#d-026"><code>D-026</code></a>, <a href="#d-027"><code>D-027</code></a></td>
+<td>M8</td>
+</tr>
+<tr>
+<td><strong>A-26</strong> 🆕</td>
+<td>🕓 Pendência</td>
+<td>PO</td>
+<td><strong>Corrigir o inventário de lacunas e o mapa das mfs de hoje</strong> (complementa a A-12; o detalhe está nas seções 2 e 3 deste documento): os tipos de bloco são seis, com o chaveamento (linha 2); o tempo continua sem medida, e a primeira vem dos tempos por etapa que a v1.xx já grava (linha 3, V-14); a pergunta respondida e o on-premises existem em parte (linhas 9 e 14); o provedor falso e o <code>claude-code</code> não rodam dentro de casa (linha 16); também se pergunta na análise customizada do board (candidata 14); a abertura de board já é um fato de uso (candidata 17); a <a href="#mf-109"><code>MF-109</code></a> pesquisa só na leitura depois da consulta do modo dados (mapa)</td>
+<td><a href="#arq-013"><code>ARQ-013</code></a>, <a href="#arq-029"><code>ARQ-029</code></a> (conferência da <code>P-002</code> e da <code>P-003</code>)</td>
+<td><a href="#d-003"><code>D-003</code></a>, <a href="#d-134"><code>D-134</code></a></td>
+<td>Nenhum (documental)</td>
+</tr>
+<tr>
+<td><strong>A-27</strong> 🆕</td>
+<td>🕓 Pendência</td>
+<td>PO</td>
+<td><strong>A tela das preferências de guarda da organização.</strong> O dono decidiu que os prazos da organização se ajustam nas preferências dela (<a href="#arq-035"><code>ARQ-035</code></a>, em 03/11/2026). Faltam: onde a tela fica, como cada prazo aparece (o padrão, o piso e o teto, documento 06, 3.3) e o aviso de que reduzir um prazo apaga, na faxina do dia seguinte, o que passou dele, sem volta</td>
+<td><a href="#arq-035"><code>ARQ-035</code></a>, <a href="#arq-045"><code>ARQ-045</code></a></td>
+<td><a href="#d-092"><code>D-092</code></a> e a leitura <code>D-092.2</code></td>
+<td>Antes do M1</td>
+</tr>
+<tr>
+<td><strong>A-28</strong> 🆕</td>
+<td>🕓 Pendência</td>
+<td>PO</td>
+<td><strong>A <a href="#mf-106"><code>MF-106</code></a> inteira na v2.1.</strong> O dono mandou a segurança dos dados por pessoa, as duas etapas, para a v2.1 (a 2.01.*), em 03/11/2026, e o código dela sai da v2.0 (<a href="#arq-090"><code>ARQ-090</code></a>). Faltam no backlog e no mapa: (1) a <a href="#mf-106"><code>MF-106</code></a> inteira na v2.1; (2) os grupos dinâmicos da <a href="#d-019"><code>D-019</code></a>, que na v2.0 só podem ser por papel, e por claims na v2.1; (3) a planilha da <a href="#mf-102"><code>MF-102</code></a>, que na v2.0 fica só para os convites em lote, sem as colunas de claims 🔎; (4) a vitrine da segurança por pessoa, fora das demonstrações até a v2.1; (5) a A-11, que perde a urgência, porque na v2.0 todo board roda com os dados da organização inteira</td>
+<td><a href="#arq-040"><code>ARQ-040</code></a>, <a href="#arq-089"><code>ARQ-089</code></a>, <a href="#arq-090"><code>ARQ-090</code></a></td>
+<td><a href="#d-019"><code>D-019</code></a>, <a href="#d-025"><code>D-025</code></a>, <a href="#d-028"><code>D-028</code></a></td>
+<td>Antes do M1</td>
+</tr>
+<tr>
+<td><strong>A-29</strong> 🆕</td>
+<td>🕓 Pendência</td>
+<td>PO</td>
+<td><strong>O painel de controle do owner da instância, com o uso.</strong> No SaaS, a Maind é a owner da instância (<a href="#d-013"><code>D-013</code></a>), e o dono quer, na v2.0, um painel com o uso da instância ao lado do controle dos assentos por organização (<a href="#arq-017"><code>ARQ-017</code></a>, em 03/11/2026). O painel dos assentos já está na <a href="#mf-101"><code>MF-101</code></a> (<a href="#d-080"><code>D-080</code></a>); o uso não está escrito. Faltam: o que o painel mostra por organização (a hipótese: os assentos liberados e ocupados por tipo, as perguntas respondidas, as execuções de agente e o custo do mês por componente, em números e sem conteúdo, <code>D-091.1</code>), o aviso de custo dentro dele (<a href="#arq-084"><code>ARQ-084</code></a>) e se vira parte da <a href="#mf-101"><code>MF-101</code></a> ou uma mf nova</td>
+<td><a href="#arq-017"><code>ARQ-017</code></a>, <a href="#arq-084"><code>ARQ-084</code></a>, <a href="#arq-088"><code>ARQ-088</code></a></td>
+<td><a href="#d-013"><code>D-013</code></a>, <a href="#d-080"><code>D-080</code></a>, <a href="#d-091"><code>D-091</code></a> e a leitura <code>D-091.1</code></td>
+<td>Antes do M1</td>
+</tr>
+<tr>
+<td><strong>A-30</strong> 🆕</td>
+<td>🕓 Pendência</td>
+<td>PO</td>
+<td><strong>O documento da organização, em PDF.</strong> O dono decidiu que o aviso de que a abertura é registrada mora num documento da organização, em PDF, que o owner publica e que fica sempre disponível para download no Horus (<a href="#arq-043"><code>ARQ-043</code></a>, em 03/11/2026). Faltam: onde o documento fica e como as pessoas o acham; se o Horus oferece um texto padrão, com a frase do registro, para o owner que não publicar o seu; se o primeiro acesso à organização pede ciência dele (a opção 2 da <a href="#arq-043"><code>ARQ-043</code></a>); e se ele também leva o aviso de privacidade (A-16)</td>
+<td><a href="#arq-043"><code>ARQ-043</code></a>, <a href="#arq-088"><code>ARQ-088</code></a></td>
+<td><a href="#d-090"><code>D-090</code></a> e a leitura <code>D-090.2</code>, <a href="#d-093"><code>D-093</code></a></td>
+<td>Antes do M5</td>
+</tr>
+</tbody>
+</table></div><h3 id="arquitetura-14-5-as-verificacoes-pendentes">5. As verificações pendentes</h3>
+<p>Nada disto foi rodado. Cada verificação confere um fato fora do repositório (uma conta, uma licença, um preço, um número da PRD) que uma decisão supõe. A lista junta as treze das rodadas anteriores e as cinco desta.</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 6 de 14 · Conferência do produto"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Nº</th>
+<th scope="col">O que conferir</th>
+<th scope="col">Quem</th>
+<th scope="col">Antes de</th>
+<th scope="col">Origem</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>V-01</strong></td>
+<td>No arquivo de ambiente da PRD e no do HML, se alguma fonte do arquivo depende da regra &quot;sem organização declarada, aparece para todas&quot;</td>
+<td>Quem opera os ambientes, com o dono</td>
+<td>M2</td>
+<td><a href="#arq-034"><code>ARQ-034</code></a>; documento 09</td>
+</tr>
+<tr>
+<td><strong>V-02</strong></td>
+<td>O plano da conta do serviço de e-mail da Maind e o teto de anexo dele</td>
+<td>O dono</td>
+<td>M1 (o teto de anexo, para o conector); a primeira produção real (o plano pago)</td>
+<td><a href="#arq-046"><code>ARQ-046</code></a>; documento 08</td>
+</tr>
+<tr>
+<td><strong>V-03</strong></td>
+<td>Se a Maind já tem a empresa verificada na Meta e um aplicativo na Meta</td>
+<td>O dono</td>
+<td>M1</td>
+<td><a href="#arq-047"><code>ARQ-047</code></a>; documento 08</td>
+</tr>
+<tr>
+<td><strong>V-04</strong></td>
+<td>A tabela de preços da Meta para o Brasil, por categoria, e o teto de texto dos modelos</td>
+<td>O arquiteto, na documentação pública</td>
+<td>M4</td>
+<td><a href="#arq-049"><code>ARQ-049</code></a>; documento 08 · <strong>Respondida em parte em 02/11/2026</strong> (documento 13, 3.3): a utilidade e a autenticação a US$ 0,0068, a franquia de 1.000 mensagens de serviço por número, o corpo do modelo até 1.024 caracteres; faltam os volumes das faixas de desconto. Reconferir no M4: a Meta mudou a tabela quatro vezes em 2026</td>
+</tr>
+<tr>
+<td><strong>V-05</strong></td>
+<td>Se a licença do SQL Server Developer cobre as bases de demonstração numa produção real</td>
+<td>O dono, com o licenciamento da Microsoft</td>
+<td>A primeira produção real</td>
+<td><a href="#arq-059"><code>ARQ-059</code></a>; documento 09</td>
+</tr>
+<tr>
+<td><strong>V-06</strong></td>
+<td>Se o provedor da VPS permite manter o endereço de saída numa troca de máquina</td>
+<td>O dono</td>
+<td>A primeira troca de máquina</td>
+<td><a href="#arq-052"><code>ARQ-052</code></a>, <a href="#arq-056"><code>ARQ-056</code></a>; documento 09</td>
+</tr>
+<tr>
+<td><strong>V-07</strong></td>
+<td>Se a VPS de hoje comporta a homologação da v2 e, depois, a v2.0, ao lado da PRD e do HML da v1.xx: a memória, a CPU e o disco de cada serviço com a homologação da v2 de pé, com a swap, contra o gatilho da troca de máquina (documento 09, 3.3); e, com o minikube, o peso dele e a swap, que o Kubernetes, por padrão, recusa no nó (<a href="#arq-093"><code>ARQ-093</code></a>) 🔎</td>
+<td>O dono, com quem opera</td>
+<td>O M0, logo depois de a homologação da v2 subir</td>
+<td><a href="#arq-055"><code>ARQ-055</code></a>, <a href="#arq-056"><code>ARQ-056</code></a>; documentos 09 e 13</td>
+</tr>
+<tr>
+<td><strong>V-08</strong></td>
+<td>O domínio da segunda VPS</td>
+<td>O dono</td>
+<td>A v2.0 nela</td>
+<td><a href="#arq-058"><code>ARQ-058</code></a>; documento 09</td>
+</tr>
+<tr>
+<td><strong>V-09</strong></td>
+<td>O que o provedor das VPS oferece na conta da Maind, para a cópia da instância SaaS (<a href="#arq-086"><code>ARQ-086</code></a>): o preço da cópia diária, quantas cópias guarda e por quanto tempo, e se a cópia volta numa máquina diferente da original</td>
+<td>O dono</td>
+<td>M0</td>
+<td><a href="#arq-086"><code>ARQ-086</code></a>; documentos 10 e 13</td>
+</tr>
+<tr>
+<td><strong>V-10</strong></td>
+<td>O tempo de vida do registro dos domínios das instâncias, e se a conta do provedor das VPS tem console fora da rede e segundo fator</td>
+<td>O dono, com quem opera</td>
+<td>M0</td>
+<td><a href="#arq-066"><code>ARQ-066</code></a>, <a href="#arq-086"><code>ARQ-086</code></a>; documento 10</td>
+</tr>
+<tr>
+<td><strong>V-11</strong></td>
+<td>Quem é o controlador e quem é o operador em cada tipo de instância; os prazos da Resolução CD/ANPD nº 15/2024 e a guarda do registro dos incidentes; o que o contrato de cada cliente diz</td>
+<td>O jurídico da Maind, com o dono</td>
+<td>A primeira organização paga na v2.0</td>
+<td><a href="#arq-068"><code>ARQ-068</code></a>; documento 10</td>
+</tr>
+<tr>
+<td><strong>V-12</strong></td>
+<td>O serviço da sonda de fora: um plano com conferência a cada minuto, de mais de uma região, com os sinais de vida e o relatório mensal, e o preço</td>
+<td>O dono</td>
+<td>A primeira produção real (M7)</td>
+<td><a href="#arq-070"><code>ARQ-070</code></a>; documentos 11 e 13</td>
+</tr>
+<tr>
+<td><strong>V-13</strong></td>
+<td>Por quanto tempo a Meta reenvia uma notificação sem resposta, e como ela avisa a mudança da nota de qualidade e do teto de cada número</td>
+<td>O arquiteto, na documentação pública da Meta</td>
+<td>M4</td>
+<td><a href="#arq-048"><code>ARQ-048</code></a>, <a href="#arq-063"><code>ARQ-063</code></a>; documento 11 · <strong>Respondida em parte em 02/11/2026</strong> (documento 13, 3.3): o reenvio dura até sete dias, com frequência decrescente; o teto é do portfólio de negócio, e a mudança dele e da vazão do número chegam por notificação. Falta conferir na conta de ensaio, no M4</td>
+</tr>
+<tr>
+<td><strong>V-14</strong> 🆕</td>
+<td>Na PRD, uma leitura agregada, sem conteúdo, dos tempos por etapa que a v1.xx já grava em cada resposta (a duração e as etapas do fato <code>resposta</code>): o p50 e o p95 por etapa e por modo dos últimos 60 dias. É a primeira medida real da <code>P-002</code>, sem chamar modelo</td>
+<td>O dono, com quem opera</td>
+<td>M0 (calibra os limiares do documento 03)</td>
+<td><a href="#arq-013"><code>ARQ-013</code></a>; seção 2</td>
+</tr>
+<tr>
+<td><strong>V-15</strong> 🆕</td>
+<td>Na PRD, o consumo de IA agregado desde 29/09/2026, por função e por modelo, sem organização nem pessoa: o custo médio por pergunta em cada modo e a fração das chamadas sem custo informado</td>
+<td>O dono, com quem opera</td>
+<td>M2 (calibra o custo por função e o aviso de custo)</td>
+<td><a href="#arq-017"><code>ARQ-017</code></a>, <a href="#arq-083"><code>ARQ-083</code></a>, <a href="#arq-084"><code>ARQ-084</code></a>; documento 13</td>
+</tr>
+<tr>
+<td><strong>V-16</strong> 🆕</td>
+<td>O plano do GitHub da conta da Maind para o repositório da v2: os minutos do Actions incluídos e a aprovação de outra pessoa nos ambientes. Os preços públicos e o teto de 2 GiB por arquivo das versões publicadas já estão no documento 13, 3.9</td>
+<td>O dono</td>
+<td>M0 (a aprovação nos ambientes); a primeira produção real (os minutos, para os executores hospedados)</td>
+<td><a href="#arq-082"><code>ARQ-082</code></a>; documentos 10, 12 e 13</td>
+</tr>
+<tr>
+<td><strong>V-17</strong> 🆕</td>
+<td>A forma do plantão fora do horário comercial: o sobreaviso, o rodízio e o pagamento, à luz da CLT e do contrato de quem estiver na escala</td>
+<td>O dono, com o jurídico e as pessoas da Maind</td>
+<td>M7 (a abertura da v2.0)</td>
+<td><a href="#arq-071"><code>ARQ-071</code></a>, <a href="#arq-085"><code>ARQ-085</code></a>; documento 13</td>
+</tr>
+<tr>
+<td><strong>V-18</strong> 🆕</td>
+<td>Na documentação da AWS, quais modelos do Bedrock processam dentro da região de São Paulo, sem sair do país, e a que preço; o Claude, pela documentação da Anthropic, só tem lá o endpoint global</td>
+<td>O arquiteto, na documentação pública</td>
+<td>M2 (a prova do Bedrock na AWS real)</td>
+<td><a href="#arq-051"><code>ARQ-051</code></a>; documento 13, 3.2; A-16</td>
+</tr>
+<tr>
+<td><strong>V-19</strong> 🆕</td>
+<td>O preço, na região de São Paulo, da forma da <a href="#arq-093"><code>ARQ-093</code></a> em cada nuvem (AWS, Google Cloud e Azure): o Kubernetes gerenciado (o EKS, o GKE ou o AKS, com a taxa do plano de controle e as máquinas dos dois papéis em duas zonas), o Postgres gerenciado com a réplica e a troca automática, a cópia e a saída de rede. <em>(03/11/2026: respondida em parte pelo arquiteto, nos preços oficiais: a Google Cloud, US$ 767 por mês sob demanda; a AWS, US$ 890; a Azure, US$ 891, com a espera do Postgres noutra zona bloqueada para servidores novos em Brazil South. Faltam os impostos do faturamento e a prova do modo Autopilot; a escolha é a <a href="#arq-085"><code>ARQ-085</code></a>; documento 13, 3.13)</em></td>
+<td>O arquiteto, na documentação pública; a escolha é do dono</td>
+<td>M7 (antes da primeira produção real)</td>
+<td><a href="#arq-085"><code>ARQ-085</code></a>, <a href="#arq-092"><code>ARQ-092</code></a>, <a href="#arq-093"><code>ARQ-093</code></a>; documento 13</td>
+</tr>
+</tbody>
+</table></div><p><strong>A contagem:</strong> dezenove verificações, das quais quinze são do dono (sozinho, ou com o jurídico, com quem opera ou com o licenciamento) e quatro do arquiteto na documentação pública (a V-04 e a V-13, respondidas em parte e reconferidas no M4; a V-18, antes do M2; e a V-19, respondida em parte em 03/11/2026, com a escolha do dono na <a href="#arq-085"><code>ARQ-085</code></a>); cinco nasceram na rodada de 02/11/2026 (V-14 a V-18), e a V-19, em 03/11/2026. Antes do M0 precisam estar feitas a V-09, a V-10, a V-14 e a V-16; a V-07, logo depois de a homologação da v2 subir; a V-05, a V-12 e a V-19, antes da primeira produção real.</p>

@@ -1,0 +1,67 @@
+<p>Esta pasta reúne os documentos de visão e as decisões de produto do <strong>Horus v2.xx</strong>, que vamos desenvolver ao repensar o Horus desde o início, aproveitando os aprendizados e as funcionalidades do produto de hoje, a v1.xx (<a href="#d-134"><code>D-134</code></a>). As entregas se chamam v2.0 e v2.1 (<a href="#d-135"><code>D-135</code></a>).</p>
+<p>O objetivo é explicitar para quem o Horus existe, quais problemas resolve, que valor entrega e quais escolhas devem orientar seu desenvolvimento.</p>
+<p>Início deste trabalho: 30/10/2026.</p>
+<h3 id="pasta-v2-documentos">Documentos</h3>
+<p>Esta pasta é o <strong>espaço de desenho do Horus v2</strong> e vai virar um repositório próprio (<a href="#d-140"><code>D-140</code></a>). A estrutura (<a href="#d-144"><code>D-144</code></a>, <a href="#d-142"><code>D-142</code></a>):</p>
+<pre class="snippets"><code class="language-none" data-lang="none">produto v2/
+├── README.md          ← este índice
+├── .claude/skills/    ← as skills do PO (product-owner-horus) e do arquiteto
+└── docs/
+    ├── leitura/       ← a documentação de leitura: a visão geral e uma página por mf, em linguagem simples (o PO)
+    └── raw/           ← o inventário, fonte da leitura
+        ├── produto/       ← visão, decisões e mapa de produto (o PO)
+        ├── arquitetura/   ← as decisões de tecnologia e a estratégia para atingir os objetivos (o arquiteto)
+        └── backlog/       ← as atividades (épicos, histórias e tasks), depois da arquitetura (o dono com um agilista)
+</code></pre><p>Os documentos de produto:</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de A pasta da v2"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Documento</th>
+<th scope="col">Conteúdo</th>
+<th scope="col">Situação</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#produto-temas">Temas para a visão de produto</a></td>
+<td>Os 20 temas e as perguntas que orientam a discussão inicial.</td>
+<td>Proposta em discussão</td>
+</tr>
+<tr>
+<td><a href="#produto-norte">Norte do produto</a></td>
+<td>Propósito, público inicial, problemas em ordem, promessa, medidas de sucesso e limites.</td>
+<td>Decidido em 30/10/2026 (<a href="#d-001"><code>D-001</code></a> a <a href="#d-015"><code>D-015</code></a>, <a href="#d-017"><code>D-017</code></a>, <a href="#d-022"><code>D-022</code></a> e <a href="#d-024"><code>D-024</code></a>)</td>
+</tr>
+<tr>
+<td><a href="#produto-lacunas">Inventário de lacunas</a></td>
+<td>O norte comparado com o produto de hoje, a começar pelo problema nº 1.</td>
+<td>Levantamento preliminar (30/10/2026)</td>
+</tr>
+<tr>
+<td><a href="#produto-mfs-hoje">Macro funcionalidades de hoje</a></td>
+<td>O que o Horus já entrega, em 12 macro funcionalidades, contra os três problemas do norte.</td>
+<td>Levantamento preliminar (31/10/2026)</td>
+</tr>
+<tr>
+<td><a href="#produto-v20">A v2.0 consolidada</a></td>
+<td>A v2.0 num lugar só: o que entra, o que fica fora, as regras decididas, os riscos, o que falta e as leituras do PO a confirmar.</td>
+<td>Composição decidida (02/11/2026); aguarda a conferência do arquiteto</td>
+</tr>
+<tr>
+<td><a href="#produto-versoes">As versões</a></td>
+<td>Uma tabela por versão, mf a mf: a v2.0 e a v2.1, que reúne tudo o que ficou fora da v2.0.</td>
+<td>v2.0 e v2.1 decididas (<a href="#d-119"><code>D-119</code></a>, <a href="#d-121"><code>D-121</code></a>, 02/11/2026)</td>
+</tr>
+<tr>
+<td><a href="#produto-mapa">Mapa de objetivos e funcionalidades</a></td>
+<td>O mapa para iniciar o desenvolvimento: o objetivo do produto, os objetivos de cada entrega e as funcionalidades de cada um, com a entrega e a decisão.</td>
+<td>Funcionalidades e objetivos decididos (<a href="#d-136"><code>D-136</code></a>, 02/11/2026)</td>
+</tr>
+<tr>
+<td><a href="#produto-backlog">Backlog estratégico</a></td>
+<td>Registro das decisões de produto: macro funcionalidades, versões, cortes e pendências do dono.</td>
+<td>Em uso</td>
+</tr>
+</tbody>
+</table></div><h3 id="pasta-v2-organizacao-dos-proximos-documentos">Organização dos próximos documentos</h3>
+<p>Os temas serão aprofundados conforme avançarmos nas conversas. Cada documento deve deixar claras as hipóteses, as decisões tomadas e as questões que continuam em aberto, com a data da última atualização.</p>
+<p>Este índice será atualizado à medida que novos documentos forem criados. A numeração dos arquivos organiza a leitura; a prioridade de desenvolvimento será definida durante a discussão de produto.</p>
+<h3 id="pasta-v2-ponto-de-partida">Ponto de partida</h3>
+<p>A proposta inicial é começar por visão e propósito, público-alvo, problemas prioritários, posicionamento e escopo. Essas escolhas orientarão os demais temas.</p>

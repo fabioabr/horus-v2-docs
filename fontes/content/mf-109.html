@@ -1,0 +1,161 @@
+<blockquote>
+<p><strong>Em uma frase:</strong> cruzar o número da empresa com o que acontece lá fora, como a inflação ou a concorrência, sem
+sair da conversa e sabendo de onde veio e de quando é cada fato.</p>
+</blockquote>
+<h3 id="mf-109-identificacao" data-dx-icone="id-card">Identificação</h3><div class="table-responsive" tabindex="0" role="region" aria-label="Identificação de MF-109 · A web como fonte"><table class="table table_shortcode"><tbody><tr><th scope="row">Código</th><td>MF-109</td></tr><tr><th scope="row">Entrega</th><td>v2.0</td></tr><tr><th scope="row">Situação</th><td>definida</td></tr><tr><th scope="row">Camada</th><td>💬 Motor de análise</td></tr><tr><th scope="row">Objetivos</th><td>O1</td></tr><tr><th scope="row">Quem usa</th><td>owner da organização, gestor, membro full</td></tr><tr><th scope="row">Complexidade</th><td>média</td></tr><tr><th scope="row">Relacionadas</th><td><a href="#mf-102">Organizações, pessoas e papéis</a> (MF-102), <a href="#mf-104">Conectar as fontes vivas</a> (MF-104), <a href="#mf-105">IA sob controle da organização</a> (MF-105), <a href="#mf-107">Perguntar aos dados em português</a> (MF-107), <a href="#mf-108">Respostas visuais</a> (MF-108), <a href="#mf-111">Chat pelo WhatsApp</a> (MF-111), <a href="#mf-112">Boards e Relatórios</a> (MF-112), <a href="#mf-115">Agentes ativos</a> (MF-115)</td></tr><tr><th scope="row">Atualizado</th><td>03/11/2026</td></tr></tbody></table></div>
+<h3 data-dx-icone="compass" id="mf-109-o-que-e">O que é</h3>
+<p>A web é a segunda fonte viva do Horus, ao lado dos bancos da empresa: complementa os números com o contexto de
+mercado, responde sozinha à pergunta sobre algo de fora e serve de régua. Hoje o Horus já pesquisa na web, mas cita
+a fonte no meio do texto, sem data.</p>
+<p>Na v2.0, todo fato da web traz o <strong>link da fonte</strong> e a <strong>data de publicação</strong>, separado do dado da empresa. O fato
+entra em qualquer <strong>nível de inferência</strong>, a régua de 1 a 5 de quanto a resposta pode ir além do número; a causa
+vinda de fora, só a partir do nível 4.</p>
+<blockquote>
+<p>📌 <strong>Exemplo:</strong> no nível padrão, a gestora Carla liga a pesquisa e pergunta &quot;as vendas de outubro acompanharam a
+inflação?&quot;. Recebe o gráfico das vendas e &quot;inflação de outubro: 0,4%&quot;, com o link do IBGE e a data de publicação.
+Se pergunta por que as vendas caíram, a resposta não culpa a inflação, a não ser que ela suba para o nível 4.</p>
+</blockquote>
+<h3 data-dx-icone="star" id="mf-109-caracteristicas">Características</h3>
+<ul>
+<li><strong>Duas formas de usar a web:</strong> a <strong>pesquisa na web</strong>, que a pessoa liga na conversa de análise, a tela de Perguntar
+aos dados em português (MF-107), e o <strong>modo web</strong>, que lê as páginas que a organização cadastrou como fonte.</li>
+<li><strong>Link e data em todo fato:</strong> a data é lida na própria página, e sem ela aparece o aviso de data não identificada.</li>
+<li><strong>O fato em qualquer nível:</strong> até no nível 1, que só descreve, o fato entra; a causa vinda de fora, só do nível 4
+em diante, rotulada como hipótese.</li>
+<li><strong>Separado do dado da empresa:</strong> os fatos aparecem à parte do texto, e um link que a pesquisa não trouxe sai da
+resposta.</li>
+<li><strong>Em todo modo e canal:</strong> vale nos modos dados, web e conversa, na Pergunta rápida (MF-110), no Chat pelo WhatsApp
+(MF-111), com o link e a data no texto, nos boards e nos agentes.</li>
+<li><strong>Quem usa:</strong> o owner da organização, que cuida das pessoas e dos dados dela, o gestor, que gere uma equipe, e o
+membro full, que pergunta e cria boards, se a role da pessoa (o pacote de permissões que o owner dá) tiver o modo
+web ligado.</li>
+<li><strong>Segue a conexão de IA:</strong> a busca é a do provedor de IA da organização, e quando ele não pesquisa, como o Amazon
+Bedrock, a opção não aparece.</li>
+<li><strong>Só a pergunta sai:</strong> à busca vai só o texto da pergunta, nunca dados do banco nem o modelo semântico, o
+dicionário de termos da empresa.</li>
+<li><strong>Corre ao lado da consulta:</strong> se a busca não volta a tempo, a resposta sai sem ela.</li>
+</ul>
+<h3 data-dx-icone="chart-line" id="mf-109-o-valor-que-gera">O valor que gera</h3>
+<ul>
+<li><strong>Para quem usa:</strong> explica um resultado com o contexto de fora antes de mostrá-lo ao CEO, sabendo de onde veio
+cada fato.</li>
+<li><strong>Para a empresa que contrata o Horus:</strong> menos pedidos ao time de dados para buscar um índice de fora.</li>
+<li><strong>Para o Horus como produto:</strong> respostas mais completas sem perder a confiança, que é a prova do produto.</li>
+</ul>
+<p><strong>Como vamos saber que funcionou:</strong> nenhuma informação da web aparece sem o link, e nenhuma aparece sem a data ou
+sem o aviso de que ela não foi identificada.</p>
+<h3 data-dx-icone="walking" id="mf-109-como-se-usa-no-horus">Como se usa no Horus</h3>
+<p><strong>Quem pergunta:</strong></p>
+<ol>
+<li>Liga a pesquisa na web na conversa.</li>
+<li>Faz a pergunta de análise, no nível que quiser.</li>
+<li>Recebe o número da empresa e, à parte, os fatos de fora, cada um com link e data.</li>
+<li>Abre o link para conferir o fato antes de levá-lo adiante.</li>
+<li>Sobe para o nível 4 quando quer que a resposta arrisque uma causa de fora.</li>
+</ol>
+<p><strong>O owner da organização:</strong></p>
+<ol>
+<li>Liga o modo web nas roles de quem pode usar a web.</li>
+<li>Cadastra a conexão de IA da organização, que decide se a pesquisa existe.</li>
+</ol>
+<figure><div class="lightbox_shortcode"><img src="media/mf-109-diagrama-1.svg" width="1383" height="102" alt="Diagrama: Como se usa no Horus"><a href="media/mf-109-diagrama-1.svg" class="img_popup" aria-label="Ampliar o diagrama"><i class="icon_plus" aria-hidden="true"></i></a></div><figcaption>Diagrama de “Como se usa no Horus”. Selecione o “+” para ampliar.</figcaption></figure><h3 data-dx-icone="puzzle-piece" id="mf-109-grau-de-complexidade-media">Grau de complexidade: média</h3>
+<p>Vêm da v1 a busca do provedor de IA e o leitor de páginas do servidor. É nova a etapa própria da web, que devolve
+os fatos com link e data e tira do texto o link que não veio da busca. Depende da busca do provedor de IA e de o
+modelo respeitar a regra da causa abaixo do nível 4, o que só a medição mostra; não é alta porque não mexe na base
+nem traz parceiro novo.</p>
+<blockquote>
+<p>⚠️ É a leitura do PO a partir dos documentos de arquitetura. A estimativa de esforço é do arquiteto.</p>
+</blockquote>
+<h3 data-dx-icone="link" id="mf-109-macro-funcionalidades-relacionadas">Macro funcionalidades relacionadas</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de A web como fonte"><table class="table table_shortcode"><thead><tr>
+<th scope="col">mf</th>
+<th scope="col">Como se relaciona</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Perguntar aos dados em português (MF-107)</td>
+<td><strong>depende de</strong>: a web entra na mesma conversa e obedece aos mesmos níveis de inferência</td>
+</tr>
+<tr>
+<td>IA sob controle da organização (MF-105)</td>
+<td><strong>depende de</strong>: a busca é a do provedor da conexão de IA da organização</td>
+</tr>
+<tr>
+<td>Organizações, pessoas e papéis (MF-102)</td>
+<td><strong>depende de</strong>: o modo web é um botão da role</td>
+</tr>
+<tr>
+<td>Conectar as fontes vivas (MF-104)</td>
+<td><strong>depende de</strong>: o modo web lê a fonte de páginas da web cadastrada ali</td>
+</tr>
+<tr>
+<td>Respostas visuais (MF-108)</td>
+<td><strong>complementa</strong>: o bloco mostra o número da empresa, e o fato de fora vem à parte, com link e data</td>
+</tr>
+<tr>
+<td>Chat pelo WhatsApp (MF-111), Boards e Relatórios (MF-112) e Agentes ativos (MF-115)</td>
+<td><strong>é a base de</strong>: o fato com link e data vale também na mensagem, no cartão e no que o agente entrega</td>
+</tr>
+</tbody>
+</table></div><h3 data-dx-icone="ban" id="mf-109-o-que-ela-nao-faz">O que ela não faz</h3>
+<ul>
+<li><strong>Selos de confiança</strong> nas fontes, nem uma lista de fontes aprovadas pela organização.</li>
+<li><strong>Causa vinda da web abaixo do nível 4.</strong></li>
+<li><strong>Guardar cópias das páginas</strong> consultadas.</li>
+<li><strong>Buscar em sites que pedem login.</strong></li>
+<li><strong>Pesquisar por outro caminho:</strong> sem a busca da conexão de IA, nenhum outro serviço pesquisa no lugar dela.</li>
+</ul>
+<h3 data-dx-icone="hourglass-half" id="mf-109-ainda-a-decidir">Ainda a decidir</h3>
+<ul>
+<li><strong>O modo web:</strong> ele depende da fonte de páginas da web, hoje fora da tela; falta decidir se a v2.0 a traz pronta.</li>
+<li><strong>O cartão do board:</strong> se guarda os fatos da resposta que o originou, com a data à vista, em vez de pesquisar de novo.</li>
+<li><strong>A resposta sem fatos:</strong> o que a tela mostra quando a pesquisa não traz fato nenhum.</li>
+</ul>
+<h3 data-dx-icone="book" id="mf-109-para-saber-mais">Para saber mais</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 2 de A web como fonte"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Trecho do inventário</th>
+<th scope="col">O que traz</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>docs/raw/produto/02-norte-do-produto.md</code>, as fontes</td>
+<td>A web como fonte viva, ao lado dos bancos, e os usos dela</td>
+</tr>
+<tr>
+<td><code>docs/raw/produto/04-macro-funcionalidades-de-hoje.md</code>, o mapa e a tabela de conversão</td>
+<td>O que a mf entrega hoje e a camada dela</td>
+</tr>
+<tr>
+<td><code>docs/raw/produto/05-v2.0-consolidada.md</code>, §3.1, §3.2, §4 e §5.4</td>
+<td>A candidata nº 3, a base herdada, o passo 5 da prova de valor e a regra da web</td>
+</tr>
+<tr>
+<td><code>docs/raw/produto/backlog-estrategico.md</code></td>
+<td>A definição macro da web como fonte viva completa (<a href="#d-131"><code>D-131</code></a>); o link e a data (<a href="#d-006"><code>D-006</code></a>); o fato em qualquer nível (<a href="#d-130"><code>D-130</code></a>, leituras <code>D-130.1</code> e <code>D-130.2</code>); o modo web nas roles (<a href="#d-110"><code>D-110</code></a>); a base herdada (<a href="#d-021"><code>D-021</code></a>)</td>
+</tr>
+<tr>
+<td><code>docs/raw/produto/03-inventario-de-lacunas.md</code>, linhas 5 e 6</td>
+<td>A lacuna da web em todos os usos e da data</td>
+</tr>
+<tr>
+<td><code>docs/raw/produto/06-versoes.md</code> e <code>07-mapa-de-objetivos-e-funcionalidades.md</code></td>
+<td>A mf na v2.0, no objetivo O1</td>
+</tr>
+<tr>
+<td><code>docs/raw/arquitetura/02-registro-de-decisoes.md</code>, <a href="#arq-025"><code>ARQ-025</code></a> a <a href="#arq-027"><code>ARQ-027</code></a></td>
+<td>O nível em toda etapa que escreve texto, a web como etapa própria e a busca nativa da conexão de IA, escolhida pelo dono</td>
+</tr>
+<tr>
+<td><code>docs/raw/arquitetura/05-motor-de-analise-e-ia.md</code>, §3.5, §3.6, §3.10 e §5</td>
+<td>Os níveis, a lista de fatos, o Bedrock sem busca e os riscos da web</td>
+</tr>
+<tr>
+<td><code>docs/raw/arquitetura/01-estrategia-da-solucao.md</code>, §4, <code>04-software.md</code> e <code>08-integracoes.md</code></td>
+<td>A estratégia da mf, as peças e a integração com os provedores</td>
+</tr>
+<tr>
+<td><code>docs/raw/arquitetura/14-conferencia-do-produto.md</code>, §1 a §4</td>
+<td>A separação do fato e da causa (<code>P-008</code>, letra aa), o que se reaproveita (<code>P-003</code>) e os itens devolvidos ao PO: a fonte de páginas web (A-04), o cartão do board (A-09) e a correção do inventário sobre a web (A-12, A-26)</td>
+</tr>
+</tbody>
+</table></div><p>📚 <a href="#mf-109-inventario">Tudo o que o inventário diz desta mf, assunto por assunto</a>.</p>

@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A documentação de produto e de arquitetura do Horus v2: a visão, as decisões, a estratégia e como ele vai ser construído.">
+    <meta name="generator" content="DocX 0.2.1">
+    <link rel="shortcut icon" href="media/horus-claro.svg">
+    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/elagent-icon/style.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/font-awesome/css/all.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/niceselectpicker/nice-select.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/font-size/css/rvfs.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/animation/animate.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/tooltipster/css/tooltipster.bundle.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism-coy.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/magnify-pop/magnific-popup.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/css/style.css">
+    <link rel="stylesheet" href="assets/kbdoc/css/responsive.css">
+    <link rel="stylesheet" href="assets/docx.css">
+    <link rel="stylesheet" href="assets/conteudo.css">
+    <link rel="stylesheet" href="assets/indice.css">
+    <title>MF-103 · Licenças e planos — Horus v2</title>
+</head>
+<body class="doc full-width-doc sticky-nav-doc onepage-doc dx-pagina-doc" data-spy="scroll" data-target=".navbar" data-offset="-120">
+    <a class="sr-only sr-only-focusable dx-skip" href="#post">Pular para o conteúdo</a>
+    <div class="body_wrapper sticky_menu">
+        <nav class="navbar navbar-expand-lg menu_one" id="stickyTwo" aria-label="Navegação principal">
+            <div class="container-fluid pl-60 pr-60">
+                <a class="navbar-brand" href="index.html">
+                    <img src="media/horus-claro.svg" alt="Horus v2">
+                    <img src="media/horus-escuro.svg" alt="Horus v2">
+                </a>
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Abrir o menu">
+                    <span class="menu_toggle">
+                        <span class="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                        <span class="hamburger-cross">
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav menu ml-auto">
+<li class="nav-item"><a href="index.html" class="nav-link">Início</a></li>
+<li class="nav-item dropdown submenu mega_menu tab-demo active"><a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentos</a><i class="arrow_carrot-down_alt2 mobile_dropdown_icon" aria-hidden="true" data-toggle="dropdown"></i><ul class="dropdown-menu scroll"><li><div class="row"><div class="col-lg-5 tabHeader"><ul class="nav flex-column nav-pills" id="dx-menu" role="tablist" aria-orientation="vertical"><li class="nav-item active"><a class="nav-link active" id="dx-menu-1-tab" data-toggle="pill" href="#dx-menu-1" role="tab" aria-controls="dx-menu-1" aria-selected="true">Comece aqui</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-2-tab" data-toggle="pill" href="#dx-menu-2" role="tab" aria-controls="dx-menu-2" aria-selected="false">Produto</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-3-tab" data-toggle="pill" href="#dx-menu-3" role="tab" aria-controls="dx-menu-3" aria-selected="false">Arquitetura · visão e decisões</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-4-tab" data-toggle="pill" href="#dx-menu-4" role="tab" aria-controls="dx-menu-4" aria-selected="false">Arquitetura · construção</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-5-tab" data-toggle="pill" href="#dx-menu-5" role="tab" aria-controls="dx-menu-5" aria-selected="false">Arquitetura · operação</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-6-tab" data-toggle="pill" href="#dx-menu-6" role="tab" aria-controls="dx-menu-6" aria-selected="false">Arquitetura · conferência</a></li></ul></div><div class="col-lg-7"><div class="tab-content tabContent" id="dx-menu-conteudo"><div class="tab-pane fade active show" id="dx-menu-1" role="tabpanel" aria-labelledby="dx-menu-1-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="visao-geral.html">O Horus v2</a></li><li><a href="pasta-v2.html">A pasta da v2</a></li></ul></div><div class="text"><a href="visao-geral.html"><p>Abrir Comece aqui</p></a></div></div><div class="tab-pane fade" id="dx-menu-2" role="tabpanel" aria-labelledby="dx-menu-2-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="produto-temas.html">Temas da visão de produto</a></li><li><a href="produto-norte.html">Norte do produto</a></li><li><a href="produto-lacunas.html">Inventário de lacunas</a></li><li><a href="produto-mfs-hoje.html">Macro funcionalidades de hoje</a></li><li><a href="produto-v20.html">A v2.0 consolidada</a></li></ul><ul class="list-unstyled tab_list"><li><a href="produto-versoes.html">As versões, mf a mf</a></li><li><a href="produto-mapa.html">Mapa de objetivos e funcionalidades</a></li><li><a href="produto-backlog.html">Backlog estratégico</a></li><li><a href="backlog-atividades.html">Backlog de atividades</a></li></ul></div><div class="text"><a href="produto-temas.html"><p>Abrir Produto</p></a></div></div><div class="tab-pane fade" id="dx-menu-3" role="tabpanel" aria-labelledby="dx-menu-3-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura.html">A pasta da arquitetura</a></li><li><a href="arquitetura-01.html">01 · Estratégia da solução</a></li><li><a href="arquitetura-02.html">02 · Registro de decisões</a></li><li><a href="arquitetura-03.html">03 · Metas de qualidade</a></li></ul></div><div class="text"><a href="arquitetura.html"><p>Abrir Arquitetura · visão e decisões</p></a></div></div><div class="tab-pane fade" id="dx-menu-4" role="tabpanel" aria-labelledby="dx-menu-4-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-04.html">04 · Software</a></li><li><a href="arquitetura-05.html">05 · Motor de análise e IA</a></li><li><a href="arquitetura-06.html">06 · Dados</a></li><li><a href="arquitetura-07.html">07 · Segurança</a></li><li><a href="arquitetura-08.html">08 · Integrações</a></li></ul></div><div class="text"><a href="arquitetura-04.html"><p>Abrir Arquitetura · construção</p></a></div></div><div class="tab-pane fade" id="dx-menu-5" role="tabpanel" aria-labelledby="dx-menu-5-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-09.html">09 · Infraestrutura e ambientes</a></li><li><a href="arquitetura-10.html">10 · Publicação e operação</a></li><li><a href="arquitetura-11.html">11 · Observabilidade</a></li><li><a href="arquitetura-12.html">12 · Qualidade e testes</a></li><li><a href="arquitetura-13.html">13 · Custo de operação</a></li></ul></div><div class="text"><a href="arquitetura-09.html"><p>Abrir Arquitetura · operação</p></a></div></div><div class="tab-pane fade" id="dx-menu-6" role="tabpanel" aria-labelledby="dx-menu-6-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-14.html">14 · Conferência do produto</a></li></ul></div><div class="text"><a href="arquitetura-14.html"><p>Abrir Arquitetura · conferência</p></a></div></div></div></div></div></li></ul></li>
+                    </ul>
+                    <ul class="list-unstyled menu_social">
+                        <li class="search">
+                            <form action="#" class="search_form" role="search" data-search-form>
+                                <label class="sr-only" for="dx-search">Buscar na documentação</label>
+                                <input type="search" class="form-control" id="dx-search" placeholder="Buscar" autocomplete="off" data-search-input aria-describedby="dx-search-status" aria-controls="dx-search-results">
+                                <button type="submit" aria-label="Buscar"><i class="icon_search" aria-hidden="true"></i></button>
+                                <div class="dx-search-results" id="dx-search-results" data-search-results hidden></div>
+                            </form>
+                            <p class="sr-only" id="dx-search-status" role="status" data-search-status></p>
+                        </li>
+                    </ul>
+                    <div class="dx-ferramentas">
+
+
+                        <div id="font-switcher"><div id="rvfs-controllers" class="fontsize-controllers group"></div></div>
+                        <button type="button" class="print" data-print aria-label="Imprimir"><i class="icon_printer" aria-hidden="true"></i></button>
+                        <div class="doc_switch">
+                            <label for="something" class="tab-btn tab-btns"><i class="icon_lightbulb_alt" aria-hidden="true"></i><span class="sr-only">Tema claro</span></label>
+                            <input type="checkbox" name="something" id="something" class="tab_switcher" aria-label="Tema escuro">
+                            <label for="something" class="tab-btn"><i class="far fa-moon" aria-hidden="true"></i><span class="sr-only">Tema escuro</span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <section class="doc_documentation_area onepage_doc_area" id="sticky_doc">
+            <div class="overlay_bg"></div>
+            <div class="container-fluid pl-60 pr-60">
+                <div class="row doc-container">
+                    <div class="col-lg-2 doc_mobile_menu doc-sidebar display_none">
+                        <aside class="doc_left_sidebarlist" aria-label="Tópicos desta página">
+                            <h3 class="nav_title">Tópicos</h3>
+                            <div class="scroll">
+                                <ul class="list-unstyled nav-sidebar doc-nav">
+<li class="nav-item active"><a href="#mf-103-identificacao" class="nav-link">Identificação</a></li>
+<li class="nav-item"><a href="#mf-103-o-que-e" class="nav-link">O que é</a></li>
+<li class="nav-item"><a href="#mf-103-caracteristicas" class="nav-link">Características</a></li>
+<li class="nav-item"><a href="#mf-103-o-valor-que-gera" class="nav-link">O valor que gera</a></li>
+<li class="nav-item"><a href="#mf-103-como-se-usa-no-horus" class="nav-link">Como se usa no Horus</a></li>
+<li class="nav-item"><a href="#mf-103-grau-de-complexidade-alta" class="nav-link">Grau de complexidade: alta</a></li>
+<li class="nav-item"><a href="#mf-103-macro-funcionalidades-relacionadas" class="nav-link">Macro funcionalidades relacionadas</a></li>
+<li class="nav-item"><a href="#mf-103-o-que-ela-nao-faz" class="nav-link">O que ela não faz</a></li>
+<li class="nav-item"><a href="#mf-103-ainda-a-decidir" class="nav-link">Ainda a decidir</a></li>
+<li class="nav-item"><a href="#mf-103-para-saber-mais" class="nav-link">Para saber mais</a></li>
+                                </ul>
+                            </div>
+                        </aside>
+                    </div>
+                    <div class="col-lg-10 col-md-12">
+                        <div class="documentation_info dx-pagina" id="post">
+                            <header class="dx-cabeca" id="mf-103">
+                                <nav class="dx-trilha" aria-label="Trilha"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Início</a></li><li class="breadcrumb-item">v2.0</li><li class="breadcrumb-item active" aria-current="page">Licenças e planos</li></ol></nav>
+                                <div class="dx-macro-topo"><span class="dx-macro-codigo">MF-103</span><span class="dx-macro-selo">v2.0 + v2.1</span></div>
+                                <h1>Licenças e planos</h1>
+                                <p>A cobrança por assentos, num plano só, no SaaS</p>
+                            </header>
+                            <div class="dx-modelo-01">
+<nav aria-labelledby="dx-m01-assuntos-titulo">
+<div class="dx-m01-rotulo"><h2 id="dx-m01-assuntos-titulo">Explore os assuntos</h2><span>10 seções</span></div>
+<div class="dx-m01-assuntos">
+<a class="dx-m01-assunto" href="#mf-103-identificacao"><span class="dx-m01-icone"><i class="fas fa-id-card" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Identificação</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-103-o-que-e"><span class="dx-m01-icone"><i class="fas fa-compass" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que é</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-103-caracteristicas"><span class="dx-m01-icone"><i class="fas fa-star" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Características</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-103-o-valor-que-gera"><span class="dx-m01-icone"><i class="fas fa-chart-line" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O valor que gera</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-103-como-se-usa-no-horus"><span class="dx-m01-icone"><i class="fas fa-walking" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Como se usa no Horus</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-103-grau-de-complexidade-alta"><span class="dx-m01-icone"><i class="fas fa-puzzle-piece" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Grau de complexidade: alta</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-103-macro-funcionalidades-relacionadas"><span class="dx-m01-icone"><i class="fas fa-link" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Macro funcionalidades relacionadas</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-103-o-que-ela-nao-faz"><span class="dx-m01-icone"><i class="fas fa-ban" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que ela não faz</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-103-ainda-a-decidir"><span class="dx-m01-icone"><i class="fas fa-hourglass-half" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Ainda a decidir</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-103-para-saber-mais"><span class="dx-m01-icone"><i class="fas fa-book" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Para saber mais</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</div></nav>
+</div>
+                            <div class="dx-content">
+<blockquote>
+<p><strong>Em uma frase:</strong> a empresa paga pelas pessoas que usam o Horus, por tipo de pessoa, e quem usa nunca passa do
+que foi contratado.</p>
+</blockquote>
+<div class="doc-section dx-assunto"><h3 id="mf-103-identificacao" data-dx-icone="id-card">Identificação</h3><div class="table-responsive" tabindex="0" role="region" aria-label="Identificação de MF-103 · Licenças e planos"><table class="table table_shortcode"><tbody><tr><th scope="row">Código</th><td>MF-103</td></tr><tr><th scope="row">Entrega</th><td>v2.0 + v2.1</td></tr><tr><th scope="row">Situação</th><td>definida</td></tr><tr><th scope="row">Camada</th><td>🧱 Plataforma</td></tr><tr><th scope="row">Objetivos</th><td>O7, O8</td></tr><tr><th scope="row">Quem usa</th><td>owner da instância, owner da organização, gestor</td></tr><tr><th scope="row">Complexidade</th><td>alta</td></tr><tr><th scope="row">Relacionadas</th><td><a href="mf-101.html">Administração da instância</a> (MF-101), <a href="mf-102.html">Organizações, pessoas e papéis</a> (MF-102), <a href="mf-112.html">Boards e Relatórios</a> (MF-112), <a href="mf-114.html">Módulo de Agendamentos de Agentes</a> (MF-114), <a href="mf-115.html">Agentes ativos</a> (MF-115), <a href="mf-113.html">Conectores de Saída</a> (MF-113)</td></tr><tr><th scope="row">Atualizado</th><td>03/11/2026</td></tr></tbody></table></div>
+</div><div class="doc-section dx-assunto"><h3 data-dx-icone="compass" id="mf-103-o-que-e">O que é</h3>
+<p>Hoje o Horus não controla licenças: qualquer número de pessoas entra numa organização. Na v2.0, cada organização
+passa a ter <strong>assentos</strong>: as vagas de uso que a empresa contratou, de quatro tipos, cada pessoa ocupando uma.</p>
+<p>Quem libera e corta os assentos é o <strong>owner da instância</strong>, que no Horus contratado como serviço (SaaS) é a Maind,
+no painel da Administração da instância (MF-101). O <strong>owner da organização</strong> decide quem ocupa cada um. A v2.0
+tem um plano só, com tudo o que ela oferece, e o preço é combinado em contrato, fora do produto.</p>
+<blockquote>
+<p>📌 <strong>Exemplo:</strong> a Maind libera para a organização do Marcos o assento de owner grátis, 30 de membro full e 100 de
+membro leitor. A gestora Carla convida um analista como membro full; o Marcos aprova, o e-mail sai e o assento
+fica guardado. Quando os 30 acabam, o Marcos pede mais à Maind. Se a empresa deixa de pagar, a Maind desativa os
+assentos, e nada mais roda.</p>
+</blockquote>
+</div><div class="doc-section dx-assunto"><h3 data-dx-icone="star" id="mf-103-caracteristicas">Características</h3>
+<ul>
+<li><strong>Os quatro tipos:</strong> owner da organização, gestor (quem gere uma equipe), membro full (pergunta e cria os
+próprios boards, os painéis de acompanhamento, e alertas) e membro leitor (só vê boards de outras pessoas e
+recebe alertas e PDFs por e-mail e WhatsApp; não pergunta em canal nenhum).</li>
+<li><strong>O owner grátis:</strong> só o primeiro owner de cada organização não paga. Quem é owner e gestor ao mesmo tempo ocupa
+um assento só, o de owner.</li>
+<li><strong>Sem vaga, não entra:</strong> sem assento livre do tipo, ninguém entra nele. O owner da organização pede mais à Maind,
+fora do produto, e o convite pendente mostra que falta vaga.</li>
+<li><strong>A reserva:</strong> aprovado o convite, o assento fica guardado pelo prazo que o owner da organização define; depois,
+o convite expira e a vaga volta. Quem espera na quarentena, por ter entrado sem gestor,
+já ocupa o assento.</li>
+<li><strong>A troca de tipo:</strong> o gestor pede, o owner da organização aprova, e precisa haver vaga do tipo novo; a antiga se
+libera na hora. Quem passa de full a leitor deixa o que criou na área da organização, o
+espaço de boards dela.</li>
+<li><strong>A contagem à vista:</strong> o owner da organização vê, de cada tipo, quantos assentos tem, quantos usa e quantos
+estão livres.</li>
+<li><strong>Reduzir:</strong> não dá para reduzir abaixo do ocupado, e os reservados contam como ocupados; o owner da organização
+desocupa antes.</li>
+<li><strong>O corte:</strong> com os assentos desativados, as pessoas perdem o acesso, e os agendamentos, os alertas e os agentes
+(os trabalhos automáticos de IA) param. Os dados, os boards e as conversas ficam guardados; ao reativar, os
+agendamentos seguem do próximo horário.</li>
+<li><strong>Sem data de validade:</strong> renovação, carência e corte são decisão comercial da Maind.</li>
+<li><strong>Um plano só:</strong> controla só os assentos. O que cada pessoa usa fica com as roles, os pacotes de botões das
+Organizações, pessoas e papéis (MF-102).</li>
+</ul>
+</div><div class="doc-section dx-assunto"><h3 data-dx-icone="chart-line" id="mf-103-o-valor-que-gera">O valor que gera</h3>
+<ul>
+<li><strong>Para quem usa:</strong> o owner da organização sabe quanto tem e quanto sobra, e ninguém perde o acesso de surpresa
+numa redução.</li>
+<li><strong>Para a empresa que contrata o Horus:</strong> paga por quem usa, por tipo, sem escolher entre planos para começar.</li>
+<li><strong>Para o Horus como produto:</strong> receita por assento desde o primeiro cliente, e o corte de quem não paga.</li>
+</ul>
+<p><strong>Como vamos saber que funcionou:</strong> o primeiro cliente fecha contrato só com a conta de assentos, e o que ele pedir
+a mais mostra onde caberia um segundo plano.</p>
+</div><div class="doc-section dx-assunto"><h3 data-dx-icone="walking" id="mf-103-como-se-usa-no-horus">Como se usa no Horus</h3>
+<p><strong>A Maind, owner da instância:</strong></p>
+<ol>
+<li>Combina os assentos com o cliente, fora do produto.</li>
+<li>Libera no painel a quantidade de cada tipo.</li>
+<li>Libera mais quando o owner da organização pede, ou reduz depois que ele desocupa os assentos.</li>
+<li>Desativa os assentos se o cliente deixa de pagar, e os reativa depois.</li>
+</ol>
+<p><strong>O owner da organização:</strong></p>
+<ol>
+<li>Acompanha quantos assentos tem, usa e tem livres.</li>
+<li>Aprova os convites e as trocas de tipo que os gestores pedem, quando há vaga.</li>
+<li>Ajusta o prazo da reserva nas preferências da organização.</li>
+</ol>
+<figure><div class="lightbox_shortcode"><img src="media/mf-103-diagrama-1.svg" width="1347" height="242" alt="Diagrama: Como se usa no Horus"><a href="media/mf-103-diagrama-1.svg" class="img_popup" aria-label="Ampliar o diagrama"><i class="icon_plus" aria-hidden="true"></i></a></div><figcaption>Diagrama de “Como se usa no Horus”. Selecione o “+” para ampliar.</figcaption></figure></div><div class="doc-section dx-assunto"><h3 data-dx-icone="puzzle-piece" id="mf-103-grau-de-complexidade-alta">Grau de complexidade: alta</h3>
+<p>Nada disso existe na v1: os tipos de assento, a reserva, a troca, a contagem e o corte são novos. O tipo de assento
+passa a ser a primeira coisa que o porteiro único das permissões confere, e o corte atravessa o produto, parando
+agendamentos, agentes e envios. Na v2.0, não depende de ninguém de fora; a instalação na casa do cliente fica para
+a v2.1.</p>
+<blockquote>
+<p>⚠️ É a leitura do PO a partir dos documentos de arquitetura. A estimativa de esforço é do arquiteto.</p>
+</blockquote>
+</div><div class="doc-section dx-assunto"><h3 data-dx-icone="link" id="mf-103-macro-funcionalidades-relacionadas">Macro funcionalidades relacionadas</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de Licenças e planos"><table class="table table_shortcode"><thead><tr>
+<th scope="col">mf</th>
+<th scope="col">Como se relaciona</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Administração da instância (MF-101)</td>
+<td><strong>depende de</strong>: o painel onde a Maind libera e corta os assentos fica lá.</td>
+</tr>
+<tr>
+<td>Organizações, pessoas e papéis (MF-102)</td>
+<td><strong>depende de</strong>: o convite, a aprovação, a quarentena e os papéis vêm de lá; em troca, o tipo de assento é o teto do que as roles liberam.</td>
+</tr>
+<tr>
+<td>Boards e Relatórios (MF-112)</td>
+<td><strong>depende de</strong>: o que a pessoa criou vai para a área da organização quando ela passa a leitor.</td>
+</tr>
+<tr>
+<td>Módulo de Agendamentos de Agentes (MF-114) e Agentes ativos (MF-115)</td>
+<td><strong>depende de</strong>: param no corte e voltam do próximo horário quando os assentos voltam.</td>
+</tr>
+<tr>
+<td>Conectores de Saída (MF-113)</td>
+<td><strong>depende de</strong>: é por eles que o membro leitor recebe alertas e PDFs.</td>
+</tr>
+</tbody>
+</table></div></div><div class="doc-section dx-assunto"><h3 data-dx-icone="ban" id="mf-103-o-que-ela-nao-faz">O que ela não faz</h3>
+<ul>
+<li><strong>Cobrar e receber:</strong> o preço em reais, a fatura e o pagamento ficam com o comercial da Maind.</li>
+<li><strong>Vários planos:</strong> nomes, seletor e limite de funcionalidades por plano ficam para quando houver mais de um.</li>
+<li><strong>Cobrar pelo uso do mês:</strong> a conta é por assento, e não por perguntas ou consumo.</li>
+<li><strong>Licenciar uma instalação na casa do cliente (on-premises):</strong> v2.1; até lá, só no SaaS.</li>
+</ul>
+</div><div class="doc-section dx-assunto"><h3 data-dx-icone="hourglass-half" id="mf-103-ainda-a-decidir">Ainda a decidir</h3>
+<ul>
+<li>Como ativar os assentos numa instalação na casa do cliente, na v2.1.</li>
+<li>Quem cria as organizações no SaaS, já que cada uma nasce com um owner grátis.</li>
+</ul>
+</div><div class="doc-section dx-assunto"><h3 data-dx-icone="book" id="mf-103-para-saber-mais">Para saber mais</h3>
+<ul>
+<li><code>docs/raw/produto/backlog-estrategico.md</code>
+<ul>
+<li><strong>D-080</strong>: a definição macro da MF-103 (reúne D-066 a D-079).</li>
+<li><strong>D-117</strong>: a definição macro dos planos da v2.0 (reúne D-115 e D-116).</li>
+<li><strong>D-069</strong> e <strong>D-123</strong> (os quatro tipos e o owner grátis por organização), <strong>D-070</strong> e <strong>D-077</strong> (sem vaga, não
+entra; o pedido fora do produto), <strong>D-071</strong>, <strong>D-072</strong> e <strong>D-078</strong> (o convite, a troca e a reserva), <strong>D-073</strong>
+(de full a leitor), <strong>D-074</strong> (owner e gestor num assento só), <strong>D-075</strong> e <strong>D-076</strong> (o corte e a redução),
+<strong>D-079</strong> (o leitor recebe), <strong>D-067</strong> e <strong>D-068</strong> (o painel, só no SaaS, sem data de validade).</li>
+<li><strong>D-107</strong> (a MF-103 inteira na v2.0) e <strong>D-121</strong> (o on-premises na v2.1).</li>
+<li><strong>P-016</strong> (a ativação no on-premises), <strong>P-022</strong> (o preço em reais) e <strong>P-008</strong>, letras s, t e u.</li>
+</ul>
+</li>
+<li><code>docs/raw/produto/04-macro-funcionalidades-de-hoje.md</code>: a direção do dono e a tabela de conversão.</li>
+<li><code>docs/raw/produto/05-v2.0-consolidada.md</code>: §1, §4 (os passos 1 e 12), §5.3 (as regras), §8 (os riscos) e as leituras
+<strong>D-069.1</strong>, <strong>D-070.2</strong>, <strong>D-071.3</strong> a <strong>D-071.5</strong>, <strong>D-072.1</strong>, <strong>D-073.1</strong>, <strong>D-075.2</strong>, <strong>D-075.3</strong>,
+<strong>D-076.1</strong>, <strong>D-077.1</strong> e <strong>D-078.1</strong>.</li>
+<li><code>docs/raw/produto/06-versoes.md</code> e <code>docs/raw/produto/07-mapa-de-objetivos-e-funcionalidades.md</code>: a candidata nº 15 na
+v2.0 (O7) e a ativação no on-premises na v2.1 (parte da nº 5, O8).</li>
+<li><code>docs/raw/produto/03-inventario-de-lacunas.md</code>: a candidata 15.</li>
+<li><code>docs/raw/arquitetura/01-estrategia-da-solucao.md</code>: §4 (a linha da MF-103) e §6 (os marcos M1 e M10).</li>
+<li><code>docs/raw/arquitetura/04-software.md</code>: §3.2, os componentes Assentos, Painel dos assentos e Avaliador de permissões.</li>
+<li><code>docs/raw/arquitetura/02-registro-de-decisoes.md</code>: <strong>ARQ-008</strong> e <strong>ARQ-039</strong> (o tipo de assento como primeira leitura
+do avaliador; o corte como estado da organização), <strong>ARQ-005</strong> (o corte pausa o que roda sozinho), <strong>ARQ-060</strong>
+(o on-premises, v2.1).</li>
+<li><code>docs/raw/arquitetura/07-seguranca.md</code>: §3.2 (a ordem do avaliador).</li>
+<li><code>docs/raw/arquitetura/14-conferencia-do-produto.md</code>: §1 (as letras s, t e u), §3 (tudo é novo) e §4 (<strong>A-02</strong>).</li>
+</ul>
+<p>📚 <a href="mf-103-inventario.html">Tudo o que o inventário diz desta mf, assunto por assunto</a>.</p>
+</div>
+                            </div>
+                            <nav class="dx-vizinhas" aria-label="Páginas vizinhas"><a class="dx-anterior" href="mf-102.html"><i class="arrow_left" aria-hidden="true"></i>Organizações, pessoas e papéis</a><a class="dx-proxima" href="mf-104.html">Conectar as fontes vivas<i class="arrow_right" aria-hidden="true"></i></a></nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="simple_footer">
+            <img class="leaf_right" src="assets/kbdoc/img/home_one/leaf_footter.png" alt="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p>Maind Horus · Horus v2 · documento interno · Revisado em 03/11/2026 · versão v2.0 em desenho, sem versão publicada</p>
+                    </div>
+                    <div class="col-lg-6 text-right">
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <a id="back-to-top" title="Voltar ao topo"></a>
+    <script src="assets/kbdoc/js/jquery-3.2.1.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/popper.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap-select.min.js"></script>
+    <script src="assets/kbdoc/js/parallaxie.js"></script>
+    <script src="assets/kbdoc/js/TweenMax.min.js"></script>
+    <script src="assets/kbdoc/js/anchor.js"></script>
+    <script src="assets/kbdoc/assets/wow/wow.min.js"></script>
+    <script src="assets/kbdoc/js/vendor/clipboard.min.js"></script>
+    <script src="assets/kbdoc/assets/prism/prism.js"></script>
+    <script src="assets/kbdoc/assets/niceselectpicker/jquery.nice-select.min.js"></script>
+    <script src="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="assets/kbdoc/assets/magnify-pop/jquery.magnific-popup.min.js"></script>
+    <script src="assets/kbdoc/assets/tooltipster/js/tooltipster.bundle.min.js"></script>
+    <script src="assets/kbdoc/assets/font-size/js/rv-jquery-fontsize-2.0.3.js"></script>
+    <script src="assets/kbdoc/js/onpage-menu.js"></script>
+    <script src="assets/kbdoc/js/main.js"></script>
+    <script src="assets/busca.js"></script>
+    <script src="assets/docx.js"></script>
+</body>
+</html>

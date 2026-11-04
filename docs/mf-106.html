@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A documentação de produto e de arquitetura do Horus v2: a visão, as decisões, a estratégia e como ele vai ser construído.">
+    <meta name="generator" content="DocX 0.2.1">
+    <link rel="shortcut icon" href="media/horus-claro.svg">
+    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/elagent-icon/style.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/font-awesome/css/all.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/niceselectpicker/nice-select.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/font-size/css/rvfs.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/animation/animate.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/tooltipster/css/tooltipster.bundle.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism-coy.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/magnify-pop/magnific-popup.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/css/style.css">
+    <link rel="stylesheet" href="assets/kbdoc/css/responsive.css">
+    <link rel="stylesheet" href="assets/docx.css">
+    <link rel="stylesheet" href="assets/conteudo.css">
+    <link rel="stylesheet" href="assets/indice.css">
+    <title>MF-106 · Segurança dos dados por pessoa — Horus v2</title>
+</head>
+<body class="doc full-width-doc sticky-nav-doc onepage-doc dx-pagina-doc" data-spy="scroll" data-target=".navbar" data-offset="-120">
+    <a class="sr-only sr-only-focusable dx-skip" href="#post">Pular para o conteúdo</a>
+    <div class="body_wrapper sticky_menu">
+        <nav class="navbar navbar-expand-lg menu_one" id="stickyTwo" aria-label="Navegação principal">
+            <div class="container-fluid pl-60 pr-60">
+                <a class="navbar-brand" href="index.html">
+                    <img src="media/horus-claro.svg" alt="Horus v2">
+                    <img src="media/horus-escuro.svg" alt="Horus v2">
+                </a>
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Abrir o menu">
+                    <span class="menu_toggle">
+                        <span class="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                        <span class="hamburger-cross">
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav menu ml-auto">
+<li class="nav-item"><a href="index.html" class="nav-link">Início</a></li>
+<li class="nav-item dropdown submenu mega_menu tab-demo active"><a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentos</a><i class="arrow_carrot-down_alt2 mobile_dropdown_icon" aria-hidden="true" data-toggle="dropdown"></i><ul class="dropdown-menu scroll"><li><div class="row"><div class="col-lg-5 tabHeader"><ul class="nav flex-column nav-pills" id="dx-menu" role="tablist" aria-orientation="vertical"><li class="nav-item active"><a class="nav-link active" id="dx-menu-1-tab" data-toggle="pill" href="#dx-menu-1" role="tab" aria-controls="dx-menu-1" aria-selected="true">Comece aqui</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-2-tab" data-toggle="pill" href="#dx-menu-2" role="tab" aria-controls="dx-menu-2" aria-selected="false">Produto</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-3-tab" data-toggle="pill" href="#dx-menu-3" role="tab" aria-controls="dx-menu-3" aria-selected="false">Arquitetura · visão e decisões</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-4-tab" data-toggle="pill" href="#dx-menu-4" role="tab" aria-controls="dx-menu-4" aria-selected="false">Arquitetura · construção</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-5-tab" data-toggle="pill" href="#dx-menu-5" role="tab" aria-controls="dx-menu-5" aria-selected="false">Arquitetura · operação</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-6-tab" data-toggle="pill" href="#dx-menu-6" role="tab" aria-controls="dx-menu-6" aria-selected="false">Arquitetura · conferência</a></li></ul></div><div class="col-lg-7"><div class="tab-content tabContent" id="dx-menu-conteudo"><div class="tab-pane fade active show" id="dx-menu-1" role="tabpanel" aria-labelledby="dx-menu-1-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="visao-geral.html">O Horus v2</a></li><li><a href="pasta-v2.html">A pasta da v2</a></li></ul></div><div class="text"><a href="visao-geral.html"><p>Abrir Comece aqui</p></a></div></div><div class="tab-pane fade" id="dx-menu-2" role="tabpanel" aria-labelledby="dx-menu-2-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="produto-temas.html">Temas da visão de produto</a></li><li><a href="produto-norte.html">Norte do produto</a></li><li><a href="produto-lacunas.html">Inventário de lacunas</a></li><li><a href="produto-mfs-hoje.html">Macro funcionalidades de hoje</a></li><li><a href="produto-v20.html">A v2.0 consolidada</a></li></ul><ul class="list-unstyled tab_list"><li><a href="produto-versoes.html">As versões, mf a mf</a></li><li><a href="produto-mapa.html">Mapa de objetivos e funcionalidades</a></li><li><a href="produto-backlog.html">Backlog estratégico</a></li><li><a href="backlog-atividades.html">Backlog de atividades</a></li></ul></div><div class="text"><a href="produto-temas.html"><p>Abrir Produto</p></a></div></div><div class="tab-pane fade" id="dx-menu-3" role="tabpanel" aria-labelledby="dx-menu-3-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura.html">A pasta da arquitetura</a></li><li><a href="arquitetura-01.html">01 · Estratégia da solução</a></li><li><a href="arquitetura-02.html">02 · Registro de decisões</a></li><li><a href="arquitetura-03.html">03 · Metas de qualidade</a></li></ul></div><div class="text"><a href="arquitetura.html"><p>Abrir Arquitetura · visão e decisões</p></a></div></div><div class="tab-pane fade" id="dx-menu-4" role="tabpanel" aria-labelledby="dx-menu-4-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-04.html">04 · Software</a></li><li><a href="arquitetura-05.html">05 · Motor de análise e IA</a></li><li><a href="arquitetura-06.html">06 · Dados</a></li><li><a href="arquitetura-07.html">07 · Segurança</a></li><li><a href="arquitetura-08.html">08 · Integrações</a></li></ul></div><div class="text"><a href="arquitetura-04.html"><p>Abrir Arquitetura · construção</p></a></div></div><div class="tab-pane fade" id="dx-menu-5" role="tabpanel" aria-labelledby="dx-menu-5-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-09.html">09 · Infraestrutura e ambientes</a></li><li><a href="arquitetura-10.html">10 · Publicação e operação</a></li><li><a href="arquitetura-11.html">11 · Observabilidade</a></li><li><a href="arquitetura-12.html">12 · Qualidade e testes</a></li><li><a href="arquitetura-13.html">13 · Custo de operação</a></li></ul></div><div class="text"><a href="arquitetura-09.html"><p>Abrir Arquitetura · operação</p></a></div></div><div class="tab-pane fade" id="dx-menu-6" role="tabpanel" aria-labelledby="dx-menu-6-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-14.html">14 · Conferência do produto</a></li></ul></div><div class="text"><a href="arquitetura-14.html"><p>Abrir Arquitetura · conferência</p></a></div></div></div></div></div></li></ul></li>
+                    </ul>
+                    <ul class="list-unstyled menu_social">
+                        <li class="search">
+                            <form action="#" class="search_form" role="search" data-search-form>
+                                <label class="sr-only" for="dx-search">Buscar na documentação</label>
+                                <input type="search" class="form-control" id="dx-search" placeholder="Buscar" autocomplete="off" data-search-input aria-describedby="dx-search-status" aria-controls="dx-search-results">
+                                <button type="submit" aria-label="Buscar"><i class="icon_search" aria-hidden="true"></i></button>
+                                <div class="dx-search-results" id="dx-search-results" data-search-results hidden></div>
+                            </form>
+                            <p class="sr-only" id="dx-search-status" role="status" data-search-status></p>
+                        </li>
+                    </ul>
+                    <div class="dx-ferramentas">
+
+
+                        <div id="font-switcher"><div id="rvfs-controllers" class="fontsize-controllers group"></div></div>
+                        <button type="button" class="print" data-print aria-label="Imprimir"><i class="icon_printer" aria-hidden="true"></i></button>
+                        <div class="doc_switch">
+                            <label for="something" class="tab-btn tab-btns"><i class="icon_lightbulb_alt" aria-hidden="true"></i><span class="sr-only">Tema claro</span></label>
+                            <input type="checkbox" name="something" id="something" class="tab_switcher" aria-label="Tema escuro">
+                            <label for="something" class="tab-btn"><i class="far fa-moon" aria-hidden="true"></i><span class="sr-only">Tema escuro</span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <section class="doc_documentation_area onepage_doc_area" id="sticky_doc">
+            <div class="overlay_bg"></div>
+            <div class="container-fluid pl-60 pr-60">
+                <div class="row doc-container">
+                    <div class="col-lg-2 doc_mobile_menu doc-sidebar display_none">
+                        <aside class="doc_left_sidebarlist" aria-label="Tópicos desta página">
+                            <h3 class="nav_title">Tópicos</h3>
+                            <div class="scroll">
+                                <ul class="list-unstyled nav-sidebar doc-nav">
+<li class="nav-item active"><a href="#mf-106-identificacao" class="nav-link">Identificação</a></li>
+<li class="nav-item"><a href="#mf-106-o-que-e" class="nav-link">O que é</a></li>
+<li class="nav-item"><a href="#mf-106-caracteristicas" class="nav-link">Características</a></li>
+<li class="nav-item"><a href="#mf-106-o-valor-que-gera" class="nav-link">O valor que gera</a></li>
+<li class="nav-item"><a href="#mf-106-como-se-usa-no-horus" class="nav-link">Como se usa no Horus</a></li>
+<li class="nav-item"><a href="#mf-106-grau-de-complexidade-alta" class="nav-link">Grau de complexidade: alta</a></li>
+<li class="nav-item"><a href="#mf-106-macro-funcionalidades-relacionadas" class="nav-link">Macro funcionalidades relacionadas</a></li>
+<li class="nav-item"><a href="#mf-106-o-que-ela-nao-faz" class="nav-link">O que ela não faz</a></li>
+<li class="nav-item"><a href="#mf-106-ainda-a-decidir" class="nav-link">Ainda a decidir</a></li>
+<li class="nav-item"><a href="#mf-106-para-saber-mais" class="nav-link">Para saber mais</a></li>
+                                </ul>
+                            </div>
+                        </aside>
+                    </div>
+                    <div class="col-lg-10 col-md-12">
+                        <div class="documentation_info dx-pagina" id="post">
+                            <header class="dx-cabeca" id="mf-106">
+                                <nav class="dx-trilha" aria-label="Trilha"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Início</a></li><li class="breadcrumb-item">v2.1</li><li class="breadcrumb-item active" aria-current="page">Segurança dos dados por pessoa</li></ol></nav>
+                                <div class="dx-macro-topo"><span class="dx-macro-codigo">MF-106</span><span class="dx-macro-selo">v2.1</span></div>
+                                <h1>Segurança dos dados por pessoa</h1>
+                                <p>As duas etapas: o acesso configurado dentro do Horus (veio da v2.0) e a segurança corporativa integrada, com o login corporativo e as roles pelo crachá. Com ela voltam os grupos por claims, a liberação de dados do gestor no board e o interruptor geral da segurança</p>
+                            </header>
+                            <div class="dx-modelo-01">
+<nav aria-labelledby="dx-m01-assuntos-titulo">
+<div class="dx-m01-rotulo"><h2 id="dx-m01-assuntos-titulo">Explore os assuntos</h2><span>10 seções</span></div>
+<div class="dx-m01-assuntos">
+<a class="dx-m01-assunto" href="#mf-106-identificacao"><span class="dx-m01-icone"><i class="fas fa-id-card" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Identificação</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-106-o-que-e"><span class="dx-m01-icone"><i class="fas fa-compass" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que é</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-106-caracteristicas"><span class="dx-m01-icone"><i class="fas fa-star" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Características</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-106-o-valor-que-gera"><span class="dx-m01-icone"><i class="fas fa-chart-line" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O valor que gera</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-106-como-se-usa-no-horus"><span class="dx-m01-icone"><i class="fas fa-walking" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Como se usa no Horus</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-106-grau-de-complexidade-alta"><span class="dx-m01-icone"><i class="fas fa-puzzle-piece" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Grau de complexidade: alta</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-106-macro-funcionalidades-relacionadas"><span class="dx-m01-icone"><i class="fas fa-link" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Macro funcionalidades relacionadas</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-106-o-que-ela-nao-faz"><span class="dx-m01-icone"><i class="fas fa-ban" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que ela não faz</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-106-ainda-a-decidir"><span class="dx-m01-icone"><i class="fas fa-hourglass-half" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Ainda a decidir</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-106-para-saber-mais"><span class="dx-m01-icone"><i class="fas fa-book" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Para saber mais</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</div></nav>
+</div>
+                            <div class="dx-content">
+<blockquote>
+<p><strong>Em uma frase:</strong> cada pessoa vê, nos dados da empresa, só o que lhe cabe, pela regra escrita no Horus ou pelas
+regras que a empresa já tem.</p>
+</blockquote>
+<div class="doc-section dx-assunto"><h3 id="mf-106-identificacao" data-dx-icone="id-card">Identificação</h3><div class="table-responsive" tabindex="0" role="region" aria-label="Identificação de MF-106 · Segurança dos dados por pessoa"><table class="table table_shortcode"><tbody><tr><th scope="row">Código</th><td>MF-106</td></tr><tr><th scope="row">Entrega</th><td>v2.1</td></tr><tr><th scope="row">Situação</th><td>definida</td></tr><tr><th scope="row">Camada</th><td>🔌 Dados e IA</td></tr><tr><th scope="row">Objetivos</th><td>O2, O8</td></tr><tr><th scope="row">Quem usa</th><td>owner da organização, gestor, membro full, membro leitor, TI e segurança do contratante</td></tr><tr><th scope="row">Complexidade</th><td>alta</td></tr><tr><th scope="row">Relacionadas</th><td><a href="mf-102.html">Organizações, pessoas e papéis</a> (MF-102), <a href="mf-104.html">Conectar as fontes vivas</a> (MF-104), <a href="mf-105.html">IA sob controle da organização</a> (MF-105), <a href="mf-112.html">Boards e Relatórios</a> (MF-112), <a href="mf-116.html">Auditoria</a> (MF-116)</td></tr><tr><th scope="row">Atualizado</th><td>03/11/2026</td></tr></tbody></table></div>
+</div><div class="doc-section dx-assunto"><h3 data-dx-icone="compass" id="mf-106-o-que-e">O que é</h3>
+<p><strong>Na v2.0, esta macro funcionalidade (mf) não existe:</strong> toda consulta usa os dados da organização inteira, e quem
+pergunta a uma <strong>fonte de dados</strong> (um banco da empresa ligado ao Horus) vê tudo o que ela tem. Ela volta inteira na
+v2.1, refeita a partir do código do Horus de hoje. Ficam na v2.0 a barreira contra a rede interna, a porta única até
+o banco e o cofre das credenciais, que são de Conectar as fontes vivas (MF-104).</p>
+<p>Na v2.1, ela vem em duas etapas. Na primeira, o <strong>owner da organização</strong>, que cuida das pessoas e dos dados de um
+setor ou de um cliente, escreve em português quem vê o quê, num documento por base, ao lado do <strong>modelo semântico</strong>,
+o texto que explica ao Horus o que cada tabela quer dizer. Na segunda, o Horus soma o login e os controles de acesso
+que a empresa já tem. A regra se apoia nas <strong>claims</strong>, as características que dizem o que cada pessoa pode ver (a
+região, a loja).</p>
+<blockquote>
+<p>💡 É como o crachá de um prédio: o mesmo elevador leva todos, mas cada crachá só abre os andares da pessoa. Onde
+a comparação falha: no Horus, o andar fechado nem aparece, e uma faixa avisa que a resposta foi limitada.</p>
+</blockquote>
+<blockquote>
+<p>📌 <strong>Exemplo</strong> (personagens ilustrativos): o Marcos, owner da área comercial de uma rede de lojas, escreve na base
+de vendas &quot;cada gestor vê só as lojas da própria região&quot;, aprova a regra e dá à gestora Carla a característica
+&quot;região = Sul&quot;. A Carla pergunta a venda da semana por loja e recebe só as do Sul.</p>
+</blockquote>
+</div><div class="doc-section dx-assunto"><h3 data-dx-icone="star" id="mf-106-caracteristicas">Características</h3>
+<ul>
+<li><strong>A regra em português:</strong> a IA a transforma em regra, que só vale com a aprovação do owner.</li>
+<li><strong>As características de cada pessoa:</strong> o owner as dá uma a uma ou por planilha; na segunda etapa, elas e as roles
+(os pacotes de permissões) chegam pelo login da empresa.</li>
+<li><strong>Conferida, e fechada na dúvida:</strong> a consulta de quem tem restrição é reescrita com a regra e conferida por um
+segundo modelo de IA antes de ir ao banco; se algo falha, a resposta não sai.</li>
+<li><strong>Em todo canal:</strong> a conversa, a Pergunta rápida, o WhatsApp, os boards e os agentes passam pela mesma proteção.</li>
+<li><strong>Avisa quem pergunta:</strong> a resposta limitada traz a faixa &quot;Resposta limitada aos dados que você pode ver&quot;.</li>
+<li><strong>O owner confere:</strong> vê o Horus como outra pessoa o veria e revisa a consulta que o Horus não protegeu sozinho.</li>
+<li><strong>Vale a mais restritiva:</strong> na segunda etapa, as regras da empresa e as do Horus valem juntas, e o Horus nunca dá
+mais do que a empresa deu.</li>
+<li><strong>O login da empresa, por organização:</strong> cada owner da organização liga o seu.</li>
+<li><strong>A exceção do board:</strong> no board que o <strong>gestor</strong> publica, quem abre vê o que ele vê, mesmo acima das travas da
+empresa, e a responsabilidade é dele; fora do board, cada um fica no que pode ver.</li>
+</ul>
+</div><div class="doc-section dx-assunto"><h3 data-dx-icone="chart-line" id="mf-106-o-valor-que-gera">O valor que gera</h3>
+<ul>
+<li><strong>Para quem usa:</strong> o gestor e o executivo perguntam sem receio de ver ou mostrar o que não podem.</li>
+<li><strong>Para a empresa que contrata o Horus:</strong> abre o Horus a mais gente, inclusive às áreas de finanças e de pessoas, e
+a TI não recria o que já tem.</li>
+<li><strong>Para o Horus como produto:</strong> a confiança destrava a venda a empresas com regras de acesso.</li>
+<li>⚠️ <strong>O cuidado:</strong> até a v2.1, ninguém tem dado restrito por pessoa, nem nas demonstrações.</li>
+</ul>
+<p><strong>Como vamos saber que funcionou:</strong> fora do board liberado pelo gestor, ninguém vê no Horus um dado que a empresa já
+lhe esconde.</p>
+</div><div class="doc-section dx-assunto"><h3 data-dx-icone="walking" id="mf-106-como-se-usa-no-horus">Como se usa no Horus</h3>
+<p><strong>O owner da organização:</strong></p>
+<ol>
+<li>Liga a segurança por pessoa, onde o owner da instância a permite.</li>
+<li>Escreve, para cada base, quem vê o quê, e aprova a regra.</li>
+<li>Dá a cada pessoa as suas características.</li>
+<li>Confere o que outra pessoa vê e responde à revisão.</li>
+<li>Na segunda etapa, liga o login da empresa e diz de onde vêm as roles.</li>
+</ol>
+<p><strong>Quem pergunta</strong> (o owner, o gestor e o <strong>membro full</strong>) recebe só o que lhe cabe.</p>
+<figure><div class="lightbox_shortcode"><img src="media/mf-106-diagrama-1.svg" width="1618" height="85" alt="Diagrama: Como se usa no Horus"><a href="media/mf-106-diagrama-1.svg" class="img_popup" aria-label="Ampliar o diagrama"><i class="icon_plus" aria-hidden="true"></i></a></div><figcaption>Diagrama de “Como se usa no Horus”. Selecione o “+” para ampliar.</figcaption></figure></div><div class="doc-section dx-assunto"><h3 data-dx-icone="puzzle-piece" id="mf-106-grau-de-complexidade-alta">Grau de complexidade: alta</h3>
+<p>🔴 A primeira etapa existe inteira na v1 e volta do código de hoje. O peso está
+em transplantá-la de uma vez sobre um Horus que mudou, com canais novos que precisam todos passar por ela: um canal
+que escape vaza dado de uma pessoa para outra. A segunda etapa é nova e depende de terceiros que o Horus não
+controla: o login de cada empresa e cada tecnologia de banco aceitar a identidade da pessoa.</p>
+<blockquote>
+<p>⚠️ É a leitura do PO a partir dos documentos de arquitetura. A estimativa de esforço é do arquiteto.</p>
+</blockquote>
+</div><div class="doc-section dx-assunto"><h3 data-dx-icone="link" id="mf-106-macro-funcionalidades-relacionadas">Macro funcionalidades relacionadas</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de Segurança dos dados por pessoa"><table class="table table_shortcode"><thead><tr>
+<th scope="col">mf</th>
+<th scope="col">Como se relaciona</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Organizações, pessoas e papéis (MF-102)</td>
+<td><strong>complementa</strong>: a role decide o que a pessoa usa, e esta mf, o que ela vê; os grupos que se montam pelas características da pessoa chegam com ela</td>
+</tr>
+<tr>
+<td>Conectar as fontes vivas (MF-104)</td>
+<td><strong>depende de</strong>: a regra vale sobre cada fonte, e a consulta protegida passa pela mesma porta única até o banco</td>
+</tr>
+<tr>
+<td>IA sob controle da organização (MF-105)</td>
+<td><strong>depende de</strong>: a IA que transforma o texto em regra e confere as consultas roda pelas conexões de IA da organização</td>
+</tr>
+<tr>
+<td>Boards e Relatórios (MF-112)</td>
+<td><strong>complementa</strong>: a liberação do gestor vale dentro do board publicado e no PDF que ele envia</td>
+</tr>
+<tr>
+<td>Auditoria (MF-116)</td>
+<td><strong>complementa</strong>: cada liberação do gestor fica no rastro, com o recorte de acesso de quem liberou</td>
+</tr>
+</tbody>
+</table></div></div><div class="doc-section dx-assunto"><h3 data-dx-icone="ban" id="mf-106-o-que-ela-nao-faz">O que ela não faz</h3>
+<ul>
+<li><strong>Criar ou mudar regras no banco ou no login da empresa</strong>, nem criar usuários lá.</li>
+<li><strong>Substituir a segurança do banco:</strong> o Horus se soma a ela.</li>
+<li><strong>Decidir o que a pessoa usa:</strong> os botões da conversa são da role, em Organizações, pessoas e papéis (MF-102).</li>
+</ul>
+</div><div class="doc-section dx-assunto"><h3 data-dx-icone="hourglass-half" id="mf-106-ainda-a-decidir">Ainda a decidir</h3>
+<ul>
+<li><strong>O que a pessoa lê quando a regra da empresa esconde um dado</strong>, já que o banco não diz por quê.</li>
+<li><strong>A entrada pelo login da empresa:</strong> quem chega sem convite, qual role vale e a sessão de quem sai.</li>
+<li><strong>Os logins corporativos aceitos:</strong> a proposta é só o padrão OpenID Connect, sem o SAML dos sistemas antigos.</li>
+</ul>
+</div><div class="doc-section dx-assunto"><h3 data-dx-icone="book" id="mf-106-para-saber-mais">Para saber mais</h3>
+<ul>
+<li><code>docs/raw/arquitetura/02-registro-de-decisoes.md</code>: <strong>ARQ-090</strong> (a mf inteira na v2.1, o código fora da v2.0, e o que
+fica: a guarda de rede, o ponto único de execução e o cofre); <strong>ARQ-032</strong> (a segurança no motor), <strong>ARQ-008</strong> e
+<strong>ARQ-039</strong> (a terceira camada do avaliador), <strong>ARQ-040</strong> (uma chave só por organização, adiada para a v2.1),
+<strong>ARQ-041</strong> e <strong>ARQ-042</strong> (em nome de quem cada coisa roda e a liberação do gestor), <strong>ARQ-038</strong> e <strong>ARQ-054</strong> (o
+login corporativo da v2.1).</li>
+<li><code>docs/raw/produto/backlog-estrategico.md</code>: <strong>D-028</strong> (a definição macro, que fechou a <strong>P-004</strong>), <strong>D-025</strong> (as duas
+etapas), <strong>D-026</strong> (vale a mais restritiva), <strong>D-027</strong> (o login ligado por organização), <strong>D-052</strong> (as roles pelo
+login), <strong>D-053</strong> e <strong>D-054</strong> (a liberação do gestor no board), <strong>D-059</strong> (o artefato enviado), <strong>D-114</strong> (a role
+decide o que se usa), <strong>D-118</strong> (o login corporativo fora da v2.0) e <strong>D-121</strong> (a etapa 2 na v2.1); <strong>P-008</strong>,
+letras c e d.</li>
+<li><code>docs/raw/produto/04-macro-funcionalidades-de-hoje.md</code> (o mapa e o que o dono disse), <code>03-inventario-de-lacunas.md</code>
+(candidatas nº 10 e 11), <code>05-v2.0-consolidada.md</code> (§3.1, §5.2, §5.4 e §6), <code>06-versoes.md</code> e
+<code>07-mapa-de-objetivos-e-funcionalidades.md</code> (O2 e O8). ⚠️ Esses documentos ainda põem a etapa 1 na v2.0: a página
+segue a ARQ-090.</li>
+<li><code>docs/raw/arquitetura/01-estrategia-da-solucao.md</code> (§3, §4 e o marco M8), <code>04-software.md</code> (§3.2 e §3.6),
+<code>05-motor-de-analise-e-ia.md</code> (§3.10 e §3.11), <code>07-seguranca.md</code> (§3.2 a §3.5) e <code>08-integracoes.md</code> (§3.7).</li>
+<li><code>docs/raw/arquitetura/14-conferencia-do-produto.md</code>: §1 (letras c e d da P-008), §3 (o que se reaproveita) e §4:
+<strong>A-20</strong> (a entrada pelo login da empresa), <strong>A-25</strong> (o que a pessoa lê quando a empresa esconde um dado) e <strong>A-28</strong>
+(a mf inteira na v2.1, a registrar no backlog e no mapa).</li>
+</ul>
+<p>📚 <a href="mf-106-inventario.html">Tudo o que o inventário diz desta mf, assunto por assunto</a>.</p>
+</div>
+                            </div>
+                            <nav class="dx-vizinhas" aria-label="Páginas vizinhas"><a class="dx-anterior" href="mf-118.html"><i class="arrow_left" aria-hidden="true"></i>Bases de demonstração</a><a class="dx-proxima" href="mf-119.html">Investigação guiada<i class="arrow_right" aria-hidden="true"></i></a></nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="simple_footer">
+            <img class="leaf_right" src="assets/kbdoc/img/home_one/leaf_footter.png" alt="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p>Maind Horus · Horus v2 · documento interno · Revisado em 03/11/2026 · versão v2.0 em desenho, sem versão publicada</p>
+                    </div>
+                    <div class="col-lg-6 text-right">
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <a id="back-to-top" title="Voltar ao topo"></a>
+    <script src="assets/kbdoc/js/jquery-3.2.1.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/popper.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap-select.min.js"></script>
+    <script src="assets/kbdoc/js/parallaxie.js"></script>
+    <script src="assets/kbdoc/js/TweenMax.min.js"></script>
+    <script src="assets/kbdoc/js/anchor.js"></script>
+    <script src="assets/kbdoc/assets/wow/wow.min.js"></script>
+    <script src="assets/kbdoc/js/vendor/clipboard.min.js"></script>
+    <script src="assets/kbdoc/assets/prism/prism.js"></script>
+    <script src="assets/kbdoc/assets/niceselectpicker/jquery.nice-select.min.js"></script>
+    <script src="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="assets/kbdoc/assets/magnify-pop/jquery.magnific-popup.min.js"></script>
+    <script src="assets/kbdoc/assets/tooltipster/js/tooltipster.bundle.min.js"></script>
+    <script src="assets/kbdoc/assets/font-size/js/rv-jquery-fontsize-2.0.3.js"></script>
+    <script src="assets/kbdoc/js/onpage-menu.js"></script>
+    <script src="assets/kbdoc/js/main.js"></script>
+    <script src="assets/busca.js"></script>
+    <script src="assets/docx.js"></script>
+</body>
+</html>

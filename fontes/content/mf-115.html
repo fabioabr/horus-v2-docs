@@ -1,0 +1,142 @@
+<blockquote>
+<p><strong>Em uma frase:</strong> descrever em texto o que você quer acompanhar e receber, na hora marcada, a análise pronta e um
+alerta quando algo muda, sem precisar perguntar.</p>
+</blockquote>
+<h3 id="mf-115-identificacao" data-dx-icone="id-card">Identificação</h3><div class="table-responsive" tabindex="0" role="region" aria-label="Identificação de MF-115 · Agentes ativos"><table class="table table_shortcode"><tbody><tr><th scope="row">Código</th><td>MF-115</td></tr><tr><th scope="row">Entrega</th><td>v2.0</td></tr><tr><th scope="row">Situação</th><td>definida</td></tr><tr><th scope="row">Camada</th><td>📌 Acompanhar e avisar</td></tr><tr><th scope="row">Objetivos</th><td>O4</td></tr><tr><th scope="row">Quem usa</th><td>gestor, membro full, owner da organização, membro leitor</td></tr><tr><th scope="row">Complexidade</th><td>alta</td></tr><tr><th scope="row">Relacionadas</th><td><a href="#mf-114">Módulo de Agendamentos de Agentes</a> (MF-114), <a href="#mf-113">Conectores de Saída</a> (MF-113), <a href="#mf-112">Boards e Relatórios</a> (MF-112), <a href="#mf-107">Perguntar aos dados em português</a> (MF-107), <a href="#mf-108">Respostas visuais</a> (MF-108), <a href="#mf-105">IA sob controle da organização</a> (MF-105), <a href="#mf-116">Auditoria</a> (MF-116)</td></tr><tr><th scope="row">Atualizado</th><td>03/11/2026</td></tr></tbody></table></div>
+<h3 data-dx-icone="compass" id="mf-115-o-que-e">O que é</h3>
+<p><strong>Como é hoje.</strong> Nada no Horus avisa sem alguém perguntar; o relatório agendado por e-mail chega perto, mas não avisa
+quando algo muda.</p>
+<p><strong>O que passa a existir.</strong> Esta macro funcionalidade (mf) cria o <strong>agente</strong>: um trabalhador de IA que consulta os
+dados, analisa e entrega o resultado, num PDF com gráficos ou num <strong>alerta</strong> curto. Ele nasce de instruções em texto,
+digitadas, coladas ou importadas de um arquivo .md, um arquivo de texto simples.</p>
+<blockquote>
+<p>💡 <strong>Analogia:</strong> é um analista com um roteiro: toda segunda ele abre os números, faz as mesmas perguntas, monta o
+resumo e só liga se algo saiu do normal. <strong>Onde a analogia para:</strong> o agente não decide nem mexe em nada; só lê, e
+cada número que cita foi calculado pelo Horus no banco da empresa.</p>
+</blockquote>
+<p><strong>Como fica o dia a dia.</strong> O <strong>gestor</strong>, quem responde por uma equipe, descreve uma vez o que quer acompanhar; o
+resto chega sozinho.</p>
+<blockquote>
+<p>📌 <strong>Exemplo</strong> <em>(personagem ilustrativo)</em>: a gestora Carla importa um .md com as perguntas da semana. Toda segunda,
+o agente consulta, analisa e entrega ao grupo &quot;Vendas Sul&quot; um PDF com gráficos. Quando as vendas caem mais de 10%,
+ele avisa a Carla no WhatsApp, com o rótulo do nível de inferência usado, o quanto ele afirma além dos dados.</p>
+</blockquote>
+<h3 data-dx-icone="star" id="mf-115-caracteristicas">Características</h3>
+<ul>
+<li><strong>Todo agente usa IA:</strong> é ela que transforma as instruções nas consultas a fazer.</li>
+<li><strong>Antes de ligar:</strong> o Horus mostra as perguntas que vai fazer e a condição para avisar, e o autor confirma.</li>
+<li><strong>Como trabalha:</strong> pergunta ao mesmo motor da conversa de análise quantas vezes precisar, dentro de um teto de
+perguntas e de tempo, e só cita números que o Horus calculou.</li>
+<li><strong>O nível de inferência:</strong> o autor o escolhe livremente, do descritivo ao especulativo, e todo alerta chega
+rotulado com o nível usado.</li>
+<li><strong>Só lê:</strong> nunca altera dados nem age nos sistemas da empresa.</li>
+<li><strong>Quando e para quem:</strong> roda só pelo Módulo de Agendamentos de Agentes (MF-114), com a permissão de quem o criou, e
+entrega pelos Conectores de Saída (MF-113), só a usuários do Horus.</li>
+<li><strong>Quem cria:</strong> o <strong>owner da organização</strong> (quem administra a organização no Horus), o gestor e o <strong>membro full</strong>
+(quem pergunta e cria os próprios boards); o <strong>membro leitor</strong>, que só vê boards de outras pessoas, só recebe.</li>
+<li><strong>Quem edita e quem desabilita:</strong> valem as regras dos boards: só o autor edita, e o owner e o gestor podem
+desabilitar.</li>
+<li><strong>Quem sai da organização:</strong> o agente dele vai, pausado, para o espaço da organização, onde fica o que é dela e
+não de uma pessoa, até o owner transferi-lo ou excluí-lo.</li>
+<li><strong>O custo:</strong> cada execução consome IA, e o consumo aparece no custo da organização, que o owner controla pelo
+modelo de IA dos agentes.</li>
+</ul>
+<h3 data-dx-icone="chart-line" id="mf-115-o-valor-que-gera">O valor que gera</h3>
+<ul>
+<li><strong>Para quem usa:</strong> o gestor e o executivo são avisados quando algo muda e recebem a análise pronta, sem lembrar de
+perguntar.</li>
+<li><strong>Para a empresa que contrata o Horus:</strong> a área de dados deixa de ser acionada para o que se repete toda semana.</li>
+<li><strong>Para o Horus como produto:</strong> preenche o aviso, um dos três problemas que o Horus se propõe a resolver, hoje
+vazio.</li>
+</ul>
+<p><strong>Como vamos saber que funcionou:</strong> a cena da Carla acontece de verdade, e o custo de IA dos agentes não surpreende os
+owners.</p>
+<h3 data-dx-icone="walking" id="mf-115-como-se-usa-no-horus">Como se usa no Horus</h3>
+<p><strong>O owner da organização configura:</strong> escolhe o modelo de IA que os agentes usam e decide se a criação de agentes
+espera a aprovação dele.</p>
+<p><strong>Quem cria o agente:</strong></p>
+<ol>
+<li>Escreve as instruções, cola um texto ou importa um .md.</li>
+<li>Escolhe o nível de inferência.</li>
+<li>Confere o que o Horus entendeu e confirma.</li>
+<li>Agenda o agente, com os destinos e os conectores.</li>
+<li>Na hora marcada, o agente pergunta, analisa e entrega o PDF, o alerta ou os dois.</li>
+</ol>
+<figure><div class="lightbox_shortcode"><img src="media/mf-115-diagrama-1.svg" width="1647" height="85" alt="Diagrama: Como se usa no Horus"><a href="media/mf-115-diagrama-1.svg" class="img_popup" aria-label="Ampliar o diagrama"><i class="icon_plus" aria-hidden="true"></i></a></div><figcaption>Diagrama de “Como se usa no Horus”. Selecione o “+” para ampliar.</figcaption></figure><h3 data-dx-icone="puzzle-piece" id="mf-115-grau-de-complexidade-alta">Grau de complexidade: alta</h3>
+<p>Nada disso existe na v1; o agente reaproveita o motor que já responde com os números do banco e a impressão em PDF. O
+novo é a leitura das instruções, o ciclo em que o modelo de IA pergunta ao motor até terminar e o alerta rotulado,
+sem ninguém na tela. Atravessa o motor, a IA, o desenho dos gráficos, a fila de trabalhos e os conectores, e cada
+execução custa IA, às vezes mais que a conversa.</p>
+<blockquote>
+<p>⚠️ É a leitura do PO a partir dos documentos de arquitetura. A estimativa de esforço é do arquiteto.</p>
+</blockquote>
+<h3 data-dx-icone="link" id="mf-115-macro-funcionalidades-relacionadas">Macro funcionalidades relacionadas</h3>
+<p>As quatro macro funcionalidades de acompanhar e avisar formam uma corrente: o agente trabalha, o agendamento diz
+quando, o conector entrega e o board mostra.</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de Agentes ativos"><table class="table table_shortcode"><thead><tr>
+<th scope="col">mf</th>
+<th scope="col">Como se relaciona</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Módulo de Agendamentos de Agentes (MF-114)</td>
+<td><strong>depende de</strong>: o agente só roda quando um agendamento o chama.</td>
+</tr>
+<tr>
+<td>Conectores de Saída (MF-113)</td>
+<td><strong>depende de</strong>: o PDF e o alerta do agente chegam às pessoas pelo e-mail ou pelo WhatsApp.</td>
+</tr>
+<tr>
+<td>Boards e Relatórios (MF-112)</td>
+<td><strong>complementa</strong>: o PDF do board é a outra coisa que o agendamento roda, e o agente segue as mesmas regras de quem edita e desabilita.</td>
+</tr>
+<tr>
+<td>Perguntar aos dados em português (MF-107)</td>
+<td><strong>depende de</strong>: o agente pergunta ao mesmo motor da conversa de análise.</td>
+</tr>
+<tr>
+<td>Respostas visuais (MF-108)</td>
+<td><strong>depende de</strong>: os gráficos do PDF do agente são os mesmos da conversa.</td>
+</tr>
+<tr>
+<td>IA sob controle da organização (MF-105)</td>
+<td><strong>depende de</strong>: é ali que o owner escolhe o modelo de IA dos agentes e vê o custo deles.</td>
+</tr>
+<tr>
+<td>Auditoria (MF-116)</td>
+<td><strong>complementa</strong>: registra o que o agente enviou, por qual conector e a quem.</td>
+</tr>
+</tbody>
+</table></div><h3 data-dx-icone="ban" id="mf-115-o-que-ela-nao-faz">O que ela não faz</h3>
+<ul>
+<li><strong>Agir nos sistemas da empresa:</strong> o agente só lê.</li>
+<li><strong>Decidir quando roda</strong> nem por onde entrega: isso é do agendamento e dos conectores.</li>
+<li><strong>Entregar a quem não é usuário do Horus.</strong></li>
+<li><strong>Nascer de um formulário sem IA:</strong> fica para depois, se o mercado pedir.</li>
+</ul>
+<h3 data-dx-icone="hourglass-half" id="mf-115-ainda-a-decidir">Ainda a decidir</h3>
+<ul>
+<li>O que o autor recebe quando uma execução falha ou passa do teto de perguntas e de tempo.</li>
+<li>O que cabe no alerta pelo WhatsApp, onde o texto do agente tem tamanho limitado.</li>
+<li>Um teto automático de custo, por agente ou por organização, que a v2.0 não traz.</li>
+</ul>
+<h3 data-dx-icone="book" id="mf-115-para-saber-mais">Para saber mais</h3>
+<ul>
+<li><a href="#produto-backlog">Backlog estratégico</a>: a <a href="#d-062"><code>D-062</code></a>, a definição macro (fechou a <code>P-007</code>); a
+<a href="#d-020"><code>D-020</code></a> (a mf); a <a href="#d-022"><code>D-022</code></a> (o &quot;só lê&quot; vale para as fontes, fechou o <code>I-003</code>); a <a href="#d-023"><code>D-023</code></a> e a <a href="#d-024"><code>D-024</code></a> (a interpretação
+e o nível livre, fechou o <code>I-004</code>); a <a href="#d-061"><code>D-061</code></a> (como se cria e como roda); a <a href="#d-063"><code>D-063</code></a> (todo agente usa IA); a <a href="#d-064"><code>D-064</code></a>
+(o agente ao lado do PDF do board no agendamento); a <a href="#d-073"><code>D-073</code></a> (de full a leitor); a <a href="#d-122"><code>D-122</code></a> (entra na v2.0); as
+letras (p) e (q) da <code>P-008</code>.</li>
+<li><a href="#produto-v20">A v2.0 consolidada</a>: §4 (passo 9), §5.9, §7 e §8 (o risco do custo).
+<a href="#produto-mfs-hoje">Mapa das mfs</a> (&quot;O que o dono já disse&quot; e o problema nº 3),
+<a href="#produto-versoes">versões</a>, <a href="#produto-mapa">objetivos</a> (O4) e
+<a href="#produto-lacunas">lacunas</a> (candidata nº 7).</li>
+<li>Arquitetura: <a href="#arquitetura-01">estratégia</a> (§3, O4; §4; o marco M6);
+<a href="#arquitetura-04">software</a> (&quot;Agentes&quot;, &quot;Desenho fora da tela&quot; e &quot;Fila durável e caixa de saída&quot;);
+<a href="#arquitetura-05">motor</a> (§3.9, o agente, e §3.10, as funções novas);
+<a href="#arquitetura-13">custo</a> (o custo de uma execução);
+<a href="#arquitetura-02">registro</a>: <a href="#arq-006"><code>ARQ-006</code></a>, <a href="#arq-007"><code>ARQ-007</code></a>, <a href="#arq-022"><code>ARQ-022</code></a>, <a href="#arq-024"><code>ARQ-024</code></a>, <a href="#arq-025"><code>ARQ-025</code></a>,
+<a href="#arq-030"><code>ARQ-030</code></a>, <a href="#arq-031"><code>ARQ-031</code></a>, <a href="#arq-041"><code>ARQ-041</code></a> e <a href="#arq-090"><code>ARQ-090</code></a> ✅ (a <a href="#mf-106"><code>MF-106</code></a> inteira na v2.1);
+<a href="#arquitetura-14">conferência</a>: §3 (&quot;tudo é novo&quot;); §4, <code>A-03</code>, <code>A-10</code> e <code>A-19</code>.</li>
+</ul>
+<p>📚 <a href="#mf-115-inventario">Tudo o que o inventário diz desta mf, assunto por assunto</a>.</p>

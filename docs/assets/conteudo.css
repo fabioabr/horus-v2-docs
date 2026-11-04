@@ -1,0 +1,506 @@
+/* DocX · gerado: as fontes da coluna de conteúdo das páginas a 80%. Não edite. */
+/* assets/kbdoc/assets/bootstrap/css/bootstrap.min.css */
+body.dx-pagina-doc .documentation_info{font-size:0.6rem;line-height:1.5}
+.dx-pagina-doc address:is(.documentation_info *){line-height:inherit}
+.dx-pagina-doc small:is(.documentation_info *){font-size:80%}
+.dx-pagina-doc sub:is(.documentation_info *),.dx-pagina-doc sup:is(.documentation_info *){font-size:75%;line-height:0}
+.dx-pagina-doc code:is(.documentation_info *),.dx-pagina-doc kbd:is(.documentation_info *),.dx-pagina-doc pre:is(.documentation_info *),.dx-pagina-doc samp:is(.documentation_info *){font-size:1em}
+.dx-pagina-doc button:is(.documentation_info *),.dx-pagina-doc input:is(.documentation_info *),.dx-pagina-doc optgroup:is(.documentation_info *),.dx-pagina-doc select:is(.documentation_info *),.dx-pagina-doc textarea:is(.documentation_info *){font-size:inherit;line-height:inherit}
+.dx-pagina-doc legend:is(.documentation_info *){font-size:0.9rem;line-height:inherit}
+.dx-pagina-doc :is(.documentation_info *)::-webkit-file-upload-button{font:inherit}
+.dx-pagina-doc .h1:is(.documentation_info *),.dx-pagina-doc .h2:is(.documentation_info *),.dx-pagina-doc .h3:is(.documentation_info *),.dx-pagina-doc .h4:is(.documentation_info *),.dx-pagina-doc .h5:is(.documentation_info *),.dx-pagina-doc .h6:is(.documentation_info *),.dx-pagina-doc h1:is(.documentation_info *),.dx-pagina-doc h2:is(.documentation_info *),.dx-pagina-doc h3:is(.documentation_info *),.dx-pagina-doc h4:is(.documentation_info *),.dx-pagina-doc h5:is(.documentation_info *),.dx-pagina-doc h6:is(.documentation_info *){line-height:1.2}
+.dx-pagina-doc .h1:is(.documentation_info *),.dx-pagina-doc h1:is(.documentation_info *){font-size:1.5rem}
+.dx-pagina-doc .h2:is(.documentation_info *),.dx-pagina-doc h2:is(.documentation_info *){font-size:1.2rem}
+.dx-pagina-doc .h3:is(.documentation_info *),.dx-pagina-doc h3:is(.documentation_info *){font-size:1.05rem}
+.dx-pagina-doc .h4:is(.documentation_info *),.dx-pagina-doc h4:is(.documentation_info *){font-size:0.9rem}
+.dx-pagina-doc .h5:is(.documentation_info *),.dx-pagina-doc h5:is(.documentation_info *){font-size:0.75rem}
+.dx-pagina-doc .h6:is(.documentation_info *),.dx-pagina-doc h6:is(.documentation_info *){font-size:0.6rem}
+.dx-pagina-doc .lead:is(.documentation_info *){font-size:0.75rem}
+.dx-pagina-doc .display-1:is(.documentation_info *){font-size:3.6rem;line-height:1.2}
+.dx-pagina-doc .display-2:is(.documentation_info *){font-size:3.3rem;line-height:1.2}
+.dx-pagina-doc .display-3:is(.documentation_info *){font-size:2.7rem;line-height:1.2}
+.dx-pagina-doc .display-4:is(.documentation_info *){font-size:2.1rem;line-height:1.2}
+.dx-pagina-doc .small:is(.documentation_info *),.dx-pagina-doc small:is(.documentation_info *){font-size:80%}
+.dx-pagina-doc .initialism:is(.documentation_info *){font-size:90%}
+.dx-pagina-doc .blockquote:is(.documentation_info *){font-size:0.75rem}
+.dx-pagina-doc .blockquote-footer:is(.documentation_info *){font-size:80%}
+.dx-pagina-doc .figure-img:is(.documentation_info *){line-height:1}
+.dx-pagina-doc .figure-caption:is(.documentation_info *){font-size:90%}
+.dx-pagina-doc code:is(.documentation_info *){font-size:87.5%}
+.dx-pagina-doc kbd:is(.documentation_info *){font-size:87.5%}
+.dx-pagina-doc kbd kbd:is(.documentation_info *){font-size:100%}
+.dx-pagina-doc pre:is(.documentation_info *){font-size:87.5%}
+.dx-pagina-doc pre code:is(.documentation_info *){font-size:inherit}
+.dx-pagina-doc .form-control:is(.documentation_info *){font-size:0.6rem;line-height:1.5}
+.dx-pagina-doc .col-form-label:is(.documentation_info *){font-size:inherit;line-height:1.5}
+.dx-pagina-doc .col-form-label-lg:is(.documentation_info *){font-size:0.75rem;line-height:1.5}
+.dx-pagina-doc .col-form-label-sm:is(.documentation_info *){font-size:0.525rem;line-height:1.5}
+.dx-pagina-doc .form-control-plaintext:is(.documentation_info *){line-height:1.5}
+.dx-pagina-doc .form-control-sm:is(.documentation_info *){font-size:0.525rem;line-height:1.5}
+.dx-pagina-doc .form-control-lg:is(.documentation_info *){font-size:0.75rem;line-height:1.5}
+.dx-pagina-doc .valid-feedback:is(.documentation_info *){font-size:80%}
+.dx-pagina-doc .valid-tooltip:is(.documentation_info *){font-size:0.525rem;line-height:1.5}
+.dx-pagina-doc .invalid-feedback:is(.documentation_info *){font-size:80%}
+.dx-pagina-doc .invalid-tooltip:is(.documentation_info *){font-size:0.525rem;line-height:1.5}
+.dx-pagina-doc .btn:is(.documentation_info *){font-size:0.6rem;line-height:1.5}
+.dx-pagina-doc .btn-group-lg>.btn:is(.documentation_info *),.dx-pagina-doc .btn-lg:is(.documentation_info *){font-size:0.75rem;line-height:1.5}
+.dx-pagina-doc .btn-group-sm>.btn:is(.documentation_info *),.dx-pagina-doc .btn-sm:is(.documentation_info *){font-size:0.525rem;line-height:1.5}
+.dx-pagina-doc .dropdown-menu:is(.documentation_info *){font-size:0.6rem}
+.dx-pagina-doc .dropdown-header:is(.documentation_info *){font-size:0.525rem}
+.dx-pagina-doc .input-group-text:is(.documentation_info *){font-size:0.6rem;line-height:1.5}
+.dx-pagina-doc .input-group-lg>.custom-select:is(.documentation_info *),.dx-pagina-doc .input-group-lg>.form-control:is(.documentation_info *),.dx-pagina-doc .input-group-lg>.input-group-append>.btn:is(.documentation_info *),.dx-pagina-doc .input-group-lg>.input-group-append>.input-group-text:is(.documentation_info *),.dx-pagina-doc .input-group-lg>.input-group-prepend>.btn:is(.documentation_info *),.dx-pagina-doc .input-group-lg>.input-group-prepend>.input-group-text:is(.documentation_info *){font-size:0.75rem;line-height:1.5}
+.dx-pagina-doc .input-group-sm>.custom-select:is(.documentation_info *),.dx-pagina-doc .input-group-sm>.form-control:is(.documentation_info *),.dx-pagina-doc .input-group-sm>.input-group-append>.btn:is(.documentation_info *),.dx-pagina-doc .input-group-sm>.input-group-append>.input-group-text:is(.documentation_info *),.dx-pagina-doc .input-group-sm>.input-group-prepend>.btn:is(.documentation_info *),.dx-pagina-doc .input-group-sm>.input-group-prepend>.input-group-text:is(.documentation_info *){font-size:0.525rem;line-height:1.5}
+.dx-pagina-doc .custom-select:is(.documentation_info *){font-size:0.6rem;line-height:1.5}
+.dx-pagina-doc .custom-select-sm:is(.documentation_info *){font-size:0.525rem}
+.dx-pagina-doc .custom-select-lg:is(.documentation_info *){font-size:0.75rem}
+.dx-pagina-doc .custom-file-label:is(.documentation_info *){line-height:1.5}
+.dx-pagina-doc .custom-file-label:is(.documentation_info *)::after{line-height:1.5}
+.dx-pagina-doc .navbar-brand:is(.documentation_info *){font-size:0.75rem;line-height:inherit}
+.dx-pagina-doc .navbar-toggler:is(.documentation_info *){font-size:0.75rem;line-height:1}
+.dx-pagina-doc .page-link:is(.documentation_info *){line-height:1.25}
+.dx-pagina-doc .pagination-lg .page-link:is(.documentation_info *){font-size:0.75rem;line-height:1.5}
+.dx-pagina-doc .pagination-sm .page-link:is(.documentation_info *){font-size:0.525rem;line-height:1.5}
+.dx-pagina-doc .badge:is(.documentation_info *){font-size:75%;line-height:1}
+.dx-pagina-doc .progress:is(.documentation_info *){font-size:0.45rem}
+.dx-pagina-doc .close:is(.documentation_info *){font-size:0.9rem;line-height:1}
+.dx-pagina-doc .toast:is(.documentation_info *){font-size:0.525rem}
+.dx-pagina-doc .modal-title:is(.documentation_info *){line-height:1.5}
+.dx-pagina-doc .tooltip:is(.documentation_info *){line-height:1.5;font-size:0.525rem}
+.dx-pagina-doc .popover:is(.documentation_info *){line-height:1.5;font-size:0.525rem}
+.dx-pagina-doc .popover-header:is(.documentation_info *){font-size:0.6rem}
+.dx-pagina-doc .text-hide:is(.documentation_info *){font:0/0 a}
+/* assets/kbdoc/assets/bootstrap/css/bootstrap-select.min.css */
+.dx-pagina-doc .form-group-lg .bootstrap-select.form-control .dropdown-toggle:is(.documentation_info *),.dx-pagina-doc .form-group-sm .bootstrap-select.form-control .dropdown-toggle:is(.documentation_info *){font-size:inherit;line-height:inherit}
+.dx-pagina-doc .bootstrap-select.form-control-lg .dropdown-toggle:is(.documentation_info *),.dx-pagina-doc .bootstrap-select.form-control-sm .dropdown-toggle:is(.documentation_info *){font-size:inherit;line-height:inherit}
+/* assets/kbdoc/assets/elagent-icon/style.css */
+.dx-pagina-doc [data-icon]:is(.documentation_info *):before{line-height: 1}
+.dx-pagina-doc .arrow_up:is(.documentation_info *),.dx-pagina-doc .arrow_down:is(.documentation_info *),.dx-pagina-doc .arrow_left:is(.documentation_info *),.dx-pagina-doc .arrow_right:is(.documentation_info *),.dx-pagina-doc .arrow_left-up:is(.documentation_info *),.dx-pagina-doc .arrow_right-up:is(.documentation_info *),.dx-pagina-doc .arrow_right-down:is(.documentation_info *),.dx-pagina-doc .arrow_left-down:is(.documentation_info *),.dx-pagina-doc .arrow-up-down:is(.documentation_info *),.dx-pagina-doc .arrow_up-down_alt:is(.documentation_info *),.dx-pagina-doc .arrow_left-right_alt:is(.documentation_info *),.dx-pagina-doc .arrow_left-right:is(.documentation_info *),.dx-pagina-doc .arrow_expand_alt2:is(.documentation_info *),.dx-pagina-doc .arrow_expand_alt:is(.documentation_info *),.dx-pagina-doc .arrow_condense:is(.documentation_info *),.dx-pagina-doc .arrow_expand:is(.documentation_info *),.dx-pagina-doc .arrow_move:is(.documentation_info *),.dx-pagina-doc .arrow_carrot-up:is(.documentation_info *),.dx-pagina-doc .arrow_carrot-down:is(.documentation_info *),.dx-pagina-doc .arrow_carrot-left:is(.documentation_info *),.dx-pagina-doc .arrow_carrot-right:is(.documentation_info *),.dx-pagina-doc .arrow_carrot-2up:is(.documentation_info *),.dx-pagina-doc .arrow_carrot-2down:is(.documentation_info *),.dx-pagina-doc .arrow_carrot-2left:is(.documentation_info *),.dx-pagina-doc .arrow_carrot-2right:is(.documentation_info *),.dx-pagina-doc .arrow_carrot-up_alt2:is(.documentation_info *),.dx-pagina-doc .arrow_carrot-down_alt2:is(.documentation_info *),.dx-pagina-doc .arrow_carrot-left_alt2:is(.documentation_info *),.dx-pagina-doc .arrow_carrot-right_alt2:is(.documentation_info *),.dx-pagina-doc .arrow_carrot-2up_alt2:is(.documentation_info *),.dx-pagina-doc .arrow_carrot-2down_alt2:is(.documentation_info *),.dx-pagina-doc .arrow_carrot-2left_alt2:is(.documentation_info *),.dx-pagina-doc .arrow_carrot-2right_alt2:is(.documentation_info *),.dx-pagina-doc .arrow_triangle-up:is(.documentation_info *),.dx-pagina-doc .arrow_triangle-down:is(.documentation_info *),.dx-pagina-doc .arrow_triangle-left:is(.documentation_info *),.dx-pagina-doc .arrow_triangle-right:is(.documentation_info *),.dx-pagina-doc .arrow_triangle-up_alt2:is(.documentation_info *),.dx-pagina-doc .arrow_triangle-down_alt2:is(.documentation_info *),.dx-pagina-doc .arrow_triangle-left_alt2:is(.documentation_info *),.dx-pagina-doc .arrow_triangle-right_alt2:is(.documentation_info *),.dx-pagina-doc .arrow_back:is(.documentation_info *),.dx-pagina-doc .icon_minus-06:is(.documentation_info *),.dx-pagina-doc .icon_plus:is(.documentation_info *),.dx-pagina-doc .icon_close:is(.documentation_info *),.dx-pagina-doc .icon_check:is(.documentation_info *),.dx-pagina-doc .icon_minus_alt2:is(.documentation_info *),.dx-pagina-doc .icon_plus_alt2:is(.documentation_info *),.dx-pagina-doc .icon_close_alt2:is(.documentation_info *),.dx-pagina-doc .icon_check_alt2:is(.documentation_info *),.dx-pagina-doc .icon_zoom-out_alt:is(.documentation_info *),.dx-pagina-doc .icon_zoom-in_alt:is(.documentation_info *),.dx-pagina-doc .icon_search:is(.documentation_info *),.dx-pagina-doc .icon_box-empty:is(.documentation_info *),.dx-pagina-doc .icon_box-selected:is(.documentation_info *),.dx-pagina-doc .icon_minus-box:is(.documentation_info *),.dx-pagina-doc .icon_plus-box:is(.documentation_info *),.dx-pagina-doc .icon_box-checked:is(.documentation_info *),.dx-pagina-doc .icon_circle-empty:is(.documentation_info *),.dx-pagina-doc .icon_circle-slelected:is(.documentation_info *),.dx-pagina-doc .icon_stop_alt2:is(.documentation_info *),.dx-pagina-doc .icon_stop:is(.documentation_info *),.dx-pagina-doc .icon_pause_alt2:is(.documentation_info *),.dx-pagina-doc .icon_pause:is(.documentation_info *),.dx-pagina-doc .icon_menu:is(.documentation_info *),.dx-pagina-doc .icon_menu-square_alt2:is(.documentation_info *),.dx-pagina-doc .icon_menu-circle_alt2:is(.documentation_info *),.dx-pagina-doc .icon_ul:is(.documentation_info *),.dx-pagina-doc .icon_ol:is(.documentation_info *),.dx-pagina-doc .icon_adjust-horiz:is(.documentation_info *),.dx-pagina-doc .icon_adjust-vert:is(.documentation_info *),.dx-pagina-doc .icon_document_alt:is(.documentation_info *),.dx-pagina-doc .icon_documents_alt:is(.documentation_info *),.dx-pagina-doc .icon_pencil:is(.documentation_info *),.dx-pagina-doc .icon_pencil-edit_alt:is(.documentation_info *),.dx-pagina-doc .icon_pencil-edit:is(.documentation_info *),.dx-pagina-doc .icon_folder-alt:is(.documentation_info *),.dx-pagina-doc .icon_folder-open_alt:is(.documentation_info *),.dx-pagina-doc .icon_folder-add_alt:is(.documentation_info *),.dx-pagina-doc .icon_info_alt:is(.documentation_info *),.dx-pagina-doc .icon_error-oct_alt:is(.documentation_info *),.dx-pagina-doc .icon_error-circle_alt:is(.documentation_info *),.dx-pagina-doc .icon_error-triangle_alt:is(.documentation_info *),.dx-pagina-doc .icon_question_alt2:is(.documentation_info *),.dx-pagina-doc .icon_question:is(.documentation_info *),.dx-pagina-doc .icon_comment_alt:is(.documentation_info *),.dx-pagina-doc .icon_chat_alt:is(.documentation_info *),.dx-pagina-doc .icon_vol-mute_alt:is(.documentation_info *),.dx-pagina-doc .icon_volume-low_alt:is(.documentation_info *),.dx-pagina-doc .icon_volume-high_alt:is(.documentation_info *),.dx-pagina-doc .icon_quotations:is(.documentation_info *),.dx-pagina-doc .icon_quotations_alt2:is(.documentation_info *),.dx-pagina-doc .icon_clock_alt:is(.documentation_info *),.dx-pagina-doc .icon_lock_alt:is(.documentation_info *),.dx-pagina-doc .icon_lock-open_alt:is(.documentation_info *),.dx-pagina-doc .icon_key_alt:is(.documentation_info *),.dx-pagina-doc .icon_cloud_alt:is(.documentation_info *),.dx-pagina-doc .icon_cloud-upload_alt:is(.documentation_info *),.dx-pagina-doc .icon_cloud-download_alt:is(.documentation_info *),.dx-pagina-doc .icon_image:is(.documentation_info *),.dx-pagina-doc .icon_images:is(.documentation_info *),.dx-pagina-doc .icon_lightbulb_alt:is(.documentation_info *),.dx-pagina-doc .icon_gift_alt:is(.documentation_info *),.dx-pagina-doc .icon_house_alt:is(.documentation_info *),.dx-pagina-doc .icon_genius:is(.documentation_info *),.dx-pagina-doc .icon_mobile:is(.documentation_info *),.dx-pagina-doc .icon_tablet:is(.documentation_info *),.dx-pagina-doc .icon_laptop:is(.documentation_info *),.dx-pagina-doc .icon_desktop:is(.documentation_info *),.dx-pagina-doc .icon_camera_alt:is(.documentation_info *),.dx-pagina-doc .icon_mail_alt:is(.documentation_info *),.dx-pagina-doc .icon_cone_alt:is(.documentation_info *),.dx-pagina-doc .icon_ribbon_alt:is(.documentation_info *),.dx-pagina-doc .icon_bag_alt:is(.documentation_info *),.dx-pagina-doc .icon_creditcard:is(.documentation_info *),.dx-pagina-doc .icon_cart_alt:is(.documentation_info *),.dx-pagina-doc .icon_paperclip:is(.documentation_info *),.dx-pagina-doc .icon_tag_alt:is(.documentation_info *),.dx-pagina-doc .icon_tags_alt:is(.documentation_info *),.dx-pagina-doc .icon_trash_alt:is(.documentation_info *),.dx-pagina-doc .icon_cursor_alt:is(.documentation_info *),.dx-pagina-doc .icon_mic_alt:is(.documentation_info *),.dx-pagina-doc .icon_compass_alt:is(.documentation_info *),.dx-pagina-doc .icon_pin_alt:is(.documentation_info *),.dx-pagina-doc .icon_pushpin_alt:is(.documentation_info *),.dx-pagina-doc .icon_map_alt:is(.documentation_info *),.dx-pagina-doc .icon_drawer_alt:is(.documentation_info *),.dx-pagina-doc .icon_toolbox_alt:is(.documentation_info *),.dx-pagina-doc .icon_book_alt:is(.documentation_info *),.dx-pagina-doc .icon_calendar:is(.documentation_info *),.dx-pagina-doc .icon_film:is(.documentation_info *),.dx-pagina-doc .icon_table:is(.documentation_info *),.dx-pagina-doc .icon_contacts_alt:is(.documentation_info *),.dx-pagina-doc .icon_headphones:is(.documentation_info *),.dx-pagina-doc .icon_lifesaver:is(.documentation_info *),.dx-pagina-doc .icon_piechart:is(.documentation_info *),.dx-pagina-doc .icon_refresh:is(.documentation_info *),.dx-pagina-doc .icon_link_alt:is(.documentation_info *),.dx-pagina-doc .icon_link:is(.documentation_info *),.dx-pagina-doc .icon_loading:is(.documentation_info *),.dx-pagina-doc .icon_blocked:is(.documentation_info *),.dx-pagina-doc .icon_archive_alt:is(.documentation_info *),.dx-pagina-doc .icon_heart_alt:is(.documentation_info *),.dx-pagina-doc .icon_star_alt:is(.documentation_info *),.dx-pagina-doc .icon_star-half_alt:is(.documentation_info *),.dx-pagina-doc .icon_star:is(.documentation_info *),.dx-pagina-doc .icon_star-half:is(.documentation_info *),.dx-pagina-doc .icon_tools:is(.documentation_info *),.dx-pagina-doc .icon_tool:is(.documentation_info *),.dx-pagina-doc .icon_cog:is(.documentation_info *),.dx-pagina-doc .icon_cogs:is(.documentation_info *),.dx-pagina-doc .arrow_up_alt:is(.documentation_info *),.dx-pagina-doc .arrow_down_alt:is(.documentation_info *),.dx-pagina-doc .arrow_left_alt:is(.documentation_info *),.dx-pagina-doc .arrow_right_alt:is(.documentation_info *),.dx-pagina-doc .arrow_left-up_alt:is(.documentation_info *),.dx-pagina-doc .arrow_right-up_alt:is(.documentation_info *),.dx-pagina-doc .arrow_right-down_alt:is(.documentation_info *),.dx-pagina-doc .arrow_left-down_alt:is(.documentation_info *),.dx-pagina-doc .arrow_condense_alt:is(.documentation_info *),.dx-pagina-doc .arrow_expand_alt3:is(.documentation_info *),.dx-pagina-doc .arrow_carrot_up_alt:is(.documentation_info *),.dx-pagina-doc .arrow_carrot-down_alt:is(.documentation_info *),.dx-pagina-doc .arrow_carrot-left_alt:is(.documentation_info *),.dx-pagina-doc .arrow_carrot-right_alt:is(.documentation_info *),.dx-pagina-doc .arrow_carrot-2up_alt:is(.documentation_info *),.dx-pagina-doc .arrow_carrot-2dwnn_alt:is(.documentation_info *),.dx-pagina-doc .arrow_carrot-2left_alt:is(.documentation_info *),.dx-pagina-doc .arrow_carrot-2right_alt:is(.documentation_info *),.dx-pagina-doc .arrow_triangle-up_alt:is(.documentation_info *),.dx-pagina-doc .arrow_triangle-down_alt:is(.documentation_info *),.dx-pagina-doc .arrow_triangle-left_alt:is(.documentation_info *),.dx-pagina-doc .arrow_triangle-right_alt:is(.documentation_info *),.dx-pagina-doc .icon_minus_alt:is(.documentation_info *),.dx-pagina-doc .icon_plus_alt:is(.documentation_info *),.dx-pagina-doc .icon_close_alt:is(.documentation_info *),.dx-pagina-doc .icon_check_alt:is(.documentation_info *),.dx-pagina-doc .icon_zoom-out:is(.documentation_info *),.dx-pagina-doc .icon_zoom-in:is(.documentation_info *),.dx-pagina-doc .icon_stop_alt:is(.documentation_info *),.dx-pagina-doc .icon_menu-square_alt:is(.documentation_info *),.dx-pagina-doc .icon_menu-circle_alt:is(.documentation_info *),.dx-pagina-doc .icon_document:is(.documentation_info *),.dx-pagina-doc .icon_documents:is(.documentation_info *),.dx-pagina-doc .icon_pencil_alt:is(.documentation_info *),.dx-pagina-doc .icon_folder:is(.documentation_info *),.dx-pagina-doc .icon_folder-open:is(.documentation_info *),.dx-pagina-doc .icon_folder-add:is(.documentation_info *),.dx-pagina-doc .icon_folder_upload:is(.documentation_info *),.dx-pagina-doc .icon_folder_download:is(.documentation_info *),.dx-pagina-doc .icon_info:is(.documentation_info *),.dx-pagina-doc .icon_error-circle:is(.documentation_info *),.dx-pagina-doc .icon_error-oct:is(.documentation_info *),.dx-pagina-doc .icon_error-triangle:is(.documentation_info *),.dx-pagina-doc .icon_question_alt:is(.documentation_info *),.dx-pagina-doc .icon_comment:is(.documentation_info *),.dx-pagina-doc .icon_chat:is(.documentation_info *),.dx-pagina-doc .icon_vol-mute:is(.documentation_info *),.dx-pagina-doc .icon_volume-low:is(.documentation_info *),.dx-pagina-doc .icon_volume-high:is(.documentation_info *),.dx-pagina-doc .icon_quotations_alt:is(.documentation_info *),.dx-pagina-doc .icon_clock:is(.documentation_info *),.dx-pagina-doc .icon_lock:is(.documentation_info *),.dx-pagina-doc .icon_lock-open:is(.documentation_info *),.dx-pagina-doc .icon_key:is(.documentation_info *),.dx-pagina-doc .icon_cloud:is(.documentation_info *),.dx-pagina-doc .icon_cloud-upload:is(.documentation_info *),.dx-pagina-doc .icon_cloud-download:is(.documentation_info *),.dx-pagina-doc .icon_lightbulb:is(.documentation_info *),.dx-pagina-doc .icon_gift:is(.documentation_info *),.dx-pagina-doc .icon_house:is(.documentation_info *),.dx-pagina-doc .icon_camera:is(.documentation_info *),.dx-pagina-doc .icon_mail:is(.documentation_info *),.dx-pagina-doc .icon_cone:is(.documentation_info *),.dx-pagina-doc .icon_ribbon:is(.documentation_info *),.dx-pagina-doc .icon_bag:is(.documentation_info *),.dx-pagina-doc .icon_cart:is(.documentation_info *),.dx-pagina-doc .icon_tag:is(.documentation_info *),.dx-pagina-doc .icon_tags:is(.documentation_info *),.dx-pagina-doc .icon_trash:is(.documentation_info *),.dx-pagina-doc .icon_cursor:is(.documentation_info *),.dx-pagina-doc .icon_mic:is(.documentation_info *),.dx-pagina-doc .icon_compass:is(.documentation_info *),.dx-pagina-doc .icon_pin:is(.documentation_info *),.dx-pagina-doc .icon_pushpin:is(.documentation_info *),.dx-pagina-doc .icon_map:is(.documentation_info *),.dx-pagina-doc .icon_drawer:is(.documentation_info *),.dx-pagina-doc .icon_toolbox:is(.documentation_info *),.dx-pagina-doc .icon_book:is(.documentation_info *),.dx-pagina-doc .icon_contacts:is(.documentation_info *),.dx-pagina-doc .icon_archive:is(.documentation_info *),.dx-pagina-doc .icon_heart:is(.documentation_info *),.dx-pagina-doc .icon_profile:is(.documentation_info *),.dx-pagina-doc .icon_group:is(.documentation_info *),.dx-pagina-doc .icon_grid-2x2:is(.documentation_info *),.dx-pagina-doc .icon_grid-3x3:is(.documentation_info *),.dx-pagina-doc .icon_music:is(.documentation_info *),.dx-pagina-doc .icon_pause_alt:is(.documentation_info *),.dx-pagina-doc .icon_phone:is(.documentation_info *),.dx-pagina-doc .icon_upload:is(.documentation_info *),.dx-pagina-doc .icon_download:is(.documentation_info *),.dx-pagina-doc .social_facebook:is(.documentation_info *),.dx-pagina-doc .social_twitter:is(.documentation_info *),.dx-pagina-doc .social_pinterest:is(.documentation_info *),.dx-pagina-doc .social_googleplus:is(.documentation_info *),.dx-pagina-doc .social_tumblr:is(.documentation_info *),.dx-pagina-doc .social_tumbleupon:is(.documentation_info *),.dx-pagina-doc .social_wordpress:is(.documentation_info *),.dx-pagina-doc .social_instagram:is(.documentation_info *),.dx-pagina-doc .social_dribbble:is(.documentation_info *),.dx-pagina-doc .social_vimeo:is(.documentation_info *),.dx-pagina-doc .social_linkedin:is(.documentation_info *),.dx-pagina-doc .social_rss:is(.documentation_info *),.dx-pagina-doc .social_deviantart:is(.documentation_info *),.dx-pagina-doc .social_share:is(.documentation_info *),.dx-pagina-doc .social_myspace:is(.documentation_info *),.dx-pagina-doc .social_skype:is(.documentation_info *),.dx-pagina-doc .social_youtube:is(.documentation_info *),.dx-pagina-doc .social_picassa:is(.documentation_info *),.dx-pagina-doc .social_googledrive:is(.documentation_info *),.dx-pagina-doc .social_flickr:is(.documentation_info *),.dx-pagina-doc .social_blogger:is(.documentation_info *),.dx-pagina-doc .social_spotify:is(.documentation_info *),.dx-pagina-doc .social_delicious:is(.documentation_info *),.dx-pagina-doc .social_facebook_circle:is(.documentation_info *),.dx-pagina-doc .social_twitter_circle:is(.documentation_info *),.dx-pagina-doc .social_pinterest_circle:is(.documentation_info *),.dx-pagina-doc .social_googleplus_circle:is(.documentation_info *),.dx-pagina-doc .social_tumblr_circle:is(.documentation_info *),.dx-pagina-doc .social_stumbleupon_circle:is(.documentation_info *),.dx-pagina-doc .social_wordpress_circle:is(.documentation_info *),.dx-pagina-doc .social_instagram_circle:is(.documentation_info *),.dx-pagina-doc .social_dribbble_circle:is(.documentation_info *),.dx-pagina-doc .social_vimeo_circle:is(.documentation_info *),.dx-pagina-doc .social_linkedin_circle:is(.documentation_info *),.dx-pagina-doc .social_rss_circle:is(.documentation_info *),.dx-pagina-doc .social_deviantart_circle:is(.documentation_info *),.dx-pagina-doc .social_share_circle:is(.documentation_info *),.dx-pagina-doc .social_myspace_circle:is(.documentation_info *),.dx-pagina-doc .social_skype_circle:is(.documentation_info *),.dx-pagina-doc .social_youtube_circle:is(.documentation_info *),.dx-pagina-doc .social_picassa_circle:is(.documentation_info *),.dx-pagina-doc .social_googledrive_alt2:is(.documentation_info *),.dx-pagina-doc .social_flickr_circle:is(.documentation_info *),.dx-pagina-doc .social_blogger_circle:is(.documentation_info *),.dx-pagina-doc .social_spotify_circle:is(.documentation_info *),.dx-pagina-doc .social_delicious_circle:is(.documentation_info *),.dx-pagina-doc .social_facebook_square:is(.documentation_info *),.dx-pagina-doc .social_twitter_square:is(.documentation_info *),.dx-pagina-doc .social_pinterest_square:is(.documentation_info *),.dx-pagina-doc .social_googleplus_square:is(.documentation_info *),.dx-pagina-doc .social_tumblr_square:is(.documentation_info *),.dx-pagina-doc .social_stumbleupon_square:is(.documentation_info *),.dx-pagina-doc .social_wordpress_square:is(.documentation_info *),.dx-pagina-doc .social_instagram_square:is(.documentation_info *),.dx-pagina-doc .social_dribbble_square:is(.documentation_info *),.dx-pagina-doc .social_vimeo_square:is(.documentation_info *),.dx-pagina-doc .social_linkedin_square:is(.documentation_info *),.dx-pagina-doc .social_rss_square:is(.documentation_info *),.dx-pagina-doc .social_deviantart_square:is(.documentation_info *),.dx-pagina-doc .social_share_square:is(.documentation_info *),.dx-pagina-doc .social_myspace_square:is(.documentation_info *),.dx-pagina-doc .social_skype_square:is(.documentation_info *),.dx-pagina-doc .social_youtube_square:is(.documentation_info *),.dx-pagina-doc .social_picassa_square:is(.documentation_info *),.dx-pagina-doc .social_googledrive_square:is(.documentation_info *),.dx-pagina-doc .social_flickr_square:is(.documentation_info *),.dx-pagina-doc .social_blogger_square:is(.documentation_info *),.dx-pagina-doc .social_spotify_square:is(.documentation_info *),.dx-pagina-doc .social_delicious_square:is(.documentation_info *),.dx-pagina-doc .icon_printer:is(.documentation_info *),.dx-pagina-doc .icon_calulator:is(.documentation_info *),.dx-pagina-doc .icon_building:is(.documentation_info *),.dx-pagina-doc .icon_floppy:is(.documentation_info *),.dx-pagina-doc .icon_drive:is(.documentation_info *),.dx-pagina-doc .icon_search-2:is(.documentation_info *),.dx-pagina-doc .icon_id:is(.documentation_info *),.dx-pagina-doc .icon_id-2:is(.documentation_info *),.dx-pagina-doc .icon_puzzle:is(.documentation_info *),.dx-pagina-doc .icon_like:is(.documentation_info *),.dx-pagina-doc .icon_dislike:is(.documentation_info *),.dx-pagina-doc .icon_mug:is(.documentation_info *),.dx-pagina-doc .icon_currency:is(.documentation_info *),.dx-pagina-doc .icon_wallet:is(.documentation_info *),.dx-pagina-doc .icon_pens:is(.documentation_info *),.dx-pagina-doc .icon_easel:is(.documentation_info *),.dx-pagina-doc .icon_flowchart:is(.documentation_info *),.dx-pagina-doc .icon_datareport:is(.documentation_info *),.dx-pagina-doc .icon_briefcase:is(.documentation_info *),.dx-pagina-doc .icon_shield:is(.documentation_info *),.dx-pagina-doc .icon_percent:is(.documentation_info *),.dx-pagina-doc .icon_globe:is(.documentation_info *),.dx-pagina-doc .icon_globe-2:is(.documentation_info *),.dx-pagina-doc .icon_target:is(.documentation_info *),.dx-pagina-doc .icon_hourglass:is(.documentation_info *),.dx-pagina-doc .icon_balance:is(.documentation_info *),.dx-pagina-doc .icon_rook:is(.documentation_info *),.dx-pagina-doc .icon_printer-alt:is(.documentation_info *),.dx-pagina-doc .icon_calculator_alt:is(.documentation_info *),.dx-pagina-doc .icon_building_alt:is(.documentation_info *),.dx-pagina-doc .icon_floppy_alt:is(.documentation_info *),.dx-pagina-doc .icon_drive_alt:is(.documentation_info *),.dx-pagina-doc .icon_search_alt:is(.documentation_info *),.dx-pagina-doc .icon_id_alt:is(.documentation_info *),.dx-pagina-doc .icon_id-2_alt:is(.documentation_info *),.dx-pagina-doc .icon_puzzle_alt:is(.documentation_info *),.dx-pagina-doc .icon_like_alt:is(.documentation_info *),.dx-pagina-doc .icon_dislike_alt:is(.documentation_info *),.dx-pagina-doc .icon_mug_alt:is(.documentation_info *),.dx-pagina-doc .icon_currency_alt:is(.documentation_info *),.dx-pagina-doc .icon_wallet_alt:is(.documentation_info *),.dx-pagina-doc .icon_pens_alt:is(.documentation_info *),.dx-pagina-doc .icon_easel_alt:is(.documentation_info *),.dx-pagina-doc .icon_flowchart_alt:is(.documentation_info *),.dx-pagina-doc .icon_datareport_alt:is(.documentation_info *),.dx-pagina-doc .icon_briefcase_alt:is(.documentation_info *),.dx-pagina-doc .icon_shield_alt:is(.documentation_info *),.dx-pagina-doc .icon_percent_alt:is(.documentation_info *),.dx-pagina-doc .icon_globe_alt:is(.documentation_info *),.dx-pagina-doc .icon_clipboard:is(.documentation_info *){line-height: 1}
+.dx-pagina-doc .glyph_big:is(.documentation_info *){font-size: 76.8px}
+.dx-pagina-doc .glyph input:is(.documentation_info *){font-size: 7.2px}
+.dx-pagina-doc .glyph .fs1:is(.documentation_info *){font-size: 2em}
+/* assets/kbdoc/assets/font-awesome/css/all.css */
+.dx-pagina-doc .fa:is(.documentation_info *),.dx-pagina-doc .fas:is(.documentation_info *),.dx-pagina-doc .far:is(.documentation_info *),.dx-pagina-doc .fal:is(.documentation_info *),.dx-pagina-doc .fad:is(.documentation_info *),.dx-pagina-doc .fab:is(.documentation_info *){line-height: 1}
+.dx-pagina-doc .fa-lg:is(.documentation_info *){font-size: 1.33333em;line-height: 0.75em}
+.dx-pagina-doc .fa-xs:is(.documentation_info *){font-size: .75em}
+.dx-pagina-doc .fa-sm:is(.documentation_info *){font-size: .875em}
+.dx-pagina-doc .fa-1x:is(.documentation_info *){font-size: 1em}
+.dx-pagina-doc .fa-2x:is(.documentation_info *){font-size: 2em}
+.dx-pagina-doc .fa-3x:is(.documentation_info *){font-size: 3em}
+.dx-pagina-doc .fa-4x:is(.documentation_info *){font-size: 4em}
+.dx-pagina-doc .fa-5x:is(.documentation_info *){font-size: 5em}
+.dx-pagina-doc .fa-6x:is(.documentation_info *){font-size: 6em}
+.dx-pagina-doc .fa-7x:is(.documentation_info *){font-size: 7em}
+.dx-pagina-doc .fa-8x:is(.documentation_info *){font-size: 8em}
+.dx-pagina-doc .fa-9x:is(.documentation_info *){font-size: 9em}
+.dx-pagina-doc .fa-10x:is(.documentation_info *){font-size: 10em}
+.dx-pagina-doc .fa-li:is(.documentation_info *){line-height: inherit}
+.dx-pagina-doc .fa-stack:is(.documentation_info *){line-height: 2em}
+.dx-pagina-doc .fa-stack-1x:is(.documentation_info *){line-height: inherit}
+.dx-pagina-doc .fa-stack-2x:is(.documentation_info *){font-size: 2em}
+/* assets/kbdoc/assets/niceselectpicker/nice-select.css */
+.dx-pagina-doc .nice-select:is(.documentation_info *){font-size: 8.4px;line-height: 40px}
+.dx-pagina-doc .nice-select.small:is(.documentation_info *){font-size: 7.2px;line-height: 34px}
+.dx-pagina-doc .nice-select.small .option:is(.documentation_info *){line-height: 34px}
+.dx-pagina-doc .nice-select .option:is(.documentation_info *){line-height: 40px}
+/* assets/kbdoc/assets/font-size/css/rvfs.css */
+.dx-pagina-doc .rvfs-1 p:is(.documentation_info *),.dx-pagina-doc .rvfs-1 li:is(.documentation_info *),.dx-pagina-doc .rvfs-1 .documentation_item .media-body h5:is(.documentation_info *){font-size: 70%}
+.dx-pagina-doc .rvfs-2 p:is(.documentation_info *),.dx-pagina-doc .rvfs-2 li:is(.documentation_info *),.dx-pagina-doc .rvfs-2 .documentation_item .media-body h5:is(.documentation_info *){font-size: 80%}
+.dx-pagina-doc .rvfs-3 p:is(.documentation_info *),.dx-pagina-doc .rvfs-3 li:is(.documentation_info *),.dx-pagina-doc .rvfs-3 .documentation_item .media-body h5:is(.documentation_info *){font-size: 90%}
+.dx-pagina-doc .rvfs-4 p:is(.documentation_info *),.dx-pagina-doc .rvfs-4 li:is(.documentation_info *){font-size: 100%}
+.dx-pagina-doc .rvfs-5 p:is(.documentation_info *),.dx-pagina-doc .rvfs-5 li:is(.documentation_info *),.dx-pagina-doc .rvfs-5 .documentation_item .media-body h5:is(.documentation_info *){font-size: 110%}
+.dx-pagina-doc .rvfs-6 p:is(.documentation_info *),.dx-pagina-doc .rvfs-6 li:is(.documentation_info *),.dx-pagina-doc .rvfs-6 .documentation_item .media-body h5:is(.documentation_info *){font-size: 120%}
+.dx-pagina-doc .rvfs-7 p:is(.documentation_info *),.dx-pagina-doc .rvfs-7 li:is(.documentation_info *),.dx-pagina-doc .rvfs-7 .documentation_item .media-body h5:is(.documentation_info *){font-size: 130%}
+.dx-pagina-doc .rvfs-4 .documentation_item .media-body h5:is(.documentation_info *){font-size: 10.8px}
+.dx-pagina-doc .rvfs-1 .shortcode_title h2:is(.documentation_info *){font-size: 6px}
+.dx-pagina-doc .rvfs-2 .shortcode_title h2:is(.documentation_info *){font-size: 12px}
+.dx-pagina-doc .rvfs-3 .shortcode_title h2:is(.documentation_info *){font-size: 15px}
+.dx-pagina-doc .rvfs-4 .shortcode_title h2:is(.documentation_info *){font-size: 18px}
+.dx-pagina-doc .rvfs-5 .shortcode_title h2:is(.documentation_info *){font-size: 21px}
+.dx-pagina-doc .rvfs-6 .shortcode_title h2:is(.documentation_info *){font-size: 24px}
+.dx-pagina-doc .rvfs-7 .shortcode_title h2:is(.documentation_info *){font-size: 27px}
+/* assets/kbdoc/assets/animation/animate.css */
+
+/* assets/kbdoc/assets/tooltipster/css/tooltipster.bundle.css */
+.dx-pagina-doc .tooltipster-sidetip .tooltipster-content:is(.documentation_info *){line-height: 10.8px}
+/* assets/kbdoc/assets/prism/prism.css */
+.dx-pagina-doc code[class*="language-"]:is(.documentation_info *),.dx-pagina-doc pre[class*="language-"]:is(.documentation_info *){font-size: 1em;line-height: 1.5}
+.dx-pagina-doc .line-highlight:is(.documentation_info *){line-height: inherit}
+.dx-pagina-doc .line-highlight:is(.documentation_info *):before,.dx-pagina-doc .line-highlight[data-end]:is(.documentation_info *):after{font: bold 65%/1.5 sans-serif}
+.dx-pagina-doc .line-numbers .line-numbers-rows:is(.documentation_info *){font-size: 100%}
+.dx-pagina-doc div.code-toolbar > .toolbar button:is(.documentation_info *){font: inherit;line-height: normal}
+.dx-pagina-doc div.code-toolbar > .toolbar a:is(.documentation_info *),.dx-pagina-doc div.code-toolbar > .toolbar button:is(.documentation_info *),.dx-pagina-doc div.code-toolbar > .toolbar span:is(.documentation_info *){font-size: .8em}
+.dx-pagina-doc .command-line-prompt:is(.documentation_info *){font-size: 100%}
+/* assets/kbdoc/assets/prism/prism-coy.css */
+.dx-pagina-doc code[class*="language-"]:is(.documentation_info *),.dx-pagina-doc pre[class*="language-"]:is(.documentation_info *){font-size: 1em;line-height: 1.5}
+/* assets/kbdoc/assets/magnify-pop/magnific-popup.css */
+.dx-pagina-doc .mfp-close:is(.documentation_info *){line-height: 44px;font-size: 16.8px}
+.dx-pagina-doc .mfp-counter:is(.documentation_info *){font-size: 7.2px;line-height: 10.8px}
+.dx-pagina-doc .mfp-iframe-holder .mfp-content:is(.documentation_info *){line-height: 0}
+.dx-pagina-doc img.mfp-img:is(.documentation_info *){line-height: 0}
+.dx-pagina-doc .mfp-figure:is(.documentation_info *){line-height: 0}
+.dx-pagina-doc .mfp-figure small:is(.documentation_info *){font-size: 7.2px;line-height: 8.4px}
+.dx-pagina-doc .mfp-title:is(.documentation_info *){line-height: 10.8px}
+@media screen and (max-width: 800px) and (orientation: landscape), screen and (max-height: 300px){.dx-pagina-doc .mfp-img-mobile .mfp-close:is(.documentation_info *){line-height: 35px}}
+/* assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.min.css */
+
+/* assets/kbdoc/css/style.css */
+body.dx-pagina-doc .documentation_info{line-height: 15.6px;font-size: 9.6px}
+.dx-pagina-doc figure figcaption:is(.documentation_info *){line-height: 12px;font-size: 8.4px}
+.dx-pagina-doc .h1:is(.documentation_info *){font-size: 30px}
+.dx-pagina-doc .h2:is(.documentation_info *){font-size: 26.4px}
+.dx-pagina-doc .h3:is(.documentation_info *){font-size: 21.6px}
+.dx-pagina-doc .h4:is(.documentation_info *){font-size: 18px}
+.dx-pagina-doc .h5:is(.documentation_info *){font-size: 14.4px}
+.dx-pagina-doc .h6:is(.documentation_info *){font-size: 10.8px}
+.dx-pagina-doc .key:is(.documentation_info *),.dx-pagina-doc kbd:is(.documentation_info *){line-height: 0.95rem}
+.dx-pagina-doc .key:is(.documentation_info *),.dx-pagina-doc kbd:is(.documentation_info *),.dx-pagina-doc p .key:is(.documentation_info *),.dx-pagina-doc p kbd:is(.documentation_info *){font-size: 0.51rem;line-height: 0.6rem}
+.dx-pagina-doc .section_title.title-img .title-lg:is(.documentation_info *){font-size: 26.4px;line-height: 1.1}
+.dx-pagina-doc .h_title:is(.documentation_info *){font-size: 18px;line-height: 24px}
+.dx-pagina-doc .c_head:is(.documentation_info *){font-size: 12px;line-height: 15.6px}
+.dx-pagina-doc #back-to-top:is(.documentation_info *)::after{font-size: 2em;line-height: 50px}
+.dx-pagina-doc .action_btn:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .action_btn i:is(.documentation_info *){font-size: 10.8px}
+.dx-pagina-doc .error_area .action_btn:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .doc_border_btn:is(.documentation_info *){font-size: 8.4px}
+@media (max-width: 420px){.dx-pagina-doc .doc_border_btn.btn-round:is(.documentation_info *){font-size: 7.2px}}
+.dx-pagina-doc .doc_border_btn i:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .download-btn:is(.documentation_info *){font-size: 10.8px}
+.dx-pagina-doc .download-btn .btn-txt .title:is(.documentation_info *){font-size: 14.4px}
+.dx-pagina-doc .download-btn .btn-txt .prop span:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .download-btn .ribbon span:is(.documentation_info *){font: 700 10.8px/1 "Lato", sans-serif}
+.dx-pagina-doc .header_top .menu li a:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .menu > .nav-item > .nav-link:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .menu > .nav-item.submenu .dropdown-menu .nav-item .nav-link:is(.documentation_info *){font: 400 8.4px/9.6px "Roboto", sans-serif}
+.dx-pagina-doc .menu > .nav-item.submenu .dropdown-menu .nav-item .nav-link h5:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .menu > .nav-item.submenu .dropdown-menu .nav-item .nav-link p:is(.documentation_info *){line-height: 17.4px;font-size: 8.4px}
+.dx-pagina-doc .menu > .nav-item.submenu.mega_menu .dropdown-menu .tabHeader .nav-item .nav-link:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .menu > .nav-item.submenu.mega_menu .dropdown-menu .tabContent .tab-pane .tab_list li a:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .menu > .nav-item.submenu.mega_menu .dropdown-menu .tabContent .tab-pane p:is(.documentation_info *){font-size: 8.4px;line-height: 18px}
+.dx-pagina-doc .nav_btn:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .menu_two .nav_btn i:is(.documentation_info *){font-size: 7.2px}
+.dx-pagina-doc .dk_menu > .nav-item > .nav-link i:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .search_form .form-control:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .search_form button:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .side_menu .mobile_menu_header .close_nav:is(.documentation_info *){font-size: 15px}
+.dx-pagina-doc .doc_banner_text h2:is(.documentation_info *){font-size: 27.6px}
+.dx-pagina-doc .doc_banner_text p:is(.documentation_info *){font-size: 10.8px;line-height: 18px}
+.dx-pagina-doc .doc_banner_text h6:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .banner_search_form .form-control:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .banner_search_form button:is(.documentation_info *){font-size: 12px}
+.dx-pagina-doc .doc_banner_text_two h2:is(.documentation_info *){font-size: 27.6px}
+.dx-pagina-doc .doc_banner_text_two p:is(.documentation_info *){font-size: 10.8px;line-height: 18px}
+.dx-pagina-doc .doc_banner_text_two .banner_search_form .search_btn:is(.documentation_info *){font-size: 10.8px}
+.dx-pagina-doc .kbDoc-banner-support .banner-content-wrapper .banner-title:is(.documentation_info *){font-size: 26.4px}
+@media (max-width: 768px){.dx-pagina-doc .kbDoc-banner-support .banner-content-wrapper .banner-title:is(.documentation_info *){font-size: 20.4px}}
+.dx-pagina-doc .kbDoc-banner-support .banner-content-wrapper p:is(.documentation_info *){font-size: 10.8px;line-height: 16.8px}
+.dx-pagina-doc .kbDoc-banner-support .banner-content-wrapper .banner-search-form button:is(.documentation_info *){font-size: 12px}
+.dx-pagina-doc .breadcrumb_area .custom-select:is(.documentation_info *){line-height: 65px}
+.dx-pagina-doc .custom-select:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .custom-select ul li:is(.documentation_info *){font-size: 8.4px;line-height: 36px}
+.dx-pagina-doc .breadcrumb_content h2:is(.documentation_info *){font-size: 21.6px;line-height: 1.4}
+.dx-pagina-doc .breadcrumb_content .single_post_author .text h4:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .breadcrumb_text h2:is(.documentation_info *){font-size: 30px;line-height: 39.6px}
+.dx-pagina-doc .page_breadcrumb .date:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .breadcrumb .breadcrumb-item:is(.documentation_info *){font-size: 8.4px;line-height: 12.6px}
+.dx-pagina-doc .breadcrumb_content_two h2:is(.documentation_info *){font-size: 30px}
+.dx-pagina-doc .breadcrumb_content_two .breadcrumb .breadcrumb-item:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .doc_features_item_one h3:is(.documentation_info *){font-size: 12px;line-height: 14.4px}
+.dx-pagina-doc .doc_features_item_one p:is(.documentation_info *){line-height: 14.4px}
+.dx-pagina-doc .doc_features_item_one .learn_btn:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .doc_features_item_one .learn_btn i:is(.documentation_info *){font-size: 12px}
+.dx-pagina-doc .learn_btn:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .learn_btn i:is(.documentation_info *){font-size: 12px}
+.dx-pagina-doc .ycp .belah .luhur span.tombol:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .doc_tag .nav-item .nav-link:is(.documentation_info *){font-size: 8.4px;line-height: 16.8px}
+.dx-pagina-doc .doc_tag_title h4:is(.documentation_info *){font-size: 12px;line-height: 15.6px}
+.dx-pagina-doc .tag_list li a:is(.documentation_info *){font-size: 9.6px;line-height: 13.2px}
+.dx-pagina-doc .documentation_tab .nav-item .nav-link:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .documentation_text .round:is(.documentation_info *){line-height: 100px}
+.dx-pagina-doc .documentation_text h4:is(.documentation_info *){font-size: 14.4px}
+.dx-pagina-doc .documentation_item .icon:is(.documentation_info *){line-height: 66px}
+.dx-pagina-doc .documentation_item .media-body h5:is(.documentation_info *){font-size: 10.8px}
+.dx-pagina-doc .documentation_item .media-body p:is(.documentation_info *){line-height: 14.4px}
+.dx-pagina-doc .doc_faq_info .card .card-header h2 button:is(.documentation_info *){font-size: 10.8px;line-height: 18px}
+.dx-pagina-doc .doc_faq_info .card .card-header h2 button i:is(.documentation_info *){font-size: 12px}
+.dx-pagina-doc .doc_faq_info .card .card-body:is(.documentation_info *){line-height: 14.4px}
+.dx-pagina-doc .doc_solution_area .all_doc_btn:is(.documentation_info *){font-size: 10.8px}
+.dx-pagina-doc .doc_solution_area .all_doc_btn i:is(.documentation_info *){font-size: 15px}
+.dx-pagina-doc .doc_solution_item h4:is(.documentation_info *){font-size: 12px}
+.dx-pagina-doc .doc_fact_item .counter:is(.documentation_info *){font-size: 30px;line-height: 36px}
+.dx-pagina-doc .doc_fact_item p:is(.documentation_info *){font-size: 10.8px}
+.dx-pagina-doc .funfact-boxes .funfact-box .counter:is(.documentation_info *){font-size: 20.4px}
+.dx-pagina-doc .funfact-boxes .funfact-box .title:is(.documentation_info *){font-size: 9.6px;line-height: 15.6px}
+.dx-pagina-doc .doc_action_info .media .media-body p:is(.documentation_info *){font-size: 10.8px}
+.dx-pagina-doc .action_content h2:is(.documentation_info *){font-size: 21.6px;line-height: 28.8px}
+.dx-pagina-doc .action_content p:is(.documentation_info *){font-size: 10.8px}
+.dx-pagina-doc .action_subscribe_form .form-group .form-control:is(.documentation_info *){line-height: 70px}
+.dx-pagina-doc .action_subscribe_form .form-group .s_btn i:is(.documentation_info *){font-size: 12px}
+.dx-pagina-doc .action_subscribe_form .form-check label:is(.documentation_info *){font-size: 9px}
+.dx-pagina-doc .fact_navigation .nav-item .nav-link:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .fact_navigation .nav-item .nav-link:is(.documentation_info *):before{font-size: 12px}
+.dx-pagina-doc .doc_feedback_slider .item p:is(.documentation_info *){font-size: 10.8px;line-height: 18px}
+.dx-pagina-doc .doc_feedback_slider .item h5:is(.documentation_info *){font-size: 12px}
+.dx-pagina-doc .doc_feedback_slider .item h6:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .action_text h2:is(.documentation_info *){font-size: 24px}
+.dx-pagina-doc .action_text p:is(.documentation_info *){font-size: 10.8px;line-height: 16.8px}
+.dx-pagina-doc #preloader .round_spinner h4:is(.documentation_info *){font-size: 18px}
+.dx-pagina-doc #preloader .head:is(.documentation_info *){font-size: 15.6px}
+.dx-pagina-doc #preloader p:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .nav-sidebar .nav-item .nav-link:is(.documentation_info *){font-size: 8.4px;line-height: 12px}
+.dx-pagina-doc .nav-sidebar .nav-item .nav-link + .icon:is(.documentation_info *){font-size: 12px}
+.dx-pagina-doc .nav-sidebar .nav-item .dropdown_nav li a:is(.documentation_info *){font-size: 8.4px;line-height: 18px}
+.dx-pagina-doc .documentation_info .c_head .anchorjs-link:is(.documentation_info *){font-size: 13.2px !important}
+.dx-pagina-doc .doc_documentation_area .shortcode_title h1:is(.documentation_info *){font-size: 18px}
+.dx-pagina-doc .get_started .c_head i:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .link p:is(.documentation_info *):before{font-size: 14.4px}
+.dx-pagina-doc .test_version p:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .v_menu .nav-item .nav-link:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .v_menu .nav-item .nav-link span:is(.documentation_info *){line-height: 20px;font-size: 7.2px}
+.dx-pagina-doc .process_tab_shortcode .version:is(.documentation_info *){font-size: 9px}
+.dx-pagina-doc .process_tab_shortcode .version .v_middle p:is(.documentation_info *){font-size: 9px}
+.dx-pagina-doc .help_text .help_info .help_item h4:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .help_text .help_info .help_item h4 i:is(.documentation_info *){font-size: 10.8px}
+.dx-pagina-doc .question_box .question_text h4:is(.documentation_info *){font-size: 10.8px}
+.dx-pagina-doc .question_box .signup_form .input-group .form-control:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .question_box .signup_form .input-group button:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .feedback_link h6:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .feedback_link .h_btn:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .open_icon:is(.documentation_info *){line-height: 40px;font-size: 19.2px}
+.dx-pagina-doc .doc_rightsidebar h6:is(.documentation_info *){font-size: 9px}
+.dx-pagina-doc .doc_rightsidebar .doc_right_link li a:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .doc_rightsidebar .doc_right_link li a i:is(.documentation_info *){font-size: 7.2px}
+.dx-pagina-doc .doc_rightsidebar .doc_switch .tab-btn:is(.documentation_info *){font-size: 9.6px;line-height: 13.2px}
+.dx-pagina-doc .doc_menu .nav-link:is(.documentation_info *){font-size: 8.4px;line-height: 18px}
+.dx-pagina-doc .doc_menu .nav .nav-link:is(.documentation_info *){font-size: 8.4px;line-height: 18px}
+.dx-pagina-doc .mobile_menu .close_nav:is(.documentation_info *){font-size: 16.8px}
+.onepage-doc.dx-pagina-doc .nav-sidebar .nav-item .icon:is(.documentation_info *){line-height: 48px;font-size: 10.8px}
+.dx-pagina-doc .doc_rightsidebar .bootstrap-select .dropdown-toggle .filter-option-inner-inner:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .doc_rightsidebar .dropdown-toggle:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .doc_rightsidebar .bootstrap-select > .dropdown-menu .inner .dropdown-menu li a:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .fontsize-controllers .btn-group .btn:is(.documentation_info *){font-size: 9.6px;line-height: 1.2}
+.dx-pagina-doc .print:is(.documentation_info *){font-size: 10.8px}
+.dx-pagina-doc .nav_title:is(.documentation_info *){font-size: 9.6px;line-height: 13.2px}
+.dx-pagina-doc .full-amount:is(.documentation_info *){font-size: 18px}
+.dx-pagina-doc .full-amount .total-count:is(.documentation_info *){font-size: 18px}
+@media (max-width: 768px) and (max-width: 768px){.dx-pagina-doc .full-amount .total-count:is(.documentation_info *){font-size: 12px}}
+.dx-pagina-doc .chart-info li .counterup:is(.documentation_info *){font-size: 20.4px}
+.dx-pagina-doc .communities-boxes .kbDoc-com-box .kbDoc-com-box-content .title:is(.documentation_info *){font-size: 12px;line-height: 15.6px}
+.dx-pagina-doc .communities-boxes .kbDoc-com-box .kbDoc-com-box-content .total-post:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .light-header .title-light:is(.documentation_info *){font-size: 36px;line-height: 1}
+@media (max-width: 768px){.dx-pagina-doc .light-header .title-light:is(.documentation_info *){font-size: 18px}}
+.dx-pagina-doc .journalism-content-wrapper .journalism-title:is(.documentation_info *){font-size: 18px;line-height: 24px}
+.dx-pagina-doc .journalism-content-wrapper p:is(.documentation_info *){font-size: 12px;line-height: 20.4px}
+.dx-pagina-doc .journalism-content-wrapper .journalism-info .name:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .journalism-content-wrapper .journalism-info .designation:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .community-box .community-content .com-title:is(.documentation_info *){font-size: 10.8px;line-height: 16.8px}
+.dx-pagina-doc .community-box .community-content .details-link:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .community-post.forum-item .post-content p:is(.documentation_info *){font-size: 8.4px;line-height: 1.3}
+.dx-pagina-doc .community-post .post-content .entry-content .post-title:is(.documentation_info *){font-size: 10.8px;line-height: 1.7}
+.dx-pagina-doc .community-post.style-two .entry-content .post-title:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .community-post.style-two .post-content .com-featured i:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .community-post.style-two .meta li:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .community-post.style-two .meta li i:is(.documentation_info *),.dx-pagina-doc .community-post.style-two .meta li img:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .community-post.style-two .meta li a:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .badge:is(.documentation_info *){font-size: 7.2px;line-height: 1.45}
+.dx-pagina-doc .pagination-wrapper .post-pagination li a:is(.documentation_info *){line-height: 35px}
+.dx-pagina-doc .shortcode_info h4:is(.documentation_info *){font-size: 12px}
+.dx-pagina-doc .shortcode_info h6:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .tab_shortcode .nav-tabs .nav-item .nav-link:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .toggle_btn:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .toggle_btn:is(.documentation_info *):before{font-size: 10.8px}
+.dx-pagina-doc .doc_accordion .card-header button:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .doc_accordion .card-header button i:is(.documentation_info *){font-size: 13.2px}
+.dx-pagina-doc .message_alert i:is(.documentation_info *){font-size: 14.4px}
+.dx-pagina-doc .message_alert h5:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .message_alert .close:is(.documentation_info *){font-size: 14.4px}
+.dx-pagina-doc .notice i:is(.documentation_info *){font-size: 14.4px}
+.dx-pagina-doc .notice h5:is(.documentation_info *){font-size: 12px}
+.dx-pagina-doc .notice p:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .explanation:is(.documentation_info *)::after{font-size: 0.36rem}
+.dx-pagina-doc .img_popup:is(.documentation_info *){line-height: 52px;font-size: 15.6px}
+.dx-pagina-doc button.mfp-close:is(.documentation_info *){font-size: 18px}
+.dx-pagina-doc .tooltipster-sidetip .tooltipster-box .tooltipster-content .blog_grid_post .grid_post_content .post_tag a:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .tooltipster-sidetip .tooltipster-box .tooltipster-content .blog_grid_post .grid_post_content .b_title:is(.documentation_info *){font-size: 10.8px;line-height: 15px}
+.dx-pagina-doc .tooltipster-sidetip .tooltipster-box .tooltipster-content .blog_grid_post .grid_post_content p:is(.documentation_info *){font-size: 8.4px;line-height: 13.2px}
+.dx-pagina-doc .direction_step:is(.documentation_info *){font-size: 7.8px;line-height: 12px}
+.dx-pagina-doc .tip_content p:is(.documentation_info *){font-size: 8.4px;line-height: 15.6px}
+.dx-pagina-doc .tip_content h6:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .tip_content h6 span:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .img_modal .close:is(.documentation_info *){font-size: 18px}
+.dx-pagina-doc .img_pointing_content p:is(.documentation_info *){font-size: 8.4px;line-height: 13.2px}
+.dx-pagina-doc .caniuse ul .caniuse_agents_item span:is(.documentation_info *){font-size: 12px}
+.dx-pagina-doc .caniuse_section_legend .caniuse_legend_list a:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .table_shortcode th:is(.documentation_info *),.dx-pagina-doc .table_shortcode td:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .footnotes:is(.documentation_info *){font-size: 0.875em}
+.dx-pagina-doc .footnotes-link:is(.documentation_info *){font-size: 0.75em}
+.dx-pagina-doc .footnotes_item:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .footnotes_item strong:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .single_list li:is(.documentation_info *){font-size: 8.4px;line-height: 13.2px}
+.dx-pagina-doc ul.ordered-list li:is(.documentation_info *)::before{font-size: 6px}
+.dx-pagina-doc .ordered-list li:is(.documentation_info *){font-size: 9.6px;line-height: 15px}
+.dx-pagina-doc .ordered-list li:is(.documentation_info *)::before{font-size: 7.2px;line-height: 23px}
+.dx-pagina-doc .changelog_info .c_version:is(.documentation_info *){font-size: 8.4px;line-height: 27px}
+.dx-pagina-doc .changelog_info .changelog_date .c_date h6:is(.documentation_info *){font-size: 12px}
+.dx-pagina-doc .changelog_info .changelog_date .c_date p:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .changelog_content p:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .changelog_content span:is(.documentation_info *){font-size: 6px;line-height: 23px}
+.dx-pagina-doc .changelog_content .changelog_btn:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .tour_info_content p:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .cheatsheet_accordian .card .card-header button:is(.documentation_info *){font-size: 12px}
+.dx-pagina-doc .typography_area p:is(.documentation_info *){line-height: 16.8px}
+.dx-pagina-doc .heading_content .bold:is(.documentation_info *),.dx-pagina-doc .heading_content .medium:is(.documentation_info *),.dx-pagina-doc .heading_content .regular:is(.documentation_info *){line-height: 1}
+.dx-pagina-doc .dropcap_content p span:is(.documentation_info *){font-size: 32.4px;line-height: 33px}
+.dx-pagina-doc .dropcap_content p .r_dropcap:is(.documentation_info *){font-size: 24px;line-height: 25.2px}
+.dx-pagina-doc .typography_list ul li a:is(.documentation_info *),.dx-pagina-doc .typography_list ol li a:is(.documentation_info *){font-size: 9px;line-height: 20.4px}
+.dx-pagina-doc .blockquote p:is(.documentation_info *){font-size: 10.8px;line-height: 18px}
+.dx-pagina-doc .blockquote_two .quote_icon:is(.documentation_info *){font-size: 90px;line-height: 155px}
+.dx-pagina-doc .blockquote_two h5:is(.documentation_info *){font-size: 13.2px;line-height: 24px}
+.dx-pagina-doc .arrow_btn_big:is(.documentation_info *){font-size: 10.8px}
+.dx-pagina-doc .arrow_btn_big i:is(.documentation_info *){font-size: 16.8px}
+.dx-pagina-doc .action_content_three h2:is(.documentation_info *){font-size: 24px;line-height: 30px}
+.dx-pagina-doc .post-header .support-total-info li:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .post-header .support-total-info li a:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .post-header .category-menu .dropdown-toggle:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .post-header .category-menu .title:is(.documentation_info *){font-size: 8.4px;line-height: 1}
+.dx-pagina-doc .post-header .category-menu .cate-search-form input:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .post-header .category-menu .all-users:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .post-header .category-menu .short-by a:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .post-header .category-menu .short-by a.active-short:is(.documentation_info *):before{font-size: 8.4px}
+.dx-pagina-doc ul.forum-titles li:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc ul.forum-titles .forum-freshness .freshness-box:is(.documentation_info *){font-size: 8.4px;line-height: 1.3}
+.dx-pagina-doc .answer-action .action-content .ans-title:is(.documentation_info *){font-size: 12px}
+.dx-pagina-doc .answer-action .btn-ans:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .call-to-action .action-content-wrapper .action-title-wrap .action-title:is(.documentation_info *){font-size: 26.4px;line-height: 1.2}
+@media (max-width: 991px){.dx-pagina-doc .call-to-action .action-content-wrapper .action-title-wrap .action-title:is(.documentation_info *){font-size: 20.4px}}
+.dx-pagina-doc .call-to-action .action-content-wrapper .action_btn:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .status_widget .title-sm:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .usefull-links li a:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .ticket_categories li a:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .ticket_categories li .count:is(.documentation_info *){font-size: 8.4px;line-height: 1}
+.dx-pagina-doc .forum-post-top .forum-post-author .author-name:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .forum-post-top .forum-post-author .forum-author-meta span:is(.documentation_info *),.dx-pagina-doc .forum-post-top .forum-post-author .forum-author-meta a:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .action-button-container.action-btns .action_btn:is(.documentation_info *){font-size: 8.4px;line-height: 30px}
+.dx-pagina-doc .action-button-container .ask-btn:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .q-title h1:is(.documentation_info *){font-size: 15.6px;line-height: 1.4}
+.dx-pagina-doc .q-title .badge:is(.documentation_info *){line-height: 1.4}
+.dx-pagina-doc .forum-post-content .forum-post-btm .taxonomy:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .question-icon:is(.documentation_info *){font-size: 30px}
+.dx-pagina-doc .best-answer .accepted-ans-mark:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .best-answer .best-ans-content p:is(.documentation_info *){font-size: 9px}
+.dx-pagina-doc .all-answers .title:is(.documentation_info *){font-size: 12px}
+.dx-pagina-doc .all-answers .filter-bar p:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .all-answers .forum-comment .comment-content p:is(.documentation_info *){font-size: 8.4px;line-height: 1.6}
+.dx-pagina-doc .forum_sidebar:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .blog_top_post .b_top_post_content h3:is(.documentation_info *){font-size: 15.6px;line-height: 21.6px}
+.dx-pagina-doc .post_tag a:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .post_author .author_text h4:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .post_author .author_text .date:is(.documentation_info *){font-size: 7.8px}
+.dx-pagina-doc .blog_tab .nav-item .nav-link:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .b_title:is(.documentation_info *){font-size: 13.2px;line-height: 18px}
+.dx-pagina-doc .blog_single_item p:is(.documentation_info *){font-size: 9.6px;line-height: 18px}
+.dx-pagina-doc blockquote:is(.documentation_info *){font-size: 12px}
+.dx-pagina-doc blockquote .c_head:is(.documentation_info *){line-height: 34px}
+.dx-pagina-doc blockquote .author:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .single_post_two h2:is(.documentation_info *){font-size: 18px}
+.dx-pagina-doc .blog_social h5:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .blog_social .f_social_icon li a:is(.documentation_info *){line-height: 44px}
+.dx-pagina-doc .blog_post_author .media-body h5:is(.documentation_info *){font-size: 10.8px}
+.dx-pagina-doc .comment_box .post_comment .comment_author .media-body .comment_info h3:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .comment_box .post_comment .comment_author .media-body .comment_info .comment_date:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .comment_box .post_comment .comment_author .media-body .comment_reply:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .comment_box .post_comment .comment_author .media-body .comment_reply i:is(.documentation_info *){font-size: 10.8px}
+.dx-pagina-doc .blog_comment_box .get_quote_form .form-group .form-control:is(.documentation_info *){font-size: 8.4px;line-height: 1.4}
+.dx-pagina-doc .video_icon:is(.documentation_info *){line-height: 75px;font-size: 18px}
+.dx-pagina-doc .blog_link_post:is(.documentation_info *){line-height: 34px}
+.dx-pagina-doc .blog_link_post p:is(.documentation_info *){font-size: 12px}
+.dx-pagina-doc .blog_related_post .grid_post_content .b_title:is(.documentation_info *){font-size: 10.8px;line-height: 14.4px}
+.dx-pagina-doc .pagination .page-numbers:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .pagination .page-numbers i:is(.documentation_info *){font-size: 14.4px}
+.dx-pagina-doc .about_widget .text h3:is(.documentation_info *){font-size: 24px}
+.dx-pagina-doc .categorie_list li a:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .recent_post_item .media-body h5:is(.documentation_info *){font-size: 9.6px;line-height: 12px}
+.dx-pagina-doc .recent_post_item .media-body .entry_post_date:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .w_tag_list li a:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .comments_widget li h6:is(.documentation_info *){font-size: 7.8px}
+.dx-pagina-doc .comments_widget li .text:is(.documentation_info *){font-size: 9.6px;line-height: 14.4px}
+.dx-pagina-doc .sign_left h2:is(.documentation_info *){font-size: 21.6px;line-height: 26.4px}
+.dx-pagina-doc .sign_inner h3:is(.documentation_info *){font-size: 15.6px;line-height: 20.4px}
+.dx-pagina-doc .sign_inner p:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .sign_inner .btn-google:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .sign_inner .divider .or-text:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .login_form .form-group .form-control:is(.documentation_info *){font-size: 8.4px;line-height: 60px}
+.dx-pagina-doc .login_form .form-group .check_box input[type=checkbox]:checked:is(.documentation_info *):after{font-size: 6px;line-height: 12px}
+.dx-pagina-doc .login_form .form-group .l_text:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .login_form .form-group .forget_btn:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .get_info_item .media .media-body h5:is(.documentation_info *){font-size: 13.2px}
+.dx-pagina-doc .get_info_item .time:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .contact_info .contact_form .form-group h6:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .contact_info .contact_form .form-group .form-check:is(.documentation_info *){font-size: 9.6px;line-height: 9.6px}
+.dx-pagina-doc .contact_info .contact_form .form-group .form-control:is(.documentation_info *){line-height: 55px}
+.dx-pagina-doc .error_content_two h2:is(.documentation_info *){font-size: 21.6px}
+.dx-pagina-doc .error_content_two p:is(.documentation_info *){font-size: 10.8px}
+.dx-pagina-doc .error_search .form-control:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .f_widget .f_title:is(.documentation_info *){font-size: 10.8px}
+.dx-pagina-doc .f_widget.link_widget .link_list li a:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .footer_subscribe_form .s_btn:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .f_social_icon li a:is(.documentation_info *){font-size: 8.4px;line-height: 45px}
+.dx-pagina-doc .footer_bottom p:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .simple_footer p:is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .simple_footer .f_social_icon li a:is(.documentation_info *){line-height: 40px}
+/* assets/kbdoc/css/responsive.css */
+@media (max-width:1750px){.dx-pagina-doc .DOWNLOAD_NOW:is(.documentation_info *){font-size: 15px;line-height: 2.08}
+.dx-pagina-doc .sign_left h2:is(.documentation_info *){font-size: 20.4px;line-height: 24px}}
+@media (max-width:1366px){.dx-pagina-doc .signup_area_height .login_form .form-group .form-control:is(.documentation_info *){line-height: 50px}}
+@media (max-width: 1199px){.dx-pagina-doc .doc_features_item_one p:is(.documentation_info *){font-size: 9px}
+.dx-pagina-doc .feedback_link h6:is(.documentation_info *){font-size: 9px}
+.dx-pagina-doc .feedback_link p:is(.documentation_info *){font-size: 9px}
+.dx-pagina-doc .feedback_link .h_btn:is(.documentation_info *){font-size: 8.4px}}
+@media(max-width:991px){.dx-pagina-doc .menu .nav-item .mobile_dropdown_icon:is(.documentation_info *){line-height: 42px;font-size: 12px}
+.dx-pagina-doc .menu > .nav-item.submenu .dropdown-menu .nav-item .mobile_dropdown_icon:is(.documentation_info *){line-height: 25px}
+.dx-pagina-doc .login_form .form-group .forget_btn:is(.documentation_info *){font-size: 7.8px}
+.dx-pagina-doc .login_form .form-group .form-control:is(.documentation_info *){font-size: 7.8px}}
+@media (max-width:670px){.dx-pagina-doc .doc_left_sidebarlist h2:is(.documentation_info *){font-size: 14.4px;line-height: 1.5}
+.dx-pagina-doc .tooltip .tooltip-inner p:is(.documentation_info *){font-size: 8.4px}}
+@media (max-width:576px){.dx-pagina-doc .question-icon:is(.documentation_info *){font-size: 24px}
+.dx-pagina-doc .call-to-action .action-content-wrapper .action-title-wrap .action-title:is(.documentation_info *){font-size: 14.4px}
+.dx-pagina-doc .doc_banner_text_two .banner_search_form .search_btn:is(.documentation_info *){line-height: 70px}
+.dx-pagina-doc .post_tag a:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .blog_top_post .b_top_post_content h3:is(.documentation_info *){font-size: 13.2px;line-height: 16.8px}
+.dx-pagina-doc .video_icon:is(.documentation_info *){line-height: 63px}
+.dx-pagina-doc .blockquote_two h5:is(.documentation_info *){font-size: 10.8px;line-height: 19.8px}
+.dx-pagina-doc .nav_btn:is(.documentation_info *){font-size: 8.4px}}
+@media (max-width: 450px){.dx-pagina-doc .page_breadcrumb .breadcrumb .breadcrumb-item:is(.documentation_info *),.dx-pagina-doc .page_breadcrumb .date:is(.documentation_info *){font-size: 9px}
+.dx-pagina-doc .breadcrumb_area .banner_search_form .form-control:is(.documentation_info *),.dx-pagina-doc .banner_search_form_two .custom-select:is(.documentation_info *),.dx-pagina-doc .breadcrumb_area .banner_search_form button:is(.documentation_info *){line-height: 50px}
+.dx-pagina-doc .doc_banner_text h2:is(.documentation_info *){font-size: 21.6px}
+.dx-pagina-doc .doc_banner_text p:is(.documentation_info *){font-size: 9.6px;line-height: 1.5}
+.dx-pagina-doc .doc_banner_text_two h2:is(.documentation_info *){font-size: 21.6px}
+.dx-pagina-doc .breadcrumb_text h2:is(.documentation_info *){font-size: 19.8px;line-height: 21.6px}
+.dx-pagina-doc .blockquote_two h5:is(.documentation_info *){font-size: 9px;line-height: 16.8px}}
+/* assets/docx.css */
+.dx-pagina-doc .dx-search-results .dx-search-count:is(.documentation_info *){font-size: 7.8px}
+.dx-pagina-doc .dx-search-results a strong:is(.documentation_info *){font-size: 9px}
+.dx-pagina-doc .dx-search-results a small:is(.documentation_info *){font-size: 7.8px;line-height: 1.5}
+.dx-pagina-doc .doc_rightsidebar button.print:is(.documentation_info *){font-size: 12px;line-height: 1}
+.onepage-doc.dx-pagina-doc .nav-sidebar .nav-item .icon:is(.documentation_info *){line-height: 43px}
+.dx-pagina-doc .dx-content h3:is(.documentation_info *){font-size: 12px;line-height: 14.4px}
+.dx-pagina-doc .dx-content h4:is(.documentation_info *){font-size: 10.8px;line-height: 12.96px}
+.dx-pagina-doc .dx-content h5:is(.documentation_info *),.dx-pagina-doc .dx-content h6:is(.documentation_info *){font-size: 9.6px;line-height: 14.4px}
+.dx-pagina-doc .dx-content figcaption:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc.onepage-doc.dx-pagina-doc .nav-sidebar .nav-item .icon:is(.documentation_info *){line-height: 23px}
+.dx-pagina-doc.dx-pagina-doc .nav-sidebar .nav-item .dropdown_nav li a:is(.documentation_info *){line-height: 15.198px}
+.dx-pagina-doc .dx-trilha .breadcrumb:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .dx-cabeca h1:is(.documentation_info *){font-size: 21.6px;line-height: 26.4px}
+.dx-pagina-doc.dx-pagina-doc .dx-content blockquote:not(.notice):is(.documentation_info *){font-size: 9.6px}
+.dx-pagina-doc .dx-content .dx-fonte:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .dx-vizinhas a:is(.documentation_info *){font-size: 9px}
+.dx-pagina-doc .dx-ferramentas button.print:is(.documentation_info *),.dx-pagina-doc .dx-ferramentas .dx-editar:is(.documentation_info *){font-size: 12px;line-height: 1}
+.dx-pagina-doc .dx-ferramentas .doc_switch .tab-btn:is(.documentation_info *){font-size: 9.6px;line-height: 13.2px}
+.dx-pagina-doc .dx-faixa h1:is(.documentation_info *){font-size: 21.6px;line-height: 26.4px}
+.dx-pagina-doc .dx-faixa p:is(.documentation_info *){font-size: 9.6px;line-height: 15.6px}
+.dx-pagina-doc .dx-grupo-titulo h2:is(.documentation_info *){font-size: 15.6px;line-height: 19.2px}
+.dx-pagina-doc .dx-grupo-titulo p:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .dx-macro-codigo:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc .dx-macro-selo:is(.documentation_info *){font-size: 7.2px}
+.dx-pagina-doc .dx-macro h3:is(.documentation_info *){font-size: 10.8px;line-height: 13.8px}
+.dx-pagina-doc .dx-macro p:is(.documentation_info *){font-size: 9px;line-height: 13.8px}
+.dx-pagina-doc .dx-painel > h2:is(.documentation_info *){font-size: 15.6px;line-height: 19.2px}

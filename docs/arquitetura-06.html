@@ -1,0 +1,874 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A documentação de produto e de arquitetura do Horus v2: a visão, as decisões, a estratégia e como ele vai ser construído.">
+    <meta name="generator" content="DocX 0.2.1">
+    <link rel="shortcut icon" href="media/horus-claro.svg">
+    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/elagent-icon/style.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/font-awesome/css/all.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/niceselectpicker/nice-select.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/font-size/css/rvfs.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/animation/animate.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/tooltipster/css/tooltipster.bundle.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism-coy.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/magnify-pop/magnific-popup.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/css/style.css">
+    <link rel="stylesheet" href="assets/kbdoc/css/responsive.css">
+    <link rel="stylesheet" href="assets/docx.css">
+    <link rel="stylesheet" href="assets/conteudo.css">
+    <link rel="stylesheet" href="assets/indice.css">
+    <title>06 · Dados — Horus v2</title>
+</head>
+<body class="doc full-width-doc sticky-nav-doc onepage-doc dx-pagina-doc" data-spy="scroll" data-target=".navbar" data-offset="-120">
+    <a class="sr-only sr-only-focusable dx-skip" href="#post">Pular para o conteúdo</a>
+    <div class="body_wrapper sticky_menu">
+        <nav class="navbar navbar-expand-lg menu_one" id="stickyTwo" aria-label="Navegação principal">
+            <div class="container-fluid pl-60 pr-60">
+                <a class="navbar-brand" href="index.html">
+                    <img src="media/horus-claro.svg" alt="Horus v2">
+                    <img src="media/horus-escuro.svg" alt="Horus v2">
+                </a>
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Abrir o menu">
+                    <span class="menu_toggle">
+                        <span class="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                        <span class="hamburger-cross">
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav menu ml-auto">
+<li class="nav-item"><a href="index.html" class="nav-link">Início</a></li>
+<li class="nav-item dropdown submenu mega_menu tab-demo active"><a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentos</a><i class="arrow_carrot-down_alt2 mobile_dropdown_icon" aria-hidden="true" data-toggle="dropdown"></i><ul class="dropdown-menu scroll"><li><div class="row"><div class="col-lg-5 tabHeader"><ul class="nav flex-column nav-pills" id="dx-menu" role="tablist" aria-orientation="vertical"><li class="nav-item active"><a class="nav-link active" id="dx-menu-1-tab" data-toggle="pill" href="#dx-menu-1" role="tab" aria-controls="dx-menu-1" aria-selected="true">Comece aqui</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-2-tab" data-toggle="pill" href="#dx-menu-2" role="tab" aria-controls="dx-menu-2" aria-selected="false">Produto</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-3-tab" data-toggle="pill" href="#dx-menu-3" role="tab" aria-controls="dx-menu-3" aria-selected="false">Arquitetura · visão e decisões</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-4-tab" data-toggle="pill" href="#dx-menu-4" role="tab" aria-controls="dx-menu-4" aria-selected="false">Arquitetura · construção</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-5-tab" data-toggle="pill" href="#dx-menu-5" role="tab" aria-controls="dx-menu-5" aria-selected="false">Arquitetura · operação</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-6-tab" data-toggle="pill" href="#dx-menu-6" role="tab" aria-controls="dx-menu-6" aria-selected="false">Arquitetura · conferência</a></li></ul></div><div class="col-lg-7"><div class="tab-content tabContent" id="dx-menu-conteudo"><div class="tab-pane fade active show" id="dx-menu-1" role="tabpanel" aria-labelledby="dx-menu-1-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="visao-geral.html">O Horus v2</a></li><li><a href="pasta-v2.html">A pasta da v2</a></li></ul></div><div class="text"><a href="visao-geral.html"><p>Abrir Comece aqui</p></a></div></div><div class="tab-pane fade" id="dx-menu-2" role="tabpanel" aria-labelledby="dx-menu-2-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="produto-temas.html">Temas da visão de produto</a></li><li><a href="produto-norte.html">Norte do produto</a></li><li><a href="produto-lacunas.html">Inventário de lacunas</a></li><li><a href="produto-mfs-hoje.html">Macro funcionalidades de hoje</a></li><li><a href="produto-v20.html">A v2.0 consolidada</a></li></ul><ul class="list-unstyled tab_list"><li><a href="produto-versoes.html">As versões, mf a mf</a></li><li><a href="produto-mapa.html">Mapa de objetivos e funcionalidades</a></li><li><a href="produto-backlog.html">Backlog estratégico</a></li><li><a href="backlog-atividades.html">Backlog de atividades</a></li></ul></div><div class="text"><a href="produto-temas.html"><p>Abrir Produto</p></a></div></div><div class="tab-pane fade" id="dx-menu-3" role="tabpanel" aria-labelledby="dx-menu-3-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura.html">A pasta da arquitetura</a></li><li><a href="arquitetura-01.html">01 · Estratégia da solução</a></li><li><a href="arquitetura-02.html">02 · Registro de decisões</a></li><li><a href="arquitetura-03.html">03 · Metas de qualidade</a></li></ul></div><div class="text"><a href="arquitetura.html"><p>Abrir Arquitetura · visão e decisões</p></a></div></div><div class="tab-pane fade" id="dx-menu-4" role="tabpanel" aria-labelledby="dx-menu-4-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-04.html">04 · Software</a></li><li><a href="arquitetura-05.html">05 · Motor de análise e IA</a></li><li><a href="arquitetura-06.html">06 · Dados</a></li><li><a href="arquitetura-07.html">07 · Segurança</a></li><li><a href="arquitetura-08.html">08 · Integrações</a></li></ul></div><div class="text"><a href="arquitetura-04.html"><p>Abrir Arquitetura · construção</p></a></div></div><div class="tab-pane fade" id="dx-menu-5" role="tabpanel" aria-labelledby="dx-menu-5-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-09.html">09 · Infraestrutura e ambientes</a></li><li><a href="arquitetura-10.html">10 · Publicação e operação</a></li><li><a href="arquitetura-11.html">11 · Observabilidade</a></li><li><a href="arquitetura-12.html">12 · Qualidade e testes</a></li><li><a href="arquitetura-13.html">13 · Custo de operação</a></li></ul></div><div class="text"><a href="arquitetura-09.html"><p>Abrir Arquitetura · operação</p></a></div></div><div class="tab-pane fade" id="dx-menu-6" role="tabpanel" aria-labelledby="dx-menu-6-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-14.html">14 · Conferência do produto</a></li></ul></div><div class="text"><a href="arquitetura-14.html"><p>Abrir Arquitetura · conferência</p></a></div></div></div></div></div></li></ul></li>
+                    </ul>
+                    <ul class="list-unstyled menu_social">
+                        <li class="search">
+                            <form action="#" class="search_form" role="search" data-search-form>
+                                <label class="sr-only" for="dx-search">Buscar na documentação</label>
+                                <input type="search" class="form-control" id="dx-search" placeholder="Buscar" autocomplete="off" data-search-input aria-describedby="dx-search-status" aria-controls="dx-search-results">
+                                <button type="submit" aria-label="Buscar"><i class="icon_search" aria-hidden="true"></i></button>
+                                <div class="dx-search-results" id="dx-search-results" data-search-results hidden></div>
+                            </form>
+                            <p class="sr-only" id="dx-search-status" role="status" data-search-status></p>
+                        </li>
+                    </ul>
+                    <div class="dx-ferramentas">
+
+
+                        <div id="font-switcher"><div id="rvfs-controllers" class="fontsize-controllers group"></div></div>
+                        <button type="button" class="print" data-print aria-label="Imprimir"><i class="icon_printer" aria-hidden="true"></i></button>
+                        <div class="doc_switch">
+                            <label for="something" class="tab-btn tab-btns"><i class="icon_lightbulb_alt" aria-hidden="true"></i><span class="sr-only">Tema claro</span></label>
+                            <input type="checkbox" name="something" id="something" class="tab_switcher" aria-label="Tema escuro">
+                            <label for="something" class="tab-btn"><i class="far fa-moon" aria-hidden="true"></i><span class="sr-only">Tema escuro</span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <section class="doc_documentation_area onepage_doc_area" id="sticky_doc">
+            <div class="overlay_bg"></div>
+            <div class="container-fluid pl-60 pr-60">
+                <div class="row doc-container">
+                    <div class="col-lg-2 doc_mobile_menu doc-sidebar display_none">
+                        <aside class="doc_left_sidebarlist" aria-label="Tópicos desta página">
+                            <h3 class="nav_title">Tópicos</h3>
+                            <div class="scroll">
+                                <ul class="list-unstyled nav-sidebar doc-nav">
+<li class="nav-item active"><a href="#arquitetura-06-1-o-que-o-tema-precisa-garantir" class="nav-link">1. O que o tema precisa garantir</a></li>
+<li class="nav-item"><a href="#arquitetura-06-2-as-decisoes" class="nav-link">2. As decisões</a></li>
+<li class="nav-item"><a href="#arquitetura-06-3-os-componentes-e-a-responsabilidade-de-cada-um" class="nav-link">3. Os componentes e a responsabilidade de cada um</a><ul class="list-unstyled dropdown_nav"><li class="nav-item"><a href="#arquitetura-06-31-o-que-se-guarda-e-de-quem-e-arq-033" class="nav-link">3.1 O que se guarda e de quem é (ARQ-033)</a></li><li class="nav-item"><a href="#arquitetura-06-32-o-isolamento-entre-organizacoes-arq-010--arq-088-arq-034" class="nav-link">3.2 O isolamento entre organizações (ARQ-010 ✅, ARQ-088, ARQ-034)</a></li><li class="nav-item"><a href="#arquitetura-06-33-a-guarda-de-cada-dado-arq-035-" class="nav-link">3.3 A guarda de cada dado (ARQ-035 ✅)</a></li><li class="nav-item"><a href="#arquitetura-06-34-apagar-arq-037" class="nav-link">3.4 Apagar (ARQ-037)</a></li><li class="nav-item"><a href="#arquitetura-06-35-as-organizacoes-de-exemplo-chegam-a-v20-arq-011--arq-089" class="nav-link">3.5 As organizações de exemplo chegam à v2.0 (ARQ-011 ✅, ARQ-089)</a></li><li class="nav-item"><a href="#arquitetura-06-36-os-componentes" class="nav-link">3.6 Os componentes</a></li></ul><span class="icon"><i class="icon_plus" aria-hidden="true"></i><i class="icon_minus-06" aria-hidden="true"></i></span></li>
+<li class="nav-item"><a href="#arquitetura-06-4-o-que-vem-da-v1xx-e-o-que-nao-vem" class="nav-link">4. O que vem da v1.xx e o que não vem</a></li>
+<li class="nav-item"><a href="#arquitetura-06-5-os-riscos-e-o-que-falta-decidir" class="nav-link">5. Os riscos e o que falta decidir</a></li>
+                                </ul>
+                            </div>
+                        </aside>
+                    </div>
+                    <div class="col-lg-10 col-md-12">
+                        <div class="documentation_info dx-pagina" id="post">
+                            <header class="dx-cabeca" id="arquitetura-06">
+                                <nav class="dx-trilha" aria-label="Trilha"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Início</a></li><li class="breadcrumb-item">Arquitetura · construção</li><li class="breadcrumb-item active" aria-current="page">06 · Dados</li></ol></nav>
+                                
+                                <h1>06 · Dados</h1>
+                                <p>O que o Horus guarda, de quem é cada dado, como as organizações ficam separadas e por quanto tempo.</p>
+                            </header>
+                            <div class="dx-modelo-01">
+<nav aria-labelledby="dx-m01-assuntos-titulo">
+<div class="dx-m01-rotulo"><h2 id="dx-m01-assuntos-titulo">Explore os assuntos</h2><span>5 seções</span></div>
+<div class="dx-m01-assuntos">
+<a class="dx-m01-assunto" href="#arquitetura-06-1-o-que-o-tema-precisa-garantir"><span class="dx-m01-icone"><i class="fas fa-file-alt" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>1. O que o tema precisa garantir</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#arquitetura-06-2-as-decisoes"><span class="dx-m01-icone"><i class="fas fa-file-alt" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>2. As decisões</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#arquitetura-06-3-os-componentes-e-a-responsabilidade-de-cada-um"><span class="dx-m01-icone"><i class="fas fa-file-alt" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>3. Os componentes e a responsabilidade de cada um</strong><small>6 tópicos</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#arquitetura-06-4-o-que-vem-da-v1xx-e-o-que-nao-vem"><span class="dx-m01-icone"><i class="fas fa-file-alt" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>4. O que vem da v1.xx e o que não vem</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#arquitetura-06-5-os-riscos-e-o-que-falta-decidir"><span class="dx-m01-icone"><i class="fas fa-file-alt" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>5. Os riscos e o que falta decidir</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</div></nav>
+<section class="dx-m01-fontes" aria-labelledby="dx-m01-fontes-titulo">
+<header class="dx-m01-cabecalho"><div>
+<h2 id="dx-m01-fontes-titulo"><i class="fas fa-link" aria-hidden="true"></i><span>Tópicos</span></h2>
+</div>
+<span class="dx-m01-total">6 tópicos</span></header>
+<div class="dx-m01-grade">
+<section class="dx-m01-fonte"><h3><i class="fas fa-file-alt" aria-hidden="true"></i><span>3. Os componentes e a responsabilidade de cada um</span><small aria-label="6 tópicos">6</small></h3><ul class="dx-m01-links"><li><a href="#arquitetura-06-31-o-que-se-guarda-e-de-quem-e-arq-033"><span>3.1 O que se guarda e de quem é (ARQ-033)</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#arquitetura-06-32-o-isolamento-entre-organizacoes-arq-010--arq-088-arq-034"><span>3.2 O isolamento entre organizações (ARQ-010 ✅, ARQ-088, ARQ-034)</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#arquitetura-06-33-a-guarda-de-cada-dado-arq-035-"><span>3.3 A guarda de cada dado (ARQ-035 ✅)</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#arquitetura-06-34-apagar-arq-037"><span>3.4 Apagar (ARQ-037)</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#arquitetura-06-35-as-organizacoes-de-exemplo-chegam-a-v20-arq-011--arq-089"><span>3.5 As organizações de exemplo chegam à v2.0 (ARQ-011 ✅, ARQ-089)</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#arquitetura-06-36-os-componentes"><span>3.6 Os componentes</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li></ul></section>
+</div></section>
+</div>
+                            <div class="dx-content">
+<p>Situação: 🟢 escrito pelo arquiteto · seis decisões novas (<a href="arquitetura-02.html#arq-033"><code>ARQ-033</code></a> a <a href="arquitetura-02.html#arq-037"><code>ARQ-037</code></a> e <a href="arquitetura-02.html#arq-089"><code>ARQ-089</code></a>): quatro 🟢, uma ⚪ (<a href="arquitetura-02.html#arq-036"><code>ARQ-036</code></a>, substituída pela <a href="arquitetura-02.html#arq-089"><code>ARQ-089</code></a>) e uma ✅ do dono (<a href="arquitetura-02.html#arq-035"><code>ARQ-035</code></a>, a guarda, em 03/11/2026) · o isolamento decidido pelo dono (<a href="arquitetura-02.html#arq-010"><code>ARQ-010</code></a> ✅, um banco por organização), com o roteamento do arquiteto (<a href="arquitetura-02.html#arq-088"><code>ARQ-088</code></a>) · a chegada da v2.0 decidida pelo dono (<a href="arquitetura-02.html#arq-011"><code>ARQ-011</code></a> ✅: uma instância nova, com as organizações de exemplo semeadas, <a href="arquitetura-02.html#arq-089"><code>ARQ-089</code></a>) · dois itens a devolver ao PO (A-14 e A-16, no <a href="arquitetura-01.html">documento 01</a>, seção 9).</p>
+<p>Última atualização: 03/11/2026 (a cópia de segurança fora do Horus, <a href="arquitetura-02.html#arq-086"><code>ARQ-086</code></a>: o prazo das cópias é de cada instância; um banco por organização, pela <a href="arquitetura-02.html#arq-010"><code>ARQ-010</code></a> ✅, e o roteamento, pela <a href="arquitetura-02.html#arq-088"><code>ARQ-088</code></a>; o envelope, <a href="arquitetura-02.html#arq-016"><code>ARQ-016</code></a> ✅; a v2.0 numa instância nova, com as organizações de exemplo semeadas, pela <a href="arquitetura-02.html#arq-011"><code>ARQ-011</code></a> ✅ e pela <a href="arquitetura-02.html#arq-089"><code>ARQ-089</code></a>; os prazos da organização nas preferências dela, pela <a href="arquitetura-02.html#arq-035"><code>ARQ-035</code></a> ✅; as regras e as claims de exemplo só na v2.1, pela <a href="arquitetura-02.html#arq-090"><code>ARQ-090</code></a> ✅).</p>
+<p>Este documento diz <strong>o que o Horus v2 guarda, de quem é cada dado, como as organizações ficam separadas, por quanto tempo cada dado fica e como as organizações de exemplo chegam à v2.0</strong>. Quem lê o quê dentro de uma organização (o login, os papéis, as roles e a segurança por pessoa) está no <a href="arquitetura-07.html">documento 07</a>; a cópia de segurança e a volta de versão, no documento 10.</p>
+<ul>
+<li>O <strong>quê</strong> e o <strong>porquê</strong> são do produto (<a href="produto-backlog.html">backlog estratégico</a>, <a href="produto-v20.html">a v2.0 consolidada</a>). As decisões (<code>ARQ-nnn</code>) estão no <a href="arquitetura-02.html">registro</a>; os módulos e os contratos, no <a href="arquitetura-04.html">documento 04</a>.</li>
+<li>O código da v1.xx se cita como <code>horus@318db52b:&lt;caminho&gt;</code>. Nada foi executado: o levantamento é de leitura do código e das regras do repositório.</li>
+<li>O nível de detalhe para no componente, no padrão e no contrato. Tabela, coluna e passo de migração ficam para o desenvolvimento; os nomes de dado abaixo (&quot;as conversas&quot;, &quot;o rastro&quot;) são do negócio.</li>
+<li>⚠️ A <code>D-138</code> e a <code>D-139</code> vêm sempre com o título curto: <code>D-138</code> (&quot;A v1.xx fecha como MVP no HML…&quot;) e <code>D-139</code> (&quot;Tabela de conversão das mfs…&quot;).</li>
+</ul>
+<p>Legenda: 🟢 decidida pelo arquiteto · 🟡 proposta ao dono · 🔎 hipótese a confirmar · ♻️ vem da v1.xx · 🔧 vem e muda · 🆕 novo.</p>
+<div class="doc-section dx-assunto"><h3 id="arquitetura-06-1-o-que-o-tema-precisa-garantir">1. O que o tema precisa garantir</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de 06 · Dados"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Garantia</th>
+<th scope="col">Por quê</th>
+<th scope="col">Objetivos</th>
+<th scope="col">Decisões de produto</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>🗂️ <strong>As organizações não se misturam</strong></td>
+<td>Uma instância comporta várias organizações, e cada setor de uma empresa é uma</td>
+<td>O2, O7</td>
+<td><a href="produto-backlog.html#d-008"><code>D-008</code></a> (prova de valor: &quot;sem misturar os dados de uma com os de outra&quot;), <a href="produto-backlog.html#d-009"><code>D-009</code></a>, <a href="produto-backlog.html#d-013"><code>D-013</code></a>, <a href="produto-backlog.html#d-017"><code>D-017</code></a></td>
+</tr>
+<tr>
+<td>👀 <strong>O Horus só lê e não copia as bases do cliente</strong></td>
+<td>O cliente confia porque os bancos dele ficam intocados; guardar as linhas dele seria outra promessa</td>
+<td>O2</td>
+<td><a href="produto-backlog.html#d-001"><code>D-001</code></a>, <a href="produto-backlog.html#d-022"><code>D-022</code></a></td>
+</tr>
+<tr>
+<td>🧾 <strong>O rastro não se altera e dura o prazo do owner</strong></td>
+<td>Sem isso, o rastro não prova a responsabilidade do gestor</td>
+<td>O2</td>
+<td><a href="produto-backlog.html#d-090"><code>D-090</code></a>, <a href="produto-backlog.html#d-092"><code>D-092</code></a> e a leitura <code>D-092.1</code>, <a href="produto-backlog.html#d-093"><code>D-093</code></a></td>
+</tr>
+<tr>
+<td>💤 <strong>No corte, nada se apaga</strong></td>
+<td>O cliente que volta a pagar encontra tudo como deixou</td>
+<td>O7</td>
+<td><a href="produto-backlog.html#d-068"><code>D-068</code></a>, <a href="produto-backlog.html#d-075"><code>D-075</code></a> e a leitura <code>D-075.3</code></td>
+</tr>
+<tr>
+<td>🔁 <strong>O que a organização já configurou chega à v2.0</strong></td>
+<td>O modelo semântico, as regras de segurança e os boards são o trabalho mais caro do cliente</td>
+<td>O6, O7</td>
+<td><a href="produto-backlog.html#d-134"><code>D-134</code></a>, <a href="produto-backlog.html#d-021"><code>D-021</code></a>, <a href="produto-backlog.html#d-133"><code>D-133</code></a> (a medida sem quebra de série)</td>
+</tr>
+<tr>
+<td>⏳ <strong>Cada dado tem prazo, e o dado pessoal não fica além do necessário</strong></td>
+<td>A <a href="produto-backlog.html#d-092"><code>D-092</code></a> não escolheu o rastro &quot;para sempre&quot;, que guardaria dado pessoal além do necessário; a conversa limpa do popup some de vez</td>
+<td>O2</td>
+<td><a href="produto-backlog.html#d-092"><code>D-092</code></a> (opção C recusada), <a href="produto-backlog.html#d-086"><code>D-086</code></a> e a leitura <code>D-086.4</code>, <a href="produto-backlog.html#d-087"><code>D-087</code></a> e a leitura <code>D-087.1</code></td>
+</tr>
+<tr>
+<td>🛟 <strong>O que uma instância precisa copiar está escrito, e a volta se confere</strong></td>
+<td>A organização paga e o rastro não pode sumir; a cópia é da infra de cada instância</td>
+<td>O2, O7</td>
+<td><a href="arquitetura-02.html#arq-086"><code>ARQ-086</code></a> ✅, <a href="arquitetura-02.html#arq-087"><code>ARQ-087</code></a></td>
+</tr>
+<tr>
+<td>📦 <strong>Cabe no envelope do primeiro ano</strong></td>
+<td>De 15 a 40 GB por ano no banco da aplicação</td>
+<td>O1, O3, O4, O7</td>
+<td><a href="arquitetura-02.html#arq-016"><code>ARQ-016</code></a> ✅</td>
+</tr>
+</tbody>
+</table></div></div><div class="doc-section dx-assunto"><h3 id="arquitetura-06-2-as-decisoes">2. As decisões</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 2 de 06 · Dados"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Decisão</th>
+<th scope="col">O que decide</th>
+<th scope="col">Situação</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="arquitetura-02.html#arq-005"><code>ARQ-005</code></a></td>
+<td>A fila de trabalhos e a caixa de saída moram no banco da aplicação</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td><a href="arquitetura-02.html#arq-009"><code>ARQ-009</code></a></td>
+<td>O rastro é um registro só de acréscimo, no banco da aplicação</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td><a href="arquitetura-02.html#arq-010"><code>ARQ-010</code></a></td>
+<td>O banco mestre e um banco por organização, cada um com o seu login</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><a href="arquitetura-02.html#arq-011"><code>ARQ-011</code></a></td>
+<td>A v2.0 nasce numa instância nova; só as organizações de exemplo chegam, pelo semeador</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><a href="arquitetura-02.html#arq-016"><code>ARQ-016</code></a></td>
+<td>O envelope do primeiro ano</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><a href="arquitetura-02.html#arq-086"><code>ARQ-086</code></a>, <a href="arquitetura-02.html#arq-087"><code>ARQ-087</code></a></td>
+<td>A cópia fora do Horus, pela infra de cada instância; o contrato da cópia e a conferência da volta</td>
+<td>✅, 🟢</td>
+</tr>
+<tr>
+<td><strong><a href="arquitetura-02.html#arq-033"><code>ARQ-033</code></a></strong></td>
+<td><strong>O que se guarda tem quatro donos — a instância, a organização, a pessoa e o cliente das fontes —, e o Horus não copia as bases do cliente</strong></td>
+<td>🟢</td>
+</tr>
+<tr>
+<td><strong><a href="arquitetura-02.html#arq-034"><code>ARQ-034</code></a></strong></td>
+<td><strong>O filtro por organização é um filtro global do contexto do banco, com a organização da sessão ou do trabalho, uma lista fechada de exceções e a falha fechada</strong></td>
+<td>🟢 (a segunda trava, sob a <a href="arquitetura-02.html#arq-010"><code>ARQ-010</code></a> e a <a href="arquitetura-02.html#arq-088"><code>ARQ-088</code></a>)</td>
+</tr>
+<tr>
+<td><strong><a href="arquitetura-02.html#arq-035"><code>ARQ-035</code></a></strong></td>
+<td><strong>A guarda de cada dado: um prazo padrão por tipo, que o owner ajusta nas preferências da organização entre um piso e um teto, e o registro de acesso por seis meses</strong></td>
+<td>✅</td>
+</tr>
+<tr>
+<td><a href="arquitetura-02.html#arq-036"><code>ARQ-036</code></a></td>
+<td>A conversão é uma sequência de migrações idempotentes, com relatório e conferência, ensaiada numa cópia da PRD, e a volta depois dela é a restauração da cópia de antes</td>
+<td>⚪ (substituída pela <a href="arquitetura-02.html#arq-089"><code>ARQ-089</code></a>)</td>
+</tr>
+<tr>
+<td><strong><a href="arquitetura-02.html#arq-037"><code>ARQ-037</code></a></strong></td>
+<td><strong>Apagar segue o dono do dado: cada módulo apaga o que é seu ao receber o evento, e um teste reprova a tabela com a marca da organização sem quem a apague</strong></td>
+<td>🟢</td>
+</tr>
+<tr>
+<td><strong><a href="arquitetura-02.html#arq-088"><code>ARQ-088</code></a></strong></td>
+<td><strong>O banco mestre guarda o mapa e o que é da instância; o contexto da organização abre o banco dela com o login dela, e a marca e o filtro continuam como segunda trava</strong></td>
+<td>🟢</td>
+</tr>
+<tr>
+<td><strong><a href="arquitetura-02.html#arq-089"><code>ARQ-089</code></a></strong></td>
+<td><strong>As organizações de exemplo nascem de um semeador versionado no repositório: os arquivos das duas organizações e um comando do pacote que as cria em qualquer instância</strong></td>
+<td>🟢</td>
+</tr>
+</tbody>
+</table></div></div><div class="doc-section dx-assunto"><h3 id="arquitetura-06-3-os-componentes-e-a-responsabilidade-de-cada-um">3. Os componentes e a responsabilidade de cada um</h3>
+<h4 id="arquitetura-06-31-o-que-se-guarda-e-de-quem-e-arq-033">3.1 O que se guarda e de quem é (<code>ARQ-033</code>)</h4>
+<p>Todo dado do banco da aplicação tem <strong>um dono</strong>, e o dono decide a marca do registro, quem pode apagá-lo e o prazo.</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 3 de 06 · Dados"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Dono</th>
+<th scope="col">O que é</th>
+<th scope="col">Quem responde por ele</th>
+<th scope="col">Marca do registro</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>🏛️ <strong>A instância</strong></td>
+<td>A identidade e a marca, os administradores, o envio de e-mail, o interruptor geral da segurança, os assentos liberados a cada organização</td>
+<td>O owner da instância, que no SaaS é a Maind (<a href="produto-backlog.html#d-013"><code>D-013</code></a>, leitura <code>D-068.1</code>)</td>
+<td>Nenhuma: fica no banco mestre (3.2)</td>
+</tr>
+<tr>
+<td>🏢 <strong>A organização</strong></td>
+<td>As fontes e os modelos semânticos, as regras de segurança, as conexões de IA, os boards e os relatórios, os agendamentos e os agentes, as roles e os grupos, as conversas, os reportes, o rastro, os fatos de uso e o custo</td>
+<td>O owner da organização (<a href="produto-backlog.html#d-013"><code>D-013</code></a>)</td>
+<td>A da organização, em todo registro</td>
+</tr>
+<tr>
+<td>👤 <strong>A pessoa</strong></td>
+<td>A conta (nome, e-mail, foto, senha cifrada, a ligação com o Google), as preferências e a área de avisos</td>
+<td>A própria pessoa</td>
+<td>Nenhuma: a conta é da instância, e a mesma pessoa está em várias organizações</td>
+</tr>
+<tr>
+<td>👤🏢 <strong>A pessoa na organização</strong></td>
+<td>O vínculo (papel, gestor, tipo de assento, roles), os valores de claim, o número de WhatsApp ligado (<a href="produto-backlog.html#d-094"><code>D-094</code></a>), o contato em cada conector (<a href="produto-backlog.html#d-038"><code>D-038</code></a>)</td>
+<td>O owner (o vínculo e as claims) e a pessoa (o número e os contatos)</td>
+<td>A da organização</td>
+</tr>
+<tr>
+<td>🗄️ <strong>O cliente, das fontes</strong></td>
+<td>Os números que a resposta mostrou: os blocos de cada resposta e de cada cartão, o resultado guardado por sete dias para o cartão e o filtro, os artefatos até a entrega</td>
+<td>A organização, que é quem tem a fonte</td>
+<td>A da organização</td>
+</tr>
+</tbody>
+</table></div><p><strong>O Horus não copia as bases do cliente.</strong> Ele guarda só o que mostrou: os blocos já desenhados, com os números (<code>horus@318db52b:apps/server/Horus.Core/Data/Consultas/ConsultaEntities.cs</code>, a execução guarda os blocos e não as linhas), e a prosa. As linhas cruas passam pela memória do servidor, vão ao modelo só na leitura depois da consulta (até 12.000 caracteres) e não se gravam. O PDF agendado da v1.xx já segue a regra: &quot;nenhum número calculado é guardado&quot; (<code>horus@318db52b:apps/server/Horus.Core/Relatorios/EntregaDeRelatorio.cs</code>). Na v2.0, o artefato pronto fica guardado só entre o desenho e a entrega (<a href="arquitetura-02.html#arq-022"><code>ARQ-022</code></a>, prazo em 3.3).</p>
+<p><strong>O que cada módulo guarda</strong> (os módulos são os do <a href="arquitetura-04.html">documento 04</a>):</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 4 de 06 · Dados"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Módulo</th>
+<th scope="col">O que guarda</th>
+<th scope="col">Dono</th>
+<th scope="col">Dado pessoal?</th>
+<th scope="col">Dado do cliente?</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>🧱 Fundação</td>
+<td>Os trabalhos da fila e os eventos da caixa de saída (só ids e o tipo, nunca conteúdo, <a href="arquitetura-02.html#arq-019"><code>ARQ-019</code></a>); os fatos de uso; o consumo de IA e de mensagens</td>
+<td>Organização</td>
+<td>Ids de pessoa</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>🏛️ Plataforma</td>
+<td>A instância, os assentos, as organizações, as contas e os vínculos, os convites, os grupos, as roles, o rastro, a área de avisos</td>
+<td>Instância, pessoa e organização</td>
+<td>Sim (conta, vínculo, rastro de quem abriu)</td>
+<td>Não</td>
+</tr>
+<tr>
+<td>🔌 Dados e IA</td>
+<td>As fontes (credencial cifrada), os modelos semânticos, as conexões de IA (chave cifrada), as claims, as regras e as consultas protegidas, a trilha de segurança, o histórico de consultas e execuções</td>
+<td>Organização</td>
+<td>Sim (valores de claim)</td>
+<td>Sim (os blocos das execuções, por sete dias)</td>
+</tr>
+<tr>
+<td>💬 Motor de análise</td>
+<td>As conversas e as mensagens (prosa, blocos, consulta, fontes da web, nível, recorte de acesso), o retorno e a cópia da resposta reportada</td>
+<td>Organização</td>
+<td>Sim (o texto da pergunta e o recorte de acesso)</td>
+<td>Sim (os números da resposta)</td>
+</tr>
+<tr>
+<td>📲 Canais</td>
+<td>A conversa do popup até ser salva ou limpa; a ligação do número de WhatsApp</td>
+<td>Organização e pessoa</td>
+<td>Sim (o número)</td>
+<td>Sim (a resposta)</td>
+</tr>
+<tr>
+<td>📌 Acompanhar e avisar</td>
+<td>Os boards, os cartões, as páginas, os relatórios; os agendamentos; os agentes (as instruções, a interpretação confirmada, as execuções); os artefatos até a entrega; os contatos aprovados</td>
+<td>Organização</td>
+<td>Sim (os contatos)</td>
+<td>Sim (os números dos cartões e dos artefatos)</td>
+</tr>
+<tr>
+<td>📈 Prova e controle</td>
+<td>Nada próprio: lê o rastro, os fatos de uso e o retorno pelas fachadas de quem os grava</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div><h4 id="arquitetura-06-32-o-isolamento-entre-organizacoes-arq-010--arq-088-arq-034">3.2 O isolamento entre organizações (<code>ARQ-010</code> ✅, <code>ARQ-088</code>, <code>ARQ-034</code>)</h4>
+<p><strong>A escolha do dono</strong> (<a href="arquitetura-02.html#arq-010"><code>ARQ-010</code></a>, em 03/11/2026): o Postgres da instância tem um <strong>banco mestre</strong>, com o mapa das organizações, e <strong>um banco por organização</strong>, com um login só dela. A <a href="arquitetura-02.html#arq-088"><code>ARQ-088</code></a> decide o que fica em cada um e como o Horus chega ao banco certo, e a <a href="arquitetura-02.html#arq-034"><code>ARQ-034</code></a>, a segunda trava dentro do banco da organização.</p>
+<figure><div class="lightbox_shortcode"><img src="media/arquitetura-06-diagrama-1.svg" width="1518" height="319" alt="Diagrama: 3.2 O isolamento entre organizações (ARQ-010 ✅, ARQ-088, ARQ-034)"><a href="media/arquitetura-06-diagrama-1.svg" class="img_popup" aria-label="Ampliar o diagrama"><i class="icon_plus" aria-hidden="true"></i></a></div><figcaption>Diagrama de “3.2 O isolamento entre organizações (ARQ-010 ✅, ARQ-088, ARQ-034)”. Selecione o “+” para ampliar.</figcaption></figure><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 5 de 06 · Dados"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Peça</th>
+<th scope="col">Como é</th>
+<th scope="col">Por quê</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>O banco mestre</strong></td>
+<td>As pessoas e o login (a conta, a sessão, o perfil, a preferência de e-mail); a lista das organizações, com o endereço e o login cifrado do banco de cada uma; o vínculo de cada pessoa com cada organização, só como &quot;existe&quot;; os assentos liberados e a administração da instância; a fila de trabalho, sem conteúdo</td>
+<td>É o que cruza organizações, e o login precisa listar as organizações de uma pessoa antes de abrir o banco de alguma</td>
+</tr>
+<tr>
+<td><strong>O banco da organização</strong></td>
+<td>Todo o resto: os membros com papel, tipo de assento, gestor, quarentena, roles e claims; as conversas, os boards, as fontes, os modelos, as regras, o rastro, o consumo, os avisos e a caixa de saída</td>
+<td>A organização fica apartada no próprio banco, e o login dela não alcança o de outra</td>
+</tr>
+<tr>
+<td><strong>O roteamento</strong></td>
+<td>O contexto do banco da organização se abre com a organização em uso, e o endereço e o login vêm do mapa; um pool pequeno de conexões por organização 🔎; o nome do banco é um identificador opaco</td>
+<td>Um erro de código não alcança outra organização, porque a conexão nem chega ao banco dela</td>
+</tr>
+<tr>
+<td><strong>De onde vem a organização</strong></td>
+<td>No papel &quot;atender&quot;, da sessão: a organização ativa já relida contra o vínculo a cada pedido, como hoje (<code>horus@318db52b:apps/server/Horus.Core/Identity/OrgScope.cs</code>). No papel &quot;trabalhar&quot;, do próprio trabalho: cada trabalho da fila nasce com a organização gravada</td>
+<td>Nunca vem do corpo de um pedido nem do valor cru do cookie</td>
+</tr>
+<tr>
+<td><strong>A segunda trava</strong></td>
+<td>A marca da organização continua em cada registro, <strong>também nos filhos</strong> (a mensagem, o cartão, o estado de um gráfico), e o filtro global do EF Core só devolve o que é da organização em uso (<a href="arquitetura-02.html#arq-034"><code>ARQ-034</code></a>)</td>
+<td>Uma conexão que caísse no banco errado ainda não leria nada de outra organização. Hoje várias tabelas chegam à organização só pela mãe</td>
+</tr>
+<tr>
+<td><strong>A falha fechada</strong></td>
+<td>Sem organização em uso, não há banco a abrir, e a consulta de dado de organização não roda (erro, nunca &quot;todas&quot;). A fonte do arquivo de configuração sem organização declarada passa a ser de <strong>nenhuma</strong> organização</td>
+<td>Hoje &quot;sem dono declarado&quot; quer dizer <strong>todas</strong> (<code>horus@318db52b:apps/server/Horus.Core/Data/Connections/ConnectionCatalog.cs</code>, <code>VisivelParaSlug</code>)</td>
+</tr>
+<tr>
+<td><strong>O que cruza organizações</strong></td>
+<td>O painel dos assentos e o custo por organização somam os bancos por um trabalho da fila, que grava o total, sem conteúdo, no mestre; o teto de assentos do mestre é copiado ao banco da organização, e a reserva confere lá, numa transação só</td>
+<td>O mestre não guarda dado de organização, e a reserva não depende de dois bancos ao mesmo tempo</td>
+</tr>
+<tr>
+<td><strong>Criar uma organização</strong></td>
+<td>Cria o banco e o login dela, na versão de migração do pacote, por um login de provisionamento que só cria banco e login</td>
+<td>Ninguém mais precisa desse privilégio</td>
+</tr>
+<tr>
+<td><strong>A prova</strong></td>
+<td>O login da A não abre o banco da B nem o mestre; com o contexto da A apontado de propósito para o banco da B, o filtro não devolve nada, em toda tabela, nos dois papéis; a consulta que não passa pelo roteamento ou pula o filtro reprova na trava de arquitetura; o CI roda tudo desde o M0 (documento 12)</td>
+<td>O isolamento passa a ser verificado, e não lembrado</td>
+</tr>
+</tbody>
+</table></div><p><strong>Sem a segurança em linha do Postgres.</strong> Com um banco e um login por organização, a regra por linha amarrada à organização da conexão não acrescenta nada que o login de cada banco já não dê.</p>
+<h4 id="arquitetura-06-33-a-guarda-de-cada-dado-arq-035-">3.3 A guarda de cada dado (<code>ARQ-035</code> ✅)</h4>
+<p>Hoje, só seis dados têm prazo: as execuções de consulta e os resultados da análise avulsa (7 dias), os fatos de uso (400 dias), os pedidos de recuperação de senha (30 dias), a telemetria (30, 14 e 7 dias) e os convites (de 1 a 90 dias de validade) (<code>horus@318db52b:apps/server/Horus.Api/LimpezaDeExecucoes.cs</code>, <code>LimpezaDeEventosDeUso.cs</code>, <code>horus@318db52b:apps/server/Horus.Core/Identity/RedefinicaoDeSenha.cs</code>). O resto fica até alguém apagar ou a organização sair. A decisão do dono (<a href="arquitetura-02.html#arq-035"><code>ARQ-035</code></a>, em 03/11/2026) é a tabela abaixo, com os prazos da organização ajustáveis nas preferências dela:</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 6 de 06 · Dados"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Dado</th>
+<th scope="col">Hoje (v1.xx)</th>
+<th scope="col">Proposta para a v2.0</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Conta da pessoa</td>
+<td>Enquanto existir; não há exclusão de conta</td>
+<td>Enquanto existir; a exclusão a pedido da pessoa foi ao PO (A-16)</td>
+</tr>
+<tr>
+<td>Vínculo, claims, número de WhatsApp e contatos</td>
+<td>Os valores de claim saem na saída da organização, na mesma transação (<code>horus@318db52b:apps/server/Horus.Core/Identity/OrgStore.cs</code>, <code>RemoveMemberAsync</code>)</td>
+<td>Tudo sai na saída, na mesma transação, e o número é desligado (leitura <code>D-094.3</code>)</td>
+</tr>
+<tr>
+<td>Conversas e mensagens (do app e do WhatsApp)</td>
+<td>Sem prazo: até a pessoa, o owner ou a exclusão da organização apagar</td>
+<td>Sem prazo automático: até a pessoa apagar a sua, o owner apagar as da organização ou a organização sair. As de quem sai ficam com a organização, como hoje 🔎 (A-16)</td>
+</tr>
+<tr>
+<td>Conversa do popup não salva</td>
+<td>Não existe</td>
+<td>Até a pessoa limpar; limpar apaga de vez (<a href="produto-backlog.html#d-086"><code>D-086</code></a>, leitura <code>D-086.4</code>)</td>
+</tr>
+<tr>
+<td>Cópia da resposta reportada</td>
+<td>Não existe</td>
+<td>Enquanto o reporte estiver aberto e 180 dias depois de o owner concluir a análise (leitura <code>D-087.1</code>)</td>
+</tr>
+<tr>
+<td>Retorno (👍🏻, 👎🏻)</td>
+<td>Não existe</td>
+<td>Junto com a resposta; a contagem, sem conteúdo, segue os fatos de uso</td>
+</tr>
+<tr>
+<td>Rastro (entregas e aberturas)</td>
+<td>Não existe</td>
+<td>O prazo do owner (<a href="produto-backlog.html#d-092"><code>D-092</code></a>): <strong>padrão 365 dias, mínimo 180, máximo 1.825</strong> (leitura <code>D-092.2</code>)</td>
+</tr>
+<tr>
+<td>Trilha de segurança e log das análises de segurança</td>
+<td>Sem prazo</td>
+<td>O mesmo prazo do rastro da organização</td>
+</tr>
+<tr>
+<td>Fatos de uso</td>
+<td>400 dias</td>
+<td>400 dias, para comparar o mesmo mês do ano anterior</td>
+</tr>
+<tr>
+<td>Consumo de IA e de mensagens</td>
+<td>Sem prazo</td>
+<td>25 meses, para o custo do mesmo mês do ano anterior e a conferência da fatura</td>
+</tr>
+<tr>
+<td>Execuções de consulta e resultados da análise avulsa</td>
+<td>7 dias (o teto da idade aceitável, <code>horus@318db52b:apps/server/Horus.Core/Data/Consultas/IdadeDoDado.cs</code>)</td>
+<td>7 dias</td>
+</tr>
+<tr>
+<td>Artefatos (PDF, imagem, JSON)</td>
+<td>O PDF do relatório não se guarda</td>
+<td>Até o fim da entrega e 7 dias depois, para reenviar e diagnosticar; o rastro fica, sem o conteúdo</td>
+</tr>
+<tr>
+<td>Execuções de agente (as perguntas e os números de cada volta)</td>
+<td>Não existe</td>
+<td>90 dias; a interpretação confirmada fica enquanto o agente existir</td>
+</tr>
+<tr>
+<td>Avisos da conta</td>
+<td>Não existe</td>
+<td>90 dias depois de lido, e 365 no máximo</td>
+</tr>
+<tr>
+<td>Trabalhos da fila e eventos</td>
+<td>Só a fila de convites, sem prazo</td>
+<td>Os concluídos, 30 dias; os que desistiram, 90 dias</td>
+</tr>
+<tr>
+<td>Convites e importações da planilha</td>
+<td>O convite vale de 1 a 90 dias; as linhas ficam</td>
+<td>O convite vencido ou revogado sai em 90 dias; a importação, em 365</td>
+</tr>
+<tr>
+<td>Registro de acesso (data, hora e endereço IP de cada uso)</td>
+<td>Só no log do Nginx, 14 dias no Loki (<code>horus@318db52b:infra/observabilidade/nginx/log-json.conf</code>)</td>
+<td><strong>6 meses</strong>, sob sigilo e fora da telemetria, como pede o Marco Civil da Internet (Lei 12.965/2014, art. 15) a quem oferece aplicação com fins econômicos 🔎 a confirmar com o jurídico da Maind</td>
+</tr>
+<tr>
+<td>Telemetria</td>
+<td>Métricas 30 dias, logs 14 e traces 7</td>
+<td>Igual (documento 11)</td>
+</tr>
+<tr>
+<td>Cópias de segurança</td>
+<td>Não existem</td>
+<td>Fora do Horus: o prazo é o que a infra de cada instância escolher (<a href="arquitetura-02.html#arq-086"><code>ARQ-086</code></a>); o que se apaga no banco sai das cópias quando elas vencem</td>
+</tr>
+<tr>
+<td>Organização cortada</td>
+<td>—</td>
+<td>Nada se apaga (<a href="produto-backlog.html#d-075"><code>D-075</code></a>, leitura <code>D-075.3</code>)</td>
+</tr>
+<tr>
+<td>Organização excluída</td>
+<td>Tudo sai na hora (<code>horus@318db52b:apps/server/Horus.Core/Identity/OrgStore.cs</code>, <code>ExcluirAsync</code>)</td>
+<td>Igual, por evento (<a href="arquitetura-02.html#arq-037"><code>ARQ-037</code></a>); nas cópias, quando elas vencerem, pelo prazo da instância</td>
+</tr>
+</tbody>
+</table></div><p><strong>O que o owner ajusta nas preferências da organização</strong> 🔎 (os pisos e os tetos são hipótese a confirmar):</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 7 de 06 · Dados"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Dado</th>
+<th scope="col">Padrão</th>
+<th scope="col">Piso</th>
+<th scope="col">Teto</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Rastro, e a trilha de segurança com ele</td>
+<td>365 dias</td>
+<td>180 dias</td>
+<td>1.825 dias</td>
+</tr>
+<tr>
+<td>Conversas e mensagens</td>
+<td>Sem prazo</td>
+<td>30 dias, se o owner ligar um prazo</td>
+<td>1.825 dias</td>
+</tr>
+<tr>
+<td>Cópia da resposta reportada</td>
+<td>180 dias depois da análise</td>
+<td>30 dias</td>
+<td>365 dias</td>
+</tr>
+<tr>
+<td>Fatos de uso</td>
+<td>400 dias</td>
+<td>400 dias, para comparar o mesmo mês do ano anterior</td>
+<td>1.825 dias</td>
+</tr>
+<tr>
+<td>Execuções de agente</td>
+<td>90 dias</td>
+<td>30 dias</td>
+<td>365 dias</td>
+</tr>
+<tr>
+<td>Avisos da conta</td>
+<td>90 dias depois de lido</td>
+<td>30 dias</td>
+<td>365 dias</td>
+</tr>
+</tbody>
+</table></div><ul>
+<li><strong>O resto fica fixo</strong>, porque é da instância, da lei ou técnico: o consumo (a conferência da fatura), as execuções de consulta e os artefatos (o teto da idade do dado), os trabalhos da fila, os convites e as importações, o registro de acesso (o Marco Civil) e a telemetria.</li>
+<li><strong>Reduzir um prazo vale a partir da faxina do dia seguinte</strong>, e a mudança fica no rastro, com quem mudou e de quanto para quanto; o que passou do prazo novo se apaga, sem volta.</li>
+<li><strong>A tela</strong> é do PO (A-27): onde fica, como cada prazo aparece e o aviso de que reduzir apaga.</li>
+</ul>
+<p>O cumprimento da guarda é de um componente só: a <strong>faxina</strong>, um trabalho diário da fila, no papel &quot;trabalhar&quot;, que cada módulo alimenta com o seu prazo. É o molde das duas limpezas diárias de hoje.</p>
+<h4 id="arquitetura-06-34-apagar-arq-037">3.4 Apagar (<code>ARQ-037</code>)</h4>
+<ul>
+<li><strong>A exclusão da organização</strong> vira um fato: a organização fica marcada como excluída no mapa do mestre e some de todas as telas na mesma transação; depois, o banco e o login dela são apagados (<a href="arquitetura-02.html#arq-010"><code>ARQ-010</code></a>, <a href="arquitetura-02.html#arq-088"><code>ARQ-088</code></a>). Hoje um método só apaga mais de 30 tabelas, listadas à mão, e uma tabela nova esquecida já deixou boards órfãos (o comentário da Task 034 em <code>ExcluirAsync</code>).</li>
+<li><strong>A saída de uma pessoa</strong> gera o evento &quot;pessoa removida da organização&quot; (documento 04, 3.3): a Plataforma apaga o vínculo e as claims na transação da saída, como hoje; os boards, agendamentos e agentes dela vão para o espaço da organização (<a href="produto-backlog.html#d-044"><code>D-044</code></a>, <a href="produto-backlog.html#d-060"><code>D-060</code></a>); os contatos dela saem; o rastro fica (<a href="produto-backlog.html#d-093"><code>D-093</code></a>).</li>
+<li><strong>O corte não apaga</strong> (<a href="produto-backlog.html#d-075"><code>D-075</code></a>): ele só pausa.</li>
+<li><strong>O que sai dentro de uma organização</strong> (uma pessoa, uma conversa) continua com o apagador de cada módulo, por evento (<a href="arquitetura-02.html#arq-019"><code>ARQ-019</code></a>).</li>
+<li><strong>A prova:</strong> um teste de arquitetura reprova a tabela com a marca da organização que não tenha um apagador registrado pelo módulo dono, e o teste de exclusão grava uma organização completa, a apaga e confere que não sobrou nem o banco, nem o login, nem a linha do mapa.</li>
+</ul>
+<h4 id="arquitetura-06-35-as-organizacoes-de-exemplo-chegam-a-v20-arq-011--arq-089">3.5 As organizações de exemplo chegam à v2.0 (<code>ARQ-011</code> ✅, <code>ARQ-089</code>)</h4>
+<p><strong>A escolha do dono</strong> (<a href="arquitetura-02.html#arq-011"><code>ARQ-011</code></a>, em 03/11/2026): a Maind não tem clientes, e as únicas organizações que importam são as de exemplo, o McDonald's e a Global Fleet. A v2.0 nasce numa instância nova, sem conversão dos dados da v1.xx, e as duas chegam por um <strong>semeador versionado no repositório</strong> (<a href="arquitetura-02.html#arq-089"><code>ARQ-089</code></a>).</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 8 de 06 · Dados"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Dado da v1.xx</th>
+<th scope="col">Na v2.0</th>
+<th scope="col">Como</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>As fontes das organizações de exemplo</td>
+<td>As mesmas, apontando para as bases de demonstração da máquina</td>
+<td>Pelos arquivos do semeador; as bases são as mesmas para todas as instâncias (<a href="arquitetura-02.html#arq-059"><code>ARQ-059</code></a>)</td>
+</tr>
+<tr>
+<td>Os modelos semânticos</td>
+<td>Os mesmos</td>
+<td>Já são arquivos do repositório, conferidos pelos verificadores das bases (<code>horus@318db52b:data/</code>); o que a v1.xx guardou no banco por cima deles entra na exportação</td>
+</tr>
+<tr>
+<td>As regras de segurança e as versões delas</td>
+<td>Na v2.1 (<a href="arquitetura-02.html#arq-090"><code>ARQ-090</code></a>)</td>
+<td>Exportadas uma vez para os arquivos do semeador, e semeadas só na v2.1</td>
+</tr>
+<tr>
+<td>Os membros de exemplo, com as claims</td>
+<td>Membros com papel, tipo de assento, gestor e roles</td>
+<td>Exportados uma vez e completados nos arquivos com o que a v2.0 pede (a carteira, o assento, as roles), sem regra de conversão; as claims, exportadas, só se semeiam na v2.1 (<a href="arquitetura-02.html#arq-090"><code>ARQ-090</code></a>)</td>
+</tr>
+<tr>
+<td>Os boards de exemplo</td>
+<td>Boards do espaço da organização, publicados 🔎</td>
+<td>Exportados uma vez; o que a vitrine mostra, o PO confirma (A-14)</td>
+</tr>
+<tr>
+<td>As conexões e as rotas de IA</td>
+<td>As mesmas, sem as chaves</td>
+<td>As chaves se cadastram em cada instância (<a href="arquitetura-02.html#arq-044"><code>ARQ-044</code></a>)</td>
+</tr>
+<tr>
+<td>As pessoas reais da Maind</td>
+<td>Convite novo</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Conversas, mensagens, consumo, fatos de uso, rastro, execuções e simulações</td>
+<td>Não vêm</td>
+<td>Eram de teste; a medida de autonomia começa na v2.0 (<a href="produto-backlog.html#d-133"><code>D-133</code></a>)</td>
+</tr>
+<tr>
+<td>As outras organizações de hoje</td>
+<td>Não vêm</td>
+<td>Só as de exemplo importam (<a href="arquitetura-02.html#arq-011"><code>ARQ-011</code></a>)</td>
+</tr>
+</tbody>
+</table></div><p><strong>Como se semeia</strong> (<a href="arquitetura-02.html#arq-089"><code>ARQ-089</code></a>):</p>
+<ol>
+<li><strong>A exportação</strong>, uma vez, enquanto a v1.xx existe: um roteiro, que nasce do roteiro de cópia de uma organização de hoje (<code>horus@318db52b:infra/vps/copiar-org-postgres.py</code>), escreve os arquivos do McDonald's e da Global Fleet no repositório da v2; depois disso, os arquivos são a fonte.</li>
+<li><strong>O semeador</strong> é um comando do pacote, num modo de uso único: cria o banco e o login de cada organização (<a href="arquitetura-02.html#arq-088"><code>ARQ-088</code></a>), grava os registros pelos arquivos e escreve um relatório em números. Rodado de novo, não duplica nada.</li>
+<li><strong>A prova</strong>: o CI semeia as duas num banco vazio e confere que as fontes abrem, que os modelos passam pelos verificadores, que as regras compilam (na v2.1) e que cada board recalcula com o modelo falso (documento 12).</li>
+</ol>
+<h4 id="arquitetura-06-36-os-componentes">3.6 Os componentes</h4>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 9 de 06 · Dados"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Componente</th>
+<th scope="col">Módulo</th>
+<th scope="col">Responsabilidade</th>
+<th scope="col">Situação</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Persistência da aplicação</td>
+<td>Fundação</td>
+<td>Os dois contextos do banco, o do mestre e o da organização, a configuração de cada entidade junto do módulo dono e as migrações de cada banco</td>
+<td>🔧 <code>horus@318db52b:apps/server/Horus.Core/Data/HorusDbContext.cs</code></td>
+</tr>
+<tr>
+<td>Roteamento</td>
+<td>Fundação</td>
+<td>Abre o banco da organização em uso pelo mapa do mestre; cria o banco e o login de uma organização nova; o repasse da caixa de saída à fila do mestre (<a href="arquitetura-02.html#arq-088"><code>ARQ-088</code></a>)</td>
+<td>🆕</td>
+</tr>
+<tr>
+<td>Filtro por organização</td>
+<td>Fundação</td>
+<td>A marca, o filtro global e a falha fechada, como segunda trava (<a href="arquitetura-02.html#arq-034"><code>ARQ-034</code></a>)</td>
+<td>🆕 sobre o <code>OrgScope</code> de hoje</td>
+</tr>
+<tr>
+<td>Inventário dos dados</td>
+<td>Fundação</td>
+<td>O dono, a categoria (pessoal, do cliente ou nenhum), a finalidade e o prazo de cada dado, declarados junto da entidade (<a href="arquitetura-02.html#arq-045"><code>ARQ-045</code></a>, documento 07)</td>
+<td>🆕</td>
+</tr>
+<tr>
+<td>Faxina</td>
+<td>Fundação, no papel &quot;trabalhar&quot;</td>
+<td>Aplica o prazo de cada dado, uma vez por dia, pela fila (<a href="arquitetura-02.html#arq-035"><code>ARQ-035</code></a>)</td>
+<td>🔧 das duas limpezas diárias de hoje</td>
+</tr>
+<tr>
+<td>Apagadores</td>
+<td>Cada módulo</td>
+<td>Apagam o que é do módulo nos eventos &quot;organização excluída&quot; e &quot;pessoa removida&quot; (<a href="arquitetura-02.html#arq-037"><code>ARQ-037</code></a>)</td>
+<td>🔧 do <code>OrgStore.ExcluirAsync</code></td>
+</tr>
+<tr>
+<td>Semeador</td>
+<td>Fundação, num modo de uso único</td>
+<td>Cria as organizações de exemplo pelos arquivos do repositório, com relatório e conferência (<a href="arquitetura-02.html#arq-089"><code>ARQ-089</code></a>)</td>
+<td>🆕 sobre o roteiro de cópia de uma organização</td>
+</tr>
+<tr>
+<td>Registro de acesso</td>
+<td>Plataforma</td>
+<td>Guarda data, hora e IP de cada uso, sob sigilo, pelo prazo da <a href="arquitetura-02.html#arq-035"><code>ARQ-035</code></a></td>
+<td>🆕, se o dono aprovar</td>
+</tr>
+</tbody>
+</table></div></div><div class="doc-section dx-assunto"><h3 id="arquitetura-06-4-o-que-vem-da-v1xx-e-o-que-nao-vem">4. O que vem da v1.xx e o que não vem</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 10 de 06 · Dados"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Peça da v1.xx</th>
+<th scope="col">Destino</th>
+<th scope="col">Por quê</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>O PostgreSQL 17, o EF Core e a cadeia de 89 migrações</td>
+<td>♻️ Ficam</td>
+<td><a href="arquitetura-02.html#arq-001"><code>ARQ-001</code></a>, <a href="arquitetura-02.html#arq-002"><code>ARQ-002</code></a></td>
+</tr>
+<tr>
+<td>Um banco só para todas as organizações</td>
+<td>🔧 Vira o banco mestre e um banco por organização</td>
+<td><a href="arquitetura-02.html#arq-010"><code>ARQ-010</code></a>, <a href="arquitetura-02.html#arq-088"><code>ARQ-088</code></a></td>
+</tr>
+<tr>
+<td>A coluna da organização nas tabelas e o <code>OrgScope</code> relido a cada pedido</td>
+<td>🔧 Viram a marca em todo registro e o filtro global</td>
+<td><a href="arquitetura-02.html#arq-034"><code>ARQ-034</code></a></td>
+</tr>
+<tr>
+<td>&quot;Fonte do arquivo sem organização declarada é de todas&quot;</td>
+<td>❌ Sai: passa a ser de nenhuma</td>
+<td><a href="arquitetura-02.html#arq-034"><code>ARQ-034</code></a></td>
+</tr>
+<tr>
+<td>As limpezas diárias das execuções (7 dias) e dos fatos de uso (400 dias)</td>
+<td>🔧 Viram a faxina geral</td>
+<td><a href="arquitetura-02.html#arq-035"><code>ARQ-035</code></a></td>
+</tr>
+<tr>
+<td>A exclusão da organização num método só, com as tabelas listadas à mão</td>
+<td>🔧 Vira um apagador por módulo, por evento</td>
+<td><a href="arquitetura-02.html#arq-037"><code>ARQ-037</code></a></td>
+</tr>
+<tr>
+<td>Os valores de claim apagados na saída, na mesma transação (R9)</td>
+<td>♻️ Ficam, e passam a valer também para o número e os contatos</td>
+<td><a href="arquitetura-02.html#arq-035"><code>ARQ-035</code></a></td>
+</tr>
+<tr>
+<td>Os blocos guardados no lugar das linhas do cliente</td>
+<td>♻️ Fica a regra</td>
+<td><a href="arquitetura-02.html#arq-033"><code>ARQ-033</code></a></td>
+</tr>
+<tr>
+<td>O clone da PRD para o HML, com o saneamento, e a cópia de uma organização</td>
+<td>🔧 A cópia de uma organização vira a exportação do semeador; o clone fica para o HML da v1.xx enquanto ele viver</td>
+<td><a href="arquitetura-02.html#arq-089"><code>ARQ-089</code></a></td>
+</tr>
+<tr>
+<td>A migração na subida do processo</td>
+<td>❌ Sai: as migrações rodam num passo da publicação</td>
+<td><a href="arquitetura-02.html#arq-062"><code>ARQ-062</code></a></td>
+</tr>
+<tr>
+<td>O legado das bases de conhecimento na conversa (<code>KbIdsJson</code>)</td>
+<td>❌ Sai: a v2.0 nasce sem ele</td>
+<td>Documento 01</td>
+</tr>
+<tr>
+<td>O IP guardado só 14 dias, no log do Nginx</td>
+<td>🔧 Ganha o registro de acesso de 6 meses, se o dono aprovar</td>
+<td><a href="arquitetura-02.html#arq-035"><code>ARQ-035</code></a></td>
+</tr>
+</tbody>
+</table></div></div><div class="doc-section dx-assunto"><h3 id="arquitetura-06-5-os-riscos-e-o-que-falta-decidir">5. Os riscos e o que falta decidir</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 11 de 06 · Dados"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Risco</th>
+<th scope="col">Por quê</th>
+<th scope="col">O que se faz</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>🔢 As migrações rodam uma vez por organização</td>
+<td>Uma migração que falha no meio deixa bancos em versões diferentes</td>
+<td>O passo retoma de onde parou, e a troca só acontece com todos na versão nova (<a href="arquitetura-02.html#arq-062"><code>ARQ-062</code></a>, <a href="arquitetura-02.html#arq-088"><code>ARQ-088</code></a>)</td>
+</tr>
+<tr>
+<td>🌱 A vitrine só existe no banco da v1.xx até a exportação</td>
+<td>Os boards, as regras e os membros de exemplo não estão em arquivo nenhum hoje</td>
+<td>A exportação, uma vez, antes de a v1.xx sair, e o CI que semeia num banco vazio (<a href="arquitetura-02.html#arq-089"><code>ARQ-089</code></a>)</td>
+</tr>
+<tr>
+<td>🗂️ A marca nos filhos é uma mudança grande</td>
+<td>Mensagens, cartões e estados de gráfico ganham a marca</td>
+<td>Uma migração por tabela, no M0, com o teste de isolamento já valendo; o semeador já grava a marca</td>
+</tr>
+<tr>
+<td>🧪 A fonte do arquivo &quot;de todas&quot; pode estar em uso</td>
+<td>A PRD e o HML podem depender da lista vazia para mostrar as bases de demonstração às organizações da Maind</td>
+<td>Conferir o <code>api.env</code> de cada ambiente antes do M2 e declarar as organizações de cada fonte</td>
+</tr>
+<tr>
+<td>📈 O rastro e as mensagens crescem</td>
+<td>10.000 registros do rastro por dia e de 20 a 50 KB por resposta (documento 03)</td>
+<td>O prazo do rastro tem teto (1.825 dias); o envelope da <a href="arquitetura-02.html#arq-016"><code>ARQ-016</code></a> já conta as mensagens</td>
+</tr>
+<tr>
+<td>⚖️ Os prazos legais não são do arquiteto</td>
+<td>O Marco Civil e a LGPD pedem leitura jurídica</td>
+<td>Os prazos ficam 🟡 com o dono, e o registro de acesso, 🔎 com o jurídico</td>
+</tr>
+<tr>
+<td>💾 O apagado continua nas cópias</td>
+<td>As cópias de segurança guardam o que se apagou até vencerem, pelo prazo que a infra de cada instância escolhe (<a href="arquitetura-02.html#arq-086"><code>ARQ-086</code></a>)</td>
+<td>O prazo das cópias da instância SaaS entra no aviso de privacidade (A-16)</td>
+</tr>
+</tbody>
+</table></div><p><strong>O que falta decidir:</strong></p>
+<ul>
+<li>🟡 Com o dono: nenhuma decisão deste documento.</li>
+<li>Ao PO: A-14 (o que os boards de exemplo mostram, agora só no semeador), A-27 (a tela das preferências de guarda) e A-16 (a LGPD: o que a pessoa sabe e o que pode pedir).</li>
+<li>Documento 07: a chave única da segurança dos dados (<a href="arquitetura-02.html#arq-040"><code>ARQ-040</code></a> 🟡), que muda como o semeador grava as claims.</li>
+<li>Documento 10: o contrato da cópia, a conferência da volta e a janela da publicação da v2.0.</li>
+<li>Documento 12: o teste de isolamento por tabela, o teste de exclusão e a conferência do semeador.</li>
+</ul>
+</div>
+                            </div>
+                            <nav class="dx-vizinhas" aria-label="Páginas vizinhas"><a class="dx-anterior" href="arquitetura-05.html"><i class="arrow_left" aria-hidden="true"></i>05 · Motor de análise e IA</a><a class="dx-proxima" href="arquitetura-07.html">07 · Segurança<i class="arrow_right" aria-hidden="true"></i></a></nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="simple_footer">
+            <img class="leaf_right" src="assets/kbdoc/img/home_one/leaf_footter.png" alt="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p>Maind Horus · Horus v2 · documento interno · Revisado em 03/11/2026 · versão v2.0 em desenho, sem versão publicada</p>
+                    </div>
+                    <div class="col-lg-6 text-right">
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <a id="back-to-top" title="Voltar ao topo"></a>
+    <script src="assets/kbdoc/js/jquery-3.2.1.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/popper.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap-select.min.js"></script>
+    <script src="assets/kbdoc/js/parallaxie.js"></script>
+    <script src="assets/kbdoc/js/TweenMax.min.js"></script>
+    <script src="assets/kbdoc/js/anchor.js"></script>
+    <script src="assets/kbdoc/assets/wow/wow.min.js"></script>
+    <script src="assets/kbdoc/js/vendor/clipboard.min.js"></script>
+    <script src="assets/kbdoc/assets/prism/prism.js"></script>
+    <script src="assets/kbdoc/assets/niceselectpicker/jquery.nice-select.min.js"></script>
+    <script src="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="assets/kbdoc/assets/magnify-pop/jquery.magnific-popup.min.js"></script>
+    <script src="assets/kbdoc/assets/tooltipster/js/tooltipster.bundle.min.js"></script>
+    <script src="assets/kbdoc/assets/font-size/js/rv-jquery-fontsize-2.0.3.js"></script>
+    <script src="assets/kbdoc/js/onpage-menu.js"></script>
+    <script src="assets/kbdoc/js/main.js"></script>
+    <script src="assets/busca.js"></script>
+    <script src="assets/docx.js"></script>
+</body>
+</html>

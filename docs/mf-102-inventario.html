@@ -1,0 +1,680 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A documentação de produto e de arquitetura do Horus v2: a visão, as decisões, a estratégia e como ele vai ser construído.">
+    <meta name="generator" content="DocX 0.2.1">
+    <link rel="shortcut icon" href="media/horus-claro.svg">
+    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/elagent-icon/style.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/font-awesome/css/all.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/niceselectpicker/nice-select.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/font-size/css/rvfs.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/animation/animate.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/tooltipster/css/tooltipster.bundle.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism-coy.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/magnify-pop/magnific-popup.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/css/style.css">
+    <link rel="stylesheet" href="assets/kbdoc/css/responsive.css">
+    <link rel="stylesheet" href="assets/docx.css">
+    <link rel="stylesheet" href="assets/conteudo.css">
+    <link rel="stylesheet" href="assets/indice.css">
+    <title>Organizações, pessoas e papéis: o inventário — Horus v2</title>
+</head>
+<body class="doc full-width-doc sticky-nav-doc onepage-doc dx-pagina-doc" data-spy="scroll" data-target=".navbar" data-offset="-120">
+    <a class="sr-only sr-only-focusable dx-skip" href="#post">Pular para o conteúdo</a>
+    <div class="body_wrapper sticky_menu">
+        <nav class="navbar navbar-expand-lg menu_one" id="stickyTwo" aria-label="Navegação principal">
+            <div class="container-fluid pl-60 pr-60">
+                <a class="navbar-brand" href="index.html">
+                    <img src="media/horus-claro.svg" alt="Horus v2">
+                    <img src="media/horus-escuro.svg" alt="Horus v2">
+                </a>
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Abrir o menu">
+                    <span class="menu_toggle">
+                        <span class="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                        <span class="hamburger-cross">
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav menu ml-auto">
+<li class="nav-item"><a href="index.html" class="nav-link">Início</a></li>
+<li class="nav-item dropdown submenu mega_menu tab-demo active"><a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentos</a><i class="arrow_carrot-down_alt2 mobile_dropdown_icon" aria-hidden="true" data-toggle="dropdown"></i><ul class="dropdown-menu scroll"><li><div class="row"><div class="col-lg-5 tabHeader"><ul class="nav flex-column nav-pills" id="dx-menu" role="tablist" aria-orientation="vertical"><li class="nav-item active"><a class="nav-link active" id="dx-menu-1-tab" data-toggle="pill" href="#dx-menu-1" role="tab" aria-controls="dx-menu-1" aria-selected="true">Comece aqui</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-2-tab" data-toggle="pill" href="#dx-menu-2" role="tab" aria-controls="dx-menu-2" aria-selected="false">Produto</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-3-tab" data-toggle="pill" href="#dx-menu-3" role="tab" aria-controls="dx-menu-3" aria-selected="false">Arquitetura · visão e decisões</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-4-tab" data-toggle="pill" href="#dx-menu-4" role="tab" aria-controls="dx-menu-4" aria-selected="false">Arquitetura · construção</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-5-tab" data-toggle="pill" href="#dx-menu-5" role="tab" aria-controls="dx-menu-5" aria-selected="false">Arquitetura · operação</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-6-tab" data-toggle="pill" href="#dx-menu-6" role="tab" aria-controls="dx-menu-6" aria-selected="false">Arquitetura · conferência</a></li></ul></div><div class="col-lg-7"><div class="tab-content tabContent" id="dx-menu-conteudo"><div class="tab-pane fade active show" id="dx-menu-1" role="tabpanel" aria-labelledby="dx-menu-1-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="visao-geral.html">O Horus v2</a></li><li><a href="pasta-v2.html">A pasta da v2</a></li></ul></div><div class="text"><a href="visao-geral.html"><p>Abrir Comece aqui</p></a></div></div><div class="tab-pane fade" id="dx-menu-2" role="tabpanel" aria-labelledby="dx-menu-2-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="produto-temas.html">Temas da visão de produto</a></li><li><a href="produto-norte.html">Norte do produto</a></li><li><a href="produto-lacunas.html">Inventário de lacunas</a></li><li><a href="produto-mfs-hoje.html">Macro funcionalidades de hoje</a></li><li><a href="produto-v20.html">A v2.0 consolidada</a></li></ul><ul class="list-unstyled tab_list"><li><a href="produto-versoes.html">As versões, mf a mf</a></li><li><a href="produto-mapa.html">Mapa de objetivos e funcionalidades</a></li><li><a href="produto-backlog.html">Backlog estratégico</a></li><li><a href="backlog-atividades.html">Backlog de atividades</a></li></ul></div><div class="text"><a href="produto-temas.html"><p>Abrir Produto</p></a></div></div><div class="tab-pane fade" id="dx-menu-3" role="tabpanel" aria-labelledby="dx-menu-3-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura.html">A pasta da arquitetura</a></li><li><a href="arquitetura-01.html">01 · Estratégia da solução</a></li><li><a href="arquitetura-02.html">02 · Registro de decisões</a></li><li><a href="arquitetura-03.html">03 · Metas de qualidade</a></li></ul></div><div class="text"><a href="arquitetura.html"><p>Abrir Arquitetura · visão e decisões</p></a></div></div><div class="tab-pane fade" id="dx-menu-4" role="tabpanel" aria-labelledby="dx-menu-4-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-04.html">04 · Software</a></li><li><a href="arquitetura-05.html">05 · Motor de análise e IA</a></li><li><a href="arquitetura-06.html">06 · Dados</a></li><li><a href="arquitetura-07.html">07 · Segurança</a></li><li><a href="arquitetura-08.html">08 · Integrações</a></li></ul></div><div class="text"><a href="arquitetura-04.html"><p>Abrir Arquitetura · construção</p></a></div></div><div class="tab-pane fade" id="dx-menu-5" role="tabpanel" aria-labelledby="dx-menu-5-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-09.html">09 · Infraestrutura e ambientes</a></li><li><a href="arquitetura-10.html">10 · Publicação e operação</a></li><li><a href="arquitetura-11.html">11 · Observabilidade</a></li><li><a href="arquitetura-12.html">12 · Qualidade e testes</a></li><li><a href="arquitetura-13.html">13 · Custo de operação</a></li></ul></div><div class="text"><a href="arquitetura-09.html"><p>Abrir Arquitetura · operação</p></a></div></div><div class="tab-pane fade" id="dx-menu-6" role="tabpanel" aria-labelledby="dx-menu-6-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-14.html">14 · Conferência do produto</a></li></ul></div><div class="text"><a href="arquitetura-14.html"><p>Abrir Arquitetura · conferência</p></a></div></div></div></div></div></li></ul></li>
+                    </ul>
+                    <ul class="list-unstyled menu_social">
+                        <li class="search">
+                            <form action="#" class="search_form" role="search" data-search-form>
+                                <label class="sr-only" for="dx-search">Buscar na documentação</label>
+                                <input type="search" class="form-control" id="dx-search" placeholder="Buscar" autocomplete="off" data-search-input aria-describedby="dx-search-status" aria-controls="dx-search-results">
+                                <button type="submit" aria-label="Buscar"><i class="icon_search" aria-hidden="true"></i></button>
+                                <div class="dx-search-results" id="dx-search-results" data-search-results hidden></div>
+                            </form>
+                            <p class="sr-only" id="dx-search-status" role="status" data-search-status></p>
+                        </li>
+                    </ul>
+                    <div class="dx-ferramentas">
+
+
+                        <div id="font-switcher"><div id="rvfs-controllers" class="fontsize-controllers group"></div></div>
+                        <button type="button" class="print" data-print aria-label="Imprimir"><i class="icon_printer" aria-hidden="true"></i></button>
+                        <div class="doc_switch">
+                            <label for="something" class="tab-btn tab-btns"><i class="icon_lightbulb_alt" aria-hidden="true"></i><span class="sr-only">Tema claro</span></label>
+                            <input type="checkbox" name="something" id="something" class="tab_switcher" aria-label="Tema escuro">
+                            <label for="something" class="tab-btn"><i class="far fa-moon" aria-hidden="true"></i><span class="sr-only">Tema escuro</span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <section class="doc_documentation_area onepage_doc_area" id="sticky_doc">
+            <div class="overlay_bg"></div>
+            <div class="container-fluid pl-60 pr-60">
+                <div class="row doc-container">
+                    <div class="col-lg-2 doc_mobile_menu doc-sidebar display_none">
+                        <aside class="doc_left_sidebarlist" aria-label="Tópicos desta página">
+                            <h3 class="nav_title">Tópicos</h3>
+                            <div class="scroll">
+                                <ul class="list-unstyled nav-sidebar doc-nav">
+<li class="nav-item active"><a href="#mf-102-inventario-o-que-e" class="nav-link">O que é</a><ul class="list-unstyled dropdown_nav"><li class="nav-item"><a href="#mf-102-inventario-d-114" class="nav-link">Definição macro · D-114</a></li><li class="nav-item"><a href="#mf-102-inventario-d-056" class="nav-link">Definição macro · D-056</a></li><li class="nav-item"><a href="#mf-102-inventario-d-032" class="nav-link">Definição macro · D-032</a></li><li class="nav-item"><a href="#mf-102-inventario-produto-mfs-hoje" class="nav-link">Macro funcionalidades de hoje</a></li></ul><span class="icon"><i class="icon_plus" aria-hidden="true"></i><i class="icon_minus-06" aria-hidden="true"></i></span></li>
+<li class="nav-item"><a href="#mf-102-inventario-entregas" class="nav-link">Nas entregas</a><ul class="list-unstyled dropdown_nav"><li class="nav-item"><a href="#mf-102-inventario-produto-v20" class="nav-link">A v2.0 consolidada</a></li><li class="nav-item"><a href="#mf-102-inventario-produto-versoes" class="nav-link">As versões, mf a mf</a></li></ul><span class="icon"><i class="icon_plus" aria-hidden="true"></i><i class="icon_minus-06" aria-hidden="true"></i></span></li>
+<li class="nav-item"><a href="#mf-102-inventario-objetivos" class="nav-link">Objetivos</a><ul class="list-unstyled dropdown_nav"><li class="nav-item"><a href="#mf-102-inventario-produto-mapa" class="nav-link">Mapa de objetivos e funcionalidades</a></li></ul><span class="icon"><i class="icon_plus" aria-hidden="true"></i><i class="icon_minus-06" aria-hidden="true"></i></span></li>
+<li class="nav-item"><a href="#mf-102-inventario-decisoes-produto" class="nav-link">Decisões de produto</a><ul class="list-unstyled dropdown_nav"><li class="nav-item"><a href="#mf-102-inventario-produto-backlog-d" class="nav-link">Backlog estratégico · 24 decisões</a></li><li class="nav-item"><a href="#mf-102-inventario-produto-backlog" class="nav-link">Backlog estratégico · pendências</a></li></ul><span class="icon"><i class="icon_plus" aria-hidden="true"></i><i class="icon_minus-06" aria-hidden="true"></i></span></li>
+<li class="nav-item"><a href="#mf-102-inventario-arquitetura" class="nav-link">Arquitetura</a><ul class="list-unstyled dropdown_nav"><li class="nav-item"><a href="#mf-102-inventario-arquitetura-01" class="nav-link">01 · Estratégia da solução</a></li><li class="nav-item"><a href="#mf-102-inventario-arquitetura-04" class="nav-link">04 · Software</a></li></ul><span class="icon"><i class="icon_plus" aria-hidden="true"></i><i class="icon_minus-06" aria-hidden="true"></i></span></li>
+<li class="nav-item"><a href="#mf-102-inventario-decisoes-arquitetura" class="nav-link">Decisões de arquitetura</a><ul class="list-unstyled dropdown_nav"><li class="nav-item"><a href="#mf-102-inventario-arquitetura-02" class="nav-link">02 · Registro de decisões</a></li></ul><span class="icon"><i class="icon_plus" aria-hidden="true"></i><i class="icon_minus-06" aria-hidden="true"></i></span></li>
+<li class="nav-item"><a href="#mf-102-inventario-v1" class="nav-link">O que se reaproveita da v1</a><ul class="list-unstyled dropdown_nav"><li class="nav-item"><a href="#mf-102-inventario-arquitetura-14" class="nav-link">14 · Conferência do produto</a></li></ul><span class="icon"><i class="icon_plus" aria-hidden="true"></i><i class="icon_minus-06" aria-hidden="true"></i></span></li>
+<li class="nav-item"><a href="#mf-102-inventario-citada" class="nav-link">Também citada em</a></li>
+                                </ul>
+                            </div>
+                        </aside>
+                    </div>
+                    <div class="col-lg-10 col-md-12">
+                        <div class="documentation_info dx-pagina" id="post">
+                            <header class="dx-cabeca" id="mf-102-inventario">
+                                <nav class="dx-trilha" aria-label="Trilha"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Início</a></li><li class="breadcrumb-item">Inventário das mfs</li><li class="breadcrumb-item active" aria-current="page">Organizações, pessoas e papéis: o inventário</li></ol></nav>
+                                
+                                <h1>Organizações, pessoas e papéis: o inventário</h1>
+                                <p>Tudo o que os documentos do inventário dizem da MF-102, assunto por assunto.</p>
+                            </header>
+                            <div class="dx-modelo-01">
+<nav aria-labelledby="dx-m01-assuntos-titulo">
+<div class="dx-m01-rotulo"><h2 id="dx-m01-assuntos-titulo">Explore os assuntos</h2><span>8 seções</span></div>
+<div class="dx-m01-assuntos">
+<a class="dx-m01-assunto" href="#mf-102-inventario-o-que-e"><span class="dx-m01-icone"><i class="fas fa-book-open" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que é</strong><small>4 referências</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-102-inventario-entregas"><span class="dx-m01-icone"><i class="fas fa-box-open" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Nas entregas</strong><small>2 referências</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-102-inventario-objetivos"><span class="dx-m01-icone"><i class="fas fa-bullseye" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Objetivos</strong><small>1 referência</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-102-inventario-decisoes-produto"><span class="dx-m01-icone"><i class="fas fa-tasks" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Decisões de produto</strong><small>2 referências</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-102-inventario-arquitetura"><span class="dx-m01-icone"><i class="fas fa-layer-group" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Arquitetura</strong><small>2 referências</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-102-inventario-decisoes-arquitetura"><span class="dx-m01-icone"><i class="fas fa-project-diagram" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Decisões de arquitetura</strong><small>1 referência</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-102-inventario-v1"><span class="dx-m01-icone"><i class="fas fa-history" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que se reaproveita da v1</strong><small>1 referência</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-102-inventario-citada"><span class="dx-m01-icone"><i class="fas fa-link" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Também citada em</strong><small>Outras citações</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</div></nav>
+<section class="dx-m01-fontes" aria-labelledby="dx-m01-fontes-titulo">
+<header class="dx-m01-cabecalho"><div>
+<h2 id="dx-m01-fontes-titulo"><i class="fas fa-link" aria-hidden="true"></i><span>De onde vem</span></h2>
+<p>Referências que fundamentam esta funcionalidade</p></div>
+<span class="dx-m01-total">13 referências</span></header>
+<div class="dx-m01-grade">
+<section class="dx-m01-fonte"><h3><i class="fas fa-book-open" aria-hidden="true"></i><span>O que é</span><small aria-label="4 referências">4</small></h3><ul class="dx-m01-links"><li><a href="#mf-102-inventario-d-114"><span>Definição macro · D-114</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#mf-102-inventario-d-056"><span>Definição macro · D-056</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#mf-102-inventario-d-032"><span>Definição macro · D-032</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#mf-102-inventario-produto-mfs-hoje"><span>Macro funcionalidades de hoje</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li></ul></section>
+<section class="dx-m01-fonte"><h3><i class="fas fa-box-open" aria-hidden="true"></i><span>Nas entregas</span><small aria-label="2 referências">2</small></h3><ul class="dx-m01-links"><li><a href="#mf-102-inventario-produto-v20"><span>A v2.0 consolidada</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#mf-102-inventario-produto-versoes"><span>As versões, mf a mf</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li></ul></section>
+<section class="dx-m01-fonte"><h3><i class="fas fa-bullseye" aria-hidden="true"></i><span>Objetivos</span><small aria-label="1 referência">1</small></h3><ul class="dx-m01-links"><li><a href="#mf-102-inventario-produto-mapa"><span>Mapa de objetivos e funcionalidades</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li></ul></section>
+<section class="dx-m01-fonte"><h3><i class="fas fa-tasks" aria-hidden="true"></i><span>Decisões de produto</span><small aria-label="2 referências">2</small></h3><ul class="dx-m01-links"><li><a href="#mf-102-inventario-produto-backlog-d"><span>Backlog estratégico · 24 decisões</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#mf-102-inventario-produto-backlog"><span>Backlog estratégico · pendências</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li></ul></section>
+<section class="dx-m01-fonte"><h3><i class="fas fa-layer-group" aria-hidden="true"></i><span>Arquitetura</span><small aria-label="2 referências">2</small></h3><ul class="dx-m01-links"><li><a href="#mf-102-inventario-arquitetura-01"><span>01 · Estratégia da solução</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#mf-102-inventario-arquitetura-04"><span>04 · Software</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li></ul></section>
+<section class="dx-m01-fonte"><h3><i class="fas fa-project-diagram" aria-hidden="true"></i><span>Decisões de arquitetura</span><small aria-label="1 referência">1</small></h3><ul class="dx-m01-links"><li><a href="#mf-102-inventario-arquitetura-02"><span>02 · Registro de decisões</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li></ul></section>
+<section class="dx-m01-fonte"><h3><i class="fas fa-history" aria-hidden="true"></i><span>O que se reaproveita da v1</span><small aria-label="1 referência">1</small></h3><ul class="dx-m01-links"><li><a href="#mf-102-inventario-arquitetura-14"><span>14 · Conferência do produto</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li></ul></section>
+<section class="dx-m01-fonte"><h3><i class="fas fa-link" aria-hidden="true"></i><span>Também citada em</span><small aria-label="0 referências">—</small></h3><p class="dx-m01-vazio">Nenhuma referência listada no índice.</p></section>
+</div></section>
+</div>
+                            <div class="dx-content">
+<div class="doc-section dx-assunto"><h3 id="mf-102-inventario-o-que-e" data-dx-icone="book-open">O que é</h3><h4 id="mf-102-inventario-d-114">Definição macro · D-114</h4><p class="dx-fonte">No <a href="produto-backlog.html#d-114">Backlog estratégico, D-114</a>:</p><p>Situação: 🟢 decidida (confirmada pelo dono em 02/11/2026) · Data: 02/11/2026 · Versão: v2.0</p>
+<p><strong>Decisão:</strong> as funcionalidades por role ficam definidas assim. Com ela, a <code>P-009</code> se fechou. Esta definição completa o que a <a href="produto-backlog.html#d-056"><code>D-056</code></a> deixou de fora (“a lista de funcionalidades por role”) e reúne a <a href="produto-backlog.html#d-110"><code>D-110</code></a>, a <a href="produto-backlog.html#d-111"><code>D-111</code></a>, a <a href="produto-backlog.html#d-112"><code>D-112</code></a> e a <a href="produto-backlog.html#d-113"><code>D-113</code></a>.</p>
+<ul>
+<li><strong>Nome:</strong> continua sendo parte da MF-102:Organizações, pessoas e papéis. O nome da peça é <strong>“role”</strong>, o mesmo do login corporativo e do cadastro (<a href="produto-backlog.html#d-052"><code>D-052</code></a>). 🔎 O nome comercial que a <code>P-009</code> ainda listava ficou fechado pela <a href="produto-backlog.html#d-052"><code>D-052</code></a>; o dono pode renomear.</li>
+<li><strong>O que é</strong> ✅: o <strong>owner liga e desliga, por role, tudo o que a conversa oferece, botão a botão</strong> (<a href="produto-backlog.html#d-050"><code>D-050</code></a>, <a href="produto-backlog.html#d-110"><code>D-110</code></a>).</li>
+<li><strong>Os botões</strong> ✅: 1) os três modos (dados, web e conversa); 2) os cinco níveis de inferência; 3) a Análise avançada; 4) a escolha do modelo de IA; 5) ver o SQL; 6) baixar CSV, imagem e PDF; 7) a Pergunta rápida (<a href="mf-110.html"><code>MF-110</code></a>). (<a href="produto-backlog.html#d-110"><code>D-110</code></a>)</li>
+<li><strong>Quando a pessoa tem mais de uma role</strong> ✅: <strong>vale a soma</strong>, botão a botão. Se qualquer role liga, a pessoa usa. Nos níveis de inferência vale o maior nível liberado, dentro do teto da organização (<a href="produto-backlog.html#d-111"><code>D-111</code></a>).</li>
+<li><strong>Quando a pessoa não tem nenhuma role</strong> ✅: a organização <strong>nasce com uma role padrão</strong>, com tudo o que a conversa oferece ligado, que vale só para quem não tem outra role. O owner a edita, mas não a apaga (<a href="produto-backlog.html#d-112"><code>D-112</code></a>).</li>
+<li><strong>Como nasce uma role nova</strong> ✅: o owner escolhe, na criação, <strong>começar do zero ou copiar uma role que já existe</strong> (<a href="produto-backlog.html#d-113"><code>D-113</code></a>).</li>
+<li><strong>Quem cria e quem atribui</strong> ✅: só o owner cria roles (<a href="produto-backlog.html#d-052"><code>D-052</code></a>). 🔎 Atribuir também é do owner. Com login corporativo, a role chega pelo mapeamento dos campos do JWT que o owner configura (<a href="produto-backlog.html#d-052"><code>D-052</code></a>).</li>
+<li><strong>O que a role controla</strong> ✅: o que a pessoa <strong>usa</strong>. O que ela <strong>vê</strong> dos dados continua com a MF-106:Segurança dos dados por pessoa (<a href="produto-backlog.html#d-056"><code>D-056</code></a>).</li>
+<li><strong>O tipo de assento vem antes</strong> 🔎: o membro leitor (<a href="produto-backlog.html#d-069"><code>D-069</code></a>) não ganha a conversa mesmo que a role a ligue; a role só limita ou libera dentro do que o tipo de assento já permite.</li>
+<li><strong>O owner não depende de roles</strong> 🔎: usa tudo, para nunca se trancar fora (<a href="produto-backlog.html#d-112"><code>D-112</code></a>).</li>
+<li><strong>Quem ganha</strong> 🆕: o owner, que controla o que cada pessoa usa, inclusive o que custa mais (a Análise avançada e os modelos), sem fechar a porta de quem só precisa perguntar; o membro, que entra já com a conversa liberada pela role padrão.</li>
+<li><strong>Decisão que passa a ser possível</strong> 🆕: o owner liberar a análise a todos sem medo de exportação, de custo ou de resposta especulativa, porque tem o botão para cada um desses casos.</li>
+<li><strong>Prova de valor</strong> 🆕: o owner Marcos cria a role “Temporário” <strong>copiando a padrão</strong> e desligando a Análise avançada, o ver o SQL e o baixar. Ele a atribui ao estagiário Léo, que pergunta na conversa, mas não vê o SQL nem baixa nada. Depois atribui a role “Analista” à Ana, que soma as duas e passa a usar a Análise avançada.</li>
+<li><strong>Retorno para o negócio</strong> 🆕: o owner confia em abrir o Horus a mais pessoas porque controla custo e risco de uso, o que sustenta organizações maiores e mais assentos (<a href="mf-103.html"><code>MF-103</code></a>).</li>
+<li><strong>O que não inclui</strong> 🆕: dar ou tirar acesso a <strong>dados</strong> (é da <a href="mf-106.html"><code>MF-106</code></a>); os botões do chat pelo WhatsApp (<a href="mf-111.html"><code>MF-111</code></a>) e dos conectores de saída (<a href="mf-113.html"><code>MF-113</code></a>), que entram quando essas mfs entrarem; role que <strong>tira</strong> o que outra role deu; ordem ou prioridade entre roles; gestor atribuir ou criar roles; o limite por número de perguntas ou por custo.</li>
+<li><strong>Depende de:</strong> a MF-102:Organizações, pessoas e papéis (owner, gestor, membro e o tipo de assento); a MF-106:Segurança dos dados por pessoa (o que a pessoa vê); o login corporativo de cada organização, para a role que vem do JWT (<a href="produto-backlog.html#d-027"><code>D-027</code></a>, <a href="produto-backlog.html#d-052"><code>D-052</code></a>); a MF-103:Licenças e planos (tipo de assento, <a href="produto-backlog.html#d-069"><code>D-069</code></a>).</li>
+</ul>
+<p><strong>Contexto:</strong> reúne as <a href="produto-backlog.html#d-110"><code>D-110</code></a> a <a href="produto-backlog.html#d-113"><code>D-113</code></a>, que o dono decidiu. Os campos marcados com ✅ vieram do dono; os marcados com 🆕 foram propostos pelo PO e confirmados pelo dono; as leituras marcadas com 🔎 (atribuir é do owner, o tipo de assento vem antes, o owner não depende de roles e o nome “role”) também foram confirmadas com a definição.</p>
+<p><strong>Notas da repassada do PO</strong> <em>(02/11/2026)</em>:</p>
+<ul>
+<li>O trecho “com login corporativo, a role chega pelo mapeamento dos campos do JWT” e a dependência da <a href="produto-backlog.html#d-027"><code>D-027</code></a> contradizem a leitura da <a href="produto-backlog.html#d-108"><code>D-108</code></a> (na v2.0, as roles vêm do cadastro). A contradição foi o <code>I-011</code>, fechado pela <a href="produto-backlog.html#d-118"><code>D-118</code></a>: o login corporativo fica fora da v2.0, e esse trecho vale a partir da etapa 2 da segurança.</li>
+<li>🔎 Leitura do PO <em>(confirmada pelo dono em 02/11/2026)</em>: na role, os cinco níveis de inferência funcionam como <strong>um teto</strong>. A role diz até que nível a pessoa pode ir, e não liga cada nível sozinho; por isso, na soma, vale o maior (<a href="produto-backlog.html#d-111"><code>D-111</code></a>).</li>
+<li>Com a <a href="produto-backlog.html#d-119"><code>D-119</code></a>, a <a href="mf-111.html"><code>MF-111:Chat pelo WhatsApp</code></a> entrou na v2.0, e o “O que não inclui” acima deixa de valer para os botões do WhatsApp. 🔎 As roles ganham um oitavo botão, conversar pelo WhatsApp (leitura confirmada na <a href="produto-backlog.html#d-119"><code>D-119</code></a>).</li>
+<li>Com a <a href="produto-backlog.html#d-122"><code>D-122</code></a>, a <a href="mf-113.html"><code>MF-113:Conectores de Saída</code></a> também entrou na v2.0, e o mesmo vale para os botões dos conectores. 🔎 As roles ganham um nono botão, enviar pelos conectores de saída (leitura confirmada na <a href="produto-backlog.html#d-122"><code>D-122</code></a>).</li>
+</ul>
+<p><strong>Hipóteses a validar:</strong> a letra (l) da <code>P-008</code> (a matriz de permissões por papel comporta roles que o owner configura, a soma, a role padrão e todos os botões). E 🔎 que o owner prefira ligar botão a botão a ter pacotes prontos.</p>
+<p><strong>Reabrir quando:</strong> o arquiteto mostrar que algum botão não pode ser desligado sozinho, o owner achar a configuração pesada demais, ou um owner precisar de uma role que tire funcionalidades.</p>
+<h4 id="mf-102-inventario-d-056">Definição macro · D-056</h4><p class="dx-fonte">No <a href="produto-backlog.html#d-056">Backlog estratégico, D-056</a>:</p><p>Situação: 🟢 decidida (confirmada pelo dono em 31/10/2026) · refinada pela <a href="produto-backlog.html#d-071"><code>D-071</code></a> (o gestor também cria convites, com a aprovação do owner) · Data: 31/10/2026 · Versão: a pontuar</p>
+<p><strong>Decisão:</strong> a gestão de pessoas, os grupos e as roles da MF-102:Organizações, pessoas e papéis ficam definidos assim. Com ela, a <code>P-012</code> se fechou. Esta definição completa e, onde houver diferença, vale mais que a <a href="produto-backlog.html#d-032"><code>D-032</code></a>.</p>
+<ul>
+<li><strong>Papéis:</strong> owner, gestor e membro. O owner <strong>não é gestor</strong>, mas <strong>vê todos os membros</strong>; pode acumular o papel de gestor (<a href="produto-backlog.html#d-047"><code>D-047</code></a>, <a href="produto-backlog.html#d-048"><code>D-048</code></a>).</li>
+<li><strong>Gestão:</strong> cada membro tem <strong>um gestor</strong>. <strong>Só o owner transfere</strong> membros entre gestores (<a href="produto-backlog.html#d-046"><code>D-046</code></a>).</li>
+<li><strong>Entrada:</strong> o <strong>convite é da organização</strong> e pode indicar o gestor. Sem gestor, o membro vai para a <strong>quarentena</strong>: só acessa o perfil e os boards públicos da organização. Dela, o owner ou um gestor o adiciona à carteira (<a href="produto-backlog.html#d-047"><code>D-047</code></a>, <a href="produto-backlog.html#d-048"><code>D-048</code></a>). <strong>Só o owner emite convites</strong>, como hoje.</li>
+<li><strong>Gestor removido:</strong> ao remover um gestor, o owner <strong>indica quem passa a gerir os membros dele</strong>; sem indicação, os membros vão para a quarentena. Os grupos dele deixam de existir.</li>
+<li><strong>Grupos do gestor:</strong> só gestores os criam, e só com as pessoas que gerem. Servem à visibilidade dentro da hierarquia dele: boards, relatórios e alertas (<a href="produto-backlog.html#d-049"><code>D-049</code></a>).</li>
+<li><strong>Grupos da organização:</strong> o owner os cria e edita, com qualquer pessoa. Servem, por exemplo, à Diretoria (<a href="produto-backlog.html#d-055"><code>D-055</code></a>).</li>
+<li><strong>Roles:</strong> só o owner as cria, para limitar ou liberar funcionalidades. São a mesma informação, venham do login corporativo ou do cadastro. Com IDP, o owner configura o mapeamento dos campos do JWT (<a href="produto-backlog.html#d-050"><code>D-050</code></a>, <a href="produto-backlog.html#d-052"><code>D-052</code></a>).</li>
+<li><strong>Quem ganha:</strong> o owner, que delega o dia a dia aos gestores sem perder o controle; o gestor, que organiza e enxerga a equipe dele; o membro, que entra já na equipe certa.</li>
+<li><strong>Prova de valor:</strong> o owner convida a Ana indicando a gestora Carla; a Carla vê o board da Ana, cria o grupo “Vendas Sul” e publica para ele; o owner cria a role “Analista”, atribui à Ana, e cria o grupo da organização “Diretoria” para receber o relatório mensal.</li>
+<li><strong>Retorno para o negócio:</strong> o owner deixa de ser gargalo do dia a dia, o que permite organizações maiores, sem abrir mão do controle.</li>
+<li><strong>O que não inclui:</strong> gestor de gestor (hierarquia de vários níveis); gestão preenchida pelo IDP (etapa 2, <a href="produto-backlog.html#d-046"><code>D-046</code></a>); convite emitido por gestor; a lista de funcionalidades por role (<code>P-009</code>); dar acesso a dados pelo grupo ou pela role (isso é da MF-106:Segurança dos dados por pessoa, com a exceção do board, <a href="produto-backlog.html#d-054"><code>D-054</code></a>).</li>
+<li><strong>Depende de:</strong> a MF-106:Segurança dos dados por pessoa, pelas claims; a ligação do IDP em cada organização (<a href="produto-backlog.html#d-027"><code>D-027</code></a>); a mf única de boards e relatórios (<code>P-005</code>) e a MF-115:Agentes ativos, que usam os grupos.</li>
+</ul>
+<p><strong>Contexto:</strong> reúne as <a href="produto-backlog.html#d-046"><code>D-046</code></a> a <a href="produto-backlog.html#d-052"><code>D-052</code></a> e a <a href="produto-backlog.html#d-055"><code>D-055</code></a>. A estrutura veio do dono; os campos “Gestor removido”, “Só o owner emite convites”, “Quem ganha”, “Retorno” e “O que não inclui” foram propostos pelo PO e confirmados pelo dono, assim como as leituras da <a href="produto-backlog.html#d-049"><code>D-049</code></a> (o grupo dinâmico de um gestor vale só sobre os geridos dele; ao ser transferido, o membro sai dos grupos do gestor anterior; na visibilidade “Grupos”, o gestor usa os dele e o owner qualquer um) e a de que <strong>cada membro tem um gestor só</strong>.</p>
+<p><strong>Hipóteses a validar:</strong> as dos itens j, k, l e m da <code>P-008</code>.</p>
+<p><strong>Reabrir quando:</strong> o arquiteto mostrar que algum campo não cabe como definido, ou gestores precisarem convidar.</p>
+<h4 id="mf-102-inventario-d-032">Definição macro · D-032</h4><p class="dx-fonte">No <a href="produto-backlog.html#d-032">Backlog estratégico, D-032</a>:</p><p>Situação: 🟢 decidida (confirmada pelo dono em 31/10/2026; o campo “Quem gerencia” foi substituído pela <a href="produto-backlog.html#d-049"><code>D-049</code></a>) · Data: 31/10/2026 · Versão: a pontuar</p>
+<p><strong>Decisão:</strong> a melhoria dos grupos de pessoas na MF-102:Organizações, pessoas e papéis fica definida assim. Com ela, a <code>P-006</code> se fechou.</p>
+<ul>
+<li><strong>Nome:</strong> MF-102:Organizações, pessoas e papéis (mantido). Os grupos entram como parte dela, e não como mf nova.</li>
+<li><strong>Quem ganha:</strong> o owner da organização, que dá acesso, relatórios e permissões a muita gente de uma vez, em vez de pessoa por pessoa; as pessoas, que passam a receber o que lhes cabe sem pedir.</li>
+<li><strong>Decisão que passa a ser possível:</strong> organizar a empresa em grupos (uma diretoria, uma região, um time de análise) e decidir, uma vez só, o que cada grupo abre, recebe e pode usar (<a href="produto-backlog.html#d-029"><code>D-029</code></a>, <a href="produto-backlog.html#d-030"><code>D-030</code></a>). No grupo dinâmico, quem entra na empresa com a claim ou o papel certo já cai no grupo sozinho (<a href="produto-backlog.html#d-019"><code>D-019</code></a>).</li>
+<li><strong>Prova de valor:</strong> o owner cria um grupo uma vez e o usa para dar acesso a um board, enviar um relatório e receber um alerta. Quando alguém passa a ter a claim do grupo dinâmico, o acesso chega sem o owner mexer (<a href="produto-backlog.html#d-029"><code>D-029</code></a>).</li>
+<li><strong>Retorno para o negócio:</strong> menos trabalho de administração por organização e implantação mais rápida; é a base de outras mfs (acesso a boards e relatórios, destino dos alertas dos agentes).</li>
+<li><strong>Quem gerencia:</strong> só o owner da organização cria e edita grupos (<a href="produto-backlog.html#d-031"><code>D-031</code></a>).</li>
+<li><strong>O que não inclui:</strong> dar acesso a dados (o que cada pessoa vê dos dados continua sendo da MF-106:Segurança dos dados por pessoa); a lista de funcionalidades ativáveis por grupo e como elas se combinam (<code>P-009</code>); grupos que atravessam organizações (cada grupo vale dentro de uma organização, <a href="produto-backlog.html#d-008"><code>D-008</code></a>).</li>
+<li><strong>Depende de:</strong> as claims do vínculo da pessoa (MF-106:Segurança dos dados por pessoa) e os papéis (owner, gestor, membro), para os grupos dinâmicos; da mf única de boards e relatórios (<code>P-005</code>) e da MF-115:Agentes ativos (<code>P-007</code>), que usam os grupos.</li>
+</ul>
+<p><strong>Contexto:</strong> reúne as <a href="produto-backlog.html#d-019"><code>D-019</code></a>, <a href="produto-backlog.html#d-029"><code>D-029</code></a>, <a href="produto-backlog.html#d-030"><code>D-030</code></a> e <a href="produto-backlog.html#d-031"><code>D-031</code></a>. Os usos e a forma de montar vieram do dono; quem gerencia foi dúvida do PO; os campos “quem ganha”, “retorno”, “o que não inclui” e “depende de” foram propostos pelo PO e confirmados pelo dono.</p>
+<p><strong>Hipóteses a validar:</strong> a do item “Consequências” da <a href="produto-backlog.html#d-029"><code>D-029</code></a>, com o arquiteto de soluções (<code>P-008</code>).</p>
+<p><strong>Reabrir quando:</strong> um uso novo de grupo exigir regra diferente das já definidas, ou o arquiteto mostrar que algum campo não cabe como definido.</p>
+<h4 id="mf-102-inventario-produto-mfs-hoje">Macro funcionalidades de hoje</h4><p class="dx-fonte">Em <a href="produto-mfs-hoje.html#produto-mfs-hoje-o-mapa-12-macro-funcionalidades">O mapa: 12 macro funcionalidades</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de MF-102 · Organizações, pessoas e papéis"><table class="table table_shortcode"><thead><tr>
+<th scope="col">MF</th>
+<th scope="col">O que entrega hoje</th>
+<th scope="col">Situação</th>
+<th scope="col">Problema do norte que atende</th>
+</tr>
+</thead><tbody><tr>
+<td>👥 <strong>MF-102:Organizações, pessoas e papéis</strong></td>
+<td>Várias organizações; owner, gestor e membro; convite nominal por e-mail, link e QR; entrar com Google; recuperar senha; foto de perfil</td>
+<td>✅</td>
+<td><a href="produto-backlog.html#d-008"><code>D-008</code></a>, <a href="produto-backlog.html#d-013"><code>D-013</code></a></td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="produto-mfs-hoje.html#produto-mfs-hoje-tabela-de-conversao-da-numeracao">Tabela de conversão da numeração</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 2 de MF-102 · Organizações, pessoas e papéis"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Novo</th>
+<th scope="col">Mf</th>
+<th scope="col">01/11</th>
+<th scope="col">Original</th>
+<th scope="col">Camada</th>
+</tr>
+</thead><tbody><tr>
+<td><a href="mf-102.html"><code>MF-102</code></a></td>
+<td>Organizações, pessoas e papéis</td>
+<td><code>MF-14</code></td>
+<td><code>MF-010</code></td>
+<td>🧱 Plataforma</td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="produto-mfs-hoje.html#produto-mfs-hoje-o-que-o-dono-ja-disse-sobre-cada-mf-31102026">O que o dono já disse sobre cada mf (31/10/2026)</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 3 de MF-102 · Organizações, pessoas e papéis"><table class="table table_shortcode"><thead><tr>
+<th scope="col">MF</th>
+<th scope="col">Direção</th>
+<th scope="col">Onde está registrado</th>
+</tr>
+</thead><tbody><tr>
+<td>MF-102:Organizações, pessoas e papéis</td>
+<td><strong>A melhorar</strong>: grupos estáticos e dinâmicos, por claims e/ou papéis (na v2.0, os dinâmicos só por papel; por claims, na v2.1, <a href="produto-backlog.html#d-145"><code>D-145</code></a>), usados para permissão de acesso a boards, receber relatórios, destino de alertas e outros usos; as funcionalidades do Horus (os três modos, os cinco níveis de inferência, a Análise avançada, a escolha do modelo de IA, ver o SQL, baixar CSV, imagem e PDF, e a Pergunta rápida) são liberadas ou limitadas pelo owner por meio de roles, botão a botão: vale a soma quando a pessoa tem mais de uma role; a organização nasce com uma role padrão, que vale só para quem não tem outra; uma role nova começa do zero ou como cópia de outra (<a href="produto-backlog.html#d-110"><code>D-110</code></a> a <a href="produto-backlog.html#d-114"><code>D-114</code></a>); as roles só o owner cria e que podem vir do login corporativo pelo mapeamento que o owner configura (<a href="produto-backlog.html#d-050"><code>D-050</code></a>, <a href="produto-backlog.html#d-052"><code>D-052</code></a>); os gestores criam grupos só com as pessoas que gerem (<a href="produto-backlog.html#d-049"><code>D-049</code></a>), e o owner cria os grupos da organização, com qualquer pessoa (<a href="produto-backlog.html#d-055"><code>D-055</code></a>); o owner não é gestor, mas vê todos os membros; o convite passa a ser da organização e pode indicar o gestor, e quem fica sem gestor espera numa quarentena (só acessa o perfil e os boards públicos da organização), de onde o owner ou um gestor o adiciona; o owner não é dono de board, a menos que acumule o papel de gestor; só o owner transfere membros entre gestores; para efeito de assento, o membro é full ou leitor (<a href="produto-backlog.html#d-069"><code>D-069</code></a>); o gestor também cria convites, com a aprovação do owner (<a href="produto-backlog.html#d-071"><code>D-071</code></a>) (definição macro decidida na <a href="produto-backlog.html#d-056"><code>D-056</code></a>; a <code>P-012</code> está fechada; as funcionalidades por role foram definidas na <a href="produto-backlog.html#d-114"><code>D-114</code></a>, e a <code>P-009</code> está fechada)</td>
+<td><a href="produto-backlog.html#d-019"><code>D-019</code></a>, <a href="produto-backlog.html#d-029"><code>D-029</code></a>, <a href="produto-backlog.html#d-030"><code>D-030</code></a> e <a href="produto-backlog.html#d-031"><code>D-031</code></a> (substituídas), <a href="produto-backlog.html#d-042"><code>D-042</code></a> e <a href="produto-backlog.html#d-046"><code>D-046</code></a> a <a href="produto-backlog.html#d-052"><code>D-052</code></a>, <a href="produto-backlog.html#d-055"><code>D-055</code></a>, <a href="produto-backlog.html#d-056"><code>D-056</code></a> e <a href="produto-backlog.html#d-110"><code>D-110</code></a> a <a href="produto-backlog.html#d-114"><code>D-114</code></a> (definição macro decidida nas <a href="produto-backlog.html#d-032"><code>D-032</code></a>, <a href="produto-backlog.html#d-056"><code>D-056</code></a> e <a href="produto-backlog.html#d-114"><code>D-114</code></a>; a <code>P-006</code>, a <code>P-009</code> e a <code>P-012</code> estão fechadas)</td>
+</tr>
+</tbody></table></div>
+</div><div class="doc-section dx-assunto"><h3 id="mf-102-inventario-entregas" data-dx-icone="box-open">Nas entregas</h3><h4 id="mf-102-inventario-produto-v20">A v2.0 consolidada</h4><p class="dx-fonte">A seção <a href="produto-v20.html#produto-v20-51-pessoas-papeis-e-convites-mf-102organizacoes-pessoas-e-papeis">5.1 Pessoas, papéis e convites (MF-102:Organizações, pessoas e papéis)</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 4 de MF-102 · Organizações, pessoas e papéis"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Regra</th>
+<th scope="col">Decisão</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Os <strong>papéis</strong> são owner, gestor e membro. O owner <strong>não é gestor</strong>, mas vê todos os membros e pode acumular o papel de gestor ✅</td>
+<td><a href="produto-backlog.html#d-056"><code>D-056</code></a></td>
+</tr>
+<tr>
+<td>Cada membro tem <strong>um gestor só</strong>; <strong>só o owner</strong> transfere membros entre gestores ✅</td>
+<td><a href="produto-backlog.html#d-046"><code>D-046</code></a>, <a href="produto-backlog.html#d-056"><code>D-056</code></a></td>
+</tr>
+<tr>
+<td>O <strong>convite é da organização</strong>. O gestor cria o convite e escolhe o tipo de assento; o owner aprova; a aprovação envia o e-mail e reserva o assento por N dias ✅</td>
+<td><a href="produto-backlog.html#d-071"><code>D-071</code></a>, <a href="produto-backlog.html#d-078"><code>D-078</code></a></td>
+</tr>
+<tr>
+<td>Quem entra <strong>sem gestor</strong> vai para a <strong>quarentena</strong>: só acessa o perfil e os boards públicos da organização; dela, o owner ou um gestor o adiciona à carteira ✅</td>
+<td><a href="produto-backlog.html#d-047"><code>D-047</code></a>, <a href="produto-backlog.html#d-048"><code>D-048</code></a>, <a href="produto-backlog.html#d-056"><code>D-056</code></a></td>
+</tr>
+<tr>
+<td>Os <strong>grupos do gestor</strong> têm só as pessoas que ele gere; os <strong>grupos da organização</strong> são do owner, com qualquer pessoa. Na v2.0 servem aos boards e relatórios da <a href="mf-112.html"><code>MF-112:Boards e Relatórios</code></a> ✅</td>
+<td><a href="produto-backlog.html#d-049"><code>D-049</code></a>, <a href="produto-backlog.html#d-055"><code>D-055</code></a>, <a href="produto-backlog.html#d-119"><code>D-119</code></a></td>
+</tr>
+<tr>
+<td>Na v2.0 a pessoa entra <strong>como hoje</strong> (e-mail e senha ou Google), e as <strong>roles vêm do cadastro</strong>. O <strong>login corporativo</strong>, com a role pelo JWT, fica para a etapa 2 da segurança, fora da v2.0 ✅</td>
+<td><a href="produto-backlog.html#d-108"><code>D-108</code></a>, <a href="produto-backlog.html#d-114"><code>D-114</code></a>, <a href="produto-backlog.html#d-118"><code>D-118</code></a></td>
+</tr>
+</tbody>
+</table></div><p class="dx-fonte">Em <a href="produto-v20.html#produto-v20-mf-a-mf-em-ordem-numerica-o-que-vem-na-v20-e-o-que-fica-no-backlog">Mf a mf, em ordem numérica: o que vem na v2.0 e o que fica no backlog</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 5 de MF-102 · Organizações, pessoas e papéis"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Mf</th>
+<th scope="col">Nome</th>
+<th scope="col">Onde</th>
+<th scope="col">Na v2.0</th>
+<th scope="col">No backlog</th>
+<th scope="col">Decisão</th>
+</tr>
+</thead><tbody><tr>
+<td><a href="mf-102.html"><code>MF-102</code></a></td>
+<td>Organizações, pessoas e papéis</td>
+<td>✅ v2.0</td>
+<td>nº 9, a gestão de pessoas inteira, com grupos e roles; os grupos dinâmicos, só por papel, e a planilha, só para os convites em lote</td>
+<td>Os grupos por claims, com a <a href="mf-106.html"><code>MF-106</code></a></td>
+<td><a href="produto-backlog.html#d-108"><code>D-108</code></a>, <a href="produto-backlog.html#d-114"><code>D-114</code></a>, <a href="produto-backlog.html#d-145"><code>D-145</code></a></td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="produto-v20.html#produto-v20-31-as-catorze-candidatas">3.1 As catorze candidatas</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 6 de MF-102 · Organizações, pessoas e papéis"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Nº</th>
+<th scope="col">Candidata</th>
+<th scope="col">Mf</th>
+<th scope="col">Papel na v2.0</th>
+<th scope="col">Hoje (inventário)</th>
+<th scope="col">Definição</th>
+<th scope="col">Nota</th>
+</tr>
+</thead><tbody><tr>
+<td>9</td>
+<td>👥 <strong>Grupos de pessoas e roles</strong> (a gestão de pessoas inteira)</td>
+<td><a href="mf-102.html"><code>MF-102:Organizações, pessoas e papéis</code></a></td>
+<td>Condição da organização. <strong>Entra por decisão do dono</strong>, abaixo do corte</td>
+<td>✅ Existe a base (owner, gestor, membro, convites); quarentena, grupos e roles são o redesenho</td>
+<td><a href="produto-backlog.html#d-056"><code>D-056</code></a>, <a href="produto-backlog.html#d-114"><code>D-114</code></a>, <a href="produto-backlog.html#d-108"><code>D-108</code></a></td>
+<td>55</td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="produto-v20.html#produto-v20-4-a-prova-de-valor-passo-a-passo">4. A prova de valor, passo a passo</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 7 de MF-102 · Organizações, pessoas e papéis"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Passo</th>
+<th scope="col">O que acontece</th>
+<th scope="col">Peça</th>
+</tr>
+</thead><tbody><tr>
+<td>2</td>
+<td>O Marcos convida a Carla num assento de gestora. A Carla cria os convites da equipe dela, e o Marcos os aprova. O Marcos define o que cada role liga; quem não tem role usa a role padrão</td>
+<td><a href="mf-102.html"><code>MF-102:Organizações, pessoas e papéis</code></a>, <a href="mf-103.html"><code>MF-103:Licenças e planos</code></a></td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="produto-v20.html#produto-v20-7-como-as-pecas-dependem-umas-das-outras">7. Como as peças dependem umas das outras</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 8 de MF-102 · Organizações, pessoas e papéis"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Peça</th>
+<th scope="col">Depende de</th>
+</tr>
+</thead><tbody><tr>
+<td><a href="mf-103.html"><code>MF-103:Licenças e planos</code></a></td>
+<td><a href="mf-102.html"><code>MF-102:Organizações, pessoas e papéis</code></a> (papéis, convites e quarentena) e <a href="mf-101.html"><code>MF-101:Administração da instância</code></a> (o painel)</td>
+</tr>
+<tr>
+<td><a href="mf-102.html"><code>MF-102:Organizações, pessoas e papéis</code></a> (roles)</td>
+<td>Na v2.0, nenhuma: a organização é a fronteira dos dados. Na v2.1, a <a href="mf-106.html"><code>MF-106:Segurança dos dados por pessoa</code></a>, para o que a pessoa vê (<a href="produto-backlog.html#d-145"><code>D-145</code></a>)</td>
+</tr>
+<tr>
+<td><a href="mf-110.html"><code>MF-110:Pergunta rápida</code></a></td>
+<td><a href="mf-107.html"><code>MF-107:Perguntar aos dados em português</code></a>, <a href="mf-108.html"><code>MF-108:Respostas visuais</code></a>, <a href="mf-102.html"><code>MF-102:Organizações, pessoas e papéis</code></a> (roles e tipos de assento) e <a href="mf-103.html"><code>MF-103:Licenças e planos</code></a> (o leitor não pergunta)</td>
+</tr>
+<tr>
+<td><a href="mf-112.html"><code>MF-112:Boards e Relatórios</code></a></td>
+<td><a href="mf-102.html"><code>MF-102:Organizações, pessoas e papéis</code></a> (gestão, grupos e roles), <a href="mf-104.html"><code>MF-104:Conectar as fontes vivas</code></a>, <a href="mf-107.html"><code>MF-107:Perguntar aos dados em português</code></a> e <a href="mf-108.html"><code>MF-108:Respostas visuais</code></a>. Para o PDF automático, a <a href="mf-114.html"><code>MF-114:Módulo de Agendamentos de Agentes</code></a> e a <a href="mf-113.html"><code>MF-113:Conectores de Saída</code></a>, que entraram na v2.0 (<a href="produto-backlog.html#d-122"><code>D-122</code></a>)</td>
+</tr>
+<tr>
+<td><a href="mf-111.html"><code>MF-111:Chat pelo WhatsApp</code></a></td>
+<td><a href="mf-107.html"><code>MF-107:Perguntar aos dados em português</code></a>, <a href="mf-108.html"><code>MF-108:Respostas visuais</code></a> (o que vira imagem, hipótese <code>p</code> da <code>P-008</code>), <a href="mf-102.html"><code>MF-102:Organizações, pessoas e papéis</code></a> (roles, tipos de assento e o número no perfil), <a href="mf-103.html"><code>MF-103:Licenças e planos</code></a> (o leitor não pergunta) e <a href="mf-116.html"><code>MF-116:Auditoria</code></a>. Fora do produto: a conta de WhatsApp Business de cada organização e a aprovação na Meta</td>
+</tr>
+<tr>
+<td><a href="mf-116.html"><code>MF-116:Auditoria</code></a></td>
+<td><a href="mf-112.html"><code>MF-112:Boards e Relatórios</code></a> (publicar e abrir) e <a href="mf-102.html"><code>MF-102:Organizações, pessoas e papéis</code></a> (owner e preferências). A <a href="mf-115.html"><code>MF-115:Agentes ativos</code></a>, a <a href="mf-114.html"><code>MF-114:Módulo de Agendamentos de Agentes</code></a> e a <a href="mf-113.html"><code>MF-113:Conectores de Saída</code></a>, para o que sai e por onde (<a href="produto-backlog.html#d-122"><code>D-122</code></a>)</td>
+</tr>
+<tr>
+<td><a href="mf-114.html"><code>MF-114:Módulo de Agendamentos de Agentes</code></a></td>
+<td><a href="mf-115.html"><code>MF-115:Agentes ativos</code></a>, <a href="mf-113.html"><code>MF-113:Conectores de Saída</code></a>, <a href="mf-112.html"><code>MF-112:Boards e Relatórios</code></a>, <a href="mf-102.html"><code>MF-102:Organizações, pessoas e papéis</code></a> (gestão e grupos). Hipótese <code>g</code>: a agenda de hoje como base</td>
+</tr>
+<tr>
+<td><a href="mf-113.html"><code>MF-113:Conectores de Saída</code></a></td>
+<td><a href="mf-115.html"><code>MF-115:Agentes ativos</code></a> e <a href="mf-114.html"><code>MF-114:Módulo de Agendamentos de Agentes</code></a>, que chamam os conectores; <a href="mf-102.html"><code>MF-102:Organizações, pessoas e papéis</code></a> (o contato no perfil e o papel de owner); <a href="mf-101.html"><code>MF-101:Administração da instância</code></a> (o &quot;tudo dentro&quot;). Hipótese <code>f</code>: a saída por e-mail de hoje como base</td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="produto-v20.html#produto-v20-8-riscos-conhecidos">8. Riscos conhecidos</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 9 de MF-102 · Organizações, pessoas e papéis"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Risco</th>
+<th scope="col">Por quê</th>
+<th scope="col">Onde está</th>
+</tr>
+</thead><tbody><tr>
+<td>📏 <strong>A v2.0 ficou grande</strong></td>
+<td>Entram a <a href="mf-102.html"><code>MF-102:Organizações, pessoas e papéis</code></a> completa, a <a href="mf-103.html"><code>MF-103:Licenças e planos</code></a> inteira, os quatro itens do problema nº 1 pela <a href="produto-backlog.html#d-119"><code>D-119</code></a>, o redesenho dos boards, o WhatsApp e a auditoria, e, pela <a href="produto-backlog.html#d-122"><code>D-122</code></a>, o aviso inteiro. Oito das catorze candidatas entraram acima do corte. O PO recomendou duas ondas e o mínimo de cada mf; o dono escolheu a v2.0 inteira e de uma vez só. Depois, a segurança por pessoa (a etapa 1) saiu para a v2.1, o que alivia a v2.0</td>
+<td><a href="produto-backlog.html#d-107"><code>D-107</code></a>, <a href="produto-backlog.html#d-108"><code>D-108</code></a>, <a href="produto-backlog.html#d-109"><code>D-109</code></a>, <a href="produto-backlog.html#d-119"><code>D-119</code></a>, <a href="produto-backlog.html#d-122"><code>D-122</code></a>, <a href="produto-backlog.html#d-145"><code>D-145</code></a></td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="produto-v20.html#produto-v20-a-leituras-que-sustentam-a-v20">A. Leituras que sustentam a v2.0</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 10 de MF-102 · Organizações, pessoas e papéis"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Ref</th>
+<th scope="col">Decisão</th>
+<th scope="col">Leitura do PO</th>
+<th scope="col">Resultado</th>
+</tr>
+</thead><tbody><tr>
+<td><code>D-128.2</code></td>
+<td><a href="produto-backlog.html#d-128"><code>D-128</code></a></td>
+<td>A preferência de receber e-mails de avisos do Horus fica no <strong>perfil da pessoa</strong> (<a href="mf-102.html"><code>MF-102:Organizações, pessoas e papéis</code></a>).</td>
+<td>✅ Confirmada</td>
+</tr>
+<tr>
+<td><code>D-108.4</code></td>
+<td><a href="produto-backlog.html#d-108"><code>D-108</code></a></td>
+<td>A v2.0 fica grande: a <a href="mf-102.html"><code>MF-102</code></a> completa, a <a href="mf-103.html"><code>MF-103</code></a> inteira, a segurança etapa 1 e os quatro itens do problema nº 1. O primeiro valor pode atrasar por causa da parte organizacional.</td>
+<td>✅ Confirmada</td>
+</tr>
+<tr>
+<td><code>D-107.3</code></td>
+<td><a href="produto-backlog.html#d-107"><code>D-107</code></a></td>
+<td>A <a href="mf-103.html"><code>MF-103</code></a> depende da <a href="mf-102.html"><code>MF-102:Organizações, pessoas e papéis</code></a> (papéis, convites e quarentena) e da <a href="mf-101.html"><code>MF-101:Administração da instância</code></a> (o painel). A <a href="mf-101.html"><code>MF-101</code></a> já é base herdada; a <a href="mf-102.html"><code>MF-102</code></a> puxa uma parte do redesenho para a v2.0, e quanto é o assunto do <code>I-010</code>.</td>
+<td>⚪ Encerrada: o <code>I-010</code> está fechado (<a href="produto-backlog.html#d-108"><code>D-108</code></a>).</td>
+</tr>
+</tbody></table></div><h4 id="mf-102-inventario-produto-versoes">As versões, mf a mf</h4><p class="dx-fonte">Em <a href="produto-versoes.html#produto-versoes--v20-a-pergunta-na-hora-com-confianca-o-acompanhamento-e-o-aviso">🟢 v2.0: a pergunta na hora, com confiança, o acompanhamento e o aviso</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 11 de MF-102 · Organizações, pessoas e papéis"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Mf</th>
+<th scope="col">Nome</th>
+<th scope="col">O que entra</th>
+<th scope="col">Nº</th>
+<th scope="col">Nota</th>
+<th scope="col">Decisão</th>
+</tr>
+</thead><tbody><tr>
+<td><a href="mf-102.html"><code>MF-102</code></a></td>
+<td>Organizações, pessoas e papéis</td>
+<td>A gestão de pessoas inteira, com quarentena, grupos e roles; os grupos dinâmicos, só por papel, e a planilha, só para os convites em lote</td>
+<td>9</td>
+<td>55 ✋</td>
+<td><a href="produto-backlog.html#d-108"><code>D-108</code></a>, <a href="produto-backlog.html#d-114"><code>D-114</code></a>, <a href="produto-backlog.html#d-145"><code>D-145</code></a></td>
+</tr>
+</tbody></table></div>
+</div><div class="doc-section dx-assunto"><h3 id="mf-102-inventario-objetivos" data-dx-icone="bullseye">Objetivos</h3><h4 id="mf-102-inventario-produto-mapa">Mapa de objetivos e funcionalidades</h4><p class="dx-fonte">Em <a href="produto-mapa.html#produto-mapa-3-os-objetivos-e-as-funcionalidades">3. Os objetivos e as funcionalidades</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 12 de MF-102 · Organizações, pessoas e papéis"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Objetivo</th>
+<th scope="col">Mf</th>
+<th scope="col">Funcionalidade</th>
+<th scope="col">Nº</th>
+<th scope="col">Entrega</th>
+<th scope="col">Definição</th>
+</tr>
+</thead><tbody><tr>
+<td>O7</td>
+<td><a href="mf-102.html"><code>MF-102:Organizações, pessoas e papéis</code></a></td>
+<td>A gestão de pessoas inteira: gestor, quarentena, grupos e roles</td>
+<td>9</td>
+<td>v2.0</td>
+<td><a href="produto-backlog.html#d-056"><code>D-056</code></a>, <a href="produto-backlog.html#d-114"><code>D-114</code></a></td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="produto-mapa.html#produto-mapa-5-o-que-a-v2-pode-reaproveitar-da-v1xx-">5. O que a v2 pode reaproveitar da v1.xx 🔎</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 13 de MF-102 · Organizações, pessoas e papéis"><table class="table table_shortcode"><thead><tr>
+<th scope="col">O que a v1.xx tem</th>
+<th scope="col">Serve de partida para</th>
+</tr>
+</thead><tbody><tr>
+<td>Owner, gestor, membro, convites e várias organizações</td>
+<td>O7, a <a href="mf-102.html"><code>MF-102:Organizações, pessoas e papéis</code></a> (<code>P-008</code>, j, k, l)</td>
+</tr>
+</tbody></table></div>
+</div><div class="doc-section dx-assunto"><h3 id="mf-102-inventario-decisoes-produto" data-dx-icone="tasks">Decisões de produto</h3><h4 id="mf-102-inventario-produto-backlog-d">Backlog estratégico · 24 decisões</h4><div class="table-responsive" tabindex="0" role="region" aria-label="Decisões de produto de MF-102 · Organizações, pessoas e papéis"><table class="table table_shortcode"><thead><tr><th scope="col">Nº</th><th scope="col">Decisão</th><th scope="col">Situação</th><th scope="col">Versão</th></tr></thead><tbody><tr><td><a href="produto-backlog.html#d-145"><code>D-145</code></a></td><td>A MF-106 inteira na v2.1 e, na v2.0, a organização como fronteira dos dados</td><td>🟢 decidida</td><td>v2.0 e v2.1</td></tr><tr><td><a href="produto-backlog.html#d-131"><code>D-131</code></a></td><td>Definição macro da candidata nº 3, a web como fonte viva completa (MF-109:A web como fonte)</td><td>🟢 decidida</td><td>v2.0</td></tr><tr><td><a href="produto-backlog.html#d-129"><code>D-129</code></a></td><td>Definição macro da candidata nº 2, o retorno do usuário sobre a resposta (MF-107:Perguntar aos dados em português)</td><td>🟢 decidida</td><td>v2.0</td></tr><tr><td><a href="produto-backlog.html#d-128"><code>D-128</code></a></td><td>Quem reporta recebe um aviso automático de “recebido”, dentro do Horus e por e-mail</td><td>🟢 decidida</td><td>v2.0</td></tr><tr><td><a href="produto-backlog.html#d-117"><code>D-117</code></a></td><td>Definição macro dos planos da v2.0 na MF-103:Licenças e planos</td><td>🟢 decidida</td><td>v2.0</td></tr><tr><td><a href="produto-backlog.html#d-114"><code>D-114</code></a></td><td>Definição macro das funcionalidades por role na MF-102:Organizações, pessoas e papéis</td><td>🟢 decidida</td><td>v2.0</td></tr><tr><td><a href="produto-backlog.html#d-108"><code>D-108</code></a></td><td>A v2.0 inclui a MF-102 redesenhada inteira: gestão de pessoas, quarentena, grupos e roles</td><td>🟢 decidida</td><td>v2.0</td></tr><tr><td><a href="produto-backlog.html#d-107"><code>D-107</code></a></td><td>A v2.0 cobra por assentos desde o primeiro cliente: a MF-103:Licenças e planos entra inteira</td><td>🟢 decidida</td><td>v2.0</td></tr><tr><td><a href="produto-backlog.html#d-105"><code>D-105</code></a></td><td>A v2.0 resolve o problema nº 1 com confiança e prova de valor</td><td>🟢 decidida</td><td>v2.0</td></tr><tr><td><a href="produto-backlog.html#d-099"><code>D-099</code></a></td><td>Definição macro da MF-111:Chat pelo WhatsApp</td><td>🟢 decidida</td><td>a pontuar</td></tr><tr><td><a href="produto-backlog.html#d-093"><code>D-093</code></a></td><td>Definição macro da MF-116:Auditoria</td><td>🟢 decidida</td><td>a pontuar</td></tr><tr><td><a href="produto-backlog.html#d-089"><code>D-089</code></a></td><td>Definição macro da MF-110:Pergunta rápida</td><td>🟢 decidida</td><td>a pontuar</td></tr><tr><td><a href="produto-backlog.html#d-080"><code>D-080</code></a></td><td>Definição macro da MF-103:Licenças e planos</td><td>🟢 decidida</td><td>a pontuar</td></tr><tr><td><a href="produto-backlog.html#d-060"><code>D-060</code></a></td><td>Definição macro da MF-114:Módulo de Agendamentos de Agentes</td><td>🟢 decidida</td><td>a pontuar</td></tr><tr><td><a href="produto-backlog.html#d-058"><code>D-058</code></a></td><td>Definição macro da mf única de boards e relatórios</td><td>🟢 decidida</td><td>a pontuar</td></tr><tr><td><a href="produto-backlog.html#d-056"><code>D-056</code></a></td><td>Definição macro da gestão de pessoas, dos grupos e das roles na MF-102:Organizações, pessoas e papéis</td><td>🟢 decidida</td><td>a pontuar</td></tr><tr><td><a href="produto-backlog.html#d-047"><code>D-047</code></a></td><td>O owner não é gestor, mas vê todos os membros; o convite é da organização e quem fica sem gestor espera na quarentena</td><td>🟢 decidida</td><td>a pontuar</td></tr><tr><td><a href="produto-backlog.html#d-045"><code>D-045</code></a></td><td>No lugar do board desabilitado entra um texto de aviso; o board sem autor mantém o status</td><td>🟢 decidida</td><td>a pontuar</td></tr><tr><td><a href="produto-backlog.html#d-041"><code>D-041</code></a></td><td>Definição macro da MF-113:Conectores de Saída</td><td>🟢 decidida</td><td>a pontuar</td></tr><tr><td><a href="produto-backlog.html#d-032"><code>D-032</code></a></td><td>Definição macro dos grupos de pessoas (MF-102:Organizações, pessoas e papéis)</td><td>🟢 decidida</td><td>a pontuar</td></tr><tr><td><a href="produto-backlog.html#d-029"><code>D-029</code></a></td><td>Os grupos de pessoas servem a vários usos, e não só aos alertas</td><td>🟢 decidida</td><td>a pontuar</td></tr><tr><td><a href="produto-backlog.html#d-028"><code>D-028</code></a></td><td>Definição macro da MF-106:Segurança dos dados por pessoa</td><td>🟢 decidida</td><td>a pontuar</td></tr><tr><td><a href="produto-backlog.html#d-021"><code>D-021</code></a></td><td>As mfs que o dono não mencionou entram na v2.0 como base herdada</td><td>🟢 decidida</td><td>geral</td></tr><tr><td><a href="produto-backlog.html#d-019"><code>D-019</code></a></td><td>A MF-102:Organizações, pessoas e papéis ganha grupos de pessoas, estáticos e dinâmicos</td><td>🟢 decidida</td><td>a pontuar</td></tr></tbody></table></div><h4 id="mf-102-inventario-produto-backlog">Backlog estratégico · pendências</h4><p class="dx-fonte">Em <a href="produto-backlog.html#produto-backlog-fechados">Fechados</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 15 de MF-102 · Organizações, pessoas e papéis"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Nº</th>
+<th scope="col">O que era</th>
+<th scope="col">Como fechou</th>
+<th scope="col">Em</th>
+</tr>
+</thead><tbody><tr>
+<td><code>I-012</code></td>
+<td>Quais regras de board valem na v2.0, já que os boards “continuavam como hoje” (<a href="produto-backlog.html#d-105"><code>D-105</code></a>) e a <a href="mf-102.html"><code>MF-102</code></a> e a <a href="mf-103.html"><code>MF-103</code></a> inteiras traziam regras de board</td>
+<td>O dono trouxe a <a href="mf-112.html"><code>MF-112:Boards e Relatórios</code></a> inteira para a v2.0, junto com a <a href="mf-111.html"><code>MF-111:Chat pelo WhatsApp</code></a> e a <a href="mf-116.html"><code>MF-116:Auditoria</code></a> (<a href="produto-backlog.html#d-119"><code>D-119</code></a>): valem todas as regras de board</td>
+<td>02/11/2026</td>
+</tr>
+<tr>
+<td><code>I-010</code></td>
+<td>O que da MF-102:Organizações, pessoas e papéis entra na v2.0, já que a <a href="mf-103.html"><code>MF-103</code></a> depende de papéis, convites e quarentena?</td>
+<td>O dono escolheu a opção C: a gestão de pessoas completa da <a href="produto-backlog.html#d-056"><code>D-056</code></a> (carteira de gestor, quarentena, grupos e roles) entra na v2.0 (<a href="produto-backlog.html#d-108"><code>D-108</code></a>). Isso fez a <code>P-009</code> deixar de poder esperar</td>
+<td>01/11/2026</td>
+</tr>
+<tr>
+<td><code>P-012</code></td>
+<td>Definição da gestão de pessoas, dos grupos e das roles na MF-102:Organizações, pessoas e papéis</td>
+<td>O dono decidiu a gestão por pessoa (<a href="produto-backlog.html#d-046"><code>D-046</code></a>), a quarentena e o convite da organização (<a href="produto-backlog.html#d-047"><code>D-047</code></a>, <a href="produto-backlog.html#d-048"><code>D-048</code></a>), os grupos do gestor e da organização (<a href="produto-backlog.html#d-049"><code>D-049</code></a>, <a href="produto-backlog.html#d-055"><code>D-055</code></a>) e as roles (<a href="produto-backlog.html#d-050"><code>D-050</code></a>, <a href="produto-backlog.html#d-052"><code>D-052</code></a>), e confirmou a definição completa (<a href="produto-backlog.html#d-056"><code>D-056</code></a>)</td>
+<td>31/10/2026</td>
+</tr>
+<tr>
+<td><code>P-006</code></td>
+<td>Definição macro dos grupos de pessoas, estáticos e dinâmicos (MF-102:Organizações, pessoas e papéis)</td>
+<td>O dono decidiu os usos (<a href="produto-backlog.html#d-029"><code>D-029</code></a>, <a href="produto-backlog.html#d-030"><code>D-030</code></a>) e que só o owner da organização cria e edita os grupos (<a href="produto-backlog.html#d-031"><code>D-031</code></a>), e confirmou a definição completa (<a href="produto-backlog.html#d-032"><code>D-032</code></a>)</td>
+<td>31/10/2026</td>
+</tr>
+</tbody></table></div>
+</div><div class="doc-section dx-assunto"><h3 id="mf-102-inventario-arquitetura" data-dx-icone="layer-group">Arquitetura</h3><h4 id="mf-102-inventario-arquitetura-01">01 · Estratégia da solução</h4><p class="dx-fonte">Em <a href="arquitetura-01.html#arquitetura-01--v20-a-pergunta-na-hora-com-confianca-o-acompanhamento-e-o-aviso">🟢 v2.0: a pergunta na hora, com confiança, o acompanhamento e o aviso</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 16 de MF-102 · Organizações, pessoas e papéis"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Campo</th>
+<th scope="col">O que diz</th>
+</tr>
+</thead><tbody><tr>
+<td>O que é trabalho novo</td>
+<td>A plataforma de pessoas, roles e assentos com o avaliador (<a href="mf-102.html"><code>MF-102</code></a>, <a href="mf-103.html"><code>MF-103</code></a>); o retorno do usuário, a web com link e data e a medida de autonomia (o problema nº 1); os dois canais novos (<a href="mf-110.html"><code>MF-110</code></a>, <a href="mf-111.html"><code>MF-111</code></a>); o editor único de boards e relatórios (<a href="mf-112.html"><code>MF-112</code></a>); o aviso inteiro (<a href="mf-113.html"><code>MF-113</code></a>, <a href="mf-114.html"><code>MF-114</code></a>, <a href="mf-115.html"><code>MF-115</code></a>); o rastro (<a href="mf-116.html"><code>MF-116</code></a>)</td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="arquitetura-01.html#arquitetura-01-3-como-cada-objetivo-e-atingido">3. Como cada objetivo é atingido</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 17 de MF-102 · Organizações, pessoas e papéis"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Objetivo</th>
+<th scope="col">Mfs</th>
+<th scope="col">Como a arquitetura o atinge</th>
+<th scope="col">Decisões</th>
+<th scope="col">Detalhe</th>
+</tr>
+</thead><tbody><tr>
+<td><strong>O7</strong> 🏢 Organizar as pessoas e cobrar</td>
+<td><a href="mf-102.html"><code>MF-102</code></a>, <a href="mf-101.html"><code>MF-101</code></a>, <a href="mf-103.html"><code>MF-103</code></a></td>
+<td>A matriz fixa de papéis da v1.xx vira o avaliador em três camadas. A carteira do gestor, a quarentena, os grupos, as roles e os assentos são novos. O corte pausa o que roda sozinho pela fila.</td>
+<td><a href="arquitetura-02.html#arq-008"><code>ARQ-008</code></a>, <a href="arquitetura-02.html#arq-005"><code>ARQ-005</code></a>, <a href="arquitetura-02.html#arq-010"><code>ARQ-010</code></a> ✅</td>
+<td>04, 06, 07</td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="arquitetura-01.html#arquitetura-01-4-as-19-mfs-uma-a-uma">4. As 19 mfs, uma a uma</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 18 de MF-102 · Organizações, pessoas e papéis"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Mf</th>
+<th scope="col">Entrega</th>
+<th scope="col">Estratégia</th>
+<th scope="col">Da v1.xx</th>
+<th scope="col">Marco</th>
+<th scope="col">Detalhe</th>
+</tr>
+</thead><tbody><tr>
+<td><a href="mf-102.html"><code>MF-102:Organizações, pessoas e papéis</code></a></td>
+<td>v2.0</td>
+<td>Redesenho: a carteira do gestor, a quarentena, o convite do gestor com aprovação do owner e reserva do assento, os grupos do gestor e da organização, as roles com os nove botões, a role padrão e a cópia de role, tudo respondendo ao avaliador. Ganha a área de avisos da conta e a preferência de e-mail (<a href="produto-backlog.html#d-128"><code>D-128</code></a>)</td>
+<td>Reaproveita as várias organizações, a sessão, os convites nominais e por link com QR, o Google, a recuperação de senha, a foto e a planilha CSV. Reescreve a matriz de 23 ações e três papéis fixos (<code>horus@318db52b:apps/server/Horus.Core/Identity/PermissoesDaOrg.cs</code>). A carteira, a quarentena, os grupos, as roles e a área de avisos não existem (o sininho saiu da tela e só volta &quot;quando houver notificação de verdade&quot;, <code>horus@318db52b:apps/web/src/layout/HeaderApp.vue</code>)</td>
+<td>M1</td>
+<td>04, 06, 07</td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="arquitetura-01.html#arquitetura-01-v20">v2.0</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 19 de MF-102 · Organizações, pessoas e papéis"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Marco</th>
+<th scope="col">Fica de pé ao fim</th>
+<th scope="col">Mfs</th>
+<th scope="col">Depende de</th>
+</tr>
+</thead><tbody><tr>
+<td><strong>M1 · Plataforma</strong></td>
+<td>A instância com o painel dos assentos. A gestão de pessoas inteira (carteira, quarentena, convite do gestor com aprovação, grupos, roles com os botões, role padrão e cópia). Os quatro tipos de assento, a reserva, a troca e o corte. O avaliador de permissões. O <strong>registro do rastro</strong> e a <strong>área de avisos</strong>. O semeador das organizações de exemplo nesse modelo (<a href="arquitetura-02.html#arq-089"><code>ARQ-089</code></a>)</td>
+<td><a href="mf-101.html"><code>MF-101</code></a>, <a href="mf-102.html"><code>MF-102</code></a>, <a href="mf-103.html"><code>MF-103</code></a>, <a href="mf-116.html"><code>MF-116</code></a> (o registro)</td>
+<td>M0; as regras de criação de organizações (A-02); <a href="arquitetura-02.html#arq-011"><code>ARQ-011</code></a> ✅</td>
+</tr>
+</tbody></table></div><h4 id="mf-102-inventario-arquitetura-04">04 · Software</h4><p class="dx-fonte">Em <a href="arquitetura-04.html#arquitetura-04--plataforma">🏛️ Plataforma</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 20 de MF-102 · Organizações, pessoas e papéis"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Componente</th>
+<th scope="col">Responsabilidade</th>
+<th scope="col">Mfs</th>
+<th scope="col">Situação</th>
+</tr>
+</thead><tbody><tr>
+<td>Organizações e sessão</td>
+<td>As organizações, o login por senha e pelo Google, a sessão por cookie, a recuperação de senha, a foto</td>
+<td><a href="mf-102.html"><code>MF-102</code></a></td>
+<td>♻️ <code>horus@318db52b:apps/server/Horus.Core/Identity/</code>, <code>Horus.Api/Sessao.cs</code></td>
+</tr>
+<tr>
+<td>Pessoas e gestão</td>
+<td>A carteira do gestor, a quarentena, o convite do gestor com aprovação do owner e reserva do assento, a planilha</td>
+<td><a href="mf-102.html"><code>MF-102</code></a>, <a href="mf-103.html"><code>MF-103</code></a></td>
+<td>🔧 os convites e a planilha (<code>horus@318db52b:apps/server/Horus.Core/Seguranca/Planilha/</code>); 🆕 a carteira e a quarentena</td>
+</tr>
+<tr>
+<td>Grupos</td>
+<td>Os grupos do gestor (só com quem ele gere) e os da organização (do owner)</td>
+<td><a href="mf-102.html"><code>MF-102</code></a></td>
+<td>🆕 (<a href="produto-backlog.html#d-049"><code>D-049</code></a>, <a href="produto-backlog.html#d-055"><code>D-055</code></a>)</td>
+</tr>
+<tr>
+<td>Roles</td>
+<td>As roles com os nove botões, a soma, a role padrão e a cópia</td>
+<td><a href="mf-102.html"><code>MF-102</code></a></td>
+<td>🆕 (<a href="produto-backlog.html#d-110"><code>D-110</code></a> a <a href="produto-backlog.html#d-114"><code>D-114</code></a>)</td>
+</tr>
+<tr>
+<td>Avaliador de permissões</td>
+<td>A porta única do &quot;pode?&quot;: tipo de assento, roles e, pelo contrato da terceira camada, a segurança dos dados (<a href="arquitetura-02.html#arq-008"><code>ARQ-008</code></a>); entrega também as <strong>permissões efetivas</strong> de uma pessoa numa organização, que a tela e o motor usam</td>
+<td><a href="mf-102.html"><code>MF-102</code></a>, <a href="mf-103.html"><code>MF-103</code></a>, <a href="mf-106.html"><code>MF-106</code></a></td>
+<td>🔧 a matriz de 23 ações e três papéis vira a primeira tabela (<code>horus@318db52b:apps/server/Horus.Core/Identity/PermissoesDaOrg.cs</code>)</td>
+</tr>
+<tr>
+<td>Área de avisos</td>
+<td>Os avisos da conta de cada pessoa, com a preferência de também receber por e-mail (<a href="produto-backlog.html#d-128"><code>D-128</code></a>, leituras <code>D-128.1</code> a <code>D-128.3</code>)</td>
+<td><a href="mf-102.html"><code>MF-102</code></a>, <a href="mf-107.html"><code>MF-107</code></a>, <a href="mf-115.html"><code>MF-115</code></a></td>
+<td>🆕 (o sininho saiu da tela: <code>horus@318db52b:apps/web/src/layout/HeaderApp.vue</code>)</td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="arquitetura-04.html#arquitetura-04-36-as-19-mfs-nos-modulos">3.6 As 19 mfs nos módulos</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 21 de MF-102 · Organizações, pessoas e papéis"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Mf</th>
+<th scope="col">Módulo</th>
+<th scope="col">Componentes que a entregam</th>
+<th scope="col">Contratos que usa</th>
+</tr>
+</thead><tbody><tr>
+<td><a href="mf-102.html"><code>MF-102:Organizações, pessoas e papéis</code></a></td>
+<td>Plataforma</td>
+<td>Organizações e sessão, pessoas e gestão, grupos, roles, área de avisos</td>
+<td>&quot;Pode?&quot;, permissões efetivas, eventos</td>
+</tr>
+</tbody></table></div>
+</div><div class="doc-section dx-assunto"><h3 id="mf-102-inventario-decisoes-arquitetura" data-dx-icone="project-diagram">Decisões de arquitetura</h3><h4 id="mf-102-inventario-arquitetura-02">02 · Registro de decisões</h4><p class="dx-fonte">Em <a href="arquitetura-02.html#arquitetura-02-indice">Índice</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 22 de MF-102 · Organizações, pessoas e papéis"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Nº</th>
+<th scope="col">Decisão</th>
+<th scope="col">Situação</th>
+<th scope="col">Quem decide</th>
+<th scope="col">Alcance</th>
+</tr>
+</thead><tbody><tr>
+<td><a href="arquitetura-02.html#arq-008"><code>ARQ-008</code></a></td>
+<td>As permissões se calculam num ponto só do servidor, em três camadas</td>
+<td>🟢</td>
+<td>Arquiteto</td>
+<td><a href="mf-102.html"><code>MF-102</code></a>, <a href="mf-103.html"><code>MF-103</code></a>, <a href="mf-106.html"><code>MF-106</code></a></td>
+</tr>
+<tr>
+<td><a href="arquitetura-02.html#arq-038"><code>ARQ-038</code></a></td>
+<td>O login e a sessão continuam os da v1.xx, e o login corporativo da v2.1 entra como mais um esquema externo, por organização, na mesma sessão</td>
+<td>🟢</td>
+<td>Arquiteto</td>
+<td><a href="mf-102.html"><code>MF-102</code></a>, <a href="mf-106.html"><code>MF-106</code></a></td>
+</tr>
+<tr>
+<td><a href="arquitetura-02.html#arq-039"><code>ARQ-039</code></a></td>
+<td>O avaliador lê quatro coisas, nesta ordem: o estado da organização e o tipo de assento, o papel e a carteira, as roles e o escopo dos dados</td>
+<td>🟢</td>
+<td>Arquiteto</td>
+<td><a href="mf-102.html"><code>MF-102</code></a>, <a href="mf-103.html"><code>MF-103</code></a>, <a href="mf-106.html"><code>MF-106</code></a></td>
+</tr>
+<tr>
+<td><a href="arquitetura-02.html#arq-050"><code>ARQ-050</code></a></td>
+<td>A conta de WhatsApp tem dono, a mensagem acha a organização pelo número, e a ligação do número é da pessoa na organização</td>
+<td>🟢</td>
+<td>Arquiteto</td>
+<td><a href="mf-111.html"><code>MF-111</code></a>, <a href="mf-113.html"><code>MF-113</code></a>, <a href="mf-102.html"><code>MF-102</code></a></td>
+</tr>
+<tr>
+<td><a href="arquitetura-02.html#arq-053"><code>ARQ-053</code></a></td>
+<td>O login com o Google continua, com o cliente OAuth de quem opera a instância, só em HTTPS</td>
+<td>🟢</td>
+<td>Arquiteto</td>
+<td><a href="mf-102.html"><code>MF-102</code></a></td>
+</tr>
+</tbody></table></div>
+</div><div class="doc-section dx-assunto"><h3 id="mf-102-inventario-v1" data-dx-icone="history">O que se reaproveita da v1</h3><h4 id="mf-102-inventario-arquitetura-14">14 · Conferência do produto</h4><p class="dx-fonte">Em <a href="arquitetura-14.html#arquitetura-14-3-a-p-003-o-que-da-v1xx-se-reaproveita-mf-a-mf">3. A P-003: o que da v1.xx se reaproveita, mf a mf</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 23 de MF-102 · Organizações, pessoas e papéis"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Mf</th>
+<th scope="col">♻️ Reaproveita</th>
+<th scope="col">🔧 Reescreve</th>
+<th scope="col">🆕 É novo</th>
+</tr>
+</thead><tbody><tr>
+<td><a href="mf-102.html"><code>MF-102:Organizações, pessoas e papéis</code></a></td>
+<td>As organizações, a sessão, os convites nominais por e-mail, link e QR, o Google, a recuperação de senha, a foto e a planilha</td>
+<td>A matriz de 23 ações e três papéis, que vira a leitura do papel no avaliador</td>
+<td>A carteira do gestor, a quarentena, o convite do gestor com aprovação, os grupos, as roles e a área de avisos</td>
+</tr>
+</tbody></table></div><p class="dx-fonte">Em <a href="arquitetura-14.html#arquitetura-14-4-a-devolver-ao-po">4. A devolver ao PO</a>:</p><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 24 de MF-102 · Organizações, pessoas e papéis"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Nº</th>
+<th scope="col">Tipo proposto</th>
+<th scope="col">Responsável proposto</th>
+<th scope="col">O que é</th>
+<th scope="col">Origem</th>
+<th scope="col">Decisões de produto tocadas</th>
+<th scope="col">Trava</th>
+</tr>
+</thead><tbody><tr>
+<td><strong>A-28</strong> 🆕</td>
+<td>🕓 Pendência</td>
+<td>PO</td>
+<td><strong>A <a href="mf-106.html"><code>MF-106</code></a> inteira na v2.1.</strong> O dono mandou a segurança dos dados por pessoa, as duas etapas, para a v2.1 (a 2.01.*), em 03/11/2026, e o código dela sai da v2.0 (<a href="arquitetura-02.html#arq-090"><code>ARQ-090</code></a>). Faltam no backlog e no mapa: (1) a <a href="mf-106.html"><code>MF-106</code></a> inteira na v2.1; (2) os grupos dinâmicos da <a href="produto-backlog.html#d-019"><code>D-019</code></a>, que na v2.0 só podem ser por papel, e por claims na v2.1; (3) a planilha da <a href="mf-102.html"><code>MF-102</code></a>, que na v2.0 fica só para os convites em lote, sem as colunas de claims 🔎; (4) a vitrine da segurança por pessoa, fora das demonstrações até a v2.1; (5) a A-11, que perde a urgência, porque na v2.0 todo board roda com os dados da organização inteira</td>
+<td><a href="arquitetura-02.html#arq-040"><code>ARQ-040</code></a>, <a href="arquitetura-02.html#arq-089"><code>ARQ-089</code></a>, <a href="arquitetura-02.html#arq-090"><code>ARQ-090</code></a></td>
+<td><a href="produto-backlog.html#d-019"><code>D-019</code></a>, <a href="produto-backlog.html#d-025"><code>D-025</code></a>, <a href="produto-backlog.html#d-028"><code>D-028</code></a></td>
+<td>Antes do M1</td>
+</tr>
+</tbody></table></div>
+</div><div class="doc-section dx-assunto"><h3 id="mf-102-inventario-citada" data-dx-icone="link">Também citada em</h3><ul><li><a href="produto-lacunas.html#produto-lacunas-candidatas-a-v20-lista-fechada-pelo-dono-em-01112026">Inventário de lacunas · Candidatas à v2.0 (lista fechada pelo dono em 01/11/2026)</a></li></ul>
+</div>
+                            </div>
+                            <nav class="dx-vizinhas" aria-label="Páginas vizinhas"><a class="dx-anterior" href="mf-101-inventario.html"><i class="arrow_left" aria-hidden="true"></i>Administração da instância: o inventário</a><a class="dx-proxima" href="mf-103-inventario.html">Licenças e planos: o inventário<i class="arrow_right" aria-hidden="true"></i></a></nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="simple_footer">
+            <img class="leaf_right" src="assets/kbdoc/img/home_one/leaf_footter.png" alt="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p>Maind Horus · Horus v2 · documento interno · Revisado em 03/11/2026 · versão v2.0 em desenho, sem versão publicada</p>
+                    </div>
+                    <div class="col-lg-6 text-right">
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <a id="back-to-top" title="Voltar ao topo"></a>
+    <script src="assets/kbdoc/js/jquery-3.2.1.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/popper.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap-select.min.js"></script>
+    <script src="assets/kbdoc/js/parallaxie.js"></script>
+    <script src="assets/kbdoc/js/TweenMax.min.js"></script>
+    <script src="assets/kbdoc/js/anchor.js"></script>
+    <script src="assets/kbdoc/assets/wow/wow.min.js"></script>
+    <script src="assets/kbdoc/js/vendor/clipboard.min.js"></script>
+    <script src="assets/kbdoc/assets/prism/prism.js"></script>
+    <script src="assets/kbdoc/assets/niceselectpicker/jquery.nice-select.min.js"></script>
+    <script src="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="assets/kbdoc/assets/magnify-pop/jquery.magnific-popup.min.js"></script>
+    <script src="assets/kbdoc/assets/tooltipster/js/tooltipster.bundle.min.js"></script>
+    <script src="assets/kbdoc/assets/font-size/js/rv-jquery-fontsize-2.0.3.js"></script>
+    <script src="assets/kbdoc/js/onpage-menu.js"></script>
+    <script src="assets/kbdoc/js/main.js"></script>
+    <script src="assets/busca.js"></script>
+    <script src="assets/docx.js"></script>
+</body>
+</html>

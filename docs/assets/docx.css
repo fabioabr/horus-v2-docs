@@ -1,0 +1,215 @@
+/* DocX · o mínimo sobre o KbDoc: a lista de resultados da busca, o botão de imprimir e o conteúdo gerado.
+   Tudo o mais é o css/style.css do KbDoc, sem edição. */
+
+.dx-skip.sr-only-focusable:focus { position: fixed; top: 8px; left: 8px; z-index: 1100; padding: 10px 16px; background: #fff; color: #1d2746; border-radius: 4px; box-shadow: 0 10px 30px rgba(29, 39, 70, .15); }
+
+/* Busca */
+[data-search-form] { position: relative; }
+.dx-search-results { position: absolute; top: calc(100% + 8px); left: 0; right: 0; z-index: 30; max-height: 420px; overflow-y: auto; text-align: left;
+  background: #fff; border-radius: 4px; box-shadow: 0 20px 40px 0 rgba(29, 39, 70, .12); padding: 6px 0; }
+.dx-search-results[hidden] { display: none; }
+.dx-search-results .dx-search-count { margin: 0; padding: 8px 20px; font-size: 9.75px; color: #878b99; }
+.dx-search-results a { display: flex; gap: 12px; padding: 10px 20px; color: #1d2746; text-decoration: none; transition: background .2s; }
+.dx-search-results a:hover, .dx-search-results a:focus { background: #f6fbfc; color: #10b3d6; outline: none; }
+.dx-search-results a i { margin-top: 4px; color: #10b3d6; }
+.dx-search-results a strong { display: block; font-size: 11.25px; font-weight: 500; }
+.dx-search-results a small { display: block; font-size: 9.75px; color: #6b707f; line-height: 1.5; }
+.menu_one .search_form .dx-search-results { left: auto; width: 420px; }
+.body_dark .dx-search-results { background: #2c2f3a; }
+.body_dark .dx-search-results a { color: #fff; }
+.body_dark .dx-search-results a:hover, .body_dark .dx-search-results a:focus { background: #1e2028; }
+
+/* Imprimir, como o link original */
+.doc_rightsidebar button.print { background: none; border: 0; padding: 0; cursor: pointer; color: inherit; font-size: 15px; line-height: 1; }
+
+/* Menu lateral: o título longo não passa por baixo do "+" */
+.doc_left_sidebarlist .nav-sidebar > .nav-item > .nav-link { display: flex; flex-wrap: nowrap; align-items: center; padding-right: 34px; }
+.doc_left_sidebarlist .nav-sidebar > .nav-item > .nav-link img { flex-shrink: 0; }
+/* O "+" se centraliza por entrelinha (48 px no KbDoc, para um link de 13 + 20 + 13 px). Com as fontes a 75%,
+   o link tem 13 + 15 + 13 px; a entrelinha acompanha a mesma relação: a altura do link mais 2. */
+.onepage-doc .nav-sidebar .nav-item .icon { line-height: 43px; }
+
+/* Conteúdo gerado: os níveis do fragmento nas medidas do KbDoc (h3 = s_title, h4 = h5 do conteúdo) */
+.dx-content h3 { font-size: 15px; line-height: 18px; font-weight: 500; margin: 45px 0 25px; }
+.dx-content h4 { font-size: 13.5px; line-height: 16.2px; font-weight: 500; margin: 30px 0 12px; }
+.dx-content h5, .dx-content h6 { font-size: 12px; line-height: 18px; font-weight: 500; margin: 24px 0 10px; }
+.dx-content > h3:first-child { margin-top: 30px; }
+
+/* Conteúdo gerado: figuras e tabelas largas não alargam a página */
+.dx-content { overflow-wrap: break-word; }
+.dx-content figure { margin: 30px 0; }
+.dx-content figure img { max-width: 100%; height: auto; }
+.dx-content figcaption { font-size: 10.5px; color: #878b99; margin-top: 10px; }
+.dx-content .table-responsive { margin-bottom: 30px; }
+
+/* A página de conteúdo (pagina.html): o Onepage do KbDoc, compacto. Os espaços valem como estão; as fontes,
+   como no resto deste arquivo, saem a 75% na geração. */
+.onepage-doc .documentation_info [id] { scroll-margin-top: 90px; } /* o título não para atrás da barra fixa */
+.dx-pagina-doc .documentation_info [id] { scroll-margin-top: 67px; } /* a barra da página tem 47 px */
+.dx-pagina-doc .doc_documentation_area { padding-bottom: 30px; }
+.dx-pagina-doc .doc-container { padding-top: 18px; }
+/* O menu de tópicos, compacto: os espaços 30% menores que os de antes; as fontes do menu não mudam. */
+.dx-pagina-doc .doc_left_sidebarlist .nav_title { padding: 6px 10px; margin-bottom: 3px; }
+.dx-pagina-doc.onepage-doc .nav-sidebar .nav-item { margin-top: 2px; }
+.dx-pagina-doc .doc_left_sidebarlist .nav-sidebar > .nav-item > .nav-link { padding: 4px 28px 4px 10px; }
+.dx-pagina-doc.onepage-doc .nav-sidebar .nav-item .icon { line-height: 23px; right: 14px; } /* a altura do link: 4 + 15 + 4 */
+.dx-pagina-doc.onepage-doc .nav-sidebar .nav-item .dropdown_nav { padding: 10px 0 10px 22px !important; }
+.dx-pagina-doc.onepage-doc .nav-sidebar .nav-item .dropdown_nav .nav-item { margin-top: 0; padding-left: 15px; }
+.dx-pagina-doc .nav-sidebar .nav-item .dropdown_nav li a { line-height: 18.997px; } /* 19 px na saída, com as fontes a 75% */
+.dx-trilha .breadcrumb { background: none; padding: 0; margin: 0 0 2px; font-size: 10.5px; }
+.body_dark .dx-trilha .breadcrumb-item.active { color: #c7c9d3; }
+.dx-cabeca { margin-bottom: 14px; }
+.dx-cabeca .dx-macro-topo { justify-content: flex-start; gap: 10px; margin-bottom: 4px; }
+.dx-cabeca h1 { font-size: 27px; line-height: 33px; margin: 0 0 2px; }
+.dx-cabeca p { margin: 0; }
+.dx-pagina-doc .table_shortcode { margin-bottom: 0; }
+/* As células das tabelas: 30% menores que as de antes (7/10 e 5/10 px) */
+.dx-pagina-doc .table_shortcode thead th { padding: 5px 7px; }
+.dx-pagina-doc .table_shortcode tbody tr td, .dx-pagina-doc .table_shortcode tbody tr th { padding: 3.5px 7px; }
+.dx-pagina-doc .table_shortcode td code { white-space: nowrap; }
+.dx-pagina-doc .dx-content .table-responsive { margin-bottom: 14px; }
+.dx-pagina-doc .dx-content h3 { margin: 26px 0 8px; }
+.dx-pagina-doc .dx-content h4 { margin: 16px 0 6px; }
+.dx-pagina-doc .dx-content h5, .dx-pagina-doc .dx-content h6 { margin: 12px 0 4px; }
+.dx-pagina-doc .dx-content p, .dx-pagina-doc .dx-content ul, .dx-pagina-doc .dx-content ol { margin-bottom: 8px; }
+.dx-pagina-doc .dx-content figure { margin: 14px 0; }
+.dx-pagina-doc .dx-content pre { margin-bottom: 14px; }
+/* A citação (>) no conteúdo das páginas: a faixa do KbDoc, sem as aspas gigantes e sem os 50 px de respiro */
+.dx-pagina-doc .dx-content blockquote:not(.notice) { font-size: 12px; padding: 10px 16px; margin: 10px 0 14px; }
+.dx-pagina-doc .dx-content blockquote:not(.notice):before, .dx-pagina-doc .dx-content blockquote:not(.notice):after { display: none; }
+.dx-pagina-doc .dx-content blockquote:not(.notice) p { margin-bottom: 4px; }
+.dx-pagina-doc .dx-content blockquote:not(.notice) p:last-child { margin-bottom: 0; }
+/* A linha de fonte de um trecho citado de outra página ("Em § 4. As entregas:") */
+.dx-content .dx-fonte { font-size: 10.5px; color: #878b99; margin: 0 0 4px; }
+.dx-content .dx-fonte a { font-weight: 500; }
+.dx-vizinhas { display: flex; justify-content: space-between; gap: 16px; margin-top: 24px; padding-top: 12px; border-top: 1px solid #e5ecf0; }
+.dx-vizinhas a { display: inline-flex; align-items: center; gap: 6px; font-size: 11.25px; font-weight: 500; color: #1d2746; }
+.dx-vizinhas a:hover { color: #10b3d6; }
+.dx-vizinhas .dx-proxima { margin-left: auto; }
+.body_dark .dx-vizinhas { border-top-color: #383a43; }
+.body_dark .dx-vizinhas a { color: #fff; }
+
+/* Tema escuro do conteúdo: o KbDoc escurece a página, mas deixa claros a linha da tabela, a citação, o bloco de
+   código (Prism coy), o selo, o aviso de atenção e o de risco e a tecla, e deixa ilegíveis o texto do alerta, o das
+   abas e o título da nota de rodapé. As cores saem da paleta escura dele (#1e2028, #2c303a, #061f2f, #c7c9d3).
+   O fundo da imagem fica claro de propósito: o diagrama tem traço escuro sobre fundo transparente. */
+.body_dark .table_shortcode tbody tr { background: #1e2028; }
+.body_dark .table_shortcode tbody tr:nth-child(odd) { background: #23252e; }
+.body_dark .table_shortcode tbody tr td { color: #c7c9d3; }
+.body_dark blockquote:not(.notice) { background: #061f2f; }
+.body_dark .dx-macro-selo { background: #10333d; color: #c7eef7; }
+.body_dark code[class*="language-"], .body_dark pre[class*="language-"] { color: #d3d4d4; }
+.body_dark pre[class*="language-"], .body_dark :not(pre) > code[class*="language-"] { background-color: #1e2028; border-color: #2c303a; }
+.body_dark pre[class*="language-"] > code { background-color: #1e2028; background-image: none; box-shadow: -1px 0 0 0 #358ccb, 0 0 0 1px #2c303a; }
+.body_dark .token.punctuation { color: #a0a4ad; }
+.body_dark .token.operator, .body_dark .token.entity, .body_dark .token.url, .body_dark .token.variable { background: none; }
+.body_dark .notice-warning { background: #2b2412; }
+.body_dark .notice-danger { background: #2e1619; }
+.body_dark .notice-warning p, .body_dark .notice-danger p { color: #c7c9d3; }
+.body_dark .notice p span { background: #1e2028; }
+.body_dark .message_alert { color: #c7c9d3; }
+.body_dark .tab_shortcode .tab-content, .body_dark .tab_shortcode .tab-content p { color: #c7c9d3; }
+.body_dark .tab_shortcode .nav-tabs .nav-item .nav-link { color: #a0a4ad; }
+.body_dark .footnotes_item strong { color: #fff; }
+.body_dark .key, .body_dark kbd { background: #2c303a; border-color: #383a43; color: #fff; }
+/* O submenu do Onepage pinta o link de #6b707f com especificidade maior que a da cor escura do KbDoc (#bbb). */
+.body_dark.onepage-doc .nav-sidebar .nav-item .dropdown_nav .nav-item:not(.active) .nav-link { color: #bbb; }
+
+/* O topo, na entrada e nas páginas: metade da altura do KbDoc (94 px no alto e 70 ao rolar viram 47, nos dois).
+   A altura vem do espaço em volta de cada item do menu. */
+@media (min-width: 992px) {
+  .dx-portal .menu > .nav-item, .dx-pagina-doc .menu > .nav-item,
+  .dx-portal .navbar_fixed.menu_one .menu > .nav-item, .dx-pagina-doc .navbar_fixed.menu_one .menu > .nav-item { padding-top: 14px; padding-bottom: 14px; }
+}
+.dx-portal .menu_one .navbar-brand img, .dx-pagina-doc .menu_one .navbar-brand img { max-height: 30px; width: auto; }
+.dx-portal .menu_one .nav_btn { padding: 3px 18px; margin-left: 50px; }
+.dx-pagina-doc .menu_one .menu_social { margin-left: 40px; }
+.dx-pagina-doc .menu_one .search_form .form-control { height: 32px; }
+.dx-pagina-doc .sticky_menu .menu_one + section { margin-top: 47px; } /* o KbDoc deixa 100 px para o topo de 94 */
+
+/* As ferramentas da página, no topo: editar e sistema (se declarados), A-/A/A+, imprimir e o tema. O seletor de
+   tema leva as regras do .doc_rightsidebar do KbDoc, copiadas para cá. */
+.dx-ferramentas { display: flex; align-items: center; gap: 14px; margin-left: 24px; }
+.dx-ferramentas .fontsize-controllers .btn-group .btn { padding: 2px 8px; }
+.dx-ferramentas button.print, .dx-ferramentas .dx-editar { background: none; border: 0; padding: 0; cursor: pointer; color: #6b707f; font-size: 15px; line-height: 1; }
+.dx-ferramentas .doc_switch { display: flex; align-items: center; }
+.dx-ferramentas .doc_switch .tab-btn { font-size: 12px; color: #10b3d6; line-height: 16.5px; margin-bottom: 0; padding-top: 2px; cursor: pointer; transition: color 0.2s linear; }
+.dx-ferramentas .doc_switch .fa-moon { top: -1px; position: relative; }
+.dx-ferramentas .doc_switch input[type=checkbox] { width: 50px; height: 22px; border: 1px solid #91e1f2; background: #e7f7fb; display: block; border-radius: 25px; margin: 0 12px 0 15px; position: relative; -webkit-appearance: none; -moz-appearance: none; appearance: none; box-sizing: content-box; cursor: pointer; }
+.dx-ferramentas .doc_switch input[type=checkbox]:before { content: ""; width: 16px; height: 16px; background: #10b3d6; position: absolute; border-radius: 50%; top: 50%; transform: translateY(-50%); transition: all 0.2s linear; left: 3px; }
+.dx-ferramentas .doc_switch input[type=checkbox]:checked:before { left: calc(100% - 19px); }
+.dx-ferramentas .doc_switch input[type=checkbox]:checked + .tab-btn { color: #10b3d6; }
+.dx-ferramentas .doc_switch input[type=checkbox] + .tab-btn { color: #6b707f; }
+.body_dark .dx-ferramentas .doc_switch input[type=checkbox] { background: #2c303a; border-color: #272830; }
+.body_dark .dx-ferramentas button.print, .body_dark .dx-ferramentas .dx-editar { color: #c7c9d3; }
+@media (max-width: 991px) {
+  .dx-ferramentas { margin: 10px 0 14px; flex-wrap: wrap; }
+}
+
+/* Portal: o banner do KbDoc é o fundo fixo, com as ilustrações e a animação; a página rola por cima dele. */
+.dx-fundo { position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 0; pointer-events: none; }
+.dx-fundo .doc_banner_area_one { height: 100vh; min-height: 560px; }
+.dx-camada { position: relative; z-index: 1; background: transparent; }
+.dx-portal .menu_one { position: absolute; top: 0; left: 0; right: 0; }
+.dx-portal .navbar_fixed .menu_one, .dx-portal .menu_one.navbar_fixed { position: fixed; }
+
+/* A faixa curta: o título à esquerda, a busca à direita */
+.dx-faixa { padding: 73px 0 30px; color: #fff; } /* o topo tem 47 px */
+.dx-faixa h1 { color: #fff; font-size: 27px; line-height: 33px; font-weight: 700; margin-bottom: 8px; }
+.dx-faixa p { color: rgba(255, 255, 255, .8); font-size: 12px; line-height: 19.5px; margin: 0; }
+.dx-faixa .banner_search_form { max-width: none; margin: 0; }
+.dx-faixa .banner_search_form .form-control { height: 56px; }
+
+/* As macro funcionalidades: cartões brancos, compactos, quatro por linha */
+.dx-macros { padding: 10px 0 10px; }
+.dx-grupo { margin-bottom: 30px; }
+.dx-grupo-titulo { display: flex; align-items: baseline; gap: 14px; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid rgba(255, 255, 255, .25); }
+.dx-grupo-titulo h2 { color: #fff; font-size: 19.5px; line-height: 24px; margin: 0; }
+.dx-grupo-titulo p { color: rgba(255, 255, 255, .75); font-size: 10.5px; margin: 0; }
+.dx-macros .row { margin-left: -8px; margin-right: -8px; }
+.dx-macros .row > [class*="col-"] { padding-left: 8px; padding-right: 8px; margin-bottom: 16px; }
+.dx-macro.doc_features_item_one { padding: 16px 18px; height: 100%; margin: 0; display: flex; flex-direction: column; box-shadow: 0 10px 30px 0 rgba(4, 73, 89, .12); }
+.dx-macro-topo { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.dx-macro-codigo { font-size: 10.5px; font-weight: 700; color: #10b3d6; letter-spacing: .3px; }
+.dx-macro-selo { font-size: 9px; font-weight: 500; color: #1d2746; background: #e6f6fa; border-radius: 3px; padding: 2px 8px; }
+.dx-macro h3 { font-size: 13.5px; line-height: 17.25px; margin-bottom: 6px; }
+.dx-macro p { font-size: 11.25px; line-height: 17.25px; margin-bottom: 10px; flex: 1; }
+.dx-macro-links { display: flex; gap: 18px; flex-wrap: wrap; }
+.dx-macro-links .learn_btn { padding-top: 0; }
+.dx-macro-links .learn_btn i { margin-left: 6px; }
+
+/* Os documentos: um painel branco, as categorias em colunas */
+.dx-documentos { padding: 0 0 50px; }
+.dx-painel { background: #fff; border-radius: 6px; box-shadow: 0 10px 30px 0 rgba(4, 73, 89, .12); padding: 26px 30px 6px; }
+.dx-painel > h2 { font-size: 19.5px; line-height: 24px; margin-bottom: 18px; }
+.dx-painel .doc_tag_item { margin-bottom: 24px; }
+/* O título da categoria do KbDoc tem 45px de margem embaixo; no painel compacto, a lista encosta na linha */
+.dx-painel .doc_tag_item .doc_tag_title { margin-bottom: 0; }
+.dx-painel .doc_tag_title h4 { margin-bottom: 12px; }
+.dx-painel .doc_tag_item .tag_list { margin-top: 12px; padding-top: 0; }
+.dx-painel .doc_tag_item .tag_list li { margin-top: 0; margin-bottom: 6px; }
+.dx-portal .simple_footer p { margin: 0; }
+
+/* Com título e busca empilhados, a busca não encosta no parágrafo */
+@media (max-width: 991px) {
+  .dx-faixa .banner_search_form { margin-top: 24px; }
+}
+
+/* O responsive.css do KbDoc leva toda col-lg-* a 100% até 670px; o cartão de macro fica em meia linha */
+@media (max-width: 670px) {
+  .dx-macros .row > .col-6 { flex: 0 0 50%; max-width: 50%; }
+}
+
+/* No celular, a entrada continua condensada: dois cartões por linha, com menos respiro */
+@media (max-width: 575px) {
+  .dx-faixa { padding-top: 100px; }
+  .dx-macro.doc_features_item_one { padding: 12px 12px; }
+  .dx-macro-topo { flex-wrap: wrap; gap: 4px; }
+  .dx-macro-links { gap: 10px; }
+  .dx-painel { padding: 20px 16px 4px; }
+}
+
+@media print {
+  .menu_one, .doc_left_sidebarlist, .doc_rightsidebar, .simple_footer, #back-to-top, .dx-search-results { display: none !important; }
+  .doc_documentation_area .col-lg-8 { flex: 0 0 100%; max-width: 100%; }
+}

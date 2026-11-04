@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A documentação de produto e de arquitetura do Horus v2: a visão, as decisões, a estratégia e como ele vai ser construído.">
+    <meta name="generator" content="DocX 0.2.1">
+    <link rel="shortcut icon" href="media/horus-claro.svg">
+    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/elagent-icon/style.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/font-awesome/css/all.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/niceselectpicker/nice-select.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/font-size/css/rvfs.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/animation/animate.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/tooltipster/css/tooltipster.bundle.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism-coy.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/magnify-pop/magnific-popup.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/css/style.css">
+    <link rel="stylesheet" href="assets/kbdoc/css/responsive.css">
+    <link rel="stylesheet" href="assets/docx.css">
+    <link rel="stylesheet" href="assets/conteudo.css">
+    <link rel="stylesheet" href="assets/indice.css">
+    <title>MF-111 · Chat pelo WhatsApp — Horus v2</title>
+</head>
+<body class="doc full-width-doc sticky-nav-doc onepage-doc dx-pagina-doc" data-spy="scroll" data-target=".navbar" data-offset="-120">
+    <a class="sr-only sr-only-focusable dx-skip" href="#post">Pular para o conteúdo</a>
+    <div class="body_wrapper sticky_menu">
+        <nav class="navbar navbar-expand-lg menu_one" id="stickyTwo" aria-label="Navegação principal">
+            <div class="container-fluid pl-60 pr-60">
+                <a class="navbar-brand" href="index.html">
+                    <img src="media/horus-claro.svg" alt="Horus v2">
+                    <img src="media/horus-escuro.svg" alt="Horus v2">
+                </a>
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Abrir o menu">
+                    <span class="menu_toggle">
+                        <span class="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                        <span class="hamburger-cross">
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav menu ml-auto">
+<li class="nav-item"><a href="index.html" class="nav-link">Início</a></li>
+<li class="nav-item dropdown submenu mega_menu tab-demo active"><a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentos</a><i class="arrow_carrot-down_alt2 mobile_dropdown_icon" aria-hidden="true" data-toggle="dropdown"></i><ul class="dropdown-menu scroll"><li><div class="row"><div class="col-lg-5 tabHeader"><ul class="nav flex-column nav-pills" id="dx-menu" role="tablist" aria-orientation="vertical"><li class="nav-item active"><a class="nav-link active" id="dx-menu-1-tab" data-toggle="pill" href="#dx-menu-1" role="tab" aria-controls="dx-menu-1" aria-selected="true">Comece aqui</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-2-tab" data-toggle="pill" href="#dx-menu-2" role="tab" aria-controls="dx-menu-2" aria-selected="false">Produto</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-3-tab" data-toggle="pill" href="#dx-menu-3" role="tab" aria-controls="dx-menu-3" aria-selected="false">Arquitetura · visão e decisões</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-4-tab" data-toggle="pill" href="#dx-menu-4" role="tab" aria-controls="dx-menu-4" aria-selected="false">Arquitetura · construção</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-5-tab" data-toggle="pill" href="#dx-menu-5" role="tab" aria-controls="dx-menu-5" aria-selected="false">Arquitetura · operação</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-6-tab" data-toggle="pill" href="#dx-menu-6" role="tab" aria-controls="dx-menu-6" aria-selected="false">Arquitetura · conferência</a></li></ul></div><div class="col-lg-7"><div class="tab-content tabContent" id="dx-menu-conteudo"><div class="tab-pane fade active show" id="dx-menu-1" role="tabpanel" aria-labelledby="dx-menu-1-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="visao-geral.html">O Horus v2</a></li><li><a href="pasta-v2.html">A pasta da v2</a></li></ul></div><div class="text"><a href="visao-geral.html"><p>Abrir Comece aqui</p></a></div></div><div class="tab-pane fade" id="dx-menu-2" role="tabpanel" aria-labelledby="dx-menu-2-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="produto-temas.html">Temas da visão de produto</a></li><li><a href="produto-norte.html">Norte do produto</a></li><li><a href="produto-lacunas.html">Inventário de lacunas</a></li><li><a href="produto-mfs-hoje.html">Macro funcionalidades de hoje</a></li><li><a href="produto-v20.html">A v2.0 consolidada</a></li></ul><ul class="list-unstyled tab_list"><li><a href="produto-versoes.html">As versões, mf a mf</a></li><li><a href="produto-mapa.html">Mapa de objetivos e funcionalidades</a></li><li><a href="produto-backlog.html">Backlog estratégico</a></li><li><a href="backlog-atividades.html">Backlog de atividades</a></li></ul></div><div class="text"><a href="produto-temas.html"><p>Abrir Produto</p></a></div></div><div class="tab-pane fade" id="dx-menu-3" role="tabpanel" aria-labelledby="dx-menu-3-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura.html">A pasta da arquitetura</a></li><li><a href="arquitetura-01.html">01 · Estratégia da solução</a></li><li><a href="arquitetura-02.html">02 · Registro de decisões</a></li><li><a href="arquitetura-03.html">03 · Metas de qualidade</a></li></ul></div><div class="text"><a href="arquitetura.html"><p>Abrir Arquitetura · visão e decisões</p></a></div></div><div class="tab-pane fade" id="dx-menu-4" role="tabpanel" aria-labelledby="dx-menu-4-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-04.html">04 · Software</a></li><li><a href="arquitetura-05.html">05 · Motor de análise e IA</a></li><li><a href="arquitetura-06.html">06 · Dados</a></li><li><a href="arquitetura-07.html">07 · Segurança</a></li><li><a href="arquitetura-08.html">08 · Integrações</a></li></ul></div><div class="text"><a href="arquitetura-04.html"><p>Abrir Arquitetura · construção</p></a></div></div><div class="tab-pane fade" id="dx-menu-5" role="tabpanel" aria-labelledby="dx-menu-5-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-09.html">09 · Infraestrutura e ambientes</a></li><li><a href="arquitetura-10.html">10 · Publicação e operação</a></li><li><a href="arquitetura-11.html">11 · Observabilidade</a></li><li><a href="arquitetura-12.html">12 · Qualidade e testes</a></li><li><a href="arquitetura-13.html">13 · Custo de operação</a></li></ul></div><div class="text"><a href="arquitetura-09.html"><p>Abrir Arquitetura · operação</p></a></div></div><div class="tab-pane fade" id="dx-menu-6" role="tabpanel" aria-labelledby="dx-menu-6-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-14.html">14 · Conferência do produto</a></li></ul></div><div class="text"><a href="arquitetura-14.html"><p>Abrir Arquitetura · conferência</p></a></div></div></div></div></div></li></ul></li>
+                    </ul>
+                    <ul class="list-unstyled menu_social">
+                        <li class="search">
+                            <form action="#" class="search_form" role="search" data-search-form>
+                                <label class="sr-only" for="dx-search">Buscar na documentação</label>
+                                <input type="search" class="form-control" id="dx-search" placeholder="Buscar" autocomplete="off" data-search-input aria-describedby="dx-search-status" aria-controls="dx-search-results">
+                                <button type="submit" aria-label="Buscar"><i class="icon_search" aria-hidden="true"></i></button>
+                                <div class="dx-search-results" id="dx-search-results" data-search-results hidden></div>
+                            </form>
+                            <p class="sr-only" id="dx-search-status" role="status" data-search-status></p>
+                        </li>
+                    </ul>
+                    <div class="dx-ferramentas">
+
+
+                        <div id="font-switcher"><div id="rvfs-controllers" class="fontsize-controllers group"></div></div>
+                        <button type="button" class="print" data-print aria-label="Imprimir"><i class="icon_printer" aria-hidden="true"></i></button>
+                        <div class="doc_switch">
+                            <label for="something" class="tab-btn tab-btns"><i class="icon_lightbulb_alt" aria-hidden="true"></i><span class="sr-only">Tema claro</span></label>
+                            <input type="checkbox" name="something" id="something" class="tab_switcher" aria-label="Tema escuro">
+                            <label for="something" class="tab-btn"><i class="far fa-moon" aria-hidden="true"></i><span class="sr-only">Tema escuro</span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <section class="doc_documentation_area onepage_doc_area" id="sticky_doc">
+            <div class="overlay_bg"></div>
+            <div class="container-fluid pl-60 pr-60">
+                <div class="row doc-container">
+                    <div class="col-lg-2 doc_mobile_menu doc-sidebar display_none">
+                        <aside class="doc_left_sidebarlist" aria-label="Tópicos desta página">
+                            <h3 class="nav_title">Tópicos</h3>
+                            <div class="scroll">
+                                <ul class="list-unstyled nav-sidebar doc-nav">
+<li class="nav-item active"><a href="#mf-111-identificacao" class="nav-link">Identificação</a></li>
+<li class="nav-item"><a href="#mf-111-o-que-e" class="nav-link">O que é</a></li>
+<li class="nav-item"><a href="#mf-111-caracteristicas" class="nav-link">Características</a></li>
+<li class="nav-item"><a href="#mf-111-o-valor-que-gera" class="nav-link">O valor que gera</a></li>
+<li class="nav-item"><a href="#mf-111-como-se-usa-no-horus" class="nav-link">Como se usa no Horus</a></li>
+<li class="nav-item"><a href="#mf-111-grau-de-complexidade-alta" class="nav-link">Grau de complexidade: alta</a></li>
+<li class="nav-item"><a href="#mf-111-macro-funcionalidades-relacionadas" class="nav-link">Macro funcionalidades relacionadas</a></li>
+<li class="nav-item"><a href="#mf-111-o-que-ela-nao-faz" class="nav-link">O que ela não faz</a></li>
+<li class="nav-item"><a href="#mf-111-ainda-a-decidir" class="nav-link">Ainda a decidir</a></li>
+<li class="nav-item"><a href="#mf-111-para-saber-mais" class="nav-link">Para saber mais</a></li>
+                                </ul>
+                            </div>
+                        </aside>
+                    </div>
+                    <div class="col-lg-10 col-md-12">
+                        <div class="documentation_info dx-pagina" id="post">
+                            <header class="dx-cabeca" id="mf-111">
+                                <nav class="dx-trilha" aria-label="Trilha"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Início</a></li><li class="breadcrumb-item">v2.0</li><li class="breadcrumb-item active" aria-current="page">Chat pelo WhatsApp</li></ol></nav>
+                                <div class="dx-macro-topo"><span class="dx-macro-codigo">MF-111</span><span class="dx-macro-selo">v2.0</span></div>
+                                <h1>Chat pelo WhatsApp</h1>
+                                <p>Conversar com o Horus pelo WhatsApp</p>
+                            </header>
+                            <div class="dx-modelo-01">
+<nav aria-labelledby="dx-m01-assuntos-titulo">
+<div class="dx-m01-rotulo"><h2 id="dx-m01-assuntos-titulo">Explore os assuntos</h2><span>10 seções</span></div>
+<div class="dx-m01-assuntos">
+<a class="dx-m01-assunto" href="#mf-111-identificacao"><span class="dx-m01-icone"><i class="fas fa-id-card" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Identificação</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-111-o-que-e"><span class="dx-m01-icone"><i class="fas fa-compass" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que é</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-111-caracteristicas"><span class="dx-m01-icone"><i class="fas fa-star" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Características</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-111-o-valor-que-gera"><span class="dx-m01-icone"><i class="fas fa-chart-line" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O valor que gera</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-111-como-se-usa-no-horus"><span class="dx-m01-icone"><i class="fas fa-walking" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Como se usa no Horus</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-111-grau-de-complexidade-alta"><span class="dx-m01-icone"><i class="fas fa-puzzle-piece" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Grau de complexidade: alta</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-111-macro-funcionalidades-relacionadas"><span class="dx-m01-icone"><i class="fas fa-link" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Macro funcionalidades relacionadas</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-111-o-que-ela-nao-faz"><span class="dx-m01-icone"><i class="fas fa-ban" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que ela não faz</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-111-ainda-a-decidir"><span class="dx-m01-icone"><i class="fas fa-hourglass-half" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Ainda a decidir</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#mf-111-para-saber-mais"><span class="dx-m01-icone"><i class="fas fa-book" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Para saber mais</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</div></nav>
+</div>
+                            <div class="dx-content">
+<blockquote>
+<p><strong>Em uma frase:</strong> perguntar sobre os números da empresa pelo WhatsApp que você já usa e receber ali mesmo o texto
+e os gráficos da resposta.</p>
+</blockquote>
+<div class="doc-section dx-assunto"><h3 id="mf-111-identificacao" data-dx-icone="id-card">Identificação</h3><div class="table-responsive" tabindex="0" role="region" aria-label="Identificação de MF-111 · Chat pelo WhatsApp"><table class="table table_shortcode"><tbody><tr><th scope="row">Código</th><td>MF-111</td></tr><tr><th scope="row">Entrega</th><td>v2.0</td></tr><tr><th scope="row">Situação</th><td>definida</td></tr><tr><th scope="row">Camada</th><td>📲 Canais</td></tr><tr><th scope="row">Objetivos</th><td>O1</td></tr><tr><th scope="row">Quem usa</th><td>gestor de área, executivo, comprador</td></tr><tr><th scope="row">Complexidade</th><td>alta</td></tr><tr><th scope="row">Relacionadas</th><td><a href="mf-107.html">Perguntar aos dados em português</a> (MF-107), <a href="mf-108.html">Respostas visuais</a> (MF-108), <a href="mf-102.html">Organizações, pessoas e papéis</a> (MF-102), <a href="mf-103.html">Licenças e planos</a> (MF-103), <a href="mf-110.html">Pergunta rápida</a> (MF-110), <a href="mf-113.html">Conectores de Saída</a> (MF-113), <a href="mf-117.html">Home da organização</a> (MF-117)</td></tr><tr><th scope="row">Atualizado</th><td>03/11/2026</td></tr></tbody></table></div>
+</div><div class="doc-section dx-assunto"><h3 data-dx-icone="compass" id="mf-111-o-que-e">O que é</h3>
+<p>Hoje, a <strong>pergunta de análise</strong>, uma pergunta sobre os números da empresa, só se faz no app do Horus. Longe do
+computador, ela fica para depois ou vira pedido à área de dados.</p>
+<p>Com o Chat pelo WhatsApp, a pessoa conversa com o Horus a sós e recebe ali o texto e os gráficos da resposta. É a
+mesma <strong>conversa de análise</strong> do app, a tela principal em que se pergunta.</p>
+<p>No dia a dia, o gestor pergunta entre um compromisso e outro e entra na reunião com o número na mão.</p>
+<blockquote>
+<p>📌 <strong>Exemplo:</strong> no carro, o gestor Pedro manda pelo WhatsApp &quot;como foram as vendas de ontem por região?&quot;. Em
+segundos, recebe o resumo e o gráfico em imagem e toca no link para ver a série no app.</p>
+</blockquote>
+</div><div class="doc-section dx-assunto"><h3 data-dx-icone="star" id="mf-111-caracteristicas">Características</h3>
+<ul>
+<li><strong>Onde funciona:</strong> só na conversa individual; num grupo, a resposta chegaria a quem o Horus não identificou.</li>
+<li><strong>Quem conversa:</strong> o <strong>owner da organização</strong> (quem administra a organização, um setor da empresa ou um cliente), o
+<strong>gestor</strong> (quem responde por uma equipe) e o <strong>membro full</strong> (quem pergunta e cria os próprios boards); o
+<strong>membro leitor</strong>, que só vê boards de outras pessoas, não conversa.</li>
+<li><strong>Como a pessoa se identifica:</strong> liga o próprio número ao perfil e o confirma com um código recebido no WhatsApp;
+um número, uma pessoa.</li>
+<li><strong>O que a resposta traz:</strong> o texto, até duas imagens fiéis ao app e um link para a resposta viva, que pede o login
+e não carrega dado nenhum; se a resposta demorar, o Horus avisa que está trabalhando.</li>
+<li><strong>A mesma conversa do app:</strong> tudo entra no histórico, com a marca do WhatsApp, conta na <strong>medida de autonomia</strong> (a
+contagem, na Home da organização, das perguntas de análise respondidas) e recebe 👍🏻, 👎🏻 ou 🚫.</li>
+<li><strong>Os mesmos controles:</strong> os modos (dados, web e conversa), os níveis de inferência (até onde a resposta vai além
+dos dados, de 1 a 5), a Análise avançada (uma segunda leitura, mais demorada) e a escolha do modelo de IA, dentro
+do que a <strong>role</strong> libera (o perfil que liga ou desliga o que cada pessoa usa).</li>
+<li><strong>De quem é o número:</strong> o padrão é o da organização, por privacidade; o owner pode autorizar o da Maind, a empresa
+que faz o Horus, e aí as mensagens passam pela conta dela.</li>
+<li><strong>Quem configura:</strong> só o owner da organização liga o canal, que abre quando a Meta, dona do WhatsApp, aprova as
+mensagens-padrão do Horus.</li>
+<li><strong>Os dados que usa:</strong> toda consulta usa os dados da organização inteira: quem pode conversar alcança todas
+as fontes dela.</li>
+</ul>
+</div><div class="doc-section dx-assunto"><h3 data-dx-icone="chart-line" id="mf-111-o-valor-que-gera">O valor que gera</h3>
+<ul>
+<li><strong>Para quem usa:</strong> decidir antes da reunião ou da visita à loja, sem abrir o computador.</li>
+<li><strong>Para a empresa que contrata o Horus:</strong> mais perguntas de análise resolvidas sem chamado à área de dados.</li>
+<li><strong>Para o Horus como produto:</strong> mais perguntas por pessoa, que movem a medida de autonomia, ao custo de cada
+mensagem, cobrada pela Meta.</li>
+</ul>
+<p><strong>Como vamos saber que funcionou:</strong> o gestor pergunta mais, e em mais lugares, e a maioria das organizações liga o
+canal sem ajuda para abrir a conta na Meta.</p>
+</div><div class="doc-section dx-assunto"><h3 data-dx-icone="walking" id="mf-111-como-se-usa-no-horus">Como se usa no Horus</h3>
+<p><strong>Quem configura:</strong></p>
+<ol>
+<li>O owner liga o canal e escolhe o número: o da organização ou o da Maind.</li>
+<li>Espera a Meta aprovar as mensagens-padrão.</li>
+<li>Decide, nas roles, quem tem o botão do WhatsApp.</li>
+</ol>
+<p><strong>Quem pergunta:</strong></p>
+<ol>
+<li>Liga o número no perfil, com o código que chega pelo WhatsApp.</li>
+<li>Escreve a pergunta de análise.</li>
+<li>Recebe o texto, as imagens e o link; se demorar, antes vem o aviso de que o Horus está trabalhando.</li>
+<li>Dá o retorno ou continua no app.</li>
+</ol>
+<figure><div class="lightbox_shortcode"><img src="media/mf-111-diagrama-1.svg" width="1345" height="85" alt="Diagrama: Como se usa no Horus"><a href="media/mf-111-diagrama-1.svg" class="img_popup" aria-label="Ampliar o diagrama"><i class="icon_plus" aria-hidden="true"></i></a></div><figcaption>Diagrama de “Como se usa no Horus”. Selecione o “+” para ampliar.</figcaption></figure></div><div class="doc-section dx-assunto"><h3 data-dx-icone="puzzle-piece" id="mf-111-grau-de-complexidade-alta">Grau de complexidade: alta</h3>
+<p>Da v1 se reaproveitam o motor de análise, agora único para todos os canais, e a peça que imprime o PDF da resposta,
+de onde saem as imagens. É novo tudo o que liga o Horus ao WhatsApp: a porta da Meta, a ligação do número e a conta
+de cada organização. E depende de quem o Horus não controla: a Meta aprova a Maind e cada mensagem-padrão, cobra por
+mensagem e só deixa responder livremente até 24 horas após a última mensagem da pessoa.</p>
+<blockquote>
+<p>⚠️ É a leitura do PO a partir dos documentos de arquitetura. A estimativa de esforço é do arquiteto.</p>
+</blockquote>
+</div><div class="doc-section dx-assunto"><h3 data-dx-icone="link" id="mf-111-macro-funcionalidades-relacionadas">Macro funcionalidades relacionadas</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de Chat pelo WhatsApp"><table class="table table_shortcode"><thead><tr>
+<th scope="col">mf</th>
+<th scope="col">Como se relaciona</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Perguntar aos dados em português (MF-107)</td>
+<td><strong>depende de</strong>: é a conversa e o motor que respondem; o WhatsApp é mais uma porta de entrada.</td>
+</tr>
+<tr>
+<td>Respostas visuais (MF-108)</td>
+<td><strong>depende de</strong>: são os gráficos, tabelas e indicadores que viram imagem.</td>
+</tr>
+<tr>
+<td>Organizações, pessoas e papéis (MF-102)</td>
+<td><strong>depende de</strong>: guarda o número no perfil e as roles, que ganham o botão do WhatsApp.</td>
+</tr>
+<tr>
+<td>Licenças e planos (MF-103)</td>
+<td><strong>depende de</strong>: o tipo de assento decide quem pode perguntar, e o membro leitor não conversa.</td>
+</tr>
+<tr>
+<td>Pergunta rápida (MF-110)</td>
+<td><strong>complementa</strong>: é o outro canal novo da mesma conversa; no popup a pessoa escolhe salvar, e aqui tudo entra no histórico.</td>
+</tr>
+<tr>
+<td>Conectores de Saída (MF-113)</td>
+<td><strong>é a base de</strong>: o conector de WhatsApp, que entrega avisos e PDFs, usa a mesma conta que o chat liga.</td>
+</tr>
+<tr>
+<td>Home da organização (MF-117)</td>
+<td><strong>é a base de</strong>, em parte: a medida de autonomia da Home conta as perguntas respondidas pelo WhatsApp.</td>
+</tr>
+</tbody>
+</table></div></div><div class="doc-section dx-assunto"><h3 data-dx-icone="ban" id="mf-111-o-que-ela-nao-faz">O que ela não faz</h3>
+<ul>
+<li><strong>Não chega a outros mensageiros:</strong> Teams e Google Chat ficam para depois.</li>
+<li><strong>Não recebe áudio nem arquivos:</strong> a pergunta é em texto.</li>
+<li><strong>Não substitui o app:</strong> boards, relatórios, agentes, agendamentos e a configuração da organização continuam lá.</li>
+<li><strong>Não funciona no modo &quot;tudo dentro&quot;</strong>, em que nada sai da infraestrutura da empresa.</li>
+<li><strong>Não investiga o porquê passo a passo:</strong> isso é a Investigação guiada (MF-119), que chega na v2.1.</li>
+</ul>
+</div><div class="doc-section dx-assunto"><h3 data-dx-icone="hourglass-half" id="mf-111-ainda-a-decidir">Ainda a decidir</h3>
+<ul>
+<li><strong>Quem não pode conversar:</strong> o que recebe quem escreve sem número ligado, sem o botão ou como membro leitor.</li>
+<li><strong>Um número, dois usos:</strong> se o mesmo número recebe os avisos dos conectores, e a regra de quem está em duas
+organizações no número da Maind.</li>
+<li><strong>Controles num texto:</strong> como dar o retorno e trocar de modo ou de modelo pelo WhatsApp.</li>
+</ul>
+</div><div class="doc-section dx-assunto"><h3 data-dx-icone="book" id="mf-111-para-saber-mais">Para saber mais</h3>
+<ul>
+<li><a href="produto-backlog.html">Backlog estratégico</a>: <a href="produto-backlog.html#d-145"><code>D-145</code></a>, a organização como fronteira dos dados na v2.0; <a href="produto-backlog.html#d-099"><code>D-099</code></a>, a definição macro, que fechou a <code>P-020</code> e reúne
+a <a href="produto-backlog.html#d-084"><code>D-084</code></a> e as <a href="produto-backlog.html#d-094"><code>D-094</code></a> a <a href="produto-backlog.html#d-098"><code>D-098</code></a>; <a href="produto-backlog.html#d-119"><code>D-119</code></a> (a entrada na v2.0); <a href="produto-backlog.html#d-124"><code>D-124</code></a> (a mesma conta no conector de WhatsApp);
+<a href="produto-backlog.html#d-131"><code>D-131</code></a> (o link e a data da web no texto da mensagem); <a href="produto-backlog.html#d-133"><code>D-133</code></a> (a medida de autonomia); a letra (x) da <code>P-008</code>.</li>
+<li><a href="produto-v20.html">A v2.0 consolidada</a>: §5.7 e o anexo B, com as leituras <code>D-084.1</code> a <code>D-098.3</code>
+(o membro leitor fora, o &quot;tudo dentro&quot;, um número por pessoa, a marca de origem no histórico, o link sem dado, o
+número da Maind, o &quot;trabalhando&quot;) e <code>D-119.1</code> (o botão nas roles); <a href="produto-mfs-hoje.html">mapa das
+mfs</a>; <a href="produto-versoes.html">versões</a>;
+<a href="produto-mapa.html">objetivos</a> (O1);
+<a href="produto-lacunas.html">lacunas</a> (a candidata nº 18).</li>
+<li>Arquitetura: <a href="arquitetura-08.html">integrações</a>, §3.3, com a <a href="arquitetura-02.html#arq-047"><code>ARQ-047</code></a> (o caminho até a Meta, em
+estudo pelo dono) e as <a href="arquitetura-02.html#arq-048"><code>ARQ-048</code></a> a <a href="arquitetura-02.html#arq-050"><code>ARQ-050</code></a> (a porta da Meta, a janela de 24 horas e as mensagens-padrão, as
+contas e a ligação do número); <a href="arquitetura-02.html">registro de decisões</a>: <a href="arquitetura-02.html#arq-006"><code>ARQ-006</code></a>,
+<a href="arquitetura-02.html#arq-007"><code>ARQ-007</code></a>, <a href="arquitetura-02.html#arq-024"><code>ARQ-024</code></a>, <a href="arquitetura-02.html#arq-029"><code>ARQ-029</code></a> e <a href="arquitetura-02.html#arq-090"><code>ARQ-090</code></a> (a <a href="mf-106.html"><code>MF-106</code></a> inteira na v2.1: na v2.0, os dados da organização
+inteira); <a href="arquitetura-05.html">motor</a>, §3.12;
+<a href="arquitetura-13.html">custo de operação</a>, §3.3 (o preço da Meta);
+<a href="arquitetura-01.html">estratégia</a>, §4 e o marco M4 · Canais;
+<a href="arquitetura-14.html">conferência</a>: a letra (x) da <code>P-008</code>, §3 e os itens A-03 (quem paga
+as mensagens no número da Maind), A-17 (um número, dois usos) e A-18 (quem não pode conversar).</li>
+</ul>
+<p>📚 <a href="mf-111-inventario.html">Tudo o que o inventário diz desta mf, assunto por assunto</a>.</p>
+</div>
+                            </div>
+                            <nav class="dx-vizinhas" aria-label="Páginas vizinhas"><a class="dx-anterior" href="mf-110.html"><i class="arrow_left" aria-hidden="true"></i>Pergunta rápida</a><a class="dx-proxima" href="mf-112.html">Boards e Relatórios<i class="arrow_right" aria-hidden="true"></i></a></nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="simple_footer">
+            <img class="leaf_right" src="assets/kbdoc/img/home_one/leaf_footter.png" alt="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p>Maind Horus · Horus v2 · documento interno · Revisado em 03/11/2026 · versão v2.0 em desenho, sem versão publicada</p>
+                    </div>
+                    <div class="col-lg-6 text-right">
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <a id="back-to-top" title="Voltar ao topo"></a>
+    <script src="assets/kbdoc/js/jquery-3.2.1.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/popper.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap-select.min.js"></script>
+    <script src="assets/kbdoc/js/parallaxie.js"></script>
+    <script src="assets/kbdoc/js/TweenMax.min.js"></script>
+    <script src="assets/kbdoc/js/anchor.js"></script>
+    <script src="assets/kbdoc/assets/wow/wow.min.js"></script>
+    <script src="assets/kbdoc/js/vendor/clipboard.min.js"></script>
+    <script src="assets/kbdoc/assets/prism/prism.js"></script>
+    <script src="assets/kbdoc/assets/niceselectpicker/jquery.nice-select.min.js"></script>
+    <script src="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="assets/kbdoc/assets/magnify-pop/jquery.magnific-popup.min.js"></script>
+    <script src="assets/kbdoc/assets/tooltipster/js/tooltipster.bundle.min.js"></script>
+    <script src="assets/kbdoc/assets/font-size/js/rv-jquery-fontsize-2.0.3.js"></script>
+    <script src="assets/kbdoc/js/onpage-menu.js"></script>
+    <script src="assets/kbdoc/js/main.js"></script>
+    <script src="assets/busca.js"></script>
+    <script src="assets/docx.js"></script>
+</body>
+</html>

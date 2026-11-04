@@ -1,0 +1,115 @@
+<p>Pasta do <strong>arquiteto de soluções</strong>: as <strong>decisões de tecnologia</strong> e a <strong>estratégia</strong> que o Horus v2 deve usar para atingir os objetivos (<a href="#d-141"><code>D-141</code></a>, <a href="#d-142"><code>D-142</code></a>). Quem a escreve é a skill <code>arquiteto-solucoes-horus</code>.</p>
+<p>O que se constrói, e por quê, está em <a href="#produto-temas"><code>../produto/</code></a>, a começar pelo <a href="#produto-mapa">mapa de objetivos e funcionalidades</a>. Esta pasta trata do <strong>como</strong>, no nível das decisões. As atividades (épicos, histórias e tasks) não ficam aqui: vêm depois, em <a href="#backlog-atividades"><code>../backlog/</code></a>.</p>
+<p><strong>Restrição do dono:</strong> a v2 mantém a stack da v1.xx (<a href="#d-143"><code>D-143</code></a>). As decisões escolhem como usar a stack, nunca trocam uma peça dela.</p>
+<p>Última atualização: 02/11/2026 (sexta rodada: os documentos 12, 13 e 14; os catorze documentos da lista estão escritos).</p>
+<p><strong>Em números:</strong> 96 decisões no <a href="#arquitetura-02">registro</a> (30 ✅, 54 🟢, 6 🟡 e 6 ⚪); as 6 🟡 esperam o dono na <a href="#arquitetura-01">fila por urgência</a> (seção 8.1); 30 itens a devolver ao PO (A-01 a A-30) e 19 verificações pendentes (V-01 a V-19), consolidados na <a href="#arquitetura-14">conferência do produto</a>.</p>
+<h3 id="arquitetura-os-documentos">Os documentos</h3>
+<p>A lista foi aprovada pelo dono em 02/11/2026.</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de A pasta da arquitetura"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Nº</th>
+<th scope="col">Documento</th>
+<th scope="col">O que responde</th>
+<th scope="col">Precisa existir</th>
+<th scope="col">Situação</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>01</td>
+<td>Estratégia da solução</td>
+<td>A solução numa página; como cada objetivo é atingido; o que se reaproveita da v1.xx; os marcos</td>
+<td>Antes de começar</td>
+<td>🟢 Escrito e atualizado em 02/11/2026 · a fila do dono com as 31 decisões 🟡, por urgência e com o que cada uma trava · os itens a devolver ao PO apontados para o documento 14</td>
+</tr>
+<tr>
+<td>02</td>
+<td>Registro de decisões (<code>ARQ-nnn</code>)</td>
+<td>Cada decisão de tecnologia, quem decidiu e por quê</td>
+<td>Antes de começar, e vivo</td>
+<td>🟢 Vivo · <a href="#arq-001"><code>ARQ-001</code></a> a <a href="#arq-096"><code>ARQ-096</code></a> (30 ✅, 54 🟢, 6 🟡, 6 ⚪) · notas datadas: três de 02/11/2026 (na <a href="#arq-049"><code>ARQ-049</code></a>, na <a href="#arq-051"><code>ARQ-051</code></a> e na <a href="#arq-073"><code>ARQ-073</code></a>) e cento e vinte e duas de 03/11/2026, em sessenta e duas decisões, pelas escolhas do dono no dia</td>
+</tr>
+<tr>
+<td>03</td>
+<td>Metas de qualidade</td>
+<td>Disponibilidade, volume, crescimento, rapidez e custo por organização</td>
+<td>Antes de começar</td>
+<td>🟢 Escrito em 02/11/2026 · 4 metas 🟡 com o dono (<a href="#arq-014"><code>ARQ-014</code></a> a <a href="#arq-017"><code>ARQ-017</code></a>) · os preços e o rateio do custo saíram no documento 13</td>
+</tr>
+<tr>
+<td>04</td>
+<td>Software</td>
+<td>Os módulos, os componentes e os contratos, camada a camada</td>
+<td>Antes de começar</td>
+<td>🟢 Escrito em 02/11/2026 · 5 decisões (<a href="#arq-018"><code>ARQ-018</code></a> a <a href="#arq-022"><code>ARQ-022</code></a>): 4 🟢 e a <a href="#arq-021"><code>ARQ-021</code></a> ⚪, substituída em 03/11/2026 pela <a href="#arq-095"><code>ARQ-095</code></a> 🟢 (os dois papéis em várias réplicas)</td>
+</tr>
+<tr>
+<td>05</td>
+<td>Motor de análise e IA</td>
+<td>Como a pergunta vira resposta</td>
+<td>Antes do marco do motor</td>
+<td>🟢 Escrito em 02/11/2026 · 10 decisões (<a href="#arq-023"><code>ARQ-023</code></a> a <a href="#arq-032"><code>ARQ-032</code></a>), nenhuma 🟡 com o dono · a <a href="#arq-027"><code>ARQ-027</code></a> ✅ pelo dono em 03/11/2026 (a pesquisa na web pela busca nativa da conexão)</td>
+</tr>
+<tr>
+<td>06</td>
+<td>Dados</td>
+<td>O que se guarda, o isolamento entre organizações, a vinda dos dados da v1.xx</td>
+<td>Antes de começar</td>
+<td>🟢 Escrito em 02/11/2026 · 6 decisões (<a href="#arq-033"><code>ARQ-033</code></a> a <a href="#arq-037"><code>ARQ-037</code></a> e <a href="#arq-089"><code>ARQ-089</code></a>), nenhuma 🟡 com o dono, 1 ⚪ · a <a href="#arq-035"><code>ARQ-035</code></a> ✅ pelo dono em 03/11/2026 (os prazos da organização nas preferências dela) · a <a href="#arq-010"><code>ARQ-010</code></a> ✅ pelo dono em 03/11/2026 (um banco por organização), com a <a href="#arq-088"><code>ARQ-088</code></a> · a <a href="#arq-011"><code>ARQ-011</code></a> ✅ pelo dono em 03/11/2026 (uma instância nova, com as organizações de exemplo semeadas), com a <a href="#arq-089"><code>ARQ-089</code></a></td>
+</tr>
+<tr>
+<td>07</td>
+<td>Segurança</td>
+<td>O login, os papéis, a segurança dos dados por pessoa, a LGPD e os segredos</td>
+<td>Antes de começar</td>
+<td>🟢 Escrito em 02/11/2026 · 9 decisões (<a href="#arq-038"><code>ARQ-038</code></a> a <a href="#arq-045"><code>ARQ-045</code></a> e <a href="#arq-090"><code>ARQ-090</code></a>), 1 🟡 com o dono (a <a href="#arq-040"><code>ARQ-040</code></a>, adiada para a v2.1) · a <a href="#arq-043"><code>ARQ-043</code></a> ✅ pelo dono em 03/11/2026 (o aviso num documento da organização, em PDF) · a <a href="#arq-044"><code>ARQ-044</code></a> ✅ pelo dono em 03/11/2026 (os segredos pelos Secrets do GitHub) · a <a href="#arq-090"><code>ARQ-090</code></a> ✅ pelo dono em 03/11/2026 (a segurança por pessoa fora da v2.0, de volta na v2.1) · a A-11 como hipótese de trabalho</td>
+</tr>
+<tr>
+<td>08</td>
+<td>Integrações</td>
+<td>E-mail, WhatsApp, IA, fontes de dados, login corporativo</td>
+<td>Antes do marco de cada uma</td>
+<td>🟢 Escrito em 02/11/2026 · 9 decisões (<a href="#arq-046"><code>ARQ-046</code></a> a <a href="#arq-054"><code>ARQ-054</code></a>), 2 🟡 com o dono · a <a href="#arq-046"><code>ARQ-046</code></a> ✅ pelo dono em 03/11/2026 (o e-mail) · corrigido na sexta rodada: o custo das mensagens da Meta desde 01/10/2026 e o Bedrock de São Paulo</td>
+</tr>
+<tr>
+<td>09</td>
+<td>Infraestrutura e ambientes</td>
+<td>SaaS, homologação, produção e o on-premises</td>
+<td>Antes de começar</td>
+<td>🟢 Escrito em 02/11/2026 · 6 decisões (<a href="#arq-055"><code>ARQ-055</code></a> a <a href="#arq-060"><code>ARQ-060</code></a>), 1 🟡 com o dono · a <a href="#arq-055"><code>ARQ-055</code></a>, a <a href="#arq-056"><code>ARQ-056</code></a>, a <a href="#arq-058"><code>ARQ-058</code></a> e a <a href="#arq-059"><code>ARQ-059</code></a> ✅ pelo dono em 03/11/2026 (a homologação da v2 na VPS de hoje, a máquina dividida sem teto, o endurecimento no lugar e uma base de demonstração só) · a <a href="#arq-057"><code>ARQ-057</code></a> ⚪, substituída em 03/11/2026 pela <a href="#arq-094"><code>ARQ-094</code></a> 🟢 (a imagem e o chart), e a <a href="#arq-060"><code>ARQ-060</code></a> refeita sobre o chart, com o Kubernetes da <a href="#arq-093"><code>ARQ-093</code></a> ✅</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Publicação e operação</td>
+<td>Publicar, voltar uma versão, o contrato da cópia de segurança e incidentes</td>
+<td>Antes da primeira homologação</td>
+<td>🟢 Escrito em 02/11/2026 · 10 decisões (<a href="#arq-061"><code>ARQ-061</code></a> a <a href="#arq-068"><code>ARQ-068</code></a>, <a href="#arq-086"><code>ARQ-086</code></a> e <a href="#arq-087"><code>ARQ-087</code></a>), nenhuma 🟡 com o dono · os incidentes e a abertura da v2.0 num subdomínio pelo dono em 03/11/2026 (<a href="#arq-068"><code>ARQ-068</code></a> ✅, <a href="#arq-065"><code>ARQ-065</code></a> ✅) · a cópia fora do Horus pelo dono em 03/11/2026 (<a href="#arq-086"><code>ARQ-086</code></a> ✅, que substituiu a <a href="#arq-064"><code>ARQ-064</code></a>), o acesso às máquinas (<a href="#arq-066"><code>ARQ-066</code></a> ✅) e a troca dos segredos (<a href="#arq-067"><code>ARQ-067</code></a> ✅)</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Observabilidade</td>
+<td>O que se mede, os alertas e o que a telemetria nunca carrega</td>
+<td>Antes da primeira homologação</td>
+<td>🟢 Escrito em 02/11/2026 · 6 decisões (<a href="#arq-069"><code>ARQ-069</code></a> a <a href="#arq-074"><code>ARQ-074</code></a>), 1 🟡 com o dono · a <a href="#arq-069"><code>ARQ-069</code></a>, a <a href="#arq-070"><code>ARQ-070</code></a> e a <a href="#arq-071"><code>ARQ-071</code></a> ✅ pelo dono em 03/11/2026 (uma stack por máquina; a sonda de fora num serviço de outro provedor; o plantão só para o que não pode esperar) · a citação do teste da ordem dos processadores corrigida</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Qualidade e testes</td>
+<td>Os testes, sem chamar modelo pago</td>
+<td>Antes de começar</td>
+<td>🟢 Escrito em 02/11/2026 · 8 decisões (<a href="#arq-075"><code>ARQ-075</code></a> a <a href="#arq-082"><code>ARQ-082</code></a>), nenhuma 🟡 com o dono · a <a href="#arq-081"><code>ARQ-081</code></a> ✅ pelo dono em 03/11/2026 (a bateria com modelo real) · a <a href="#arq-082"><code>ARQ-082</code></a> ✅ pelo dono em 03/11/2026 (o CI na VPS de hoje até a primeira produção real) · o CI, as travas, o contrato com a tela, o catálogo de provas e a prova dos alertas</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Custo de operação</td>
+<td>Quanto custam a IA, o WhatsApp e a infraestrutura</td>
+<td>Antes do marco dos agentes</td>
+<td>🟢 Escrito em 02/11/2026 e atualizado em 03/11/2026 (a cópia da instância SaaS fora do Horus) · 3 decisões (<a href="#arq-083"><code>ARQ-083</code></a> a <a href="#arq-085"><code>ARQ-085</code></a>), 2 🟡 com o dono · os números em faixas 🔎, com a fonte e a data de cada preço</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Conferência do produto</td>
+<td>As respostas às <code>P-002</code>, <code>P-003</code> e <code>P-008</code>, e o que volta ao PO</td>
+<td>Vivo</td>
+<td>🟢 Vivo, escrito em 02/11/2026 · a <code>P-008</code> inteira (14 ✅, 13 ⚠️, nenhuma ❌) · a <code>P-002</code> e a <code>P-003</code> conferidas · 30 itens ao PO, sem número <code>P-nnn</code> ou <code>I-nnn</code> (o backlog está congelado) · 19 verificações</td>
+</tr>
+</tbody>
+</table></div>

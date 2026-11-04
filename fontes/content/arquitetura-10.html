@@ -1,0 +1,910 @@
+<p>Situação: 🟢 escrito pelo arquiteto · dez decisões novas (<a href="#arq-061"><code>ARQ-061</code></a> a <a href="#arq-068"><code>ARQ-068</code></a>, <a href="#arq-086"><code>ARQ-086</code></a> e <a href="#arq-087"><code>ARQ-087</code></a>): quatro 🟢, cinco ✅ do dono (<a href="#arq-086"><code>ARQ-086</code></a>, <a href="#arq-066"><code>ARQ-066</code></a>, <a href="#arq-067"><code>ARQ-067</code></a>, <a href="#arq-068"><code>ARQ-068</code></a> e <a href="#arq-065"><code>ARQ-065</code></a>, em 03/11/2026) e uma ⚪ (<a href="#arq-064"><code>ARQ-064</code></a>, substituída pela <a href="#arq-086"><code>ARQ-086</code></a>) · um item a devolver ao PO (A-21) · verificações V-09 a V-11 (seção 5).</p>
+<p>Última atualização: 03/11/2026 (a cópia de segurança fora do Horus, pela <a href="#arq-086"><code>ARQ-086</code></a> ✅, e o contrato da cópia com a conferência da volta, pela <a href="#arq-087"><code>ARQ-087</code></a>; a homologação da v2 na VPS de hoje, pela <a href="#arq-055"><code>ARQ-055</code></a> ✅; nenhuma instância é produção real, pela <a href="#arq-056"><code>ARQ-056</code></a> ✅; as migrações e a cópia com um banco por organização, pela <a href="#arq-010"><code>ARQ-010</code></a> ✅; os segredos da instância nos Secrets do GitHub, gravados pelo CD, pela <a href="#arq-044"><code>ARQ-044</code></a> ✅; o endurecimento da VPS de hoje, pela <a href="#arq-058"><code>ARQ-058</code></a> ✅; o acesso às máquinas, pela <a href="#arq-066"><code>ARQ-066</code></a> ✅; o calendário de troca dos segredos, pela <a href="#arq-067"><code>ARQ-067</code></a> ✅; a abertura da v2.0 como troca de domínio, sem conversão, pela <a href="#arq-011"><code>ARQ-011</code></a> ✅; a meta de 99,9%, pela <a href="#arq-014"><code>ARQ-014</code></a> ✅; a produção real numa nuvem pública com Kubernetes e a construção na VPS, pela <a href="#arq-092"><code>ARQ-092</code></a> ✅; a publicação sobre a imagem e o chart, pela <a href="#arq-094"><code>ARQ-094</code></a>, no minikube da VPS e no Kubernetes gerenciado da produção real, pela <a href="#arq-093"><code>ARQ-093</code></a> ✅; o plantão só para o que não pode esperar, pela <a href="#arq-071"><code>ARQ-071</code></a> ✅; os incidentes com gravidade, responsável, prazos e registro, pela <a href="#arq-068"><code>ARQ-068</code></a> ✅; a v2.0 num subdomínio próprio, ao lado da v1.xx, pela <a href="#arq-065"><code>ARQ-065</code></a> ✅; a cópia lógica fora da nuvem e a prova da saída, pela <a href="#arq-096"><code>ARQ-096</code></a> ✅).</p>
+<p>Este documento diz <strong>como uma versão do Horus v2 chega a uma instância e como a instância se mantém de pé</strong>: a publicação sobre o pacote único, a guarda &quot;só vai à produção o que passou pela homologação&quot;, as migrações, a abertura da v2.0 com as organizações de exemplo semeadas, a volta de uma versão, o contrato da cópia de segurança, que fica fora do Horus, e a volta numa máquina nova, o acesso às máquinas, os segredos e os incidentes. Onde cada instância roda é do <a href="#arquitetura-09">documento 09</a>; o que se mede e quem é avisado, do <a href="#arquitetura-11">documento 11</a>; o CI que gera o pacote, do documento 12; o custo, do documento 13.</p>
+<ul>
+<li>O <strong>quê</strong> e o <strong>porquê</strong> são do produto (<a href="#produto-backlog">backlog estratégico</a>, <a href="#produto-v20">a v2.0 consolidada</a>). As decisões (<code>ARQ-nnn</code>) estão no <a href="#arquitetura-02">registro</a>; as metas, no <a href="#arquitetura-03">documento 03</a>.</li>
+<li>O código da v1.xx se cita como <code>horus@318db52b:&lt;caminho&gt;</code>. As fontes desta rodada foram o workflow e os roteiros de publicação (<code>horus@318db52b:.github/workflows/deploy.yml</code>, <code>infra/github/</code>, <code>infra/subir-versao.py</code>, <code>infra/vps.py</code>, <code>infra/redeploy.sh</code>, <code>infra/README.md</code>), o plano da instalação do zero (<code>horus@318db52b:docs/superpowers/plans/2026-10-27-deploy-do-zero-da-vps.md</code>), o inventário da máquina (<code>horus@318db52b:docs/superpowers/plans/anexos/2026-10-27-inventario-vps-maind.md</code>) e a análise das métricas (<code>horus@318db52b:docs/produto/observabilidade/analise-metricas.html</code>). Nada foi executado, e nenhuma máquina foi acessada.</li>
+<li><strong>Nenhum host, endereço de IP ou domínio aparece aqui</strong>: eles moram nas variáveis do GitHub, por regra do dono. O texto diz &quot;a máquina da PRD&quot;, &quot;a homologação&quot; (uma instância na máquina da PRD, pela <a href="#arq-055"><code>ARQ-055</code></a>) e &quot;a segunda VPS&quot;.</li>
+<li>⚠️ A <code>D-138</code> vem sempre com o título curto: <code>D-138</code> (&quot;A v1.xx fecha como MVP no HML…&quot;).</li>
+</ul>
+<p>Legenda: 🟢 decidida pelo arquiteto · 🟡 proposta ao dono · 🔎 hipótese a confirmar · ♻️ vem da v1.xx · 🔧 vem e muda · 🆕 novo.</p>
+<h3 id="arquitetura-10-1-o-que-o-tema-precisa-garantir">1. O que o tema precisa garantir</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de 10 · Publicação e operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Garantia</th>
+<th scope="col">Objetivos</th>
+<th scope="col">Decisões</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>📦 <strong>O que a homologação provou é o que a produção instala</strong>, em qualquer instância, também numa instância noutra máquina, como a segunda VPS</td>
+<td>O2, O8</td>
+<td><a href="#d-017"><code>D-017</code></a>; a decisão D1 da spec dos ambientes da v1.xx (<code>horus@318db52b:docs/superpowers/specs/2026-09-25-ambientes-hml-e-prd-design.md</code>); <a href="#arq-055"><code>ARQ-055</code></a> ✅, <a href="#arq-094"><code>ARQ-094</code></a></td>
+</tr>
+<tr>
+<td>⏯️ <strong>Publicar não derruba quem está usando nem perde trabalho</strong>: a conversa, a mensagem do WhatsApp, a rodada de um agendamento, o agente no meio</td>
+<td>O1, O4</td>
+<td><a href="#d-122"><code>D-122</code></a>, <a href="#d-124"><code>D-124</code></a>; <a href="#arq-004"><code>ARQ-004</code></a>, <a href="#arq-005"><code>ARQ-005</code></a>, <a href="#arq-024"><code>ARQ-024</code></a></td>
+</tr>
+<tr>
+<td>↩️ <strong>Toda versão tem volta</strong>, sem um roteiro de comandos à mão para cada migração</td>
+<td>O2</td>
+<td><a href="#arq-094"><code>ARQ-094</code></a>, <a href="#arq-062"><code>ARQ-062</code></a></td>
+</tr>
+<tr>
+<td>🚪 <strong>A v2.0 abre num subdomínio próprio, ao lado da v1.xx</strong>, com as organizações de exemplo semeadas</td>
+<td>O6, O7</td>
+<td><a href="#d-109"><code>D-109</code></a>, <a href="#d-134"><code>D-134</code></a>; <a href="#arq-011"><code>ARQ-011</code></a> ✅, <a href="#arq-065"><code>ARQ-065</code></a> ✅, <a href="#arq-089"><code>ARQ-089</code></a></td>
+</tr>
+<tr>
+<td>💾 <strong>O que uma instância precisa copiar está escrito, e o Horus confere a volta a cada subida</strong>; a cópia é da infra de cada instância</td>
+<td>O2, O7, O8</td>
+<td><a href="#d-013"><code>D-013</code></a>, <a href="#d-017"><code>D-017</code></a>, <a href="#d-075"><code>D-075</code></a> e a leitura <code>D-075.3</code>, <a href="#d-092"><code>D-092</code></a>, <a href="#d-093"><code>D-093</code></a> (o rastro não some); <a href="#arq-086"><code>ARQ-086</code></a> ✅, <a href="#arq-087"><code>ARQ-087</code></a></td>
+</tr>
+<tr>
+<td>🔑 <strong>Quem entra nas máquinas tem nome, e os segredos se renovam</strong></td>
+<td>O2, O8</td>
+<td><code>D-138</code> &quot;A v1.xx fecha como MVP no HML…&quot; (a frente 3, a segurança de onde o Horus roda); <a href="#arq-044"><code>ARQ-044</code></a> ✅, <a href="#arq-058"><code>ARQ-058</code></a> ✅</td>
+</tr>
+<tr>
+<td>🚨 <strong>Um incidente tem responsável, prazo e comunicação</strong>, inclusive o que vai à ANPD</td>
+<td>O2</td>
+<td><a href="#d-013"><code>D-013</code></a>, <a href="#d-090"><code>D-090</code></a> a <a href="#d-093"><code>D-093</code></a>; a LGPD (Lei 13.709/2018, art. 48)</td>
+</tr>
+<tr>
+<td>🏢 <strong>A mesma operação na casa do contratante</strong>, sem a Maind dentro dela</td>
+<td>O8</td>
+<td><a href="#d-007"><code>D-007</code></a>, <a href="#d-017"><code>D-017</code></a>, <a href="#d-121"><code>D-121</code></a>; <a href="#arq-060"><code>ARQ-060</code></a> 🟡</td>
+</tr>
+</tbody>
+</table></div><h3 id="arquitetura-10-2-as-decisoes">2. As decisões</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 2 de 10 · Publicação e operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Decisão</th>
+<th scope="col">O que decide</th>
+<th scope="col">Situação</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="#arq-005"><code>ARQ-005</code></a></td>
+<td>A fila e a caixa de saída no banco da aplicação: todo trabalho pode ser repetido sem efeito em dobro</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td><a href="#arq-011"><code>ARQ-011</code></a>, <a href="#arq-089"><code>ARQ-089</code></a></td>
+<td>A v2.0 nasce numa instância nova; as organizações de exemplo chegam pelo semeador (a conversão, <a href="#arq-036"><code>ARQ-036</code></a>, saiu)</td>
+<td>✅, 🟢</td>
+</tr>
+<tr>
+<td><a href="#arq-014"><code>ARQ-014</code></a></td>
+<td>99,9% por mês</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><a href="#arq-044"><code>ARQ-044</code></a></td>
+<td>Os segredos da instância nos Secrets de cada ambiente do GitHub, gravados pelo CD no arquivo de ambiente; o anel cifrado por certificado, com uma cópia no cofre da Maind; um login sem poder de dono em cada banco</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><a href="#arq-055"><code>ARQ-055</code></a>, <a href="#arq-058"><code>ARQ-058</code></a></td>
+<td>Os ambientes, com a homologação da v2 na VPS de hoje; a máquina endurecida</td>
+<td>✅, ✅</td>
+</tr>
+<tr>
+<td><a href="#arq-093"><code>ARQ-093</code></a>, <a href="#arq-094"><code>ARQ-094</code></a></td>
+<td>O Kubernetes gerenciado na produção real e o minikube na construção; a imagem e o chart, iguais em toda instância</td>
+<td>✅, 🟢</td>
+</tr>
+<tr>
+<td><a href="#arq-096"><code>ARQ-096</code></a></td>
+<td>A solução não fica presa a uma nuvem; a cópia lógica fora dela e a prova da saída</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong><a href="#arq-061"><code>ARQ-061</code></a></strong></td>
+<td><strong>A publicação instala o pacote do CI, e a produção só aceita o pacote que a homologação registrou</strong></td>
+<td>🟢</td>
+</tr>
+<tr>
+<td><strong><a href="#arq-062"><code>ARQ-062</code></a></strong></td>
+<td><strong>As migrações rodam num passo próprio e são compatíveis com a versão no ar; só a migração de corte pede janela</strong></td>
+<td>🟢</td>
+</tr>
+<tr>
+<td><strong><a href="#arq-063"><code>ARQ-063</code></a></strong></td>
+<td><strong>A troca de versão drena o trabalho em curso, e nada se perde</strong></td>
+<td>🟢</td>
+</tr>
+<tr>
+<td><a href="#arq-064"><code>ARQ-064</code></a></td>
+<td>As cópias de segurança ficam no próprio provedor das VPS, fora da máquina do Horus, e a volta se ensaia a cada trimestre</td>
+<td>⚪ (<a href="#arq-086"><code>ARQ-086</code></a>)</td>
+</tr>
+<tr>
+<td><strong><a href="#arq-065"><code>ARQ-065</code></a></strong></td>
+<td><strong>A v2.0 abre num subdomínio próprio, ao lado da v1.xx, que continua no domínio de hoje até a Maind decidir; as duas na mesma VPS, separadas pelo nome na entrada da máquina</strong></td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong><a href="#arq-066"><code>ARQ-066</code></a></strong></td>
+<td><strong>Cada pessoa da operação entra nas máquinas com nome e chave próprios, a publicação com a chave do ambiente, o root não entra por SSH, e a senha sai dos roteiros</strong></td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong><a href="#arq-067"><code>ARQ-067</code></a></strong></td>
+<td><strong>Os segredos têm um calendário de troca, a suspeita vira troca, e o certificado do anel se renova por acréscimo, com a recifragem do cofre</strong></td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong><a href="#arq-068"><code>ARQ-068</code></a></strong></td>
+<td><strong>Os incidentes têm gravidade, responsável, prazos, comunicação às organizações e o apoio à comunicação à ANPD, e todo incidente se registra e se revisa</strong></td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong><a href="#arq-086"><code>ARQ-086</code></a></strong></td>
+<td><strong>A cópia de segurança fica fora do Horus: cada dono de instância a configura na infraestrutura dele</strong></td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong><a href="#arq-087"><code>ARQ-087</code></a></strong></td>
+<td><strong>O Horus diz o que uma instância precisa copiar e confere, a cada subida, se o banco e o anel de chaves são do mesmo par</strong></td>
+<td>🟢</td>
+</tr>
+</tbody>
+</table></div><h3 id="arquitetura-10-3-os-componentes-e-a-responsabilidade-de-cada-um">3. Os componentes e a responsabilidade de cada um</h3>
+<h4 id="arquitetura-10-31-como-a-v1xx-publica-hoje">3.1 Como a v1.xx publica hoje</h4>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 3 de 10 · Publicação e operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Peça</th>
+<th scope="col">Hoje</th>
+<th scope="col">Onde está</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>O disparo</strong></td>
+<td>Só manual, pelo GitHub Actions ou da máquina de quem opera; nada publica sozinho (decisão do dono de 27/10/2026); simula por padrão; na PRD, exige a caixa &quot;Confirmo publicar&quot;; um disparo por ambiente de cada vez, nunca cancelado no meio</td>
+<td><code>horus@318db52b:.github/workflows/deploy.yml</code>, <code>infra/github/deploy-ambiente.py</code></td>
+</tr>
+<tr>
+<td><strong>O que viaja</strong></td>
+<td>O código-fonte do commit, empacotado fora do diretório de trabalho, e o roteiro de troca, conferido pela soma nas duas pontas</td>
+<td><code>horus@318db52b:infra/subir-versao.py</code></td>
+</tr>
+<tr>
+<td><strong>Onde compila</strong></td>
+<td>Na própria VPS, com o serviço no ar, num diretório novo</td>
+<td><code>horus@318db52b:infra/redeploy.sh</code></td>
+</tr>
+<tr>
+<td><strong>A troca</strong></td>
+<td>Uma troca de diretórios de segundos, com a marca da troca pendente em disco; a saúde conferida até 24 vezes em dois minutos; a volta sozinha se reprovar; cinco pontos de volta; a execução destacada da sessão SSH, que sobrevive à queda da conexão (provada em 27/10/2026)</td>
+<td><code>horus@318db52b:infra/redeploy.sh</code>, <code>infra/README.md</code>; o plano do zero, tarefa B3</td>
+</tr>
+<tr>
+<td><strong>O anel de chaves</strong></td>
+<td>Mora dentro do diretório da versão: cada troca junta as chaves de todos os lugares em que ele pode ter ficado e as confere byte a byte</td>
+<td><code>horus@318db52b:infra/redeploy.sh</code> (<code>montar_anel</code>)</td>
+</tr>
+<tr>
+<td><strong>As migrações</strong></td>
+<td>A API migra ao subir</td>
+<td><code>horus@318db52b:apps/server/Horus.Api/Program.cs</code></td>
+</tr>
+<tr>
+<td><strong>A volta</strong></td>
+<td>Volta o código, e não o banco: cada versão que mexe em dado escreve à mão o que a volta precisa rodar, num aviso de quase 300 linhas</td>
+<td><code>horus@318db52b:infra/subir-versao.py</code> (<code>aviso_da_volta</code>)</td>
+</tr>
+<tr>
+<td><strong>A guarda da PRD</strong></td>
+<td>Lê o registro das publicações do HML na mesma máquina e recusa o commit sem uma publicação de verdade lá; a correção urgente passa com uma frase digitada inteira; a VPS de ambiente único passa sem a guarda</td>
+<td><code>horus@318db52b:infra/subir-versao.py</code> (<code>avaliar_promocao</code>), <code>infra/github/deploy-ambiente.py</code></td>
+</tr>
+<tr>
+<td><strong>O acesso</strong></td>
+<td>O Actions entra com a chave do ambiente e a impressão digital do host fixada; o caminho da máquina de quem opera entra como root com a senha do cofre e aceita qualquer host</td>
+<td><code>horus@318db52b:infra/vps.py</code> (<code>conectar</code>)</td>
+</tr>
+<tr>
+<td><strong>Testes antes de publicar</strong></td>
+<td>Nenhum CI roda os testes</td>
+<td>Documento 12</td>
+</tr>
+<tr>
+<td><strong>Cópias de segurança</strong></td>
+<td>Não há rotina: só um passo manual antes de um deploy e duas cópias avulsas das bases de demonstração, de 30/08</td>
+<td>O inventário, §6; <a href="#arq-086"><code>ARQ-086</code></a></td>
+</tr>
+<tr>
+<td><strong>Incidentes</strong></td>
+<td>Sem procedimento escrito. O de 03 e 04/09/2026 deixou a PRD 15h30 fora do ar, porque o deploy parou o serviço e nunca deu o start; a lição virou o guarda do roteiro</td>
+<td><code>horus@318db52b:docs/produto/observabilidade/analise-metricas.html</code>; <code>infra/redeploy.sh</code></td>
+</tr>
+</tbody>
+</table></div><p>O que a v1.xx já provou e fica: a volta automática, a saúde conferida antes de dar a troca por boa, o disparo manual e simulado. A troca por diretório, a marca da troca pendente e a execução destacada dão lugar à troca gradual do cluster (<a href="#arq-094"><code>ARQ-094</code></a>). O que muda é <strong>o que viaja</strong> (a imagem e o chart, no lugar da fonte), <strong>onde mora a guarda</strong>, <strong>como se migra</strong> e <strong>quem entra na máquina</strong>.</p>
+<h4 id="arquitetura-10-32-a-publicacao-sobre-a-imagem-e-o-chart-arq-061--arq-094-">3.2 A publicação sobre a imagem e o chart (<code>ARQ-061</code> 🟢, <code>ARQ-094</code> 🟢)</h4>
+<figure><div class="lightbox_shortcode"><img src="media/arquitetura-10-diagrama-1.svg" width="2221" height="263" alt="Diagrama: 3.2 A publicação sobre a imagem e o chart (ARQ-061 🟢, ARQ-094 🟢)"><a href="media/arquitetura-10-diagrama-1.svg" class="img_popup" aria-label="Ampliar o diagrama"><i class="icon_plus" aria-hidden="true"></i></a></div><figcaption>Diagrama de “3.2 A publicação sobre a imagem e o chart (ARQ-061 🟢, ARQ-094 🟢)”. Selecione o “+” para ampliar.</figcaption></figure><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 4 de 10 · Publicação e operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Passo</th>
+<th scope="col">O que acontece</th>
+<th scope="col">Quem</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1. A imagem e o chart</td>
+<td>O CI compila uma vez por commit da <code>main</code>, só com os testes verdes (documento 12), monta a imagem e o chart com a identidade (o commit e o digest) e os guarda no registro de imagens do GitHub, junto do repositório</td>
+<td>O CI</td>
+</tr>
+<tr>
+<td>2. A homologação</td>
+<td>O disparo manual escolhe a imagem; o CD aplica o chart na instância da homologação, no minikube da VPS: a tarefa das migrações, a troca gradual das réplicas e a saúde</td>
+<td>Quem opera</td>
+</tr>
+<tr>
+<td>3. O registro</td>
+<td>A publicação saudável deixa, ao lado da imagem, o registro &quot;aprovada na homologação&quot;, com a data e quem disparou</td>
+<td>O CD</td>
+</tr>
+<tr>
+<td>4. A produção</td>
+<td>A publicação em qualquer instância de produção só aceita imagem com esse registro. A correção urgente continua possível, com a frase inteira digitada, e fica registrada como &quot;sem homologação&quot;</td>
+<td>Quem opera</td>
+</tr>
+<tr>
+<td>5. O cluster</td>
+<td>Guarda o histórico das versões do chart, para a volta e para a conferência</td>
+<td>O Kubernetes</td>
+</tr>
+</tbody>
+</table></div><ul>
+<li><strong>A guarda deixa de ler um arquivo da mesma máquina.</strong> O registro mora junto da imagem, fora das máquinas, e vale igual qualquer que seja a instância da homologação e a da produção, venha o disparo do Actions ou da máquina de quem opera.</li>
+<li><strong>Uma homologação aprova a imagem para todas as instâncias.</strong> A imagem e o chart são os mesmos (<a href="#arq-094"><code>ARQ-094</code></a>), então o que passou pela homologação vale para a produção na nuvem, para a segunda VPS e para as instâncias dedicadas, e o passe sem guarda da VPS de ambiente único sai. A produção real ainda se homologa uma vez no cluster da nuvem, antes da primeira organização paga, para provar o ambiente (<a href="#arq-092"><code>ARQ-092</code></a>).</li>
+<li><strong>No contratante</strong>, que não alcança o GitHub, a Maind entrega só imagem aprovada, como arquivo, com o digest publicado, e a instalação usa a imagem pelo digest.</li>
+<li><strong>O disparo continua manual</strong>, simulado por padrão, com a caixa de confirmação na produção e um disparo por instância de cada vez.</li>
+<li><strong>Guardam-se</strong> as imagens que estão no ar em alguma instância e as dez últimas 🔎; o cluster guarda as cinco últimas versões do chart, para a volta.</li>
+<li><strong>A troca fica mais simples.</strong> O anel mora no banco mestre (<a href="#arq-094"><code>ARQ-094</code></a>), e a junção das chaves de todos os lugares, a parte mais delicada do roteiro de hoje, deixa de ser necessária.</li>
+</ul>
+<h4 id="arquitetura-10-33-as-migracoes-e-a-volta-arq-062-">3.3 As migrações e a volta (<code>ARQ-062</code> 🟢)</h4>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 5 de 10 · Publicação e operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Tipo de migração</th>
+<th scope="col">Quando roda</th>
+<th scope="col">A versão no ar</th>
+<th scope="col">A volta</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Compatível</strong> (o padrão): acrescenta tabela, coluna ou índice, ou copia dado sem apagar o de antes</td>
+<td>No passo das migrações, <strong>antes</strong> da troca, com a versão anterior ainda no ar</td>
+<td>Continua funcionando sobre o banco novo</td>
+<td>Só a volta à versão anterior do chart: o banco fica, e a versão anterior o lê</td>
+</tr>
+<tr>
+<td><strong>De limpeza</strong>: apaga ou renomeia o que uma versão anterior usava</td>
+<td>Só na versão seguinte à que deixou de usar (expandir numa versão, contrair na outra)</td>
+<td>Já não usa o que sai</td>
+<td>Igual</td>
+</tr>
+<tr>
+<td><strong>De corte</strong>: muda o sentido do dado de um jeito que a versão anterior não lê, nenhuma está prevista, desde que a v2.0 deixou de converter os dados da v1.xx (<a href="#arq-011"><code>ARQ-011</code></a>)</td>
+<td>Só numa janela, com os dois papéis parados e a página de manutenção</td>
+<td>Parada</td>
+<td>A restauração da cópia tirada logo antes (<a href="#arq-062"><code>ARQ-062</code></a>)</td>
+</tr>
+</tbody>
+</table></div><ul>
+<li><strong>O passo das migrações</strong> é o mesmo executável num modo de uso único, uma tarefa do chart (<a href="#arq-094"><code>ARQ-094</code></a>), que só migra e sai, com o login das migrações (<a href="#arq-044"><code>ARQ-044</code></a>). Nenhum dos dois papéis migra ao subir. Ele migra o banco mestre e depois o de cada organização, com o registro de onde parou: se um falhar, o passo retoma dele, e a troca só acontece com todos na versão nova (<a href="#arq-088"><code>ARQ-088</code></a>).</li>
+<li><strong>A prova da volta vem junto.</strong> Como a migração compatível roda com a versão anterior no ar, a saúde dela, conferida logo depois do passo, mostra que a volta de código continua possível. Se reprovar, a troca não acontece, e a versão no ar segue.</li>
+<li><strong>A migração de corte se declara no pacote</strong>, e o roteiro recusa rodá-la fora de uma janela. O teste que confere a compatibilidade é do documento 12.</li>
+<li>É o fim do aviso da volta da v1.xx, que lista à mão, versão a versão, os comandos que a volta não roda (<code>horus@318db52b:infra/subir-versao.py</code>).</li>
+</ul>
+<h4 id="arquitetura-10-34-publicar-sem-perder-trabalho-arq-063-">3.4 Publicar sem perder trabalho (<code>ARQ-063</code> 🟢)</h4>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 6 de 10 · Publicação e operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Quem</th>
+<th scope="col">O que faz na troca</th>
+<th scope="col">O que se perde</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Papel &quot;trabalhar&quot;</strong></td>
+<td>Para de pegar trabalho novo, espera o que está em curso por até dois minutos 🔎 e solta o resto; o que foi solto volta à fila e roda de novo na versão nova, sem efeito em dobro (<a href="#arq-005"><code>ARQ-005</code></a>)</td>
+<td>Nada; o trabalho longo recomeça</td>
+</tr>
+<tr>
+<td><strong>Agente no meio da execução</strong></td>
+<td>Cada volta do ciclo (<a href="#arq-030"><code>ARQ-030</code></a>) fica gravada; a execução retomada continua da última volta gravada, sem refazer as perguntas já respondidas</td>
+<td>O tempo da volta em curso</td>
+</tr>
+<tr>
+<td><strong>Rodada marcada para a hora da troca</strong></td>
+<td>A reivindicação da rodada é do banco, como na agenda de hoje (<code>horus@318db52b:apps/server/Horus.Api/VigiaDeAgendaDeRelatorios.cs</code>); ela começa quando o &quot;trabalhar&quot; novo sobe, dentro do limiar de 10 minutos do documento 03</td>
+<td>Nada</td>
+</tr>
+<tr>
+<td><strong>Papel &quot;atender&quot;</strong></td>
+<td>Para de aceitar turno novo, espera as transmissões em curso por até um minuto 🔎 e fecha as que restarem; a resposta cortada fica gravada como interrompida (<a href="#arq-029"><code>ARQ-029</code></a>)</td>
+<td>A resposta em transmissão que passar do minuto</td>
+</tr>
+<tr>
+<td><strong>Notificação da Meta</strong></td>
+<td>A entrada só responde depois de gravar (<a href="#arq-048"><code>ARQ-048</code></a>); a que chega durante a troca não recebe o &quot;recebido&quot;, e a Meta a reenvia 🔎 (V-13, no documento 11)</td>
+<td>Nada</td>
+</tr>
+</tbody>
+</table></div><p><strong>A ordem da troca</strong> (<a href="#arq-094"><code>ARQ-094</code></a>): (1) o cluster baixa a imagem nova, com tudo no ar; (2) a tarefa das migrações, e a saúde da versão no ar logo depois; (3) as réplicas do &quot;trabalhar&quot; trocam uma a uma, e cada uma drena antes de sair; (4) as do &quot;atender&quot;, do mesmo jeito, com a nova pronta antes de a velha sair; (5) a saúde de todas; (6) a volta sozinha à versão anterior do chart, se reprovar; (7) o registro. No cluster, a drenagem é o tempo de encerramento de cada réplica. Uma publicação comum não precisa de janela: ela se faz no horário de menos uso, por quem opera.</p>
+<h4 id="arquitetura-10-35-a-abertura-da-v20-arq-065--arq-011--arq-089">3.5 A abertura da v2.0 (<code>ARQ-065</code> ✅, <code>ARQ-011</code> ✅, <code>ARQ-089</code>)</h4>
+<p>A v2.0 não converte os dados da v1.xx: ela nasce numa instância nova, na VPS de hoje, e as organizações de exemplo, o McDonald's e a Global Fleet, chegam pelo semeador (<a href="#arq-011"><code>ARQ-011</code></a>, <a href="#arq-089"><code>ARQ-089</code></a>). A abertura (<a href="#arq-065"><code>ARQ-065</code></a> ✅, a escolha do dono em 03/11/2026):</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 7 de 10 · Publicação e operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Momento</th>
+<th scope="col">O que acontece</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Antes</strong></td>
+<td>A instância nova sobe com a forma da v2, no minikube da VPS (os dois papéis em réplicas, o anel no banco mestre, o mestre e um banco por organização: <a href="#arq-010"><code>ARQ-010</code></a>, <a href="#arq-044"><code>ARQ-044</code></a>, <a href="#arq-093"><code>ARQ-093</code></a>, <a href="#arq-094"><code>ARQ-094</code></a>); o semeador cria as duas organizações, e a Maind as confere: as fontes abrem, os boards recalculam, uma organização não enxerga a outra</td>
+</tr>
+<tr>
+<td><strong>As pessoas</strong></td>
+<td>As pessoas da Maind recebem convite na v2.0; as chaves de IA e da Meta se cadastram de novo (<a href="#arq-044"><code>ARQ-044</code></a>)</td>
+</tr>
+<tr>
+<td><strong>A abertura</strong></td>
+<td>A v2.0 abre num subdomínio próprio, com o certificado HTTPS dele; a entrada da VPS separa pelo nome e manda a v1.xx aos serviços dela e a v2.0 à entrada do minikube, numa porta interna. O nome fica nas variáveis do ambiente no GitHub</td>
+</tr>
+<tr>
+<td><strong>A volta</strong></td>
+<td>Não há troca a desfazer: a v1.xx continua no domínio de hoje, e um defeito na v2.0 se corrige com a volta à versão anterior do chart (<a href="#arq-094"><code>ARQ-094</code></a>)</td>
+</tr>
+<tr>
+<td><strong>Depois</strong></td>
+<td>Quando a Maind decidir tirar a v1.xx, a PRD e o HML dela saem (<a href="#arq-055"><code>ARQ-055</code></a>), a v2.0 pode assumir o domínio de hoje, com o tempo de vida do registro na troca (V-10), e o subdomínio passa a levar a ele; a segunda VPS recebe a v2.0 do mesmo jeito, já com domínio (<a href="#arq-058"><code>ARQ-058</code></a>, V-08)</td>
+</tr>
+</tbody>
+</table></div><ul>
+<li><strong>O Google e a Meta</strong> precisam do endereço de volta da instância nova cadastrado antes da abertura: o cliente do Google e o aplicativo da Meta (<a href="#arq-047"><code>ARQ-047</code></a>, <a href="#arq-053"><code>ARQ-053</code></a>) 🔎.</li>
+<li><strong>Um subdomínio, e não <code>/v2/</code> no domínio de hoje:</strong> o caminho poria as duas versões na mesma origem do navegador, com os cookies e o armazenamento local de uma visíveis à outra, e obrigaria o front, a API, a transmissão, a impressão, os links dos e-mails e os retornos do Google e da Meta a viver sob um prefixo que o código de hoje não conhece.</li>
+<li><strong>Nenhuma instância de hoje é produção real</strong> (<a href="#arq-056"><code>ARQ-056</code></a>): a abertura não tem janela longa nem página de manutenção, e a A-21 perde a janela que a motivava.</li>
+<li><strong>A produção real não abre na VPS</strong> (<a href="#arq-092"><code>ARQ-092</code></a> ✅, <a href="#arq-093"><code>ARQ-093</code></a> ✅): a primeira organização paga chega num Kubernetes gerenciado de uma nuvem pública. A publicação nela leva a mesma imagem e o mesmo chart (<a href="#arq-094"><code>ARQ-094</code></a>), e o ambiente se homologa lá antes de abrir (<a href="#arq-061"><code>ARQ-061</code></a>); a VPS de hoje fica com a construção, no minikube.</li>
+</ul>
+<h4 id="arquitetura-10-36-a-copia-de-seguranca-fica-fora-do-horus-arq-086--arq-087">3.6 A cópia de segurança fica fora do Horus (<code>ARQ-086</code> ✅, <code>ARQ-087</code>)</h4>
+<p>O Horus não faz, não agenda nem guarda cópia de segurança, e não fixa quanto dado uma instância pode perder numa pane nem em quanto tempo ela volta: é a escolha do dono, em 03/11/2026 (<a href="#arq-086"><code>ARQ-086</code></a>). Cada dono de instância (<a href="#d-013"><code>D-013</code></a>) configura a cópia na infraestrutura dele. O que o Horus entrega é o <strong>contrato da cópia</strong>, que vai junto do pacote, e a <strong>conferência da volta</strong>, a cada subida (<a href="#arq-087"><code>ARQ-087</code></a>).</p>
+<p><strong>O contrato da cópia:</strong></p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 8 de 10 · Publicação e operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">O que</th>
+<th scope="col">Na cópia?</th>
+<th scope="col">Por quê</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Bancos da aplicação</strong> (o mestre e o de cada organização)</td>
+<td>Sim, todos do mesmo momento, numa cópia do servidor Postgres inteiro</td>
+<td>O mestre guarda o mapa e a fila; cada banco de organização, as conversas, os boards, o rastro e os segredos cifrados dela (<a href="#arq-010"><code>ARQ-010</code></a>); copiados em momentos diferentes, o mapa e os bancos não voltam juntos</td>
+</tr>
+<tr>
+<td><strong>Anel de chaves</strong></td>
+<td>Sim, inteiro, com cada chave nova</td>
+<td>Sem ele, as credenciais das fontes, as chaves de IA, as contas da Meta e os convites voltam ilegíveis, e as sessões caem; ele mora no banco mestre, cifrado pelo certificado, e vai na cópia do Postgres (<a href="#arq-094"><code>ARQ-094</code></a>)</td>
+</tr>
+<tr>
+<td><strong>Certificado do anel e a senha dele</strong></td>
+<td>Sim, separados do anel e das cópias, no cofre de quem opera; na SaaS, num Secret do ambiente no GitHub, que o CD instala, e com uma cópia no cofre da Maind, porque o GitHub não deixa ler um Secret de volta</td>
+<td>O anel é cifrado por ele (<a href="#arq-044"><code>ARQ-044</code></a>): o anel sem o certificado não abre, e a cópia do anel sozinha não vaza nada</td>
+</tr>
+<tr>
+<td><strong>Arquivo de ambiente com os segredos</strong></td>
+<td>Não: o CD o refaz</td>
+<td>Na SaaS, os segredos moram nos Secrets do ambiente de cada instância no GitHub, e o CD grava o arquivo a cada publicação (<a href="#arq-044"><code>ARQ-044</code></a>); no contratante, a TI dele o preenche</td>
+</tr>
+<tr>
+<td><strong>Bases de demonstração</strong></td>
+<td>Não precisa</td>
+<td>Os geradores as refazem, ou o roteiro as copia de outra instância (documento 09); uma cópia delas só encurta a volta</td>
+</tr>
+<tr>
+<td><strong>Telemetria</strong></td>
+<td>Não</td>
+<td>Documento 11</td>
+</tr>
+<tr>
+<td><strong>Bases dos clientes</strong></td>
+<td>Não</td>
+<td>O Horus não as copia (<a href="#arq-033"><code>ARQ-033</code></a>)</td>
+</tr>
+</tbody>
+</table></div><ul>
+<li><strong>O cofre de quem opera guarda só cópias</strong> (na SaaS, os Secrets do GitHub, que só o CD lê, e o cofre da operação que a Maind já usa, com a cópia do certificado e o acesso às máquinas: <code>horus@318db52b:infra/README.md</code>, <code>infra/vps.py</code>): nenhuma instância o lê em funcionamento, e o segredo em uso continua no arquivo da máquina, como manda a <a href="#arq-044"><code>ARQ-044</code></a>.</li>
+<li><strong>O contrato traz um exemplo de rotina</strong> com a ferramenta do Postgres, como referência; o Horus não a executa.</li>
+</ul>
+<p><strong>A conferência da volta</strong> (<a href="#arq-087"><code>ARQ-087</code></a>):</p>
+<ul>
+<li><strong>A cada subida</strong>, o &quot;atender&quot; confere se o anel abre o segredo de prova que a instância gravou no banco mestre ao nascer. Se não abrir, o &quot;pronto&quot; falha com o motivo (documento 11, 3.4), a troca de versão volta sozinha, e nenhum segredo novo se grava, para não misturar dois anéis. Hoje, um anel trocado não dá erro: o segredo que não abre vira texto vazio, e a fonte aparece como não configurada (<code>horus@318db52b:apps/server/Horus.Core/Data/Connections/CofreDeCredencial.cs</code>, <code>Decifrar</code>).</li>
+<li><strong>O anel perdido de vez:</strong> um comando de manutenção do pacote aceita um anel novo, grava o segredo de prova novo, marca cada segredo cifrado das organizações como perdido e registra a troca no registro da operação. A fonte, a conexão de IA e o conector aparecem como não configurados, como na v1.xx, e o owner de cada organização recadastra as credenciais.</li>
+<li><strong>O banco que voltou atrás</strong> sobe até a versão do pacote pelo passo das migrações (<a href="#arq-062"><code>ARQ-062</code></a>).</li>
+</ul>
+<p><strong>A volta numa máquina nova</strong>, o passo a passo do contrato (o tempo é de cada instância):</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 9 de 10 · Publicação e operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Passo</th>
+<th scope="col">Tempo 🔎</th>
+<th scope="col">De onde vem</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Provisionar a máquina nova, endurecida</td>
+<td>Minutos: a base levou 76 segundos na reinstalação da segunda VPS</td>
+<td>O plano do zero</td>
+</tr>
+<tr>
+<td>Restaurar o banco</td>
+<td>Minutos para o banco de hoje (59 MB); menos de uma hora no envelope do primeiro ano</td>
+<td>A cópia da instância</td>
+</tr>
+<tr>
+<td>Pôr o anel e o certificado</td>
+<td>Minutos</td>
+<td>A cópia e o cofre</td>
+</tr>
+<tr>
+<td>Instalar o pacote que estava no ar</td>
+<td>Minutos: a primeira publicação, com o vídeo da Home, levou 154 segundos na segunda VPS, ainda compilando na máquina</td>
+<td>O GitHub</td>
+</tr>
+<tr>
+<td>Apontar o domínio para a máquina nova e emitir o certificado HTTPS</td>
+<td>O tempo de vida do registro do domínio (V-10)</td>
+<td>O registro do domínio</td>
+</tr>
+<tr>
+<td>Conferir: o &quot;pronto&quot;, com o anel que abre o segredo de prova, e as contagens</td>
+<td>Minutos</td>
+<td>A conferência da volta (<a href="#arq-087"><code>ARQ-087</code></a>)</td>
+</tr>
+<tr>
+<td>Avisar os clientes, se o endereço de saída mudou</td>
+<td>—</td>
+<td>V-06 (documento 09)</td>
+</tr>
+</tbody>
+</table></div><p><strong>Na instância SaaS</strong> (a dona é a Maind):</p>
+<ul>
+<li><strong>A cópia se configura na infra da instância</strong>, a partir da escolha do dono de 03/11/2026: no próprio provedor das VPS, fora da máquina do Horus, sem fornecedor novo.</li>
+<li><strong>O que o provedor de hoje oferece</strong> 🔎 (as páginas de ajuda dele, consultadas em 03/11/2026, divergem em detalhes; a conferência no painel é a V-09): a cópia semanal da máquina inteira no plano; a diária, paga à parte; as duas últimas diárias e as duas últimas semanais, guardadas fora do servidor, e a diária não se apaga à mão; um retrato manual só, que some numa reinstalação. A cópia do provedor volta sobre a própria máquina 🔎 e guarda duas semanas no máximo.</li>
+<li><strong>O que isso dá:</strong> com a cópia diária, perde-se até um dia; com só a semanal, até uma semana. A cópia leva a máquina inteira, e a conta do provedor vira a chave das cópias: o segundo fator nela passa a protegê-las (<a href="#arq-066"><code>ARQ-066</code></a>, V-10). ⚠️ A pane do provedor, ou quem tomar a conta dele, alcança a máquina e as cópias juntas, risco que o dono aceitou.</li>
+<li><strong>Perder menos que um dia</strong>, se a Maind quiser: a infra da instância liga o arquivamento contínuo do Postgres (pgBackRest 🔎, ou WAL-G) para uma máquina pequena só de cópias, no mesmo provedor (R$ 30 a 90 por mês, documento 13), sem mudar o pacote (<a href="#arq-094"><code>ARQ-094</code></a>).</li>
+<li><strong>O ensaio da volta</strong> também é da infra da instância: na SaaS, ele pode restaurar o banco e o anel numa instância de prova da máquina da PRD, ou numa máquina por hora (documento 13, 3.7), com a conferência da volta como prova de que voltou inteiro. Com só a cópia do provedor, que volta sobre a própria máquina, o ensaio depende da V-09.</li>
+<li><strong>A homologação não tem cópia</strong>: ela se refaz pelo provisionamento e pelo semeador (<a href="#arq-089"><code>ARQ-089</code></a>).</li>
+</ul>
+<p><strong>No contratante</strong> (<a href="#arq-060"><code>ARQ-060</code></a>): a cópia é a da TI dele, com a ferramenta e o lugar dele; o contrato da cópia vai com o pacote, e o certificado fica no cofre da empresa.</p>
+<p><strong>A cópia da troca de versão não é a cópia de segurança.</strong> Uma publicação com migração de corte tira a sua cópia do banco e do anel logo antes, conferida, e a guarda até o ponto de não retorno (3.3; <a href="#arq-062"><code>ARQ-062</code></a>): é passo do roteiro, e vale em toda instância, tenha ela cópia de segurança ou não. A abertura da v2.0 não precisa dela: a v1.xx fica de pé ao lado (3.5).</p>
+<p><strong>A homologação recebe as organizações de exemplo pelo semeador</strong> (<a href="#arq-089"><code>ARQ-089</code></a>), e não por um clone da PRD; o clone de hoje (<code>horus@318db52b:infra/hml/clonar-prd-para-hml.sh</code>) fica só para o HML da v1.xx enquanto ele viver.</p>
+<p><strong>O que se apaga no banco continua nas cópias até elas vencerem</strong>, pelo prazo que a infra de cada instância escolher (<a href="#arq-035"><code>ARQ-035</code></a>; o que a pessoa sabe disso é a A-16).</p>
+<p><strong>Na produção real, a saída da nuvem se prova</strong> (<a href="#arq-096"><code>ARQ-096</code></a> ✅). A cópia inclui uma cópia lógica, fora da nuvem, que qualquer Postgres 17 restaura, porque o instantâneo do Postgres gerenciado só abre na nuvem que o fez. Antes da primeira produção real e uma vez por ano, essa cópia se restaura fora da nuvem, e o mesmo chart sobe sobre ela.</p>
+<h4 id="arquitetura-10-37-o-acesso-as-maquinas-arq-066-">3.7 O acesso às máquinas (<code>ARQ-066</code> ✅)</h4>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 10 de 10 · Publicação e operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Quem</th>
+<th scope="col">Como entra</th>
+<th scope="col">O que pode</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Uma pessoa da operação da Maind</strong></td>
+<td>Com usuário e chave próprios; a chave fica no cofre da operação e os roteiros a leem só na memória, como a reinstalação da segunda VPS já fez (o plano do zero)</td>
+<td>Administrar a máquina, com cada uso de privilégio registrado pelo sistema</td>
+</tr>
+<tr>
+<td><strong>A publicação</strong></td>
+<td>Com o usuário de publicação e a chave do ambiente, e a impressão digital do host fixada, como o Actions já faz</td>
+<td>Só rodar a troca de versão</td>
+</tr>
+<tr>
+<td><strong>O root</strong></td>
+<td>Não entra por SSH</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>A emergência</strong></td>
+<td>Pelo console do provedor da máquina, fora da rede, com segundo fator na conta (V-10)</td>
+<td>Tudo</td>
+</tr>
+<tr>
+<td><strong>A senha</strong></td>
+<td>Em lugar nenhum: os roteiros que entram com a senha do cofre passam à chave, e o caminho que aceita qualquer host sai (<code>horus@318db52b:infra/vps.py</code>)</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div><ul>
+<li><strong>Quem sai da operação</strong> perde a chave em todas as máquinas no mesmo dia. A lista das chaves de cada máquina é configuração da instância (chave pública não é segredo), aplicada pelo provisionamento.</li>
+<li><strong>Os dados de produção só se abrem num incidente ou num pedido de suporte</strong>, e cada abertura fica no registro de incidentes (<a href="#arq-068"><code>ARQ-068</code></a>). É o que mantém, na operação, a leitura confirmada da <a href="#d-091"><code>D-091</code></a> de que o owner da instância não consulta o rastro das organizações, quando quem opera tem a máquina inteira na mão.</li>
+<li><strong>A observabilidade</strong> tem contas nominais, só da operação da Maind (documento 11).</li>
+<li><strong>No contratante</strong>, a Maind entra só com o acesso que ele conceder, pelo mesmo modelo (<a href="#arq-060"><code>ARQ-060</code></a>).</li>
+</ul>
+<h4 id="arquitetura-10-38-os-segredos-a-guarda-do-certificado-e-a-rotacao-arq-067-">3.8 Os segredos: a guarda do certificado e a rotação (<code>ARQ-067</code> ✅)</h4>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 11 de 10 · Publicação e operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Segredo</th>
+<th scope="col">De quem</th>
+<th scope="col">Troca de rotina</th>
+<th scope="col">Troca forçada</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Chave de trabalho do anel</strong></td>
+<td>Instância</td>
+<td>A cada 90 dias, sozinha, como hoje (documento 07, 3.7)</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Certificado do anel</strong></td>
+<td>Instância</td>
+<td>Antes de vencer (validade de dois anos 🔎): o novo se acrescenta, como um Secret do ambiente e com uma cópia no cofre da Maind, e o antigo fica só para abrir; o cofre recifra cada segredo com a chave em uso numa rodada da fila, e o antigo sai depois de a conferência provar que nenhum segredo depende dele</td>
+<td>Na suspeita de vazamento</td>
+</tr>
+<tr>
+<td><strong>Senhas dos logins do banco</strong> (o mestre, as migrações, o provisionamento, a observabilidade)</td>
+<td>Instância</td>
+<td>Por ano, trocando o Secret do ambiente e publicando de novo; as dos bancos de organização nascem com cada uma e ficam no mestre, cifradas pelo anel (<a href="#arq-088"><code>ARQ-088</code></a>)</td>
+<td>Na suspeita, ou quando sai alguém que as viu</td>
+</tr>
+<tr>
+<td><strong>Chave do SMTP, segredo do Google, segredo do aplicativo da Meta, token do Telegram, token do Broadcast do OpenRouter</strong></td>
+<td>Maind</td>
+<td>Por ano, trocando o Secret do ambiente e publicando de novo</td>
+<td>Na suspeita, em até 24 horas 🔎</td>
+</tr>
+<tr>
+<td><strong>Chave de publicação de cada ambiente</strong></td>
+<td>Maind</td>
+<td>Por ano; o preparador dos ambientes já troca um segredo só (<code>horus@318db52b:infra/github/preparar-environments.py</code>)</td>
+<td>Quando sai alguém da operação</td>
+</tr>
+<tr>
+<td><strong>Chaves pessoais de SSH</strong></td>
+<td>Pessoa da operação</td>
+<td>Por ano</td>
+<td>No mesmo dia em que a pessoa sai</td>
+</tr>
+<tr>
+<td><strong>Chaves de IA, credenciais das fontes, conta da Meta da organização, segredo do login corporativo (v2.1)</strong></td>
+<td>Organização</td>
+<td>Do owner, no Horus; o Horus nunca as troca</td>
+<td>Num incidente, a Maind pede ao owner</td>
+</tr>
+</tbody>
+</table></div><ul>
+<li><strong>Cada troca fica registrada</strong> no registro da operação: a data, o nome do segredo e quem trocou, nunca o valor.</li>
+<li><strong>O vencimento</strong> do certificado do anel e dos certificados HTTPS vira medida, com alerta 30 dias antes e outro 7 dias antes (documento 11).</li>
+<li><strong>A recifragem fecha o legado da v1.xx</strong>: as chaves gravadas sem cifra deixam de ser necessárias quando nenhum segredo depende delas.</li>
+<li><strong>O precedente</strong>: no levantamento da máquina, em 27/10/2026, o token do Broadcast apareceu na saída de uma sessão, e a troca ficou descrita, sem prazo (o inventário, §10). Com esta decisão, a suspeita vira troca, e não nota.</li>
+</ul>
+<h4 id="arquitetura-10-39-os-incidentes-arq-068-">3.9 Os incidentes (<code>ARQ-068</code> ✅)</h4>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 12 de 10 · Publicação e operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Gravidade</th>
+<th scope="col">O que é</th>
+<th scope="col">Exemplo</th>
+<th scope="col">Primeira resposta 🔎</th>
+<th scope="col">Quem a Maind avisa</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>S1</strong></td>
+<td>A instância fora do ar; perda de dado; dado de uma organização visto por outra; dado pessoal exposto; segredo vazado</td>
+<td>A PRD fora 15h30 em 03 e 04/09/2026</td>
+<td>Até 30 minutos, a qualquer hora (o plantão da <a href="#arq-071"><code>ARQ-071</code></a>)</td>
+<td>O dono; os owners das organizações afetadas</td>
+</tr>
+<tr>
+<td><strong>S2</strong></td>
+<td>Uma função parada para todos: a fila, o WhatsApp, a IA de um provedor, o e-mail</td>
+<td>Um provedor de IA fora do ar</td>
+<td>Até 2 horas depois do alerta; a qualquer hora, se o alerta for dos que acordam (a fila parada, um sinal de vida que faltou, <a href="#arq-071"><code>ARQ-071</code></a>)</td>
+<td>Os owners, se passar de 2 horas</td>
+</tr>
+<tr>
+<td><strong>S3</strong></td>
+<td>Uma organização ou uma pessoa afetada; lentidão</td>
+<td>A chave de IA de uma organização recusada</td>
+<td>No dia útil seguinte</td>
+<td>O owner da organização (A-22)</td>
+</tr>
+</tbody>
+</table></div><div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 13 de 10 · Publicação e operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Passo</th>
+<th scope="col">O que se faz</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Detectar</strong></td>
+<td>O alerta e a sonda de fora (documento 11), ou o relato de um owner</td>
+</tr>
+<tr>
+<td><strong>Conter</strong></td>
+<td>Desligar a peça pela configuração (o canal, um conector, uma fonte), revogar o segredo, tirar a réplica ou a máquina da rede; nunca apagar o que serve de prova</td>
+</tr>
+<tr>
+<td><strong>Preservar</strong></td>
+<td>Levar os logs e os traces do intervalo ao registro do incidente antes que vençam (14 e 7 dias), sem conteúdo de conversa</td>
+</tr>
+<tr>
+<td><strong>Recuperar</strong></td>
+<td>A volta à versão anterior do chart (<a href="#arq-061"><code>ARQ-061</code></a>, <a href="#arq-094"><code>ARQ-094</code></a>), a restauração pela cópia da instância (<a href="#arq-086"><code>ARQ-086</code></a>) ou, na VPS, a máquina nova</td>
+</tr>
+<tr>
+<td><strong>Comunicar</strong></td>
+<td>Os owners pela Maind, nos prazos da tabela; no incidente com dado pessoal, o que vem abaixo</td>
+</tr>
+<tr>
+<td><strong>Registrar e revisar</strong></td>
+<td>Todo incidente no registro de incidentes, com a linha do tempo, a causa e as ações; a revisão sem culpa em até cinco dias úteis, e cada ação vira trabalho com dono</td>
+</tr>
+</tbody>
+</table></div><p><strong>O incidente com dado pessoal.</strong> A qualificação jurídica (quem é o controlador e quem é o operador em cada instância) é do jurídico da Maind, e o contrato com cada cliente a escreve (V-11). A recomendação:</p>
+<ul>
+<li>A Maind avisa o controlador assim que confirmar o incidente, em até 24 horas 🔎, com o que se sabe: a natureza dos dados, as organizações e as pessoas afetadas, o intervalo e as medidas tomadas. O inventário dos dados (<a href="#arq-045"><code>ARQ-045</code></a>), o rastro e a telemetria dão o alcance.</li>
+<li>A comunicação à ANPD e aos titulares, quando o incidente puder causar risco ou dano relevante (LGPD, art. 48), é do controlador, no prazo do regulamento da ANPD (três dias úteis, Resolução CD/ANPD nº 15/2024 🔎). A Maind dá a ele o que for preciso; quando ela mesma for a controladora (por exemplo, das contas da instância 🔎), ela comunica.</li>
+<li>O registro dos incidentes de segurança fica guardado por cinco anos 🔎, fora do produto e da telemetria, sem dado pessoal além do necessário.</li>
+<li>O alcance de quem abriu ou recebeu o quê vem do owner da organização, que consulta o rastro dela (<a href="#d-091"><code>D-091</code></a>); a leitura direta dos dados pela Maind é a exceção registrada da 3.7.</li>
+<li><strong>No on-premises</strong>, o contratante conduz o incidente, e a Maind apoia pelo contrato.</li>
+</ul>
+<h4 id="arquitetura-10-310-os-componentes">3.10 Os componentes</h4>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 14 de 10 · Publicação e operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Componente</th>
+<th scope="col">Responsabilidade</th>
+<th scope="col">Situação</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>CI, imagem e chart</td>
+<td>Compila, testa e guarda a imagem e o chart com a identidade</td>
+<td>🆕 (<a href="#arq-094"><code>ARQ-094</code></a>; documento 12)</td>
+</tr>
+<tr>
+<td>Disparo da publicação</td>
+<td>O workflow manual e fino: a instância, a simulação, a confirmação, um disparo de cada vez</td>
+<td>♻️ <code>horus@318db52b:.github/workflows/deploy.yml</code>, <code>infra/github/deploy-ambiente.py</code></td>
+</tr>
+<tr>
+<td>Entrega dos segredos</td>
+<td>O CD lê os Secrets do ambiente e grava o arquivo de ambiente da máquina, antes da troca de versão; roda nos executores hospedados do GitHub, nunca no executor do CI</td>
+<td>🔧 dos ambientes do GitHub, onde já mora a chave de publicação (<code>horus@318db52b:infra/github/</code>); <a href="#arq-044"><code>ARQ-044</code></a></td>
+</tr>
+<tr>
+<td>Guarda da homologação</td>
+<td>Confere o registro &quot;aprovado na homologação&quot; do pacote antes de qualquer produção</td>
+<td>🔧 <code>horus@318db52b:infra/subir-versao.py</code> (<code>avaliar_promocao</code>)</td>
+</tr>
+<tr>
+<td>Troca de versão</td>
+<td>Instala o pacote, roda o passo das migrações, drena os papéis, troca por diretório, confere a saúde e volta sozinha</td>
+<td>🔧 <code>horus@318db52b:infra/redeploy.sh</code></td>
+</tr>
+<tr>
+<td>Passo das migrações</td>
+<td>O executável num modo de uso único, com o login das migrações</td>
+<td>🆕 (<a href="#arq-062"><code>ARQ-062</code></a>)</td>
+</tr>
+<tr>
+<td>Semeador</td>
+<td>O executável num modo de uso único que cria as organizações de exemplo pelos arquivos do repositório, com relatório e conferência</td>
+<td>🆕 (<a href="#arq-089"><code>ARQ-089</code></a>)</td>
+</tr>
+<tr>
+<td>Drenagem dos papéis</td>
+<td>O &quot;trabalhar&quot; solta o que não terminou; o &quot;atender&quot; fecha as transmissões; o agente guarda cada volta</td>
+<td>🆕 (<a href="#arq-063"><code>ARQ-063</code></a>)</td>
+</tr>
+<tr>
+<td>Contrato da cópia</td>
+<td>O que a instância copia e o que não copia, e a volta passo a passo, junto do pacote</td>
+<td>🆕 (<a href="#arq-087"><code>ARQ-087</code></a>)</td>
+</tr>
+<tr>
+<td>Conferência da volta</td>
+<td>A cada subida, o anel abre o segredo de prova do banco; o comando que aceita um anel novo</td>
+<td>🆕 (<a href="#arq-087"><code>ARQ-087</code></a>)</td>
+</tr>
+<tr>
+<td>Volta numa máquina nova</td>
+<td>O provisionamento do zero com a restauração do banco e do anel, pelo contrato da cópia</td>
+<td>🔧 <code>horus@318db52b:infra/vps/provisionar-base.sh</code> e a restauração do plano do zero</td>
+</tr>
+<tr>
+<td>Clone para o HML da v1.xx</td>
+<td>A cópia saneada da PRD, enquanto o HML da v1.xx viver</td>
+<td>♻️ <code>horus@318db52b:infra/hml/clonar-prd-para-hml.sh</code></td>
+</tr>
+<tr>
+<td>Acesso às máquinas</td>
+<td>Os usuários e as chaves por pessoa, o usuário de publicação, o root sem SSH</td>
+<td>🔧 <code>horus@318db52b:infra/vps.py</code>, <code>infra/vps/provisionar-base.sh</code></td>
+</tr>
+<tr>
+<td>Recifragem do cofre</td>
+<td>Regrava cada segredo das organizações com a chave em uso, numa rodada da fila</td>
+<td>🆕 (<a href="#arq-067"><code>ARQ-067</code></a>; documento 04, na Fundação)</td>
+</tr>
+<tr>
+<td>Registro da operação</td>
+<td>As publicações, as voltas, os ensaios, as trocas de segredo e os incidentes, sem valor de segredo nem conteúdo, fora do produto</td>
+<td>🔧 o registro das publicações de hoje; 🆕 o resto</td>
+</tr>
+</tbody>
+</table></div><h3 id="arquitetura-10-4-o-que-vem-da-v1xx-e-o-que-nao-vem">4. O que vem da v1.xx e o que não vem</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 15 de 10 · Publicação e operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Peça da v1.xx</th>
+<th scope="col">Destino</th>
+<th scope="col">Por quê</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>O disparo manual pelo Actions, simulado por padrão, com a confirmação na PRD e um de cada vez</td>
+<td>♻️ Fica</td>
+<td>Decisão do dono de 27/10/2026</td>
+</tr>
+<tr>
+<td>A troca por diretório, a marca da troca pendente, a volta automática, os cinco pontos de volta e a execução destacada</td>
+<td>♻️ Ficam</td>
+<td>Provados em produção e na segunda VPS</td>
+</tr>
+<tr>
+<td>Enviar a fonte e compilar na máquina</td>
+<td>❌ Sai: o cluster baixa a imagem</td>
+<td><a href="#arq-094"><code>ARQ-094</code></a>, <a href="#arq-061"><code>ARQ-061</code></a></td>
+</tr>
+<tr>
+<td>A guarda da PRD lendo o registro do HML na mesma máquina</td>
+<td>🔧 O registro vai para junto do pacote, fora das máquinas</td>
+<td><a href="#arq-061"><code>ARQ-061</code></a></td>
+</tr>
+<tr>
+<td>O passe sem guarda da VPS de ambiente único</td>
+<td>❌ Sai: a homologação do SaaS aprova o pacote para todas</td>
+<td><a href="#arq-061"><code>ARQ-061</code></a></td>
+</tr>
+<tr>
+<td>A junção do anel de todos os lugares a cada troca</td>
+<td>❌ Sai: o anel mora no banco mestre</td>
+<td><a href="#arq-094"><code>ARQ-094</code></a></td>
+</tr>
+<tr>
+<td>A migração na subida da API</td>
+<td>❌ Sai: um passo próprio, com o login das migrações</td>
+<td><a href="#arq-062"><code>ARQ-062</code></a></td>
+</tr>
+<tr>
+<td>O aviso da volta escrito à mão, versão a versão</td>
+<td>❌ Sai: as migrações são compatíveis com a versão no ar</td>
+<td><a href="#arq-062"><code>ARQ-062</code></a></td>
+</tr>
+<tr>
+<td>O clone da PRD para o HML, com o saneamento</td>
+<td>♻️ Fica para o HML da v1.xx enquanto ele viver; a homologação da v2 recebe as organizações de exemplo pelo semeador</td>
+<td><a href="#arq-055"><code>ARQ-055</code></a>, <a href="#arq-089"><code>ARQ-089</code></a></td>
+</tr>
+<tr>
+<td>O provisionamento do zero e a restauração do anel por parâmetro</td>
+<td>🔧 Ficam, e viram a volta numa máquina nova do contrato da cópia</td>
+<td><a href="#arq-087"><code>ARQ-087</code></a></td>
+</tr>
+<tr>
+<td>A cópia de segurança como passo manual antes de um deploy</td>
+<td>🔧 Fica só na publicação de corte, como passo do roteiro; a cópia de rotina é da infra de cada instância</td>
+<td><a href="#arq-062"><code>ARQ-062</code></a>, <a href="#arq-086"><code>ARQ-086</code></a></td>
+</tr>
+<tr>
+<td>O root por senha e o caminho que aceita qualquer host</td>
+<td>❌ Saem</td>
+<td><a href="#arq-066"><code>ARQ-066</code></a></td>
+</tr>
+<tr>
+<td>A chave de publicação por ambiente, com a impressão digital fixada e a troca de um segredo só</td>
+<td>♻️ Fica</td>
+<td><a href="#arq-066"><code>ARQ-066</code></a>, <a href="#arq-067"><code>ARQ-067</code></a></td>
+</tr>
+<tr>
+<td>A troca da chave de trabalho do anel a cada 90 dias</td>
+<td>♻️ Fica</td>
+<td><a href="#arq-067"><code>ARQ-067</code></a></td>
+</tr>
+<tr>
+<td>A falta de procedimento de incidente</td>
+<td>❌ Sai</td>
+<td><a href="#arq-068"><code>ARQ-068</code></a></td>
+</tr>
+</tbody>
+</table></div><h3 id="arquitetura-10-5-os-riscos-e-o-que-falta-decidir">5. Os riscos e o que falta decidir</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 16 de 10 · Publicação e operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Risco</th>
+<th scope="col">Por quê</th>
+<th scope="col">O que se faz</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>🌐 <strong>A máquina nova sai por outro endereço</strong></td>
+<td>Os clientes liberam o endereço de saída no firewall dos bancos deles; numa volta de pane, as fontes falham até eles liberarem o novo</td>
+<td>Manter o endereço (V-06, documento 09); senão, avisar os clientes na hora, pela A-21, e o &quot;Testar&quot; de cada fonte</td>
+</tr>
+<tr>
+<td>⏱️ <strong>O domínio demora a apontar para a máquina nova</strong></td>
+<td>O tempo de vida do registro do domínio entra inteiro no tempo da volta</td>
+<td>Um tempo de vida curto nos domínios das instâncias (V-10)</td>
+</tr>
+<tr>
+<td>🧩 <strong>Uma migração incompatível escapa</strong></td>
+<td>Uma renomeação esquecida deixa a volta de código sem banco que ela leia</td>
+<td>A saúde da versão no ar depois do passo; o teste do CI (documento 12)</td>
+</tr>
+<tr>
+<td>🕳️ <strong>Uma instância sem cópia</strong></td>
+<td>A cópia é do dono de cada instância (<a href="#arq-086"><code>ARQ-086</code></a>): se ele não a configurar, uma pane leva tudo, e o Horus não tem o que voltar</td>
+<td>O contrato da cópia vai com o pacote e com o roteiro de instalação do contratante (<a href="#arq-060"><code>ARQ-060</code></a>); na SaaS, a Maind configura a dela antes da v2.0</td>
+</tr>
+<tr>
+<td>🏚️ <strong>Na instância SaaS, a pane do provedor leva a máquina e as cópias</strong></td>
+<td>As cópias ficam no mesmo provedor das VPS, o ponto de partida que o dono escolheu: uma pane do provedor, ou quem tomar a conta dele, alcança as duas</td>
+<td>O segundo fator na conta do provedor (V-10); a infra da instância pode levar as cópias a outro lugar sem mudar o Horus</td>
+</tr>
+<tr>
+<td>🧩 <strong>A cópia leva o banco e esquece o anel</strong></td>
+<td>A cópia volta, e as credenciais das organizações não abrem</td>
+<td>O contrato diz isso logo na primeira linha; a conferência da volta reprova o &quot;pronto&quot; na primeira subida (<a href="#arq-087"><code>ARQ-087</code></a>)</td>
+</tr>
+<tr>
+<td>🔑 <strong>A chave das chaves</strong></td>
+<td>O certificado do anel: perdê-lo é perder as credenciais das organizações</td>
+<td>No cofre de quem opera, separado das cópias; a conferência da volta abre o segredo de prova a cada subida (<a href="#arq-087"><code>ARQ-087</code></a>)</td>
+</tr>
+<tr>
+<td>🔄 <strong>A recifragem mexe em todos os segredos</strong></td>
+<td>Uma falha no meio deixaria segredos que não abrem</td>
+<td>Rodada da fila por segredo, idempotente, com a conferência antes de aposentar o certificado (documento 12)</td>
+</tr>
+<tr>
+<td>🧑‍🚒 <strong>O plantão pede gente</strong></td>
+<td>A primeira resposta em 30 minutos a qualquer hora precisa de uma escala</td>
+<td>A escala é da Maind (<a href="#arq-071"><code>ARQ-071</code></a>); o custo vai ao documento 13</td>
+</tr>
+<tr>
+<td>🏷️ <strong>O disparo protegido só pela caixa de confirmação</strong></td>
+<td>No repositório privado de hoje, o plano do GitHub não oferece a aprovação de outra pessoa nos ambientes (o plano do zero, &quot;Pontos a verificar&quot;, 1)</td>
+<td>Rever a proteção dos ambientes no repositório da v2 (<a href="#d-140"><code>D-140</code></a>); o custo de um plano, se for preciso, vai ao documento 13</td>
+</tr>
+<tr>
+<td>⚖️ <strong>Os papéis jurídicos não estão escritos</strong></td>
+<td>Sem saber quem é o controlador em cada instância, o prazo de quem comunica a ANPD fica sem dono</td>
+<td>V-11, com o jurídico, antes da primeira organização paga da v2.0</td>
+</tr>
+<tr>
+<td>🌱 <strong>A vitrine depende da exportação</strong></td>
+<td>Os boards, as regras e os membros de exemplo só existem no banco da v1.xx até a exportação</td>
+<td>A exportação antes de a v1.xx sair, e o CI que semeia num banco vazio (<a href="#arq-089"><code>ARQ-089</code></a>)</td>
+</tr>
+</tbody>
+</table></div><p><strong>Verificações pendentes</strong> (nada disso foi rodado nesta rodada):</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 17 de 10 · Publicação e operação"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Nº</th>
+<th scope="col">O que conferir</th>
+<th scope="col">Quem</th>
+<th scope="col">Antes de</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>V-09</strong></td>
+<td>O que o provedor das VPS oferece na conta da Maind, para a cópia da instância SaaS (<a href="#arq-086"><code>ARQ-086</code></a>): o preço da cópia diária, quantas cópias guarda e por quanto tempo, e se a cópia volta numa máquina diferente da original</td>
+<td>O dono</td>
+<td>M0</td>
+</tr>
+<tr>
+<td><strong>V-10</strong></td>
+<td>O tempo de vida do registro dos domínios das instâncias, e se a conta do provedor das VPS tem console fora da rede e segundo fator</td>
+<td>O dono, com quem opera</td>
+<td>M0</td>
+</tr>
+<tr>
+<td><strong>V-11</strong></td>
+<td>Quem é o controlador e quem é o operador em cada tipo de instância; os prazos da Resolução CD/ANPD nº 15/2024 e a guarda do registro dos incidentes; o que o contrato de cada cliente diz</td>
+<td>O jurídico da Maind, com o dono</td>
+<td>A primeira organização paga na v2.0</td>
+</tr>
+</tbody>
+</table></div><p>(As verificações V-01 a V-08 são dos documentos 08 e 09; a V-12 e a V-13, do <a href="#arquitetura-11">documento 11</a>.)</p>
+<p><strong>O que falta decidir:</strong></p>
+<ul>
+<li>🟡 Com o dono: nenhuma decisão deste documento.</li>
+<li>Ao PO (documento 01, seção 9): <strong>A-21</strong> (como a instância fala com todas as pessoas quando ela para).</li>
+<li>Documento 11: os alertas que acordam o plantão (<a href="#arq-071"><code>ARQ-071</code></a>) e a sonda de fora (<a href="#arq-070"><code>ARQ-070</code></a>).</li>
+<li>Documento 12: o CI que gera o pacote; o teste da compatibilidade das migrações e da recusa da migração de corte fora da janela; o teste da troca com trabalho em curso; o teste da recifragem e do anel com dois certificados; a prova da conferência da volta (<a href="#arq-087"><code>ARQ-087</code></a>).</li>
+<li>Documento 13: o custo da cópia da instância SaaS, das máquinas por hora e do plantão.</li>
+</ul>

@@ -1,0 +1,907 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A documentação de produto e de arquitetura do Horus v2: a visão, as decisões, a estratégia e como ele vai ser construído.">
+    <meta name="generator" content="DocX 0.2.1">
+    <link rel="shortcut icon" href="media/horus-claro.svg">
+    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/elagent-icon/style.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/font-awesome/css/all.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/niceselectpicker/nice-select.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/font-size/css/rvfs.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/animation/animate.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/tooltipster/css/tooltipster.bundle.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism-coy.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/magnify-pop/magnific-popup.css">
+    <link rel="stylesheet" href="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="assets/kbdoc/css/style.css">
+    <link rel="stylesheet" href="assets/kbdoc/css/responsive.css">
+    <link rel="stylesheet" href="assets/docx.css">
+    <link rel="stylesheet" href="assets/conteudo.css">
+    <link rel="stylesheet" href="assets/indice.css">
+    <title>09 · Infraestrutura e ambientes — Horus v2</title>
+</head>
+<body class="doc full-width-doc sticky-nav-doc onepage-doc dx-pagina-doc" data-spy="scroll" data-target=".navbar" data-offset="-120">
+    <a class="sr-only sr-only-focusable dx-skip" href="#post">Pular para o conteúdo</a>
+    <div class="body_wrapper sticky_menu">
+        <nav class="navbar navbar-expand-lg menu_one" id="stickyTwo" aria-label="Navegação principal">
+            <div class="container-fluid pl-60 pr-60">
+                <a class="navbar-brand" href="index.html">
+                    <img src="media/horus-claro.svg" alt="Horus v2">
+                    <img src="media/horus-escuro.svg" alt="Horus v2">
+                </a>
+                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Abrir o menu">
+                    <span class="menu_toggle">
+                        <span class="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                        <span class="hamburger-cross">
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav menu ml-auto">
+<li class="nav-item"><a href="index.html" class="nav-link">Início</a></li>
+<li class="nav-item dropdown submenu mega_menu tab-demo active"><a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentos</a><i class="arrow_carrot-down_alt2 mobile_dropdown_icon" aria-hidden="true" data-toggle="dropdown"></i><ul class="dropdown-menu scroll"><li><div class="row"><div class="col-lg-5 tabHeader"><ul class="nav flex-column nav-pills" id="dx-menu" role="tablist" aria-orientation="vertical"><li class="nav-item active"><a class="nav-link active" id="dx-menu-1-tab" data-toggle="pill" href="#dx-menu-1" role="tab" aria-controls="dx-menu-1" aria-selected="true">Comece aqui</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-2-tab" data-toggle="pill" href="#dx-menu-2" role="tab" aria-controls="dx-menu-2" aria-selected="false">Produto</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-3-tab" data-toggle="pill" href="#dx-menu-3" role="tab" aria-controls="dx-menu-3" aria-selected="false">Arquitetura · visão e decisões</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-4-tab" data-toggle="pill" href="#dx-menu-4" role="tab" aria-controls="dx-menu-4" aria-selected="false">Arquitetura · construção</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-5-tab" data-toggle="pill" href="#dx-menu-5" role="tab" aria-controls="dx-menu-5" aria-selected="false">Arquitetura · operação</a></li><li class="nav-item"><a class="nav-link" id="dx-menu-6-tab" data-toggle="pill" href="#dx-menu-6" role="tab" aria-controls="dx-menu-6" aria-selected="false">Arquitetura · conferência</a></li></ul></div><div class="col-lg-7"><div class="tab-content tabContent" id="dx-menu-conteudo"><div class="tab-pane fade active show" id="dx-menu-1" role="tabpanel" aria-labelledby="dx-menu-1-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="visao-geral.html">O Horus v2</a></li><li><a href="pasta-v2.html">A pasta da v2</a></li></ul></div><div class="text"><a href="visao-geral.html"><p>Abrir Comece aqui</p></a></div></div><div class="tab-pane fade" id="dx-menu-2" role="tabpanel" aria-labelledby="dx-menu-2-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="produto-temas.html">Temas da visão de produto</a></li><li><a href="produto-norte.html">Norte do produto</a></li><li><a href="produto-lacunas.html">Inventário de lacunas</a></li><li><a href="produto-mfs-hoje.html">Macro funcionalidades de hoje</a></li><li><a href="produto-v20.html">A v2.0 consolidada</a></li></ul><ul class="list-unstyled tab_list"><li><a href="produto-versoes.html">As versões, mf a mf</a></li><li><a href="produto-mapa.html">Mapa de objetivos e funcionalidades</a></li><li><a href="produto-backlog.html">Backlog estratégico</a></li><li><a href="backlog-atividades.html">Backlog de atividades</a></li></ul></div><div class="text"><a href="produto-temas.html"><p>Abrir Produto</p></a></div></div><div class="tab-pane fade" id="dx-menu-3" role="tabpanel" aria-labelledby="dx-menu-3-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura.html">A pasta da arquitetura</a></li><li><a href="arquitetura-01.html">01 · Estratégia da solução</a></li><li><a href="arquitetura-02.html">02 · Registro de decisões</a></li><li><a href="arquitetura-03.html">03 · Metas de qualidade</a></li></ul></div><div class="text"><a href="arquitetura.html"><p>Abrir Arquitetura · visão e decisões</p></a></div></div><div class="tab-pane fade" id="dx-menu-4" role="tabpanel" aria-labelledby="dx-menu-4-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-04.html">04 · Software</a></li><li><a href="arquitetura-05.html">05 · Motor de análise e IA</a></li><li><a href="arquitetura-06.html">06 · Dados</a></li><li><a href="arquitetura-07.html">07 · Segurança</a></li><li><a href="arquitetura-08.html">08 · Integrações</a></li></ul></div><div class="text"><a href="arquitetura-04.html"><p>Abrir Arquitetura · construção</p></a></div></div><div class="tab-pane fade" id="dx-menu-5" role="tabpanel" aria-labelledby="dx-menu-5-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-09.html">09 · Infraestrutura e ambientes</a></li><li><a href="arquitetura-10.html">10 · Publicação e operação</a></li><li><a href="arquitetura-11.html">11 · Observabilidade</a></li><li><a href="arquitetura-12.html">12 · Qualidade e testes</a></li><li><a href="arquitetura-13.html">13 · Custo de operação</a></li></ul></div><div class="text"><a href="arquitetura-09.html"><p>Abrir Arquitetura · operação</p></a></div></div><div class="tab-pane fade" id="dx-menu-6" role="tabpanel" aria-labelledby="dx-menu-6-tab"><div class="d-flex"><ul class="list-unstyled tab_list"><li><a href="arquitetura-14.html">14 · Conferência do produto</a></li></ul></div><div class="text"><a href="arquitetura-14.html"><p>Abrir Arquitetura · conferência</p></a></div></div></div></div></div></li></ul></li>
+                    </ul>
+                    <ul class="list-unstyled menu_social">
+                        <li class="search">
+                            <form action="#" class="search_form" role="search" data-search-form>
+                                <label class="sr-only" for="dx-search">Buscar na documentação</label>
+                                <input type="search" class="form-control" id="dx-search" placeholder="Buscar" autocomplete="off" data-search-input aria-describedby="dx-search-status" aria-controls="dx-search-results">
+                                <button type="submit" aria-label="Buscar"><i class="icon_search" aria-hidden="true"></i></button>
+                                <div class="dx-search-results" id="dx-search-results" data-search-results hidden></div>
+                            </form>
+                            <p class="sr-only" id="dx-search-status" role="status" data-search-status></p>
+                        </li>
+                    </ul>
+                    <div class="dx-ferramentas">
+
+
+                        <div id="font-switcher"><div id="rvfs-controllers" class="fontsize-controllers group"></div></div>
+                        <button type="button" class="print" data-print aria-label="Imprimir"><i class="icon_printer" aria-hidden="true"></i></button>
+                        <div class="doc_switch">
+                            <label for="something" class="tab-btn tab-btns"><i class="icon_lightbulb_alt" aria-hidden="true"></i><span class="sr-only">Tema claro</span></label>
+                            <input type="checkbox" name="something" id="something" class="tab_switcher" aria-label="Tema escuro">
+                            <label for="something" class="tab-btn"><i class="far fa-moon" aria-hidden="true"></i><span class="sr-only">Tema escuro</span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <section class="doc_documentation_area onepage_doc_area" id="sticky_doc">
+            <div class="overlay_bg"></div>
+            <div class="container-fluid pl-60 pr-60">
+                <div class="row doc-container">
+                    <div class="col-lg-2 doc_mobile_menu doc-sidebar display_none">
+                        <aside class="doc_left_sidebarlist" aria-label="Tópicos desta página">
+                            <h3 class="nav_title">Tópicos</h3>
+                            <div class="scroll">
+                                <ul class="list-unstyled nav-sidebar doc-nav">
+<li class="nav-item active"><a href="#arquitetura-09-1-o-que-o-tema-precisa-garantir" class="nav-link">1. O que o tema precisa garantir</a></li>
+<li class="nav-item"><a href="#arquitetura-09-2-as-decisoes" class="nav-link">2. As decisões</a></li>
+<li class="nav-item"><a href="#arquitetura-09-3-os-componentes-e-a-responsabilidade-de-cada-um" class="nav-link">3. Os componentes e a responsabilidade de cada um</a><ul class="list-unstyled dropdown_nav"><li class="nav-item"><a href="#arquitetura-09-31-onde-a-v1xx-roda-hoje" class="nav-link">3.1 Onde a v1.xx roda hoje</a></li><li class="nav-item"><a href="#arquitetura-09-32-os-ambientes-arq-055-" class="nav-link">3.2 Os ambientes (ARQ-055 ✅)</a></li><li class="nav-item"><a href="#arquitetura-09-33-a-instancia-saas-da-v20-e-a-maquina-dividida-arq-056--arq-093-" class="nav-link">3.3 A instância SaaS da v2.0 e a máquina dividida (ARQ-056 ✅, ARQ-093 ✅)</a></li><li class="nav-item"><a href="#arquitetura-09-34-o-banco-da-aplicacao" class="nav-link">3.4 O banco da aplicação</a></li><li class="nav-item"><a href="#arquitetura-09-35-a-imagem-e-o-chart-arq-094-" class="nav-link">3.5 A imagem e o chart (ARQ-094 🟢)</a></li><li class="nav-item"><a href="#arquitetura-09-36-a-maquina-endurecida-arq-058-" class="nav-link">3.6 A máquina endurecida (ARQ-058 ✅)</a></li><li class="nav-item"><a href="#arquitetura-09-37-as-bases-de-demonstracao-arq-059-" class="nav-link">3.7 As bases de demonstração (ARQ-059 ✅)</a></li><li class="nav-item"><a href="#arquitetura-09-38-o-on-premises-da-v21-arq-060-" class="nav-link">3.8 O on-premises da v2.1 (ARQ-060 🟡)</a></li><li class="nav-item"><a href="#arquitetura-09-39-os-componentes" class="nav-link">3.9 Os componentes</a></li></ul><span class="icon"><i class="icon_plus" aria-hidden="true"></i><i class="icon_minus-06" aria-hidden="true"></i></span></li>
+<li class="nav-item"><a href="#arquitetura-09-4-o-que-vem-da-v1xx-e-o-que-nao-vem" class="nav-link">4. O que vem da v1.xx e o que não vem</a></li>
+<li class="nav-item"><a href="#arquitetura-09-5-os-riscos-e-o-que-falta-decidir" class="nav-link">5. Os riscos e o que falta decidir</a></li>
+                                </ul>
+                            </div>
+                        </aside>
+                    </div>
+                    <div class="col-lg-10 col-md-12">
+                        <div class="documentation_info dx-pagina" id="post">
+                            <header class="dx-cabeca" id="arquitetura-09">
+                                <nav class="dx-trilha" aria-label="Trilha"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Início</a></li><li class="breadcrumb-item">Arquitetura · operação</li><li class="breadcrumb-item active" aria-current="page">09 · Infraestrutura e ambientes</li></ol></nav>
+                                
+                                <h1>09 · Infraestrutura e ambientes</h1>
+                                <p>Onde o Horus roda: a VPS da construção com o minikube, a produção real na nuvem e o on-premises.</p>
+                            </header>
+                            <div class="dx-modelo-01">
+<nav aria-labelledby="dx-m01-assuntos-titulo">
+<div class="dx-m01-rotulo"><h2 id="dx-m01-assuntos-titulo">Explore os assuntos</h2><span>5 seções</span></div>
+<div class="dx-m01-assuntos">
+<a class="dx-m01-assunto" href="#arquitetura-09-1-o-que-o-tema-precisa-garantir"><span class="dx-m01-icone"><i class="fas fa-file-alt" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>1. O que o tema precisa garantir</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#arquitetura-09-2-as-decisoes"><span class="dx-m01-icone"><i class="fas fa-file-alt" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>2. As decisões</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#arquitetura-09-3-os-componentes-e-a-responsabilidade-de-cada-um"><span class="dx-m01-icone"><i class="fas fa-file-alt" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>3. Os componentes e a responsabilidade de cada um</strong><small>9 tópicos</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#arquitetura-09-4-o-que-vem-da-v1xx-e-o-que-nao-vem"><span class="dx-m01-icone"><i class="fas fa-file-alt" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>4. O que vem da v1.xx e o que não vem</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#arquitetura-09-5-os-riscos-e-o-que-falta-decidir"><span class="dx-m01-icone"><i class="fas fa-file-alt" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>5. Os riscos e o que falta decidir</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+</div></nav>
+<section class="dx-m01-fontes" aria-labelledby="dx-m01-fontes-titulo">
+<header class="dx-m01-cabecalho"><div>
+<h2 id="dx-m01-fontes-titulo"><i class="fas fa-link" aria-hidden="true"></i><span>Tópicos</span></h2>
+</div>
+<span class="dx-m01-total">9 tópicos</span></header>
+<div class="dx-m01-grade">
+<section class="dx-m01-fonte"><h3><i class="fas fa-file-alt" aria-hidden="true"></i><span>3. Os componentes e a responsabilidade de cada um</span><small aria-label="9 tópicos">9</small></h3><ul class="dx-m01-links"><li><a href="#arquitetura-09-31-onde-a-v1xx-roda-hoje"><span>3.1 Onde a v1.xx roda hoje</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#arquitetura-09-32-os-ambientes-arq-055-"><span>3.2 Os ambientes (ARQ-055 ✅)</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#arquitetura-09-33-a-instancia-saas-da-v20-e-a-maquina-dividida-arq-056--arq-093-"><span>3.3 A instância SaaS da v2.0 e a máquina dividida (ARQ-056 ✅, ARQ-093 ✅)</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#arquitetura-09-34-o-banco-da-aplicacao"><span>3.4 O banco da aplicação</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#arquitetura-09-35-a-imagem-e-o-chart-arq-094-"><span>3.5 A imagem e o chart (ARQ-094 🟢)</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#arquitetura-09-36-a-maquina-endurecida-arq-058-"><span>3.6 A máquina endurecida (ARQ-058 ✅)</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#arquitetura-09-37-as-bases-de-demonstracao-arq-059-"><span>3.7 As bases de demonstração (ARQ-059 ✅)</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#arquitetura-09-38-o-on-premises-da-v21-arq-060-"><span>3.8 O on-premises da v2.1 (ARQ-060 🟡)</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li><li><a href="#arquitetura-09-3-os-componentes-e-a-responsabilidade-de-cada-um"><span>e mais 1</span><i class="fas fa-arrow-right" aria-hidden="true"></i></a></li></ul></section>
+</div></section>
+</div>
+                            <div class="dx-content">
+<p>Situação: 🟢 escrito pelo arquiteto · seis decisões novas (<a href="arquitetura-02.html#arq-055"><code>ARQ-055</code></a> a <a href="arquitetura-02.html#arq-060"><code>ARQ-060</code></a>): quatro ✅ do dono (<a href="arquitetura-02.html#arq-055"><code>ARQ-055</code></a>, <a href="arquitetura-02.html#arq-056"><code>ARQ-056</code></a>, <a href="arquitetura-02.html#arq-058"><code>ARQ-058</code></a> e <a href="arquitetura-02.html#arq-059"><code>ARQ-059</code></a>, em 03/11/2026), uma 🟡 com o dono e uma ⚪ (a <a href="arquitetura-02.html#arq-094"><code>ARQ-094</code></a>, substituída em 03/11/2026 pela <a href="arquitetura-02.html#arq-094"><code>ARQ-094</code></a> 🟢) · uma verificação herdada da rodada anterior, antes do M2 (V-01, seção 5).</p>
+<p>Última atualização: 03/11/2026 (o dono decidiu a <a href="arquitetura-02.html#arq-055"><code>ARQ-055</code></a>, a homologação da v2 na VPS de hoje, a <a href="arquitetura-02.html#arq-056"><code>ARQ-056</code></a>, nenhuma instância é produção real e todas dividem a máquina, e a <a href="arquitetura-02.html#arq-059"><code>ARQ-059</code></a>, uma base de demonstração só; a cópia de segurança fora do Horus, <a href="arquitetura-02.html#arq-086"><code>ARQ-086</code></a>; o banco mestre e um banco por organização, <a href="arquitetura-02.html#arq-010"><code>ARQ-010</code></a> ✅; o executor do CI na VPS de hoje, <a href="arquitetura-02.html#arq-082"><code>ARQ-082</code></a> ✅; os segredos pelos Secrets do GitHub, <a href="arquitetura-02.html#arq-044"><code>ARQ-044</code></a> ✅; o endurecimento da VPS de hoje no lugar, <a href="arquitetura-02.html#arq-058"><code>ARQ-058</code></a> ✅; o envelope, <a href="arquitetura-02.html#arq-016"><code>ARQ-016</code></a> ✅; a v2.0 numa instância nova, com as organizações de exemplo semeadas, <a href="arquitetura-02.html#arq-011"><code>ARQ-011</code></a> ✅; 99,9% na produção real, <a href="arquitetura-02.html#arq-014"><code>ARQ-014</code></a> ✅, e a troca entre duas máquinas próprias, a <a href="arquitetura-02.html#arq-091"><code>ARQ-091</code></a>, que passou a ⚪; a produção real numa nuvem pública com Kubernetes e a construção na VPS, <a href="arquitetura-02.html#arq-092"><code>ARQ-092</code></a> ✅; a forma da produção real na nuvem, a <a href="arquitetura-02.html#arq-093"><code>ARQ-093</code></a>, ainda como proposta; o Kubernetes gerenciado na produção real e o minikube na VPS, pela <a href="arquitetura-02.html#arq-093"><code>ARQ-093</code></a> ✅; a imagem e o chart, pela <a href="arquitetura-02.html#arq-094"><code>ARQ-094</code></a>; os papéis em várias réplicas, pela <a href="arquitetura-02.html#arq-095"><code>ARQ-095</code></a>; o on-premises refeito sobre o chart, na <a href="arquitetura-02.html#arq-060"><code>ARQ-060</code></a>; a v2.0 num subdomínio próprio, ao lado da v1.xx, pela <a href="arquitetura-02.html#arq-065"><code>ARQ-065</code></a> ✅; a solução sem ficar presa a uma nuvem, pela <a href="arquitetura-02.html#arq-096"><code>ARQ-096</code></a> ✅).</p>
+<p>Este documento diz <strong>onde o Horus v2 roda</strong>: a instância SaaS da v2.0, os ambientes (desenvolvimento, CI, homologação e produção da v2, ao lado da v1.xx enquanto ela viver), a máquina e a capacidade, o banco da aplicação, as bases de demonstração e o Horus dentro da casa do contratante, na v2.1. Como se publica, como se volta uma versão e o que uma instância copia (a cópia fica fora do Horus) é do documento 10; o que se mede e quem é avisado, do 11. A ativação dos assentos no on-premises é a <code>P-016</code> e não se detalha aqui.</p>
+<ul>
+<li>O <strong>quê</strong> e o <strong>porquê</strong> são do produto (<a href="produto-backlog.html">backlog estratégico</a>, <a href="produto-v20.html">a v2.0 consolidada</a>). As decisões (<code>ARQ-nnn</code>) estão no <a href="arquitetura-02.html">registro</a>; as metas, no <a href="arquitetura-03.html">documento 03</a>.</li>
+<li>O código da v1.xx se cita como <code>horus@318db52b:&lt;caminho&gt;</code>. As fontes desta rodada foram os roteiros de <code>horus@318db52b:infra/</code>, o inventário da máquina (<code>horus@318db52b:docs/superpowers/plans/anexos/2026-10-27-inventario-vps-maind.md</code>), a spec dos dois ambientes (<code>horus@318db52b:docs/superpowers/specs/2026-09-25-ambientes-hml-e-prd-design.md</code>) e as regras <code>horus@318db52b:.claude/rules/infra/observabilidade.md</code> e <code>seguranca/guarda-de-rede.md</code>. Nada foi executado, e nenhuma máquina foi acessada.</li>
+<li><strong>Nenhum host, endereço de IP ou domínio aparece aqui</strong>: eles moram nas variáveis do GitHub, por regra do dono. O texto diz &quot;a VPS de hoje&quot;, &quot;a máquina da PRD&quot; e &quot;a segunda VPS&quot;.</li>
+<li>⚠️ A <code>D-138</code> e a <code>D-139</code> vêm sempre com o título curto: <code>D-138</code> (&quot;A v1.xx fecha como MVP no HML…&quot;).</li>
+</ul>
+<p>Legenda: 🟢 decidida pelo arquiteto · 🟡 proposta ao dono · 🔎 hipótese a confirmar · ♻️ vem da v1.xx · 🔧 vem e muda · 🆕 novo.</p>
+<div class="doc-section dx-assunto"><h3 id="arquitetura-09-1-o-que-o-tema-precisa-garantir">1. O que o tema precisa garantir</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de 09 · Infraestrutura e ambientes"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Garantia</th>
+<th scope="col">Objetivos</th>
+<th scope="col">Decisões</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>🏛️ <strong>A mesma versão em qualquer instância</strong>: o SaaS, a instância que a Maind opera para um cliente e, na v2.1, a do contratante</td>
+<td>O8</td>
+<td><a href="produto-backlog.html#d-017"><code>D-017</code></a>, <a href="produto-backlog.html#d-007"><code>D-007</code></a></td>
+</tr>
+<tr>
+<td>☁️ <strong>A v2.0 em SaaS</strong>, numa instância nova da Maind, que substitui a de hoje, entregue de uma vez só</td>
+<td>O1 a O7</td>
+<td><a href="produto-backlog.html#d-017"><code>D-017</code></a> (o SaaS primeiro: ver A-07), <a href="produto-backlog.html#d-109"><code>D-109</code></a>; <a href="arquitetura-02.html#arq-011"><code>ARQ-011</code></a> ✅</td>
+</tr>
+<tr>
+<td>🧪 <strong>Cada marco de pé antes da produção</strong>, e a mesma versão do HML na PRD</td>
+<td>O2</td>
+<td>A decisão D1 da spec dos ambientes da v1.xx; <code>D-138</code> &quot;A v1.xx fecha como MVP no HML…&quot; (a frente 4, a operação que sustenta o HML)</td>
+</tr>
+<tr>
+<td>📶 <strong>No ar</strong>: 99,9% por mês; a volta numa pane é a da cópia de cada instância</td>
+<td>O1, O4</td>
+<td><a href="arquitetura-02.html#arq-014"><code>ARQ-014</code></a> ✅, <a href="arquitetura-02.html#arq-086"><code>ARQ-086</code></a> ✅</td>
+</tr>
+<tr>
+<td>📦 <strong>O envelope do primeiro ano cabe</strong>, e se sabe quando trocar de máquina</td>
+<td>O1, O3, O4, O7</td>
+<td><a href="arquitetura-02.html#arq-016"><code>ARQ-016</code></a> ✅</td>
+</tr>
+<tr>
+<td>🛡️ <strong>A máquina não abre o que o código fecha</strong>: os bancos só no loopback, a fonte da organização fora da rede interna, os segredos fora do repositório</td>
+<td>O2</td>
+<td><a href="produto-backlog.html#d-001"><code>D-001</code></a>; <a href="arquitetura-02.html#arq-044"><code>ARQ-044</code></a> ✅; a guarda de rede</td>
+</tr>
+<tr>
+<td>🏢 <strong>Na v2.1, o Horus dentro da casa do contratante</strong>, com a fonte na rede interna e, no &quot;tudo dentro&quot;, a IA dentro de casa</td>
+<td>O8</td>
+<td><a href="produto-backlog.html#d-010"><code>D-010</code></a>, <a href="produto-backlog.html#d-017"><code>D-017</code></a>, <a href="produto-backlog.html#d-121"><code>D-121</code></a>; a <code>P-016</code> à parte</td>
+</tr>
+<tr>
+<td>🎪 <strong>As bases de demonstração seguem como vitrine e banco de prova</strong></td>
+<td>O6</td>
+<td><a href="produto-backlog.html#d-021"><code>D-021</code></a>; <a href="mf-118.html"><code>MF-118:Bases de demonstração</code></a></td>
+</tr>
+</tbody>
+</table></div></div><div class="doc-section dx-assunto"><h3 id="arquitetura-09-2-as-decisoes">2. As decisões</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 2 de 09 · Infraestrutura e ambientes"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Decisão</th>
+<th scope="col">O que decide</th>
+<th scope="col">Situação</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><a href="arquitetura-02.html#arq-004"><code>ARQ-004</code></a>, <a href="arquitetura-02.html#arq-095"><code>ARQ-095</code></a></td>
+<td>O mesmo executável em dois papéis; duas réplicas ou mais de cada um na produção real, com o que precisa valer em todas pelo Postgres</td>
+<td>🟢, 🟢</td>
+</tr>
+<tr>
+<td><a href="arquitetura-02.html#arq-005"><code>ARQ-005</code></a></td>
+<td>A fila e a caixa de saída no banco da aplicação</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td><a href="arquitetura-02.html#arq-011"><code>ARQ-011</code></a></td>
+<td>A v2.0 nasce numa instância nova, com as organizações de exemplo semeadas</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><a href="arquitetura-02.html#arq-014"><code>ARQ-014</code></a>, <a href="arquitetura-02.html#arq-016"><code>ARQ-016</code></a></td>
+<td>A disponibilidade e o envelope</td>
+<td>✅, ✅</td>
+</tr>
+<tr>
+<td><a href="arquitetura-02.html#arq-092"><code>ARQ-092</code></a>, <a href="arquitetura-02.html#arq-093"><code>ARQ-093</code></a></td>
+<td>A produção real num Kubernetes gerenciado de uma nuvem pública, com o Postgres gerenciado; a construção no minikube da VPS de hoje</td>
+<td>✅, ✅</td>
+</tr>
+<tr>
+<td><a href="arquitetura-02.html#arq-096"><code>ARQ-096</code></a></td>
+<td>A solução não fica presa a uma nuvem: só o que roda igual em qualquer Kubernetes e em qualquer Postgres 17, e a saída provada</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><a href="arquitetura-02.html#arq-086"><code>ARQ-086</code></a>, <a href="arquitetura-02.html#arq-087"><code>ARQ-087</code></a></td>
+<td>A cópia fora do Horus, pela infra de cada instância; o contrato da cópia e a conferência da volta</td>
+<td>✅, 🟢</td>
+</tr>
+<tr>
+<td><a href="arquitetura-02.html#arq-036"><code>ARQ-036</code></a>, <a href="arquitetura-02.html#arq-089"><code>ARQ-089</code></a></td>
+<td>A conversão, substituída pelo semeador das organizações de exemplo</td>
+<td>⚪, 🟢</td>
+</tr>
+<tr>
+<td><a href="arquitetura-02.html#arq-044"><code>ARQ-044</code></a></td>
+<td>Os segredos da instância nos Secrets do GitHub, gravados pelo CD no arquivo de ambiente; o anel cifrado por certificado; um login sem poder de dono em cada banco</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong><a href="arquitetura-02.html#arq-055"><code>ARQ-055</code></a></strong></td>
+<td><strong>Os ambientes da v2: o desenvolvimento local, o CI, a homologação da v2 numa terceira instância da VPS de hoje e a PRD de hoje atualizada no fim; a v1.xx fica onde está até a v2.0 subir</strong></td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong><a href="arquitetura-02.html#arq-056"><code>ARQ-056</code></a></strong></td>
+<td><strong>As instâncias da VPS de hoje dividem todos os recursos da máquina, sem teto por instância, porque nenhuma é produção real; os dois papéis são dois serviços, e o banco fica em container</strong></td>
+<td>✅</td>
+</tr>
+<tr>
+<td><a href="arquitetura-02.html#arq-057"><code>ARQ-057</code></a></td>
+<td>Toda instância roda o mesmo pacote, compilado uma vez, e o que muda entre instâncias é só configuração e estado</td>
+<td>⚪ (<a href="arquitetura-02.html#arq-094"><code>ARQ-094</code></a>)</td>
+</tr>
+<tr>
+<td><strong><a href="arquitetura-02.html#arq-094"><code>ARQ-094</code></a></strong></td>
+<td><strong>Toda instância roda a mesma imagem de container, compilada uma vez, e o mesmo chart do Helm; o que muda entre instâncias é só a configuração e o estado</strong></td>
+<td>🟢</td>
+</tr>
+<tr>
+<td><strong><a href="arquitetura-02.html#arq-058"><code>ARQ-058</code></a></strong></td>
+<td><strong>Toda máquina do Horus fica endurecida — domínio com HTTPS, SSH só por chave, a regra de saída do serviço da API e os bancos só no loopback —, e a VPS de hoje se endurece no lugar, antes da homologação da v2</strong></td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong><a href="arquitetura-02.html#arq-059"><code>ARQ-059</code></a></strong></td>
+<td><strong>As bases de demonstração ficam no SQL Server Developer da VPS de hoje, só para demonstração e prova, uma só para todas as instâncias do Horus</strong></td>
+<td>✅</td>
+</tr>
+<tr>
+<td><strong><a href="arquitetura-02.html#arq-060"><code>ARQ-060</code></a></strong></td>
+<td><strong>O on-premises da v2.1 é a mesma imagem e o mesmo chart, no Kubernetes do contratante ou num Kubernetes de um nó numa máquina Linux dele, sem compilar nem baixar nada na hora</strong></td>
+<td>🟡</td>
+</tr>
+</tbody>
+</table></div></div><div class="doc-section dx-assunto"><h3 id="arquitetura-09-3-os-componentes-e-a-responsabilidade-de-cada-um">3. Os componentes e a responsabilidade de cada um</h3>
+<h4 id="arquitetura-09-31-onde-a-v1xx-roda-hoje">3.1 Onde a v1.xx roda hoje</h4>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 3 de 09 · Infraestrutura e ambientes"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Peça</th>
+<th scope="col">Hoje</th>
+<th scope="col">Onde está</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>A VPS de hoje</strong></td>
+<td>Ubuntu 24.04, 8 vCPU, 31 GB de memória, 387 GB de disco (47 GB usados), <strong>sem swap</strong>, fuso UTC</td>
+<td>O inventário, §1 e §2</td>
+</tr>
+<tr>
+<td><strong>Dois ambientes na mesma VPS</strong></td>
+<td>A PRD e o HML lado a lado, com usuário, diretório, configuração, banco e anel de chaves próprios; o HML com teto de 4 GB e de duas CPUs; a PRD <strong>sem teto</strong></td>
+<td><code>horus@318db52b:infra/README.md</code>; a spec dos ambientes, §3</td>
+</tr>
+<tr>
+<td><strong>A segunda VPS</strong></td>
+<td>Uma instância só com a PRD, para um cliente, servida <strong>sem domínio e sem HTTPS</strong> (e por isso sem o login do Google), publicada pelo mesmo roteiro, com uma cópia das bases de demonstração</td>
+<td><code>horus@318db52b:infra/github/ambientes.yml</code>; <code>horus@318db52b:infra/vps/copiar-bases-sqlserver.py</code>; o inventário, §9</td>
+</tr>
+<tr>
+<td><strong>O banco da aplicação</strong></td>
+<td>Postgres 17 num container, só no loopback, dividido pela PRD e pelo HML com bancos e papéis separados; a aplicação entra como <strong>superusuário</strong>; a memória é a padrão do container; 59 MB em 27/10/2026</td>
+<td><code>horus@318db52b:infra/vps/provisionar-base.sh</code>; o inventário, §6</td>
+</tr>
+<tr>
+<td><strong>As bases de demonstração</strong></td>
+<td>SQL Server 2022 <strong>Developer</strong> num container, oito bases (cerca de 13,8 GB de dados), <strong>sem teto de memória</strong>, um login só de leitura por base; a ingestão contínua a cada 10 minutos, por um timer do systemd</td>
+<td>O inventário, §4 e §6; <code>horus@318db52b:infra/horus-ingestao-mcdonalds.timer</code></td>
+</tr>
+<tr>
+<td><strong>A API</strong></td>
+<td>Um serviço do systemd por ambiente, só no loopback, atrás do Nginx; os segredos no arquivo de ambiente, só do root</td>
+<td><code>horus@318db52b:infra/vps/provisionar-base.sh</code></td>
+</tr>
+<tr>
+<td><strong>O Nginx</strong></td>
+<td>Um site por ambiente, com os certificados renovados pelo certbot; um site de renderização do PDF só no loopback; o log em JSON sem o token de convite</td>
+<td>O inventário, §5</td>
+</tr>
+<tr>
+<td><strong>O PDF</strong></td>
+<td>O Chromium do Playwright num diretório da máquina, instalado por roteiro, com as bibliotecas e as fontes do sistema</td>
+<td><code>horus@318db52b:infra/hml/preparar-pdf.sh</code></td>
+</tr>
+<tr>
+<td><strong>A publicação</strong></td>
+<td>Manual, pelo GitHub Actions ou da máquina do dono; <strong>compila na VPS</strong>; troca por diretório; volta sozinha se a saúde reprovar; recusa na PRD o que não passou pelo HML, lendo o registro do HML na mesma máquina</td>
+<td><code>horus@318db52b:.github/workflows/deploy.yml</code>, <code>infra/redeploy.sh</code>, <code>infra/subir-versao.py</code></td>
+</tr>
+<tr>
+<td><strong>A observabilidade</strong></td>
+<td>Nove containers na mesma máquina, todas as portas no loopback</td>
+<td><code>horus@318db52b:infra/observabilidade/compose.yml</code></td>
+</tr>
+<tr>
+<td><strong>Firewall e SSH</strong></td>
+<td>Entram só 22, 80 e 443; <strong>nenhuma regra de saída</strong>; o SSH aceita senha, também para o root</td>
+<td>O inventário, §8</td>
+</tr>
+<tr>
+<td><strong>Cópias de segurança e CI</strong></td>
+<td>Não há rotina de cópia nem um CI que rode os testes</td>
+<td><a href="arquitetura-02.html#arq-086"><code>ARQ-086</code></a> (a cópia é da infra da instância); o único workflow é o da publicação</td>
+</tr>
+</tbody>
+</table></div><h4 id="arquitetura-09-32-os-ambientes-arq-055-">3.2 Os ambientes (<code>ARQ-055</code> ✅)</h4>
+<p><strong>Nenhuma instância de hoje é produção real</strong> (o dono, em 03/11/2026): a PRD e o HML da v1.xx, a homologação da v2 e a segunda VPS são de teste, e as da VPS de hoje dividem todos os recursos da máquina (<a href="arquitetura-02.html#arq-056"><code>ARQ-056</code></a>). 🔎 Na leitura do arquiteto, a produção real começa com a primeira organização que pagar (<a href="produto-backlog.html#d-107"><code>D-107</code></a>).</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 4 de 09 · Infraestrutura e ambientes"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Ambiente</th>
+<th scope="col">Onde</th>
+<th scope="col">Para quê</th>
+<th scope="col">Com que dados</th>
+<th scope="col">De quando a quando</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Desenvolvimento</strong></td>
+<td>A máquina de cada pessoa do time: o Postgres em container, o SQL Server local com as bases, a API e o front; o ponta a ponta em portas próprias, com banco próprio (<code>horus@318db52b:CLAUDE.md</code>)</td>
+<td>Construir e testar durante a construção, sem custo</td>
+<td>As bases de demonstração; a IA <code>mock</code>; a porta da Meta falsa (<a href="arquitetura-02.html#arq-048"><code>ARQ-048</code></a>); o e-mail nulo</td>
+<td>Sempre</td>
+</tr>
+<tr>
+<td><strong>CI</strong> 🆕</td>
+<td>GitHub Actions, com um executor próprio na VPS de hoje até a primeira produção real, e os executores hospedados do GitHub depois (<a href="arquitetura-02.html#arq-082"><code>ARQ-082</code></a>)</td>
+<td>Compilar uma vez, rodar os testes sem modelo pago e gerar a imagem e o chart (<a href="arquitetura-02.html#arq-094"><code>ARQ-094</code></a>); o desenho é do documento 12</td>
+<td>Containers descartáveis (Testcontainers)</td>
+<td>Do M0 em diante</td>
+</tr>
+<tr>
+<td><strong>Homologação da v2</strong> 🆕</td>
+<td>Uma terceira instância na VPS de hoje, ao lado da PRD e do HML da v1.xx, com usuário, diretório, serviços, banco, logins, anel de chaves, certificado e domínio próprios, dividindo os recursos da máquina com as outras instâncias (<a href="arquitetura-02.html#arq-055"><code>ARQ-055</code></a>, <a href="arquitetura-02.html#arq-056"><code>ARQ-056</code></a>)</td>
+<td>Pôr cada marco de pé: os dois papéis, a instalação da instância do zero, a notificação da Meta (que exige HTTPS público), o ensaio do semeador das organizações de exemplo (<a href="arquitetura-02.html#arq-089"><code>ARQ-089</code></a>) e, se a Maind quiser, o ensaio da volta da instância SaaS (<a href="arquitetura-02.html#arq-086"><code>ARQ-086</code></a>)</td>
+<td>As bases de demonstração da máquina, com logins próprios só de leitura; organizações de prova; o McDonald's e a Global Fleet, pelo semeador</td>
+<td>Do M0 ao M7; com a v2.0 publicada, vira a homologação do SaaS</td>
+</tr>
+<tr>
+<td><strong>PRD da v2.0</strong></td>
+<td>Uma instância nova no minikube da VPS de hoje, num subdomínio próprio (<a href="arquitetura-02.html#arq-011"><code>ARQ-011</code></a>, <a href="arquitetura-02.html#arq-065"><code>ARQ-065</code></a>, <a href="arquitetura-02.html#arq-093"><code>ARQ-093</code></a>)</td>
+<td>A instância SaaS da v2.0</td>
+<td>O McDonald's e a Global Fleet, pelo semeador (<a href="arquitetura-02.html#arq-089"><code>ARQ-089</code></a>); as pessoas da Maind, por convite</td>
+<td>Da abertura da v2.0 em diante (<a href="arquitetura-02.html#arq-065"><code>ARQ-065</code></a>)</td>
+</tr>
+<tr>
+<td><strong>PRD e HML da v1.xx</strong></td>
+<td>A VPS de hoje, como estão</td>
+<td>O SaaS de hoje e o MVP no HML (<code>D-138</code> &quot;A v1.xx fecha como MVP no HML…&quot;)</td>
+<td>Os de hoje</td>
+<td>No domínio de hoje, ao lado da v2.0, até a Maind decidir tirá-las (<a href="arquitetura-02.html#arq-065"><code>ARQ-065</code></a>); então a v2.0 pode assumir o domínio de hoje, e a máquina fica com a PRD da v2.0 e a homologação do SaaS</td>
+</tr>
+<tr>
+<td><strong>A segunda VPS</strong></td>
+<td>Como está</td>
+<td>A instância dedicada de hoje</td>
+<td>Os dela</td>
+<td>Recebe a v2.0 depois da PRD, como instância nova, com as organizações de exemplo semeadas, já com domínio (<a href="arquitetura-02.html#arq-058"><code>ARQ-058</code></a>)</td>
+</tr>
+</tbody>
+</table></div><figure><div class="lightbox_shortcode"><img src="media/arquitetura-09-diagrama-1.svg" width="767" height="511" alt="Diagrama: 3.2 Os ambientes (ARQ-055 ✅)"><a href="media/arquitetura-09-diagrama-1.svg" class="img_popup" aria-label="Ampliar o diagrama"><i class="icon_plus" aria-hidden="true"></i></a></div><figcaption>Diagrama de “3.2 Os ambientes (ARQ-055 ✅)”. Selecione o “+” para ampliar.</figcaption></figure><ul>
+<li><strong>A homologação da v2 se separa da PRD como o HML de hoje</strong>: usuário, diretório, serviços, banco e logins, anel de chaves, certificado e domínio próprios, com o domínio nas variáveis do GitHub; o login dela não alcança o banco da PRD nem o do MVP (<a href="arquitetura-02.html#arq-055"><code>ARQ-055</code></a>).</li>
+<li><strong>A homologação da v2 recebe o McDonald's e a Global Fleet pelo semeador</strong> (<a href="arquitetura-02.html#arq-089"><code>ARQ-089</code></a>), e não por um clone da PRD; o clone de hoje (<code>horus@318db52b:infra/hml/clonar-prd-para-hml.sh</code>) fica só para o HML da v1.xx enquanto ele viver.</li>
+<li><strong>A guarda &quot;passou pelo HML&quot;</strong> hoje lê o registro do HML na mesma máquina. O documento 10 a redesenha sobre a imagem (<a href="arquitetura-02.html#arq-094"><code>ARQ-094</code></a>, <a href="arquitetura-02.html#arq-061"><code>ARQ-061</code></a>), o que vale em qualquer instância, também na segunda VPS: a PRD recusa o pacote que a homologação não registrou.</li>
+<li><strong>O provisionamento do zero de uma máquina</strong> não se prova na construção, porque a homologação nasce numa máquina que já existe: ele se prova numa máquina por hora antes do M7 (documento 13, 3.7), ou quando a segunda VPS receber a v2.0.</li>
+</ul>
+<h4 id="arquitetura-09-33-a-instancia-saas-da-v20-e-a-maquina-dividida-arq-056--arq-093-">3.3 A instância SaaS da v2.0 e a máquina dividida (<code>ARQ-056</code> ✅, <code>ARQ-093</code> ✅)</h4>
+<figure><div class="lightbox_shortcode"><img src="media/arquitetura-09-diagrama-2.svg" width="1065" height="817" alt="Diagrama: 3.3 A instância SaaS da v2.0 e a máquina dividida (ARQ-056 ✅, ARQ-093 ✅)"><a href="media/arquitetura-09-diagrama-2.svg" class="img_popup" aria-label="Ampliar o diagrama"><i class="icon_plus" aria-hidden="true"></i></a></div><figcaption>Diagrama de “3.3 A instância SaaS da v2.0 e a máquina dividida (ARQ-056 ✅, ARQ-093 ✅)”. Selecione o “+” para ampliar.</figcaption></figure><ul>
+<li><strong>Os dois papéis são dois conjuntos de réplicas da mesma imagem</strong> (<a href="arquitetura-02.html#arq-004"><code>ARQ-004</code></a>, <a href="arquitetura-02.html#arq-094"><code>ARQ-094</code></a>), no minikube da VPS durante a construção: o &quot;atender&quot;, atrás da entrada do cluster; o &quot;trabalhar&quot;, sem entrada de fora, que serve a própria renderização no loopback ao Chromium do mesmo pod (<a href="arquitetura-02.html#arq-095"><code>ARQ-095</code></a>; hoje o impressor só aceita loopback, <code>horus@318db52b:apps/server/Horus.Core/Relatorios/ImpressorDePdfChromium.cs</code>). Na VPS, uma réplica de cada basta, e a homologação roda duas do &quot;atender&quot;, para provar o que a produção roda.</li>
+<li><strong>As migrações rodam numa tarefa do chart</strong>, antes da troca, com o login das migrações (<a href="arquitetura-02.html#arq-044"><code>ARQ-044</code></a>, <a href="arquitetura-02.html#arq-062"><code>ARQ-062</code></a>), e nenhuma réplica migra ao subir.</li>
+<li><strong>Todas as réplicas leem o mesmo anel de chaves</strong>, guardado no banco mestre e cifrado pelo certificado (<a href="arquitetura-02.html#arq-087"><code>ARQ-087</code></a>, <a href="arquitetura-02.html#arq-094"><code>ARQ-094</code></a>); a chave nova nasce na tarefa das migrações, e as réplicas só leem.</li>
+<li><strong>O Postgres da VPS fica fora do minikube</strong>, no container de hoje, como o gerenciado fica fora do cluster na produção real; a v1.xx continua com os serviços do systemd e o Nginx de hoje até a v2.0 subir.</li>
+<li><strong>A observabilidade fica na máquina</strong>, fora do minikube, até o documento 11 decidir; a sonda de fora da máquina é dele (<a href="arquitetura-02.html#arq-014"><code>ARQ-014</code></a>).</li>
+</ul>
+<p><strong>A capacidade</strong> 🔎 (a partir do envelope da <a href="arquitetura-02.html#arq-016"><code>ARQ-016</code></a> e da medição de hoje: CPU no máximo em 26,4% e memória entre 19% e 21%, <a href="arquitetura-03.html">documento 03</a>): as instâncias da VPS de hoje dividem todos os recursos da máquina, sem teto por instância nem por serviço, porque nenhuma é produção real (<a href="arquitetura-02.html#arq-056"><code>ARQ-056</code></a> ✅, a escolha do dono em 03/11/2026). A máquina ganha 8 GB de swap 🔎, que não reparte recurso: é a rede de segurança para um pico de memória não matar um processo. O minikube pesa na máquina, e o Kubernetes, por padrão, recusa swap no nó: ele se configura para aceitá-la, e a V-07 confere as duas coisas 🔎. O uso de cada instância e de cada serviço (o Postgres, o SQL Server das bases, a observabilidade e o executor do CI, <a href="arquitetura-02.html#arq-082"><code>ARQ-082</code></a>) se mede no documento 11, e a V-07 confere, com a homologação da v2 de pé, se a máquina basta. Com a primeira produção real, a <a href="arquitetura-02.html#arq-056"><code>ARQ-056</code></a> reabre: a produção ganha teto ou máquina própria.</p>
+<p><strong>Na primeira produção real</strong> (<a href="arquitetura-02.html#arq-014"><code>ARQ-014</code></a> ✅, <a href="arquitetura-02.html#arq-092"><code>ARQ-092</code></a> ✅, <a href="arquitetura-02.html#arq-093"><code>ARQ-093</code></a> ✅): a PRD vai para um Kubernetes gerenciado de uma nuvem pública, com o Postgres gerenciado da mesma nuvem, na região de São Paulo; cada papel com duas réplicas ou mais, em zonas diferentes, e o banco com a réplica noutra zona e a troca automática (<a href="arquitetura-02.html#arq-095"><code>ARQ-095</code></a>). A nuvem se escolhe na primeira produção real, pelos preços da V-19 (<a href="arquitetura-02.html#arq-085"><code>ARQ-085</code></a>, adiada pelo dono), e nada fica preso a ela: o chart usa só os recursos padrão do Kubernetes, o banco é o PostgreSQL 17 padrão, e a entrada e o certificado são do cluster (<a href="arquitetura-02.html#arq-096"><code>ARQ-096</code></a> ✅). A VPS de hoje fica com a construção e as instâncias de teste, no minikube, com a mesma imagem e o mesmo chart (<a href="arquitetura-02.html#arq-094"><code>ARQ-094</code></a>).</p>
+<p><strong>Quando trocar de máquina</strong> (os gatilhos que reabrem a <a href="arquitetura-02.html#arq-016"><code>ARQ-016</code></a>): o uso passou da metade do envelope; a memória ficou acima de 80% por uma semana; o trabalho mais antigo da fila passou de 10 minutos no pico de segunda (o limiar de 2.4 do documento 03); ou o tempo piorou por causa da máquina, e não do modelo nem do banco do cliente. <strong>A ordem</strong>: primeiro, uma máquina maior, pelo provisionamento do zero e pela volta da cópia da instância (<a href="arquitetura-02.html#arq-086"><code>ARQ-086</code></a>, <a href="arquitetura-02.html#arq-087"><code>ARQ-087</code></a>), numa janela combinada; depois, o papel &quot;trabalhar&quot; numa segunda máquina, com o banco alcançado pela rede privada do provedor; acima de dez vezes o envelope, este documento reabre.</p>
+<p><strong>O endereço de saída é parte do contrato com cada cliente</strong>: é ele que o cliente libera no firewall do banco (<a href="arquitetura-02.html#arq-052"><code>ARQ-052</code></a>). A troca de máquina leva o endereço junto, se o provedor permitir (verificação V-06); senão, os clientes são avisados com antecedência, e o &quot;Testar&quot; de cada fonte roda depois da troca.</p>
+<h4 id="arquitetura-09-34-o-banco-da-aplicacao">3.4 O banco da aplicação</h4>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 5 de 09 · Infraestrutura e ambientes"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Ponto</th>
+<th scope="col">Como fica</th>
+<th scope="col">Decisão</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Tecnologia</td>
+<td>Na VPS, o PostgreSQL 17 em container, fora do minikube, como hoje; na produção real, o Postgres gerenciado da nuvem</td>
+<td><a href="arquitetura-02.html#arq-001"><code>ARQ-001</code></a>, <a href="arquitetura-02.html#arq-056"><code>ARQ-056</code></a>, <a href="arquitetura-02.html#arq-093"><code>ARQ-093</code></a></td>
+</tr>
+<tr>
+<td>Os bancos de cada instância</td>
+<td>O container do Postgres da máquina guarda, para cada instância, o banco mestre e um banco por organização, cada um com o seu login; a homologação da v2 tem os dela, ao lado dos da PRD</td>
+<td><a href="arquitetura-02.html#arq-010"><code>ARQ-010</code></a>, <a href="arquitetura-02.html#arq-055"><code>ARQ-055</code></a>, <a href="arquitetura-02.html#arq-088"><code>ARQ-088</code></a></td>
+</tr>
+<tr>
+<td>Os logins</td>
+<td>O do mestre e o de cada organização, sem privilégio de dono, cada um só no seu banco; o das migrações, só no passo da publicação; o de provisionamento, que só cria banco e login, só para criar uma organização</td>
+<td><a href="arquitetura-02.html#arq-044"><code>ARQ-044</code></a> ✅, <a href="arquitetura-02.html#arq-088"><code>ARQ-088</code></a></td>
+</tr>
+<tr>
+<td>A cópia</td>
+<td>Fora do Horus: a infra da instância copia o Postgres inteiro (o mestre e os bancos das organizações, do mesmo momento), o anel e o certificado, pelo contrato da cópia (documento 10)</td>
+<td><a href="arquitetura-02.html#arq-086"><code>ARQ-086</code></a> ✅, <a href="arquitetura-02.html#arq-087"><code>ARQ-087</code></a></td>
+</tr>
+<tr>
+<td>A memória</td>
+<td>A da máquina, dividida com as outras instâncias; a memória de trabalho do banco se ajusta pela medida</td>
+<td><a href="arquitetura-02.html#arq-056"><code>ARQ-056</code></a></td>
+</tr>
+<tr>
+<td>Uma versão nova do Postgres</td>
+<td>Manutenção, ensaiada na homologação com a cópia da PRD</td>
+<td><a href="arquitetura-02.html#arq-001"><code>ARQ-001</code></a></td>
+</tr>
+<tr>
+<td>Um Postgres gerenciado de nuvem</td>
+<td>✅ Na produção real, a partir da primeira organização paga, com a réplica noutra zona e a troca automática; a construção segue com o container da VPS (a escolha do dono em 03/11/2026)</td>
+<td><a href="arquitetura-02.html#arq-093"><code>ARQ-093</code></a></td>
+</tr>
+</tbody>
+</table></div><h4 id="arquitetura-09-35-a-imagem-e-o-chart-arq-094-">3.5 A imagem e o chart (<code>ARQ-094</code> 🟢)</h4>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 6 de 09 · Infraestrutura e ambientes"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Na imagem e no chart (igual em toda instância)</th>
+<th scope="col">Na instância (configuração e estado)</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>O executável do servidor, com o runtime do .NET</td>
+<td>O número de réplicas de cada papel, no arquivo de valores da instância</td>
+</tr>
+<tr>
+<td>O front já compilado, servido pelo &quot;atender&quot;</td>
+<td>Os segredos, nos Secrets do Kubernetes, gravados pelo CD a partir dos Secrets do ambiente no GitHub (<a href="arquitetura-02.html#arq-044"><code>ARQ-044</code></a>)</td>
+</tr>
+<tr>
+<td>O Chromium da versão do Playwright, com as bibliotecas e as fontes do sistema</td>
+<td>O domínio e a origem da instância</td>
+</tr>
+<tr>
+<td>As migrações e o semeador das organizações de exemplo (<a href="arquitetura-02.html#arq-062"><code>ARQ-062</code></a>, <a href="arquitetura-02.html#arq-089"><code>ARQ-089</code></a>)</td>
+<td>O modo da instância: &quot;com serviços externos autorizados&quot; ou &quot;tudo dentro&quot; (<a href="produto-backlog.html#d-010"><code>D-010</code></a>)</td>
+</tr>
+<tr>
+<td>O chart: os dois papéis, a tarefa das migrações e a entrada do cluster</td>
+<td>As fontes do arquivo, com as organizações declaradas (<a href="arquitetura-02.html#arq-034"><code>ARQ-034</code></a>), e os documentos semânticos do arquivo</td>
+</tr>
+<tr>
+<td>A identidade (o commit e o digest da imagem)</td>
+<td>Os bancos; o anel de chaves, no banco mestre, cifrado pelo certificado, que mora num Secret (<a href="arquitetura-02.html#arq-087"><code>ARQ-087</code></a>)</td>
+</tr>
+</tbody>
+</table></div><p>Hoje a publicação compila na VPS (<code>horus@318db52b:infra/redeploy.sh</code>): o HML e a PRD compilam cada um o mesmo commit, mas não instalam os mesmos bytes, e a máquina de produção precisa do SDK do .NET e do Node. Com a imagem, o CI compila uma vez, e o cluster — o minikube da VPS, o Kubernetes gerenciado da produção real ou o do contratante — só baixa e sobe. Nenhum estado mora nos pods: a réplica que cai volta igual. O documento 10 redesenha a publicação sobre a imagem e o chart.</p>
+<h4 id="arquitetura-09-36-a-maquina-endurecida-arq-058-">3.6 A máquina endurecida (<code>ARQ-058</code> ✅)</h4>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 7 de 09 · Infraestrutura e ambientes"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Medida</th>
+<th scope="col">Hoje</th>
+<th scope="col">Na v2</th>
+<th scope="col">Por quê</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Domínio com HTTPS</strong></td>
+<td>Na PRD e no HML, sim; na segunda VPS, não</td>
+<td>Em toda instância</td>
+<td>A Meta só entrega notificação a um endereço HTTPS com certificado válido 🔎, e o Google não aceita IP nem HTTP (o inventário, §9)</td>
+</tr>
+<tr>
+<td><strong>SSH só por chave</strong></td>
+<td>Aceita senha, também para o root (o inventário, §8)</td>
+<td>Só por chave; os roteiros de operação que usam a senha do cofre passam à chave</td>
+<td>Tira a porta mais tentada da internet</td>
+</tr>
+<tr>
+<td><strong>A regra de saída do serviço da API</strong></td>
+<td>Não existe</td>
+<td>Nega loopback, redes privadas, link-local e CGNAT, menos os destinos que o Horus conhece na máquina (o Postgres, o SQL Server das bases, a renderização, a observabilidade); no contratante, mais as faixas que ele autoriza (<a href="arquitetura-02.html#arq-060"><code>ARQ-060</code></a>)</td>
+<td>É o único fechamento do redirecionamento do protocolo e da troca de DNS que a guarda de rede declara não fechar (<code>horus@318db52b:apps/server/Horus.Core/Data/Connections/GuardaDeRede.cs</code>)</td>
+</tr>
+<tr>
+<td><strong>Os bancos e a observabilidade só no loopback</strong></td>
+<td>Já é assim</td>
+<td>Igual, conferido no provisionamento; a exceção é o SQL Server das bases, aberto só para as outras máquinas do Horus que a Maind opera, com a conexão cifrada (<a href="arquitetura-02.html#arq-059"><code>ARQ-059</code></a>)</td>
+<td>O Docker publica por cima do ufw sem o prefixo de loopback (<code>horus@318db52b:.claude/rules/infra/observabilidade.md</code>)</td>
+</tr>
+<tr>
+<td><strong>A guarda de rede sem saída na PRD e no HML</strong></td>
+<td>A saída nunca vai ao arquivo de ambiente do HML nem da PRD (<code>horus@318db52b:.claude/rules/seguranca/guarda-de-rede.md</code>)</td>
+<td>Igual no SaaS; só a instância do contratante a liga (<a href="arquitetura-02.html#arq-060"><code>ARQ-060</code></a>)</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Atualizações de segurança automáticas</strong></td>
+<td>Ativas</td>
+<td>Iguais</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div><h4 id="arquitetura-09-37-as-bases-de-demonstracao-arq-059-">3.7 As bases de demonstração (<code>ARQ-059</code> ✅)</h4>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 8 de 09 · Infraestrutura e ambientes"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Ponto</th>
+<th scope="col">Como fica</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Onde</strong></td>
+<td>Uma base só, no SQL Server da VPS de hoje, para todas as instâncias do Horus que a Maind opera, cada uma com os seus logins só de leitura; a instância de outra máquina, como a segunda VPS, a lê pela rede, com a conexão cifrada e o firewall aberto só para ela; nunca na instância do contratante, salvo pedido</td>
+</tr>
+<tr>
+<td><strong>A licença</strong></td>
+<td>O SQL Server 2022 Developer, só para demonstração e prova, só nas organizações de demonstração da Maind, nunca como fonte de um cliente. A Microsoft licencia o Developer para desenvolvimento e teste, e não para produção; enquanto nenhuma instância for produção real, cabe; se a demonstração numa produção real cabe nessa licença é a verificação V-05, antes da primeira produção real 🔎</td>
+</tr>
+<tr>
+<td><strong>A memória</strong></td>
+<td>A da máquina, dividida com as instâncias, sem teto (<a href="arquitetura-02.html#arq-056"><code>ARQ-056</code></a>)</td>
+</tr>
+<tr>
+<td><strong>Quem as vê</strong></td>
+<td>Só as organizações declaradas em cada fonte do arquivo (<a href="arquitetura-02.html#arq-034"><code>ARQ-034</code></a>); a fonte sem organização declarada passa a ser de nenhuma (V-01)</td>
+</tr>
+<tr>
+<td><strong>A ingestão contínua</strong></td>
+<td>♻️ O timer de 10 minutos, uma vez só, na VPS de hoje</td>
+</tr>
+<tr>
+<td><strong>A cópia para outra máquina</strong></td>
+<td>♻️ O roteiro de cópia por backup e restauração, conferido por contagem (<code>horus@318db52b:infra/vps/copiar-bases-sqlserver.py</code>), só para refazer a VPS de hoje; a segunda VPS deixa a cópia dela e passa a ler a base da VPS de hoje</td>
+</tr>
+<tr>
+<td><strong>A volta numa pane</strong></td>
+<td>Fora do contrato da cópia (<a href="arquitetura-02.html#arq-087"><code>ARQ-087</code></a>): refazem-se pelos geradores determinísticos de <code>horus@318db52b:data/</code></td>
+</tr>
+</tbody>
+</table></div><h4 id="arquitetura-09-38-o-on-premises-da-v21-arq-060-">3.8 O on-premises da v2.1 (<code>ARQ-060</code> 🟡)</h4>
+<p>A mesma versão (<a href="produto-backlog.html#d-017"><code>D-017</code></a>) vira <strong>a mesma imagem e o mesmo chart</strong> (<a href="arquitetura-02.html#arq-094"><code>ARQ-094</code></a>) no Kubernetes do contratante ou num Kubernetes de um nó numa máquina dele, instalados e atualizados como no SaaS, sem compilar e sem baixar nada da internet na hora (o Chromium e as fontes vão na imagem, e a imagem vai como arquivo, conferida pelo digest). O que o contratante fornece:</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 9 de 09 · Infraestrutura e ambientes"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Item</th>
+<th scope="col">O que é</th>
+<th scope="col">Em que modo</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>Cluster ou máquina</strong></td>
+<td>O Kubernetes da empresa, ou uma máquina virtual Linux x64 com o Ubuntu LTS que o roteiro conhece, onde o roteiro da Maind instala um Kubernetes de um nó (o k3s ou o minikube 🔎); dimensionado pelo envelope do contratante com a conta do documento 03 (🔎 ponto de partida: 4 vCPU, 16 GB e 200 GB para até 300 assentos)</td>
+<td>Os dois</td>
+</tr>
+<tr>
+<td><strong>Nome e certificado</strong></td>
+<td>Um nome no DNS da empresa e o certificado dele</td>
+<td>Os dois</td>
+</tr>
+<tr>
+<td><strong>Banco</strong></td>
+<td>O Postgres 17 que o chart sobe (o padrão), ou um Postgres 17 da empresa, com um login sem poder de dono em cada banco (<a href="arquitetura-02.html#arq-044"><code>ARQ-044</code></a>); a cópia é da infra da instância (<a href="arquitetura-02.html#arq-086"><code>ARQ-086</code></a>)</td>
+<td>Os dois</td>
+</tr>
+<tr>
+<td><strong>Guarda das cópias</strong></td>
+<td>Um lugar da empresa fora da máquina (documento 10)</td>
+<td>Os dois</td>
+</tr>
+<tr>
+<td><strong>Rede até as fontes</strong></td>
+<td>A rota da máquina até os bancos internos, a saída da guarda de rede ligada nesta instância com as faixas que o contratante autoriza, e a regra de rede dos pods com as mesmas faixas (<a href="arquitetura-02.html#arq-058"><code>ARQ-058</code></a>)</td>
+<td>Os dois</td>
+</tr>
+<tr>
+<td><strong>E-mail</strong></td>
+<td>O servidor SMTP da empresa (<a href="arquitetura-02.html#arq-046"><code>ARQ-046</code></a>)</td>
+<td>Os dois; no &quot;tudo dentro&quot;, como interno, se a instância o liberar (<a href="produto-backlog.html#d-040"><code>D-040</code></a>)</td>
+</tr>
+<tr>
+<td><strong>Login</strong></td>
+<td>O login da empresa (<a href="arquitetura-02.html#arq-054"><code>ARQ-054</code></a>), o Google com o cliente da empresa (<a href="arquitetura-02.html#arq-053"><code>ARQ-053</code></a>) ou só a senha</td>
+<td>Os dois</td>
+</tr>
+<tr>
+<td><strong>Saída para fora</strong></td>
+<td>Os provedores de IA; a Meta, com a conta e o aplicativo da própria empresa (<a href="arquitetura-02.html#arq-047"><code>ARQ-047</code></a>, opção C) e um endereço HTTPS público só para as notificações dela</td>
+<td>Só &quot;com serviços externos autorizados&quot;</td>
+</tr>
+<tr>
+<td><strong>IA dentro de casa</strong></td>
+<td>O servidor de modelos da empresa, pelo protocolo compatível com o da OpenAI (<a href="arquitetura-02.html#arq-051"><code>ARQ-051</code></a>), escolhido com o dono no M10</td>
+<td>Só &quot;tudo dentro&quot;</td>
+</tr>
+<tr>
+<td><strong>Atualização</strong></td>
+<td>A Maind com acesso concedido, ou a TI da empresa aplicando o mesmo chart com a imagem nova</td>
+<td>Os dois</td>
+</tr>
+<tr>
+<td><strong>Ativação dos assentos</strong></td>
+<td>A <code>P-016</code>, à parte</td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div><ul>
+<li><strong>No &quot;tudo dentro&quot;</strong>, ficam bloqueados o WhatsApp (leitura <code>D-084.2</code>), os conectores até a instância liberar (<a href="produto-backlog.html#d-040"><code>D-040</code></a>) e a pesquisa na web (<a href="produto-backlog.html#d-010"><code>D-010</code></a>); a instância diz o modo pela configuração do pacote.</li>
+<li><strong>A observabilidade</strong> é a mesma stack, na máquina do contratante, e nada dela sai sem ele permitir (no &quot;tudo dentro&quot;, nunca); o documento 11 decide o que a Maind vê.</li>
+<li><strong>O que não vai ao contratante</strong>: o aplicativo da Maind na Meta e o cliente OAuth da Maind (os segredos da Maind ficam com a Maind), e as bases de demonstração, salvo pedido.</li>
+</ul>
+<h4 id="arquitetura-09-39-os-componentes">3.9 Os componentes</h4>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 10 de 09 · Infraestrutura e ambientes"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Componente</th>
+<th scope="col">Responsabilidade</th>
+<th scope="col">Situação</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Provisionamento do zero</td>
+<td>Deixa uma máquina Ubuntu pronta, endurecida, com os bancos, o minikube e a entrada dele; a v1.xx segue com os serviços e o Nginx de hoje até a v2.0 subir</td>
+<td>🔧 <code>horus@318db52b:infra/vps/provisionar-base.sh</code>, com o endurecimento e o certificado do anel</td>
+</tr>
+<tr>
+<td>Imagem e chart</td>
+<td>O que roda em toda instância, compilado uma vez</td>
+<td>🆕 (<a href="arquitetura-02.html#arq-094"><code>ARQ-094</code></a>)</td>
+</tr>
+<tr>
+<td>Troca de versão</td>
+<td>Aplica o chart: a tarefa das migrações, a troca gradual das réplicas e a volta à versão anterior do chart se a saúde reprovar</td>
+<td>🆕 (<a href="arquitetura-02.html#arq-094"><code>ARQ-094</code></a>; documento 10), no lugar de <code>horus@318db52b:infra/redeploy.sh</code></td>
+</tr>
+<tr>
+<td>Os dois papéis</td>
+<td>O &quot;atender&quot; e o &quot;trabalhar&quot; de cada instância, dois conjuntos de réplicas da mesma imagem, sem teto na VPS (<a href="arquitetura-02.html#arq-056"><code>ARQ-056</code></a>) e com duas réplicas ou mais na produção real (<a href="arquitetura-02.html#arq-095"><code>ARQ-095</code></a>)</td>
+<td>🔧 hoje um serviço do systemd por ambiente</td>
+</tr>
+<tr>
+<td>Entrada do cluster</td>
+<td>O HTTPS e a rota pública para o &quot;atender&quot;; o log sem o token. A renderização fica no loopback do pod do &quot;trabalhar&quot;</td>
+<td>🆕 uma implementação aberta da Gateway API e o certificado do Let's Encrypt renovado no cluster, iguais no minikube, na nuvem e no contratante (<a href="arquitetura-02.html#arq-096"><code>ARQ-096</code></a>) 🔎; hoje o Nginx faz isso</td>
+</tr>
+<tr>
+<td>Postgres</td>
+<td>O banco mestre e os bancos das organizações de cada instância (<a href="arquitetura-02.html#arq-010"><code>ARQ-010</code></a>): na VPS, em container, fora do minikube; na produção real, o gerenciado da nuvem (<a href="arquitetura-02.html#arq-093"><code>ARQ-093</code></a>)</td>
+<td>♻️ na VPS, com um login sem poder de dono em cada banco</td>
+</tr>
+<tr>
+<td>SQL Server das bases de demonstração</td>
+<td>A vitrine e o banco de prova, uma base só para todas as instâncias (<a href="arquitetura-02.html#arq-059"><code>ARQ-059</code></a>)</td>
+<td>♻️</td>
+</tr>
+<tr>
+<td>Ingestão contínua</td>
+<td>A janela móvel de 12 meses da base de pedidos</td>
+<td>♻️ <code>horus@318db52b:infra/horus-ingestao-mcdonalds.timer</code></td>
+</tr>
+<tr>
+<td>Regra de saída da máquina</td>
+<td>Fecha o que a guarda de rede não fecha; no cluster, com a regra de rede dos pods 🔎</td>
+<td>🆕 (<a href="arquitetura-02.html#arq-058"><code>ARQ-058</code></a>)</td>
+</tr>
+<tr>
+<td>Semeador</td>
+<td>As organizações de exemplo em qualquer instância, pelos arquivos do repositório</td>
+<td>🆕 (<a href="arquitetura-02.html#arq-089"><code>ARQ-089</code></a>)</td>
+</tr>
+<tr>
+<td>Ambientes do GitHub</td>
+<td>Uma entrada por máquina e ambiente, com as variáveis e os segredos da publicação</td>
+<td>♻️ <code>horus@318db52b:infra/github/</code></td>
+</tr>
+</tbody>
+</table></div></div><div class="doc-section dx-assunto"><h3 id="arquitetura-09-4-o-que-vem-da-v1xx-e-o-que-nao-vem">4. O que vem da v1.xx e o que não vem</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 11 de 09 · Infraestrutura e ambientes"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Peça da v1.xx</th>
+<th scope="col">Destino</th>
+<th scope="col">Por quê</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>A VPS com Ubuntu, Nginx, systemd, Docker Compose e ufw</td>
+<td>♻️ Fica para a construção, com o minikube a mais; a v1.xx segue nela até a v2.0</td>
+<td><a href="arquitetura-02.html#arq-001"><code>ARQ-001</code></a>, <a href="arquitetura-02.html#arq-093"><code>ARQ-093</code></a></td>
+</tr>
+<tr>
+<td>O provisionamento do zero e a cópia das bases para outra máquina</td>
+<td>♻️ Ficam, e o provisionamento ganha o endurecimento; a cópia das bases serve só para refazer a VPS de hoje</td>
+<td><a href="arquitetura-02.html#arq-058"><code>ARQ-058</code></a>, <a href="arquitetura-02.html#arq-059"><code>ARQ-059</code></a></td>
+</tr>
+<tr>
+<td>A troca por diretório com a volta automática</td>
+<td>🔧 A volta automática fica; a troca por diretório dá lugar à troca gradual do cluster</td>
+<td><a href="arquitetura-02.html#arq-094"><code>ARQ-094</code></a>; documento 10</td>
+</tr>
+<tr>
+<td>Compilar na máquina de produção</td>
+<td>❌ Sai: o cluster baixa a imagem</td>
+<td><a href="arquitetura-02.html#arq-094"><code>ARQ-094</code></a></td>
+</tr>
+<tr>
+<td>A PRD e o HML na mesma máquina</td>
+<td>♻️ Fica: a homologação da v2 entra como terceira instância, e, com a v2.0, a máquina fica com a PRD e a homologação do SaaS</td>
+<td><a href="arquitetura-02.html#arq-055"><code>ARQ-055</code></a></td>
+</tr>
+<tr>
+<td>A PRD sem teto de memória e a máquina sem swap</td>
+<td>🔧 O teto não entra, porque as instâncias dividem a máquina; entra a swap</td>
+<td><a href="arquitetura-02.html#arq-056"><code>ARQ-056</code></a></td>
+</tr>
+<tr>
+<td>O SQL Server das bases sem teto de memória</td>
+<td>♻️ Fica: as bases dividem a máquina</td>
+<td><a href="arquitetura-02.html#arq-059"><code>ARQ-059</code></a></td>
+</tr>
+<tr>
+<td>O login da aplicação como superusuário do banco</td>
+<td>❌ Sai</td>
+<td><a href="arquitetura-02.html#arq-044"><code>ARQ-044</code></a></td>
+</tr>
+<tr>
+<td>O SSH com senha e a falta de regra de saída</td>
+<td>❌ Saem</td>
+<td><a href="arquitetura-02.html#arq-058"><code>ARQ-058</code></a></td>
+</tr>
+<tr>
+<td>A instância sem domínio</td>
+<td>❌ Sai: toda instância tem domínio e HTTPS</td>
+<td><a href="arquitetura-02.html#arq-058"><code>ARQ-058</code></a></td>
+</tr>
+<tr>
+<td>As bases de demonstração, os geradores, a ingestão e a conferência</td>
+<td>♻️ Ficam</td>
+<td><a href="arquitetura-02.html#arq-059"><code>ARQ-059</code></a></td>
+</tr>
+<tr>
+<td>A guarda &quot;passou pelo HML&quot; lendo o registro na mesma máquina</td>
+<td>🔧 Passa a valer sobre a imagem, em qualquer instância</td>
+<td>Documento 10</td>
+</tr>
+</tbody>
+</table></div></div><div class="doc-section dx-assunto"><h3 id="arquitetura-09-5-os-riscos-e-o-que-falta-decidir">5. Os riscos e o que falta decidir</h3>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 12 de 09 · Infraestrutura e ambientes"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Risco</th>
+<th scope="col">Por quê</th>
+<th scope="col">O que se faz</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>🖥️ <strong>Uma máquina para tudo, sem teto</strong></td>
+<td>Todas as instâncias, os dois bancos e a observabilidade dividem a VPS de hoje: uma instância que passa do limite derruba as outras</td>
+<td>Aceito pelo dono, porque nenhuma é produção real (<a href="arquitetura-02.html#arq-056"><code>ARQ-056</code></a>); a swap segura o pico raro; a V-07 e o gatilho da troca de máquina (3.3) dizem quando a máquina não basta; com a primeira produção real, a <a href="arquitetura-02.html#arq-056"><code>ARQ-056</code></a> reabre</td>
+</tr>
+<tr>
+<td>⚖️ <strong>A licença do SQL Server Developer</strong></td>
+<td>A Microsoft o licencia para desenvolvimento e teste, e as bases vão servir a demonstrações numa produção real</td>
+<td>A verificação V-05 antes da primeira produção real; se a licença não couber, a <a href="arquitetura-02.html#arq-059"><code>ARQ-059</code></a> reabre, com o Express ou o Standard</td>
+</tr>
+<tr>
+<td>🌐 <strong>O endereço de saída muda com a máquina</strong></td>
+<td>Os clientes liberam esse endereço no firewall dos bancos deles</td>
+<td>Manter o endereço na troca (V-06), ou avisar com antecedência</td>
+</tr>
+<tr>
+<td>🔁 <strong>A guarda &quot;passou pelo HML&quot; muda de lugar</strong></td>
+<td>Hoje ela lê um arquivo na mesma máquina</td>
+<td>O documento 10 a redesenha sobre a imagem antes da primeira publicação da v2</td>
+</tr>
+<tr>
+<td>🏢 <strong>A TI do contratante não roda Kubernetes</strong></td>
+<td>Algumas não têm cluster nem aceitam um endereço público para a Meta</td>
+<td>O Kubernetes de um nó numa máquina Linux dela, que o roteiro da Maind instala (<a href="arquitetura-02.html#arq-060"><code>ARQ-060</code></a>); sem o endereço público, o contratante fica sem o WhatsApp</td>
+</tr>
+<tr>
+<td>📴 <strong>O contratante sem internet</strong></td>
+<td>A imagem precisa trazer tudo: o runtime, o Chromium e as fontes</td>
+<td>A imagem completa (<a href="arquitetura-02.html#arq-094"><code>ARQ-094</code></a>) vai como arquivo e se prova num Kubernetes sem saída antes do M10</td>
+</tr>
+<tr>
+<td>☸️ <strong>A Maind opera um Kubernetes</strong></td>
+<td>As atualizações de versão a cada poucos meses, a entrada, os certificados e os grupos de máquinas, num time pequeno; na VPS, o minikube divide a máquina com a v1.xx</td>
+<td>A escolha do dono (<a href="arquitetura-02.html#arq-093"><code>ARQ-093</code></a>); a atualização do cluster entra no calendário da operação e se ensaia no minikube antes 🔎</td>
+</tr>
+<tr>
+<td>🧭 <strong>A versão do Ubuntu muda</strong></td>
+<td>O provisionamento foi montado na 24.04, e o inventário lista o que conferir numa versão nova (§9)</td>
+<td>Fixar a versão do Ubuntu LTS por pacote e conferir a nova na homologação</td>
+</tr>
+</tbody>
+</table></div><p><strong>Verificações pendentes</strong> (nada disso foi rodado nesta rodada):</p>
+<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 13 de 09 · Infraestrutura e ambientes"><table class="table table_shortcode"><thead><tr>
+<th scope="col">Nº</th>
+<th scope="col">O que conferir</th>
+<th scope="col">Quem</th>
+<th scope="col">Antes de</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>V-01</strong></td>
+<td><strong>Herdada da rodada anterior.</strong> No arquivo de ambiente da PRD e no do HML, se alguma fonte do arquivo depende da regra &quot;sem organização declarada, aparece para todas&quot; (<code>horus@318db52b:apps/server/Horus.Core/Data/Connections/ConnectionCatalog.cs</code>, <code>VisivelParaSlug</code>). O inventário lista as chaves das organizações nas fontes da PRD, mas não prova que cada uma das oito as tem. Toda fonte precisa declarar as organizações antes de a regra mudar para &quot;de nenhuma&quot; (<a href="arquitetura-02.html#arq-034"><code>ARQ-034</code></a>)</td>
+<td>Quem opera os ambientes, com o dono</td>
+<td>M2</td>
+</tr>
+<tr>
+<td>V-05</td>
+<td>Se a licença do SQL Server Developer cobre as bases de demonstração numa produção real</td>
+<td>O dono, com o licenciamento da Microsoft</td>
+<td>A primeira produção real</td>
+</tr>
+<tr>
+<td>V-06</td>
+<td>Se o provedor da VPS permite manter o endereço de saída numa troca de máquina</td>
+<td>O dono</td>
+<td>A primeira troca de máquina</td>
+</tr>
+<tr>
+<td>V-07</td>
+<td>Se a VPS de hoje comporta a homologação da v2 e, depois, a v2.0, ao lado da PRD e do HML da v1.xx: a memória, a CPU e o disco de cada serviço com a homologação da v2 de pé, com a swap, contra o gatilho da troca de máquina (3.3); e, com o minikube, o peso dele e a swap, que o Kubernetes, por padrão, recusa no nó (<a href="arquitetura-02.html#arq-093"><code>ARQ-093</code></a>) 🔎</td>
+<td>O dono, com quem opera</td>
+<td>O M0, logo depois de a homologação da v2 subir</td>
+</tr>
+<tr>
+<td>V-08</td>
+<td>O domínio da segunda VPS</td>
+<td>O dono</td>
+<td>A v2.0 nela</td>
+</tr>
+</tbody>
+</table></div><p>(As verificações V-02 a V-04 são das integrações, no <a href="arquitetura-08.html">documento 08</a>.)</p>
+<p><strong>O que falta decidir:</strong></p>
+<ul>
+<li>🟡 Com o dono: <a href="arquitetura-02.html#arq-060"><code>ARQ-060</code></a> (o on-premises).</li>
+<li>Documento 10: a publicação sobre a imagem e o chart; a guarda &quot;passou pelo HML&quot; sobre a imagem; o contrato da cópia e a volta numa máquina nova; a janela da publicação da v2.0; a rotação dos segredos; o incidente.</li>
+<li>Documento 11: onde a observabilidade roda; a sonda de fora da máquina; a telemetria da homologação da v2 e a do contratante.</li>
+<li>Documento 12: o CI, os testes de arquitetura e de isolamento, a prova do pacote numa máquina sem saída.</li>
+<li>Documento 13: o custo das máquinas, da guarda das cópias e da licença das bases.</li>
+<li>A <code>P-016</code> (a ativação dos assentos no on-premises), com o dono, antes do M10.</li>
+</ul>
+</div>
+                            </div>
+                            <nav class="dx-vizinhas" aria-label="Páginas vizinhas"><a class="dx-anterior" href="arquitetura-08.html"><i class="arrow_left" aria-hidden="true"></i>08 · Integrações</a><a class="dx-proxima" href="arquitetura-10.html">10 · Publicação e operação<i class="arrow_right" aria-hidden="true"></i></a></nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="simple_footer">
+            <img class="leaf_right" src="assets/kbdoc/img/home_one/leaf_footter.png" alt="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p>Maind Horus · Horus v2 · documento interno · Revisado em 03/11/2026 · versão v2.0 em desenho, sem versão publicada</p>
+                    </div>
+                    <div class="col-lg-6 text-right">
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <a id="back-to-top" title="Voltar ao topo"></a>
+    <script src="assets/kbdoc/js/jquery-3.2.1.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/popper.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap-select.min.js"></script>
+    <script src="assets/kbdoc/js/parallaxie.js"></script>
+    <script src="assets/kbdoc/js/TweenMax.min.js"></script>
+    <script src="assets/kbdoc/js/anchor.js"></script>
+    <script src="assets/kbdoc/assets/wow/wow.min.js"></script>
+    <script src="assets/kbdoc/js/vendor/clipboard.min.js"></script>
+    <script src="assets/kbdoc/assets/prism/prism.js"></script>
+    <script src="assets/kbdoc/assets/niceselectpicker/jquery.nice-select.min.js"></script>
+    <script src="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="assets/kbdoc/assets/magnify-pop/jquery.magnific-popup.min.js"></script>
+    <script src="assets/kbdoc/assets/tooltipster/js/tooltipster.bundle.min.js"></script>
+    <script src="assets/kbdoc/assets/font-size/js/rv-jquery-fontsize-2.0.3.js"></script>
+    <script src="assets/kbdoc/js/onpage-menu.js"></script>
+    <script src="assets/kbdoc/js/main.js"></script>
+    <script src="assets/busca.js"></script>
+    <script src="assets/docx.js"></script>
+</body>
+</html>
