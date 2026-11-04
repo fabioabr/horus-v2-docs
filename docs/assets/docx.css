@@ -45,31 +45,82 @@
 /* A página de conteúdo (pagina.html): o Onepage do KbDoc, compacto. Os espaços valem como estão; as fontes,
    como no resto deste arquivo, saem a 75% na geração. */
 .onepage-doc .documentation_info [id] { scroll-margin-top: 90px; } /* o título não para atrás da barra fixa */
-.dx-pagina-doc .documentation_info [id] { scroll-margin-top: 67px; } /* a barra da página tem 47 px */
+/* A altura da barra fixa do topo, numa medida só: o conteúdo desce por ela, o menu de tópicos gruda abaixo dela e as
+   âncoras param abaixo dela. Eram 47 px escritos à mão em três regras, e a altura real da barra vinha do espaço em volta
+   dos itens do menu: ao tirar "Início" e "Documentos" (header_links: false) a barra passou a ter 40 px, e os 7 px que
+   sobraram viraram uma faixa branca entre a barra e a página, no tema escuro. Agora a barra tem a altura declarada
+   aqui. Abaixo de 992 px o menu vira o botão de abrir, que dá 54 px (min-height: o menu aberto cresce por cima). */
+.dx-pagina-doc { --dx-barra: 54px; }
+.dx-pagina-doc .menu_one { min-height: var(--dx-barra); }
+@media (min-width: 992px) {
+  .dx-pagina-doc { --dx-barra: 40px; }
+  .dx-pagina-doc .menu_one { height: var(--dx-barra); }
+}
+.dx-pagina-doc .documentation_info [id] { scroll-margin-top: calc(var(--dx-barra) + 20px); }
 .dx-pagina-doc .doc_documentation_area { padding-bottom: 30px; }
 .dx-pagina-doc .doc-container { padding-top: 18px; }
 /* O menu de tópicos fica fixo por CSS (sticky), e a página não tem margem lateral: o menu encosta à esquerda.
    O KbDoc o trocava por position:fixed ao rolar, com outra largura, outro topo e outro espaçamento: o menu saltava
-   e escapava da coluna. Aqui o estado é um só, rolando ou não. A barra fixa da página tem 47 px. */
+   e escapava da coluna. Aqui o estado é um só, rolando ou não. A altura da barra fixa é a --dx-barra. */
 /* overflow:hidden do .body_wrapper cria um contêiner de rolagem, e o sticky passa a valer só dentro dele (não gruda na
    janela); clip corta do mesmo jeito sem criá-lo. O topo, o corpo e o rodapé ocupam a largura toda: o KbDoc prende o topo e
    o corpo em 990 px entre 992 e 1199 px. */
 .dx-pagina-doc .body_wrapper { overflow: clip; }
 .dx-pagina-doc .menu_one .container-fluid, .dx-pagina-doc .onepage_doc_area .container-fluid { max-width: 100%; }
 @media (min-width: 992px) {
-  .dx-pagina-doc .doc_documentation_area > .container-fluid { padding-left: 0; padding-right: 0; }
+  /* Sem margem à esquerda (o menu encosta), e 30 px à direita (a margem negativa da linha e o espaço da coluna se
+     cancelam: vale o do contêiner) para a tabela e o texto recuarem da barra de rolagem da janela. */
+  .dx-pagina-doc .doc_documentation_area > .container-fluid { padding-left: 0; padding-right: 30px; }
   .dx-pagina-doc .doc-container > .doc-sidebar { align-self: stretch; } /* a coluna tem a altura da página: o sticky corre por ela */
   .dx-pagina-doc .doc_left_sidebarlist,
   .dx-pagina-doc .sticky_menu .doc_documentation_area.body_fixed .doc_left_sidebarlist {
-    position: sticky; top: 57px; width: auto; height: auto; max-height: calc(100vh - 67px);
-    overflow-y: auto; margin-right: 0; padding-top: 0;
+    position: sticky; top: calc(var(--dx-barra) + 10px); width: auto; height: auto; max-height: calc(100vh - var(--dx-barra) - 20px);
+    margin-right: 0; padding-top: 0;
+  }
+  /* O menu de tópicos como um painel que flutua: fundo, borda, cantos e sombra, um respiro de 12 px à esquerda e 10 px
+     acima e abaixo (o top do sticky e o max-height). O título fica parado, e só a lista rola, com a barra dela, fina, quando
+     passa da altura da janela. O KbDoc ligava um mCustomScrollbar na classe "scroll" (com altura máxima fixa de 450 px,
+     brigando com a rolagem do painel); a lista tem outra classe, e a rolagem é a nativa. */
+  .dx-pagina-doc .doc_left_sidebarlist,
+  .dx-pagina-doc .sticky_menu .doc_documentation_area.body_fixed .doc_left_sidebarlist {
+    display: flex; flex-direction: column; overflow: hidden; margin-left: 12px; padding: 8px;
+    background: #fff; border: 1px solid #e3e9ee; border-radius: 10px; box-shadow: 0 8px 28px rgba(20, 30, 50, .14);
+  }
+  .body_dark.dx-pagina-doc .doc_left_sidebarlist,
+  .body_dark.dx-pagina-doc .sticky_menu .doc_documentation_area.body_fixed .doc_left_sidebarlist {
+    background: #1a1c22; border-color: #2b2f3a; box-shadow: 0 10px 30px rgba(0, 0, 0, .6);
+  }
+  .dx-pagina-doc .doc_left_sidebarlist .nav_title { flex: none; }
+  .dx-pagina-doc .dx-menu-rolagem {
+    flex: 1 1 auto; min-height: 0; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain;
+    scrollbar-width: thin; scrollbar-color: rgba(128, 138, 150, .5) transparent;
   }
 }
-/* Entre 992 e 1199 px o KbDoc dá 24% à coluna do menu e 83% ao texto: passa de 100%, e o texto desce para baixo do menu. */
-@media (min-width: 992px) and (max-width: 1199px) {
-  .dx-pagina-doc .doc-container > .doc-sidebar { flex: 0 0 20%; max-width: 20%; }
-  .dx-pagina-doc .doc-container > .col-lg-10 { flex: 0 0 80%; max-width: 80%; }
+/* A largura do menu de tópicos: o divisor (docx.js) guarda a escolha em --dx-menu-largura, em px, na <html>; sem ela
+   vale a padrão (2 de 12 colunas; 20% entre 992 e 1199 px, onde o KbDoc dava 24% ao menu e 83% ao texto: passava de 100%, e
+   o texto descia para baixo do menu). O texto toma o que sobra, e as duas colunas somam sempre 100%. */
+@media (min-width: 992px) {
+  .dx-pagina-doc { --dx-menu-padrao: 16.6667%; }
+  .dx-pagina-doc .doc-container > .doc-sidebar { flex: 0 0 var(--dx-menu-largura, var(--dx-menu-padrao)); max-width: var(--dx-menu-largura, var(--dx-menu-padrao)); }
+  .dx-pagina-doc .doc-container > .col-lg-10 { flex: 1 1 0; min-width: 0; max-width: none; }
 }
+@media (min-width: 992px) and (max-width: 1199px) {
+  .dx-pagina-doc { --dx-menu-padrao: 20%; }
+}
+/* O divisor entre o menu e o conteúdo, dentro da coluna do menu (docx.js): arraste, ou as setas ← →; duplo clique volta
+   à largura padrão. A linha tem a altura da página, e a alça acompanha o meio da janela. */
+.dx-divisor { display: none; }
+@media (min-width: 992px) {
+  .dx-pagina-doc .dx-divisor { display: block; position: absolute; top: 0; bottom: 0; right: -6px; width: 12px; cursor: col-resize; z-index: 5; touch-action: none; outline: none; }
+  .dx-pagina-doc .dx-divisor::before { content: ""; position: absolute; top: 0; bottom: 0; left: 5px; width: 2px; background: rgba(128, 138, 150, .22); transition: background .15s; }
+  .dx-pagina-doc .dx-divisor__pega { position: sticky; top: calc(50vh - 20px); display: block; width: 6px; height: 40px; margin-left: 3px; border-radius: 3px; background: rgba(128, 138, 150, .55); transition: background .15s; }
+  .dx-pagina-doc .dx-divisor:hover::before, .dx-pagina-doc .dx-divisor:focus-visible::before, .dx-pagina-doc .dx-divisor.arrastando::before,
+  .dx-pagina-doc .dx-divisor:hover .dx-divisor__pega, .dx-pagina-doc .dx-divisor:focus-visible .dx-divisor__pega, .dx-pagina-doc .dx-divisor.arrastando .dx-divisor__pega { background: #10b3d6; }
+}
+html.dx-arrastando, html.dx-arrastando * { cursor: col-resize !important; user-select: none !important; }
+/* O botão de voltar ao topo: 32 px, e não os 50 do KbDoc, para não cobrir o texto nem a tabela. */
+#back-to-top { width: 32px; height: 32px; bottom: 20px; right: 20px; }
+#back-to-top::after { font-size: 1.3em; line-height: 32px; }
 /* O menu de tópicos, compacto: os espaços 30% menores que os de antes; as fontes do menu não mudam. */
 .dx-pagina-doc .doc_left_sidebarlist .nav_title { padding: 6px 10px; margin-bottom: 3px; }
 .dx-pagina-doc.onepage-doc .nav-sidebar .nav-item { margin-top: 2px; }
@@ -142,12 +193,14 @@
 @media (min-width: 992px) {
   .dx-portal .menu > .nav-item, .dx-pagina-doc .menu > .nav-item,
   .dx-portal .navbar_fixed.menu_one .menu > .nav-item, .dx-pagina-doc .navbar_fixed.menu_one .menu > .nav-item { padding-top: 14px; padding-bottom: 14px; }
+  /* Na página, os itens cabem na barra de --dx-barra (a linha do item tem 19 px), com ou sem o "Início" e o "Documentos". */
+  .dx-pagina-doc .menu > .nav-item, .dx-pagina-doc .navbar_fixed.menu_one .menu > .nav-item { padding-top: calc((var(--dx-barra) - 19px) / 2); padding-bottom: calc((var(--dx-barra) - 19px) / 2); }
 }
 .dx-portal .menu_one .navbar-brand img, .dx-pagina-doc .menu_one .navbar-brand img { max-height: 30px; width: auto; }
 .dx-portal .menu_one .nav_btn { padding: 3px 18px; margin-left: 50px; }
 .dx-pagina-doc .menu_one .menu_social { margin-left: 40px; }
 .dx-pagina-doc .menu_one .search_form .form-control { height: 32px; }
-.dx-pagina-doc .sticky_menu .menu_one + section { margin-top: 47px; } /* o KbDoc deixa 100 px para o topo de 94 */
+.dx-pagina-doc .sticky_menu .menu_one + section { margin-top: var(--dx-barra); } /* o KbDoc deixa 100 px para o topo de 94 */
 
 /* As ferramentas da página, no topo: editar e sistema (se declarados), A-/A/A+, imprimir e o tema. O seletor de
    tema leva as regras do .doc_rightsidebar do KbDoc, copiadas para cá. */
@@ -232,6 +285,6 @@
 }
 
 @media print {
-  .menu_one, .doc_left_sidebarlist, .doc_rightsidebar, .simple_footer, #back-to-top, .dx-search-results { display: none !important; }
+  .menu_one, .doc_left_sidebarlist, .dx-divisor, .doc_rightsidebar, .simple_footer, #back-to-top, .dx-search-results { display: none !important; }
   .doc_documentation_area .col-lg-8 { flex: 0 0 100%; max-width: 100%; }
 }

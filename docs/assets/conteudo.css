@@ -486,6 +486,7 @@ body.dx-pagina-doc .documentation_info{line-height: 15.6px;font-size: 9.6px}
 .dx-pagina-doc .dx-content h4:is(.documentation_info *){font-size: 10.8px;line-height: 12.96px}
 .dx-pagina-doc .dx-content h5:is(.documentation_info *),.dx-pagina-doc .dx-content h6:is(.documentation_info *){font-size: 9.6px;line-height: 14.4px}
 .dx-pagina-doc .dx-content figcaption:is(.documentation_info *){font-size: 8.4px}
+.dx-pagina-doc #back-to-top:is(.documentation_info *)::after{font-size: 1.3em;line-height: 32px}
 .dx-pagina-doc.onepage-doc.dx-pagina-doc .nav-sidebar .nav-item .icon:is(.documentation_info *){line-height: 23px}
 .dx-pagina-doc.dx-pagina-doc .nav-sidebar .nav-item .dropdown_nav li a:is(.documentation_info *){line-height: 15.198px}
 .dx-pagina-doc .dx-trilha .breadcrumb:is(.documentation_info *){font-size: 8.4px}

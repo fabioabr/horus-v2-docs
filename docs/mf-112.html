@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="assets/docx.css">
     <link rel="stylesheet" href="assets/conteudo.css">
     <link rel="stylesheet" href="assets/indice.css">
+    <script>try { var l = parseInt(localStorage.getItem('docx-menu-largura'), 10); if (l >= 200 && l <= 640) document.documentElement.style.setProperty('--dx-menu-largura', l + 'px'); } catch (e) { /* Sem armazenamento, vale a largura padrão. */ }</script>
     <title>MF-112 · Boards e Relatórios — Horus v2</title>
 </head>
 <body class="doc full-width-doc sticky-nav-doc onepage-doc dx-pagina-doc" data-spy="scroll" data-target=".navbar" data-offset="-120">
@@ -83,7 +84,7 @@
                     <div class="col-lg-2 doc_mobile_menu doc-sidebar display_none">
                         <aside class="doc_left_sidebarlist" aria-label="Tópicos desta página">
                             <h3 class="nav_title">Tópicos</h3>
-                            <div class="scroll">
+                            <div class="dx-menu-rolagem">
                                 <ul class="list-unstyled nav-sidebar doc-nav">
 <li class="nav-item active"><a href="#mf-112-identificacao" class="nav-link">Identificação</a></li>
 <li class="nav-item"><a href="#mf-112-o-que-e" class="nav-link">O que é</a></li>
@@ -98,6 +99,7 @@
                                 </ul>
                             </div>
                         </aside>
+                        <div class="dx-divisor" role="separator" aria-orientation="vertical" aria-label="Ajustar a largura do menu" tabindex="0" title="Arraste para ajustar a largura do menu (duplo clique volta ao padrão)"><span class="dx-divisor__pega"></span></div>
                     </div>
                     <div class="col-lg-10 col-md-12">
                         <div class="documentation_info dx-pagina" id="post">

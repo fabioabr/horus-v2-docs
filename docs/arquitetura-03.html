@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="assets/docx.css">
     <link rel="stylesheet" href="assets/conteudo.css">
     <link rel="stylesheet" href="assets/indice.css">
+    <script>try { var l = parseInt(localStorage.getItem('docx-menu-largura'), 10); if (l >= 200 && l <= 640) document.documentElement.style.setProperty('--dx-menu-largura', l + 'px'); } catch (e) { /* Sem armazenamento, vale a largura padrão. */ }</script>
     <title>03 · Metas de qualidade — Horus v2</title>
 </head>
 <body class="doc full-width-doc sticky-nav-doc onepage-doc dx-pagina-doc" data-spy="scroll" data-target=".navbar" data-offset="-120">
@@ -83,7 +84,7 @@
                     <div class="col-lg-2 doc_mobile_menu doc-sidebar display_none">
                         <aside class="doc_left_sidebarlist" aria-label="Tópicos desta página">
                             <h3 class="nav_title">Tópicos</h3>
-                            <div class="scroll">
+                            <div class="dx-menu-rolagem">
                                 <ul class="list-unstyled nav-sidebar doc-nav">
 <li class="nav-item active"><a href="#arquitetura-03-1-o-que-o-tema-precisa-garantir" class="nav-link">1. O que o tema precisa garantir</a></li>
 <li class="nav-item"><a href="#arquitetura-03-2-as-decisoes" class="nav-link">2. As decisões</a><ul class="list-unstyled dropdown_nav"><li class="nav-item"><a href="#arquitetura-03-21-disponibilidade-arq-014-" class="nav-link">2.1 Disponibilidade (ARQ-014 ✅)</a></li><li class="nav-item"><a href="#arquitetura-03-22-recuperacao-arq-086--arq-087" class="nav-link">2.2 Recuperação (ARQ-086 ✅, ARQ-087)</a></li><li class="nav-item"><a href="#arquitetura-03-23-volume-e-crescimento-arq-016-" class="nav-link">2.3 Volume e crescimento (ARQ-016 ✅)</a></li><li class="nav-item"><a href="#arquitetura-03-24-rapidez-arq-013-" class="nav-link">2.4 Rapidez (ARQ-013 🟢)</a></li><li class="nav-item"><a href="#arquitetura-03-25-custo-por-organizacao-arq-017-" class="nav-link">2.5 Custo por organização (ARQ-017 ✅)</a></li></ul><span class="icon"><i class="icon_plus" aria-hidden="true"></i><i class="icon_minus-06" aria-hidden="true"></i></span></li>
@@ -93,6 +94,7 @@
                                 </ul>
                             </div>
                         </aside>
+                        <div class="dx-divisor" role="separator" aria-orientation="vertical" aria-label="Ajustar a largura do menu" tabindex="0" title="Arraste para ajustar a largura do menu (duplo clique volta ao padrão)"><span class="dx-divisor__pega"></span></div>
                     </div>
                     <div class="col-lg-10 col-md-12">
                         <div class="documentation_info dx-pagina" id="post">
