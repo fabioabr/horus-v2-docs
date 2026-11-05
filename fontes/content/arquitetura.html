@@ -2,7 +2,7 @@
 <p>O que se constrói, e por quê, está em <a href="#produto-temas"><code>../produto/</code></a>, a começar pelo <a href="#produto-mapa">mapa de objetivos e funcionalidades</a>. Esta pasta trata do <strong>como</strong>, no nível das decisões. As atividades (épicos, histórias e tasks) não ficam aqui: vêm depois, em <a href="#backlog-atividades"><code>../backlog/</code></a>.</p>
 <p><strong>Restrição do dono:</strong> a v2 mantém a stack da v1.xx (<a href="#d-143"><code>D-143</code></a>). As decisões escolhem como usar a stack, nunca trocam uma peça dela.</p>
 <p>Última atualização: 02/11/2026 (sexta rodada: os documentos 12, 13 e 14; os catorze documentos da lista estão escritos).</p>
-<p><strong>Em números:</strong> 96 decisões no <a href="#arquitetura-02">registro</a> (30 ✅, 54 🟢, 6 🟡 e 6 ⚪); as 6 🟡 esperam o dono na <a href="#arquitetura-01">fila por urgência</a> (seção 8.1); 30 itens a devolver ao PO (A-01 a A-30) e 19 verificações pendentes (V-01 a V-19), consolidados na <a href="#arquitetura-14">conferência do produto</a>.</p>
+<p><strong>Em números:</strong> 97 decisões no <a href="#arquitetura-02">registro</a> (31 ✅, 54 🟢, 6 🟡 e 6 ⚪); as 6 🟡 esperam o dono na <a href="#arquitetura-01">fila por urgência</a> (seção 8.1); 30 itens a devolver ao PO (A-01 a A-30) e 19 verificações pendentes (V-01 a V-19), consolidados na <a href="#arquitetura-14">conferência do produto</a>.</p>
 <h3 id="arquitetura-os-documentos">Os documentos</h3>
 <p>A lista foi aprovada pelo dono em 02/11/2026.</p>
 <div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de A pasta da arquitetura"><table class="table table_shortcode"><thead><tr>
@@ -25,7 +25,7 @@
 <td>Registro de decisões (<code>ARQ-nnn</code>)</td>
 <td>Cada decisão de tecnologia, quem decidiu e por quê</td>
 <td>Antes de começar, e vivo</td>
-<td>🟢 Vivo · <a href="#arq-001"><code>ARQ-001</code></a> a <a href="#arq-096"><code>ARQ-096</code></a> (30 ✅, 54 🟢, 6 🟡, 6 ⚪) · notas datadas: três de 02/11/2026 (na <a href="#arq-049"><code>ARQ-049</code></a>, na <a href="#arq-051"><code>ARQ-051</code></a> e na <a href="#arq-073"><code>ARQ-073</code></a>) e cento e vinte e duas de 03/11/2026, em sessenta e duas decisões, pelas escolhas do dono no dia</td>
+<td>🟢 Vivo · <a href="#arq-001"><code>ARQ-001</code></a> a <code>ARQ-097</code> (31 ✅, 54 🟢, 6 🟡, 6 ⚪) · notas datadas: três de 02/11/2026 (na <a href="#arq-049"><code>ARQ-049</code></a>, na <a href="#arq-051"><code>ARQ-051</code></a> e na <a href="#arq-073"><code>ARQ-073</code></a>) e cento e vinte e duas de 03/11/2026, em sessenta e duas decisões, pelas escolhas do dono no dia</td>
 </tr>
 <tr>
 <td>03</td>
@@ -114,8 +114,13 @@
 </tbody>
 </table></div><h3 id="arquitetura-o-modelo-de-dados-mer">O modelo de dados (MER)</h3>
 <p>A arquitetura para no componente (documento 06, <a href="#arquitetura-06">Dados</a>); o <strong>modelo de dados</strong> é o passo seguinte e mostra, tabela a tabela, o que cada componente guarda. O primeiro é o da <strong>MF-101</strong>, a administração da instância, que vive no banco mestre (<a href="#arq-010"><code>ARQ-010</code></a>, <a href="#arq-088"><code>ARQ-088</code></a>).</p>
+<p>O modelo está na <strong>terceira versão</strong> (05/11/2026): o banco transacional guarda <strong>só o estado de hoje</strong>, a <strong>história</strong> mora num <strong>banco de log</strong> no mesmo Postgres (uma tabela <code>log_&lt;entidade&gt;</code> tipada por entidade, só de inclusão, alimentada pela caixa de saída) e os valores fixos viram <strong>tabelas de dimensão</strong>. O estado de qualquer entidade em qualquer data se reconstrói do log, e o próprio Horus o consulta (<code>D-158</code>, <code>ARQ-097</code>). O MER é um conjunto de cinco diagramas:</p>
 <ul>
-<li><a href="https://fabioabr.github.io/horus-v2-docs/archify/mer-mf-101.html">O MER da MF-101</a>: onze tabelas, com todas as colunas, as chaves e a opcionalidade de cada ponta, em cinco visões (marca e logos, administração e pessoas, assentos, uso e custo, aviso da instância). Duas delas, <code>pessoa</code> e <code>vinculo_pessoa_organizacao</code>, são da MF-102 e entram só para fechar as chaves.</li>
-<li><a href="https://fabioabr.github.io/horus-v2-docs/archify/mf-101-modelo-de-dados.html">A documentação da MF-101</a>: onde cada dado mora, as entidades, os assentos, o ciclo de uma organização, o uso e o custo, as regras de integridade, o que muda no backend e as dúvidas respondidas pelo dono em 05/11/2026.</li>
+<li><a href="https://fabioabr.github.io/horus-v2-docs/archify/mer-mf-101.html">MER 1 · A instância, as pessoas e as organizações</a>: dez tabelas do banco mestre, só com o estado de hoje. Duas delas, <code>pessoa</code> e <code>vinculo_pessoa_organizacao</code>, são da MF-102 e entram só para fechar as chaves.</li>
+<li><a href="https://fabioabr.github.io/horus-v2-docs/archify/mer-mf-101-assentos.html">MER 2 · O assento no banco da organização</a>: seis tabelas. Cada assento é um registro, com tipo, situação e ocupação em dimensões, o membro que o ocupa e o convite que o reserva.</li>
+<li><a href="https://fabioabr.github.io/horus-v2-docs/archify/mer-mf-101-concessao.html">MER 3 · A concessão de assentos</a>: cinco tabelas. O pedido de liberar ou reduzir assentos, com ciclo de vida, que só existe enquanto está pendente.</li>
+<li><a href="https://fabioabr.github.io/horus-v2-docs/archify/mer-mf-101-uso.html">MER 4 · Uso e custo</a>: quatro tabelas, só números; o aviso de custo é um evento no log.</li>
+<li><a href="https://fabioabr.github.io/horus-v2-docs/archify/mer-mf-101-log.html">MER 5 · O banco de log</a>: doze tabelas. Sete tabelas <code>log_*</code>, as três dimensões dos eventos, a dimensão de pessoas e a visão <code>log_geral</code>.</li>
+<li><a href="https://fabioabr.github.io/horus-v2-docs/archify/mf-101-modelo-de-dados.html">A documentação da MF-101</a>: ⚠️ ainda descreve a <strong>primeira</strong> versão do modelo (assento como número); é refeita depois que o dono responder as duas pendências que restam.</li>
 </ul>
-<p><strong>Situação:</strong> 🟢 modelo com as decisões do dono de 05/11/2026 (<code>D-146</code> a <code>D-152</code>); restam duas perguntas pequenas (Q13, quando o aviso sai da faixa, e Q14, o formato do relatório da organização) e as propostas <code>D-153</code> a <code>D-156</code>. Os desenhos saem do archify, e as fontes estão em <code>fontes/archify/</code>.</p>
+<p><strong>Situação:</strong> 🟢 modelo refeito em 05/11/2026 sobre as decisões do dono (<code>D-146</code> a <code>D-158</code>) e a <code>ARQ-097</code>, que registra o banco de log, a retenção (o log de uma organização fica enquanto ela existir) e a fonte do Horus. Restam duas pendências, que não travam o modelo: o que o aviso oferece na faixa (<code>P-030</code>) e o formato do relatório da organização (<code>P-031</code>). Os desenhos saem do archify, e as fontes estão em <code>fontes/archify/</code>.</p>

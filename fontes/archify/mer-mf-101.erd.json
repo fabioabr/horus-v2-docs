@@ -2,8 +2,8 @@
   "schema_version": 1,
   "diagram_type": "erd",
   "meta": {
-    "title": "MER da MF-101 — Administração da instância",
-    "subtitle": "Banco mestre · modelo lógico com as decisões do dono de 05/11/2026",
+    "title": "MER da MF-101 — A instância, as pessoas e as organizações",
+    "subtitle": "Banco mestre · só o estado de hoje (1 de 5) · 05/11/2026",
     "locale": "pt-BR",
     "translations": {
       "page.title": "Diagrama {title}",
@@ -493,7 +493,7 @@
       "legend.erd.many": "Muitos",
       "legend.erd.optional": "Opcional"
     },
-    "output": ".archify/erd-mf-101-mer-20261105-092649/mer-mf-101.html",
+    "output": "docs/archify/mer-mf-101.html",
     "quality_profile": "standard",
     "views": [
       {
@@ -504,47 +504,37 @@
           "imagem_de_marca",
           "organizacao"
         ],
-        "note": "A imagem pertence à instância ou a uma organização, nunca às duas; os bytes ficam fora das linhas listadas."
+        "note": "A imagem é da instância ou de uma organização, nunca das duas. A troca vira um fato no log, sem os bytes."
+      },
+      {
+        "id": "organizacoes",
+        "label": "A organização",
+        "focus": [
+          "organizacao",
+          "situacao_da_organizacao",
+          "banco_da_organizacao"
+        ],
+        "note": "A organização guarda só a situação de hoje. Cada mudança de situação é uma linha no log."
+      },
+      {
+        "id": "responsavel",
+        "label": "O responsável",
+        "focus": [
+          "organizacao",
+          "responsavel_indicado",
+          "pessoa"
+        ],
+        "note": "Nome e e-mail do indicado ficam fora do log e somem quando ele aceita o convite."
       },
       {
         "id": "administracao",
-        "label": "Administração e pessoas",
+        "label": "Quem administra",
         "focus": [
           "pessoa",
           "administrador_da_instancia",
-          "vinculo_pessoa_organizacao",
-          "organizacao"
+          "instancia"
         ],
-        "note": "Administrar é um fato da instância sobre uma pessoa; o vínculo com a organização é da MF-102."
-      },
-      {
-        "id": "assentos",
-        "label": "Assentos",
-        "focus": [
-          "organizacao",
-          "assento_liberado",
-          "ocupacao_de_assento"
-        ],
-        "note": "Liberado vem do mestre; ocupado e reservado são cópia da organização. Livres = liberados − ocupados − reservados."
-      },
-      {
-        "id": "uso",
-        "label": "Uso e custo",
-        "focus": [
-          "organizacao",
-          "uso_diario_da_organizacao",
-          "limiar_de_custo"
-        ],
-        "note": "Só números, nunca conteúdo. O limiar avisa a Maind e não corta nada."
-      },
-      {
-        "id": "avisos",
-        "label": "Aviso da instância",
-        "focus": [
-          "aviso_da_instancia",
-          "pessoa"
-        ],
-        "note": "O administrador escreve o aviso e ele aparece na faixa de todas as pessoas (D-151). O aviso do owner da organização é da MF-120."
+        "note": "A tabela diz quem é administrador hoje. Quem foi, desde quando e por quem está no log."
       }
     ]
   },
@@ -557,15 +547,15 @@
     {
       "id": "instancia",
       "label": "instancia",
-      "sublabel": "linha única · identidade e parâmetros",
-      "tag": "Marca da instância",
+      "sublabel": "linha única · só o estado de hoje",
+      "tag": "Instância",
       "row": 0,
       "col": 0,
       "width": 300,
       "attributes": [
         {
           "name": "instancia_id",
-          "type": "smallint",
+          "type": "uuid",
           "key": "pk"
         },
         {
@@ -585,28 +575,18 @@
           "type": "smallint"
         },
         {
-          "name": "criada_em",
-          "type": "timestamptz"
-        },
-        {
-          "name": "atualizada_em",
-          "type": "timestamptz"
-        },
-        {
-          "name": "atualizada_por",
-          "type": "uuid",
-          "key": "fk",
-          "references": "pessoa.pessoa_id"
+          "name": "versao",
+          "type": "integer"
         }
       ]
     },
     {
       "id": "imagem_de_marca",
       "label": "imagem_de_marca",
-      "sublabel": "logos · um dono por vez",
-      "tag": "Marca da instância",
-      "row": 0,
-      "col": 1,
+      "sublabel": "logos · um dono por vez · sem log (a troca é um fato)",
+      "tag": "Instância",
+      "row": 1,
+      "col": 0,
       "width": 300,
       "attributes": [
         {
@@ -616,7 +596,7 @@
         },
         {
           "name": "instancia_id",
-          "type": "smallint",
+          "type": "uuid",
           "key": "fk",
           "references": "instancia.instancia_id"
         },
@@ -640,127 +620,78 @@
         },
         {
           "name": "versao",
-          "type": "varchar(32)"
-        },
-        {
-          "name": "atualizada_em",
-          "type": "timestamptz"
+          "type": "integer"
         }
       ]
     },
     {
-      "id": "uso_diario_da_organizacao",
-      "label": "uso_diario_da_organizacao",
-      "sublabel": "cópia agregada · só números",
-      "tag": "Uso e custo",
-      "row": 0,
-      "col": 2,
-      "width": 300,
-      "attributes": [
-        {
-          "name": "organizacao_id",
-          "type": "uuid",
-          "key": [
-            "pk",
-            "fk"
-          ],
-          "references": "organizacao.organizacao_id"
-        },
-        {
-          "name": "dia",
-          "type": "date",
-          "key": "pk"
-        },
-        {
-          "name": "medida",
-          "type": "medida_de_uso",
-          "key": "pk"
-        },
-        {
-          "name": "quantidade",
-          "type": "numeric"
-        },
-        {
-          "name": "custo_usd",
-          "type": "numeric(14,6)"
-        },
-        {
-          "name": "atualizado_em",
-          "type": "timestamptz"
-        }
-      ]
-    },
-    {
-      "id": "limiar_de_custo",
-      "label": "limiar_de_custo",
-      "sublabel": "organizacao_id nulo = padrão da instância",
-      "tag": "Uso e custo",
-      "row": 0,
-      "col": 3,
-      "width": 320,
-      "attributes": [
-        {
-          "name": "limiar_id",
-          "type": "uuid",
-          "key": "pk"
-        },
-        {
-          "name": "organizacao_id",
-          "type": "uuid",
-          "key": [
-            "fk",
-            "uk"
-          ],
-          "references": "organizacao.organizacao_id"
-        },
-        {
-          "name": "mes_por_assento_usd",
-          "type": "numeric"
-        },
-        {
-          "name": "semana_fator",
-          "type": "numeric"
-        },
-        {
-          "name": "semana_piso_usd",
-          "type": "numeric"
-        },
-        {
-          "name": "execucao_de_agente_usd",
-          "type": "numeric"
-        },
-        {
-          "name": "atualizado_em",
-          "type": "timestamptz"
-        },
-        {
-          "name": "atualizado_por",
-          "type": "uuid",
-          "key": "fk",
-          "references": "pessoa.pessoa_id"
-        }
-      ]
-    },
-    {
-      "id": "pessoa",
-      "label": "pessoa",
-      "sublabel": "MF-102 · só a referência",
-      "tag": "Pessoas e administração",
-      "row": 1,
+      "id": "aviso_da_instancia",
+      "label": "aviso_da_instancia",
+      "sublabel": "texto do administrador · aparece na faixa",
+      "tag": "Instância",
+      "row": 2,
       "col": 0,
       "width": 300,
       "attributes": [
         {
-          "name": "pessoa_id",
+          "name": "aviso_id",
           "type": "uuid",
           "key": "pk"
+        },
+        {
+          "name": "mensagem",
+          "type": "varchar(300)"
+        },
+        {
+          "name": "referente_a",
+          "type": "timestamptz"
+        },
+        {
+          "name": "exibir_de",
+          "type": "timestamptz"
+        },
+        {
+          "name": "exibir_ate",
+          "type": "timestamptz"
+        },
+        {
+          "name": "versao",
+          "type": "integer"
+        }
+      ]
+    },
+    {
+      "id": "situacao_da_organizacao",
+      "label": "situacao_da_organizacao",
+      "sublabel": "dimensão · em configuração, ativa, inativa",
+      "tag": "Organizações",
+      "row": 0,
+      "col": 1,
+      "width": 300,
+      "attributes": [
+        {
+          "name": "codigo",
+          "type": "varchar(40)",
+          "key": "pk"
+        },
+        {
+          "name": "nome",
+          "type": "varchar(60)"
+        },
+        {
+          "name": "descricao",
+          "type": "varchar(200)"
+        },
+        {
+          "name": "ordem",
+          "type": "smallint"
         }
       ]
     },
     {
       "id": "organizacao",
       "label": "organizacao",
-      "sublabel": "o mapa no mestre · um banco por organização",
+      "sublabel": "o estado de hoje · um banco por organização",
       "tag": "Organizações",
       "row": 1,
       "col": 1,
@@ -786,17 +717,9 @@
         },
         {
           "name": "situacao",
-          "type": "situacao_da_org"
-        },
-        {
-          "name": "situacao_alterada_em",
-          "type": "timestamptz"
-        },
-        {
-          "name": "situacao_alterada_por",
-          "type": "uuid",
+          "type": "varchar(40)",
           "key": "fk",
-          "references": "pessoa.pessoa_id"
+          "references": "situacao_da_organizacao.codigo"
         },
         {
           "name": "responsavel_id",
@@ -805,42 +728,72 @@
           "references": "pessoa.pessoa_id"
         },
         {
-          "name": "responsavel_nome",
+          "name": "versao",
+          "type": "integer"
+        }
+      ]
+    },
+    {
+      "id": "responsavel_indicado",
+      "label": "responsavel_indicado",
+      "sublabel": "dado pessoal transitório · sem log · some ao aceitar",
+      "tag": "Organizações",
+      "row": 2,
+      "col": 1,
+      "width": 300,
+      "attributes": [
+        {
+          "name": "organizacao_id",
+          "type": "uuid",
+          "key": [
+            "pk",
+            "fk"
+          ],
+          "references": "organizacao.organizacao_id"
+        },
+        {
+          "name": "nome",
           "type": "varchar(100)"
         },
         {
-          "name": "responsavel_email",
+          "name": "email",
           "type": "varchar(254)"
-        },
+        }
+      ]
+    },
+    {
+      "id": "banco_da_organizacao",
+      "label": "banco_da_organizacao",
+      "sublabel": "o mapa do banco dela · sem log (tem segredo)",
+      "tag": "Organizações",
+      "row": 3,
+      "col": 1,
+      "width": 300,
+      "attributes": [
         {
-          "name": "criada_em",
-          "type": "timestamptz"
-        },
-        {
-          "name": "criada_por",
+          "name": "organizacao_id",
           "type": "uuid",
-          "key": "fk",
-          "references": "pessoa.pessoa_id"
+          "key": [
+            "pk",
+            "fk"
+          ],
+          "references": "organizacao.organizacao_id"
         },
         {
-          "name": "atualizada_em",
-          "type": "timestamptz"
-        },
-        {
-          "name": "banco_identificador",
+          "name": "identificador",
           "type": "text",
           "key": "uk"
         },
         {
-          "name": "banco_endereco",
+          "name": "endereco",
           "type": "text"
         },
         {
-          "name": "banco_login_cifrado",
+          "name": "login_cifrado",
           "type": "text"
         },
         {
-          "name": "banco_situacao",
+          "name": "situacao",
           "type": "situacao_do_banco"
         },
         {
@@ -850,51 +803,12 @@
       ]
     },
     {
-      "id": "assento_liberado",
-      "label": "assento_liberado",
-      "sublabel": "o que a Maind liberou · sem validade",
-      "tag": "Assentos",
-      "row": 1,
-      "col": 2,
-      "width": 300,
-      "attributes": [
-        {
-          "name": "organizacao_id",
-          "type": "uuid",
-          "key": [
-            "pk",
-            "fk"
-          ],
-          "references": "organizacao.organizacao_id"
-        },
-        {
-          "name": "tipo_de_assento",
-          "type": "tipo_de_assento",
-          "key": "pk"
-        },
-        {
-          "name": "quantidade",
-          "type": "integer"
-        },
-        {
-          "name": "atualizado_em",
-          "type": "timestamptz"
-        },
-        {
-          "name": "atualizado_por",
-          "type": "uuid",
-          "key": "fk",
-          "references": "pessoa.pessoa_id"
-        }
-      ]
-    },
-    {
       "id": "administrador_da_instancia",
       "label": "administrador_da_instancia",
-      "sublabel": "um fato da instância sobre uma pessoa",
+      "sublabel": "quem é administrador hoje",
       "tag": "Pessoas e administração",
-      "row": 2,
-      "col": 0,
+      "row": 0,
+      "col": 2,
       "width": 300,
       "attributes": [
         {
@@ -907,14 +821,24 @@
           "references": "pessoa.pessoa_id"
         },
         {
-          "name": "concedido_em",
-          "type": "timestamptz"
-        },
+          "name": "versao",
+          "type": "integer"
+        }
+      ]
+    },
+    {
+      "id": "pessoa",
+      "label": "pessoa",
+      "sublabel": "MF-102 · só a referência",
+      "tag": "Pessoas e administração",
+      "row": 1,
+      "col": 2,
+      "width": 300,
+      "attributes": [
         {
-          "name": "concedido_por",
+          "name": "pessoa_id",
           "type": "uuid",
-          "key": "fk",
-          "references": "pessoa.pessoa_id"
+          "key": "pk"
         }
       ]
     },
@@ -922,9 +846,9 @@
       "id": "vinculo_pessoa_organizacao",
       "label": "vinculo_pessoa_organizacao",
       "sublabel": "MF-102 · no mestre só para existir",
-      "tag": "Organizações",
+      "tag": "Pessoas e administração",
       "row": 2,
-      "col": 1,
+      "col": 2,
       "width": 300,
       "attributes": [
         {
@@ -944,89 +868,6 @@
             "fk"
           ],
           "references": "organizacao.organizacao_id"
-        }
-      ]
-    },
-    {
-      "id": "ocupacao_de_assento",
-      "label": "ocupacao_de_assento",
-      "sublabel": "cópia derivada · a verdade está na organização",
-      "tag": "Assentos",
-      "row": 2,
-      "col": 2,
-      "width": 300,
-      "attributes": [
-        {
-          "name": "organizacao_id",
-          "type": "uuid",
-          "key": [
-            "pk",
-            "fk"
-          ],
-          "references": "organizacao.organizacao_id"
-        },
-        {
-          "name": "tipo_de_assento",
-          "type": "tipo_de_assento",
-          "key": "pk"
-        },
-        {
-          "name": "ocupados",
-          "type": "integer"
-        },
-        {
-          "name": "reservados",
-          "type": "integer"
-        },
-        {
-          "name": "lido_em",
-          "type": "timestamptz"
-        }
-      ]
-    },
-    {
-      "id": "aviso_da_instancia",
-      "label": "aviso_da_instancia",
-      "sublabel": "texto do administrador · aparece na faixa",
-      "tag": "Avisos da instância",
-      "row": 1,
-      "col": 3,
-      "width": 300,
-      "attributes": [
-        {
-          "name": "aviso_id",
-          "type": "uuid",
-          "key": "pk"
-        },
-        {
-          "name": "mensagem",
-          "type": "varchar(300)"
-        },
-        {
-          "name": "ocorre_em",
-          "type": "timestamptz"
-        },
-        {
-          "name": "exibir_de",
-          "type": "timestamptz"
-        },
-        {
-          "name": "exibir_ate",
-          "type": "timestamptz"
-        },
-        {
-          "name": "criado_por",
-          "type": "uuid",
-          "key": "fk",
-          "references": "pessoa.pessoa_id"
-        },
-        {
-          "name": "criado_em",
-          "type": "timestamptz"
-        },
-        {
-          "name": "atualizado_em",
-          "type": "timestamptz"
         }
       ]
     }
@@ -1054,18 +895,17 @@
       "fromOptional": true,
       "toOptional": true,
       "identifying": false,
-      "variant": "dashed",
-      "labelDx": 90,
-      "labelDy": 24
+      "variant": "dashed"
     },
     {
-      "id": "administrador_pessoa",
-      "from": "administrador_da_instancia",
-      "to": "pessoa",
-      "fromCardinality": "one",
+      "id": "organizacao_situacao",
+      "from": "organizacao",
+      "to": "situacao_da_organizacao",
+      "fromCardinality": "many",
       "toCardinality": "one",
-      "label": "é administradora",
-      "fromOptional": true
+      "label": "situação",
+      "identifying": false,
+      "variant": "dashed"
     },
     {
       "id": "organizacao_responsavel",
@@ -1077,6 +917,32 @@
       "toOptional": true,
       "identifying": false,
       "variant": "dashed"
+    },
+    {
+      "id": "indicado_organizacao",
+      "from": "responsavel_indicado",
+      "to": "organizacao",
+      "fromCardinality": "one",
+      "toCardinality": "one",
+      "label": "enquanto não aceita",
+      "fromOptional": true
+    },
+    {
+      "id": "banco_organizacao",
+      "from": "banco_da_organizacao",
+      "to": "organizacao",
+      "fromCardinality": "one",
+      "toCardinality": "one",
+      "label": "o banco dela"
+    },
+    {
+      "id": "administrador_pessoa",
+      "from": "administrador_da_instancia",
+      "to": "pessoa",
+      "fromCardinality": "one",
+      "toCardinality": "one",
+      "label": "é administradora",
+      "fromOptional": true
     },
     {
       "id": "vinculo_pessoa",
@@ -1091,90 +957,52 @@
       "to": "organizacao",
       "fromCardinality": "many",
       "toCardinality": "one"
-    },
-    {
-      "id": "assento_organizacao",
-      "from": "assento_liberado",
-      "to": "organizacao",
-      "fromCardinality": "many",
-      "toCardinality": "one",
-      "label": "4 tipos"
-    },
-    {
-      "id": "ocupacao_organizacao",
-      "from": "ocupacao_de_assento",
-      "to": "organizacao",
-      "fromCardinality": "many",
-      "toCardinality": "one",
-      "label": "4 tipos"
-    },
-    {
-      "id": "uso_organizacao",
-      "from": "uso_diario_da_organizacao",
-      "to": "organizacao",
-      "fromCardinality": "many",
-      "toCardinality": "one",
-      "label": "por dia e medida"
-    },
-    {
-      "id": "limiar_organizacao",
-      "from": "limiar_de_custo",
-      "to": "organizacao",
-      "fromCardinality": "one",
-      "toCardinality": "one",
-      "label": "exceção",
-      "fromOptional": true,
-      "toOptional": true,
-      "identifying": false,
-      "variant": "dashed"
     }
   ],
   "cards": [
     {
       "dot": "cyan",
-      "title": "Onde cada dado mora",
+      "title": "Só o estado de hoje",
       "items": [
-        "Tudo aqui está no banco mestre (ARQ-010, ARQ-088): o que é da instância ou cruza organizações.",
-        "Membros, convites, conversas e consumo bruto ficam no banco de cada organização, fora deste diagrama.",
-        "pessoa e vinculo_pessoa_organizacao aparecem só como referência: são da MF-102."
+        "O banco mestre não guarda história: nenhuma tabela de movimento, de transição ou de período.",
+        "Toda tabela de entidade carrega versao, o número da linha no log; ele também é o controle de concorrência.",
+        "A história de cada entidade está no banco de log (MER 5), uma tabela log_<entidade> para cada uma."
       ]
     },
     {
       "dot": "violet",
-      "title": "Cópias, não verdades",
+      "title": "Onde cada dado mora",
       "items": [
-        "ocupacao_de_assento e uso_diario_da_organizacao são reescritas por um trabalho da fila que soma os bancos.",
-        "Nenhuma tela escreve nelas; o painel mostra a hora da leitura (lido_em).",
-        "Reduzir assento confere o banco da organização, sob trava, e nunca a cópia do mestre (D-076)."
+        "Tudo aqui está no banco mestre (ARQ-010, ARQ-088): o que é da instância ou cruza organizações.",
+        "pessoa e vinculo_pessoa_organizacao aparecem só como referência: são da MF-102.",
+        "Os assentos moram no banco da organização (MER 2); o pedido de liberar ou reduzir, no MER 3; o uso e o custo, no MER 4."
       ]
     },
     {
       "dot": "amber",
-      "title": "O que não existe de propósito",
+      "title": "O que não entra no log de propósito",
       "items": [
-        "Sem validade de assento: nenhuma coluna de data de fim (D-068).",
-        "Sem preço, fatura ou plano (D-115, D-116) e sem conteúdo de organização no mestre (D-091.1).",
-        "SMTP e segredos ficam fora do banco (ARQ-044); marca completa e interruptor de segurança são v2.1.",
-        "Sem histórico de assentos (D-149) e sem prazo de retenção do uso diário: ele vive enquanto a organização existir (D-150)."
+        "responsavel_indicado tem nome e e-mail: dado pessoal transitório, apagado quando a pessoa aceita.",
+        "banco_da_organizacao tem o login cifrado do banco dela: é segredo (ARQ-044), nunca vai ao log.",
+        "Sem preço, fatura ou plano (D-115, D-116) e sem conteúdo de organização no mestre (D-091.1)."
       ]
     },
     {
       "dot": "emerald",
       "title": "Decidido em 05/11/2026",
       "items": [
-        "Q1: um papel só de administrador; a coluna papel não existe (D-147).",
-        "Só o administrador cria organizações (D-146); três situações, e o corte é inativar a organização inteira (D-148).",
-        "O aviso da instância (D-151) ganhou a tabela aviso_da_instancia; o aviso do owner da organização é da MF-120 (D-152).",
-        "O relatório da organização (D-149) é gerado das tabelas de uso e assentos: não pede tabela nova."
+        "Um papel só de administrador (D-147) e só ele cria organizações (D-146).",
+        "Três situações; o corte é inativar a organização inteira (D-148).",
+        "O aviso da instância passa só pela faixa (D-151); o relatório mostra a história com nomes (D-157)."
       ]
     },
     {
       "dot": "rose",
       "title": "Ainda em aberto",
       "items": [
-        "Q13: quando o aviso sai da faixa, pelo horário (exibir_ate) ou quando o administrador o retira.",
-        "Q14: em que formato se baixa o relatório da organização: planilha, PDF ou os dois.",
-        "As propostas D-153 a D-156 aguardam a confirmação do dono; as colunas do aviso são proposta desta modelagem."
+        "Q13: o aviso sai da faixa pelo horário (exibir_ate) ou quando o administrador o retira.",
+        "Q14: em que formato se baixa o relatório da organização.",
+        "A história de cada entidade está no banco de log, no MER 5."
       ]
     }
   ]
