@@ -30,3 +30,12 @@ A lista foi aprovada pelo dono em 02/11/2026.
 | 12 | Qualidade e testes | Os testes, sem chamar modelo pago | Antes de começar | 🟢 Escrito em 02/11/2026 · 8 decisões (`ARQ-075` a `ARQ-082`), nenhuma 🟡 com o dono · a `ARQ-081` ✅ pelo dono em 03/11/2026 (a bateria com modelo real) · a `ARQ-082` ✅ pelo dono em 03/11/2026 (o CI na VPS de hoje até a primeira produção real) · o CI, as travas, o contrato com a tela, o catálogo de provas e a prova dos alertas |
 | 13 | Custo de operação | Quanto custam a IA, o WhatsApp e a infraestrutura | Antes do marco dos agentes | 🟢 Escrito em 02/11/2026 e atualizado em 03/11/2026 (a cópia da instância SaaS fora do Horus) · 3 decisões (`ARQ-083` a `ARQ-085`), 2 🟡 com o dono · os números em faixas 🔎, com a fonte e a data de cada preço |
 | 14 | Conferência do produto | As respostas às `P-002`, `P-003` e `P-008`, e o que volta ao PO | Vivo | 🟢 Vivo, escrito em 02/11/2026 · a `P-008` inteira (14 ✅, 13 ⚠️, nenhuma ❌) · a `P-002` e a `P-003` conferidas · 30 itens ao PO, sem número `P-nnn` ou `I-nnn` (o backlog está congelado) · 19 verificações |
+
+## O modelo de dados (MER)
+
+A arquitetura para no componente (documento 06, [Dados](06-dados.md)); o **modelo de dados** é o passo seguinte e mostra, tabela a tabela, o que cada componente guarda. O primeiro é o da **MF-101**, a administração da instância, que vive no banco mestre (`ARQ-010`, `ARQ-088`).
+
+- [O MER da MF-101](https://fabioabr.github.io/horus-v2-docs/archify/mer-mf-101.html): onze tabelas, com todas as colunas, as chaves e a opcionalidade de cada ponta, em cinco visões (marca e logos, administração e pessoas, assentos, uso e custo, aviso da instância). Duas delas, `pessoa` e `vinculo_pessoa_organizacao`, são da MF-102 e entram só para fechar as chaves.
+- [A documentação da MF-101](https://fabioabr.github.io/horus-v2-docs/archify/mf-101-modelo-de-dados.html): onde cada dado mora, as entidades, os assentos, o ciclo de uma organização, o uso e o custo, as regras de integridade, o que muda no backend e as dúvidas respondidas pelo dono em 05/11/2026.
+
+**Situação:** 🟢 modelo com as decisões do dono de 05/11/2026 (`D-146` a `D-152`); restam duas perguntas pequenas (Q13, quando o aviso sai da faixa, e Q14, o formato do relatório da organização) e as propostas `D-153` a `D-156`. Os desenhos saem do archify, e as fontes estão em `fontes/archify/`.

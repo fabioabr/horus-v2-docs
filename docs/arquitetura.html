@@ -87,6 +87,7 @@
                             <div class="dx-menu-rolagem">
                                 <ul class="list-unstyled nav-sidebar doc-nav">
 <li class="nav-item active"><a href="#arquitetura-os-documentos" class="nav-link">Os documentos</a></li>
+<li class="nav-item"><a href="#arquitetura-o-modelo-de-dados-mer" class="nav-link">O modelo de dados (MER)</a></li>
                                 </ul>
                             </div>
                         </aside>
@@ -102,9 +103,10 @@
                             </header>
                             <div class="dx-modelo-01">
 <nav aria-labelledby="dx-m01-assuntos-titulo">
-<div class="dx-m01-rotulo"><h2 id="dx-m01-assuntos-titulo">Explore os assuntos</h2><span>1 seção</span></div>
+<div class="dx-m01-rotulo"><h2 id="dx-m01-assuntos-titulo">Explore os assuntos</h2><span>2 seções</span></div>
 <div class="dx-m01-assuntos">
 <a class="dx-m01-assunto" href="#arquitetura-os-documentos"><span class="dx-m01-icone"><i class="fas fa-file-alt" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Os documentos</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+<a class="dx-m01-assunto" href="#arquitetura-o-modelo-de-dados-mer"><span class="dx-m01-icone"><i class="fas fa-file-alt" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O modelo de dados (MER)</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
 </div></nav>
 </div>
                             <div class="dx-content">
@@ -222,7 +224,14 @@
 <td>🟢 Vivo, escrito em 02/11/2026 · a <code>P-008</code> inteira (14 ✅, 13 ⚠️, nenhuma ❌) · a <code>P-002</code> e a <code>P-003</code> conferidas · 30 itens ao PO, sem número <code>P-nnn</code> ou <code>I-nnn</code> (o backlog está congelado) · 19 verificações</td>
 </tr>
 </tbody>
-</table></div></div>
+</table></div></div><div class="doc-section dx-assunto"><h3 id="arquitetura-o-modelo-de-dados-mer">O modelo de dados (MER)</h3>
+<p>A arquitetura para no componente (documento 06, <a href="arquitetura-06.html">Dados</a>); o <strong>modelo de dados</strong> é o passo seguinte e mostra, tabela a tabela, o que cada componente guarda. O primeiro é o da <strong>MF-101</strong>, a administração da instância, que vive no banco mestre (<a href="arquitetura-02.html#arq-010"><code>ARQ-010</code></a>, <a href="arquitetura-02.html#arq-088"><code>ARQ-088</code></a>).</p>
+<ul>
+<li><a href="https://fabioabr.github.io/horus-v2-docs/archify/mer-mf-101.html">O MER da MF-101</a>: onze tabelas, com todas as colunas, as chaves e a opcionalidade de cada ponta, em cinco visões (marca e logos, administração e pessoas, assentos, uso e custo, aviso da instância). Duas delas, <code>pessoa</code> e <code>vinculo_pessoa_organizacao</code>, são da MF-102 e entram só para fechar as chaves.</li>
+<li><a href="https://fabioabr.github.io/horus-v2-docs/archify/mf-101-modelo-de-dados.html">A documentação da MF-101</a>: onde cada dado mora, as entidades, os assentos, o ciclo de uma organização, o uso e o custo, as regras de integridade, o que muda no backend e as dúvidas respondidas pelo dono em 05/11/2026.</li>
+</ul>
+<p><strong>Situação:</strong> 🟢 modelo com as decisões do dono de 05/11/2026 (<code>D-146</code> a <code>D-152</code>); restam duas perguntas pequenas (Q13, quando o aviso sai da faixa, e Q14, o formato do relatório da organização) e as propostas <code>D-153</code> a <code>D-156</code>. Os desenhos saem do archify, e as fontes estão em <code>fontes/archify/</code>.</p>
+</div>
                             </div>
                             <nav class="dx-vizinhas" aria-label="Páginas vizinhas"><a class="dx-anterior" href="backlog-atividades.html"><i class="arrow_left" aria-hidden="true"></i>Backlog de atividades</a><a class="dx-proxima" href="arquitetura-01.html">01 · Estratégia da solução<i class="arrow_right" aria-hidden="true"></i></a></nav>
                         </div>
