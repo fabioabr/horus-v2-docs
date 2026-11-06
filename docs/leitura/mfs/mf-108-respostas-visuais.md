@@ -5,10 +5,10 @@ entrega: v2.0
 situacao: só no mapa
 camada: 💬 Motor de análise
 objetivos: [O1]
-quem_usa: [owner da organização, gestor, membro full, membro leitor]
+quem_usa: [owner da organização, gestor, membro ouro, membro prata, membro bronze]
 complexidade: baixa
-relacionadas: [MF-104, MF-107, MF-109, MF-111, MF-112, MF-115]
-atualizado: 2026-11-03
+relacionadas: [MF-104, MF-107, MF-109, MF-110, MF-111, MF-112, MF-115]
+atualizado: 2026-11-05
 fontes:
   - docs/raw/produto/02-norte-do-produto.md
   - docs/raw/produto/03-inventario-de-lacunas.md
@@ -59,9 +59,10 @@ imagem no WhatsApp e como PDF nos boards e nos agentes, sem refazer nada.
   documento que diz o que cada termo significa na empresa, com os números do banco em cada etapa.
 - **Um desenho só, em todo lugar:** a conversa, a Pergunta rápida (MF-110), os boards, a imagem do WhatsApp e os PDFs
   usam o mesmo desenho, fotografado ou impresso pelo servidor.
-- **Tema da organização:** cada organização tem o tema dos seus gráficos, ajustado pelo owner da organização, quem
-  cuida das pessoas, dos dados e das preferências dela.
-- **Quem vê:** toda pessoa que recebe uma resposta, inclusive o membro leitor, que não pergunta mas vê os blocos nos
+- **Tema da organização:** cada organização mantém o tema dos seus gráficos, a paleta que ela escolhe, como no Horus
+  de hoje, ajustado pelo owner da organização, quem cuida das pessoas, dos dados e das preferências dela. A interface
+  e a marca seguem as da Maind.
+- **Quem vê:** toda pessoa que recebe uma resposta, inclusive o membro bronze, que não pergunta mas vê os blocos nos
   boards de outras pessoas.
 - **Baixar:** a resposta sai em CSV, imagem ou PDF, se a role da pessoa, o pacote de permissões que o owner dá,
   permitir.
@@ -76,7 +77,7 @@ imagem no WhatsApp e como PDF nos boards e nos agentes, sem refazer nada.
   WhatsApp e aos agentes: todo canal novo já nasce com visual.
 
 **Como vamos saber que funcionou:** o mesmo bloco, com os mesmos números, aparece igual na tela, na imagem do
-WhatsApp e no PDF; a qualidade percebida aparece no retorno 👍🏻 e 👎🏻 de cada resposta.
+WhatsApp e no PDF; a qualidade percebida aparece no retorno 👍🏻, 👎🏻 e 🚫 de cada resposta.
 
 ## 🚶 Como se usa no Horus
 
@@ -86,9 +87,9 @@ WhatsApp e no PDF; a qualidade percebida aparece no retorno 👍🏻 e 👎🏻 
 2. O Horus consulta a fonte e escolhe a forma: até dois blocos, ao lado do texto.
 3. A tela desenha os blocos com os números do resultado.
 4. No WhatsApp, cada bloco chega como imagem, com o link para abrir a resposta no app.
-5. A pessoa baixa a resposta ou a fixa num board, onde ela vira um cartão.
+5. A pessoa baixa a resposta; quem tem board, o dono dele, pode fixá-la nele, onde ela vira um cartão.
 
-**O owner da organização:** ajusta o tema dos gráficos na área da organização e decide, nas roles, quem pode baixar.
+**O owner da organização:** ajusta o tema dos gráficos nas preferências da organização e decide, nas roles, quem pode baixar.
 
 ```mermaid
 flowchart LR
@@ -115,6 +116,7 @@ cuidado é o peso desse desenho no horário de pico, que o servidor controla num
 | Perguntar aos dados em português (MF-107) | **depende de**: é a conversa que consulta o banco e entrega os números que o bloco desenha |
 | Conectar as fontes vivas (MF-104) | **depende de**: os números de todo bloco vêm das fontes |
 | A web como fonte (MF-109) | **complementa**: o bloco mostra o número da empresa, e o fato de fora vem à parte, com link e data |
+| Pergunta rápida (MF-110) | **é a base de**: a resposta da Pergunta rápida traz os mesmos gráficos, tabelas e indicadores da conversa |
 | Chat pelo WhatsApp (MF-111) | **é a base de**: cada bloco chega ao WhatsApp como imagem |
 | Boards e Relatórios (MF-112) | **é a base de**: os cartões dos boards são blocos, e o PDF sai da mesma montagem |
 | Agentes ativos (MF-115) | **é a base de**: o PDF do agente leva os blocos que o motor calculou |
@@ -138,7 +140,7 @@ Nada a decidir.
 | `docs/raw/produto/04-macro-funcionalidades-de-hoje.md`, o mapa e a tabela de conversão | O que a mf entrega hoje, a camada e o "valor central da promessa" |
 | `docs/raw/produto/02-norte-do-produto.md`, a promessa | O visual como parte da promessa |
 | `docs/raw/produto/05-v2.0-consolidada.md`, §3.2 e §4 | A mf na base herdada e o passo 5 da prova de valor |
-| `docs/raw/produto/backlog-estrategico.md` | A base herdada (`D-021`); o visual como valor central (`D-001`); a imagem fiel ao chat no WhatsApp (`D-096`); o papel da mf na ordem de construção (`D-139`) |
+| `docs/raw/produto/backlog-estrategico.md` | A base herdada (`D-021`); o visual como valor central (`D-001`); a imagem fiel ao chat no WhatsApp (`D-096`); o papel da mf na ordem de construção (`D-139`, a tabela de conversão); o tema dos gráficos por organização, como hoje, numa interface com a marca da Maind (`D-237`); só o dono do board fixa uma resposta nele (`D-221`) |
 | `docs/raw/produto/03-inventario-de-lacunas.md`, linhas 2 e 11 | Os blocos de hoje e a área da organização, com os gráficos |
 | `docs/raw/produto/06-versoes.md` e `07-mapa-de-objetivos-e-funcionalidades.md` | A mf na v2.0, no objetivo O1 |
 | `docs/raw/arquitetura/02-registro-de-decisoes.md`, `ARQ-007` | Um desenho só, em tela, imagem e PDF |

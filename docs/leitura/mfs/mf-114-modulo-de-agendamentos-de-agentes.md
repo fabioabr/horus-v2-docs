@@ -5,10 +5,10 @@ entrega: v2.0
 situacao: definida
 camada: 📌 Acompanhar e avisar
 objetivos: [O4]
-quem_usa: [gestor, owner da organização, membro full, membro leitor]
+quem_usa: [gestor, owner da organização, membro ouro, membro prata, membro bronze]
 complexidade: média
 relacionadas: [MF-115, MF-112, MF-113, MF-102, MF-103, MF-116]
-atualizado: 2026-11-03
+atualizado: 2026-11-05
 fontes:
   - docs/raw/produto/04-macro-funcionalidades-de-hoje.md
   - docs/raw/produto/05-v2.0-consolidada.md
@@ -39,32 +39,41 @@ trabalhador de IA que analisa os dados e avisa. O resultado, o **artefato**, seg
 escolhidos.
 
 > 💡 **Analogia:** é o débito automático: programado uma vez, a conta sai todo mês sem ninguém lembrar. **Onde a
-> analogia para:** aqui só o **gestor** (quem responde por uma equipe) e o **owner da organização** (quem a administra
-> no Horus) programam envios para outras pessoas; os demais, só para si.
+> analogia para:** aqui nem todos programam. O **gestor** (quem responde por uma equipe) e o **owner da organização**
+> (o funcionário da empresa cliente que a administra no Horus) programam envios para si e para outras pessoas; o
+> **membro ouro**, que cria, programa só para si; o **membro prata**, que pergunta, e o **membro bronze**, que só vê,
+> não programam nada.
 
 **Como fica o dia a dia.** O gestor programa o PDF do board e o agente da semana; na hora marcada, o Horus gera e
 entrega sozinho.
 
 > 📌 **Exemplo** *(personagem ilustrativo)*: a gestora Carla agenda o PDF do board de vendas para o grupo "Vendas
-> Sul", todo dia 1º, e o João, do grupo, o recebe no WhatsApp. A Maria, **membro full** (quem pergunta e cria os
-> próprios boards), tenta agendar o mesmo envio ao João, e o Horus não deixa.
+> Sul", todo dia 1º, e o João, do grupo, o recebe no WhatsApp. A Maria, **membro ouro** (quem pergunta e cria boards
+> e relatórios para si, sem compartilhar), tenta agendar o mesmo envio ao João, e o Horus não deixa.
 
 ## ✨ Características
 
 - **Um agendador só:** todo envio automático do Horus passa por ele.
 - **Mais de um item:** um agendamento pode rodar vários PDFs e agentes e sair por mais de um conector.
-- **Para quem cada um agenda:** cada pessoa agenda para si; para outras, só o gestor, para quem ele gere, e o owner,
-  para qualquer pessoa.
+- **Para quem cada um agenda:** quem agenda pode agendar para si; para outras pessoas, só o gestor, para quem ele
+  gere, e o owner, para qualquer pessoa.
 - **Os destinos:** pessoas e grupos do Horus, pelo contato que cada um informou em cada conector; o gestor usa os
   grupos dele, e o owner, também os da organização.
-- **Quem não agenda:** o **membro leitor**, que só vê boards de outras pessoas, não agenda nada, mas recebe.
-- **A aprovação:** o owner liga ou desliga a aprovação automática; desligada, o agendamento só roda depois do sim
-  dele.
-- **Com que permissão roda:** com a de quem o criou, lida na hora de cada rodada; na v2.0, os números são sempre os
-  da organização inteira.
+- **Quem não agenda:** os membros **prata** (que pergunta, mas não cria) e **bronze** (que só exibe os dashboards
+  já criados e compartilhados) não agendam nada, mas recebem.
+- **A aprovação:** o owner liga ou desliga a aprovação automática, que nasce ligada quando a organização é criada;
+  desligada, o agendamento só roda depois do sim dele. Enquanto espera, ele aparece na lista da pessoa marcado
+  "aguardando aprovação do owner", sem rodar; quando o owner decide, a marca passa a "ativo" ou "recusado".
+- **Com que permissão roda:** com a de quem o criou, lida na hora de cada rodada. Na v2.0, os números são sempre os
+  da organização inteira; a diferença por pessoa só chega com a Segurança dos dados por pessoa (MF-106), na v2.1.
 - **O board desabilitado:** o agendamento continua, com um aviso de board desativado no lugar dele.
-- **Quem sai da organização:** os agendamentos dele ficam pausados no espaço da organização, onde fica o que é dela
-  e não de uma pessoa, até o owner transferi-los ou excluí-los; o mesmo vale para quem passa a membro leitor.
+- **Quando uma rodada falha:** se a execução dá erro ou passa do teto, os destinatários não recebem nada naquela
+  rodada e só o autor é avisado; a próxima rodada segue no horário normal.
+- **Quem é excluído da organização** (sai ou é retirado dela): perde em definitivo os agendamentos que criou. Não
+  há transferência, e ninguém os recebe.
+- **Quem é rebaixado** (passa de ouro a prata ou a bronze e continua na organização): os agendamentos que criou
+  continuam vinculados a ele, mas **desabilitados**: não rodam, e a única ação é excluí-los, porque a prata e o
+  bronze não agendam. Se voltar a ser ouro, reativa um a um; nada volta sozinho.
 - **O corte:** se a organização tem os assentos (as licenças das pessoas) desativados, nada roda; na volta, segue
   do próximo horário, sem refazer o que perdeu.
 
@@ -118,22 +127,23 @@ quando, o conector entrega e o board mostra.
 | Boards e Relatórios (MF-112) | **depende de**: o PDF do board é a outra coisa que o agendamento roda. |
 | Conectores de Saída (MF-113) | **depende de**: o agendamento não entrega nada sozinho; passa o artefato ao conector, que o leva ao e-mail ou ao WhatsApp. |
 | Organizações, pessoas e papéis (MF-102) | **depende de**: a carteira do gestor e os grupos dizem para quem cada um pode agendar. |
-| Licenças e planos (MF-103) | **complementa**: no corte dos assentos, todo agendamento da organização para. |
-| Auditoria (MF-116) | **complementa**: registra o que cada rodada enviou, por qual conector e a quem. |
+| Licenças e planos (MF-103) | **complementa**: no corte dos assentos, todo agendamento da organização para; quando a pessoa passa a prata ou a bronze, os agendamentos dela ficam desabilitados. |
+| Auditoria (MF-116) | **é a base de**: registra o que cada rodada enviou, por qual conector e a quem. |
 
 ## 🚧 O que ela não faz
 
 - **Decidir o que o agente faz** nem o que ele avalia: isso é dos Agentes ativos.
 - **Escolher o formato do que sai,** que é do board ou do agente, nem o canal, que é dos conectores.
 - **Enviar a quem não é usuário do Horus.**
-- **Deixar o membro full agendar para colegas:** só o gestor e o owner entregam a outras pessoas.
+- **Deixar um membro agendar para colegas,** seja qual for o tipo de assento dele: só o gestor e o owner entregam a
+  outras pessoas.
 - **Refazer as rodadas perdidas** durante um corte.
+- **Transferir os agendamentos** de quem sai ou é rebaixado a outra pessoa.
+- **Avisar os destinatários de uma rodada que falhou:** só o autor é avisado.
 
 ## ⏳ Ainda a decidir
 
-- O que recebem os destinatários e o autor quando uma rodada falha.
-- O padrão do interruptor de aprovação quando a organização nasce.
-- O que a pessoa vê enquanto o agendamento espera a aprovação do owner.
+Nada a decidir.
 
 ## 📚 Para saber mais
 
@@ -141,8 +151,15 @@ quando, o conector entrega e o board mostra.
   `D-036` (o agendador único, fechou o `I-005`) e a `D-037` (o nome); a `D-064` (o PDF de um board ou um agente, no
   mesmo nível, fechou o `I-007`, com a leitura de mais de um item); a `D-059` (só o gestor e o owner entregam a
   outras pessoas); as `D-038` e `D-039` (a aprovação por tipo); as `D-044` e `D-045` (o board desabilitado); a `D-073`
-  (de full a leitor); a `D-075` (o corte, sem refazer rodadas); a `D-079` (o membro leitor recebe); a `D-122` (entra
-  na v2.0, fechou o `I-014`); as letras (g) e (o) da `P-008`.
+  (de full a leitor, substituída em parte pela `D-207`); a `D-075` (o corte, sem refazer rodadas); a `D-079` (o membro
+  leitor recebe); a `D-122` (entra na v2.0, fechou o `I-014`); a `D-145` (na v2.0, a organização é a fronteira dos
+  dados); a `D-163`, cuja leitura sobre o agendamento pausado e transferido ficou sem efeito pelas `D-206` a `D-209`;
+  a `D-193` (o owner da organização é funcionário do cliente); a `D-194` (os cinco tipos de assento; que o ouro é o
+  antigo membro full e o bronze, o antigo membro leitor, é leitura confirmada pelo dono em 05/11/2026); a `D-203` (a
+  prata e o bronze não agendam; a parte do espaço da organização foi substituída pela `D-207`); as `D-206` a `D-209`
+  (sem transferência: quem é excluído perde os agendamentos, quem é rebaixado os mantém desabilitados e os reativa um
+  a um); a `D-226` (na falha, só o autor é avisado, e a próxima rodada segue); a `D-244` (o que aguarda o sim do owner aparece marcado "aguardando aprovação"); a `D-228` (a aprovação nasce
+  automática); a `D-197` (a mf inteira numa versão só, a v2.0); as letras (g) e (o) da `P-008`.
 - [A v2.0 consolidada](../../raw/produto/05-v2.0-consolidada.md): §4 (passo 9), §5.10 e §7.
   [Mapa das mfs](../../raw/produto/04-macro-funcionalidades-de-hoje.md) ("O que o dono já disse"),
   [versões](../../raw/produto/06-versoes.md), [objetivos](../../raw/produto/07-mapa-de-objetivos-e-funcionalidades.md) (O4) e

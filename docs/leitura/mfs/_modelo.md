@@ -2,7 +2,7 @@
 # Identificação da macro funcionalidade (mf). Copie este bloco, preencha e apague os comentários.
 codigo: MF-000
 nome: Nome da mf, como está no mapa do 04
-entrega: v2.0                 # v2.0 · v2.1 · v2.0 + v2.1 (base na v2.0, extensão na v2.1)
+entrega: v2.0                 # v2.0 · v2.1 (uma mf pertence a uma versão só) · ou "sem versão"
 situacao: definida            # definida (definição macro confirmada pelo dono) · em definição · só no mapa
 camada: 💬 Motor de análise    # a camada da tabela de conversão do 04
 objetivos: [O1]               # os objetivos do 07 que ela cumpre
@@ -95,7 +95,7 @@ Régua do grau de complexidade (a mesma em todas as páginas):
 
 Regras de escrita (as mesmas em todas as páginas):
   - De 600 a 900 palavras no corpo, sem contar tabela, diagrama e "Para saber mais".
-  - Frases curtas, voz ativa, uma ideia por frase. Termo do Horus (owner da organização, membro leitor, fonte de
+  - Frases curtas, voz ativa, uma ideia por frase. Termo do Horus (owner da organização, membro bronze, fonte de
     dados, modelo semântico) explicado na primeira vez em que aparece.
   - Nenhum número de decisão nem de pendência no corpo: só em "Para saber mais" e no front-matter.
   - Nada de bastidor no corpo: nada de "o arquiteto achou viável", "o dono decidiu em tal data", nome de arquivo,

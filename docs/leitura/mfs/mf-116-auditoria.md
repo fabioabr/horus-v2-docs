@@ -7,8 +7,8 @@ camada: 📈 Prova e controle
 objetivos: [O2]
 quem_usa: [owner da organização, gestor, comprador]
 complexidade: média
-relacionadas: [MF-112, MF-113, MF-114, MF-115, MF-102, MF-106, MF-117, MF-118]
-atualizado: 2026-11-03
+relacionadas: [MF-112, MF-113, MF-114, MF-115, MF-102, MF-111, MF-101, MF-106, MF-117, MF-118]
+atualizado: 2026-11-05
 fontes:
   - docs/raw/produto/04-macro-funcionalidades-de-hoje.md
   - docs/raw/produto/05-v2.0-consolidada.md
@@ -54,16 +54,22 @@ precisa.
   (o canal de saída: e-mail ou WhatsApp) e a quem; e quem abriu cada board e relatório, e quando.
 - **O que não registra:** o conteúdo. As perguntas de análise, as respostas e os números entregues ficam de fora.
 - **Quem consulta:** só o owner da organização, que vê o rastro da organização inteira. Nem o gestor nem o **owner
-  da instância**, quem cuida da instalação e da marca (no Horus em nuvem, a Maind), o veem.
+  da instância**, o funcionário da Maind que administra o Horus em nuvem e vê todas as organizações por cima, o veem.
 - **Como se consulta:** numa tela da organização, por pessoa, por board ou relatório, por conector e por período.
-- **Não se altera:** nenhum registro se edita nem se apaga, nem pelo owner; sem isso, o rastro não provaria nada.
+- **Não se altera:** nenhum registro se edita nem se apaga à mão, nem pelo owner; sem isso, o rastro não provaria
+  nada. Só somem os que passam do prazo e os de quem é excluído da organização.
 - **Nada escapa:** o registro é gravado no mesmo instante da entrega. Se ela aconteceu, o registro existe.
-- **Quanto tempo fica:** o owner define, nas preferências da organização. A proposta é de 365 dias por padrão,
-  entre 180 dias e cinco anos; o que passa do prazo some de vez.
+- **Quanto tempo fica:** o owner define, nas preferências da organização, entre 180 dias e cinco anos; o padrão é
+  de 365 dias, e o que passa do prazo some de vez.
 - **Anota as mudanças de prazo:** quem encurtou um prazo de guarda, e de quanto para quanto.
-- **Cada organização guarda o seu**, e o registro fica mesmo depois que a pessoa sai.
-- **As pessoas sabem:** o aviso de que a abertura é registrada vai num documento da organização, em PDF, que o
-  owner publica e que fica sempre disponível para baixar.
+- **Cada organização guarda o seu.**
+- **Quem é excluído** (sai ou é retirado da organização) leva os registros junto: o rastro do que entregou e do que
+  abriu, os reportes de resposta errada que fez e o owner ainda não analisou, e a parte dela na contagem de perguntas
+  respondidas são apagados com a pessoa. A Auditoria perde o que ela entregou e abriu; o total de perguntas
+  respondidas da organização, na Home da organização (MF-117), não muda e fica sem ligação com ela.
+- **As pessoas sabem:** o aviso de que a abertura é registrada vai num documento da organização, em PDF, sempre
+  disponível para baixar. O Horus traz um texto padrão, já publicado, que o owner pode trocar pelo da empresa; a
+  pessoa o encontra por um link, e o primeiro acesso não pede ciência, sem tela de "li e aceito".
 
 ## 📈 O valor que gera
 
@@ -81,7 +87,7 @@ corporativos pedem o rastro antes de liberar envios para fora.
 
 **O owner da organização:**
 
-1. Publica o documento com o aviso de que a abertura é registrada.
+1. Se quiser, troca o texto padrão do aviso de que a abertura é registrada pelo da empresa.
 2. Define, nas preferências, por quantos dias o rastro fica guardado.
 3. Quando surge a dúvida, abre a tela da auditoria.
 4. Filtra por pessoa, board ou relatório, conector e período.
@@ -114,32 +120,41 @@ entregam gravam nele, e por isso ele nasce antes delas.
 | Módulo de Agendamentos de Agentes (MF-114) e Agentes ativos (MF-115) | **depende de**: o que sai sozinho, e para quem, vem deles. |
 | Conectores de Saída (MF-113) | **depende de**: dizem por onde cada entrega saiu, o e-mail ou o WhatsApp, com um registro por destinatário. |
 | Organizações, pessoas e papéis (MF-102) | **depende de**: o owner, o gestor e as preferências da organização vêm daqui. |
-| Segurança dos dados por pessoa (MF-106) | **complementa**, na v2.1: quando ela chegar, o rastro registra também a liberação de dados do gestor, com o recorte do que ele vê. |
+| Chat pelo WhatsApp (MF-111) | **é a base de**: o chat pelo WhatsApp conta com o rastro; se o que a pessoa vê por lá entra nele é questão do desenho do arquiteto. |
+| Administração da instância (MF-101) | **complementa**: o rastro de quem abriu e entregou o quê é daqui, só do owner de cada organização; a história que a administração da instância guarda é a da instância, sem conteúdo das organizações. |
+| Segurança dos dados por pessoa (MF-106) | **complementa**: é uma mf da v2.1, e é ela que traz ao rastro o registro das liberações de dados do gestor, com o recorte do que ele vê. |
 | Home da organização (MF-117) | **complementa**: a Home conta quanto o Horus é usado; a auditoria registra quem recebeu o quê. |
 | Bases de demonstração (MF-118) | **complementa**: as organizações de exemplo ganham cenários para mostrar o rastro numa demonstração. |
 
 ## 🚧 O que ela não faz
 
 - **Guardar o conteúdo** das perguntas de análise, das respostas e do que foi entregue.
+- **Guardar o rastro de quem é excluído:** ele sai junto com a pessoa.
 - **Abrir o rastro ao gestor ou ao owner da instância.**
 - **Avisar de um comportamento suspeito** nem **exportar** o rastro para sistemas de fora.
 - **Bloquear ou desfazer uma entrega:** ela só registra.
-- **Registrar liberação de dados na v2.0:** sem a segurança por pessoa, que fica para a v2.1, todo board já mostra
-  os dados da organização inteira.
+- **Registrar a liberação de dados do gestor:** na v2.0, todo board mostra os dados da organização inteira, e esse
+  registro é da Segurança dos dados por pessoa (MF-106), na v2.1.
 
 ## ⏳ Ainda a decidir
 
-- **O aviso às pessoas:** onde fica o documento, se há texto padrão e se o primeiro acesso pede ciência.
-- **O prazo:** o padrão e os limites (proposta: 365 dias, entre 180 e cinco anos) e a tela onde se ajusta.
-- **A exclusão da conta:** a proposta é manter o rastro de quem a pede até vencer o prazo do owner.
+- **A exclusão de quem sai:** se apagar o rastro dele convive com a guarda técnica do registro de acesso e as cópias
+  de segurança (do arquiteto). No setup de cada organização, o cliente deve consultar o jurídico dele sobre isso.
 
 ## 📚 Para saber mais
 
-- [Backlog estratégico](../../raw/produto/backlog-estrategico.md): `D-093`, a definição macro (fechou a `P-019`);
+- [Backlog estratégico](../../raw/produto/backlog-estrategico.md): `D-093`, a definição macro (fechou a `P-019`); a `P-044` (apagar o que é de quem sai e a guarda técnica do registro de acesso) e a `D-247` (o cliente consulta o jurídico dele no setup);
   `D-082`, a necessidade; `D-090`, o que se registra, com as leituras `D-090.1` e `D-090.2`; `D-091`, só o owner
   consulta, com a leitura `D-091.1`; `D-092`, o prazo, com as leituras `D-092.1` e `D-092.2`; `D-119`, a entrada na
   v2.0 (nota 41, acima do corte por decisão do dono); `D-122`, os agentes, os agendamentos e os conectores na v2.0;
-  `D-054` e `D-059`, a responsabilidade do gestor; `D-064`, o agendamento do PDF ou do agente; `P-008`, letra (w).
+  `D-054` e `D-059`, a responsabilidade do gestor; `D-064`, o agendamento do PDF ou do agente; `D-145`, a
+  organização como fronteira dos dados na v2.0; `D-199`, o registro das liberações do gestor no rastro passa à
+  `MF-106`, e esta mf fica inteira na v2.0 (`D-197`); `D-164`, o board público e o owner que o publicou; `D-193`, o
+  usuário da instância é um funcionário da Maind, sem ver os dados das conexões; `D-099`, o Chat pelo WhatsApp
+  depende da auditoria; `D-210`, quem é excluído leva o rastro, os reportes pendentes e a contagem dele (substitui a
+  proposta de manter o rastro de quem pede a exclusão da conta); `D-211`, o total da organização segue como número
+  sem dono; `D-231`, o texto padrão do aviso de abertura, que o owner pode trocar, sem ciência no primeiro acesso;
+  `P-008`, letra (w).
 - [A v2.0 consolidada](../../raw/produto/05-v2.0-consolidada.md): §2, §3.1 (candidata nº 17), §4 (passo 10), §5.8 (as
   regras), §7 (as dependências), §8 (o risco da LGPD) e §10, parte B (as leituras da Auditoria).
   [Mapa das mfs](../../raw/produto/04-macro-funcionalidades-de-hoje.md): a tabela de conversão e "O que o dono já
@@ -148,9 +163,10 @@ entregam gravam nele, e por isso ele nasce antes delas.
 - Arquitetura: [estratégia](../../raw/arquitetura/01-estrategia-da-solucao.md) (§3, O2; §4; §6, os marcos M1 e M7);
   [software](../../raw/arquitetura/04-software.md) (o registro do rastro na Plataforma, a consulta em Prova e controle,
   o contrato do registro); [dados](../../raw/arquitetura/06-dados.md) (§3.3, os prazos; §3.4, a saída de uma pessoa);
-  [segurança](../../raw/arquitetura/07-seguranca.md) (§3.5, a liberação do gestor, que vai para a v2.1; §3.6, a LGPD);
+  [segurança](../../raw/arquitetura/07-seguranca.md) (§3.5, a liberação do gestor, que é da `MF-106`, na v2.1; §3.6, a
+  LGPD);
   [registro](../../raw/arquitetura/02-registro-de-decisoes.md): `ARQ-009` (o registro só de acréscimo), `ARQ-012` (o
-  registro antecipado), `ARQ-035` (os prazos), `ARQ-042` (a liberação com o recorte, na v2.1), `ARQ-043` (o
+  registro antecipado), `ARQ-035` ✅ (os prazos; o do rastro, com padrão de 365 dias, de 180 a 1.825), `ARQ-042` (a liberação com o recorte, na `MF-106`), `ARQ-043` (o
   documento da organização) e `ARQ-090` (a `MF-106` inteira na v2.1);
   [conferência](../../raw/arquitetura/14-conferencia-do-produto.md): §1, letra (w) ✅; §2, a candidata 17 corrigida
   para "existe em parte"; §3, o reaproveitamento; §4, `A-05`, `A-16`, `A-27`, `A-28` e `A-30`.

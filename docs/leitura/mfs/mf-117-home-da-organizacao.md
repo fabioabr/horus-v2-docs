@@ -7,8 +7,8 @@ camada: 📈 Prova e controle
 objetivos: [O6]
 quem_usa: [owner da organização, comprador]
 complexidade: baixa
-relacionadas: [MF-107, MF-110, MF-111, MF-102, MF-103, MF-116, MF-118]
-atualizado: 2026-11-03
+relacionadas: [MF-107, MF-110, MF-111, MF-102, MF-103, MF-116, MF-118, MF-120]
+atualizado: 2026-11-05
 fontes:
   - docs/raw/produto/02-norte-do-produto.md
   - docs/raw/produto/04-macro-funcionalidades-de-hoje.md
@@ -34,9 +34,9 @@ fontes:
 ## 🧭 O que é
 
 **Como é hoje.** A Home é a tela de entrada da organização: um painel com cerca de 60 indicadores de uso, como
-consumo, erros, adoção e fontes. O **owner da organização**, quem administra a organização no Horus (as pessoas, as
-preferências e os dados), monta a grade, e todos veem o que ele montou. Nenhum indicador diz de onde veio cada
-resposta nem se ela foi boa.
+consumo, erros, adoção e fontes, num catálogo de cards próprio da Home. O **owner da organização**, o funcionário da
+empresa cliente que administra a organização no Horus (as pessoas, as preferências e os dados), monta a grade com
+esses cards, e todos veem o que ele montou. Nenhum indicador diz de onde veio cada resposta nem se ela foi boa.
 
 **O que passa a existir.** A **medida de autonomia**: a contagem das **perguntas de análise** respondidas, as que as
 pessoas fazem ao Horus sobre os números da empresa, ao lado da **qualidade**, a proporção de 👍🏻, 👎🏻 e 🚫 que
@@ -56,17 +56,25 @@ de dados que deixa de montar relatório sob encomenda, a Maind calcula fora do p
 ## ✨ Características
 
 - **Onde aparece:** na Home, ao lado dos indicadores de hoje.
-- **O que conta:** toda pergunta de análise respondida, com gráfico, texto ou os dois, na conversa de análise, na
-  Pergunta rápida (MF-110), salva ou não, e no Chat pelo WhatsApp (MF-111).
-- **O que não conta:** a pergunta de análise que o Horus disse não conseguir responder, e o que os agentes, os
-  trabalhadores de IA, perguntam sozinhos.
+- **O que conta:** a pergunta de análise que trouxe dado da empresa ou fato da web, com resultado, em gráfico, texto
+  ou os dois, na conversa de análise, na Pergunta rápida (MF-110), salva ou não, e no Chat pelo WhatsApp (MF-111).
+- **O que não conta:** a consulta que volta vazia, a falha, como a pergunta que o Horus disse não conseguir
+  responder, a conversa sem dado nem web e o que os agentes, os trabalhadores de IA, perguntam sozinhos.
 - **Conta sem julgar:** a resposta de que a pessoa não gostou também conta; a satisfação aparece na qualidade.
 - **A qualidade:** a proporção de 👍🏻 Gostei, 👎🏻 Não gostei e 🚫 Reportar entre as respostas avaliadas.
-- **Quem vê o detalhe:** o owner vê o total e a divisão por **gestor**, quem responde por uma equipe, e por pessoa.
+- **A divisão por canal:** a Home mostra quantas respondidas vieram da conversa de análise, da Pergunta rápida e do
+  WhatsApp.
+- **Quem vê o detalhe:** o owner vê a organização inteira e a divisão por **gestor**, quem responde por uma equipe,
+  e por pessoa; o gestor vê a medida e a divisão por pessoa da equipe que ele gere. As demais pessoas não veem a
+  divisão, e o comprador, quem aprova e paga a contratação, acompanha pelo relatório da Maind, fora do produto.
+- **Quando alguém sai:** a pessoa **excluída**, que sai ou é retirada da organização, some da divisão por pessoa,
+  mas o total e a série de cada mês continuam como estavam: o número fica sem dono, sem nome nem conversa.
 - **Sem conteúdo:** a contagem guarda o canal e o desfecho de cada resposta, nunca o texto.
 - **Começa do zero:** a medida nasce com a v2.0; o uso de teste da versão de hoje não vem junto.
 - **Quanto tempo fica:** 400 dias por padrão, para comparar um mês com o mesmo mês do ano anterior; o owner pode
   estender o prazo nas preferências da organização.
+- **Separada da faixa:** a Faixa de avisos e números (MF-120), no alto de todas as telas, é outra mf, com catálogo
+  próprio e montada fora da Home; os cards da Home não passam nela.
 
 ## 📈 O valor que gera
 
@@ -82,15 +90,18 @@ relatório da Maind. O sinal de alerta é a contagem subir sem cair o número de
 
 ## 🚶 Como se usa no Horus
 
-**Quem pergunta** (o owner, o gestor e o **membro full**, que pergunta e cria os próprios boards) não faz nada a
-mais: a resposta e a avaliação entram sozinhas.
+**Quem pergunta** (o owner, o gestor, o **membro ouro**, que pergunta e cria boards e relatórios para si, e o
+**membro prata**, que pergunta mas não cria boards nem relatórios) não faz nada a mais: a resposta e a avaliação
+entram sozinhas. O **membro bronze**, que só exibe os dashboards já criados e compartilhados, não pergunta.
 
 **O owner da organização:**
 
 1. Monta a grade da Home com os indicadores que quer ver.
-2. Escolhe o período e vê as respondidas, a qualidade e a divisão por gestor e por pessoa.
+2. Escolhe o período e vê as respondidas, a qualidade, a divisão por canal e a divisão por gestor e por pessoa.
 3. Decide onde expandir o uso e onde corrigir.
 4. Com a Maind, compara com os pedidos de antes e chega ao saving.
+
+**O gestor** vê, na mesma Home, a medida e a divisão por pessoa da equipe que ele gere.
 
 ```mermaid
 flowchart LR
@@ -119,31 +130,37 @@ ninguém de fora do Horus.
 | Perguntar aos dados em português (MF-107) | **depende de**: cada pergunta de análise respondida e cada 👍🏻, 👎🏻 ou 🚫 nascem na conversa de análise. |
 | Pergunta rápida (MF-110) | **depende de**: as perguntas de análise do popup contam, salvas ou não. |
 | Chat pelo WhatsApp (MF-111) | **depende de**: as perguntas de análise feitas pelo WhatsApp também contam. |
-| Organizações, pessoas e papéis (MF-102) | **depende de**: a divisão por gestor vem da equipe de cada um. |
+| Organizações, pessoas e papéis (MF-102) | **depende de**: a divisão por gestor, e o que cada gestor vê, vem da equipe de cada um. |
 | Licenças e planos (MF-103) | **é a base de**: a adoção medida sustenta a renovação e a compra de mais assentos. |
 | Auditoria (MF-116) | **complementa**: a Home conta quanto o Horus é usado; a auditoria registra quem recebeu o quê. |
 | Bases de demonstração (MF-118) | **complementa**: é nas organizações de exemplo que a medida aparece antes de haver cliente. |
+| Faixa de avisos e números (MF-120) | **complementa**: a faixa passa avisos e números no alto de todas as telas, com catálogo próprio; a Home fica com o dela, e um card de uma não vai para a outra. |
 
 ## 🚧 O que ela não faz
 
 - **Calcular o saving** no produto, nem pedir ao owner um ponto de partida para estimá-lo.
 - **Ligar-se ao sistema de chamados** do cliente.
 - **Mostrar o tempo ganho** frente ao pedido ao time de dados: essa comparação também se faz com a Maind.
+- **Passar avisos e números no alto das telas:** isso é a Faixa de avisos e números.
 
 ## ⏳ Ainda a decidir
 
-- **O que conta como respondida** quando a consulta volta vazia, dá erro ou a conversa não usa dado nem web.
-- **Quem mais vê a medida:** se o gestor vê a da própria equipe, e como o comprador a acompanha.
-- **A divisão por canal:** se a Home mostra quantas vieram da conversa, do popup e do WhatsApp.
+Nada a decidir.
 
 ## 📚 Para saber mais
 
 - [Backlog estratégico](../../raw/produto/backlog-estrategico.md): `D-133`, a definição macro da medida de autonomia
   (fechou a `P-023`, letra d); `D-132`, o produto mostra só o que mede e o saving se calcula fora, com a leitura
-  `D-132.1` (a Maind faz a conta); `D-004`, o que é uma pergunta de análise respondida; `D-005` e `D-129`, o retorno
-  do usuário; `D-087`, a Pergunta rápida conta, salva ou não; `D-095`, o WhatsApp conta; `D-125`, "em segundos" é
-  comparação; `D-021`, a base herdada; `D-105`, a candidata nº 4 (nota 66, essencial); `P-008`, letras (b) e (y);
-  `P-001`, dispensada.
+  `D-132.1` (a Maind faz a conta); `D-004`, o que é uma pergunta de análise respondida; `D-222`, conta só a que
+  trouxe dado da empresa ou fato da web, com resultado; `D-238`, o gestor vê a medida e a divisão por pessoa da
+  própria equipe, e o comprador acompanha pelo relatório da Maind; `D-239`, a divisão por canal; `D-210` e `D-211`,
+  quem é excluído leva a contagem dele, e o total segue como número sem dono; `D-005` e `D-129`, o retorno do
+  usuário; `D-087`, a Pergunta rápida conta, salva ou não; `D-095`, o WhatsApp conta; `D-125`, "em segundos" é
+  comparação; `D-021`, a base herdada; `D-105`, a candidata nº 4 (nota 66, essencial); `D-152` e `D-174`, a faixa de
+  avisos e números como mf própria, a `MF-120`; `D-170`, `D-172` e `D-173`, a faixa sem os cards da Home, montada
+  fora dela e com catálogo próprio; `D-193`, o owner da organização é funcionário do cliente; `D-194`, os cinco tipos
+  de assento (a prata pergunta, o bronze não); `D-197`, a mf inteira numa versão só, a v2.0; `P-008`, letras (b) e
+  (y); `P-001`, dispensada.
 - [A v2.0 consolidada](../../raw/produto/05-v2.0-consolidada.md): §1 ("Como saberemos"), §3.1 (candidata nº 4), §3.2 (a
   base herdada), §4 (passo 11), §7 (as dependências) e §8 (o risco do saving fora do produto).
   [Mapa das mfs](../../raw/produto/04-macro-funcionalidades-de-hoje.md): o mapa, a tabela de conversão e "O que salta
@@ -158,4 +175,4 @@ ninguém de fora do Horus.
   [registro](../../raw/arquitetura/02-registro-de-decisoes.md): `ARQ-011` (a medida começa na v2.0), `ARQ-013` (o tempo
   medido por dentro, sem virar promessa), `ARQ-029` (a contagem no fecho do turno) e `ARQ-035` (os prazos);
   [conferência](../../raw/arquitetura/14-conferencia-do-produto.md): §1, letra (b) ⚠️; §3, o reaproveitamento; §4,
-  `A-08` (os casos de borda) e `A-26`.
+  `A-08` (os casos de borda, respondido pela `D-222`) e `A-26`.

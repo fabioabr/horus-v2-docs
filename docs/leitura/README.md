@@ -5,7 +5,7 @@ simples. O objetivo de cada página é um só: o leitor entender o que o Horus e
 e quais são as características deles.
 
 **Comece pela [visão geral](visao-geral.md)**: o que o Horus é, para quem, que problemas resolve, como funciona e as
-19 mfs, cada uma com o link para a sua página.
+23 mfs, da MF-101 à MF-123, cada uma com o link para a sua página.
 
 | Pasta ou arquivo | O que tem |
 | --- | --- |
