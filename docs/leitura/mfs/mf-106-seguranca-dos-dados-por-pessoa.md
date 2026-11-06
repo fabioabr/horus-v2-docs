@@ -71,7 +71,11 @@ A regra se apoia nas **claims**, as características que dizem o que cada pessoa
   regras já valem, mas todos da organização veem os mesmos dados.
 - **O login da empresa, por organização:** na segunda etapa, cada owner liga o da sua organização, só pelo padrão
   OpenID Connect. As regras da empresa e as do Horus valem juntas, e vale a mais restritiva: o Horus nunca dá mais
-  do que a empresa deu.
+  do que a empresa deu. O login só autentica: só entra quem foi convidado. Quando a role do cadastro e a do login
+  discordam, vale a do login, e quem chega sem valor mapeado cai na role padrão. A sessão se confirma com a empresa a
+  cada 8 horas, e quem ela desliga precisa entrar de novo e não consegue. Com o login ligado, o aviso de resposta
+  limitada diz qual regra do Horus limitou e que as regras da empresa também valem; e a fonte cuja tecnologia não
+  aceita a identidade da pessoa fica só com a regra do Horus, com o owner avisado ao ligar o login.
 - **A liberação do gestor no board:** no board que o **gestor** publica, quem abre vê o que ele vê, mesmo acima das
   travas da empresa, e a responsabilidade é dele; cada liberação fica no rastro da Auditoria (MF-116), com o recorte
   de acesso de quem liberou. Fora do board, cada um fica no que pode ver.
@@ -146,8 +150,6 @@ tecnologia de banco aceitar a identidade da pessoa.
 
 ## ⏳ Ainda a decidir
 
-- **O que a pessoa lê quando a regra da empresa esconde um dado**, já que o banco não diz por quê.
-- **A entrada pelo login da empresa:** quem chega sem convite, qual role vale e a sessão de quem sai.
 - **Os bancos que a proteção cobre além do SQL Server**, a começar pelo AWS Athena.
 
 ## 📚 Para saber mais
@@ -169,6 +171,9 @@ tecnologia de banco aceitar a identidade da pessoa.
     (os grupos dinâmicos), **D-051**, **D-053** e **D-054** (a liberação do gestor), **D-059** (o artefato enviado),
     **D-090** e **D-093** (o rastro).
   - **D-184** (o login corporativo só por OpenID Connect; o SAML só com decisão nova).
+  - **D-253** a **D-257** (o login só autentica e só entra quem tem convite; vale a role do login; a sessão se
+    confirma a cada 8 horas; o aviso de resposta limitada diz a regra do Horus e que a da empresa também vale; a
+    fonte que não aceita a identidade da pessoa fica só com a regra do Horus), que fecham o **A-20** e o **A-25**.
   - **D-163**, **D-164**, **D-167** e **D-169** (o board da organização e a faixa com o acesso de quem abre ou vê; o
     board público com o acesso do owner que o publicou), com a leitura **D-163.2** do documento da v2.0, confirmada
     pelo dono em 05/11/2026.

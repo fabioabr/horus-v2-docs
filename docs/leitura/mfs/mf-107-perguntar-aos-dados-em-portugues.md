@@ -69,6 +69,9 @@ segundos" é uma comparação com o pedido ao time de dados, que às vezes leva 
   WhatsApp.
 - **Fixar num board:** só o dono do board, quem o criou, guarda nele o gráfico ou a tabela de uma resposta; não é um
   botão da role, e o membro prata, que não cria boards, não vê o controle.
+- **Exportar a conversa:** a pessoa exporta a conversa em PDF ou HTML, como um recurso da própria conversa; é o jeito
+  de levá-la a outras pessoas, já que a conversa nunca é compartilhada. Quem exporta é quem tem o botão "Baixar" na
+  role, sem botão novo, e a exportação fica no rastro da Auditoria (MF-116).
 - **O owner lê as conversas:** o owner da organização lê as conversas de todas as pessoas dela, como no Horus de
   hoje, sem aviso especial à pessoa.
 - **Quem configura:** o owner liga e desliga cada botão da conversa nas roles, e quem tem várias roles soma o que
@@ -139,6 +142,8 @@ depende de terceiros.
 - **Prometer um tempo** em segundos ou em contrato, nem acelerar o banco do cliente.
 - **Contar como respondida** a falha, a consulta que volta vazia ou a conversa sem dado nem web.
 - **Responder a quem reportou:** o aviso é só de "recebido".
+- **Compartilhar a conversa:** ela é só de quem a teve (o owner a lê como supervisão); para levá-la a outras pessoas,
+  exporta-se em PDF ou HTML.
 - **Investigar o porquê passo a passo:** é a Investigação guiada (MF-119), na v2.1.
 - **Limitar os dados por pessoa:** na v2.0, toda pergunta vê os dados da organização inteira; o limite por pessoa é a
   Segurança dos dados por pessoa (MF-106), na v2.1.
@@ -154,7 +159,7 @@ Nada a decidir.
 | `docs/raw/produto/04-macro-funcionalidades-de-hoje.md`, o mapa e a tabela de conversão | O que a mf entrega hoje e a camada dela |
 | `docs/raw/produto/02-norte-do-produto.md`, problemas, medidas e limites | A pergunta na hora, a pergunta respondida e o "só lê" |
 | `docs/raw/produto/05-v2.0-consolidada.md`, §1, §3, §4 e §5.4 | A mf na v2.0 (base herdada e candidatas nº 1 e nº 2), a prova de valor e as regras da conversa |
-| `docs/raw/produto/backlog-estrategico.md` | A resposta em segundos (`D-125`, `D-126`); o retorno do usuário (`D-005`, `D-014`, `D-127`, `D-128`, `D-129`); a proporção de 👍🏻, 👎🏻 e 🚫 na medida de autonomia (`D-133`); a pergunta respondida (`D-004`) e o que conta como respondida, só a que trouxe dado ou fato da web (`D-222`); os botões por role e a soma (`D-110`, `D-111`); os dois modos, dados e conversa, e a pesquisa na web como interruptor ao lado (`D-215`); o teto de cada fonte, que a role só baixa (`D-220`); só o dono do board fixa uma resposta nele (`D-221`); o owner lê as conversas, sem aviso especial (`D-223`); o "só lê" (`D-022`); o modelo semântico com o time de dados (`D-083`); a base herdada (`D-021`) |
+| `docs/raw/produto/backlog-estrategico.md` | A resposta em segundos (`D-125`, `D-126`); o retorno do usuário (`D-005`, `D-014`, `D-127`, `D-128`, `D-129`); a proporção de 👍🏻, 👎🏻 e 🚫 na medida de autonomia (`D-133`); a pergunta respondida (`D-004`) e o que conta como respondida, só a que trouxe dado ou fato da web (`D-222`); os botões por role e a soma (`D-110`, `D-111`); os dois modos, dados e conversa, e a pesquisa na web como interruptor ao lado (`D-215`); o teto de cada fonte, que a role só baixa (`D-220`); só o dono do board fixa uma resposta nele (`D-221`); o owner lê as conversas, sem aviso especial (`D-223`); a conversa nunca é compartilhada, e a exportação dela em PDF ou HTML (`D-249` a `D-252`); o "só lê" (`D-022`); o modelo semântico com o time de dados (`D-083`); a base herdada (`D-021`) |
 | `docs/raw/produto/03-inventario-de-lacunas.md`, linhas 1 a 9 | O que existe e o que falta no problema nº 1 |
 | `docs/raw/produto/06-versoes.md` e `07-mapa-de-objetivos-e-funcionalidades.md` | A mf na v2.0, no objetivo O1 |
 | `docs/raw/arquitetura/05-motor-de-analise-e-ia.md`, §3 e §4 | O caminho da pergunta, o motor único (`ARQ-006`, `ARQ-023`, `ARQ-024`), os níveis (`ARQ-025`), o retorno e o reporte (`ARQ-028`) e a contagem (`ARQ-029`) |

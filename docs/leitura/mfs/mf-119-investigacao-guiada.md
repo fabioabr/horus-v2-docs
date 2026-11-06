@@ -121,7 +121,7 @@ quebra a variação pelas partes que ele descreve.
 | Conectar as fontes vivas (MF-104) | **depende de**: o modelo semântico de cada fonte diz por quais partes a variação pode ser quebrada. |
 | A web como fonte (MF-109) | **complementa**: o fato de fora, com link e data, ajuda a explicar a variação. |
 | Agentes ativos (MF-115) | **complementa**: o agente avisa que algo mudou, e a investigação explica o porquê; começar pelo aviso não é a porta desta primeira entrega. |
-| Boards e Relatórios (MF-112) | **complementa**: o caminho não vai para um board; para mostrá-lo, a pessoa compartilha a conversa ou fixa as respostas uma a uma. |
+| Boards e Relatórios (MF-112) | **complementa**: o caminho não vai para um board; a conversa nunca é compartilhada, e, para mostrá-lo, a pessoa fixa as respostas uma a uma ou exporta a conversa em PDF ou HTML, recurso da MF-107 na v2.0. |
 | Pergunta rápida (MF-110) e Chat pelo WhatsApp (MF-111) | **complementa**: são os canais novos da conversa, que hoje não trazem a investigação. |
 
 ## 🚧 O que ela não faz
@@ -137,14 +137,13 @@ quebra a variação pelas partes que ele descreve.
 ## ⏳ Ainda a decidir
 
 - **Se a investigação chega à Pergunta rápida e ao Chat pelo WhatsApp,** que hoje não a trazem.
-
 ## 📚 Para saber mais
 
 - [Norte do produto](../../raw/produto/02-norte-do-produto.md): o problema nº 2, a investigação, e a web que ajuda a
   investigar o porquê de uma variação (`D-001`, `D-006`).
 - [Backlog estratégico](../../raw/produto/backlog-estrategico.md): `D-180` (a definição macro, que fechou a `P-018`);
   `D-177` (começa pelo número ou gráfico que mudou, pela ação "investigar"); `D-178` (passo a passo, e a pessoa
-  escolhe qual parte aprofundar); `D-179` (o caminho fica na conversa, sem fixar num board); `D-181` (a v2.1 em duas
+  escolhe qual parte aprofundar); `D-179` (o caminho fica na conversa, sem fixar num board); `D-249` (a conversa nunca é compartilhada; para mostrar o caminho, exporta-se a conversa em PDF ou HTML); `D-181` (a v2.1 em duas
   ondas, a `MF-119` na onda 1, a do SaaS); `D-194` e `D-203` (os cinco tipos de assento; a prata pergunta e investiga, e o
   bronze não); `D-197` (cada mf numa versão só);
   `D-081` (a necessidade); `I-008` e `D-104` (a nota provisória, que continua); `D-105` (a pontuação: 61, a 5 pontos

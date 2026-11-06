@@ -51,8 +51,10 @@ precisa.
 ## ✨ Características
 
 - **O que registra:** os boards e relatórios publicados; o que cada agendamento ou agente enviou, por qual conector
-  (o canal de saída: e-mail ou WhatsApp) e a quem; e quem abriu cada board e relatório, e quando.
-- **O que não registra:** o conteúdo. As perguntas de análise, as respostas e os números entregues ficam de fora.
+  (o canal de saída: e-mail ou WhatsApp) e a quem; quem abriu cada board e relatório, e quando; e quem exportou uma
+  conversa em PDF ou HTML, e quando.
+- **O que não registra:** o conteúdo. As perguntas de análise, as respostas e os números entregues ficam de fora, e
+  também o que havia na conversa exportada. O download de CSV, imagem ou PDF de uma resposta não entra.
 - **Quem consulta:** só o owner da organização, que vê o rastro da organização inteira. Nem o gestor nem o **owner
   da instância**, o funcionário da Maind que administra o Horus em nuvem e vê todas as organizações por cima, o veem.
 - **Como se consulta:** numa tela da organização, por pessoa, por board ou relatório, por conector e por período.
