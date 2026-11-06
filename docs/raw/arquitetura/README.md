@@ -31,6 +31,12 @@ A lista foi aprovada pelo dono em 02/11/2026.
 | 13 | Custo de operação | Quanto custam a IA, o WhatsApp e a infraestrutura | Antes do marco dos agentes | 🟢 Escrito em 02/11/2026 e atualizado em 03/11/2026 (a cópia da instância SaaS fora do Horus) · 3 decisões (`ARQ-083` a `ARQ-085`), 2 🟡 com o dono · os números em faixas 🔎, com a fonte e a data de cada preço |
 | 14 | Conferência do produto | As respostas às `P-002`, `P-003` e `P-008`, e o que volta ao PO | Vivo | 🟢 Vivo, escrito em 02/11/2026 · a `P-008` inteira (14 ✅, 13 ⚠️, nenhuma ❌) · a `P-002` e a `P-003` conferidas · 30 itens ao PO, sem número `P-nnn` ou `I-nnn` (o backlog está congelado) · 19 verificações |
 
+## Os documentos por mf (proposta, 06/11/2026)
+
+Os documentos de 03 a 13 cortam a arquitetura **por tema**. A partir de 06/11/2026 cada mf ganha também o seu documento, que corta a arquitetura **por mf** e atravessa os mesmos temas: ele diz o que a mf pede de cada um e **aponta** para o documento de tema, sem repeti-lo. O esqueleto, com os 17 assuntos a atacar e a seção de pontos de ataque, está em [`mfs/_modelo.md`](mfs/_modelo.md). Cada documento fica em `mfs/mf-nnn-nome-da-mf.md`. O documento fala de **componentes e conexões** e não decide código. O assunto 15 é o **registro de decisão de arquitetura** (`ADR-xxx`, várias por mf); a decisão que vale para mais de uma mf continua sendo uma `ARQ-nnn` no [registro](02-registro-de-decisoes.md). A página HTML de cada documento (`ARQ-xxx`, o número é o da mf) sai do `.md` pelo [manual dos documentos ARQ-xxx](../../../manuais/manual-geracao-doc-arq.md). A página de produto da mesma mf (`MF-xxx`) tem o seu próprio [manual](../../../manuais/manual-geracao-doc-mf.md).
+
+**Situação:** 🟡 proposta ao dono (a lista de documentos aprovada em 02/11/2026 não previa esta família). Nenhum documento de mf foi escrito ainda; a `ARQ-nnn` que registra a família nasce quando o dono confirmar o esqueleto e o manual.
+
 ## O modelo de dados (MER)
 
 A arquitetura para no componente (documento 06, [Dados](06-dados.md)); o **modelo de dados** é o passo seguinte e mostra, tabela a tabela, o que cada componente guarda. O primeiro é o da **MF-101**, a administração da instância, que vive no banco mestre (`ARQ-010`, `ARQ-088`).
