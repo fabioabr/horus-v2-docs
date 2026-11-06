@@ -1,0 +1,151 @@
+<p>Em muitos prédios comerciais, o elevador tem uma tela pequena que todo mundo vê no caminho: o condomínio avisa da manutenção do sábado e, ao lado, a empresa do andar lembra o prazo das despesas ou mostra um número do mês. Ninguém precisa abrir um e-mail nem perguntar a alguém: a informação está ali, à vista, enquanto a pessoa faz outra coisa.</p>
+<p>A Faixa de avisos e números faz isso dentro do Horus. É uma faixa logo abaixo do cabeçalho, em toda tela, que passa os <strong>avisos</strong> que importam, como o de uma manutenção, e os <strong>números do dia</strong>, como as vendas de ontem. Hoje, o Horus só fala com cada pessoa pela área de avisos da conta dela e não tem como falar com todas de uma vez; a faixa resolve isso. O nome da funcionalidade ainda é provisório.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Versão 2.0, em construção</b><p>O que está aqui é o que a versão 2.0 do Horus vai entregar. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
+</div>
+
+<h3 id="mf-120-o-que-e">O que é, em poucas palavras</h3>
+<p>A faixa é um espaço no alto de toda tela, montado com <strong>cards prontos</strong>: peças que o Horus oferece e que cada owner escolhe, põe em ordem e preenche. Ela cuida de cinco coisas:</p>
+<ul>
+  <li><strong>Avisar todo mundo de uma vez.</strong> O aviso da Maind e o do owner da organização aparecem para todas as pessoas que não esconderam a faixa, sem e-mail.</li>
+  <li><strong>Mostrar os números do dia.</strong> Cards de número com as métricas que a empresa já definiu, como vendas ou margem, no período escolhido.</li>
+  <li><strong>Separar o que é da Maind do que é da organização.</strong> São duas categorias de card, cada uma com a sua identificação visual, para ninguém confundir um aviso com o outro.</li>
+  <li><strong>Respeitar o acesso de quem vê.</strong> Cada número é calculado com o acesso da pessoa que olha a faixa.</li>
+  <li><strong>Deixar a pessoa ler com calma, ou não ver.</strong> Ela pausa a faixa, abre um número para ver de onde ele veio e, se preferir, esconde a faixa inteira.</li>
+</ul>
+<p>Uma observação sobre a palavra: aqui, <strong>faixa</strong> é a tira no alto da tela. Ela não tem relação com as faixas de membro (ouro, prata e bronze), explicadas em <a href="#mf-103-faixas">As três faixas de membro</a>.</p>
+<h4 id="mf-120-quem-e-quem">Quem monta e quem vê</h4>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quem</th><th>O que faz com a faixa</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Administrador da instância</strong> (a Maind)</td><td>Escreve o aviso da instância e escolhe quais cards da instância passam e em que ordem, na Administração da instância.</td></tr>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>Monta os cards da organização nas preferências da organização: escreve o aviso, aponta os cards de número e os põe em ordem.</td></tr>
+      <tr class="zebra"><td><strong>Todas as pessoas</strong></td><td>Veem a faixa em qualquer tela, pausam para ler, abrem um número para ver a origem e o período e escondem a faixa, se quiserem.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 id="mf-120-na-pratica">A faixa numa semana comum</h3>
+<p>Um exemplo, com personagens e horários ilustrativos. O Marcos é o owner da área comercial de uma rede de lojas, e a Carla é gestora de vendas.</p>
+<ol class="steps">
+  <li><div><h4>A Maind publica um aviso</h4><p>Na sexta, a Maind escreve, na Administração da instância, “Manutenção no sábado, das 22h às 23h”, e marca a hora de fim. O aviso entra na faixa de todas as pessoas que não a esconderam, sem e-mail.</p></div></li>
+  <li><div><h4>O owner monta a faixa da organização</h4><p>Nas preferências da organização, o Marcos escolhe três peças do catálogo da faixa: uma caixa de texto livre, em que escreve “Lancem as despesas até sexta”, e dois cards de número, que ele aponta para as métricas de vendas e de margem do modelo semântico, com os períodos ontem e mês. Depois, põe os três em ordem.</p></div></li>
+  <li><div><h4>A equipe vê, em qualquer tela</h4><p>A Carla abre o Horus e encontra a faixa logo abaixo do cabeçalho, com o aviso da Maind e os cards do Marcos, cada categoria com a sua identificação visual.</p></div></li>
+  <li><div><h4>Pausa e abre um número</h4><p>Ela pausa a faixa, abre o card da margem e vê de que fonte e de que período o número veio.</p></div></li>
+  <li><div><h4>Esconde, se quiser</h4><p>Quem prefere a tela livre esconde a faixa inteira e a mostra de novo quando quiser. Enquanto ela estiver escondida, a pessoa não vê os avisos.</p></div></li>
+</ol>
+<h4 id="mf-120-categorias">As duas categorias de card</h4>
+<p>Os cards da faixa se dividem em <strong>Instance Cards</strong>, os cards da instância, e <strong>Organization Cards</strong>, os cards da organização. Cada categoria tem um dono só:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Sobre a categoria</th><th>Instance Cards (da instância)</th><th>Organization Cards (da organização)</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Quem monta</strong></td><td>Só o administrador da instância.</td><td>Só o owner da organização.</td></tr>
+      <tr class="zebra"><td><strong>Onde se monta</strong></td><td>Na Administração da instância.</td><td>Nas preferências da organização.</td></tr>
+      <tr class="zebra"><td><strong>O que traz</strong></td><td>O aviso da instância e os números que a Maind acompanha de cada organização: os assentos, as perguntas respondidas, as execuções dos agentes e os custos. Só números, nunca conteúdo.</td><td>O aviso do owner, numa caixa de texto livre, e os cards de número do negócio.</td></tr>
+      <tr class="zebra"><td><strong>Quem vê</strong></td><td>O aviso, todas as pessoas. Os números, só os administradores da instância.</td><td>O aviso, todas as pessoas da organização. Os números, conforme o acesso de quem vê.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 id="mf-120-componentes">O que vai na faixa</h3>
+<p>Os cards saem de um <strong>catálogo próprio da faixa</strong>, feito para o formato dela e separado do catálogo de cards da <a href="#mf-117">Home da organização (MF-117)</a>. O owner escolhe no catálogo e não cria componentes próprios. Para a organização, há dois componentes definidos até aqui, a caixa de texto livre e o card de número; os da instância já têm um primeiro conjunto, com o aviso e os números da tabela acima.</p>
+<h4 id="mf-120-aviso">A caixa de texto livre: o aviso do owner</h4>
+<p>É onde o owner da organização escreve um recado para todas as pessoas da organização, como “Lancem as despesas até sexta”. O aviso aparece na faixa de quem não a escondeu, sem depender de acesso a dados, e não vai por e-mail. O aviso da instância, que a Maind escreve, segue as regras de <a href="#mf-101-avisos">Avisos e paradas</a>: hora de fim opcional e retirada à mão a qualquer momento.</p>
+<h4 id="mf-120-numero">O card de número</h4>
+<p>O owner aponta o card para uma <strong>métrica já definida no <a href="#glossario">modelo semântico</a></strong> da organização, como vendas ou margem, e escolhe o período: ontem, a semana ou o mês. Assim o número aparece com a definição que a própria empresa deu, e o owner não precisa criar nada: escolher a métrica e o período não é criar componente.</p>
+<p>Todo número da faixa abre para mostrar de onde veio e de que período é, como em qualquer resposta do Horus.</p>
+<h4 id="mf-120-montar">Como o owner monta a faixa</h4>
+<ul>
+  <li><strong>Quais cards e em que ordem.</strong> Cada owner escolhe quais cards passam, em que ordem e o que cada um traz. Ele não marca dias nem horários para cada card.</li>
+  <li><strong>Numa tela à parte.</strong> A montagem é feita numa tela de configuração: a Administração da instância, para os cards da instância, e as preferências da organização, para os cards da organização. A faixa em si não se edita.</li>
+  <li><strong>Sem prévia.</strong> O owner monta sem ver a faixa ao vivo, e as pessoas a veem como ele a montou.</li>
+</ul>
+
+<h3 id="mf-120-quem-ve">Quem vê o quê</h3>
+<ul>
+  <li><strong>Os avisos são de todos.</strong> Todas as pessoas que não escondem a faixa os veem, sem depender de acesso a dados.</li>
+  <li><strong>Os números seguem o acesso de quem vê.</strong> Cada card de número calcula os dados com o acesso da pessoa que olha a faixa. O card a que ela não tem acesso não aparece, nem o título dele, porque o título já é informação do negócio.</li>
+</ul>
+<p>É a mesma regra dos boards do espaço da organização, que calculam com o acesso de quem os abre (veja <a href="#mf-112-dados">Os dados do board</a>). Na versão 2.0, a organização é a fronteira dos dados, sem recorte por pessoa: dentro de uma organização, todos os que têm acesso aos dados veem os mesmos números (veja <a href="#mf-104-quem-ve">Quem vê os dados de cada fonte</a>). A faixa só passa a mudar de uma pessoa para outra com a Segurança dos dados por pessoa (MF-106), na versão 2.1.</p>
+<h4 id="mf-120-esconder">Esconder a faixa</h4>
+<p>Cada pessoa pode esconder a faixa inteira, avisos e números juntos, e mostrá-la de novo quando quiser. A escolha vale nas sessões seguintes, até a pessoa mostrar a faixa outra vez.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Quem esconde a faixa não vê os avisos</b><p>Isso vale também para o aviso da Maind. Já a página de manutenção não depende da faixa: durante uma parada, quem abre o Horus vê o motivo e a hora de volta (veja <a href="#mf-101-avisos">Avisos e paradas</a>).</p></div>
+</div>
+
+<h3 id="mf-120-bastidores">Nos bastidores, sem complicar</h3>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>Os números do negócio saem das fontes.</strong> O card de número usa a métrica do modelo semântico da organização, e o número vem das fontes de dados dela (veja <a href="#mf-104">Conectar as fontes vivas (MF-104)</a>).</li>
+  <li><strong>Os números da instância vêm da administração.</strong> Quem produz os números de uso e de custo de cada organização é a Administração da instância; a faixa só os mostra, aos administradores (veja <a href="#mf-101-uso-e-custo">Uso, custo e relatório</a>).</li>
+  <li><strong>Um cálculo para cada pessoa.</strong> Como cada card de número usa o acesso de quem olha, o número é calculado pessoa a pessoa, e esse cálculo precisa ser feito sem pesar na abertura da tela.</li>
+  <li><strong>O que já existe e o que é novo.</strong> A ideia de card pronto vem do Horus de hoje. São novos a própria faixa, as duas telas de configuração e o catálogo próprio de componentes. O desenho técnico desta funcionalidade ainda está sendo feito.</li>
+</ul>
+
+<h3 id="mf-120-limites">O que a faixa não faz</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Mandar e-mail</strong></td><td>O aviso vai só pela faixa. Quem não abre o Horus não o recebe.</td></tr>
+      <tr class="zebra"><td><strong>Marcar dia e horário para cada card</strong></td><td>O owner escolhe quais cards passam e em que ordem. O horário de um aviso da instância é o do próprio aviso.</td></tr>
+      <tr class="zebra"><td><strong>Ser editada na própria tela, ou mostrar uma prévia</strong></td><td>A montagem é feita nas telas de configuração, sem ver a faixa ao vivo.</td></tr>
+      <tr class="zebra"><td><strong>Deixar o owner criar componentes</strong></td><td>Só entram os componentes do catálogo da faixa. Apontar a métrica e o período de um card de número não é criar componente.</td></tr>
+      <tr class="zebra"><td><strong>Mostrar um card da Home</strong></td><td>A faixa e a Home da organização (MF-117) têm catálogos separados, e um card da Home não vai para a faixa.</td></tr>
+      <tr class="zebra"><td><strong>Avisar que existe um número escondido</strong></td><td>O card a que a pessoa não tem acesso simplesmente não aparece, e a faixa não avisa que ele existe.</td></tr>
+      <tr class="zebra"><td><strong>Substituir a página de manutenção</strong></td><td>Durante uma parada, uma página com o motivo e a hora de volta toma o lugar do Horus, e ela não depende da faixa (veja <a href="#mf-101-avisos">Avisos e paradas</a>).</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="mf-120-ligadas">Funcionalidades ligadas a esta</h4>
+<p>A faixa mostra o que outras funcionalidades produzem. As principais:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="#mf-101">Administração da instância (MF-101)</a></td><td>É lá que a Maind escreve o aviso da instância e monta os cards da instância, e é lá que nascem os números de uso e de custo de cada organização.</td></tr>
+      <tr class="zebra"><td><a href="#mf-102">Organizações, pessoas e papéis (MF-102)</a></td><td>É de lá o owner da organização, que monta os cards da organização nas preferências dela.</td></tr>
+      <tr class="zebra"><td><a href="#mf-104">Conectar as fontes vivas (MF-104)</a></td><td>Os números do negócio saem das fontes da organização, e o card de número usa as métricas do modelo semântico dela.</td></tr>
+      <tr class="zebra"><td><a href="#mf-112">Boards e Relatórios (MF-112)</a></td><td>A faixa segue a regra dos boards do espaço da organização, que calculam os dados com o acesso de quem os abre.</td></tr>
+      <tr class="zebra"><td><a href="#mf-117">Home da organização (MF-117)</a></td><td>A Home tem o seu catálogo de cards, e a faixa, outro; um card da Home não vai para a faixa.</td></tr>
+      <tr class="zebra"><td><a href="#mf-118">Bases de demonstração (MF-118)</a></td><td>As organizações de exemplo mostram a faixa com o aviso da instância, uma caixa de texto livre e cards de número.</td></tr>
+      <tr class="zebra"><td>Segurança dos dados por pessoa (MF-106)</td><td>Na versão 2.1, faz cada pessoa ver só os números que o acesso dela permite; na versão 2.0, vale a organização inteira.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Ainda em definição</b><p><strong>Os componentes do catálogo.</strong> Além da caixa de texto livre e do card de número, outros componentes, como indicadores (KPIs) e ícones, ainda serão definidos, cada um com as suas regras. Entre elas, se o aviso do owner da organização terá hora de fim e poderá ser retirado à mão, como o da Maind.</p><p><strong>O movimento e a aparência.</strong> Como a faixa se move na tela, como a pessoa a pausa e como cada categoria se apresenta à vista ainda estão em desenho.</p><p><strong>Quem vê os números da instância.</strong> Hoje se parte de que só os administradores da instância os veem. Isso ainda será confirmado.</p><p><strong>O nome.</strong> “Faixa de avisos e números” é um nome provisório.</p></div>
+</div>
+
+<h3 id="mf-120-faq">Perguntas frequentes</h3>
+<div class="faq">
+  <details open>
+    <summary>Posso avisar toda a equipe sem mandar e-mail?</summary>
+    <div class="faq-body"><p>Pode. O owner da organização escreve o aviso numa caixa de texto livre, nas preferências da organização, e ele aparece na faixa, no alto de toda tela, para todas as pessoas da organização que não a esconderam. O aviso não vai por e-mail: quem não abre o Horus não o recebe. Se esse aviso terá hora de fim ainda está em definição.</p></div>
+  </details>
+  <details>
+    <summary>Que números posso colocar na faixa?</summary>
+    <div class="faq-body"><p>Os das métricas que a organização já definiu no modelo semântico, como vendas ou margem. O owner escolhe um card de número, aponta a métrica e escolhe o período: ontem, a semana ou o mês. Ele não cria componentes próprios; outros componentes do catálogo, como indicadores e ícones, ainda serão definidos.</p></div>
+  </details>
+  <details>
+    <summary>Todo mundo vê os mesmos números na faixa?</summary>
+    <div class="faq-body"><p>Cada card de número calcula com o acesso de quem olha a faixa, e o card a que a pessoa não tem acesso não aparece, nem o título. Na versão 2.0, a organização é a fronteira dos dados: dentro dela, todos os que têm acesso aos dados veem os mesmos números. Números diferentes por pessoa chegam com a Segurança dos dados por pessoa (MF-106), na versão 2.1.</p></div>
+  </details>
+  <details>
+    <summary>Como sei se um aviso é da Maind ou da minha empresa?</summary>
+    <div class="faq-body"><p>Pela categoria do card. O que a Maind publica entra nos cards da instância, e o que o owner da sua organização publica, nos cards da organização. Cada categoria tem a sua identificação visual, justamente para ninguém confundir um aviso com o outro. A aparência de cada uma ainda está em desenho.</p></div>
+  </details>
+  <details>
+    <summary>E se alguém esconder a faixa? Perde os avisos?</summary>
+    <div class="faq-body"><p>Perde. Cada pessoa pode esconder a faixa inteira, avisos e números, e mostrá-la de novo quando quiser; a escolha vale nas sessões seguintes. Quem a esconde deixa de ver os avisos, inclusive os da Maind. A página de manutenção não depende da faixa: quem abre o Horus durante uma parada vê o motivo e a hora de volta.</p></div>
+  </details>
+  <details>
+    <summary>Posso programar quando cada card aparece ou ver a faixa enquanto monto?</summary>
+    <div class="faq-body"><p>Não. O owner escolhe quais cards passam, em que ordem e o que cada um traz, numa tela de configuração à parte, sem dias nem horários por card. A montagem é feita sem ver a faixa ao vivo, e as pessoas a veem como ela foi montada.</p></div>
+  </details>
+</div>

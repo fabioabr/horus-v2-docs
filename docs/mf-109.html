@@ -1,333 +1,209 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-menu="vertical">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="A documentação de produto e de arquitetura do Horus v2: a visão, as decisões, a estratégia e como ele vai ser construído.">
-    <meta name="generator" content="DocX 0.2.1">
-    <link rel="shortcut icon" href="media/horus-claro.svg">
-    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/elagent-icon/style.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/font-awesome/css/all.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/niceselectpicker/nice-select.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/font-size/css/rvfs.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/animation/animate.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/tooltipster/css/tooltipster.bundle.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism-coy.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/magnify-pop/magnific-popup.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/css/style.css">
-    <link rel="stylesheet" href="assets/kbdoc/css/responsive.css">
-    <link rel="stylesheet" href="assets/docx.css">
-    <link rel="stylesheet" href="assets/conteudo.css">
-    <link rel="stylesheet" href="assets/indice.css">
-    <script>try { var l = parseInt(localStorage.getItem('docx-menu-largura'), 10); if (l >= 200 && l <= 640) document.documentElement.style.setProperty('--dx-menu-largura', l + 'px'); } catch (e) { /* Sem armazenamento, vale a largura padrão. */ }</script>
-    <title>MF-109 · A web como fonte — Horus v2</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="DocX 0.4.0" />
+<meta name="description" content="As funcionalidades do Horus v2 explicadas uma a uma, em linguagem simples: o que cada uma faz, como funciona na prática e as dúvidas mais comuns." />
+<link rel="icon" href="assets/logo-claro.svg" />
+<title>MF-109 · A web como fonte — Horus v2</title>
+<script>
+(function () {
+  try {
+    var raiz = document.documentElement;
+    var tema = localStorage.getItem('kinto-theme');
+    var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    raiz.setAttribute('data-theme', tema || (escuro ? 'dark' : 'light'));
+    raiz.setAttribute('data-menu', localStorage.getItem('kinto-menu') || 'vertical');
+    var ws = parseInt(localStorage.getItem('kinto-side-w'), 10);
+    var wt = parseInt(localStorage.getItem('kinto-toc-w'), 10);
+    if (ws) raiz.style.setProperty('--side-w-user', ws + 'px');
+    if (wt) raiz.style.setProperty('--toc-w-user', wt + 'px');
+  } catch (e) { /* localStorage bloqueado: ficam os atributos do <html> */ }
+})();
+</script>
+<link rel="stylesheet" href="assets/docs.css" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="assets/docx-kbr.css" />
 </head>
-<body class="doc full-width-doc sticky-nav-doc onepage-doc dx-pagina-doc" data-spy="scroll" data-target=".navbar" data-offset="-120">
-    <a class="sr-only sr-only-focusable dx-skip" href="#post">Pular para o conteúdo</a>
-    <div class="body_wrapper sticky_menu">
-        <nav class="navbar navbar-expand-lg menu_one" id="stickyTwo" aria-label="Navegação principal">
-            <div class="container-fluid pl-60 pr-60">
-                <a class="navbar-brand" href="index.html">
-                    <img src="media/horus-claro.svg" alt="Horus v2">
-                    <img src="media/horus-escuro.svg" alt="Horus v2">
-                </a>
-                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Abrir o menu">
-                    <span class="menu_toggle">
-                        <span class="hamburger">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </span>
-                        <span class="hamburger-cross">
-                            <span></span>
-                            <span></span>
-                        </span>
-                    </span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav menu ml-auto">
-
-                    </ul>
-                    <ul class="list-unstyled menu_social">
-                        <li class="search">
-                            <form action="#" class="search_form" role="search" data-search-form>
-                                <label class="sr-only" for="dx-search">Buscar na documentação</label>
-                                <input type="search" class="form-control" id="dx-search" placeholder="Buscar" autocomplete="off" data-search-input aria-describedby="dx-search-status" aria-controls="dx-search-results">
-                                <button type="submit" aria-label="Buscar"><i class="icon_search" aria-hidden="true"></i></button>
-                                <div class="dx-search-results" id="dx-search-results" data-search-results hidden></div>
-                            </form>
-                            <p class="sr-only" id="dx-search-status" role="status" data-search-status></p>
-                        </li>
-                    </ul>
-                    <div class="dx-ferramentas">
-
-
-                        <div id="font-switcher"><div id="rvfs-controllers" class="fontsize-controllers group"></div></div>
-                        <button type="button" class="print" data-print aria-label="Imprimir"><i class="icon_printer" aria-hidden="true"></i></button>
-                        <div class="doc_switch">
-                            <label for="something" class="tab-btn tab-btns"><i class="icon_lightbulb_alt" aria-hidden="true"></i><span class="sr-only">Tema claro</span></label>
-                            <input type="checkbox" name="something" id="something" class="tab_switcher" aria-label="Tema escuro">
-                            <label for="something" class="tab-btn"><i class="far fa-moon" aria-hidden="true"></i><span class="sr-only">Tema escuro</span></label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-        <section class="doc_documentation_area onepage_doc_area" id="sticky_doc">
-            <div class="overlay_bg"></div>
-            <div class="container-fluid pl-60 pr-60">
-                <div class="row doc-container">
-                    <div class="col-lg-2 doc_mobile_menu doc-sidebar display_none">
-                        <aside class="doc_left_sidebarlist" aria-label="Tópicos desta página">
-                            <h3 class="nav_title">Tópicos</h3>
-                            <div class="dx-menu-rolagem">
-                                <ul class="list-unstyled nav-sidebar doc-nav">
-<li class="nav-item active"><a href="#mf-109-identificacao" class="nav-link">Identificação</a></li>
-<li class="nav-item"><a href="#mf-109-o-que-e" class="nav-link">O que é</a></li>
-<li class="nav-item"><a href="#mf-109-caracteristicas" class="nav-link">Características</a></li>
-<li class="nav-item"><a href="#mf-109-o-valor-que-gera" class="nav-link">O valor que gera</a></li>
-<li class="nav-item"><a href="#mf-109-como-se-usa-no-horus" class="nav-link">Como se usa no Horus</a></li>
-<li class="nav-item"><a href="#mf-109-grau-de-complexidade-media" class="nav-link">Grau de complexidade: média</a></li>
-<li class="nav-item"><a href="#mf-109-macro-funcionalidades-relacionadas" class="nav-link">Macro funcionalidades relacionadas</a></li>
-<li class="nav-item"><a href="#mf-109-o-que-ela-nao-faz" class="nav-link">O que ela não faz</a></li>
-<li class="nav-item"><a href="#mf-109-ainda-a-decidir" class="nav-link">Ainda a decidir</a></li>
-<li class="nav-item"><a href="#mf-109-para-saber-mais" class="nav-link">Para saber mais</a></li>
-                                </ul>
-                            </div>
-                        </aside>
-                        <div class="dx-divisor" role="separator" aria-orientation="vertical" aria-label="Ajustar a largura do menu" tabindex="0" title="Arraste para ajustar a largura do menu (duplo clique volta ao padrão)"><span class="dx-divisor__pega"></span></div>
-                    </div>
-                    <div class="col-lg-10 col-md-12">
-                        <div class="documentation_info dx-pagina" id="post">
-                            <header class="dx-cabeca" id="mf-109">
-                                <nav class="dx-trilha" aria-label="Trilha"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Início</a></li><li class="breadcrumb-item">v2.0</li><li class="breadcrumb-item active" aria-current="page">A web como fonte</li></ol></nav>
-                                <div class="dx-macro-topo"><span class="dx-macro-codigo">MF-109</span><span class="dx-macro-selo">v2.0</span></div>
-                                <h1>A web como fonte</h1>
-                                <p>Base herdada; a web como fonte viva completa, com link e data</p>
-                            </header>
-                            <div class="dx-modelo-01">
-<nav aria-labelledby="dx-m01-assuntos-titulo">
-<div class="dx-m01-rotulo"><h2 id="dx-m01-assuntos-titulo">Explore os assuntos</h2><span>10 seções</span></div>
-<div class="dx-m01-assuntos">
-<a class="dx-m01-assunto" href="#mf-109-identificacao"><span class="dx-m01-icone"><i class="fas fa-id-card" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Identificação</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-109-o-que-e"><span class="dx-m01-icone"><i class="fas fa-compass" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que é</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-109-caracteristicas"><span class="dx-m01-icone"><i class="fas fa-star" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Características</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-109-o-valor-que-gera"><span class="dx-m01-icone"><i class="fas fa-chart-line" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O valor que gera</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-109-como-se-usa-no-horus"><span class="dx-m01-icone"><i class="fas fa-walking" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Como se usa no Horus</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-109-grau-de-complexidade-media"><span class="dx-m01-icone"><i class="fas fa-puzzle-piece" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Grau de complexidade: média</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-109-macro-funcionalidades-relacionadas"><span class="dx-m01-icone"><i class="fas fa-link" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Macro funcionalidades relacionadas</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-109-o-que-ela-nao-faz"><span class="dx-m01-icone"><i class="fas fa-ban" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que ela não faz</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-109-ainda-a-decidir"><span class="dx-m01-icone"><i class="fas fa-hourglass-half" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Ainda a decidir</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-109-para-saber-mais"><span class="dx-m01-icone"><i class="fas fa-book" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Para saber mais</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-</div></nav>
+<body>
+<header class="hdr"><div class="hdr-brand"><a class="hdr-logo" href="index.html" aria-label="Horus v2"><img class="logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /></a><div class="div"></div><div class="doc-meta"><b>Horus v2 · Documentação</b><small>Maind Horus</small></div></div><div class="hdr-center"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-topo" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><div class="hdr-actions"><div class="menu-toggle" role="group" aria-label="Menu"><button data-set="vertical" aria-label="Menu vertical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button><button data-set="horizontal" aria-label="Menu horizontal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></button></div><div class="theme-toggle" role="group" aria-label="Tema"><button data-set="light" aria-label="Claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button><button data-set="dark" aria-label="Escuro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header>
+<div class="shell">
+<aside class="side"><nav aria-label="Páginas da documentação"><h6>Horus v2</h6><ul><li><a href="index.html">Início</a></li></ul><h6>Para começar</h6><ul><li><a href="como-ler.html">Como ler esta documentação</a></li></ul><h6>v2.0</h6><ul class="side-sub"><li><a href="mf-101.html">MF-101 · Administração da instância</a></li><li><a href="mf-102.html">MF-102 · Organizações, pessoas e papéis</a></li><li><a href="mf-103.html">MF-103 · Licenças e planos</a></li><li><a href="mf-104.html">MF-104 · Conectar as fontes vivas</a></li><li><a href="mf-105.html">MF-105 · IA sob controle da organização</a></li><li><a href="mf-107.html">MF-107 · Perguntar aos dados em português</a></li><li><a href="mf-108.html">MF-108 · Respostas visuais</a></li><li><a href="mf-109.html" class="active">MF-109 · A web como fonte</a></li><li><a href="mf-110.html">MF-110 · Pergunta rápida</a></li><li><a href="mf-111.html">MF-111 · Chat pelo WhatsApp</a></li><li><a href="mf-112.html">MF-112 · Boards e Relatórios</a></li><li><a href="mf-113.html">MF-113 · Conectores de Saída</a></li><li><a href="mf-114.html">MF-114 · Módulo de Agendamentos de Agentes</a></li><li><a href="mf-115.html">MF-115 · Agentes ativos</a></li><li><a href="mf-116.html">MF-116 · Auditoria</a></li><li><a href="mf-117.html">MF-117 · Home da organização</a></li><li><a href="mf-118.html">MF-118 · Bases de demonstração</a></li><li><a href="mf-120.html">MF-120 · Faixa de avisos e números</a></li></ul></nav></aside>
+<main class="content doc">
+<div class="dx-busca-movel"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-movel" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><nav class="crumbs" aria-label="Trilha"><a href="index.html">Horus v2</a><span class="sep">/</span><span>v2.0</span><span class="sep">/</span><span class="now">A web como fonte</span></nav><span class="doc-eyebrow">v2.0</span><div class="dx-macro-topo"><span class="dx-codigo">MF-109</span><span class="dx-selo">v2.0</span></div><h1 class="doc-h1">A web como fonte</h1><p class="doc-lead">O Horus pesquisa na web quando autorizado e traz, à parte do número da empresa, os fatos de fora, cada um com o link e a data.</p><section class="dx-assuntos" aria-labelledby="dx-assuntos-titulo"><h2 id="dx-assuntos-titulo">Explore os assuntos</h2><div class="dx-assuntos-grade"><div class="dx-assunto"><h3><a href="#mf-109-o-que-e">O que é, em poucas palavras</a><small>1 tópico</small></h3><ul><li><a href="#mf-109-quem-usa">Quem usa</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-109-na-pratica">Uma pergunta com a web ligada</a><small>1 tópico</small></h3><ul><li><a href="#mf-109-quando-aparece">Quando o interruptor aparece</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-109-fato">O fato de fora, sempre com link e data</a><small>2 tópicos</small></h3><ul><li><a href="#mf-109-niveis">O fato em qualquer nível; a causa de fora, só do 4 em diante</a></li><li><a href="#mf-109-sem-fato">Quando a pesquisa não traz fato</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-109-canais">Em todo lugar onde o Horus responde</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-109-bastidores">Nos bastidores, sem complicar</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-109-limites">O que esta funcionalidade não faz</a><small>1 tópico</small></h3><ul><li><a href="#mf-109-ligadas">Funcionalidades ligadas a esta</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-109-faq">Perguntas frequentes</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div></div></section><div id="dx-topo"><p>Na reunião de resultados, o número da empresa quase nunca basta. As vendas de outubro caíram, mas a inflação do mês subiu? O concorrente mexeu nos preços? Para responder, alguém abre o navegador, procura o índice, cola o número no slide e, muitas vezes, esquece de anotar de onde ele veio e de quando é. No Horus, quem pergunta liga a pesquisa na web e recebe, na mesma resposta, o número da empresa e o fato de fora, cada fato com o link de onde veio e a data em que foi publicado.</p>
+<p>É como o analista que, ao entregar o relatório, grampeia ao lado o recorte de jornal que explica o mês: o número da casa de um lado, a notícia de fora do outro, com a fonte e a data à vista. A web entra no Horus como a segunda fonte viva, ao lado dos bancos de dados da empresa, sem nunca se misturar com eles.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Versão 2.0, em construção</b><p>O que está aqui é o que a versão 2.0 do Horus vai entregar. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
 </div>
-                            <div class="dx-content">
-<blockquote>
-<p><strong>Em uma frase:</strong> cruzar o número da empresa com o que acontece lá fora, como a inflação ou a concorrência, sem
-sair da conversa e sabendo de onde veio e de quando é cada fato.</p>
-</blockquote>
-<div class="doc-section dx-assunto"><h3 id="mf-109-identificacao" data-dx-icone="id-card">Identificação</h3><div class="table-responsive" tabindex="0" role="region" aria-label="Identificação de MF-109 · A web como fonte"><table class="table table_shortcode"><tbody><tr><th scope="row">Código</th><td>MF-109</td></tr><tr><th scope="row">Entrega</th><td>v2.0</td></tr><tr><th scope="row">Situação</th><td>definida</td></tr><tr><th scope="row">Camada</th><td>💬 Motor de análise</td></tr><tr><th scope="row">Objetivos</th><td>O1</td></tr><tr><th scope="row">Quem usa</th><td>owner da organização, gestor, membro full</td></tr><tr><th scope="row">Complexidade</th><td>média</td></tr><tr><th scope="row">Relacionadas</th><td><a href="mf-102.html">Organizações, pessoas e papéis</a> (MF-102), <a href="mf-104.html">Conectar as fontes vivas</a> (MF-104), <a href="mf-105.html">IA sob controle da organização</a> (MF-105), <a href="mf-107.html">Perguntar aos dados em português</a> (MF-107), <a href="mf-108.html">Respostas visuais</a> (MF-108), <a href="mf-111.html">Chat pelo WhatsApp</a> (MF-111), <a href="mf-112.html">Boards e Relatórios</a> (MF-112), <a href="mf-115.html">Agentes ativos</a> (MF-115)</td></tr><tr><th scope="row">Atualizado</th><td>03/11/2026</td></tr></tbody></table></div>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="compass" id="mf-109-o-que-e">O que é</h3>
-<p>A web é a segunda fonte viva do Horus, ao lado dos bancos da empresa: complementa os números com o contexto de
-mercado, responde sozinha à pergunta sobre algo de fora e serve de régua. Hoje o Horus já pesquisa na web, mas cita
-a fonte no meio do texto, sem data.</p>
-<p>Na v2.0, todo fato da web traz o <strong>link da fonte</strong> e a <strong>data de publicação</strong>, separado do dado da empresa. O fato
-entra em qualquer <strong>nível de inferência</strong>, a régua de 1 a 5 de quanto a resposta pode ir além do número; a causa
-vinda de fora, só a partir do nível 4.</p>
-<blockquote>
-<p>📌 <strong>Exemplo:</strong> no nível padrão, a gestora Carla liga a pesquisa e pergunta &quot;as vendas de outubro acompanharam a
-inflação?&quot;. Recebe o gráfico das vendas e &quot;inflação de outubro: 0,4%&quot;, com o link do IBGE e a data de publicação.
-Se pergunta por que as vendas caíram, a resposta não culpa a inflação, a não ser que ela suba para o nível 4.</p>
-</blockquote>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="star" id="mf-109-caracteristicas">Características</h3>
-<ul>
-<li><strong>Duas formas de usar a web:</strong> a <strong>pesquisa na web</strong>, que a pessoa liga na conversa de análise, a tela de Perguntar
-aos dados em português (MF-107), e o <strong>modo web</strong>, que lê as páginas que a organização cadastrou como fonte.</li>
-<li><strong>Link e data em todo fato:</strong> a data é lida na própria página, e sem ela aparece o aviso de data não identificada.</li>
-<li><strong>O fato em qualquer nível:</strong> até no nível 1, que só descreve, o fato entra; a causa vinda de fora, só do nível 4
-em diante, rotulada como hipótese.</li>
-<li><strong>Separado do dado da empresa:</strong> os fatos aparecem à parte do texto, e um link que a pesquisa não trouxe sai da
-resposta.</li>
-<li><strong>Em todo modo e canal:</strong> vale nos modos dados, web e conversa, na Pergunta rápida (MF-110), no Chat pelo WhatsApp
-(MF-111), com o link e a data no texto, nos boards e nos agentes.</li>
-<li><strong>Quem usa:</strong> o owner da organização, que cuida das pessoas e dos dados dela, o gestor, que gere uma equipe, e o
-membro full, que pergunta e cria boards, se a role da pessoa (o pacote de permissões que o owner dá) tiver o modo
-web ligado.</li>
-<li><strong>Segue a conexão de IA:</strong> a busca é a do provedor de IA da organização, e quando ele não pesquisa, como o Amazon
-Bedrock, a opção não aparece.</li>
-<li><strong>Só a pergunta sai:</strong> à busca vai só o texto da pergunta, nunca dados do banco nem o modelo semântico, o
-dicionário de termos da empresa.</li>
-<li><strong>Corre ao lado da consulta:</strong> se a busca não volta a tempo, a resposta sai sem ela.</li>
-</ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="chart-line" id="mf-109-o-valor-que-gera">O valor que gera</h3>
-<ul>
-<li><strong>Para quem usa:</strong> explica um resultado com o contexto de fora antes de mostrá-lo ao CEO, sabendo de onde veio
-cada fato.</li>
-<li><strong>Para a empresa que contrata o Horus:</strong> menos pedidos ao time de dados para buscar um índice de fora.</li>
-<li><strong>Para o Horus como produto:</strong> respostas mais completas sem perder a confiança, que é a prova do produto.</li>
-</ul>
-<p><strong>Como vamos saber que funcionou:</strong> nenhuma informação da web aparece sem o link, e nenhuma aparece sem a data ou
-sem o aviso de que ela não foi identificada.</p>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="walking" id="mf-109-como-se-usa-no-horus">Como se usa no Horus</h3>
-<p><strong>Quem pergunta:</strong></p>
-<ol>
-<li>Liga a pesquisa na web na conversa.</li>
-<li>Faz a pergunta de análise, no nível que quiser.</li>
-<li>Recebe o número da empresa e, à parte, os fatos de fora, cada um com link e data.</li>
-<li>Abre o link para conferir o fato antes de levá-lo adiante.</li>
-<li>Sobe para o nível 4 quando quer que a resposta arrisque uma causa de fora.</li>
-</ol>
-<p><strong>O owner da organização:</strong></p>
-<ol>
-<li>Liga o modo web nas roles de quem pode usar a web.</li>
-<li>Cadastra a conexão de IA da organização, que decide se a pesquisa existe.</li>
-</ol>
-<figure><div class="lightbox_shortcode"><img src="media/mf-109-diagrama-1.svg" width="1383" height="102" alt="Diagrama: Como se usa no Horus"><a href="media/mf-109-diagrama-1.svg" class="img_popup" aria-label="Ampliar o diagrama"><i class="icon_plus" aria-hidden="true"></i></a></div><figcaption>Diagrama de “Como se usa no Horus”. Selecione o “+” para ampliar.</figcaption></figure></div><div class="doc-section dx-assunto"><h3 data-dx-icone="puzzle-piece" id="mf-109-grau-de-complexidade-media">Grau de complexidade: média</h3>
-<p>Vêm da v1 a busca do provedor de IA e o leitor de páginas do servidor. É nova a etapa própria da web, que devolve
-os fatos com link e data e tira do texto o link que não veio da busca. Depende da busca do provedor de IA e de o
-modelo respeitar a regra da causa abaixo do nível 4, o que só a medição mostra; não é alta porque não mexe na base
-nem traz parceiro novo.</p>
-<blockquote>
-<p>⚠️ É a leitura do PO a partir dos documentos de arquitetura. A estimativa de esforço é do arquiteto.</p>
-</blockquote>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="link" id="mf-109-macro-funcionalidades-relacionadas">Macro funcionalidades relacionadas</h3>
-<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de A web como fonte"><table class="table table_shortcode"><thead><tr>
-<th scope="col">mf</th>
-<th scope="col">Como se relaciona</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Perguntar aos dados em português (MF-107)</td>
-<td><strong>depende de</strong>: a web entra na mesma conversa e obedece aos mesmos níveis de inferência</td>
-</tr>
-<tr>
-<td>IA sob controle da organização (MF-105)</td>
-<td><strong>depende de</strong>: a busca é a do provedor da conexão de IA da organização</td>
-</tr>
-<tr>
-<td>Organizações, pessoas e papéis (MF-102)</td>
-<td><strong>depende de</strong>: o modo web é um botão da role</td>
-</tr>
-<tr>
-<td>Conectar as fontes vivas (MF-104)</td>
-<td><strong>depende de</strong>: o modo web lê a fonte de páginas da web cadastrada ali</td>
-</tr>
-<tr>
-<td>Respostas visuais (MF-108)</td>
-<td><strong>complementa</strong>: o bloco mostra o número da empresa, e o fato de fora vem à parte, com link e data</td>
-</tr>
-<tr>
-<td>Chat pelo WhatsApp (MF-111), Boards e Relatórios (MF-112) e Agentes ativos (MF-115)</td>
-<td><strong>é a base de</strong>: o fato com link e data vale também na mensagem, no cartão e no que o agente entrega</td>
-</tr>
-</tbody>
-</table></div></div><div class="doc-section dx-assunto"><h3 data-dx-icone="ban" id="mf-109-o-que-ela-nao-faz">O que ela não faz</h3>
-<ul>
-<li><strong>Selos de confiança</strong> nas fontes, nem uma lista de fontes aprovadas pela organização.</li>
-<li><strong>Causa vinda da web abaixo do nível 4.</strong></li>
-<li><strong>Guardar cópias das páginas</strong> consultadas.</li>
-<li><strong>Buscar em sites que pedem login.</strong></li>
-<li><strong>Pesquisar por outro caminho:</strong> sem a busca da conexão de IA, nenhum outro serviço pesquisa no lugar dela.</li>
-</ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="hourglass-half" id="mf-109-ainda-a-decidir">Ainda a decidir</h3>
-<ul>
-<li><strong>O modo web:</strong> ele depende da fonte de páginas da web, hoje fora da tela; falta decidir se a v2.0 a traz pronta.</li>
-<li><strong>O cartão do board:</strong> se guarda os fatos da resposta que o originou, com a data à vista, em vez de pesquisar de novo.</li>
-<li><strong>A resposta sem fatos:</strong> o que a tela mostra quando a pesquisa não traz fato nenhum.</li>
-</ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="book" id="mf-109-para-saber-mais">Para saber mais</h3>
-<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 2 de A web como fonte"><table class="table table_shortcode"><thead><tr>
-<th scope="col">Trecho do inventário</th>
-<th scope="col">O que traz</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><a href="produto-norte.html"><code>docs/raw/produto/02-norte-do-produto.md</code></a>, as fontes</td>
-<td>A web como fonte viva, ao lado dos bancos, e os usos dela</td>
-</tr>
-<tr>
-<td><a href="produto-mfs-hoje.html"><code>docs/raw/produto/04-macro-funcionalidades-de-hoje.md</code></a>, o mapa e a tabela de conversão</td>
-<td>O que a mf entrega hoje e a camada dela</td>
-</tr>
-<tr>
-<td><a href="produto-v20.html"><code>docs/raw/produto/05-v2.0-consolidada.md</code></a>, §3.1, §3.2, §4 e §5.4</td>
-<td>A candidata nº 3, a base herdada, o passo 5 da prova de valor e a regra da web</td>
-</tr>
-<tr>
-<td><a href="produto-backlog.html"><code>docs/raw/produto/backlog-estrategico.md</code></a></td>
-<td>A definição macro da web como fonte viva completa (<a href="produto-backlog.html#d-131"><code>D-131</code></a>); o link e a data (<a href="produto-backlog.html#d-006"><code>D-006</code></a>); o fato em qualquer nível (<a href="produto-backlog.html#d-130"><code>D-130</code></a>, leituras <code>D-130.1</code> e <code>D-130.2</code>); o modo web nas roles (<a href="produto-backlog.html#d-110"><code>D-110</code></a>); a base herdada (<a href="produto-backlog.html#d-021"><code>D-021</code></a>)</td>
-</tr>
-<tr>
-<td><a href="produto-lacunas.html"><code>docs/raw/produto/03-inventario-de-lacunas.md</code></a>, linhas 5 e 6</td>
-<td>A lacuna da web em todos os usos e da data</td>
-</tr>
-<tr>
-<td><a href="produto-versoes.html"><code>docs/raw/produto/06-versoes.md</code></a> e <a href="produto-mapa.html"><code>07-mapa-de-objetivos-e-funcionalidades.md</code></a></td>
-<td>A mf na v2.0, no objetivo O1</td>
-</tr>
-<tr>
-<td><a href="arquitetura-02.html"><code>docs/raw/arquitetura/02-registro-de-decisoes.md</code></a>, <a href="arquitetura-02.html#arq-025"><code>ARQ-025</code></a> a <a href="arquitetura-02.html#arq-027"><code>ARQ-027</code></a></td>
-<td>O nível em toda etapa que escreve texto, a web como etapa própria e a busca nativa da conexão de IA, escolhida pelo dono</td>
-</tr>
-<tr>
-<td><a href="arquitetura-05.html"><code>docs/raw/arquitetura/05-motor-de-analise-e-ia.md</code></a>, §3.5, §3.6, §3.10 e §5</td>
-<td>Os níveis, a lista de fatos, o Bedrock sem busca e os riscos da web</td>
-</tr>
-<tr>
-<td><a href="arquitetura-01.html"><code>docs/raw/arquitetura/01-estrategia-da-solucao.md</code></a>, §4, <a href="arquitetura-04.html"><code>04-software.md</code></a> e <a href="arquitetura-08.html"><code>08-integracoes.md</code></a></td>
-<td>A estratégia da mf, as peças e a integração com os provedores</td>
-</tr>
-<tr>
-<td><a href="arquitetura-14.html"><code>docs/raw/arquitetura/14-conferencia-do-produto.md</code></a>, §1 a §4</td>
-<td>A separação do fato e da causa (<code>P-008</code>, letra aa), o que se reaproveita (<code>P-003</code>) e os itens devolvidos ao PO: a fonte de páginas web (A-04), o cartão do board (A-09) e a correção do inventário sobre a web (A-12, A-26)</td>
-</tr>
-</tbody>
-</table></div><p>📚 <a href="mf-109-inventario.html">Tudo o que o inventário diz desta mf, assunto por assunto</a>.</p>
-</div>
-                            </div>
-                            <nav class="dx-vizinhas" aria-label="Páginas vizinhas"><a class="dx-anterior" href="mf-108.html"><i class="arrow_left" aria-hidden="true"></i>Respostas visuais</a><a class="dx-proxima" href="mf-110.html">Pergunta rápida<i class="arrow_right" aria-hidden="true"></i></a></nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <footer class="simple_footer">
-            <img class="leaf_right" src="assets/kbdoc/img/home_one/leaf_footter.png" alt="">
-            <div class="container-fluid pl-60 pr-60">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <p>Maind Horus · Horus v2 · documento interno · Revisado em 03/11/2026 · versão v2.0 em desenho, sem versão publicada</p>
-                    </div>
-                    <div class="col-lg-6 text-right">
 
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
-    <a id="back-to-top" title="Voltar ao topo"></a>
-    <script src="assets/kbdoc/js/jquery-3.2.1.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/popper.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap-select.min.js"></script>
-    <script src="assets/kbdoc/js/parallaxie.js"></script>
-    <script src="assets/kbdoc/js/TweenMax.min.js"></script>
-    <script src="assets/kbdoc/js/anchor.js"></script>
-    <script src="assets/kbdoc/assets/wow/wow.min.js"></script>
-    <script src="assets/kbdoc/js/vendor/clipboard.min.js"></script>
-    <script src="assets/kbdoc/assets/prism/prism.js"></script>
-    <script src="assets/kbdoc/assets/niceselectpicker/jquery.nice-select.min.js"></script>
-    <script src="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="assets/kbdoc/assets/magnify-pop/jquery.magnific-popup.min.js"></script>
-    <script src="assets/kbdoc/assets/tooltipster/js/tooltipster.bundle.min.js"></script>
-    <script src="assets/kbdoc/assets/font-size/js/rv-jquery-fontsize-2.0.3.js"></script>
-    <script src="assets/kbdoc/js/onpage-menu.js"></script>
-    <script src="assets/kbdoc/js/main.js"></script>
-    <script src="assets/busca.js"></script>
-    <script src="assets/docx.js"></script>
+<h2 class="doc-h2" id="mf-109-o-que-e">O que é, em poucas palavras</h2>
+<p>Na versão 2.0, a web como fonte é <strong>a pesquisa que o modelo de IA faz na web, quando autorizado</strong>. Não é um cadastro de páginas nem uma fonte de dados como os bancos: é um interruptor, “pesquisar na web”, que a pessoa liga na conversa. A web serve a três usos: complementar o número da empresa com o contexto de mercado, responder sozinha à pergunta sobre algo de fora e servir de régua para comparar.</p>
+<ul>
+  <li><strong>Um interruptor, não um modo.</strong> A pessoa liga “pesquisar na web”, e a pesquisa roda ao lado da consulta aos dados, ou da conversa sem fonte.</li>
+  <li><strong>Link e data em todo fato.</strong> Cada fato de fora traz o link da página e a data de publicação; sem data, um aviso.</li>
+  <li><strong>Separado do dado da empresa.</strong> Os fatos aparecem à parte do texto, e o número continua saindo do banco.</li>
+  <li><strong>Só a pergunta sai.</strong> À busca vai o texto da pergunta, nunca os dados da empresa.</li>
+  <li><strong>Em todo lugar onde o Horus responde:</strong> na conversa, na Pergunta rápida, no WhatsApp, nos painéis e nos agentes.</li>
+</ul>
+<p>Hoje o Horus já pesquisa na web, mas cita a fonte no meio do texto, sem data, e a web é um modo de perguntar à parte. A versão 2.0 muda as duas coisas: cada fato ganha link e data e fica separado do texto, e a web vira um complemento da pergunta, ao lado dos dados.</p>
+<h3 class="doc-h3" id="mf-109-quem-usa">Quem usa</h3>
+<p>Pesquisa na web quem pode perguntar: o owner, o gestor e os membros ouro e prata (os tipos de assento estão em <a href="mf-101.html#mf-101-assentos">Os assentos: quem pode fazer o quê</a>). O membro bronze não pergunta: só vê os painéis que outras pessoas criaram e compartilharam. Quem libera a pesquisa é o owner da organização, no botão “Modos e web” das roles (veja <a href="mf-102.html#mf-102-roles">Roles: o que cada pessoa pode usar</a>).</p>
+
+<h2 class="doc-h2" id="mf-109-na-pratica">Uma pergunta com a web ligada</h2>
+<p>Um exemplo, com personagens ilustrativos. A Carla é gestora de vendas de uma rede de lojas e prepara os números de outubro para levar ao CEO.</p>
+<ol class="steps">
+  <li><div><h4>Liga a pesquisa</h4><p>Na conversa de análise, a Carla liga o interruptor “pesquisar na web”, ao lado dos dados. O banco de vendas continua sendo a fonte dos números.</p></div></li>
+  <li><div><h4>Pergunta, no nível que quiser</h4><p>Ela pergunta “as vendas de outubro acompanharam a inflação?”, no nível de inferência padrão. Enquanto o Horus consulta o banco de vendas, a pesquisa corre ao mesmo tempo, e à busca vai só o texto da pergunta.</p></div></li>
+  <li><div><h4>Recebe o número e, à parte, o fato de fora</h4><p>A resposta traz o gráfico das vendas e, separado dele, o fato “inflação de outubro: X%” (valor ilustrativo), com o link da página que o publicou e a data de publicação.</p></div></li>
+  <li><div><h4>Confere pelo link</h4><p>Antes de levar o número ao CEO, a Carla abre o link e confere o fato na própria página.</p></div></li>
+  <li><div><h4>Sobe o nível, se quiser uma causa de fora</h4><p>Se ela pergunta por que as vendas caíram, a resposta não culpa a inflação, a não ser que ela suba para o nível 4. Aí a causa de fora pode aparecer, rotulada como hipótese.</p></div></li>
+</ol>
+<p>O mesmo caminho em desenho, com o que acontece por dentro: a consulta e a busca ao mesmo tempo, a lista de fatos com link e data, o aviso quando a pesquisa não traz fato e a conferência dos links antes de a resposta chegar.</p>
+<figure class="dx-diagrama"><figcaption><b>A pergunta com a web ligada</b> <span>A consulta aos dados e a busca na web ao mesmo tempo, a lista de fatos com link e data, o aviso quando a pesquisa não traz fato e a conferência dos links</span><a href="media/diagramas/mf-109-pergunta-com-a-web.html" target="_blank" rel="noopener">Abrir em tela cheia ↗</a></figcaption><iframe src="media/diagramas/mf-109-pergunta-com-a-web.html?embutido=1" title="A pergunta com a web ligada" loading="lazy"></iframe></figure>
+<h3 class="doc-h3" id="mf-109-quando-aparece">Quando o interruptor aparece</h3>
+<p>O “pesquisar na web” só aparece quando três condições se juntam. Se uma delas falta, a opção não aparece na conversa.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Condição</th><th>Como fica na versão 2.0</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>A instalação do Horus deixa sair a serviços de fora</strong></td><td>O serviço da Maind, onde o Horus roda, deixa.</td></tr>
+      <tr class="zebra"><td><strong>O provedor de IA pesquisa por conta própria</strong></td><td>O OpenRouter pesquisa; o Amazon Bedrock, não. A organização que só tem uma conexão Bedrock fica sem a opção (veja <a href="mf-105.html#mf-105-provedores">Os provedores da versão 2.0</a>).</td></tr>
+      <tr class="zebra"><td><strong>A role da pessoa libera a pesquisa</strong></td><td>O owner liga a pesquisa na web no botão “Modos e web” da role. O owner não depende de roles: usa tudo (veja <a href="mf-102.html#mf-102-regras-das-roles">As regras das roles</a>).</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="doc-h2" id="mf-109-fato">O fato de fora, sempre com link e data</h2>
+<p>A promessa de confiança do Horus vale também para o que vem de fora: <strong>nenhuma informação da web aparece sem o link</strong>, e nenhuma aparece sem a data ou sem o aviso de que ela não foi identificada.</p>
+<ul>
+  <li><strong>O link vem da busca.</strong> O link de cada fato é o que a busca do provedor devolveu, e não um endereço escrito pelo modelo. Se o texto da resposta trouxer um link que a busca não trouxe, ele é retirado antes de a resposta chegar.</li>
+  <li><strong>A data é lida na própria página.</strong> O Horus abre a página citada e lê a data de publicação. Muitas páginas não declaram data: aí o fato aparece com o aviso de data não identificada, para uma informação antiga não passar por atual sem ninguém perceber.</li>
+  <li><strong>À parte do texto.</strong> Os fatos aparecem separados da resposta, cada um com o título da página, o link e a data. O número da empresa continua vindo do banco, e quem lê distingue à vista um do outro.</li>
+</ul>
+<h3 class="doc-h3" id="mf-109-niveis">O fato em qualquer nível; a causa de fora, só do 4 em diante</h3>
+<p>O <strong>nível de inferência</strong> é a régua de 1 a 5 de quanto a resposta pode ir além do número (o teto de cada fonte está em <a href="mf-104.html#mf-104-teto">O teto de inferência</a>). Com a web, a régua separa duas coisas: o <strong>fato</strong>, que se confere pelo link e pela data, entra em qualquer nível; a <strong>causa</strong> vinda de fora dos dados, que já é explicação, só entra a partir do nível 4.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Nível</th><th>O fato da web</th><th>Uma causa vinda de fora</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>1 · Descritivo</strong></td><td><span class="badge badge--success">Entra</span> com link e data</td><td><span class="badge">Não entra</span></td></tr>
+      <tr class="zebra"><td><strong>2 · Explicativo</strong> (o padrão)</td><td><span class="badge badge--success">Entra</span> com link e data</td><td><span class="badge">Não entra</span></td></tr>
+      <tr class="zebra"><td><strong>3 · Comparativo</strong></td><td><span class="badge badge--success">Entra</span> com link e data</td><td><span class="badge">Não entra</span></td></tr>
+      <tr class="zebra"><td><strong>4 · Hipótese de domínio</strong></td><td><span class="badge badge--success">Entra</span> com link e data</td><td><span class="badge badge--warning">Entra</span> rotulada como hipótese</td></tr>
+      <tr class="zebra"><td><strong>5 · Especulativo</strong></td><td><span class="badge badge--success">Entra</span> com link e data</td><td><span class="badge badge--warning">Entra</span> rotulada como especulação</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>O nível que vale numa pergunta é o menor entre o que a pessoa pediu, o que a role dela libera e o teto das fontes da conversa.</p>
+<h3 class="doc-h3" id="mf-109-sem-fato">Quando a pesquisa não traz fato</h3>
+<p>Às vezes a busca não acha o que a pergunta pede: o índice do setor, por exemplo. Aí a resposta <strong>sai com os dados da empresa</strong> e traz <strong>um aviso curto</strong> de que a pesquisa na web não trouxe fatos. A pessoa sabe que a web foi tentada e não achou, e não fica sem a parte da empresa.</p>
+<p>A pesquisa também tem prazo próprio. Ela corre ao mesmo tempo que a consulta ao banco e, se não volta a tempo, a resposta não espera: sai sem os fatos da web.</p>
+
+<h2 class="doc-h2" id="mf-109-canais">Em todo lugar onde o Horus responde</h2>
+<p>A regra do link e da data não é só da conversa. Ela vale em todo lugar onde aparece uma resposta com fato da web:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Onde</th><th>Como a web aparece</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Conversa de análise</strong> (MF-107)</td><td>Ao lado dos dados, ou da conversa sem fonte. No modo conversa, a web pode responder sozinha a uma pergunta só sobre algo de fora.</td></tr>
+      <tr class="zebra"><td><strong>Pergunta rápida</strong> (MF-110)</td><td>Com o mesmo interruptor, ao lado dos dados.</td></tr>
+      <tr class="zebra"><td><strong>WhatsApp</strong> (MF-111)</td><td>O link e a data vão no texto da mensagem.</td></tr>
+      <tr class="zebra"><td><strong>Cartão de um painel</strong> (MF-112)</td><td>Guarda os fatos que a resposta trouxe, com o link e a data à vista, e não pesquisa de novo: só os números da empresa se recalculam.</td></tr>
+      <tr class="zebra"><td><strong>Agentes</strong> (MF-115)</td><td>Cada execução do agente pesquisa de novo, e o fato chega com o link e a data ao que o agente entrega.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Um exemplo do cartão: a Carla fixa no painel “vendas de outubro contra a inflação do mês”. O cartão se recalcula toda noite, e a inflação continua a de outubro, com o link e a data à vista.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>O fato do cartão envelhece</b><p>Como o cartão não pesquisa de novo, o fato de fora continua o da resposta que originou o cartão. A data à vista avisa quem olha o painel. Um jeito de o autor atualizar o fato à mão fica para depois, se os autores pedirem.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-109-bastidores">Nos bastidores, sem complicar</h2>
+<p>Só o bastante da tecnologia para a história fazer sentido. Como já conta a página da IA sob controle da organização, a busca é a do provedor de IA que a organização usa, e à busca vai só o texto da pergunta, nunca os dados do banco nem o modelo semântico (veja <a href="mf-105.html#mf-105-provedores">Os provedores da versão 2.0</a> e <a href="mf-105.html#mf-105-bastidores">os bastidores da IA</a>). O que é desta funcionalidade é o que vem antes e depois da busca:</p>
+<ul>
+  <li><strong>Uma etapa própria para a web.</strong> A pesquisa começa junto com a pergunta e corre em paralelo com a consulta ao banco, com prazo próprio. Ela tem a sua tarefa de IA, e o owner escolhe o modelo dela como escolhe o das outras tarefas (veja <a href="mf-105.html#mf-105-tarefas">Um modelo para cada tarefa</a>).</li>
+  <li><strong>O fato é do Horus; a frase é do modelo.</strong> O link vem da citação que a busca devolve, a data o Horus lê na própria página, e a lista de fatos (o texto, o link, o título e a data) fica gravada com a resposta. Depois que o modelo escreve, uma conferência tira do texto todo link que não está na lista.</li>
+  <li><strong>A leitura da página não aponta para dentro.</strong> Para ler a data, o Horus só abre endereços comuns da web e recusa qualquer endereço interno.</li>
+  <li><strong>A regra da causa se mede.</strong> O fato com link e data é garantido pelo Horus. Já a regra de não dar causa de fora abaixo do nível 4 vai na instrução ao modelo, e uma bateria de testes mede quanto ele a respeita.</li>
+  <li><strong>Boa parte já existe.</strong> A busca do provedor e o leitor de páginas vêm do Horus de hoje. É nova a etapa própria da web, que devolve os fatos com link e data e tira do texto o link que não veio da busca.</li>
+</ul>
+
+<h2 class="doc-h2" id="mf-109-limites">O que esta funcionalidade não faz</h2>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Escolher as fontes da web</strong></td><td>Não há selos de confiança, lista de fontes aprovadas pela organização nem páginas cadastradas como fonte: a web entra só pela pesquisa.</td></tr>
+      <tr class="zebra"><td><strong>Dar causa de fora abaixo do nível 4</strong></td><td>O fato entra em qualquer nível; a causa vinda da web, só do nível 4 em diante, sempre rotulada.</td></tr>
+      <tr class="zebra"><td><strong>Guardar cópias das páginas</strong></td><td>Com a resposta ficam o fato, o link, o título e a data, e não a página consultada.</td></tr>
+      <tr class="zebra"><td><strong>Buscar em sites que pedem login</strong></td><td>A pesquisa fica no que está aberto na web.</td></tr>
+      <tr class="zebra"><td><strong>Pesquisar por outro caminho</strong></td><td>Sem a busca do provedor de IA, nenhum outro serviço pesquisa no lugar dela, nem um serviço da Maind.</td></tr>
+      <tr class="zebra"><td><strong>Pesquisar de novo no cartão do painel</strong></td><td>O cartão guarda os fatos da resposta que o originou, e só os números da empresa se recalculam.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="mf-109-ligadas">Funcionalidades ligadas a esta</h3>
+<p>A web como fonte se apoia na conversa e na IA da organização, e chega a quase todo lugar onde o Horus responde. As páginas das outras funcionalidades entram aqui conforme forem escritas.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="mf-102.html">Organizações, pessoas e papéis (MF-102)</a></td><td>A pesquisa na web mora no botão “Modos e web” das roles, que o owner liga ou desliga.</td></tr>
+      <tr class="zebra"><td><a href="mf-104.html">Conectar as fontes vivas (MF-104)</a></td><td>Os bancos dão o número da empresa, e a web, o contexto de fora. A web não é cadastrada como fonte lá.</td></tr>
+      <tr class="zebra"><td><a href="mf-105.html">IA sob controle da organização (MF-105)</a></td><td>A busca é a do provedor de IA que a organização usa; sem um provedor que pesquise, a opção não aparece.</td></tr>
+      <tr class="zebra"><td><a href="mf-107.html">Perguntar aos dados em português (MF-107)</a></td><td>A web entra na mesma conversa e obedece aos mesmos níveis de inferência.</td></tr>
+      <tr class="zebra"><td><a href="mf-108.html">Respostas visuais (MF-108)</a></td><td>O gráfico ou a tabela mostra o número da empresa, e o fato de fora vem à parte, com link e data.</td></tr>
+      <tr class="zebra"><td><a href="mf-110.html">Pergunta rápida (MF-110)</a></td><td>O mesmo interruptor, ao lado dos dados, a partir de outras telas do Horus.</td></tr>
+      <tr class="zebra"><td>Chat pelo WhatsApp (MF-111)</td><td>O fato chega à mensagem com o link e a data no texto.</td></tr>
+      <tr class="zebra"><td>Boards e Relatórios (MF-112)</td><td>O cartão guarda os fatos da web, com o link e a data à vista, e não pesquisa de novo.</td></tr>
+      <tr class="zebra"><td>Agentes ativos (MF-115)</td><td>Cada execução pesquisa, e o fato vale com link e data no que o agente entrega.</td></tr>
+      <tr class="zebra"><td>Middleware na casa do contratante (MF-121)</td><td>Na versão 2.1, para a organização que usa o middleware, a saída do Horus para a internet passa por ele.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Ainda em definição</b><p><strong>Páginas da web cadastradas como fonte.</strong> O Horus de hoje tem um tipo de fonte que lê páginas da web escolhidas e cadastradas. Na versão 2.0, a web entra pela pesquisa da IA, quando autorizada, e o cadastro de páginas fica de fora. Se esse tipo de fonte some ou continua ainda está em definição.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-109-faq">Perguntas frequentes</h2>
+<div class="faq">
+  <details open>
+    <summary>Os dados da minha empresa vão para a busca na web?</summary>
+    <div class="faq-body"><p>Não. À busca vai só o texto da pergunta, nunca os dados do banco nem o modelo semântico, o dicionário de termos da sua empresa. A busca é a do provedor de IA que a sua organização usa, e nenhum outro serviço pesquisa no lugar dela.</p></div>
+  </details>
+  <details>
+    <summary>Como sei de onde veio e de quando é uma informação de fora?</summary>
+    <div class="faq-body"><p>Todo fato da web aparece à parte do texto, com o link da página e a data de publicação, lida na própria página. Quando a página não declara a data, o fato vem com o aviso de que ela não foi identificada. E um link que a busca não trouxe é retirado da resposta.</p></div>
+  </details>
+  <details>
+    <summary>A resposta pode culpar a inflação pela queda das vendas?</summary>
+    <div class="faq-body"><p>Só se você pedir o nível 4 ou o 5. O fato de fora, como a inflação do mês, entra em qualquer nível, com link e data. Já a causa vinda de fora dos dados só aparece a partir do nível 4, rotulada como hipótese, ou como especulação no nível 5.</p></div>
+  </details>
+  <details>
+    <summary>E se a pesquisa não achar nada?</summary>
+    <div class="faq-body"><p>A resposta sai com os dados da empresa e um aviso curto de que a pesquisa na web não trouxe fatos. Se a busca demorar, a resposta não espera por ela: a pesquisa corre ao lado da consulta, com prazo próprio, e, se não volta a tempo, a resposta sai sem os fatos da web.</p></div>
+  </details>
+  <details>
+    <summary>Por que a opção “pesquisar na web” não aparece para mim?</summary>
+    <div class="faq-body"><p>Ela só aparece quando a sua role libera a pesquisa e quando o provedor de IA da sua organização pesquisa por conta própria: o OpenRouter pesquisa, o Amazon Bedrock não. A instalação também precisa deixar sair a serviços de fora, o que o serviço da Maind deixa. E o membro bronze não pergunta, por isso não vê a opção.</p></div>
+  </details>
+  <details>
+    <summary>Posso escolher os sites que o Horus consulta?</summary>
+    <div class="faq-body"><p>Na versão 2.0, não. Não há lista de fontes aprovadas pela organização, selos de confiança nem páginas cadastradas como fonte: a web entra só pela pesquisa, que não busca em sites que pedem login. Se haverá um jeito de cadastrar páginas escolhidas ainda está em definição.</p></div>
+  </details>
+</div>
+</div><nav class="rel-grid dx-vizinhas" aria-label="Páginas vizinhas"><a class="rel-card dx-anterior" href="mf-108.html"><span class="cat">Anterior</span><h5>Respostas visuais</h5><span class="arrow">←</span></a><a class="rel-card dx-proxima" href="mf-110.html"><span class="cat">Próxima</span><h5>Pergunta rápida</h5><span class="arrow">→</span></a></nav>
+<footer class="ds-footer"><div class="ftr-brand"><img class="ftr-logo logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="ftr-logo logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /><div class="ftr-divider"></div><div class="ftr-meta"><b>Maind Horus · Horus v2 · versão 2.0 em desenho</b></div></div><div class="ftr-center"><span class="ftr-tag">v2.0 em desenho, sem versão publicada · 06/11/2026</span></div><div class="ftr-author"><div class="avatar">MT</div><div class="ftr-author-info"><b>Maind Tech</b><span>Horus v2</span></div></div></footer>
+</main>
+<aside class="toc"><h6>Neste artigo</h6><ul><li><a href="#mf-109-o-que-e">O que é, em poucas palavras</a></li><li class="lvl-3"><a href="#mf-109-quem-usa">Quem usa</a></li><li><a href="#mf-109-na-pratica">Uma pergunta com a web ligada</a></li><li class="lvl-3"><a href="#mf-109-quando-aparece">Quando o interruptor aparece</a></li><li><a href="#mf-109-fato">O fato de fora, sempre com link e data</a></li><li class="lvl-3"><a href="#mf-109-niveis">O fato em qualquer nível; a causa de fora, só do 4 em diante</a></li><li class="lvl-3"><a href="#mf-109-sem-fato">Quando a pesquisa não traz fato</a></li><li><a href="#mf-109-canais">Em todo lugar onde o Horus responde</a></li><li><a href="#mf-109-bastidores">Nos bastidores, sem complicar</a></li><li><a href="#mf-109-limites">O que esta funcionalidade não faz</a></li><li class="lvl-3"><a href="#mf-109-ligadas">Funcionalidades ligadas a esta</a></li><li><a href="#mf-109-faq">Perguntas frequentes</a></li></ul></aside>
+</div>
+<div class="toast" id="toast">Copiado ✓</div>
+<script src="assets/busca.js"></script>
+<script src="assets/docs.js"></script>
+<script src="assets/docx-kbr.js"></script>
 </body>
 </html>

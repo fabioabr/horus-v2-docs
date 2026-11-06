@@ -1,314 +1,233 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-menu="vertical">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="A documentação de produto e de arquitetura do Horus v2: a visão, as decisões, a estratégia e como ele vai ser construído.">
-    <meta name="generator" content="DocX 0.2.1">
-    <link rel="shortcut icon" href="media/horus-claro.svg">
-    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/elagent-icon/style.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/font-awesome/css/all.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/niceselectpicker/nice-select.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/font-size/css/rvfs.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/animation/animate.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/tooltipster/css/tooltipster.bundle.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism-coy.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/magnify-pop/magnific-popup.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/css/style.css">
-    <link rel="stylesheet" href="assets/kbdoc/css/responsive.css">
-    <link rel="stylesheet" href="assets/docx.css">
-    <link rel="stylesheet" href="assets/conteudo.css">
-    <link rel="stylesheet" href="assets/indice.css">
-    <script>try { var l = parseInt(localStorage.getItem('docx-menu-largura'), 10); if (l >= 200 && l <= 640) document.documentElement.style.setProperty('--dx-menu-largura', l + 'px'); } catch (e) { /* Sem armazenamento, vale a largura padrão. */ }</script>
-    <title>MF-115 · Agentes ativos — Horus v2</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="DocX 0.4.0" />
+<meta name="description" content="As funcionalidades do Horus v2 explicadas uma a uma, em linguagem simples: o que cada uma faz, como funciona na prática e as dúvidas mais comuns." />
+<link rel="icon" href="assets/logo-claro.svg" />
+<title>MF-115 · Agentes ativos — Horus v2</title>
+<script>
+(function () {
+  try {
+    var raiz = document.documentElement;
+    var tema = localStorage.getItem('kinto-theme');
+    var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    raiz.setAttribute('data-theme', tema || (escuro ? 'dark' : 'light'));
+    raiz.setAttribute('data-menu', localStorage.getItem('kinto-menu') || 'vertical');
+    var ws = parseInt(localStorage.getItem('kinto-side-w'), 10);
+    var wt = parseInt(localStorage.getItem('kinto-toc-w'), 10);
+    if (ws) raiz.style.setProperty('--side-w-user', ws + 'px');
+    if (wt) raiz.style.setProperty('--toc-w-user', wt + 'px');
+  } catch (e) { /* localStorage bloqueado: ficam os atributos do <html> */ }
+})();
+</script>
+<link rel="stylesheet" href="assets/docs.css" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="assets/docx-kbr.css" />
 </head>
-<body class="doc full-width-doc sticky-nav-doc onepage-doc dx-pagina-doc" data-spy="scroll" data-target=".navbar" data-offset="-120">
-    <a class="sr-only sr-only-focusable dx-skip" href="#post">Pular para o conteúdo</a>
-    <div class="body_wrapper sticky_menu">
-        <nav class="navbar navbar-expand-lg menu_one" id="stickyTwo" aria-label="Navegação principal">
-            <div class="container-fluid pl-60 pr-60">
-                <a class="navbar-brand" href="index.html">
-                    <img src="media/horus-claro.svg" alt="Horus v2">
-                    <img src="media/horus-escuro.svg" alt="Horus v2">
-                </a>
-                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Abrir o menu">
-                    <span class="menu_toggle">
-                        <span class="hamburger">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </span>
-                        <span class="hamburger-cross">
-                            <span></span>
-                            <span></span>
-                        </span>
-                    </span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav menu ml-auto">
-
-                    </ul>
-                    <ul class="list-unstyled menu_social">
-                        <li class="search">
-                            <form action="#" class="search_form" role="search" data-search-form>
-                                <label class="sr-only" for="dx-search">Buscar na documentação</label>
-                                <input type="search" class="form-control" id="dx-search" placeholder="Buscar" autocomplete="off" data-search-input aria-describedby="dx-search-status" aria-controls="dx-search-results">
-                                <button type="submit" aria-label="Buscar"><i class="icon_search" aria-hidden="true"></i></button>
-                                <div class="dx-search-results" id="dx-search-results" data-search-results hidden></div>
-                            </form>
-                            <p class="sr-only" id="dx-search-status" role="status" data-search-status></p>
-                        </li>
-                    </ul>
-                    <div class="dx-ferramentas">
-
-
-                        <div id="font-switcher"><div id="rvfs-controllers" class="fontsize-controllers group"></div></div>
-                        <button type="button" class="print" data-print aria-label="Imprimir"><i class="icon_printer" aria-hidden="true"></i></button>
-                        <div class="doc_switch">
-                            <label for="something" class="tab-btn tab-btns"><i class="icon_lightbulb_alt" aria-hidden="true"></i><span class="sr-only">Tema claro</span></label>
-                            <input type="checkbox" name="something" id="something" class="tab_switcher" aria-label="Tema escuro">
-                            <label for="something" class="tab-btn"><i class="far fa-moon" aria-hidden="true"></i><span class="sr-only">Tema escuro</span></label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-        <section class="doc_documentation_area onepage_doc_area" id="sticky_doc">
-            <div class="overlay_bg"></div>
-            <div class="container-fluid pl-60 pr-60">
-                <div class="row doc-container">
-                    <div class="col-lg-2 doc_mobile_menu doc-sidebar display_none">
-                        <aside class="doc_left_sidebarlist" aria-label="Tópicos desta página">
-                            <h3 class="nav_title">Tópicos</h3>
-                            <div class="dx-menu-rolagem">
-                                <ul class="list-unstyled nav-sidebar doc-nav">
-<li class="nav-item active"><a href="#mf-115-identificacao" class="nav-link">Identificação</a></li>
-<li class="nav-item"><a href="#mf-115-o-que-e" class="nav-link">O que é</a></li>
-<li class="nav-item"><a href="#mf-115-caracteristicas" class="nav-link">Características</a></li>
-<li class="nav-item"><a href="#mf-115-o-valor-que-gera" class="nav-link">O valor que gera</a></li>
-<li class="nav-item"><a href="#mf-115-como-se-usa-no-horus" class="nav-link">Como se usa no Horus</a></li>
-<li class="nav-item"><a href="#mf-115-grau-de-complexidade-alta" class="nav-link">Grau de complexidade: alta</a></li>
-<li class="nav-item"><a href="#mf-115-macro-funcionalidades-relacionadas" class="nav-link">Macro funcionalidades relacionadas</a></li>
-<li class="nav-item"><a href="#mf-115-o-que-ela-nao-faz" class="nav-link">O que ela não faz</a></li>
-<li class="nav-item"><a href="#mf-115-ainda-a-decidir" class="nav-link">Ainda a decidir</a></li>
-<li class="nav-item"><a href="#mf-115-para-saber-mais" class="nav-link">Para saber mais</a></li>
-                                </ul>
-                            </div>
-                        </aside>
-                        <div class="dx-divisor" role="separator" aria-orientation="vertical" aria-label="Ajustar a largura do menu" tabindex="0" title="Arraste para ajustar a largura do menu (duplo clique volta ao padrão)"><span class="dx-divisor__pega"></span></div>
-                    </div>
-                    <div class="col-lg-10 col-md-12">
-                        <div class="documentation_info dx-pagina" id="post">
-                            <header class="dx-cabeca" id="mf-115">
-                                <nav class="dx-trilha" aria-label="Trilha"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Início</a></li><li class="breadcrumb-item">v2.0</li><li class="breadcrumb-item active" aria-current="page">Agentes ativos</li></ol></nav>
-                                <div class="dx-macro-topo"><span class="dx-macro-codigo">MF-115</span><span class="dx-macro-selo">v2.0</span></div>
-                                <h1>Agentes ativos</h1>
-                                <p>O trabalhador de IA que extrai, analisa e avisa</p>
-                            </header>
-                            <div class="dx-modelo-01">
-<nav aria-labelledby="dx-m01-assuntos-titulo">
-<div class="dx-m01-rotulo"><h2 id="dx-m01-assuntos-titulo">Explore os assuntos</h2><span>10 seções</span></div>
-<div class="dx-m01-assuntos">
-<a class="dx-m01-assunto" href="#mf-115-identificacao"><span class="dx-m01-icone"><i class="fas fa-id-card" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Identificação</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-115-o-que-e"><span class="dx-m01-icone"><i class="fas fa-compass" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que é</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-115-caracteristicas"><span class="dx-m01-icone"><i class="fas fa-star" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Características</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-115-o-valor-que-gera"><span class="dx-m01-icone"><i class="fas fa-chart-line" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O valor que gera</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-115-como-se-usa-no-horus"><span class="dx-m01-icone"><i class="fas fa-walking" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Como se usa no Horus</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-115-grau-de-complexidade-alta"><span class="dx-m01-icone"><i class="fas fa-puzzle-piece" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Grau de complexidade: alta</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-115-macro-funcionalidades-relacionadas"><span class="dx-m01-icone"><i class="fas fa-link" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Macro funcionalidades relacionadas</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-115-o-que-ela-nao-faz"><span class="dx-m01-icone"><i class="fas fa-ban" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que ela não faz</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-115-ainda-a-decidir"><span class="dx-m01-icone"><i class="fas fa-hourglass-half" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Ainda a decidir</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-115-para-saber-mais"><span class="dx-m01-icone"><i class="fas fa-book" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Para saber mais</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-</div></nav>
+<body>
+<header class="hdr"><div class="hdr-brand"><a class="hdr-logo" href="index.html" aria-label="Horus v2"><img class="logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /></a><div class="div"></div><div class="doc-meta"><b>Horus v2 · Documentação</b><small>Maind Horus</small></div></div><div class="hdr-center"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-topo" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><div class="hdr-actions"><div class="menu-toggle" role="group" aria-label="Menu"><button data-set="vertical" aria-label="Menu vertical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button><button data-set="horizontal" aria-label="Menu horizontal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></button></div><div class="theme-toggle" role="group" aria-label="Tema"><button data-set="light" aria-label="Claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button><button data-set="dark" aria-label="Escuro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header>
+<div class="shell">
+<aside class="side"><nav aria-label="Páginas da documentação"><h6>Horus v2</h6><ul><li><a href="index.html">Início</a></li></ul><h6>Para começar</h6><ul><li><a href="como-ler.html">Como ler esta documentação</a></li></ul><h6>v2.0</h6><ul class="side-sub"><li><a href="mf-101.html">MF-101 · Administração da instância</a></li><li><a href="mf-102.html">MF-102 · Organizações, pessoas e papéis</a></li><li><a href="mf-103.html">MF-103 · Licenças e planos</a></li><li><a href="mf-104.html">MF-104 · Conectar as fontes vivas</a></li><li><a href="mf-105.html">MF-105 · IA sob controle da organização</a></li><li><a href="mf-107.html">MF-107 · Perguntar aos dados em português</a></li><li><a href="mf-108.html">MF-108 · Respostas visuais</a></li><li><a href="mf-109.html">MF-109 · A web como fonte</a></li><li><a href="mf-110.html">MF-110 · Pergunta rápida</a></li><li><a href="mf-111.html">MF-111 · Chat pelo WhatsApp</a></li><li><a href="mf-112.html">MF-112 · Boards e Relatórios</a></li><li><a href="mf-113.html">MF-113 · Conectores de Saída</a></li><li><a href="mf-114.html">MF-114 · Módulo de Agendamentos de Agentes</a></li><li><a href="mf-115.html" class="active">MF-115 · Agentes ativos</a></li><li><a href="mf-116.html">MF-116 · Auditoria</a></li><li><a href="mf-117.html">MF-117 · Home da organização</a></li><li><a href="mf-118.html">MF-118 · Bases de demonstração</a></li><li><a href="mf-120.html">MF-120 · Faixa de avisos e números</a></li></ul></nav></aside>
+<main class="content doc">
+<div class="dx-busca-movel"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-movel" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><nav class="crumbs" aria-label="Trilha"><a href="index.html">Horus v2</a><span class="sep">/</span><span>v2.0</span><span class="sep">/</span><span class="now">Agentes ativos</span></nav><span class="doc-eyebrow">v2.0</span><div class="dx-macro-topo"><span class="dx-codigo">MF-115</span><span class="dx-selo">v2.0</span></div><h1 class="doc-h1">Agentes ativos</h1><p class="doc-lead">Um trabalho automático de IA que, a partir de instruções em texto, consulta os dados na hora marcada e entrega a análise pronta, num PDF com gráficos ou num alerta, sem ninguém precisar perguntar.</p><section class="dx-assuntos" aria-labelledby="dx-assuntos-titulo"><h2 id="dx-assuntos-titulo">Explore os assuntos</h2><div class="dx-assuntos-grade"><div class="dx-assunto"><h3><a href="#mf-115-o-que-e">O que é, em poucas palavras</a><small>1 tópico</small></h3><ul><li><a href="#mf-115-quem-e-quem">Quem faz o quê</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-115-um-agente">Um agente, do texto à entrega</a><small>1 tópico</small></h3><ul><li><a href="#mf-115-aprovacao">A aprovação do owner</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-115-instrucoes">As instruções e o que o Horus entende</a><small>1 tópico</small></h3><ul><li><a href="#mf-115-nivel">O nível de inferência do agente</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-115-execucao">Na hora marcada: como o agente trabalha</a><small>2 tópicos</small></h3><ul><li><a href="#mf-115-permissoes">Com as permissões de quem o criou</a></li><li><a href="#mf-115-entrega">O que chega, e para quem</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-115-quando-falha">Quando algo dá errado</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-115-custo">O custo de um agente</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-115-bastidores">Nos bastidores, sem complicar</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-115-limites">O que esta funcionalidade não faz</a><small>1 tópico</small></h3><ul><li><a href="#mf-115-ligadas">Funcionalidades ligadas a esta</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-115-faq">Perguntas frequentes</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div></div></section><div id="dx-topo"><p>Pense no analista que, toda segunda de manhã, abre os números da semana, faz as mesmas perguntas de sempre, monta um resumo para a equipe e só liga para a gestora se algo saiu do normal. É um trabalho útil, que se repete, e que depende de alguém lembrar de fazê-lo. No Horus, esse trabalho tem um nome: <strong>agente</strong>. Ele recebe um roteiro em texto e, na hora marcada, consulta os dados, analisa e entrega o resultado, sem ninguém precisar estar na tela nem lembrar de perguntar.</p>
+<p>Onde a comparação para: o agente não decide nem mexe em nada. Ele só lê, e cada número que ele cita foi calculado pelo Horus no banco de dados da empresa. Hoje, nada no Horus avisa sem alguém perguntar; com os agentes, o aviso passa a chegar sozinho.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Versão 2.0, em construção</b><p>O que está aqui é o que a versão 2.0 do Horus vai entregar. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
 </div>
-                            <div class="dx-content">
-<blockquote>
-<p><strong>Em uma frase:</strong> descrever em texto o que você quer acompanhar e receber, na hora marcada, a análise pronta e um
-alerta quando algo muda, sem precisar perguntar.</p>
-</blockquote>
-<div class="doc-section dx-assunto"><h3 id="mf-115-identificacao" data-dx-icone="id-card">Identificação</h3><div class="table-responsive" tabindex="0" role="region" aria-label="Identificação de MF-115 · Agentes ativos"><table class="table table_shortcode"><tbody><tr><th scope="row">Código</th><td>MF-115</td></tr><tr><th scope="row">Entrega</th><td>v2.0</td></tr><tr><th scope="row">Situação</th><td>definida</td></tr><tr><th scope="row">Camada</th><td>📌 Acompanhar e avisar</td></tr><tr><th scope="row">Objetivos</th><td>O4</td></tr><tr><th scope="row">Quem usa</th><td>gestor, membro full, owner da organização, membro leitor</td></tr><tr><th scope="row">Complexidade</th><td>alta</td></tr><tr><th scope="row">Relacionadas</th><td><a href="mf-114.html">Módulo de Agendamentos de Agentes</a> (MF-114), <a href="mf-113.html">Conectores de Saída</a> (MF-113), <a href="mf-112.html">Boards e Relatórios</a> (MF-112), <a href="mf-107.html">Perguntar aos dados em português</a> (MF-107), <a href="mf-108.html">Respostas visuais</a> (MF-108), <a href="mf-105.html">IA sob controle da organização</a> (MF-105), <a href="mf-116.html">Auditoria</a> (MF-116)</td></tr><tr><th scope="row">Atualizado</th><td>03/11/2026</td></tr></tbody></table></div>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="compass" id="mf-115-o-que-e">O que é</h3>
-<p><strong>Como é hoje.</strong> Nada no Horus avisa sem alguém perguntar; o relatório agendado por e-mail chega perto, mas não avisa
-quando algo muda.</p>
-<p><strong>O que passa a existir.</strong> Esta macro funcionalidade (mf) cria o <strong>agente</strong>: um trabalhador de IA que consulta os
-dados, analisa e entrega o resultado, num PDF com gráficos ou num <strong>alerta</strong> curto. Ele nasce de instruções em texto,
-digitadas, coladas ou importadas de um arquivo .md, um arquivo de texto simples.</p>
-<blockquote>
-<p>💡 <strong>Analogia:</strong> é um analista com um roteiro: toda segunda ele abre os números, faz as mesmas perguntas, monta o
-resumo e só liga se algo saiu do normal. <strong>Onde a analogia para:</strong> o agente não decide nem mexe em nada; só lê, e
-cada número que cita foi calculado pelo Horus no banco da empresa.</p>
-</blockquote>
-<p><strong>Como fica o dia a dia.</strong> O <strong>gestor</strong>, quem responde por uma equipe, descreve uma vez o que quer acompanhar; o
-resto chega sozinho.</p>
-<blockquote>
-<p>📌 <strong>Exemplo</strong> <em>(personagem ilustrativo)</em>: a gestora Carla importa um .md com as perguntas da semana. Toda segunda,
-o agente consulta, analisa e entrega ao grupo &quot;Vendas Sul&quot; um PDF com gráficos. Quando as vendas caem mais de 10%,
-ele avisa a Carla no WhatsApp, com o rótulo do nível de inferência usado, o quanto ele afirma além dos dados.</p>
-</blockquote>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="star" id="mf-115-caracteristicas">Características</h3>
+
+<h2 class="doc-h2" id="mf-115-o-que-e">O que é, em poucas palavras</h2>
+<p>Um agente é um <strong>trabalho automático de inteligência artificial</strong> que lê os dados da organização e entrega o resultado, num PDF com gráficos ou num alerta curto, sem a pessoa estar presente. Esta funcionalidade cuida de cinco coisas:</p>
 <ul>
-<li><strong>Todo agente usa IA:</strong> é ela que transforma as instruções nas consultas a fazer.</li>
-<li><strong>Antes de ligar:</strong> o Horus mostra as perguntas que vai fazer e a condição para avisar, e o autor confirma.</li>
-<li><strong>Como trabalha:</strong> pergunta ao mesmo motor da conversa de análise quantas vezes precisar, dentro de um teto de
-perguntas e de tempo, e só cita números que o Horus calculou.</li>
-<li><strong>O nível de inferência:</strong> o autor o escolhe livremente, do descritivo ao especulativo, e todo alerta chega
-rotulado com o nível usado.</li>
-<li><strong>Só lê:</strong> nunca altera dados nem age nos sistemas da empresa.</li>
-<li><strong>Quando e para quem:</strong> roda só pelo Módulo de Agendamentos de Agentes (MF-114), com a permissão de quem o criou, e
-entrega pelos Conectores de Saída (MF-113), só a usuários do Horus.</li>
-<li><strong>Quem cria:</strong> o <strong>owner da organização</strong> (quem administra a organização no Horus), o gestor e o <strong>membro full</strong>
-(quem pergunta e cria os próprios boards); o <strong>membro leitor</strong>, que só vê boards de outras pessoas, só recebe.</li>
-<li><strong>Quem edita e quem desabilita:</strong> valem as regras dos boards: só o autor edita, e o owner e o gestor podem
-desabilitar.</li>
-<li><strong>Quem sai da organização:</strong> o agente dele vai, pausado, para o espaço da organização, onde fica o que é dela e
-não de uma pessoa, até o owner transferi-lo ou excluí-lo.</li>
-<li><strong>O custo:</strong> cada execução consome IA, e o consumo aparece no custo da organização, que o owner controla pelo
-modelo de IA dos agentes.</li>
+  <li><strong>Criar o agente a partir de um texto.</strong> As instruções são digitadas, coladas ou importadas de um arquivo .md, um arquivo de texto simples. Todo agente usa IA: é ela que transforma as instruções nas consultas a fazer.</li>
+  <li><strong>Mostrar o que entendeu antes de ligar.</strong> O Horus mostra as perguntas que o agente vai fazer e a condição para avisar, e o autor confirma.</li>
+  <li><strong>Trabalhar sozinho, na hora marcada.</strong> O agente pergunta ao mesmo motor da conversa de análise quantas vezes precisar, dentro de limites técnicos, e só cita números que o Horus calculou.</li>
+  <li><strong>Entregar o resultado:</strong> o PDF, o alerta ou os dois, sempre com o rótulo do nível de inferência usado.</li>
+  <li><strong>Só ler.</strong> O agente nunca altera dados nem age nos sistemas da empresa.</li>
 </ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="chart-line" id="mf-115-o-valor-que-gera">O valor que gera</h3>
-<ul>
-<li><strong>Para quem usa:</strong> o gestor e o executivo são avisados quando algo muda e recebem a análise pronta, sem lembrar de
-perguntar.</li>
-<li><strong>Para a empresa que contrata o Horus:</strong> a área de dados deixa de ser acionada para o que se repete toda semana.</li>
-<li><strong>Para o Horus como produto:</strong> preenche o aviso, um dos três problemas que o Horus se propõe a resolver, hoje
-vazio.</li>
-</ul>
-<p><strong>Como vamos saber que funcionou:</strong> a cena da Carla acontece de verdade, e o custo de IA dos agentes não surpreende os
-owners.</p>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="walking" id="mf-115-como-se-usa-no-horus">Como se usa no Horus</h3>
-<p><strong>O owner da organização configura:</strong> escolhe o modelo de IA que os agentes usam e decide se a criação de agentes
-espera a aprovação dele.</p>
-<p><strong>Quem cria o agente:</strong></p>
-<ol>
-<li>Escreve as instruções, cola um texto ou importa um .md.</li>
-<li>Escolhe o nível de inferência.</li>
-<li>Confere o que o Horus entendeu e confirma.</li>
-<li>Agenda o agente, com os destinos e os conectores.</li>
-<li>Na hora marcada, o agente pergunta, analisa e entrega o PDF, o alerta ou os dois.</li>
+<p>Esta é uma de quatro funcionalidades que formam uma corrente: o agente trabalha, o <a href="mf-114.html">agendamento (MF-114)</a> diz quando, o <a href="mf-113.html">conector de saída (MF-113)</a> entrega e o <a href="mf-112.html">painel (MF-112)</a> mostra.</p>
+<h3 class="doc-h3" id="mf-115-quem-e-quem">Quem faz o quê</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quem</th><th>O que faz com os agentes</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>Escolhe o modelo de IA dos agentes, decide se a criação de um agente espera a aprovação dele, cria os próprios agentes e pode desabilitar os das outras pessoas.</td></tr>
+      <tr class="zebra"><td><strong>Gestor</strong></td><td>Cria agentes e pode entregar o resultado às pessoas que gere. Também pode desabilitar um agente.</td></tr>
+      <tr class="zebra"><td><strong>Membro ouro</strong></td><td>Cria agentes para si.</td></tr>
+      <tr class="zebra"><td><strong>Membro prata e membro bronze</strong></td><td>Não criam agentes: recebem o PDF e os alertas.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>O que cada tipo de assento faz, em geral, está em <a href="mf-101.html#mf-101-assentos">Os assentos: quem pode fazer o quê</a>.</p>
+
+<h2 class="doc-h2" id="mf-115-um-agente">Um agente, do texto à entrega</h2>
+<p>A Carla é gestora de vendas na área comercial de uma rede de lojas, e o Marcos é o owner da organização (personagens ilustrativos). Ela quer acompanhar as vendas da semana sem precisar lembrar de perguntar.</p>
+<ol class="steps">
+  <li><div><h4>Ela escreve as instruções</h4><p>A Carla importa um arquivo .md com as perguntas da semana: as vendas de cada loja da região Sul contra a semana anterior e um aviso se elas caírem mais de 10% (valor ilustrativo). Ela também poderia digitar ou colar o texto.</p></div></li>
+  <li><div><h4>Escolhe o nível de inferência</h4><p>Decide até onde o agente pode interpretar além dos números, do nível que só descreve ao que especula.</p></div></li>
+  <li><div><h4>Confere o que o Horus entendeu e confirma</h4><p>O Horus mostra as perguntas que o agente vai fazer e a condição para avisar. A Carla confere e confirma.</p></div></li>
+  <li><div><h4>Agenda o agente</h4><p>Escolhe quando ele roda (toda segunda de manhã), para quem vai o resultado (o grupo “Vendas Sul”) e por qual conector. O agendamento em si é da <a href="mf-114.html">MF-114</a>.</p></div></li>
+  <li><div><h4>Na hora marcada, o agente trabalha e entrega</h4><p>Toda segunda, ele consulta, analisa e entrega ao grupo um PDF com gráficos. Na semana em que as vendas caem mais de 10%, a Carla recebe também um alerta no WhatsApp, com o rótulo do nível de inferência usado.</p></div></li>
 </ol>
-<figure><div class="lightbox_shortcode"><img src="media/mf-115-diagrama-1.svg" width="1647" height="85" alt="Diagrama: Como se usa no Horus"><a href="media/mf-115-diagrama-1.svg" class="img_popup" aria-label="Ampliar o diagrama"><i class="icon_plus" aria-hidden="true"></i></a></div><figcaption>Diagrama de “Como se usa no Horus”. Selecione o “+” para ampliar.</figcaption></figure></div><div class="doc-section dx-assunto"><h3 data-dx-icone="puzzle-piece" id="mf-115-grau-de-complexidade-alta">Grau de complexidade: alta</h3>
-<p>Nada disso existe na v1; o agente reaproveita o motor que já responde com os números do banco e a impressão em PDF. O
-novo é a leitura das instruções, o ciclo em que o modelo de IA pergunta ao motor até terminar e o alerta rotulado,
-sem ninguém na tela. Atravessa o motor, a IA, o desenho dos gráficos, a fila de trabalhos e os conectores, e cada
-execução custa IA, às vezes mais que a conversa.</p>
-<blockquote>
-<p>⚠️ É a leitura do PO a partir dos documentos de arquitetura. A estimativa de esforço é do arquiteto.</p>
-</blockquote>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="link" id="mf-115-macro-funcionalidades-relacionadas">Macro funcionalidades relacionadas</h3>
-<p>As quatro macro funcionalidades de acompanhar e avisar formam uma corrente: o agente trabalha, o agendamento diz
-quando, o conector entrega e o board mostra.</p>
-<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de Agentes ativos"><table class="table table_shortcode"><thead><tr>
-<th scope="col">mf</th>
-<th scope="col">Como se relaciona</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Módulo de Agendamentos de Agentes (MF-114)</td>
-<td><strong>depende de</strong>: o agente só roda quando um agendamento o chama.</td>
-</tr>
-<tr>
-<td>Conectores de Saída (MF-113)</td>
-<td><strong>depende de</strong>: o PDF e o alerta do agente chegam às pessoas pelo e-mail ou pelo WhatsApp.</td>
-</tr>
-<tr>
-<td>Boards e Relatórios (MF-112)</td>
-<td><strong>complementa</strong>: o PDF do board é a outra coisa que o agendamento roda, e o agente segue as mesmas regras de quem edita e desabilita.</td>
-</tr>
-<tr>
-<td>Perguntar aos dados em português (MF-107)</td>
-<td><strong>depende de</strong>: o agente pergunta ao mesmo motor da conversa de análise.</td>
-</tr>
-<tr>
-<td>Respostas visuais (MF-108)</td>
-<td><strong>depende de</strong>: os gráficos do PDF do agente são os mesmos da conversa.</td>
-</tr>
-<tr>
-<td>IA sob controle da organização (MF-105)</td>
-<td><strong>depende de</strong>: é ali que o owner escolhe o modelo de IA dos agentes e vê o custo deles.</td>
-</tr>
-<tr>
-<td>Auditoria (MF-116)</td>
-<td><strong>complementa</strong>: registra o que o agente enviou, por qual conector e a quem.</td>
-</tr>
-</tbody>
-</table></div></div><div class="doc-section dx-assunto"><h3 data-dx-icone="ban" id="mf-115-o-que-ela-nao-faz">O que ela não faz</h3>
-<ul>
-<li><strong>Agir nos sistemas da empresa:</strong> o agente só lê.</li>
-<li><strong>Decidir quando roda</strong> nem por onde entrega: isso é do agendamento e dos conectores.</li>
-<li><strong>Entregar a quem não é usuário do Horus.</strong></li>
-<li><strong>Nascer de um formulário sem IA:</strong> fica para depois, se o mercado pedir.</li>
-</ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="hourglass-half" id="mf-115-ainda-a-decidir">Ainda a decidir</h3>
-<ul>
-<li>O que o autor recebe quando uma execução falha ou passa do teto de perguntas e de tempo.</li>
-<li>O que cabe no alerta pelo WhatsApp, onde o texto do agente tem tamanho limitado.</li>
-<li>Um teto automático de custo, por agente ou por organização, que a v2.0 não traz.</li>
-</ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="book" id="mf-115-para-saber-mais">Para saber mais</h3>
-<ul>
-<li><a href="produto-backlog.html">Backlog estratégico</a>: a <a href="produto-backlog.html#d-062"><code>D-062</code></a>, a definição macro (fechou a <code>P-007</code>); a
-<a href="produto-backlog.html#d-020"><code>D-020</code></a> (a mf); a <a href="produto-backlog.html#d-022"><code>D-022</code></a> (o &quot;só lê&quot; vale para as fontes, fechou o <code>I-003</code>); a <a href="produto-backlog.html#d-023"><code>D-023</code></a> e a <a href="produto-backlog.html#d-024"><code>D-024</code></a> (a interpretação
-e o nível livre, fechou o <code>I-004</code>); a <a href="produto-backlog.html#d-061"><code>D-061</code></a> (como se cria e como roda); a <a href="produto-backlog.html#d-063"><code>D-063</code></a> (todo agente usa IA); a <a href="produto-backlog.html#d-064"><code>D-064</code></a>
-(o agente ao lado do PDF do board no agendamento); a <a href="produto-backlog.html#d-073"><code>D-073</code></a> (de full a leitor); a <a href="produto-backlog.html#d-122"><code>D-122</code></a> (entra na v2.0); as
-letras (p) e (q) da <code>P-008</code>.</li>
-<li><a href="produto-v20.html">A v2.0 consolidada</a>: §4 (passo 9), §5.9, §7 e §8 (o risco do custo).
-<a href="produto-mfs-hoje.html">Mapa das mfs</a> (&quot;O que o dono já disse&quot; e o problema nº 3),
-<a href="produto-versoes.html">versões</a>, <a href="produto-mapa.html">objetivos</a> (O4) e
-<a href="produto-lacunas.html">lacunas</a> (candidata nº 7).</li>
-<li>Arquitetura: <a href="arquitetura-01.html">estratégia</a> (§3, O4; §4; o marco M6);
-<a href="arquitetura-04.html">software</a> (&quot;Agentes&quot;, &quot;Desenho fora da tela&quot; e &quot;Fila durável e caixa de saída&quot;);
-<a href="arquitetura-05.html">motor</a> (§3.9, o agente, e §3.10, as funções novas);
-<a href="arquitetura-13.html">custo</a> (o custo de uma execução);
-<a href="arquitetura-02.html">registro</a>: <a href="arquitetura-02.html#arq-006"><code>ARQ-006</code></a>, <a href="arquitetura-02.html#arq-007"><code>ARQ-007</code></a>, <a href="arquitetura-02.html#arq-022"><code>ARQ-022</code></a>, <a href="arquitetura-02.html#arq-024"><code>ARQ-024</code></a>, <a href="arquitetura-02.html#arq-025"><code>ARQ-025</code></a>,
-<a href="arquitetura-02.html#arq-030"><code>ARQ-030</code></a>, <a href="arquitetura-02.html#arq-031"><code>ARQ-031</code></a>, <a href="arquitetura-02.html#arq-041"><code>ARQ-041</code></a> e <a href="arquitetura-02.html#arq-090"><code>ARQ-090</code></a> ✅ (a <a href="mf-106.html"><code>MF-106</code></a> inteira na v2.1);
-<a href="arquitetura-14.html">conferência</a>: §3 (&quot;tudo é novo&quot;); §4, <code>A-03</code>, <code>A-10</code> e <code>A-19</code>.</li>
-</ul>
-<p>📚 <a href="mf-115-inventario.html">Tudo o que o inventário diz desta mf, assunto por assunto</a>.</p>
+<p>O mesmo caminho em desenho: quem faz cada passo antes de ligar, o ciclo em que o agente pergunta ao motor até terminar e o que acontece quando algo dá errado.</p>
+<figure class="dx-diagrama"><figcaption><b>Um agente, do texto à entrega</b> <span>Das instruções em texto à confirmação do autor e à aprovação do owner, o ciclo em que o agente pergunta ao motor até terminar, a entrega pelos conectores e o aviso de falha ao autor</span><a href="media/diagramas/mf-115-do-texto-a-entrega.html" target="_blank" rel="noopener">Abrir em tela cheia ↗</a></figcaption><iframe src="media/diagramas/mf-115-do-texto-a-entrega.html?embutido=1" title="Um agente, do texto à entrega" loading="lazy"></iframe></figure>
+<h3 class="doc-h3" id="mf-115-aprovacao">A aprovação do owner</h3>
+<p>Quando a organização nasce, a criação de agentes é aprovada automaticamente: o agente confirmado não espera ninguém. Se o owner preferir revisar cada agente antes de ele rodar, desliga essa aprovação automática nas preferências da organização. É um interruptor só dos agentes; a criação de agendamentos tem o seu, explicado na <a href="mf-114.html">MF-114</a>. Na lista de quem o criou, o agente aparece numa destas situações:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Situação</th><th>O que significa</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><span class="badge badge--warning">Aguardando aprovação do owner</span></td><td>O owner exige aprovação e ainda não decidiu. O agente não roda.</td></tr>
+      <tr class="zebra"><td><span class="badge badge--success">Ativo</span></td><td>Foi aprovado, ou a aprovação é automática. Roda sempre que o agendamento o chama.</td></tr>
+      <tr class="zebra"><td><span class="badge badge--danger">Recusado</span></td><td>O owner recusou. O agente não roda.</td></tr>
+      <tr class="zebra"><td><span class="badge">Desabilitado</span></td><td>O owner ou um gestor o desabilitou, ou o autor passou a um assento que não cria agentes. Neste segundo caso, o agente não roda, e a única ação é excluí-lo.</td></tr>
+    </tbody>
+  </table>
 </div>
-                            </div>
-                            <nav class="dx-vizinhas" aria-label="Páginas vizinhas"><a class="dx-anterior" href="mf-114.html"><i class="arrow_left" aria-hidden="true"></i>Módulo de Agendamentos de Agentes</a><a class="dx-proxima" href="mf-116.html">Auditoria<i class="arrow_right" aria-hidden="true"></i></a></nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <footer class="simple_footer">
-            <img class="leaf_right" src="assets/kbdoc/img/home_one/leaf_footter.png" alt="">
-            <div class="container-fluid pl-60 pr-60">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <p>Maind Horus · Horus v2 · documento interno · Revisado em 03/11/2026 · versão v2.0 em desenho, sem versão publicada</p>
-                    </div>
-                    <div class="col-lg-6 text-right">
 
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
-    <a id="back-to-top" title="Voltar ao topo"></a>
-    <script src="assets/kbdoc/js/jquery-3.2.1.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/popper.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap-select.min.js"></script>
-    <script src="assets/kbdoc/js/parallaxie.js"></script>
-    <script src="assets/kbdoc/js/TweenMax.min.js"></script>
-    <script src="assets/kbdoc/js/anchor.js"></script>
-    <script src="assets/kbdoc/assets/wow/wow.min.js"></script>
-    <script src="assets/kbdoc/js/vendor/clipboard.min.js"></script>
-    <script src="assets/kbdoc/assets/prism/prism.js"></script>
-    <script src="assets/kbdoc/assets/niceselectpicker/jquery.nice-select.min.js"></script>
-    <script src="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="assets/kbdoc/assets/magnify-pop/jquery.magnific-popup.min.js"></script>
-    <script src="assets/kbdoc/assets/tooltipster/js/tooltipster.bundle.min.js"></script>
-    <script src="assets/kbdoc/assets/font-size/js/rv-jquery-fontsize-2.0.3.js"></script>
-    <script src="assets/kbdoc/js/onpage-menu.js"></script>
-    <script src="assets/kbdoc/js/main.js"></script>
-    <script src="assets/busca.js"></script>
-    <script src="assets/docx.js"></script>
+<h2 class="doc-h2" id="mf-115-instrucoes">As instruções e o que o Horus entende</h2>
+<p>O agente nasce de um texto, e é o autor quem diz, nesse texto, o que acompanhar e como ler o que for extraído antes de decidir se avisa. Por isso, dois agentes sobre os mesmos dados podem avisar coisas diferentes, cada um do jeito que o seu autor o descreveu.</p>
+<ul>
+  <li><strong>Antes de ligar, a conferência.</strong> O Horus devolve, na linguagem de quem escreveu, as perguntas de análise que o agente vai fazer e a condição para avisar. O autor confere e confirma, e é essa leitura confirmada que o agente segue a cada execução.</li>
+  <li><strong>Mudou o texto, o Horus lê de novo.</strong> Quando o autor muda as instruções, o Horus volta a interpretá-las.</li>
+  <li><strong>Só o autor edita.</strong> Valem as regras dos painéis (<a href="mf-112.html">MF-112</a>): o owner e o gestor podem desabilitar um agente, mas não alterá-lo.</li>
+  <li><strong>Sem formulário.</strong> Criar um agente preenchendo um formulário, sem IA, fica para depois, se o mercado pedir.</li>
+</ul>
+<h3 class="doc-h3" id="mf-115-nivel">O nível de inferência do agente</h3>
+<p>Na conversa de análise, o nível que vale é o menor entre o que a pessoa pede, o que as roles dela liberam e o teto das fontes (veja <a href="mf-107.html#mf-107-niveis">Os níveis de inferência na conversa</a>). <strong>No agente, a regra é outra:</strong> o autor escolhe o nível livremente, do descritivo ao especulativo, e o owner não limita o nível dos agentes. Em troca, todo alerta chega rotulado com o nível usado, e a hipótese e a especulação vêm sempre marcadas, como na conversa.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Ponto de atenção</b><p>Como o owner não limita o nível dos agentes, um alerta pode chegar com especulação sem o aval da organização. O rótulo diz a quem recebe o quanto o agente afirma além dos dados.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-115-execucao">Na hora marcada: como o agente trabalha</h2>
+<p>O agente só roda quando um agendamento o chama. A partir daí, sem ninguém na tela, ele trabalha num ciclo:</p>
+<ul>
+  <li><strong>Pergunta ao mesmo motor da conversa.</strong> Cada pergunta do agente percorre o mesmo caminho de uma pergunta feita na tela (veja <a href="mf-107.html#mf-107-uma-pergunta">Uma pergunta, do começo ao fim</a>): o modelo semântico da fonte, a consulta ao banco, que o Horus só lê, e os números do resultado.</li>
+  <li><strong>Quantas vezes precisar, dentro de limites.</strong> A cada resposta, o modelo de IA do agente decide se faz mais uma pergunta ou se termina. Cada execução tem limites técnicos, como um número máximo de perguntas e de minutos.</li>
+  <li><strong>Só cita o que o Horus calculou.</strong> O agente escolhe quais gráficos e tabelas entram no PDF, mas todos foram montados pelo Horus com os números do banco (veja <a href="mf-108.html#mf-108-numeros">A IA escolhe a forma; os números são do banco</a>).</li>
+  <li><strong>Decide se avisa.</strong> Ao terminar, o modelo do agente confere a condição de aviso sobre os números que recebeu e diz se o alerta sai.</li>
+  <li><strong>Pesquisa na web, se liberada.</strong> Cada execução pesquisa de novo, e o fato de fora chega com o link e a data ao que o agente entrega (veja <a href="mf-109.html#mf-109-canais">Em todo lugar onde o Horus responde</a>).</li>
+</ul>
+<h3 class="doc-h3" id="mf-115-permissoes">Com as permissões de quem o criou</h3>
+<p>O agente roda como quem o criou, com as permissões lidas na hora de cada execução, e não no dia em que foi criado (veja <a href="mf-102.html#mf-102-bastidores">os bastidores das pessoas e papéis</a>). Se a role do autor não libera a pesquisa na web, por exemplo, o agente dele também não pesquisa. Quanto aos dados, na versão 2.0 a organização é a fronteira: o agente vê os dados da organização inteira, como qualquer pessoa que pergunta (veja <a href="mf-104.html#mf-104-quem-ve">Quem vê os dados de cada fonte</a>). O recorte por pessoa chega na versão 2.1, com a Segurança dos dados por pessoa (MF-106).</p>
+<h3 class="doc-h3" id="mf-115-entrega">O que chega, e para quem</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>O que o agente entrega</th><th>Como é</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>PDF com gráficos</strong></td><td>O texto do agente e os gráficos e tabelas que o Horus calculou, impressos a partir da mesma montagem da tela (veja <a href="mf-108.html#mf-108-em-todo-lugar">Um desenho só, em todo lugar</a>).</td></tr>
+      <tr class="zebra"><td><strong>Alerta curto</strong></td><td>Sai quando a condição de aviso é cumprida, rotulado com o nível de inferência usado.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>O resultado chega pelos conectores de saída, que na versão 2.0 são o e-mail e o WhatsApp, e <strong>só a usuários do Horus</strong>. Quem pode receber o que cada um agenda segue as regras do agendamento: o membro ouro agenda só para si; para outras pessoas, só o gestor, para as que ele gere, e o owner (veja <a href="mf-114.html">Agendamentos, MF-114</a>).</p>
+
+<h2 class="doc-h2" id="mf-115-quando-falha">Quando algo dá errado</h2>
+<p>A execução de um agente segue as mesmas regras de qualquer rodada agendada, explicadas na página dos <a href="mf-114.html">Agendamentos (MF-114)</a>. Em resumo:</p>
+<ul>
+  <li><strong>Erro ou limite técnico estourado:</strong> ninguém recebe nada naquela rodada, nem um PDF pela metade, e só o autor é avisado. A próxima rodada segue no horário normal.</li>
+  <li><strong>O que não cabe no canal:</strong> um PDF maior que o anexo do e-mail, ou um alerta maior que a mensagem do WhatsApp, não é entregue naquele canal, nem cortado ou alterado, e o autor é avisado.</li>
+  <li><strong>O autor muda de faixa ou sai:</strong> o agente de quem passa de ouro a prata ou a bronze fica desabilitado, só para excluir, e volta só se a pessoa, de novo ouro, o reativar; o de quem é excluído da organização se perde, sem transferência (veja <a href="mf-102.html#mf-102-mudancas">Quando alguém muda de faixa ou sai</a>).</li>
+  <li><strong>A organização é cortada:</strong> os agentes param e, na volta, seguem do próximo horário, sem refazer as rodadas perdidas (veja <a href="mf-103.html#mf-103-corte">O corte</a>).</li>
+</ul>
+
+<h2 class="doc-h2" id="mf-115-custo">O custo de um agente</h2>
+<p>Toda execução consome IA, às vezes mais que uma conversa, porque o agente faz várias perguntas inteiras ao motor. <strong>Quem paga é o dono da conexão de IA:</strong> a organização, se a conexão é dela; a Maind, se é a conexão da instância que a Maind disponibiliza à organização (veja <a href="mf-101.html#mf-101-ia">A inteligência artificial: da instância ou a sua</a>).</p>
+<ul>
+  <li><strong>O modelo dos agentes é escolha do owner</strong>, entre os modelos das conexões que a organização tem. Sem uma escolha própria, os agentes usam o modelo padrão da organização (veja <a href="mf-105.html#mf-105-tarefas">Um modelo para cada tarefa</a>).</li>
+  <li><strong>O consumo dos agentes entra no consumo e no custo da organização</strong>, e quem vê esses números depende de quem paga a conexão (veja <a href="mf-105.html#mf-105-consumo">Consumo e custo</a>).</li>
+  <li><strong>Não há teto automático de custo</strong>, nem por agente nem por organização: nada se corta sozinho. Valem os limites técnicos de cada execução e o <a href="mf-101.html#mf-101-aviso-de-custo">aviso de custo</a> à Maind, que avisa e não corta. As alavancas do owner são a escolha do modelo dos agentes e a aprovação antes de criar um agente (veja <a href="mf-105.html#mf-105-sem-teto">Sem corte automático</a>).</li>
+</ul>
+
+<h2 class="doc-h2" id="mf-115-bastidores">Nos bastidores, sem complicar</h2>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>O agente é o motor em ciclo.</strong> Ele não tem um caminho próprio até o banco: cada pergunta dele é uma pergunta inteira ao mesmo motor que responde à conversa. Por isso as regras da resposta, como os níveis, a web com link e data e o “só ler”, valem igual no agente (veja <a href="mf-107.html#mf-107-bastidores">os bastidores da conversa</a>).</li>
+  <li><strong>A tarefa de IA dos agentes faz duas coisas.</strong> Lê as instruções, devolvendo as perguntas e a condição de aviso, e conduz cada execução. As duas usam o modelo que o owner escolheu para os agentes (veja <a href="mf-105.html#mf-105-tarefas">Um modelo para cada tarefa</a>).</li>
+  <li><strong>O gráfico é do Horus, não do modelo.</strong> O modelo do agente recebe o texto e os números de cada resposta e, no fim, aponta os gráficos que quer pelo identificador que o Horus deu a cada um. Um gráfico que o Horus não calculou não existe para ele.</li>
+  <li><strong>O PDF é a mesma montagem da tela.</strong> O Horus abre o desenho num navegador sem tela e o imprime, como faz com o PDF dos painéis.</li>
+  <li><strong>A vez de cada organização.</strong> Cada execução é um trabalho na mesma fila dos agendamentos (MF-114), e a fila reparte a vez entre as organizações: os agentes de segunda de manhã de uma organização grande não ocupam a fila inteira.</li>
+  <li><strong>Fora da contagem de respondidas.</strong> As perguntas que os agentes fazem não contam como perguntas de análise respondidas (veja <a href="mf-107.html#mf-107-respondidas">As perguntas respondidas</a>). A Maind acompanha, em números, quantas vezes os agentes rodaram.</li>
+  <li><strong>Tudo é novo.</strong> Nada disso existe no Horus de hoje. O agente reaproveita o motor que já responde com os números do banco e a impressão em PDF; são novos a leitura das instruções, o ciclo de perguntas e o alerta rotulado.</li>
+</ul>
+
+<h2 class="doc-h2" id="mf-115-limites">O que esta funcionalidade não faz</h2>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Agir nos sistemas da empresa</strong></td><td>O agente só lê. Mandar um PDF ou um alerta é informação que sai, e não mexe nos sistemas (veja <a href="mf-104.html#mf-104-so-le">Só ler, nunca alterar</a>).</td></tr>
+      <tr class="zebra"><td><strong>Decidir quando roda nem por onde entrega</strong></td><td>Quando roda é do agendamento (MF-114); por onde sai, dos conectores de saída (MF-113).</td></tr>
+      <tr class="zebra"><td><strong>Entregar a quem não é usuário do Horus</strong></td><td>Os conectores só entregam a usuários do Horus.</td></tr>
+      <tr class="zebra"><td><strong>Nascer de um formulário sem IA</strong></td><td>Todo agente usa IA. O formulário fica para depois, sem versão, se o mercado pedir.</td></tr>
+      <tr class="zebra"><td><strong>Transferir o agente para outra pessoa</strong></td><td>Não existe em nenhuma versão: quem é excluído perde os agentes, e os de quem é rebaixado ficam desabilitados.</td></tr>
+      <tr class="zebra"><td><strong>Parar sozinho por custo</strong></td><td>Não há teto automático de custo, por agente nem por organização. Há os limites de cada execução e o aviso de custo à Maind.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="mf-115-ligadas">Funcionalidades ligadas a esta</h3>
+<p>O agente depende de quase tudo o que o Horus já faz para responder, e de duas funcionalidades novas para rodar e entregar. As principais:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="mf-114.html">Agendamentos (MF-114)</a></td><td>O agente só roda quando um agendamento o chama; lá se escolhe quando, para quem e por onde.</td></tr>
+      <tr class="zebra"><td><a href="mf-113.html">Conectores de saída (MF-113)</a></td><td>O PDF e o alerta chegam às pessoas pelo e-mail ou pelo WhatsApp.</td></tr>
+      <tr class="zebra"><td><a href="mf-112.html">Boards e Relatórios (MF-112)</a></td><td>O PDF de um painel é a outra coisa que o agendamento roda, e o agente segue as mesmas regras de quem edita e de quem desabilita.</td></tr>
+      <tr class="zebra"><td><a href="mf-107.html">Perguntar aos dados em português (MF-107)</a></td><td>O agente pergunta ao mesmo motor da conversa de análise.</td></tr>
+      <tr class="zebra"><td><a href="mf-108.html">Respostas visuais (MF-108)</a></td><td>Os gráficos do PDF do agente são os mesmos da conversa.</td></tr>
+      <tr class="zebra"><td><a href="mf-109.html">A web como fonte (MF-109)</a></td><td>O fato da web, com o link e a data, vale também no que o agente entrega.</td></tr>
+      <tr class="zebra"><td><a href="mf-105.html">IA sob controle da organização (MF-105)</a></td><td>O owner escolhe o modelo dos agentes, e o consumo é pago pelo dono da conexão de IA.</td></tr>
+      <tr class="zebra"><td><a href="mf-104.html">Conectar as fontes vivas (MF-104)</a></td><td>O agente extrai os dados das mesmas fontes da organização.</td></tr>
+      <tr class="zebra"><td><a href="mf-103.html">Licenças e planos (MF-103)</a></td><td>No corte, os agentes param; quando o autor passa a prata ou a bronze, ficam desabilitados.</td></tr>
+      <tr class="zebra"><td>Auditoria (MF-116)</td><td>Registra o que o agente enviou, por qual conector e a quem.</td></tr>
+      <tr class="zebra"><td>Bases de demonstração (MF-118)</td><td>As organizações de exemplo ganham um cenário próprio para mostrar o agente.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Ainda em definição</b><p>Os limites técnicos de cada execução, como o número máximo de perguntas e de minutos, ainda serão calibrados. Também estão em desenho por onde o autor recebe o aviso de falha, se ele é avisado quando o owner aprova ou recusa um agente e o tamanho máximo do PDF e do alerta em cada canal.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-115-faq">Perguntas frequentes</h2>
+<div class="faq">
+  <details open>
+    <summary>O agente pode alterar algum dado ou fazer algo nos nossos sistemas?</summary>
+    <div class="faq-body"><p>Não. O agente só lê: ele consulta as fontes da organização pelo mesmo motor da conversa, que nunca altera um dado nem age nos sistemas da empresa. O que ele faz é entregar um PDF ou um alerta a usuários do Horus, e isso é informação que sai, não uma ação nos seus sistemas.</p></div>
+  </details>
+  <details>
+    <summary>Preciso saber programar para criar um agente?</summary>
+    <div class="faq-body"><p>Não. Você descreve em texto o que quer acompanhar: digita, cola ou importa um arquivo .md. Antes de ligar, o Horus mostra as perguntas que o agente vai fazer e a condição para avisar, e você confere e confirma. Criam agentes o owner, o gestor e o membro ouro; a prata e o bronze recebem os resultados.</p></div>
+  </details>
+  <details>
+    <summary>O agente pode inventar números ou exagerar na interpretação?</summary>
+    <div class="faq-body"><p>Os números não saem do modelo de IA: o agente só cita gráficos e tabelas que o Horus calculou com os números do banco. Até onde ele interpreta é o nível de inferência, que o autor escolhe livremente, e todo alerta chega rotulado com o nível usado. A hipótese e a especulação vêm sempre marcadas.</p></div>
+  </details>
+  <details>
+    <summary>Quanto custa rodar um agente, e existe um limite de gasto?</summary>
+    <div class="faq-body"><p>Cada execução consome IA, às vezes mais que uma conversa, e quem paga é o dono da conexão: a organização, se a conexão é dela, ou a Maind, se é a conexão da instância. Não há teto automático de custo: valem os limites técnicos de cada execução e o aviso de custo à Maind, que não corta nada sozinho. O owner controla o gasto pela escolha do modelo dos agentes e pela aprovação antes de criar um agente.</p></div>
+  </details>
+  <details>
+    <summary>O que acontece se o agente falhar numa segunda-feira?</summary>
+    <div class="faq-body"><p>Ninguém recebe nada naquela rodada, nem um PDF pela metade, e só o autor é avisado da falha. Na rodada seguinte, o agente roda no horário normal. Se o PDF ou o alerta não couber num canal, ele não é entregue nesse canal nem cortado, e o autor também é avisado.</p></div>
+  </details>
+  <details>
+    <summary>E se quem criou o agente sair da empresa ou mudar de função?</summary>
+    <div class="faq-body"><p>Quem é excluído da organização perde em definitivo os agentes que criou, e o Horus não os transfere a ninguém. Quem passa de ouro a prata ou a bronze continua com os agentes, mas desabilitados: eles não rodam, e a única ação é excluí-los. Se a pessoa voltar a ser ouro, reativa cada agente, um a um.</p></div>
+  </details>
+</div>
+</div><nav class="rel-grid dx-vizinhas" aria-label="Páginas vizinhas"><a class="rel-card dx-anterior" href="mf-114.html"><span class="cat">Anterior</span><h5>Módulo de Agendamentos de Agentes</h5><span class="arrow">←</span></a><a class="rel-card dx-proxima" href="mf-116.html"><span class="cat">Próxima</span><h5>Auditoria</h5><span class="arrow">→</span></a></nav>
+<footer class="ds-footer"><div class="ftr-brand"><img class="ftr-logo logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="ftr-logo logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /><div class="ftr-divider"></div><div class="ftr-meta"><b>Maind Horus · Horus v2 · versão 2.0 em desenho</b></div></div><div class="ftr-center"><span class="ftr-tag">v2.0 em desenho, sem versão publicada · 06/11/2026</span></div><div class="ftr-author"><div class="avatar">MT</div><div class="ftr-author-info"><b>Maind Tech</b><span>Horus v2</span></div></div></footer>
+</main>
+<aside class="toc"><h6>Neste artigo</h6><ul><li><a href="#mf-115-o-que-e">O que é, em poucas palavras</a></li><li class="lvl-3"><a href="#mf-115-quem-e-quem">Quem faz o quê</a></li><li><a href="#mf-115-um-agente">Um agente, do texto à entrega</a></li><li class="lvl-3"><a href="#mf-115-aprovacao">A aprovação do owner</a></li><li><a href="#mf-115-instrucoes">As instruções e o que o Horus entende</a></li><li class="lvl-3"><a href="#mf-115-nivel">O nível de inferência do agente</a></li><li><a href="#mf-115-execucao">Na hora marcada: como o agente trabalha</a></li><li class="lvl-3"><a href="#mf-115-permissoes">Com as permissões de quem o criou</a></li><li class="lvl-3"><a href="#mf-115-entrega">O que chega, e para quem</a></li><li><a href="#mf-115-quando-falha">Quando algo dá errado</a></li><li><a href="#mf-115-custo">O custo de um agente</a></li><li><a href="#mf-115-bastidores">Nos bastidores, sem complicar</a></li><li><a href="#mf-115-limites">O que esta funcionalidade não faz</a></li><li class="lvl-3"><a href="#mf-115-ligadas">Funcionalidades ligadas a esta</a></li><li><a href="#mf-115-faq">Perguntas frequentes</a></li></ul></aside>
+</div>
+<div class="toast" id="toast">Copiado ✓</div>
+<script src="assets/busca.js"></script>
+<script src="assets/docs.js"></script>
+<script src="assets/docx-kbr.js"></script>
 </body>
 </html>

@@ -1,0 +1,212 @@
+<p>Imagine o Horus como um prédio de escritórios. Cada empresa, ou cada setor de uma empresa, ocupa o seu andar: entra pela própria porta, vê só as suas coisas e nunca cruza com o andar ao lado. No Horus, o prédio se chama <strong>instância</strong> e cada andar é uma <strong>organização</strong>. A <strong>Administração da instância</strong> é a sala de controle desse prédio: é por ela que se abre um andar novo, se combina quantas pessoas podem trabalhar nele, se acompanha o consumo e se avisa todo mundo antes de uma obra.</p>
+<p>Quem opera essa sala de controle é a Maind, que oferece o Horus como serviço. Você, como cliente, não precisa dela para trabalhar. Mas quase tudo o que a sua organização recebe passa por ali, e esta página conta como.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Versão 2.0, em construção</b><p>O que está aqui é o que a versão 2.0 do Horus vai entregar. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
+</div>
+
+<h3 id="mf-101-o-que-e">O que é, em poucas palavras</h3>
+<p>A Administração da instância é o painel de quem opera o Horus. Ela cuida de seis coisas:</p>
+<ul>
+  <li><strong>Criar as organizações.</strong> Só a administração cria uma organização; ela não nasce sozinha nem por pedido direto de um usuário.</li>
+  <li><strong>Liberar e cortar os assentos.</strong> Os assentos são as vagas de uso contratadas, e é aqui que a Maind as libera, tipo a tipo.</li>
+  <li><strong>Acompanhar o uso e o custo</strong> de cada organização, sempre em números, nunca em conteúdo.</li>
+  <li><strong>Cuidar das conexões de IA da instância</strong> e decidir a quais organizações cada uma fica disponível.</li>
+  <li><strong>Avisar as pessoas</strong> antes de uma parada e mostrar uma página de manutenção durante ela.</li>
+  <li><strong>Guardar a marca e o e-mail</strong> do produto: o nome, os logos e o envio dos e-mails da conta.</li>
+</ul>
+<h4 id="mf-101-quem-e-quem">Quem opera e quem usa</h4>
+<p>Há dois papéis que se parecem no nome e são bem diferentes. O <strong>administrador da instância</strong> é um funcionário da Maind: vê todas as organizações em números e não vê os dados de nenhuma. O <strong>owner da organização</strong> é uma pessoa da empresa cliente: cuida da organização dela, convida as pessoas e configura as preferências. A Administração da instância é do primeiro; o segundo trabalha dentro da própria organização. As demais palavras estão em “Palavras que aparecem nas páginas”, na página <a href="#como-ler">Como ler esta documentação</a>.</p>
+
+<h3 id="mf-101-uma-organizacao">A vida de uma organização</h3>
+<p>O melhor jeito de entender a administração é acompanhar uma organização do primeiro dia ao dia a dia. Digamos que a área comercial de uma rede de lojas vai começar a usar o Horus.</p>
+<ol class="steps">
+  <li><div><h4>A Maind cria a organização</h4><p>Ela nasce com o assento do primeiro owner (o responsável do cliente) e sem inteligência artificial. Nessa fase, está “em configuração”: nada bloqueia ninguém.</p></div></li>
+  <li><div><h4>Os assentos são liberados</h4><p>Maind e cliente combinam, fora do produto, quantos assentos de cada tipo a organização precisa. A Maind os libera no painel e escolhe se disponibiliza à organização uma conexão de IA da instância.</p></div></li>
+  <li><div><h4>A organização fica ativa</h4><p>Quando a Maind a dá por pronta, ela passa a “ativa”. O owner convida as pessoas, dentro dos assentos liberados.</p></div></li>
+  <li><div><h4>O dia a dia é acompanhado em números</h4><p>A Maind vê o uso e o custo da organização e baixa o relatório quando precisa, sem ler nenhuma conversa.</p></div></li>
+  <li><div><h4>Se precisar, a organização é suspensa</h4><p>Se o contrato for suspenso, a organização inteira é inativada. Reativar devolve tudo como estava.</p></div></li>
+</ol>
+<p>O mesmo caminho em desenho, com os dois laços que acontecem na vida real: o cliente que pede mais assentos e a organização que é suspensa e depois reativada.</p>
+<dx-diagrama ref="mf-101-vida-da-organizacao"></dx-diagrama>
+<h4 id="mf-101-situacoes">As três situações</h4>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Situação</th><th>O que significa</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><span class="badge badge--info">Em configuração</span></td><td>Acabou de ser criada: ainda falta o responsável ou as fontes de dados. É o começo de toda organização, e não bloqueia ninguém.</td></tr>
+      <tr class="zebra"><td><span class="badge badge--success">Ativa</span></td><td>A Maind a deu por pronta. As pessoas usam o Horus normalmente.</td></tr>
+      <tr class="zebra"><td><span class="badge badge--warning">Inativa</span></td><td>O acesso está suspenso. Ninguém entra, e os agendamentos, os alertas e os agentes da organização (os trabalhos automáticos de IA) param.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="mf-101-suspender">Suspender, reativar e excluir</h4>
+<p><strong>Suspender</strong> é inativar a organização inteira, e não apaga nada. Quando o acesso volta, a Maind reativa a organização e tudo volta ao que era: as pessoas, os painéis, os agendamentos, os alertas e os agentes.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Excluir é outra coisa</b><p>Excluir uma organização é definitivo: tudo o que é dela é apagado, inclusive o uso, o custo e a história dos assentos que a administração guardava. Por isso a Maind pode baixar o relatório antes de excluir.</p></div>
+</div>
+
+<h3 id="mf-101-assentos">Os assentos: quem pode fazer o quê</h3>
+<p>Cada pessoa que usa o Horus ocupa um <strong>assento</strong>, e o tipo do assento define o que ela pode fazer. São cinco tipos:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Tipo</th><th>O que a pessoa faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Owner</strong></td><td>Configura a organização, convida as pessoas e acompanha a contagem dos assentos.</td></tr>
+      <tr class="zebra"><td><strong>Gestor</strong></td><td>Cria e cuida de grupos de membros, pergunta e analisa, cria painéis (boards) e os compartilha com os grupos de que é dono.</td></tr>
+      <tr class="zebra"><td><strong>Membro ouro</strong></td><td>Pergunta e cria painéis e relatórios para si, sem compartilhar.</td></tr>
+      <tr class="zebra"><td><strong>Membro prata</strong></td><td>Pergunta, recebe alertas e PDFs, mas não cria painéis, relatórios, agendamentos nem agentes.</td></tr>
+      <tr class="zebra"><td><strong>Membro bronze</strong></td><td>Só vê os painéis que outras pessoas já criaram e compartilharam.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Uma forma fácil de guardar: o bronze vê, a prata pergunta, o ouro cria.</p>
+<h4 id="mf-101-liberar-assentos">Como os assentos são liberados</h4>
+<p>Os assentos se liberam <strong>só pela Administração da instância</strong>, tipo a tipo, e não têm validade. O número de um tipo nunca é reduzido abaixo do que já está ocupado. Por exemplo: com dez assentos ouro em uso, não dá para voltar para oito sem antes liberar duas vagas. A organização pode pedir mais assentos quando precisar, de qualquer tipo.</p>
+<p>O owner acompanha a contagem pela visão de cobrança da organização: para cada tipo, quantos assentos a organização tem, quantos usa e quantos estão livres. Ele não vê o custo nem a história dos assentos, que ficam com a administração.</p>
+
+<h3 id="mf-101-ia">A inteligência artificial: da instância ou a sua</h3>
+<p>O Horus usa inteligência artificial para entender as perguntas e montar as respostas, e isso tem um custo de consumo. Por isso há duas origens possíveis para a conexão de IA de uma organização:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Sobre a conexão</th><th>Conexão da instância</th><th>Conexão da organização</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Quem cadastra</strong></td><td>A Maind, na Administração da instância.</td><td>O owner da organização.</td></tr>
+      <tr class="zebra"><td><strong>Quem paga o consumo</strong></td><td>A Maind.</td><td>A organização.</td></tr>
+      <tr class="zebra"><td><strong>Quem pode editar</strong></td><td>Só a Maind. A organização usa, sem poder alterar.</td><td>O owner da organização.</td></tr>
+      <tr class="zebra"><td><strong>O que o owner vê do consumo</strong></td><td>Nada, nem consumo nem custo: quem acompanha é a Maind.</td><td>O consumo e o custo dessa conexão.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>A organização <strong>nasce sem IA</strong>. No mesmo passo em que cria a organização e libera os assentos, a Maind escolhe se disponibiliza uma conexão da instância. A organização que já tem contrato com um provedor de IA pode, em vez disso, cadastrar a conexão dela.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Ponto de atenção</b><p>Se a Maind não disponibilizar uma conexão e o owner ainda não tiver cadastrado a dele, ninguém na organização consegue fazer a primeira pergunta de análise. Vale conferir esse passo ao criar a organização.</p></div>
+</div>
+
+<h3 id="mf-101-uso-e-custo">Uso, custo e relatório</h3>
+<p>A Maind acompanha, para cada organização e para cada dia, quanto o Horus está sendo usado e quanto isso custa. Os números ficam guardados enquanto a organização existir. A regra que não muda: <strong>só números, nunca conteúdo</strong>.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>A administração vê</th><th>A administração não vê</th></tr></thead>
+    <tbody>
+      <tr class="zebra">
+        <td><ul>
+          <li>Quantos assentos de cada tipo foram liberados e quantos estão ocupados.</li>
+          <li>Quem ocupa cada assento (o nome da pessoa) e desde quando.</li>
+          <li>Quantas perguntas de análise foram respondidas.</li>
+          <li>Quantas vezes os agentes (trabalhos automáticos de IA) rodaram.</li>
+          <li>O custo de IA e de WhatsApp do mês e quantas mensagens saíram.</li>
+          <li>Quantos e-mails foram enviados.</li>
+        </ul></td>
+        <td><ul>
+          <li>As conversas das pessoas com o Horus.</li>
+          <li>Os painéis (boards) e os relatórios criados.</li>
+          <li>O rastro de quem abriu e entregou o quê, que é só do owner de cada organização.</li>
+          <li>Os dados das fontes da organização.</li>
+        </ul></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="mf-101-aviso-de-custo">O aviso de custo</h4>
+<p>Quando o custo de uma organização passa de um limite, a Maind é avisada. O limite é ajustado caso a caso pela própria Maind, e nada é cortado sozinho: o aviso serve para olhar a organização antes da fatura de IA chegar.</p>
+<h4 id="mf-101-relatorio">O relatório da organização</h4>
+<p>A qualquer momento, a administração pode ver e baixar, em <strong>planilha</strong> e em <strong>PDF</strong>, o relatório de uma organização: o uso, o custo e a história de cada assento, com quem o ocupou e quando, os convites, as devoluções, os cortes e as reativações. É o que a Maind usa para conferir a cobrança e para guardar o que ficou antes de excluir uma organização.</p>
+<p>A administração também pode perguntar ao próprio Horus, em português, como a instância estava numa certa data.</p>
+
+<h3 id="mf-101-avisos">Avisos e paradas</h3>
+<p>De vez em quando o Horus precisa parar, para uma troca ou uma manutenção. A administração cuida de três momentos:</p>
+<ol class="steps">
+  <li><div><h4>Antes: o aviso da instância</h4><p>A Maind escreve o texto, a data e a hora, com uma hora de fim se quiser, e pode retirar o aviso a qualquer momento. Ele aparece numa faixa no alto de todas as telas, sem e-mail. Cada pessoa pode esconder a faixa, e quem a esconde deixa de ver os avisos.</p></div></li>
+  <li><div><h4>Durante: a página de manutenção</h4><p>Quem abre o Horus durante a parada vê uma página com o motivo e a hora de volta, em vez de uma tela de entrada que não responde. Assim ninguém conclui que o Horus quebrou.</p></div></li>
+  <li><div><h4>Depois: tudo volta ao normal</h4><p>Terminada a parada, o aviso sai da faixa, pela hora de fim ou retirado à mão, e o Horus volta a abrir normalmente.</p></div></li>
+</ol>
+<h4 id="mf-101-quando-um-servico-para">Quando um serviço para</h4>
+<p>Além das paradas combinadas, um serviço pode falhar: uma chave de IA recusada, falta de crédito, um número de WhatsApp bloqueado. Quem é avisado depende de quem é o serviço:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>O que parou</th><th>Quem é avisado</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td>A conexão de IA da instância</td><td>O administrador da instância (a Maind).</td></tr>
+      <tr class="zebra"><td>O número de WhatsApp compartilhado da Maind</td><td>O administrador da instância.</td></tr>
+      <tr class="zebra"><td>O e-mail da instância (o servidor recusa o envio)</td><td>O administrador da instância.</td></tr>
+      <tr class="zebra"><td>A conexão de IA da própria organização, a fonte de dados ou o WhatsApp próprio</td><td>O owner da organização.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 id="mf-101-marca-e-email">A marca e o e-mail</h3>
+<p>Na versão 2.0, a marca do Horus é a da Maind: o nome, os logos e o rodapé valem para todas as organizações. Os convites, a recuperação de senha e os avisos da conta saem pelo e-mail da instância, num ritmo de envio que a administração ajusta.</p>
+
+<h3 id="mf-101-bastidores">Nos bastidores, sem complicar</h3>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>Um serviço, vários andares.</strong> Na versão 2.0, o Horus é um serviço da Maind com uma instância só, onde vivem todas as organizações.</li>
+  <li><strong>Cada organização tem o seu cofre.</strong> Os dados de uma organização ficam num banco de dados só dela, com um acesso que não alcança o de outra organização. Um banco central guarda apenas o mapa: quais organizações existem e o que é da instância.</li>
+  <li><strong>O hoje e a história ficam separados.</strong> O sistema guarda o estado de hoje (quem ocupa cada assento agora). A história (quem ocupou, quando, os cortes e as reativações) vai para um registro à parte, onde só se acrescenta: o que já foi registrado não é reescrito.</li>
+  <li><strong>A história se consulta em português.</strong> O Horus trata esse registro como mais uma fonte de dados, e por isso o administrador pode fazer perguntas a ele do mesmo jeito que se pergunta a qualquer fonte.</li>
+</ul>
+
+<h3 id="mf-101-limites">O que a Administração da instância não faz</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Cobrar</strong></td><td>O preço, a fatura e o pagamento ficam com o comercial da Maind. Há um plano só.</td></tr>
+      <tr class="zebra"><td><strong>Ligar a segurança dos dados por pessoa</strong></td><td>Cada pessoa ver só uma parte dos dados da organização é de outra funcionalidade (MF-106), prevista para a versão 2.1. Na versão 2.0, a organização é a fronteira dos dados.</td></tr>
+      <tr class="zebra"><td><strong>Mostrar a marca do cliente</strong></td><td>O logo, o nome, o e-mail e as cores do cliente dentro do produto não têm versão prevista.</td></tr>
+      <tr class="zebra"><td><strong>Instalar o Horus na casa do cliente</strong></td><td>O Horus roda no serviço da Maind. A peça que o cliente instala para o Horus chegar a dados que ficam na casa dele (o middleware, MF-121, versão 2.1) é configurada pelo owner da organização.</td></tr>
+      <tr class="zebra"><td><strong>Mostrar ao público se o Horus está de pé</strong></td><td>Uma página aberta com o estado da instância não entra na versão 2.0. O que há é o aviso na faixa e a página de manutenção.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="mf-101-ligadas">Funcionalidades ligadas a esta</h4>
+<p>A Administração da instância conversa com outras funcionalidades. As páginas delas entram aqui conforme forem escritas.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="#mf-102">Organizações, pessoas e papéis (MF-102)</a></td><td>Daqui sai a organização; de lá vêm as pessoas e os papéis.</td></tr>
+      <tr class="zebra"><td><a href="#mf-103">Licenças e planos (MF-103)</a></td><td>As regras dos cinco tipos de assento são de lá; o painel onde a Maind libera e corta os assentos é desta funcionalidade.</td></tr>
+      <tr class="zebra"><td><a href="#mf-105">IA sob controle da organização (MF-105)</a></td><td>Aqui a Maind cadastra as conexões de IA da instância; lá, a organização cadastra a dela.</td></tr>
+      <tr class="zebra"><td>Segurança dos dados por pessoa (MF-106)</td><td>O interruptor geral dessa segurança será de lá, na versão 2.1.</td></tr>
+      <tr class="zebra"><td>Conectores de saída (MF-113)</td><td>O conector de e-mail usa o mesmo servidor de e-mail da instância.</td></tr>
+      <tr class="zebra"><td>Auditoria (MF-116)</td><td>O rastro de quem abriu e entregou o quê é de lá, e só do owner de cada organização.</td></tr>
+      <tr class="zebra"><td>Faixa de avisos e números (MF-120, nome provisório)</td><td>É a faixa onde o aviso da instância aparece.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Na implantação</b><p>Os relatórios mostram o nome de quem ocupa cada assento, porque é o que permite conferir a cobrança. Durante a implantação da organização, vale a empresa consultar o jurídico dela sobre esse tratamento de dados pessoais.</p></div>
+</div>
+
+<h3 id="mf-101-faq">Perguntas frequentes</h3>
+<div class="faq">
+  <details open>
+    <summary>A Maind consegue ler as conversas e os dados da minha empresa?</summary>
+    <div class="faq-body"><p>Não. A Administração da instância trabalha só com números: quantos assentos há de cada tipo, quem ocupa cada um, quantas perguntas foram respondidas, quanto se gastou com IA e WhatsApp e quantos e-mails saíram. Ela não lê conversas, painéis, relatórios nem os dados das suas fontes. Além disso, os dados de cada organização ficam num banco só dela, com um acesso que não alcança o de outra organização.</p></div>
+  </details>
+  <details>
+    <summary>O que acontece se o contrato for suspenso? Meus dados somem?</summary>
+    <div class="faq-body"><p>Não somem. Suspender é inativar a organização inteira: as pessoas perdem o acesso, e os agendamentos, os alertas e os agentes param, mas nada é apagado. Quando o acesso volta, a Maind reativa a organização e tudo volta como estava. Só a exclusão apaga, e ela é uma decisão à parte e definitiva. Antes de excluir, a Maind pode baixar o relatório da organização.</p></div>
+  </details>
+  <details>
+    <summary>Posso aumentar ou reduzir o número de assentos depois de contratar?</summary>
+    <div class="faq-body"><p>Pode pedir mais assentos quando precisar, de qualquer tipo. A Maind os libera na administração, tipo a tipo, e eles não têm validade. Reduzir também é possível, mas nunca abaixo do que já está ocupado. O owner acompanha, para cada tipo, quantos assentos a organização tem, quantos usa e quantos estão livres.</p></div>
+  </details>
+  <details>
+    <summary>Como vou saber se o Horus vai ficar fora do ar?</summary>
+    <div class="faq-body"><p>A Maind publica um aviso, com texto, data e hora, que aparece numa faixa no alto de todas as telas, sem e-mail. Cada pessoa pode esconder a faixa, e quem a esconde deixa de ver os avisos. Se você abrir o Horus durante a parada, em vez de uma tela de entrada que não responde, vê uma página com o motivo e a hora de volta.</p></div>
+  </details>
+  <details>
+    <summary>Preciso ter a minha própria inteligência artificial? Quem paga?</summary>
+    <div class="faq-body"><p>Não precisa. A organização nasce sem IA, e a Maind escolhe, ao criá-la, se disponibiliza uma conexão de IA da instância: essa a Maind paga, e a organização usa sem poder alterá-la. Se a sua empresa já tem contrato com um provedor de IA e prefere usá-lo, o owner cadastra a conexão própria, e a organização paga o consumo dela. O owner vê o consumo e o custo apenas da conexão que a organização paga.</p></div>
+  </details>
+  <details>
+    <summary>O Horus pode aparecer com a marca da minha empresa?</summary>
+    <div class="faq-body"><p>Na versão 2.0, não: a marca é a da Maind e vale para todas as organizações. O logo, o nome, o e-mail e as cores do cliente dentro do produto não têm versão prevista.</p></div>
+  </details>
+</div>

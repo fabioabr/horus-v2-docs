@@ -1,0 +1,165 @@
+<p>Na reunião de resultados, o número da empresa quase nunca basta. As vendas de outubro caíram, mas a inflação do mês subiu? O concorrente mexeu nos preços? Para responder, alguém abre o navegador, procura o índice, cola o número no slide e, muitas vezes, esquece de anotar de onde ele veio e de quando é. No Horus, quem pergunta liga a pesquisa na web e recebe, na mesma resposta, o número da empresa e o fato de fora, cada fato com o link de onde veio e a data em que foi publicado.</p>
+<p>É como o analista que, ao entregar o relatório, grampeia ao lado o recorte de jornal que explica o mês: o número da casa de um lado, a notícia de fora do outro, com a fonte e a data à vista. A web entra no Horus como a segunda fonte viva, ao lado dos bancos de dados da empresa, sem nunca se misturar com eles.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Versão 2.0, em construção</b><p>O que está aqui é o que a versão 2.0 do Horus vai entregar. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
+</div>
+
+<h3 id="mf-109-o-que-e">O que é, em poucas palavras</h3>
+<p>Na versão 2.0, a web como fonte é <strong>a pesquisa que o modelo de IA faz na web, quando autorizado</strong>. Não é um cadastro de páginas nem uma fonte de dados como os bancos: é um interruptor, “pesquisar na web”, que a pessoa liga na conversa. A web serve a três usos: complementar o número da empresa com o contexto de mercado, responder sozinha à pergunta sobre algo de fora e servir de régua para comparar.</p>
+<ul>
+  <li><strong>Um interruptor, não um modo.</strong> A pessoa liga “pesquisar na web”, e a pesquisa roda ao lado da consulta aos dados, ou da conversa sem fonte.</li>
+  <li><strong>Link e data em todo fato.</strong> Cada fato de fora traz o link da página e a data de publicação; sem data, um aviso.</li>
+  <li><strong>Separado do dado da empresa.</strong> Os fatos aparecem à parte do texto, e o número continua saindo do banco.</li>
+  <li><strong>Só a pergunta sai.</strong> À busca vai o texto da pergunta, nunca os dados da empresa.</li>
+  <li><strong>Em todo lugar onde o Horus responde:</strong> na conversa, na Pergunta rápida, no WhatsApp, nos painéis e nos agentes.</li>
+</ul>
+<p>Hoje o Horus já pesquisa na web, mas cita a fonte no meio do texto, sem data, e a web é um modo de perguntar à parte. A versão 2.0 muda as duas coisas: cada fato ganha link e data e fica separado do texto, e a web vira um complemento da pergunta, ao lado dos dados.</p>
+<h4 id="mf-109-quem-usa">Quem usa</h4>
+<p>Pesquisa na web quem pode perguntar: o owner, o gestor e os membros ouro e prata (os tipos de assento estão em <a href="#mf-101-assentos">Os assentos: quem pode fazer o quê</a>). O membro bronze não pergunta: só vê os painéis que outras pessoas criaram e compartilharam. Quem libera a pesquisa é o owner da organização, no botão “Modos e web” das roles (veja <a href="#mf-102-roles">Roles: o que cada pessoa pode usar</a>).</p>
+
+<h3 id="mf-109-na-pratica">Uma pergunta com a web ligada</h3>
+<p>Um exemplo, com personagens ilustrativos. A Carla é gestora de vendas de uma rede de lojas e prepara os números de outubro para levar ao CEO.</p>
+<ol class="steps">
+  <li><div><h4>Liga a pesquisa</h4><p>Na conversa de análise, a Carla liga o interruptor “pesquisar na web”, ao lado dos dados. O banco de vendas continua sendo a fonte dos números.</p></div></li>
+  <li><div><h4>Pergunta, no nível que quiser</h4><p>Ela pergunta “as vendas de outubro acompanharam a inflação?”, no nível de inferência padrão. Enquanto o Horus consulta o banco de vendas, a pesquisa corre ao mesmo tempo, e à busca vai só o texto da pergunta.</p></div></li>
+  <li><div><h4>Recebe o número e, à parte, o fato de fora</h4><p>A resposta traz o gráfico das vendas e, separado dele, o fato “inflação de outubro: X%” (valor ilustrativo), com o link da página que o publicou e a data de publicação.</p></div></li>
+  <li><div><h4>Confere pelo link</h4><p>Antes de levar o número ao CEO, a Carla abre o link e confere o fato na própria página.</p></div></li>
+  <li><div><h4>Sobe o nível, se quiser uma causa de fora</h4><p>Se ela pergunta por que as vendas caíram, a resposta não culpa a inflação, a não ser que ela suba para o nível 4. Aí a causa de fora pode aparecer, rotulada como hipótese.</p></div></li>
+</ol>
+<p>O mesmo caminho em desenho, com o que acontece por dentro: a consulta e a busca ao mesmo tempo, a lista de fatos com link e data, o aviso quando a pesquisa não traz fato e a conferência dos links antes de a resposta chegar.</p>
+<dx-diagrama ref="mf-109-pergunta-com-a-web"></dx-diagrama>
+<h4 id="mf-109-quando-aparece">Quando o interruptor aparece</h4>
+<p>O “pesquisar na web” só aparece quando três condições se juntam. Se uma delas falta, a opção não aparece na conversa.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Condição</th><th>Como fica na versão 2.0</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>A instalação do Horus deixa sair a serviços de fora</strong></td><td>O serviço da Maind, onde o Horus roda, deixa.</td></tr>
+      <tr class="zebra"><td><strong>O provedor de IA pesquisa por conta própria</strong></td><td>O OpenRouter pesquisa; o Amazon Bedrock, não. A organização que só tem uma conexão Bedrock fica sem a opção (veja <a href="#mf-105-provedores">Os provedores da versão 2.0</a>).</td></tr>
+      <tr class="zebra"><td><strong>A role da pessoa libera a pesquisa</strong></td><td>O owner liga a pesquisa na web no botão “Modos e web” da role. O owner não depende de roles: usa tudo (veja <a href="#mf-102-regras-das-roles">As regras das roles</a>).</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 id="mf-109-fato">O fato de fora, sempre com link e data</h3>
+<p>A promessa de confiança do Horus vale também para o que vem de fora: <strong>nenhuma informação da web aparece sem o link</strong>, e nenhuma aparece sem a data ou sem o aviso de que ela não foi identificada.</p>
+<ul>
+  <li><strong>O link vem da busca.</strong> O link de cada fato é o que a busca do provedor devolveu, e não um endereço escrito pelo modelo. Se o texto da resposta trouxer um link que a busca não trouxe, ele é retirado antes de a resposta chegar.</li>
+  <li><strong>A data é lida na própria página.</strong> O Horus abre a página citada e lê a data de publicação. Muitas páginas não declaram data: aí o fato aparece com o aviso de data não identificada, para uma informação antiga não passar por atual sem ninguém perceber.</li>
+  <li><strong>À parte do texto.</strong> Os fatos aparecem separados da resposta, cada um com o título da página, o link e a data. O número da empresa continua vindo do banco, e quem lê distingue à vista um do outro.</li>
+</ul>
+<h4 id="mf-109-niveis">O fato em qualquer nível; a causa de fora, só do 4 em diante</h4>
+<p>O <strong>nível de inferência</strong> é a régua de 1 a 5 de quanto a resposta pode ir além do número (o teto de cada fonte está em <a href="#mf-104-teto">O teto de inferência</a>). Com a web, a régua separa duas coisas: o <strong>fato</strong>, que se confere pelo link e pela data, entra em qualquer nível; a <strong>causa</strong> vinda de fora dos dados, que já é explicação, só entra a partir do nível 4.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Nível</th><th>O fato da web</th><th>Uma causa vinda de fora</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>1 · Descritivo</strong></td><td><span class="badge badge--success">Entra</span> com link e data</td><td><span class="badge">Não entra</span></td></tr>
+      <tr class="zebra"><td><strong>2 · Explicativo</strong> (o padrão)</td><td><span class="badge badge--success">Entra</span> com link e data</td><td><span class="badge">Não entra</span></td></tr>
+      <tr class="zebra"><td><strong>3 · Comparativo</strong></td><td><span class="badge badge--success">Entra</span> com link e data</td><td><span class="badge">Não entra</span></td></tr>
+      <tr class="zebra"><td><strong>4 · Hipótese de domínio</strong></td><td><span class="badge badge--success">Entra</span> com link e data</td><td><span class="badge badge--warning">Entra</span> rotulada como hipótese</td></tr>
+      <tr class="zebra"><td><strong>5 · Especulativo</strong></td><td><span class="badge badge--success">Entra</span> com link e data</td><td><span class="badge badge--warning">Entra</span> rotulada como especulação</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>O nível que vale numa pergunta é o menor entre o que a pessoa pediu, o que a role dela libera e o teto das fontes da conversa.</p>
+<h4 id="mf-109-sem-fato">Quando a pesquisa não traz fato</h4>
+<p>Às vezes a busca não acha o que a pergunta pede: o índice do setor, por exemplo. Aí a resposta <strong>sai com os dados da empresa</strong> e traz <strong>um aviso curto</strong> de que a pesquisa na web não trouxe fatos. A pessoa sabe que a web foi tentada e não achou, e não fica sem a parte da empresa.</p>
+<p>A pesquisa também tem prazo próprio. Ela corre ao mesmo tempo que a consulta ao banco e, se não volta a tempo, a resposta não espera: sai sem os fatos da web.</p>
+
+<h3 id="mf-109-canais">Em todo lugar onde o Horus responde</h3>
+<p>A regra do link e da data não é só da conversa. Ela vale em todo lugar onde aparece uma resposta com fato da web:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Onde</th><th>Como a web aparece</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Conversa de análise</strong> (MF-107)</td><td>Ao lado dos dados, ou da conversa sem fonte. No modo conversa, a web pode responder sozinha a uma pergunta só sobre algo de fora.</td></tr>
+      <tr class="zebra"><td><strong>Pergunta rápida</strong> (MF-110)</td><td>Com o mesmo interruptor, ao lado dos dados.</td></tr>
+      <tr class="zebra"><td><strong>WhatsApp</strong> (MF-111)</td><td>O link e a data vão no texto da mensagem.</td></tr>
+      <tr class="zebra"><td><strong>Cartão de um painel</strong> (MF-112)</td><td>Guarda os fatos que a resposta trouxe, com o link e a data à vista, e não pesquisa de novo: só os números da empresa se recalculam.</td></tr>
+      <tr class="zebra"><td><strong>Agentes</strong> (MF-115)</td><td>Cada execução do agente pesquisa de novo, e o fato chega com o link e a data ao que o agente entrega.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Um exemplo do cartão: a Carla fixa no painel “vendas de outubro contra a inflação do mês”. O cartão se recalcula toda noite, e a inflação continua a de outubro, com o link e a data à vista.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>O fato do cartão envelhece</b><p>Como o cartão não pesquisa de novo, o fato de fora continua o da resposta que originou o cartão. A data à vista avisa quem olha o painel. Um jeito de o autor atualizar o fato à mão fica para depois, se os autores pedirem.</p></div>
+</div>
+
+<h3 id="mf-109-bastidores">Nos bastidores, sem complicar</h3>
+<p>Só o bastante da tecnologia para a história fazer sentido. Como já conta a página da IA sob controle da organização, a busca é a do provedor de IA que a organização usa, e à busca vai só o texto da pergunta, nunca os dados do banco nem o modelo semântico (veja <a href="#mf-105-provedores">Os provedores da versão 2.0</a> e <a href="#mf-105-bastidores">os bastidores da IA</a>). O que é desta funcionalidade é o que vem antes e depois da busca:</p>
+<ul>
+  <li><strong>Uma etapa própria para a web.</strong> A pesquisa começa junto com a pergunta e corre em paralelo com a consulta ao banco, com prazo próprio. Ela tem a sua tarefa de IA, e o owner escolhe o modelo dela como escolhe o das outras tarefas (veja <a href="#mf-105-tarefas">Um modelo para cada tarefa</a>).</li>
+  <li><strong>O fato é do Horus; a frase é do modelo.</strong> O link vem da citação que a busca devolve, a data o Horus lê na própria página, e a lista de fatos (o texto, o link, o título e a data) fica gravada com a resposta. Depois que o modelo escreve, uma conferência tira do texto todo link que não está na lista.</li>
+  <li><strong>A leitura da página não aponta para dentro.</strong> Para ler a data, o Horus só abre endereços comuns da web e recusa qualquer endereço interno.</li>
+  <li><strong>A regra da causa se mede.</strong> O fato com link e data é garantido pelo Horus. Já a regra de não dar causa de fora abaixo do nível 4 vai na instrução ao modelo, e uma bateria de testes mede quanto ele a respeita.</li>
+  <li><strong>Boa parte já existe.</strong> A busca do provedor e o leitor de páginas vêm do Horus de hoje. É nova a etapa própria da web, que devolve os fatos com link e data e tira do texto o link que não veio da busca.</li>
+</ul>
+
+<h3 id="mf-109-limites">O que esta funcionalidade não faz</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Escolher as fontes da web</strong></td><td>Não há selos de confiança, lista de fontes aprovadas pela organização nem páginas cadastradas como fonte: a web entra só pela pesquisa.</td></tr>
+      <tr class="zebra"><td><strong>Dar causa de fora abaixo do nível 4</strong></td><td>O fato entra em qualquer nível; a causa vinda da web, só do nível 4 em diante, sempre rotulada.</td></tr>
+      <tr class="zebra"><td><strong>Guardar cópias das páginas</strong></td><td>Com a resposta ficam o fato, o link, o título e a data, e não a página consultada.</td></tr>
+      <tr class="zebra"><td><strong>Buscar em sites que pedem login</strong></td><td>A pesquisa fica no que está aberto na web.</td></tr>
+      <tr class="zebra"><td><strong>Pesquisar por outro caminho</strong></td><td>Sem a busca do provedor de IA, nenhum outro serviço pesquisa no lugar dela, nem um serviço da Maind.</td></tr>
+      <tr class="zebra"><td><strong>Pesquisar de novo no cartão do painel</strong></td><td>O cartão guarda os fatos da resposta que o originou, e só os números da empresa se recalculam.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="mf-109-ligadas">Funcionalidades ligadas a esta</h4>
+<p>A web como fonte se apoia na conversa e na IA da organização, e chega a quase todo lugar onde o Horus responde. As páginas das outras funcionalidades entram aqui conforme forem escritas.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="#mf-102">Organizações, pessoas e papéis (MF-102)</a></td><td>A pesquisa na web mora no botão “Modos e web” das roles, que o owner liga ou desliga.</td></tr>
+      <tr class="zebra"><td><a href="#mf-104">Conectar as fontes vivas (MF-104)</a></td><td>Os bancos dão o número da empresa, e a web, o contexto de fora. A web não é cadastrada como fonte lá.</td></tr>
+      <tr class="zebra"><td><a href="#mf-105">IA sob controle da organização (MF-105)</a></td><td>A busca é a do provedor de IA que a organização usa; sem um provedor que pesquise, a opção não aparece.</td></tr>
+      <tr class="zebra"><td><a href="#mf-107">Perguntar aos dados em português (MF-107)</a></td><td>A web entra na mesma conversa e obedece aos mesmos níveis de inferência.</td></tr>
+      <tr class="zebra"><td><a href="#mf-108">Respostas visuais (MF-108)</a></td><td>O gráfico ou a tabela mostra o número da empresa, e o fato de fora vem à parte, com link e data.</td></tr>
+      <tr class="zebra"><td><a href="#mf-110">Pergunta rápida (MF-110)</a></td><td>O mesmo interruptor, ao lado dos dados, a partir de outras telas do Horus.</td></tr>
+      <tr class="zebra"><td>Chat pelo WhatsApp (MF-111)</td><td>O fato chega à mensagem com o link e a data no texto.</td></tr>
+      <tr class="zebra"><td>Boards e Relatórios (MF-112)</td><td>O cartão guarda os fatos da web, com o link e a data à vista, e não pesquisa de novo.</td></tr>
+      <tr class="zebra"><td>Agentes ativos (MF-115)</td><td>Cada execução pesquisa, e o fato vale com link e data no que o agente entrega.</td></tr>
+      <tr class="zebra"><td>Middleware na casa do contratante (MF-121)</td><td>Na versão 2.1, para a organização que usa o middleware, a saída do Horus para a internet passa por ele.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Ainda em definição</b><p><strong>Páginas da web cadastradas como fonte.</strong> O Horus de hoje tem um tipo de fonte que lê páginas da web escolhidas e cadastradas. Na versão 2.0, a web entra pela pesquisa da IA, quando autorizada, e o cadastro de páginas fica de fora. Se esse tipo de fonte some ou continua ainda está em definição.</p></div>
+</div>
+
+<h3 id="mf-109-faq">Perguntas frequentes</h3>
+<div class="faq">
+  <details open>
+    <summary>Os dados da minha empresa vão para a busca na web?</summary>
+    <div class="faq-body"><p>Não. À busca vai só o texto da pergunta, nunca os dados do banco nem o modelo semântico, o dicionário de termos da sua empresa. A busca é a do provedor de IA que a sua organização usa, e nenhum outro serviço pesquisa no lugar dela.</p></div>
+  </details>
+  <details>
+    <summary>Como sei de onde veio e de quando é uma informação de fora?</summary>
+    <div class="faq-body"><p>Todo fato da web aparece à parte do texto, com o link da página e a data de publicação, lida na própria página. Quando a página não declara a data, o fato vem com o aviso de que ela não foi identificada. E um link que a busca não trouxe é retirado da resposta.</p></div>
+  </details>
+  <details>
+    <summary>A resposta pode culpar a inflação pela queda das vendas?</summary>
+    <div class="faq-body"><p>Só se você pedir o nível 4 ou o 5. O fato de fora, como a inflação do mês, entra em qualquer nível, com link e data. Já a causa vinda de fora dos dados só aparece a partir do nível 4, rotulada como hipótese, ou como especulação no nível 5.</p></div>
+  </details>
+  <details>
+    <summary>E se a pesquisa não achar nada?</summary>
+    <div class="faq-body"><p>A resposta sai com os dados da empresa e um aviso curto de que a pesquisa na web não trouxe fatos. Se a busca demorar, a resposta não espera por ela: a pesquisa corre ao lado da consulta, com prazo próprio, e, se não volta a tempo, a resposta sai sem os fatos da web.</p></div>
+  </details>
+  <details>
+    <summary>Por que a opção “pesquisar na web” não aparece para mim?</summary>
+    <div class="faq-body"><p>Ela só aparece quando a sua role libera a pesquisa e quando o provedor de IA da sua organização pesquisa por conta própria: o OpenRouter pesquisa, o Amazon Bedrock não. A instalação também precisa deixar sair a serviços de fora, o que o serviço da Maind deixa. E o membro bronze não pergunta, por isso não vê a opção.</p></div>
+  </details>
+  <details>
+    <summary>Posso escolher os sites que o Horus consulta?</summary>
+    <div class="faq-body"><p>Na versão 2.0, não. Não há lista de fontes aprovadas pela organização, selos de confiança nem páginas cadastradas como fonte: a web entra só pela pesquisa, que não busca em sites que pedem login. Se haverá um jeito de cadastrar páginas escolhidas ainda está em definição.</p></div>
+  </details>
+</div>

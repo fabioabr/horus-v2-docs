@@ -1,317 +1,231 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-menu="vertical">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="A documentação de produto e de arquitetura do Horus v2: a visão, as decisões, a estratégia e como ele vai ser construído.">
-    <meta name="generator" content="DocX 0.2.1">
-    <link rel="shortcut icon" href="media/horus-claro.svg">
-    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/elagent-icon/style.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/font-awesome/css/all.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/niceselectpicker/nice-select.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/font-size/css/rvfs.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/animation/animate.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/tooltipster/css/tooltipster.bundle.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism-coy.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/magnify-pop/magnific-popup.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/css/style.css">
-    <link rel="stylesheet" href="assets/kbdoc/css/responsive.css">
-    <link rel="stylesheet" href="assets/docx.css">
-    <link rel="stylesheet" href="assets/conteudo.css">
-    <link rel="stylesheet" href="assets/indice.css">
-    <script>try { var l = parseInt(localStorage.getItem('docx-menu-largura'), 10); if (l >= 200 && l <= 640) document.documentElement.style.setProperty('--dx-menu-largura', l + 'px'); } catch (e) { /* Sem armazenamento, vale a largura padrão. */ }</script>
-    <title>MF-112 · Boards e Relatórios — Horus v2</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="DocX 0.4.0" />
+<meta name="description" content="As funcionalidades do Horus v2 explicadas uma a uma, em linguagem simples: o que cada uma faz, como funciona na prática e as dúvidas mais comuns." />
+<link rel="icon" href="assets/logo-claro.svg" />
+<title>MF-112 · Boards e Relatórios — Horus v2</title>
+<script>
+(function () {
+  try {
+    var raiz = document.documentElement;
+    var tema = localStorage.getItem('kinto-theme');
+    var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    raiz.setAttribute('data-theme', tema || (escuro ? 'dark' : 'light'));
+    raiz.setAttribute('data-menu', localStorage.getItem('kinto-menu') || 'vertical');
+    var ws = parseInt(localStorage.getItem('kinto-side-w'), 10);
+    var wt = parseInt(localStorage.getItem('kinto-toc-w'), 10);
+    if (ws) raiz.style.setProperty('--side-w-user', ws + 'px');
+    if (wt) raiz.style.setProperty('--toc-w-user', wt + 'px');
+  } catch (e) { /* localStorage bloqueado: ficam os atributos do <html> */ }
+})();
+</script>
+<link rel="stylesheet" href="assets/docs.css" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="assets/docx-kbr.css" />
 </head>
-<body class="doc full-width-doc sticky-nav-doc onepage-doc dx-pagina-doc" data-spy="scroll" data-target=".navbar" data-offset="-120">
-    <a class="sr-only sr-only-focusable dx-skip" href="#post">Pular para o conteúdo</a>
-    <div class="body_wrapper sticky_menu">
-        <nav class="navbar navbar-expand-lg menu_one" id="stickyTwo" aria-label="Navegação principal">
-            <div class="container-fluid pl-60 pr-60">
-                <a class="navbar-brand" href="index.html">
-                    <img src="media/horus-claro.svg" alt="Horus v2">
-                    <img src="media/horus-escuro.svg" alt="Horus v2">
-                </a>
-                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Abrir o menu">
-                    <span class="menu_toggle">
-                        <span class="hamburger">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </span>
-                        <span class="hamburger-cross">
-                            <span></span>
-                            <span></span>
-                        </span>
-                    </span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav menu ml-auto">
-
-                    </ul>
-                    <ul class="list-unstyled menu_social">
-                        <li class="search">
-                            <form action="#" class="search_form" role="search" data-search-form>
-                                <label class="sr-only" for="dx-search">Buscar na documentação</label>
-                                <input type="search" class="form-control" id="dx-search" placeholder="Buscar" autocomplete="off" data-search-input aria-describedby="dx-search-status" aria-controls="dx-search-results">
-                                <button type="submit" aria-label="Buscar"><i class="icon_search" aria-hidden="true"></i></button>
-                                <div class="dx-search-results" id="dx-search-results" data-search-results hidden></div>
-                            </form>
-                            <p class="sr-only" id="dx-search-status" role="status" data-search-status></p>
-                        </li>
-                    </ul>
-                    <div class="dx-ferramentas">
-
-
-                        <div id="font-switcher"><div id="rvfs-controllers" class="fontsize-controllers group"></div></div>
-                        <button type="button" class="print" data-print aria-label="Imprimir"><i class="icon_printer" aria-hidden="true"></i></button>
-                        <div class="doc_switch">
-                            <label for="something" class="tab-btn tab-btns"><i class="icon_lightbulb_alt" aria-hidden="true"></i><span class="sr-only">Tema claro</span></label>
-                            <input type="checkbox" name="something" id="something" class="tab_switcher" aria-label="Tema escuro">
-                            <label for="something" class="tab-btn"><i class="far fa-moon" aria-hidden="true"></i><span class="sr-only">Tema escuro</span></label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-        <section class="doc_documentation_area onepage_doc_area" id="sticky_doc">
-            <div class="overlay_bg"></div>
-            <div class="container-fluid pl-60 pr-60">
-                <div class="row doc-container">
-                    <div class="col-lg-2 doc_mobile_menu doc-sidebar display_none">
-                        <aside class="doc_left_sidebarlist" aria-label="Tópicos desta página">
-                            <h3 class="nav_title">Tópicos</h3>
-                            <div class="dx-menu-rolagem">
-                                <ul class="list-unstyled nav-sidebar doc-nav">
-<li class="nav-item active"><a href="#mf-112-identificacao" class="nav-link">Identificação</a></li>
-<li class="nav-item"><a href="#mf-112-o-que-e" class="nav-link">O que é</a></li>
-<li class="nav-item"><a href="#mf-112-caracteristicas" class="nav-link">Características</a></li>
-<li class="nav-item"><a href="#mf-112-o-valor-que-gera" class="nav-link">O valor que gera</a></li>
-<li class="nav-item"><a href="#mf-112-como-se-usa-no-horus" class="nav-link">Como se usa no Horus</a></li>
-<li class="nav-item"><a href="#mf-112-grau-de-complexidade-media" class="nav-link">Grau de complexidade: média</a></li>
-<li class="nav-item"><a href="#mf-112-macro-funcionalidades-relacionadas" class="nav-link">Macro funcionalidades relacionadas</a></li>
-<li class="nav-item"><a href="#mf-112-o-que-ela-nao-faz" class="nav-link">O que ela não faz</a></li>
-<li class="nav-item"><a href="#mf-112-ainda-a-decidir" class="nav-link">Ainda a decidir</a></li>
-<li class="nav-item"><a href="#mf-112-para-saber-mais" class="nav-link">Para saber mais</a></li>
-                                </ul>
-                            </div>
-                        </aside>
-                        <div class="dx-divisor" role="separator" aria-orientation="vertical" aria-label="Ajustar a largura do menu" tabindex="0" title="Arraste para ajustar a largura do menu (duplo clique volta ao padrão)"><span class="dx-divisor__pega"></span></div>
-                    </div>
-                    <div class="col-lg-10 col-md-12">
-                        <div class="documentation_info dx-pagina" id="post">
-                            <header class="dx-cabeca" id="mf-112">
-                                <nav class="dx-trilha" aria-label="Trilha"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Início</a></li><li class="breadcrumb-item">v2.0</li><li class="breadcrumb-item active" aria-current="page">Boards e Relatórios</li></ol></nav>
-                                <div class="dx-macro-topo"><span class="dx-macro-codigo">MF-112</span><span class="dx-macro-selo">v2.0</span></div>
-                                <h1>Boards e Relatórios</h1>
-                                <p>O redesenho inteiro, com o PDF automático pelo agendador e pelos conectores</p>
-                            </header>
-                            <div class="dx-modelo-01">
-<nav aria-labelledby="dx-m01-assuntos-titulo">
-<div class="dx-m01-rotulo"><h2 id="dx-m01-assuntos-titulo">Explore os assuntos</h2><span>10 seções</span></div>
-<div class="dx-m01-assuntos">
-<a class="dx-m01-assunto" href="#mf-112-identificacao"><span class="dx-m01-icone"><i class="fas fa-id-card" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Identificação</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-112-o-que-e"><span class="dx-m01-icone"><i class="fas fa-compass" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que é</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-112-caracteristicas"><span class="dx-m01-icone"><i class="fas fa-star" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Características</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-112-o-valor-que-gera"><span class="dx-m01-icone"><i class="fas fa-chart-line" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O valor que gera</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-112-como-se-usa-no-horus"><span class="dx-m01-icone"><i class="fas fa-walking" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Como se usa no Horus</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-112-grau-de-complexidade-media"><span class="dx-m01-icone"><i class="fas fa-puzzle-piece" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Grau de complexidade: média</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-112-macro-funcionalidades-relacionadas"><span class="dx-m01-icone"><i class="fas fa-link" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Macro funcionalidades relacionadas</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-112-o-que-ela-nao-faz"><span class="dx-m01-icone"><i class="fas fa-ban" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que ela não faz</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-112-ainda-a-decidir"><span class="dx-m01-icone"><i class="fas fa-hourglass-half" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Ainda a decidir</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-112-para-saber-mais"><span class="dx-m01-icone"><i class="fas fa-book" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Para saber mais</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-</div></nav>
+<body>
+<header class="hdr"><div class="hdr-brand"><a class="hdr-logo" href="index.html" aria-label="Horus v2"><img class="logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /></a><div class="div"></div><div class="doc-meta"><b>Horus v2 · Documentação</b><small>Maind Horus</small></div></div><div class="hdr-center"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-topo" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><div class="hdr-actions"><div class="menu-toggle" role="group" aria-label="Menu"><button data-set="vertical" aria-label="Menu vertical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button><button data-set="horizontal" aria-label="Menu horizontal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></button></div><div class="theme-toggle" role="group" aria-label="Tema"><button data-set="light" aria-label="Claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button><button data-set="dark" aria-label="Escuro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header>
+<div class="shell">
+<aside class="side"><nav aria-label="Páginas da documentação"><h6>Horus v2</h6><ul><li><a href="index.html">Início</a></li></ul><h6>Para começar</h6><ul><li><a href="como-ler.html">Como ler esta documentação</a></li></ul><h6>v2.0</h6><ul class="side-sub"><li><a href="mf-101.html">MF-101 · Administração da instância</a></li><li><a href="mf-102.html">MF-102 · Organizações, pessoas e papéis</a></li><li><a href="mf-103.html">MF-103 · Licenças e planos</a></li><li><a href="mf-104.html">MF-104 · Conectar as fontes vivas</a></li><li><a href="mf-105.html">MF-105 · IA sob controle da organização</a></li><li><a href="mf-107.html">MF-107 · Perguntar aos dados em português</a></li><li><a href="mf-108.html">MF-108 · Respostas visuais</a></li><li><a href="mf-109.html">MF-109 · A web como fonte</a></li><li><a href="mf-110.html">MF-110 · Pergunta rápida</a></li><li><a href="mf-111.html">MF-111 · Chat pelo WhatsApp</a></li><li><a href="mf-112.html" class="active">MF-112 · Boards e Relatórios</a></li><li><a href="mf-113.html">MF-113 · Conectores de Saída</a></li><li><a href="mf-114.html">MF-114 · Módulo de Agendamentos de Agentes</a></li><li><a href="mf-115.html">MF-115 · Agentes ativos</a></li><li><a href="mf-116.html">MF-116 · Auditoria</a></li><li><a href="mf-117.html">MF-117 · Home da organização</a></li><li><a href="mf-118.html">MF-118 · Bases de demonstração</a></li><li><a href="mf-120.html">MF-120 · Faixa de avisos e números</a></li></ul></nav></aside>
+<main class="content doc">
+<div class="dx-busca-movel"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-movel" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><nav class="crumbs" aria-label="Trilha"><a href="index.html">Horus v2</a><span class="sep">/</span><span>v2.0</span><span class="sep">/</span><span class="now">Boards e Relatórios</span></nav><span class="doc-eyebrow">v2.0</span><div class="dx-macro-topo"><span class="dx-codigo">MF-112</span><span class="dx-selo">v2.0</span></div><h1 class="doc-h1">Boards e Relatórios</h1><p class="doc-lead">Montar uma vez o painel que acompanha o negócio e tê-lo vivo na tela e em PDF, com a empresa no controle de quem publica e de quem vê.</p><section class="dx-assuntos" aria-labelledby="dx-assuntos-titulo"><h2 id="dx-assuntos-titulo">Explore os assuntos</h2><div class="dx-assuntos-grade"><div class="dx-assunto"><h3><a href="#mf-112-o-que-e">O que é, em poucas palavras</a><small>1 tópico</small></h3><ul><li><a href="#mf-112-quem-e-quem">Quem faz o quê</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-112-na-pratica">Um board, da resposta ao PDF</a><small>1 tópico</small></h3><ul><li><a href="#mf-112-cartoes">Os cartões</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-112-tela-e-pdf">Vivo na tela e em PDF</a><small>2 tópicos</small></h3><ul><li><a href="#mf-112-board-grande">O board maior que a folha</a></li><li><a href="#mf-112-pdf-automatico">O PDF que chega sozinho</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-112-publicar">Publicar: quem abre cada board</a><small>2 tópicos</small></h3><ul><li><a href="#mf-112-visibilidades">As quatro visibilidades</a></li><li><a href="#mf-112-fronteira">O que sai do board segue a pessoa</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-112-editar">Editar, desabilitar e o espaço da organização</a><small>5 tópicos</small></h3><ul><li><a href="#mf-112-espaco">O espaço da organização</a></li><li><a href="#mf-112-publicos">Os boards públicos</a></li><li><a href="#mf-112-dados">Os dados do board</a></li><li><a href="#mf-112-mudancas">Quando o autor muda de faixa ou sai</a></li><li><a href="#mf-112-registro">O que fica registrado</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-112-bastidores">Nos bastidores, sem complicar</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-112-limites">O que esta funcionalidade não faz</a><small>1 tópico</small></h3><ul><li><a href="#mf-112-ligadas">Funcionalidades ligadas a esta</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-112-faq">Perguntas frequentes</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div></div></section><div id="dx-topo"><p>Toda segunda-feira, a gestora de vendas abre as mesmas consultas, copia os números para uma planilha, refaz os gráficos e exporta um PDF para a reunião da diretoria. Na semana seguinte, começa tudo de novo. No Horus, ela monta o painel uma vez: ele fica vivo na tela, com os números de agora, e sai em PDF do mesmo jeito, sem refazer nada. Se a equipe quiser recebê-lo todo mês, um agendamento manda o PDF sozinho.</p>
+<p>Esta é a funcionalidade dos <strong>boards</strong>, os painéis de acompanhamento, e dos relatórios. Hoje o Horus tem as duas coisas separadas: o board, com gráficos e indicadores que se atualizam sozinhos, e o relatório em PDF, feito noutro editor, com agenda e envio por e-mail. A versão 2.0 junta os dois num editor só e traz regras claras de quem cria, abre, publica, edita e desabilita cada board.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Versão 2.0, em construção</b><p>O que está aqui é o que a versão 2.0 do Horus vai entregar. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
 </div>
-                            <div class="dx-content">
-<blockquote>
-<p><strong>Em uma frase:</strong> montar uma vez o painel que acompanha o negócio e tê-lo vivo na tela e em PDF, com a empresa no
-controle de quem o publica e de quem o vê.</p>
-</blockquote>
-<div class="doc-section dx-assunto"><h3 id="mf-112-identificacao" data-dx-icone="id-card">Identificação</h3><div class="table-responsive" tabindex="0" role="region" aria-label="Identificação de MF-112 · Boards e Relatórios"><table class="table table_shortcode"><tbody><tr><th scope="row">Código</th><td>MF-112</td></tr><tr><th scope="row">Entrega</th><td>v2.0</td></tr><tr><th scope="row">Situação</th><td>definida</td></tr><tr><th scope="row">Camada</th><td>📌 Acompanhar e avisar</td></tr><tr><th scope="row">Objetivos</th><td>O3</td></tr><tr><th scope="row">Quem usa</th><td>gestor, membro full, membro leitor, owner da organização</td></tr><tr><th scope="row">Complexidade</th><td>média</td></tr><tr><th scope="row">Relacionadas</th><td><a href="mf-102.html">Organizações, pessoas e papéis</a> (MF-102), <a href="mf-107.html">Perguntar aos dados em português</a> (MF-107), <a href="mf-108.html">Respostas visuais</a> (MF-108), <a href="mf-114.html">Módulo de Agendamentos de Agentes</a> (MF-114), <a href="mf-113.html">Conectores de Saída</a> (MF-113), <a href="mf-115.html">Agentes ativos</a> (MF-115), <a href="mf-116.html">Auditoria</a> (MF-116), <a href="mf-106.html">Segurança dos dados por pessoa</a> (MF-106)</td></tr><tr><th scope="row">Atualizado</th><td>03/11/2026</td></tr></tbody></table></div>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="compass" id="mf-112-o-que-e">O que é</h3>
-<p><strong>Como é hoje.</strong> O Horus tem duas coisas separadas para acompanhar o negócio: o <strong>board</strong>, um painel de gráficos e
-indicadores que se atualizam sozinhos, e o <strong>relatório em PDF</strong>, feito noutro editor, com agenda e envio por e-mail.</p>
-<p><strong>O que passa a existir.</strong> Esta macro funcionalidade (mf) junta os dois num <strong>editor só</strong>: todo board é vivo na tela
-e se imprime em PDF, de qualquer tamanho. Junto chegam regras claras de quem cria, abre, publica, edita e desabilita.</p>
-<p><strong>Como fica o dia a dia.</strong> O <strong>gestor</strong>, quem responde por uma equipe, monta o board uma vez, publica-o para a equipe
-e leva a mesma montagem em PDF para a reunião. O PDF também pode chegar sozinho, pelo Módulo de Agendamentos de
-Agentes (MF-114) e pelos Conectores de Saída (MF-113).</p>
-<blockquote>
-<p>📌 <strong>Exemplo</strong> <em>(personagem ilustrativo)</em>: a gestora Carla monta o board de vendas e o publica para &quot;Pessoas
-geridas por mim&quot;. Na reunião, leva o mesmo board em PDF, sem refazer nada, e todo mês um agendamento o manda à
-diretoria.</p>
-</blockquote>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="star" id="mf-112-caracteristicas">Características</h3>
+
+<h2 class="doc-h2" id="mf-112-o-que-e">O que é, em poucas palavras</h2>
+<p>Boards e Relatórios é o lugar de acompanhar o negócio com regularidade, na tela e em PDF, com a empresa no controle de quem publica e de quem vê. Cuida de cinco coisas:</p>
 <ul>
-<li><strong>Um editor só:</strong> a mesma montagem é o board vivo e o PDF, sem refazer.</li>
-<li><strong>O que herda:</strong> grade livre, páginas, cartões que se recalculam sozinhos, filtros, temas e a apresentação que
-passa as páginas sozinha numa tela.</li>
-<li><strong>Quem cria:</strong> o <strong>owner da organização</strong> (quem administra a organização no Horus), o gestor e o <strong>membro full</strong>
-(quem pergunta e cria os próprios boards); o <strong>membro leitor</strong>, que só vê boards de outras pessoas, não cria.</li>
-<li><strong>Quem abre:</strong> o autor, quem está na visibilidade publicada, o gestor, nos boards de quem ele gere, e o owner, nos
-de todos.</li>
-<li><strong>Quem publica:</strong> o owner e, se ele permitir, o gestor, para Todos, Grupos, Pessoas geridas por mim ou Pessoas
-específicas.</li>
-<li><strong>Quem edita e quem desabilita:</strong> só o autor edita; o owner e o gestor podem tirar o board do ar sem apagá-lo, e no
-lugar dele aparece um aviso.</li>
-<li><strong>O espaço da organização:</strong> guarda os boards da organização, que o owner edita, e recebe, com o mesmo status, os
-de quem sai ou passa a membro leitor.</li>
-<li><strong>Os boards públicos:</strong> o owner escolhe os que quem está na quarentena (quem entrou e ainda não tem gestor) pode
-ver.</li>
-<li><strong>A fronteira do board:</strong> quem abre o board de um gestor o vê como o gestor, só dentro dele; fora dele (a consulta,
-a planilha, o chat), vale o que a pessoa pode, e na v2.0 todo board usa os dados da organização inteira.</li>
-<li><strong>Fica registrado:</strong> quem publicou, para quem e quando, e quem abriu; o aviso disso fica num documento da
-organização, em PDF.</li>
+  <li><strong>Um editor só.</strong> A mesma montagem é o board vivo na tela e o PDF, de qualquer tamanho.</li>
+  <li><strong>Os cartões.</strong> Cada gráfico, tabela ou indicador do board é um cartão, que nasce de uma resposta da conversa ou de uma descrição em texto e se recalcula sozinho.</li>
+  <li><strong>Quem publica.</strong> Só o gestor e o owner publicam um board para outras pessoas, e o owner decide se os gestores podem.</li>
+  <li><strong>Quem edita e quem desabilita.</strong> Só o autor edita; o owner e o gestor podem tirar um board do ar sem apagá-lo.</li>
+  <li><strong>O espaço da organização e os boards públicos.</strong> Os boards da própria organização, que o owner cuida, e os que até quem está na quarentena vê.</li>
 </ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="chart-line" id="mf-112-o-valor-que-gera">O valor que gera</h3>
-<ul>
-<li><strong>Para quem usa:</strong> acompanha o negócio num painel vivo, sem pedir relatório à área de dados, e leva o mesmo
-conteúdo impresso a quem não abre o Horus.</li>
-<li><strong>Para a empresa que contrata o Horus:</strong> o owner decide quem publica, e o que se publica e se abre fica registrado.</li>
-<li><strong>Para o Horus como produto:</strong> entrega o acompanhamento recorrente com a parte mais construída do produto de hoje.</li>
-</ul>
-<p><strong>Como vamos saber que funcionou:</strong> a mesma montagem sai como tela viva e como PDF, sem refazer, e o PDF chega todo
-mês à diretoria por um agendamento.</p>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="walking" id="mf-112-como-se-usa-no-horus">Como se usa no Horus</h3>
-<p><strong>Quem configura:</strong> o owner decide se os gestores publicam, escolhe os boards públicos e cuida do espaço da
-organização.</p>
-<p><strong>Quem monta:</strong></p>
-<ol>
-<li>Monta o board, com cartões que nascem de perguntas de análise.</li>
-<li>Escolhe o tamanho; o mesmo board serve à tela e ao PDF.</li>
-<li>Se é gestor ou owner, publica para uma das quatro visibilidades.</li>
-<li>Quem está na visibilidade abre o board vivo, sem editá-lo.</li>
-<li>O autor leva o PDF à reunião ou agenda o envio.</li>
+<p>O editor único herda o que os boards e os relatórios de hoje já fazem: a grade livre, as páginas, os cartões que se recalculam, os filtros, os temas e a apresentação, que passa as páginas sozinha numa tela.</p>
+<h3 class="doc-h3" id="mf-112-quem-e-quem">Quem faz o quê</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quem</th><th>O que faz com os boards</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>Cria, edita e publica os boards da organização, no espaço dela; abre os boards de todos e desabilita qualquer um; decide se os gestores publicam e quais boards são públicos.</td></tr>
+      <tr class="zebra"><td><strong>Gestor</strong></td><td>Cria boards e os publica; abre os boards das pessoas que ele gere e pode desabilitá-los.</td></tr>
+      <tr class="zebra"><td><strong>Membro ouro</strong></td><td>Cria boards para si, sem compartilhar.</td></tr>
+      <tr class="zebra"><td><strong>Membro prata e membro bronze</strong></td><td>Não criam boards. Abrem os boards de outras pessoas, quando publicados para eles, e podem recebê-los em PDF.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>O owner não é dono de board, a não ser que também seja gestor: o board que ele cria nasce no espaço da organização. Os tipos de assento estão em <a href="mf-101.html#mf-101-assentos">Os assentos: quem pode fazer o quê</a>.</p>
+
+<h2 class="doc-h2" id="mf-112-na-pratica">Um board, da resposta ao PDF</h2>
+<p>Um exemplo, com personagens ilustrativos. A Carla é gestora de vendas de uma rede de lojas, e o Marcos é o owner da organização.</p>
+<ol class="steps">
+  <li><div><h4>Guarda a resposta que importa</h4><p>Na conversa de análise, a Carla pergunta pela margem por região no trimestre e fixa o gráfico da resposta no board de vendas dela, onde ele vira um cartão. Só o dono do board fixa nele (veja <a href="mf-107.html#mf-107-fixar">Guardar a resposta num painel</a>).</p></div></li>
+  <li><div><h4>Descreve o cartão que falta</h4><p>Para a margem por loja no trimestre, ela descreve o cartão em texto. O Horus mostra o gráfico montado, ela confere e salva: salvar é aprovar, sem outra etapa.</p></div></li>
+  <li><div><h4>Monta e escolhe o tamanho</h4><p>Arruma os cartões na grade e nas páginas, com filtros e tema, e escolhe o tamanho do board. O mesmo board serve à tela e ao PDF.</p></div></li>
+  <li><div><h4>Publica para a equipe</h4><p>Publica o board para “Pessoas geridas por mim”. Quem está nessa visibilidade abre o board vivo, com os números de agora, sem poder editá-lo.</p></div></li>
+  <li><div><h4>Leva o PDF e deixa o envio agendado</h4><p>Leva o mesmo board em PDF para a reunião, sem refazer nada. E o PDF também chega sozinho: todo mês, um agendamento o manda à equipe dela.</p></div></li>
 </ol>
-<figure><div class="lightbox_shortcode"><img src="media/mf-112-diagrama-1.svg" width="991" height="278" alt="Diagrama: Como se usa no Horus"><a href="media/mf-112-diagrama-1.svg" class="img_popup" aria-label="Ampliar o diagrama"><i class="icon_plus" aria-hidden="true"></i></a></div><figcaption>Diagrama de “Como se usa no Horus”. Selecione o “+” para ampliar.</figcaption></figure></div><div class="doc-section dx-assunto"><h3 data-dx-icone="puzzle-piece" id="mf-112-grau-de-complexidade-media">Grau de complexidade: média</h3>
-<p>Quase tudo se reaproveita da v1: os cartões que se recalculam, a apresentação, o editor de relatórios e a impressão
-em PDF. O novo é fundir os dois editores, criar o espaço da organização e as regras de publicar e de desabilitar.
-Depende das pessoas que cada gestor gere e dos grupos de Organizações, pessoas e papéis (MF-102), e de ninguém de
-fora do Horus.</p>
-<blockquote>
-<p>⚠️ É a leitura do PO a partir dos documentos de arquitetura. A estimativa de esforço é do arquiteto.</p>
-</blockquote>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="link" id="mf-112-macro-funcionalidades-relacionadas">Macro funcionalidades relacionadas</h3>
-<p>As quatro macro funcionalidades de acompanhar e avisar formam uma corrente: o agente trabalha, o agendamento diz
-quando, o conector entrega e o board mostra.</p>
-<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de Boards e Relatórios"><table class="table table_shortcode"><thead><tr>
-<th scope="col">mf</th>
-<th scope="col">Como se relaciona</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Organizações, pessoas e papéis (MF-102)</td>
-<td><strong>depende de</strong>: os papéis, a carteira do gestor, os grupos e a quarentena decidem quem cria, abre e publica.</td>
-</tr>
-<tr>
-<td>Perguntar aos dados em português (MF-107)</td>
-<td><strong>depende de</strong>: cada cartão nasce de uma pergunta de análise e se recalcula pelo mesmo motor da conversa.</td>
-</tr>
-<tr>
-<td>Respostas visuais (MF-108)</td>
-<td><strong>depende de</strong>: os cartões são os mesmos gráficos, tabelas e indicadores da conversa.</td>
-</tr>
-<tr>
-<td>Módulo de Agendamentos de Agentes (MF-114)</td>
-<td><strong>depende de</strong>, para o PDF automático: o agendamento diz quando o PDF do board sai.</td>
-</tr>
-<tr>
-<td>Conectores de Saída (MF-113)</td>
-<td><strong>depende de</strong>, para o PDF automático: o conector entrega o PDF por e-mail ou pelo WhatsApp.</td>
-</tr>
-<tr>
-<td>Agentes ativos (MF-115)</td>
-<td><strong>complementa</strong>: o agente trabalha ao lado do PDF do board no agendamento e segue as mesmas regras de quem edita e desabilita.</td>
-</tr>
-<tr>
-<td>Auditoria (MF-116)</td>
-<td><strong>complementa</strong>: registra quem publicou cada board e quem o abriu.</td>
-</tr>
-<tr>
-<td>Segurança dos dados por pessoa (MF-106)</td>
-<td><strong>complementa</strong>, na v2.1: com ela volta o dado restrito por pessoa, e o board do gestor passa a levar a quem o abre o que só o gestor vê.</td>
-</tr>
-</tbody>
-</table></div></div><div class="doc-section dx-assunto"><h3 data-dx-icone="ban" id="mf-112-o-que-ela-nao-faz">O que ela não faz</h3>
+<p>O mesmo caminho em desenho: as duas origens de um cartão, o board publicado que cada um abre vivo e o PDF que sai da mesma montagem, levado à mão ou enviado no horário agendado.</p>
+<figure class="dx-diagrama"><figcaption><b>Da resposta ao board e ao PDF</b> <span>As duas origens de um cartão, o board publicado que cada um abre vivo e o PDF que sai da mesma montagem, levado à reunião ou enviado no horário agendado</span><a href="media/diagramas/mf-112-da-resposta-ao-pdf.html" target="_blank" rel="noopener">Abrir em tela cheia ↗</a></figcaption><iframe src="media/diagramas/mf-112-da-resposta-ao-pdf.html?embutido=1" title="Da resposta ao board e ao PDF" loading="lazy"></iframe></figure>
+<h3 class="doc-h3" id="mf-112-cartoes">Os cartões</h3>
 <ul>
-<li><strong>Agendar nem enviar:</strong> isso é do agendamento e dos conectores.</li>
-<li><strong>Ter mais de um autor:</strong> só quem criou edita.</li>
-<li><strong>Alterar o board de outra pessoa:</strong> o owner e o gestor só desabilitam; o owner edita só os do espaço da
-organização.</li>
-<li><strong>Outros formatos:</strong> só a tela viva e o PDF, por ora.</li>
-<li><strong>Board do membro leitor:</strong> ele não cria; abre os de outras pessoas e recebe PDFs.</li>
+  <li><strong>De uma resposta.</strong> O cartão é o mesmo gráfico, tabela ou indicador da conversa, com os números do banco. As formas que ele toma são as das <a href="mf-108.html">Respostas visuais (MF-108)</a>.</li>
+  <li><strong>De uma descrição.</strong> O autor escreve o que quer, como “margem por loja no trimestre”, e vê o resultado antes de salvar. Salvar é a aprovação, sem rascunho nem espera, e a regra vale para todo cartão do editor.</li>
+  <li><strong>Sempre com os números de agora.</strong> Os cartões se recalculam pelo mesmo motor da conversa e consultam as mesmas fontes. Dentro do intervalo que cada fonte define, reaproveitam o resultado já buscado (veja <a href="mf-104.html#mf-104-idade-minima">A idade mínima do dado</a>).</li>
+  <li><strong>O fato da web fica guardado.</strong> O cartão que nasceu de uma resposta com fato da web guarda os fatos que ela trouxe, com o link e a data à vista, e não pesquisa de novo: só os números da empresa se recalculam (veja <a href="mf-109.html#mf-109-canais">Em todo lugar onde o Horus responde</a>).</li>
 </ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="hourglass-half" id="mf-112-ainda-a-decidir">Ainda a decidir</h3>
-<ul>
-<li>Como um board maior que a folha vira PDF: uma folha por página ou reduzido para caber.</li>
-<li>Como o autor aprova o cartão que descreve em texto, como as regiões do relatório de hoje.</li>
-<li>Onde fica o documento do aviso de abertura e se o primeiro acesso pede ciência dele.</li>
-</ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="book" id="mf-112-para-saber-mais">Para saber mais</h3>
-<ul>
-<li><a href="produto-backlog.html">Backlog estratégico</a>: a <a href="produto-backlog.html#d-058"><code>D-058</code></a>, a definição macro (fechou a <code>P-005</code>); a
-<a href="produto-backlog.html#d-018"><code>D-018</code></a> e a <a href="produto-backlog.html#d-057"><code>D-057</code></a> (o editor único e o tamanho como propriedade); as <a href="produto-backlog.html#d-042"><code>D-042</code></a> a <a href="produto-backlog.html#d-048"><code>D-048</code></a> (quem cria, abre, publica,
-edita e desabilita, o espaço da organização e a quarentena); as <a href="produto-backlog.html#d-051"><code>D-051</code></a>, <a href="produto-backlog.html#d-053"><code>D-053</code></a>, <a href="produto-backlog.html#d-054"><code>D-054</code></a> e <a href="produto-backlog.html#d-059"><code>D-059</code></a> (a liberação do
-gestor e a fronteira do board); a <a href="produto-backlog.html#d-069"><code>D-069</code></a> e a <a href="produto-backlog.html#d-073"><code>D-073</code></a> (o membro leitor e a passagem de full a leitor); a <a href="produto-backlog.html#d-119"><code>D-119</code></a>
-(entra na v2.0, fechou o <code>I-012</code>); a <a href="produto-backlog.html#d-122"><code>D-122</code></a> (o PDF automático, fechou o <code>I-014</code>); as letras (a), (h), (i), (n) e
-(o) da <code>P-008</code>.</li>
-<li><a href="produto-v20.html">A v2.0 consolidada</a>: §1, §2, §3.1 (candidata nº 8), §4 (passo 8), §5.6 e §7.
-<a href="produto-mfs-hoje.html">Mapa das mfs</a>: a <code>MF-006</code> e a <code>MF-008</code>, substituídas, e &quot;O que
-o dono já disse&quot;. <a href="produto-versoes.html">Versões</a>, <a href="produto-mapa.html">objetivos</a>
-(O3) e <a href="produto-lacunas.html">lacunas</a> (candidata nº 8).</li>
-<li>Arquitetura: <a href="arquitetura-01.html">estratégia</a> (§3, O3; §4; o marco M5);
-<a href="arquitetura-04.html">software</a> (&quot;Boards e relatórios&quot; e &quot;Desenho fora da tela&quot;);
-<a href="arquitetura-02.html">registro</a>: <a href="arquitetura-02.html#arq-006"><code>ARQ-006</code></a>, <a href="arquitetura-02.html#arq-007"><code>ARQ-007</code></a>, <a href="arquitetura-02.html#arq-022"><code>ARQ-022</code></a>, <a href="arquitetura-02.html#arq-023"><code>ARQ-023</code></a>, <a href="arquitetura-02.html#arq-041"><code>ARQ-041</code></a> e
-<a href="arquitetura-02.html#arq-042"><code>ARQ-042</code></a> (com as notas de 03/11/2026), <a href="arquitetura-02.html#arq-043"><code>ARQ-043</code></a> ✅ (o documento da organização, em PDF) e <a href="arquitetura-02.html#arq-090"><code>ARQ-090</code></a> ✅ (a
-<a href="mf-106.html"><code>MF-106</code></a> inteira na v2.1: na v2.0, todo board roda com os dados da organização inteira);
-<a href="arquitetura-14.html">conferência</a>: §3, o reaproveitamento; §4, <code>A-05</code>, <code>A-09</code>, <code>A-11</code>,
-<code>A-14</code>, <code>A-15</code>, <code>A-23</code>, <code>A-28</code> e <code>A-30</code>.</li>
-</ul>
-<p>📚 <a href="mf-112-inventario.html">Tudo o que o inventário diz desta mf, assunto por assunto</a>.</p>
-</div>
-                            </div>
-                            <nav class="dx-vizinhas" aria-label="Páginas vizinhas"><a class="dx-anterior" href="mf-111.html"><i class="arrow_left" aria-hidden="true"></i>Chat pelo WhatsApp</a><a class="dx-proxima" href="mf-113.html">Conectores de Saída<i class="arrow_right" aria-hidden="true"></i></a></nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <footer class="simple_footer">
-            <img class="leaf_right" src="assets/kbdoc/img/home_one/leaf_footter.png" alt="">
-            <div class="container-fluid pl-60 pr-60">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <p>Maind Horus · Horus v2 · documento interno · Revisado em 03/11/2026 · versão v2.0 em desenho, sem versão publicada</p>
-                    </div>
-                    <div class="col-lg-6 text-right">
 
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
-    <a id="back-to-top" title="Voltar ao topo"></a>
-    <script src="assets/kbdoc/js/jquery-3.2.1.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/popper.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap-select.min.js"></script>
-    <script src="assets/kbdoc/js/parallaxie.js"></script>
-    <script src="assets/kbdoc/js/TweenMax.min.js"></script>
-    <script src="assets/kbdoc/js/anchor.js"></script>
-    <script src="assets/kbdoc/assets/wow/wow.min.js"></script>
-    <script src="assets/kbdoc/js/vendor/clipboard.min.js"></script>
-    <script src="assets/kbdoc/assets/prism/prism.js"></script>
-    <script src="assets/kbdoc/assets/niceselectpicker/jquery.nice-select.min.js"></script>
-    <script src="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="assets/kbdoc/assets/magnify-pop/jquery.magnific-popup.min.js"></script>
-    <script src="assets/kbdoc/assets/tooltipster/js/tooltipster.bundle.min.js"></script>
-    <script src="assets/kbdoc/assets/font-size/js/rv-jquery-fontsize-2.0.3.js"></script>
-    <script src="assets/kbdoc/js/onpage-menu.js"></script>
-    <script src="assets/kbdoc/js/main.js"></script>
-    <script src="assets/busca.js"></script>
-    <script src="assets/docx.js"></script>
+<h2 class="doc-h2" id="mf-112-tela-e-pdf">Vivo na tela e em PDF</h2>
+<p>Na versão 2.0, o tamanho do board é só uma propriedade dele. Todo board, de qualquer tamanho, é vivo na tela e se imprime em PDF a partir da mesma montagem. O PDF do board é o próprio board, com os mesmos cartões e os mesmos números; por que o desenho sai igual está em <a href="mf-108.html#mf-108-em-todo-lugar">Um desenho só, em todo lugar</a>.</p>
+<h3 class="doc-h3" id="mf-112-board-grande">O board maior que a folha</h3>
+<p>O PDF de um board maior que a folha tem <strong>uma página só, do tamanho do board</strong>: a folha cresce até caber, sem reduzir o board e sem cortar cartão. É como uma foto fiel do board, para ler na tela e no celular. O board de vendas da Carla, com 12 cartões (número ilustrativo), sai num PDF de uma página, com todos os cartões legíveis.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Feito para ler na tela</b><p>Impresso em papel, a impressora reduz a página para caber na folha, e um board muito maior que ela pode ficar pequeno no papel. O PDF do board é pensado para a leitura na tela.</p></div>
+</div>
+<h3 class="doc-h3" id="mf-112-pdf-automatico">O PDF que chega sozinho</h3>
+<p>Além de ir à reunião com o autor, o PDF pode chegar sozinho: o <a href="mf-114.html">Módulo de Agendamentos de Agentes (MF-114)</a> diz quando ele sai, e os <a href="mf-113.html">Conectores de Saída (MF-113)</a> o entregam por e-mail ou pelo WhatsApp. Cada pessoa agenda para si; para outras pessoas, só o gestor, para quem ele gere, e o owner. Se o board estiver desabilitado, o agendamento segue e entrega um aviso no lugar dele.</p>
+
+<h2 class="doc-h2" id="mf-112-publicar">Publicar: quem abre cada board</h2>
+<p>Publicar é escolher quem abre o board. Quem o abre vê o board vivo e não o edita. Abrem um board:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quem abre</th><th>Quais boards</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>O autor</strong></td><td>Os que ele criou.</td></tr>
+      <tr class="zebra"><td><strong>Quem está na visibilidade publicada</strong></td><td>Os boards publicados para ele.</td></tr>
+      <tr class="zebra"><td><strong>O gestor</strong></td><td>Os boards das pessoas que ele gere.</td></tr>
+      <tr class="zebra"><td><strong>O owner</strong></td><td>Os boards de todos.</td></tr>
+      <tr class="zebra"><td><strong>Quem está na quarentena</strong></td><td>Só os boards públicos (veja <a href="mf-102.html#mf-102-quarentena">A quarentena</a>).</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>O membro ouro não publica: ele cria boards para si, sem compartilhar, e não agenda o PDF deles para outras pessoas. O gestor dele e o owner abrem os boards que ele cria, mesmo sem publicação.</p>
+<h3 class="doc-h3" id="mf-112-visibilidades">As quatro visibilidades</h3>
+<p>O owner e o gestor publicam escolhendo uma de quatro visibilidades:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Visibilidade</th><th>Quem abre o board</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><span class="badge badge--info">Todos</span></td><td>As pessoas da organização.</td></tr>
+      <tr class="zebra"><td><span class="badge badge--info">Grupos</span></td><td>Quem está nos grupos escolhidos. O gestor usa os grupos dele; o owner, qualquer grupo (veja <a href="mf-102.html#mf-102-grupos">Grupos: para quem vai cada coisa</a>).</td></tr>
+      <tr class="zebra"><td><span class="badge badge--info">Pessoas geridas por mim</span></td><td>A equipe de quem publica.</td></tr>
+      <tr class="zebra"><td><span class="badge badge--info">Pessoas específicas</span></td><td>As pessoas escolhidas, uma a uma.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Quando a organização nasce, o gestor já pode publicar. O owner pode tirar essa permissão, nas preferências da organização (veja <a href="mf-102.html#mf-102-nasce-liberado">Tudo nasce liberado</a>).</p>
+<h3 class="doc-h3" id="mf-112-fronteira">O que sai do board segue a pessoa</h3>
+<p>A tela, os cartões e o PDF são o próprio board. Já ver a consulta de um cartão, baixar o CSV dele e continuar a pergunta na conversa a partir dele ficam fora do board e seguem só a permissão da própria pessoa (veja <a href="mf-102.html#mf-102-roles">Roles: o que cada pessoa pode usar</a>).</p>
+
+<h2 class="doc-h2" id="mf-112-editar">Editar, desabilitar e o espaço da organização</h2>
+<ul>
+  <li><strong>Só o autor edita.</strong> Nem o owner nem o gestor alteram o board de outra pessoa. Fixar uma resposta é editar o board, e por isso só o autor fixa.</li>
+  <li><strong>Desabilitar é tirar do ar, sem apagar.</strong> O owner desabilita qualquer board; o gestor, os boards de quem ele gere. No lugar do board desabilitado aparece um aviso de que ele está desativado.</li>
+  <li><strong>Um autor por board.</strong> O board não tem coautores.</li>
+</ul>
+<h3 class="doc-h3" id="mf-112-espaco">O espaço da organização</h3>
+<p>A organização tem um espaço próprio de boards, ligado a ela e não a uma pessoa. É ali que nasce o board que o owner cria, e é ali que ele o edita e o publica. O espaço <strong>não recebe o que as pessoas deixam</strong>: o board de quem sai se perde com a pessoa, e o de quem é rebaixado fica com ela, desabilitado.</p>
+<h3 class="doc-h3" id="mf-112-publicos">Os boards públicos</h3>
+<p>O owner escolhe quais boards da organização são <strong>públicos</strong>: os que até quem está na quarentena vê, enquanto espera um gestor. O board público calcula os números com o acesso do owner que o publicou e mostra os mesmos números a todos que o abrem. O owner responde pelo que publica e, se ele sai da organização, o board público some junto, e quem estava na quarentena deixa de vê-lo.</p>
+<h3 class="doc-h3" id="mf-112-dados">Os dados do board</h3>
+<p>Na versão 2.0, a organização é a fronteira dos dados: todo board usa os dados da organização inteira, e todas as pessoas da organização veem os mesmos dados (veja <a href="mf-102.html#mf-102-dados-e-conversas">Os dados, as conversas e o perfil</a>). O board do espaço da organização calcula com o acesso de quem o abre, mas só mostra números diferentes a pessoas diferentes quando chegar a Segurança dos dados por pessoa (MF-106), na versão 2.1.</p>
+<h3 class="doc-h3" id="mf-112-mudancas">Quando o autor muda de faixa ou sai</h3>
+<p>Os boards seguem a regra geral, explicada em <a href="mf-102.html#mf-102-mudancas">Quando alguém muda de faixa ou sai</a>: quem é rebaixado mantém os boards ligados a ele, desabilitados e só para excluir, e os reativa um a um se voltar a ser ouro; quem é excluído os perde em definitivo. Não há transferência, e nada vai para o espaço da organização. Por isso, o board que um gestor publicava para a equipe some quando ele sai.</p>
+<h3 class="doc-h3" id="mf-112-registro">O que fica registrado</h3>
+<p>Fica registrado quem publicou cada board, para quem e quando, e quem o abriu. O registro é da Auditoria (MF-116), e o owner o consulta. O aviso de que a abertura é registrada também é de lá: o Horus traz um texto padrão, já publicado, que a pessoa encontra por um link, e o owner pode trocá-lo pelo texto da empresa. O board não ganha uma linha de aviso, e o primeiro acesso não pede que a pessoa declare ciência; por isso, o Horus não tem como provar que ela leu o aviso.</p>
+
+<h2 class="doc-h2" id="mf-112-bastidores">Nos bastidores, sem complicar</h2>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>Um motor só.</strong> O recálculo dos cartões chama o mesmo motor de análise da conversa, da Pergunta rápida, do WhatsApp e dos agentes. Por isso as regras da resposta valem igual no board.</li>
+  <li><strong>O cartão guarda a receita.</strong> Recalcular um cartão não refaz a pergunta: o Horus guarda a receita dele (a consulta, o plano dos blocos e os filtros) e a roda de novo, para trazer os números de agora, sem gerar consulta nova. Ao abrir um board, o Horus recalcula os cartões.</li>
+  <li><strong>O PDF é a própria tela.</strong> O servidor imprime a mesma montagem que aparece na tela, como conta <a href="mf-108.html#mf-108-bastidores">os bastidores das Respostas visuais</a>.</li>
+  <li><strong>O registro grava junto.</strong> A abertura de um board entra no rastro no mesmo momento em que acontece, e o rastro só recebe acréscimos: o que já foi registrado não é reescrito.</li>
+  <li><strong>O que já existe e o que é novo.</strong> Vêm do Horus de hoje o recálculo dos cartões, a apresentação, a lista de quem abre um painel, o editor de relatórios e a impressão em PDF. São novos o editor único, a publicação nas quatro visibilidades, o desabilitar, o espaço da organização e o PDF de todo board.</li>
+</ul>
+
+<h2 class="doc-h2" id="mf-112-limites">O que esta funcionalidade não faz</h2>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Agendar e enviar</strong></td><td>Quando o PDF sai é do <a href="mf-114.html">Módulo de Agendamentos de Agentes (MF-114)</a>, e a entrega, dos <a href="mf-113.html">Conectores de Saída (MF-113)</a>.</td></tr>
+      <tr class="zebra"><td><strong>Ter mais de um autor ou editar o board de outra pessoa</strong></td><td>Só quem criou edita. O owner e o gestor só desabilitam, e o owner edita só os boards do espaço da organização.</td></tr>
+      <tr class="zebra"><td><strong>Transferir o board de quem sai ou é rebaixado</strong></td><td>Não existe em nenhuma versão, e o espaço da organização não guarda o que as pessoas deixam (veja <a href="mf-102.html#mf-102-mudancas">Quando alguém muda de faixa ou sai</a>).</td></tr>
+      <tr class="zebra"><td><strong>Levar a quem abre o que só o gestor vê</strong></td><td>É a liberação de dados do gestor no board, da Segurança dos dados por pessoa (MF-106), na versão 2.1. Na versão 2.0, todo board usa os dados da organização inteira.</td></tr>
+      <tr class="zebra"><td><strong>Sair em outros formatos</strong></td><td>Por ora, só a tela viva e o PDF.</td></tr>
+      <tr class="zebra"><td><strong>Board do membro prata ou do bronze</strong></td><td>Nenhum dos dois cria; os dois abrem os boards de outras pessoas e podem recebê-los em PDF.</td></tr>
+      <tr class="zebra"><td><strong>Pesquisar a web de novo no cartão</strong></td><td>O cartão guarda os fatos da resposta que o originou, com a data à vista. Um jeito de o autor atualizar o fato à mão fica para depois, se os autores pedirem.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="mf-112-ligadas">Funcionalidades ligadas a esta</h3>
+<p>As quatro funcionalidades de acompanhar e avisar formam uma corrente: o agente trabalha, o agendamento diz quando, o conector entrega e o board mostra. As demais páginas entram aqui conforme forem escritas.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="mf-102.html">Organizações, pessoas e papéis (MF-102)</a></td><td>Os papéis, a carteira do gestor, os grupos e a quarentena decidem quem cria, abre e publica.</td></tr>
+      <tr class="zebra"><td><a href="mf-103.html">Licenças e planos (MF-103)</a></td><td>Quem passa a prata ou a bronze mantém os boards que criou, desabilitados e só para excluir.</td></tr>
+      <tr class="zebra"><td><a href="mf-104.html">Conectar as fontes vivas (MF-104)</a></td><td>Os cartões consultam as mesmas fontes e reaproveitam o resultado dentro da idade mínima do dado.</td></tr>
+      <tr class="zebra"><td><a href="mf-107.html">Perguntar aos dados em português (MF-107)</a> e <a href="mf-110.html">Pergunta rápida (MF-110)</a></td><td>Cada cartão nasce de uma pergunta de análise e se recalcula pelo mesmo motor; o dono do board fixa nele a resposta da conversa ou do popup.</td></tr>
+      <tr class="zebra"><td><a href="mf-108.html">Respostas visuais (MF-108)</a></td><td>Os cartões são os mesmos gráficos, tabelas e indicadores da conversa, e o PDF sai da mesma montagem.</td></tr>
+      <tr class="zebra"><td><a href="mf-109.html">A web como fonte (MF-109)</a></td><td>O fato da web vale no cartão, com o link e a data, sem nova pesquisa.</td></tr>
+      <tr class="zebra"><td><a href="mf-114.html">Agendamentos de Agentes (MF-114)</a> e <a href="mf-113.html">Conectores de Saída (MF-113)</a></td><td>O agendamento diz quando o PDF do board sai, e o conector o entrega por e-mail ou pelo WhatsApp.</td></tr>
+      <tr class="zebra"><td><a href="mf-115.html">Agentes ativos (MF-115)</a></td><td>O agente trabalha ao lado do PDF do board no agendamento e segue as mesmas regras de quem edita e desabilita.</td></tr>
+      <tr class="zebra"><td>Auditoria (MF-116)</td><td>Registra quem publicou cada board e quem o abriu, e guarda o aviso de que a abertura é registrada.</td></tr>
+      <tr class="zebra"><td>Faixa de avisos e números (MF-120, nome provisório)</td><td>Os números da faixa, no alto de toda tela, seguem a regra dos boards do espaço da organização e calculam com o acesso de quem os vê.</td></tr>
+      <tr class="zebra"><td>Segurança dos dados por pessoa (MF-106)</td><td>Na versão 2.1, traz o dado restrito por pessoa e a liberação de dados do gestor no board.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Ainda em definição</b><p><strong>Pessoas específicas.</strong> Ao publicar para “Pessoas específicas”, se o gestor escolhe qualquer pessoa da organização ou só as que ele gere ainda está em definição. <strong>O board enorme.</strong> Um limite para o tamanho da página do PDF de um board muito grande também ainda será definido.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-112-faq">Perguntas frequentes</h2>
+<div class="faq">
+  <details open>
+    <summary>Preciso montar o relatório em PDF à parte do painel?</summary>
+    <div class="faq-body"><p>Não. Na versão 2.0, o board e o relatório são um editor só: a mesma montagem é o board vivo na tela e o PDF, de qualquer tamanho, sem refazer. O board maior que a folha sai num PDF de uma página só, do tamanho dele, sem reduzir o board nem cortar cartão.</p></div>
+  </details>
+  <details>
+    <summary>Quem consegue ver um board que eu criei?</summary>
+    <div class="faq-body"><p>Sem publicação, abrem o board você, o gestor que cuida de você e o owner da organização. Publicar para outras pessoas é só do gestor e do owner, numa de quatro visibilidades: Todos, Grupos, Pessoas geridas por mim ou Pessoas específicas. O membro ouro cria boards para si, sem compartilhar, e quem está na quarentena vê só os boards públicos.</p></div>
+  </details>
+  <details>
+    <summary>Posso impedir que os gestores publiquem boards?</summary>
+    <div class="faq-body"><p>Pode. O gestor nasce liberado para publicar, e o owner tira essa permissão nas preferências da organização. O owner também pode desabilitar qualquer board, e o gestor, os boards de quem ele gere: no lugar do board entra um aviso de que ele está desativado, e nada é apagado.</p></div>
+  </details>
+  <details>
+    <summary>Os números do board ficam atualizados?</summary>
+    <div class="faq-body"><p>Ficam. Os cartões se recalculam sozinhos, consultando as mesmas fontes da conversa, e dentro da idade mínima do dado de cada fonte reaproveitam o resultado já buscado. A exceção é o fato da web: o cartão guarda o da resposta que o originou, com o link e a data à vista, e só os números da empresa se recalculam.</p></div>
+  </details>
+  <details>
+    <summary>O que acontece com os boards de quem sai da empresa ou muda de faixa?</summary>
+    <div class="faq-body"><p>Quem é excluído da organização perde em definitivo os boards que criou: não há transferência, e o espaço da organização não os recebe. Quem passa de ouro a prata ou a bronze mantém os boards, desabilitados e só para excluir, e os reativa um a um se voltar a ser ouro. O board público some junto com o owner que o publicou.</p></div>
+  </details>
+  <details>
+    <summary>Um board pode mostrar a alguém dados que essa pessoa não poderia ver?</summary>
+    <div class="faq-body"><p>Na versão 2.0, todo board usa os dados da organização inteira, e todas as pessoas da organização veem os mesmos dados. O board público calcula com o acesso do owner que o publicou e mostra os mesmos números a todos, inclusive a quem está na quarentena; o owner responde pelo que publica. A liberação de dados do gestor no board chega com a Segurança dos dados por pessoa (MF-106), na versão 2.1.</p></div>
+  </details>
+</div>
+</div><nav class="rel-grid dx-vizinhas" aria-label="Páginas vizinhas"><a class="rel-card dx-anterior" href="mf-111.html"><span class="cat">Anterior</span><h5>Chat pelo WhatsApp</h5><span class="arrow">←</span></a><a class="rel-card dx-proxima" href="mf-113.html"><span class="cat">Próxima</span><h5>Conectores de Saída</h5><span class="arrow">→</span></a></nav>
+<footer class="ds-footer"><div class="ftr-brand"><img class="ftr-logo logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="ftr-logo logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /><div class="ftr-divider"></div><div class="ftr-meta"><b>Maind Horus · Horus v2 · versão 2.0 em desenho</b></div></div><div class="ftr-center"><span class="ftr-tag">v2.0 em desenho, sem versão publicada · 06/11/2026</span></div><div class="ftr-author"><div class="avatar">MT</div><div class="ftr-author-info"><b>Maind Tech</b><span>Horus v2</span></div></div></footer>
+</main>
+<aside class="toc"><h6>Neste artigo</h6><ul><li><a href="#mf-112-o-que-e">O que é, em poucas palavras</a></li><li class="lvl-3"><a href="#mf-112-quem-e-quem">Quem faz o quê</a></li><li><a href="#mf-112-na-pratica">Um board, da resposta ao PDF</a></li><li class="lvl-3"><a href="#mf-112-cartoes">Os cartões</a></li><li><a href="#mf-112-tela-e-pdf">Vivo na tela e em PDF</a></li><li class="lvl-3"><a href="#mf-112-board-grande">O board maior que a folha</a></li><li class="lvl-3"><a href="#mf-112-pdf-automatico">O PDF que chega sozinho</a></li><li><a href="#mf-112-publicar">Publicar: quem abre cada board</a></li><li class="lvl-3"><a href="#mf-112-visibilidades">As quatro visibilidades</a></li><li class="lvl-3"><a href="#mf-112-fronteira">O que sai do board segue a pessoa</a></li><li><a href="#mf-112-editar">Editar, desabilitar e o espaço da organização</a></li><li class="lvl-3"><a href="#mf-112-espaco">O espaço da organização</a></li><li class="lvl-3"><a href="#mf-112-publicos">Os boards públicos</a></li><li class="lvl-3"><a href="#mf-112-dados">Os dados do board</a></li><li class="lvl-3"><a href="#mf-112-mudancas">Quando o autor muda de faixa ou sai</a></li><li class="lvl-3"><a href="#mf-112-registro">O que fica registrado</a></li><li><a href="#mf-112-bastidores">Nos bastidores, sem complicar</a></li><li><a href="#mf-112-limites">O que esta funcionalidade não faz</a></li><li class="lvl-3"><a href="#mf-112-ligadas">Funcionalidades ligadas a esta</a></li><li><a href="#mf-112-faq">Perguntas frequentes</a></li></ul></aside>
+</div>
+<div class="toast" id="toast">Copiado ✓</div>
+<script src="assets/busca.js"></script>
+<script src="assets/docs.js"></script>
+<script src="assets/docx-kbr.js"></script>
 </body>
 </html>

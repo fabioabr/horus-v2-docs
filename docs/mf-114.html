@@ -1,309 +1,204 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-menu="vertical">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="A documentação de produto e de arquitetura do Horus v2: a visão, as decisões, a estratégia e como ele vai ser construído.">
-    <meta name="generator" content="DocX 0.2.1">
-    <link rel="shortcut icon" href="media/horus-claro.svg">
-    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/elagent-icon/style.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/font-awesome/css/all.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/niceselectpicker/nice-select.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/font-size/css/rvfs.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/animation/animate.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/tooltipster/css/tooltipster.bundle.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism-coy.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/magnify-pop/magnific-popup.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/css/style.css">
-    <link rel="stylesheet" href="assets/kbdoc/css/responsive.css">
-    <link rel="stylesheet" href="assets/docx.css">
-    <link rel="stylesheet" href="assets/conteudo.css">
-    <link rel="stylesheet" href="assets/indice.css">
-    <script>try { var l = parseInt(localStorage.getItem('docx-menu-largura'), 10); if (l >= 200 && l <= 640) document.documentElement.style.setProperty('--dx-menu-largura', l + 'px'); } catch (e) { /* Sem armazenamento, vale a largura padrão. */ }</script>
-    <title>MF-114 · Módulo de Agendamentos de Agentes — Horus v2</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="DocX 0.4.0" />
+<meta name="description" content="As funcionalidades do Horus v2 explicadas uma a uma, em linguagem simples: o que cada uma faz, como funciona na prática e as dúvidas mais comuns." />
+<link rel="icon" href="assets/logo-claro.svg" />
+<title>MF-114 · Módulo de Agendamentos de Agentes — Horus v2</title>
+<script>
+(function () {
+  try {
+    var raiz = document.documentElement;
+    var tema = localStorage.getItem('kinto-theme');
+    var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    raiz.setAttribute('data-theme', tema || (escuro ? 'dark' : 'light'));
+    raiz.setAttribute('data-menu', localStorage.getItem('kinto-menu') || 'vertical');
+    var ws = parseInt(localStorage.getItem('kinto-side-w'), 10);
+    var wt = parseInt(localStorage.getItem('kinto-toc-w'), 10);
+    if (ws) raiz.style.setProperty('--side-w-user', ws + 'px');
+    if (wt) raiz.style.setProperty('--toc-w-user', wt + 'px');
+  } catch (e) { /* localStorage bloqueado: ficam os atributos do <html> */ }
+})();
+</script>
+<link rel="stylesheet" href="assets/docs.css" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="assets/docx-kbr.css" />
 </head>
-<body class="doc full-width-doc sticky-nav-doc onepage-doc dx-pagina-doc" data-spy="scroll" data-target=".navbar" data-offset="-120">
-    <a class="sr-only sr-only-focusable dx-skip" href="#post">Pular para o conteúdo</a>
-    <div class="body_wrapper sticky_menu">
-        <nav class="navbar navbar-expand-lg menu_one" id="stickyTwo" aria-label="Navegação principal">
-            <div class="container-fluid pl-60 pr-60">
-                <a class="navbar-brand" href="index.html">
-                    <img src="media/horus-claro.svg" alt="Horus v2">
-                    <img src="media/horus-escuro.svg" alt="Horus v2">
-                </a>
-                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Abrir o menu">
-                    <span class="menu_toggle">
-                        <span class="hamburger">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </span>
-                        <span class="hamburger-cross">
-                            <span></span>
-                            <span></span>
-                        </span>
-                    </span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav menu ml-auto">
-
-                    </ul>
-                    <ul class="list-unstyled menu_social">
-                        <li class="search">
-                            <form action="#" class="search_form" role="search" data-search-form>
-                                <label class="sr-only" for="dx-search">Buscar na documentação</label>
-                                <input type="search" class="form-control" id="dx-search" placeholder="Buscar" autocomplete="off" data-search-input aria-describedby="dx-search-status" aria-controls="dx-search-results">
-                                <button type="submit" aria-label="Buscar"><i class="icon_search" aria-hidden="true"></i></button>
-                                <div class="dx-search-results" id="dx-search-results" data-search-results hidden></div>
-                            </form>
-                            <p class="sr-only" id="dx-search-status" role="status" data-search-status></p>
-                        </li>
-                    </ul>
-                    <div class="dx-ferramentas">
-
-
-                        <div id="font-switcher"><div id="rvfs-controllers" class="fontsize-controllers group"></div></div>
-                        <button type="button" class="print" data-print aria-label="Imprimir"><i class="icon_printer" aria-hidden="true"></i></button>
-                        <div class="doc_switch">
-                            <label for="something" class="tab-btn tab-btns"><i class="icon_lightbulb_alt" aria-hidden="true"></i><span class="sr-only">Tema claro</span></label>
-                            <input type="checkbox" name="something" id="something" class="tab_switcher" aria-label="Tema escuro">
-                            <label for="something" class="tab-btn"><i class="far fa-moon" aria-hidden="true"></i><span class="sr-only">Tema escuro</span></label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-        <section class="doc_documentation_area onepage_doc_area" id="sticky_doc">
-            <div class="overlay_bg"></div>
-            <div class="container-fluid pl-60 pr-60">
-                <div class="row doc-container">
-                    <div class="col-lg-2 doc_mobile_menu doc-sidebar display_none">
-                        <aside class="doc_left_sidebarlist" aria-label="Tópicos desta página">
-                            <h3 class="nav_title">Tópicos</h3>
-                            <div class="dx-menu-rolagem">
-                                <ul class="list-unstyled nav-sidebar doc-nav">
-<li class="nav-item active"><a href="#mf-114-identificacao" class="nav-link">Identificação</a></li>
-<li class="nav-item"><a href="#mf-114-o-que-e" class="nav-link">O que é</a></li>
-<li class="nav-item"><a href="#mf-114-caracteristicas" class="nav-link">Características</a></li>
-<li class="nav-item"><a href="#mf-114-o-valor-que-gera" class="nav-link">O valor que gera</a></li>
-<li class="nav-item"><a href="#mf-114-como-se-usa-no-horus" class="nav-link">Como se usa no Horus</a></li>
-<li class="nav-item"><a href="#mf-114-grau-de-complexidade-media" class="nav-link">Grau de complexidade: média</a></li>
-<li class="nav-item"><a href="#mf-114-macro-funcionalidades-relacionadas" class="nav-link">Macro funcionalidades relacionadas</a></li>
-<li class="nav-item"><a href="#mf-114-o-que-ela-nao-faz" class="nav-link">O que ela não faz</a></li>
-<li class="nav-item"><a href="#mf-114-ainda-a-decidir" class="nav-link">Ainda a decidir</a></li>
-<li class="nav-item"><a href="#mf-114-para-saber-mais" class="nav-link">Para saber mais</a></li>
-                                </ul>
-                            </div>
-                        </aside>
-                        <div class="dx-divisor" role="separator" aria-orientation="vertical" aria-label="Ajustar a largura do menu" tabindex="0" title="Arraste para ajustar a largura do menu (duplo clique volta ao padrão)"><span class="dx-divisor__pega"></span></div>
-                    </div>
-                    <div class="col-lg-10 col-md-12">
-                        <div class="documentation_info dx-pagina" id="post">
-                            <header class="dx-cabeca" id="mf-114">
-                                <nav class="dx-trilha" aria-label="Trilha"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Início</a></li><li class="breadcrumb-item">v2.0</li><li class="breadcrumb-item active" aria-current="page">Módulo de Agendamentos de Agentes</li></ol></nav>
-                                <div class="dx-macro-topo"><span class="dx-macro-codigo">MF-114</span><span class="dx-macro-selo">v2.0</span></div>
-                                <h1>Módulo de Agendamentos de Agentes</h1>
-                                <p>O relógio: quando gerar e enviar</p>
-                            </header>
-                            <div class="dx-modelo-01">
-<nav aria-labelledby="dx-m01-assuntos-titulo">
-<div class="dx-m01-rotulo"><h2 id="dx-m01-assuntos-titulo">Explore os assuntos</h2><span>10 seções</span></div>
-<div class="dx-m01-assuntos">
-<a class="dx-m01-assunto" href="#mf-114-identificacao"><span class="dx-m01-icone"><i class="fas fa-id-card" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Identificação</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-114-o-que-e"><span class="dx-m01-icone"><i class="fas fa-compass" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que é</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-114-caracteristicas"><span class="dx-m01-icone"><i class="fas fa-star" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Características</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-114-o-valor-que-gera"><span class="dx-m01-icone"><i class="fas fa-chart-line" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O valor que gera</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-114-como-se-usa-no-horus"><span class="dx-m01-icone"><i class="fas fa-walking" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Como se usa no Horus</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-114-grau-de-complexidade-media"><span class="dx-m01-icone"><i class="fas fa-puzzle-piece" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Grau de complexidade: média</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-114-macro-funcionalidades-relacionadas"><span class="dx-m01-icone"><i class="fas fa-link" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Macro funcionalidades relacionadas</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-114-o-que-ela-nao-faz"><span class="dx-m01-icone"><i class="fas fa-ban" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que ela não faz</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-114-ainda-a-decidir"><span class="dx-m01-icone"><i class="fas fa-hourglass-half" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Ainda a decidir</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-114-para-saber-mais"><span class="dx-m01-icone"><i class="fas fa-book" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Para saber mais</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-</div></nav>
+<body>
+<header class="hdr"><div class="hdr-brand"><a class="hdr-logo" href="index.html" aria-label="Horus v2"><img class="logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /></a><div class="div"></div><div class="doc-meta"><b>Horus v2 · Documentação</b><small>Maind Horus</small></div></div><div class="hdr-center"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-topo" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><div class="hdr-actions"><div class="menu-toggle" role="group" aria-label="Menu"><button data-set="vertical" aria-label="Menu vertical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button><button data-set="horizontal" aria-label="Menu horizontal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></button></div><div class="theme-toggle" role="group" aria-label="Tema"><button data-set="light" aria-label="Claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button><button data-set="dark" aria-label="Escuro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header>
+<div class="shell">
+<aside class="side"><nav aria-label="Páginas da documentação"><h6>Horus v2</h6><ul><li><a href="index.html">Início</a></li></ul><h6>Para começar</h6><ul><li><a href="como-ler.html">Como ler esta documentação</a></li></ul><h6>v2.0</h6><ul class="side-sub"><li><a href="mf-101.html">MF-101 · Administração da instância</a></li><li><a href="mf-102.html">MF-102 · Organizações, pessoas e papéis</a></li><li><a href="mf-103.html">MF-103 · Licenças e planos</a></li><li><a href="mf-104.html">MF-104 · Conectar as fontes vivas</a></li><li><a href="mf-105.html">MF-105 · IA sob controle da organização</a></li><li><a href="mf-107.html">MF-107 · Perguntar aos dados em português</a></li><li><a href="mf-108.html">MF-108 · Respostas visuais</a></li><li><a href="mf-109.html">MF-109 · A web como fonte</a></li><li><a href="mf-110.html">MF-110 · Pergunta rápida</a></li><li><a href="mf-111.html">MF-111 · Chat pelo WhatsApp</a></li><li><a href="mf-112.html">MF-112 · Boards e Relatórios</a></li><li><a href="mf-113.html">MF-113 · Conectores de Saída</a></li><li><a href="mf-114.html" class="active">MF-114 · Módulo de Agendamentos de Agentes</a></li><li><a href="mf-115.html">MF-115 · Agentes ativos</a></li><li><a href="mf-116.html">MF-116 · Auditoria</a></li><li><a href="mf-117.html">MF-117 · Home da organização</a></li><li><a href="mf-118.html">MF-118 · Bases de demonstração</a></li><li><a href="mf-120.html">MF-120 · Faixa de avisos e números</a></li></ul></nav></aside>
+<main class="content doc">
+<div class="dx-busca-movel"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-movel" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><nav class="crumbs" aria-label="Trilha"><a href="index.html">Horus v2</a><span class="sep">/</span><span>v2.0</span><span class="sep">/</span><span class="now">Módulo de Agendamentos de Agentes</span></nav><span class="doc-eyebrow">v2.0</span><div class="dx-macro-topo"><span class="dx-codigo">MF-114</span><span class="dx-selo">v2.0</span></div><h1 class="doc-h1">Módulo de Agendamentos de Agentes</h1><p class="doc-lead">O relógio do Horus: programar uma vez quando sai o PDF de um board ou roda um agente, e para quem vai o resultado, sem depender de alguém lembrar.</p><section class="dx-assuntos" aria-labelledby="dx-assuntos-titulo"><h2 id="dx-assuntos-titulo">Explore os assuntos</h2><div class="dx-assuntos-grade"><div class="dx-assunto"><h3><a href="#mf-114-o-que-e">O que é, em poucas palavras</a><small>1 tópico</small></h3><ul><li><a href="#mf-114-quem-e-quem">Quem agenda, e para quem</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-114-na-pratica">Um agendamento, do começo ao fim</a><small>1 tópico</small></h3><ul><li><a href="#mf-114-board-desabilitado">Quando o board está desabilitado</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-114-aprovacao">A aprovação do owner</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-114-como-quem-criou">Roda sozinho, como quem criou</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-114-quando-nao-roda">Quando um agendamento não roda</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-114-bastidores">Nos bastidores, sem complicar</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-114-limites">O que esta funcionalidade não faz</a><small>1 tópico</small></h3><ul><li><a href="#mf-114-ligadas">Funcionalidades ligadas a esta</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-114-faq">Perguntas frequentes</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div></div></section><div id="dx-topo"><p>Toda segunda de manhã, alguém precisa lembrar de abrir o painel de vendas, gerar o PDF e mandar para a equipe. No dia em que essa pessoa esquece, ou está de férias, a reunião começa sem os números. No Horus, esse lembrete sai das costas de alguém: programa-se uma vez <strong>o que gerar, quando e para quem</strong>, e na hora marcada o Horus gera e entrega sozinho.</p>
+<p>É como o débito automático: programado uma vez, a conta sai todo mês sem ninguém lembrar. Onde a comparação para: aqui nem todos programam, e quem programa não programa para qualquer pessoa. Esta página conta quem pode agendar, para quem, como o owner controla isso e o que acontece quando algo sai do roteiro.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Versão 2.0, em construção</b><p>O que está aqui é o que a versão 2.0 do Horus vai entregar. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
 </div>
-                            <div class="dx-content">
-<blockquote>
-<p><strong>Em uma frase:</strong> programar uma vez quando o Horus gera o PDF de um board ou roda um agente, e para quem entrega o
-resultado, sem depender de alguém lembrar.</p>
-</blockquote>
-<div class="doc-section dx-assunto"><h3 id="mf-114-identificacao" data-dx-icone="id-card">Identificação</h3><div class="table-responsive" tabindex="0" role="region" aria-label="Identificação de MF-114 · Módulo de Agendamentos de Agentes"><table class="table table_shortcode"><tbody><tr><th scope="row">Código</th><td>MF-114</td></tr><tr><th scope="row">Entrega</th><td>v2.0</td></tr><tr><th scope="row">Situação</th><td>definida</td></tr><tr><th scope="row">Camada</th><td>📌 Acompanhar e avisar</td></tr><tr><th scope="row">Objetivos</th><td>O4</td></tr><tr><th scope="row">Quem usa</th><td>gestor, owner da organização, membro full, membro leitor</td></tr><tr><th scope="row">Complexidade</th><td>média</td></tr><tr><th scope="row">Relacionadas</th><td><a href="mf-115.html">Agentes ativos</a> (MF-115), <a href="mf-112.html">Boards e Relatórios</a> (MF-112), <a href="mf-113.html">Conectores de Saída</a> (MF-113), <a href="mf-102.html">Organizações, pessoas e papéis</a> (MF-102), <a href="mf-103.html">Licenças e planos</a> (MF-103), <a href="mf-116.html">Auditoria</a> (MF-116)</td></tr><tr><th scope="row">Atualizado</th><td>03/11/2026</td></tr></tbody></table></div>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="compass" id="mf-114-o-que-e">O que é</h3>
-<p><strong>Como é hoje.</strong> Só o relatório em PDF tem agenda: sai na hora marcada e chega por e-mail, o único envio que o Horus
-faz sem alguém pedir.</p>
-<p><strong>O que passa a existir.</strong> Esta macro funcionalidade (mf) é o <strong>agendador único</strong>, o relógio do Horus. Ele decide
-quando roda uma de duas coisas, no mesmo nível: o <strong>PDF de um board</strong> (o painel de gráficos) ou um <strong>agente</strong>, o
-trabalhador de IA que analisa os dados e avisa. O resultado, o <strong>artefato</strong>, segue pelos conectores aos destinos
-escolhidos.</p>
-<blockquote>
-<p>💡 <strong>Analogia:</strong> é o débito automático: programado uma vez, a conta sai todo mês sem ninguém lembrar. <strong>Onde a
-analogia para:</strong> aqui só o <strong>gestor</strong> (quem responde por uma equipe) e o <strong>owner da organização</strong> (quem a administra
-no Horus) programam envios para outras pessoas; os demais, só para si.</p>
-</blockquote>
-<p><strong>Como fica o dia a dia.</strong> O gestor programa o PDF do board e o agente da semana; na hora marcada, o Horus gera e
-entrega sozinho.</p>
-<blockquote>
-<p>📌 <strong>Exemplo</strong> <em>(personagem ilustrativo)</em>: a gestora Carla agenda o PDF do board de vendas para o grupo &quot;Vendas
-Sul&quot;, todo dia 1º, e o João, do grupo, o recebe no WhatsApp. A Maria, <strong>membro full</strong> (quem pergunta e cria os
-próprios boards), tenta agendar o mesmo envio ao João, e o Horus não deixa.</p>
-</blockquote>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="star" id="mf-114-caracteristicas">Características</h3>
+
+<h2 class="doc-h2" id="mf-114-o-que-e">O que é, em poucas palavras</h2>
+<p>O Módulo de Agendamentos de Agentes é o <strong>relógio do Horus</strong>: um agendador só, por onde passa todo envio automático. Cada <strong>agendamento</strong> diz quando roda uma de duas coisas, que ficam no mesmo nível:</p>
 <ul>
-<li><strong>Um agendador só:</strong> todo envio automático do Horus passa por ele.</li>
-<li><strong>Mais de um item:</strong> um agendamento pode rodar vários PDFs e agentes e sair por mais de um conector.</li>
-<li><strong>Para quem cada um agenda:</strong> cada pessoa agenda para si; para outras, só o gestor, para quem ele gere, e o owner,
-para qualquer pessoa.</li>
-<li><strong>Os destinos:</strong> pessoas e grupos do Horus, pelo contato que cada um informou em cada conector; o gestor usa os
-grupos dele, e o owner, também os da organização.</li>
-<li><strong>Quem não agenda:</strong> o <strong>membro leitor</strong>, que só vê boards de outras pessoas, não agenda nada, mas recebe.</li>
-<li><strong>A aprovação:</strong> o owner liga ou desliga a aprovação automática; desligada, o agendamento só roda depois do sim
-dele.</li>
-<li><strong>Com que permissão roda:</strong> com a de quem o criou, lida na hora de cada rodada; na v2.0, os números são sempre os
-da organização inteira.</li>
-<li><strong>O board desabilitado:</strong> o agendamento continua, com um aviso de board desativado no lugar dele.</li>
-<li><strong>Quem sai da organização:</strong> os agendamentos dele ficam pausados no espaço da organização, onde fica o que é dela
-e não de uma pessoa, até o owner transferi-los ou excluí-los; o mesmo vale para quem passa a membro leitor.</li>
-<li><strong>O corte:</strong> se a organização tem os assentos (as licenças das pessoas) desativados, nada roda; na volta, segue
-do próximo horário, sem refazer o que perdeu.</li>
+  <li><strong>O PDF de um board.</strong> O painel impresso a partir da mesma montagem da tela, como conta <a href="mf-108.html#mf-108-em-todo-lugar">Um desenho só, em todo lugar</a>.</li>
+  <li><strong>Um agente.</strong> O trabalhador de IA que analisa os dados e avisa. O que ele faz, e como se cria, está em <a href="mf-115.html">Agentes ativos (MF-115)</a>.</li>
 </ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="chart-line" id="mf-114-o-valor-que-gera">O valor que gera</h3>
-<ul>
-<li><strong>Para quem usa:</strong> a informação certa chega na hora certa, sem alguém lembrar de gerar e mandar.</li>
-<li><strong>Para a empresa que contrata o Horus:</strong> o gestor leva o PDF ou o alerta à equipe, e o owner controla quem agenda.</li>
-<li><strong>Para o Horus como produto:</strong> o único envio automático de hoje vira geral, e o acompanhamento e o aviso chegam sem
-trabalho manual.</li>
-</ul>
-<p><strong>Como vamos saber que funcionou:</strong> o PDF da Carla chega todo dia 1º ao grupo, e o envio que a Maria tenta para o
-João é barrado.</p>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="walking" id="mf-114-como-se-usa-no-horus">Como se usa no Horus</h3>
-<ol>
-<li>A pessoa escolhe o que rodar: o PDF de um board, um agente ou mais de um item.</li>
-<li>Escolhe quando, por exemplo toda segunda de manhã ou todo dia 1º.</li>
-<li>Escolhe os destinos e os conectores, dentro do que o papel dela permite.</li>
-<li>Se o owner exige aprovação, o agendamento espera o sim dele.</li>
-<li>Na hora marcada, o Horus gera o artefato e o passa aos conectores.</li>
-<li>Cada entrega fica registrada no rastro da auditoria.</li>
+<p>Cada vez que o agendamento roda é uma <strong>rodada</strong>. O resultado pronto de uma rodada, o <strong>artefato</strong> (um PDF ou um alerta, por exemplo), segue pelos <strong>conectores de saída</strong>, os canais que só transportam o que o Horus produz (na versão 2.0, o e-mail e o WhatsApp, explicados em <a href="mf-113.html">Conectores de Saída, MF-113</a>), até os destinos escolhidos. Um mesmo agendamento pode rodar mais de um item, como dois PDFs e um agente, e sair por mais de um conector. Apesar do nome, o módulo agenda as duas coisas, e não só agentes.</p>
+<p><strong>Hoje e na versão 2.0.</strong> No Horus de hoje, só o relatório em PDF tem agenda: sai na hora marcada e chega por e-mail, e é o único envio que o Horus faz sem alguém pedir. Na versão 2.0, esse envio vira regra geral: o PDF de um board e os agentes passam pelo mesmo relógio, e a entrega sai pelos conectores.</p>
+<h3 class="doc-h3" id="mf-114-quem-e-quem">Quem agenda, e para quem</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Tipo de assento</th><th>Agenda?</th><th>Para quem</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Owner</strong></td><td><span class="badge badge--success">Sim</span></td><td>Para si e para qualquer pessoa da organização, inclusive pelos grupos da organização.</td></tr>
+      <tr class="zebra"><td><strong>Gestor</strong></td><td><span class="badge badge--success">Sim</span></td><td>Para si e para as pessoas que ele gere, inclusive pelos grupos dele.</td></tr>
+      <tr class="zebra"><td><strong>Membro ouro</strong></td><td><span class="badge badge--success">Sim</span></td><td>Só para si.</td></tr>
+      <tr class="zebra"><td><strong>Membro prata</strong></td><td><span class="badge">Não</span></td><td>Não agenda nada, mas recebe o que outras pessoas agendam para ele.</td></tr>
+      <tr class="zebra"><td><strong>Membro bronze</strong></td><td><span class="badge">Não</span></td><td>Também não agenda, e também recebe.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>É a mesma escada dos <a href="mf-101.html#mf-101-assentos">assentos</a>: o bronze vê, a prata pergunta, o ouro cria, e criar inclui os agendamentos e os agentes. Entregar a <strong>outras pessoas</strong> é só do gestor e do owner, seja qual for o tipo de assento do membro.</p>
+<p>Os destinos são sempre <strong>pessoas e grupos do Horus</strong>. Cada pessoa recebe pelo contato que ela mesma informou em cada conector, no <a href="mf-102.html#mf-102-perfil">perfil</a>. Os grupos são os da página <a href="mf-102.html#mf-102-grupos">Grupos: para quem vai cada coisa</a>: o gestor usa os dele, e o owner também os da organização.</p>
+<p>Um exemplo, com personagens ilustrativos: a gestora Carla agenda o PDF do board de vendas para o grupo “Vendas Sul”, todo dia 1º, e o João, do grupo, o recebe no WhatsApp. A Maria, membro ouro, tenta agendar o mesmo envio ao João, e o Horus não deixa: o ouro agenda só para si.</p>
+
+<h2 class="doc-h2" id="mf-114-na-pratica">Um agendamento, do começo ao fim</h2>
+<p>A Carla quer que a equipe receba os números da semana sem precisar pedir.</p>
+<ol class="steps">
+  <li><div><h4>Escolhe o que rodar</h4><p>O PDF de um board, um agente ou mais de um item. A Carla põe dois: o PDF do board de vendas e um agente que analisa a semana.</p></div></li>
+  <li><div><h4>Escolhe quando</h4><p>Por exemplo, toda segunda de manhã ou todo dia 1º.</p></div></li>
+  <li><div><h4>Escolhe os destinos e os conectores</h4><p>Dentro do que o papel dela permite: o grupo “Vendas Sul”, por e-mail e pelo WhatsApp. Cada item pode sair pelo conector que ela escolher.</p></div></li>
+  <li><div><h4>Salva, e o owner aprova se exigir</h4><p>Com a aprovação automática, que é como a organização nasce, o agendamento já fica ativo. Se o owner ligou a aprovação, ele espera o sim do owner, sem rodar.</p></div></li>
+  <li><div><h4>Na hora marcada, o Horus gera e entrega</h4><p>Gera o artefato e o passa aos conectores, que o levam a cada pessoa do grupo pelo contato que ela informou.</p></div></li>
+  <li><div><h4>Cada entrega fica registrada</h4><p>O rastro da Auditoria (MF-116) guarda o que cada rodada enviou, por qual conector e a quem.</p></div></li>
 </ol>
-<figure><div class="lightbox_shortcode"><img src="media/mf-114-diagrama-1.svg" width="1759" height="240" alt="Diagrama: Como se usa no Horus"><a href="media/mf-114-diagrama-1.svg" class="img_popup" aria-label="Ampliar o diagrama"><i class="icon_plus" aria-hidden="true"></i></a></div><figcaption>Diagrama de “Como se usa no Horus”. Selecione o “+” para ampliar.</figcaption></figure></div><div class="doc-section dx-assunto"><h3 data-dx-icone="puzzle-piece" id="mf-114-grau-de-complexidade-media">Grau de complexidade: média</h3>
-<p>A agenda dos relatórios em PDF da v1 serve de molde, e o jeito de reservar cada rodada para não rodá-la duas vezes se
-reaproveita. O novo é o agente como coisa agendada e a pausa no corte, sobre uma fila de trabalhos que não se perde
-quando o Horus é atualizado. Depende dos Agentes ativos (MF-115), dos Boards e Relatórios (MF-112) e dos Conectores
-de Saída (MF-113), e de ninguém de fora do Horus.</p>
-<blockquote>
-<p>⚠️ É a leitura do PO a partir dos documentos de arquitetura. A estimativa de esforço é do arquiteto.</p>
-</blockquote>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="link" id="mf-114-macro-funcionalidades-relacionadas">Macro funcionalidades relacionadas</h3>
-<p>As quatro macro funcionalidades de acompanhar e avisar formam uma corrente: o agente trabalha, o agendamento diz
-quando, o conector entrega e o board mostra.</p>
-<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de Módulo de Agendamentos de Agentes"><table class="table table_shortcode"><thead><tr>
-<th scope="col">mf</th>
-<th scope="col">Como se relaciona</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Agentes ativos (MF-115)</td>
-<td><strong>depende de</strong>: o agente é uma das duas coisas que o agendamento roda, e só roda quando o agendamento o chama.</td>
-</tr>
-<tr>
-<td>Boards e Relatórios (MF-112)</td>
-<td><strong>depende de</strong>: o PDF do board é a outra coisa que o agendamento roda.</td>
-</tr>
-<tr>
-<td>Conectores de Saída (MF-113)</td>
-<td><strong>depende de</strong>: o agendamento não entrega nada sozinho; passa o artefato ao conector, que o leva ao e-mail ou ao WhatsApp.</td>
-</tr>
-<tr>
-<td>Organizações, pessoas e papéis (MF-102)</td>
-<td><strong>depende de</strong>: a carteira do gestor e os grupos dizem para quem cada um pode agendar.</td>
-</tr>
-<tr>
-<td>Licenças e planos (MF-103)</td>
-<td><strong>complementa</strong>: no corte dos assentos, todo agendamento da organização para.</td>
-</tr>
-<tr>
-<td>Auditoria (MF-116)</td>
-<td><strong>complementa</strong>: registra o que cada rodada enviou, por qual conector e a quem.</td>
-</tr>
-</tbody>
-</table></div></div><div class="doc-section dx-assunto"><h3 data-dx-icone="ban" id="mf-114-o-que-ela-nao-faz">O que ela não faz</h3>
-<ul>
-<li><strong>Decidir o que o agente faz</strong> nem o que ele avalia: isso é dos Agentes ativos.</li>
-<li><strong>Escolher o formato do que sai,</strong> que é do board ou do agente, nem o canal, que é dos conectores.</li>
-<li><strong>Enviar a quem não é usuário do Horus.</strong></li>
-<li><strong>Deixar o membro full agendar para colegas:</strong> só o gestor e o owner entregam a outras pessoas.</li>
-<li><strong>Refazer as rodadas perdidas</strong> durante um corte.</li>
-</ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="hourglass-half" id="mf-114-ainda-a-decidir">Ainda a decidir</h3>
-<ul>
-<li>O que recebem os destinatários e o autor quando uma rodada falha.</li>
-<li>O padrão do interruptor de aprovação quando a organização nasce.</li>
-<li>O que a pessoa vê enquanto o agendamento espera a aprovação do owner.</li>
-</ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="book" id="mf-114-para-saber-mais">Para saber mais</h3>
-<ul>
-<li><a href="produto-backlog.html">Backlog estratégico</a>: a <a href="produto-backlog.html#d-060"><code>D-060</code></a>, a definição macro (fechou a <code>P-011</code>); a
-<a href="produto-backlog.html#d-036"><code>D-036</code></a> (o agendador único, fechou o <code>I-005</code>) e a <a href="produto-backlog.html#d-037"><code>D-037</code></a> (o nome); a <a href="produto-backlog.html#d-064"><code>D-064</code></a> (o PDF de um board ou um agente, no
-mesmo nível, fechou o <code>I-007</code>, com a leitura de mais de um item); a <a href="produto-backlog.html#d-059"><code>D-059</code></a> (só o gestor e o owner entregam a
-outras pessoas); as <a href="produto-backlog.html#d-038"><code>D-038</code></a> e <a href="produto-backlog.html#d-039"><code>D-039</code></a> (a aprovação por tipo); as <a href="produto-backlog.html#d-044"><code>D-044</code></a> e <a href="produto-backlog.html#d-045"><code>D-045</code></a> (o board desabilitado); a <a href="produto-backlog.html#d-073"><code>D-073</code></a>
-(de full a leitor); a <a href="produto-backlog.html#d-075"><code>D-075</code></a> (o corte, sem refazer rodadas); a <a href="produto-backlog.html#d-079"><code>D-079</code></a> (o membro leitor recebe); a <a href="produto-backlog.html#d-122"><code>D-122</code></a> (entra
-na v2.0, fechou o <code>I-014</code>); as letras (g) e (o) da <code>P-008</code>.</li>
-<li><a href="produto-v20.html">A v2.0 consolidada</a>: §4 (passo 9), §5.10 e §7.
-<a href="produto-mfs-hoje.html">Mapa das mfs</a> (&quot;O que o dono já disse&quot;),
-<a href="produto-versoes.html">versões</a>, <a href="produto-mapa.html">objetivos</a> (O4) e
-<a href="produto-lacunas.html">lacunas</a> (candidata nº 13).</li>
-<li>Arquitetura: <a href="arquitetura-01.html">estratégia</a> (§3, O4; §4; o marco M6);
-<a href="arquitetura-04.html">software</a> (&quot;Agendador&quot; e &quot;Fila durável e caixa de saída&quot;);
-<a href="arquitetura-05.html">motor</a> (§3.9); <a href="arquitetura-02.html">registro</a>:
-<a href="arquitetura-02.html#arq-004"><code>ARQ-004</code></a>, <a href="arquitetura-02.html#arq-005"><code>ARQ-005</code></a>, <a href="arquitetura-02.html#arq-022"><code>ARQ-022</code></a>, <a href="arquitetura-02.html#arq-030"><code>ARQ-030</code></a>, <a href="arquitetura-02.html#arq-041"><code>ARQ-041</code></a> (com a nota de 03/11/2026) e <a href="arquitetura-02.html#arq-090"><code>ARQ-090</code></a> ✅ (a <a href="mf-106.html"><code>MF-106</code></a> inteira
-na v2.1: na v2.0, o escopo é o da organização inteira);
-<a href="arquitetura-14.html">conferência</a>: §3, o reaproveitamento; §4, <code>A-10</code>, <code>A-11</code>, <code>A-15</code> e
-<code>A-28</code>.</li>
-</ul>
-<p>📚 <a href="mf-114-inventario.html">Tudo o que o inventário diz desta mf, assunto por assunto</a>.</p>
-</div>
-                            </div>
-                            <nav class="dx-vizinhas" aria-label="Páginas vizinhas"><a class="dx-anterior" href="mf-113.html"><i class="arrow_left" aria-hidden="true"></i>Conectores de Saída</a><a class="dx-proxima" href="mf-115.html">Agentes ativos<i class="arrow_right" aria-hidden="true"></i></a></nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <footer class="simple_footer">
-            <img class="leaf_right" src="assets/kbdoc/img/home_one/leaf_footter.png" alt="">
-            <div class="container-fluid pl-60 pr-60">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <p>Maind Horus · Horus v2 · documento interno · Revisado em 03/11/2026 · versão v2.0 em desenho, sem versão publicada</p>
-                    </div>
-                    <div class="col-lg-6 text-right">
+<p>O mesmo caminho em desenho, como a vida de um agendamento: a aprovação do owner, cada rodada, a falha que não interrompe o agendamento e o corte da organização. O que acontece quando o autor muda de faixa ou sai está em <a href="#mf-114-quando-nao-roda">Quando um agendamento não roda</a>.</p>
+<figure class="dx-diagrama"><figcaption><b>A vida de um agendamento</b> <span>Do agendamento salvo à entrega, com a aprovação do owner, a rodada que falha e o corte da organização</span><a href="media/diagramas/mf-114-vida-de-um-agendamento.html" target="_blank" rel="noopener">Abrir em tela cheia ↗</a></figcaption><iframe src="media/diagramas/mf-114-vida-de-um-agendamento.html?embutido=1" title="A vida de um agendamento" loading="lazy"></iframe></figure>
+<h3 class="doc-h3" id="mf-114-board-desabilitado">Quando o board está desabilitado</h3>
+<p>O owner e o gestor podem desabilitar um board, como conta a página dos <a href="mf-112.html">Boards e Relatórios (MF-112)</a>. O agendamento que o usa <strong>continua</strong>: no lugar do board entra um texto avisando que ele está desativado. Num agendamento com vários boards, só a parte do board desabilitado é trocada pelo aviso, e o resto sai normalmente.</p>
 
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
-    <a id="back-to-top" title="Voltar ao topo"></a>
-    <script src="assets/kbdoc/js/jquery-3.2.1.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/popper.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap-select.min.js"></script>
-    <script src="assets/kbdoc/js/parallaxie.js"></script>
-    <script src="assets/kbdoc/js/TweenMax.min.js"></script>
-    <script src="assets/kbdoc/js/anchor.js"></script>
-    <script src="assets/kbdoc/assets/wow/wow.min.js"></script>
-    <script src="assets/kbdoc/js/vendor/clipboard.min.js"></script>
-    <script src="assets/kbdoc/assets/prism/prism.js"></script>
-    <script src="assets/kbdoc/assets/niceselectpicker/jquery.nice-select.min.js"></script>
-    <script src="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="assets/kbdoc/assets/magnify-pop/jquery.magnific-popup.min.js"></script>
-    <script src="assets/kbdoc/assets/tooltipster/js/tooltipster.bundle.min.js"></script>
-    <script src="assets/kbdoc/assets/font-size/js/rv-jquery-fontsize-2.0.3.js"></script>
-    <script src="assets/kbdoc/js/onpage-menu.js"></script>
-    <script src="assets/kbdoc/js/main.js"></script>
-    <script src="assets/busca.js"></script>
-    <script src="assets/docx.js"></script>
+<h2 class="doc-h2" id="mf-114-aprovacao">A aprovação do owner</h2>
+<p>O owner da organização decide, nas preferências da organização, se os agendamentos que as pessoas criam valem na hora ou esperam o sim dele. A <strong>aprovação automática nasce ligada</strong>: tudo funciona no primeiro dia, e o owner restringe se quiser. A aprovação é um interruptor <strong>por tipo</strong>: o owner pode, por exemplo, deixar os contatos dos conectores em aprovação automática e exigir aprovação para os agendamentos. Os agentes também têm a sua aprovação, explicada em <a href="mf-115.html">Agentes ativos</a>.</p>
+<p>Quando a aprovação está ligada, o agendamento salvo aparece na lista de quem o criou com uma marca, para a pessoa saber por que nada sai:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Marca</th><th>O que significa</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><span class="badge badge--warning">Aguardando aprovação do owner</span></td><td>Salvo, mas sem rodar. Fica assim até o owner decidir.</td></tr>
+      <tr class="zebra"><td><span class="badge badge--success">Ativo</span></td><td>O owner aprovou, ou a aprovação é automática. Roda na hora marcada.</td></tr>
+      <tr class="zebra"><td><span class="badge badge--danger">Recusado</span></td><td>O owner disse não. O agendamento não roda.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Um exemplo: o Marcos, owner da área comercial, liga a aprovação. A Carla salva um agendamento, que aparece marcado “aguardando aprovação do owner”. O Marcos aprova, e a marca passa a “ativo”.</p>
+
+<h2 class="doc-h2" id="mf-114-como-quem-criou">Roda sozinho, como quem criou</h2>
+<p>Ninguém aperta um botão na hora da rodada, e mesmo assim o agendamento não roda “como ninguém”: ele usa as <strong>permissões de quem o criou</strong>. Essas permissões são lidas na hora de cada rodada, e não guardadas do dia em que o agendamento foi criado. É a mesma regra dos trabalhos automáticos explicada em <a href="mf-102.html">Organizações, pessoas e papéis</a>.</p>
+<p>Na versão 2.0, isso não muda os números: a organização é a fronteira dos dados, e toda rodada usa os dados da organização inteira, como toda pergunta (veja <a href="mf-102.html#mf-102-dados-e-conversas">Os dados, as conversas e o perfil</a>). A diferença por pessoa só chega com a Segurança dos dados por pessoa (MF-106), na versão 2.1.</p>
+
+<h2 class="doc-h2" id="mf-114-quando-nao-roda">Quando um agendamento não roda</h2>
+<p>Na maior parte do tempo, o agendamento só espera a próxima hora marcada. Estas são as situações em que ele não entrega, e o que acontece em cada uma:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Situação</th><th>O que acontece</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><span class="badge badge--danger">A rodada falha</span></td><td>A execução deu erro ou passou do limite técnico dela. Os destinatários não recebem nada naquela rodada, nem um PDF pela metade, e <strong>só o autor é avisado</strong>. A próxima rodada segue no horário normal.</td></tr>
+      <tr class="zebra"><td><span class="badge badge--warning">O resultado não cabe no canal</span></td><td>Um PDF maior que o anexo do e-mail, por exemplo. O Horus não o entrega naquele canal, não o corta nem o altera, e avisa o autor, como numa falha. Os canais são assunto dos <a href="mf-113.html">Conectores de Saída</a>.</td></tr>
+      <tr class="zebra"><td><span class="badge badge--warning">A organização é cortada</span></td><td>Nada roda nem é enviado, e os agendamentos ficam guardados. Na volta, cada um segue do próximo horário, <strong>sem refazer o que perdeu</strong> (veja <a href="mf-103.html#mf-103-corte">O corte</a>).</td></tr>
+      <tr class="zebra"><td><span class="badge">O autor é rebaixado</span></td><td>Passou de ouro a prata ou a bronze e continua na organização. O agendamento fica com ele, mas <strong>desabilitado</strong>: não roda, e a única ação possível é excluí-lo. Se ele voltar a ser ouro, reativa um a um; nada volta sozinho.</td></tr>
+      <tr class="zebra"><td><span class="badge badge--danger">O autor é excluído</span></td><td>Saiu ou foi retirado da organização. Os agendamentos dele são apagados em definitivo, sem transferência: ninguém os recebe. Quem sai também deixa de ser destino dos agendamentos dos outros.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>O que acontece com o resto do que a pessoa criou, quando muda de faixa ou sai, está em <a href="mf-102.html#mf-102-mudancas">Quando alguém muda de faixa ou sai</a>.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Quem recebe nem sempre fica sabendo</b><p>Numa rodada que falha, os destinatários ficam sem o PDF e não sabem por quê: o aviso vai só ao autor, que é quem pode consertar. Num corte, o alerta deixa de chegar sem aviso a quem o recebia. E um gestor que sai da organização leva junto o PDF que agendava para a equipe.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-114-bastidores">Nos bastidores, sem complicar</h2>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>Um relógio só.</strong> O PDF dos boards e os agentes usam o mesmo agendador, em vez de cada parte do Horus ter o seu. O corte da organização, por exemplo, pausa os dois do mesmo jeito.</li>
+  <li><strong>Uma fila que não se perde.</strong> Cada rodada vira um pedido de trabalho guardado no banco de dados da aplicação, que sobrevive a uma atualização do Horus. Cada rodada é reservada antes de rodar, para não sair duas vezes.</li>
+  <li><strong>Quem conversa não espera o PDF de ninguém.</strong> O Horus trabalha em dois papéis: um atende as telas e a conversa; o outro roda os agendamentos, os agentes, os PDFs e os envios. O pico de segunda de manhã não deixa lenta a conversa de quem está numa reunião.</li>
+  <li><strong>O resultado sai pronto.</strong> O agendador entrega aos conectores o artefato já desenhado e a lista de destinatários; o conector só o transporta e registra cada entrega no rastro.</li>
+  <li><strong>O que já existe e o que é novo.</strong> A agenda dos relatórios em PDF de hoje serve de molde, inclusive o jeito de reservar cada rodada. O agente como coisa agendada, a pausa no corte e a fila que não se perde são novos.</li>
+</ul>
+
+<h2 class="doc-h2" id="mf-114-limites">O que esta funcionalidade não faz</h2>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Decidir o que o agente faz</strong></td><td>O que o agente analisa e quando avisa é dos <a href="mf-115.html">Agentes ativos (MF-115)</a>. O agendamento só diz quando ele roda.</td></tr>
+      <tr class="zebra"><td><strong>Escolher o formato ou o canal</strong></td><td>O formato do que sai é do board ou do agente; o canal é dos <a href="mf-113.html">Conectores de Saída (MF-113)</a>.</td></tr>
+      <tr class="zebra"><td><strong>Enviar a quem não é usuário do Horus</strong></td><td>Os destinos são sempre pessoas e grupos do Horus. Um cliente ou um fornecedor de fora não recebe.</td></tr>
+      <tr class="zebra"><td><strong>Deixar um membro agendar para colegas</strong></td><td>Só o gestor e o owner entregam a outras pessoas. O ouro agenda para si; a prata e o bronze não agendam.</td></tr>
+      <tr class="zebra"><td><strong>Refazer as rodadas perdidas</strong></td><td>Depois de um corte, o agendamento segue do próximo horário.</td></tr>
+      <tr class="zebra"><td><strong>Transferir agendamentos</strong></td><td>Não há transferência em nenhuma versão: o de quem é excluído é apagado, e o de quem é rebaixado fica desabilitado com ele.</td></tr>
+      <tr class="zebra"><td><strong>Avisar os destinatários de uma falha</strong></td><td>Só o autor é avisado.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="mf-114-ligadas">Funcionalidades ligadas a esta</h3>
+<p>O agendamento é um elo de uma corrente: o agente trabalha, o agendamento diz quando, o conector entrega e o board mostra.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="mf-115.html">Agentes ativos (MF-115)</a></td><td>O agente é uma das duas coisas que o agendamento roda, e só roda quando o agendamento o chama.</td></tr>
+      <tr class="zebra"><td><a href="mf-112.html">Boards e Relatórios (MF-112)</a></td><td>O PDF do board é a outra. Com o board desabilitado, entra o aviso no lugar dele.</td></tr>
+      <tr class="zebra"><td><a href="mf-113.html">Conectores de Saída (MF-113)</a></td><td>O agendamento não entrega nada sozinho: passa o artefato ao conector, que o leva ao e-mail ou ao WhatsApp.</td></tr>
+      <tr class="zebra"><td><a href="mf-102.html">Organizações, pessoas e papéis (MF-102)</a></td><td>A carteira do gestor e os grupos dizem para quem cada um pode agendar, e o contato de cada pessoa fica no perfil.</td></tr>
+      <tr class="zebra"><td><a href="mf-103.html">Licenças e planos (MF-103)</a></td><td>No corte, todo agendamento da organização para; quem passa a prata ou a bronze tem os agendamentos desabilitados.</td></tr>
+      <tr class="zebra"><td><a href="mf-108.html">Respostas visuais (MF-108)</a></td><td>O PDF sai da mesma montagem da tela, com os mesmos números.</td></tr>
+      <tr class="zebra"><td>Auditoria (MF-116)</td><td>Registra o que cada rodada enviou, por qual conector e a quem.</td></tr>
+      <tr class="zebra"><td>Segurança dos dados por pessoa (MF-106)</td><td>Traz a diferença dos dados por pessoa na versão 2.1. Na versão 2.0, toda rodada usa os dados da organização inteira.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Ainda em definição</b><p>As regras desta página estão decididas. Ficam com o desenho técnico três detalhes: se a pessoa é avisada quando o owner aprova ou recusa o agendamento dela, e por qual canal; por qual canal chega ao autor o aviso de uma rodada que falhou; e quantas vezes o Horus tenta antes de dar uma rodada por perdida. O texto exato do aviso de board desativado também será definido.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-114-faq">Perguntas frequentes</h2>
+<div class="faq">
+  <details open>
+    <summary>Quem na minha equipe pode programar um envio automático?</summary>
+    <div class="faq-body"><p>O owner, os gestores e os membros ouro. O ouro agenda só para si; o gestor agenda para si e para as pessoas que ele gere; o owner, para qualquer pessoa da organização. Os membros prata e bronze não agendam nada, mas recebem o que os outros agendam para eles.</p></div>
+  </details>
+  <details>
+    <summary>Posso mandar o relatório para alguém de fora da empresa?</summary>
+    <div class="faq-body"><p>Não. Os destinos são sempre pessoas e grupos do Horus, e cada um recebe pelo contato que informou em cada conector. Na versão 2.0, os conectores são o e-mail e o WhatsApp. Quem não é usuário do Horus não recebe nada.</p></div>
+  </details>
+  <details>
+    <summary>Vou ter de aprovar cada agendamento que a equipe cria?</summary>
+    <div class="faq-body"><p>Não necessariamente. A organização nasce com a aprovação automática, e o agendamento salvo já fica ativo. Se o owner ligar a aprovação, cada agendamento novo aparece marcado “aguardando aprovação do owner”, sem rodar, até ele decidir; aí a marca passa a “ativo” ou a “recusado”. A aprovação dos agendamentos é um interruptor à parte, separado, por exemplo, do que aprova os contatos dos conectores.</p></div>
+  </details>
+  <details>
+    <summary>Se uma rodada falhar, a equipe recebe um relatório pela metade?</summary>
+    <div class="faq-body"><p>Não. Quando a execução dá erro ou passa do limite técnico, os destinatários não recebem nada naquela rodada, e só o autor é avisado, porque é quem pode consertar. O agendamento não para: a próxima rodada segue no horário normal.</p></div>
+  </details>
+  <details>
+    <summary>Se o acesso da organização for suspenso, os relatórios perdidos saem depois?</summary>
+    <div class="faq-body"><p>Não. Com a organização cortada, nada roda nem é enviado, e os agendamentos ficam guardados. Quando a organização volta, cada agendamento segue do próximo horário, e as rodadas que não aconteceram durante o corte não são refeitas.</p></div>
+  </details>
+  <details>
+    <summary>O que acontece com os agendamentos de quem sai da empresa ou muda de faixa?</summary>
+    <div class="faq-body"><p>Quem é excluído da organização perde os agendamentos em definitivo: o Horus não os transfere a ninguém, e o PDF que essa pessoa agendava para a equipe deixa de sair. Quem passa de ouro a prata ou a bronze mantém os agendamentos, desabilitados: não rodam, e ele só pode excluí-los. Se voltar a ser ouro, reativa um a um.</p></div>
+  </details>
+</div>
+</div><nav class="rel-grid dx-vizinhas" aria-label="Páginas vizinhas"><a class="rel-card dx-anterior" href="mf-113.html"><span class="cat">Anterior</span><h5>Conectores de Saída</h5><span class="arrow">←</span></a><a class="rel-card dx-proxima" href="mf-115.html"><span class="cat">Próxima</span><h5>Agentes ativos</h5><span class="arrow">→</span></a></nav>
+<footer class="ds-footer"><div class="ftr-brand"><img class="ftr-logo logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="ftr-logo logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /><div class="ftr-divider"></div><div class="ftr-meta"><b>Maind Horus · Horus v2 · versão 2.0 em desenho</b></div></div><div class="ftr-center"><span class="ftr-tag">v2.0 em desenho, sem versão publicada · 06/11/2026</span></div><div class="ftr-author"><div class="avatar">MT</div><div class="ftr-author-info"><b>Maind Tech</b><span>Horus v2</span></div></div></footer>
+</main>
+<aside class="toc"><h6>Neste artigo</h6><ul><li><a href="#mf-114-o-que-e">O que é, em poucas palavras</a></li><li class="lvl-3"><a href="#mf-114-quem-e-quem">Quem agenda, e para quem</a></li><li><a href="#mf-114-na-pratica">Um agendamento, do começo ao fim</a></li><li class="lvl-3"><a href="#mf-114-board-desabilitado">Quando o board está desabilitado</a></li><li><a href="#mf-114-aprovacao">A aprovação do owner</a></li><li><a href="#mf-114-como-quem-criou">Roda sozinho, como quem criou</a></li><li><a href="#mf-114-quando-nao-roda">Quando um agendamento não roda</a></li><li><a href="#mf-114-bastidores">Nos bastidores, sem complicar</a></li><li><a href="#mf-114-limites">O que esta funcionalidade não faz</a></li><li class="lvl-3"><a href="#mf-114-ligadas">Funcionalidades ligadas a esta</a></li><li><a href="#mf-114-faq">Perguntas frequentes</a></li></ul></aside>
+</div>
+<div class="toast" id="toast">Copiado ✓</div>
+<script src="assets/busca.js"></script>
+<script src="assets/docs.js"></script>
+<script src="assets/docx-kbr.js"></script>
 </body>
 </html>

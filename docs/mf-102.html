@@ -1,322 +1,247 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-menu="vertical">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="A documentação de produto e de arquitetura do Horus v2: a visão, as decisões, a estratégia e como ele vai ser construído.">
-    <meta name="generator" content="DocX 0.2.1">
-    <link rel="shortcut icon" href="media/horus-claro.svg">
-    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/elagent-icon/style.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/font-awesome/css/all.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/niceselectpicker/nice-select.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/font-size/css/rvfs.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/animation/animate.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/tooltipster/css/tooltipster.bundle.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism-coy.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/magnify-pop/magnific-popup.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/css/style.css">
-    <link rel="stylesheet" href="assets/kbdoc/css/responsive.css">
-    <link rel="stylesheet" href="assets/docx.css">
-    <link rel="stylesheet" href="assets/conteudo.css">
-    <link rel="stylesheet" href="assets/indice.css">
-    <script>try { var l = parseInt(localStorage.getItem('docx-menu-largura'), 10); if (l >= 200 && l <= 640) document.documentElement.style.setProperty('--dx-menu-largura', l + 'px'); } catch (e) { /* Sem armazenamento, vale a largura padrão. */ }</script>
-    <title>MF-102 · Organizações, pessoas e papéis — Horus v2</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="DocX 0.4.0" />
+<meta name="description" content="As funcionalidades do Horus v2 explicadas uma a uma, em linguagem simples: o que cada uma faz, como funciona na prática e as dúvidas mais comuns." />
+<link rel="icon" href="assets/logo-claro.svg" />
+<title>MF-102 · Organizações, pessoas e papéis — Horus v2</title>
+<script>
+(function () {
+  try {
+    var raiz = document.documentElement;
+    var tema = localStorage.getItem('kinto-theme');
+    var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    raiz.setAttribute('data-theme', tema || (escuro ? 'dark' : 'light'));
+    raiz.setAttribute('data-menu', localStorage.getItem('kinto-menu') || 'vertical');
+    var ws = parseInt(localStorage.getItem('kinto-side-w'), 10);
+    var wt = parseInt(localStorage.getItem('kinto-toc-w'), 10);
+    if (ws) raiz.style.setProperty('--side-w-user', ws + 'px');
+    if (wt) raiz.style.setProperty('--toc-w-user', wt + 'px');
+  } catch (e) { /* localStorage bloqueado: ficam os atributos do <html> */ }
+})();
+</script>
+<link rel="stylesheet" href="assets/docs.css" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="assets/docx-kbr.css" />
 </head>
-<body class="doc full-width-doc sticky-nav-doc onepage-doc dx-pagina-doc" data-spy="scroll" data-target=".navbar" data-offset="-120">
-    <a class="sr-only sr-only-focusable dx-skip" href="#post">Pular para o conteúdo</a>
-    <div class="body_wrapper sticky_menu">
-        <nav class="navbar navbar-expand-lg menu_one" id="stickyTwo" aria-label="Navegação principal">
-            <div class="container-fluid pl-60 pr-60">
-                <a class="navbar-brand" href="index.html">
-                    <img src="media/horus-claro.svg" alt="Horus v2">
-                    <img src="media/horus-escuro.svg" alt="Horus v2">
-                </a>
-                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Abrir o menu">
-                    <span class="menu_toggle">
-                        <span class="hamburger">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </span>
-                        <span class="hamburger-cross">
-                            <span></span>
-                            <span></span>
-                        </span>
-                    </span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav menu ml-auto">
-
-                    </ul>
-                    <ul class="list-unstyled menu_social">
-                        <li class="search">
-                            <form action="#" class="search_form" role="search" data-search-form>
-                                <label class="sr-only" for="dx-search">Buscar na documentação</label>
-                                <input type="search" class="form-control" id="dx-search" placeholder="Buscar" autocomplete="off" data-search-input aria-describedby="dx-search-status" aria-controls="dx-search-results">
-                                <button type="submit" aria-label="Buscar"><i class="icon_search" aria-hidden="true"></i></button>
-                                <div class="dx-search-results" id="dx-search-results" data-search-results hidden></div>
-                            </form>
-                            <p class="sr-only" id="dx-search-status" role="status" data-search-status></p>
-                        </li>
-                    </ul>
-                    <div class="dx-ferramentas">
-
-
-                        <div id="font-switcher"><div id="rvfs-controllers" class="fontsize-controllers group"></div></div>
-                        <button type="button" class="print" data-print aria-label="Imprimir"><i class="icon_printer" aria-hidden="true"></i></button>
-                        <div class="doc_switch">
-                            <label for="something" class="tab-btn tab-btns"><i class="icon_lightbulb_alt" aria-hidden="true"></i><span class="sr-only">Tema claro</span></label>
-                            <input type="checkbox" name="something" id="something" class="tab_switcher" aria-label="Tema escuro">
-                            <label for="something" class="tab-btn"><i class="far fa-moon" aria-hidden="true"></i><span class="sr-only">Tema escuro</span></label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-        <section class="doc_documentation_area onepage_doc_area" id="sticky_doc">
-            <div class="overlay_bg"></div>
-            <div class="container-fluid pl-60 pr-60">
-                <div class="row doc-container">
-                    <div class="col-lg-2 doc_mobile_menu doc-sidebar display_none">
-                        <aside class="doc_left_sidebarlist" aria-label="Tópicos desta página">
-                            <h3 class="nav_title">Tópicos</h3>
-                            <div class="dx-menu-rolagem">
-                                <ul class="list-unstyled nav-sidebar doc-nav">
-<li class="nav-item active"><a href="#mf-102-identificacao" class="nav-link">Identificação</a></li>
-<li class="nav-item"><a href="#mf-102-o-que-e" class="nav-link">O que é</a></li>
-<li class="nav-item"><a href="#mf-102-caracteristicas" class="nav-link">Características</a></li>
-<li class="nav-item"><a href="#mf-102-o-valor-que-gera" class="nav-link">O valor que gera</a></li>
-<li class="nav-item"><a href="#mf-102-como-se-usa-no-horus" class="nav-link">Como se usa no Horus</a></li>
-<li class="nav-item"><a href="#mf-102-grau-de-complexidade-alta" class="nav-link">Grau de complexidade: alta</a></li>
-<li class="nav-item"><a href="#mf-102-macro-funcionalidades-relacionadas" class="nav-link">Macro funcionalidades relacionadas</a></li>
-<li class="nav-item"><a href="#mf-102-o-que-ela-nao-faz" class="nav-link">O que ela não faz</a></li>
-<li class="nav-item"><a href="#mf-102-ainda-a-decidir" class="nav-link">Ainda a decidir</a></li>
-<li class="nav-item"><a href="#mf-102-para-saber-mais" class="nav-link">Para saber mais</a></li>
-                                </ul>
-                            </div>
-                        </aside>
-                        <div class="dx-divisor" role="separator" aria-orientation="vertical" aria-label="Ajustar a largura do menu" tabindex="0" title="Arraste para ajustar a largura do menu (duplo clique volta ao padrão)"><span class="dx-divisor__pega"></span></div>
-                    </div>
-                    <div class="col-lg-10 col-md-12">
-                        <div class="documentation_info dx-pagina" id="post">
-                            <header class="dx-cabeca" id="mf-102">
-                                <nav class="dx-trilha" aria-label="Trilha"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Início</a></li><li class="breadcrumb-item">v2.0</li><li class="breadcrumb-item active" aria-current="page">Organizações, pessoas e papéis</li></ol></nav>
-                                <div class="dx-macro-topo"><span class="dx-macro-codigo">MF-102</span><span class="dx-macro-selo">v2.0</span></div>
-                                <h1>Organizações, pessoas e papéis</h1>
-                                <p>A gestão de pessoas inteira, com quarentena, grupos e roles; os grupos dinâmicos, só por papel, e a planilha, só para os convites em lote</p>
-                            </header>
-                            <div class="dx-modelo-01">
-<nav aria-labelledby="dx-m01-assuntos-titulo">
-<div class="dx-m01-rotulo"><h2 id="dx-m01-assuntos-titulo">Explore os assuntos</h2><span>10 seções</span></div>
-<div class="dx-m01-assuntos">
-<a class="dx-m01-assunto" href="#mf-102-identificacao"><span class="dx-m01-icone"><i class="fas fa-id-card" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Identificação</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-102-o-que-e"><span class="dx-m01-icone"><i class="fas fa-compass" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que é</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-102-caracteristicas"><span class="dx-m01-icone"><i class="fas fa-star" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Características</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-102-o-valor-que-gera"><span class="dx-m01-icone"><i class="fas fa-chart-line" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O valor que gera</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-102-como-se-usa-no-horus"><span class="dx-m01-icone"><i class="fas fa-walking" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Como se usa no Horus</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-102-grau-de-complexidade-alta"><span class="dx-m01-icone"><i class="fas fa-puzzle-piece" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Grau de complexidade: alta</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-102-macro-funcionalidades-relacionadas"><span class="dx-m01-icone"><i class="fas fa-link" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Macro funcionalidades relacionadas</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-102-o-que-ela-nao-faz"><span class="dx-m01-icone"><i class="fas fa-ban" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que ela não faz</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-102-ainda-a-decidir"><span class="dx-m01-icone"><i class="fas fa-hourglass-half" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Ainda a decidir</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-102-para-saber-mais"><span class="dx-m01-icone"><i class="fas fa-book" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Para saber mais</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-</div></nav>
+<body>
+<header class="hdr"><div class="hdr-brand"><a class="hdr-logo" href="index.html" aria-label="Horus v2"><img class="logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /></a><div class="div"></div><div class="doc-meta"><b>Horus v2 · Documentação</b><small>Maind Horus</small></div></div><div class="hdr-center"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-topo" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><div class="hdr-actions"><div class="menu-toggle" role="group" aria-label="Menu"><button data-set="vertical" aria-label="Menu vertical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button><button data-set="horizontal" aria-label="Menu horizontal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></button></div><div class="theme-toggle" role="group" aria-label="Tema"><button data-set="light" aria-label="Claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button><button data-set="dark" aria-label="Escuro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header>
+<div class="shell">
+<aside class="side"><nav aria-label="Páginas da documentação"><h6>Horus v2</h6><ul><li><a href="index.html">Início</a></li></ul><h6>Para começar</h6><ul><li><a href="como-ler.html">Como ler esta documentação</a></li></ul><h6>v2.0</h6><ul class="side-sub"><li><a href="mf-101.html">MF-101 · Administração da instância</a></li><li><a href="mf-102.html" class="active">MF-102 · Organizações, pessoas e papéis</a></li><li><a href="mf-103.html">MF-103 · Licenças e planos</a></li><li><a href="mf-104.html">MF-104 · Conectar as fontes vivas</a></li><li><a href="mf-105.html">MF-105 · IA sob controle da organização</a></li><li><a href="mf-107.html">MF-107 · Perguntar aos dados em português</a></li><li><a href="mf-108.html">MF-108 · Respostas visuais</a></li><li><a href="mf-109.html">MF-109 · A web como fonte</a></li><li><a href="mf-110.html">MF-110 · Pergunta rápida</a></li><li><a href="mf-111.html">MF-111 · Chat pelo WhatsApp</a></li><li><a href="mf-112.html">MF-112 · Boards e Relatórios</a></li><li><a href="mf-113.html">MF-113 · Conectores de Saída</a></li><li><a href="mf-114.html">MF-114 · Módulo de Agendamentos de Agentes</a></li><li><a href="mf-115.html">MF-115 · Agentes ativos</a></li><li><a href="mf-116.html">MF-116 · Auditoria</a></li><li><a href="mf-117.html">MF-117 · Home da organização</a></li><li><a href="mf-118.html">MF-118 · Bases de demonstração</a></li><li><a href="mf-120.html">MF-120 · Faixa de avisos e números</a></li></ul></nav></aside>
+<main class="content doc">
+<div class="dx-busca-movel"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-movel" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><nav class="crumbs" aria-label="Trilha"><a href="index.html">Horus v2</a><span class="sep">/</span><span>v2.0</span><span class="sep">/</span><span class="now">Organizações, pessoas e papéis</span></nav><span class="doc-eyebrow">v2.0</span><div class="dx-macro-topo"><span class="dx-codigo">MF-102</span><span class="dx-selo">v2.0</span></div><h1 class="doc-h1">Organizações, pessoas e papéis</h1><p class="doc-lead">Como a equipe entra e se organiza no Horus: o gestor convida, o owner aprova, os grupos dizem para quem vai cada coisa e as roles, o que cada um pode usar.</p><section class="dx-assuntos" aria-labelledby="dx-assuntos-titulo"><h2 id="dx-assuntos-titulo">Explore os assuntos</h2><div class="dx-assuntos-grade"><div class="dx-assunto"><h3><a href="#mf-102-o-que-e">O que é, em poucas palavras</a><small>1 tópico</small></h3><ul><li><a href="#mf-102-quem-e-quem">Os papéis, um por um</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-102-convite">Como uma pessoa entra</a><small>3 tópicos</small></h3><ul><li><a href="#mf-102-lote">A planilha de convites em lote</a></li><li><a href="#mf-102-quarentena">A quarentena</a></li><li><a href="#mf-102-trocar">Trocar de faixa ou de gestor</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-102-mudancas">Quando alguém muda de faixa ou sai</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-102-grupos">Grupos: para quem vai cada coisa</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-102-roles">Roles: o que cada pessoa pode usar</a><small>2 tópicos</small></h3><ul><li><a href="#mf-102-regras-das-roles">As regras das roles</a></li><li><a href="#mf-102-nasce-liberado">Tudo nasce liberado</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-102-dados-e-conversas">Os dados, as conversas e o perfil</a><small>1 tópico</small></h3><ul><li><a href="#mf-102-perfil">O perfil e os avisos</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-102-bastidores">Nos bastidores, sem complicar</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-102-limites">O que esta funcionalidade não faz</a><small>1 tópico</small></h3><ul><li><a href="#mf-102-ligadas">Funcionalidades ligadas a esta</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-102-faq">Perguntas frequentes</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div></div></section><div id="dx-topo"><p>Se a organização é um andar do prédio do Horus, esta funcionalidade arruma o andar por dentro: diz quem responde pelo andar, quem cuida de cada equipe e o que cada pessoa pode usar. Sem ela, uma pessoa só faria tudo: convidaria cada colega, montaria cada lista de envio, liberaria cada botão. Ela viraria o gargalo da empresa inteira.</p>
+<p>No Horus, a equipe entra organizada como na empresa. O <strong>owner da organização</strong> cuida do conjunto, cada <strong>gestor</strong> cuida da sua equipe, e cada pessoa usa o que o assento e as permissões dela ligam. Esta página conta como as pessoas entram, como se agrupam, o que cada uma pode usar e o que acontece quando alguém muda de função ou sai.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Versão 2.0, em construção</b><p>O que está aqui é o que a versão 2.0 do Horus vai entregar. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
 </div>
-                            <div class="dx-content">
-<blockquote>
-<p><strong>Em uma frase:</strong> a equipe entra no Horus organizada como na empresa: quem gere quem e o que cada um usa, sem o
-owner da organização fazer tudo sozinho.</p>
-</blockquote>
-<div class="doc-section dx-assunto"><h3 id="mf-102-identificacao" data-dx-icone="id-card">Identificação</h3><div class="table-responsive" tabindex="0" role="region" aria-label="Identificação de MF-102 · Organizações, pessoas e papéis"><table class="table table_shortcode"><tbody><tr><th scope="row">Código</th><td>MF-102</td></tr><tr><th scope="row">Entrega</th><td>v2.0 + v2.1</td></tr><tr><th scope="row">Situação</th><td>definida</td></tr><tr><th scope="row">Camada</th><td>🧱 Plataforma</td></tr><tr><th scope="row">Objetivos</th><td>O7</td></tr><tr><th scope="row">Quem usa</th><td>owner da organização, gestor, membro full, membro leitor</td></tr><tr><th scope="row">Complexidade</th><td>alta</td></tr><tr><th scope="row">Relacionadas</th><td><a href="mf-101.html">Administração da instância</a> (MF-101), <a href="mf-103.html">Licenças e planos</a> (MF-103), <a href="mf-106.html">Segurança dos dados por pessoa</a> (MF-106), <a href="mf-112.html">Boards e Relatórios</a> (MF-112), <a href="mf-111.html">Chat pelo WhatsApp</a> (MF-111), <a href="mf-114.html">Módulo de Agendamentos de Agentes</a> (MF-114)</td></tr><tr><th scope="row">Atualizado</th><td>03/11/2026</td></tr></tbody></table></div>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="compass" id="mf-102-o-que-e">O que é</h3>
-<p>Cada setor ou cliente que usa o Horus é uma <strong>organização</strong>, e quem responde por ela é o <strong>owner da organização</strong>
-(nesta página, só &quot;owner&quot;), diferente do owner da instância, que cuida da instalação na Administração da instância
-(MF-101). Hoje já existem várias organizações e convites por e-mail, link e QR, mas os papéis são fixos e só o
-owner convida.</p>
-<p>Na v2.0, o <strong>gestor</strong> gere a sua <strong>carteira</strong> de pessoas e cria os convites delas, que o owner aprova. O <strong>membro
-full</strong> pergunta e cria os próprios boards (os painéis de acompanhamento) e alertas; o <strong>membro leitor</strong> só vê boards
-de outras pessoas e recebe alertas e PDFs. Quem chega sem gestor espera na <strong>quarentena</strong>. E o owner monta
-<strong>roles</strong>, pacotes que ligam ou desligam botões da conversa.</p>
-<blockquote>
-<p>📌 <strong>Exemplo:</strong> o Marcos, owner da área comercial, convida a Carla como gestora. Ela convida a equipe, o Marcos
-aprova, e a Ana entra na carteira da Carla e já pergunta. O Marcos copia a role padrão, desliga ver o SQL e baixar
-e dá essa role ao estagiário Léo, que pergunta, mas não baixa.</p>
-</blockquote>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="star" id="mf-102-caracteristicas">Características</h3>
-<ul>
-<li><strong>Os papéis:</strong> owner, gestor e membro. O owner não é gestor, mas vê todos os membros e pode ser gestor também.</li>
-<li><strong>Um gestor por membro:</strong> só o owner transfere pessoas entre gestores; se um gestor sai, a equipe vai para quem o
-owner indicar, ou para a quarentena.</li>
-<li><strong>O convite:</strong> o gestor cria e escolhe membro full ou leitor; o owner aprova ou deixa a aprovação automática. O
-assento, a vaga de uso das Licenças e planos (MF-103), fica guardado por um prazo; a planilha convida em lote.</li>
-<li><strong>A quarentena:</strong> quem entra sem gestor vê só o perfil e os boards públicos, até o owner ou um gestor o pôr numa
-carteira.</li>
-<li><strong>Os grupos:</strong> os do gestor têm só quem ele gere; os da organização, do owner, qualquer pessoa. Servem para
-publicar boards e escolher quem recebe relatórios e alertas. Na v2.0, o grupo que se atualiza sozinho segue só o
-papel.</li>
-<li><strong>Os nove botões da role:</strong> os três modos da conversa, o nível máximo de inferência (quanto a resposta interpreta
-além dos números), a Análise avançada, o modelo de IA, ver o SQL (a consulta montada), baixar, a Pergunta rápida
-(MF-110), o WhatsApp e os conectores de saída.</li>
-<li><strong>A soma:</strong> só o owner cria e atribui roles, e quem tem duas usa o que qualquer uma liga. Quem não tem nenhuma
-usa a role padrão, que nasce com tudo ligado, inclusive o que mais custa. O owner não depende de roles.</li>
-<li><strong>O assento vem antes:</strong> a role só libera o que o tipo de assento permite; o membro leitor não pergunta.</li>
-<li><strong>Os dados, na v2.0:</strong> a role decide o que a pessoa usa, e não o que vê; até a v2.1, toda pergunta usa os dados
-da organização inteira.</li>
-<li><strong>O perfil:</strong> a pessoa entra por convite, com e-mail e senha ou Google; no perfil ficam a foto, o número de
-WhatsApp, os contatos e a escolha de receber os avisos por e-mail.</li>
-</ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="chart-line" id="mf-102-o-valor-que-gera">O valor que gera</h3>
-<ul>
-<li><strong>Para quem usa:</strong> o owner deixa de ser o gargalo sem perder o controle; o membro pergunta no primeiro dia.</li>
-<li><strong>Para a empresa que contrata o Horus:</strong> abre a análise a todos, com um botão para cada risco: exportação, custo
-e resposta especulativa.</li>
-<li><strong>Para o Horus como produto:</strong> organizações maiores e mais assentos.</li>
-</ul>
-<p><strong>Como vamos saber que funcionou:</strong> o mesmo grupo abre um board e recebe relatórios e alertas, e o estagiário com
-role restrita pergunta sem baixar nada.</p>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="walking" id="mf-102-como-se-usa-no-horus">Como se usa no Horus</h3>
-<p><strong>O owner:</strong></p>
-<ol>
-<li>Convida os gestores.</li>
-<li>Ajusta a role padrão, cria as outras e as atribui.</li>
-<li>Aprova os convites, ou deixa a aprovação automática.</li>
-<li>Tira pessoas da quarentena e monta os grupos da organização.</li>
-</ol>
-<p><strong>O gestor:</strong></p>
-<ol>
-<li>Cria o convite e escolhe membro full ou leitor.</li>
-<li>Aprovado o convite, a pessoa aceita e entra na carteira dele.</li>
-<li>Monta grupos com a equipe.</li>
-</ol>
-<figure><div class="lightbox_shortcode"><img src="media/mf-102-diagrama-1.svg" width="1604" height="203" alt="Diagrama: Como se usa no Horus"><a href="media/mf-102-diagrama-1.svg" class="img_popup" aria-label="Ampliar o diagrama"><i class="icon_plus" aria-hidden="true"></i></a></div><figcaption>Diagrama de “Como se usa no Horus”. Selecione o “+” para ampliar.</figcaption></figure></div><div class="doc-section dx-assunto"><h3 data-dx-icone="puzzle-piece" id="mf-102-grau-de-complexidade-alta">Grau de complexidade: alta</h3>
-<p>As organizações, o login, os convites, a foto e a planilha vêm da v1. A tabela fixa de permissões vira um porteiro
-único, a quem toda tela, canal e trabalho automático pergunta &quot;esta pessoa pode isto?&quot;, e a carteira, a quarentena,
-os grupos, as roles e a área de avisos são novos. Não depende de ninguém de fora, mas quase todas as mfs novas
-dependem dela.</p>
-<blockquote>
-<p>⚠️ É a leitura do PO a partir dos documentos de arquitetura. A estimativa de esforço é do arquiteto.</p>
-</blockquote>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="link" id="mf-102-macro-funcionalidades-relacionadas">Macro funcionalidades relacionadas</h3>
-<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de Organizações, pessoas e papéis"><table class="table table_shortcode"><thead><tr>
-<th scope="col">mf</th>
-<th scope="col">Como se relaciona</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Administração da instância (MF-101)</td>
-<td><strong>complementa</strong>: lá se cuida da instância e da marca; aqui, das pessoas de cada organização.</td>
-</tr>
-<tr>
-<td>Licenças e planos (MF-103)</td>
-<td><strong>é a base de</strong>: a cobrança por assento usa os papéis, o convite e a quarentena; em troca, o tipo de assento é o teto do que a role libera.</td>
-</tr>
-<tr>
-<td>Segurança dos dados por pessoa (MF-106)</td>
-<td><strong>complementa</strong>, na v2.1: a role decide o que a pessoa usa, e a segurança decidirá o que ela vê; com ela chegam os grupos pelas características da pessoa (a região, a loja) e as roles vindas do login corporativo.</td>
-</tr>
-<tr>
-<td>Boards e Relatórios (MF-112)</td>
-<td><strong>é a base de</strong>: publicar para um grupo ou para &quot;Pessoas geridas por mim&quot; e os boards públicos da quarentena saem daqui.</td>
-</tr>
-<tr>
-<td>Chat pelo WhatsApp (MF-111)</td>
-<td><strong>é a base de</strong>: o botão de conversar pelo WhatsApp mora nas roles, e o número ligado fica no perfil.</td>
-</tr>
-<tr>
-<td>Módulo de Agendamentos de Agentes (MF-114)</td>
-<td><strong>é a base de</strong>: os grupos são o destino dos PDFs e alertas agendados.</td>
-</tr>
-</tbody>
-</table></div></div><div class="doc-section dx-assunto"><h3 data-dx-icone="ban" id="mf-102-o-que-ela-nao-faz">O que ela não faz</h3>
-<ul>
-<li><strong>O login corporativo</strong> e as roles que chegam por ele: v2.1.</li>
-<li><strong>Gestor de gestor:</strong> a hierarquia tem um nível só.</li>
-<li><strong>Role que tira</strong> o que outra deu, prioridade entre roles ou gestor que cria roles.</li>
-<li><strong>Limite por perguntas ou por custo.</strong></li>
-</ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="hourglass-half" id="mf-102-ainda-a-decidir">Ainda a decidir</h3>
-<ul>
-<li>Se fixar a resposta num board vira um botão da role, ou segue o tipo de assento.</li>
-<li>Se o owner continua lendo as conversas de todos, como na v1, e se a pessoa sabe disso.</li>
-<li>O teto da organização nos níveis de inferência: o das fontes dela ou uma configuração própria.</li>
-</ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="book" id="mf-102-para-saber-mais">Para saber mais</h3>
-<ul>
-<li><a href="produto-backlog.html"><code>docs/raw/produto/backlog-estrategico.md</code></a>
-<ul>
-<li><strong>D-056</strong>: a definição macro da gestão de pessoas, dos grupos e das roles (reúne D-046 a D-052 e D-055),
-refinada pela <strong>D-071</strong> (o gestor cria o convite, o owner aprova).</li>
-<li><strong>D-114</strong>: a definição macro das funcionalidades por role (reúne D-110 a D-113), com o oitavo e o nono botão
-(D-119, D-122).</li>
-<li><strong>D-108</strong> (a MF-102 inteira na v2.0) e <strong>D-118</strong> (o login corporativo fora da v2.0).</li>
-<li><strong>D-145</strong> (a organização é a fronteira dos dados na v2.0; a segurança por pessoa inteira na v2.1): os grupos dinâmicos só por papel e a planilha só para os convites em lote.</li>
-<li><strong>D-019</strong>, <strong>D-029</strong>, <strong>D-032</strong>, <strong>D-049</strong> e <strong>D-055</strong>: os grupos e os seus usos.</li>
-<li><strong>D-069</strong>, <strong>D-072</strong>, <strong>D-074</strong> e <strong>D-078</strong>: os tipos de assento, a troca, quem acumula owner e gestor, a
-reserva.</li>
-<li><strong>D-128</strong> (a área de avisos e a preferência de e-mail), <strong>D-013</strong> (os dois níveis de owner), <strong>D-048</strong> (a
-quarentena e os boards públicos), <strong>D-044</strong> e <strong>D-045</strong> (remover uma pessoa).</li>
-<li><strong>P-008</strong>, letras j, k, l, m, t, u e z: as hipóteses técnicas desta mf.</li>
-</ul>
-</li>
-<li><a href="produto-mfs-hoje.html"><code>docs/raw/produto/04-macro-funcionalidades-de-hoje.md</code></a>: o que a v1.xx entrega e a direção do dono.</li>
-<li><a href="produto-v20.html"><code>docs/raw/produto/05-v2.0-consolidada.md</code></a>: §1, §4 (o passo 2), §5.1 e §5.2 (as regras), §7 e §8 (os riscos).</li>
-<li><a href="produto-versoes.html"><code>docs/raw/produto/06-versoes.md</code></a> (a candidata nº 9), <a href="produto-mapa.html"><code>docs/raw/produto/07-mapa-de-objetivos-e-funcionalidades.md</code></a> (o
-objetivo O7) e <a href="produto-lacunas.html"><code>docs/raw/produto/03-inventario-de-lacunas.md</code></a> (a candidata 9).</li>
-<li><a href="arquitetura-01.html"><code>docs/raw/arquitetura/01-estrategia-da-solucao.md</code></a>: §4 (a linha da MF-102) e §6 (o marco M1, Plataforma).</li>
-<li><a href="arquitetura-04.html"><code>docs/raw/arquitetura/04-software.md</code></a>: §3.2, o módulo Plataforma.</li>
-<li><a href="arquitetura-02.html"><code>docs/raw/arquitetura/02-registro-de-decisoes.md</code></a>: <strong>ARQ-008</strong> e <strong>ARQ-039</strong> (o avaliador de permissões), <strong>ARQ-038</strong>
-e <strong>ARQ-053</strong> (o login e a sessão), <strong>ARQ-050</strong> (o número de WhatsApp) e <strong>ARQ-090</strong> (a segurança por pessoa na
-v2.1: toda consulta com os dados da organização inteira, os grupos dinâmicos só por papel e a planilha só para os
-convites em lote).</li>
-<li><a href="arquitetura-07.html"><code>docs/raw/arquitetura/07-seguranca.md</code></a>: §3.1 (o login e a sessão) e §3.2 (o avaliador por dentro).</li>
-<li><a href="arquitetura-14.html"><code>docs/raw/arquitetura/14-conferencia-do-produto.md</code></a>: §1 (as letras da P-008), §3 (o que se reaproveita) e §4
-(<strong>A-02</strong>, <strong>A-13</strong>, <strong>A-16</strong>, <strong>A-24</strong> e <strong>A-28</strong>).</li>
-</ul>
-<p>📚 <a href="mf-102-inventario.html">Tudo o que o inventário diz desta mf, assunto por assunto</a>.</p>
-</div>
-                            </div>
-                            <nav class="dx-vizinhas" aria-label="Páginas vizinhas"><a class="dx-anterior" href="mf-101.html"><i class="arrow_left" aria-hidden="true"></i>Administração da instância</a><a class="dx-proxima" href="mf-103.html">Licenças e planos<i class="arrow_right" aria-hidden="true"></i></a></nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <footer class="simple_footer">
-            <img class="leaf_right" src="assets/kbdoc/img/home_one/leaf_footter.png" alt="">
-            <div class="container-fluid pl-60 pr-60">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <p>Maind Horus · Horus v2 · documento interno · Revisado em 03/11/2026 · versão v2.0 em desenho, sem versão publicada</p>
-                    </div>
-                    <div class="col-lg-6 text-right">
 
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
-    <a id="back-to-top" title="Voltar ao topo"></a>
-    <script src="assets/kbdoc/js/jquery-3.2.1.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/popper.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap-select.min.js"></script>
-    <script src="assets/kbdoc/js/parallaxie.js"></script>
-    <script src="assets/kbdoc/js/TweenMax.min.js"></script>
-    <script src="assets/kbdoc/js/anchor.js"></script>
-    <script src="assets/kbdoc/assets/wow/wow.min.js"></script>
-    <script src="assets/kbdoc/js/vendor/clipboard.min.js"></script>
-    <script src="assets/kbdoc/assets/prism/prism.js"></script>
-    <script src="assets/kbdoc/assets/niceselectpicker/jquery.nice-select.min.js"></script>
-    <script src="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="assets/kbdoc/assets/magnify-pop/jquery.magnific-popup.min.js"></script>
-    <script src="assets/kbdoc/assets/tooltipster/js/tooltipster.bundle.min.js"></script>
-    <script src="assets/kbdoc/assets/font-size/js/rv-jquery-fontsize-2.0.3.js"></script>
-    <script src="assets/kbdoc/js/onpage-menu.js"></script>
-    <script src="assets/kbdoc/js/main.js"></script>
-    <script src="assets/busca.js"></script>
-    <script src="assets/docx.js"></script>
+<h2 class="doc-h2" id="mf-102-o-que-e">O que é, em poucas palavras</h2>
+<p>Organizações, pessoas e papéis é a parte do Horus que cuida das pessoas de cada organização. Ela resolve cinco coisas:</p>
+<ul>
+  <li><strong>Quem é quem.</strong> Cada pessoa tem um papel (owner, gestor ou membro) e, se for membro, uma faixa: ouro, prata ou bronze.</li>
+  <li><strong>Quem cuida de quem.</strong> Cada membro tem um gestor, e a equipe de um gestor se chama <strong>carteira</strong>.</li>
+  <li><strong>Como se entra.</strong> Só por convite: o gestor convida a equipe dele, e o owner aprova.</li>
+  <li><strong>Para quem vai cada coisa.</strong> Os <strong>grupos</strong> dizem quem abre um painel e quem recebe um relatório ou um alerta.</li>
+  <li><strong>O que cada um pode usar.</strong> As <strong>roles</strong> são pacotes de botões que o owner liga ou desliga, como ver a consulta montada ou baixar a resposta.</li>
+</ul>
+<p>Criar a organização não é daqui: quem cria é a Maind, na <a href="mf-101.html#mf-101-uma-organizacao">Administração da instância</a>. Esta funcionalidade começa quando a organização chega ao owner.</p>
+
+<h3 class="doc-h3" id="mf-102-quem-e-quem">Os papéis, um por um</h3>
+<p>O <strong>papel</strong> diz sobre quem a pessoa age. O <strong>tipo de assento</strong> diz o que ela pode fazer. Os dois andam juntos, mas não são a mesma coisa.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Papel</th><th>Sobre quem age e o que faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Owner</strong></td><td>Responde pela organização. Vê todos os membros, convida, aprova convites, cria as roles e os grupos da organização e muda uma pessoa de gestor. Uma organização pode ter mais de um owner.</td></tr>
+      <tr class="zebra"><td><strong>Gestor</strong></td><td>Cuida da carteira dele: convida a equipe, monta grupos com ela, abre os painéis (boards) de quem gere e pode desabilitá-los.</td></tr>
+      <tr class="zebra"><td><strong>Membro</strong></td><td>Age só sobre si. A faixa diz o que ele faz: o <strong>bronze</strong> vê, a <strong>prata</strong> pergunta, o <strong>ouro</strong> cria.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>O owner não é gestor, mas pode ser também, por exemplo quando a equipe é pequena. Nesse caso, ocupa um assento só, o de owner. O que cada faixa de membro faz, em detalhe, está em <a href="mf-101.html#mf-101-assentos">Os assentos: quem pode fazer o quê</a>. E o owner da organização não se confunde com o administrador da instância, que é da Maind: a diferença está em <a href="mf-101.html#mf-101-quem-e-quem">Quem opera e quem usa</a>.</p>
+
+<h2 class="doc-h2" id="mf-102-convite">Como uma pessoa entra</h2>
+<p>Digamos que a área comercial de uma rede de lojas acabou de receber a organização dela. O Marcos é o owner, a Carla é a gestora de vendas, e a Ana vai entrar na equipe da Carla.</p>
+<ol class="steps">
+  <li><div><h4>O owner convida os gestores</h4><p>O Marcos convida a Carla num assento de gestora. Só o owner convida gestores e outros owners, e o convite dele não passa por aprovação.</p></div></li>
+  <li><div><h4>O gestor cria os convites da equipe</h4><p>A Carla convida a Ana, uma pessoa por vez, e escolhe o tipo de assento dela entre membro ouro, prata ou bronze: para a Ana, prata. Ela pode pedir mesmo que, naquele momento, não haja vaga livre do tipo.</p></div></li>
+  <li><div><h4>O owner aprova</h4><p>O Marcos aprova o convite, ou liga, nas preferências da organização, a aprovação automática dos convites. Para aprovar, precisa haver um assento livre do tipo pedido; se faltar, ele pede mais à Maind, fora do Horus. Se ele recusar, nada é enviado.</p></div></li>
+  <li><div><h4>O e-mail sai e o assento fica guardado</h4><p>O convite chega à Ana por e-mail, e o assento fica reservado para ela pelo prazo que o owner definiu nas preferências da organização. Se ela não aceitar a tempo, o convite expira, o assento volta a ficar livre, e a Carla pede de novo.</p></div></li>
+  <li><div><h4>A pessoa entra na carteira do gestor</h4><p>A Ana aceita, entra com e-mail e senha ou com a conta Google, e já cai na carteira da Carla, que a convidou. Com o assento de prata, ela pergunta desde o primeiro dia.</p></div></li>
+</ol>
+<p>O mesmo caminho em desenho, com os desvios da vida real: o convite que o owner faz direto, a falta de vaga e a pessoa que entra sem gestor.</p>
+<figure class="dx-diagrama"><figcaption><b>O caminho de um convite</b> <span>Do convite do gestor à carteira, com o convite direto do owner, a falta de vaga e a quarentena</span><a href="media/diagramas/mf-102-caminho-do-convite.html" target="_blank" rel="noopener">Abrir em tela cheia ↗</a></figcaption><iframe src="media/diagramas/mf-102-caminho-do-convite.html?embutido=1" title="O caminho de um convite" loading="lazy"></iframe></figure>
+<p>O produto traz um valor inicial e um teto para o prazo da reserva, para nenhum assento ficar parado; os números ainda serão definidos. Mudar o prazo vale para os convites novos.</p>
+<h3 class="doc-h3" id="mf-102-lote">A planilha de convites em lote</h3>
+<p>Para implantar uma organização grande, o owner pode convidar todo mundo de uma vez, por uma planilha. Cada linha traz a pessoa, o tipo de assento dela e o gestor. O lote guarda os assentos como o convite individual, e a linha sem vaga livre do tipo fica de fora. A planilha é <strong>só do owner</strong>: o gestor convida um a um.</p>
+<h3 class="doc-h3" id="mf-102-quarentena">A quarentena</h3>
+<p>Quem entra sem gestor espera na <strong>quarentena</strong>. Acontece quando o owner convida alguém sem indicar o gestor, ou quando um gestor sai e o owner não indica quem passa a cuidar da equipe dele. Na quarentena, a pessoa vê só o próprio perfil e os <strong>boards públicos</strong>, que são os painéis que o owner abre para a organização inteira. Ela já ocupa o assento do tipo do convite. Sai da quarentena quando o owner ou um gestor a põe numa carteira.</p>
+<h3 class="doc-h3" id="mf-102-trocar">Trocar de faixa ou de gestor</h3>
+<p>Trocar o tipo de assento de quem já está dentro segue o caminho do convite: o gestor pede, o owner aprova, e precisa haver vaga livre no tipo novo. Aprovada a troca, o assento antigo volta a ficar livre na hora. O owner também pode trocar direto. Já mudar uma pessoa de um gestor para outro é só com o owner, e ela sai dos grupos do gestor anterior.</p>
+
+<h2 class="doc-h2" id="mf-102-mudancas">Quando alguém muda de faixa ou sai</h2>
+<p>O que acontece com o que a pessoa criou (painéis, relatórios, conversas, agendamentos e agentes, que são os trabalhos automáticos de IA) depende do caso:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Situação</th><th>O que acontece</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><span class="badge badge--warning">Rebaixada</span></td><td>A pessoa passa de ouro a prata ou a bronze e continua na organização. O que ela criou fica com ela, mas <strong>desabilitado</strong>: não abre nem roda, e a única ação possível é excluir.</td></tr>
+      <tr class="zebra"><td><span class="badge badge--success">Volta ao ouro</span></td><td>Nada volta sozinho. Ela reativa o que quiser, um item por vez.</td></tr>
+      <tr class="zebra"><td><span class="badge badge--danger">Excluída</span></td><td>Quem sai ou é retirado da organização perde em definitivo o que criou. Saem junto o rastro dela na Auditoria (MF-116) e os reportes de resposta errada que o owner ainda não analisou.</td></tr>
+      <tr class="zebra"><td><span class="badge badge--info">Gestor que sai</span></td><td>A equipe dele vai para o gestor que o owner indicar ou, sem indicação, para a quarentena. Os grupos dele deixam de existir.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Não há transferência</b><p>Em nenhuma versão o Horus passa o trabalho de quem sai para outra pessoa. Um gestor que sai leva o painel que compartilhava com a equipe e o PDF que agendava para ela. Um board público some junto com o owner que o publicou.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-102-grupos">Grupos: para quem vai cada coisa</h2>
+<p>Um grupo é uma lista de pessoas montada uma vez e usada muitas: para publicar um painel, escolher quem recebe um relatório ou definir quem recebe um alerta. Há dois tipos:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Sobre o grupo</th><th>Grupo do gestor</th><th>Grupo da organização</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Quem cria</strong></td><td>O gestor.</td><td>O owner.</td></tr>
+      <tr class="zebra"><td><strong>Quem pode estar nele</strong></td><td>Só as pessoas que o gestor gere.</td><td>Qualquer pessoa da organização.</td></tr>
+      <tr class="zebra"><td><strong>Um exemplo</strong></td><td>“Vendas Sul”, com quatro pessoas da Carla.</td><td>“Diretoria”, com pessoas de várias equipes, para receber o relatório mensal.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Cada grupo pode ser <strong>estático</strong>, com a lista escolhida à mão, ou <strong>dinâmico</strong>, que se atualiza sozinho por uma regra: o tipo de assento. O owner monta o grupo “todo bronze”, agenda o PDF semanal para ele, e quem passa a bronze entra no grupo sem ninguém mexer. O grupo dinâmico de um gestor vale só sobre a carteira dele.</p>
+<p>Os grupos não decidem o que cada pessoa vê dos dados. Grupos pelas características da pessoa, como a região ou a loja, chegam com a Segurança dos dados por pessoa (MF-106), na versão 2.1.</p>
+
+<h2 class="doc-h2" id="mf-102-roles">Roles: o que cada pessoa pode usar</h2>
+<p>Uma <strong>role</strong> é um pacote de botões da conversa com o Horus que o owner liga ou desliga, um a um. Serve para abrir a análise a muita gente com um botão para cada risco: a exportação, o custo e a resposta que especula demais. São nove botões:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Botão</th><th>O que ele libera</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Modos e web</strong></td><td>Perguntar aos dados, conversar sem dados e ligar a pesquisa na web ao lado.</td></tr>
+      <tr class="zebra"><td><strong>Nível de inferência</strong></td><td>Até onde a resposta pode interpretar além dos números.</td></tr>
+      <tr class="zebra"><td><strong>Análise avançada</strong></td><td>Usar a Análise avançada, que está entre o que mais custa.</td></tr>
+      <tr class="zebra"><td><strong>Modelo de IA</strong></td><td>Escolher o modelo de IA na conversa.</td></tr>
+      <tr class="zebra"><td><strong>Ver o SQL</strong></td><td>Ver a consulta que o Horus montou para responder.</td></tr>
+      <tr class="zebra"><td><strong>Baixar</strong></td><td>Baixar a resposta e a conversa em CSV, imagem ou PDF.</td></tr>
+      <tr class="zebra"><td><strong>Pergunta rápida</strong></td><td>Perguntar a partir de outras telas do Horus (MF-110).</td></tr>
+      <tr class="zebra"><td><strong>WhatsApp</strong></td><td>Conversar com o Horus pelo WhatsApp (MF-111), depois que o owner liga o canal.</td></tr>
+      <tr class="zebra"><td><strong>Conectores de saída</strong></td><td>Enviar pelos conectores de saída, que na versão 2.0 são o e-mail e o WhatsApp (MF-113).</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="mf-102-regras-das-roles">As regras das roles</h3>
+<ul>
+  <li><strong>Só o owner cria e atribui roles.</strong> Uma role nova começa do zero, com tudo desligado, ou como cópia de outra.</li>
+  <li><strong>Mais de uma role: vale a soma.</strong> Se qualquer role da pessoa liga um botão, ela o usa. Por isso uma role não tira o que outra deu; para tirar, o owner retira a role que dá.</li>
+  <li><strong>A role padrão.</strong> Toda organização nasce com uma, com tudo ligado, que vale para quem não tem outra. O owner a edita, mas não a apaga. Quem recebe qualquer outra role deixa de usar a padrão, a não ser que o owner atribua as duas.</li>
+  <li><strong>O assento vem antes.</strong> A role só libera o que o tipo de assento permite: o bronze não pergunta, e a prata não cria painéis, relatórios, agendamentos nem agentes, seja qual for a role.</li>
+  <li><strong>O teto de inferência é o de cada fonte de dados.</strong> A role pode baixá-lo para a pessoa, nunca subi-lo, e vale sempre o menor.</li>
+  <li><strong>O owner não depende de roles.</strong> Usa tudo, para nunca se trancar fora.</li>
+</ul>
+<p>Um exemplo: o Marcos copia a role padrão, desliga “Ver o SQL” e “Baixar” e dá essa role ao estagiário Léo. O Léo pergunta normalmente, mas não vê a consulta nem baixa nada. Fixar uma resposta num painel não é botão de role: só o dono do painel fixa.</p>
+<h3 class="doc-h3" id="mf-102-nasce-liberado">Tudo nasce liberado</h3>
+<p>A organização chega com tudo aberto, para funcionar no primeiro dia, e o owner restringe o que quiser: a role padrão vem com tudo ligado, os gestores podem publicar painéis, e os contatos que as pessoas cadastram para os conectores de saída são aprovados sozinhos.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Ponto de atenção</b><p>Se o owner não revisar as configurações, tudo fica aberto, inclusive o que custa mais, como a Análise avançada. O botão do WhatsApp nasce ligado, mas só funciona depois que o owner liga o canal. Vale revisar as configurações no primeiro dia.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-102-dados-e-conversas">Os dados, as conversas e o perfil</h2>
+<p>A role decide o que a pessoa <strong>usa</strong>, e não o que ela <strong>vê</strong>. Na versão 2.0, a organização é a fronteira dos dados: toda pergunta usa os dados da organização inteira. Se dois setores precisam ver dados separados, cada um ganha a sua organização. Ver só uma parte dos dados, pessoa a pessoa, é da Segurança dos dados por pessoa (MF-106), na versão 2.1.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>O owner lê as conversas</b><p>O owner da organização lê as conversas de todas as pessoas da organização com o Horus, como já acontece hoje, e nada de especial avisa a pessoa disso. A Maind não lê: ela só vê números, como conta a página da <a href="mf-101.html#mf-101-uso-e-custo">Administração da instância</a>.</p></div>
+</div>
+<h3 class="doc-h3" id="mf-102-perfil">O perfil e os avisos</h3>
+<p>Só cria conta quem tem convite para o próprio e-mail. A pessoa entra com e-mail e senha ou com a conta Google. No perfil ficam a foto, o número de WhatsApp, que ela mesma liga e confirma com um código, os contatos que usa nos envios e a escolha de receber, ou não, os avisos do Horus por e-mail. Os avisos também aparecem dentro do próprio Horus: por exemplo, o “recebido” de quem reporta uma resposta errada.</p>
+
+<h2 class="doc-h2" id="mf-102-bastidores">Nos bastidores, sem complicar</h2>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>Um porteiro só.</strong> Toda tela, o WhatsApp e os trabalhos automáticos perguntam a um mesmo ponto do servidor: “esta pessoa pode isto?”. A tela só esconde o que ele nega, e por isso a regra é a mesma em todo lugar.</li>
+  <li><strong>A conta tem ordem.</strong> O porteiro olha primeiro a situação da organização e o tipo de assento, que é o teto; depois o papel e a carteira, que dizem sobre quem a pessoa age e se ela está na quarentena; por fim, as roles. O primeiro “não” encerra a conta, e, na dúvida, a resposta é “não pode”.</li>
+  <li><strong>Mudar vale na hora.</strong> O papel é relido a cada pedido: tirar um poder de alguém vale no ato, sem esperar a pessoa sair e entrar de novo.</li>
+  <li><strong>O trabalho automático roda como quem o criou.</strong> Um agendamento ou um agente usa as permissões do autor, lidas na hora em que roda.</li>
+  <li><strong>O que já existe e o que é novo.</strong> As organizações, a entrada com senha ou Google, os convites, a foto e a planilha já existem no Horus de hoje. A carteira, a quarentena, os grupos, as roles e a área de avisos são novos.</li>
+</ul>
+
+<h2 class="doc-h2" id="mf-102-limites">O que esta funcionalidade não faz</h2>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Criar organizações</strong></td><td>Quem cria é a Maind, na <a href="mf-101.html">Administração da instância</a> (MF-101).</td></tr>
+      <tr class="zebra"><td><strong>Entrar com a conta da empresa</strong></td><td>O login corporativo, e as roles que chegam por ele, são da Segurança dos dados por pessoa (MF-106), na versão 2.1. Na versão 2.0, a pessoa entra com e-mail e senha ou com o Google, e as roles vêm do cadastro.</td></tr>
+      <tr class="zebra"><td><strong>Separar os dados por pessoa</strong></td><td>Também é da MF-106, na versão 2.1, assim como os grupos pela região ou pela loja e as colunas dessas características na planilha de convites.</td></tr>
+      <tr class="zebra"><td><strong>Gestor de gestor</strong></td><td>A hierarquia tem um nível só: owner, gestores e as carteiras deles.</td></tr>
+      <tr class="zebra"><td><strong>Role que tira, ou ordem entre roles</strong></td><td>As roles só somam, e quem as cria e atribui é sempre o owner, nunca o gestor.</td></tr>
+      <tr class="zebra"><td><strong>Limitar por número de perguntas ou por custo</strong></td><td>Não há esse limite por pessoa. O que existe é o <a href="mf-101.html#mf-101-aviso-de-custo">aviso de custo</a> da organização, para a Maind.</td></tr>
+      <tr class="zebra"><td><strong>Transferir o trabalho de quem sai</strong></td><td>Não existe em nenhuma versão: quem é excluído perde o que criou.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="mf-102-ligadas">Funcionalidades ligadas a esta</h3>
+<p>Quase todas as funcionalidades novas do Horus partem desta. As principais:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="mf-101.html">Administração da instância (MF-101)</a></td><td>Lá a Maind cria a organização e libera os assentos; aqui, o owner cuida das pessoas.</td></tr>
+      <tr class="zebra"><td>Licenças e planos (MF-103)</td><td>A cobrança por assento usa os papéis, o convite e a quarentena daqui; em troca, o tipo de assento é o teto do que a role libera.</td></tr>
+      <tr class="zebra"><td>Segurança dos dados por pessoa (MF-106)</td><td>Na versão 2.1, decide o que cada pessoa vê, enquanto a role continua decidindo o que ela usa.</td></tr>
+      <tr class="zebra"><td>Perguntar aos dados em português (MF-107)</td><td>As roles ligam e desligam os botões da conversa, e a área de avisos recebe o “recebido” dos reportes.</td></tr>
+      <tr class="zebra"><td>Chat pelo WhatsApp (MF-111)</td><td>O botão de conversar pelo WhatsApp mora nas roles, e o número fica no perfil.</td></tr>
+      <tr class="zebra"><td>Boards e Relatórios (MF-112)</td><td>Publicar para um grupo, ou para as pessoas que o gestor gere, e os boards públicos da quarentena saem daqui.</td></tr>
+      <tr class="zebra"><td>Conectores de saída (MF-113) e Agendamentos de agentes (MF-114)</td><td>Os grupos são o destino dos PDFs e dos alertas, e o contato de cada pessoa fica no perfil.</td></tr>
+      <tr class="zebra"><td>Auditoria (MF-116)</td><td>O owner e o gestor que a Auditoria conhece são os daqui; o rastro de quem é excluído sai junto com a pessoa.</td></tr>
+      <tr class="zebra"><td>Home da organização (MF-117)</td><td>A divisão dos números por gestor vem das carteiras.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Na implantação</b><p>Dois pontos desta página tratam de dados pessoais: o owner ler as conversas de todos, sem um aviso especial à pessoa, e apagar tudo de quem sai. As duas regras valem como estão. Durante a implantação da organização, vale a empresa consultar o jurídico dela sobre ambas. Ainda falta conferir, do lado técnico, como apagar tudo convive com a guarda dos registros de acesso e das cópias de segurança.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-102-faq">Perguntas frequentes</h2>
+<div class="faq">
+  <details open>
+    <summary>Vou ter de aprovar cada pessoa que entra na organização?</summary>
+    <div class="faq-body"><p>Não necessariamente. O gestor cria os convites da equipe e o owner os aprova, mas o owner pode ligar, nas preferências da organização, a aprovação automática dos convites. Os convites que o próprio owner faz não passam por aprovação. Em qualquer caso, só entra quem tem um assento livre do tipo pedido.</p></div>
+  </details>
+  <details>
+    <summary>O owner da minha empresa consegue ler as minhas conversas com o Horus?</summary>
+    <div class="faq-body"><p>Sim. O owner da organização lê as conversas de todas as pessoas da organização, como já acontece hoje, e o Horus não mostra um aviso especial sobre isso. A Maind não lê: ela vê só números de uso e custo. Como é um tratamento de dados pessoais, vale a sua empresa consultar o jurídico dela durante a implantação.</p></div>
+  </details>
+  <details>
+    <summary>O que acontece com os painéis e os agendamentos de quem sai da empresa?</summary>
+    <div class="faq-body"><p>São apagados em definitivo, junto com as conversas, os agentes e o rastro da pessoa na Auditoria. O Horus não transfere o trabalho para outra pessoa. Se a pessoa só passa de ouro a prata ou a bronze, o que ela criou fica desabilitado, só para excluir; se voltar a ser ouro, ela reativa um item por vez.</p></div>
+  </details>
+  <details>
+    <summary>Posso impedir que um estagiário baixe dados ou veja a consulta montada?</summary>
+    <div class="faq-body"><p>Pode, com uma role. O owner copia a role padrão, desliga “Ver o SQL” e “Baixar” e atribui a nova role ao estagiário, que continua perguntando. Só lembre que as roles somam: se ele tiver outra role que liga o “Baixar”, ele baixa.</p></div>
+  </details>
+  <details>
+    <summary>Dá para cada pessoa ver só uma parte dos dados, como a própria loja?</summary>
+    <div class="faq-body"><p>Na versão 2.0, não dentro de uma mesma organização: toda pergunta usa os dados da organização inteira. Se dois setores precisam de dados separados, cada um ganha a sua organização. A separação pessoa a pessoa chega com a Segurança dos dados por pessoa (MF-106), na versão 2.1.</p></div>
+  </details>
+  <details>
+    <summary>As pessoas podem entrar com a conta da empresa, sem criar senha?</summary>
+    <div class="faq-body"><p>Na versão 2.0, a pessoa entra com e-mail e senha ou com a conta Google, sempre a partir de um convite. O login com a conta da empresa, e as roles que chegam por ele, vêm na versão 2.1, com a Segurança dos dados por pessoa (MF-106).</p></div>
+  </details>
+</div>
+</div><nav class="rel-grid dx-vizinhas" aria-label="Páginas vizinhas"><a class="rel-card dx-anterior" href="mf-101.html"><span class="cat">Anterior</span><h5>Administração da instância</h5><span class="arrow">←</span></a><a class="rel-card dx-proxima" href="mf-103.html"><span class="cat">Próxima</span><h5>Licenças e planos</h5><span class="arrow">→</span></a></nav>
+<footer class="ds-footer"><div class="ftr-brand"><img class="ftr-logo logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="ftr-logo logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /><div class="ftr-divider"></div><div class="ftr-meta"><b>Maind Horus · Horus v2 · versão 2.0 em desenho</b></div></div><div class="ftr-center"><span class="ftr-tag">v2.0 em desenho, sem versão publicada · 06/11/2026</span></div><div class="ftr-author"><div class="avatar">MT</div><div class="ftr-author-info"><b>Maind Tech</b><span>Horus v2</span></div></div></footer>
+</main>
+<aside class="toc"><h6>Neste artigo</h6><ul><li><a href="#mf-102-o-que-e">O que é, em poucas palavras</a></li><li class="lvl-3"><a href="#mf-102-quem-e-quem">Os papéis, um por um</a></li><li><a href="#mf-102-convite">Como uma pessoa entra</a></li><li class="lvl-3"><a href="#mf-102-lote">A planilha de convites em lote</a></li><li class="lvl-3"><a href="#mf-102-quarentena">A quarentena</a></li><li class="lvl-3"><a href="#mf-102-trocar">Trocar de faixa ou de gestor</a></li><li><a href="#mf-102-mudancas">Quando alguém muda de faixa ou sai</a></li><li><a href="#mf-102-grupos">Grupos: para quem vai cada coisa</a></li><li><a href="#mf-102-roles">Roles: o que cada pessoa pode usar</a></li><li class="lvl-3"><a href="#mf-102-regras-das-roles">As regras das roles</a></li><li class="lvl-3"><a href="#mf-102-nasce-liberado">Tudo nasce liberado</a></li><li><a href="#mf-102-dados-e-conversas">Os dados, as conversas e o perfil</a></li><li class="lvl-3"><a href="#mf-102-perfil">O perfil e os avisos</a></li><li><a href="#mf-102-bastidores">Nos bastidores, sem complicar</a></li><li><a href="#mf-102-limites">O que esta funcionalidade não faz</a></li><li class="lvl-3"><a href="#mf-102-ligadas">Funcionalidades ligadas a esta</a></li><li><a href="#mf-102-faq">Perguntas frequentes</a></li></ul></aside>
+</div>
+<div class="toast" id="toast">Copiado ✓</div>
+<script src="assets/busca.js"></script>
+<script src="assets/docs.js"></script>
+<script src="assets/docx-kbr.js"></script>
 </body>
 </html>

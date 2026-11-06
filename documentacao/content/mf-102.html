@@ -1,0 +1,203 @@
+<p>Se a organização é um andar do prédio do Horus, esta funcionalidade arruma o andar por dentro: diz quem responde pelo andar, quem cuida de cada equipe e o que cada pessoa pode usar. Sem ela, uma pessoa só faria tudo: convidaria cada colega, montaria cada lista de envio, liberaria cada botão. Ela viraria o gargalo da empresa inteira.</p>
+<p>No Horus, a equipe entra organizada como na empresa. O <strong>owner da organização</strong> cuida do conjunto, cada <strong>gestor</strong> cuida da sua equipe, e cada pessoa usa o que o assento e as permissões dela ligam. Esta página conta como as pessoas entram, como se agrupam, o que cada uma pode usar e o que acontece quando alguém muda de função ou sai.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Versão 2.0, em construção</b><p>O que está aqui é o que a versão 2.0 do Horus vai entregar. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
+</div>
+
+<h3 id="mf-102-o-que-e">O que é, em poucas palavras</h3>
+<p>Organizações, pessoas e papéis é a parte do Horus que cuida das pessoas de cada organização. Ela resolve cinco coisas:</p>
+<ul>
+  <li><strong>Quem é quem.</strong> Cada pessoa tem um papel (owner, gestor ou membro) e, se for membro, uma faixa: ouro, prata ou bronze.</li>
+  <li><strong>Quem cuida de quem.</strong> Cada membro tem um gestor, e a equipe de um gestor se chama <strong>carteira</strong>.</li>
+  <li><strong>Como se entra.</strong> Só por convite: o gestor convida a equipe dele, e o owner aprova.</li>
+  <li><strong>Para quem vai cada coisa.</strong> Os <strong>grupos</strong> dizem quem abre um painel e quem recebe um relatório ou um alerta.</li>
+  <li><strong>O que cada um pode usar.</strong> As <strong>roles</strong> são pacotes de botões que o owner liga ou desliga, como ver a consulta montada ou baixar a resposta.</li>
+</ul>
+<p>Criar a organização não é daqui: quem cria é a Maind, na <a href="#mf-101-uma-organizacao">Administração da instância</a>. Esta funcionalidade começa quando a organização chega ao owner.</p>
+
+<h4 id="mf-102-quem-e-quem">Os papéis, um por um</h4>
+<p>O <strong>papel</strong> diz sobre quem a pessoa age. O <strong>tipo de assento</strong> diz o que ela pode fazer. Os dois andam juntos, mas não são a mesma coisa.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Papel</th><th>Sobre quem age e o que faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Owner</strong></td><td>Responde pela organização. Vê todos os membros, convida, aprova convites, cria as roles e os grupos da organização e muda uma pessoa de gestor. Uma organização pode ter mais de um owner.</td></tr>
+      <tr class="zebra"><td><strong>Gestor</strong></td><td>Cuida da carteira dele: convida a equipe, monta grupos com ela, abre os painéis (boards) de quem gere e pode desabilitá-los.</td></tr>
+      <tr class="zebra"><td><strong>Membro</strong></td><td>Age só sobre si. A faixa diz o que ele faz: o <strong>bronze</strong> vê, a <strong>prata</strong> pergunta, o <strong>ouro</strong> cria.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>O owner não é gestor, mas pode ser também, por exemplo quando a equipe é pequena. Nesse caso, ocupa um assento só, o de owner. O que cada faixa de membro faz, em detalhe, está em <a href="#mf-101-assentos">Os assentos: quem pode fazer o quê</a>. E o owner da organização não se confunde com o administrador da instância, que é da Maind: a diferença está em <a href="#mf-101-quem-e-quem">Quem opera e quem usa</a>.</p>
+
+<h3 id="mf-102-convite">Como uma pessoa entra</h3>
+<p>Digamos que a área comercial de uma rede de lojas acabou de receber a organização dela. O Marcos é o owner, a Carla é a gestora de vendas, e a Ana vai entrar na equipe da Carla.</p>
+<ol class="steps">
+  <li><div><h4>O owner convida os gestores</h4><p>O Marcos convida a Carla num assento de gestora. Só o owner convida gestores e outros owners, e o convite dele não passa por aprovação.</p></div></li>
+  <li><div><h4>O gestor cria os convites da equipe</h4><p>A Carla convida a Ana, uma pessoa por vez, e escolhe o tipo de assento dela entre membro ouro, prata ou bronze: para a Ana, prata. Ela pode pedir mesmo que, naquele momento, não haja vaga livre do tipo.</p></div></li>
+  <li><div><h4>O owner aprova</h4><p>O Marcos aprova o convite, ou liga, nas preferências da organização, a aprovação automática dos convites. Para aprovar, precisa haver um assento livre do tipo pedido; se faltar, ele pede mais à Maind, fora do Horus. Se ele recusar, nada é enviado.</p></div></li>
+  <li><div><h4>O e-mail sai e o assento fica guardado</h4><p>O convite chega à Ana por e-mail, e o assento fica reservado para ela pelo prazo que o owner definiu nas preferências da organização. Se ela não aceitar a tempo, o convite expira, o assento volta a ficar livre, e a Carla pede de novo.</p></div></li>
+  <li><div><h4>A pessoa entra na carteira do gestor</h4><p>A Ana aceita, entra com e-mail e senha ou com a conta Google, e já cai na carteira da Carla, que a convidou. Com o assento de prata, ela pergunta desde o primeiro dia.</p></div></li>
+</ol>
+<p>O mesmo caminho em desenho, com os desvios da vida real: o convite que o owner faz direto, a falta de vaga e a pessoa que entra sem gestor.</p>
+<dx-diagrama ref="mf-102-caminho-do-convite"></dx-diagrama>
+<p>O produto traz um valor inicial e um teto para o prazo da reserva, para nenhum assento ficar parado; os números ainda serão definidos. Mudar o prazo vale para os convites novos.</p>
+<h4 id="mf-102-lote">A planilha de convites em lote</h4>
+<p>Para implantar uma organização grande, o owner pode convidar todo mundo de uma vez, por uma planilha. Cada linha traz a pessoa, o tipo de assento dela e o gestor. O lote guarda os assentos como o convite individual, e a linha sem vaga livre do tipo fica de fora. A planilha é <strong>só do owner</strong>: o gestor convida um a um.</p>
+<h4 id="mf-102-quarentena">A quarentena</h4>
+<p>Quem entra sem gestor espera na <strong>quarentena</strong>. Acontece quando o owner convida alguém sem indicar o gestor, ou quando um gestor sai e o owner não indica quem passa a cuidar da equipe dele. Na quarentena, a pessoa vê só o próprio perfil e os <strong>boards públicos</strong>, que são os painéis que o owner abre para a organização inteira. Ela já ocupa o assento do tipo do convite. Sai da quarentena quando o owner ou um gestor a põe numa carteira.</p>
+<h4 id="mf-102-trocar">Trocar de faixa ou de gestor</h4>
+<p>Trocar o tipo de assento de quem já está dentro segue o caminho do convite: o gestor pede, o owner aprova, e precisa haver vaga livre no tipo novo. Aprovada a troca, o assento antigo volta a ficar livre na hora. O owner também pode trocar direto. Já mudar uma pessoa de um gestor para outro é só com o owner, e ela sai dos grupos do gestor anterior.</p>
+
+<h3 id="mf-102-mudancas">Quando alguém muda de faixa ou sai</h3>
+<p>O que acontece com o que a pessoa criou (painéis, relatórios, conversas, agendamentos e agentes, que são os trabalhos automáticos de IA) depende do caso:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Situação</th><th>O que acontece</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><span class="badge badge--warning">Rebaixada</span></td><td>A pessoa passa de ouro a prata ou a bronze e continua na organização. O que ela criou fica com ela, mas <strong>desabilitado</strong>: não abre nem roda, e a única ação possível é excluir.</td></tr>
+      <tr class="zebra"><td><span class="badge badge--success">Volta ao ouro</span></td><td>Nada volta sozinho. Ela reativa o que quiser, um item por vez.</td></tr>
+      <tr class="zebra"><td><span class="badge badge--danger">Excluída</span></td><td>Quem sai ou é retirado da organização perde em definitivo o que criou. Saem junto o rastro dela na Auditoria (MF-116) e os reportes de resposta errada que o owner ainda não analisou.</td></tr>
+      <tr class="zebra"><td><span class="badge badge--info">Gestor que sai</span></td><td>A equipe dele vai para o gestor que o owner indicar ou, sem indicação, para a quarentena. Os grupos dele deixam de existir.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Não há transferência</b><p>Em nenhuma versão o Horus passa o trabalho de quem sai para outra pessoa. Um gestor que sai leva o painel que compartilhava com a equipe e o PDF que agendava para ela. Um board público some junto com o owner que o publicou.</p></div>
+</div>
+
+<h3 id="mf-102-grupos">Grupos: para quem vai cada coisa</h3>
+<p>Um grupo é uma lista de pessoas montada uma vez e usada muitas: para publicar um painel, escolher quem recebe um relatório ou definir quem recebe um alerta. Há dois tipos:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Sobre o grupo</th><th>Grupo do gestor</th><th>Grupo da organização</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Quem cria</strong></td><td>O gestor.</td><td>O owner.</td></tr>
+      <tr class="zebra"><td><strong>Quem pode estar nele</strong></td><td>Só as pessoas que o gestor gere.</td><td>Qualquer pessoa da organização.</td></tr>
+      <tr class="zebra"><td><strong>Um exemplo</strong></td><td>“Vendas Sul”, com quatro pessoas da Carla.</td><td>“Diretoria”, com pessoas de várias equipes, para receber o relatório mensal.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Cada grupo pode ser <strong>estático</strong>, com a lista escolhida à mão, ou <strong>dinâmico</strong>, que se atualiza sozinho por uma regra: o tipo de assento. O owner monta o grupo “todo bronze”, agenda o PDF semanal para ele, e quem passa a bronze entra no grupo sem ninguém mexer. O grupo dinâmico de um gestor vale só sobre a carteira dele.</p>
+<p>Os grupos não decidem o que cada pessoa vê dos dados. Grupos pelas características da pessoa, como a região ou a loja, chegam com a Segurança dos dados por pessoa (MF-106), na versão 2.1.</p>
+
+<h3 id="mf-102-roles">Roles: o que cada pessoa pode usar</h3>
+<p>Uma <strong>role</strong> é um pacote de botões da conversa com o Horus que o owner liga ou desliga, um a um. Serve para abrir a análise a muita gente com um botão para cada risco: a exportação, o custo e a resposta que especula demais. São nove botões:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Botão</th><th>O que ele libera</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Modos e web</strong></td><td>Perguntar aos dados, conversar sem dados e ligar a pesquisa na web ao lado.</td></tr>
+      <tr class="zebra"><td><strong>Nível de inferência</strong></td><td>Até onde a resposta pode interpretar além dos números.</td></tr>
+      <tr class="zebra"><td><strong>Análise avançada</strong></td><td>Usar a Análise avançada, que está entre o que mais custa.</td></tr>
+      <tr class="zebra"><td><strong>Modelo de IA</strong></td><td>Escolher o modelo de IA na conversa.</td></tr>
+      <tr class="zebra"><td><strong>Ver o SQL</strong></td><td>Ver a consulta que o Horus montou para responder.</td></tr>
+      <tr class="zebra"><td><strong>Baixar</strong></td><td>Baixar a resposta e a conversa em CSV, imagem ou PDF.</td></tr>
+      <tr class="zebra"><td><strong>Pergunta rápida</strong></td><td>Perguntar a partir de outras telas do Horus (MF-110).</td></tr>
+      <tr class="zebra"><td><strong>WhatsApp</strong></td><td>Conversar com o Horus pelo WhatsApp (MF-111), depois que o owner liga o canal.</td></tr>
+      <tr class="zebra"><td><strong>Conectores de saída</strong></td><td>Enviar pelos conectores de saída, que na versão 2.0 são o e-mail e o WhatsApp (MF-113).</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="mf-102-regras-das-roles">As regras das roles</h4>
+<ul>
+  <li><strong>Só o owner cria e atribui roles.</strong> Uma role nova começa do zero, com tudo desligado, ou como cópia de outra.</li>
+  <li><strong>Mais de uma role: vale a soma.</strong> Se qualquer role da pessoa liga um botão, ela o usa. Por isso uma role não tira o que outra deu; para tirar, o owner retira a role que dá.</li>
+  <li><strong>A role padrão.</strong> Toda organização nasce com uma, com tudo ligado, que vale para quem não tem outra. O owner a edita, mas não a apaga. Quem recebe qualquer outra role deixa de usar a padrão, a não ser que o owner atribua as duas.</li>
+  <li><strong>O assento vem antes.</strong> A role só libera o que o tipo de assento permite: o bronze não pergunta, e a prata não cria painéis, relatórios, agendamentos nem agentes, seja qual for a role.</li>
+  <li><strong>O teto de inferência é o de cada fonte de dados.</strong> A role pode baixá-lo para a pessoa, nunca subi-lo, e vale sempre o menor.</li>
+  <li><strong>O owner não depende de roles.</strong> Usa tudo, para nunca se trancar fora.</li>
+</ul>
+<p>Um exemplo: o Marcos copia a role padrão, desliga “Ver o SQL” e “Baixar” e dá essa role ao estagiário Léo. O Léo pergunta normalmente, mas não vê a consulta nem baixa nada. Fixar uma resposta num painel não é botão de role: só o dono do painel fixa.</p>
+<h4 id="mf-102-nasce-liberado">Tudo nasce liberado</h4>
+<p>A organização chega com tudo aberto, para funcionar no primeiro dia, e o owner restringe o que quiser: a role padrão vem com tudo ligado, os gestores podem publicar painéis, e os contatos que as pessoas cadastram para os conectores de saída são aprovados sozinhos.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Ponto de atenção</b><p>Se o owner não revisar as configurações, tudo fica aberto, inclusive o que custa mais, como a Análise avançada. O botão do WhatsApp nasce ligado, mas só funciona depois que o owner liga o canal. Vale revisar as configurações no primeiro dia.</p></div>
+</div>
+
+<h3 id="mf-102-dados-e-conversas">Os dados, as conversas e o perfil</h3>
+<p>A role decide o que a pessoa <strong>usa</strong>, e não o que ela <strong>vê</strong>. Na versão 2.0, a organização é a fronteira dos dados: toda pergunta usa os dados da organização inteira. Se dois setores precisam ver dados separados, cada um ganha a sua organização. Ver só uma parte dos dados, pessoa a pessoa, é da Segurança dos dados por pessoa (MF-106), na versão 2.1.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>O owner lê as conversas</b><p>O owner da organização lê as conversas de todas as pessoas da organização com o Horus, como já acontece hoje, e nada de especial avisa a pessoa disso. A Maind não lê: ela só vê números, como conta a página da <a href="#mf-101-uso-e-custo">Administração da instância</a>.</p></div>
+</div>
+<h4 id="mf-102-perfil">O perfil e os avisos</h4>
+<p>Só cria conta quem tem convite para o próprio e-mail. A pessoa entra com e-mail e senha ou com a conta Google. No perfil ficam a foto, o número de WhatsApp, que ela mesma liga e confirma com um código, os contatos que usa nos envios e a escolha de receber, ou não, os avisos do Horus por e-mail. Os avisos também aparecem dentro do próprio Horus: por exemplo, o “recebido” de quem reporta uma resposta errada.</p>
+
+<h3 id="mf-102-bastidores">Nos bastidores, sem complicar</h3>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>Um porteiro só.</strong> Toda tela, o WhatsApp e os trabalhos automáticos perguntam a um mesmo ponto do servidor: “esta pessoa pode isto?”. A tela só esconde o que ele nega, e por isso a regra é a mesma em todo lugar.</li>
+  <li><strong>A conta tem ordem.</strong> O porteiro olha primeiro a situação da organização e o tipo de assento, que é o teto; depois o papel e a carteira, que dizem sobre quem a pessoa age e se ela está na quarentena; por fim, as roles. O primeiro “não” encerra a conta, e, na dúvida, a resposta é “não pode”.</li>
+  <li><strong>Mudar vale na hora.</strong> O papel é relido a cada pedido: tirar um poder de alguém vale no ato, sem esperar a pessoa sair e entrar de novo.</li>
+  <li><strong>O trabalho automático roda como quem o criou.</strong> Um agendamento ou um agente usa as permissões do autor, lidas na hora em que roda.</li>
+  <li><strong>O que já existe e o que é novo.</strong> As organizações, a entrada com senha ou Google, os convites, a foto e a planilha já existem no Horus de hoje. A carteira, a quarentena, os grupos, as roles e a área de avisos são novos.</li>
+</ul>
+
+<h3 id="mf-102-limites">O que esta funcionalidade não faz</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Criar organizações</strong></td><td>Quem cria é a Maind, na <a href="#mf-101">Administração da instância</a> (MF-101).</td></tr>
+      <tr class="zebra"><td><strong>Entrar com a conta da empresa</strong></td><td>O login corporativo, e as roles que chegam por ele, são da Segurança dos dados por pessoa (MF-106), na versão 2.1. Na versão 2.0, a pessoa entra com e-mail e senha ou com o Google, e as roles vêm do cadastro.</td></tr>
+      <tr class="zebra"><td><strong>Separar os dados por pessoa</strong></td><td>Também é da MF-106, na versão 2.1, assim como os grupos pela região ou pela loja e as colunas dessas características na planilha de convites.</td></tr>
+      <tr class="zebra"><td><strong>Gestor de gestor</strong></td><td>A hierarquia tem um nível só: owner, gestores e as carteiras deles.</td></tr>
+      <tr class="zebra"><td><strong>Role que tira, ou ordem entre roles</strong></td><td>As roles só somam, e quem as cria e atribui é sempre o owner, nunca o gestor.</td></tr>
+      <tr class="zebra"><td><strong>Limitar por número de perguntas ou por custo</strong></td><td>Não há esse limite por pessoa. O que existe é o <a href="#mf-101-aviso-de-custo">aviso de custo</a> da organização, para a Maind.</td></tr>
+      <tr class="zebra"><td><strong>Transferir o trabalho de quem sai</strong></td><td>Não existe em nenhuma versão: quem é excluído perde o que criou.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="mf-102-ligadas">Funcionalidades ligadas a esta</h4>
+<p>Quase todas as funcionalidades novas do Horus partem desta. As principais:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="#mf-101">Administração da instância (MF-101)</a></td><td>Lá a Maind cria a organização e libera os assentos; aqui, o owner cuida das pessoas.</td></tr>
+      <tr class="zebra"><td>Licenças e planos (MF-103)</td><td>A cobrança por assento usa os papéis, o convite e a quarentena daqui; em troca, o tipo de assento é o teto do que a role libera.</td></tr>
+      <tr class="zebra"><td>Segurança dos dados por pessoa (MF-106)</td><td>Na versão 2.1, decide o que cada pessoa vê, enquanto a role continua decidindo o que ela usa.</td></tr>
+      <tr class="zebra"><td>Perguntar aos dados em português (MF-107)</td><td>As roles ligam e desligam os botões da conversa, e a área de avisos recebe o “recebido” dos reportes.</td></tr>
+      <tr class="zebra"><td>Chat pelo WhatsApp (MF-111)</td><td>O botão de conversar pelo WhatsApp mora nas roles, e o número fica no perfil.</td></tr>
+      <tr class="zebra"><td>Boards e Relatórios (MF-112)</td><td>Publicar para um grupo, ou para as pessoas que o gestor gere, e os boards públicos da quarentena saem daqui.</td></tr>
+      <tr class="zebra"><td>Conectores de saída (MF-113) e Agendamentos de agentes (MF-114)</td><td>Os grupos são o destino dos PDFs e dos alertas, e o contato de cada pessoa fica no perfil.</td></tr>
+      <tr class="zebra"><td>Auditoria (MF-116)</td><td>O owner e o gestor que a Auditoria conhece são os daqui; o rastro de quem é excluído sai junto com a pessoa.</td></tr>
+      <tr class="zebra"><td>Home da organização (MF-117)</td><td>A divisão dos números por gestor vem das carteiras.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Na implantação</b><p>Dois pontos desta página tratam de dados pessoais: o owner ler as conversas de todos, sem um aviso especial à pessoa, e apagar tudo de quem sai. As duas regras valem como estão. Durante a implantação da organização, vale a empresa consultar o jurídico dela sobre ambas. Ainda falta conferir, do lado técnico, como apagar tudo convive com a guarda dos registros de acesso e das cópias de segurança.</p></div>
+</div>
+
+<h3 id="mf-102-faq">Perguntas frequentes</h3>
+<div class="faq">
+  <details open>
+    <summary>Vou ter de aprovar cada pessoa que entra na organização?</summary>
+    <div class="faq-body"><p>Não necessariamente. O gestor cria os convites da equipe e o owner os aprova, mas o owner pode ligar, nas preferências da organização, a aprovação automática dos convites. Os convites que o próprio owner faz não passam por aprovação. Em qualquer caso, só entra quem tem um assento livre do tipo pedido.</p></div>
+  </details>
+  <details>
+    <summary>O owner da minha empresa consegue ler as minhas conversas com o Horus?</summary>
+    <div class="faq-body"><p>Sim. O owner da organização lê as conversas de todas as pessoas da organização, como já acontece hoje, e o Horus não mostra um aviso especial sobre isso. A Maind não lê: ela vê só números de uso e custo. Como é um tratamento de dados pessoais, vale a sua empresa consultar o jurídico dela durante a implantação.</p></div>
+  </details>
+  <details>
+    <summary>O que acontece com os painéis e os agendamentos de quem sai da empresa?</summary>
+    <div class="faq-body"><p>São apagados em definitivo, junto com as conversas, os agentes e o rastro da pessoa na Auditoria. O Horus não transfere o trabalho para outra pessoa. Se a pessoa só passa de ouro a prata ou a bronze, o que ela criou fica desabilitado, só para excluir; se voltar a ser ouro, ela reativa um item por vez.</p></div>
+  </details>
+  <details>
+    <summary>Posso impedir que um estagiário baixe dados ou veja a consulta montada?</summary>
+    <div class="faq-body"><p>Pode, com uma role. O owner copia a role padrão, desliga “Ver o SQL” e “Baixar” e atribui a nova role ao estagiário, que continua perguntando. Só lembre que as roles somam: se ele tiver outra role que liga o “Baixar”, ele baixa.</p></div>
+  </details>
+  <details>
+    <summary>Dá para cada pessoa ver só uma parte dos dados, como a própria loja?</summary>
+    <div class="faq-body"><p>Na versão 2.0, não dentro de uma mesma organização: toda pergunta usa os dados da organização inteira. Se dois setores precisam de dados separados, cada um ganha a sua organização. A separação pessoa a pessoa chega com a Segurança dos dados por pessoa (MF-106), na versão 2.1.</p></div>
+  </details>
+  <details>
+    <summary>As pessoas podem entrar com a conta da empresa, sem criar senha?</summary>
+    <div class="faq-body"><p>Na versão 2.0, a pessoa entra com e-mail e senha ou com a conta Google, sempre a partir de um convite. O login com a conta da empresa, e as roles que chegam por ele, vêm na versão 2.1, com a Segurança dos dados por pessoa (MF-106).</p></div>
+  </details>
+</div>

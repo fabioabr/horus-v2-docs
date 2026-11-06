@@ -1,292 +1,256 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-menu="vertical">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="A documentação de produto e de arquitetura do Horus v2: a visão, as decisões, a estratégia e como ele vai ser construído.">
-    <meta name="generator" content="DocX 0.2.1">
-    <link rel="shortcut icon" href="media/horus-claro.svg">
-    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/elagent-icon/style.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/font-awesome/css/all.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/niceselectpicker/nice-select.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/font-size/css/rvfs.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/animation/animate.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/tooltipster/css/tooltipster.bundle.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism-coy.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/magnify-pop/magnific-popup.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/css/style.css">
-    <link rel="stylesheet" href="assets/kbdoc/css/responsive.css">
-    <link rel="stylesheet" href="assets/docx.css">
-    <link rel="stylesheet" href="assets/conteudo.css">
-    <link rel="stylesheet" href="assets/indice.css">
-    <script>try { var l = parseInt(localStorage.getItem('docx-menu-largura'), 10); if (l >= 200 && l <= 640) document.documentElement.style.setProperty('--dx-menu-largura', l + 'px'); } catch (e) { /* Sem armazenamento, vale a largura padrão. */ }</script>
-    <title>MF-101 · Administração da instância — Horus v2</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="DocX 0.4.0" />
+<meta name="description" content="As funcionalidades do Horus v2 explicadas uma a uma, em linguagem simples: o que cada uma faz, como funciona na prática e as dúvidas mais comuns." />
+<link rel="icon" href="assets/logo-claro.svg" />
+<title>MF-101 · Administração da instância — Horus v2</title>
+<script>
+(function () {
+  try {
+    var raiz = document.documentElement;
+    var tema = localStorage.getItem('kinto-theme');
+    var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    raiz.setAttribute('data-theme', tema || (escuro ? 'dark' : 'light'));
+    raiz.setAttribute('data-menu', localStorage.getItem('kinto-menu') || 'vertical');
+    var ws = parseInt(localStorage.getItem('kinto-side-w'), 10);
+    var wt = parseInt(localStorage.getItem('kinto-toc-w'), 10);
+    if (ws) raiz.style.setProperty('--side-w-user', ws + 'px');
+    if (wt) raiz.style.setProperty('--toc-w-user', wt + 'px');
+  } catch (e) { /* localStorage bloqueado: ficam os atributos do <html> */ }
+})();
+</script>
+<link rel="stylesheet" href="assets/docs.css" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="assets/docx-kbr.css" />
 </head>
-<body class="doc full-width-doc sticky-nav-doc onepage-doc dx-pagina-doc" data-spy="scroll" data-target=".navbar" data-offset="-120">
-    <a class="sr-only sr-only-focusable dx-skip" href="#post">Pular para o conteúdo</a>
-    <div class="body_wrapper sticky_menu">
-        <nav class="navbar navbar-expand-lg menu_one" id="stickyTwo" aria-label="Navegação principal">
-            <div class="container-fluid pl-60 pr-60">
-                <a class="navbar-brand" href="index.html">
-                    <img src="media/horus-claro.svg" alt="Horus v2">
-                    <img src="media/horus-escuro.svg" alt="Horus v2">
-                </a>
-                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Abrir o menu">
-                    <span class="menu_toggle">
-                        <span class="hamburger">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </span>
-                        <span class="hamburger-cross">
-                            <span></span>
-                            <span></span>
-                        </span>
-                    </span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav menu ml-auto">
-
-                    </ul>
-                    <ul class="list-unstyled menu_social">
-                        <li class="search">
-                            <form action="#" class="search_form" role="search" data-search-form>
-                                <label class="sr-only" for="dx-search">Buscar na documentação</label>
-                                <input type="search" class="form-control" id="dx-search" placeholder="Buscar" autocomplete="off" data-search-input aria-describedby="dx-search-status" aria-controls="dx-search-results">
-                                <button type="submit" aria-label="Buscar"><i class="icon_search" aria-hidden="true"></i></button>
-                                <div class="dx-search-results" id="dx-search-results" data-search-results hidden></div>
-                            </form>
-                            <p class="sr-only" id="dx-search-status" role="status" data-search-status></p>
-                        </li>
-                    </ul>
-                    <div class="dx-ferramentas">
-
-
-                        <div id="font-switcher"><div id="rvfs-controllers" class="fontsize-controllers group"></div></div>
-                        <button type="button" class="print" data-print aria-label="Imprimir"><i class="icon_printer" aria-hidden="true"></i></button>
-                        <div class="doc_switch">
-                            <label for="something" class="tab-btn tab-btns"><i class="icon_lightbulb_alt" aria-hidden="true"></i><span class="sr-only">Tema claro</span></label>
-                            <input type="checkbox" name="something" id="something" class="tab_switcher" aria-label="Tema escuro">
-                            <label for="something" class="tab-btn"><i class="far fa-moon" aria-hidden="true"></i><span class="sr-only">Tema escuro</span></label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-        <section class="doc_documentation_area onepage_doc_area" id="sticky_doc">
-            <div class="overlay_bg"></div>
-            <div class="container-fluid pl-60 pr-60">
-                <div class="row doc-container">
-                    <div class="col-lg-2 doc_mobile_menu doc-sidebar display_none">
-                        <aside class="doc_left_sidebarlist" aria-label="Tópicos desta página">
-                            <h3 class="nav_title">Tópicos</h3>
-                            <div class="dx-menu-rolagem">
-                                <ul class="list-unstyled nav-sidebar doc-nav">
-<li class="nav-item active"><a href="#mf-101-identificacao" class="nav-link">Identificação</a></li>
-<li class="nav-item"><a href="#mf-101-o-que-e" class="nav-link">O que é</a></li>
-<li class="nav-item"><a href="#mf-101-caracteristicas" class="nav-link">Características</a></li>
-<li class="nav-item"><a href="#mf-101-o-valor-que-gera" class="nav-link">O valor que gera</a></li>
-<li class="nav-item"><a href="#mf-101-como-se-usa-no-horus" class="nav-link">Como se usa no Horus</a></li>
-<li class="nav-item"><a href="#mf-101-grau-de-complexidade-media" class="nav-link">Grau de complexidade: média</a></li>
-<li class="nav-item"><a href="#mf-101-macro-funcionalidades-relacionadas" class="nav-link">Macro funcionalidades relacionadas</a></li>
-<li class="nav-item"><a href="#mf-101-o-que-ela-nao-faz" class="nav-link">O que ela não faz</a></li>
-<li class="nav-item"><a href="#mf-101-ainda-a-decidir" class="nav-link">Ainda a decidir</a></li>
-<li class="nav-item"><a href="#mf-101-para-saber-mais" class="nav-link">Para saber mais</a></li>
-                                </ul>
-                            </div>
-                        </aside>
-                        <div class="dx-divisor" role="separator" aria-orientation="vertical" aria-label="Ajustar a largura do menu" tabindex="0" title="Arraste para ajustar a largura do menu (duplo clique volta ao padrão)"><span class="dx-divisor__pega"></span></div>
-                    </div>
-                    <div class="col-lg-10 col-md-12">
-                        <div class="documentation_info dx-pagina" id="post">
-                            <header class="dx-cabeca" id="mf-101">
-                                <nav class="dx-trilha" aria-label="Trilha"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Início</a></li><li class="breadcrumb-item">v2.0</li><li class="breadcrumb-item active" aria-current="page">Administração da instância</li></ol></nav>
-                                <div class="dx-macro-topo"><span class="dx-macro-codigo">MF-101</span><span class="dx-macro-selo">v2.0 + v2.1</span></div>
-                                <h1>Administração da instância</h1>
-                                <p>Base herdada, com o painel dos assentos e sem o interruptor geral da segurança, que vai para a v2.1</p>
-                            </header>
-                            <div class="dx-modelo-01">
-<nav aria-labelledby="dx-m01-assuntos-titulo">
-<div class="dx-m01-rotulo"><h2 id="dx-m01-assuntos-titulo">Explore os assuntos</h2><span>10 seções</span></div>
-<div class="dx-m01-assuntos">
-<a class="dx-m01-assunto" href="#mf-101-identificacao"><span class="dx-m01-icone"><i class="fas fa-id-card" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Identificação</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-101-o-que-e"><span class="dx-m01-icone"><i class="fas fa-compass" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que é</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-101-caracteristicas"><span class="dx-m01-icone"><i class="fas fa-star" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Características</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-101-o-valor-que-gera"><span class="dx-m01-icone"><i class="fas fa-chart-line" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O valor que gera</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-101-como-se-usa-no-horus"><span class="dx-m01-icone"><i class="fas fa-walking" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Como se usa no Horus</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-101-grau-de-complexidade-media"><span class="dx-m01-icone"><i class="fas fa-puzzle-piece" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Grau de complexidade: média</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-101-macro-funcionalidades-relacionadas"><span class="dx-m01-icone"><i class="fas fa-link" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Macro funcionalidades relacionadas</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-101-o-que-ela-nao-faz"><span class="dx-m01-icone"><i class="fas fa-ban" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que ela não faz</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-101-ainda-a-decidir"><span class="dx-m01-icone"><i class="fas fa-hourglass-half" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Ainda a decidir</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-101-para-saber-mais"><span class="dx-m01-icone"><i class="fas fa-book" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Para saber mais</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-</div></nav>
+<body>
+<header class="hdr"><div class="hdr-brand"><a class="hdr-logo" href="index.html" aria-label="Horus v2"><img class="logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /></a><div class="div"></div><div class="doc-meta"><b>Horus v2 · Documentação</b><small>Maind Horus</small></div></div><div class="hdr-center"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-topo" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><div class="hdr-actions"><div class="menu-toggle" role="group" aria-label="Menu"><button data-set="vertical" aria-label="Menu vertical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button><button data-set="horizontal" aria-label="Menu horizontal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></button></div><div class="theme-toggle" role="group" aria-label="Tema"><button data-set="light" aria-label="Claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button><button data-set="dark" aria-label="Escuro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header>
+<div class="shell">
+<aside class="side"><nav aria-label="Páginas da documentação"><h6>Horus v2</h6><ul><li><a href="index.html">Início</a></li></ul><h6>Para começar</h6><ul><li><a href="como-ler.html">Como ler esta documentação</a></li></ul><h6>v2.0</h6><ul class="side-sub"><li><a href="mf-101.html" class="active">MF-101 · Administração da instância</a></li><li><a href="mf-102.html">MF-102 · Organizações, pessoas e papéis</a></li><li><a href="mf-103.html">MF-103 · Licenças e planos</a></li><li><a href="mf-104.html">MF-104 · Conectar as fontes vivas</a></li><li><a href="mf-105.html">MF-105 · IA sob controle da organização</a></li><li><a href="mf-107.html">MF-107 · Perguntar aos dados em português</a></li><li><a href="mf-108.html">MF-108 · Respostas visuais</a></li><li><a href="mf-109.html">MF-109 · A web como fonte</a></li><li><a href="mf-110.html">MF-110 · Pergunta rápida</a></li><li><a href="mf-111.html">MF-111 · Chat pelo WhatsApp</a></li><li><a href="mf-112.html">MF-112 · Boards e Relatórios</a></li><li><a href="mf-113.html">MF-113 · Conectores de Saída</a></li><li><a href="mf-114.html">MF-114 · Módulo de Agendamentos de Agentes</a></li><li><a href="mf-115.html">MF-115 · Agentes ativos</a></li><li><a href="mf-116.html">MF-116 · Auditoria</a></li><li><a href="mf-117.html">MF-117 · Home da organização</a></li><li><a href="mf-118.html">MF-118 · Bases de demonstração</a></li><li><a href="mf-120.html">MF-120 · Faixa de avisos e números</a></li></ul></nav></aside>
+<main class="content doc">
+<div class="dx-busca-movel"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-movel" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><nav class="crumbs" aria-label="Trilha"><a href="index.html">Horus v2</a><span class="sep">/</span><span>v2.0</span><span class="sep">/</span><span class="now">Administração da instância</span></nav><span class="doc-eyebrow">v2.0</span><div class="dx-macro-topo"><span class="dx-codigo">MF-101</span><span class="dx-selo">v2.0</span></div><h1 class="doc-h1">Administração da instância</h1><p class="doc-lead">A sala de controle do Horus: criar organizações, liberar assentos, acompanhar o uso e avisar antes de uma parada.</p><section class="dx-assuntos" aria-labelledby="dx-assuntos-titulo"><h2 id="dx-assuntos-titulo">Explore os assuntos</h2><div class="dx-assuntos-grade"><div class="dx-assunto"><h3><a href="#mf-101-o-que-e">O que é, em poucas palavras</a><small>1 tópico</small></h3><ul><li><a href="#mf-101-quem-e-quem">Quem opera e quem usa</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-101-uma-organizacao">A vida de uma organização</a><small>2 tópicos</small></h3><ul><li><a href="#mf-101-situacoes">As três situações</a></li><li><a href="#mf-101-suspender">Suspender, reativar e excluir</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-101-assentos">Os assentos: quem pode fazer o quê</a><small>1 tópico</small></h3><ul><li><a href="#mf-101-liberar-assentos">Como os assentos são liberados</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-101-ia">A inteligência artificial: da instância ou a sua</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-101-uso-e-custo">Uso, custo e relatório</a><small>2 tópicos</small></h3><ul><li><a href="#mf-101-aviso-de-custo">O aviso de custo</a></li><li><a href="#mf-101-relatorio">O relatório da organização</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-101-avisos">Avisos e paradas</a><small>1 tópico</small></h3><ul><li><a href="#mf-101-quando-um-servico-para">Quando um serviço para</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-101-marca-e-email">A marca e o e-mail</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-101-bastidores">Nos bastidores, sem complicar</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-101-limites">O que a Administração da instância não faz</a><small>1 tópico</small></h3><ul><li><a href="#mf-101-ligadas">Funcionalidades ligadas a esta</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-101-faq">Perguntas frequentes</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div></div></section><div id="dx-topo"><p>Imagine o Horus como um prédio de escritórios. Cada empresa, ou cada setor de uma empresa, ocupa o seu andar: entra pela própria porta, vê só as suas coisas e nunca cruza com o andar ao lado. No Horus, o prédio se chama <strong>instância</strong> e cada andar é uma <strong>organização</strong>. A <strong>Administração da instância</strong> é a sala de controle desse prédio: é por ela que se abre um andar novo, se combina quantas pessoas podem trabalhar nele, se acompanha o consumo e se avisa todo mundo antes de uma obra.</p>
+<p>Quem opera essa sala de controle é a Maind, que oferece o Horus como serviço. Você, como cliente, não precisa dela para trabalhar. Mas quase tudo o que a sua organização recebe passa por ali, e esta página conta como.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Versão 2.0, em construção</b><p>O que está aqui é o que a versão 2.0 do Horus vai entregar. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
 </div>
-                            <div class="dx-content">
-<blockquote>
-<p><strong>Em uma frase:</strong> o painel de quem opera o Horus: a marca, os administradores, o e-mail do produto e os
-assentos, o uso e o custo de cada organização.</p>
-</blockquote>
-<div class="doc-section dx-assunto"><h3 id="mf-101-identificacao" data-dx-icone="id-card">Identificação</h3><div class="table-responsive" tabindex="0" role="region" aria-label="Identificação de MF-101 · Administração da instância"><table class="table table_shortcode"><tbody><tr><th scope="row">Código</th><td>MF-101</td></tr><tr><th scope="row">Entrega</th><td>v2.0 + v2.1</td></tr><tr><th scope="row">Situação</th><td>em definição</td></tr><tr><th scope="row">Camada</th><td>🧱 Plataforma</td></tr><tr><th scope="row">Objetivos</th><td>O7, O8</td></tr><tr><th scope="row">Quem usa</th><td>owner da instância, administradores da instância</td></tr><tr><th scope="row">Complexidade</th><td>média</td></tr><tr><th scope="row">Relacionadas</th><td><a href="mf-102.html">Organizações, pessoas e papéis</a> (MF-102), <a href="mf-103.html">Licenças e planos</a> (MF-103), <a href="mf-113.html">Conectores de Saída</a> (MF-113)</td></tr><tr><th scope="row">Atualizado</th><td>03/11/2026</td></tr></tbody></table></div>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="compass" id="mf-101-o-que-e">O que é</h3>
-<p>Uma instalação do Horus, a <strong>instância</strong>, serve várias <strong>organizações</strong>: cada setor de uma empresa, ou cada
-cliente, é uma organização. Quem responde pela instância inteira é o <strong>owner da instância</strong>, com os
-<strong>administradores da instância</strong>. No Horus contratado como serviço (SaaS), que roda na estrutura da Maind, esse
-papel é da Maind. Ele não se confunde com o <strong>owner da organização</strong>, que cuida das pessoas e dos dados de um setor.</p>
-<p>Hoje a administração guarda o nome e os logos do produto, o rodapé, os administradores e o envio de e-mail. Na
-v2.0, ganha o <strong>painel dos assentos</strong>. Um assento é uma vaga de uso contratada, de um tipo: owner, gestor, membro
-full ou membro leitor. No painel, a Maind libera as vagas de cada organização, acompanha o uso e o custo dela e
-corta o acesso de quem não paga. Na v2.1, a marca do contratante chega a todo o produto.</p>
-<blockquote>
-<p>📌 <strong>Exemplo:</strong> uma rede de lojas contrata o Horus para a área comercial, a organização do owner Marcos. No
-painel, a Maind libera o assento de owner grátis dele, 30 de membro full e 100 de membro leitor. No fim do mês, vê
-que a área respondeu 1.200 perguntas de análise e quanto gastou de IA, sem ler nenhuma conversa.</p>
-</blockquote>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="star" id="mf-101-caracteristicas">Características</h3>
+
+<h2 class="doc-h2" id="mf-101-o-que-e">O que é, em poucas palavras</h2>
+<p>A Administração da instância é o painel de quem opera o Horus. Ela cuida de seis coisas:</p>
 <ul>
-<li><strong>Quem usa:</strong> só o owner da instância e os administradores dele; o owner da organização cuida da dele nas
-Organizações, pessoas e papéis (MF-102).</li>
-<li><strong>A marca:</strong> o nome, os logos (claro e escuro) e o rodapé valem para todas as organizações. Na v2.1, o logo, o
-nome e o e-mail do contratante aparecem em todo o produto, inclusive no remetente.</li>
-<li><strong>O e-mail do produto:</strong> os convites, a recuperação de senha e os avisos da conta saem pelo e-mail da instância,
-e não pelos conectores que o owner da organização liga.</li>
-<li><strong>O painel dos assentos:</strong> mostra, por organização, quantos assentos de cada tipo estão liberados e ocupados. As
-regras dos assentos são das Licenças e planos (MF-103).</li>
-<li><strong>Liberar e cortar:</strong> só daqui se liberam e se desativam os assentos de uma organização, sem reduzir abaixo do
-ocupado e sem data de validade.</li>
-<li><strong>O uso e o custo:</strong> por organização, as perguntas respondidas, as execuções dos agentes (os trabalhos
-automáticos de IA) e o custo do mês, separado em IA, WhatsApp e número de e-mails.</li>
-<li><strong>O aviso de custo:</strong> a Maind é avisada quando uma organização passa de um limite que ela ajusta caso a caso.
-Nada se corta sozinho.</li>
-<li><strong>Só números:</strong> a administração não lê as conversas, os boards nem o rastro de organização nenhuma.</li>
-<li><strong>Sem escolha de plano:</strong> há um plano só, e o painel libera apenas assentos.</li>
+  <li><strong>Criar as organizações.</strong> Só a administração cria uma organização; ela não nasce sozinha nem por pedido direto de um usuário.</li>
+  <li><strong>Liberar e cortar os assentos.</strong> Os assentos são as vagas de uso contratadas, e é aqui que a Maind as libera, tipo a tipo.</li>
+  <li><strong>Acompanhar o uso e o custo</strong> de cada organização, sempre em números, nunca em conteúdo.</li>
+  <li><strong>Cuidar das conexões de IA da instância</strong> e decidir a quais organizações cada uma fica disponível.</li>
+  <li><strong>Avisar as pessoas</strong> antes de uma parada e mostrar uma página de manutenção durante ela.</li>
+  <li><strong>Guardar a marca e o e-mail</strong> do produto: o nome, os logos e o envio dos e-mails da conta.</li>
 </ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="chart-line" id="mf-101-o-valor-que-gera">O valor que gera</h3>
-<ul>
-<li><strong>Para quem usa:</strong> a Maind cuida do acesso de cada cliente num lugar só e vê o custo antes da fatura de IA.</li>
-<li><strong>Para a empresa que contrata o Horus:</strong> recebe os assentos do contrato e, na v2.1, a própria marca no produto.</li>
-<li><strong>Para o Horus como produto:</strong> a cobrança por assento funciona desde o primeiro cliente, com o custo à vista.</li>
-</ul>
-<p><strong>Como vamos saber que funcionou:</strong> a Maind libera os assentos de uma organização nova e, no fim do mês, confere o
-uso e o custo dela no mesmo painel.</p>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="walking" id="mf-101-como-se-usa-no-horus">Como se usa no Horus</h3>
-<ol>
-<li>O owner da instância configura o nome, os logos e o rodapé.</li>
-<li>Combina os assentos com o cliente, fora do produto, e os libera no painel, tipo a tipo.</li>
-<li>O owner da organização convida pessoas dentro desse limite.</li>
-<li>Se a organização pede mais, libera; para reduzir, espera que ela desocupe os assentos.</li>
-<li>Acompanha o uso e o custo do mês e recebe o aviso de custo.</li>
-<li>Se o cliente deixa de pagar, desativa os assentos: tudo para, e as configurações ficam guardadas.</li>
+<h3 class="doc-h3" id="mf-101-quem-e-quem">Quem opera e quem usa</h3>
+<p>Há dois papéis que se parecem no nome e são bem diferentes. O <strong>administrador da instância</strong> é um funcionário da Maind: vê todas as organizações em números e não vê os dados de nenhuma. O <strong>owner da organização</strong> é uma pessoa da empresa cliente: cuida da organização dela, convida as pessoas e configura as preferências. A Administração da instância é do primeiro; o segundo trabalha dentro da própria organização. As demais palavras estão em “Palavras que aparecem nas páginas”, na página <a href="como-ler.html">Como ler esta documentação</a>.</p>
+
+<h2 class="doc-h2" id="mf-101-uma-organizacao">A vida de uma organização</h2>
+<p>O melhor jeito de entender a administração é acompanhar uma organização do primeiro dia ao dia a dia. Digamos que a área comercial de uma rede de lojas vai começar a usar o Horus.</p>
+<ol class="steps">
+  <li><div><h4>A Maind cria a organização</h4><p>Ela nasce com o assento do primeiro owner (o responsável do cliente) e sem inteligência artificial. Nessa fase, está “em configuração”: nada bloqueia ninguém.</p></div></li>
+  <li><div><h4>Os assentos são liberados</h4><p>Maind e cliente combinam, fora do produto, quantos assentos de cada tipo a organização precisa. A Maind os libera no painel e escolhe se disponibiliza à organização uma conexão de IA da instância.</p></div></li>
+  <li><div><h4>A organização fica ativa</h4><p>Quando a Maind a dá por pronta, ela passa a “ativa”. O owner convida as pessoas, dentro dos assentos liberados.</p></div></li>
+  <li><div><h4>O dia a dia é acompanhado em números</h4><p>A Maind vê o uso e o custo da organização e baixa o relatório quando precisa, sem ler nenhuma conversa.</p></div></li>
+  <li><div><h4>Se precisar, a organização é suspensa</h4><p>Se o contrato for suspenso, a organização inteira é inativada. Reativar devolve tudo como estava.</p></div></li>
 </ol>
-<figure><div class="lightbox_shortcode"><img src="media/mf-101-diagrama-1.svg" width="1648" height="187" alt="Diagrama: Como se usa no Horus"><a href="media/mf-101-diagrama-1.svg" class="img_popup" aria-label="Ampliar o diagrama"><i class="icon_plus" aria-hidden="true"></i></a></div><figcaption>Diagrama de “Como se usa no Horus”. Selecione o “+” para ampliar.</figcaption></figure></div><div class="doc-section dx-assunto"><h3 data-dx-icone="puzzle-piece" id="mf-101-grau-de-complexidade-media">Grau de complexidade: média</h3>
-<p>A identidade da instância, os administradores, o envio de e-mail e as telas de administração vêm da v1 quase como
-estão. Novos são o painel dos assentos e o painel do uso, que junta os números de todas as organizações, porque
-cada uma passa a guardar os dados num banco próprio. De fora, depende só do serviço de e-mail que já se usa hoje.</p>
-<blockquote>
-<p>⚠️ É a leitura do PO a partir dos documentos de arquitetura. A estimativa de esforço é do arquiteto.</p>
-</blockquote>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="link" id="mf-101-macro-funcionalidades-relacionadas">Macro funcionalidades relacionadas</h3>
-<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de Administração da instância"><table class="table table_shortcode"><thead><tr>
-<th scope="col">mf</th>
-<th scope="col">Como se relaciona</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Organizações, pessoas e papéis (MF-102)</td>
-<td><strong>complementa</strong>: a administração cuida da instância e da marca; o owner da organização cuida das pessoas e das preferências dela.</td>
-</tr>
-<tr>
-<td>Licenças e planos (MF-103)</td>
-<td><strong>é a base de</strong>: o painel onde a Maind libera e corta os assentos é daqui; as regras deles são de lá.</td>
-</tr>
-<tr>
-<td>Conectores de Saída (MF-113)</td>
-<td><strong>complementa</strong>: o conector de e-mail usa o mesmo servidor de e-mail da instância; no modo &quot;tudo dentro&quot;, da v2.1, é a instância que libera cada tipo de conector.</td>
-</tr>
-</tbody>
-</table></div></div><div class="doc-section dx-assunto"><h3 data-dx-icone="ban" id="mf-101-o-que-ela-nao-faz">O que ela não faz</h3>
-<ul>
-<li><strong>Cobrar:</strong> o preço, a fatura e o pagamento ficam com o comercial da Maind.</li>
-<li><strong>Consultar o rastro:</strong> o registro de quem abriu e entregou o quê é da Auditoria (MF-116), só do owner de cada
-organização.</li>
-<li><strong>Ligar a segurança dos dados por pessoa:</strong> ela volta na v2.1, com a Segurança dos dados por pessoa (MF-106), e
-o interruptor geral que a instância tem hoje vai junto.</li>
-<li><strong>Ativar assentos numa instalação na casa do cliente (on-premises):</strong> fica para a v2.1.</li>
-</ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="hourglass-half" id="mf-101-ainda-a-decidir">Ainda a decidir</h3>
-<ul>
-<li>Se o painel do uso e do custo fica nesta mf ou vira uma mf própria.</li>
-<li>Quem cria as organizações no SaaS: hoje, qualquer pessoa com login cria uma e vira owner dela.</li>
-<li>Se a administração publica um aviso a todas as pessoas, numa faixa no topo do app, antes de uma parada.</li>
-</ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="book" id="mf-101-para-saber-mais">Para saber mais</h3>
-<ul>
-<li><a href="produto-mfs-hoje.html"><code>docs/raw/produto/04-macro-funcionalidades-de-hoje.md</code></a>: o mapa (o que a v1.xx entrega) e a tabela de conversão (a
-camada 🧱 Plataforma).</li>
-<li><a href="produto-v20.html"><code>docs/raw/produto/05-v2.0-consolidada.md</code></a>: §1 (mf a mf), §3.2 (a base herdada), §4 (o passo 1) e as leituras
-<strong>D-067.1</strong>, <strong>D-068.1</strong> e <strong>D-128.3</strong>.</li>
-<li><a href="produto-versoes.html"><code>docs/raw/produto/06-versoes.md</code></a> e <a href="produto-mapa.html"><code>docs/raw/produto/07-mapa-de-objetivos-e-funcionalidades.md</code></a>: o painel dos assentos
-na v2.0 (O7) e a marca completa na v2.1 (candidata nº 6, O8).</li>
-<li><a href="produto-lacunas.html"><code>docs/raw/produto/03-inventario-de-lacunas.md</code></a>: as linhas 11 (os dois owners), 12 (várias organizações) e 13 (a
-marca branca).</li>
-<li><a href="produto-backlog.html"><code>docs/raw/produto/backlog-estrategico.md</code></a>: <strong>D-011</strong> (a marca: logo, e-mail e nome), <strong>D-013</strong> (os dois níveis de
-owner), <strong>D-008</strong> (várias organizações), <strong>D-021</strong> (a base herdada), <strong>D-067</strong>, <strong>D-068</strong>, <strong>D-076</strong> e <strong>D-077</strong>
-(o painel e quem libera), <strong>D-080</strong> e <strong>D-117</strong> (o painel sem seletor de plano), <strong>D-091</strong> (o rastro é do owner
-da organização), <strong>D-121</strong> (a marca completa na v2.1), <strong>D-128</strong> (o e-mail dos avisos).</li>
-<li><a href="arquitetura-01.html"><code>docs/raw/arquitetura/01-estrategia-da-solucao.md</code></a>: §4 (a linha da MF-101) e §6 (os marcos M1 e M9).</li>
-<li><a href="arquitetura-02.html"><code>docs/raw/arquitetura/02-registro-de-decisoes.md</code></a>: <strong>ARQ-017</strong> e <strong>ARQ-084</strong> (o uso e o custo no painel e o aviso à
-Maind), <strong>ARQ-046</strong> (o e-mail da instância), <strong>ARQ-010</strong> e <strong>ARQ-088</strong> (um banco por organização; a instância no
-banco mestre), <strong>ARQ-090</strong> (a segurança por pessoa na v2.1).</li>
-<li><a href="arquitetura-04.html"><code>docs/raw/arquitetura/04-software.md</code></a>: §3.2, os componentes Instância, Painel dos assentos e Envio de e-mail.</li>
-<li><a href="arquitetura-06.html"><code>docs/raw/arquitetura/06-dados.md</code></a> (o que é da instância) e <a href="arquitetura-07.html"><code>docs/raw/arquitetura/07-seguranca.md</code></a> §3.1 (o administrador
-não lê dado de organização).</li>
-<li><a href="arquitetura-14.html"><code>docs/raw/arquitetura/14-conferencia-do-produto.md</code></a>: §3 (o que se reaproveita) e §4 (<strong>A-02</strong>, <strong>A-21</strong> e <strong>A-29</strong>).</li>
-</ul>
-<p>📚 <a href="mf-101-inventario.html">Tudo o que o inventário diz desta mf, assunto por assunto</a>.</p>
+<p>O mesmo caminho em desenho, com os dois laços que acontecem na vida real: o cliente que pede mais assentos e a organização que é suspensa e depois reativada.</p>
+<figure class="dx-diagrama"><figcaption><b>A vida de uma organização</b> <span>Da criação ao dia a dia, com os laços de mais assentos e de suspender e reativar</span><a href="media/diagramas/mf-101-vida-da-organizacao.html" target="_blank" rel="noopener">Abrir em tela cheia ↗</a></figcaption><iframe src="media/diagramas/mf-101-vida-da-organizacao.html?embutido=1" title="A vida de uma organização" loading="lazy"></iframe></figure>
+<h3 class="doc-h3" id="mf-101-situacoes">As três situações</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Situação</th><th>O que significa</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><span class="badge badge--info">Em configuração</span></td><td>Acabou de ser criada: ainda falta o responsável ou as fontes de dados. É o começo de toda organização, e não bloqueia ninguém.</td></tr>
+      <tr class="zebra"><td><span class="badge badge--success">Ativa</span></td><td>A Maind a deu por pronta. As pessoas usam o Horus normalmente.</td></tr>
+      <tr class="zebra"><td><span class="badge badge--warning">Inativa</span></td><td>O acesso está suspenso. Ninguém entra, e os agendamentos, os alertas e os agentes da organização (os trabalhos automáticos de IA) param.</td></tr>
+    </tbody>
+  </table>
 </div>
-                            </div>
-                            <nav class="dx-vizinhas" aria-label="Páginas vizinhas"><a class="dx-proxima" href="mf-102.html">Organizações, pessoas e papéis<i class="arrow_right" aria-hidden="true"></i></a></nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <footer class="simple_footer">
-            <img class="leaf_right" src="assets/kbdoc/img/home_one/leaf_footter.png" alt="">
-            <div class="container-fluid pl-60 pr-60">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <p>Maind Horus · Horus v2 · documento interno · Revisado em 03/11/2026 · versão v2.0 em desenho, sem versão publicada</p>
-                    </div>
-                    <div class="col-lg-6 text-right">
+<h3 class="doc-h3" id="mf-101-suspender">Suspender, reativar e excluir</h3>
+<p><strong>Suspender</strong> é inativar a organização inteira, e não apaga nada. Quando o acesso volta, a Maind reativa a organização e tudo volta ao que era: as pessoas, os painéis, os agendamentos, os alertas e os agentes.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Excluir é outra coisa</b><p>Excluir uma organização é definitivo: tudo o que é dela é apagado, inclusive o uso, o custo e a história dos assentos que a administração guardava. Por isso a Maind pode baixar o relatório antes de excluir.</p></div>
+</div>
 
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
-    <a id="back-to-top" title="Voltar ao topo"></a>
-    <script src="assets/kbdoc/js/jquery-3.2.1.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/popper.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap-select.min.js"></script>
-    <script src="assets/kbdoc/js/parallaxie.js"></script>
-    <script src="assets/kbdoc/js/TweenMax.min.js"></script>
-    <script src="assets/kbdoc/js/anchor.js"></script>
-    <script src="assets/kbdoc/assets/wow/wow.min.js"></script>
-    <script src="assets/kbdoc/js/vendor/clipboard.min.js"></script>
-    <script src="assets/kbdoc/assets/prism/prism.js"></script>
-    <script src="assets/kbdoc/assets/niceselectpicker/jquery.nice-select.min.js"></script>
-    <script src="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="assets/kbdoc/assets/magnify-pop/jquery.magnific-popup.min.js"></script>
-    <script src="assets/kbdoc/assets/tooltipster/js/tooltipster.bundle.min.js"></script>
-    <script src="assets/kbdoc/assets/font-size/js/rv-jquery-fontsize-2.0.3.js"></script>
-    <script src="assets/kbdoc/js/onpage-menu.js"></script>
-    <script src="assets/kbdoc/js/main.js"></script>
-    <script src="assets/busca.js"></script>
-    <script src="assets/docx.js"></script>
+<h2 class="doc-h2" id="mf-101-assentos">Os assentos: quem pode fazer o quê</h2>
+<p>Cada pessoa que usa o Horus ocupa um <strong>assento</strong>, e o tipo do assento define o que ela pode fazer. São cinco tipos:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Tipo</th><th>O que a pessoa faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Owner</strong></td><td>Configura a organização, convida as pessoas e acompanha a contagem dos assentos.</td></tr>
+      <tr class="zebra"><td><strong>Gestor</strong></td><td>Cria e cuida de grupos de membros, pergunta e analisa, cria painéis (boards) e os compartilha com os grupos de que é dono.</td></tr>
+      <tr class="zebra"><td><strong>Membro ouro</strong></td><td>Pergunta e cria painéis e relatórios para si, sem compartilhar.</td></tr>
+      <tr class="zebra"><td><strong>Membro prata</strong></td><td>Pergunta, recebe alertas e PDFs, mas não cria painéis, relatórios, agendamentos nem agentes.</td></tr>
+      <tr class="zebra"><td><strong>Membro bronze</strong></td><td>Só vê os painéis que outras pessoas já criaram e compartilharam.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Uma forma fácil de guardar: o bronze vê, a prata pergunta, o ouro cria.</p>
+<h3 class="doc-h3" id="mf-101-liberar-assentos">Como os assentos são liberados</h3>
+<p>Os assentos se liberam <strong>só pela Administração da instância</strong>, tipo a tipo, e não têm validade. O número de um tipo nunca é reduzido abaixo do que já está ocupado. Por exemplo: com dez assentos ouro em uso, não dá para voltar para oito sem antes liberar duas vagas. A organização pode pedir mais assentos quando precisar, de qualquer tipo.</p>
+<p>O owner acompanha a contagem pela visão de cobrança da organização: para cada tipo, quantos assentos a organização tem, quantos usa e quantos estão livres. Ele não vê o custo nem a história dos assentos, que ficam com a administração.</p>
+
+<h2 class="doc-h2" id="mf-101-ia">A inteligência artificial: da instância ou a sua</h2>
+<p>O Horus usa inteligência artificial para entender as perguntas e montar as respostas, e isso tem um custo de consumo. Por isso há duas origens possíveis para a conexão de IA de uma organização:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Sobre a conexão</th><th>Conexão da instância</th><th>Conexão da organização</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Quem cadastra</strong></td><td>A Maind, na Administração da instância.</td><td>O owner da organização.</td></tr>
+      <tr class="zebra"><td><strong>Quem paga o consumo</strong></td><td>A Maind.</td><td>A organização.</td></tr>
+      <tr class="zebra"><td><strong>Quem pode editar</strong></td><td>Só a Maind. A organização usa, sem poder alterar.</td><td>O owner da organização.</td></tr>
+      <tr class="zebra"><td><strong>O que o owner vê do consumo</strong></td><td>Nada, nem consumo nem custo: quem acompanha é a Maind.</td><td>O consumo e o custo dessa conexão.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>A organização <strong>nasce sem IA</strong>. No mesmo passo em que cria a organização e libera os assentos, a Maind escolhe se disponibiliza uma conexão da instância. A organização que já tem contrato com um provedor de IA pode, em vez disso, cadastrar a conexão dela.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Ponto de atenção</b><p>Se a Maind não disponibilizar uma conexão e o owner ainda não tiver cadastrado a dele, ninguém na organização consegue fazer a primeira pergunta de análise. Vale conferir esse passo ao criar a organização.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-101-uso-e-custo">Uso, custo e relatório</h2>
+<p>A Maind acompanha, para cada organização e para cada dia, quanto o Horus está sendo usado e quanto isso custa. Os números ficam guardados enquanto a organização existir. A regra que não muda: <strong>só números, nunca conteúdo</strong>.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>A administração vê</th><th>A administração não vê</th></tr></thead>
+    <tbody>
+      <tr class="zebra">
+        <td><ul>
+          <li>Quantos assentos de cada tipo foram liberados e quantos estão ocupados.</li>
+          <li>Quem ocupa cada assento (o nome da pessoa) e desde quando.</li>
+          <li>Quantas perguntas de análise foram respondidas.</li>
+          <li>Quantas vezes os agentes (trabalhos automáticos de IA) rodaram.</li>
+          <li>O custo de IA e de WhatsApp do mês e quantas mensagens saíram.</li>
+          <li>Quantos e-mails foram enviados.</li>
+        </ul></td>
+        <td><ul>
+          <li>As conversas das pessoas com o Horus.</li>
+          <li>Os painéis (boards) e os relatórios criados.</li>
+          <li>O rastro de quem abriu e entregou o quê, que é só do owner de cada organização.</li>
+          <li>Os dados das fontes da organização.</li>
+        </ul></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="mf-101-aviso-de-custo">O aviso de custo</h3>
+<p>Quando o custo de uma organização passa de um limite, a Maind é avisada. O limite é ajustado caso a caso pela própria Maind, e nada é cortado sozinho: o aviso serve para olhar a organização antes da fatura de IA chegar.</p>
+<h3 class="doc-h3" id="mf-101-relatorio">O relatório da organização</h3>
+<p>A qualquer momento, a administração pode ver e baixar, em <strong>planilha</strong> e em <strong>PDF</strong>, o relatório de uma organização: o uso, o custo e a história de cada assento, com quem o ocupou e quando, os convites, as devoluções, os cortes e as reativações. É o que a Maind usa para conferir a cobrança e para guardar o que ficou antes de excluir uma organização.</p>
+<p>A administração também pode perguntar ao próprio Horus, em português, como a instância estava numa certa data.</p>
+
+<h2 class="doc-h2" id="mf-101-avisos">Avisos e paradas</h2>
+<p>De vez em quando o Horus precisa parar, para uma troca ou uma manutenção. A administração cuida de três momentos:</p>
+<ol class="steps">
+  <li><div><h4>Antes: o aviso da instância</h4><p>A Maind escreve o texto, a data e a hora, com uma hora de fim se quiser, e pode retirar o aviso a qualquer momento. Ele aparece numa faixa no alto de todas as telas, sem e-mail. Cada pessoa pode esconder a faixa, e quem a esconde deixa de ver os avisos.</p></div></li>
+  <li><div><h4>Durante: a página de manutenção</h4><p>Quem abre o Horus durante a parada vê uma página com o motivo e a hora de volta, em vez de uma tela de entrada que não responde. Assim ninguém conclui que o Horus quebrou.</p></div></li>
+  <li><div><h4>Depois: tudo volta ao normal</h4><p>Terminada a parada, o aviso sai da faixa, pela hora de fim ou retirado à mão, e o Horus volta a abrir normalmente.</p></div></li>
+</ol>
+<h3 class="doc-h3" id="mf-101-quando-um-servico-para">Quando um serviço para</h3>
+<p>Além das paradas combinadas, um serviço pode falhar: uma chave de IA recusada, falta de crédito, um número de WhatsApp bloqueado. Quem é avisado depende de quem é o serviço:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>O que parou</th><th>Quem é avisado</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td>A conexão de IA da instância</td><td>O administrador da instância (a Maind).</td></tr>
+      <tr class="zebra"><td>O número de WhatsApp compartilhado da Maind</td><td>O administrador da instância.</td></tr>
+      <tr class="zebra"><td>O e-mail da instância (o servidor recusa o envio)</td><td>O administrador da instância.</td></tr>
+      <tr class="zebra"><td>A conexão de IA da própria organização, a fonte de dados ou o WhatsApp próprio</td><td>O owner da organização.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="doc-h2" id="mf-101-marca-e-email">A marca e o e-mail</h2>
+<p>Na versão 2.0, a marca do Horus é a da Maind: o nome, os logos e o rodapé valem para todas as organizações. Os convites, a recuperação de senha e os avisos da conta saem pelo e-mail da instância, num ritmo de envio que a administração ajusta.</p>
+
+<h2 class="doc-h2" id="mf-101-bastidores">Nos bastidores, sem complicar</h2>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>Um serviço, vários andares.</strong> Na versão 2.0, o Horus é um serviço da Maind com uma instância só, onde vivem todas as organizações.</li>
+  <li><strong>Cada organização tem o seu cofre.</strong> Os dados de uma organização ficam num banco de dados só dela, com um acesso que não alcança o de outra organização. Um banco central guarda apenas o mapa: quais organizações existem e o que é da instância.</li>
+  <li><strong>O hoje e a história ficam separados.</strong> O sistema guarda o estado de hoje (quem ocupa cada assento agora). A história (quem ocupou, quando, os cortes e as reativações) vai para um registro à parte, onde só se acrescenta: o que já foi registrado não é reescrito.</li>
+  <li><strong>A história se consulta em português.</strong> O Horus trata esse registro como mais uma fonte de dados, e por isso o administrador pode fazer perguntas a ele do mesmo jeito que se pergunta a qualquer fonte.</li>
+</ul>
+
+<h2 class="doc-h2" id="mf-101-limites">O que a Administração da instância não faz</h2>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Cobrar</strong></td><td>O preço, a fatura e o pagamento ficam com o comercial da Maind. Há um plano só.</td></tr>
+      <tr class="zebra"><td><strong>Ligar a segurança dos dados por pessoa</strong></td><td>Cada pessoa ver só uma parte dos dados da organização é de outra funcionalidade (MF-106), prevista para a versão 2.1. Na versão 2.0, a organização é a fronteira dos dados.</td></tr>
+      <tr class="zebra"><td><strong>Mostrar a marca do cliente</strong></td><td>O logo, o nome, o e-mail e as cores do cliente dentro do produto não têm versão prevista.</td></tr>
+      <tr class="zebra"><td><strong>Instalar o Horus na casa do cliente</strong></td><td>O Horus roda no serviço da Maind. A peça que o cliente instala para o Horus chegar a dados que ficam na casa dele (o middleware, MF-121, versão 2.1) é configurada pelo owner da organização.</td></tr>
+      <tr class="zebra"><td><strong>Mostrar ao público se o Horus está de pé</strong></td><td>Uma página aberta com o estado da instância não entra na versão 2.0. O que há é o aviso na faixa e a página de manutenção.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="mf-101-ligadas">Funcionalidades ligadas a esta</h3>
+<p>A Administração da instância conversa com outras funcionalidades. As páginas delas entram aqui conforme forem escritas.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="mf-102.html">Organizações, pessoas e papéis (MF-102)</a></td><td>Daqui sai a organização; de lá vêm as pessoas e os papéis.</td></tr>
+      <tr class="zebra"><td><a href="mf-103.html">Licenças e planos (MF-103)</a></td><td>As regras dos cinco tipos de assento são de lá; o painel onde a Maind libera e corta os assentos é desta funcionalidade.</td></tr>
+      <tr class="zebra"><td><a href="mf-105.html">IA sob controle da organização (MF-105)</a></td><td>Aqui a Maind cadastra as conexões de IA da instância; lá, a organização cadastra a dela.</td></tr>
+      <tr class="zebra"><td>Segurança dos dados por pessoa (MF-106)</td><td>O interruptor geral dessa segurança será de lá, na versão 2.1.</td></tr>
+      <tr class="zebra"><td>Conectores de saída (MF-113)</td><td>O conector de e-mail usa o mesmo servidor de e-mail da instância.</td></tr>
+      <tr class="zebra"><td>Auditoria (MF-116)</td><td>O rastro de quem abriu e entregou o quê é de lá, e só do owner de cada organização.</td></tr>
+      <tr class="zebra"><td>Faixa de avisos e números (MF-120, nome provisório)</td><td>É a faixa onde o aviso da instância aparece.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Na implantação</b><p>Os relatórios mostram o nome de quem ocupa cada assento, porque é o que permite conferir a cobrança. Durante a implantação da organização, vale a empresa consultar o jurídico dela sobre esse tratamento de dados pessoais.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-101-faq">Perguntas frequentes</h2>
+<div class="faq">
+  <details open>
+    <summary>A Maind consegue ler as conversas e os dados da minha empresa?</summary>
+    <div class="faq-body"><p>Não. A Administração da instância trabalha só com números: quantos assentos há de cada tipo, quem ocupa cada um, quantas perguntas foram respondidas, quanto se gastou com IA e WhatsApp e quantos e-mails saíram. Ela não lê conversas, painéis, relatórios nem os dados das suas fontes. Além disso, os dados de cada organização ficam num banco só dela, com um acesso que não alcança o de outra organização.</p></div>
+  </details>
+  <details>
+    <summary>O que acontece se o contrato for suspenso? Meus dados somem?</summary>
+    <div class="faq-body"><p>Não somem. Suspender é inativar a organização inteira: as pessoas perdem o acesso, e os agendamentos, os alertas e os agentes param, mas nada é apagado. Quando o acesso volta, a Maind reativa a organização e tudo volta como estava. Só a exclusão apaga, e ela é uma decisão à parte e definitiva. Antes de excluir, a Maind pode baixar o relatório da organização.</p></div>
+  </details>
+  <details>
+    <summary>Posso aumentar ou reduzir o número de assentos depois de contratar?</summary>
+    <div class="faq-body"><p>Pode pedir mais assentos quando precisar, de qualquer tipo. A Maind os libera na administração, tipo a tipo, e eles não têm validade. Reduzir também é possível, mas nunca abaixo do que já está ocupado. O owner acompanha, para cada tipo, quantos assentos a organização tem, quantos usa e quantos estão livres.</p></div>
+  </details>
+  <details>
+    <summary>Como vou saber se o Horus vai ficar fora do ar?</summary>
+    <div class="faq-body"><p>A Maind publica um aviso, com texto, data e hora, que aparece numa faixa no alto de todas as telas, sem e-mail. Cada pessoa pode esconder a faixa, e quem a esconde deixa de ver os avisos. Se você abrir o Horus durante a parada, em vez de uma tela de entrada que não responde, vê uma página com o motivo e a hora de volta.</p></div>
+  </details>
+  <details>
+    <summary>Preciso ter a minha própria inteligência artificial? Quem paga?</summary>
+    <div class="faq-body"><p>Não precisa. A organização nasce sem IA, e a Maind escolhe, ao criá-la, se disponibiliza uma conexão de IA da instância: essa a Maind paga, e a organização usa sem poder alterá-la. Se a sua empresa já tem contrato com um provedor de IA e prefere usá-lo, o owner cadastra a conexão própria, e a organização paga o consumo dela. O owner vê o consumo e o custo apenas da conexão que a organização paga.</p></div>
+  </details>
+  <details>
+    <summary>O Horus pode aparecer com a marca da minha empresa?</summary>
+    <div class="faq-body"><p>Na versão 2.0, não: a marca é a da Maind e vale para todas as organizações. O logo, o nome, o e-mail e as cores do cliente dentro do produto não têm versão prevista.</p></div>
+  </details>
+</div>
+</div><nav class="rel-grid dx-vizinhas" aria-label="Páginas vizinhas"><a class="rel-card dx-proxima" href="mf-102.html"><span class="cat">Próxima</span><h5>Organizações, pessoas e papéis</h5><span class="arrow">→</span></a></nav>
+<footer class="ds-footer"><div class="ftr-brand"><img class="ftr-logo logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="ftr-logo logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /><div class="ftr-divider"></div><div class="ftr-meta"><b>Maind Horus · Horus v2 · versão 2.0 em desenho</b></div></div><div class="ftr-center"><span class="ftr-tag">v2.0 em desenho, sem versão publicada · 06/11/2026</span></div><div class="ftr-author"><div class="avatar">MT</div><div class="ftr-author-info"><b>Maind Tech</b><span>Horus v2</span></div></div></footer>
+</main>
+<aside class="toc"><h6>Neste artigo</h6><ul><li><a href="#mf-101-o-que-e">O que é, em poucas palavras</a></li><li class="lvl-3"><a href="#mf-101-quem-e-quem">Quem opera e quem usa</a></li><li><a href="#mf-101-uma-organizacao">A vida de uma organização</a></li><li class="lvl-3"><a href="#mf-101-situacoes">As três situações</a></li><li class="lvl-3"><a href="#mf-101-suspender">Suspender, reativar e excluir</a></li><li><a href="#mf-101-assentos">Os assentos: quem pode fazer o quê</a></li><li class="lvl-3"><a href="#mf-101-liberar-assentos">Como os assentos são liberados</a></li><li><a href="#mf-101-ia">A inteligência artificial: da instância ou a sua</a></li><li><a href="#mf-101-uso-e-custo">Uso, custo e relatório</a></li><li class="lvl-3"><a href="#mf-101-aviso-de-custo">O aviso de custo</a></li><li class="lvl-3"><a href="#mf-101-relatorio">O relatório da organização</a></li><li><a href="#mf-101-avisos">Avisos e paradas</a></li><li class="lvl-3"><a href="#mf-101-quando-um-servico-para">Quando um serviço para</a></li><li><a href="#mf-101-marca-e-email">A marca e o e-mail</a></li><li><a href="#mf-101-bastidores">Nos bastidores, sem complicar</a></li><li><a href="#mf-101-limites">O que a Administração da instância não faz</a></li><li class="lvl-3"><a href="#mf-101-ligadas">Funcionalidades ligadas a esta</a></li><li><a href="#mf-101-faq">Perguntas frequentes</a></li></ul></aside>
+</div>
+<div class="toast" id="toast">Copiado ✓</div>
+<script src="assets/busca.js"></script>
+<script src="assets/docs.js"></script>
+<script src="assets/docx-kbr.js"></script>
 </body>
 </html>

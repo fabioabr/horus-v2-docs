@@ -1,305 +1,210 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-menu="vertical">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="A documentação de produto e de arquitetura do Horus v2: a visão, as decisões, a estratégia e como ele vai ser construído.">
-    <meta name="generator" content="DocX 0.2.1">
-    <link rel="shortcut icon" href="media/horus-claro.svg">
-    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/elagent-icon/style.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/font-awesome/css/all.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/niceselectpicker/nice-select.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/font-size/css/rvfs.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/animation/animate.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/tooltipster/css/tooltipster.bundle.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism-coy.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/magnify-pop/magnific-popup.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/css/style.css">
-    <link rel="stylesheet" href="assets/kbdoc/css/responsive.css">
-    <link rel="stylesheet" href="assets/docx.css">
-    <link rel="stylesheet" href="assets/conteudo.css">
-    <link rel="stylesheet" href="assets/indice.css">
-    <script>try { var l = parseInt(localStorage.getItem('docx-menu-largura'), 10); if (l >= 200 && l <= 640) document.documentElement.style.setProperty('--dx-menu-largura', l + 'px'); } catch (e) { /* Sem armazenamento, vale a largura padrão. */ }</script>
-    <title>MF-118 · Bases de demonstração — Horus v2</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="DocX 0.4.0" />
+<meta name="description" content="As funcionalidades do Horus v2 explicadas uma a uma, em linguagem simples: o que cada uma faz, como funciona na prática e as dúvidas mais comuns." />
+<link rel="icon" href="assets/logo-claro.svg" />
+<title>MF-118 · Bases de demonstração — Horus v2</title>
+<script>
+(function () {
+  try {
+    var raiz = document.documentElement;
+    var tema = localStorage.getItem('kinto-theme');
+    var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    raiz.setAttribute('data-theme', tema || (escuro ? 'dark' : 'light'));
+    raiz.setAttribute('data-menu', localStorage.getItem('kinto-menu') || 'vertical');
+    var ws = parseInt(localStorage.getItem('kinto-side-w'), 10);
+    var wt = parseInt(localStorage.getItem('kinto-toc-w'), 10);
+    if (ws) raiz.style.setProperty('--side-w-user', ws + 'px');
+    if (wt) raiz.style.setProperty('--toc-w-user', wt + 'px');
+  } catch (e) { /* localStorage bloqueado: ficam os atributos do <html> */ }
+})();
+</script>
+<link rel="stylesheet" href="assets/docs.css" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="assets/docx-kbr.css" />
 </head>
-<body class="doc full-width-doc sticky-nav-doc onepage-doc dx-pagina-doc" data-spy="scroll" data-target=".navbar" data-offset="-120">
-    <a class="sr-only sr-only-focusable dx-skip" href="#post">Pular para o conteúdo</a>
-    <div class="body_wrapper sticky_menu">
-        <nav class="navbar navbar-expand-lg menu_one" id="stickyTwo" aria-label="Navegação principal">
-            <div class="container-fluid pl-60 pr-60">
-                <a class="navbar-brand" href="index.html">
-                    <img src="media/horus-claro.svg" alt="Horus v2">
-                    <img src="media/horus-escuro.svg" alt="Horus v2">
-                </a>
-                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Abrir o menu">
-                    <span class="menu_toggle">
-                        <span class="hamburger">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </span>
-                        <span class="hamburger-cross">
-                            <span></span>
-                            <span></span>
-                        </span>
-                    </span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav menu ml-auto">
-
-                    </ul>
-                    <ul class="list-unstyled menu_social">
-                        <li class="search">
-                            <form action="#" class="search_form" role="search" data-search-form>
-                                <label class="sr-only" for="dx-search">Buscar na documentação</label>
-                                <input type="search" class="form-control" id="dx-search" placeholder="Buscar" autocomplete="off" data-search-input aria-describedby="dx-search-status" aria-controls="dx-search-results">
-                                <button type="submit" aria-label="Buscar"><i class="icon_search" aria-hidden="true"></i></button>
-                                <div class="dx-search-results" id="dx-search-results" data-search-results hidden></div>
-                            </form>
-                            <p class="sr-only" id="dx-search-status" role="status" data-search-status></p>
-                        </li>
-                    </ul>
-                    <div class="dx-ferramentas">
-
-
-                        <div id="font-switcher"><div id="rvfs-controllers" class="fontsize-controllers group"></div></div>
-                        <button type="button" class="print" data-print aria-label="Imprimir"><i class="icon_printer" aria-hidden="true"></i></button>
-                        <div class="doc_switch">
-                            <label for="something" class="tab-btn tab-btns"><i class="icon_lightbulb_alt" aria-hidden="true"></i><span class="sr-only">Tema claro</span></label>
-                            <input type="checkbox" name="something" id="something" class="tab_switcher" aria-label="Tema escuro">
-                            <label for="something" class="tab-btn"><i class="far fa-moon" aria-hidden="true"></i><span class="sr-only">Tema escuro</span></label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-        <section class="doc_documentation_area onepage_doc_area" id="sticky_doc">
-            <div class="overlay_bg"></div>
-            <div class="container-fluid pl-60 pr-60">
-                <div class="row doc-container">
-                    <div class="col-lg-2 doc_mobile_menu doc-sidebar display_none">
-                        <aside class="doc_left_sidebarlist" aria-label="Tópicos desta página">
-                            <h3 class="nav_title">Tópicos</h3>
-                            <div class="dx-menu-rolagem">
-                                <ul class="list-unstyled nav-sidebar doc-nav">
-<li class="nav-item active"><a href="#mf-118-identificacao" class="nav-link">Identificação</a></li>
-<li class="nav-item"><a href="#mf-118-o-que-e" class="nav-link">O que é</a></li>
-<li class="nav-item"><a href="#mf-118-caracteristicas" class="nav-link">Características</a></li>
-<li class="nav-item"><a href="#mf-118-o-valor-que-gera" class="nav-link">O valor que gera</a></li>
-<li class="nav-item"><a href="#mf-118-como-se-usa-no-horus" class="nav-link">Como se usa no Horus</a></li>
-<li class="nav-item"><a href="#mf-118-grau-de-complexidade-baixa" class="nav-link">Grau de complexidade: baixa</a></li>
-<li class="nav-item"><a href="#mf-118-macro-funcionalidades-relacionadas" class="nav-link">Macro funcionalidades relacionadas</a></li>
-<li class="nav-item"><a href="#mf-118-o-que-ela-nao-faz" class="nav-link">O que ela não faz</a></li>
-<li class="nav-item"><a href="#mf-118-ainda-a-decidir" class="nav-link">Ainda a decidir</a></li>
-<li class="nav-item"><a href="#mf-118-para-saber-mais" class="nav-link">Para saber mais</a></li>
-                                </ul>
-                            </div>
-                        </aside>
-                        <div class="dx-divisor" role="separator" aria-orientation="vertical" aria-label="Ajustar a largura do menu" tabindex="0" title="Arraste para ajustar a largura do menu (duplo clique volta ao padrão)"><span class="dx-divisor__pega"></span></div>
-                    </div>
-                    <div class="col-lg-10 col-md-12">
-                        <div class="documentation_info dx-pagina" id="post">
-                            <header class="dx-cabeca" id="mf-118">
-                                <nav class="dx-trilha" aria-label="Trilha"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Início</a></li><li class="breadcrumb-item">v2.0</li><li class="breadcrumb-item active" aria-current="page">Bases de demonstração</li></ol></nav>
-                                <div class="dx-macro-topo"><span class="dx-macro-codigo">MF-118</span><span class="dx-macro-selo">v2.0</span></div>
-                                <h1>Bases de demonstração</h1>
-                                <p>Base herdada</p>
-                            </header>
-                            <div class="dx-modelo-01">
-<nav aria-labelledby="dx-m01-assuntos-titulo">
-<div class="dx-m01-rotulo"><h2 id="dx-m01-assuntos-titulo">Explore os assuntos</h2><span>10 seções</span></div>
-<div class="dx-m01-assuntos">
-<a class="dx-m01-assunto" href="#mf-118-identificacao"><span class="dx-m01-icone"><i class="fas fa-id-card" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Identificação</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-118-o-que-e"><span class="dx-m01-icone"><i class="fas fa-compass" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que é</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-118-caracteristicas"><span class="dx-m01-icone"><i class="fas fa-star" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Características</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-118-o-valor-que-gera"><span class="dx-m01-icone"><i class="fas fa-chart-line" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O valor que gera</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-118-como-se-usa-no-horus"><span class="dx-m01-icone"><i class="fas fa-walking" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Como se usa no Horus</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-118-grau-de-complexidade-baixa"><span class="dx-m01-icone"><i class="fas fa-puzzle-piece" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Grau de complexidade: baixa</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-118-macro-funcionalidades-relacionadas"><span class="dx-m01-icone"><i class="fas fa-link" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Macro funcionalidades relacionadas</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-118-o-que-ela-nao-faz"><span class="dx-m01-icone"><i class="fas fa-ban" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que ela não faz</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-118-ainda-a-decidir"><span class="dx-m01-icone"><i class="fas fa-hourglass-half" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Ainda a decidir</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-118-para-saber-mais"><span class="dx-m01-icone"><i class="fas fa-book" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Para saber mais</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-</div></nav>
+<body>
+<header class="hdr"><div class="hdr-brand"><a class="hdr-logo" href="index.html" aria-label="Horus v2"><img class="logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /></a><div class="div"></div><div class="doc-meta"><b>Horus v2 · Documentação</b><small>Maind Horus</small></div></div><div class="hdr-center"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-topo" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><div class="hdr-actions"><div class="menu-toggle" role="group" aria-label="Menu"><button data-set="vertical" aria-label="Menu vertical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button><button data-set="horizontal" aria-label="Menu horizontal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></button></div><div class="theme-toggle" role="group" aria-label="Tema"><button data-set="light" aria-label="Claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button><button data-set="dark" aria-label="Escuro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header>
+<div class="shell">
+<aside class="side"><nav aria-label="Páginas da documentação"><h6>Horus v2</h6><ul><li><a href="index.html">Início</a></li></ul><h6>Para começar</h6><ul><li><a href="como-ler.html">Como ler esta documentação</a></li></ul><h6>v2.0</h6><ul class="side-sub"><li><a href="mf-101.html">MF-101 · Administração da instância</a></li><li><a href="mf-102.html">MF-102 · Organizações, pessoas e papéis</a></li><li><a href="mf-103.html">MF-103 · Licenças e planos</a></li><li><a href="mf-104.html">MF-104 · Conectar as fontes vivas</a></li><li><a href="mf-105.html">MF-105 · IA sob controle da organização</a></li><li><a href="mf-107.html">MF-107 · Perguntar aos dados em português</a></li><li><a href="mf-108.html">MF-108 · Respostas visuais</a></li><li><a href="mf-109.html">MF-109 · A web como fonte</a></li><li><a href="mf-110.html">MF-110 · Pergunta rápida</a></li><li><a href="mf-111.html">MF-111 · Chat pelo WhatsApp</a></li><li><a href="mf-112.html">MF-112 · Boards e Relatórios</a></li><li><a href="mf-113.html">MF-113 · Conectores de Saída</a></li><li><a href="mf-114.html">MF-114 · Módulo de Agendamentos de Agentes</a></li><li><a href="mf-115.html">MF-115 · Agentes ativos</a></li><li><a href="mf-116.html">MF-116 · Auditoria</a></li><li><a href="mf-117.html">MF-117 · Home da organização</a></li><li><a href="mf-118.html" class="active">MF-118 · Bases de demonstração</a></li><li><a href="mf-120.html">MF-120 · Faixa de avisos e números</a></li></ul></nav></aside>
+<main class="content doc">
+<div class="dx-busca-movel"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-movel" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><nav class="crumbs" aria-label="Trilha"><a href="index.html">Horus v2</a><span class="sep">/</span><span>v2.0</span><span class="sep">/</span><span class="now">Bases de demonstração</span></nav><span class="doc-eyebrow">v2.0</span><div class="dx-macro-topo"><span class="dx-codigo">MF-118</span><span class="dx-selo">v2.0</span></div><h1 class="doc-h1">Bases de demonstração</h1><p class="doc-lead">Duas organizações de exemplo, com dados inventados e um cenário para cada funcionalidade da versão 2.0, onde a Maind demonstra o Horus sem tocar nos dados de ninguém e testa cada etapa da construção.</p><section class="dx-assuntos" aria-labelledby="dx-assuntos-titulo"><h2 id="dx-assuntos-titulo">Explore os assuntos</h2><div class="dx-assuntos-grade"><div class="dx-assunto"><h3><a href="#mf-118-o-que-e">O que é, em poucas palavras</a><small>1 tópico</small></h3><ul><li><a href="#mf-118-quem-e-quem">Quem usa</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-118-vitrine">A vitrine: duas organizações de exemplo</a><small>1 tópico</small></h3><ul><li><a href="#mf-118-boards">Os boards já vêm publicados</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-118-demonstracao">Uma demonstração, do preparo à reunião</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-118-cenarios">Um cenário para cada promessa da versão 2.0</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-118-bastidores">Nos bastidores, sem complicar</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-118-limites">O que as bases de demonstração não fazem</a><small>1 tópico</small></h3><ul><li><a href="#mf-118-ligadas">Funcionalidades ligadas a esta</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-118-faq">Perguntas frequentes</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div></div></section><div id="dx-topo"><p>Quem compra um apartamento na planta costuma visitar o decorado do estande de vendas: um apartamento mobiliado, para o comprador se imaginar morando ali antes de o prédio existir. As <strong>bases de demonstração</strong> são o decorado do Horus. São organizações de empresas que não existem, com dados inventados, onde a Maind mostra o Horus respondendo, publicando e avisando, sem tocar nos dados de ninguém.</p>
+<p>Onde a comparação para: aqui o apartamento funciona de verdade. As perguntas de análise rodam num banco de dados real, pelos mesmos caminhos que o Horus usa com os clientes; só os dados são inventados. E o decorado serve também à própria Maind: é nele que cada etapa da construção da versão 2.0 é testada.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Versão 2.0, em construção</b><p>O que está aqui é o que a versão 2.0 do Horus vai entregar. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
 </div>
-                            <div class="dx-content">
-<blockquote>
-<p><strong>Em uma frase:</strong> mostrar o Horus respondendo sobre os números de empresas que não existem, para vender sem tocar
-nos dados de ninguém e para testar o produto antes de cada entrega.</p>
-</blockquote>
-<div class="doc-section dx-assunto"><h3 id="mf-118-identificacao" data-dx-icone="id-card">Identificação</h3><div class="table-responsive" tabindex="0" role="region" aria-label="Identificação de MF-118 · Bases de demonstração"><table class="table table_shortcode"><tbody><tr><th scope="row">Código</th><td>MF-118</td></tr><tr><th scope="row">Entrega</th><td>v2.0</td></tr><tr><th scope="row">Situação</th><td>só no mapa</td></tr><tr><th scope="row">Camada</th><td>📈 Prova e controle</td></tr><tr><th scope="row">Objetivos</th><td>O6</td></tr><tr><th scope="row">Quem usa</th><td>owner da instância, comprador</td></tr><tr><th scope="row">Complexidade</th><td>baixa</td></tr><tr><th scope="row">Relacionadas</th><td><a href="mf-104.html">Conectar as fontes vivas</a> (MF-104), <a href="mf-102.html">Organizações, pessoas e papéis</a> (MF-102), <a href="mf-117.html">Home da organização</a> (MF-117), <a href="mf-116.html">Auditoria</a> (MF-116), <a href="mf-111.html">Chat pelo WhatsApp</a> (MF-111), <a href="mf-115.html">Agentes ativos</a> (MF-115), <a href="mf-106.html">Segurança dos dados por pessoa</a> (MF-106)</td></tr><tr><th scope="row">Atualizado</th><td>03/11/2026</td></tr></tbody></table></div>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="compass" id="mf-118-o-que-e">O que é</h3>
-<p><strong>Como é hoje.</strong> O Horus já tem bancos de dados de empresas fictícias: uma rede de lojas, em quatro bases, uma frota
-e a DRE de uma usina (o demonstrativo de receitas, custos e lucro). Os números saem de roteiros fixos, que dão sempre
-o mesmo resultado, e verificadores conferem se fazem sentido. Parte deles chega a cada 10 minutos, como se as lojas
-estivessem vendendo agora.</p>
-<p><strong>O que passa a existir.</strong> As bases ganham os cenários das provas de valor da v2.0: os agentes, o WhatsApp e o
-rastro da Auditoria (MF-116). E as duas <strong>organizações de exemplo</strong>, a da rede de lojas (McDonald's) e a da frota
-(Global Fleet), passam a nascer prontas em qualquer instalação do Horus, com as fontes, os modelos semânticos (o
-dicionário que explica ao Horus o que cada tabela e cada termo significam), os membros de exemplo e os boards.</p>
-<p><strong>Como fica o dia a dia.</strong> A Maind, que no Horus em nuvem é o <strong>owner da instância</strong> (quem cuida da instalação
-inteira e da marca), entra nelas por convite e demonstra o produto ao <strong>comprador</strong>, quem aprova e paga a
-contratação.</p>
-<blockquote>
-<p>💡 <strong>Analogia:</strong> é o apartamento decorado do estande de vendas, mobiliado para o comprador se imaginar morando ali.
-<strong>Onde a analogia para:</strong> aqui o apartamento funciona de verdade; as perguntas de análise rodam num banco real, e
-só os dados são inventados.</p>
-</blockquote>
-<blockquote>
-<p>📌 <strong>Exemplo (personagens ilustrativos):</strong> numa demonstração, a Júlia, da Maind, entra na organização da rede de
-lojas e pergunta quanto cada região vendeu ontem. O gráfico chega com os pedidos de minutos atrás. Depois, ela
-mostra a Home da organização (MF-117), com a <strong>medida de autonomia</strong>, a contagem das perguntas de análise que o
-Horus respondeu.</p>
-</blockquote>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="star" id="mf-118-caracteristicas">Características</h3>
+
+<h2 class="doc-h2" id="mf-118-o-que-e">O que é, em poucas palavras</h2>
+<p>As bases de demonstração são a vitrine do Horus e o banco de prova da construção dele. Elas cuidam de cinco coisas:</p>
 <ul>
-<li><strong>Dados inventados, números plausíveis:</strong> nada é de cliente; os roteiros dão sempre o mesmo resultado, e os
-verificadores de cada ramo conferem os números.</li>
-<li><strong>Dado que se move:</strong> parte das bases recebe dados a cada 10 minutos, para haver &quot;ontem&quot; e &quot;hoje&quot;.</li>
-<li><strong>Prontas em qualquer instalação:</strong> um comando cria as organizações de exemplo do zero; rodado de novo, não
-duplica nada nem desfaz o que a Maind ajustou na tela.</li>
-<li><strong>Sem segredos:</strong> as chaves de IA e do WhatsApp não vêm junto; cada instalação cadastra as suas.</li>
-<li><strong>Uma vitrine só:</strong> as bases ficam num servidor da Maind e servem, só para leitura, a todas as instalações dela.</li>
-<li><strong>Só para demonstração e prova:</strong> só as organizações de exemplo as veem; nunca viram fonte de um cliente.</li>
-<li><strong>Banco de prova:</strong> cada etapa da construção da v2.0 só se dá por pronta quando funciona nessas bases.</li>
-<li><strong>Sem a segurança por pessoa até a v2.1:</strong> na v2.0, toda consulta usa os dados da organização inteira, e a Maind
-não demonstra o &quot;cada um vê só o que pode&quot;; as regras de exemplo esperam a Segurança dos dados por pessoa (MF-106).</li>
-<li><strong>Começam limpas:</strong> conversas, consumo, uso e rastro da versão de hoje não vêm; a medida de autonomia começa do
-zero.</li>
+  <li><strong>Duas organizações de exemplo.</strong> Na versão 2.0, a vitrine tem a organização de uma rede de lojas e a de uma frota, as duas fictícias.</li>
+  <li><strong>Dados inventados, números plausíveis.</strong> Nada é de cliente. Os números saem de roteiros fixos, que dão sempre o mesmo resultado, e verificadores conferem se eles fazem sentido.</li>
+  <li><strong>Dado que se move.</strong> Parte dos dados chega a cada 10 minutos, como se as lojas estivessem vendendo agora, para haver “ontem” e “hoje”.</li>
+  <li><strong>Um cenário para cada promessa.</strong> Cada funcionalidade da versão 2.0 ganha, nas organizações de exemplo, uma situação pronta que mostra o que ela promete.</li>
+  <li><strong>Prontas em qualquer ambiente.</strong> As duas organizações nascem iguais em todo ambiente do Horus, do de testes ao de produção, com as fontes, os modelos semânticos, os membros de exemplo e os boards.</li>
 </ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="chart-line" id="mf-118-o-valor-que-gera">O valor que gera</h3>
-<ul>
-<li><strong>Para quem usa:</strong> a Maind demonstra a v2.0 sem montar nada à mão e sem pedir dado a ninguém.</li>
-<li><strong>Para a empresa que contrata o Horus:</strong> o comprador vê o Horus responder, publicar e avisar antes de ligar os
-bancos da empresa.</li>
-<li><strong>Para o Horus como produto:</strong> apoio à venda e, até o primeiro cliente usar a v2.0, o lugar onde o Horus aprende
-e se testa.</li>
-</ul>
-<p><strong>Como vamos saber que funcionou:</strong> a vitrine sai igual e completa em toda instalação, e toda prova de valor da v2.0
-se demonstra nela.</p>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="walking" id="mf-118-como-se-usa-no-horus">Como se usa no Horus</h3>
-<p><strong>A Maind, como owner da instância:</strong></p>
-<ol>
-<li>Os roteiros geram as bases, e a carga de 10 em 10 minutos as mantém em dia.</li>
-<li>O comando monta as organizações de exemplo na instalação nova.</li>
-<li>A Maind cadastra as chaves de IA e convida a própria equipe.</li>
-<li>Na demonstração, mostra ao comprador a conversa, os boards, o WhatsApp, os agentes, a auditoria e a Home.</li>
+<h3 class="doc-h3" id="mf-118-quem-e-quem">Quem usa</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quem</th><th>O que faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>A Maind</strong></td><td>O administrador da instância monta as organizações de exemplo em cada ambiente. A Maind cadastra as chaves de IA e convida a própria equipe, que conduz a demonstração.</td></tr>
+      <tr class="zebra"><td><strong>O comprador</strong></td><td>Quem aprova e paga a contratação do Horus. Na demonstração, vê o Horus responder, publicar e avisar antes de a empresa ligar os bancos dela.</td></tr>
+      <tr class="zebra"><td><strong>Os membros de exemplo</strong></td><td>Pessoas fictícias que já vêm nas organizações, com papel, tipo de assento, gestor e roles, para que cada tipo de assento mostre o que faz.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>As palavras administrador da instância, owner, assento e role estão no <a href="como-ler.html#glossario">glossário</a>.</p>
+
+<h2 class="doc-h2" id="mf-118-vitrine">A vitrine: duas organizações de exemplo</h2>
+<p>O Horus de hoje já tem bancos de empresas fictícias: uma rede de lojas, com os dados em quatro bases, uma frota e a DRE de uma usina (o demonstrativo de receitas, custos e lucro). Na versão 2.0, a vitrine fica só com as duas <strong>organizações de exemplo</strong>, a da rede de lojas e a da frota. A DRE de usina sai.</p>
+<p>Cada organização de exemplo é uma organização como a de qualquer cliente, só que já vem montada:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Já vem pronta</th><th>Não vem junto</th></tr></thead>
+    <tbody>
+      <tr class="zebra">
+        <td><ul>
+          <li>As fontes de dados: as bases de demonstração, ligadas como fontes comuns, pelos mesmos conectores dos clientes, cada uma com o seu modelo semântico.</li>
+          <li>Os membros de exemplo, em todos os tipos de assento, inclusive a prata e o bronze.</li>
+          <li>Os boards de exemplo, no espaço da organização e já publicados.</li>
+          <li>As preferências da organização e a configuração da IA, sem as chaves.</li>
+        </ul></td>
+        <td><ul>
+          <li>As chaves de IA e do WhatsApp: a Maind as cadastra em cada ambiente.</li>
+          <li>As pessoas reais da Maind, que recebem convite.</li>
+          <li>As conversas, o consumo, o uso e o rastro do Horus de hoje. A medida de autonomia começa do zero.</li>
+          <li>As outras organizações que existem hoje.</li>
+        </ul></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>Como as fontes funcionam, do cadastro ao modelo semântico, está em <a href="mf-104.html">Conectar as fontes vivas (MF-104)</a>; aqui elas só apontam para as bases de demonstração.</p>
+<h3 class="doc-h3" id="mf-118-boards">Os boards já vêm publicados</h3>
+<p>Os boards de exemplo nascem no <a href="mf-112.html#mf-112-espaco">espaço da organização</a>, publicados para todos que entram. Como, na versão 2.0, todas as pessoas da organização veem os mesmos dados, qualquer membro de exemplo encontra tudo pronto: quem entra na organização da rede de lojas vê, por exemplo, os boards de vendas e de estoque. A contrapartida é que o board que um membro ouro cria só para si não está entre os que já vêm prontos.</p>
+
+<h2 class="doc-h2" id="mf-118-demonstracao">Uma demonstração, do preparo à reunião</h2>
+<p>Quem prepara e conduz é a Maind. O comprador só precisa assistir:</p>
+<ol class="steps">
+  <li><div><h4>As bases se mantêm em dia</h4><p>Os roteiros geram as bases, e uma carga de 10 em 10 minutos traz os dados novos.</p></div></li>
+  <li><div><h4>As organizações nascem no ambiente</h4><p>Um comando monta as duas organizações de exemplo em cada ambiente novo do Horus, sem ninguém montar nada à mão.</p></div></li>
+  <li><div><h4>A Maind prepara o acesso</h4><p>Cadastra as chaves de IA e do WhatsApp, que não vêm junto, e convida a própria equipe.</p></div></li>
+  <li><div><h4>A demonstração ao comprador</h4><p>A equipe percorre com ele os cenários: a conversa, a Pergunta rápida, os boards, o WhatsApp, os agentes, a auditoria, a faixa e a Home.</p></div></li>
 </ol>
-<figure><div class="lightbox_shortcode"><img src="media/mf-118-diagrama-1.svg" width="1350" height="85" alt="Diagrama: Como se usa no Horus"><a href="media/mf-118-diagrama-1.svg" class="img_popup" aria-label="Ampliar o diagrama"><i class="icon_plus" aria-hidden="true"></i></a></div><figcaption>Diagrama de “Como se usa no Horus”. Selecione o “+” para ampliar.</figcaption></figure></div><div class="doc-section dx-assunto"><h3 data-dx-icone="puzzle-piece" id="mf-118-grau-de-complexidade-baixa">Grau de complexidade: baixa</h3>
-<p>Vem inteiro da v1: as bases, os roteiros, a carga contínua e os verificadores. São novos os cenários da v2.0 e o
-comando que cria as organizações de exemplo, feito a partir de um roteiro de cópia que a Maind já usa. Ninguém de
-fora entra no caminho; o cuidado é manter o comando em dia quando muda o jeito de o Horus guardar os dados.</p>
-<blockquote>
-<p>⚠️ É a leitura do PO a partir dos documentos de arquitetura. A estimativa de esforço é do arquiteto.</p>
-</blockquote>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="link" id="mf-118-macro-funcionalidades-relacionadas">Macro funcionalidades relacionadas</h3>
-<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de Bases de demonstração"><table class="table table_shortcode"><thead><tr>
-<th scope="col">mf</th>
-<th scope="col">Como se relaciona</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Conectar as fontes vivas (MF-104)</td>
-<td><strong>depende de</strong>: as bases entram nas organizações de exemplo como fontes comuns, pelos mesmos conectores dos clientes.</td>
-</tr>
-<tr>
-<td>Organizações, pessoas e papéis (MF-102)</td>
-<td><strong>depende de</strong>: os membros de exemplo chegam com papel, tipo de assento, gestor e roles.</td>
-</tr>
-<tr>
-<td>Home da organização (MF-117)</td>
-<td><strong>é a base de</strong>: é nas organizações de exemplo que a medida de autonomia aparece antes de haver cliente.</td>
-</tr>
-<tr>
-<td>Auditoria (MF-116)</td>
-<td><strong>é a base de</strong>: ganha um cenário para mostrar o rastro numa demonstração.</td>
-</tr>
-<tr>
-<td>Chat pelo WhatsApp (MF-111) e Agentes ativos (MF-115)</td>
-<td><strong>é a base de</strong>: ganham cenários próprios para as provas de valor da v2.0.</td>
-</tr>
-<tr>
-<td>Segurança dos dados por pessoa (MF-106)</td>
-<td><strong>complementa</strong>, na v2.1: as regras de exemplo esperam guardadas para voltar com ela.</td>
-</tr>
-</tbody>
-</table></div></div><div class="doc-section dx-assunto"><h3 data-dx-icone="ban" id="mf-118-o-que-ela-nao-faz">O que ela não faz</h3>
-<ul>
-<li><strong>Servir de fonte a um cliente</strong> ou ir à instalação de um contratante, salvo pedido.</li>
-<li><strong>Demonstrar a segurança dos dados por pessoa</strong> na v2.0: isso volta na v2.1.</li>
-<li><strong>Trazer as outras organizações de hoje</strong>, as pessoas, as conversas e o histórico de uso.</li>
-</ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="hourglass-half" id="mf-118-ainda-a-decidir">Ainda a decidir</h3>
-<ul>
-<li><strong>O que os boards de exemplo mostram:</strong> a hipótese é ficarem no espaço da organização, publicados.</li>
-<li><strong>Os cenários da v2.0:</strong> o inventário cita os agentes, o WhatsApp e o rastro, sem dizer o que cada um mostra.</li>
-<li><strong>A DRE de usina:</strong> só duas organizações de exemplo chegam à v2.0, e não se diz se a usina segue na vitrine.</li>
-</ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="book" id="mf-118-para-saber-mais">Para saber mais</h3>
-<ul>
-<li><a href="produto-backlog.html">Backlog estratégico</a>: <a href="produto-backlog.html#d-021"><code>D-021</code></a>, a base herdada; <a href="produto-backlog.html#d-109"><code>D-109</code></a> e a leitura
-<code>D-109.2</code>, até a v2.0 completa o aprendizado vem das bases e do uso interno da Maind; <a href="produto-backlog.html#d-134"><code>D-134</code></a>, a v1.xx como ponto
-de partida; <code>D-139</code> &quot;Tabela de conversão das mfs…&quot;, &quot;apoio à venda e às provas, sem que nada dependa dela&quot;.</li>
-<li><a href="produto-v20.html">A v2.0 consolidada</a>: §1 (mf a mf), §3.2 (a base herdada), §8 (o primeiro
-valor só no fim) e §10, parte A (<code>D-109.2</code>). <a href="produto-mfs-hoje.html">Mapa das mfs</a>: o
-mapa (&quot;apoio à venda&quot;) e a tabela de conversão. <a href="produto-versoes.html">Versões</a> e
-<a href="produto-mapa.html">objetivos</a> (O6).</li>
-<li>Arquitetura: <a href="arquitetura-01.html">estratégia</a> (§3, O6; §4; §5, a camada das bases; §6,
-as bases como prova de cada marco); <a href="arquitetura-04.html">software</a> (as bases fora do executável);
-<a href="arquitetura-06.html">dados</a> (§3.5, o que chega à v2.0 e como se semeia);
-<a href="arquitetura-09.html">infraestrutura</a> (§3.7, as bases; a verificação <code>V-05</code>, a
-licença do SQL Server Developer); <a href="arquitetura-12.html">qualidade</a> (o banco de prova e a
-conferência do semeador); <a href="arquitetura-02.html">registro</a>: <a href="arquitetura-02.html#arq-011"><code>ARQ-011</code></a> (a instância nova,
-só com as organizações de exemplo), <a href="arquitetura-02.html#arq-012"><code>ARQ-012</code></a> (os marcos provados nas bases), <a href="arquitetura-02.html#arq-059"><code>ARQ-059</code></a> (uma base só, só para
-demonstração e prova), <a href="arquitetura-02.html#arq-089"><code>ARQ-089</code></a> (o semeador) e <a href="arquitetura-02.html#arq-090"><code>ARQ-090</code></a> (a segurança por pessoa na v2.1);
-<a href="arquitetura-14.html">conferência</a>: §3, o reaproveitamento; §4, <code>A-14</code> (o que os
-boards de exemplo mostram) e <code>A-28</code>.</li>
-</ul>
-<p>📚 <a href="mf-118-inventario.html">Tudo o que o inventário diz desta mf, assunto por assunto</a>.</p>
-</div>
-                            </div>
-                            <nav class="dx-vizinhas" aria-label="Páginas vizinhas"><a class="dx-anterior" href="mf-117.html"><i class="arrow_left" aria-hidden="true"></i>Home da organização</a><a class="dx-proxima" href="mf-106.html">Segurança dos dados por pessoa<i class="arrow_right" aria-hidden="true"></i></a></nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <footer class="simple_footer">
-            <img class="leaf_right" src="assets/kbdoc/img/home_one/leaf_footter.png" alt="">
-            <div class="container-fluid pl-60 pr-60">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <p>Maind Horus · Horus v2 · documento interno · Revisado em 03/11/2026 · versão v2.0 em desenho, sem versão publicada</p>
-                    </div>
-                    <div class="col-lg-6 text-right">
+<p>Um exemplo, com personagens ilustrativos. Numa demonstração, a Júlia, da Maind, entra na organização da rede de lojas e pergunta quanto cada região vendeu ontem, e o gráfico chega na hora. Depois, ela mostra a Home da organização, com a medida de autonomia: a contagem das perguntas de análise que o Horus respondeu.</p>
 
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
-    <a id="back-to-top" title="Voltar ao topo"></a>
-    <script src="assets/kbdoc/js/jquery-3.2.1.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/popper.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap-select.min.js"></script>
-    <script src="assets/kbdoc/js/parallaxie.js"></script>
-    <script src="assets/kbdoc/js/TweenMax.min.js"></script>
-    <script src="assets/kbdoc/js/anchor.js"></script>
-    <script src="assets/kbdoc/assets/wow/wow.min.js"></script>
-    <script src="assets/kbdoc/js/vendor/clipboard.min.js"></script>
-    <script src="assets/kbdoc/assets/prism/prism.js"></script>
-    <script src="assets/kbdoc/assets/niceselectpicker/jquery.nice-select.min.js"></script>
-    <script src="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="assets/kbdoc/assets/magnify-pop/jquery.magnific-popup.min.js"></script>
-    <script src="assets/kbdoc/assets/tooltipster/js/tooltipster.bundle.min.js"></script>
-    <script src="assets/kbdoc/assets/font-size/js/rv-jquery-fontsize-2.0.3.js"></script>
-    <script src="assets/kbdoc/js/onpage-menu.js"></script>
-    <script src="assets/kbdoc/js/main.js"></script>
-    <script src="assets/busca.js"></script>
-    <script src="assets/docx.js"></script>
+<h2 class="doc-h2" id="mf-118-cenarios">Um cenário para cada promessa da versão 2.0</h2>
+<p>Cada funcionalidade da versão 2.0 ganha, nas organizações de exemplo, um cenário que mostra o que ela promete. Os personagens são membros de exemplo, e os números, inventados.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>O que o cenário mostra</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="mf-101.html">Administração da instância (MF-101)</a></td><td>A administração com os assentos, o uso e o custo de cada organização de exemplo, sem ler nenhuma conversa, e um aviso da instância passando na faixa.</td></tr>
+      <tr class="zebra"><td><a href="mf-102.html">Organizações, pessoas e papéis (MF-102)</a></td><td>O owner, uma gestora e a equipe dela, com os convites aprovados; um grupo que abre um board e recebe relatórios e alertas; e um estagiário com uma role restrita, que pergunta sem baixar nada.</td></tr>
+      <tr class="zebra"><td><a href="mf-103.html">Licenças e planos (MF-103)</a></td><td>Membros de exemplo em cada tipo de assento: o ouro cria boards para si, o prata pergunta sem criar nada e o bronze só abre os boards compartilhados. E a visão de cobrança do owner, com quantos assentos de cada tipo a organização tem, usa e tem livres.</td></tr>
+      <tr class="zebra"><td><a href="mf-104.html">Conectar as fontes vivas (MF-104)</a></td><td>As bases como fontes comuns, com o modelo semântico: o número sai do banco na hora, e uma organização de exemplo não enxerga a fonte da outra.</td></tr>
+      <tr class="zebra"><td><a href="mf-105.html">IA sob controle da organização (MF-105)</a></td><td>O owner escolhe, entre os modelos que a organização tem, o padrão e um mais forte para montar a consulta, e a gestora troca o modelo numa pergunta difícil.</td></tr>
+      <tr class="zebra"><td><a href="mf-107.html">Perguntar aos dados em português (MF-107)</a></td><td>A pergunta em português com o gráfico na hora, os botões Gostei, Não gostei e Reportar, e o reporte chegando ao owner.</td></tr>
+      <tr class="zebra"><td><a href="mf-108.html">Respostas visuais (MF-108)</a></td><td>Um indicador, um gráfico e um texto curto na mesma resposta, e o mesmo gráfico igual na tela, na imagem do WhatsApp e no PDF.</td></tr>
+      <tr class="zebra"><td><a href="mf-109.html">A web como fonte (MF-109)</a></td><td>Com a pesquisa na web ligada, o número da empresa ao lado de um índice de fora, como a inflação do mês, com o link e a data.</td></tr>
+      <tr class="zebra"><td><a href="mf-110.html">Pergunta rápida (MF-110)</a></td><td>Num board, o botão flutuante responde por que um número caiu, sem sair da tela, e a conversa limpa sem salvar conta assim mesmo na Home.</td></tr>
+      <tr class="zebra"><td><a href="mf-111.html">Chat pelo WhatsApp (MF-111)</a></td><td>A pergunta pelo WhatsApp com o resumo, o gráfico em imagem e o link para o app, e a resposta fixa que o membro bronze recebe quando escreve.</td></tr>
+      <tr class="zebra"><td><a href="mf-112.html">Boards e Relatórios (MF-112)</a></td><td>O board publicado para a equipe e a mesma montagem em PDF, sem refazer nada.</td></tr>
+      <tr class="zebra"><td><a href="mf-113.html">Conectores de saída (MF-113)</a></td><td>O conector de e-mail ligado uma vez, o PDF da semana chegando ao grupo por e-mail e o alerta chegando ao WhatsApp da gestora.</td></tr>
+      <tr class="zebra"><td><a href="mf-114.html">Módulo de Agendamentos de Agentes (MF-114)</a></td><td>O PDF de um board agendado para um grupo todo dia 1º, e o mesmo envio barrado quando um membro ouro tenta mandá-lo a outra pessoa.</td></tr>
+      <tr class="zebra"><td><a href="mf-115.html">Agentes ativos (MF-115)</a></td><td>O agente que, toda segunda, entrega ao grupo um PDF com gráficos e avisa a gestora no WhatsApp quando as vendas caem mais de 10% (valor do exemplo), com o rótulo do nível de inferência.</td></tr>
+      <tr class="zebra"><td><a href="mf-116.html">Auditoria (MF-116)</a></td><td>O rastro que mostra quem publicou um board, quem o abriu e a quem um agendamento enviou o PDF por e-mail.</td></tr>
+      <tr class="zebra"><td><a href="mf-117.html">Home da organização (MF-117)</a></td><td>A medida de autonomia e a qualidade das perguntas feitas nas organizações de exemplo, com a divisão por canal e por gestor.</td></tr>
+      <tr class="zebra"><td><a href="mf-120.html">Faixa de avisos e números (MF-120, nome provisório)</a></td><td>O aviso da instância, uma caixa de texto livre do owner e cards com números do modelo semântico; a pessoa pausa a faixa e abre um número para ver de onde ele veio e de que período é.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="doc-h2" id="mf-118-bastidores">Nos bastidores, sem complicar</h2>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>Quase tudo já existe.</strong> As bases, os roteiros que as geram, a carga de 10 em 10 minutos e os verificadores vêm do Horus de hoje. São novos os cenários da versão 2.0 e o comando que cria as organizações de exemplo.</li>
+  <li><strong>Uma vitrine para todos os ambientes.</strong> As bases ficam num servidor da Maind e servem, só para leitura, a todos os ambientes do Horus que ela opera. A carga dos dados novos roda uma vez só, para todos.</li>
+  <li><strong>A organização guardada em arquivos.</strong> Tudo o que forma cada organização de exemplo fica descrito em arquivos de texto, guardados junto com o código do Horus. O comando lê esses arquivos e cria a organização do zero. Rodado de novo, não duplica nada nem desfaz o que a Maind ajustou na tela.</li>
+  <li><strong>Sem segredos nos arquivos.</strong> As chaves de IA e do WhatsApp não vão junto: cada ambiente cadastra as suas.</li>
+  <li><strong>O banco de prova da construção.</strong> Cada etapa da construção da versão 2.0 só se dá por pronta quando funciona nessas bases. Os testes automáticos criam as duas organizações num banco vazio e conferem que as fontes abrem e que cada board se recalcula; uma mudança no Horus que quebre isso não entra.</li>
+  <li><strong>Onde o Horus aprende antes do primeiro cliente.</strong> Até a primeira empresa usar a versão 2.0, o aprendizado vem dessas bases e do uso interno da Maind.</li>
+</ul>
+
+<h2 class="doc-h2" id="mf-118-limites">O que as bases de demonstração não fazem</h2>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não fazem</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Servir de fonte a um cliente</strong></td><td>As bases são só para demonstração e prova: só as organizações de exemplo as veem, e elas nunca vão à organização de um cliente.</td></tr>
+      <tr class="zebra"><td><strong>Trazer a DRE de usina</strong></td><td>A vitrine da versão 2.0 fica com a rede de lojas e a frota. A DRE de usina volta se um cliente do ramo de energia pedir, sem versão prevista.</td></tr>
+      <tr class="zebra"><td><strong>Demonstrar a segurança dos dados por pessoa</strong></td><td>Na versão 2.0, toda consulta usa os dados da organização inteira. A demonstração do “cada um vê só o que pode”, com as regras de exemplo, é parte da Segurança dos dados por pessoa (MF-106), na versão 2.1.</td></tr>
+      <tr class="zebra"><td><strong>Trazer um board pessoal de exemplo</strong></td><td>Os boards que já vêm prontos ficam no espaço da organização. Um board de exemplo que um membro ouro tenha criado só para si fica de fora.</td></tr>
+      <tr class="zebra"><td><strong>Trazer o que existe hoje além das duas</strong></td><td>As outras organizações de hoje, as pessoas, as conversas e o histórico de uso não vêm. As pessoas da Maind recebem convite novo.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="mf-118-ligadas">Funcionalidades ligadas a esta</h3>
+<p>Nada no produto depende das bases de demonstração: elas apoiam a venda e as provas. Elas dependem de duas funcionalidades e mostram todas as outras da versão 2.0, na tabela de cenários acima.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="mf-104.html">Conectar as fontes vivas (MF-104)</a></td><td>Depende dela: as bases entram nas organizações de exemplo como fontes comuns, pelos mesmos conectores dos clientes.</td></tr>
+      <tr class="zebra"><td><a href="mf-102.html">Organizações, pessoas e papéis (MF-102)</a></td><td>Depende dela: os membros de exemplo chegam com papel, tipo de assento, gestor e roles.</td></tr>
+      <tr class="zebra"><td><a href="mf-103.html">Licenças e planos (MF-103)</a></td><td>Os membros de exemplo ocupam todos os tipos de assento, inclusive a prata e o bronze, para mostrar o que cada um faz.</td></tr>
+      <tr class="zebra"><td><a href="mf-117.html">Home da organização (MF-117)</a></td><td>É nas organizações de exemplo que a medida de autonomia aparece antes de haver cliente.</td></tr>
+      <tr class="zebra"><td><a href="mf-116.html">Auditoria (MF-116)</a></td><td>Ganha um cenário para mostrar o rastro numa demonstração.</td></tr>
+      <tr class="zebra"><td><a href="mf-110.html">Pergunta rápida (MF-110)</a>, <a href="mf-111.html">Chat pelo WhatsApp (MF-111)</a>, <a href="mf-115.html">Agentes ativos (MF-115)</a> e <a href="mf-120.html">Faixa de avisos e números (MF-120)</a></td><td>Ganham cenários próprios, como as demais funcionalidades da versão 2.0.</td></tr>
+      <tr class="zebra"><td>Segurança dos dados por pessoa (MF-106)</td><td>A demonstração da segurança por pessoa, com as regras de exemplo, é parte dela, na versão 2.1.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Ainda em definição</b><p><strong>O que entra em cada cenário.</strong> Estão decididas as duas organizações, os boards publicados no espaço da organização e um cenário para cada funcionalidade da versão 2.0. Os detalhes, como os boards e os membros de exemplo de cada cenário, ainda serão fechados.</p><p><strong>A conta de WhatsApp de exemplo.</strong> Os cenários do WhatsApp dependem de haver uma conta de WhatsApp só para a demonstração, e se isso é viável ainda está sendo verificado.</p><p><strong>Se duas organizações bastam.</strong> A aposta é que a rede de lojas e a frota cubram as demonstrações da versão 2.0 e que os boards do espaço da organização bastem. O vendedor que visitar um cliente do ramo de energia mostra a rede de lojas ou a frota; um board pessoal de exemplo volta à mesa se o vendedor precisar mostrar o que o membro ouro cria.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-118-faq">Perguntas frequentes</h2>
+<div class="faq">
+  <details open>
+    <summary>Os dados da demonstração são de alguma empresa de verdade?</summary>
+    <div class="faq-body"><p>Não. As organizações de exemplo são de empresas que não existem, e os dados são inventados: roteiros fixos geram números plausíveis, sempre os mesmos, e verificadores conferem se eles fazem sentido. Nada vem de cliente, e as bases nunca viram fonte de um cliente.</p></div>
+  </details>
+  <details>
+    <summary>Se os dados são inventados, o Horus da demonstração é o de verdade?</summary>
+    <div class="faq-body"><p>É. As perguntas rodam num banco de dados real, ligado pelos mesmos conectores que o Horus usa com os clientes e com o modelo semântico; só os dados são inventados. Como parte deles chega a cada 10 minutos, há sempre um “ontem” e um “hoje” para perguntar.</p></div>
+  </details>
+  <details>
+    <summary>Preciso ligar os bancos da minha empresa para ver o Horus funcionando?</summary>
+    <div class="faq-body"><p>Não. A Maind demonstra nas organizações de exemplo, sem pedir dado a ninguém. Você vê o Horus responder, publicar e avisar antes de ligar qualquer banco da sua empresa.</p></div>
+  </details>
+  <details>
+    <summary>A demonstração mostra tudo o que a versão 2.0 faz?</summary>
+    <div class="faq-body"><p>Cada funcionalidade da versão 2.0 ganha um cenário nas organizações de exemplo: a conversa, a Pergunta rápida, os boards, o WhatsApp, os agentes, a auditoria, a faixa e a Home, entre outras. A exceção é a segurança dos dados por pessoa, que chega na versão 2.1 (MF-106). Os cenários do WhatsApp ainda dependem de uma conta de WhatsApp de exemplo.</p></div>
+  </details>
+  <details>
+    <summary>Posso usar as bases de demonstração na organização da minha empresa?</summary>
+    <div class="faq-body"><p>Não. As bases são só para demonstração e prova: só as organizações de exemplo as veem, e elas nunca vão à organização de um cliente. Na sua organização, o Horus responde com os bancos da sua empresa, ligados como fontes.</p></div>
+  </details>
+  <details>
+    <summary>A minha empresa é de outro ramo. Há um exemplo do meu setor?</summary>
+    <div class="faq-body"><p>Na versão 2.0, a vitrine tem duas organizações de exemplo: uma rede de lojas e uma frota. A DRE de usina, que existe no Horus de hoje, saiu da vitrine e volta se um cliente do ramo de energia pedir, sem versão prevista. Até lá, a demonstração usa uma das duas.</p></div>
+  </details>
+</div>
+</div><nav class="rel-grid dx-vizinhas" aria-label="Páginas vizinhas"><a class="rel-card dx-anterior" href="mf-117.html"><span class="cat">Anterior</span><h5>Home da organização</h5><span class="arrow">←</span></a><a class="rel-card dx-proxima" href="mf-120.html"><span class="cat">Próxima</span><h5>Faixa de avisos e números</h5><span class="arrow">→</span></a></nav>
+<footer class="ds-footer"><div class="ftr-brand"><img class="ftr-logo logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="ftr-logo logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /><div class="ftr-divider"></div><div class="ftr-meta"><b>Maind Horus · Horus v2 · versão 2.0 em desenho</b></div></div><div class="ftr-center"><span class="ftr-tag">v2.0 em desenho, sem versão publicada · 06/11/2026</span></div><div class="ftr-author"><div class="avatar">MT</div><div class="ftr-author-info"><b>Maind Tech</b><span>Horus v2</span></div></div></footer>
+</main>
+<aside class="toc"><h6>Neste artigo</h6><ul><li><a href="#mf-118-o-que-e">O que é, em poucas palavras</a></li><li class="lvl-3"><a href="#mf-118-quem-e-quem">Quem usa</a></li><li><a href="#mf-118-vitrine">A vitrine: duas organizações de exemplo</a></li><li class="lvl-3"><a href="#mf-118-boards">Os boards já vêm publicados</a></li><li><a href="#mf-118-demonstracao">Uma demonstração, do preparo à reunião</a></li><li><a href="#mf-118-cenarios">Um cenário para cada promessa da versão 2.0</a></li><li><a href="#mf-118-bastidores">Nos bastidores, sem complicar</a></li><li><a href="#mf-118-limites">O que as bases de demonstração não fazem</a></li><li class="lvl-3"><a href="#mf-118-ligadas">Funcionalidades ligadas a esta</a></li><li><a href="#mf-118-faq">Perguntas frequentes</a></li></ul></aside>
+</div>
+<div class="toast" id="toast">Copiado ✓</div>
+<script src="assets/busca.js"></script>
+<script src="assets/docs.js"></script>
+<script src="assets/docx-kbr.js"></script>
 </body>
 </html>

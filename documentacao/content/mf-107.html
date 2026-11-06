@@ -1,0 +1,222 @@
+<p>Reunião de resultado. Alguém pergunta: “e se tirarmos as lojas do Sul, como fica a margem?”. Muitas vezes, a resposta é “abro um pedido ao time de dados e te retorno”, e o número chega dias depois, com a reunião já encerrada. No Horus, a gestora escreve a pergunta do jeito que fala e recebe o gráfico ali mesmo, com a origem do número à vista. E, se um número lhe parecer errado, ela tem como avisar.</p>
+<p>Esta é a <strong>conversa de análise</strong>, o coração do Horus: a tela em que a pessoa escreve uma pergunta de negócio em português e o Horus responde com os números dos bancos da empresa. Ela já existe no Horus de hoje. A versão 2.0 acrescenta o retorno sobre cada resposta, o reporte de resposta errada e a contagem das perguntas respondidas.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Versão 2.0, em construção</b><p>O que está aqui é o que a versão 2.0 do Horus vai entregar. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
+</div>
+
+<h3 id="mf-107-o-que-e">O que é, em poucas palavras</h3>
+<p>Perguntar aos dados em português é fazer a pergunta de negócio do jeito que se fala, ter o número na hora, com a origem à vista, e avisar quando a resposta parece errada. Esta funcionalidade cuida de cinco coisas:</p>
+<ul>
+  <li><strong>Entender a pergunta.</strong> O Horus lê o <a href="#glossario">modelo semântico</a> de cada fonte, o documento que diz o que a empresa chama de receita ou de margem, para transformar a pergunta numa consulta ao banco.</li>
+  <li><strong>Responder com os números do banco.</strong> O modelo de IA escreve a consulta e o texto; os números são os do resultado que o banco devolveu.</li>
+  <li><strong>Deixar a pessoa ajustar a conversa:</strong> o modo, a pesquisa na web, o nível de inferência, a Análise avançada e o modelo de IA, dentro do que a role dela libera.</li>
+  <li><strong>Receber o retorno de cada resposta:</strong> Gostei, Não gostei ou Reportar, com o reporte indo ao owner da organização.</li>
+  <li><strong>Contar as perguntas respondidas</strong>, para a empresa ver quanto o Horus é usado e como estão as respostas.</li>
+</ul>
+<h4 id="mf-107-quem-pergunta">Quem pergunta, e onde</h4>
+<p>Perguntam o owner da organização, o gestor e os membros ouro e prata. O membro bronze não pergunta: só vê os painéis que outras pessoas criaram e compartilharam (veja <a href="#mf-101-assentos">Os assentos</a>). A mesma conversa aparece em vários lugares do Horus:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Onde</th><th>Como a conversa chega lá</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Conversa de análise</strong></td><td>A tela de perguntar, com tudo o que a conversa oferece.</td></tr>
+      <tr class="zebra"><td><strong>Pergunta rápida (MF-110)</strong></td><td>Um botão nas outras telas abre a mesma conversa numa janela, sem sair de onde se está.</td></tr>
+      <tr class="zebra"><td><strong>Chat pelo WhatsApp (MF-111)</strong></td><td>A mesma conversa do app: o que se pergunta pelo WhatsApp entra no histórico e pode continuar na tela.</td></tr>
+      <tr class="zebra"><td><strong>Boards (MF-112)</strong></td><td>Cada cartão de um painel nasce de uma pergunta de análise e se recalcula pelo mesmo motor da conversa.</td></tr>
+      <tr class="zebra"><td><strong>Agentes (MF-115)</strong></td><td>O agente, o trabalho automático de IA, faz as perguntas dele ao mesmo motor da conversa.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 id="mf-107-uma-pergunta">Uma pergunta, do começo ao fim</h3>
+<p>A Carla é gestora de vendas na área comercial de uma rede de lojas, e o Marcos é o owner da organização. Na reunião, a Carla precisa do número na hora.</p>
+<ol class="steps">
+  <li><div><h4>Ela escolhe as fontes e pergunta</h4><p>Abre a conversa de análise, escolhe o banco de vendas e escreve: “e se tirarmos as lojas do Sul, como fica a margem?”.</p></div></li>
+  <li><div><h4>Ajusta a conversa, se a role deixar</h4><p>Pode escolher o modo, ligar a pesquisa na web e ajustar o nível de inferência, a Análise avançada e o modelo de IA. Cada um desses controles depende da role que o Marcos lhe deu.</p></div></li>
+  <li><div><h4>O Horus monta a consulta e vai ao banco</h4><p>Guiado pelo modelo semântico da fonte, o modelo de IA escreve a consulta. O banco devolve os números, e nada nele é alterado: o Horus só lê.</p></div></li>
+  <li><div><h4>A resposta chega</h4><p>Vem o texto e até dois blocos visuais, como um gráfico ou uma tabela, com a fonte à vista. Os números dos blocos são os do resultado da consulta.</p></div></li>
+  <li><div><h4>Ela avalia</h4><p>Dá Gostei, Não gostei ou Reportar. Semanas depois, um número lhe parece velho, e ela o reporta. O Marcos recebe o reporte, acha a carga de dados atrasada e a corrige.</p></div></li>
+</ol>
+<p>O mesmo caminho em desenho, no modo dados: o que o Horus faz entre a pergunta e a resposta, a pesquisa na web correndo ao lado e o caminho de um reporte até o owner.</p>
+<dx-diagrama ref="mf-107-da-pergunta-a-resposta"></dx-diagrama>
+<h4 id="mf-107-numeros">Os números vêm do banco</h4>
+<p>O modelo de IA escreve a consulta e o texto, mas <strong>os números da resposta são os que o banco devolveu</strong>: o Horus os põe nos gráficos e nas tabelas, e o palpite, quando há, fica no texto e nunca entra num bloco. Se a consulta falha ou volta vazia, o Horus tenta consertá-la uma vez. Sem dado, ele diz que não consegue responder.</p>
+
+<h3 id="mf-107-ajustes">O que a pessoa ajusta na conversa</h3>
+<p>Além de escrever a pergunta, a pessoa pode ajustar a conversa. Fora a escolha das fontes, cada ajuste depende de um botão que o owner liga ou desliga nas roles, e quem tem várias roles soma o que elas liberam (veja <a href="#mf-102-roles">Roles: o que cada pessoa pode usar</a>).</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Ajuste</th><th>O que ele faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Fontes</strong></td><td>Escolhe de quais bancos da organização a resposta sai.</td></tr>
+      <tr class="zebra"><td><strong>Modo</strong></td><td>Dados, que pergunta aos bancos, ou conversa, sem fonte nenhuma.</td></tr>
+      <tr class="zebra"><td><strong>Pesquisar na web</strong></td><td>Traz para a mesma resposta os fatos de fora, com link e data.</td></tr>
+      <tr class="zebra"><td><strong>Nível de inferência</strong></td><td>Diz até onde o texto pode ir além do número.</td></tr>
+      <tr class="zebra"><td><strong>Análise avançada</strong></td><td>Faz uma segunda leitura, com o resultado da consulta na mão.</td></tr>
+      <tr class="zebra"><td><strong>Modelo de IA</strong></td><td>Troca o modelo da conversa, entre os que o owner aceitou (veja <a href="#mf-105-na-conversa">Na conversa</a>).</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="mf-107-modos">Dois modos, e a web ao lado</h4>
+<p>Os modos são dois. No modo <strong>dados</strong>, o Horus pergunta aos bancos escolhidos. No modo <strong>conversa</strong>, ele responde sem fonte nenhuma. A web não é um modo: é o interruptor <strong>“pesquisar na web”</strong>, que a pessoa liga na conversa e que roda ao lado dos dados, ou da conversa. Assim, a pergunta que cruza o número da empresa com um fato de fora, como as vendas de outubro e a inflação do mês, cabe numa resposta só. No modo conversa, com o interruptor ligado, a web responde sozinha à pergunta de fora.</p>
+<p>O interruptor só aparece quando a role da pessoa o libera e quando a conexão de IA da conversa pesquisa na web por conta própria (veja <a href="#mf-105-provedores">Os provedores da versão 2.0</a>). À busca vai só a pergunta, nunca os dados do banco. Se a pesquisa não traz fato nenhum, a resposta sai com os dados da empresa e um aviso curto. O resto da web está em <a href="#mf-109">A web como fonte (MF-109)</a>.</p>
+<h4 id="mf-107-niveis">Os níveis de inferência na conversa</h4>
+<p>Além de mostrar o número, o texto da resposta pode interpretá-lo. O nível de inferência diz até onde, em cinco degraus, e o padrão é o 2:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Nível</th><th>O que o texto da resposta pode dizer</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>1 · Descritivo</strong></td><td>Só o que a consulta devolveu e, com a pesquisa na web ligada, os fatos de fora, com link e data.</td></tr>
+      <tr class="zebra"><td><strong>2 · Explicativo</strong> <span class="badge badge--info">padrão</span></td><td>Explica o número com os mecanismos que o modelo semântico da fonte descreve.</td></tr>
+      <tr class="zebra"><td><strong>3 · Comparativo</strong></td><td>Propõe uma causa que os próprios dados alcançam e a testa na mesma consulta.</td></tr>
+      <tr class="zebra"><td><strong>4 · Hipótese</strong></td><td>Arrisca uma causa do conhecimento geral, num parágrafo marcado como hipótese.</td></tr>
+      <tr class="zebra"><td><strong>5 · Especulativo</strong></td><td>Especula, sempre com o rótulo de especulação.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>O nível que vale numa pergunta é o <strong>menor</strong> entre o que a pessoa pediu, o que as roles dela liberam e o teto das fontes da conversa (veja <a href="#mf-104-teto">O teto de inferência</a>). O Horus calcula esse nível e o grava na resposta. Com a pesquisa na web ligada, o fato de fora entra em qualquer nível, mas a causa vinda de fora dos dados só aparece a partir do nível 4. No nível 2, a Carla vê o índice da inflação ao lado das vendas, mas a resposta não atribui à inflação uma queda nas vendas.</p>
+
+<h3 id="mf-107-resposta">O que aparece na resposta</h3>
+<ul>
+  <li><strong>O texto</strong>, escrito pelo modelo de IA no nível que vale.</li>
+  <li><strong>Até dois blocos visuais</strong>, como um gráfico, uma tabela ou um indicador, com os números do banco. As formas que eles tomam são das <a href="#mf-108">Respostas visuais (MF-108)</a>.</li>
+  <li><strong>A fonte à vista</strong>, para a pessoa saber o que pode mostrar como dado da empresa e o que veio de fora.</li>
+  <li><strong>Os botões de retorno:</strong> Gostei, Não gostei e Reportar.</li>
+  <li><strong>As ferramentas, conforme a role:</strong> sugestões de próxima pergunta, a consulta ao banco (o SQL) à vista e o download em CSV, imagem ou PDF.</li>
+</ul>
+<h4 id="mf-107-analise-avancada">A Análise avançada</h4>
+<p>O texto da resposta começa a ser escrito antes de a consulta rodar. A <strong>Análise avançada</strong> é uma segunda leitura, feita depois, com o resultado na mão: ela lê os números que voltaram, escreve uma leitura deles e corrige o que o primeiro texto disse. Respeita o mesmo nível de inferência, e nada dela vira gráfico. Demora mais que a resposta comum e tem botão próprio na role.</p>
+<h4 id="mf-107-fixar">Guardar a resposta num painel</h4>
+<p>Quem é dono de um board, o painel que criou, pode fixar nele o gráfico ou a tabela de uma resposta, na conversa e na Pergunta rápida. Não é botão de role: o membro prata, que não cria painéis, não vê o controle, e ninguém fixa no painel de outra pessoa.</p>
+
+<h3 id="mf-107-retorno">O retorno sobre cada resposta</h3>
+<p>Cada resposta de análise traz três botões: <strong>Gostei</strong>, <strong>Não gostei</strong> e <strong>Reportar</strong>. Eles valem na conversa, na Pergunta rápida e no WhatsApp. A pessoa pode mudar de ideia, e vale o último sinal. O Não gostei não pede motivo; o Reportar pede.</p>
+<h4 id="mf-107-reportar">Quando a resposta parece errada</h4>
+<ol class="steps">
+  <li><div><h4>A pessoa reporta e escolhe o motivo</h4><p>São três, escritos na língua de quem pergunta, para ninguém precisar saber o que é modelo semântico (veja a tabela abaixo).</p></div></li>
+  <li><div><h4>O Horus guarda uma cópia da resposta</h4><p>A pergunta, o texto, os blocos, a consulta, a fonte, o nível, o modo e o modelo de IA. A cópia não depende da conversa: fica guardada mesmo se a conversa for apagada ou a Pergunta rápida for limpa sem salvar.</p></div></li>
+  <li><div><h4>Quem reportou recebe o “recebido”</h4><p>Na área de avisos do Horus e, se as preferências da pessoa permitirem, por e-mail. É só um aviso de que o reporte chegou: ninguém responde a ele.</p></div></li>
+  <li><div><h4>O owner analisa</h4><p>O owner da organização em que a resposta foi dada recebe o reporte já separado pelo motivo, confirma a causa e corrige. A análise é dele e não se delega a outras pessoas.</p></div></li>
+</ol>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Motivo que a pessoa escolhe</th><th>Para onde ele aponta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>“Os dados parecem errados ou desatualizados”</strong></td><td>Os dados da fonte, como uma carga atrasada. Quem corrige é o owner.</td></tr>
+      <tr class="zebra"><td><strong>“O Horus entendeu ou calculou errado”</strong></td><td>O modelo semântico. Ajustá-lo é trabalho do time de dados (veja <a href="#mf-104-modelo-semantico">O modelo semântico</a>).</td></tr>
+      <tr class="zebra"><td><strong>“Outro motivo”</strong></td><td>O que a pessoa escrever, em texto livre.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>A pessoa descreve o sintoma, e quem confirma a causa é o owner: o motivo escolhido pode não ser o certo.</p>
+
+<h3 id="mf-107-respondidas">As perguntas respondidas</h3>
+<p>Para a empresa saber se o Horus está sendo útil, ele conta as <strong>perguntas de análise respondidas</strong>. Conta só a resposta que trouxe dado da empresa ou fato da web, com resultado, na conversa, na Pergunta rápida (salva ou não) e no WhatsApp. A satisfação não entra nessa conta: a resposta conta mesmo que a pessoa não goste dela, e a qualidade se mede à parte, pelo retorno.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Conta como respondida</th><th>Não conta</th></tr></thead>
+    <tbody>
+      <tr class="zebra">
+        <td><ul>
+          <li>“Vendas por região em outubro”, com o resultado na tela.</li>
+          <li>A pergunta que trouxe um fato da web.</li>
+          <li>A pergunta da Pergunta rápida, mesmo que a conversa seja limpa sem salvar.</li>
+          <li>A pergunta feita pelo WhatsApp.</li>
+        </ul></td>
+        <td><ul>
+          <li>A consulta que volta vazia, como “vendas do Sul em 2019” sem nenhuma venda.</li>
+          <li>A falha, ou a resposta em que o Horus diz que não consegue.</li>
+          <li>A conversa sem dado nem web, como “oi, tudo bem?”.</li>
+          <li>As perguntas que os agentes fazem.</li>
+        </ul></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>O total e a proporção de Gostei, Não gostei e Reportar aparecem na Home da organização (MF-117). A economia que isso representa para o time de dados é calculada fora do produto, com a Maind.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Ponto de atenção</b><p>Uma resposta correta de “não há vendas nesse período” vem de uma consulta vazia e, por isso, não conta como respondida. A conta mede análise com dado de verdade, e não toda resposta que o Horus dá.</p></div>
+</div>
+
+<h3 id="mf-107-conversas">As conversas e quem as lê</h3>
+<p>As conversas ficam no histórico de cada pessoa, inclusive as que vieram do WhatsApp. Por padrão, não têm prazo: ficam até a pessoa apagar a sua, o owner apagar as da organização ou a organização ser excluída. O owner pode ligar um prazo nas preferências da organização.</p>
+<p>O <strong>owner da organização lê as conversas de todas as pessoas</strong> da organização, como já acontece no Horus de hoje, e nada de especial avisa a pessoa disso. A Maind não lê: ela vê só números, como conta a página da <a href="#mf-101-uso-e-custo">Administração da instância</a>.</p>
+
+<h3 id="mf-107-bastidores">Nos bastidores, sem complicar</h3>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>Um motor só, para todos os canais.</strong> A conversa, a Pergunta rápida, o WhatsApp, os cartões dos painéis e os agentes chamam o mesmo motor de análise, e cada canal só traduz a entrada e a saída. Por isso o nível, a web, o retorno e a contagem valem igual em todo lugar.</li>
+  <li><strong>Na tela, a resposta chega ao vivo.</strong> O texto aparece enquanto é escrito. No WhatsApp, o Horus confirma na hora que recebeu a pergunta e responde quando termina.</li>
+  <li><strong>A web corre em paralelo.</strong> Com o interruptor ligado, a pesquisa começa junto com a pergunta e corre enquanto o banco responde.</li>
+  <li><strong>A contagem não leva conteúdo.</strong> Ao fim de cada pergunta, o Horus registra o canal, o modo, o nível e se ela foi respondida, sem a pergunta e sem a resposta.</li>
+  <li><strong>A cópia do reporte tem prazo próprio.</strong> Fica guardada enquanto o reporte está aberto e por um tempo depois da análise, num prazo que o owner ajusta nas preferências da organização.</li>
+  <li><strong>O tempo é medido etapa por etapa.</strong> Serve para achar onde o tempo vai, e não para virar promessa.</li>
+  <li><strong>Quase tudo já existe.</strong> A consulta, os números nos blocos, os níveis e a Análise avançada vêm do Horus de hoje. São novos o retorno, o reporte e a contagem, e o motor se reorganiza para servir a todos os canais.</li>
+</ul>
+
+<h3 id="mf-107-limites">O que esta funcionalidade não faz</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Prometer um tempo de resposta</strong></td><td>“Em segundos” é uma comparação com o pedido ao time de dados, que às vezes leva dias. Não há um número de segundos nem prazo em contrato, e o Horus não acelera o banco do cliente, que ele só lê.</td></tr>
+      <tr class="zebra"><td><strong>Arrumar os dados</strong></td><td>O Horus usa os dados como estão nos bancos ligados, sem limpar nem reconciliar. Quando um dado parece errado, a pessoa pode reportá-lo ao owner.</td></tr>
+      <tr class="zebra"><td><strong>Responder a quem reportou</strong></td><td>O aviso é só de “recebido”. A pessoa não fica sabendo se o problema foi corrigido.</td></tr>
+      <tr class="zebra"><td><strong>Contar toda resposta como respondida</strong></td><td>A falha, a consulta que volta vazia e a conversa sem dado nem web ficam de fora.</td></tr>
+      <tr class="zebra"><td><strong>Investigar o porquê, passo a passo</strong></td><td>É da Investigação guiada (MF-119), na versão 2.1.</td></tr>
+      <tr class="zebra"><td><strong>Limitar os dados por pessoa</strong></td><td>Na versão 2.0, toda pergunta vê os dados da organização inteira. O limite por pessoa é da Segurança dos dados por pessoa (MF-106), na versão 2.1.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="mf-107-ligadas">Funcionalidades ligadas a esta</h4>
+<p>Esta funcionalidade depende de três outras e é a base de muitas. As principais:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="#mf-104">Conectar as fontes vivas (MF-104)</a></td><td>Sem fonte ligada e sem modelo semântico, não há o que perguntar.</td></tr>
+      <tr class="zebra"><td><a href="#mf-105">IA sob controle da organização (MF-105)</a></td><td>O modelo de IA que escreve a consulta e o texto é o que a organização escolheu.</td></tr>
+      <tr class="zebra"><td><a href="#mf-102">Organizações, pessoas e papéis (MF-102)</a></td><td>As roles ligam e desligam os ajustes da conversa, e a área de avisos recebe o reporte e o “recebido”.</td></tr>
+      <tr class="zebra"><td><a href="#mf-108">Respostas visuais (MF-108)</a></td><td>Dá forma à resposta, com gráficos, tabelas e indicadores.</td></tr>
+      <tr class="zebra"><td><a href="#mf-109">A web como fonte (MF-109)</a></td><td>Traz para a mesma resposta os fatos de fora, com link e data.</td></tr>
+      <tr class="zebra"><td><a href="#mf-110">Pergunta rápida (MF-110)</a> e Chat pelo WhatsApp (MF-111)</td><td>Os dois abrem esta mesma conversa, com o mesmo retorno.</td></tr>
+      <tr class="zebra"><td>Boards e Relatórios (MF-112)</td><td>Cada cartão nasce de uma pergunta de análise e se recalcula pelo mesmo motor da conversa.</td></tr>
+      <tr class="zebra"><td>Agentes ativos (MF-115)</td><td>O agente pergunta ao mesmo motor da conversa, com o nível que o autor escolheu.</td></tr>
+      <tr class="zebra"><td>Home da organização (MF-117)</td><td>A contagem das respondidas e a proporção de Gostei, Não gostei e Reportar nascem aqui e aparecem lá.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Na implantação</b><p>Um ponto desta página trata de dados pessoais: o owner da organização ler as conversas de todas as pessoas, sem um aviso especial à pessoa. A regra vale como está. Durante a implantação da organização, vale a empresa consultar o jurídico dela sobre esse ponto.</p></div>
+</div>
+
+<h3 id="mf-107-faq">Perguntas frequentes</h3>
+<div class="faq">
+  <details open>
+    <summary>Preciso saber SQL ou conhecer as tabelas do banco para perguntar?</summary>
+    <div class="faq-body"><p>Não. A pessoa escreve a pergunta em português, do jeito que fala. O Horus a entende pelo modelo semântico de cada fonte, o documento que diz o que a empresa chama de receita ou de margem, e o modelo de IA escreve a consulta. Quem quiser conferir pode ver a consulta montada, se a role liberar esse botão.</p></div>
+  </details>
+  <details>
+    <summary>Quanto tempo leva uma resposta?</summary>
+    <div class="faq-body"><p>“Em segundos” é uma comparação com o pedido ao time de dados, que às vezes leva dias, e não um tempo garantido. O Horus não promete um número de segundos e não acelera o banco da empresa, que ele só lê. A Análise avançada demora mais que a resposta comum.</p></div>
+  </details>
+  <details>
+    <summary>O que faço se um número da resposta parecer errado?</summary>
+    <div class="faq-body"><p>Use o botão Reportar e escolha o motivo: os dados parecem errados ou desatualizados, o Horus entendeu ou calculou errado, ou outro motivo. O owner da organização recebe o reporte com uma cópia da resposta, confirma a causa e corrige; o ajuste do modelo semântico fica com o time de dados. Você recebe o aviso de “recebido”, mas não uma resposta ao reporte.</p></div>
+  </details>
+  <details>
+    <summary>A resposta pode dar opinião ou especular sobre os números?</summary>
+    <div class="faq-body"><p>Só até o nível de inferência que vale na pergunta. O padrão é o 2, que explica o número com o que o modelo semântico da fonte descreve; a hipótese e a especulação ficam nos níveis 4 e 5, sempre marcadas. O nível que vale é o menor entre o que a pessoa pede, o que as roles dela liberam e o teto das fontes.</p></div>
+  </details>
+  <details>
+    <summary>Dá para cruzar os números da empresa com algo de fora, como a inflação?</summary>
+    <div class="faq-body"><p>Dá, com o interruptor “pesquisar na web” ligado, se a sua role o libera e se a conexão de IA da organização pesquisa na web. A resposta traz o número da empresa e o fato de fora, com link e data. À busca vai só a pergunta, nunca os dados do banco.</p></div>
+  </details>
+  <details>
+    <summary>Como a empresa sabe se o Horus está sendo útil?</summary>
+    <div class="faq-body"><p>A Home da organização (MF-117) mostra quantas perguntas de análise o Horus respondeu com dado da empresa ou fato da web e a proporção de Gostei, Não gostei e Reportar. O owner vê o total e a divisão por gestor e por pessoa. A economia para o time de dados é calculada fora do produto, com a Maind.</p></div>
+  </details>
+</div>

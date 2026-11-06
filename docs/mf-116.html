@@ -1,312 +1,229 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-menu="vertical">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="A documentação de produto e de arquitetura do Horus v2: a visão, as decisões, a estratégia e como ele vai ser construído.">
-    <meta name="generator" content="DocX 0.2.1">
-    <link rel="shortcut icon" href="media/horus-claro.svg">
-    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/elagent-icon/style.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/font-awesome/css/all.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/niceselectpicker/nice-select.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/font-size/css/rvfs.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/animation/animate.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/tooltipster/css/tooltipster.bundle.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism-coy.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/magnify-pop/magnific-popup.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/css/style.css">
-    <link rel="stylesheet" href="assets/kbdoc/css/responsive.css">
-    <link rel="stylesheet" href="assets/docx.css">
-    <link rel="stylesheet" href="assets/conteudo.css">
-    <link rel="stylesheet" href="assets/indice.css">
-    <script>try { var l = parseInt(localStorage.getItem('docx-menu-largura'), 10); if (l >= 200 && l <= 640) document.documentElement.style.setProperty('--dx-menu-largura', l + 'px'); } catch (e) { /* Sem armazenamento, vale a largura padrão. */ }</script>
-    <title>MF-116 · Auditoria — Horus v2</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="DocX 0.4.0" />
+<meta name="description" content="As funcionalidades do Horus v2 explicadas uma a uma, em linguagem simples: o que cada uma faz, como funciona na prática e as dúvidas mais comuns." />
+<link rel="icon" href="assets/logo-claro.svg" />
+<title>MF-116 · Auditoria — Horus v2</title>
+<script>
+(function () {
+  try {
+    var raiz = document.documentElement;
+    var tema = localStorage.getItem('kinto-theme');
+    var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    raiz.setAttribute('data-theme', tema || (escuro ? 'dark' : 'light'));
+    raiz.setAttribute('data-menu', localStorage.getItem('kinto-menu') || 'vertical');
+    var ws = parseInt(localStorage.getItem('kinto-side-w'), 10);
+    var wt = parseInt(localStorage.getItem('kinto-toc-w'), 10);
+    if (ws) raiz.style.setProperty('--side-w-user', ws + 'px');
+    if (wt) raiz.style.setProperty('--toc-w-user', wt + 'px');
+  } catch (e) { /* localStorage bloqueado: ficam os atributos do <html> */ }
+})();
+</script>
+<link rel="stylesheet" href="assets/docs.css" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="assets/docx-kbr.css" />
 </head>
-<body class="doc full-width-doc sticky-nav-doc onepage-doc dx-pagina-doc" data-spy="scroll" data-target=".navbar" data-offset="-120">
-    <a class="sr-only sr-only-focusable dx-skip" href="#post">Pular para o conteúdo</a>
-    <div class="body_wrapper sticky_menu">
-        <nav class="navbar navbar-expand-lg menu_one" id="stickyTwo" aria-label="Navegação principal">
-            <div class="container-fluid pl-60 pr-60">
-                <a class="navbar-brand" href="index.html">
-                    <img src="media/horus-claro.svg" alt="Horus v2">
-                    <img src="media/horus-escuro.svg" alt="Horus v2">
-                </a>
-                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Abrir o menu">
-                    <span class="menu_toggle">
-                        <span class="hamburger">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </span>
-                        <span class="hamburger-cross">
-                            <span></span>
-                            <span></span>
-                        </span>
-                    </span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav menu ml-auto">
-
-                    </ul>
-                    <ul class="list-unstyled menu_social">
-                        <li class="search">
-                            <form action="#" class="search_form" role="search" data-search-form>
-                                <label class="sr-only" for="dx-search">Buscar na documentação</label>
-                                <input type="search" class="form-control" id="dx-search" placeholder="Buscar" autocomplete="off" data-search-input aria-describedby="dx-search-status" aria-controls="dx-search-results">
-                                <button type="submit" aria-label="Buscar"><i class="icon_search" aria-hidden="true"></i></button>
-                                <div class="dx-search-results" id="dx-search-results" data-search-results hidden></div>
-                            </form>
-                            <p class="sr-only" id="dx-search-status" role="status" data-search-status></p>
-                        </li>
-                    </ul>
-                    <div class="dx-ferramentas">
-
-
-                        <div id="font-switcher"><div id="rvfs-controllers" class="fontsize-controllers group"></div></div>
-                        <button type="button" class="print" data-print aria-label="Imprimir"><i class="icon_printer" aria-hidden="true"></i></button>
-                        <div class="doc_switch">
-                            <label for="something" class="tab-btn tab-btns"><i class="icon_lightbulb_alt" aria-hidden="true"></i><span class="sr-only">Tema claro</span></label>
-                            <input type="checkbox" name="something" id="something" class="tab_switcher" aria-label="Tema escuro">
-                            <label for="something" class="tab-btn"><i class="far fa-moon" aria-hidden="true"></i><span class="sr-only">Tema escuro</span></label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-        <section class="doc_documentation_area onepage_doc_area" id="sticky_doc">
-            <div class="overlay_bg"></div>
-            <div class="container-fluid pl-60 pr-60">
-                <div class="row doc-container">
-                    <div class="col-lg-2 doc_mobile_menu doc-sidebar display_none">
-                        <aside class="doc_left_sidebarlist" aria-label="Tópicos desta página">
-                            <h3 class="nav_title">Tópicos</h3>
-                            <div class="dx-menu-rolagem">
-                                <ul class="list-unstyled nav-sidebar doc-nav">
-<li class="nav-item active"><a href="#mf-116-identificacao" class="nav-link">Identificação</a></li>
-<li class="nav-item"><a href="#mf-116-o-que-e" class="nav-link">O que é</a></li>
-<li class="nav-item"><a href="#mf-116-caracteristicas" class="nav-link">Características</a></li>
-<li class="nav-item"><a href="#mf-116-o-valor-que-gera" class="nav-link">O valor que gera</a></li>
-<li class="nav-item"><a href="#mf-116-como-se-usa-no-horus" class="nav-link">Como se usa no Horus</a></li>
-<li class="nav-item"><a href="#mf-116-grau-de-complexidade-media" class="nav-link">Grau de complexidade: média</a></li>
-<li class="nav-item"><a href="#mf-116-macro-funcionalidades-relacionadas" class="nav-link">Macro funcionalidades relacionadas</a></li>
-<li class="nav-item"><a href="#mf-116-o-que-ela-nao-faz" class="nav-link">O que ela não faz</a></li>
-<li class="nav-item"><a href="#mf-116-ainda-a-decidir" class="nav-link">Ainda a decidir</a></li>
-<li class="nav-item"><a href="#mf-116-para-saber-mais" class="nav-link">Para saber mais</a></li>
-                                </ul>
-                            </div>
-                        </aside>
-                        <div class="dx-divisor" role="separator" aria-orientation="vertical" aria-label="Ajustar a largura do menu" tabindex="0" title="Arraste para ajustar a largura do menu (duplo clique volta ao padrão)"><span class="dx-divisor__pega"></span></div>
-                    </div>
-                    <div class="col-lg-10 col-md-12">
-                        <div class="documentation_info dx-pagina" id="post">
-                            <header class="dx-cabeca" id="mf-116">
-                                <nav class="dx-trilha" aria-label="Trilha"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Início</a></li><li class="breadcrumb-item">v2.0</li><li class="breadcrumb-item active" aria-current="page">Auditoria</li></ol></nav>
-                                <div class="dx-macro-topo"><span class="dx-macro-codigo">MF-116</span><span class="dx-macro-selo">v2.0</span></div>
-                                <h1>Auditoria</h1>
-                                <p>O rastro de quem entregou o quê e de quem abriu</p>
-                            </header>
-                            <div class="dx-modelo-01">
-<nav aria-labelledby="dx-m01-assuntos-titulo">
-<div class="dx-m01-rotulo"><h2 id="dx-m01-assuntos-titulo">Explore os assuntos</h2><span>10 seções</span></div>
-<div class="dx-m01-assuntos">
-<a class="dx-m01-assunto" href="#mf-116-identificacao"><span class="dx-m01-icone"><i class="fas fa-id-card" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Identificação</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-116-o-que-e"><span class="dx-m01-icone"><i class="fas fa-compass" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que é</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-116-caracteristicas"><span class="dx-m01-icone"><i class="fas fa-star" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Características</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-116-o-valor-que-gera"><span class="dx-m01-icone"><i class="fas fa-chart-line" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O valor que gera</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-116-como-se-usa-no-horus"><span class="dx-m01-icone"><i class="fas fa-walking" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Como se usa no Horus</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-116-grau-de-complexidade-media"><span class="dx-m01-icone"><i class="fas fa-puzzle-piece" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Grau de complexidade: média</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-116-macro-funcionalidades-relacionadas"><span class="dx-m01-icone"><i class="fas fa-link" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Macro funcionalidades relacionadas</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-116-o-que-ela-nao-faz"><span class="dx-m01-icone"><i class="fas fa-ban" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que ela não faz</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-116-ainda-a-decidir"><span class="dx-m01-icone"><i class="fas fa-hourglass-half" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Ainda a decidir</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-116-para-saber-mais"><span class="dx-m01-icone"><i class="fas fa-book" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Para saber mais</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-</div></nav>
+<body>
+<header class="hdr"><div class="hdr-brand"><a class="hdr-logo" href="index.html" aria-label="Horus v2"><img class="logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /></a><div class="div"></div><div class="doc-meta"><b>Horus v2 · Documentação</b><small>Maind Horus</small></div></div><div class="hdr-center"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-topo" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><div class="hdr-actions"><div class="menu-toggle" role="group" aria-label="Menu"><button data-set="vertical" aria-label="Menu vertical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button><button data-set="horizontal" aria-label="Menu horizontal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></button></div><div class="theme-toggle" role="group" aria-label="Tema"><button data-set="light" aria-label="Claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button><button data-set="dark" aria-label="Escuro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header>
+<div class="shell">
+<aside class="side"><nav aria-label="Páginas da documentação"><h6>Horus v2</h6><ul><li><a href="index.html">Início</a></li></ul><h6>Para começar</h6><ul><li><a href="como-ler.html">Como ler esta documentação</a></li></ul><h6>v2.0</h6><ul class="side-sub"><li><a href="mf-101.html">MF-101 · Administração da instância</a></li><li><a href="mf-102.html">MF-102 · Organizações, pessoas e papéis</a></li><li><a href="mf-103.html">MF-103 · Licenças e planos</a></li><li><a href="mf-104.html">MF-104 · Conectar as fontes vivas</a></li><li><a href="mf-105.html">MF-105 · IA sob controle da organização</a></li><li><a href="mf-107.html">MF-107 · Perguntar aos dados em português</a></li><li><a href="mf-108.html">MF-108 · Respostas visuais</a></li><li><a href="mf-109.html">MF-109 · A web como fonte</a></li><li><a href="mf-110.html">MF-110 · Pergunta rápida</a></li><li><a href="mf-111.html">MF-111 · Chat pelo WhatsApp</a></li><li><a href="mf-112.html">MF-112 · Boards e Relatórios</a></li><li><a href="mf-113.html">MF-113 · Conectores de Saída</a></li><li><a href="mf-114.html">MF-114 · Módulo de Agendamentos de Agentes</a></li><li><a href="mf-115.html">MF-115 · Agentes ativos</a></li><li><a href="mf-116.html" class="active">MF-116 · Auditoria</a></li><li><a href="mf-117.html">MF-117 · Home da organização</a></li><li><a href="mf-118.html">MF-118 · Bases de demonstração</a></li><li><a href="mf-120.html">MF-120 · Faixa de avisos e números</a></li></ul></nav></aside>
+<main class="content doc">
+<div class="dx-busca-movel"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-movel" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><nav class="crumbs" aria-label="Trilha"><a href="index.html">Horus v2</a><span class="sep">/</span><span>v2.0</span><span class="sep">/</span><span class="now">Auditoria</span></nav><span class="doc-eyebrow">v2.0</span><div class="dx-macro-topo"><span class="dx-codigo">MF-116</span><span class="dx-selo">v2.0</span></div><h1 class="doc-h1">Auditoria</h1><p class="doc-lead">O rastro de quem entregou e de quem abriu o quê na organização, sem o conteúdo, que só o owner consulta e ninguém altera.</p><section class="dx-assuntos" aria-labelledby="dx-assuntos-titulo"><h2 id="dx-assuntos-titulo">Explore os assuntos</h2><div class="dx-assuntos-grade"><div class="dx-assunto"><h3><a href="#mf-116-o-que-e">O que é, em poucas palavras</a><small>1 tópico</small></h3><ul><li><a href="#mf-116-quem-e-quem">Quem vê o rastro</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-116-na-pratica">Quem recebeu o board de outubro?</a><small>2 tópicos</small></h3><ul><li><a href="#mf-116-o-que-registra">O que entra no rastro, e o que fica de fora</a></li><li><a href="#mf-116-consulta">A tela da auditoria</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-116-prova">Um rastro que serve de prova</a><small>1 tópico</small></h3><ul><li><a href="#mf-116-prazo">Por quanto tempo o rastro fica</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-116-aviso">O aviso de que a abertura é registrada</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-116-quem-sai">Quando alguém é excluído</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-116-bastidores">Nos bastidores, sem complicar</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-116-limites">O que a Auditoria não faz</a><small>1 tópico</small></h3><ul><li><a href="#mf-116-ligadas">Funcionalidades ligadas a esta</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-116-faq">Perguntas frequentes</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div></div></section><div id="dx-topo"><p>Pense no livro de protocolo da recepção de um prédio: ele anota quem levou qual envelope a quem, e quando, sem abrir o envelope. A <strong>Auditoria</strong> é esse livro dentro do Horus. Cada vez que um board (painel) é publicado, que um PDF ou um alerta sai por e-mail ou pelo WhatsApp, ou que alguém abre um board, nasce uma linha no <strong>rastro</strong>: quem fez, o quê, para quem, por onde e quando. A diferença é que aqui ninguém assina nada, e nem o owner rasura uma linha.</p>
+<p>Hoje, o Horus anota que alguém abriu um board, mas só para contar o uso, e ninguém consegue provar quem recebeu um relatório, quando e por onde. Na versão 2.0, os gestores publicam boards para as equipes, e os agendamentos e os agentes enviam PDFs e alertas para fora do app. A Auditoria é o que deixa a empresa liberar esses envios e conferir depois quem entregou o quê a quem.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Versão 2.0, em construção</b><p>O que está aqui é o que a versão 2.0 do Horus vai entregar. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
 </div>
-                            <div class="dx-content">
-<blockquote>
-<p><strong>Em uma frase:</strong> saber, com prova, quem entregou o quê a quem no Horus e quem abriu, sem guardar o conteúdo.</p>
-</blockquote>
-<div class="doc-section dx-assunto"><h3 id="mf-116-identificacao" data-dx-icone="id-card">Identificação</h3><div class="table-responsive" tabindex="0" role="region" aria-label="Identificação de MF-116 · Auditoria"><table class="table table_shortcode"><tbody><tr><th scope="row">Código</th><td>MF-116</td></tr><tr><th scope="row">Entrega</th><td>v2.0</td></tr><tr><th scope="row">Situação</th><td>definida</td></tr><tr><th scope="row">Camada</th><td>📈 Prova e controle</td></tr><tr><th scope="row">Objetivos</th><td>O2</td></tr><tr><th scope="row">Quem usa</th><td>owner da organização, gestor, comprador</td></tr><tr><th scope="row">Complexidade</th><td>média</td></tr><tr><th scope="row">Relacionadas</th><td><a href="mf-112.html">Boards e Relatórios</a> (MF-112), <a href="mf-113.html">Conectores de Saída</a> (MF-113), <a href="mf-114.html">Módulo de Agendamentos de Agentes</a> (MF-114), <a href="mf-115.html">Agentes ativos</a> (MF-115), <a href="mf-102.html">Organizações, pessoas e papéis</a> (MF-102), <a href="mf-106.html">Segurança dos dados por pessoa</a> (MF-106), <a href="mf-117.html">Home da organização</a> (MF-117), <a href="mf-118.html">Bases de demonstração</a> (MF-118)</td></tr><tr><th scope="row">Atualizado</th><td>03/11/2026</td></tr></tbody></table></div>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="compass" id="mf-116-o-que-e">O que é</h3>
-<p><strong>Como é hoje.</strong> O Horus anota que alguém abriu um board (o painel de gráficos), mas só para contar o uso. Ninguém
-consegue provar quem recebeu um relatório, quando e por onde.</p>
-<p><strong>O que passa a existir.</strong> Na v2.0, o <strong>gestor</strong>, quem responde por uma equipe, publica boards, e os agendamentos e
-os agentes, os trabalhadores de IA, enviam PDFs e alertas por e-mail e WhatsApp. A Auditoria é o <strong>rastro</strong> disso:
-cada entrega e cada abertura vira um registro de <strong>quem fez, o quê, para quem, por onde e quando</strong>. Só o <strong>owner da
-organização</strong>, quem administra a organização no Horus (as pessoas, as preferências e os dados), o consulta.</p>
-<p><strong>Como fica o dia a dia.</strong> Ninguém preenche nada: o registro nasce com a entrega, e o owner o consulta quando
-precisa.</p>
-<blockquote>
-<p>💡 <strong>Analogia:</strong> é o livro de protocolo da recepção, que anota quem levou qual envelope a quem, e quando, sem abrir
-o envelope. <strong>Onde a analogia para:</strong> ninguém assina nada, e nem o owner rasura uma linha.</p>
-</blockquote>
-<blockquote>
-<p>📌 <strong>Exemplo (personagens ilustrativos):</strong> o owner Marcos quer saber quem recebeu o board de vendas de outubro. A
-tela mostra que o gestor Pedro o publicou em 03/10 para o grupo &quot;Vendas Sul&quot;, que duas pessoas o abriram em 04/10
-e que um agendamento enviou o PDF dele, por e-mail, a doze pessoas em 05/10.</p>
-</blockquote>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="star" id="mf-116-caracteristicas">Características</h3>
+
+<h2 class="doc-h2" id="mf-116-o-que-e">O que é, em poucas palavras</h2>
+<p>A Auditoria é o rastro de quem entregou e de quem abriu o quê na organização. Ela se resume em seis pontos:</p>
 <ul>
-<li><strong>O que registra:</strong> os boards e relatórios publicados; o que cada agendamento ou agente enviou, por qual conector
-(o canal de saída: e-mail ou WhatsApp) e a quem; e quem abriu cada board e relatório, e quando.</li>
-<li><strong>O que não registra:</strong> o conteúdo. As perguntas de análise, as respostas e os números entregues ficam de fora.</li>
-<li><strong>Quem consulta:</strong> só o owner da organização, que vê o rastro da organização inteira. Nem o gestor nem o <strong>owner
-da instância</strong>, quem cuida da instalação e da marca (no Horus em nuvem, a Maind), o veem.</li>
-<li><strong>Como se consulta:</strong> numa tela da organização, por pessoa, por board ou relatório, por conector e por período.</li>
-<li><strong>Não se altera:</strong> nenhum registro se edita nem se apaga, nem pelo owner; sem isso, o rastro não provaria nada.</li>
-<li><strong>Nada escapa:</strong> o registro é gravado no mesmo instante da entrega. Se ela aconteceu, o registro existe.</li>
-<li><strong>Quanto tempo fica:</strong> o owner define, nas preferências da organização. A proposta é de 365 dias por padrão,
-entre 180 dias e cinco anos; o que passa do prazo some de vez.</li>
-<li><strong>Anota as mudanças de prazo:</strong> quem encurtou um prazo de guarda, e de quanto para quanto.</li>
-<li><strong>Cada organização guarda o seu</strong>, e o registro fica mesmo depois que a pessoa sai.</li>
-<li><strong>As pessoas sabem:</strong> o aviso de que a abertura é registrada vai num documento da organização, em PDF, que o
-owner publica e que fica sempre disponível para baixar.</li>
+  <li><strong>Registra cada entrega e cada abertura.</strong> Os boards e relatórios publicados, o que cada agendamento ou agente enviou, por qual conector e a quem, e quem abriu cada board e relatório.</li>
+  <li><strong>Não guarda o conteúdo.</strong> As perguntas de análise, as respostas e os números entregues ficam de fora.</li>
+  <li><strong>Só o owner da organização consulta</strong>, e ele vê o rastro da organização inteira.</li>
+  <li><strong>Ninguém preenche nada.</strong> O registro nasce com a entrega, no mesmo instante.</li>
+  <li><strong>Não se altera.</strong> Nenhum registro se edita nem se apaga à mão, nem pelo owner.</li>
+  <li><strong>Fica pelo prazo que o owner define</strong>, e cada organização guarda o seu.</li>
 </ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="chart-line" id="mf-116-o-valor-que-gera">O valor que gera</h3>
-<ul>
-<li><strong>Para quem usa:</strong> o owner responde &quot;quem recebeu o quê&quot; sem pedir ajuda; o gestor consegue comprovar o que
-entregou, e a quem.</li>
-<li><strong>Para a empresa que contrata o Horus:</strong> pode deixar os gestores publicarem e os agentes enviarem por canais de
-fora, porque confere depois. O <strong>comprador</strong>, quem aprova e paga a contratação, ganha prova para a conformidade e
-a LGPD, a lei de proteção de dados pessoais.</li>
-<li><strong>Para o Horus como produto:</strong> fica vendável a empresas com exigência de conformidade.</li>
-</ul>
-<p><strong>Como vamos saber que funcionou:</strong> o owner descobre sozinho quem recebeu um board ou um alerta, e os compradores
-corporativos pedem o rastro antes de liberar envios para fora.</p>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="walking" id="mf-116-como-se-usa-no-horus">Como se usa no Horus</h3>
-<p><strong>O owner da organização:</strong></p>
-<ol>
-<li>Publica o documento com o aviso de que a abertura é registrada.</li>
-<li>Define, nas preferências, por quantos dias o rastro fica guardado.</li>
-<li>Quando surge a dúvida, abre a tela da auditoria.</li>
-<li>Filtra por pessoa, board ou relatório, conector e período.</li>
-<li>Lê quem fez, o quê, para quem, por onde e quando.</li>
+<h3 class="doc-h3" id="mf-116-quem-e-quem">Quem vê o rastro</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quem</th><th>O que tem a ver com o rastro</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>Consulta o rastro da organização inteira, define por quanto tempo ele fica guardado e pode trocar o texto do aviso de que a abertura é registrada.</td></tr>
+      <tr class="zebra"><td><strong>Gestor</strong></td><td>Não consulta o rastro, nem o das pessoas que gere; assim, não vê quem da equipe abriu o quê. O que ele publica e envia fica registrado, e é isso que comprova o que ele entregou, e a quem.</td></tr>
+      <tr class="zebra"><td><strong>Membros</strong></td><td>Recebem e abrem os boards e os relatórios como sempre. As aberturas ficam registradas, e o aviso de que isso acontece está a um link de distância.</td></tr>
+      <tr class="zebra"><td><strong>Administrador da instância</strong> (a Maind)</td><td>Não consulta o rastro de nenhuma organização. Vê só números de uso e custo, como conta <a href="mf-101.html#mf-101-uso-e-custo">Uso, custo e relatório</a>.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>O owner da organização e o administrador da instância são papéis diferentes, explicados em <a href="mf-101.html#mf-101-quem-e-quem">Quem opera e quem usa</a>.</p>
+
+<h2 class="doc-h2" id="mf-116-na-pratica">Quem recebeu o board de outubro?</h2>
+<p>Um exemplo, com personagens, datas e números ilustrativos. O Marcos é o owner da área comercial de uma rede de lojas, e a Carla é a gestora de vendas.</p>
+<ol class="steps">
+  <li><div><h4>O owner acerta duas coisas, se quiser</h4><p>Nas preferências da organização, o Marcos escolhe por quanto tempo o rastro fica guardado e troca o texto padrão do aviso de que a abertura é registrada pelo texto da empresa. Os dois passos são opcionais: o prazo e o aviso já nascem prontos.</p></div></li>
+  <li><div><h4>A organização trabalha como sempre</h4><p>Em 03/10, a Carla publica o board de vendas de outubro para o grupo “Vendas Sul”. Em 04/10, duas pessoas o abrem. Em 05/10, um agendamento envia o PDF dele, por e-mail, a doze pessoas. Cada passo grava a sua linha no rastro, sem ninguém preencher nada.</p></div></li>
+  <li><div><h4>Surge a dúvida</h4><p>Em novembro, o Marcos quer saber quem recebeu o board de vendas de outubro.</p></div></li>
+  <li><div><h4>O owner filtra</h4><p>Na tela da auditoria, ele filtra pelo board e pelo mês de outubro. Também daria para filtrar por pessoa ou por conector.</p></div></li>
+  <li><div><h4>A resposta, com prova</h4><p>A tela mostra que a Carla publicou o board em 03/10 para o grupo “Vendas Sul”, que duas pessoas o abriram em 04/10 e que o agendamento enviou o PDF por e-mail a doze pessoas em 05/10, com um registro para cada pessoa que recebeu.</p></div></li>
 </ol>
-<p><strong>O resto da organização</strong> publica, recebe e abre como sempre; o rastro anota sozinho.</p>
-<figure><div class="lightbox_shortcode"><img src="media/mf-116-diagrama-1.svg" width="931" height="269" alt="Diagrama: Como se usa no Horus"><a href="media/mf-116-diagrama-1.svg" class="img_popup" aria-label="Ampliar o diagrama"><i class="icon_plus" aria-hidden="true"></i></a></div><figcaption>Diagrama de “Como se usa no Horus”. Selecione o “+” para ampliar.</figcaption></figure></div><div class="doc-section dx-assunto"><h3 data-dx-icone="puzzle-piece" id="mf-116-grau-de-complexidade-media">Grau de complexidade: média</h3>
-<p>Da v1 vem só um molde: a trilha que hoje registra os eventos de segurança. O registro e a tela do owner são novos,
-sem ninguém de fora do Horus no caminho. Não mexe em permissões, mas as quatro macro funcionalidades (mfs) que
-entregam gravam nele, e por isso ele nasce antes delas.</p>
-<blockquote>
-<p>⚠️ É a leitura do PO a partir dos documentos de arquitetura. A estimativa de esforço é do arquiteto.</p>
-</blockquote>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="link" id="mf-116-macro-funcionalidades-relacionadas">Macro funcionalidades relacionadas</h3>
-<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de Auditoria"><table class="table table_shortcode"><thead><tr>
-<th scope="col">mf</th>
-<th scope="col">Como se relaciona</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Boards e Relatórios (MF-112)</td>
-<td><strong>depende de</strong>: publicar e abrir boards e relatórios é o que mais se registra.</td>
-</tr>
-<tr>
-<td>Módulo de Agendamentos de Agentes (MF-114) e Agentes ativos (MF-115)</td>
-<td><strong>depende de</strong>: o que sai sozinho, e para quem, vem deles.</td>
-</tr>
-<tr>
-<td>Conectores de Saída (MF-113)</td>
-<td><strong>depende de</strong>: dizem por onde cada entrega saiu, o e-mail ou o WhatsApp, com um registro por destinatário.</td>
-</tr>
-<tr>
-<td>Organizações, pessoas e papéis (MF-102)</td>
-<td><strong>depende de</strong>: o owner, o gestor e as preferências da organização vêm daqui.</td>
-</tr>
-<tr>
-<td>Segurança dos dados por pessoa (MF-106)</td>
-<td><strong>complementa</strong>, na v2.1: quando ela chegar, o rastro registra também a liberação de dados do gestor, com o recorte do que ele vê.</td>
-</tr>
-<tr>
-<td>Home da organização (MF-117)</td>
-<td><strong>complementa</strong>: a Home conta quanto o Horus é usado; a auditoria registra quem recebeu o quê.</td>
-</tr>
-<tr>
-<td>Bases de demonstração (MF-118)</td>
-<td><strong>complementa</strong>: as organizações de exemplo ganham cenários para mostrar o rastro numa demonstração.</td>
-</tr>
-</tbody>
-</table></div></div><div class="doc-section dx-assunto"><h3 data-dx-icone="ban" id="mf-116-o-que-ela-nao-faz">O que ela não faz</h3>
-<ul>
-<li><strong>Guardar o conteúdo</strong> das perguntas de análise, das respostas e do que foi entregue.</li>
-<li><strong>Abrir o rastro ao gestor ou ao owner da instância.</strong></li>
-<li><strong>Avisar de um comportamento suspeito</strong> nem <strong>exportar</strong> o rastro para sistemas de fora.</li>
-<li><strong>Bloquear ou desfazer uma entrega:</strong> ela só registra.</li>
-<li><strong>Registrar liberação de dados na v2.0:</strong> sem a segurança por pessoa, que fica para a v2.1, todo board já mostra
-os dados da organização inteira.</li>
-</ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="hourglass-half" id="mf-116-ainda-a-decidir">Ainda a decidir</h3>
-<ul>
-<li><strong>O aviso às pessoas:</strong> onde fica o documento, se há texto padrão e se o primeiro acesso pede ciência.</li>
-<li><strong>O prazo:</strong> o padrão e os limites (proposta: 365 dias, entre 180 e cinco anos) e a tela onde se ajusta.</li>
-<li><strong>A exclusão da conta:</strong> a proposta é manter o rastro de quem a pede até vencer o prazo do owner.</li>
-</ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="book" id="mf-116-para-saber-mais">Para saber mais</h3>
-<ul>
-<li><a href="produto-backlog.html">Backlog estratégico</a>: <a href="produto-backlog.html#d-093"><code>D-093</code></a>, a definição macro (fechou a <code>P-019</code>);
-<a href="produto-backlog.html#d-082"><code>D-082</code></a>, a necessidade; <a href="produto-backlog.html#d-090"><code>D-090</code></a>, o que se registra, com as leituras <code>D-090.1</code> e <code>D-090.2</code>; <a href="produto-backlog.html#d-091"><code>D-091</code></a>, só o owner
-consulta, com a leitura <code>D-091.1</code>; <a href="produto-backlog.html#d-092"><code>D-092</code></a>, o prazo, com as leituras <code>D-092.1</code> e <code>D-092.2</code>; <a href="produto-backlog.html#d-119"><code>D-119</code></a>, a entrada na
-v2.0 (nota 41, acima do corte por decisão do dono); <a href="produto-backlog.html#d-122"><code>D-122</code></a>, os agentes, os agendamentos e os conectores na v2.0;
-<a href="produto-backlog.html#d-054"><code>D-054</code></a> e <a href="produto-backlog.html#d-059"><code>D-059</code></a>, a responsabilidade do gestor; <a href="produto-backlog.html#d-064"><code>D-064</code></a>, o agendamento do PDF ou do agente; <code>P-008</code>, letra (w).</li>
-<li><a href="produto-v20.html">A v2.0 consolidada</a>: §2, §3.1 (candidata nº 17), §4 (passo 10), §5.8 (as
-regras), §7 (as dependências), §8 (o risco da LGPD) e §10, parte B (as leituras da Auditoria).
-<a href="produto-mfs-hoje.html">Mapa das mfs</a>: a tabela de conversão e &quot;O que o dono já
-disse&quot;. <a href="produto-versoes.html">Versões</a>, <a href="produto-mapa.html">objetivos</a>
-(O2) e <a href="produto-lacunas.html">lacunas</a> (candidata 17).</li>
-<li>Arquitetura: <a href="arquitetura-01.html">estratégia</a> (§3, O2; §4; §6, os marcos M1 e M7);
-<a href="arquitetura-04.html">software</a> (o registro do rastro na Plataforma, a consulta em Prova e controle,
-o contrato do registro); <a href="arquitetura-06.html">dados</a> (§3.3, os prazos; §3.4, a saída de uma pessoa);
-<a href="arquitetura-07.html">segurança</a> (§3.5, a liberação do gestor, que vai para a v2.1; §3.6, a LGPD);
-<a href="arquitetura-02.html">registro</a>: <a href="arquitetura-02.html#arq-009"><code>ARQ-009</code></a> (o registro só de acréscimo), <a href="arquitetura-02.html#arq-012"><code>ARQ-012</code></a> (o
-registro antecipado), <a href="arquitetura-02.html#arq-035"><code>ARQ-035</code></a> (os prazos), <a href="arquitetura-02.html#arq-042"><code>ARQ-042</code></a> (a liberação com o recorte, na v2.1), <a href="arquitetura-02.html#arq-043"><code>ARQ-043</code></a> (o
-documento da organização) e <a href="arquitetura-02.html#arq-090"><code>ARQ-090</code></a> (a <a href="mf-106.html"><code>MF-106</code></a> inteira na v2.1);
-<a href="arquitetura-14.html">conferência</a>: §1, letra (w) ✅; §2, a candidata 17 corrigida
-para &quot;existe em parte&quot;; §3, o reaproveitamento; §4, <code>A-05</code>, <code>A-16</code>, <code>A-27</code>, <code>A-28</code> e <code>A-30</code>.</li>
-</ul>
-<p>📚 <a href="mf-116-inventario.html">Tudo o que o inventário diz desta mf, assunto por assunto</a>.</p>
+<p>O mesmo caminho em desenho: de onde vêm as linhas do rastro, o que acontece com elas no tempo e como o owner as consulta.</p>
+<figure class="dx-diagrama"><figcaption><b>Da entrega à consulta do owner</b> <span>De onde vêm as linhas do rastro (a publicação, a entrega e a abertura), como elas ficam guardadas sem alteração até o fim do prazo ou a exclusão de quem as gerou, e a consulta que só o owner faz</span><a href="media/diagramas/mf-116-da-entrega-a-consulta.html" target="_blank" rel="noopener">Abrir em tela cheia ↗</a></figcaption><iframe src="media/diagramas/mf-116-da-entrega-a-consulta.html?embutido=1" title="Da entrega à consulta do owner" loading="lazy"></iframe></figure>
+<h3 class="doc-h3" id="mf-116-o-que-registra">O que entra no rastro, e o que fica de fora</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Entra no rastro</th><th>Fica de fora</th></tr></thead>
+    <tbody>
+      <tr class="zebra">
+        <td><ul>
+          <li>Quem publicou cada board e relatório, para quem e quando (veja <a href="mf-112.html#mf-112-registro">O que fica registrado</a>, nos Boards e Relatórios).</li>
+          <li>O que cada agendamento ou agente enviou, por qual conector (o e-mail ou o WhatsApp) e a quem, com um registro por destinatário (veja <a href="mf-113.html#mf-113-rastro">Cada entrega fica registrada</a>, nos Conectores de saída).</li>
+          <li>Quem abriu cada board e relatório, e quando.</li>
+          <li>Quem encurtou um prazo de guarda da organização, e de quanto para quanto.</li>
+        </ul></td>
+        <td><ul>
+          <li>As perguntas de análise e as respostas.</li>
+          <li>Os números entregues e o conteúdo do PDF ou do alerta.</li>
+          <li>A liberação de dados do gestor num board, que chega com a Segurança dos dados por pessoa (MF-106), na versão 2.1.</li>
+        </ul></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-                            </div>
-                            <nav class="dx-vizinhas" aria-label="Páginas vizinhas"><a class="dx-anterior" href="mf-115.html"><i class="arrow_left" aria-hidden="true"></i>Agentes ativos</a><a class="dx-proxima" href="mf-117.html">Home da organização<i class="arrow_right" aria-hidden="true"></i></a></nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <footer class="simple_footer">
-            <img class="leaf_right" src="assets/kbdoc/img/home_one/leaf_footter.png" alt="">
-            <div class="container-fluid pl-60 pr-60">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <p>Maind Horus · Horus v2 · documento interno · Revisado em 03/11/2026 · versão v2.0 em desenho, sem versão publicada</p>
-                    </div>
-                    <div class="col-lg-6 text-right">
+<h3 class="doc-h3" id="mf-116-consulta">A tela da auditoria</h3>
+<p>O owner consulta o rastro numa tela da organização, com quatro filtros: por <strong>pessoa</strong>, por <strong>board ou relatório</strong>, por <strong>conector</strong> e por <strong>período</strong>. Cada linha responde a cinco perguntas: quem fez, o quê, para quem, por onde e quando. É assim que ele responde “quem recebeu o quê” sem pedir ajuda a ninguém.</p>
 
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
-    <a id="back-to-top" title="Voltar ao topo"></a>
-    <script src="assets/kbdoc/js/jquery-3.2.1.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/popper.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap-select.min.js"></script>
-    <script src="assets/kbdoc/js/parallaxie.js"></script>
-    <script src="assets/kbdoc/js/TweenMax.min.js"></script>
-    <script src="assets/kbdoc/js/anchor.js"></script>
-    <script src="assets/kbdoc/assets/wow/wow.min.js"></script>
-    <script src="assets/kbdoc/js/vendor/clipboard.min.js"></script>
-    <script src="assets/kbdoc/assets/prism/prism.js"></script>
-    <script src="assets/kbdoc/assets/niceselectpicker/jquery.nice-select.min.js"></script>
-    <script src="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="assets/kbdoc/assets/magnify-pop/jquery.magnific-popup.min.js"></script>
-    <script src="assets/kbdoc/assets/tooltipster/js/tooltipster.bundle.min.js"></script>
-    <script src="assets/kbdoc/assets/font-size/js/rv-jquery-fontsize-2.0.3.js"></script>
-    <script src="assets/kbdoc/js/onpage-menu.js"></script>
-    <script src="assets/kbdoc/js/main.js"></script>
-    <script src="assets/busca.js"></script>
-    <script src="assets/docx.js"></script>
+<h2 class="doc-h2" id="mf-116-prova">Um rastro que serve de prova</h2>
+<p>Um registro só vale como prova se nenhuma entrega escapar dele e se ninguém mexer nele depois. Por isso, três regras:</p>
+<ul>
+  <li><strong>Nada escapa.</strong> O registro é gravado no mesmo instante da entrega ou da abertura. Se ela aconteceu, o registro existe.</li>
+  <li><strong>Só se acrescenta.</strong> Nenhum registro se edita nem se apaga à mão, nem pelo owner. Sem isso, o rastro não provaria nada.</li>
+  <li><strong>Só some de dois jeitos.</strong> Quando passa do prazo de guarda, ou junto com quem é excluído da organização.</li>
+</ul>
+<h3 class="doc-h3" id="mf-116-prazo">Por quanto tempo o rastro fica</h3>
+<p>O owner define, nas preferências da organização, por quantos dias o rastro fica guardado: de <strong>180 dias</strong> a <strong>cinco anos</strong>, com padrão de <strong>365 dias</strong>. O prazo vale para o rastro inteiro, e o que passa dele é apagado de vez. Cada organização escolhe o prazo que a sua regra jurídica pede.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Encurtar o prazo apaga</b><p>Se o owner encurtar o prazo, o que já passou do prazo novo é apagado a partir do dia seguinte, sem volta. A mudança fica no próprio rastro, com quem a fez e de quanto para quanto. Um prazo curto demais pode fazer a empresa perder a prova de que precisaria depois.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-116-aviso">O aviso de que a abertura é registrada</h2>
+<p>Registrar quem abriu cada board e relatório é um assunto sensível para as pessoas, e por isso elas são avisadas:</p>
+<ul>
+  <li><strong>Um documento da organização, em PDF.</strong> O aviso fica num documento sempre disponível para baixar no Horus, para todas as pessoas da organização.</li>
+  <li><strong>Um texto padrão, já publicado.</strong> O Horus traz o texto pronto, e assim a abertura nunca é registrada sem um aviso publicado.</li>
+  <li><strong>O owner pode trocá-lo</strong> pelo texto da empresa.</li>
+  <li><strong>Sem tela de “li e aceito”.</strong> A pessoa encontra o aviso por um link, e o primeiro acesso não pede ciência.</li>
+</ul>
+<p>O board não ganha uma linha de aviso, e, como ninguém declara ciência, o Horus não tem como provar que a pessoa leu o aviso. A página dos Boards e Relatórios conta isso do lado de quem abre, em <a href="mf-112.html#mf-112-registro">O que fica registrado</a>.</p>
+
+<h2 class="doc-h2" id="mf-116-quem-sai">Quando alguém é excluído</h2>
+<p>A regra geral está em <a href="mf-102.html#mf-102-mudancas">Quando alguém muda de faixa ou sai</a>: quem sai ou é retirado da organização perde em definitivo o que criou. Na Auditoria, os registros da pessoa saem junto com ela:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>O que era da pessoa</th><th>O que acontece</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>O rastro do que ela entregou e do que ela abriu</strong></td><td>É apagado. A Auditoria deixa de mostrá-lo, e o owner não consegue mais ver o que essa pessoa entregou, nem a quem.</td></tr>
+      <tr class="zebra"><td><strong>Os reportes de resposta errada</strong> que ela fez e o owner ainda não analisou</td><td>São apagados junto (os reportes estão em <a href="mf-107.html#mf-107-reportar">Perguntar aos dados em português</a>).</td></tr>
+      <tr class="zebra"><td><strong>A parte dela na contagem de perguntas respondidas</strong></td><td>Sai a ligação com ela. O total da organização na Home (MF-117) não muda e segue como um número sem dono.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Por exemplo: o gestor Pedro, que respondeu 300 das 1.200 perguntas de outubro (números ilustrativos), é excluído em novembro. A Auditoria deixa de mostrar o que ele entregou e abriu, e a Home continua mostrando 1.200 perguntas em outubro.</p>
+
+<h2 class="doc-h2" id="mf-116-bastidores">Nos bastidores, sem complicar</h2>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>Grava junto com a entrega.</strong> O registro e a entrega acontecem no mesmo passo, no servidor. É isso que garante que nenhuma entrega escape do rastro.</li>
+  <li><strong>No cofre da organização.</strong> O rastro fica no banco de dados de cada organização, junto dos demais dados dela (veja <a href="mf-101.html#mf-101-bastidores">os bastidores da Administração da instância</a>).</li>
+  <li><strong>Separado da telemetria.</strong> Os números técnicos com que a Maind cuida do serviço não levam nome de pessoa nem conteúdo. O rastro é outro registro, dentro da organização.</li>
+  <li><strong>Uma faxina por dia.</strong> O prazo de guarda se cumpre por uma faxina diária, que apaga o que passou do prazo.</li>
+  <li><strong>Nasce antes de quem grava nele.</strong> O registro do rastro está entre as primeiras peças da versão 2.0 a serem construídas, porque os boards e os envios gravam nele desde o primeiro dia.</li>
+  <li><strong>O que já existe e o que é novo.</strong> Do Horus de hoje vem só um molde: a trilha que registra os eventos de segurança. O registro do rastro e a tela do owner são novos.</li>
+</ul>
+
+<h2 class="doc-h2" id="mf-116-limites">O que a Auditoria não faz</h2>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Guardar o conteúdo</strong></td><td>As perguntas de análise, as respostas e o que foi entregue ficam de fora. O rastro guarda quem, o quê, para quem, por onde e quando.</td></tr>
+      <tr class="zebra"><td><strong>Abrir o rastro ao gestor ou à Maind</strong></td><td>Só o owner da organização consulta. O administrador da instância vê só números, na <a href="mf-101.html">Administração da instância</a> (MF-101).</td></tr>
+      <tr class="zebra"><td><strong>Avisar de um comportamento suspeito</strong></td><td>Não há alerta automático: o owner consulta quando precisa.</td></tr>
+      <tr class="zebra"><td><strong>Exportar o rastro</strong></td><td>O rastro não sai para sistemas de fora; a consulta é na tela da organização.</td></tr>
+      <tr class="zebra"><td><strong>Bloquear ou desfazer uma entrega</strong></td><td>A Auditoria só registra. O controle do que sai, e por onde, está nos <a href="mf-113.html#mf-113-controle">Conectores de saída</a>.</td></tr>
+      <tr class="zebra"><td><strong>Guardar o rastro de quem é excluído</strong></td><td>Ele sai junto com a pessoa.</td></tr>
+      <tr class="zebra"><td><strong>Registrar a liberação de dados do gestor</strong></td><td>Na versão 2.0, todo board mostra os dados da organização inteira. Esse registro chega com a Segurança dos dados por pessoa (MF-106), na versão 2.1.</td></tr>
+      <tr class="zebra"><td><strong>Provar que a pessoa leu o aviso</strong></td><td>O primeiro acesso não pede ciência, e por isso não há essa prova.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="mf-116-ligadas">Funcionalidades ligadas a esta</h3>
+<p>A Auditoria não entrega nada: ela registra o que as outras funcionalidades entregam.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="mf-112.html">Boards e Relatórios (MF-112)</a></td><td>Publicar e abrir boards e relatórios é o que mais se registra.</td></tr>
+      <tr class="zebra"><td><a href="mf-114.html">Módulo de Agendamentos de Agentes (MF-114)</a> e <a href="mf-115.html">Agentes ativos (MF-115)</a></td><td>O que sai sozinho, e para quem, vem deles.</td></tr>
+      <tr class="zebra"><td><a href="mf-113.html">Conectores de saída (MF-113)</a></td><td>Dizem por onde cada entrega saiu, o e-mail ou o WhatsApp, com um registro por destinatário.</td></tr>
+      <tr class="zebra"><td><a href="mf-102.html">Organizações, pessoas e papéis (MF-102)</a></td><td>O owner, o gestor e as preferências da organização vêm de lá; o rastro de quem é excluído sai junto com a pessoa.</td></tr>
+      <tr class="zebra"><td><a href="mf-111.html">Chat pelo WhatsApp (MF-111)</a></td><td>O chat pelo WhatsApp conta com o rastro da organização.</td></tr>
+      <tr class="zebra"><td><a href="mf-101.html">Administração da instância (MF-101)</a></td><td>O rastro de quem abriu e entregou o quê é só do owner de cada organização; a história que a administração guarda é a da instância, sem o conteúdo das organizações.</td></tr>
+      <tr class="zebra"><td><a href="mf-117.html">Home da organização (MF-117)</a></td><td>A Home conta quanto o Horus é usado; a Auditoria registra quem recebeu o quê. O total de perguntas respondidas não muda quando alguém é excluído.</td></tr>
+      <tr class="zebra"><td><a href="mf-118.html">Bases de demonstração (MF-118)</a></td><td>As organizações de exemplo ganham cenários para mostrar o rastro numa demonstração.</td></tr>
+      <tr class="zebra"><td>Segurança dos dados por pessoa (MF-106)</td><td>Na versão 2.1, traz ao rastro o registro das liberações de dados do gestor.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Ainda em definição</b><p><strong>O WhatsApp.</strong> Se o que a pessoa vê pelo WhatsApp entra no rastro ainda será definido no desenho técnico. <strong>O aviso.</strong> O texto final do aviso padrão e o lugar exato do link também ainda serão acertados.</p></div>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Na implantação</b><p>Dois pontos desta página tratam de dados pessoais: registrar quem abriu cada board e relatório, num rastro que só o owner da organização consulta, e apagar tudo de quem sai, inclusive o rastro dela. As duas regras valem como estão. Durante a implantação da organização, vale a empresa consultar o jurídico dela sobre ambas. Ainda falta conferir, do lado técnico, como apagar tudo convive com a guarda dos registros de acesso e das cópias de segurança.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-116-faq">Perguntas frequentes</h2>
+<div class="faq">
+  <details open>
+    <summary>A Auditoria guarda o que as pessoas perguntaram e o que receberam?</summary>
+    <div class="faq-body"><p>Não. O rastro registra quem fez, o quê (o board, o relatório ou o PDF e o alerta enviados), para quem, por onde e quando. O conteúdo das perguntas de análise, das respostas e do que foi entregue fica de fora.</p></div>
+  </details>
+  <details>
+    <summary>Quem consegue ver o rastro? O gestor vê o da equipe dele?</summary>
+    <div class="faq-body"><p>Só o owner da organização, que vê o rastro da organização inteira. O gestor não o vê, nem o das pessoas que gere, e por isso não sabe quem da equipe abriu o quê. A Maind também não o vê: ela acompanha só números de uso e custo.</p></div>
+  </details>
+  <details>
+    <summary>As pessoas ficam sabendo que a abertura dos boards é registrada?</summary>
+    <div class="faq-body"><p>O aviso fica num documento da organização, em PDF, sempre disponível para baixar, que a pessoa encontra por um link. O Horus traz um texto padrão, já publicado, e o owner pode trocá-lo pelo da empresa. O primeiro acesso não pede ciência; por isso, o Horus não tem como provar que a pessoa leu o aviso.</p></div>
+  </details>
+  <details>
+    <summary>Dá para confiar no rastro? Alguém consegue alterá-lo?</summary>
+    <div class="faq-body"><p>O registro é gravado no mesmo instante da entrega ou da abertura: se ela aconteceu, o registro existe. Nenhum registro se edita nem se apaga à mão, nem pelo owner, e o rastro só recebe acréscimos. Os registros só somem quando passam do prazo de guarda ou junto com quem é excluído da organização.</p></div>
+  </details>
+  <details>
+    <summary>Por quanto tempo o rastro fica guardado?</summary>
+    <div class="faq-body"><p>Pelo prazo que o owner define nas preferências da organização, de 180 dias a cinco anos, com padrão de 365 dias. O que passa do prazo é apagado de vez. Se o owner encurtar o prazo, o que já passou do prazo novo some a partir do dia seguinte, e a mudança fica registrada, com quem a fez.</p></div>
+  </details>
+  <details>
+    <summary>O que acontece com o rastro de quem sai da empresa?</summary>
+    <div class="faq-body"><p>Sai junto com a pessoa: o que ela entregou e o que ela abriu deixam de aparecer na Auditoria, e os reportes dela que o owner não analisou também são apagados. O total de perguntas respondidas da organização, na Home, não muda. Como se trata de dados pessoais, vale a empresa consultar o jurídico dela durante a implantação.</p></div>
+  </details>
+</div>
+</div><nav class="rel-grid dx-vizinhas" aria-label="Páginas vizinhas"><a class="rel-card dx-anterior" href="mf-115.html"><span class="cat">Anterior</span><h5>Agentes ativos</h5><span class="arrow">←</span></a><a class="rel-card dx-proxima" href="mf-117.html"><span class="cat">Próxima</span><h5>Home da organização</h5><span class="arrow">→</span></a></nav>
+<footer class="ds-footer"><div class="ftr-brand"><img class="ftr-logo logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="ftr-logo logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /><div class="ftr-divider"></div><div class="ftr-meta"><b>Maind Horus · Horus v2 · versão 2.0 em desenho</b></div></div><div class="ftr-center"><span class="ftr-tag">v2.0 em desenho, sem versão publicada · 06/11/2026</span></div><div class="ftr-author"><div class="avatar">MT</div><div class="ftr-author-info"><b>Maind Tech</b><span>Horus v2</span></div></div></footer>
+</main>
+<aside class="toc"><h6>Neste artigo</h6><ul><li><a href="#mf-116-o-que-e">O que é, em poucas palavras</a></li><li class="lvl-3"><a href="#mf-116-quem-e-quem">Quem vê o rastro</a></li><li><a href="#mf-116-na-pratica">Quem recebeu o board de outubro?</a></li><li class="lvl-3"><a href="#mf-116-o-que-registra">O que entra no rastro, e o que fica de fora</a></li><li class="lvl-3"><a href="#mf-116-consulta">A tela da auditoria</a></li><li><a href="#mf-116-prova">Um rastro que serve de prova</a></li><li class="lvl-3"><a href="#mf-116-prazo">Por quanto tempo o rastro fica</a></li><li><a href="#mf-116-aviso">O aviso de que a abertura é registrada</a></li><li><a href="#mf-116-quem-sai">Quando alguém é excluído</a></li><li><a href="#mf-116-bastidores">Nos bastidores, sem complicar</a></li><li><a href="#mf-116-limites">O que a Auditoria não faz</a></li><li class="lvl-3"><a href="#mf-116-ligadas">Funcionalidades ligadas a esta</a></li><li><a href="#mf-116-faq">Perguntas frequentes</a></li></ul></aside>
+</div>
+<div class="toast" id="toast">Copiado ✓</div>
+<script src="assets/busca.js"></script>
+<script src="assets/docs.js"></script>
+<script src="assets/docx-kbr.js"></script>
 </body>
 </html>

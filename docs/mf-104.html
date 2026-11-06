@@ -1,306 +1,233 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-menu="vertical">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="A documentação de produto e de arquitetura do Horus v2: a visão, as decisões, a estratégia e como ele vai ser construído.">
-    <meta name="generator" content="DocX 0.2.1">
-    <link rel="shortcut icon" href="media/horus-claro.svg">
-    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/elagent-icon/style.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/font-awesome/css/all.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/niceselectpicker/nice-select.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/font-size/css/rvfs.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/animation/animate.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/tooltipster/css/tooltipster.bundle.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism-coy.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/magnify-pop/magnific-popup.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/css/style.css">
-    <link rel="stylesheet" href="assets/kbdoc/css/responsive.css">
-    <link rel="stylesheet" href="assets/docx.css">
-    <link rel="stylesheet" href="assets/conteudo.css">
-    <link rel="stylesheet" href="assets/indice.css">
-    <script>try { var l = parseInt(localStorage.getItem('docx-menu-largura'), 10); if (l >= 200 && l <= 640) document.documentElement.style.setProperty('--dx-menu-largura', l + 'px'); } catch (e) { /* Sem armazenamento, vale a largura padrão. */ }</script>
-    <title>MF-104 · Conectar as fontes vivas — Horus v2</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="DocX 0.4.0" />
+<meta name="description" content="As funcionalidades do Horus v2 explicadas uma a uma, em linguagem simples: o que cada uma faz, como funciona na prática e as dúvidas mais comuns." />
+<link rel="icon" href="assets/logo-claro.svg" />
+<title>MF-104 · Conectar as fontes vivas — Horus v2</title>
+<script>
+(function () {
+  try {
+    var raiz = document.documentElement;
+    var tema = localStorage.getItem('kinto-theme');
+    var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    raiz.setAttribute('data-theme', tema || (escuro ? 'dark' : 'light'));
+    raiz.setAttribute('data-menu', localStorage.getItem('kinto-menu') || 'vertical');
+    var ws = parseInt(localStorage.getItem('kinto-side-w'), 10);
+    var wt = parseInt(localStorage.getItem('kinto-toc-w'), 10);
+    if (ws) raiz.style.setProperty('--side-w-user', ws + 'px');
+    if (wt) raiz.style.setProperty('--toc-w-user', wt + 'px');
+  } catch (e) { /* localStorage bloqueado: ficam os atributos do <html> */ }
+})();
+</script>
+<link rel="stylesheet" href="assets/docs.css" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="assets/docx-kbr.css" />
 </head>
-<body class="doc full-width-doc sticky-nav-doc onepage-doc dx-pagina-doc" data-spy="scroll" data-target=".navbar" data-offset="-120">
-    <a class="sr-only sr-only-focusable dx-skip" href="#post">Pular para o conteúdo</a>
-    <div class="body_wrapper sticky_menu">
-        <nav class="navbar navbar-expand-lg menu_one" id="stickyTwo" aria-label="Navegação principal">
-            <div class="container-fluid pl-60 pr-60">
-                <a class="navbar-brand" href="index.html">
-                    <img src="media/horus-claro.svg" alt="Horus v2">
-                    <img src="media/horus-escuro.svg" alt="Horus v2">
-                </a>
-                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Abrir o menu">
-                    <span class="menu_toggle">
-                        <span class="hamburger">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </span>
-                        <span class="hamburger-cross">
-                            <span></span>
-                            <span></span>
-                        </span>
-                    </span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav menu ml-auto">
-
-                    </ul>
-                    <ul class="list-unstyled menu_social">
-                        <li class="search">
-                            <form action="#" class="search_form" role="search" data-search-form>
-                                <label class="sr-only" for="dx-search">Buscar na documentação</label>
-                                <input type="search" class="form-control" id="dx-search" placeholder="Buscar" autocomplete="off" data-search-input aria-describedby="dx-search-status" aria-controls="dx-search-results">
-                                <button type="submit" aria-label="Buscar"><i class="icon_search" aria-hidden="true"></i></button>
-                                <div class="dx-search-results" id="dx-search-results" data-search-results hidden></div>
-                            </form>
-                            <p class="sr-only" id="dx-search-status" role="status" data-search-status></p>
-                        </li>
-                    </ul>
-                    <div class="dx-ferramentas">
-
-
-                        <div id="font-switcher"><div id="rvfs-controllers" class="fontsize-controllers group"></div></div>
-                        <button type="button" class="print" data-print aria-label="Imprimir"><i class="icon_printer" aria-hidden="true"></i></button>
-                        <div class="doc_switch">
-                            <label for="something" class="tab-btn tab-btns"><i class="icon_lightbulb_alt" aria-hidden="true"></i><span class="sr-only">Tema claro</span></label>
-                            <input type="checkbox" name="something" id="something" class="tab_switcher" aria-label="Tema escuro">
-                            <label for="something" class="tab-btn"><i class="far fa-moon" aria-hidden="true"></i><span class="sr-only">Tema escuro</span></label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-        <section class="doc_documentation_area onepage_doc_area" id="sticky_doc">
-            <div class="overlay_bg"></div>
-            <div class="container-fluid pl-60 pr-60">
-                <div class="row doc-container">
-                    <div class="col-lg-2 doc_mobile_menu doc-sidebar display_none">
-                        <aside class="doc_left_sidebarlist" aria-label="Tópicos desta página">
-                            <h3 class="nav_title">Tópicos</h3>
-                            <div class="dx-menu-rolagem">
-                                <ul class="list-unstyled nav-sidebar doc-nav">
-<li class="nav-item active"><a href="#mf-104-identificacao" class="nav-link">Identificação</a></li>
-<li class="nav-item"><a href="#mf-104-o-que-e" class="nav-link">O que é</a></li>
-<li class="nav-item"><a href="#mf-104-caracteristicas" class="nav-link">Características</a></li>
-<li class="nav-item"><a href="#mf-104-o-valor-que-gera" class="nav-link">O valor que gera</a></li>
-<li class="nav-item"><a href="#mf-104-como-se-usa-no-horus" class="nav-link">Como se usa no Horus</a></li>
-<li class="nav-item"><a href="#mf-104-grau-de-complexidade-baixa" class="nav-link">Grau de complexidade: baixa</a></li>
-<li class="nav-item"><a href="#mf-104-macro-funcionalidades-relacionadas" class="nav-link">Macro funcionalidades relacionadas</a></li>
-<li class="nav-item"><a href="#mf-104-o-que-ela-nao-faz" class="nav-link">O que ela não faz</a></li>
-<li class="nav-item"><a href="#mf-104-ainda-a-decidir" class="nav-link">Ainda a decidir</a></li>
-<li class="nav-item"><a href="#mf-104-para-saber-mais" class="nav-link">Para saber mais</a></li>
-                                </ul>
-                            </div>
-                        </aside>
-                        <div class="dx-divisor" role="separator" aria-orientation="vertical" aria-label="Ajustar a largura do menu" tabindex="0" title="Arraste para ajustar a largura do menu (duplo clique volta ao padrão)"><span class="dx-divisor__pega"></span></div>
-                    </div>
-                    <div class="col-lg-10 col-md-12">
-                        <div class="documentation_info dx-pagina" id="post">
-                            <header class="dx-cabeca" id="mf-104">
-                                <nav class="dx-trilha" aria-label="Trilha"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Início</a></li><li class="breadcrumb-item">v2.0</li><li class="breadcrumb-item active" aria-current="page">Conectar as fontes vivas</li></ol></nav>
-                                <div class="dx-macro-topo"><span class="dx-macro-codigo">MF-104</span><span class="dx-macro-selo">v2.0 + v2.1</span></div>
-                                <h1>Conectar as fontes vivas</h1>
-                                <p>Base herdada, sem a fonte alcançar a rede interna</p>
-                            </header>
-                            <div class="dx-modelo-01">
-<nav aria-labelledby="dx-m01-assuntos-titulo">
-<div class="dx-m01-rotulo"><h2 id="dx-m01-assuntos-titulo">Explore os assuntos</h2><span>10 seções</span></div>
-<div class="dx-m01-assuntos">
-<a class="dx-m01-assunto" href="#mf-104-identificacao"><span class="dx-m01-icone"><i class="fas fa-id-card" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Identificação</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-104-o-que-e"><span class="dx-m01-icone"><i class="fas fa-compass" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que é</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-104-caracteristicas"><span class="dx-m01-icone"><i class="fas fa-star" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Características</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-104-o-valor-que-gera"><span class="dx-m01-icone"><i class="fas fa-chart-line" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O valor que gera</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-104-como-se-usa-no-horus"><span class="dx-m01-icone"><i class="fas fa-walking" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Como se usa no Horus</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-104-grau-de-complexidade-baixa"><span class="dx-m01-icone"><i class="fas fa-puzzle-piece" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Grau de complexidade: baixa</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-104-macro-funcionalidades-relacionadas"><span class="dx-m01-icone"><i class="fas fa-link" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Macro funcionalidades relacionadas</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-104-o-que-ela-nao-faz"><span class="dx-m01-icone"><i class="fas fa-ban" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que ela não faz</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-104-ainda-a-decidir"><span class="dx-m01-icone"><i class="fas fa-hourglass-half" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Ainda a decidir</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-104-para-saber-mais"><span class="dx-m01-icone"><i class="fas fa-book" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Para saber mais</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-</div></nav>
+<body>
+<header class="hdr"><div class="hdr-brand"><a class="hdr-logo" href="index.html" aria-label="Horus v2"><img class="logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /></a><div class="div"></div><div class="doc-meta"><b>Horus v2 · Documentação</b><small>Maind Horus</small></div></div><div class="hdr-center"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-topo" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><div class="hdr-actions"><div class="menu-toggle" role="group" aria-label="Menu"><button data-set="vertical" aria-label="Menu vertical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button><button data-set="horizontal" aria-label="Menu horizontal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></button></div><div class="theme-toggle" role="group" aria-label="Tema"><button data-set="light" aria-label="Claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button><button data-set="dark" aria-label="Escuro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header>
+<div class="shell">
+<aside class="side"><nav aria-label="Páginas da documentação"><h6>Horus v2</h6><ul><li><a href="index.html">Início</a></li></ul><h6>Para começar</h6><ul><li><a href="como-ler.html">Como ler esta documentação</a></li></ul><h6>v2.0</h6><ul class="side-sub"><li><a href="mf-101.html">MF-101 · Administração da instância</a></li><li><a href="mf-102.html">MF-102 · Organizações, pessoas e papéis</a></li><li><a href="mf-103.html">MF-103 · Licenças e planos</a></li><li><a href="mf-104.html" class="active">MF-104 · Conectar as fontes vivas</a></li><li><a href="mf-105.html">MF-105 · IA sob controle da organização</a></li><li><a href="mf-107.html">MF-107 · Perguntar aos dados em português</a></li><li><a href="mf-108.html">MF-108 · Respostas visuais</a></li><li><a href="mf-109.html">MF-109 · A web como fonte</a></li><li><a href="mf-110.html">MF-110 · Pergunta rápida</a></li><li><a href="mf-111.html">MF-111 · Chat pelo WhatsApp</a></li><li><a href="mf-112.html">MF-112 · Boards e Relatórios</a></li><li><a href="mf-113.html">MF-113 · Conectores de Saída</a></li><li><a href="mf-114.html">MF-114 · Módulo de Agendamentos de Agentes</a></li><li><a href="mf-115.html">MF-115 · Agentes ativos</a></li><li><a href="mf-116.html">MF-116 · Auditoria</a></li><li><a href="mf-117.html">MF-117 · Home da organização</a></li><li><a href="mf-118.html">MF-118 · Bases de demonstração</a></li><li><a href="mf-120.html">MF-120 · Faixa de avisos e números</a></li></ul></nav></aside>
+<main class="content doc">
+<div class="dx-busca-movel"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-movel" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><nav class="crumbs" aria-label="Trilha"><a href="index.html">Horus v2</a><span class="sep">/</span><span>v2.0</span><span class="sep">/</span><span class="now">Conectar as fontes vivas</span></nav><span class="doc-eyebrow">v2.0</span><div class="dx-macro-topo"><span class="dx-codigo">MF-104</span><span class="dx-selo">v2.0</span></div><h1 class="doc-h1">Conectar as fontes vivas</h1><p class="doc-lead">Ligar o Horus aos bancos de dados da empresa, só para ler, para que cada resposta traga o número de agora.</p><section class="dx-assuntos" aria-labelledby="dx-assuntos-titulo"><h2 id="dx-assuntos-titulo">Explore os assuntos</h2><div class="dx-assuntos-grade"><div class="dx-assunto"><h3><a href="#mf-104-o-que-e">O que é, em poucas palavras</a><small>1 tópico</small></h3><ul><li><a href="#mf-104-quem-e-quem">Quem faz o quê</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-104-uma-fonte">Uma fonte, do cadastro à primeira resposta</a><small>1 tópico</small></h3><ul><li><a href="#mf-104-tecnologias">As tecnologias que o Horus lê</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-104-caminhos">Dois caminhos até o banco</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-104-so-le">Só ler, nunca alterar</a><small>1 tópico</small></h3><ul><li><a href="#mf-104-cofre">A credencial fica no cofre</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-104-modelo-semantico">O modelo semântico: o dicionário de cada fonte</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-104-ajustes">Os dois ajustes de cada fonte</a><small>2 tópicos</small></h3><ul><li><a href="#mf-104-teto">O teto de inferência</a></li><li><a href="#mf-104-idade-minima">A idade mínima do dado</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-104-quem-ve">Quem vê os dados de cada fonte</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-104-bastidores">Nos bastidores, sem complicar</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-104-limites">O que esta funcionalidade não faz</a><small>1 tópico</small></h3><ul><li><a href="#mf-104-ligadas">Funcionalidades ligadas a esta</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-104-faq">Perguntas frequentes</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div></div></section><div id="dx-topo"><p>Pense na pergunta mais comum de uma reunião: quanto vendemos nesta semana? Muitas vezes a resposta vem de uma planilha exportada ontem, por alguém que precisou parar o que fazia para gerá-la. No Horus, a pessoa pergunta, e o número sai do próprio banco de dados da empresa, na hora. Para isso, o banco precisa estar ligado ao Horus, e é disso que esta página trata.</p>
+<p>Cada banco ligado é uma <strong>fonte de dados</strong>: o de vendas, o de estoque, o financeiro. Ela é <strong>viva</strong> porque o Horus consulta o próprio banco no momento da pergunta, e não uma cópia exportada. E a ligação tem mão única: o Horus só lê.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Versão 2.0, em construção</b><p>O que está aqui é o que a versão 2.0 do Horus vai entregar. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
 </div>
-                            <div class="dx-content">
-<blockquote>
-<p><strong>Em uma frase:</strong> ligar o Horus aos bancos de dados da empresa, só para ler, para que cada resposta traga o número
-de agora, e não o de uma planilha de ontem.</p>
-</blockquote>
-<div class="doc-section dx-assunto"><h3 id="mf-104-identificacao" data-dx-icone="id-card">Identificação</h3><div class="table-responsive" tabindex="0" role="region" aria-label="Identificação de MF-104 · Conectar as fontes vivas"><table class="table table_shortcode"><tbody><tr><th scope="row">Código</th><td>MF-104</td></tr><tr><th scope="row">Entrega</th><td>v2.0 + v2.1</td></tr><tr><th scope="row">Situação</th><td>só no mapa</td></tr><tr><th scope="row">Camada</th><td>🔌 Dados e IA</td></tr><tr><th scope="row">Objetivos</th><td>O1, O8</td></tr><tr><th scope="row">Quem usa</th><td>owner da organização, time de dados, gestor, membro full</td></tr><tr><th scope="row">Complexidade</th><td>baixa</td></tr><tr><th scope="row">Relacionadas</th><td><a href="mf-107.html">Perguntar aos dados em português</a> (MF-107), <a href="mf-105.html">IA sob controle da organização</a> (MF-105), <a href="mf-106.html">Segurança dos dados por pessoa</a> (MF-106), <a href="mf-109.html">A web como fonte</a> (MF-109), <a href="mf-112.html">Boards e Relatórios</a> (MF-112)</td></tr><tr><th scope="row">Atualizado</th><td>03/11/2026</td></tr></tbody></table></div>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="compass" id="mf-104-o-que-e">O que é</h3>
-<p>Uma <strong>fonte de dados</strong> é um banco da empresa ligado ao Horus: o de vendas, o de estoque, o financeiro. Ela é <strong>viva</strong>
-porque o Horus consulta o próprio banco na hora da pergunta de análise, e não uma cópia exportada.</p>
-<p>O Horus de hoje já faz isso, e a v2.0 mantém esta macro funcionalidade (mf) quase como está. Cada fonte tem o seu
-<strong>modelo semântico</strong>, o documento que explica ao Horus o que cada tabela e cada palavra querem dizer na empresa
-(&quot;faturamento&quot;, &quot;loja ativa&quot;). O <strong>owner da organização</strong>, que cuida das pessoas e dos dados de um setor ou de um
-cliente, cadastra as fontes; o time de dados escreve o modelo semântico.</p>
-<p>Na v2.0, cada organização guarda as suas fontes num espaço só dela. Na v2.1, com o Horus dentro da casa do
-contratante, a fonte passa a alcançar a rede interna dele, com autorização explícita.</p>
-<blockquote>
-<p>💡 A credencial só de leitura é como o acesso de &quot;só consulta&quot; que o banco dá ao contador: ele vê o extrato, mas
-não faz transferência. Onde a comparação falha: o Horus não confia na palavra de quem cadastra e confere com o
-próprio banco.</p>
-</blockquote>
-<blockquote>
-<p>📌 <strong>Exemplo</strong> (personagens ilustrativos): o Marcos, owner da área comercial de uma rede de lojas, cadastra o banco
-de vendas, que a TI não expõe na internet. Escolhe o túnel, informa a credencial só de leitura e clica em
-&quot;Testar&quot;: a conexão responde. O time de dados escreve o modelo semântico, e a gestora Carla pergunta quanto cada
-loja vendeu na semana: o número sai do banco na hora.</p>
-</blockquote>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="star" id="mf-104-caracteristicas">Características</h3>
+
+<h2 class="doc-h2" id="mf-104-o-que-e">O que é, em poucas palavras</h2>
+<p>Conectar as fontes vivas é ligar o Horus aos bancos de dados da empresa, só para ler. Esta funcionalidade cuida de cinco coisas:</p>
 <ul>
-<li><strong>Cinco tecnologias:</strong> SQL Server, PostgreSQL, Oracle, MongoDB e BigQuery.</li>
-<li><strong>Só lê:</strong> o Horus nunca altera um dado; toda consulta passa por uma porta única que recusa escrita e traz até 500
-linhas em até 30 segundos.</li>
-<li><strong>Dois caminhos até o banco:</strong> o endereço público, que a TI do cliente libera no firewall, ou o túnel SSH, uma
-passagem segura pela máquina de entrada da rede dele.</li>
-<li><strong>Credencial no cofre:</strong> cifrada, nunca volta à tela; o botão &quot;Testar&quot; confere a conexão sem gastar IA.</li>
-<li><strong>Um modelo semântico por fonte:</strong> o Horus o lê a cada pergunta; melhorá-lo é do time de dados.</li>
-<li><strong>Um teto de inferência por fonte:</strong> até onde o Horus pode interpretar além do número; com várias fontes na
-conversa, vale o menor teto.</li>
-<li><strong>Idade mínima do dado:</strong> dentro de um intervalo que a fonte define, a mesma consulta reaproveita o resultado já
-buscado, em vez de perguntar de novo ao banco.</li>
-<li><strong>Longe da rede interna:</strong> a fonte nunca alcança a rede interna da máquina onde o Horus roda; a exceção da v2.1 vale
-só na instalação do contratante.</li>
-<li><strong>Os dados da organização inteira:</strong> na v2.0, quem pergunta vê tudo o que a fonte tem; o papel e as roles (pacotes
-de botões que o owner monta) decidem quem pergunta, e o recorte por pessoa vem com a Segurança dos dados por pessoa
-(MF-106), na v2.1. Um setor que precise de dados à parte ganha a sua própria organização.</li>
+  <li><strong>Ligar os bancos da empresa.</strong> São cinco tecnologias na versão 2.0, por um de dois caminhos que a TI do cliente escolhe.</li>
+  <li><strong>Garantir que o Horus só leia.</strong> A credencial é só de leitura, o Horus confere isso no próprio banco, e toda consulta passa por uma porta que recusa escrita.</li>
+  <li><strong>Guardar a credencial no cofre.</strong> Ela fica cifrada e nunca volta à tela.</li>
+  <li><strong>Dar a cada fonte o seu modelo semântico</strong>, o documento que explica ao Horus o que cada tabela e cada palavra querem dizer na empresa.</li>
+  <li><strong>Ajustar cada fonte:</strong> até onde o Horus pode interpretar além do número e por quanto tempo um resultado recente pode ser reaproveitado.</li>
 </ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="chart-line" id="mf-104-o-valor-que-gera">O valor que gera</h3>
-<ul>
-<li><strong>Para quem usa:</strong> o número sai do banco de verdade, na hora, sem pedir exportação a ninguém.</li>
-<li><strong>Para a empresa que contrata o Horus:</strong> os bancos ficam intocados, e a TI decide por onde o Horus entra.</li>
-<li><strong>Para o Horus como produto:</strong> é a base da conversa, dos boards e dos agentes.</li>
-</ul>
-<p><strong>Como vamos saber que funcionou:</strong> as fontes de cada organização respondem com o número do banco, e nenhuma
-enxerga a de outra.</p>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="walking" id="mf-104-como-se-usa-no-horus">Como se usa no Horus</h3>
-<p><strong>O owner da organização:</strong></p>
-<ol>
-<li>Cadastra a fonte: a tecnologia, o caminho e a credencial só de leitura.</li>
-<li>Clica em &quot;Testar&quot;: o Horus confere que conecta e que a credencial só lê.</li>
-<li>Ajusta o teto de inferência e a idade mínima do dado.</li>
-<li>Passa a fonte ao time de dados, que escreve o modelo semântico.</li>
+<h3 class="doc-h3" id="mf-104-quem-e-quem">Quem faz o quê</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quem</th><th>O que faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>Cadastra as fontes, testa a conexão, ajusta cada fonte e carrega o modelo semântico.</td></tr>
+      <tr class="zebra"><td><strong>Time de dados</strong></td><td>É o time do cliente ou, na implantação, o da Maind. Escreve o modelo semântico fora do Horus e entrega o arquivo ao owner, sem entrar na organização nem ganhar assento para isso.</td></tr>
+      <tr class="zebra"><td><strong>TI do cliente</strong></td><td>Decide por onde o Horus chega ao banco e libera esse caminho.</td></tr>
+      <tr class="zebra"><td><strong>Owner, gestor, membro ouro e membro prata</strong></td><td>Escolhem as fontes na conversa e perguntam.</td></tr>
+      <tr class="zebra"><td><strong>Membro bronze</strong></td><td>Não pergunta: vê os painéis que outras pessoas criaram e compartilharam, com números que saem das mesmas fontes.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Os tipos de assento estão explicados em <a href="mf-101.html#mf-101-assentos">Os assentos: quem pode fazer o quê</a>, na página da Administração da instância.</p>
+
+<h2 class="doc-h2" id="mf-104-uma-fonte">Uma fonte, do cadastro à primeira resposta</h2>
+<p>Digamos que o Marcos, owner da área comercial de uma rede de lojas, vai ligar o banco de vendas, que a TI da empresa não expõe na internet.</p>
+<ol class="steps">
+  <li><div><h4>O owner cadastra a fonte</h4><p>O Marcos escolhe a tecnologia do banco e o caminho (aqui, o túnel SSH, porque o banco não está na internet) e informa uma credencial só de leitura, que vai cifrada para o cofre.</p></div></li>
+  <li><div><h4>Testa a conexão</h4><p>Ele clica em “Testar”. O Horus confere que a conexão responde e que a credencial só lê, sem gastar nada de inteligência artificial.</p></div></li>
+  <li><div><h4>Ajusta a fonte</h4><p>Define o teto de inferência e a idade mínima do dado dessa fonte, explicados mais abaixo.</p></div></li>
+  <li><div><h4>Carrega o modelo semântico</h4><p>O time de dados escreve o modelo fora do Horus e entrega o arquivo. O Marcos o carrega na fonte.</p></div></li>
+  <li><div><h4>As pessoas perguntam</h4><p>A gestora Carla escolhe o banco de vendas na conversa e pergunta quanto cada loja vendeu na semana. O número sai do banco, na hora.</p></div></li>
 </ol>
-<p><strong>Quem pergunta</strong> (o owner, o <strong>gestor</strong> e o <strong>membro full</strong>; o <strong>membro leitor</strong> só vê boards) escolhe as fontes na
-conversa e pergunta.</p>
-<figure><div class="lightbox_shortcode"><img src="media/mf-104-diagrama-1.svg" width="1371" height="102" alt="Diagrama: Como se usa no Horus"><a href="media/mf-104-diagrama-1.svg" class="img_popup" aria-label="Ampliar o diagrama"><i class="icon_plus" aria-hidden="true"></i></a></div><figcaption>Diagrama de “Como se usa no Horus”. Selecione o “+” para ampliar.</figcaption></figure></div><div class="doc-section dx-assunto"><h3 data-dx-icone="puzzle-piece" id="mf-104-grau-de-complexidade-baixa">Grau de complexidade: baixa</h3>
-<p>🟢 Quase tudo vem pronto da v1: os conectores, o túnel, a barreira contra a rede interna, o cofre, o reaproveitamento
-das consultas e o modelo semântico. Na v2.0, só o acesso muda, para respeitar o espaço de cada organização, e nada
-externo é novo. Depende da separação entre organizações, que é da plataforma, e da instalação na casa do contratante,
-na v2.1; o grau sobe se a v2.0 tiver de terminar as duas fontes que hoje saem da tela.</p>
-<blockquote>
-<p>⚠️ É a leitura do PO a partir dos documentos de arquitetura. A estimativa de esforço é do arquiteto.</p>
-</blockquote>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="link" id="mf-104-macro-funcionalidades-relacionadas">Macro funcionalidades relacionadas</h3>
-<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de Conectar as fontes vivas"><table class="table table_shortcode"><thead><tr>
-<th scope="col">mf</th>
-<th scope="col">Como se relaciona</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Perguntar aos dados em português (MF-107)</td>
-<td><strong>é a base de</strong>: a conversa transforma a pergunta numa consulta a estas fontes, guiada pelo modelo semântico</td>
-</tr>
-<tr>
-<td>IA sob controle da organização (MF-105)</td>
-<td><strong>complementa</strong>: a IA escreve a consulta e o texto, e os números saem da fonte; na v2.1, as duas entram juntas na casa do contratante</td>
-</tr>
-<tr>
-<td>Segurança dos dados por pessoa (MF-106)</td>
-<td><strong>complementa</strong>: na v2.1, recorta o que cada pessoa vê de cada fonte; até lá, vale a organização inteira</td>
-</tr>
-<tr>
-<td>A web como fonte (MF-109)</td>
-<td><strong>complementa</strong>: a web é a outra fonte viva, ao lado dos bancos da empresa</td>
-</tr>
-<tr>
-<td>Boards e Relatórios (MF-112)</td>
-<td><strong>é a base de</strong>: os cartões consultam as mesmas fontes e reaproveitam o resultado dentro da idade mínima do dado</td>
-</tr>
-</tbody>
-</table></div></div><div class="doc-section dx-assunto"><h3 data-dx-icone="ban" id="mf-104-o-que-ela-nao-faz">O que ela não faz</h3>
-<ul>
-<li><strong>Escrever nos bancos</strong> ou agir nos sistemas da empresa.</li>
-<li><strong>Montar o modelo semântico sozinha:</strong> é do time de dados.</li>
-<li><strong>Conectar por VPN ou pela rede privada de uma nuvem:</strong> fica fora da v2.0.</li>
-<li><strong>Recortar os dados por pessoa:</strong> é da Segurança dos dados por pessoa, na v2.1.</li>
-</ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="hourglass-half" id="mf-104-ainda-a-decidir">Ainda a decidir</h3>
-<ul>
-<li><strong>O AWS Athena e a fonte de páginas web</strong>, fora da tela no MVP da v1: voltam terminados na v2.0 ou ficam de fora.</li>
-<li><strong>O teto de inferência:</strong> as roles falam num &quot;teto da organização&quot;, e hoje ele é de cada fonte.</li>
-</ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="book" id="mf-104-para-saber-mais">Para saber mais</h3>
-<ul>
-<li><a href="produto-mfs-hoje.html"><code>docs/raw/produto/04-macro-funcionalidades-de-hoje.md</code></a>: o mapa (o que a mf entrega hoje), a tabela de conversão
-(camada 🔌 Dados e IA) e &quot;Previsto e ainda não construído&quot; (o Athena, as redes privadas, o assistente de modelagem).</li>
-<li><a href="produto-backlog.html"><code>docs/raw/produto/backlog-estrategico.md</code></a>: <strong>D-021</strong> (base herdada); <strong>D-001</strong> e <strong>D-022</strong> (o Horus só lê); <strong>D-016</strong>,
-<strong>D-017</strong> e <strong>D-121</strong> (a rede interna do contratante na v2.1); <strong>D-083</strong> (o modelo semântico com o time de dados);
-<strong>D-013</strong> (o owner da organização); <strong>D-138</strong> e <strong>D-139</strong> (o Athena e as páginas web fora da tela no MVP);
-<strong>D-110</strong> (os botões da role); <strong>D-145</strong> (a organização é a fronteira dos dados na v2.0; a segurança por pessoa inteira na v2.1).</li>
-<li><a href="produto-v20.html"><code>docs/raw/produto/05-v2.0-consolidada.md</code></a> (§1, §3.2, §5.4 e §6), <a href="produto-versoes.html"><code>06-versoes.md</code></a>, <a href="produto-mapa.html"><code>07-mapa-de-objetivos-e-funcionalidades.md</code></a>
-(O1 e O8) e <a href="produto-lacunas.html"><code>03-inventario-de-lacunas.md</code></a> (linha 15 e candidata nº 5).</li>
-<li><a href="arquitetura-01.html"><code>docs/raw/arquitetura/01-estrategia-da-solucao.md</code></a>: §1 (&quot;O que continua valendo&quot;), §4 (a linha da MF-104) e §6 (os
-marcos M2 e M10).</li>
-<li><a href="arquitetura-02.html"><code>docs/raw/arquitetura/02-registro-de-decisoes.md</code></a>: <strong>ARQ-052</strong> (as cinco tecnologias e os dois caminhos),
-<strong>ARQ-010</strong> e <strong>ARQ-034</strong> (a fonte de uma organização só), <strong>ARQ-077</strong> (as travas do banco e do driver),
-<strong>ARQ-090</strong> (o que fica na v2.0 sem a segurança por pessoa) e <strong>ARQ-060</strong> (o on-premises da v2.1).</li>
-<li><a href="arquitetura-04.html"><code>docs/raw/arquitetura/04-software.md</code></a> (§3.2 e §3.6: o catálogo de fontes, os conectores, o histórico de execuções e o
-ponto único de execução), <a href="arquitetura-05.html"><code>05-motor-de-analise-e-ia.md</code></a> (§3.4: o modelo semântico e o teto por fonte),
-<a href="arquitetura-06.html"><code>06-dados.md</code></a> (§3.2: o isolamento entre organizações), <a href="arquitetura-07.html"><code>07-seguranca.md</code></a> (§3.7: o cofre e a guarda de rede) e
-<a href="arquitetura-08.html"><code>08-integracoes.md</code></a> (§3.5: as fontes dos clientes e os tetos por consulta).</li>
-<li><a href="arquitetura-14.html"><code>docs/raw/arquitetura/14-conferencia-do-produto.md</code></a>: §3 (o que se reaproveita) e §4: <strong>A-04</strong> (o Athena e as páginas
-web), <strong>A-13</strong> (o teto de inferência) e <strong>A-24</strong> (escolher as fontes não está entre os botões da role).</li>
-<li>O sentido da &quot;idade mínima do dado&quot;, que o mapa só nomeia, vem do código da v1.xx:
-<code>horus@318db52b:apps/server/Horus.Core/Data/Connections/ConnectionCatalog.cs</code> (<code>IdadeMinimaPadraoMinutos</code>).</li>
-</ul>
-<p>📚 <a href="mf-104-inventario.html">Tudo o que o inventário diz desta mf, assunto por assunto</a>.</p>
+<p>O mesmo caminho em desenho, com quem faz cada passo e o que o Horus decide a cada pergunta: ir ao banco ou reaproveitar um resultado recente.</p>
+<figure class="dx-diagrama"><figcaption><b>Da fonte cadastrada à resposta</b> <span>Quem prepara a fonte, do cadastro ao modelo semântico, e o que o Horus faz a cada pergunta: vai ao banco ou reaproveita um resultado recente</span><a href="media/diagramas/mf-104-da-fonte-a-resposta.html" target="_blank" rel="noopener">Abrir em tela cheia ↗</a></figcaption><iframe src="media/diagramas/mf-104-da-fonte-a-resposta.html?embutido=1" title="Da fonte cadastrada à resposta" loading="lazy"></iframe></figure>
+<p>Se um dia a fonte deixar de conectar, quem é avisado é o owner da organização, que é quem pode consertá-la (veja <a href="mf-101.html#mf-101-quando-um-servico-para">Quando um serviço para</a>).</p>
+<h3 class="doc-h3" id="mf-104-tecnologias">As tecnologias que o Horus lê</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Tecnologia</th><th>Quando</th><th>Observação</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>SQL Server, PostgreSQL, Oracle, MongoDB e BigQuery</strong></td><td><span class="badge badge--success">Versão 2.0</span></td><td>Respondem às perguntas de análise.</td></tr>
+      <tr class="zebra"><td><strong>AWS Athena</strong></td><td><span class="badge badge--info">Versão 2.1</span></td><td>Não aparece na versão 2.0. Chega na 2.1, já respondendo às perguntas, numa funcionalidade própria (MF-123).</td></tr>
+      <tr class="zebra"><td><strong>Outras tecnologias</strong></td><td><span class="badge">Sem previsão</span></td><td>Nenhuma outra está prevista. Uma tecnologia nova depende de uma decisão do produto.</td></tr>
+    </tbody>
+  </table>
 </div>
-                            </div>
-                            <nav class="dx-vizinhas" aria-label="Páginas vizinhas"><a class="dx-anterior" href="mf-103.html"><i class="arrow_left" aria-hidden="true"></i>Licenças e planos</a><a class="dx-proxima" href="mf-105.html">IA sob controle da organização<i class="arrow_right" aria-hidden="true"></i></a></nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <footer class="simple_footer">
-            <img class="leaf_right" src="assets/kbdoc/img/home_one/leaf_footter.png" alt="">
-            <div class="container-fluid pl-60 pr-60">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <p>Maind Horus · Horus v2 · documento interno · Revisado em 03/11/2026 · versão v2.0 em desenho, sem versão publicada</p>
-                    </div>
-                    <div class="col-lg-6 text-right">
 
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
-    <a id="back-to-top" title="Voltar ao topo"></a>
-    <script src="assets/kbdoc/js/jquery-3.2.1.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/popper.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap-select.min.js"></script>
-    <script src="assets/kbdoc/js/parallaxie.js"></script>
-    <script src="assets/kbdoc/js/TweenMax.min.js"></script>
-    <script src="assets/kbdoc/js/anchor.js"></script>
-    <script src="assets/kbdoc/assets/wow/wow.min.js"></script>
-    <script src="assets/kbdoc/js/vendor/clipboard.min.js"></script>
-    <script src="assets/kbdoc/assets/prism/prism.js"></script>
-    <script src="assets/kbdoc/assets/niceselectpicker/jquery.nice-select.min.js"></script>
-    <script src="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="assets/kbdoc/assets/magnify-pop/jquery.magnific-popup.min.js"></script>
-    <script src="assets/kbdoc/assets/tooltipster/js/tooltipster.bundle.min.js"></script>
-    <script src="assets/kbdoc/assets/font-size/js/rv-jquery-fontsize-2.0.3.js"></script>
-    <script src="assets/kbdoc/js/onpage-menu.js"></script>
-    <script src="assets/kbdoc/js/main.js"></script>
-    <script src="assets/busca.js"></script>
-    <script src="assets/docx.js"></script>
+<h2 class="doc-h2" id="mf-104-caminhos">Dois caminhos até o banco</h2>
+<p>O Horus roda no serviço da Maind, e o banco fica com o cliente, na casa dele ou na nuvem dele. Entre um e outro há dois caminhos, e quem escolhe é a TI do cliente:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Sobre o caminho</th><th>Endereço público</th><th>Túnel SSH</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Como funciona</strong></td><td>O banco tem um endereço na internet, e a TI libera no firewall o endereço de onde o Horus sai.</td><td>O Horus passa por uma máquina de entrada da rede do cliente, numa passagem segura, até chegar ao banco.</td></tr>
+      <tr class="zebra"><td><strong>Para quem serve</strong></td><td>Para quem já expõe o banco na internet.</td><td>Para quem não expõe o banco na internet.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Uma rede privada, como uma VPN ou a conexão privada de uma nuvem, fica fora da versão 2.0. Para o banco que não pode sair de casa, a versão 2.1 traz o Middleware na casa do contratante (MF-121): uma peça da Maind que o cliente instala na própria infraestrutura e pela qual as fontes alcançam esse banco, com o Horus continuando no serviço da Maind.</p>
+
+<h2 class="doc-h2" id="mf-104-so-le">Só ler, nunca alterar</h2>
+<p>A credencial só de leitura é como o acesso de “só consulta” que o banco dá ao contador: ele vê o extrato, mas não faz transferência. A diferença é que o Horus não confia na palavra de quem cadastra: ele confere, no próprio banco, que a credencial só lê.</p>
+<ul>
+  <li><strong>A conferência no “Testar”.</strong> Ao testar a fonte, o Horus confere que a conexão responde e que a credencial não escreve.</li>
+  <li><strong>Uma porta única até o banco.</strong> Toda consulta passa por ela, que recusa escrita e traz até 500 linhas em até 30 segundos.</li>
+  <li><strong>Os bancos ficam intocados.</strong> O Horus nunca altera um dado nem age nos sistemas da empresa. Mandar um aviso por e-mail ou WhatsApp é informação que sai, e não mexe nos sistemas.</li>
+</ul>
+<h3 class="doc-h3" id="mf-104-cofre">A credencial fica no cofre</h3>
+<p>A credencial de cada fonte é guardada cifrada, num cofre, e nunca volta à tela. O administrador da instância, o funcionário da Maind que opera o Horus, vê todas as organizações em números, mas não os dados das fontes delas (veja <a href="mf-101.html#mf-101-uso-e-custo">Uso, custo e relatório</a>).</p>
+
+<h2 class="doc-h2" id="mf-104-modelo-semantico">O modelo semântico: o dicionário de cada fonte</h2>
+<p>Um banco guarda tabelas e colunas com nomes técnicos. O que é “faturamento” na sua empresa? O que conta como “loja ativa”? O <strong>modelo semântico</strong> é o documento que explica isso ao Horus. Há um para cada fonte, e o Horus o lê a cada pergunta, para transformar a pergunta em português numa consulta certa ao banco.</p>
+<ul>
+  <li><strong>Quem escreve é o time de dados</strong>, do cliente ou da Maind na implantação, fora do Horus. Ele entrega o arquivo, e ninguém de fora entra na organização nem ganha assento para isso.</li>
+  <li><strong>Quem carrega é o owner da organização</strong>, que é o dono do modelo dentro do Horus.</li>
+  <li><strong>Melhorar o modelo é trabalho do time de dados.</strong> A versão 2.0 não tem um assistente que monte ou melhore o modelo sozinho.</li>
+  <li><strong>Quando uma resposta parece errada</strong>, a pessoa pode reportá-la, e o owner analisa se a falha está no modelo semântico ou nos dados.</li>
+</ul>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Ponto de atenção</b><p>Como o time de dados não entra na organização, ele só vê o modelo funcionando depois que o owner o carrega. É um ponto a acompanhar na implantação de uma organização nova.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-104-ajustes">Os dois ajustes de cada fonte</h2>
+<h3 class="doc-h3" id="mf-104-teto">O teto de inferência</h3>
+<p>Além de mostrar o número, o Horus pode interpretá-lo: explicar, comparar, arriscar uma causa. O <strong>nível de inferência</strong> diz até onde ele pode ir, em cinco degraus: do mais contido, que só descreve o que a consulta devolveu, ao mais solto, que especula, sempre com o rótulo de especulação. O <strong>teto</strong> é o nível mais alto que uma fonte aceita, e quem conhece o dado o define na própria fonte.</p>
+<ul>
+  <li><strong>A role só baixa o teto, nunca sobe.</strong> A role é o pacote de permissões que o owner monta, botão a botão; ela pode baixar o teto para quem a tem.</li>
+  <li><strong>Vale sempre o menor</strong>, inclusive quando a conversa usa várias fontes.</li>
+  <li><strong>Não há um teto único da organização.</strong> Para limitar todo mundo de uma vez, o owner baixa o limite nas roles.</li>
+  <li><strong>Os agentes seguem outra regra.</strong> Os trabalhos automáticos de IA (MF-115) usam o nível que o autor do agente escolheu.</li>
+</ul>
+<p>Por exemplo: o banco de vendas aceita até o nível 3, e o financeiro, até o 1. A role “Comercial” baixa o limite para o 2. Quem tem essa role recebe, no máximo, o nível 2 nas vendas e o 1 no financeiro.</p>
+<h3 class="doc-h3" id="mf-104-idade-minima">A idade mínima do dado</h3>
+<p>Cada fonte define um intervalo. Dentro dele, a mesma consulta reaproveita o resultado já buscado, em vez de perguntar de novo ao banco; passado o intervalo, ou numa consulta nova, o Horus vai ao banco. Os painéis seguem a mesma regra: os cartões reaproveitam o resultado dentro da idade mínima do dado da fonte.</p>
+
+<h2 class="doc-h2" id="mf-104-quem-ve">Quem vê os dados de cada fonte</h2>
+<p>Na versão 2.0, a <strong>organização é a fronteira dos dados</strong>. Cada organização guarda as suas fontes num espaço só dela, e nenhuma enxerga as de outra. Dentro da organização, quem pode perguntar vê tudo o que a fonte tem: o tipo de assento e as roles decidem quem pergunta, e não que parte dos dados cada um vê.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Precisa separar os dados de dois setores?</b><p>Na versão 2.0, cada setor ganha a sua própria organização. O recorte por pessoa, em que cada um vê só a sua parte de uma fonte, vem com a Segurança dos dados por pessoa (MF-106), na versão 2.1.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-104-bastidores">Nos bastidores, sem complicar</h2>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>Quase tudo já existe.</strong> Os conectores, o túnel, a barreira de rede, o cofre, o reaproveitamento das consultas e o modelo semântico vêm do Horus de hoje. Na versão 2.0, o que muda é o acesso, para respeitar o espaço de cada organização.</li>
+  <li><strong>Cada organização no seu espaço.</strong> O cadastro das fontes e os resultados guardados para reaproveitar ficam no banco da própria organização, que nenhuma outra alcança (veja <a href="mf-101.html#mf-101-bastidores">os bastidores da Administração da instância</a>).</li>
+  <li><strong>Um caminho só até o banco do cliente.</strong> Só um componente do Horus executa consultas no banco do cliente, e testes automáticos garantem que nenhum outro o faça.</li>
+  <li><strong>A fonte não aponta para dentro.</strong> Uma fonte nunca alcança a rede interna da máquina onde o Horus roda: uma barreira confere o endereço a cada operação, e uma regra da própria máquina fecha o que sobrar.</li>
+  <li><strong>Um endereço de saída estável.</strong> O endereço de onde o Horus sai é mantido o mesmo, porque é ele que a TI do cliente libera no firewall.</li>
+  <li><strong>O teste não gasta IA.</strong> O “Testar” fala só com o banco, sem chamar o modelo de inteligência artificial.</li>
+</ul>
+
+<h2 class="doc-h2" id="mf-104-limites">O que esta funcionalidade não faz</h2>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Escrever nos bancos</strong></td><td>O Horus só lê: nunca altera um dado nem age nos sistemas da empresa.</td></tr>
+      <tr class="zebra"><td><strong>Montar o modelo semântico sozinha</strong></td><td>É do time de dados, que o escreve fora do Horus. Um assistente que ajude a montá-lo não está na versão 2.0.</td></tr>
+      <tr class="zebra"><td><strong>Conectar por VPN ou pela rede privada de uma nuvem</strong></td><td>Fica fora da versão 2.0. Os caminhos são o endereço público e o túnel SSH.</td></tr>
+      <tr class="zebra"><td><strong>Recortar os dados por pessoa</strong></td><td>É da Segurança dos dados por pessoa (MF-106), na versão 2.1. Na versão 2.0, vale a organização inteira.</td></tr>
+      <tr class="zebra"><td><strong>Responder com o AWS Athena</strong></td><td>Chega na versão 2.1, numa funcionalidade própria (MF-123).</td></tr>
+      <tr class="zebra"><td><strong>Alcançar a rede interna da casa do cliente</strong></td><td>Na versão 2.1, o Middleware na casa do contratante (MF-121) leva as fontes ao banco que não pode sair de casa. Alcançar a rede interna diretamente só seria possível com o Horus instalado inteiro na casa do cliente, que não tem versão prevista: só volta se um cliente exigir que nada saia de casa, nem a pergunta.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="mf-104-ligadas">Funcionalidades ligadas a esta</h3>
+<p>Sem fonte, não há resposta: quase tudo o que o Horus mostra começa aqui. As páginas das outras funcionalidades entram conforme forem escritas.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="mf-101.html">Administração da instância (MF-101)</a></td><td>A Maind vê as organizações em números, sem ver os dados das fontes. Quando uma fonte deixa de conectar, quem é avisado é o owner da organização.</td></tr>
+      <tr class="zebra"><td>Perguntar aos dados em português (MF-107)</td><td>A conversa transforma a pergunta numa consulta a estas fontes, guiada pelo modelo semântico.</td></tr>
+      <tr class="zebra"><td>IA sob controle da organização (MF-105)</td><td>A IA escreve a consulta e o texto; os números saem da fonte.</td></tr>
+      <tr class="zebra"><td>Respostas visuais (MF-108)</td><td>Os números de todo gráfico e de toda tabela da resposta vêm das fontes.</td></tr>
+      <tr class="zebra"><td>A web como fonte (MF-109)</td><td>Os bancos dão o número da empresa, e a web, o contexto de fora. A web entra pela pesquisa da IA, e não como fonte cadastrada aqui.</td></tr>
+      <tr class="zebra"><td>Boards e Relatórios (MF-112)</td><td>Os cartões dos painéis consultam as mesmas fontes e reaproveitam o resultado dentro da idade mínima do dado.</td></tr>
+      <tr class="zebra"><td>Agentes ativos (MF-115)</td><td>O agente extrai os dados das fontes desta funcionalidade.</td></tr>
+      <tr class="zebra"><td>Bases de demonstração (MF-118)</td><td>As bases entram nas organizações de exemplo como fontes comuns, pelos mesmos conectores dos clientes.</td></tr>
+      <tr class="zebra"><td>Faixa de avisos e números (MF-120, nome provisório)</td><td>Os números do negócio que a faixa mostra saem das fontes da organização.</td></tr>
+      <tr class="zebra"><td>Segurança dos dados por pessoa (MF-106)</td><td>Na versão 2.1, recorta o que cada pessoa vê de cada fonte.</td></tr>
+      <tr class="zebra"><td>Middleware na casa do contratante (MF-121)</td><td>Na versão 2.1, as fontes alcançam por ele o banco que não pode sair da casa do cliente.</td></tr>
+      <tr class="zebra"><td>Fonte AWS Athena (MF-123)</td><td>Na versão 2.1, o Athena chega terminado, sobre a base desta funcionalidade.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Ainda em definição</b><p><strong>Páginas da web como fonte.</strong> Na versão 2.0, a web entra pela pesquisa da IA (MF-109), quando autorizada, e não como uma fonte cadastrada aqui. Se haverá um tipo de fonte para cadastrar páginas da web escolhidas ainda está em definição.</p><p><strong>O arquivo do modelo semântico.</strong> O formato do arquivo e o jeito de carregá-lo no Horus ainda serão definidos no desenho técnico.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-104-faq">Perguntas frequentes</h2>
+<div class="faq">
+  <details open>
+    <summary>O Horus pode alterar ou apagar algum dado dos nossos bancos?</summary>
+    <div class="faq-body"><p>Não. O Horus só lê. A fonte é cadastrada com uma credencial só de leitura, e o Horus confere, no próprio banco, que ela não escreve. Além disso, toda consulta passa por uma porta única, que recusa escrita.</p></div>
+  </details>
+  <details>
+    <summary>Precisamos expor o nosso banco na internet?</summary>
+    <div class="faq-body"><p>Não necessariamente. Se o banco não está na internet, o Horus chega a ele pelo túnel SSH, uma passagem segura pela máquina de entrada da sua rede. Se está, a sua TI libera no firewall o endereço de onde o Horus sai. VPN e rede privada de nuvem ficam fora da versão 2.0; para o banco que não pode sair de casa, a versão 2.1 traz o Middleware na casa do contratante (MF-121).</p></div>
+  </details>
+  <details>
+    <summary>Quais bancos de dados o Horus consegue ler?</summary>
+    <div class="faq-body"><p>Na versão 2.0, SQL Server, PostgreSQL, Oracle, MongoDB e BigQuery. O AWS Athena chega na versão 2.1, numa funcionalidade própria. Qualquer outra tecnologia depende de uma decisão nova do produto.</p></div>
+  </details>
+  <details>
+    <summary>A Maind vê os dados das nossas fontes?</summary>
+    <div class="faq-body"><p>Não. O administrador da instância, o funcionário da Maind que opera o Horus, vê as organizações em números, sem ver os dados das fontes. A credencial fica cifrada num cofre e nunca volta à tela. Mesmo quando o time de dados da Maind escreve o modelo semântico na implantação, ele trabalha fora do Horus e entrega o arquivo ao owner, sem entrar na organização.</p></div>
+  </details>
+  <details>
+    <summary>O número da resposta é sempre o de agora?</summary>
+    <div class="faq-body"><p>Ele sai do próprio banco, e não de uma cópia exportada. A exceção é a idade mínima do dado: dentro do intervalo que a fonte define, a mesma consulta reaproveita o resultado já buscado, em vez de ir de novo ao banco. Quem ajusta esse intervalo é o owner, na configuração da fonte.</p></div>
+  </details>
+  <details>
+    <summary>Todas as pessoas da organização veem todos os dados das fontes?</summary>
+    <div class="faq-body"><p>Na versão 2.0, sim: quem pode perguntar vê tudo o que a fonte tem, e o tipo de assento e as roles decidem quem pergunta. Para separar os dados de dois setores, cada um ganha a sua própria organização. O recorte por pessoa chega na versão 2.1, com a Segurança dos dados por pessoa (MF-106).</p></div>
+  </details>
+</div>
+</div><nav class="rel-grid dx-vizinhas" aria-label="Páginas vizinhas"><a class="rel-card dx-anterior" href="mf-103.html"><span class="cat">Anterior</span><h5>Licenças e planos</h5><span class="arrow">←</span></a><a class="rel-card dx-proxima" href="mf-105.html"><span class="cat">Próxima</span><h5>IA sob controle da organização</h5><span class="arrow">→</span></a></nav>
+<footer class="ds-footer"><div class="ftr-brand"><img class="ftr-logo logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="ftr-logo logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /><div class="ftr-divider"></div><div class="ftr-meta"><b>Maind Horus · Horus v2 · versão 2.0 em desenho</b></div></div><div class="ftr-center"><span class="ftr-tag">v2.0 em desenho, sem versão publicada · 06/11/2026</span></div><div class="ftr-author"><div class="avatar">MT</div><div class="ftr-author-info"><b>Maind Tech</b><span>Horus v2</span></div></div></footer>
+</main>
+<aside class="toc"><h6>Neste artigo</h6><ul><li><a href="#mf-104-o-que-e">O que é, em poucas palavras</a></li><li class="lvl-3"><a href="#mf-104-quem-e-quem">Quem faz o quê</a></li><li><a href="#mf-104-uma-fonte">Uma fonte, do cadastro à primeira resposta</a></li><li class="lvl-3"><a href="#mf-104-tecnologias">As tecnologias que o Horus lê</a></li><li><a href="#mf-104-caminhos">Dois caminhos até o banco</a></li><li><a href="#mf-104-so-le">Só ler, nunca alterar</a></li><li class="lvl-3"><a href="#mf-104-cofre">A credencial fica no cofre</a></li><li><a href="#mf-104-modelo-semantico">O modelo semântico: o dicionário de cada fonte</a></li><li><a href="#mf-104-ajustes">Os dois ajustes de cada fonte</a></li><li class="lvl-3"><a href="#mf-104-teto">O teto de inferência</a></li><li class="lvl-3"><a href="#mf-104-idade-minima">A idade mínima do dado</a></li><li><a href="#mf-104-quem-ve">Quem vê os dados de cada fonte</a></li><li><a href="#mf-104-bastidores">Nos bastidores, sem complicar</a></li><li><a href="#mf-104-limites">O que esta funcionalidade não faz</a></li><li class="lvl-3"><a href="#mf-104-ligadas">Funcionalidades ligadas a esta</a></li><li><a href="#mf-104-faq">Perguntas frequentes</a></li></ul></aside>
+</div>
+<div class="toast" id="toast">Copiado ✓</div>
+<script src="assets/busca.js"></script>
+<script src="assets/docs.js"></script>
+<script src="assets/docx-kbr.js"></script>
 </body>
 </html>

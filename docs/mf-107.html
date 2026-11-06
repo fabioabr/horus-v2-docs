@@ -1,343 +1,266 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-menu="vertical">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="A documentação de produto e de arquitetura do Horus v2: a visão, as decisões, a estratégia e como ele vai ser construído.">
-    <meta name="generator" content="DocX 0.2.1">
-    <link rel="shortcut icon" href="media/horus-claro.svg">
-    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/elagent-icon/style.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/font-awesome/css/all.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/niceselectpicker/nice-select.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/font-size/css/rvfs.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/animation/animate.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/tooltipster/css/tooltipster.bundle.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism-coy.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/magnify-pop/magnific-popup.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/css/style.css">
-    <link rel="stylesheet" href="assets/kbdoc/css/responsive.css">
-    <link rel="stylesheet" href="assets/docx.css">
-    <link rel="stylesheet" href="assets/conteudo.css">
-    <link rel="stylesheet" href="assets/indice.css">
-    <script>try { var l = parseInt(localStorage.getItem('docx-menu-largura'), 10); if (l >= 200 && l <= 640) document.documentElement.style.setProperty('--dx-menu-largura', l + 'px'); } catch (e) { /* Sem armazenamento, vale a largura padrão. */ }</script>
-    <title>MF-107 · Perguntar aos dados em português — Horus v2</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="DocX 0.4.0" />
+<meta name="description" content="As funcionalidades do Horus v2 explicadas uma a uma, em linguagem simples: o que cada uma faz, como funciona na prática e as dúvidas mais comuns." />
+<link rel="icon" href="assets/logo-claro.svg" />
+<title>MF-107 · Perguntar aos dados em português — Horus v2</title>
+<script>
+(function () {
+  try {
+    var raiz = document.documentElement;
+    var tema = localStorage.getItem('kinto-theme');
+    var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    raiz.setAttribute('data-theme', tema || (escuro ? 'dark' : 'light'));
+    raiz.setAttribute('data-menu', localStorage.getItem('kinto-menu') || 'vertical');
+    var ws = parseInt(localStorage.getItem('kinto-side-w'), 10);
+    var wt = parseInt(localStorage.getItem('kinto-toc-w'), 10);
+    if (ws) raiz.style.setProperty('--side-w-user', ws + 'px');
+    if (wt) raiz.style.setProperty('--toc-w-user', wt + 'px');
+  } catch (e) { /* localStorage bloqueado: ficam os atributos do <html> */ }
+})();
+</script>
+<link rel="stylesheet" href="assets/docs.css" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="assets/docx-kbr.css" />
 </head>
-<body class="doc full-width-doc sticky-nav-doc onepage-doc dx-pagina-doc" data-spy="scroll" data-target=".navbar" data-offset="-120">
-    <a class="sr-only sr-only-focusable dx-skip" href="#post">Pular para o conteúdo</a>
-    <div class="body_wrapper sticky_menu">
-        <nav class="navbar navbar-expand-lg menu_one" id="stickyTwo" aria-label="Navegação principal">
-            <div class="container-fluid pl-60 pr-60">
-                <a class="navbar-brand" href="index.html">
-                    <img src="media/horus-claro.svg" alt="Horus v2">
-                    <img src="media/horus-escuro.svg" alt="Horus v2">
-                </a>
-                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Abrir o menu">
-                    <span class="menu_toggle">
-                        <span class="hamburger">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </span>
-                        <span class="hamburger-cross">
-                            <span></span>
-                            <span></span>
-                        </span>
-                    </span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav menu ml-auto">
-
-                    </ul>
-                    <ul class="list-unstyled menu_social">
-                        <li class="search">
-                            <form action="#" class="search_form" role="search" data-search-form>
-                                <label class="sr-only" for="dx-search">Buscar na documentação</label>
-                                <input type="search" class="form-control" id="dx-search" placeholder="Buscar" autocomplete="off" data-search-input aria-describedby="dx-search-status" aria-controls="dx-search-results">
-                                <button type="submit" aria-label="Buscar"><i class="icon_search" aria-hidden="true"></i></button>
-                                <div class="dx-search-results" id="dx-search-results" data-search-results hidden></div>
-                            </form>
-                            <p class="sr-only" id="dx-search-status" role="status" data-search-status></p>
-                        </li>
-                    </ul>
-                    <div class="dx-ferramentas">
-
-
-                        <div id="font-switcher"><div id="rvfs-controllers" class="fontsize-controllers group"></div></div>
-                        <button type="button" class="print" data-print aria-label="Imprimir"><i class="icon_printer" aria-hidden="true"></i></button>
-                        <div class="doc_switch">
-                            <label for="something" class="tab-btn tab-btns"><i class="icon_lightbulb_alt" aria-hidden="true"></i><span class="sr-only">Tema claro</span></label>
-                            <input type="checkbox" name="something" id="something" class="tab_switcher" aria-label="Tema escuro">
-                            <label for="something" class="tab-btn"><i class="far fa-moon" aria-hidden="true"></i><span class="sr-only">Tema escuro</span></label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-        <section class="doc_documentation_area onepage_doc_area" id="sticky_doc">
-            <div class="overlay_bg"></div>
-            <div class="container-fluid pl-60 pr-60">
-                <div class="row doc-container">
-                    <div class="col-lg-2 doc_mobile_menu doc-sidebar display_none">
-                        <aside class="doc_left_sidebarlist" aria-label="Tópicos desta página">
-                            <h3 class="nav_title">Tópicos</h3>
-                            <div class="dx-menu-rolagem">
-                                <ul class="list-unstyled nav-sidebar doc-nav">
-<li class="nav-item active"><a href="#mf-107-identificacao" class="nav-link">Identificação</a></li>
-<li class="nav-item"><a href="#mf-107-o-que-e" class="nav-link">O que é</a></li>
-<li class="nav-item"><a href="#mf-107-caracteristicas" class="nav-link">Características</a></li>
-<li class="nav-item"><a href="#mf-107-o-valor-que-gera" class="nav-link">O valor que gera</a></li>
-<li class="nav-item"><a href="#mf-107-como-se-usa-no-horus" class="nav-link">Como se usa no Horus</a></li>
-<li class="nav-item"><a href="#mf-107-grau-de-complexidade-media" class="nav-link">Grau de complexidade: média</a></li>
-<li class="nav-item"><a href="#mf-107-macro-funcionalidades-relacionadas" class="nav-link">Macro funcionalidades relacionadas</a></li>
-<li class="nav-item"><a href="#mf-107-o-que-ela-nao-faz" class="nav-link">O que ela não faz</a></li>
-<li class="nav-item"><a href="#mf-107-ainda-a-decidir" class="nav-link">Ainda a decidir</a></li>
-<li class="nav-item"><a href="#mf-107-para-saber-mais" class="nav-link">Para saber mais</a></li>
-                                </ul>
-                            </div>
-                        </aside>
-                        <div class="dx-divisor" role="separator" aria-orientation="vertical" aria-label="Ajustar a largura do menu" tabindex="0" title="Arraste para ajustar a largura do menu (duplo clique volta ao padrão)"><span class="dx-divisor__pega"></span></div>
-                    </div>
-                    <div class="col-lg-10 col-md-12">
-                        <div class="documentation_info dx-pagina" id="post">
-                            <header class="dx-cabeca" id="mf-107">
-                                <nav class="dx-trilha" aria-label="Trilha"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Início</a></li><li class="breadcrumb-item">v2.0</li><li class="breadcrumb-item active" aria-current="page">Perguntar aos dados em português</li></ol></nav>
-                                <div class="dx-macro-topo"><span class="dx-macro-codigo">MF-107</span><span class="dx-macro-selo">v2.0</span></div>
-                                <h1>Perguntar aos dados em português</h1>
-                                <p>Base herdada; a resposta em segundos na reunião; o retorno do usuário (👍🏻, 👎🏻 e 🚫)</p>
-                            </header>
-                            <div class="dx-modelo-01">
-<nav aria-labelledby="dx-m01-assuntos-titulo">
-<div class="dx-m01-rotulo"><h2 id="dx-m01-assuntos-titulo">Explore os assuntos</h2><span>10 seções</span></div>
-<div class="dx-m01-assuntos">
-<a class="dx-m01-assunto" href="#mf-107-identificacao"><span class="dx-m01-icone"><i class="fas fa-id-card" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Identificação</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-107-o-que-e"><span class="dx-m01-icone"><i class="fas fa-compass" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que é</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-107-caracteristicas"><span class="dx-m01-icone"><i class="fas fa-star" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Características</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-107-o-valor-que-gera"><span class="dx-m01-icone"><i class="fas fa-chart-line" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O valor que gera</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-107-como-se-usa-no-horus"><span class="dx-m01-icone"><i class="fas fa-walking" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Como se usa no Horus</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-107-grau-de-complexidade-media"><span class="dx-m01-icone"><i class="fas fa-puzzle-piece" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Grau de complexidade: média</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-107-macro-funcionalidades-relacionadas"><span class="dx-m01-icone"><i class="fas fa-link" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Macro funcionalidades relacionadas</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-107-o-que-ela-nao-faz"><span class="dx-m01-icone"><i class="fas fa-ban" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que ela não faz</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-107-ainda-a-decidir"><span class="dx-m01-icone"><i class="fas fa-hourglass-half" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Ainda a decidir</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-107-para-saber-mais"><span class="dx-m01-icone"><i class="fas fa-book" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Para saber mais</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-</div></nav>
+<body>
+<header class="hdr"><div class="hdr-brand"><a class="hdr-logo" href="index.html" aria-label="Horus v2"><img class="logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /></a><div class="div"></div><div class="doc-meta"><b>Horus v2 · Documentação</b><small>Maind Horus</small></div></div><div class="hdr-center"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-topo" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><div class="hdr-actions"><div class="menu-toggle" role="group" aria-label="Menu"><button data-set="vertical" aria-label="Menu vertical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button><button data-set="horizontal" aria-label="Menu horizontal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></button></div><div class="theme-toggle" role="group" aria-label="Tema"><button data-set="light" aria-label="Claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button><button data-set="dark" aria-label="Escuro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header>
+<div class="shell">
+<aside class="side"><nav aria-label="Páginas da documentação"><h6>Horus v2</h6><ul><li><a href="index.html">Início</a></li></ul><h6>Para começar</h6><ul><li><a href="como-ler.html">Como ler esta documentação</a></li></ul><h6>v2.0</h6><ul class="side-sub"><li><a href="mf-101.html">MF-101 · Administração da instância</a></li><li><a href="mf-102.html">MF-102 · Organizações, pessoas e papéis</a></li><li><a href="mf-103.html">MF-103 · Licenças e planos</a></li><li><a href="mf-104.html">MF-104 · Conectar as fontes vivas</a></li><li><a href="mf-105.html">MF-105 · IA sob controle da organização</a></li><li><a href="mf-107.html" class="active">MF-107 · Perguntar aos dados em português</a></li><li><a href="mf-108.html">MF-108 · Respostas visuais</a></li><li><a href="mf-109.html">MF-109 · A web como fonte</a></li><li><a href="mf-110.html">MF-110 · Pergunta rápida</a></li><li><a href="mf-111.html">MF-111 · Chat pelo WhatsApp</a></li><li><a href="mf-112.html">MF-112 · Boards e Relatórios</a></li><li><a href="mf-113.html">MF-113 · Conectores de Saída</a></li><li><a href="mf-114.html">MF-114 · Módulo de Agendamentos de Agentes</a></li><li><a href="mf-115.html">MF-115 · Agentes ativos</a></li><li><a href="mf-116.html">MF-116 · Auditoria</a></li><li><a href="mf-117.html">MF-117 · Home da organização</a></li><li><a href="mf-118.html">MF-118 · Bases de demonstração</a></li><li><a href="mf-120.html">MF-120 · Faixa de avisos e números</a></li></ul></nav></aside>
+<main class="content doc">
+<div class="dx-busca-movel"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-movel" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><nav class="crumbs" aria-label="Trilha"><a href="index.html">Horus v2</a><span class="sep">/</span><span>v2.0</span><span class="sep">/</span><span class="now">Perguntar aos dados em português</span></nav><span class="doc-eyebrow">v2.0</span><div class="dx-macro-topo"><span class="dx-codigo">MF-107</span><span class="dx-selo">v2.0</span></div><h1 class="doc-h1">Perguntar aos dados em português</h1><p class="doc-lead">A pergunta de negócio feita do jeito que se fala, com o número do banco na hora, a origem à vista e um jeito de avisar quando a resposta parece errada.</p><section class="dx-assuntos" aria-labelledby="dx-assuntos-titulo"><h2 id="dx-assuntos-titulo">Explore os assuntos</h2><div class="dx-assuntos-grade"><div class="dx-assunto"><h3><a href="#mf-107-o-que-e">O que é, em poucas palavras</a><small>1 tópico</small></h3><ul><li><a href="#mf-107-quem-pergunta">Quem pergunta, e onde</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-107-uma-pergunta">Uma pergunta, do começo ao fim</a><small>1 tópico</small></h3><ul><li><a href="#mf-107-numeros">Os números vêm do banco</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-107-ajustes">O que a pessoa ajusta na conversa</a><small>2 tópicos</small></h3><ul><li><a href="#mf-107-modos">Dois modos, e a web ao lado</a></li><li><a href="#mf-107-niveis">Os níveis de inferência na conversa</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-107-resposta">O que aparece na resposta</a><small>2 tópicos</small></h3><ul><li><a href="#mf-107-analise-avancada">A Análise avançada</a></li><li><a href="#mf-107-fixar">Guardar a resposta num painel</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-107-retorno">O retorno sobre cada resposta</a><small>1 tópico</small></h3><ul><li><a href="#mf-107-reportar">Quando a resposta parece errada</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-107-respondidas">As perguntas respondidas</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-107-conversas">As conversas e quem as lê</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-107-bastidores">Nos bastidores, sem complicar</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-107-limites">O que esta funcionalidade não faz</a><small>1 tópico</small></h3><ul><li><a href="#mf-107-ligadas">Funcionalidades ligadas a esta</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-107-faq">Perguntas frequentes</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div></div></section><div id="dx-topo"><p>Reunião de resultado. Alguém pergunta: “e se tirarmos as lojas do Sul, como fica a margem?”. Muitas vezes, a resposta é “abro um pedido ao time de dados e te retorno”, e o número chega dias depois, com a reunião já encerrada. No Horus, a gestora escreve a pergunta do jeito que fala e recebe o gráfico ali mesmo, com a origem do número à vista. E, se um número lhe parecer errado, ela tem como avisar.</p>
+<p>Esta é a <strong>conversa de análise</strong>, o coração do Horus: a tela em que a pessoa escreve uma pergunta de negócio em português e o Horus responde com os números dos bancos da empresa. Ela já existe no Horus de hoje. A versão 2.0 acrescenta o retorno sobre cada resposta, o reporte de resposta errada e a contagem das perguntas respondidas.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Versão 2.0, em construção</b><p>O que está aqui é o que a versão 2.0 do Horus vai entregar. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
 </div>
-                            <div class="dx-content">
-<blockquote>
-<p><strong>Em uma frase:</strong> fazer a pergunta de negócio do jeito que se fala, ter o número na hora, com a origem à vista,
-e avisar quando a resposta parece errada.</p>
-</blockquote>
-<div class="doc-section dx-assunto"><h3 id="mf-107-identificacao" data-dx-icone="id-card">Identificação</h3><div class="table-responsive" tabindex="0" role="region" aria-label="Identificação de MF-107 · Perguntar aos dados em português"><table class="table table_shortcode"><tbody><tr><th scope="row">Código</th><td>MF-107</td></tr><tr><th scope="row">Entrega</th><td>v2.0</td></tr><tr><th scope="row">Situação</th><td>definida</td></tr><tr><th scope="row">Camada</th><td>💬 Motor de análise</td></tr><tr><th scope="row">Objetivos</th><td>O1</td></tr><tr><th scope="row">Quem usa</th><td>owner da organização, gestor, membro full</td></tr><tr><th scope="row">Complexidade</th><td>média</td></tr><tr><th scope="row">Relacionadas</th><td><a href="mf-102.html">Organizações, pessoas e papéis</a> (MF-102), <a href="mf-104.html">Conectar as fontes vivas</a> (MF-104), <a href="mf-105.html">IA sob controle da organização</a> (MF-105), <a href="mf-108.html">Respostas visuais</a> (MF-108), <a href="mf-109.html">A web como fonte</a> (MF-109), <a href="mf-110.html">Pergunta rápida</a> (MF-110), <a href="mf-111.html">Chat pelo WhatsApp</a> (MF-111), <a href="mf-117.html">Home da organização</a> (MF-117)</td></tr><tr><th scope="row">Atualizado</th><td>03/11/2026</td></tr></tbody></table></div>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="compass" id="mf-107-o-que-e">O que é</h3>
-<p>É a <strong>conversa de análise</strong>: a tela em que a pessoa escreve uma pergunta de negócio em português e o Horus responde
-com os números dos bancos da empresa. Ela já existe; a v2.0 acrescenta o retorno sobre cada resposta e a contagem
-das perguntas respondidas.</p>
-<p>O Horus consulta as <strong>fontes de dados</strong>, os bancos ligados a ele, que ele só lê, e entende a pergunta pelo <strong>modelo
-semântico</strong> de cada fonte, o documento que diz o que a empresa chama de receita ou de margem. A resposta &quot;em
-segundos&quot; é uma comparação com o pedido ao time de dados, que às vezes leva dias, e não um cronômetro.</p>
-<blockquote>
-<p>📌 <strong>Exemplo:</strong> na reunião, a gestora Carla pergunta &quot;e se tirarmos as lojas do Sul, como fica a margem?&quot; e
-recebe o gráfico na hora. Semanas depois, um número lhe parece velho, e ela o reporta. O Marcos, owner da
-organização, quem cuida das pessoas e dos dados dela, acha a carga atrasada e a corrige.</p>
-</blockquote>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="star" id="mf-107-caracteristicas">Características</h3>
-<ul>
-<li><strong>Onde aparece:</strong> na conversa de análise, que também abre na Pergunta rápida (MF-110), no Chat pelo WhatsApp
-(MF-111), dentro dos boards e nos agentes.</li>
-<li><strong>Quem pergunta:</strong> o owner da organização, o gestor, que gere uma equipe, e o membro full, que pergunta e cria os
-próprios boards; o membro leitor só vê boards de outras pessoas.</li>
-<li><strong>Três modos:</strong> <strong>dados</strong>, que pergunta aos bancos; <strong>web</strong>, que lê páginas cadastradas como fonte (ver A web como
-fonte, MF-109); e <strong>conversa</strong>, sem fonte nenhuma.</li>
-<li><strong>Os números vêm do banco:</strong> o modelo de IA escreve a consulta e o texto, mas os números são os do resultado; sem
-dado, o Horus diz que não consegue.</li>
-<li><strong>Nível de inferência:</strong> cinco degraus de quanto a resposta pode ir além do número, do 1, que só descreve, ao 5,
-que especula com rótulo; o padrão é o 2, que explica.</li>
-<li><strong>Análise avançada e ferramentas:</strong> uma segunda leitura feita com o resultado na mão, sugestões de próxima
-pergunta, a consulta ao banco (o SQL) à vista e o download em CSV, imagem ou PDF.</li>
-<li><strong>Retorno em cada resposta:</strong> 👍🏻 Gostei, 👎🏻 Não gostei e 🚫 Reportar, em qualquer canal; vale o último sinal.</li>
-<li><strong>O reporte vai ao owner:</strong> com o motivo e uma cópia da resposta, que fica guardada mesmo se a conversa for apagada.</li>
-<li><strong>Quem configura:</strong> o owner liga e desliga cada botão da conversa nas roles, os pacotes de permissões que ele dá às
-pessoas, e quem tem várias roles soma o que elas liberam.</li>
-</ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="chart-line" id="mf-107-o-valor-que-gera">O valor que gera</h3>
-<ul>
-<li><strong>Para quem usa:</strong> decide na própria reunião, com o número na mão, e tem como apontar o erro.</li>
-<li><strong>Para a empresa que contrata o Horus:</strong> menos pedidos repetidos ao time de dados, a economia que o comprador paga,
-e as falhas dos dados achadas antes de uma reunião.</li>
-<li><strong>Para o Horus como produto:</strong> resolve o primeiro problema do produto e mede a qualidade das respostas, não só a
-quantidade.</li>
-</ul>
-<p><strong>Como vamos saber que funcionou:</strong> a Home da organização mostra quantas perguntas de análise o Horus conseguiu
-responder, goste a pessoa ou não, e a proporção de 👍🏻 e 👎🏻.</p>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="walking" id="mf-107-como-se-usa-no-horus">Como se usa no Horus</h3>
-<p><strong>Quem pergunta:</strong></p>
-<ol>
-<li>Abre a conversa, escolhe as fontes e escreve a pergunta.</li>
-<li>Se a role permitir, ajusta o modo, o nível, a Análise avançada e o modelo de IA.</li>
-<li>Recebe o texto e até dois blocos visuais, com a fonte à vista.</li>
-<li>Avalia; ao reportar, escolhe &quot;Os dados parecem errados ou desatualizados&quot;, &quot;O Horus entendeu ou calculou errado&quot;
-ou &quot;Outro motivo&quot;, e vê o aviso de &quot;recebido&quot; no Horus e, se o perfil permitir, no e-mail.</li>
-</ol>
-<p><strong>O owner da organização:</strong></p>
-<ol>
-<li>Define nas roles os botões que cada pessoa usa.</li>
-<li>Recebe o reporte separado pelo motivo, com a cópia da resposta.</li>
-<li>Corrige a carga de dados; ajustar o modelo semântico é com o time de dados.</li>
-</ol>
-<figure><div class="lightbox_shortcode"><img src="media/mf-107-diagrama-1.svg" width="1772" height="85" alt="Diagrama: Como se usa no Horus"><a href="media/mf-107-diagrama-1.svg" class="img_popup" aria-label="Ampliar o diagrama"><i class="icon_plus" aria-hidden="true"></i></a></div><figcaption>Diagrama de “Como se usa no Horus”. Selecione o “+” para ampliar.</figcaption></figure></div><div class="doc-section dx-assunto"><h3 data-dx-icone="puzzle-piece" id="mf-107-grau-de-complexidade-media">Grau de complexidade: média</h3>
-<p>Quase tudo o que responde vem pronto da v1: a consulta, os números nos blocos, os níveis e a Análise avançada. São
-novos o retorno, o reporte e a contagem, e o motor se reorganiza para servir a todos os canais. Depende das roles e
-da área de avisos de Organizações, pessoas e papéis (MF-102); não é alta porque não mexe na segurança dos dados nem
-depende de terceiros.</p>
-<blockquote>
-<p>⚠️ É a leitura do PO a partir dos documentos de arquitetura. A estimativa de esforço é do arquiteto.</p>
-</blockquote>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="link" id="mf-107-macro-funcionalidades-relacionadas">Macro funcionalidades relacionadas</h3>
-<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de Perguntar aos dados em português"><table class="table table_shortcode"><thead><tr>
-<th scope="col">mf</th>
-<th scope="col">Como se relaciona</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Conectar as fontes vivas (MF-104)</td>
-<td><strong>depende de</strong>: sem fonte ligada e sem modelo semântico, não há o que perguntar</td>
-</tr>
-<tr>
-<td>IA sob controle da organização (MF-105)</td>
-<td><strong>depende de</strong>: o modelo de IA que escreve a consulta e o texto é o que a organização escolhe</td>
-</tr>
-<tr>
-<td>Organizações, pessoas e papéis (MF-102)</td>
-<td><strong>depende de</strong>: as roles limitam os botões, e a área de avisos recebe o reporte e o &quot;recebido&quot;</td>
-</tr>
-<tr>
-<td>Respostas visuais (MF-108)</td>
-<td><strong>complementa</strong>: dá forma à resposta, com gráficos, tabelas e indicadores</td>
-</tr>
-<tr>
-<td>A web como fonte (MF-109)</td>
-<td><strong>complementa</strong>: traz para a mesma resposta os fatos de fora, com link e data</td>
-</tr>
-<tr>
-<td>Pergunta rápida (MF-110) e Chat pelo WhatsApp (MF-111)</td>
-<td><strong>é a base de</strong>: os dois abrem esta mesma conversa, com o mesmo retorno</td>
-</tr>
-<tr>
-<td>Home da organização (MF-117)</td>
-<td><strong>é a base de</strong>: a contagem das respondidas e a proporção de 👍🏻 e 👎🏻 nascem aqui e aparecem lá</td>
-</tr>
-</tbody>
-</table></div></div><div class="doc-section dx-assunto"><h3 data-dx-icone="ban" id="mf-107-o-que-ela-nao-faz">O que ela não faz</h3>
-<ul>
-<li><strong>Prometer um tempo</strong> em segundos ou em contrato, nem acelerar o banco do cliente.</li>
-<li><strong>Contar como respondida</strong> a pergunta que o Horus não conseguiu responder.</li>
-<li><strong>Responder a quem reportou:</strong> o aviso é só de &quot;recebido&quot;.</li>
-<li><strong>Investigar o porquê passo a passo:</strong> é a Investigação guiada (MF-119), na v2.1.</li>
-<li><strong>Limitar os dados por pessoa:</strong> na v2.0, toda pergunta vê os dados da organização inteira; o limite por pessoa é a
-Segurança dos dados por pessoa (MF-106), na v2.1.</li>
-</ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="hourglass-half" id="mf-107-ainda-a-decidir">Ainda a decidir</h3>
-<ul>
-<li><strong>O que conta como respondida</strong> quando a consulta volta vazia, a conversa responde sem fonte ou a resposta falha.</li>
-<li><strong>Até que nível cada um vai:</strong> a regra fala num limite da organização, mas hoje o limite é de cada fonte de dados.</li>
-<li><strong>Privacidade:</strong> se o owner continua lendo as conversas dos membros, como hoje, e se a pessoa é avisada.</li>
-</ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="book" id="mf-107-para-saber-mais">Para saber mais</h3>
-<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 2 de Perguntar aos dados em português"><table class="table table_shortcode"><thead><tr>
-<th scope="col">Trecho do inventário</th>
-<th scope="col">O que traz</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><a href="produto-mfs-hoje.html"><code>docs/raw/produto/04-macro-funcionalidades-de-hoje.md</code></a>, o mapa e a tabela de conversão</td>
-<td>O que a mf entrega hoje e a camada dela</td>
-</tr>
-<tr>
-<td><a href="produto-norte.html"><code>docs/raw/produto/02-norte-do-produto.md</code></a>, problemas, medidas e limites</td>
-<td>A pergunta na hora, a pergunta respondida e o &quot;só lê&quot;</td>
-</tr>
-<tr>
-<td><a href="produto-v20.html"><code>docs/raw/produto/05-v2.0-consolidada.md</code></a>, §1, §3, §4 e §5.4</td>
-<td>A mf na v2.0 (base herdada e candidatas nº 1 e nº 2), a prova de valor e as regras da conversa</td>
-</tr>
-<tr>
-<td><a href="produto-backlog.html"><code>docs/raw/produto/backlog-estrategico.md</code></a></td>
-<td>A resposta em segundos (<a href="produto-backlog.html#d-125"><code>D-125</code></a>, <a href="produto-backlog.html#d-126"><code>D-126</code></a>); o retorno do usuário (<a href="produto-backlog.html#d-005"><code>D-005</code></a>, <a href="produto-backlog.html#d-014"><code>D-014</code></a>, <a href="produto-backlog.html#d-127"><code>D-127</code></a>, <a href="produto-backlog.html#d-128"><code>D-128</code></a>, <a href="produto-backlog.html#d-129"><code>D-129</code></a>); a pergunta respondida (<a href="produto-backlog.html#d-004"><code>D-004</code></a>); os botões por role e a soma (<a href="produto-backlog.html#d-110"><code>D-110</code></a>, <a href="produto-backlog.html#d-111"><code>D-111</code></a>); o &quot;só lê&quot; (<a href="produto-backlog.html#d-022"><code>D-022</code></a>); o modelo semântico com o time de dados (<a href="produto-backlog.html#d-083"><code>D-083</code></a>); a base herdada (<a href="produto-backlog.html#d-021"><code>D-021</code></a>)</td>
-</tr>
-<tr>
-<td><a href="produto-lacunas.html"><code>docs/raw/produto/03-inventario-de-lacunas.md</code></a>, linhas 1 a 9</td>
-<td>O que existe e o que falta no problema nº 1</td>
-</tr>
-<tr>
-<td><a href="produto-versoes.html"><code>docs/raw/produto/06-versoes.md</code></a> e <a href="produto-mapa.html"><code>07-mapa-de-objetivos-e-funcionalidades.md</code></a></td>
-<td>A mf na v2.0, no objetivo O1</td>
-</tr>
-<tr>
-<td><a href="arquitetura-05.html"><code>docs/raw/arquitetura/05-motor-de-analise-e-ia.md</code></a>, §3 e §4</td>
-<td>O caminho da pergunta, o motor único (<a href="arquitetura-02.html#arq-006"><code>ARQ-006</code></a>, <a href="arquitetura-02.html#arq-023"><code>ARQ-023</code></a>, <a href="arquitetura-02.html#arq-024"><code>ARQ-024</code></a>), os níveis (<a href="arquitetura-02.html#arq-025"><code>ARQ-025</code></a>), o retorno e o reporte (<a href="arquitetura-02.html#arq-028"><code>ARQ-028</code></a>) e a contagem (<a href="arquitetura-02.html#arq-029"><code>ARQ-029</code></a>)</td>
-</tr>
-<tr>
-<td><a href="arquitetura-01.html"><code>docs/raw/arquitetura/01-estrategia-da-solucao.md</code></a>, §4, e <a href="arquitetura-04.html"><code>04-software.md</code></a></td>
-<td>A estratégia da mf e as peças que a entregam</td>
-</tr>
-<tr>
-<td><a href="arquitetura-06.html"><code>docs/raw/arquitetura/06-dados.md</code></a> e <a href="arquitetura-02.html"><code>02-registro-de-decisoes.md</code></a>, <a href="arquitetura-02.html#arq-035"><code>ARQ-035</code></a></td>
-<td>A guarda da cópia da resposta reportada</td>
-</tr>
-<tr>
-<td><a href="arquitetura-02.html"><code>docs/raw/arquitetura/02-registro-de-decisoes.md</code></a>, <a href="arquitetura-02.html#arq-090"><code>ARQ-090</code></a></td>
-<td>A segurança dos dados por pessoa inteira na v2.1; na v2.0, os dados da organização inteira</td>
-</tr>
-<tr>
-<td><a href="arquitetura-14.html"><code>docs/raw/arquitetura/14-conferencia-do-produto.md</code></a>, §2 a §4</td>
-<td>O tempo ainda sem medida (<code>P-002</code>), o que se reaproveita (<code>P-003</code>) e os itens devolvidos ao PO: o que conta como respondida (A-08), o teto dos níveis (A-13), a privacidade (A-16), os botões fora da lista (A-24) e a <a href="mf-106.html"><code>MF-106</code></a> na v2.1 (A-28)</td>
-</tr>
-</tbody>
-</table></div><p>📚 <a href="mf-107-inventario.html">Tudo o que o inventário diz desta mf, assunto por assunto</a>.</p>
-</div>
-                            </div>
-                            <nav class="dx-vizinhas" aria-label="Páginas vizinhas"><a class="dx-anterior" href="mf-105.html"><i class="arrow_left" aria-hidden="true"></i>IA sob controle da organização</a><a class="dx-proxima" href="mf-108.html">Respostas visuais<i class="arrow_right" aria-hidden="true"></i></a></nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <footer class="simple_footer">
-            <img class="leaf_right" src="assets/kbdoc/img/home_one/leaf_footter.png" alt="">
-            <div class="container-fluid pl-60 pr-60">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <p>Maind Horus · Horus v2 · documento interno · Revisado em 03/11/2026 · versão v2.0 em desenho, sem versão publicada</p>
-                    </div>
-                    <div class="col-lg-6 text-right">
 
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
-    <a id="back-to-top" title="Voltar ao topo"></a>
-    <script src="assets/kbdoc/js/jquery-3.2.1.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/popper.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap-select.min.js"></script>
-    <script src="assets/kbdoc/js/parallaxie.js"></script>
-    <script src="assets/kbdoc/js/TweenMax.min.js"></script>
-    <script src="assets/kbdoc/js/anchor.js"></script>
-    <script src="assets/kbdoc/assets/wow/wow.min.js"></script>
-    <script src="assets/kbdoc/js/vendor/clipboard.min.js"></script>
-    <script src="assets/kbdoc/assets/prism/prism.js"></script>
-    <script src="assets/kbdoc/assets/niceselectpicker/jquery.nice-select.min.js"></script>
-    <script src="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="assets/kbdoc/assets/magnify-pop/jquery.magnific-popup.min.js"></script>
-    <script src="assets/kbdoc/assets/tooltipster/js/tooltipster.bundle.min.js"></script>
-    <script src="assets/kbdoc/assets/font-size/js/rv-jquery-fontsize-2.0.3.js"></script>
-    <script src="assets/kbdoc/js/onpage-menu.js"></script>
-    <script src="assets/kbdoc/js/main.js"></script>
-    <script src="assets/busca.js"></script>
-    <script src="assets/docx.js"></script>
+<h2 class="doc-h2" id="mf-107-o-que-e">O que é, em poucas palavras</h2>
+<p>Perguntar aos dados em português é fazer a pergunta de negócio do jeito que se fala, ter o número na hora, com a origem à vista, e avisar quando a resposta parece errada. Esta funcionalidade cuida de cinco coisas:</p>
+<ul>
+  <li><strong>Entender a pergunta.</strong> O Horus lê o <a href="como-ler.html#glossario">modelo semântico</a> de cada fonte, o documento que diz o que a empresa chama de receita ou de margem, para transformar a pergunta numa consulta ao banco.</li>
+  <li><strong>Responder com os números do banco.</strong> O modelo de IA escreve a consulta e o texto; os números são os do resultado que o banco devolveu.</li>
+  <li><strong>Deixar a pessoa ajustar a conversa:</strong> o modo, a pesquisa na web, o nível de inferência, a Análise avançada e o modelo de IA, dentro do que a role dela libera.</li>
+  <li><strong>Receber o retorno de cada resposta:</strong> Gostei, Não gostei ou Reportar, com o reporte indo ao owner da organização.</li>
+  <li><strong>Contar as perguntas respondidas</strong>, para a empresa ver quanto o Horus é usado e como estão as respostas.</li>
+</ul>
+<h3 class="doc-h3" id="mf-107-quem-pergunta">Quem pergunta, e onde</h3>
+<p>Perguntam o owner da organização, o gestor e os membros ouro e prata. O membro bronze não pergunta: só vê os painéis que outras pessoas criaram e compartilharam (veja <a href="mf-101.html#mf-101-assentos">Os assentos</a>). A mesma conversa aparece em vários lugares do Horus:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Onde</th><th>Como a conversa chega lá</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Conversa de análise</strong></td><td>A tela de perguntar, com tudo o que a conversa oferece.</td></tr>
+      <tr class="zebra"><td><strong>Pergunta rápida (MF-110)</strong></td><td>Um botão nas outras telas abre a mesma conversa numa janela, sem sair de onde se está.</td></tr>
+      <tr class="zebra"><td><strong>Chat pelo WhatsApp (MF-111)</strong></td><td>A mesma conversa do app: o que se pergunta pelo WhatsApp entra no histórico e pode continuar na tela.</td></tr>
+      <tr class="zebra"><td><strong>Boards (MF-112)</strong></td><td>Cada cartão de um painel nasce de uma pergunta de análise e se recalcula pelo mesmo motor da conversa.</td></tr>
+      <tr class="zebra"><td><strong>Agentes (MF-115)</strong></td><td>O agente, o trabalho automático de IA, faz as perguntas dele ao mesmo motor da conversa.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="doc-h2" id="mf-107-uma-pergunta">Uma pergunta, do começo ao fim</h2>
+<p>A Carla é gestora de vendas na área comercial de uma rede de lojas, e o Marcos é o owner da organização. Na reunião, a Carla precisa do número na hora.</p>
+<ol class="steps">
+  <li><div><h4>Ela escolhe as fontes e pergunta</h4><p>Abre a conversa de análise, escolhe o banco de vendas e escreve: “e se tirarmos as lojas do Sul, como fica a margem?”.</p></div></li>
+  <li><div><h4>Ajusta a conversa, se a role deixar</h4><p>Pode escolher o modo, ligar a pesquisa na web e ajustar o nível de inferência, a Análise avançada e o modelo de IA. Cada um desses controles depende da role que o Marcos lhe deu.</p></div></li>
+  <li><div><h4>O Horus monta a consulta e vai ao banco</h4><p>Guiado pelo modelo semântico da fonte, o modelo de IA escreve a consulta. O banco devolve os números, e nada nele é alterado: o Horus só lê.</p></div></li>
+  <li><div><h4>A resposta chega</h4><p>Vem o texto e até dois blocos visuais, como um gráfico ou uma tabela, com a fonte à vista. Os números dos blocos são os do resultado da consulta.</p></div></li>
+  <li><div><h4>Ela avalia</h4><p>Dá Gostei, Não gostei ou Reportar. Semanas depois, um número lhe parece velho, e ela o reporta. O Marcos recebe o reporte, acha a carga de dados atrasada e a corrige.</p></div></li>
+</ol>
+<p>O mesmo caminho em desenho, no modo dados: o que o Horus faz entre a pergunta e a resposta, a pesquisa na web correndo ao lado e o caminho de um reporte até o owner.</p>
+<figure class="dx-diagrama"><figcaption><b>Da pergunta à resposta</b> <span>O caminho de uma pergunta no modo dados: as permissões, a consulta guiada pelo modelo semântico, a web ao lado, a resposta e o reporte até o owner</span><a href="media/diagramas/mf-107-da-pergunta-a-resposta.html" target="_blank" rel="noopener">Abrir em tela cheia ↗</a></figcaption><iframe src="media/diagramas/mf-107-da-pergunta-a-resposta.html?embutido=1" title="Da pergunta à resposta" loading="lazy"></iframe></figure>
+<h3 class="doc-h3" id="mf-107-numeros">Os números vêm do banco</h3>
+<p>O modelo de IA escreve a consulta e o texto, mas <strong>os números da resposta são os que o banco devolveu</strong>: o Horus os põe nos gráficos e nas tabelas, e o palpite, quando há, fica no texto e nunca entra num bloco. Se a consulta falha ou volta vazia, o Horus tenta consertá-la uma vez. Sem dado, ele diz que não consegue responder.</p>
+
+<h2 class="doc-h2" id="mf-107-ajustes">O que a pessoa ajusta na conversa</h2>
+<p>Além de escrever a pergunta, a pessoa pode ajustar a conversa. Fora a escolha das fontes, cada ajuste depende de um botão que o owner liga ou desliga nas roles, e quem tem várias roles soma o que elas liberam (veja <a href="mf-102.html#mf-102-roles">Roles: o que cada pessoa pode usar</a>).</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Ajuste</th><th>O que ele faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Fontes</strong></td><td>Escolhe de quais bancos da organização a resposta sai.</td></tr>
+      <tr class="zebra"><td><strong>Modo</strong></td><td>Dados, que pergunta aos bancos, ou conversa, sem fonte nenhuma.</td></tr>
+      <tr class="zebra"><td><strong>Pesquisar na web</strong></td><td>Traz para a mesma resposta os fatos de fora, com link e data.</td></tr>
+      <tr class="zebra"><td><strong>Nível de inferência</strong></td><td>Diz até onde o texto pode ir além do número.</td></tr>
+      <tr class="zebra"><td><strong>Análise avançada</strong></td><td>Faz uma segunda leitura, com o resultado da consulta na mão.</td></tr>
+      <tr class="zebra"><td><strong>Modelo de IA</strong></td><td>Troca o modelo da conversa, entre os que o owner aceitou (veja <a href="mf-105.html#mf-105-na-conversa">Na conversa</a>).</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="mf-107-modos">Dois modos, e a web ao lado</h3>
+<p>Os modos são dois. No modo <strong>dados</strong>, o Horus pergunta aos bancos escolhidos. No modo <strong>conversa</strong>, ele responde sem fonte nenhuma. A web não é um modo: é o interruptor <strong>“pesquisar na web”</strong>, que a pessoa liga na conversa e que roda ao lado dos dados, ou da conversa. Assim, a pergunta que cruza o número da empresa com um fato de fora, como as vendas de outubro e a inflação do mês, cabe numa resposta só. No modo conversa, com o interruptor ligado, a web responde sozinha à pergunta de fora.</p>
+<p>O interruptor só aparece quando a role da pessoa o libera e quando a conexão de IA da conversa pesquisa na web por conta própria (veja <a href="mf-105.html#mf-105-provedores">Os provedores da versão 2.0</a>). À busca vai só a pergunta, nunca os dados do banco. Se a pesquisa não traz fato nenhum, a resposta sai com os dados da empresa e um aviso curto. O resto da web está em <a href="mf-109.html">A web como fonte (MF-109)</a>.</p>
+<h3 class="doc-h3" id="mf-107-niveis">Os níveis de inferência na conversa</h3>
+<p>Além de mostrar o número, o texto da resposta pode interpretá-lo. O nível de inferência diz até onde, em cinco degraus, e o padrão é o 2:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Nível</th><th>O que o texto da resposta pode dizer</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>1 · Descritivo</strong></td><td>Só o que a consulta devolveu e, com a pesquisa na web ligada, os fatos de fora, com link e data.</td></tr>
+      <tr class="zebra"><td><strong>2 · Explicativo</strong> <span class="badge badge--info">padrão</span></td><td>Explica o número com os mecanismos que o modelo semântico da fonte descreve.</td></tr>
+      <tr class="zebra"><td><strong>3 · Comparativo</strong></td><td>Propõe uma causa que os próprios dados alcançam e a testa na mesma consulta.</td></tr>
+      <tr class="zebra"><td><strong>4 · Hipótese</strong></td><td>Arrisca uma causa do conhecimento geral, num parágrafo marcado como hipótese.</td></tr>
+      <tr class="zebra"><td><strong>5 · Especulativo</strong></td><td>Especula, sempre com o rótulo de especulação.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>O nível que vale numa pergunta é o <strong>menor</strong> entre o que a pessoa pediu, o que as roles dela liberam e o teto das fontes da conversa (veja <a href="mf-104.html#mf-104-teto">O teto de inferência</a>). O Horus calcula esse nível e o grava na resposta. Com a pesquisa na web ligada, o fato de fora entra em qualquer nível, mas a causa vinda de fora dos dados só aparece a partir do nível 4. No nível 2, a Carla vê o índice da inflação ao lado das vendas, mas a resposta não atribui à inflação uma queda nas vendas.</p>
+
+<h2 class="doc-h2" id="mf-107-resposta">O que aparece na resposta</h2>
+<ul>
+  <li><strong>O texto</strong>, escrito pelo modelo de IA no nível que vale.</li>
+  <li><strong>Até dois blocos visuais</strong>, como um gráfico, uma tabela ou um indicador, com os números do banco. As formas que eles tomam são das <a href="mf-108.html">Respostas visuais (MF-108)</a>.</li>
+  <li><strong>A fonte à vista</strong>, para a pessoa saber o que pode mostrar como dado da empresa e o que veio de fora.</li>
+  <li><strong>Os botões de retorno:</strong> Gostei, Não gostei e Reportar.</li>
+  <li><strong>As ferramentas, conforme a role:</strong> sugestões de próxima pergunta, a consulta ao banco (o SQL) à vista e o download em CSV, imagem ou PDF.</li>
+</ul>
+<h3 class="doc-h3" id="mf-107-analise-avancada">A Análise avançada</h3>
+<p>O texto da resposta começa a ser escrito antes de a consulta rodar. A <strong>Análise avançada</strong> é uma segunda leitura, feita depois, com o resultado na mão: ela lê os números que voltaram, escreve uma leitura deles e corrige o que o primeiro texto disse. Respeita o mesmo nível de inferência, e nada dela vira gráfico. Demora mais que a resposta comum e tem botão próprio na role.</p>
+<h3 class="doc-h3" id="mf-107-fixar">Guardar a resposta num painel</h3>
+<p>Quem é dono de um board, o painel que criou, pode fixar nele o gráfico ou a tabela de uma resposta, na conversa e na Pergunta rápida. Não é botão de role: o membro prata, que não cria painéis, não vê o controle, e ninguém fixa no painel de outra pessoa.</p>
+
+<h2 class="doc-h2" id="mf-107-retorno">O retorno sobre cada resposta</h2>
+<p>Cada resposta de análise traz três botões: <strong>Gostei</strong>, <strong>Não gostei</strong> e <strong>Reportar</strong>. Eles valem na conversa, na Pergunta rápida e no WhatsApp. A pessoa pode mudar de ideia, e vale o último sinal. O Não gostei não pede motivo; o Reportar pede.</p>
+<h3 class="doc-h3" id="mf-107-reportar">Quando a resposta parece errada</h3>
+<ol class="steps">
+  <li><div><h4>A pessoa reporta e escolhe o motivo</h4><p>São três, escritos na língua de quem pergunta, para ninguém precisar saber o que é modelo semântico (veja a tabela abaixo).</p></div></li>
+  <li><div><h4>O Horus guarda uma cópia da resposta</h4><p>A pergunta, o texto, os blocos, a consulta, a fonte, o nível, o modo e o modelo de IA. A cópia não depende da conversa: fica guardada mesmo se a conversa for apagada ou a Pergunta rápida for limpa sem salvar.</p></div></li>
+  <li><div><h4>Quem reportou recebe o “recebido”</h4><p>Na área de avisos do Horus e, se as preferências da pessoa permitirem, por e-mail. É só um aviso de que o reporte chegou: ninguém responde a ele.</p></div></li>
+  <li><div><h4>O owner analisa</h4><p>O owner da organização em que a resposta foi dada recebe o reporte já separado pelo motivo, confirma a causa e corrige. A análise é dele e não se delega a outras pessoas.</p></div></li>
+</ol>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Motivo que a pessoa escolhe</th><th>Para onde ele aponta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>“Os dados parecem errados ou desatualizados”</strong></td><td>Os dados da fonte, como uma carga atrasada. Quem corrige é o owner.</td></tr>
+      <tr class="zebra"><td><strong>“O Horus entendeu ou calculou errado”</strong></td><td>O modelo semântico. Ajustá-lo é trabalho do time de dados (veja <a href="mf-104.html#mf-104-modelo-semantico">O modelo semântico</a>).</td></tr>
+      <tr class="zebra"><td><strong>“Outro motivo”</strong></td><td>O que a pessoa escrever, em texto livre.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>A pessoa descreve o sintoma, e quem confirma a causa é o owner: o motivo escolhido pode não ser o certo.</p>
+
+<h2 class="doc-h2" id="mf-107-respondidas">As perguntas respondidas</h2>
+<p>Para a empresa saber se o Horus está sendo útil, ele conta as <strong>perguntas de análise respondidas</strong>. Conta só a resposta que trouxe dado da empresa ou fato da web, com resultado, na conversa, na Pergunta rápida (salva ou não) e no WhatsApp. A satisfação não entra nessa conta: a resposta conta mesmo que a pessoa não goste dela, e a qualidade se mede à parte, pelo retorno.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Conta como respondida</th><th>Não conta</th></tr></thead>
+    <tbody>
+      <tr class="zebra">
+        <td><ul>
+          <li>“Vendas por região em outubro”, com o resultado na tela.</li>
+          <li>A pergunta que trouxe um fato da web.</li>
+          <li>A pergunta da Pergunta rápida, mesmo que a conversa seja limpa sem salvar.</li>
+          <li>A pergunta feita pelo WhatsApp.</li>
+        </ul></td>
+        <td><ul>
+          <li>A consulta que volta vazia, como “vendas do Sul em 2019” sem nenhuma venda.</li>
+          <li>A falha, ou a resposta em que o Horus diz que não consegue.</li>
+          <li>A conversa sem dado nem web, como “oi, tudo bem?”.</li>
+          <li>As perguntas que os agentes fazem.</li>
+        </ul></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>O total e a proporção de Gostei, Não gostei e Reportar aparecem na Home da organização (MF-117). A economia que isso representa para o time de dados é calculada fora do produto, com a Maind.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Ponto de atenção</b><p>Uma resposta correta de “não há vendas nesse período” vem de uma consulta vazia e, por isso, não conta como respondida. A conta mede análise com dado de verdade, e não toda resposta que o Horus dá.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-107-conversas">As conversas e quem as lê</h2>
+<p>As conversas ficam no histórico de cada pessoa, inclusive as que vieram do WhatsApp. Por padrão, não têm prazo: ficam até a pessoa apagar a sua, o owner apagar as da organização ou a organização ser excluída. O owner pode ligar um prazo nas preferências da organização.</p>
+<p>O <strong>owner da organização lê as conversas de todas as pessoas</strong> da organização, como já acontece no Horus de hoje, e nada de especial avisa a pessoa disso. A Maind não lê: ela vê só números, como conta a página da <a href="mf-101.html#mf-101-uso-e-custo">Administração da instância</a>.</p>
+
+<h2 class="doc-h2" id="mf-107-bastidores">Nos bastidores, sem complicar</h2>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>Um motor só, para todos os canais.</strong> A conversa, a Pergunta rápida, o WhatsApp, os cartões dos painéis e os agentes chamam o mesmo motor de análise, e cada canal só traduz a entrada e a saída. Por isso o nível, a web, o retorno e a contagem valem igual em todo lugar.</li>
+  <li><strong>Na tela, a resposta chega ao vivo.</strong> O texto aparece enquanto é escrito. No WhatsApp, o Horus confirma na hora que recebeu a pergunta e responde quando termina.</li>
+  <li><strong>A web corre em paralelo.</strong> Com o interruptor ligado, a pesquisa começa junto com a pergunta e corre enquanto o banco responde.</li>
+  <li><strong>A contagem não leva conteúdo.</strong> Ao fim de cada pergunta, o Horus registra o canal, o modo, o nível e se ela foi respondida, sem a pergunta e sem a resposta.</li>
+  <li><strong>A cópia do reporte tem prazo próprio.</strong> Fica guardada enquanto o reporte está aberto e por um tempo depois da análise, num prazo que o owner ajusta nas preferências da organização.</li>
+  <li><strong>O tempo é medido etapa por etapa.</strong> Serve para achar onde o tempo vai, e não para virar promessa.</li>
+  <li><strong>Quase tudo já existe.</strong> A consulta, os números nos blocos, os níveis e a Análise avançada vêm do Horus de hoje. São novos o retorno, o reporte e a contagem, e o motor se reorganiza para servir a todos os canais.</li>
+</ul>
+
+<h2 class="doc-h2" id="mf-107-limites">O que esta funcionalidade não faz</h2>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Prometer um tempo de resposta</strong></td><td>“Em segundos” é uma comparação com o pedido ao time de dados, que às vezes leva dias. Não há um número de segundos nem prazo em contrato, e o Horus não acelera o banco do cliente, que ele só lê.</td></tr>
+      <tr class="zebra"><td><strong>Arrumar os dados</strong></td><td>O Horus usa os dados como estão nos bancos ligados, sem limpar nem reconciliar. Quando um dado parece errado, a pessoa pode reportá-lo ao owner.</td></tr>
+      <tr class="zebra"><td><strong>Responder a quem reportou</strong></td><td>O aviso é só de “recebido”. A pessoa não fica sabendo se o problema foi corrigido.</td></tr>
+      <tr class="zebra"><td><strong>Contar toda resposta como respondida</strong></td><td>A falha, a consulta que volta vazia e a conversa sem dado nem web ficam de fora.</td></tr>
+      <tr class="zebra"><td><strong>Investigar o porquê, passo a passo</strong></td><td>É da Investigação guiada (MF-119), na versão 2.1.</td></tr>
+      <tr class="zebra"><td><strong>Limitar os dados por pessoa</strong></td><td>Na versão 2.0, toda pergunta vê os dados da organização inteira. O limite por pessoa é da Segurança dos dados por pessoa (MF-106), na versão 2.1.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="mf-107-ligadas">Funcionalidades ligadas a esta</h3>
+<p>Esta funcionalidade depende de três outras e é a base de muitas. As principais:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="mf-104.html">Conectar as fontes vivas (MF-104)</a></td><td>Sem fonte ligada e sem modelo semântico, não há o que perguntar.</td></tr>
+      <tr class="zebra"><td><a href="mf-105.html">IA sob controle da organização (MF-105)</a></td><td>O modelo de IA que escreve a consulta e o texto é o que a organização escolheu.</td></tr>
+      <tr class="zebra"><td><a href="mf-102.html">Organizações, pessoas e papéis (MF-102)</a></td><td>As roles ligam e desligam os ajustes da conversa, e a área de avisos recebe o reporte e o “recebido”.</td></tr>
+      <tr class="zebra"><td><a href="mf-108.html">Respostas visuais (MF-108)</a></td><td>Dá forma à resposta, com gráficos, tabelas e indicadores.</td></tr>
+      <tr class="zebra"><td><a href="mf-109.html">A web como fonte (MF-109)</a></td><td>Traz para a mesma resposta os fatos de fora, com link e data.</td></tr>
+      <tr class="zebra"><td><a href="mf-110.html">Pergunta rápida (MF-110)</a> e Chat pelo WhatsApp (MF-111)</td><td>Os dois abrem esta mesma conversa, com o mesmo retorno.</td></tr>
+      <tr class="zebra"><td>Boards e Relatórios (MF-112)</td><td>Cada cartão nasce de uma pergunta de análise e se recalcula pelo mesmo motor da conversa.</td></tr>
+      <tr class="zebra"><td>Agentes ativos (MF-115)</td><td>O agente pergunta ao mesmo motor da conversa, com o nível que o autor escolheu.</td></tr>
+      <tr class="zebra"><td>Home da organização (MF-117)</td><td>A contagem das respondidas e a proporção de Gostei, Não gostei e Reportar nascem aqui e aparecem lá.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Na implantação</b><p>Um ponto desta página trata de dados pessoais: o owner da organização ler as conversas de todas as pessoas, sem um aviso especial à pessoa. A regra vale como está. Durante a implantação da organização, vale a empresa consultar o jurídico dela sobre esse ponto.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-107-faq">Perguntas frequentes</h2>
+<div class="faq">
+  <details open>
+    <summary>Preciso saber SQL ou conhecer as tabelas do banco para perguntar?</summary>
+    <div class="faq-body"><p>Não. A pessoa escreve a pergunta em português, do jeito que fala. O Horus a entende pelo modelo semântico de cada fonte, o documento que diz o que a empresa chama de receita ou de margem, e o modelo de IA escreve a consulta. Quem quiser conferir pode ver a consulta montada, se a role liberar esse botão.</p></div>
+  </details>
+  <details>
+    <summary>Quanto tempo leva uma resposta?</summary>
+    <div class="faq-body"><p>“Em segundos” é uma comparação com o pedido ao time de dados, que às vezes leva dias, e não um tempo garantido. O Horus não promete um número de segundos e não acelera o banco da empresa, que ele só lê. A Análise avançada demora mais que a resposta comum.</p></div>
+  </details>
+  <details>
+    <summary>O que faço se um número da resposta parecer errado?</summary>
+    <div class="faq-body"><p>Use o botão Reportar e escolha o motivo: os dados parecem errados ou desatualizados, o Horus entendeu ou calculou errado, ou outro motivo. O owner da organização recebe o reporte com uma cópia da resposta, confirma a causa e corrige; o ajuste do modelo semântico fica com o time de dados. Você recebe o aviso de “recebido”, mas não uma resposta ao reporte.</p></div>
+  </details>
+  <details>
+    <summary>A resposta pode dar opinião ou especular sobre os números?</summary>
+    <div class="faq-body"><p>Só até o nível de inferência que vale na pergunta. O padrão é o 2, que explica o número com o que o modelo semântico da fonte descreve; a hipótese e a especulação ficam nos níveis 4 e 5, sempre marcadas. O nível que vale é o menor entre o que a pessoa pede, o que as roles dela liberam e o teto das fontes.</p></div>
+  </details>
+  <details>
+    <summary>Dá para cruzar os números da empresa com algo de fora, como a inflação?</summary>
+    <div class="faq-body"><p>Dá, com o interruptor “pesquisar na web” ligado, se a sua role o libera e se a conexão de IA da organização pesquisa na web. A resposta traz o número da empresa e o fato de fora, com link e data. À busca vai só a pergunta, nunca os dados do banco.</p></div>
+  </details>
+  <details>
+    <summary>Como a empresa sabe se o Horus está sendo útil?</summary>
+    <div class="faq-body"><p>A Home da organização (MF-117) mostra quantas perguntas de análise o Horus respondeu com dado da empresa ou fato da web e a proporção de Gostei, Não gostei e Reportar. O owner vê o total e a divisão por gestor e por pessoa. A economia para o time de dados é calculada fora do produto, com a Maind.</p></div>
+  </details>
+</div>
+</div><nav class="rel-grid dx-vizinhas" aria-label="Páginas vizinhas"><a class="rel-card dx-anterior" href="mf-105.html"><span class="cat">Anterior</span><h5>IA sob controle da organização</h5><span class="arrow">←</span></a><a class="rel-card dx-proxima" href="mf-108.html"><span class="cat">Próxima</span><h5>Respostas visuais</h5><span class="arrow">→</span></a></nav>
+<footer class="ds-footer"><div class="ftr-brand"><img class="ftr-logo logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="ftr-logo logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /><div class="ftr-divider"></div><div class="ftr-meta"><b>Maind Horus · Horus v2 · versão 2.0 em desenho</b></div></div><div class="ftr-center"><span class="ftr-tag">v2.0 em desenho, sem versão publicada · 06/11/2026</span></div><div class="ftr-author"><div class="avatar">MT</div><div class="ftr-author-info"><b>Maind Tech</b><span>Horus v2</span></div></div></footer>
+</main>
+<aside class="toc"><h6>Neste artigo</h6><ul><li><a href="#mf-107-o-que-e">O que é, em poucas palavras</a></li><li class="lvl-3"><a href="#mf-107-quem-pergunta">Quem pergunta, e onde</a></li><li><a href="#mf-107-uma-pergunta">Uma pergunta, do começo ao fim</a></li><li class="lvl-3"><a href="#mf-107-numeros">Os números vêm do banco</a></li><li><a href="#mf-107-ajustes">O que a pessoa ajusta na conversa</a></li><li class="lvl-3"><a href="#mf-107-modos">Dois modos, e a web ao lado</a></li><li class="lvl-3"><a href="#mf-107-niveis">Os níveis de inferência na conversa</a></li><li><a href="#mf-107-resposta">O que aparece na resposta</a></li><li class="lvl-3"><a href="#mf-107-analise-avancada">A Análise avançada</a></li><li class="lvl-3"><a href="#mf-107-fixar">Guardar a resposta num painel</a></li><li><a href="#mf-107-retorno">O retorno sobre cada resposta</a></li><li class="lvl-3"><a href="#mf-107-reportar">Quando a resposta parece errada</a></li><li><a href="#mf-107-respondidas">As perguntas respondidas</a></li><li><a href="#mf-107-conversas">As conversas e quem as lê</a></li><li><a href="#mf-107-bastidores">Nos bastidores, sem complicar</a></li><li><a href="#mf-107-limites">O que esta funcionalidade não faz</a></li><li class="lvl-3"><a href="#mf-107-ligadas">Funcionalidades ligadas a esta</a></li><li><a href="#mf-107-faq">Perguntas frequentes</a></li></ul></aside>
+</div>
+<div class="toast" id="toast">Copiado ✓</div>
+<script src="assets/busca.js"></script>
+<script src="assets/docs.js"></script>
+<script src="assets/docx-kbr.js"></script>
 </body>
 </html>

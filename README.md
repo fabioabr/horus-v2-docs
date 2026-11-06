@@ -8,8 +8,9 @@ Início deste trabalho: 30/10/2026.
 
 ## Documentos
 
-Este repositório (`horus-v2-docs`) guarda **toda a documentação do Horus v2**: os documentos em Markdown e o **portal HTML** feito
-a partir deles, publicado com o GitHub Pages. O código da v2 mora no repositório `horus-v2` (privado) (`D-140`). A estrutura (`D-144`, `D-142`):
+Este repositório (`horus-v2-docs`) guarda **toda a documentação do Horus v2**: os documentos em Markdown e a **documentação das macro
+funcionalidades em HTML** (uma página por funcionalidade, em linguagem simples, com perguntas frequentes e diagramas), publicada com o
+GitHub Pages. O código da v2 mora no repositório `horus-v2` (privado) (`D-140`). A estrutura (`D-144`, `D-142`):
 
 ```
 horus-v2-docs/
@@ -20,11 +21,11 @@ horus-v2-docs/
 │   │   ├── produto/           ← visão, decisões e mapa de produto (o PO)
 │   │   ├── arquitetura/       ← as decisões de tecnologia e a estratégia para atingir os objetivos (o arquiteto)
 │   │   └── backlog/           ← as atividades (épicos, histórias e tasks), depois da arquitetura (o dono com um agilista)
-│   ├── marca/             ← os logos do Horus, que o conversor copia para o portal
-│   └── *.html, assets/, media/   ← o portal pronto, que o GitHub Pages serve (gerado: não se edita à mão)
-├── fontes/                ← a origem do portal: docx.json, os fragmentos HTML de content/, os diagramas de media/ e a galeria modelos-mf/
-└── ferramentas/
-    └── montar_fontes.py   ← o conversor: Markdown → fontes do portal
+│   ├── marca/             ← os logos do Horus (a marca da documentação, em .claude/plugins-data/kbr-docs/docs-brand.yml)
+│   └── *.html, assets/, media/   ← a documentação das macro funcionalidades, que o GitHub Pages serve (gerada de documentacao/: não se edita à mão)
+├── documentacao/          ← a origem da documentação publicada: docx.json, os fragmentos HTML de content/ e os diagramas
+├── fontes/ e ferramentas/ ← a origem do portal ANTERIOR (arquitetura, inventário, MER), que deixou de ser publicado em docs/
+└── .claude/plugins-data/kbr-docs/docs-brand.yml   ← a marca (logos e cor do Horus) da documentação
 ```
 
 Os documentos de produto:
@@ -40,16 +41,23 @@ Os documentos de produto:
 | [Mapa de objetivos e funcionalidades](docs/raw/produto/07-mapa-de-objetivos-e-funcionalidades.md) | O mapa para iniciar o desenvolvimento: o objetivo do produto, os objetivos de cada entrega e as funcionalidades de cada um, com a entrega e a decisão. | Funcionalidades e objetivos decididos (`D-136`, 02/11/2026) |
 | [Backlog estratégico](docs/raw/produto/backlog-estrategico.md) | Registro das decisões de produto: macro funcionalidades, versões, cortes e pendências do dono. | Em uso |
 
-## Como o portal é feito
+## Como a documentação publicada é feita
 
-Os fragmentos de `fontes/` são **gerados** a partir dos Markdown de `docs/leitura/` e `docs/raw/` (editar um à mão se perde na próxima
-montagem), e o portal de `docs/` é gerado das fontes com o plugin DocX. Mude o Markdown e monte de novo, da raiz deste repositório:
+A documentação de `docs/` (as páginas `.html`, `assets/` e `media/`) é **gerada** de `documentacao/` com o plugin DocX (design da Kinto,
+`docx@maindtech` 0.4.0 ou superior): edite os fragmentos em `documentacao/content/` (ou o diagrama, em `documentacao/diagramas/`) e gere de
+novo, da raiz deste repositório. Editar uma página gerada à mão se perde na próxima geração, e o DocX recusa gerar sobre uma edição manual.
 
 ```
-python ferramentas/montar_fontes.py . fontes <caminho do mermaid.min.js>               # Markdown → fontes
-python <plugin docx>/scripts/docx.py gerar --config fontes/docx.json --saida docs       # fontes → portal
-python <plugin docx>/scripts/docx.py validar --site docs                                # confere o portal
+python <plugin docx>/scripts/docx.py gerar --config documentacao/docx.json --saida docs     # fontes → documentação publicada
+python <plugin docx>/scripts/docx.py validar --site docs                                     # confere as páginas
 ```
+
+As fontes em Markdown de `docs/leitura/` e `docs/raw/` ficam ao lado: o DocX as preserva. A origem de cada afirmação das páginas está em
+[`documentacao/README.md`](documentacao/README.md).
+
+> O portal anterior (arquitetura, inventário, modelo de dados), gerado por `fontes/` e `ferramentas/montar_fontes.py`, saiu de `docs/` em
+> 06/11/2026 e continua no histórico do git. **Não rode aquele conversor com `--saida docs`**: ele recriaria o portal antigo por cima da
+> documentação atual.
 
 ## Organização dos próximos documentos
 

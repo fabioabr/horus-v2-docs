@@ -1,0 +1,58 @@
+<p>O Horus dá autonomia a quem decide: a pessoa pergunta aos dados da empresa (e também à web), em português, e entende a resposta na hora, em texto ou em gráfico, sem depender de ninguém. Esta documentação explica, uma por uma, o que o Horus v2 vai oferecer e como cada parte funciona.</p>
+<h3 id="como-ler-o-que-e-uma-mf">O que é uma macro funcionalidade</h3>
+<p>Uma <strong>macro funcionalidade</strong> (MF) é um bloco grande do produto, que resolve um problema inteiro para alguém: perguntar aos dados em português, conectar as fontes de dados, administrar a instância. Cada uma tem um código (MF-101, MF-102…), para ser fácil de citar numa conversa.</p>
+<h3 id="como-ler-cada-pagina">Como cada página é organizada</h3>
+<p>Todas as páginas de macro funcionalidade seguem a mesma ordem, para você achar o que procura sem reaprender o caminho:</p>
+<ol class="steps">
+  <li><div><h4>O que é</h4><p>A ideia em poucas palavras, com uma imagem do dia a dia.</p></div></li>
+  <li><div><h4>Como funciona na prática</h4><p>Quem faz o quê, passo a passo, com desenhos quando um fluxo ajuda.</p></div></li>
+  <li><div><h4>Nos bastidores</h4><p>Um pouco da tecnologia, só o bastante para a história fazer sentido.</p></div></li>
+  <li><div><h4>O que ela não faz</h4><p>Os limites, ditos com clareza, para ninguém esperar o que não vem.</p></div></li>
+  <li><div><h4>Perguntas frequentes</h4><p>As dúvidas que costumam aparecer, com a resposta direta.</p></div></li>
+</ol>
+<h3 id="como-ler-estado">O que esta documentação descreve</h3>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>A versão 2.0 ainda está em construção</b><p>As páginas descrevem o que a versão 2.0 do Horus vai entregar, não um produto que já esteja no ar. O texto é revisado conforme as decisões se fecham, e cada página traz a data da última revisão no rodapé.</p></div>
+</div>
+<h3 id="glossario">Palavras que aparecem nas páginas</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Palavra</th><th>O que quer dizer no Horus</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Instância</strong></td><td>Uma instalação do Horus. Na versão 2.0, o Horus funciona como serviço (SaaS) e há uma instância só, a da Maind, onde vivem todas as organizações.</td></tr>
+      <tr class="zebra"><td><strong>Organização</strong></td><td>O espaço de uma empresa, de um setor ou de um cliente dentro do Horus, com as pessoas, as fontes de dados e os painéis dela. Uma organização não enxerga a outra.</td></tr>
+      <tr class="zebra"><td><strong>Administrador da instância</strong></td><td>Funcionário da Maind que opera a instância. Vê todas as organizações em números, sem ver os dados delas. Em alguns materiais aparece como “owner da instância”.</td></tr>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>Pessoa da empresa cliente que cuida da organização dela: convida as pessoas e configura as preferências.</td></tr>
+      <tr class="zebra"><td><strong>Assento</strong></td><td>Uma vaga de uso contratada. Cada pessoa que usa o Horus ocupa um assento, de um de cinco tipos: owner, gestor, membro ouro, membro prata ou membro bronze.</td></tr>
+      <tr class="zebra"><td><strong>Gestor</strong></td><td>Pessoa da empresa cliente que cuida de uma equipe: convida as pessoas dela, monta grupos e abre os painéis de quem gere.</td></tr>
+      <tr class="zebra"><td><strong>Membro</strong></td><td>Quem usa o Horus sem cuidar de equipe. Há três faixas: o bronze vê, a prata pergunta e o ouro cria.</td></tr>
+      <tr class="zebra"><td><strong>Carteira</strong></td><td>A equipe de um gestor. Cada membro está na carteira de um gestor só.</td></tr>
+      <tr class="zebra"><td><strong>Quarentena</strong></td><td>Onde espera quem entrou sem gestor: a pessoa vê só o próprio perfil e os painéis públicos até entrar numa carteira.</td></tr>
+      <tr class="zebra"><td><strong>Grupo</strong></td><td>Uma lista de pessoas, montada uma vez e usada muitas: para publicar um painel e para escolher quem recebe um relatório ou um alerta.</td></tr>
+      <tr class="zebra"><td><strong>Role</strong></td><td>Um pacote de botões da conversa que o owner liga ou desliga para as pessoas. Decide o que a pessoa usa, e não o que ela vê. O tipo de assento é o teto do que a role libera.</td></tr>
+      <tr class="zebra"><td><strong>Board (painel)</strong></td><td>Um painel de acompanhamento, com números e gráficos, que uma pessoa cria e pode compartilhar.</td></tr>
+      <tr class="zebra"><td><strong>Fonte de dados</strong></td><td>Um banco de dados da empresa ligado ao Horus, só para leitura: o de vendas, o de estoque, o financeiro.</td></tr>
+      <tr class="zebra"><td><strong>Modelo semântico</strong></td><td>O documento de cada fonte de dados que explica ao Horus o que cada tabela e cada palavra querem dizer na empresa.</td></tr>
+      <tr class="zebra"><td><strong>Conexão de IA</strong></td><td>A ligação com um serviço de inteligência artificial, que o Horus usa para entender as perguntas e montar as respostas.</td></tr>
+      <tr class="zebra"><td><strong>Modelo de IA</strong></td><td>O programa de inteligência artificial que entende a pergunta, escreve a consulta ao banco e redige o texto da resposta.</td></tr>
+      <tr class="zebra"><td><strong>Provedor de IA</strong></td><td>A empresa por onde o Horus chega aos modelos de IA. Na versão 2.0 são dois: o OpenRouter e o Amazon Bedrock.</td></tr>
+      <tr class="zebra"><td><strong>Conversa de análise</strong></td><td>A tela principal do Horus, em que a pessoa escreve uma pergunta de negócio em português e recebe a resposta em texto, gráfico ou tabela.</td></tr>
+      <tr class="zebra"><td><strong>Nível de inferência</strong></td><td>Até onde o texto da resposta pode ir além do número, em cinco degraus: o 1 só descreve, o 2 explica (é o padrão) e o 5 especula, sempre com rótulo.</td></tr>
+      <tr class="zebra"><td><strong>Bloco visual</strong></td><td>Cada forma visual de uma resposta: gráfico, tabela, indicador, mapa de calor, chaveamento ou fluxo. Cada resposta traz até dois.</td></tr>
+      <tr class="zebra"><td><strong>Agente</strong></td><td>Um trabalho automático de IA que, a partir de instruções em texto, consulta os dados na hora marcada e entrega um PDF ou um alerta, sem ninguém na tela.</td></tr>
+      <tr class="zebra"><td><strong>Agendamento</strong></td><td>O que diz quando o Horus gera o PDF de um board ou roda um agente, e para quem vai o resultado.</td></tr>
+      <tr class="zebra"><td><strong>Conector de saída</strong></td><td>Um canal por onde o Horus entrega o que produz a quem não está com o app aberto. Na versão 2.0, o e-mail e o WhatsApp.</td></tr>
+      <tr class="zebra"><td><strong>Artefato</strong></td><td>A peça pronta que o conector leva: o PDF de um board ou o alerta de um agente.</td></tr>
+      <tr class="zebra"><td><strong>Cartão</strong></td><td>Cada gráfico, tabela ou indicador de um board. Nasce de uma resposta fixada ou de uma descrição em texto e se recalcula sozinho.</td></tr>
+      <tr class="zebra"><td><strong>Mensagem-padrão</strong></td><td>Um modelo de mensagem que a Meta, dona do WhatsApp, aprova antes do uso. É por ela que o Horus manda avisos e PDFs pelo WhatsApp.</td></tr>
+      <tr class="zebra"><td><strong>Rastro</strong></td><td>O registro da Auditoria de quem entregou e de quem abriu o quê, sem o conteúdo. Só o owner da organização o consulta, e ninguém o altera.</td></tr>
+      <tr class="zebra"><td><strong>Home da organização</strong></td><td>A tela de entrada da organização, com os indicadores de uso (inclusive a medida de autonomia e a qualidade das respostas), que o owner arruma numa grade.</td></tr>
+      <tr class="zebra"><td><strong>Qualidade</strong></td><td>A proporção de Gostei, Não gostei e Reportar entre as respostas que as pessoas avaliaram.</td></tr>
+      <tr class="zebra"><td><strong>Faixa de avisos e números</strong></td><td>A tira logo abaixo do cabeçalho, em toda tela, que passa os avisos e os números do dia. O nome é provisório, e a palavra “faixa” aqui não tem relação com as faixas de membro (ouro, prata e bronze).</td></tr>
+      <tr class="zebra"><td><strong>Organização de exemplo</strong></td><td>Organização de uma empresa que não existe, com dados inventados, usada pela Maind para demonstrar e testar o Horus.</td></tr>
+      <tr class="zebra"><td><strong>Reporte</strong></td><td>O aviso que a pessoa dá quando uma resposta parece errada. Vai ao owner da organização, com uma cópia da resposta.</td></tr>
+      <tr class="zebra"><td><strong>Medida de autonomia</strong></td><td>A contagem, na Home da organização, das perguntas de análise respondidas com dado da empresa ou fato da web.</td></tr>
+    </tbody>
+  </table>
+</div>

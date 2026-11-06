@@ -1,304 +1,220 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-menu="vertical">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="A documentação de produto e de arquitetura do Horus v2: a visão, as decisões, a estratégia e como ele vai ser construído.">
-    <meta name="generator" content="DocX 0.2.1">
-    <link rel="shortcut icon" href="media/horus-claro.svg">
-    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/elagent-icon/style.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/font-awesome/css/all.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/niceselectpicker/nice-select.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/font-size/css/rvfs.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/animation/animate.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/tooltipster/css/tooltipster.bundle.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism-coy.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/magnify-pop/magnific-popup.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/css/style.css">
-    <link rel="stylesheet" href="assets/kbdoc/css/responsive.css">
-    <link rel="stylesheet" href="assets/docx.css">
-    <link rel="stylesheet" href="assets/conteudo.css">
-    <link rel="stylesheet" href="assets/indice.css">
-    <script>try { var l = parseInt(localStorage.getItem('docx-menu-largura'), 10); if (l >= 200 && l <= 640) document.documentElement.style.setProperty('--dx-menu-largura', l + 'px'); } catch (e) { /* Sem armazenamento, vale a largura padrão. */ }</script>
-    <title>MF-110 · Pergunta rápida — Horus v2</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="DocX 0.4.0" />
+<meta name="description" content="As funcionalidades do Horus v2 explicadas uma a uma, em linguagem simples: o que cada uma faz, como funciona na prática e as dúvidas mais comuns." />
+<link rel="icon" href="assets/logo-claro.svg" />
+<title>MF-110 · Pergunta rápida — Horus v2</title>
+<script>
+(function () {
+  try {
+    var raiz = document.documentElement;
+    var tema = localStorage.getItem('kinto-theme');
+    var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    raiz.setAttribute('data-theme', tema || (escuro ? 'dark' : 'light'));
+    raiz.setAttribute('data-menu', localStorage.getItem('kinto-menu') || 'vertical');
+    var ws = parseInt(localStorage.getItem('kinto-side-w'), 10);
+    var wt = parseInt(localStorage.getItem('kinto-toc-w'), 10);
+    if (ws) raiz.style.setProperty('--side-w-user', ws + 'px');
+    if (wt) raiz.style.setProperty('--toc-w-user', wt + 'px');
+  } catch (e) { /* localStorage bloqueado: ficam os atributos do <html> */ }
+})();
+</script>
+<link rel="stylesheet" href="assets/docs.css" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="assets/docx-kbr.css" />
 </head>
-<body class="doc full-width-doc sticky-nav-doc onepage-doc dx-pagina-doc" data-spy="scroll" data-target=".navbar" data-offset="-120">
-    <a class="sr-only sr-only-focusable dx-skip" href="#post">Pular para o conteúdo</a>
-    <div class="body_wrapper sticky_menu">
-        <nav class="navbar navbar-expand-lg menu_one" id="stickyTwo" aria-label="Navegação principal">
-            <div class="container-fluid pl-60 pr-60">
-                <a class="navbar-brand" href="index.html">
-                    <img src="media/horus-claro.svg" alt="Horus v2">
-                    <img src="media/horus-escuro.svg" alt="Horus v2">
-                </a>
-                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Abrir o menu">
-                    <span class="menu_toggle">
-                        <span class="hamburger">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </span>
-                        <span class="hamburger-cross">
-                            <span></span>
-                            <span></span>
-                        </span>
-                    </span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav menu ml-auto">
-
-                    </ul>
-                    <ul class="list-unstyled menu_social">
-                        <li class="search">
-                            <form action="#" class="search_form" role="search" data-search-form>
-                                <label class="sr-only" for="dx-search">Buscar na documentação</label>
-                                <input type="search" class="form-control" id="dx-search" placeholder="Buscar" autocomplete="off" data-search-input aria-describedby="dx-search-status" aria-controls="dx-search-results">
-                                <button type="submit" aria-label="Buscar"><i class="icon_search" aria-hidden="true"></i></button>
-                                <div class="dx-search-results" id="dx-search-results" data-search-results hidden></div>
-                            </form>
-                            <p class="sr-only" id="dx-search-status" role="status" data-search-status></p>
-                        </li>
-                    </ul>
-                    <div class="dx-ferramentas">
-
-
-                        <div id="font-switcher"><div id="rvfs-controllers" class="fontsize-controllers group"></div></div>
-                        <button type="button" class="print" data-print aria-label="Imprimir"><i class="icon_printer" aria-hidden="true"></i></button>
-                        <div class="doc_switch">
-                            <label for="something" class="tab-btn tab-btns"><i class="icon_lightbulb_alt" aria-hidden="true"></i><span class="sr-only">Tema claro</span></label>
-                            <input type="checkbox" name="something" id="something" class="tab_switcher" aria-label="Tema escuro">
-                            <label for="something" class="tab-btn"><i class="far fa-moon" aria-hidden="true"></i><span class="sr-only">Tema escuro</span></label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-        <section class="doc_documentation_area onepage_doc_area" id="sticky_doc">
-            <div class="overlay_bg"></div>
-            <div class="container-fluid pl-60 pr-60">
-                <div class="row doc-container">
-                    <div class="col-lg-2 doc_mobile_menu doc-sidebar display_none">
-                        <aside class="doc_left_sidebarlist" aria-label="Tópicos desta página">
-                            <h3 class="nav_title">Tópicos</h3>
-                            <div class="dx-menu-rolagem">
-                                <ul class="list-unstyled nav-sidebar doc-nav">
-<li class="nav-item active"><a href="#mf-110-identificacao" class="nav-link">Identificação</a></li>
-<li class="nav-item"><a href="#mf-110-o-que-e" class="nav-link">O que é</a></li>
-<li class="nav-item"><a href="#mf-110-caracteristicas" class="nav-link">Características</a></li>
-<li class="nav-item"><a href="#mf-110-o-valor-que-gera" class="nav-link">O valor que gera</a></li>
-<li class="nav-item"><a href="#mf-110-como-se-usa-no-horus" class="nav-link">Como se usa no Horus</a></li>
-<li class="nav-item"><a href="#mf-110-grau-de-complexidade-media" class="nav-link">Grau de complexidade: média</a></li>
-<li class="nav-item"><a href="#mf-110-macro-funcionalidades-relacionadas" class="nav-link">Macro funcionalidades relacionadas</a></li>
-<li class="nav-item"><a href="#mf-110-o-que-ela-nao-faz" class="nav-link">O que ela não faz</a></li>
-<li class="nav-item"><a href="#mf-110-ainda-a-decidir" class="nav-link">Ainda a decidir</a></li>
-<li class="nav-item"><a href="#mf-110-para-saber-mais" class="nav-link">Para saber mais</a></li>
-                                </ul>
-                            </div>
-                        </aside>
-                        <div class="dx-divisor" role="separator" aria-orientation="vertical" aria-label="Ajustar a largura do menu" tabindex="0" title="Arraste para ajustar a largura do menu (duplo clique volta ao padrão)"><span class="dx-divisor__pega"></span></div>
-                    </div>
-                    <div class="col-lg-10 col-md-12">
-                        <div class="documentation_info dx-pagina" id="post">
-                            <header class="dx-cabeca" id="mf-110">
-                                <nav class="dx-trilha" aria-label="Trilha"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Início</a></li><li class="breadcrumb-item">v2.0</li><li class="breadcrumb-item active" aria-current="page">Pergunta rápida</li></ol></nav>
-                                <div class="dx-macro-topo"><span class="dx-macro-codigo">MF-110</span><span class="dx-macro-selo">v2.0</span></div>
-                                <h1>Pergunta rápida</h1>
-                                <p>Perguntar sem sair da tela, num botão flutuante</p>
-                            </header>
-                            <div class="dx-modelo-01">
-<nav aria-labelledby="dx-m01-assuntos-titulo">
-<div class="dx-m01-rotulo"><h2 id="dx-m01-assuntos-titulo">Explore os assuntos</h2><span>10 seções</span></div>
-<div class="dx-m01-assuntos">
-<a class="dx-m01-assunto" href="#mf-110-identificacao"><span class="dx-m01-icone"><i class="fas fa-id-card" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Identificação</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-110-o-que-e"><span class="dx-m01-icone"><i class="fas fa-compass" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que é</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-110-caracteristicas"><span class="dx-m01-icone"><i class="fas fa-star" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Características</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-110-o-valor-que-gera"><span class="dx-m01-icone"><i class="fas fa-chart-line" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O valor que gera</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-110-como-se-usa-no-horus"><span class="dx-m01-icone"><i class="fas fa-walking" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Como se usa no Horus</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-110-grau-de-complexidade-media"><span class="dx-m01-icone"><i class="fas fa-puzzle-piece" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Grau de complexidade: média</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-110-macro-funcionalidades-relacionadas"><span class="dx-m01-icone"><i class="fas fa-link" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Macro funcionalidades relacionadas</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-110-o-que-ela-nao-faz"><span class="dx-m01-icone"><i class="fas fa-ban" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que ela não faz</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-110-ainda-a-decidir"><span class="dx-m01-icone"><i class="fas fa-hourglass-half" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Ainda a decidir</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-110-para-saber-mais"><span class="dx-m01-icone"><i class="fas fa-book" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Para saber mais</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-</div></nav>
+<body>
+<header class="hdr"><div class="hdr-brand"><a class="hdr-logo" href="index.html" aria-label="Horus v2"><img class="logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /></a><div class="div"></div><div class="doc-meta"><b>Horus v2 · Documentação</b><small>Maind Horus</small></div></div><div class="hdr-center"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-topo" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><div class="hdr-actions"><div class="menu-toggle" role="group" aria-label="Menu"><button data-set="vertical" aria-label="Menu vertical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button><button data-set="horizontal" aria-label="Menu horizontal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></button></div><div class="theme-toggle" role="group" aria-label="Tema"><button data-set="light" aria-label="Claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button><button data-set="dark" aria-label="Escuro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header>
+<div class="shell">
+<aside class="side"><nav aria-label="Páginas da documentação"><h6>Horus v2</h6><ul><li><a href="index.html">Início</a></li></ul><h6>Para começar</h6><ul><li><a href="como-ler.html">Como ler esta documentação</a></li></ul><h6>v2.0</h6><ul class="side-sub"><li><a href="mf-101.html">MF-101 · Administração da instância</a></li><li><a href="mf-102.html">MF-102 · Organizações, pessoas e papéis</a></li><li><a href="mf-103.html">MF-103 · Licenças e planos</a></li><li><a href="mf-104.html">MF-104 · Conectar as fontes vivas</a></li><li><a href="mf-105.html">MF-105 · IA sob controle da organização</a></li><li><a href="mf-107.html">MF-107 · Perguntar aos dados em português</a></li><li><a href="mf-108.html">MF-108 · Respostas visuais</a></li><li><a href="mf-109.html">MF-109 · A web como fonte</a></li><li><a href="mf-110.html" class="active">MF-110 · Pergunta rápida</a></li><li><a href="mf-111.html">MF-111 · Chat pelo WhatsApp</a></li><li><a href="mf-112.html">MF-112 · Boards e Relatórios</a></li><li><a href="mf-113.html">MF-113 · Conectores de Saída</a></li><li><a href="mf-114.html">MF-114 · Módulo de Agendamentos de Agentes</a></li><li><a href="mf-115.html">MF-115 · Agentes ativos</a></li><li><a href="mf-116.html">MF-116 · Auditoria</a></li><li><a href="mf-117.html">MF-117 · Home da organização</a></li><li><a href="mf-118.html">MF-118 · Bases de demonstração</a></li><li><a href="mf-120.html">MF-120 · Faixa de avisos e números</a></li></ul></nav></aside>
+<main class="content doc">
+<div class="dx-busca-movel"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-movel" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><nav class="crumbs" aria-label="Trilha"><a href="index.html">Horus v2</a><span class="sep">/</span><span>v2.0</span><span class="sep">/</span><span class="now">Pergunta rápida</span></nav><span class="doc-eyebrow">v2.0</span><div class="dx-macro-topo"><span class="dx-codigo">MF-110</span><span class="dx-selo">v2.0</span></div><h1 class="doc-h1">Pergunta rápida</h1><p class="doc-lead">Um botão em quase todas as telas abre um popup com a mesma conversa de análise, para tirar a dúvida sobre os números sem sair do que se está fazendo.</p><section class="dx-assuntos" aria-labelledby="dx-assuntos-titulo"><h2 id="dx-assuntos-titulo">Explore os assuntos</h2><div class="dx-assuntos-grade"><div class="dx-assunto"><h3><a href="#mf-110-o-que-e">O que é, em poucas palavras</a><small>1 tópico</small></h3><ul><li><a href="#mf-110-quem-tem">Quem tem o botão</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-110-na-pratica">Uma dúvida, do painel à resposta</a><small>1 tópico</small></h3><ul><li><a href="#mf-110-pergunta-inteira">Por que escrever a pergunta inteira</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-110-conversa">A conversa do popup: fica, vai para o histórico ou some</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-110-o-que-oferece">Tudo o que a conversa oferece</a><small>2 tópicos</small></h3><ul><li><a href="#mf-110-fixar">Fixar uma resposta num board</a></li><li><a href="#mf-110-dados">Os dados que a pergunta alcança</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-110-medida">A pergunta conta, salva ou não</a><small>1 tópico</small></h3><ul><li><a href="#mf-110-reporte">O reporte não se perde</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-110-bastidores">Nos bastidores, sem complicar</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-110-limites">O que a Pergunta rápida não faz</a><small>1 tópico</small></h3><ul><li><a href="#mf-110-ligadas">Funcionalidades ligadas a esta</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-110-faq">Perguntas frequentes</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div></div></section><div id="dx-topo"><p>Numa reunião de resultado, a gestora olha o painel de vendas e surge a dúvida: por que esta filial caiu? No Horus, a pergunta se faz na <strong>conversa de análise</strong>, a tela onde a pessoa escreve em português e recebe a resposta em texto, gráfico ou tabela. Quem está num painel ou na Home precisa sair dali para perguntar.</p>
+<p>A <strong>Pergunta rápida</strong> leva a pergunta até onde a pessoa já está. Um botão flutuante nas telas do Horus abre um <strong>popup</strong>, uma janela pequena sobre a tela, com a mesma conversa de análise. A dúvida se resolve quando aparece: a pessoa pergunta, lê a resposta, fecha o popup e continua. Só vai para o histórico o que ela escolher salvar.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Versão 2.0, em construção</b><p>O que está aqui é o que a versão 2.0 do Horus vai entregar. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
 </div>
-                            <div class="dx-content">
-<blockquote>
-<p><strong>Em uma frase:</strong> tirar uma dúvida sobre os números da empresa de qualquer tela, sem largar o que você está
-fazendo.</p>
-</blockquote>
-<div class="doc-section dx-assunto"><h3 id="mf-110-identificacao" data-dx-icone="id-card">Identificação</h3><div class="table-responsive" tabindex="0" role="region" aria-label="Identificação de MF-110 · Pergunta rápida"><table class="table table_shortcode"><tbody><tr><th scope="row">Código</th><td>MF-110</td></tr><tr><th scope="row">Entrega</th><td>v2.0</td></tr><tr><th scope="row">Situação</th><td>definida</td></tr><tr><th scope="row">Camada</th><td>📲 Canais</td></tr><tr><th scope="row">Objetivos</th><td>O1</td></tr><tr><th scope="row">Quem usa</th><td>gestor de área, executivo, comprador</td></tr><tr><th scope="row">Complexidade</th><td>média</td></tr><tr><th scope="row">Relacionadas</th><td><a href="mf-107.html">Perguntar aos dados em português</a> (MF-107), <a href="mf-108.html">Respostas visuais</a> (MF-108), <a href="mf-102.html">Organizações, pessoas e papéis</a> (MF-102), <a href="mf-103.html">Licenças e planos</a> (MF-103), <a href="mf-111.html">Chat pelo WhatsApp</a> (MF-111), <a href="mf-117.html">Home da organização</a> (MF-117)</td></tr><tr><th scope="row">Atualizado</th><td>03/11/2026</td></tr></tbody></table></div>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="compass" id="mf-110-o-que-e">O que é</h3>
-<p>Hoje, para fazer uma <strong>pergunta de análise</strong>, uma pergunta sobre os números da empresa, a pessoa vai à <strong>conversa de
-análise</strong>, a tela principal do Horus, onde escreve em português e recebe a resposta em texto, gráfico ou tabela.
-Quem está num board ou na Home precisa sair dali.</p>
-<p>A Pergunta rápida põe um <strong>botão flutuante</strong> nas telas do app. Ele abre um <strong>popup</strong>, uma janela pequena sobre a
-tela, com a mesma conversa de análise.</p>
-<p>No dia a dia, a dúvida se resolve quando aparece: a pessoa pergunta, lê, fecha o popup e continua o que fazia. Só
-vai para o histórico o que ela escolher salvar.</p>
-<blockquote>
-<p>📌 <strong>Exemplo:</strong> no board de vendas, a gestora Carla vê a filial Centro 12% abaixo da semana anterior. Abre o botão,
-escreve &quot;por que a filial Centro caiu?&quot; e recebe a resposta com o gráfico, sem sair do board. Limpa a conversa sem
-salvar, e a pergunta conta assim mesmo.</p>
-</blockquote>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="star" id="mf-110-caracteristicas">Características</h3>
+
+<h2 class="doc-h2" id="mf-110-o-que-e">O que é, em poucas palavras</h2>
+<p>A Pergunta rápida é um atalho para a conversa de análise, a partir de quase qualquer tela. Ela se resume em cinco pontos:</p>
 <ul>
-<li><strong>Onde aparece:</strong> em todas as telas do app, menos na própria conversa de análise.</li>
-<li><strong>Quem usa:</strong> o <strong>owner da organização</strong> (quem administra a organização, um setor da empresa ou um cliente), o
-<strong>gestor</strong> (quem responde por uma equipe) e o <strong>membro full</strong> (quem pergunta e cria os próprios boards); o
-<strong>membro leitor</strong>, que só vê boards de outras pessoas, não tem o botão.</li>
-<li><strong>Quem configura:</strong> o owner, nas <strong>roles</strong>, os perfis que ligam ou desligam o que cada pessoa usa; a role padrão,
-com que a organização nasce, traz a Pergunta rápida ligada.</li>
-<li><strong>O que oferece:</strong> tudo o que a conversa oferece, dentro da role: os modos (dados, web e conversa), os níveis de
-inferência (até onde a resposta vai além dos dados, de 1 a 5), a Análise avançada (uma segunda leitura, mais
-demorada) e a escolha do modelo de IA.</li>
-<li><strong>Não sabe o que está na tela:</strong> o popup não vê o que está atrás dele, então a pessoa escreve a pergunta inteira,
-com a filial, o produto ou o período.</li>
-<li><strong>A conversa fica:</strong> ela continua no popup até ser limpa, mesmo que a pessoa o feche ou troque de tela; fechar não
-corta a resposta que está chegando.</li>
-<li><strong>Limpar e salvar:</strong> ao limpar, a pessoa escolhe salvar a conversa no histórico, onde ela continua, ou apagá-la de
-vez.</li>
-<li><strong>Conta na medida:</strong> toda pergunta respondida, salva ou não, conta na <strong>medida de autonomia</strong> (a contagem, na Home
-da organização, das perguntas de análise respondidas) e pode receber 👍🏻, 👎🏻 ou 🚫.</li>
-<li><strong>O reporte fica guardado:</strong> a resposta reportada com 🚫 chega ao owner, mesmo que a conversa seja apagada.</li>
-<li><strong>Os dados que usa:</strong> toda consulta usa os dados da organização inteira: quem pode perguntar alcança todas
-as fontes dela.</li>
+  <li><strong>Um botão em todas as telas do app</strong>, menos na própria conversa de análise, onde ele seria repetido.</li>
+  <li><strong>A mesma conversa, numa janela pequena.</strong> O popup traz tudo o que a conversa oferece, dentro do que a role da pessoa liga.</li>
+  <li><strong>Independente da tela.</strong> O popup não sabe o que está atrás dele, e por isso a pessoa escreve a pergunta inteira.</li>
+  <li><strong>A conversa espera.</strong> Ela fica no popup até a pessoa limpá-la, e na hora de limpar a pessoa escolhe salvá-la ou apagá-la.</li>
+  <li><strong>A pergunta respondida conta</strong> na medida de autonomia da organização, salva ou não.</li>
 </ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="chart-line" id="mf-110-o-valor-que-gera">O valor que gera</h3>
-<ul>
-<li><strong>Para quem usa:</strong> o gestor de área e o executivo tiram a dúvida na hora em que ela surge, sem trocar de tela.</li>
-<li><strong>Para a empresa que contrata o Horus:</strong> mais perguntas de análise resolvidas sem pedido ao time de dados.</li>
-<li><strong>Para o Horus como produto:</strong> mais perguntas por pessoa, que movem a medida de autonomia e o <em>saving</em>, a economia
-com a área de dados, que a Maind calcula com cada cliente.</li>
-</ul>
-<p><strong>Como vamos saber que funcionou:</strong> as pessoas perguntam mais, e com mais frequência, quando a pergunta está a um
-clique da tela em que já estão.</p>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="walking" id="mf-110-como-se-usa-no-horus">Como se usa no Horus</h3>
-<p><strong>Quem pergunta:</strong></p>
-<ol>
-<li>Numa tela qualquer, como um board ou a Home, a pessoa abre o botão.</li>
-<li>Escreve a pergunta de análise inteira.</li>
-<li>Recebe a resposta no popup, com a fonte à vista, e dá 👍🏻, 👎🏻 ou 🚫, se quiser.</li>
-<li>Fecha o popup e segue; a conversa espera por ela.</li>
-<li>Ao terminar, limpa a conversa e escolhe salvá-la ou apagá-la.</li>
+<h3 class="doc-h3" id="mf-110-quem-tem">Quem tem o botão</h3>
+<p>O botão segue as mesmas regras da conversa: o tipo de assento vem primeiro, e a role liga ou desliga dentro do que ele permite (as regras estão em <a href="mf-102.html#mf-102-regras-das-roles">As regras das roles</a>).</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quem</th><th>Tem o botão?</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td><span class="badge badge--success">Sim</span> O owner não depende de roles: usa tudo.</td></tr>
+      <tr class="zebra"><td><strong>Gestor, membro ouro e membro prata</strong></td><td><span class="badge badge--success">Sim</span> Quando a role da pessoa liga a Pergunta rápida. A role padrão, com que a organização nasce, já a traz ligada.</td></tr>
+      <tr class="zebra"><td><strong>Membro bronze</strong></td><td><span class="badge badge--warning">Não</span> Seja qual for a role. O bronze não faz perguntas de análise: vê os painéis que outras pessoas criaram e compartilharam.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Quem configura é o owner: ele mantém a Pergunta rápida ligada na role padrão, ou a liga nas roles que monta, com os controles que cada uma libera. Os tipos de assento estão em <a href="mf-101.html#mf-101-assentos">Os assentos: quem pode fazer o quê</a>.</p>
+
+<h2 class="doc-h2" id="mf-110-na-pratica">Uma dúvida, do painel à resposta</h2>
+<p>Digamos que a Carla, gestora de vendas de uma rede de lojas, acompanha o board de vendas da semana e vê a filial Centro 12% abaixo da semana anterior.</p>
+<ol class="steps">
+  <li><div><h4>Abre o botão</h4><p>Sem sair do board, a Carla abre o botão da Pergunta rápida, e o popup aparece sobre a tela.</p></div></li>
+  <li><div><h4>Escreve a pergunta inteira</h4><p>Ela escreve “por que a filial Centro caiu?”. O popup não vê o board atrás dele; por isso a filial vai escrita na pergunta.</p></div></li>
+  <li><div><h4>Recebe a resposta</h4><p>A resposta chega no popup, com o gráfico e a fonte à vista, como na conversa. Se quiser, ela marca “Gostei”, “Não gostei” ou “Reportar”.</p></div></li>
+  <li><div><h4>Fecha e segue</h4><p>A Carla fecha o popup e continua no board. A conversa fica esperando por ela, mesmo que ela troque de tela.</p></div></li>
+  <li><div><h4>Limpa e escolhe</h4><p>Ao terminar, ela limpa a conversa sem salvar. A pergunta conta assim mesmo na medida de autonomia.</p></div></li>
 </ol>
-<p><strong>Quem configura:</strong> o owner mantém a Pergunta rápida ligada na role padrão, ou a liga nas roles que monta, com os
-controles que cada uma libera.</p>
-<figure><div class="lightbox_shortcode"><img src="media/mf-110-diagrama-1.svg" width="1585" height="192" alt="Diagrama: Como se usa no Horus"><a href="media/mf-110-diagrama-1.svg" class="img_popup" aria-label="Ampliar o diagrama"><i class="icon_plus" aria-hidden="true"></i></a></div><figcaption>Diagrama de “Como se usa no Horus”. Selecione o “+” para ampliar.</figcaption></figure></div><div class="doc-section dx-assunto"><h3 data-dx-icone="puzzle-piece" id="mf-110-grau-de-complexidade-media">Grau de complexidade: média</h3>
-<p>Da v1 se reaproveitam o motor que já responde com os números do banco, a caixa da pergunta e o cartão da resposta,
-que viram uma peça só da tela de análise e do popup. São novos o botão, o popup e a conversa do popup, guardada fora
-do histórico até ser salva ou limpa. Depende do motor de análise, que na v2.0 serve a todos os canais, e das roles,
-sem nada de fora do Horus.</p>
-<blockquote>
-<p>⚠️ É a leitura do PO a partir dos documentos de arquitetura. A estimativa de esforço é do arquiteto.</p>
-</blockquote>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="link" id="mf-110-macro-funcionalidades-relacionadas">Macro funcionalidades relacionadas</h3>
-<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de Pergunta rápida"><table class="table table_shortcode"><thead><tr>
-<th scope="col">mf</th>
-<th scope="col">Como se relaciona</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Perguntar aos dados em português (MF-107)</td>
-<td><strong>depende de</strong>: o popup é a conversa de análise dela, com o mesmo motor, os mesmos controles e o mesmo retorno 👍🏻 👎🏻 🚫.</td>
-</tr>
-<tr>
-<td>Respostas visuais (MF-108)</td>
-<td><strong>depende de</strong>: a resposta no popup traz os mesmos gráficos, tabelas e indicadores da conversa.</td>
-</tr>
-<tr>
-<td>Organizações, pessoas e papéis (MF-102)</td>
-<td><strong>depende de</strong>: as roles do owner ligam o botão e os controles do popup.</td>
-</tr>
-<tr>
-<td>Licenças e planos (MF-103)</td>
-<td><strong>depende de</strong>: o tipo de assento vem antes da role, e o membro leitor não ganha o botão.</td>
-</tr>
-<tr>
-<td>Chat pelo WhatsApp (MF-111)</td>
-<td><strong>complementa</strong>: é o outro canal novo da mesma conversa; lá tudo entra no histórico, e aqui a pessoa escolhe salvar.</td>
-</tr>
-<tr>
-<td>Home da organização (MF-117)</td>
-<td><strong>é a base de</strong>, em parte: a medida de autonomia da Home conta as perguntas respondidas no popup, salvas ou não.</td>
-</tr>
-</tbody>
-</table></div></div><div class="doc-section dx-assunto"><h3 data-dx-icone="ban" id="mf-110-o-que-ela-nao-faz">O que ela não faz</h3>
-<ul>
-<li><strong>Não aponta para a tela:</strong> não dá para marcar um gráfico e perguntar &quot;por que esta caiu?&quot; sem escrever o contexto.</li>
-<li><strong>Não abre duas conversas ao mesmo tempo</strong> no popup.</li>
-<li><strong>Não aparece para o membro leitor</strong>, que não faz perguntas de análise.</li>
-<li><strong>Não investiga o porquê passo a passo:</strong> isso é a Investigação guiada (MF-119), que chega na v2.1.</li>
-</ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="hourglass-half" id="mf-110-ainda-a-decidir">Ainda a decidir</h3>
-<ul>
-<li><strong>Fixar a resposta num board:</strong> se esse controle da conversa, que o popup herda, vira um botão nas roles.</li>
-<li><strong>O que conta como respondida:</strong> se a consulta que volta vazia ou que falha entra na medida de autonomia.</li>
-</ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="book" id="mf-110-para-saber-mais">Para saber mais</h3>
-<ul>
-<li><a href="produto-backlog.html">Backlog estratégico</a>: <a href="produto-backlog.html#d-145"><code>D-145</code></a>, a organização como fronteira dos dados na v2.0; <a href="produto-backlog.html#d-089"><code>D-089</code></a>, a definição macro, que fechou a <code>P-013</code> e reúne
-a <a href="produto-backlog.html#d-065"><code>D-065</code></a> e as <a href="produto-backlog.html#d-085"><code>D-085</code></a> a <a href="produto-backlog.html#d-088"><code>D-088</code></a>; as leituras <code>D-086.1</code> a <code>D-086.4</code> (a conversa no popup, limpar e salvar) e
-<code>D-087.1</code> (o reporte guardado, confirmado na <a href="produto-backlog.html#d-129"><code>D-129</code></a>); <a href="produto-backlog.html#d-110"><code>D-110</code></a>, <a href="produto-backlog.html#d-112"><code>D-112</code></a> e <a href="produto-backlog.html#d-114"><code>D-114</code></a> (o botão nas roles, a role
-padrão, o assento antes da role); <a href="produto-backlog.html#d-069"><code>D-069</code></a> e a leitura <code>D-107.4</code> (o membro leitor sem o botão); <a href="produto-backlog.html#d-132"><code>D-132</code></a> e <a href="produto-backlog.html#d-133"><code>D-133</code></a> (o
-saving e a medida de autonomia); <a href="produto-backlog.html#d-105"><code>D-105</code></a> (a nota 67 e o papel &quot;acelera&quot;).</li>
-<li><a href="produto-v20.html">A v2.0 consolidada</a>: §3.1 (a candidata nº 14), §4, §5.5, §7 e o anexo A;
-<a href="produto-mfs-hoje.html">mapa das mfs</a>; <a href="produto-versoes.html">versões</a>;
-<a href="produto-mapa.html">objetivos</a> (O1);
-<a href="produto-lacunas.html">lacunas</a> (a candidata nº 14).</li>
-<li>Arquitetura: <a href="arquitetura-01.html">estratégia</a>, §4 e o marco M4 · Canais;
-<a href="arquitetura-04.html">software</a>, a &quot;Conversa do popup&quot; e §3.6;
-<a href="arquitetura-05.html">motor</a>, §3.8 e §3.12;
-<a href="arquitetura-02.html">registro de decisões</a>: <a href="arquitetura-02.html#arq-006"><code>ARQ-006</code></a>, <a href="arquitetura-02.html#arq-020"><code>ARQ-020</code></a>, <a href="arquitetura-02.html#arq-024"><code>ARQ-024</code></a>, <a href="arquitetura-02.html#arq-029"><code>ARQ-029</code></a> e
-<a href="arquitetura-02.html#arq-090"><code>ARQ-090</code></a> (a <a href="mf-106.html"><code>MF-106</code></a> inteira na v2.1: na v2.0, os dados da organização inteira);
-<a href="arquitetura-14.html">conferência</a>: as letras (r) e (y) da <code>P-008</code>, §3 e os itens A-08
-(o que conta como respondida) e A-24 (fixar e escolher as fontes).</li>
-</ul>
-<p>📚 <a href="mf-110-inventario.html">Tudo o que o inventário diz desta mf, assunto por assunto</a>.</p>
-</div>
-                            </div>
-                            <nav class="dx-vizinhas" aria-label="Páginas vizinhas"><a class="dx-anterior" href="mf-109.html"><i class="arrow_left" aria-hidden="true"></i>A web como fonte</a><a class="dx-proxima" href="mf-111.html">Chat pelo WhatsApp<i class="arrow_right" aria-hidden="true"></i></a></nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <footer class="simple_footer">
-            <img class="leaf_right" src="assets/kbdoc/img/home_one/leaf_footter.png" alt="">
-            <div class="container-fluid pl-60 pr-60">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <p>Maind Horus · Horus v2 · documento interno · Revisado em 03/11/2026 · versão v2.0 em desenho, sem versão publicada</p>
-                    </div>
-                    <div class="col-lg-6 text-right">
+<p>Em outra pergunta, a Carla prefere guardar o que descobriu: ao limpar, ela salva a conversa, que vai para o histórico, e a continua na tela de análise.</p>
+<h3 class="doc-h3" id="mf-110-pergunta-inteira">Por que escrever a pergunta inteira</h3>
+<p>O popup abre a mesma conversa em qualquer tela e não sabe o que a pessoa está vendo. Não dá para marcar um gráfico e perguntar “por que esta caiu?”: a pessoa escreve o contexto, com a filial, o produto ou o período. É o caminho mais simples, e assim o popup não depende do que cada tela mostra.</p>
 
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
-    <a id="back-to-top" title="Voltar ao topo"></a>
-    <script src="assets/kbdoc/js/jquery-3.2.1.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/popper.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap-select.min.js"></script>
-    <script src="assets/kbdoc/js/parallaxie.js"></script>
-    <script src="assets/kbdoc/js/TweenMax.min.js"></script>
-    <script src="assets/kbdoc/js/anchor.js"></script>
-    <script src="assets/kbdoc/assets/wow/wow.min.js"></script>
-    <script src="assets/kbdoc/js/vendor/clipboard.min.js"></script>
-    <script src="assets/kbdoc/assets/prism/prism.js"></script>
-    <script src="assets/kbdoc/assets/niceselectpicker/jquery.nice-select.min.js"></script>
-    <script src="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="assets/kbdoc/assets/magnify-pop/jquery.magnific-popup.min.js"></script>
-    <script src="assets/kbdoc/assets/tooltipster/js/tooltipster.bundle.min.js"></script>
-    <script src="assets/kbdoc/assets/font-size/js/rv-jquery-fontsize-2.0.3.js"></script>
-    <script src="assets/kbdoc/js/onpage-menu.js"></script>
-    <script src="assets/kbdoc/js/main.js"></script>
-    <script src="assets/busca.js"></script>
-    <script src="assets/docx.js"></script>
+<h2 class="doc-h2" id="mf-110-conversa">A conversa do popup: fica, vai para o histórico ou some</h2>
+<p>A conversa do popup tem regras próprias, para a janela ficar leve, sem encher o histórico, e sem a pessoa perder uma resposta por fechar a janela:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>O que a pessoa faz</th><th>O que acontece com a conversa</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Fecha o popup</strong></td><td>A conversa continua lá, à espera. Se uma resposta estava chegando, fechar não a corta.</td></tr>
+      <tr class="zebra"><td><strong>Troca de tela</strong></td><td>A conversa continua no popup. Trocar de tela também não corta a resposta que está chegando.</td></tr>
+      <tr class="zebra"><td><span class="badge badge--success">Limpa e salva</span></td><td>A conversa vira uma conversa do histórico: aparece na tela de análise e pode ser continuada lá.</td></tr>
+      <tr class="zebra"><td><span class="badge badge--warning">Limpa sem salvar</span></td><td>A conversa é apagada de vez. Ficam só a contagem da pergunta, sem o texto, e a resposta que a pessoa tenha reportado, que já foi para o owner.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>O popup tem <strong>uma conversa por vez</strong>, e ela fica até ser limpa.</p>
+
+<h2 class="doc-h2" id="mf-110-o-que-oferece">Tudo o que a conversa oferece</h2>
+<p>O popup não é uma versão reduzida da conversa: é a própria conversa de análise, numa janela menor. Dentro do que a role da pessoa liga, ele oferece:</p>
+<ul>
+  <li><strong>Os modos de perguntar</strong>, aos dados ou em conversa, com a pesquisa na web como um interruptor ao lado.</li>
+  <li><strong>O nível de inferência</strong>, até onde a resposta vai além dos números, de 1 a 5, dentro do teto de cada fonte (veja <a href="mf-104.html#mf-104-teto">O teto de inferência</a>).</li>
+  <li><strong>A Análise avançada</strong>, uma segunda leitura do resultado, mais demorada.</li>
+  <li><strong>A escolha do modelo de IA</strong>, entre os que a organização aceita (veja <a href="mf-105.html#mf-105-na-conversa">Na conversa</a>).</li>
+  <li><strong>As mesmas respostas visuais</strong>: os gráficos, as tabelas e os indicadores da conversa.</li>
+  <li><strong>O retorno sobre a resposta</strong>: “Gostei”, “Não gostei” ou “Reportar”, como em qualquer resposta de análise.</li>
+</ul>
+<p>Cada um desses controles é da conversa e está explicado em <a href="mf-107.html">Perguntar aos dados em português (MF-107)</a>.</p>
+<h3 class="doc-h3" id="mf-110-fixar">Fixar uma resposta num board</h3>
+<p>Como na conversa, <strong>só o dono do board</strong>, o autor dele, fixa ali uma resposta recebida no popup. Fixar é editar o board, e só o autor edita. Quem não cria boards, como o membro prata, não vê o controle. Fixar não é um botão das roles.</p>
+<h3 class="doc-h3" id="mf-110-dados">Os dados que a pergunta alcança</h3>
+<p>Na versão 2.0, toda pergunta feita no popup usa os dados da organização inteira: quem pode perguntar alcança todas as fontes dela, como na conversa (veja <a href="mf-104.html#mf-104-quem-ve">Quem vê os dados de cada fonte</a>). O recorte por pessoa vem com a Segurança dos dados por pessoa (MF-106), na versão 2.1.</p>
+
+<h2 class="doc-h2" id="mf-110-medida">A pergunta conta, salva ou não</h2>
+<p>A Pergunta rápida existe para um uso mais dinâmico das perguntas, e a medida não pode deixar esse uso de fora. Por isso, a pergunta respondida no popup entra na <strong>medida de autonomia</strong>, a contagem das perguntas de análise respondidas que aparece na Home da organização (MF-117), mesmo que a conversa seja apagada depois. A regra do que conta é a mesma da conversa e do WhatsApp:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Conta</th><th>Não conta</th></tr></thead>
+    <tbody>
+      <tr class="zebra">
+        <td><ul>
+          <li>A pergunta que trouxe dado da empresa, com resultado.</li>
+          <li>A pergunta que trouxe um fato da web, com resultado.</li>
+        </ul></td>
+        <td><ul>
+          <li>A consulta que volta vazia.</li>
+          <li>A falha.</li>
+          <li>A conversa sem dado nem web, como um “oi, tudo bem?”.</li>
+        </ul></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>Na Home, a contagem aparece dividida por canal: a conversa de análise no app, a Pergunta rápida e o WhatsApp. É o sinal de que a Pergunta rápida está sendo usada.</p>
+<h3 class="doc-h3" id="mf-110-reporte">O reporte não se perde</h3>
+<p>Quem reporta uma resposta do popup faz o mesmo que na conversa, e o reporte chega ao owner da organização. A resposta reportada fica guardada para o owner analisar, <strong>mesmo que a conversa seja apagada depois</strong>. A exceção é quem é excluído da organização: os reportes dele que o owner ainda não analisou saem junto com a pessoa (veja <a href="mf-102.html#mf-102-mudancas">Quando alguém muda de faixa ou sai</a>).</p>
+
+<h2 class="doc-h2" id="mf-110-bastidores">Nos bastidores, sem complicar</h2>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>Um motor só para todos os canais.</strong> A conversa, a Pergunta rápida, o WhatsApp, os cartões dos boards e os agentes chamam o mesmo motor de análise. Por isso, as regras da resposta, como os níveis, a web com link e data, o retorno e a contagem, valem igual em todo lugar.</li>
+  <li><strong>A mesma peça de tela.</strong> A caixa da pergunta e o cartão da resposta da conversa viram uma peça só, usada pela tela de análise e pelo popup. Uma correção vale nos dois lugares.</li>
+  <li><strong>A resposta não mora na janela.</strong> A resposta que está chegando fica guardada no próprio app, e não na janela do popup: é por isso que fechar o popup ou trocar de tela não a corta.</li>
+  <li><strong>A conversa fica no servidor, fora do histórico.</strong> Enquanto não é salva nem limpa, a conversa do popup fica guardada no servidor, marcada como do popup e fora da lista do histórico. Salvar a põe na lista; limpar a apaga de vez.</li>
+  <li><strong>Contar sem guardar o texto.</strong> Ao fim de cada resposta, o Horus registra o canal e se a pergunta foi respondida, sem a pergunta e sem a resposta. É assim que a pergunta descartada continua contando.</li>
+  <li><strong>O botão obedece ao servidor.</strong> A tela pergunta ao servidor o que a pessoa pode e só esconde o que ele nega, como em todo o Horus (veja <a href="mf-102.html#mf-102-bastidores">os bastidores das roles</a>).</li>
+  <li><strong>O que já existe e o que é novo.</strong> O motor que responde com os números do banco, a caixa da pergunta e o cartão da resposta vêm do Horus de hoje. O botão, o popup e a conversa do popup são novos, e nada depende de um serviço de fora do Horus.</li>
+</ul>
+
+<h2 class="doc-h2" id="mf-110-limites">O que a Pergunta rápida não faz</h2>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Entender o que está na tela</strong></td><td>O popup não sabe em que tela a pessoa está. Não dá para apontar um gráfico e perguntar “por que esta caiu?”: a pergunta vai escrita inteira.</td></tr>
+      <tr class="zebra"><td><strong>Abrir duas conversas ao mesmo tempo</strong></td><td>O popup tem uma conversa por vez, que fica até ser limpa.</td></tr>
+      <tr class="zebra"><td><strong>Aparecer para o membro bronze</strong></td><td>O bronze não faz perguntas de análise, seja qual for a role (veja <a href="mf-103.html#mf-103-faixas">As três faixas de membro</a>).</td></tr>
+      <tr class="zebra"><td><strong>Aparecer na conversa de análise</strong></td><td>Lá a conversa já está na tela, e o botão seria repetido.</td></tr>
+      <tr class="zebra"><td><strong>Guardar tudo no histórico</strong></td><td>Só vai para o histórico o que a pessoa salva. No Chat pelo WhatsApp (MF-111) é diferente: lá tudo entra no histórico.</td></tr>
+      <tr class="zebra"><td><strong>Fixar no board de outra pessoa</strong></td><td>Só o dono do board fixa uma resposta nele.</td></tr>
+      <tr class="zebra"><td><strong>Investigar o porquê passo a passo</strong></td><td>É da Investigação guiada (MF-119), que chega na versão 2.1.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="mf-110-ligadas">Funcionalidades ligadas a esta</h3>
+<p>A Pergunta rápida é um canal da conversa de análise e depende dela. As páginas das outras funcionalidades entram aqui conforme forem escritas.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="mf-107.html">Perguntar aos dados em português (MF-107)</a></td><td>O popup é a conversa de análise dela, com o mesmo motor, os mesmos controles e o mesmo retorno.</td></tr>
+      <tr class="zebra"><td><a href="mf-108.html">Respostas visuais (MF-108)</a></td><td>A resposta no popup traz os mesmos gráficos, tabelas e indicadores da conversa.</td></tr>
+      <tr class="zebra"><td><a href="mf-102.html">Organizações, pessoas e papéis (MF-102)</a></td><td>O botão da Pergunta rápida mora nas roles do owner, e a role padrão já nasce com ele ligado.</td></tr>
+      <tr class="zebra"><td><a href="mf-103.html">Licenças e planos (MF-103)</a></td><td>O tipo de assento vem antes da role: o membro bronze não ganha o botão.</td></tr>
+      <tr class="zebra"><td>Chat pelo WhatsApp (MF-111)</td><td>É o outro canal novo da mesma conversa. Lá tudo entra no histórico; aqui, a pessoa escolhe salvar.</td></tr>
+      <tr class="zebra"><td>Boards e Relatórios (MF-112)</td><td>O dono do board fixa nele uma resposta do popup, como na conversa.</td></tr>
+      <tr class="zebra"><td>Home da organização (MF-117)</td><td>A medida de autonomia conta as perguntas respondidas no popup, salvas ou não, e mostra a divisão por canal.</td></tr>
+      <tr class="zebra"><td>Bases de demonstração (MF-118)</td><td>As organizações de exemplo ganham um cenário da Pergunta rápida.</td></tr>
+      <tr class="zebra"><td>Segurança dos dados por pessoa (MF-106)</td><td>Na versão 2.1, o que cada pessoa vê dos dados passa a valer também no popup.</td></tr>
+      <tr class="zebra"><td>Investigação guiada (MF-119)</td><td>Na versão 2.1, descobre o porquê de uma mudança, passo a passo, a partir de “investigar” na resposta.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Na implantação</b><p>Um ponto desta página trata de dados pessoais: quem é excluído da organização leva junto os reportes que o owner ainda não analisou, inclusive os feitos no popup. A regra vale como está. Durante a implantação da organização, vale a empresa consultar o jurídico dela sobre esse ponto.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-110-faq">Perguntas frequentes</h2>
+<div class="faq">
+  <details open>
+    <summary>Preciso sair do painel para fazer uma pergunta?</summary>
+    <div class="faq-body"><p>Não. O botão da Pergunta rápida aparece em todas as telas do app, menos na própria conversa de análise. Ele abre um popup com a mesma conversa: você pergunta, lê a resposta, fecha o popup e continua no painel.</p></div>
+  </details>
+  <details>
+    <summary>O popup sabe o que estou vendo na tela?</summary>
+    <div class="faq-body"><p>Não. O popup abre a mesma conversa em qualquer tela e não vê o que está atrás dele. Escreva a pergunta inteira, com a filial, o produto ou o período: em vez de “por que esta caiu?”, “por que a filial Centro caiu?”.</p></div>
+  </details>
+  <details>
+    <summary>Se eu fechar o popup, perco a conversa?</summary>
+    <div class="faq-body"><p>Não. A conversa fica no popup até você limpá-la, mesmo que feche a janela ou troque de tela, e fechar não corta a resposta que está chegando. Ao limpar, você escolhe: salvar, e a conversa vai para o histórico, onde pode ser continuada na tela de análise, ou apagar de vez.</p></div>
+  </details>
+  <details>
+    <summary>A pergunta que eu não salvo conta para alguma coisa?</summary>
+    <div class="faq-body"><p>Conta na medida de autonomia da organização, salva ou não, quando a resposta trouxe dado da empresa ou fato da web, com resultado. A consulta que volta vazia, a falha e a conversa sem dado nem web não contam. Da pergunta apagada fica só a contagem, sem o texto; a resposta que você reportou continua guardada para o owner analisar.</p></div>
+  </details>
+  <details>
+    <summary>Todas as pessoas da organização têm o botão?</summary>
+    <div class="faq-body"><p>Têm o owner, o gestor e os membros ouro e prata, quando a role da pessoa liga a Pergunta rápida; a role padrão, com que a organização nasce, já a traz ligada. O owner pode desligá-la nas roles que monta. O membro bronze não tem o botão, seja qual for a role, porque não faz perguntas de análise.</p></div>
+  </details>
+  <details>
+    <summary>O popup tem menos recursos que a conversa completa?</summary>
+    <div class="faq-body"><p>Não. Ele traz tudo o que a conversa oferece, dentro do que a sua role liga: os modos de perguntar e a pesquisa na web, o nível de inferência, a Análise avançada e a escolha do modelo de IA, com as mesmas respostas em gráfico, tabela e texto. Fixar uma resposta num board também funciona como na conversa: só o dono do board fixa.</p></div>
+  </details>
+</div>
+</div><nav class="rel-grid dx-vizinhas" aria-label="Páginas vizinhas"><a class="rel-card dx-anterior" href="mf-109.html"><span class="cat">Anterior</span><h5>A web como fonte</h5><span class="arrow">←</span></a><a class="rel-card dx-proxima" href="mf-111.html"><span class="cat">Próxima</span><h5>Chat pelo WhatsApp</h5><span class="arrow">→</span></a></nav>
+<footer class="ds-footer"><div class="ftr-brand"><img class="ftr-logo logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="ftr-logo logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /><div class="ftr-divider"></div><div class="ftr-meta"><b>Maind Horus · Horus v2 · versão 2.0 em desenho</b></div></div><div class="ftr-center"><span class="ftr-tag">v2.0 em desenho, sem versão publicada · 06/11/2026</span></div><div class="ftr-author"><div class="avatar">MT</div><div class="ftr-author-info"><b>Maind Tech</b><span>Horus v2</span></div></div></footer>
+</main>
+<aside class="toc"><h6>Neste artigo</h6><ul><li><a href="#mf-110-o-que-e">O que é, em poucas palavras</a></li><li class="lvl-3"><a href="#mf-110-quem-tem">Quem tem o botão</a></li><li><a href="#mf-110-na-pratica">Uma dúvida, do painel à resposta</a></li><li class="lvl-3"><a href="#mf-110-pergunta-inteira">Por que escrever a pergunta inteira</a></li><li><a href="#mf-110-conversa">A conversa do popup: fica, vai para o histórico ou some</a></li><li><a href="#mf-110-o-que-oferece">Tudo o que a conversa oferece</a></li><li class="lvl-3"><a href="#mf-110-fixar">Fixar uma resposta num board</a></li><li class="lvl-3"><a href="#mf-110-dados">Os dados que a pergunta alcança</a></li><li><a href="#mf-110-medida">A pergunta conta, salva ou não</a></li><li class="lvl-3"><a href="#mf-110-reporte">O reporte não se perde</a></li><li><a href="#mf-110-bastidores">Nos bastidores, sem complicar</a></li><li><a href="#mf-110-limites">O que a Pergunta rápida não faz</a></li><li class="lvl-3"><a href="#mf-110-ligadas">Funcionalidades ligadas a esta</a></li><li><a href="#mf-110-faq">Perguntas frequentes</a></li></ul></aside>
+</div>
+<div class="toast" id="toast">Copiado ✓</div>
+<script src="assets/busca.js"></script>
+<script src="assets/docs.js"></script>
+<script src="assets/docx-kbr.js"></script>
 </body>
 </html>

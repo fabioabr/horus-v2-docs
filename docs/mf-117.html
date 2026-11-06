@@ -1,313 +1,195 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-menu="vertical">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="A documentação de produto e de arquitetura do Horus v2: a visão, as decisões, a estratégia e como ele vai ser construído.">
-    <meta name="generator" content="DocX 0.2.1">
-    <link rel="shortcut icon" href="media/horus-claro.svg">
-    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/elagent-icon/style.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/font-awesome/css/all.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/niceselectpicker/nice-select.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/font-size/css/rvfs.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/animation/animate.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/tooltipster/css/tooltipster.bundle.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism-coy.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/magnify-pop/magnific-popup.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/css/style.css">
-    <link rel="stylesheet" href="assets/kbdoc/css/responsive.css">
-    <link rel="stylesheet" href="assets/docx.css">
-    <link rel="stylesheet" href="assets/conteudo.css">
-    <link rel="stylesheet" href="assets/indice.css">
-    <script>try { var l = parseInt(localStorage.getItem('docx-menu-largura'), 10); if (l >= 200 && l <= 640) document.documentElement.style.setProperty('--dx-menu-largura', l + 'px'); } catch (e) { /* Sem armazenamento, vale a largura padrão. */ }</script>
-    <title>MF-117 · Home da organização — Horus v2</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="DocX 0.4.0" />
+<meta name="description" content="As funcionalidades do Horus v2 explicadas uma a uma, em linguagem simples: o que cada uma faz, como funciona na prática e as dúvidas mais comuns." />
+<link rel="icon" href="assets/logo-claro.svg" />
+<title>MF-117 · Home da organização — Horus v2</title>
+<script>
+(function () {
+  try {
+    var raiz = document.documentElement;
+    var tema = localStorage.getItem('kinto-theme');
+    var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    raiz.setAttribute('data-theme', tema || (escuro ? 'dark' : 'light'));
+    raiz.setAttribute('data-menu', localStorage.getItem('kinto-menu') || 'vertical');
+    var ws = parseInt(localStorage.getItem('kinto-side-w'), 10);
+    var wt = parseInt(localStorage.getItem('kinto-toc-w'), 10);
+    if (ws) raiz.style.setProperty('--side-w-user', ws + 'px');
+    if (wt) raiz.style.setProperty('--toc-w-user', wt + 'px');
+  } catch (e) { /* localStorage bloqueado: ficam os atributos do <html> */ }
+})();
+</script>
+<link rel="stylesheet" href="assets/docs.css" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="assets/docx-kbr.css" />
 </head>
-<body class="doc full-width-doc sticky-nav-doc onepage-doc dx-pagina-doc" data-spy="scroll" data-target=".navbar" data-offset="-120">
-    <a class="sr-only sr-only-focusable dx-skip" href="#post">Pular para o conteúdo</a>
-    <div class="body_wrapper sticky_menu">
-        <nav class="navbar navbar-expand-lg menu_one" id="stickyTwo" aria-label="Navegação principal">
-            <div class="container-fluid pl-60 pr-60">
-                <a class="navbar-brand" href="index.html">
-                    <img src="media/horus-claro.svg" alt="Horus v2">
-                    <img src="media/horus-escuro.svg" alt="Horus v2">
-                </a>
-                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Abrir o menu">
-                    <span class="menu_toggle">
-                        <span class="hamburger">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </span>
-                        <span class="hamburger-cross">
-                            <span></span>
-                            <span></span>
-                        </span>
-                    </span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav menu ml-auto">
-
-                    </ul>
-                    <ul class="list-unstyled menu_social">
-                        <li class="search">
-                            <form action="#" class="search_form" role="search" data-search-form>
-                                <label class="sr-only" for="dx-search">Buscar na documentação</label>
-                                <input type="search" class="form-control" id="dx-search" placeholder="Buscar" autocomplete="off" data-search-input aria-describedby="dx-search-status" aria-controls="dx-search-results">
-                                <button type="submit" aria-label="Buscar"><i class="icon_search" aria-hidden="true"></i></button>
-                                <div class="dx-search-results" id="dx-search-results" data-search-results hidden></div>
-                            </form>
-                            <p class="sr-only" id="dx-search-status" role="status" data-search-status></p>
-                        </li>
-                    </ul>
-                    <div class="dx-ferramentas">
-
-
-                        <div id="font-switcher"><div id="rvfs-controllers" class="fontsize-controllers group"></div></div>
-                        <button type="button" class="print" data-print aria-label="Imprimir"><i class="icon_printer" aria-hidden="true"></i></button>
-                        <div class="doc_switch">
-                            <label for="something" class="tab-btn tab-btns"><i class="icon_lightbulb_alt" aria-hidden="true"></i><span class="sr-only">Tema claro</span></label>
-                            <input type="checkbox" name="something" id="something" class="tab_switcher" aria-label="Tema escuro">
-                            <label for="something" class="tab-btn"><i class="far fa-moon" aria-hidden="true"></i><span class="sr-only">Tema escuro</span></label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-        <section class="doc_documentation_area onepage_doc_area" id="sticky_doc">
-            <div class="overlay_bg"></div>
-            <div class="container-fluid pl-60 pr-60">
-                <div class="row doc-container">
-                    <div class="col-lg-2 doc_mobile_menu doc-sidebar display_none">
-                        <aside class="doc_left_sidebarlist" aria-label="Tópicos desta página">
-                            <h3 class="nav_title">Tópicos</h3>
-                            <div class="dx-menu-rolagem">
-                                <ul class="list-unstyled nav-sidebar doc-nav">
-<li class="nav-item active"><a href="#mf-117-identificacao" class="nav-link">Identificação</a></li>
-<li class="nav-item"><a href="#mf-117-o-que-e" class="nav-link">O que é</a></li>
-<li class="nav-item"><a href="#mf-117-caracteristicas" class="nav-link">Características</a></li>
-<li class="nav-item"><a href="#mf-117-o-valor-que-gera" class="nav-link">O valor que gera</a></li>
-<li class="nav-item"><a href="#mf-117-como-se-usa-no-horus" class="nav-link">Como se usa no Horus</a></li>
-<li class="nav-item"><a href="#mf-117-grau-de-complexidade-baixa" class="nav-link">Grau de complexidade: baixa</a></li>
-<li class="nav-item"><a href="#mf-117-macro-funcionalidades-relacionadas" class="nav-link">Macro funcionalidades relacionadas</a></li>
-<li class="nav-item"><a href="#mf-117-o-que-ela-nao-faz" class="nav-link">O que ela não faz</a></li>
-<li class="nav-item"><a href="#mf-117-ainda-a-decidir" class="nav-link">Ainda a decidir</a></li>
-<li class="nav-item"><a href="#mf-117-para-saber-mais" class="nav-link">Para saber mais</a></li>
-                                </ul>
-                            </div>
-                        </aside>
-                        <div class="dx-divisor" role="separator" aria-orientation="vertical" aria-label="Ajustar a largura do menu" tabindex="0" title="Arraste para ajustar a largura do menu (duplo clique volta ao padrão)"><span class="dx-divisor__pega"></span></div>
-                    </div>
-                    <div class="col-lg-10 col-md-12">
-                        <div class="documentation_info dx-pagina" id="post">
-                            <header class="dx-cabeca" id="mf-117">
-                                <nav class="dx-trilha" aria-label="Trilha"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Início</a></li><li class="breadcrumb-item">v2.0</li><li class="breadcrumb-item active" aria-current="page">Home da organização</li></ol></nav>
-                                <div class="dx-macro-topo"><span class="dx-macro-codigo">MF-117</span><span class="dx-macro-selo">v2.0</span></div>
-                                <h1>Home da organização</h1>
-                                <p>Base herdada; a medida de autonomia</p>
-                            </header>
-                            <div class="dx-modelo-01">
-<nav aria-labelledby="dx-m01-assuntos-titulo">
-<div class="dx-m01-rotulo"><h2 id="dx-m01-assuntos-titulo">Explore os assuntos</h2><span>10 seções</span></div>
-<div class="dx-m01-assuntos">
-<a class="dx-m01-assunto" href="#mf-117-identificacao"><span class="dx-m01-icone"><i class="fas fa-id-card" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Identificação</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-117-o-que-e"><span class="dx-m01-icone"><i class="fas fa-compass" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que é</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-117-caracteristicas"><span class="dx-m01-icone"><i class="fas fa-star" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Características</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-117-o-valor-que-gera"><span class="dx-m01-icone"><i class="fas fa-chart-line" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O valor que gera</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-117-como-se-usa-no-horus"><span class="dx-m01-icone"><i class="fas fa-walking" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Como se usa no Horus</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-117-grau-de-complexidade-baixa"><span class="dx-m01-icone"><i class="fas fa-puzzle-piece" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Grau de complexidade: baixa</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-117-macro-funcionalidades-relacionadas"><span class="dx-m01-icone"><i class="fas fa-link" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Macro funcionalidades relacionadas</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-117-o-que-ela-nao-faz"><span class="dx-m01-icone"><i class="fas fa-ban" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que ela não faz</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-117-ainda-a-decidir"><span class="dx-m01-icone"><i class="fas fa-hourglass-half" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Ainda a decidir</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-117-para-saber-mais"><span class="dx-m01-icone"><i class="fas fa-book" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Para saber mais</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-</div></nav>
+<body>
+<header class="hdr"><div class="hdr-brand"><a class="hdr-logo" href="index.html" aria-label="Horus v2"><img class="logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /></a><div class="div"></div><div class="doc-meta"><b>Horus v2 · Documentação</b><small>Maind Horus</small></div></div><div class="hdr-center"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-topo" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><div class="hdr-actions"><div class="menu-toggle" role="group" aria-label="Menu"><button data-set="vertical" aria-label="Menu vertical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button><button data-set="horizontal" aria-label="Menu horizontal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></button></div><div class="theme-toggle" role="group" aria-label="Tema"><button data-set="light" aria-label="Claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button><button data-set="dark" aria-label="Escuro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header>
+<div class="shell">
+<aside class="side"><nav aria-label="Páginas da documentação"><h6>Horus v2</h6><ul><li><a href="index.html">Início</a></li></ul><h6>Para começar</h6><ul><li><a href="como-ler.html">Como ler esta documentação</a></li></ul><h6>v2.0</h6><ul class="side-sub"><li><a href="mf-101.html">MF-101 · Administração da instância</a></li><li><a href="mf-102.html">MF-102 · Organizações, pessoas e papéis</a></li><li><a href="mf-103.html">MF-103 · Licenças e planos</a></li><li><a href="mf-104.html">MF-104 · Conectar as fontes vivas</a></li><li><a href="mf-105.html">MF-105 · IA sob controle da organização</a></li><li><a href="mf-107.html">MF-107 · Perguntar aos dados em português</a></li><li><a href="mf-108.html">MF-108 · Respostas visuais</a></li><li><a href="mf-109.html">MF-109 · A web como fonte</a></li><li><a href="mf-110.html">MF-110 · Pergunta rápida</a></li><li><a href="mf-111.html">MF-111 · Chat pelo WhatsApp</a></li><li><a href="mf-112.html">MF-112 · Boards e Relatórios</a></li><li><a href="mf-113.html">MF-113 · Conectores de Saída</a></li><li><a href="mf-114.html">MF-114 · Módulo de Agendamentos de Agentes</a></li><li><a href="mf-115.html">MF-115 · Agentes ativos</a></li><li><a href="mf-116.html">MF-116 · Auditoria</a></li><li><a href="mf-117.html" class="active">MF-117 · Home da organização</a></li><li><a href="mf-118.html">MF-118 · Bases de demonstração</a></li><li><a href="mf-120.html">MF-120 · Faixa de avisos e números</a></li></ul></nav></aside>
+<main class="content doc">
+<div class="dx-busca-movel"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-movel" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><nav class="crumbs" aria-label="Trilha"><a href="index.html">Horus v2</a><span class="sep">/</span><span>v2.0</span><span class="sep">/</span><span class="now">Home da organização</span></nav><span class="doc-eyebrow">v2.0</span><div class="dx-macro-topo"><span class="dx-codigo">MF-117</span><span class="dx-selo">v2.0</span></div><h1 class="doc-h1">Home da organização</h1><p class="doc-lead">A tela de entrada da organização passa a mostrar quantas perguntas de análise o Horus respondeu e o que as pessoas acharam das respostas, por canal, por gestor e por pessoa.</p><section class="dx-assuntos" aria-labelledby="dx-assuntos-titulo"><h2 id="dx-assuntos-titulo">Explore os assuntos</h2><div class="dx-assuntos-grade"><div class="dx-assunto"><h3><a href="#mf-117-o-que-e">O que é, em poucas palavras</a><small>1 tópico</small></h3><ul><li><a href="#mf-117-palavras">As palavras desta página</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-117-na-pratica">Um mês na Home</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-117-grade">A grade que o owner arruma</a><small>1 tópico</small></h3><ul><li><a href="#mf-117-faixa">A Home e a faixa de avisos</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-117-o-que-conta">O que entra na conta</a><small>2 tópicos</small></h3><ul><li><a href="#mf-117-qualidade">A qualidade</a></li><li><a href="#mf-117-canais">A divisão por canal</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-117-quem-ve">Quem vê o quê</a><small>2 tópicos</small></h3><ul><li><a href="#mf-117-quem-sai">Quando alguém sai</a></li><li><a href="#mf-117-prazo">Por quanto tempo os números ficam</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-117-bastidores">Nos bastidores, sem complicar</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-117-limites">O que a Home da organização não faz</a><small>1 tópico</small></h3><ul><li><a href="#mf-117-ligadas">Funcionalidades ligadas a esta</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-117-faq">Perguntas frequentes</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div></div></section><div id="dx-topo"><p>Algum tempo depois de contratar o Horus, alguém da diretoria pergunta: as pessoas estão mesmo usando? E as respostas prestam? Sem um número, a resposta é uma impressão. A <strong>Home da organização</strong>, a tela de entrada da organização no Horus, passa a dar esse número: quantas perguntas de análise o Horus respondeu e o que as pessoas acharam das respostas.</p>
+<p>Pense no hodômetro do carro: ele conta os quilômetros, mas não diz quanto se economizou de táxi; essa conta se faz fora, com a Maind. Onde a comparação para: o hodômetro não sabe se a viagem foi boa, e a Home sabe, porque cada resposta pode receber o retorno de quem perguntou.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Versão 2.0, em construção</b><p>O que está aqui é o que a versão 2.0 do Horus vai entregar. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
 </div>
-                            <div class="dx-content">
-<blockquote>
-<p><strong>Em uma frase:</strong> ver, na tela de entrada da organização, quantas perguntas de análise o Horus respondeu e o que
-as pessoas acharam das respostas.</p>
-</blockquote>
-<div class="doc-section dx-assunto"><h3 id="mf-117-identificacao" data-dx-icone="id-card">Identificação</h3><div class="table-responsive" tabindex="0" role="region" aria-label="Identificação de MF-117 · Home da organização"><table class="table table_shortcode"><tbody><tr><th scope="row">Código</th><td>MF-117</td></tr><tr><th scope="row">Entrega</th><td>v2.0</td></tr><tr><th scope="row">Situação</th><td>definida</td></tr><tr><th scope="row">Camada</th><td>📈 Prova e controle</td></tr><tr><th scope="row">Objetivos</th><td>O6</td></tr><tr><th scope="row">Quem usa</th><td>owner da organização, comprador</td></tr><tr><th scope="row">Complexidade</th><td>baixa</td></tr><tr><th scope="row">Relacionadas</th><td><a href="mf-107.html">Perguntar aos dados em português</a> (MF-107), <a href="mf-110.html">Pergunta rápida</a> (MF-110), <a href="mf-111.html">Chat pelo WhatsApp</a> (MF-111), <a href="mf-102.html">Organizações, pessoas e papéis</a> (MF-102), <a href="mf-103.html">Licenças e planos</a> (MF-103), <a href="mf-116.html">Auditoria</a> (MF-116), <a href="mf-118.html">Bases de demonstração</a> (MF-118)</td></tr><tr><th scope="row">Atualizado</th><td>03/11/2026</td></tr></tbody></table></div>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="compass" id="mf-117-o-que-e">O que é</h3>
-<p><strong>Como é hoje.</strong> A Home é a tela de entrada da organização: um painel com cerca de 60 indicadores de uso, como
-consumo, erros, adoção e fontes. O <strong>owner da organização</strong>, quem administra a organização no Horus (as pessoas, as
-preferências e os dados), monta a grade, e todos veem o que ele montou. Nenhum indicador diz de onde veio cada
-resposta nem se ela foi boa.</p>
-<p><strong>O que passa a existir.</strong> A <strong>medida de autonomia</strong>: a contagem das <strong>perguntas de análise</strong> respondidas, as que as
-pessoas fazem ao Horus sobre os números da empresa, ao lado da <strong>qualidade</strong>, a proporção de 👍🏻, 👎🏻 e 🚫 que
-elas deram às respostas. Ela soma todos os lugares onde se pergunta.</p>
-<p><strong>Como fica o dia a dia.</strong> O owner vê onde o Horus é usado e onde a qualidade cai. O <strong>saving</strong>, a economia da área
-de dados que deixa de montar relatório sob encomenda, a Maind calcula fora do produto, com cada cliente.</p>
-<blockquote>
-<p>💡 <strong>Analogia:</strong> é o hodômetro do carro: conta os quilômetros, mas não diz quanto se economizou de táxi; essa conta
-se faz fora, com a Maind. <strong>Onde a analogia para:</strong> o hodômetro não sabe se a viagem foi boa, e a Home sabe.</p>
-</blockquote>
-<blockquote>
-<p>📌 <strong>Exemplo (personagens ilustrativos):</strong> o owner Marcos abre a Home e vê que, em outubro, a organização teve
-1.200 perguntas de análise respondidas, com 85% de 👍🏻 entre as avaliadas, e que a área do Sul pergunta pouco. Com
-a Maind, ele compara o número com os cerca de 300 pedidos por mês que o time de dados atendia antes e chega ao
-saving.</p>
-</blockquote>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="star" id="mf-117-caracteristicas">Características</h3>
+
+<h2 class="doc-h2" id="mf-117-o-que-e">O que é, em poucas palavras</h2>
+<p>A Home já existe no Horus de hoje: é um painel com cerca de 60 indicadores de uso, como os erros, a adoção e as fontes, que o owner da organização arruma numa grade. Nenhum desses indicadores diz de onde veio cada resposta nem se ela foi boa. A versão 2.0 acrescenta, ao lado dos indicadores de hoje, quatro coisas:</p>
 <ul>
-<li><strong>Onde aparece:</strong> na Home, ao lado dos indicadores de hoje.</li>
-<li><strong>O que conta:</strong> toda pergunta de análise respondida, com gráfico, texto ou os dois, na conversa de análise, na
-Pergunta rápida (MF-110), salva ou não, e no Chat pelo WhatsApp (MF-111).</li>
-<li><strong>O que não conta:</strong> a pergunta de análise que o Horus disse não conseguir responder, e o que os agentes, os
-trabalhadores de IA, perguntam sozinhos.</li>
-<li><strong>Conta sem julgar:</strong> a resposta de que a pessoa não gostou também conta; a satisfação aparece na qualidade.</li>
-<li><strong>A qualidade:</strong> a proporção de 👍🏻 Gostei, 👎🏻 Não gostei e 🚫 Reportar entre as respostas avaliadas.</li>
-<li><strong>Quem vê o detalhe:</strong> o owner vê o total e a divisão por <strong>gestor</strong>, quem responde por uma equipe, e por pessoa.</li>
-<li><strong>Sem conteúdo:</strong> a contagem guarda o canal e o desfecho de cada resposta, nunca o texto.</li>
-<li><strong>Começa do zero:</strong> a medida nasce com a v2.0; o uso de teste da versão de hoje não vem junto.</li>
-<li><strong>Quanto tempo fica:</strong> 400 dias por padrão, para comparar um mês com o mesmo mês do ano anterior; o owner pode
-estender o prazo nas preferências da organização.</li>
+  <li><strong>A medida de autonomia.</strong> A contagem das perguntas de análise que o Horus respondeu, somando todos os lugares onde se pergunta (veja o <a href="como-ler.html#glossario">glossário</a>).</li>
+  <li><strong>A qualidade.</strong> A proporção de Gostei, Não gostei e Reportar entre as respostas que as pessoas avaliaram.</li>
+  <li><strong>A divisão por canal.</strong> Quantas respondidas vieram da conversa de análise, da Pergunta rápida e do WhatsApp.</li>
+  <li><strong>A divisão por gestor e por pessoa</strong>, para o owner e, na equipe de cada um, para o gestor.</li>
 </ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="chart-line" id="mf-117-o-valor-que-gera">O valor que gera</h3>
-<ul>
-<li><strong>Para quem usa:</strong> o owner decide onde expandir o uso (as áreas que perguntam pouco) e onde corrigir (onde se
-juntam os 👎🏻 e os reportes).</li>
-<li><strong>Para a empresa que contrata o Horus:</strong> o <strong>comprador</strong>, quem aprova e paga a contratação, acompanha quantas
-perguntas de análise se resolvem no Horus e, com a Maind, chega ao saving.</li>
-<li><strong>Para o Horus como produto:</strong> a adoção vira um número, e isso sustenta a renovação e a compra de mais assentos
-nas Licenças e planos (MF-103).</li>
-</ul>
-<p><strong>Como vamos saber que funcionou:</strong> o comprador vê a autonomia subir semana a semana e aceita ver o saving num
-relatório da Maind. O sinal de alerta é a contagem subir sem cair o número de pedidos ao time de dados.</p>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="walking" id="mf-117-como-se-usa-no-horus">Como se usa no Horus</h3>
-<p><strong>Quem pergunta</strong> (o owner, o gestor e o <strong>membro full</strong>, que pergunta e cria os próprios boards) não faz nada a
-mais: a resposta e a avaliação entram sozinhas.</p>
-<p><strong>O owner da organização:</strong></p>
-<ol>
-<li>Monta a grade da Home com os indicadores que quer ver.</li>
-<li>Escolhe o período e vê as respondidas, a qualidade e a divisão por gestor e por pessoa.</li>
-<li>Decide onde expandir o uso e onde corrigir.</li>
-<li>Com a Maind, compara com os pedidos de antes e chega ao saving.</li>
+<p>Com isso, o owner vê onde o Horus é usado e onde a qualidade cai. A economia que esse uso representa, a Maind calcula fora do produto, com cada cliente.</p>
+<h3 class="doc-h3" id="mf-117-palavras">As palavras desta página</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Palavra</th><th>O que quer dizer aqui</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Home da organização</strong></td><td>A tela de entrada da organização no Horus: o painel de indicadores de uso que o owner arruma numa grade.</td></tr>
+      <tr class="zebra"><td><strong>Qualidade</strong></td><td>A proporção de Gostei, Não gostei e Reportar entre as respostas avaliadas. É a satisfação das pessoas, medida à parte da contagem.</td></tr>
+      <tr class="zebra"><td><strong>Comprador</strong></td><td>Quem aprova e paga a contratação do Horus na empresa cliente. Acompanha os números pelo relatório da Maind, fora do produto.</td></tr>
+      <tr class="zebra"><td><strong>Saving</strong></td><td>A economia da área de dados, que deixa de montar relatório sob encomenda. A Maind a calcula com cada cliente, fora do produto.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="doc-h2" id="mf-117-na-pratica">Um mês na Home</h2>
+<p>Digamos que a área comercial de uma rede de lojas usa o Horus há alguns meses. O Marcos é o owner da organização; a Carla e o Pedro são gestores de vendas, cada um com a sua equipe. Os números são ilustrativos.</p>
+<ol class="steps">
+  <li><div><h4>O owner arruma a grade</h4><p>O Marcos monta a grade da Home com os indicadores que quer ver, escolhidos no catálogo de cards da Home. Todos na organização veem a Home que ele montou.</p></div></li>
+  <li><div><h4>As pessoas perguntam, e mais nada</h4><p>Quem pergunta (o owner, os gestores e os membros ouro e prata) não faz nada a mais: cada resposta e cada avaliação entram sozinhas na conta, venham da conversa de análise, da Pergunta rápida ou do WhatsApp. O membro bronze não pergunta: só vê os painéis que outras pessoas criaram e compartilharam.</p></div></li>
+  <li><div><h4>O owner escolhe o período e lê</h4><p>O Marcos escolhe outubro e vê 1.200 perguntas de análise respondidas, com 85% de Gostei entre as avaliadas: 700 vieram da conversa, 300 da Pergunta rápida e 200 do WhatsApp. Na divisão por gestor, ele vê que a equipe do Pedro pergunta pouco.</p></div></li>
+  <li><div><h4>O gestor olha a própria equipe</h4><p>Na mesma Home, a Carla vê as respondidas e a qualidade da equipe que ela gere, pessoa a pessoa.</p></div></li>
+  <li><div><h4>O owner decide onde agir</h4><p>O Marcos sabe agora onde expandir o uso, na equipe que pergunta pouco, e onde corrigir: onde se juntam os Não gostei e os reportes.</p></div></li>
+  <li><div><h4>Com a Maind, chega ao saving</h4><p>O Marcos e a Maind comparam as 1.200 respondidas com os cerca de 300 pedidos por mês que o time de dados atendia antes e chegam à economia. Essa conta se faz fora do Horus.</p></div></li>
 </ol>
-<figure><div class="lightbox_shortcode"><img src="media/mf-117-diagrama-1.svg" width="1073" height="370" alt="Diagrama: Como se usa no Horus"><a href="media/mf-117-diagrama-1.svg" class="img_popup" aria-label="Ampliar o diagrama"><i class="icon_plus" aria-hidden="true"></i></a></div><figcaption>Diagrama de “Como se usa no Horus”. Selecione o “+” para ampliar.</figcaption></figure></div><div class="doc-section dx-assunto"><h3 data-dx-icone="puzzle-piece" id="mf-117-grau-de-complexidade-baixa">Grau de complexidade: baixa</h3>
-<p>Quase tudo vem da v1: os registros de uso, o catálogo de indicadores e a grade do owner. O novo é a soma das
-respondidas e da qualidade em todos os canais, com cada resposta passando a registrar o canal e o desfecho. Depende
-de outras macro funcionalidades (mfs) prontas, como a conversa, a avaliação, a Pergunta rápida e o WhatsApp, e de
-ninguém de fora do Horus.</p>
-<blockquote>
-<p>⚠️ É a leitura do PO a partir dos documentos de arquitetura. A estimativa de esforço é do arquiteto.</p>
-</blockquote>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="link" id="mf-117-macro-funcionalidades-relacionadas">Macro funcionalidades relacionadas</h3>
-<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de Home da organização"><table class="table table_shortcode"><thead><tr>
-<th scope="col">mf</th>
-<th scope="col">Como se relaciona</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Perguntar aos dados em português (MF-107)</td>
-<td><strong>depende de</strong>: cada pergunta de análise respondida e cada 👍🏻, 👎🏻 ou 🚫 nascem na conversa de análise.</td>
-</tr>
-<tr>
-<td>Pergunta rápida (MF-110)</td>
-<td><strong>depende de</strong>: as perguntas de análise do popup contam, salvas ou não.</td>
-</tr>
-<tr>
-<td>Chat pelo WhatsApp (MF-111)</td>
-<td><strong>depende de</strong>: as perguntas de análise feitas pelo WhatsApp também contam.</td>
-</tr>
-<tr>
-<td>Organizações, pessoas e papéis (MF-102)</td>
-<td><strong>depende de</strong>: a divisão por gestor vem da equipe de cada um.</td>
-</tr>
-<tr>
-<td>Licenças e planos (MF-103)</td>
-<td><strong>é a base de</strong>: a adoção medida sustenta a renovação e a compra de mais assentos.</td>
-</tr>
-<tr>
-<td>Auditoria (MF-116)</td>
-<td><strong>complementa</strong>: a Home conta quanto o Horus é usado; a auditoria registra quem recebeu o quê.</td>
-</tr>
-<tr>
-<td>Bases de demonstração (MF-118)</td>
-<td><strong>complementa</strong>: é nas organizações de exemplo que a medida aparece antes de haver cliente.</td>
-</tr>
-</tbody>
-</table></div></div><div class="doc-section dx-assunto"><h3 data-dx-icone="ban" id="mf-117-o-que-ela-nao-faz">O que ela não faz</h3>
-<ul>
-<li><strong>Calcular o saving</strong> no produto, nem pedir ao owner um ponto de partida para estimá-lo.</li>
-<li><strong>Ligar-se ao sistema de chamados</strong> do cliente.</li>
-<li><strong>Mostrar o tempo ganho</strong> frente ao pedido ao time de dados: essa comparação também se faz com a Maind.</li>
-</ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="hourglass-half" id="mf-117-ainda-a-decidir">Ainda a decidir</h3>
-<ul>
-<li><strong>O que conta como respondida</strong> quando a consulta volta vazia, dá erro ou a conversa não usa dado nem web.</li>
-<li><strong>Quem mais vê a medida:</strong> se o gestor vê a da própria equipe, e como o comprador a acompanha.</li>
-<li><strong>A divisão por canal:</strong> se a Home mostra quantas vieram da conversa, do popup e do WhatsApp.</li>
-</ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="book" id="mf-117-para-saber-mais">Para saber mais</h3>
-<ul>
-<li><a href="produto-backlog.html">Backlog estratégico</a>: <a href="produto-backlog.html#d-133"><code>D-133</code></a>, a definição macro da medida de autonomia
-(fechou a <code>P-023</code>, letra d); <a href="produto-backlog.html#d-132"><code>D-132</code></a>, o produto mostra só o que mede e o saving se calcula fora, com a leitura
-<code>D-132.1</code> (a Maind faz a conta); <a href="produto-backlog.html#d-004"><code>D-004</code></a>, o que é uma pergunta de análise respondida; <a href="produto-backlog.html#d-005"><code>D-005</code></a> e <a href="produto-backlog.html#d-129"><code>D-129</code></a>, o retorno
-do usuário; <a href="produto-backlog.html#d-087"><code>D-087</code></a>, a Pergunta rápida conta, salva ou não; <a href="produto-backlog.html#d-095"><code>D-095</code></a>, o WhatsApp conta; <a href="produto-backlog.html#d-125"><code>D-125</code></a>, &quot;em segundos&quot; é
-comparação; <a href="produto-backlog.html#d-021"><code>D-021</code></a>, a base herdada; <a href="produto-backlog.html#d-105"><code>D-105</code></a>, a candidata nº 4 (nota 66, essencial); <code>P-008</code>, letras (b) e (y);
-<code>P-001</code>, dispensada.</li>
-<li><a href="produto-v20.html">A v2.0 consolidada</a>: §1 (&quot;Como saberemos&quot;), §3.1 (candidata nº 4), §3.2 (a
-base herdada), §4 (passo 11), §7 (as dependências) e §8 (o risco do saving fora do produto).
-<a href="produto-mfs-hoje.html">Mapa das mfs</a>: o mapa, a tabela de conversão e &quot;O que salta
-aos olhos&quot;. <a href="produto-norte.html">Norte</a> (&quot;Como saberemos que deu certo&quot;),
-<a href="produto-versoes.html">versões</a>, <a href="produto-mapa.html">objetivos</a> (O6) e
-<a href="produto-lacunas.html">lacunas</a> (candidata 4).</li>
-<li>Arquitetura: <a href="arquitetura-01.html">estratégia</a> (§3, O6; §4; §5, &quot;Uso, Home e rastro&quot;;
-§6, o marco M7); <a href="arquitetura-04.html">software</a> (o registro de uso, o fecho do turno, a medida de
-autonomia e qualidade, a Home); <a href="arquitetura-05.html">motor</a> (§3.8, o retorno, o reporte
-e a medida); <a href="arquitetura-06.html">dados</a> (§3.3, os prazos dos fatos de uso; §3.5, o que não vem da
-v1.xx); <a href="arquitetura-11.html">observabilidade</a> (§3.5: a medida não é telemetria);
-<a href="arquitetura-02.html">registro</a>: <a href="arquitetura-02.html#arq-011"><code>ARQ-011</code></a> (a medida começa na v2.0), <a href="arquitetura-02.html#arq-013"><code>ARQ-013</code></a> (o tempo
-medido por dentro, sem virar promessa), <a href="arquitetura-02.html#arq-029"><code>ARQ-029</code></a> (a contagem no fecho do turno) e <a href="arquitetura-02.html#arq-035"><code>ARQ-035</code></a> (os prazos);
-<a href="arquitetura-14.html">conferência</a>: §1, letra (b) ⚠️; §3, o reaproveitamento; §4,
-<code>A-08</code> (os casos de borda) e <code>A-26</code>.</li>
-</ul>
-<p>📚 <a href="mf-117-inventario.html">Tudo o que o inventário diz desta mf, assunto por assunto</a>.</p>
-</div>
-                            </div>
-                            <nav class="dx-vizinhas" aria-label="Páginas vizinhas"><a class="dx-anterior" href="mf-116.html"><i class="arrow_left" aria-hidden="true"></i>Auditoria</a><a class="dx-proxima" href="mf-118.html">Bases de demonstração<i class="arrow_right" aria-hidden="true"></i></a></nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <footer class="simple_footer">
-            <img class="leaf_right" src="assets/kbdoc/img/home_one/leaf_footter.png" alt="">
-            <div class="container-fluid pl-60 pr-60">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <p>Maind Horus · Horus v2 · documento interno · Revisado em 03/11/2026 · versão v2.0 em desenho, sem versão publicada</p>
-                    </div>
-                    <div class="col-lg-6 text-right">
+<p>O mesmo caminho em desenho: os três lugares onde se pergunta, o que o Horus registra no fim de cada pergunta, o que a Home mostra a quem e a conta que se faz fora, com a Maind.</p>
+<figure class="dx-diagrama"><figcaption><b>Das perguntas à Home da organização</b> <span>Os três lugares onde se pergunta, o que o Horus registra no fim de cada pergunta, o que conta e o que fica fora, o que a Home mostra ao owner e ao gestor e a economia calculada fora, com a Maind</span><a href="media/diagramas/mf-117-das-perguntas-a-home.html" target="_blank" rel="noopener">Abrir em tela cheia ↗</a></figcaption><iframe src="media/diagramas/mf-117-das-perguntas-a-home.html?embutido=1" title="Das perguntas à Home da organização" loading="lazy"></iframe></figure>
 
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
-    <a id="back-to-top" title="Voltar ao topo"></a>
-    <script src="assets/kbdoc/js/jquery-3.2.1.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/popper.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap-select.min.js"></script>
-    <script src="assets/kbdoc/js/parallaxie.js"></script>
-    <script src="assets/kbdoc/js/TweenMax.min.js"></script>
-    <script src="assets/kbdoc/js/anchor.js"></script>
-    <script src="assets/kbdoc/assets/wow/wow.min.js"></script>
-    <script src="assets/kbdoc/js/vendor/clipboard.min.js"></script>
-    <script src="assets/kbdoc/assets/prism/prism.js"></script>
-    <script src="assets/kbdoc/assets/niceselectpicker/jquery.nice-select.min.js"></script>
-    <script src="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="assets/kbdoc/assets/magnify-pop/jquery.magnific-popup.min.js"></script>
-    <script src="assets/kbdoc/assets/tooltipster/js/tooltipster.bundle.min.js"></script>
-    <script src="assets/kbdoc/assets/font-size/js/rv-jquery-fontsize-2.0.3.js"></script>
-    <script src="assets/kbdoc/js/onpage-menu.js"></script>
-    <script src="assets/kbdoc/js/main.js"></script>
-    <script src="assets/busca.js"></script>
-    <script src="assets/docx.js"></script>
+<h2 class="doc-h2" id="mf-117-grade">A grade que o owner arruma</h2>
+<p>A Home tem um <strong>catálogo de cards</strong> próprio, com os indicadores de uso, e o owner da organização monta a grade com eles. Todos veem o que ele montou. A medida de autonomia, a qualidade e as divisões entram na Home ao lado dos indicadores de hoje.</p>
+<h3 class="doc-h3" id="mf-117-faixa">A Home e a faixa de avisos</h3>
+<p>A <a href="mf-120.html">Faixa de avisos e números (MF-120)</a>, que passa no alto de todas as telas, é outra funcionalidade: tem um catálogo próprio e se monta fora da Home, nas preferências da organização. Os cards da Home não passam na faixa, e os da faixa não entram na Home.</p>
+
+<h2 class="doc-h2" id="mf-117-o-que-conta">O que entra na conta</h2>
+<p>A regra do que conta como pergunta respondida é a da conversa de análise, e está em <a href="mf-107.html#mf-107-respondidas">As perguntas respondidas</a>. Em resumo: conta a resposta que trouxe dado da empresa ou fato da web, com resultado, na conversa, na Pergunta rápida, salva ou não, e no WhatsApp. Não contam a consulta que volta vazia, a falha, a conversa sem dado nem web e as perguntas que os agentes fazem sozinhos.</p>
+<p>A conta <strong>não julga</strong>: a resposta de que a pessoa não gostou também conta. A satisfação aparece na qualidade, à parte.</p>
+<h3 class="doc-h3" id="mf-117-qualidade">A qualidade</h3>
+<p>Cada resposta de análise traz os botões Gostei, Não gostei e Reportar (o retorno está explicado em <a href="mf-107.html#mf-107-retorno">O retorno sobre cada resposta</a>). A Home mostra a proporção dos três entre as respostas avaliadas. É ela que mostra onde corrigir: onde se juntam os Não gostei e os reportes. A correção, no modelo semântico ou na carga de dados, parte do que as pessoas apontam (veja <a href="mf-107.html#mf-107-reportar">Quando a resposta parece errada</a>).</p>
+<h3 class="doc-h3" id="mf-117-canais">A divisão por canal</h3>
+<p>A Home mostra quantas respondidas vieram de cada canal: a conversa de análise no app, a <a href="mf-110.html">Pergunta rápida (MF-110)</a> e o <a href="mf-111.html">Chat pelo WhatsApp (MF-111)</a>. É o sinal de que os dois canais novos estão sendo usados. O canal fica guardado em cada resposta, sem o texto dela.</p>
+
+<h2 class="doc-h2" id="mf-117-quem-ve">Quem vê o quê</h2>
+<p>Todos veem a grade que o owner montou, mas o detalhe da medida depende de quem olha:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quem</th><th>O que vê da medida</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>A organização inteira: as respondidas, a qualidade, a divisão por canal e a divisão por gestor e por pessoa.</td></tr>
+      <tr class="zebra"><td><strong>Gestor</strong></td><td>A medida e a qualidade da equipe que ele gere, com a divisão por pessoa.</td></tr>
+      <tr class="zebra"><td><strong>Membros ouro, prata e bronze</strong></td><td>Não veem a divisão.</td></tr>
+      <tr class="zebra"><td><strong>Comprador</strong></td><td>Acompanha pelo relatório da Maind, fora do produto.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>A divisão por gestor vem das carteiras: cada membro está na equipe de um gestor só (veja <a href="mf-102.html#mf-102-quem-e-quem">Os papéis, um por um</a>). A contagem guarda o canal e o desfecho de cada resposta, nunca o texto.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Ponto de atenção</b><p>Com a divisão por pessoa, o gestor vê quanto cada pessoa da equipe dele pergunta. O risco que se acompanha é a contagem por pessoa levar alguém a perguntar por pressão, e não por necessidade. E o sinal de alerta da medida é a contagem subir sem cair o número de pedidos ao time de dados.</p></div>
+</div>
+<h3 class="doc-h3" id="mf-117-quem-sai">Quando alguém sai</h3>
+<p>Quem é <strong>excluído</strong>, porque saiu ou foi retirado da organização, some da divisão por pessoa: a contagem que era dele é apagada junto com os outros registros dele (veja <a href="mf-102.html#mf-102-mudancas">Quando alguém muda de faixa ou sai</a>). O total da organização e a série de cada mês, porém, continuam como estavam: o número fica <strong>sem dono</strong>, sem nome nem conversa. Se a Ana, da equipe da Carla, fez 90 das 1.200 perguntas respondidas de outubro e é excluída em novembro, a Home continua mostrando 1.200 em outubro, e a Ana deixa de aparecer na divisão por pessoa (números ilustrativos).</p>
+<h3 class="doc-h3" id="mf-117-prazo">Por quanto tempo os números ficam</h3>
+<p>Os registros de uso ficam <strong>400 dias</strong> por padrão, o bastante para comparar um mês com o mesmo mês do ano anterior. O owner pode estender esse prazo nas preferências da organização. A medida <strong>começa do zero</strong> na versão 2.0: o uso de teste do Horus de hoje não vem junto.</p>
+
+<h2 class="doc-h2" id="mf-117-bastidores">Nos bastidores, sem complicar</h2>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>A conta se faz no fim de cada pergunta.</strong> Quando uma pergunta termina, o Horus registra o canal, o modo, o nível de inferência e o desfecho: respondida, ou não respondida e por quê. A pergunta e a resposta não entram no registro. É por isso que a pergunta do popup apagada sem salvar continua contando.</li>
+  <li><strong>Um ponto só vê tudo.</strong> Quem registra é o servidor do Horus, o único que vê a pergunta inteira em todos os canais. Por isso a conta é a mesma na tela, no popup e no WhatsApp.</li>
+  <li><strong>A medida é dado da organização.</strong> Ela fica no banco da organização, com os outros registros de uso, e não nos números técnicos que acompanham a saúde do serviço.</li>
+  <li><strong>Quase tudo já existe.</strong> Os registros de uso, o catálogo de indicadores e a grade do owner vêm do Horus de hoje. O novo é somar as respondidas e a qualidade de todos os canais, com cada resposta registrando o canal e o desfecho. Nada depende de um serviço de fora do Horus.</li>
+</ul>
+
+<h2 class="doc-h2" id="mf-117-limites">O que a Home da organização não faz</h2>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Calcular a economia (o saving)</strong></td><td>O Horus mostra só o que mede: as respondidas e a qualidade. A economia se calcula fora do produto, com a Maind, e o Horus não pede ao owner um ponto de partida para estimá-la.</td></tr>
+      <tr class="zebra"><td><strong>Ligar-se ao sistema de chamados da empresa</strong></td><td>O Horus não sabe quantos pedidos ao time de dados deixaram de existir nem quanto cada um custava. A comparação com os pedidos de antes se faz com a Maind.</td></tr>
+      <tr class="zebra"><td><strong>Mostrar o tempo ganho</strong></td><td>A comparação com o prazo do pedido ao time de dados também se faz com a Maind. “Em segundos” é uma comparação, e não um tempo garantido (veja <a href="mf-107.html#mf-107-limites">o que a conversa não faz</a>).</td></tr>
+      <tr class="zebra"><td><strong>Dividir por outros cortes</strong></td><td>A Home divide as respondidas por canal, por gestor e por pessoa. Outras divisões, como por área ou por horário, ficaram de fora.</td></tr>
+      <tr class="zebra"><td><strong>Trazer o uso do Horus de hoje</strong></td><td>A medida começa do zero na versão 2.0; o uso de teste da versão de hoje não vem junto.</td></tr>
+      <tr class="zebra"><td><strong>Passar avisos e números no alto das telas</strong></td><td>É a <a href="mf-120.html">Faixa de avisos e números (MF-120)</a>, com catálogo próprio.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="mf-117-ligadas">Funcionalidades ligadas a esta</h3>
+<p>A Home soma o que nasce em outras funcionalidades. As principais:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="mf-107.html">Perguntar aos dados em português (MF-107)</a></td><td>Cada pergunta de análise respondida e cada Gostei, Não gostei ou Reportar nascem na conversa de análise.</td></tr>
+      <tr class="zebra"><td><a href="mf-110.html">Pergunta rápida (MF-110)</a></td><td>As perguntas de análise do popup contam, salvas ou não.</td></tr>
+      <tr class="zebra"><td><a href="mf-111.html">Chat pelo WhatsApp (MF-111)</a></td><td>As perguntas de análise feitas pelo WhatsApp também contam.</td></tr>
+      <tr class="zebra"><td><a href="mf-102.html">Organizações, pessoas e papéis (MF-102)</a></td><td>A divisão por gestor, e o que cada gestor vê, vem da carteira de cada um; a regra de quem sai também é de lá.</td></tr>
+      <tr class="zebra"><td><a href="mf-103.html">Licenças e planos (MF-103)</a></td><td>A adoção medida aqui sustenta a renovação e a compra de mais assentos; a contagem dos assentos fica na visão de cobrança de lá.</td></tr>
+      <tr class="zebra"><td><a href="mf-105.html">IA sob controle da organização (MF-105)</a></td><td>Na organização que usa a conexão de IA da instância, o owner não vê o consumo de IA e acompanha o uso das pessoas por aqui.</td></tr>
+      <tr class="zebra"><td><a href="mf-116.html">Auditoria (MF-116)</a></td><td>A Home conta quanto o Horus é usado; a Auditoria registra quem recebeu o quê.</td></tr>
+      <tr class="zebra"><td><a href="mf-118.html">Bases de demonstração (MF-118)</a></td><td>É nas organizações de exemplo que a medida aparece antes de haver cliente.</td></tr>
+      <tr class="zebra"><td><a href="mf-120.html">Faixa de avisos e números (MF-120)</a></td><td>A faixa passa avisos e números no alto de todas as telas, com catálogo próprio; a Home fica com o dela, e um card de uma não vai para a outra.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Na implantação</b><p>Um ponto desta página trata de dados pessoais: quem é excluído da organização tem os registros apagados junto, inclusive a contagem dele na medida de autonomia, e o total da organização segue como número sem dono. A regra vale como está. Durante a implantação da organização, vale a empresa consultar o jurídico dela sobre esse ponto. Do lado técnico, ainda se confere como apagar os registros de quem sai convive com a guarda dos registros de acesso e das cópias de segurança.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-117-faq">Perguntas frequentes</h2>
+<div class="faq">
+  <details open>
+    <summary>Como sei se as pessoas estão de fato usando o Horus?</summary>
+    <div class="faq-body"><p>Pela Home da organização. Ela mostra quantas perguntas de análise o Horus respondeu no período que o owner escolher, somando a conversa de análise, a Pergunta rápida e o WhatsApp, com a divisão por canal. O owner vê também a divisão por gestor e por pessoa e, ao lado, a qualidade: a proporção de Gostei, Não gostei e Reportar entre as respostas avaliadas.</p></div>
+  </details>
+  <details>
+    <summary>O Horus mostra quanto a minha empresa economizou?</summary>
+    <div class="faq-body"><p>Não dentro do produto. A Home mostra só o que o Horus mede: as perguntas respondidas e a qualidade. A economia da área de dados se calcula com a Maind, comparando as respondidas com os pedidos que o time de dados atendia antes, e quem aprovou a compra acompanha pelo relatório da Maind.</p></div>
+  </details>
+  <details>
+    <summary>Quem escolhe o que aparece na Home?</summary>
+    <div class="faq-body"><p>O owner da organização. Ele monta a grade da Home com os indicadores do catálogo de cards dela, e todos veem o que ele montou. A faixa que passa no alto das telas é outra funcionalidade: tem catálogo próprio e se monta nas preferências da organização (MF-120).</p></div>
+  </details>
+  <details>
+    <summary>O meu gestor vê quantas perguntas eu faço?</summary>
+    <div class="faq-body"><p>Vê. O gestor vê a medida e a qualidade da equipe que ele gere, pessoa a pessoa, e o owner vê a organização inteira, por gestor e por pessoa. Os membros não veem a divisão. A contagem guarda só o canal e o desfecho de cada resposta, nunca o texto da pergunta.</p></div>
+  </details>
+  <details>
+    <summary>Uma resposta de que a pessoa não gostou conta como respondida?</summary>
+    <div class="faq-body"><p>Conta. A medida conta a resposta que trouxe dado da empresa ou fato da web, com resultado, sem julgar se ela agradou; a satisfação aparece na qualidade. Não contam a consulta que volta vazia, a falha, a conversa sem dado nem web e as perguntas que os agentes fazem sozinhos.</p></div>
+  </details>
+  <details>
+    <summary>O que acontece com os números de quem sai da empresa?</summary>
+    <div class="faq-body"><p>A pessoa excluída some da divisão por pessoa, porque a contagem dela é apagada junto com os outros registros dela. O total da organização e a série de cada mês continuam como estavam, como número sem dono, sem nome nem conversa. Como é um tratamento de dados pessoais, vale a sua empresa consultar o jurídico dela durante a implantação.</p></div>
+  </details>
+</div>
+</div><nav class="rel-grid dx-vizinhas" aria-label="Páginas vizinhas"><a class="rel-card dx-anterior" href="mf-116.html"><span class="cat">Anterior</span><h5>Auditoria</h5><span class="arrow">←</span></a><a class="rel-card dx-proxima" href="mf-118.html"><span class="cat">Próxima</span><h5>Bases de demonstração</h5><span class="arrow">→</span></a></nav>
+<footer class="ds-footer"><div class="ftr-brand"><img class="ftr-logo logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="ftr-logo logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /><div class="ftr-divider"></div><div class="ftr-meta"><b>Maind Horus · Horus v2 · versão 2.0 em desenho</b></div></div><div class="ftr-center"><span class="ftr-tag">v2.0 em desenho, sem versão publicada · 06/11/2026</span></div><div class="ftr-author"><div class="avatar">MT</div><div class="ftr-author-info"><b>Maind Tech</b><span>Horus v2</span></div></div></footer>
+</main>
+<aside class="toc"><h6>Neste artigo</h6><ul><li><a href="#mf-117-o-que-e">O que é, em poucas palavras</a></li><li class="lvl-3"><a href="#mf-117-palavras">As palavras desta página</a></li><li><a href="#mf-117-na-pratica">Um mês na Home</a></li><li><a href="#mf-117-grade">A grade que o owner arruma</a></li><li class="lvl-3"><a href="#mf-117-faixa">A Home e a faixa de avisos</a></li><li><a href="#mf-117-o-que-conta">O que entra na conta</a></li><li class="lvl-3"><a href="#mf-117-qualidade">A qualidade</a></li><li class="lvl-3"><a href="#mf-117-canais">A divisão por canal</a></li><li><a href="#mf-117-quem-ve">Quem vê o quê</a></li><li class="lvl-3"><a href="#mf-117-quem-sai">Quando alguém sai</a></li><li class="lvl-3"><a href="#mf-117-prazo">Por quanto tempo os números ficam</a></li><li><a href="#mf-117-bastidores">Nos bastidores, sem complicar</a></li><li><a href="#mf-117-limites">O que a Home da organização não faz</a></li><li class="lvl-3"><a href="#mf-117-ligadas">Funcionalidades ligadas a esta</a></li><li><a href="#mf-117-faq">Perguntas frequentes</a></li></ul></aside>
+</div>
+<div class="toast" id="toast">Copiado ✓</div>
+<script src="assets/busca.js"></script>
+<script src="assets/docs.js"></script>
+<script src="assets/docx-kbr.js"></script>
 </body>
 </html>

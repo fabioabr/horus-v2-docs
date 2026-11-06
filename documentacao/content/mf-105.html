@@ -1,0 +1,173 @@
+<p>Por trás de cada resposta do Horus trabalha um <strong>modelo de inteligência artificial</strong>: o programa que entende a pergunta, escreve a consulta ao banco de dados e redige o texto da resposta. Os números, esses não vêm dele: saem sempre da fonte de dados da empresa. Esta funcionalidade põe nas mãos da organização a escolha desse modelo: qual modelo faz cada tarefa, quem pode trocá-lo numa conversa e, quando a organização paga a própria IA, quanto ela consome.</p>
+<p>É parecido com alugar um carro. A empresa escolhe o carro de cada trajeto e abastece com o próprio cartão, ou recebe o carro com o combustível pago pela locadora, quando ela oferece. A diferença é que aqui o consumo se mede a cada chamada à IA, e a locadora (a Maind) decide, cliente a cliente, a quem oferece o combustível.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Versão 2.0, em construção</b><p>O que está aqui é o que a versão 2.0 do Horus vai entregar. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
+</div>
+
+<h3 id="mf-105-o-que-e">O que é, em poucas palavras</h3>
+<p>A IA sob controle da organização é o conjunto de escolhas que a organização faz sobre a inteligência artificial que o Horus usa por ela. São cinco:</p>
+<ul>
+  <li><strong>De onde vem a IA.</strong> A organização pode usar a conexão que a Maind lhe disponibiliza e paga, ou cadastrar a própria e pagar o consumo.</li>
+  <li><strong>Quais modelos ela aceita.</strong> Entre os modelos das conexões que tem, o owner escolhe os que a organização usa.</li>
+  <li><strong>O modelo de cada tarefa.</strong> Há um modelo padrão, obrigatório, e cada tarefa pode ter o seu, inclusive a dos agentes.</li>
+  <li><strong>Quem pode trocar o modelo na conversa.</strong> O owner libera, ou não, essa escolha para cada grupo de pessoas.</li>
+  <li><strong>O consumo e o custo</strong> da conexão que a organização paga, em números, chamada a chamada.</li>
+</ul>
+<h4 id="mf-105-palavras">As palavras desta página</h4>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Palavra</th><th>O que quer dizer aqui</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Modelo de IA</strong></td><td>O programa de inteligência artificial que entende a pergunta, escreve a consulta e redige o texto. Há vários, de vários fabricantes, com qualidades e preços diferentes.</td></tr>
+      <tr class="zebra"><td><strong>Provedor de IA</strong></td><td>A empresa por onde o Horus chega aos modelos. Na versão 2.0 são dois: o <strong>OpenRouter</strong>, que reúne modelos de vários fabricantes, e o <strong>Amazon Bedrock</strong>.</td></tr>
+      <tr class="zebra"><td><strong>Conexão de IA</strong></td><td>A ligação com um provedor, com a chave de acesso dele. Veja também o <a href="#glossario">glossário</a>.</td></tr>
+      <tr class="zebra"><td><strong>Curadoria</strong></td><td>A lista dos modelos que a organização aceita. Ninguém na organização usa um modelo fora dela.</td></tr>
+      <tr class="zebra"><td><strong>Role</strong></td><td>O pacote de botões que o owner monta para um grupo de pessoas: liga e desliga, um a um, o que a conversa oferece, inclusive a escolha do modelo.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 id="mf-105-de-onde-vem">De onde vem a IA da organização</h3>
+<p>A conexão de IA de uma organização tem duas origens possíveis: a <strong>da instância</strong>, que a Maind cadastra, disponibiliza e paga, e a <strong>da organização</strong>, que o owner cadastra e a organização paga. Quem cadastra, quem paga e quem edita cada uma está explicado na página da Administração da instância, em <a href="#mf-101-ia">A inteligência artificial: da instância ou a sua</a>. Aqui o assunto é o que vem depois: com a conexão disponível, como a organização a usa.</p>
+<p>Duas regras valem lembrar. A organização <strong>nasce sem IA</strong>, e é a Maind que escolhe, ao criá-la, se lhe disponibiliza a conexão da instância; sem nenhuma conexão, a primeira pergunta de análise espera (veja o <a href="#mf-101-ia">ponto de atenção</a>). E a conexão da instância <strong>chega como a Maind a cadastrou</strong>: a organização a usa, mas não a edita. A Maind controla o que paga decidindo o que disponibiliza; o que a organização paga com a conexão própria, a Maind não limita.</p>
+<h4 id="mf-105-provedores">Os provedores da versão 2.0</h4>
+<p>A organização que cadastra a conexão própria escolhe entre dois provedores:</p>
+<ul>
+  <li><strong>OpenRouter</strong>, que reúne modelos de vários fabricantes. Os modelos da Anthropic, da OpenAI e do Google chegam ao Horus por ele, e não por uma ligação direta com cada fabricante.</li>
+  <li><strong>Amazon Bedrock</strong>, o serviço de modelos de IA da Amazon (AWS).</li>
+</ul>
+<p>A escolha muda uma coisa que a pessoa vê: a pesquisa na web só aparece na conversa quando o provedor pesquisa por conta própria. O OpenRouter pesquisa; o Amazon Bedrock, não. Por isso, a organização que só tem uma conexão Bedrock fica sem a opção de pesquisar na web.</p>
+
+<h3 id="mf-105-escolhas">O que o owner escolhe</h3>
+<p>Com a conexão no lugar, o owner da organização faz as escolhas uma vez, e elas valem para todos:</p>
+<ol class="steps">
+  <li><div><h4>Escolhe a conexão</h4><p>Usa a conexão que a Maind disponibilizou, como veio, ou cadastra a da organização, com o provedor que quiser. Pode ter as duas: valem os modelos de todas as conexões que a organização tem.</p></div></li>
+  <li><div><h4>Monta a curadoria</h4><p>Escolhe os modelos que a organização aceita, entre os das conexões que ela tem. No OpenRouter, um mesmo modelo pode rodar em mais de uma empresa, e o owner indica a preferida para cada um.</p></div></li>
+  <li><div><h4>Define o modelo padrão</h4><p>É obrigatório. Toda conversa nasce com ele, e ele vale onde ninguém escolheu outro.</p></div></li>
+  <li><div><h4>Dá um modelo a cada tarefa, se quiser</h4><p>Pode pôr um modelo mais forte para montar a consulta e um mais econômico para o resto, por exemplo. Também escolhe o modelo dos agentes.</p></div></li>
+  <li><div><h4>Libera a troca na conversa, se quiser</h4><p>Pela role, decide quem pode trocar o modelo durante uma conversa, sempre dentro da curadoria.</p></div></li>
+</ol>
+<p>Um exemplo, com personagens ilustrativos. Ao criar a organização da área comercial de uma rede de lojas, a Maind lhe disponibiliza a conexão da instância. O Marcos, owner da área, aceita três modelos e deixa o mais econômico como padrão; para montar a consulta ao banco, escolhe um mais forte. A gestora Carla, cuja role permite, troca o modelo numa pergunta difícil. No fim do mês, a Maind, que paga essa conexão, vê quanto a área consumiu. Já a área financeira, outra organização da mesma rede, cadastra a própria conexão, num provedor com que a empresa tem contrato, e paga o consumo.</p>
+<p>O mesmo caminho em desenho: as duas origens da conexão, as escolhas do owner, a pergunta e o registro do consumo, com quem vê o quê no fim.</p>
+<dx-diagrama ref="mf-105-da-conexao-ao-custo"></dx-diagrama>
+<h4 id="mf-105-tarefas">Um modelo para cada tarefa</h4>
+<p>Uma resposta do Horus passa por várias tarefas, e cada uma pode ter o seu modelo. As principais:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Tarefa</th><th>O que o modelo faz</th><th>Sem escolha própria, usa</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Montar a consulta</strong></td><td>Escreve a consulta ao banco e o plano da resposta, antes de a consulta rodar.</td><td>O modelo da conversa</td></tr>
+      <tr class="zebra"><td><strong>Consertar a consulta</strong></td><td>Tenta uma vez corrigir a consulta que falhou ou voltou vazia.</td><td>O modelo da conversa</td></tr>
+      <tr class="zebra"><td><strong>Análise avançada</strong></td><td>Lê o resultado da consulta e escreve uma leitura dele.</td><td>O modelo da conversa</td></tr>
+      <tr class="zebra"><td><strong>Responder sem consultar</strong></td><td>Redige a resposta quando a conversa não consulta o banco.</td><td>O modelo da conversa</td></tr>
+      <tr class="zebra"><td><strong>Apoio</strong></td><td>Escolhe as fontes, quando a conversa tem muitas, e dá título à conversa.</td><td>O modelo da conversa</td></tr>
+      <tr class="zebra"><td><strong>Pesquisa na web</strong> <span class="badge badge--info">nova na 2.0</span></td><td>Busca os fatos de fora que a pergunta pede.</td><td>A conexão da conversa, se o provedor dela pesquisa</td></tr>
+      <tr class="zebra"><td><strong>Agentes</strong> <span class="badge badge--info">nova na 2.0</span></td><td>Entendem as instruções do agente e conduzem cada execução.</td><td>O modelo padrão da organização</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="mf-105-na-conversa">Na conversa</h4>
+<p>Quem pergunta é o owner, o gestor e os membros ouro e prata; o membro bronze só vê painéis prontos (os tipos de assento estão em <a href="#mf-101-assentos">Os assentos</a>). A conversa começa com o modelo padrão. Se a role da pessoa liga a escolha do modelo, ela troca o modelo ali mesmo, mas só entre os da curadoria.</p>
+
+<h3 id="mf-105-sem-troca">O modelo nunca muda em silêncio</h3>
+<p>Uma regra de confiança atravessa toda esta funcionalidade: <strong>o Horus nunca troca o modelo por conta própria</strong>. A resposta vem do modelo que a organização escolheu, ou não vem.</p>
+<ul>
+  <li><strong>Falha passageira, antes de começar a responder:</strong> quando o provedor avisa que a falha é passageira (pedidos demais ao mesmo tempo, serviço fora do ar), o Horus tenta de novo uma vez, com o mesmo modelo.</li>
+  <li><strong>Depois que o texto começou a aparecer:</strong> não há nova tentativa, para não pagar duas vezes a mesma parte.</li>
+  <li><strong>Se a falha continua:</strong> a pessoa vê uma falha do serviço, e não uma resposta de outro modelo.</li>
+</ul>
+
+<h3 id="mf-105-consumo">Consumo e custo</h3>
+<p>Cada chamada à IA fica registrada <strong>só em números</strong>, sem o conteúdo da pergunta nem da resposta. Quando o provedor informa o custo da chamada, o Horus guarda esse valor. Quando não informa (o Amazon Bedrock, por exemplo, nunca informa), o Horus <strong>estima</strong> o custo pelo preço público do modelo e marca o número como estimado, para ninguém confundir o medido com o calculado.</p>
+<p>Quem vê esses números depende de quem paga a conexão:</p>
+<ul>
+  <li><strong>O owner da organização</strong> vê o consumo e o custo da conexão própria, a que a organização paga. Da conexão da instância, não vê nada de IA; o uso das pessoas ele acompanha pela Home da organização (MF-117).</li>
+  <li><strong>A Maind</strong> acompanha o custo de IA do mês de cada organização, na Administração da instância, e é avisada quando ele passa de um limite (veja <a href="#mf-101-aviso-de-custo">O aviso de custo</a>).</li>
+</ul>
+<h4 id="mf-105-sem-teto">Sem corte automático</h4>
+<p>Na versão 2.0 <strong>não há teto automático de custo</strong>, nem por agente nem por organização: nada se corta sozinho. Cada execução de agente tem limites técnicos, como um número máximo de perguntas e de minutos, e o aviso de custo chega à Maind, que age à mão.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Ponto de atenção</b><p>Sem corte automático, um agente com erro pode consumir IA até alguém perceber. As alavancas do owner são a escolha do modelo dos agentes e a aprovação antes de criar um agente, que ele pode ligar.</p></div>
+</div>
+
+<h3 id="mf-105-quando-para">Quando a IA para</h3>
+<p>Uma conexão de IA pode parar: a chave é recusada, ou o crédito acaba. Quem é avisado é <strong>o dono da conexão</strong>, porque é quem pode consertar. Se a conexão é a própria, o owner da organização é avisado. Se é a da instância, a Maind é avisada, e o owner da organização que a usa não recebe o aviso. A regra é a mesma dos outros serviços que podem parar, como a fonte de dados e o WhatsApp, em <a href="#mf-101-quando-um-servico-para">Quando um serviço para</a>.</p>
+<p>E vale a regra de cima: o Horus não troca de modelo por conta própria.</p>
+
+<h3 id="mf-105-bastidores">Nos bastidores, sem complicar</h3>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>Um roteador decide cada chamada.</strong> A cada tarefa, uma peça do Horus resolve qual provedor, qual modelo e qual chave usar, seguindo as escolhas do owner. É ela que garante que o modelo não muda em silêncio.</li>
+  <li><strong>As chaves ficam num cofre.</strong> A chave de cada conexão de IA é guardada cifrada, como as credenciais das fontes de dados.</li>
+  <li><strong>O número vem do banco.</strong> A IA escreve a consulta; quem responde com os números é o banco da empresa, e são esses números que entram na resposta.</li>
+  <li><strong>À busca na web vai só a pergunta.</strong> Os dados do banco nunca vão à pesquisa na web.</li>
+  <li><strong>Boa parte já existe.</strong> As conexões, a curadoria, o modelo por tarefa e o registro do consumo vêm do Horus de hoje. A versão 2.0 acrescenta as tarefas dos agentes e da pesquisa na web, a estimativa de custo, o custo por organização e a conexão da instância.</li>
+</ul>
+
+<h3 id="mf-105-limites">O que esta funcionalidade não faz</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Tirar o número do modelo de IA</strong></td><td>Os números vêm sempre do banco da empresa. A IA escreve a consulta e o texto.</td></tr>
+      <tr class="zebra"><td><strong>Cortar o gasto sozinha</strong></td><td>Há o aviso de custo à Maind e os limites técnicos de cada execução, mas nenhum teto automático de custo.</td></tr>
+      <tr class="zebra"><td><strong>Deixar a organização editar a conexão da instância</strong></td><td>Ela chega como a Maind a cadastrou. Quem quer outra coisa cadastra a conexão própria.</td></tr>
+      <tr class="zebra"><td><strong>Mostrar ao owner o consumo da conexão da instância</strong></td><td>Quem acompanha esse custo é a Maind. O owner vê o uso das pessoas pela Home da organização (MF-117).</td></tr>
+      <tr class="zebra"><td><strong>Ligar direto à Anthropic, à OpenAI ou ao Google</strong></td><td>Os modelos desses fabricantes chegam pelo OpenRouter.</td></tr>
+      <tr class="zebra"><td><strong>Garantir que a IA processe os dados no Brasil</strong></td><td>O OpenRouter encaminha as chamadas a fornecedores de vários países, e nem o Amazon Bedrock na região de São Paulo mantém no país o processamento dos modelos Claude.</td></tr>
+      <tr class="zebra"><td><strong>Rodar a IA inteira dentro da casa do cliente</strong></td><td>O modo em que nada sai da casa do cliente, nem a pergunta, não tem versão prevista e só volta se um cliente exigir o Horus instalado inteiro. Na versão 2.1, o middleware (MF-121) vai levar o Horus também à IA do próprio cliente.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="mf-105-ligadas">Funcionalidades ligadas a esta</h4>
+<p>A IA sob controle da organização serve de base a várias outras funcionalidades. As páginas delas entram aqui conforme forem escritas.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="#mf-101">Administração da instância (MF-101)</a></td><td>É lá que a Maind cadastra a conexão da instância, a disponibiliza ao criar cada organização, vê o custo de IA de cada uma e recebe o aviso de custo.</td></tr>
+      <tr class="zebra"><td><a href="#mf-102">Organizações, pessoas e papéis (MF-102)</a></td><td>O botão de escolher o modelo na conversa mora nas roles.</td></tr>
+      <tr class="zebra"><td><a href="#mf-103">Licenças e planos (MF-103)</a></td><td>Na organização que usa a conexão da instância, a Maind paga o consumo de IA; na que usa a conexão própria, a organização o paga.</td></tr>
+      <tr class="zebra"><td><a href="#mf-104">Conectar as fontes vivas (MF-104)</a></td><td>A IA escreve a consulta, e a fonte dá os números.</td></tr>
+      <tr class="zebra"><td>Perguntar aos dados em português (MF-107)</td><td>Cada etapa da resposta usa o modelo que a organização escolheu.</td></tr>
+      <tr class="zebra"><td>A web como fonte (MF-109)</td><td>A pesquisa na web só existe quando o provedor da IA pesquisa por conta própria.</td></tr>
+      <tr class="zebra"><td>Agentes ativos (MF-115)</td><td>O modelo que segue as instruções do agente é escolha do owner, e o consumo dos agentes entra no custo da organização.</td></tr>
+      <tr class="zebra"><td>Segurança dos dados por pessoa (MF-106)</td><td>Na versão 2.1, a IA que transforma a regra de acesso numa consulta protegida, e a confere, será a da organização.</td></tr>
+      <tr class="zebra"><td>Middleware na casa do contratante (MF-121)</td><td>Na versão 2.1, leva o Horus também ao modelo de IA do próprio cliente.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Ainda em definição</b><p>O comercial da Maind ainda define se o preço do assento muda para a organização que traz a própria IA. Também estão em desenho por onde o aviso chega ao dono da conexão quando a IA para (a área de avisos do Horus ou o e-mail), como a falha aparece na tela de quem perguntou e a forma técnica de a conexão da instância chegar a cada organização.</p></div>
+</div>
+
+<h3 id="mf-105-faq">Perguntas frequentes</h3>
+<div class="faq">
+  <details open>
+    <summary>Posso usar o contrato de IA que a minha empresa já tem?</summary>
+    <div class="faq-body"><p>Pode, se ele for com o OpenRouter ou com o Amazon Bedrock, os dois provedores da versão 2.0. O owner da organização cadastra a conexão própria, a organização paga o consumo, e o owner acompanha o consumo e o custo dela no Horus. A Maind não limita os modelos que a organização usa com a conexão que ela mesma paga.</p></div>
+  </details>
+  <details>
+    <summary>Quem decide qual modelo de IA responde às perguntas?</summary>
+    <div class="faq-body"><p>O owner da organização. Ele escolhe os modelos aceitos, define o modelo padrão e, se quiser, um modelo para cada tarefa, inclusive a dos agentes. Quem pergunta usa o padrão, ou troca na conversa se a role dele permitir, sempre dentro da lista do owner.</p></div>
+  </details>
+  <details>
+    <summary>O Horus pode trocar de modelo sem avisar?</summary>
+    <div class="faq-body"><p>Não. Numa falha passageira do provedor, antes de a resposta começar, o Horus tenta de novo uma vez com o mesmo modelo. Se não der certo, a pessoa vê uma falha do serviço, e não uma resposta escrita por outro modelo.</p></div>
+  </details>
+  <details>
+    <summary>A IA pode inventar os números da resposta?</summary>
+    <div class="faq-body"><p>Os números não saem do modelo de IA. A IA escreve a consulta e o texto; quem devolve os números é o banco de dados da empresa, e são eles que entram na resposta.</p></div>
+  </details>
+  <details>
+    <summary>Existe um limite de gasto com IA?</summary>
+    <div class="faq-body"><p>Na versão 2.0, não há teto automático de custo, nem por agente nem por organização. Cada execução de agente tem limites técnicos, e a Maind é avisada quando o custo do mês de uma organização passa de um limite. O owner controla o gasto pela escolha dos modelos, inclusive o dos agentes, e pela aprovação antes de criar um agente.</p></div>
+  </details>
+  <details>
+    <summary>A IA processa os dados da minha empresa no Brasil?</summary>
+    <div class="faq-body"><p>Na versão 2.0, o Horus não garante isso. O OpenRouter encaminha as chamadas a fornecedores de vários países, e nem o Amazon Bedrock na região de São Paulo mantém no país o processamento dos modelos Claude. Para quem precisa usar uma IA dentro de casa, a versão 2.1 traz o middleware (MF-121), que leva o Horus também à IA do próprio cliente.</p></div>
+  </details>
+</div>

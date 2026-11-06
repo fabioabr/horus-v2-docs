@@ -1,0 +1,453 @@
+{
+  "schema_version": 1,
+  "language": "pt-BR",
+  "layout": "portal",
+  "design": "kbr",
+  "project": {
+    "name": "Horus v2",
+    "description": "As funcionalidades do Horus v2 explicadas uma a uma, em linguagem simples: o que cada uma faz, como funciona na prática e as dúvidas mais comuns.",
+    "version": "2.0 em desenho, sem versão publicada",
+    "owner": "Maind Tech",
+    "updated": "2026-11-06",
+    "eyebrow": "Maind Horus · Horus v2",
+    "hero_title": "O Horus v2, funcionalidade por funcionalidade"
+  },
+  "portal": {
+    "macros": {
+      "title": "Macro funcionalidades",
+      "groups": [
+        {
+          "label": "v2.0",
+          "text": "A primeira entrega do Horus v2: 18 macro funcionalidades, todas explicadas aqui.",
+          "items": [
+            {
+              "id": "mf-101",
+              "source": "content/mf-101.html",
+              "code": "MF-101",
+              "badge": "v2.0",
+              "title": "Administração da instância",
+              "summary": "A sala de controle do Horus: criar organizações, liberar assentos, acompanhar o uso e avisar antes de uma parada.",
+              "links": [
+                {
+                  "label": "Os assentos",
+                  "href": "#mf-101-assentos"
+                },
+                {
+                  "label": "Perguntas frequentes",
+                  "href": "#mf-101-faq"
+                }
+              ]
+            },
+            {
+              "id": "mf-102",
+              "source": "content/mf-102.html",
+              "code": "MF-102",
+              "badge": "v2.0",
+              "title": "Organizações, pessoas e papéis",
+              "summary": "Como a equipe entra e se organiza no Horus: o gestor convida, o owner aprova, os grupos dizem para quem vai cada coisa e as roles, o que cada um pode usar.",
+              "links": [
+                {
+                  "label": "Como uma pessoa entra",
+                  "href": "#mf-102-convite"
+                },
+                {
+                  "label": "Perguntas frequentes",
+                  "href": "#mf-102-faq"
+                }
+              ]
+            },
+            {
+              "id": "mf-103",
+              "source": "content/mf-103.html",
+              "code": "MF-103",
+              "badge": "v2.0",
+              "title": "Licenças e planos",
+              "summary": "As regras dos assentos: um plano só, pago por assento e por tipo, com a vaga guardada no convite e ninguém passando do que foi contratado.",
+              "links": [
+                {
+                  "label": "As três faixas de membro",
+                  "href": "#mf-103-faixas"
+                },
+                {
+                  "label": "Perguntas frequentes",
+                  "href": "#mf-103-faq"
+                }
+              ]
+            },
+            {
+              "id": "mf-104",
+              "source": "content/mf-104.html",
+              "code": "MF-104",
+              "badge": "v2.0",
+              "title": "Conectar as fontes vivas",
+              "summary": "Ligar o Horus aos bancos de dados da empresa, só para ler, para que cada resposta traga o número de agora.",
+              "links": [
+                {
+                  "label": "Da fonte à resposta",
+                  "href": "#mf-104-uma-fonte"
+                },
+                {
+                  "label": "Perguntas frequentes",
+                  "href": "#mf-104-faq"
+                }
+              ]
+            },
+            {
+              "id": "mf-105",
+              "source": "content/mf-105.html",
+              "code": "MF-105",
+              "badge": "v2.0",
+              "title": "IA sob controle da organização",
+              "summary": "A organização escolhe qual modelo de IA faz cada tarefa do Horus, na conexão que a Maind lhe disponibiliza ou na que ela mesma cadastra e paga.",
+              "links": [
+                {
+                  "label": "O que o owner escolhe",
+                  "href": "#mf-105-escolhas"
+                },
+                {
+                  "label": "Perguntas frequentes",
+                  "href": "#mf-105-faq"
+                }
+              ]
+            },
+            {
+              "id": "mf-107",
+              "source": "content/mf-107.html",
+              "code": "MF-107",
+              "badge": "v2.0",
+              "title": "Perguntar aos dados em português",
+              "summary": "A pergunta de negócio feita do jeito que se fala, com o número do banco na hora, a origem à vista e um jeito de avisar quando a resposta parece errada.",
+              "links": [
+                {
+                  "label": "Uma pergunta, do começo ao fim",
+                  "href": "#mf-107-uma-pergunta"
+                },
+                {
+                  "label": "Perguntas frequentes",
+                  "href": "#mf-107-faq"
+                }
+              ]
+            },
+            {
+              "id": "mf-108",
+              "source": "content/mf-108.html",
+              "code": "MF-108",
+              "badge": "v2.0",
+              "title": "Respostas visuais",
+              "summary": "A forma da resposta: até dois blocos visuais, como gráfico, tabela ou indicador, com os números do banco e o mesmo desenho na tela, no WhatsApp e no PDF.",
+              "links": [
+                {
+                  "label": "Os seis tipos de bloco",
+                  "href": "#mf-108-tipos"
+                },
+                {
+                  "label": "Perguntas frequentes",
+                  "href": "#mf-108-faq"
+                }
+              ]
+            },
+            {
+              "id": "mf-109",
+              "source": "content/mf-109.html",
+              "code": "MF-109",
+              "badge": "v2.0",
+              "title": "A web como fonte",
+              "summary": "O Horus pesquisa na web quando autorizado e traz, à parte do número da empresa, os fatos de fora, cada um com o link e a data.",
+              "links": [
+                {
+                  "label": "Uma pergunta com a web ligada",
+                  "href": "#mf-109-na-pratica"
+                },
+                {
+                  "label": "Perguntas frequentes",
+                  "href": "#mf-109-faq"
+                }
+              ]
+            },
+            {
+              "id": "mf-110",
+              "source": "content/mf-110.html",
+              "code": "MF-110",
+              "badge": "v2.0",
+              "title": "Pergunta rápida",
+              "summary": "Um botão em quase todas as telas abre um popup com a mesma conversa de análise, para tirar a dúvida sobre os números sem sair do que se está fazendo.",
+              "links": [
+                {
+                  "label": "Uma dúvida, do painel à resposta",
+                  "href": "#mf-110-na-pratica"
+                },
+                {
+                  "label": "Perguntas frequentes",
+                  "href": "#mf-110-faq"
+                }
+              ]
+            },
+            {
+              "id": "mf-111",
+              "source": "content/mf-111.html",
+              "code": "MF-111",
+              "badge": "v2.0",
+              "title": "Chat pelo WhatsApp",
+              "summary": "Perguntar sobre os números da empresa pelo WhatsApp que a pessoa já usa e receber ali mesmo o texto, os gráficos em imagem e o link para a resposta no app.",
+              "links": [
+                {
+                  "label": "Do número ligado à primeira resposta",
+                  "href": "#mf-111-na-pratica"
+                },
+                {
+                  "label": "Perguntas frequentes",
+                  "href": "#mf-111-faq"
+                }
+              ]
+            },
+            {
+              "id": "mf-112",
+              "source": "content/mf-112.html",
+              "code": "MF-112",
+              "badge": "v2.0",
+              "title": "Boards e Relatórios",
+              "summary": "Montar uma vez o painel que acompanha o negócio e tê-lo vivo na tela e em PDF, com a empresa no controle de quem publica e de quem vê.",
+              "links": [
+                {
+                  "label": "Um board, da resposta ao PDF",
+                  "href": "#mf-112-na-pratica"
+                },
+                {
+                  "label": "Perguntas frequentes",
+                  "href": "#mf-112-faq"
+                }
+              ]
+            },
+            {
+              "id": "mf-113",
+              "source": "content/mf-113.html",
+              "code": "MF-113",
+              "badge": "v2.0",
+              "title": "Conectores de Saída",
+              "summary": "O e-mail e o WhatsApp levam o PDF de um painel ou o alerta de um agente a quem precisa, só a pessoas da organização e só pelos canais que o owner ligou.",
+              "links": [
+                {
+                  "label": "Um PDF, do agendamento à caixa de entrada",
+                  "href": "#mf-113-na-pratica"
+                },
+                {
+                  "label": "Perguntas frequentes",
+                  "href": "#mf-113-faq"
+                }
+              ]
+            },
+            {
+              "id": "mf-114",
+              "source": "content/mf-114.html",
+              "code": "MF-114",
+              "badge": "v2.0",
+              "title": "Módulo de Agendamentos de Agentes",
+              "summary": "O relógio do Horus: programar uma vez quando sai o PDF de um board ou roda um agente, e para quem vai o resultado, sem depender de alguém lembrar.",
+              "links": [
+                {
+                  "label": "Um agendamento, do começo ao fim",
+                  "href": "#mf-114-na-pratica"
+                },
+                {
+                  "label": "Perguntas frequentes",
+                  "href": "#mf-114-faq"
+                }
+              ]
+            },
+            {
+              "id": "mf-115",
+              "source": "content/mf-115.html",
+              "code": "MF-115",
+              "badge": "v2.0",
+              "title": "Agentes ativos",
+              "summary": "Um trabalho automático de IA que, a partir de instruções em texto, consulta os dados na hora marcada e entrega a análise pronta, num PDF com gráficos ou num alerta, sem ninguém precisar perguntar.",
+              "links": [
+                {
+                  "label": "Um agente, do texto à entrega",
+                  "href": "#mf-115-um-agente"
+                },
+                {
+                  "label": "Perguntas frequentes",
+                  "href": "#mf-115-faq"
+                }
+              ]
+            },
+            {
+              "id": "mf-116",
+              "source": "content/mf-116.html",
+              "code": "MF-116",
+              "badge": "v2.0",
+              "title": "Auditoria",
+              "summary": "O rastro de quem entregou e de quem abriu o quê na organização, sem o conteúdo, que só o owner consulta e ninguém altera.",
+              "links": [
+                {
+                  "label": "Quem recebeu o board de outubro?",
+                  "href": "#mf-116-na-pratica"
+                },
+                {
+                  "label": "Perguntas frequentes",
+                  "href": "#mf-116-faq"
+                }
+              ]
+            },
+            {
+              "id": "mf-117",
+              "source": "content/mf-117.html",
+              "code": "MF-117",
+              "badge": "v2.0",
+              "title": "Home da organização",
+              "summary": "A tela de entrada da organização passa a mostrar quantas perguntas de análise o Horus respondeu e o que as pessoas acharam das respostas, por canal, por gestor e por pessoa.",
+              "links": [
+                {
+                  "label": "Um mês na Home",
+                  "href": "#mf-117-na-pratica"
+                },
+                {
+                  "label": "Perguntas frequentes",
+                  "href": "#mf-117-faq"
+                }
+              ]
+            },
+            {
+              "id": "mf-118",
+              "source": "content/mf-118.html",
+              "code": "MF-118",
+              "badge": "v2.0",
+              "title": "Bases de demonstração",
+              "summary": "Duas organizações de exemplo, com dados inventados e um cenário para cada funcionalidade da versão 2.0, onde a Maind demonstra o Horus sem tocar nos dados de ninguém e testa cada etapa da construção.",
+              "links": [
+                {
+                  "label": "Um cenário para cada promessa",
+                  "href": "#mf-118-cenarios"
+                },
+                {
+                  "label": "Perguntas frequentes",
+                  "href": "#mf-118-faq"
+                }
+              ]
+            },
+            {
+              "id": "mf-120",
+              "source": "content/mf-120.html",
+              "code": "MF-120",
+              "badge": "v2.0",
+              "title": "Faixa de avisos e números",
+              "summary": "Uma faixa no alto de toda tela passa os avisos da Maind e do owner e os números do dia, cada um com o acesso de quem vê, sem abrir nada nem perguntar.",
+              "links": [
+                {
+                  "label": "A faixa numa semana comum",
+                  "href": "#mf-120-na-pratica"
+                },
+                {
+                  "label": "Perguntas frequentes",
+                  "href": "#mf-120-faq"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "diagrams": [
+    {
+      "id": "mf-101-vida-da-organizacao",
+      "title": "A vida de uma organização",
+      "description": "Da criação ao dia a dia, com os laços de mais assentos e de suspender e reativar",
+      "source": "diagramas/mf-101-vida-da-organizacao.html"
+    },
+    {
+      "id": "mf-102-caminho-do-convite",
+      "title": "O caminho de um convite",
+      "description": "Do convite do gestor à carteira, com o convite direto do owner, a falta de vaga e a quarentena",
+      "source": "diagramas/mf-102-caminho-do-convite.html"
+    },
+    {
+      "id": "mf-103-vida-de-um-assento",
+      "title": "A vida de um assento",
+      "description": "Livre, guardado, ocupado e retirado: o que leva um assento de uma situação a outra",
+      "source": "diagramas/mf-103-vida-de-um-assento.html"
+    },
+    {
+      "id": "mf-104-da-fonte-a-resposta",
+      "title": "Da fonte cadastrada à resposta",
+      "description": "Quem prepara a fonte, do cadastro ao modelo semântico, e o que o Horus faz a cada pergunta: vai ao banco ou reaproveita um resultado recente",
+      "source": "diagramas/mf-104-da-fonte-a-resposta.html"
+    },
+    {
+      "id": "mf-105-da-conexao-ao-custo",
+      "title": "A IA da organização, da conexão ao custo",
+      "description": "As duas origens da conexão de IA, as escolhas do owner, a pergunta e quem vê o consumo",
+      "source": "diagramas/mf-105-da-conexao-ao-custo.html"
+    },
+    {
+      "id": "mf-107-da-pergunta-a-resposta",
+      "title": "Da pergunta à resposta",
+      "description": "O caminho de uma pergunta no modo dados: as permissões, a consulta guiada pelo modelo semântico, a web ao lado, a resposta e o reporte até o owner",
+      "source": "diagramas/mf-107-da-pergunta-a-resposta.html"
+    },
+    {
+      "id": "mf-108-do-pedido-ao-desenho",
+      "title": "Do pedido ao desenho, em todo lugar",
+      "description": "Quem escolhe a forma da resposta, quem põe os números, o que acontece quando não há o que mostrar e os três lugares onde o mesmo desenho aparece",
+      "source": "diagramas/mf-108-do-pedido-ao-desenho.html"
+    },
+    {
+      "id": "mf-109-pergunta-com-a-web",
+      "title": "A pergunta com a web ligada",
+      "description": "A consulta aos dados e a busca na web ao mesmo tempo, a lista de fatos com link e data, o aviso quando a pesquisa não traz fato e a conferência dos links",
+      "source": "diagramas/mf-109-pergunta-com-a-web.html"
+    },
+    {
+      "id": "mf-111-do-numero-a-resposta",
+      "title": "Do número ligado à primeira resposta",
+      "description": "O que se faz uma vez, o canal ligado pelo owner e o número ligado pela pessoa, e o que acontece a cada pergunta pelo WhatsApp, inclusive com quem não pode conversar",
+      "source": "diagramas/mf-111-do-numero-a-resposta.html"
+    },
+    {
+      "id": "mf-112-da-resposta-ao-pdf",
+      "title": "Da resposta ao board e ao PDF",
+      "description": "As duas origens de um cartão, o board publicado que cada um abre vivo e o PDF que sai da mesma montagem, levado à reunião ou enviado no horário agendado",
+      "source": "diagramas/mf-112-da-resposta-ao-pdf.html"
+    },
+    {
+      "id": "mf-113-do-contato-a-entrega",
+      "title": "Do contato à entrega",
+      "description": "O owner liga os conectores, cada pessoa informa o contato, a aprovação, o artefato que o agendamento entrega, o conector que leva ao e-mail ou ao WhatsApp e registra no rastro, e o aviso ao autor quando o artefato não cabe no canal",
+      "source": "diagramas/mf-113-do-contato-a-entrega.html"
+    },
+    {
+      "id": "mf-114-vida-de-um-agendamento",
+      "title": "A vida de um agendamento",
+      "description": "Do agendamento salvo à entrega, com a aprovação do owner, a rodada que falha e o corte da organização",
+      "source": "diagramas/mf-114-vida-de-um-agendamento.html"
+    },
+    {
+      "id": "mf-115-do-texto-a-entrega",
+      "title": "Um agente, do texto à entrega",
+      "description": "Das instruções em texto à confirmação do autor e à aprovação do owner, o ciclo em que o agente pergunta ao motor até terminar, a entrega pelos conectores e o aviso de falha ao autor",
+      "source": "diagramas/mf-115-do-texto-a-entrega.html"
+    },
+    {
+      "id": "mf-116-da-entrega-a-consulta",
+      "title": "Da entrega à consulta do owner",
+      "description": "De onde vêm as linhas do rastro (a publicação, a entrega e a abertura), como elas ficam guardadas sem alteração até o fim do prazo ou a exclusão de quem as gerou, e a consulta que só o owner faz",
+      "source": "diagramas/mf-116-da-entrega-a-consulta.html"
+    },
+    {
+      "id": "mf-117-das-perguntas-a-home",
+      "title": "Das perguntas à Home da organização",
+      "description": "Os três lugares onde se pergunta, o que o Horus registra no fim de cada pergunta, o que conta e o que fica fora, o que a Home mostra ao owner e ao gestor e a economia calculada fora, com a Maind",
+      "source": "diagramas/mf-117-das-perguntas-a-home.html"
+    }
+  ],
+  "sections": [
+    {
+      "id": "como-ler",
+      "title": "Como ler esta documentação",
+      "summary": "O que é uma macro funcionalidade, como cada página é organizada e o que as palavras do Horus querem dizer.",
+      "category": "Para começar",
+      "source": "content/como-ler.html"
+    }
+  ]
+}

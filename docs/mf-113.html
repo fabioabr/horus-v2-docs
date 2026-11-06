@@ -1,315 +1,236 @@
-<!doctype html>
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-menu="vertical">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="A documentação de produto e de arquitetura do Horus v2: a visão, as decisões, a estratégia e como ele vai ser construído.">
-    <meta name="generator" content="DocX 0.2.1">
-    <link rel="shortcut icon" href="media/horus-claro.svg">
-    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/bootstrap/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/elagent-icon/style.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/font-awesome/css/all.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/niceselectpicker/nice-select.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/font-size/css/rvfs.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/animation/animate.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/tooltipster/css/tooltipster.bundle.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/prism/prism-coy.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/magnify-pop/magnific-popup.css">
-    <link rel="stylesheet" href="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.min.css">
-    <link rel="stylesheet" href="assets/kbdoc/css/style.css">
-    <link rel="stylesheet" href="assets/kbdoc/css/responsive.css">
-    <link rel="stylesheet" href="assets/docx.css">
-    <link rel="stylesheet" href="assets/conteudo.css">
-    <link rel="stylesheet" href="assets/indice.css">
-    <script>try { var l = parseInt(localStorage.getItem('docx-menu-largura'), 10); if (l >= 200 && l <= 640) document.documentElement.style.setProperty('--dx-menu-largura', l + 'px'); } catch (e) { /* Sem armazenamento, vale a largura padrão. */ }</script>
-    <title>MF-113 · Conectores de Saída — Horus v2</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="DocX 0.4.0" />
+<meta name="description" content="As funcionalidades do Horus v2 explicadas uma a uma, em linguagem simples: o que cada uma faz, como funciona na prática e as dúvidas mais comuns." />
+<link rel="icon" href="assets/logo-claro.svg" />
+<title>MF-113 · Conectores de Saída — Horus v2</title>
+<script>
+(function () {
+  try {
+    var raiz = document.documentElement;
+    var tema = localStorage.getItem('kinto-theme');
+    var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    raiz.setAttribute('data-theme', tema || (escuro ? 'dark' : 'light'));
+    raiz.setAttribute('data-menu', localStorage.getItem('kinto-menu') || 'vertical');
+    var ws = parseInt(localStorage.getItem('kinto-side-w'), 10);
+    var wt = parseInt(localStorage.getItem('kinto-toc-w'), 10);
+    if (ws) raiz.style.setProperty('--side-w-user', ws + 'px');
+    if (wt) raiz.style.setProperty('--toc-w-user', wt + 'px');
+  } catch (e) { /* localStorage bloqueado: ficam os atributos do <html> */ }
+})();
+</script>
+<link rel="stylesheet" href="assets/docs.css" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="assets/docx-kbr.css" />
 </head>
-<body class="doc full-width-doc sticky-nav-doc onepage-doc dx-pagina-doc" data-spy="scroll" data-target=".navbar" data-offset="-120">
-    <a class="sr-only sr-only-focusable dx-skip" href="#post">Pular para o conteúdo</a>
-    <div class="body_wrapper sticky_menu">
-        <nav class="navbar navbar-expand-lg menu_one" id="stickyTwo" aria-label="Navegação principal">
-            <div class="container-fluid pl-60 pr-60">
-                <a class="navbar-brand" href="index.html">
-                    <img src="media/horus-claro.svg" alt="Horus v2">
-                    <img src="media/horus-escuro.svg" alt="Horus v2">
-                </a>
-                <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Abrir o menu">
-                    <span class="menu_toggle">
-                        <span class="hamburger">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </span>
-                        <span class="hamburger-cross">
-                            <span></span>
-                            <span></span>
-                        </span>
-                    </span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav menu ml-auto">
-
-                    </ul>
-                    <ul class="list-unstyled menu_social">
-                        <li class="search">
-                            <form action="#" class="search_form" role="search" data-search-form>
-                                <label class="sr-only" for="dx-search">Buscar na documentação</label>
-                                <input type="search" class="form-control" id="dx-search" placeholder="Buscar" autocomplete="off" data-search-input aria-describedby="dx-search-status" aria-controls="dx-search-results">
-                                <button type="submit" aria-label="Buscar"><i class="icon_search" aria-hidden="true"></i></button>
-                                <div class="dx-search-results" id="dx-search-results" data-search-results hidden></div>
-                            </form>
-                            <p class="sr-only" id="dx-search-status" role="status" data-search-status></p>
-                        </li>
-                    </ul>
-                    <div class="dx-ferramentas">
-
-
-                        <div id="font-switcher"><div id="rvfs-controllers" class="fontsize-controllers group"></div></div>
-                        <button type="button" class="print" data-print aria-label="Imprimir"><i class="icon_printer" aria-hidden="true"></i></button>
-                        <div class="doc_switch">
-                            <label for="something" class="tab-btn tab-btns"><i class="icon_lightbulb_alt" aria-hidden="true"></i><span class="sr-only">Tema claro</span></label>
-                            <input type="checkbox" name="something" id="something" class="tab_switcher" aria-label="Tema escuro">
-                            <label for="something" class="tab-btn"><i class="far fa-moon" aria-hidden="true"></i><span class="sr-only">Tema escuro</span></label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-        <section class="doc_documentation_area onepage_doc_area" id="sticky_doc">
-            <div class="overlay_bg"></div>
-            <div class="container-fluid pl-60 pr-60">
-                <div class="row doc-container">
-                    <div class="col-lg-2 doc_mobile_menu doc-sidebar display_none">
-                        <aside class="doc_left_sidebarlist" aria-label="Tópicos desta página">
-                            <h3 class="nav_title">Tópicos</h3>
-                            <div class="dx-menu-rolagem">
-                                <ul class="list-unstyled nav-sidebar doc-nav">
-<li class="nav-item active"><a href="#mf-113-identificacao" class="nav-link">Identificação</a></li>
-<li class="nav-item"><a href="#mf-113-o-que-e" class="nav-link">O que é</a></li>
-<li class="nav-item"><a href="#mf-113-caracteristicas" class="nav-link">Características</a></li>
-<li class="nav-item"><a href="#mf-113-o-valor-que-gera" class="nav-link">O valor que gera</a></li>
-<li class="nav-item"><a href="#mf-113-como-se-usa-no-horus" class="nav-link">Como se usa no Horus</a></li>
-<li class="nav-item"><a href="#mf-113-grau-de-complexidade-alta" class="nav-link">Grau de complexidade: alta</a></li>
-<li class="nav-item"><a href="#mf-113-macro-funcionalidades-relacionadas" class="nav-link">Macro funcionalidades relacionadas</a></li>
-<li class="nav-item"><a href="#mf-113-o-que-ela-nao-faz" class="nav-link">O que ela não faz</a></li>
-<li class="nav-item"><a href="#mf-113-ainda-a-decidir" class="nav-link">Ainda a decidir</a></li>
-<li class="nav-item"><a href="#mf-113-para-saber-mais" class="nav-link">Para saber mais</a></li>
-                                </ul>
-                            </div>
-                        </aside>
-                        <div class="dx-divisor" role="separator" aria-orientation="vertical" aria-label="Ajustar a largura do menu" tabindex="0" title="Arraste para ajustar a largura do menu (duplo clique volta ao padrão)"><span class="dx-divisor__pega"></span></div>
-                    </div>
-                    <div class="col-lg-10 col-md-12">
-                        <div class="documentation_info dx-pagina" id="post">
-                            <header class="dx-cabeca" id="mf-113">
-                                <nav class="dx-trilha" aria-label="Trilha"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="index.html">Início</a></li><li class="breadcrumb-item">v2.0</li><li class="breadcrumb-item active" aria-current="page">Conectores de Saída</li></ol></nav>
-                                <div class="dx-macro-topo"><span class="dx-macro-codigo">MF-113</span><span class="dx-macro-selo">v2.0 + v2.1</span></div>
-                                <h1>Conectores de Saída</h1>
-                                <p>O carteiro: por onde o Horus entrega, só a usuários do Horus. Na v2.0, o e-mail e o WhatsApp</p>
-                            </header>
-                            <div class="dx-modelo-01">
-<nav aria-labelledby="dx-m01-assuntos-titulo">
-<div class="dx-m01-rotulo"><h2 id="dx-m01-assuntos-titulo">Explore os assuntos</h2><span>10 seções</span></div>
-<div class="dx-m01-assuntos">
-<a class="dx-m01-assunto" href="#mf-113-identificacao"><span class="dx-m01-icone"><i class="fas fa-id-card" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Identificação</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-113-o-que-e"><span class="dx-m01-icone"><i class="fas fa-compass" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que é</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-113-caracteristicas"><span class="dx-m01-icone"><i class="fas fa-star" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Características</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-113-o-valor-que-gera"><span class="dx-m01-icone"><i class="fas fa-chart-line" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O valor que gera</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-113-como-se-usa-no-horus"><span class="dx-m01-icone"><i class="fas fa-walking" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Como se usa no Horus</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-113-grau-de-complexidade-alta"><span class="dx-m01-icone"><i class="fas fa-puzzle-piece" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Grau de complexidade: alta</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-113-macro-funcionalidades-relacionadas"><span class="dx-m01-icone"><i class="fas fa-link" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Macro funcionalidades relacionadas</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-113-o-que-ela-nao-faz"><span class="dx-m01-icone"><i class="fas fa-ban" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>O que ela não faz</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-113-ainda-a-decidir"><span class="dx-m01-icone"><i class="fas fa-hourglass-half" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Ainda a decidir</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-<a class="dx-m01-assunto" href="#mf-113-para-saber-mais"><span class="dx-m01-icone"><i class="fas fa-book" aria-hidden="true"></i></span><span class="dx-m01-texto"><strong>Para saber mais</strong><small>Ver o assunto</small></span><i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-</div></nav>
+<body>
+<header class="hdr"><div class="hdr-brand"><a class="hdr-logo" href="index.html" aria-label="Horus v2"><img class="logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /></a><div class="div"></div><div class="doc-meta"><b>Horus v2 · Documentação</b><small>Maind Horus</small></div></div><div class="hdr-center"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-topo" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><div class="hdr-actions"><div class="menu-toggle" role="group" aria-label="Menu"><button data-set="vertical" aria-label="Menu vertical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button><button data-set="horizontal" aria-label="Menu horizontal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></button></div><div class="theme-toggle" role="group" aria-label="Tema"><button data-set="light" aria-label="Claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button><button data-set="dark" aria-label="Escuro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header>
+<div class="shell">
+<aside class="side"><nav aria-label="Páginas da documentação"><h6>Horus v2</h6><ul><li><a href="index.html">Início</a></li></ul><h6>Para começar</h6><ul><li><a href="como-ler.html">Como ler esta documentação</a></li></ul><h6>v2.0</h6><ul class="side-sub"><li><a href="mf-101.html">MF-101 · Administração da instância</a></li><li><a href="mf-102.html">MF-102 · Organizações, pessoas e papéis</a></li><li><a href="mf-103.html">MF-103 · Licenças e planos</a></li><li><a href="mf-104.html">MF-104 · Conectar as fontes vivas</a></li><li><a href="mf-105.html">MF-105 · IA sob controle da organização</a></li><li><a href="mf-107.html">MF-107 · Perguntar aos dados em português</a></li><li><a href="mf-108.html">MF-108 · Respostas visuais</a></li><li><a href="mf-109.html">MF-109 · A web como fonte</a></li><li><a href="mf-110.html">MF-110 · Pergunta rápida</a></li><li><a href="mf-111.html">MF-111 · Chat pelo WhatsApp</a></li><li><a href="mf-112.html">MF-112 · Boards e Relatórios</a></li><li><a href="mf-113.html" class="active">MF-113 · Conectores de Saída</a></li><li><a href="mf-114.html">MF-114 · Módulo de Agendamentos de Agentes</a></li><li><a href="mf-115.html">MF-115 · Agentes ativos</a></li><li><a href="mf-116.html">MF-116 · Auditoria</a></li><li><a href="mf-117.html">MF-117 · Home da organização</a></li><li><a href="mf-118.html">MF-118 · Bases de demonstração</a></li><li><a href="mf-120.html">MF-120 · Faixa de avisos e números</a></li></ul></nav></aside>
+<main class="content doc">
+<div class="dx-busca-movel"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-movel" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><nav class="crumbs" aria-label="Trilha"><a href="index.html">Horus v2</a><span class="sep">/</span><span>v2.0</span><span class="sep">/</span><span class="now">Conectores de Saída</span></nav><span class="doc-eyebrow">v2.0</span><div class="dx-macro-topo"><span class="dx-codigo">MF-113</span><span class="dx-selo">v2.0</span></div><h1 class="doc-h1">Conectores de Saída</h1><p class="doc-lead">O e-mail e o WhatsApp levam o PDF de um painel ou o alerta de um agente a quem precisa, só a pessoas da organização e só pelos canais que o owner ligou.</p><section class="dx-assuntos" aria-labelledby="dx-assuntos-titulo"><h2 id="dx-assuntos-titulo">Explore os assuntos</h2><div class="dx-assuntos-grade"><div class="dx-assunto"><h3><a href="#mf-113-o-que-e">O que é, em poucas palavras</a><small>2 tópicos</small></h3><ul><li><a href="#mf-113-palavras">As palavras desta página</a></li><li><a href="#mf-113-quem-e-quem">Quem faz o quê</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-113-na-pratica">Um PDF, do agendamento à caixa de entrada</a><small>1 tópico</small></h3><ul><li><a href="#mf-113-quem-recebe">Quem pode receber</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-113-canais">Os dois canais da versão 2.0</a><small>2 tópicos</small></h3><ul><li><a href="#mf-113-email">O conector de e-mail</a></li><li><a href="#mf-113-whatsapp">O conector de WhatsApp</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-113-quando-nao-da">Quando a entrega não dá certo</a><small>3 tópicos</small></h3><ul><li><a href="#mf-113-nao-cabe">O que não cabe no canal</a></li><li><a href="#mf-113-canal-parado">Quando um canal para</a></li><li><a href="#mf-113-rastro">Cada entrega fica registrada</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-113-controle">A empresa no controle do que sai</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-113-bastidores">Nos bastidores, sem complicar</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-113-limites">O que os Conectores de saída não fazem</a><small>1 tópico</small></h3><ul><li><a href="#mf-113-ligadas">Funcionalidades ligadas a esta</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-113-faq">Perguntas frequentes</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div></div></section><div id="dx-topo"><p>Toda segunda de manhã, alguém da equipe de vendas quer o resumo da semana. Hoje, a única coisa que o Horus manda sozinho é o relatório em PDF agendado, por e-mail; todo o resto só chega a quem abre o app. Uma queda nas vendas, por exemplo, só aparece para quem entra e olha. Os <strong>conectores de saída</strong> mudam isso: levam o que o Horus produz até o e-mail ou o WhatsApp de quem precisa, sem a pessoa abrir o app.</p>
+<p>Pense num carteiro. Ele leva a carta fechada ao endereço cadastrado, sem abri-la e sem reescrevê-la. O conector é esse carteiro, com uma diferença: ele só entrega a quem mora no prédio, as pessoas da organização no Horus. Um exemplo, com personagens ilustrativos: toda segunda, o PDF da semana chega por e-mail ao grupo “Vendas Sul”; quando as vendas do Sul caem 10% (valor ilustrativo), o alerta de um agente chega ao WhatsApp da gestora Carla.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Versão 2.0, em construção</b><p>O que está aqui é o que a versão 2.0 do Horus vai entregar. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
 </div>
-                            <div class="dx-content">
-<blockquote>
-<p><strong>Em uma frase:</strong> levar o que o Horus produz, como o PDF de um board ou o alerta de um agente, ao e-mail ou ao
-WhatsApp de quem precisa, sem a pessoa abrir o app.</p>
-</blockquote>
-<div class="doc-section dx-assunto"><h3 id="mf-113-identificacao" data-dx-icone="id-card">Identificação</h3><div class="table-responsive" tabindex="0" role="region" aria-label="Identificação de MF-113 · Conectores de Saída"><table class="table table_shortcode"><tbody><tr><th scope="row">Código</th><td>MF-113</td></tr><tr><th scope="row">Entrega</th><td>v2.0 + v2.1</td></tr><tr><th scope="row">Situação</th><td>definida</td></tr><tr><th scope="row">Camada</th><td>📌 Acompanhar e avisar</td></tr><tr><th scope="row">Objetivos</th><td>O4</td></tr><tr><th scope="row">Quem usa</th><td>owner da organização, gestor, membro full, membro leitor</td></tr><tr><th scope="row">Complexidade</th><td>alta</td></tr><tr><th scope="row">Relacionadas</th><td><a href="mf-114.html">Módulo de Agendamentos de Agentes</a> (MF-114), <a href="mf-115.html">Agentes ativos</a> (MF-115), <a href="mf-112.html">Boards e Relatórios</a> (MF-112), <a href="mf-111.html">Chat pelo WhatsApp</a> (MF-111), <a href="mf-102.html">Organizações, pessoas e papéis</a> (MF-102), <a href="mf-101.html">Administração da instância</a> (MF-101), <a href="mf-116.html">Auditoria</a> (MF-116)</td></tr><tr><th scope="row">Atualizado</th><td>03/11/2026</td></tr></tbody></table></div>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="compass" id="mf-113-o-que-e">O que é</h3>
-<p><strong>Como é hoje.</strong> A única saída do Horus é o e-mail do relatório em PDF agendado; o resto só chega a quem abre o app.</p>
-<p><strong>O que passa a existir.</strong> Esta macro funcionalidade (mf) cria os <strong>conectores de saída</strong>, os canais por onde o Horus
-entrega o que produz: na v2.0, o <strong>e-mail</strong> e o <strong>WhatsApp</strong>. O conector só transporta o <strong>artefato</strong>, a peça pronta
-que outra parte gerou, como o PDF de um board (o painel de gráficos) ou o alerta de um agente de IA, e só entrega a
-usuários do Horus.</p>
-<blockquote>
-<p>💡 <strong>Analogia:</strong> é o carteiro, que leva a carta fechada ao endereço cadastrado sem abri-la. <strong>Onde a analogia
-para:</strong> este carteiro só entrega a quem mora no prédio, as pessoas da organização no Horus.</p>
-</blockquote>
-<p><strong>Como fica o dia a dia.</strong> O <strong>owner da organização</strong>, quem administra a organização no Horus, liga os conectores
-uma vez. Cada pessoa informa o seu contato e passa a receber no canal em que já olha.</p>
-<blockquote>
-<p>📌 <strong>Exemplo</strong> <em>(personagem ilustrativo)</em>: toda segunda, o PDF da semana chega por e-mail ao grupo &quot;Vendas Sul&quot;;
-quando as vendas do Sul caem 10%, o alerta do agente chega ao WhatsApp da gestora Carla.</p>
-</blockquote>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="star" id="mf-113-caracteristicas">Características</h3>
-<ul>
-<li><strong>Só transporta:</strong> leva o que lhe entregam pronto, sem mudar nada.</li>
-<li><strong>Os canais da v2.0:</strong> o e-mail e o WhatsApp; Teams, Google Chat e outros ficam para a v2.1.</li>
-<li><strong>Só para usuários do Horus:</strong> todo destinatário é uma pessoa da organização, por nome ou por grupo, inclusive o
-<strong>membro leitor</strong>, que só vê boards de outras pessoas.</li>
-<li><strong>Quem liga:</strong> só o owner da organização; o <strong>gestor</strong> (quem responde por uma equipe) e o <strong>membro full</strong> (quem
-pergunta e cria os próprios boards) usam os que estão ligados.</li>
-<li><strong>O contato de cada um:</strong> cada pessoa informa o próprio contato em cada conector, e o owner aprova um a um ou deixa
-a aprovação automática.</li>
-<li><strong>Quem envia:</strong> quem tem, nas <strong>roles</strong> (os pacotes de permissões que o owner monta), o botão de enviar pelos
-conectores.</li>
-<li><strong>O e-mail:</strong> sai pelo mesmo serviço de e-mail dos convites do Horus, com o nome da organização no assunto e o PDF
-anexo.</li>
-<li><strong>O WhatsApp:</strong> usa a conta da organização que o Chat pelo WhatsApp (MF-111) liga, o número próprio ou o da Maind,
-e cada envio é uma mensagem-padrão aprovada pela Meta, a dona do WhatsApp, paga por mensagem.</li>
-<li><strong>Fica registrado:</strong> cada entrega, por qual conector e a quem, vai para o rastro da Auditoria (MF-116).</li>
-<li><strong>No modo &quot;tudo dentro&quot;:</strong> nesse modo da v2.1, em que nada sai da casa da empresa, os conectores ficam bloqueados
-até o owner da instância (quem administra a instalação inteira) liberar cada tipo.</li>
-</ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="chart-line" id="mf-113-o-valor-que-gera">O valor que gera</h3>
-<ul>
-<li><strong>Para quem usa:</strong> recebe o resultado onde já olha, sem ir buscá-lo.</li>
-<li><strong>Para a empresa que contrata o Horus:</strong> decide por onde a informação sai; nada sai por um canal que o owner não
-ligou.</li>
-<li><strong>Para o Horus como produto:</strong> o aviso chega sem ninguém perguntar, e o contratante exigente aceita o produto
-porque controla o que sai.</li>
-</ul>
-<p><strong>Como vamos saber que funcionou:</strong> o owner liga o conector uma vez, um agendamento envia o PDF de um board, e a
-pessoa o recebe no canal dela.</p>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="walking" id="mf-113-como-se-usa-no-horus">Como se usa no Horus</h3>
-<p><strong>O owner da organização configura:</strong></p>
-<ol>
-<li>Liga o conector de e-mail e, se quiser, o de WhatsApp.</li>
-<li>Escolhe se aprova cada contato ou deixa a aprovação automática.</li>
-<li>Nas roles, liga o botão de enviar pelos conectores para quem pode.</li>
-</ol>
-<p><strong>Quem recebe:</strong></p>
-<ol>
-<li>Informa no perfil o próprio contato em cada conector.</li>
-<li>Espera o sim do owner, se ele o exigir.</li>
-<li>Recebe o PDF ou o alerta que um agendamento lhe manda.</li>
-</ol>
-<figure><div class="lightbox_shortcode"><img src="media/mf-113-diagrama-1.svg" width="1657" height="85" alt="Diagrama: Como se usa no Horus"><a href="media/mf-113-diagrama-1.svg" class="img_popup" aria-label="Ampliar o diagrama"><i class="icon_plus" aria-hidden="true"></i></a></div><figcaption>Diagrama de “Como se usa no Horus”. Selecione o “+” para ampliar.</figcaption></figure></div><div class="doc-section dx-assunto"><h3 data-dx-icone="puzzle-piece" id="mf-113-grau-de-complexidade-alta">Grau de complexidade: alta</h3>
-<p>Da v1 se reaproveitam o envio de e-mail e o seu ritmo, e o relatório agendado vira o primeiro caso de conector. São
-novos o conector de WhatsApp e o contato aprovado de cada pessoa em cada canal. O que a faz alta é a Meta, que o Horus
-não controla: ela aprova cada mensagem-padrão, cobra por mensagem e decide a categoria de cada envio, que muda o preço.</p>
-<blockquote>
-<p>⚠️ É a leitura do PO a partir dos documentos de arquitetura. A estimativa de esforço é do arquiteto.</p>
-</blockquote>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="link" id="mf-113-macro-funcionalidades-relacionadas">Macro funcionalidades relacionadas</h3>
-<p>As quatro macro funcionalidades de acompanhar e avisar formam uma corrente: o agente trabalha, o agendamento diz
-quando, o conector entrega e o board mostra.</p>
-<div class="table-responsive" tabindex="0" role="region" aria-label="Tabela 1 de Conectores de Saída"><table class="table table_shortcode"><thead><tr>
-<th scope="col">mf</th>
-<th scope="col">Como se relaciona</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Módulo de Agendamentos de Agentes (MF-114)</td>
-<td><strong>depende de</strong>: é o agendamento que diz quando e chama o conector com o artefato pronto.</td>
-</tr>
-<tr>
-<td>Agentes ativos (MF-115)</td>
-<td><strong>depende de</strong>: é o agente que produz boa parte do que o conector leva, o PDF com gráficos e o alerta.</td>
-</tr>
-<tr>
-<td>Boards e Relatórios (MF-112)</td>
-<td><strong>é a base de</strong>: o PDF automático do board chega a quem o recebe pelo conector.</td>
-</tr>
-<tr>
-<td>Chat pelo WhatsApp (MF-111)</td>
-<td><strong>depende de</strong>: o conector de WhatsApp usa a mesma conta da organização que o chat liga.</td>
-</tr>
-<tr>
-<td>Organizações, pessoas e papéis (MF-102)</td>
-<td><strong>depende de</strong>: guarda o contato no perfil, o papel de owner e o botão das roles de enviar pelos conectores.</td>
-</tr>
-<tr>
-<td>Administração da instância (MF-101)</td>
-<td><strong>depende de</strong>: o e-mail sai pelo serviço de e-mail da instância, e é lá que se liberam os conectores no modo &quot;tudo dentro&quot;.</td>
-</tr>
-<tr>
-<td>Auditoria (MF-116)</td>
-<td><strong>complementa</strong>: registra cada entrega, por qual conector e a quem.</td>
-</tr>
-</tbody>
-</table></div></div><div class="doc-section dx-assunto"><h3 data-dx-icone="ban" id="mf-113-o-que-ela-nao-faz">O que ela não faz</h3>
-<ul>
-<li><strong>Criar o conteúdo:</strong> o PDF é do board, e o alerta, do agente.</li>
-<li><strong>Decidir quando enviar:</strong> isso é do Módulo de Agendamentos de Agentes (MF-114).</li>
-<li><strong>Entregar a quem não é usuário do Horus,</strong> como um cliente da empresa.</li>
-<li><strong>Mandar os e-mails da conta,</strong> como o convite e a recuperação de senha: saem pelo e-mail do próprio Horus.</li>
-<li><strong>Teams e Google Chat na v2.0:</strong> entram na v2.1.</li>
-</ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="hourglass-half" id="mf-113-ainda-a-decidir">Ainda a decidir</h3>
-<ul>
-<li>Se o número de WhatsApp dos envios é o mesmo da conversa com o Horus.</li>
-<li>O que acontece quando o artefato não cabe no canal, como um PDF maior que o anexo do e-mail.</li>
-<li>Quem paga as mensagens do WhatsApp quando a organização usa o número da Maind.</li>
-</ul>
-</div><div class="doc-section dx-assunto"><h3 data-dx-icone="book" id="mf-113-para-saber-mais">Para saber mais</h3>
-<ul>
-<li><a href="produto-backlog.html">Backlog estratégico</a>: a <a href="produto-backlog.html#d-041"><code>D-041</code></a>, a definição macro (fechou a <code>P-010</code>); as
-<a href="produto-backlog.html#d-033"><code>D-033</code></a> a <a href="produto-backlog.html#d-035"><code>D-035</code></a> (a mf, o &quot;só transporta&quot; e o &quot;só a usuários do Horus&quot;); as <a href="produto-backlog.html#d-038"><code>D-038</code></a> a <a href="produto-backlog.html#d-040"><code>D-040</code></a> (o contato, a
-aprovação por tipo e o &quot;tudo dentro&quot;); a <a href="produto-backlog.html#d-079"><code>D-079</code></a> (o membro leitor recebe); a <a href="produto-backlog.html#d-122"><code>D-122</code></a> (entra na v2.0, com a leitura
-<code>D-122.1</code>, o nono botão das roles); a <a href="produto-backlog.html#d-124"><code>D-124</code></a> (o e-mail e o WhatsApp, fechou a <code>P-024</code>, com a leitura da mesma
-conta); a <a href="produto-backlog.html#d-121"><code>D-121</code></a> (os outros conectores na v2.1); a leitura <code>D-128.3</code> (o aviso de &quot;recebido&quot; sai pelo e-mail da
-instância); as letras (f) e (x) da <code>P-008</code>.</li>
-<li><a href="produto-v20.html">A v2.0 consolidada</a>: §5.2 (o nono botão), §5.11, §7 e §10.
-<a href="produto-mfs-hoje.html">Mapa das mfs</a> (&quot;O que o dono já disse&quot;),
-<a href="produto-versoes.html">versões</a> (v2.0 e v2.1), <a href="produto-mapa.html">objetivos</a>
-(O4) e <a href="produto-lacunas.html">lacunas</a> (candidata nº 12).</li>
-<li>Arquitetura: <a href="arquitetura-01.html">estratégia</a> (§3, O4; §4; os marcos M6 e M12);
-<a href="arquitetura-04.html">software</a> (&quot;Conectores de saída&quot;, &quot;Envio de e-mail&quot; e &quot;Porta da Meta&quot;);
-<a href="arquitetura-08.html">integrações</a> (§3.2 e §3.3); <a href="arquitetura-13.html">custo</a>
-(as mensagens da Meta); <a href="arquitetura-02.html">registro</a>: <a href="arquitetura-02.html#arq-022"><code>ARQ-022</code></a>, <a href="arquitetura-02.html#arq-042"><code>ARQ-042</code></a>, <a href="arquitetura-02.html#arq-046"><code>ARQ-046</code></a> ✅,
-<a href="arquitetura-02.html#arq-047"><code>ARQ-047</code></a> 🟡 (o caminho até a Meta, com o dono) e <a href="arquitetura-02.html#arq-048"><code>ARQ-048</code></a> a <a href="arquitetura-02.html#arq-050"><code>ARQ-050</code></a>;
-<a href="arquitetura-14.html">conferência</a>: §3, o reaproveitamento; §4, <code>A-03</code>, <code>A-17</code>, <code>A-19</code> e
-<code>A-22</code>.</li>
-</ul>
-<p>📚 <a href="mf-113-inventario.html">Tudo o que o inventário diz desta mf, assunto por assunto</a>.</p>
-</div>
-                            </div>
-                            <nav class="dx-vizinhas" aria-label="Páginas vizinhas"><a class="dx-anterior" href="mf-112.html"><i class="arrow_left" aria-hidden="true"></i>Boards e Relatórios</a><a class="dx-proxima" href="mf-114.html">Módulo de Agendamentos de Agentes<i class="arrow_right" aria-hidden="true"></i></a></nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <footer class="simple_footer">
-            <img class="leaf_right" src="assets/kbdoc/img/home_one/leaf_footter.png" alt="">
-            <div class="container-fluid pl-60 pr-60">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <p>Maind Horus · Horus v2 · documento interno · Revisado em 03/11/2026 · versão v2.0 em desenho, sem versão publicada</p>
-                    </div>
-                    <div class="col-lg-6 text-right">
 
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
-    <a id="back-to-top" title="Voltar ao topo"></a>
-    <script src="assets/kbdoc/js/jquery-3.2.1.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/popper.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/kbdoc/assets/bootstrap/js/bootstrap-select.min.js"></script>
-    <script src="assets/kbdoc/js/parallaxie.js"></script>
-    <script src="assets/kbdoc/js/TweenMax.min.js"></script>
-    <script src="assets/kbdoc/js/anchor.js"></script>
-    <script src="assets/kbdoc/assets/wow/wow.min.js"></script>
-    <script src="assets/kbdoc/js/vendor/clipboard.min.js"></script>
-    <script src="assets/kbdoc/assets/prism/prism.js"></script>
-    <script src="assets/kbdoc/assets/niceselectpicker/jquery.nice-select.min.js"></script>
-    <script src="assets/kbdoc/assets/mcustomscrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="assets/kbdoc/assets/magnify-pop/jquery.magnific-popup.min.js"></script>
-    <script src="assets/kbdoc/assets/tooltipster/js/tooltipster.bundle.min.js"></script>
-    <script src="assets/kbdoc/assets/font-size/js/rv-jquery-fontsize-2.0.3.js"></script>
-    <script src="assets/kbdoc/js/onpage-menu.js"></script>
-    <script src="assets/kbdoc/js/main.js"></script>
-    <script src="assets/busca.js"></script>
-    <script src="assets/docx.js"></script>
+<h2 class="doc-h2" id="mf-113-o-que-e">O que é, em poucas palavras</h2>
+<p>Os Conectores de saída são os canais por onde o Horus entrega o que produz. A funcionalidade cabe em seis pontos:</p>
+<ul>
+  <li><strong>Dois canais na versão 2.0:</strong> o e-mail e o WhatsApp. O Teams e o Google Chat chegam na versão 2.1, numa funcionalidade própria (MF-122); outros, como o Slack, não têm versão prevista.</li>
+  <li><strong>Só transporta.</strong> O conector leva a peça pronta que outra parte do Horus fez, como o PDF de um painel ou o alerta de um agente, sem mudar nada.</li>
+  <li><strong>Só entrega a pessoas da organização</strong>, por nome ou por grupo, inclusive aos membros prata e bronze, que recebem mas não criam envios.</li>
+  <li><strong>Só o owner liga.</strong> Nada sai por um canal que o owner da organização não ligou.</li>
+  <li><strong>Cada pessoa informa o próprio contato</strong> em cada conector, e a aprovação desse contato nasce automática.</li>
+  <li><strong>Cada entrega fica registrada:</strong> o que saiu, por qual conector e a quem.</li>
+</ul>
+<h3 class="doc-h3" id="mf-113-palavras">As palavras desta página</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Palavra</th><th>O que quer dizer aqui</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Conector de saída</strong></td><td>Um canal por onde o Horus entrega o que produz a quem não está com o app aberto. Na versão 2.0, o e-mail e o WhatsApp.</td></tr>
+      <tr class="zebra"><td><strong>Artefato</strong></td><td>A peça pronta que o conector leva: o PDF de um board (painel) ou o alerta de um agente, o trabalho automático de IA. Quem faz o artefato é o painel ou o agente, nunca o conector.</td></tr>
+      <tr class="zebra"><td><strong>Contato</strong></td><td>O endereço de cada pessoa num conector: o e-mail dela ou o número de WhatsApp. Ela mesma o informa no perfil.</td></tr>
+      <tr class="zebra"><td><strong>Mensagem-padrão</strong></td><td>Um modelo de mensagem que a Meta, a dona do WhatsApp, aprova antes do uso. É por ela que o Horus manda os avisos e os PDFs pelo WhatsApp.</td></tr>
+      <tr class="zebra"><td><strong>Rastro</strong></td><td>O registro da Auditoria (MF-116) de quem entregou o quê a quem, sem o conteúdo do que foi entregue.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="mf-113-quem-e-quem">Quem faz o quê</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quem</th><th>O que faz com os conectores</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>Liga os conectores, decide se aprova os contatos um a um e mantém ou desliga, nas roles, o botão de enviar pelos conectores.</td></tr>
+      <tr class="zebra"><td><strong>Gestor e membro ouro</strong></td><td>Usam os conectores que o owner ligou, nos agendamentos e agentes que criam, quando a role deles tem o botão. A quem cada um pode mandar é regra do agendamento (<a href="mf-114.html">MF-114</a>).</td></tr>
+      <tr class="zebra"><td><strong>Membros prata e bronze</strong></td><td>Recebem os PDFs e os alertas, mas não criam envios.</td></tr>
+      <tr class="zebra"><td><strong>Todas as pessoas</strong></td><td>Informam o próprio contato em cada conector, no perfil.</td></tr>
+      <tr class="zebra"><td><strong>Administrador da instância</strong> (a Maind)</td><td>Cuida do e-mail da instância e do número de WhatsApp da Maind, e é avisado quando um deles para.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Os tipos de assento estão em <a href="mf-101.html#mf-101-assentos">Os assentos: quem pode fazer o quê</a>, e as roles, em <a href="mf-102.html#mf-102-roles">Roles: o que cada pessoa pode usar</a>.</p>
+
+<h2 class="doc-h2" id="mf-113-na-pratica">Um PDF, do agendamento à caixa de entrada</h2>
+<p>Digamos que o Marcos é o owner da área comercial de uma rede de lojas, a Carla é a gestora de vendas, e o Rui, vendedor da equipe dela, tem um assento bronze: não pergunta, mas quer receber o resumo da semana.</p>
+<ol class="steps">
+  <li><div><h4>O owner liga os conectores</h4><p>O Marcos liga o conector de e-mail e, como a área já conversa com o Horus pelo WhatsApp, liga também o de WhatsApp. Ele faz isso uma vez, e vale para a organização inteira.</p></div></li>
+  <li><div><h4>Cada pessoa informa o contato</h4><p>No perfil, o Rui informa o e-mail e o número de WhatsApp dele. Cada pessoa informa o próprio contato.</p></div></li>
+  <li><div><h4>O contato é aprovado</h4><p>A aprovação nasce automática: o contato do Rui vale na hora. Se o Marcos preferir, passa a aprovar cada contato, e a pessoa espera o sim dele.</p></div></li>
+  <li><div><h4>O agendamento entrega o artefato</h4><p>Toda segunda, o agendamento da Carla gera o PDF do painel de vendas e o entrega ao conector de e-mail, com os destinatários: o grupo “Vendas Sul”, que reúne pessoas da equipe dela, entre elas o Rui.</p></div></li>
+  <li><div><h4>O conector leva e registra</h4><p>O conector acha o contato aprovado de cada pessoa do grupo, leva o PDF como recebeu e registra cada entrega no rastro. O Rui lê o resumo no e-mail, sem abrir o Horus.</p></div></li>
+</ol>
+<p>O mesmo caminho em desenho, com quem age em cada passo e o desvio de quando o artefato não cabe no canal.</p>
+<figure class="dx-diagrama"><figcaption><b>Do contato à entrega</b> <span>O owner liga os conectores, cada pessoa informa o contato, a aprovação, o artefato que o agendamento entrega, o conector que leva ao e-mail ou ao WhatsApp e registra no rastro, e o aviso ao autor quando o artefato não cabe no canal</span><a href="media/diagramas/mf-113-do-contato-a-entrega.html" target="_blank" rel="noopener">Abrir em tela cheia ↗</a></figcaption><iframe src="media/diagramas/mf-113-do-contato-a-entrega.html?embutido=1" title="Do contato à entrega" loading="lazy"></iframe></figure>
+<h3 class="doc-h3" id="mf-113-quem-recebe">Quem pode receber</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quem</th><th>Recebe</th><th>Cria envios</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td><span class="badge badge--success">Sim</span></td><td><span class="badge badge--success">Sim</span> O owner não depende de roles.</td></tr>
+      <tr class="zebra"><td><strong>Gestor e membro ouro</strong></td><td><span class="badge badge--success">Sim</span></td><td><span class="badge badge--success">Sim</span> Quando a role tem o botão dos conectores.</td></tr>
+      <tr class="zebra"><td><strong>Membros prata e bronze</strong></td><td><span class="badge badge--success">Sim</span></td><td><span class="badge badge--warning">Não</span> Seja qual for a role.</td></tr>
+      <tr class="zebra"><td><strong>Quem não é da organização</strong>, como um cliente da empresa</td><td><span class="badge badge--danger">Não</span></td><td><span class="badge badge--danger">Não</span></td></tr>
+    </tbody>
+  </table>
+</div>
+<p>A role padrão, com que a organização nasce, já traz o botão de enviar pelos conectores ligado (veja <a href="mf-102.html#mf-102-nasce-liberado">Tudo nasce liberado</a>).</p>
+
+<h2 class="doc-h2" id="mf-113-canais">Os dois canais da versão 2.0</h2>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Sobre o canal</th><th>E-mail</th><th>WhatsApp</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Por onde sai</strong></td><td>Pelo mesmo servidor de e-mail da instância, o dos convites do Horus.</td><td>Pela conta de WhatsApp da organização que o <a href="mf-111.html">Chat pelo WhatsApp</a> liga: o número próprio ou o da Maind.</td></tr>
+      <tr class="zebra"><td><strong>Como chega</strong></td><td>Com o nome da organização no assunto; o PDF vai anexo.</td><td>Como uma mensagem-padrão aprovada pela Meta.</td></tr>
+      <tr class="zebra"><td><strong>O contato da pessoa</strong></td><td>O e-mail que ela informa no perfil.</td><td>O número dela, um só para a conversa com o Horus e para os envios.</td></tr>
+      <tr class="zebra"><td><strong>Se o canal parar, quem é avisado</strong></td><td>O administrador da instância (a Maind).</td><td>O owner, se o número é o próprio; o administrador da instância, se é o da Maind.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="mf-113-email">O conector de e-mail</h3>
+<p>O e-mail sai pelo mesmo serviço que já manda os convites, a recuperação de senha e os avisos da conta, e de que a Maind cuida na <a href="mf-101.html#mf-101-marca-e-email">Administração da instância</a>. São coisas diferentes, porém: os e-mails da conta saem pelo e-mail da instância, e não pelo conector que o owner liga. O conector leva só o que um agendamento ou um agente produziu, com o nome da organização no assunto e o PDF anexo.</p>
+<h3 class="doc-h3" id="mf-113-whatsapp">O conector de WhatsApp</h3>
+<p>O conector de WhatsApp não tem conta própria: usa a mesma conta da organização que o Chat pelo WhatsApp (MF-111) liga. Pode ser o <strong>número próprio</strong> da organização, que é o padrão, ou o <strong>número da Maind</strong>, que o owner autoriza sabendo que as mensagens passam pela conta da Maind. Cada envio é uma mensagem-padrão aprovada pela Meta e paga por mensagem. A organização paga as mensagens que gerar:</p>
+<ul>
+  <li><strong>Com o número próprio,</strong> paga diretamente à Meta.</li>
+  <li><strong>Com o número da Maind,</strong> a Maind lhe repassa o custo, numa cobrança fora do Horus (veja <a href="mf-103.html#mf-103-o-que-inclui">O que o assento inclui, e o que se paga à parte</a>).</li>
+</ul>
+<p>Cada pessoa tem <strong>um número de WhatsApp só</strong>, o mesmo da conversa com o Horus e dos envios, e esse número fica ligado a uma organização por vez. Ligá-lo numa organização o desliga das outras, e a pessoa é avisada.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Ponto de atenção</b><p>Quem atende duas organizações, como um consultor, religa o número de WhatsApp ao trocar de uma para a outra. Assim o Horus sempre sabe a qual organização o número responde.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-113-quando-nao-da">Quando a entrega não dá certo</h2>
+<h3 class="doc-h3" id="mf-113-nao-cabe">O que não cabe no canal</h3>
+<p>Cada canal tem um limite: o tamanho do anexo, no e-mail, e o da mensagem, no WhatsApp. Se o artefato passa do limite, o Horus <strong>não o entrega naquele canal</strong>, <strong>não o corta</strong> e <strong>avisa o autor</strong>, como numa falha. Ninguém recebe um PDF pela metade. Por exemplo: o PDF do painel de fim de ano da Carla passa do anexo do e-mail; ele não sai por e-mail, e a Carla recebe o aviso.</p>
+<h3 class="doc-h3" id="mf-113-canal-parado">Quando um canal para</h3>
+<p>Um canal pode parar: o servidor recusa o e-mail, ou a conta de WhatsApp é bloqueada. Quem é avisado é o <strong>dono do serviço</strong>, porque é quem pode consertar: o owner da organização, se o WhatsApp é o próprio; o administrador da instância, se é o número da Maind ou o e-mail da instância. Quando o serviço é da Maind, o owner da organização não recebe esse aviso. A regra é a mesma dos outros serviços, em <a href="mf-101.html#mf-101-quando-um-servico-para">Quando um serviço para</a>.</p>
+<h3 class="doc-h3" id="mf-113-rastro">Cada entrega fica registrada</h3>
+<p>Cada entrega vai para o rastro da Auditoria (MF-116): quem enviou, o quê (o painel ou o artefato), para quem, por qual conector e quando. O conteúdo do que foi entregue não vai para o rastro. É assim que o owner vê o que saiu da organização e para quem.</p>
+
+<h2 class="doc-h2" id="mf-113-controle">A empresa no controle do que sai</h2>
+<p>O Horus <strong>só lê</strong> os bancos de dados da empresa: nunca altera um dado nem age nos sistemas dela (veja <a href="mf-104.html#mf-104-so-le">Só ler, nunca alterar</a>). Mandar um alerta por e-mail ou pelo WhatsApp é informação que sai, e não mexe nos sistemas. E a saída também tem dono:</p>
+<ul>
+  <li><strong>O canal:</strong> nada sai por um conector que o owner não ligou.</li>
+  <li><strong>O destino:</strong> só pessoas da organização recebem, por nome ou por grupo.</li>
+  <li><strong>O contato:</strong> o owner pode passar a aprovar cada contato antes de ele valer.</li>
+  <li><strong>Quem envia:</strong> o botão dos conectores fica nas roles, e o owner o desliga para quem quiser.</li>
+  <li><strong>A prova:</strong> o rastro mostra o que saiu, por onde e a quem.</li>
+</ul>
+
+<h2 class="doc-h2" id="mf-113-bastidores">Nos bastidores, sem complicar</h2>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>Um contrato só entre quem produz e quem leva.</strong> O agendamento e o agente entregam ao conector a peça pronta e a lista de destinatários. O conector acha o contato aprovado de cada pessoa, transporta e grava a entrega no rastro no mesmo passo, sem consultar fonte de dados, sem chamar o motor de análise e sem desenhar nada.</li>
+  <li><strong>Um caminho só para todos os e-mails.</strong> A recuperação de senha, os avisos, os convites e o conector saem pelo mesmo envio, nessa ordem de vez: o conector vai por último, em lote. O domínio de quem envia é autenticado, para o e-mail não cair no lixo eletrônico.</li>
+  <li><strong>O e-mail sabe até o servidor.</strong> O Horus sabe se o servidor de e-mail aceitou ou recusou a mensagem. Uma devolução que aconteça depois, como uma caixa que não existe, não volta ao Horus.</li>
+  <li><strong>Uma porta só para o WhatsApp.</strong> Uma única peça do Horus fala com a Meta, e o chat e o conector a usam sem depender um do outro. Cada envio entra numa fila, que tenta de novo na falha passageira. O PDF sobe ao próprio WhatsApp, sem um endereço público do Horus, e a Meta informa se a mensagem foi enviada, entregue, lida ou falhou.</li>
+  <li><strong>Mensagens-padrão do próprio Horus.</strong> O Horus traz um conjunto fixo de mensagens-padrão em português, criado na conta da organização quando o owner liga o WhatsApp: a organização não escreve nem aprova mensagem nenhuma. O conector envia sempre por elas, e por isso o aviso chega mesmo a quem não escreveu ao Horus nas últimas 24 horas. A Meta aprova cada mensagem-padrão e decide a categoria dela.</li>
+  <li><strong>O que já existe e o que é novo.</strong> O envio de e-mail e o ritmo dele vêm do Horus de hoje, e o relatório agendado vira o primeiro caso de conector. O conector de WhatsApp e o contato aprovado de cada pessoa em cada canal são novos.</li>
+</ul>
+
+<h2 class="doc-h2" id="mf-113-limites">O que os Conectores de saída não fazem</h2>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não fazem</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Criar o conteúdo</strong></td><td>O PDF é do painel (<a href="mf-112.html">MF-112</a>), e o alerta, do agente (<a href="mf-115.html">MF-115</a>). O conector só leva.</td></tr>
+      <tr class="zebra"><td><strong>Cortar ou reduzir o artefato</strong></td><td>O que não cabe no canal não sai por ali, e o autor é avisado.</td></tr>
+      <tr class="zebra"><td><strong>Decidir quando enviar</strong></td><td>É do Módulo de Agendamentos de Agentes (<a href="mf-114.html">MF-114</a>).</td></tr>
+      <tr class="zebra"><td><strong>Entregar a quem não usa o Horus</strong></td><td>Todo destinatário é uma pessoa da organização. Um cliente da empresa, por exemplo, não recebe.</td></tr>
+      <tr class="zebra"><td><strong>Mandar os e-mails da conta</strong></td><td>O convite, a recuperação de senha e os avisos da conta saem pelo e-mail da instância (<a href="mf-101.html">MF-101</a>).</td></tr>
+      <tr class="zebra"><td><strong>Conversar pelo WhatsApp</strong></td><td>Receber perguntas é do Chat pelo WhatsApp (<a href="mf-111.html">MF-111</a>). Quem não pode conversar e escreve ao Horus recebe uma resposta fixa, sem dado nenhum, que aponta para o app.</td></tr>
+      <tr class="zebra"><td><strong>Entregar pelo Teams ou pelo Google Chat</strong></td><td>Chegam na versão 2.1, nos Conectores de chat corporativo (MF-122). Outros, como o Slack, não têm versão prevista.</td></tr>
+      <tr class="zebra"><td><strong>Agir nos sistemas da empresa</strong></td><td>O conector leva informação; o Horus nunca altera um dado da empresa.</td></tr>
+      <tr class="zebra"><td><strong>Funcionar com nada saindo da casa da empresa</strong></td><td>O modo em que nada sai da casa do cliente não tem versão prevista.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="mf-113-ligadas">Funcionalidades ligadas a esta</h3>
+<p>Os conectores fecham uma corrente de quatro funcionalidades: o agente trabalha, o agendamento diz quando, o conector entrega e o painel mostra.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="mf-114.html">Módulo de Agendamentos de Agentes (MF-114)</a></td><td>É o agendamento que diz quando e chama o conector com o artefato pronto.</td></tr>
+      <tr class="zebra"><td><a href="mf-115.html">Agentes ativos (MF-115)</a></td><td>O agente produz boa parte do que o conector leva: o PDF com gráficos e o alerta.</td></tr>
+      <tr class="zebra"><td><a href="mf-112.html">Boards e Relatórios (MF-112)</a></td><td>O PDF automático do painel chega a quem o recebe pelo conector.</td></tr>
+      <tr class="zebra"><td><a href="mf-111.html">Chat pelo WhatsApp (MF-111)</a></td><td>O conector de WhatsApp usa a mesma conta da organização que o chat liga, e o mesmo número de cada pessoa.</td></tr>
+      <tr class="zebra"><td><a href="mf-102.html">Organizações, pessoas e papéis (MF-102)</a></td><td>Guarda o contato no perfil, o papel de owner, os grupos de destino e o botão das roles.</td></tr>
+      <tr class="zebra"><td><a href="mf-103.html">Licenças e planos (MF-103)</a></td><td>O tipo de assento diz quem recebe e quem cria envios: a prata e o bronze recebem alertas e PDFs. As mensagens pelo número da Maind se pagam à parte.</td></tr>
+      <tr class="zebra"><td><a href="mf-101.html">Administração da instância (MF-101)</a></td><td>O e-mail sai pelo servidor da instância, e é lá que a Maind mede, por organização, o custo do WhatsApp que repassa.</td></tr>
+      <tr class="zebra"><td>Auditoria (MF-116)</td><td>Registra cada entrega: por qual conector e a quem.</td></tr>
+      <tr class="zebra"><td>Conectores de chat corporativo (MF-122)</td><td>Na versão 2.1, o Teams e o Google Chat entram como canais novos deste mesmo carteiro.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Ainda em definição</b><p>As regras desta página estão decididas. Ficam para o desenho técnico o tamanho máximo de cada canal e o texto do aviso ao autor, por onde chega o aviso quando um canal para (a área de avisos do Horus ou o e-mail) e o caminho técnico pelo qual o Horus chega ao WhatsApp, que a Maind ainda estuda.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-113-faq">Perguntas frequentes</h2>
+<div class="faq">
+  <details open>
+    <summary>Quem não usa o Horus pode receber os relatórios e os alertas?</summary>
+    <div class="faq-body"><p>Não. Os conectores só entregam a pessoas da organização, por nome ou por grupo; um cliente da empresa, por exemplo, não recebe. Dentro da organização, todos os tipos de assento recebem, inclusive o bronze, que só vê os painéis prontos.</p></div>
+  </details>
+  <details>
+    <summary>Quem decide por onde a informação da empresa sai?</summary>
+    <div class="faq-body"><p>O owner da organização. Só ele liga os conectores, e nada sai por um canal que ele não ligou. Ele também pode passar a aprovar cada contato antes de valer e desligar, nas roles, o botão de enviar pelos conectores. Cada entrega fica no rastro, com o conector e o destinatário.</p></div>
+  </details>
+  <details>
+    <summary>Preciso de um número de WhatsApp próprio? Quem paga as mensagens?</summary>
+    <div class="faq-body"><p>Não necessariamente. O conector usa a conta de WhatsApp que a organização liga no Chat pelo WhatsApp: o número próprio ou, se o owner autorizar, o número da Maind, por cuja conta as mensagens passam. A organização paga as mensagens que gerar: com o número próprio, direto à Meta; com o da Maind, a Maind repassa o custo, numa cobrança fora do Horus.</p></div>
+  </details>
+  <details>
+    <summary>E se o PDF for grande demais para o e-mail?</summary>
+    <div class="faq-body"><p>Ele não sai por e-mail e não é cortado: o Horus avisa o autor. Quem receberia fica sem o PDF por aquele canal até o autor reduzir o painel ou o texto do alerta. O mesmo vale para um alerta maior que a mensagem do WhatsApp.</p></div>
+  </details>
+  <details>
+    <summary>Como sei o que foi enviado, e a quem?</summary>
+    <div class="faq-body"><p>Pelo rastro da Auditoria (MF-116), que registra cada entrega: quem enviou, o quê, para quem, por qual conector e quando, sem o conteúdo. No e-mail, o Horus sabe se o servidor aceitou ou recusou a mensagem; no WhatsApp, a Meta informa se ela foi enviada, entregue, lida ou falhou.</p></div>
+  </details>
+  <details>
+    <summary>Dá para receber no Teams ou no Google Chat?</summary>
+    <div class="faq-body"><p>Na versão 2.0, não: os canais são o e-mail e o WhatsApp. O Teams e o Google Chat chegam na versão 2.1, nos Conectores de chat corporativo (MF-122), que usam este mesmo carteiro. Outros, como o Slack, não têm versão prevista.</p></div>
+  </details>
+</div>
+</div><nav class="rel-grid dx-vizinhas" aria-label="Páginas vizinhas"><a class="rel-card dx-anterior" href="mf-112.html"><span class="cat">Anterior</span><h5>Boards e Relatórios</h5><span class="arrow">←</span></a><a class="rel-card dx-proxima" href="mf-114.html"><span class="cat">Próxima</span><h5>Módulo de Agendamentos de Agentes</h5><span class="arrow">→</span></a></nav>
+<footer class="ds-footer"><div class="ftr-brand"><img class="ftr-logo logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="ftr-logo logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /><div class="ftr-divider"></div><div class="ftr-meta"><b>Maind Horus · Horus v2 · versão 2.0 em desenho</b></div></div><div class="ftr-center"><span class="ftr-tag">v2.0 em desenho, sem versão publicada · 06/11/2026</span></div><div class="ftr-author"><div class="avatar">MT</div><div class="ftr-author-info"><b>Maind Tech</b><span>Horus v2</span></div></div></footer>
+</main>
+<aside class="toc"><h6>Neste artigo</h6><ul><li><a href="#mf-113-o-que-e">O que é, em poucas palavras</a></li><li class="lvl-3"><a href="#mf-113-palavras">As palavras desta página</a></li><li class="lvl-3"><a href="#mf-113-quem-e-quem">Quem faz o quê</a></li><li><a href="#mf-113-na-pratica">Um PDF, do agendamento à caixa de entrada</a></li><li class="lvl-3"><a href="#mf-113-quem-recebe">Quem pode receber</a></li><li><a href="#mf-113-canais">Os dois canais da versão 2.0</a></li><li class="lvl-3"><a href="#mf-113-email">O conector de e-mail</a></li><li class="lvl-3"><a href="#mf-113-whatsapp">O conector de WhatsApp</a></li><li><a href="#mf-113-quando-nao-da">Quando a entrega não dá certo</a></li><li class="lvl-3"><a href="#mf-113-nao-cabe">O que não cabe no canal</a></li><li class="lvl-3"><a href="#mf-113-canal-parado">Quando um canal para</a></li><li class="lvl-3"><a href="#mf-113-rastro">Cada entrega fica registrada</a></li><li><a href="#mf-113-controle">A empresa no controle do que sai</a></li><li><a href="#mf-113-bastidores">Nos bastidores, sem complicar</a></li><li><a href="#mf-113-limites">O que os Conectores de saída não fazem</a></li><li class="lvl-3"><a href="#mf-113-ligadas">Funcionalidades ligadas a esta</a></li><li><a href="#mf-113-faq">Perguntas frequentes</a></li></ul></aside>
+</div>
+<div class="toast" id="toast">Copiado ✓</div>
+<script src="assets/busca.js"></script>
+<script src="assets/docs.js"></script>
+<script src="assets/docx-kbr.js"></script>
 </body>
 </html>

@@ -1,0 +1,189 @@
+<p>O gestor está no carro, a caminho de uma reunião, e lembra que vai precisar do número das vendas de ontem. Hoje, a pergunta de análise só se faz no app do Horus: longe do computador, ela fica para depois ou vira um pedido à área de dados. Com o Chat pelo WhatsApp, ele manda a pergunta pelo WhatsApp que já usa e recebe ali mesmo o texto e os gráficos da resposta. Entra na reunião com o número na mão.</p>
+<p>Não é um Horus menor. É a mesma <strong>conversa de análise</strong> do app, a tela em que se pergunta, que agora também chega pelo WhatsApp: a pessoa conversa com o Horus a sós, com os mesmos controles, e tudo o que ela pergunta entra no histórico. Esta página conta como a pessoa se identifica, o que a resposta traz, de quem é o número e quem paga as mensagens.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Versão 2.0, em construção</b><p>O que está aqui é o que a versão 2.0 do Horus vai entregar. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
+</div>
+
+<h3 id="mf-111-o-que-e">O que é, em poucas palavras</h3>
+<p>O Chat pelo WhatsApp é mais uma porta de entrada para a conversa de análise. Ele se resume em seis pontos:</p>
+<ul>
+  <li><strong>Só na conversa individual.</strong> A pessoa conversa a sós com o Horus. Num grupo, a resposta chegaria a quem o Horus não identificou.</li>
+  <li><strong>O número é a credencial.</strong> A pessoa liga o próprio número ao perfil e o confirma com um código que chega pelo WhatsApp. Um número, uma pessoa.</li>
+  <li><strong>A resposta chega inteira:</strong> o texto, até duas imagens fiéis ao app e um link para abrir a resposta viva no app.</li>
+  <li><strong>A mesma conversa do app.</strong> Tudo entra no histórico, conta na medida de autonomia e recebe o retorno, como qualquer pergunta.</li>
+  <li><strong>Os mesmos controles:</strong> os modos, a pesquisa na web, o nível de inferência, a Análise avançada e o modelo de IA, dentro do que a role da pessoa libera.</li>
+  <li><strong>Um canal que o owner liga.</strong> Só o owner da organização liga o canal e escolhe o número: o da própria organização ou, se ele autorizar, o da Maind.</li>
+</ul>
+<h4 id="mf-111-quem-conversa">Quem conversa</h4>
+<p>Conversa pelo WhatsApp quem pode fazer perguntas de análise. O tipo de assento vem primeiro, e a role liga ou desliga, dentro do que ele permite, o botão do WhatsApp (as regras estão em <a href="#mf-102-regras-das-roles">As regras das roles</a>).</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quem</th><th>Conversa pelo WhatsApp?</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td><span class="badge badge--success">Sim</span> O owner não depende de roles: usa tudo.</td></tr>
+      <tr class="zebra"><td><strong>Gestor, membro ouro e membro prata</strong></td><td><span class="badge badge--success">Sim</span> Quando a role da pessoa liga o botão do WhatsApp. A role padrão, com que a organização nasce, já o traz ligado, mas ele só funciona depois que o owner liga o canal.</td></tr>
+      <tr class="zebra"><td><strong>Membro bronze</strong></td><td><span class="badge badge--warning">Não</span> Seja qual for a role. O bronze só vê os painéis que outras pessoas criaram e compartilharam. Ele pode receber alertas e PDFs pelo WhatsApp, pelos <a href="#mf-113">Conectores de saída (MF-113)</a>, mas não conversa.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Os tipos de assento estão em <a href="#mf-101-assentos">Os assentos: quem pode fazer o quê</a>.</p>
+
+<h3 id="mf-111-na-pratica">Do número ligado à primeira resposta</h3>
+<p>Digamos que o Marcos é o owner da área comercial de uma rede de lojas, e o Pedro é gestor de vendas na mesma organização.</p>
+<ol class="steps">
+  <li><div><h4>O owner liga o canal</h4><p>O Marcos liga o WhatsApp da organização e escolhe o número: o da própria organização, que é o padrão, ou o da Maind, se ele autorizar. O canal abre quando a Meta, dona do WhatsApp, aprova as <strong>mensagens-padrão</strong> do Horus: os textos fixos que o Horus manda por conta própria, como o que leva o código de ligação. A organização não escreve nenhum deles.</p></div></li>
+  <li><div><h4>O owner revisa as roles</h4><p>A role padrão já traz o botão do WhatsApp ligado. O Marcos o desliga nas roles de quem não deve conversar.</p></div></li>
+  <li><div><h4>A pessoa liga o número</h4><p>No perfil, no app, o Pedro informa o número dele. O Horus manda um código pelo WhatsApp, e o Pedro o confirma no app. Isso se faz uma vez.</p></div></li>
+  <li><div><h4>Ela pergunta</h4><p>No carro, o Pedro escreve pelo WhatsApp: “como foram as vendas de ontem por região?”. O Horus confirma que recebeu e, se a resposta demorar, avisa que está trabalhando.</p></div></li>
+  <li><div><h4>A resposta chega</h4><p>Vêm o resumo em texto, o gráfico em imagem e o link. O Pedro toca no link para ver a série no app e dá Gostei. A pergunta aparece no histórico dele e conta na medida de autonomia.</p></div></li>
+</ol>
+<p>O mesmo caminho em desenho: o que se faz uma vez, para ligar o canal e o número, e o que acontece a cada pergunta, inclusive com quem escreve sem poder conversar.</p>
+<dx-diagrama ref="mf-111-do-numero-a-resposta"></dx-diagrama>
+<h4 id="mf-111-sem-poder">Quem escreve sem poder conversar</h4>
+<p>Toda mensagem passa pela mesma conferência do resto do Horus, antes de qualquer resposta: o número está ligado a uma pessoa? O assento dela pergunta? A role dela tem o botão do WhatsApp? Se alguma resposta for não, a pessoa recebe uma <strong>resposta fixa, sem dado nenhum</strong>, que diz que o Horus não conversa com aquele número e aponta para o app: ligar o número ou pedir acesso ao owner. A mesma mensagem vale para todos esses casos, e ninguém fica sem entender por que o Horus não respondeu.</p>
+<p>Por exemplo: o Rui, membro bronze, recebe toda segunda o PDF de vendas pelo WhatsApp. Um dia, responde à mensagem com “vendas de outubro?”. Recebe a resposta fixa, que o aponta para o app.</p>
+
+<h3 id="mf-111-numero">O número de telefone é a credencial</h3>
+<p>O WhatsApp só informa ao Horus o número de quem escreve. É a ligação do número ao perfil que diz quem é a pessoa e, portanto, o que ela pode fazer. Por isso a ligação tem regras próprias:</p>
+<ul>
+  <li><strong>Quem liga é a própria pessoa</strong>, no perfil, e o código recebido pelo WhatsApp prova que o número é dela.</li>
+  <li><strong>Um número, uma pessoa.</strong> Um número se liga a uma pessoa só, e a pessoa tem um número só.</li>
+  <li><strong>O mesmo número para conversar e para receber avisos.</strong> É ele que recebe os alertas e os PDFs dos <a href="#mf-113">Conectores de saída (MF-113)</a>; não há um número para cada uso.</li>
+  <li><strong>Uma organização por vez.</strong> O telefone fica ligado a uma organização só, e assim o Horus sempre sabe qual organização responde.</li>
+</ul>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>O que acontece</th><th>O que muda na ligação</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><span class="badge badge--success">Liga e confirma</span></td><td>A ligação nasce, e a pessoa passa a conversar pelo WhatsApp, se o assento e a role dela permitirem.</td></tr>
+      <tr class="zebra"><td><span class="badge badge--info">Liga em outra organização</span></td><td>A ligação sai da organização anterior e vai para a nova, com um aviso à pessoa. Um consultor que atende duas organizações religa o número ao trocar de uma para a outra.</td></tr>
+      <tr class="zebra"><td><span class="badge badge--info">Troca de número</span></td><td>A pessoa refaz a ligação com o número novo.</td></tr>
+      <tr class="zebra"><td><span class="badge badge--warning">Sai ou perde o assento</span></td><td>Quem sai da organização ou perde o assento deixa de conversar: o número é desligado.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>O que acontece com o resto do que a pessoa criou quando ela sai está em <a href="#mf-102-mudancas">Quando alguém muda de faixa ou sai</a>.</p>
+
+<h3 id="mf-111-resposta">O que chega no WhatsApp</h3>
+<p>A resposta pelo WhatsApp é a mesma resposta da conversa de análise, traduzida para o que o WhatsApp mostra:</p>
+<ul>
+  <li><strong>A confirmação</strong> de que a pergunta chegou e, se a resposta demorar, como na Análise avançada, o aviso de que o Horus está trabalhando.</li>
+  <li><strong>O texto</strong> da resposta. Quando a pesquisa na web traz um fato de fora, o link e a data vão no texto da mensagem (veja <a href="#mf-109-canais">Em todo lugar onde o Horus responde</a>).</li>
+  <li><strong>Até duas imagens</strong>, uma para cada bloco visual, como um gráfico, uma tabela ou um indicador, fiéis ao que o app mostra e com os mesmos números (veja <a href="#mf-108-em-todo-lugar">Um desenho só, em todo lugar</a>).</li>
+  <li><strong>Um link para a resposta viva no app</strong>, onde o gráfico é interativo. O link pede a entrada no Horus, se a pessoa não estiver conectada, e não carrega dado nenhum: só aponta para a conversa.</li>
+</ul>
+<p>A pergunta é em texto: o Horus não recebe áudio nem arquivos.</p>
+<h4 id="mf-111-mesma-conversa">A mesma conversa do app</h4>
+<p>Tudo o que a pessoa pergunta pelo WhatsApp <strong>entra no histórico</strong> do Horus, com a marca do WhatsApp, para ela saber de onde a conversa veio. Ela pode continuar a conversa na tela de análise e apagá-la pelo app, como apaga qualquer outra. As regras do histórico, inclusive quem lê as conversas, estão em <a href="#mf-107-conversas">As conversas e quem as lê</a>.</p>
+<ul>
+  <li><strong>O retorno vale aqui também.</strong> A resposta recebe Gostei, Não gostei ou Reportar, pelo WhatsApp ou pelo app, e o reporte vai ao owner como qualquer outro (veja <a href="#mf-107-retorno">O retorno sobre cada resposta</a>).</li>
+  <li><strong>A pergunta conta na medida de autonomia</strong> quando traz dado da empresa ou fato da web, com resultado, pela mesma regra da conversa (veja <a href="#mf-107-respondidas">As perguntas respondidas</a>). Na Home da organização (MF-117), a contagem aparece dividida por canal, e o WhatsApp tem a sua parte.</li>
+</ul>
+<p>É a diferença para a <a href="#mf-110">Pergunta rápida (MF-110)</a>: no popup, a pessoa escolhe salvar a conversa; no WhatsApp, tudo entra no histórico.</p>
+<h4 id="mf-111-controles">Os mesmos controles e os mesmos dados</h4>
+<p>Pelo WhatsApp, a pessoa tem tudo o que a conversa de análise oferece: os dois modos e a pesquisa na web, o nível de inferência, a Análise avançada e a escolha do modelo de IA. Cada controle obedece à role: quem não tem a Análise avançada na role não a tem no WhatsApp. O que cada um faz está em <a href="#mf-107-ajustes">O que a pessoa ajusta na conversa</a>.</p>
+<p>Na versão 2.0, toda pergunta feita pelo WhatsApp usa os dados da organização inteira, como na conversa: quem pode conversar alcança todas as fontes dela (veja <a href="#mf-104-quem-ve">Quem vê os dados de cada fonte</a>).</p>
+
+<h3 id="mf-111-de-quem-e-o-numero">De quem é o número e quem paga</h3>
+<p>Quem conversa com o Horus escreve para um número de WhatsApp. Esse número pode ser de dois donos, e a organização usa um ou outro, nunca os dois ao mesmo tempo:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Sobre o número</th><th>Número da organização (o padrão)</th><th>Número da Maind</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>De quem é a conta</strong></td><td>Da organização: a conta de WhatsApp Business dela, junto à Meta.</td><td>Da Maind, compartilhada pelas organizações que a autorizam.</td></tr>
+      <tr class="zebra"><td><strong>Por que usar</strong></td><td>É o padrão, pela privacidade dos dados.</td><td>É um atalho para quem não quer abrir a conta na Meta. Quem autoriza é o owner da organização.</td></tr>
+      <tr class="zebra"><td><strong>Por onde passam as mensagens</strong></td><td>Só pela conta da organização.</td><td>Pela conta da Maind. A autorização diz isso com todas as letras.</td></tr>
+      <tr class="zebra"><td><strong>Quem paga as mensagens</strong></td><td>A organização, direto à Meta.</td><td>A organização paga as mensagens que gerar: a Maind repassa o custo, numa cobrança fora do Horus.</td></tr>
+      <tr class="zebra"><td><strong>Quem é avisado se a conta parar</strong></td><td>O owner da organização.</td><td>O administrador da instância (a Maind).</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Os alertas e os PDFs do conector de WhatsApp (<a href="#mf-113">MF-113</a>) saem pela mesma conta que a conversa usa. O que o assento inclui e o que se paga à parte está em <a href="#mf-103-o-que-inclui">O que o assento inclui</a>, e quem é avisado quando cada serviço para, em <a href="#mf-101-quando-um-servico-para">Quando um serviço para</a>.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Ponto de atenção</b><p>Uma conta de WhatsApp pode parar: a Meta pode bloqueá-la ou rebaixar a nota de qualidade dela. Com o número próprio, o owner da organização é avisado. Com o número da Maind, quem é avisado é a Maind, e o owner da organização não recebe o aviso.</p></div>
+</div>
+
+<h3 id="mf-111-bastidores">Nos bastidores, sem complicar</h3>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>Um motor só, para todos os canais.</strong> O WhatsApp chama o mesmo motor de análise da conversa e da Pergunta rápida, e só traduz a entrada e a saída. Por isso o nível, a web com link e data, o retorno e a contagem valem igual.</li>
+  <li><strong>Uma porta só até a Meta.</strong> Uma única peça do Horus fala com o WhatsApp, para a conversa e para os conectores. Ela confere cada mensagem que chega, guarda a pergunta antes de responder à Meta e reconhece a mensagem repetida, para a mesma pergunta não ser respondida duas vezes.</li>
+  <li><strong>A resposta não depende de uma tela aberta.</strong> A pergunta do WhatsApp entra numa fila de trabalho do Horus: a confirmação sai primeiro, e a resposta, quando fica pronta.</li>
+  <li><strong>O mesmo porteiro do app.</strong> Nenhuma mensagem vira pergunta sem que o Horus ache a pessoa pelo número e confira que ela pode, no mesmo ponto do servidor que decide tudo no Horus (veja <a href="#mf-102-bastidores">os bastidores das roles</a>).</li>
+  <li><strong>A janela de 24 horas.</strong> A Meta só deixa responder livremente até 24 horas depois da última mensagem da pessoa. Fora disso, só saem mensagens-padrão aprovadas. O código de ligação é uma delas, e por isso o canal só abre depois da aprovação: sem ele, ninguém liga o número.</li>
+  <li><strong>O número fica fora dos registros técnicos.</strong> Os registros de funcionamento do Horus não guardam o número de WhatsApp nem o texto das mensagens.</li>
+  <li><strong>O que já existe e o que é novo.</strong> O motor de análise e a peça que imprime o PDF da resposta, de onde saem as imagens, vêm do Horus de hoje. É novo tudo o que liga o Horus ao WhatsApp: a porta da Meta, a ligação do número e a conta de cada organização. E parte do caminho depende da Meta, que aprova as mensagens-padrão e cobra por mensagem.</li>
+</ul>
+
+<h3 id="mf-111-limites">O que o Chat pelo WhatsApp não faz</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Conversar em grupo</strong></td><td>Só a conversa individual. Num grupo de WhatsApp, a resposta com dados chegaria a quem o Horus não identificou.</td></tr>
+      <tr class="zebra"><td><strong>Conversar por outros mensageiros</strong></td><td>Conversar pelo Teams ou pelo Google Chat fica para depois, sem versão prevista. Na versão 2.1, os dois chegam só para entregar avisos, nos Conectores de chat corporativo (MF-122).</td></tr>
+      <tr class="zebra"><td><strong>Receber áudio ou arquivos</strong></td><td>A pergunta é em texto.</td></tr>
+      <tr class="zebra"><td><strong>Substituir o app</strong></td><td>Os painéis e relatórios (<a href="#mf-112">MF-112</a>), os agendamentos (<a href="#mf-114">MF-114</a>), os agentes (<a href="#mf-115">MF-115</a>) e a configuração da organização continuam no app.</td></tr>
+      <tr class="zebra"><td><strong>Funcionar com tudo dentro da casa do cliente</strong></td><td>O WhatsApp é um serviço de fora. O modo em que nada sai da infraestrutura da empresa não tem versão prevista.</td></tr>
+      <tr class="zebra"><td><strong>Investigar o porquê, passo a passo</strong></td><td>É da Investigação guiada (MF-119), que chega na versão 2.1.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="mf-111-ligadas">Funcionalidades ligadas a esta</h4>
+<p>O Chat pelo WhatsApp é um canal da conversa de análise e depende de várias outras funcionalidades. As principais:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="#mf-107">Perguntar aos dados em português (MF-107)</a></td><td>É a conversa e o motor que respondem; o WhatsApp é mais uma porta de entrada.</td></tr>
+      <tr class="zebra"><td><a href="#mf-108">Respostas visuais (MF-108)</a></td><td>São os gráficos, as tabelas e os indicadores que viram imagem.</td></tr>
+      <tr class="zebra"><td><a href="#mf-109">A web como fonte (MF-109)</a></td><td>O fato que vem da web chega à mensagem com o link e a data.</td></tr>
+      <tr class="zebra"><td><a href="#mf-110">Pergunta rápida (MF-110)</a></td><td>É o outro canal novo da mesma conversa. Lá a pessoa escolhe salvar; aqui tudo entra no histórico.</td></tr>
+      <tr class="zebra"><td><a href="#mf-102">Organizações, pessoas e papéis (MF-102)</a></td><td>Guarda o número no perfil, e as roles têm o botão do WhatsApp.</td></tr>
+      <tr class="zebra"><td><a href="#mf-103">Licenças e planos (MF-103)</a></td><td>O tipo de assento decide quem pode perguntar: o membro bronze não conversa.</td></tr>
+      <tr class="zebra"><td><a href="#mf-113">Conectores de saída (MF-113)</a></td><td>O conector de WhatsApp, que entrega avisos e PDFs, usa a mesma conta que o chat liga e chega ao mesmo número que a pessoa ligou.</td></tr>
+      <tr class="zebra"><td><a href="#mf-101">Administração da instância (MF-101)</a></td><td>A Maind acompanha o custo de WhatsApp de cada organização e é avisada quando o número dela para.</td></tr>
+      <tr class="zebra"><td>Home da organização (MF-117)</td><td>A medida de autonomia conta as perguntas respondidas pelo WhatsApp e mostra a divisão por canal.</td></tr>
+      <tr class="zebra"><td>Auditoria (MF-116)</td><td>É o rastro da organização. Se o que a pessoa vê pelo WhatsApp entra nele ainda está em definição.</td></tr>
+      <tr class="zebra"><td>Bases de demonstração (MF-118)</td><td>As organizações de exemplo ganham cenários do WhatsApp, para as demonstrações da versão 2.0.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Ainda em definição</b><p><strong>Os controles numa conversa de texto.</strong> Pelo WhatsApp a pessoa tem todos os controles da conversa, mas ainda está em desenho como ela dá o retorno e como troca de modo, de nível ou de modelo numa mensagem de texto.</p><p><strong>A ligação da conta com a Meta.</strong> O caminho técnico até o WhatsApp, e com ele os passos para o owner ligar a conta da organização, ainda está em estudo. Também serão definidos no desenho os textos da resposta fixa e do aviso de número movido, e se o que a pessoa vê pelo WhatsApp entra no rastro da Auditoria (MF-116).</p></div>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Na implantação</b><p>Um ponto desta página trata de dados pessoais: o owner da organização ler as conversas de todas as pessoas, inclusive as que vieram do WhatsApp, sem um aviso especial à pessoa. A regra vale como está. Durante a implantação da organização, vale a empresa consultar o jurídico dela sobre esse ponto.</p></div>
+</div>
+
+<h3 id="mf-111-faq">Perguntas frequentes</h3>
+<div class="faq">
+  <details open>
+    <summary>Preciso instalar alguma coisa para perguntar pelo WhatsApp?</summary>
+    <div class="faq-body"><p>Não. Você usa o WhatsApp que já tem. Depois que o owner da organização liga o canal, você liga o seu número no perfil do Horus e o confirma com o código que chega pelo WhatsApp. A partir daí, é só escrever a pergunta, em texto, na conversa com o Horus.</p></div>
+  </details>
+  <details>
+    <summary>Posso pôr o Horus num grupo de WhatsApp da equipe?</summary>
+    <div class="faq-body"><p>Não. O Horus conversa só a sós com cada pessoa, porque num grupo a resposta com os dados da empresa chegaria a quem ele não identificou. Cada pessoa que pode perguntar liga o próprio número e conversa com o Horus a sós.</p></div>
+  </details>
+  <details>
+    <summary>Trabalho para duas organizações no Horus. Como o WhatsApp sabe qual responde?</summary>
+    <div class="faq-body"><p>O seu número fica ligado a uma organização por vez. Se você o ligar na outra, a ligação sai da primeira e vai para a nova, e você é avisado. A partir daí, quem responde às suas perguntas pelo WhatsApp é a organização em que o número está ligado.</p></div>
+  </details>
+  <details>
+    <summary>As perguntas que faço pelo WhatsApp ficam guardadas?</summary>
+    <div class="faq-body"><p>Ficam. Tudo entra no seu histórico no Horus, com a marca do WhatsApp, e você pode continuar a conversa na tela de análise ou apagá-la pelo app. Como qualquer conversa, ela pode ser lida pelo owner da organização, e a pergunta respondida conta na medida de autonomia.</p></div>
+  </details>
+  <details>
+    <summary>Precisamos ter um número de WhatsApp próprio? Quem paga as mensagens?</summary>
+    <div class="faq-body"><p>O padrão é o número da organização, numa conta de WhatsApp Business dela, e a organização paga as mensagens direto à Meta. Se o owner preferir não abrir a conta, pode autorizar o número da Maind: as mensagens passam pela conta da Maind, e a organização paga as que gerar, numa cobrança da Maind fora do Horus.</p></div>
+  </details>
+  <details>
+    <summary>Pelo WhatsApp tenho menos recursos que no app?</summary>
+    <div class="faq-body"><p>Na conversa, não: você tem os modos, a pesquisa na web, o nível de inferência, a Análise avançada e a escolha do modelo de IA, dentro do que a sua role libera, e a resposta traz o texto, até duas imagens e o link para o app. Como pedir cada ajuste numa mensagem de texto ainda está em definição. Criar painéis, agendamentos e agentes continua no app.</p></div>
+  </details>
+</div>

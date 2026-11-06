@@ -1,0 +1,160 @@
+<p>Toda segunda de manhã, alguém precisa lembrar de abrir o painel de vendas, gerar o PDF e mandar para a equipe. No dia em que essa pessoa esquece, ou está de férias, a reunião começa sem os números. No Horus, esse lembrete sai das costas de alguém: programa-se uma vez <strong>o que gerar, quando e para quem</strong>, e na hora marcada o Horus gera e entrega sozinho.</p>
+<p>É como o débito automático: programado uma vez, a conta sai todo mês sem ninguém lembrar. Onde a comparação para: aqui nem todos programam, e quem programa não programa para qualquer pessoa. Esta página conta quem pode agendar, para quem, como o owner controla isso e o que acontece quando algo sai do roteiro.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Versão 2.0, em construção</b><p>O que está aqui é o que a versão 2.0 do Horus vai entregar. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
+</div>
+
+<h3 id="mf-114-o-que-e">O que é, em poucas palavras</h3>
+<p>O Módulo de Agendamentos de Agentes é o <strong>relógio do Horus</strong>: um agendador só, por onde passa todo envio automático. Cada <strong>agendamento</strong> diz quando roda uma de duas coisas, que ficam no mesmo nível:</p>
+<ul>
+  <li><strong>O PDF de um board.</strong> O painel impresso a partir da mesma montagem da tela, como conta <a href="#mf-108-em-todo-lugar">Um desenho só, em todo lugar</a>.</li>
+  <li><strong>Um agente.</strong> O trabalhador de IA que analisa os dados e avisa. O que ele faz, e como se cria, está em <a href="#mf-115">Agentes ativos (MF-115)</a>.</li>
+</ul>
+<p>Cada vez que o agendamento roda é uma <strong>rodada</strong>. O resultado pronto de uma rodada, o <strong>artefato</strong> (um PDF ou um alerta, por exemplo), segue pelos <strong>conectores de saída</strong>, os canais que só transportam o que o Horus produz (na versão 2.0, o e-mail e o WhatsApp, explicados em <a href="#mf-113">Conectores de Saída, MF-113</a>), até os destinos escolhidos. Um mesmo agendamento pode rodar mais de um item, como dois PDFs e um agente, e sair por mais de um conector. Apesar do nome, o módulo agenda as duas coisas, e não só agentes.</p>
+<p><strong>Hoje e na versão 2.0.</strong> No Horus de hoje, só o relatório em PDF tem agenda: sai na hora marcada e chega por e-mail, e é o único envio que o Horus faz sem alguém pedir. Na versão 2.0, esse envio vira regra geral: o PDF de um board e os agentes passam pelo mesmo relógio, e a entrega sai pelos conectores.</p>
+<h4 id="mf-114-quem-e-quem">Quem agenda, e para quem</h4>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Tipo de assento</th><th>Agenda?</th><th>Para quem</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Owner</strong></td><td><span class="badge badge--success">Sim</span></td><td>Para si e para qualquer pessoa da organização, inclusive pelos grupos da organização.</td></tr>
+      <tr class="zebra"><td><strong>Gestor</strong></td><td><span class="badge badge--success">Sim</span></td><td>Para si e para as pessoas que ele gere, inclusive pelos grupos dele.</td></tr>
+      <tr class="zebra"><td><strong>Membro ouro</strong></td><td><span class="badge badge--success">Sim</span></td><td>Só para si.</td></tr>
+      <tr class="zebra"><td><strong>Membro prata</strong></td><td><span class="badge">Não</span></td><td>Não agenda nada, mas recebe o que outras pessoas agendam para ele.</td></tr>
+      <tr class="zebra"><td><strong>Membro bronze</strong></td><td><span class="badge">Não</span></td><td>Também não agenda, e também recebe.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>É a mesma escada dos <a href="#mf-101-assentos">assentos</a>: o bronze vê, a prata pergunta, o ouro cria, e criar inclui os agendamentos e os agentes. Entregar a <strong>outras pessoas</strong> é só do gestor e do owner, seja qual for o tipo de assento do membro.</p>
+<p>Os destinos são sempre <strong>pessoas e grupos do Horus</strong>. Cada pessoa recebe pelo contato que ela mesma informou em cada conector, no <a href="#mf-102-perfil">perfil</a>. Os grupos são os da página <a href="#mf-102-grupos">Grupos: para quem vai cada coisa</a>: o gestor usa os dele, e o owner também os da organização.</p>
+<p>Um exemplo, com personagens ilustrativos: a gestora Carla agenda o PDF do board de vendas para o grupo “Vendas Sul”, todo dia 1º, e o João, do grupo, o recebe no WhatsApp. A Maria, membro ouro, tenta agendar o mesmo envio ao João, e o Horus não deixa: o ouro agenda só para si.</p>
+
+<h3 id="mf-114-na-pratica">Um agendamento, do começo ao fim</h3>
+<p>A Carla quer que a equipe receba os números da semana sem precisar pedir.</p>
+<ol class="steps">
+  <li><div><h4>Escolhe o que rodar</h4><p>O PDF de um board, um agente ou mais de um item. A Carla põe dois: o PDF do board de vendas e um agente que analisa a semana.</p></div></li>
+  <li><div><h4>Escolhe quando</h4><p>Por exemplo, toda segunda de manhã ou todo dia 1º.</p></div></li>
+  <li><div><h4>Escolhe os destinos e os conectores</h4><p>Dentro do que o papel dela permite: o grupo “Vendas Sul”, por e-mail e pelo WhatsApp. Cada item pode sair pelo conector que ela escolher.</p></div></li>
+  <li><div><h4>Salva, e o owner aprova se exigir</h4><p>Com a aprovação automática, que é como a organização nasce, o agendamento já fica ativo. Se o owner ligou a aprovação, ele espera o sim do owner, sem rodar.</p></div></li>
+  <li><div><h4>Na hora marcada, o Horus gera e entrega</h4><p>Gera o artefato e o passa aos conectores, que o levam a cada pessoa do grupo pelo contato que ela informou.</p></div></li>
+  <li><div><h4>Cada entrega fica registrada</h4><p>O rastro da Auditoria (MF-116) guarda o que cada rodada enviou, por qual conector e a quem.</p></div></li>
+</ol>
+<p>O mesmo caminho em desenho, como a vida de um agendamento: a aprovação do owner, cada rodada, a falha que não interrompe o agendamento e o corte da organização. O que acontece quando o autor muda de faixa ou sai está em <a href="#mf-114-quando-nao-roda">Quando um agendamento não roda</a>.</p>
+<dx-diagrama ref="mf-114-vida-de-um-agendamento"></dx-diagrama>
+<h4 id="mf-114-board-desabilitado">Quando o board está desabilitado</h4>
+<p>O owner e o gestor podem desabilitar um board, como conta a página dos <a href="#mf-112">Boards e Relatórios (MF-112)</a>. O agendamento que o usa <strong>continua</strong>: no lugar do board entra um texto avisando que ele está desativado. Num agendamento com vários boards, só a parte do board desabilitado é trocada pelo aviso, e o resto sai normalmente.</p>
+
+<h3 id="mf-114-aprovacao">A aprovação do owner</h3>
+<p>O owner da organização decide, nas preferências da organização, se os agendamentos que as pessoas criam valem na hora ou esperam o sim dele. A <strong>aprovação automática nasce ligada</strong>: tudo funciona no primeiro dia, e o owner restringe se quiser. A aprovação é um interruptor <strong>por tipo</strong>: o owner pode, por exemplo, deixar os contatos dos conectores em aprovação automática e exigir aprovação para os agendamentos. Os agentes também têm a sua aprovação, explicada em <a href="#mf-115">Agentes ativos</a>.</p>
+<p>Quando a aprovação está ligada, o agendamento salvo aparece na lista de quem o criou com uma marca, para a pessoa saber por que nada sai:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Marca</th><th>O que significa</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><span class="badge badge--warning">Aguardando aprovação do owner</span></td><td>Salvo, mas sem rodar. Fica assim até o owner decidir.</td></tr>
+      <tr class="zebra"><td><span class="badge badge--success">Ativo</span></td><td>O owner aprovou, ou a aprovação é automática. Roda na hora marcada.</td></tr>
+      <tr class="zebra"><td><span class="badge badge--danger">Recusado</span></td><td>O owner disse não. O agendamento não roda.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Um exemplo: o Marcos, owner da área comercial, liga a aprovação. A Carla salva um agendamento, que aparece marcado “aguardando aprovação do owner”. O Marcos aprova, e a marca passa a “ativo”.</p>
+
+<h3 id="mf-114-como-quem-criou">Roda sozinho, como quem criou</h3>
+<p>Ninguém aperta um botão na hora da rodada, e mesmo assim o agendamento não roda “como ninguém”: ele usa as <strong>permissões de quem o criou</strong>. Essas permissões são lidas na hora de cada rodada, e não guardadas do dia em que o agendamento foi criado. É a mesma regra dos trabalhos automáticos explicada em <a href="#mf-102">Organizações, pessoas e papéis</a>.</p>
+<p>Na versão 2.0, isso não muda os números: a organização é a fronteira dos dados, e toda rodada usa os dados da organização inteira, como toda pergunta (veja <a href="#mf-102-dados-e-conversas">Os dados, as conversas e o perfil</a>). A diferença por pessoa só chega com a Segurança dos dados por pessoa (MF-106), na versão 2.1.</p>
+
+<h3 id="mf-114-quando-nao-roda">Quando um agendamento não roda</h3>
+<p>Na maior parte do tempo, o agendamento só espera a próxima hora marcada. Estas são as situações em que ele não entrega, e o que acontece em cada uma:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Situação</th><th>O que acontece</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><span class="badge badge--danger">A rodada falha</span></td><td>A execução deu erro ou passou do limite técnico dela. Os destinatários não recebem nada naquela rodada, nem um PDF pela metade, e <strong>só o autor é avisado</strong>. A próxima rodada segue no horário normal.</td></tr>
+      <tr class="zebra"><td><span class="badge badge--warning">O resultado não cabe no canal</span></td><td>Um PDF maior que o anexo do e-mail, por exemplo. O Horus não o entrega naquele canal, não o corta nem o altera, e avisa o autor, como numa falha. Os canais são assunto dos <a href="#mf-113">Conectores de Saída</a>.</td></tr>
+      <tr class="zebra"><td><span class="badge badge--warning">A organização é cortada</span></td><td>Nada roda nem é enviado, e os agendamentos ficam guardados. Na volta, cada um segue do próximo horário, <strong>sem refazer o que perdeu</strong> (veja <a href="#mf-103-corte">O corte</a>).</td></tr>
+      <tr class="zebra"><td><span class="badge">O autor é rebaixado</span></td><td>Passou de ouro a prata ou a bronze e continua na organização. O agendamento fica com ele, mas <strong>desabilitado</strong>: não roda, e a única ação possível é excluí-lo. Se ele voltar a ser ouro, reativa um a um; nada volta sozinho.</td></tr>
+      <tr class="zebra"><td><span class="badge badge--danger">O autor é excluído</span></td><td>Saiu ou foi retirado da organização. Os agendamentos dele são apagados em definitivo, sem transferência: ninguém os recebe. Quem sai também deixa de ser destino dos agendamentos dos outros.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>O que acontece com o resto do que a pessoa criou, quando muda de faixa ou sai, está em <a href="#mf-102-mudancas">Quando alguém muda de faixa ou sai</a>.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Quem recebe nem sempre fica sabendo</b><p>Numa rodada que falha, os destinatários ficam sem o PDF e não sabem por quê: o aviso vai só ao autor, que é quem pode consertar. Num corte, o alerta deixa de chegar sem aviso a quem o recebia. E um gestor que sai da organização leva junto o PDF que agendava para a equipe.</p></div>
+</div>
+
+<h3 id="mf-114-bastidores">Nos bastidores, sem complicar</h3>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>Um relógio só.</strong> O PDF dos boards e os agentes usam o mesmo agendador, em vez de cada parte do Horus ter o seu. O corte da organização, por exemplo, pausa os dois do mesmo jeito.</li>
+  <li><strong>Uma fila que não se perde.</strong> Cada rodada vira um pedido de trabalho guardado no banco de dados da aplicação, que sobrevive a uma atualização do Horus. Cada rodada é reservada antes de rodar, para não sair duas vezes.</li>
+  <li><strong>Quem conversa não espera o PDF de ninguém.</strong> O Horus trabalha em dois papéis: um atende as telas e a conversa; o outro roda os agendamentos, os agentes, os PDFs e os envios. O pico de segunda de manhã não deixa lenta a conversa de quem está numa reunião.</li>
+  <li><strong>O resultado sai pronto.</strong> O agendador entrega aos conectores o artefato já desenhado e a lista de destinatários; o conector só o transporta e registra cada entrega no rastro.</li>
+  <li><strong>O que já existe e o que é novo.</strong> A agenda dos relatórios em PDF de hoje serve de molde, inclusive o jeito de reservar cada rodada. O agente como coisa agendada, a pausa no corte e a fila que não se perde são novos.</li>
+</ul>
+
+<h3 id="mf-114-limites">O que esta funcionalidade não faz</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Decidir o que o agente faz</strong></td><td>O que o agente analisa e quando avisa é dos <a href="#mf-115">Agentes ativos (MF-115)</a>. O agendamento só diz quando ele roda.</td></tr>
+      <tr class="zebra"><td><strong>Escolher o formato ou o canal</strong></td><td>O formato do que sai é do board ou do agente; o canal é dos <a href="#mf-113">Conectores de Saída (MF-113)</a>.</td></tr>
+      <tr class="zebra"><td><strong>Enviar a quem não é usuário do Horus</strong></td><td>Os destinos são sempre pessoas e grupos do Horus. Um cliente ou um fornecedor de fora não recebe.</td></tr>
+      <tr class="zebra"><td><strong>Deixar um membro agendar para colegas</strong></td><td>Só o gestor e o owner entregam a outras pessoas. O ouro agenda para si; a prata e o bronze não agendam.</td></tr>
+      <tr class="zebra"><td><strong>Refazer as rodadas perdidas</strong></td><td>Depois de um corte, o agendamento segue do próximo horário.</td></tr>
+      <tr class="zebra"><td><strong>Transferir agendamentos</strong></td><td>Não há transferência em nenhuma versão: o de quem é excluído é apagado, e o de quem é rebaixado fica desabilitado com ele.</td></tr>
+      <tr class="zebra"><td><strong>Avisar os destinatários de uma falha</strong></td><td>Só o autor é avisado.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="mf-114-ligadas">Funcionalidades ligadas a esta</h4>
+<p>O agendamento é um elo de uma corrente: o agente trabalha, o agendamento diz quando, o conector entrega e o board mostra.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="#mf-115">Agentes ativos (MF-115)</a></td><td>O agente é uma das duas coisas que o agendamento roda, e só roda quando o agendamento o chama.</td></tr>
+      <tr class="zebra"><td><a href="#mf-112">Boards e Relatórios (MF-112)</a></td><td>O PDF do board é a outra. Com o board desabilitado, entra o aviso no lugar dele.</td></tr>
+      <tr class="zebra"><td><a href="#mf-113">Conectores de Saída (MF-113)</a></td><td>O agendamento não entrega nada sozinho: passa o artefato ao conector, que o leva ao e-mail ou ao WhatsApp.</td></tr>
+      <tr class="zebra"><td><a href="#mf-102">Organizações, pessoas e papéis (MF-102)</a></td><td>A carteira do gestor e os grupos dizem para quem cada um pode agendar, e o contato de cada pessoa fica no perfil.</td></tr>
+      <tr class="zebra"><td><a href="#mf-103">Licenças e planos (MF-103)</a></td><td>No corte, todo agendamento da organização para; quem passa a prata ou a bronze tem os agendamentos desabilitados.</td></tr>
+      <tr class="zebra"><td><a href="#mf-108">Respostas visuais (MF-108)</a></td><td>O PDF sai da mesma montagem da tela, com os mesmos números.</td></tr>
+      <tr class="zebra"><td>Auditoria (MF-116)</td><td>Registra o que cada rodada enviou, por qual conector e a quem.</td></tr>
+      <tr class="zebra"><td>Segurança dos dados por pessoa (MF-106)</td><td>Traz a diferença dos dados por pessoa na versão 2.1. Na versão 2.0, toda rodada usa os dados da organização inteira.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Ainda em definição</b><p>As regras desta página estão decididas. Ficam com o desenho técnico três detalhes: se a pessoa é avisada quando o owner aprova ou recusa o agendamento dela, e por qual canal; por qual canal chega ao autor o aviso de uma rodada que falhou; e quantas vezes o Horus tenta antes de dar uma rodada por perdida. O texto exato do aviso de board desativado também será definido.</p></div>
+</div>
+
+<h3 id="mf-114-faq">Perguntas frequentes</h3>
+<div class="faq">
+  <details open>
+    <summary>Quem na minha equipe pode programar um envio automático?</summary>
+    <div class="faq-body"><p>O owner, os gestores e os membros ouro. O ouro agenda só para si; o gestor agenda para si e para as pessoas que ele gere; o owner, para qualquer pessoa da organização. Os membros prata e bronze não agendam nada, mas recebem o que os outros agendam para eles.</p></div>
+  </details>
+  <details>
+    <summary>Posso mandar o relatório para alguém de fora da empresa?</summary>
+    <div class="faq-body"><p>Não. Os destinos são sempre pessoas e grupos do Horus, e cada um recebe pelo contato que informou em cada conector. Na versão 2.0, os conectores são o e-mail e o WhatsApp. Quem não é usuário do Horus não recebe nada.</p></div>
+  </details>
+  <details>
+    <summary>Vou ter de aprovar cada agendamento que a equipe cria?</summary>
+    <div class="faq-body"><p>Não necessariamente. A organização nasce com a aprovação automática, e o agendamento salvo já fica ativo. Se o owner ligar a aprovação, cada agendamento novo aparece marcado “aguardando aprovação do owner”, sem rodar, até ele decidir; aí a marca passa a “ativo” ou a “recusado”. A aprovação dos agendamentos é um interruptor à parte, separado, por exemplo, do que aprova os contatos dos conectores.</p></div>
+  </details>
+  <details>
+    <summary>Se uma rodada falhar, a equipe recebe um relatório pela metade?</summary>
+    <div class="faq-body"><p>Não. Quando a execução dá erro ou passa do limite técnico, os destinatários não recebem nada naquela rodada, e só o autor é avisado, porque é quem pode consertar. O agendamento não para: a próxima rodada segue no horário normal.</p></div>
+  </details>
+  <details>
+    <summary>Se o acesso da organização for suspenso, os relatórios perdidos saem depois?</summary>
+    <div class="faq-body"><p>Não. Com a organização cortada, nada roda nem é enviado, e os agendamentos ficam guardados. Quando a organização volta, cada agendamento segue do próximo horário, e as rodadas que não aconteceram durante o corte não são refeitas.</p></div>
+  </details>
+  <details>
+    <summary>O que acontece com os agendamentos de quem sai da empresa ou muda de faixa?</summary>
+    <div class="faq-body"><p>Quem é excluído da organização perde os agendamentos em definitivo: o Horus não os transfere a ninguém, e o PDF que essa pessoa agendava para a equipe deixa de sair. Quem passa de ouro a prata ou a bronze mantém os agendamentos, desabilitados: não rodam, e ele só pode excluí-los. Se voltar a ser ouro, reativa um a um.</p></div>
+  </details>
+</div>

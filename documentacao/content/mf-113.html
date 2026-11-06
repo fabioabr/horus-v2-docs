@@ -1,0 +1,192 @@
+<p>Toda segunda de manhã, alguém da equipe de vendas quer o resumo da semana. Hoje, a única coisa que o Horus manda sozinho é o relatório em PDF agendado, por e-mail; todo o resto só chega a quem abre o app. Uma queda nas vendas, por exemplo, só aparece para quem entra e olha. Os <strong>conectores de saída</strong> mudam isso: levam o que o Horus produz até o e-mail ou o WhatsApp de quem precisa, sem a pessoa abrir o app.</p>
+<p>Pense num carteiro. Ele leva a carta fechada ao endereço cadastrado, sem abri-la e sem reescrevê-la. O conector é esse carteiro, com uma diferença: ele só entrega a quem mora no prédio, as pessoas da organização no Horus. Um exemplo, com personagens ilustrativos: toda segunda, o PDF da semana chega por e-mail ao grupo “Vendas Sul”; quando as vendas do Sul caem 10% (valor ilustrativo), o alerta de um agente chega ao WhatsApp da gestora Carla.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Versão 2.0, em construção</b><p>O que está aqui é o que a versão 2.0 do Horus vai entregar. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
+</div>
+
+<h3 id="mf-113-o-que-e">O que é, em poucas palavras</h3>
+<p>Os Conectores de saída são os canais por onde o Horus entrega o que produz. A funcionalidade cabe em seis pontos:</p>
+<ul>
+  <li><strong>Dois canais na versão 2.0:</strong> o e-mail e o WhatsApp. O Teams e o Google Chat chegam na versão 2.1, numa funcionalidade própria (MF-122); outros, como o Slack, não têm versão prevista.</li>
+  <li><strong>Só transporta.</strong> O conector leva a peça pronta que outra parte do Horus fez, como o PDF de um painel ou o alerta de um agente, sem mudar nada.</li>
+  <li><strong>Só entrega a pessoas da organização</strong>, por nome ou por grupo, inclusive aos membros prata e bronze, que recebem mas não criam envios.</li>
+  <li><strong>Só o owner liga.</strong> Nada sai por um canal que o owner da organização não ligou.</li>
+  <li><strong>Cada pessoa informa o próprio contato</strong> em cada conector, e a aprovação desse contato nasce automática.</li>
+  <li><strong>Cada entrega fica registrada:</strong> o que saiu, por qual conector e a quem.</li>
+</ul>
+<h4 id="mf-113-palavras">As palavras desta página</h4>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Palavra</th><th>O que quer dizer aqui</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Conector de saída</strong></td><td>Um canal por onde o Horus entrega o que produz a quem não está com o app aberto. Na versão 2.0, o e-mail e o WhatsApp.</td></tr>
+      <tr class="zebra"><td><strong>Artefato</strong></td><td>A peça pronta que o conector leva: o PDF de um board (painel) ou o alerta de um agente, o trabalho automático de IA. Quem faz o artefato é o painel ou o agente, nunca o conector.</td></tr>
+      <tr class="zebra"><td><strong>Contato</strong></td><td>O endereço de cada pessoa num conector: o e-mail dela ou o número de WhatsApp. Ela mesma o informa no perfil.</td></tr>
+      <tr class="zebra"><td><strong>Mensagem-padrão</strong></td><td>Um modelo de mensagem que a Meta, a dona do WhatsApp, aprova antes do uso. É por ela que o Horus manda os avisos e os PDFs pelo WhatsApp.</td></tr>
+      <tr class="zebra"><td><strong>Rastro</strong></td><td>O registro da Auditoria (MF-116) de quem entregou o quê a quem, sem o conteúdo do que foi entregue.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="mf-113-quem-e-quem">Quem faz o quê</h4>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quem</th><th>O que faz com os conectores</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>Liga os conectores, decide se aprova os contatos um a um e mantém ou desliga, nas roles, o botão de enviar pelos conectores.</td></tr>
+      <tr class="zebra"><td><strong>Gestor e membro ouro</strong></td><td>Usam os conectores que o owner ligou, nos agendamentos e agentes que criam, quando a role deles tem o botão. A quem cada um pode mandar é regra do agendamento (<a href="#mf-114">MF-114</a>).</td></tr>
+      <tr class="zebra"><td><strong>Membros prata e bronze</strong></td><td>Recebem os PDFs e os alertas, mas não criam envios.</td></tr>
+      <tr class="zebra"><td><strong>Todas as pessoas</strong></td><td>Informam o próprio contato em cada conector, no perfil.</td></tr>
+      <tr class="zebra"><td><strong>Administrador da instância</strong> (a Maind)</td><td>Cuida do e-mail da instância e do número de WhatsApp da Maind, e é avisado quando um deles para.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Os tipos de assento estão em <a href="#mf-101-assentos">Os assentos: quem pode fazer o quê</a>, e as roles, em <a href="#mf-102-roles">Roles: o que cada pessoa pode usar</a>.</p>
+
+<h3 id="mf-113-na-pratica">Um PDF, do agendamento à caixa de entrada</h3>
+<p>Digamos que o Marcos é o owner da área comercial de uma rede de lojas, a Carla é a gestora de vendas, e o Rui, vendedor da equipe dela, tem um assento bronze: não pergunta, mas quer receber o resumo da semana.</p>
+<ol class="steps">
+  <li><div><h4>O owner liga os conectores</h4><p>O Marcos liga o conector de e-mail e, como a área já conversa com o Horus pelo WhatsApp, liga também o de WhatsApp. Ele faz isso uma vez, e vale para a organização inteira.</p></div></li>
+  <li><div><h4>Cada pessoa informa o contato</h4><p>No perfil, o Rui informa o e-mail e o número de WhatsApp dele. Cada pessoa informa o próprio contato.</p></div></li>
+  <li><div><h4>O contato é aprovado</h4><p>A aprovação nasce automática: o contato do Rui vale na hora. Se o Marcos preferir, passa a aprovar cada contato, e a pessoa espera o sim dele.</p></div></li>
+  <li><div><h4>O agendamento entrega o artefato</h4><p>Toda segunda, o agendamento da Carla gera o PDF do painel de vendas e o entrega ao conector de e-mail, com os destinatários: o grupo “Vendas Sul”, que reúne pessoas da equipe dela, entre elas o Rui.</p></div></li>
+  <li><div><h4>O conector leva e registra</h4><p>O conector acha o contato aprovado de cada pessoa do grupo, leva o PDF como recebeu e registra cada entrega no rastro. O Rui lê o resumo no e-mail, sem abrir o Horus.</p></div></li>
+</ol>
+<p>O mesmo caminho em desenho, com quem age em cada passo e o desvio de quando o artefato não cabe no canal.</p>
+<dx-diagrama ref="mf-113-do-contato-a-entrega"></dx-diagrama>
+<h4 id="mf-113-quem-recebe">Quem pode receber</h4>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quem</th><th>Recebe</th><th>Cria envios</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td><span class="badge badge--success">Sim</span></td><td><span class="badge badge--success">Sim</span> O owner não depende de roles.</td></tr>
+      <tr class="zebra"><td><strong>Gestor e membro ouro</strong></td><td><span class="badge badge--success">Sim</span></td><td><span class="badge badge--success">Sim</span> Quando a role tem o botão dos conectores.</td></tr>
+      <tr class="zebra"><td><strong>Membros prata e bronze</strong></td><td><span class="badge badge--success">Sim</span></td><td><span class="badge badge--warning">Não</span> Seja qual for a role.</td></tr>
+      <tr class="zebra"><td><strong>Quem não é da organização</strong>, como um cliente da empresa</td><td><span class="badge badge--danger">Não</span></td><td><span class="badge badge--danger">Não</span></td></tr>
+    </tbody>
+  </table>
+</div>
+<p>A role padrão, com que a organização nasce, já traz o botão de enviar pelos conectores ligado (veja <a href="#mf-102-nasce-liberado">Tudo nasce liberado</a>).</p>
+
+<h3 id="mf-113-canais">Os dois canais da versão 2.0</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Sobre o canal</th><th>E-mail</th><th>WhatsApp</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Por onde sai</strong></td><td>Pelo mesmo servidor de e-mail da instância, o dos convites do Horus.</td><td>Pela conta de WhatsApp da organização que o <a href="#mf-111">Chat pelo WhatsApp</a> liga: o número próprio ou o da Maind.</td></tr>
+      <tr class="zebra"><td><strong>Como chega</strong></td><td>Com o nome da organização no assunto; o PDF vai anexo.</td><td>Como uma mensagem-padrão aprovada pela Meta.</td></tr>
+      <tr class="zebra"><td><strong>O contato da pessoa</strong></td><td>O e-mail que ela informa no perfil.</td><td>O número dela, um só para a conversa com o Horus e para os envios.</td></tr>
+      <tr class="zebra"><td><strong>Se o canal parar, quem é avisado</strong></td><td>O administrador da instância (a Maind).</td><td>O owner, se o número é o próprio; o administrador da instância, se é o da Maind.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="mf-113-email">O conector de e-mail</h4>
+<p>O e-mail sai pelo mesmo serviço que já manda os convites, a recuperação de senha e os avisos da conta, e de que a Maind cuida na <a href="#mf-101-marca-e-email">Administração da instância</a>. São coisas diferentes, porém: os e-mails da conta saem pelo e-mail da instância, e não pelo conector que o owner liga. O conector leva só o que um agendamento ou um agente produziu, com o nome da organização no assunto e o PDF anexo.</p>
+<h4 id="mf-113-whatsapp">O conector de WhatsApp</h4>
+<p>O conector de WhatsApp não tem conta própria: usa a mesma conta da organização que o Chat pelo WhatsApp (MF-111) liga. Pode ser o <strong>número próprio</strong> da organização, que é o padrão, ou o <strong>número da Maind</strong>, que o owner autoriza sabendo que as mensagens passam pela conta da Maind. Cada envio é uma mensagem-padrão aprovada pela Meta e paga por mensagem. A organização paga as mensagens que gerar:</p>
+<ul>
+  <li><strong>Com o número próprio,</strong> paga diretamente à Meta.</li>
+  <li><strong>Com o número da Maind,</strong> a Maind lhe repassa o custo, numa cobrança fora do Horus (veja <a href="#mf-103-o-que-inclui">O que o assento inclui, e o que se paga à parte</a>).</li>
+</ul>
+<p>Cada pessoa tem <strong>um número de WhatsApp só</strong>, o mesmo da conversa com o Horus e dos envios, e esse número fica ligado a uma organização por vez. Ligá-lo numa organização o desliga das outras, e a pessoa é avisada.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Ponto de atenção</b><p>Quem atende duas organizações, como um consultor, religa o número de WhatsApp ao trocar de uma para a outra. Assim o Horus sempre sabe a qual organização o número responde.</p></div>
+</div>
+
+<h3 id="mf-113-quando-nao-da">Quando a entrega não dá certo</h3>
+<h4 id="mf-113-nao-cabe">O que não cabe no canal</h4>
+<p>Cada canal tem um limite: o tamanho do anexo, no e-mail, e o da mensagem, no WhatsApp. Se o artefato passa do limite, o Horus <strong>não o entrega naquele canal</strong>, <strong>não o corta</strong> e <strong>avisa o autor</strong>, como numa falha. Ninguém recebe um PDF pela metade. Por exemplo: o PDF do painel de fim de ano da Carla passa do anexo do e-mail; ele não sai por e-mail, e a Carla recebe o aviso.</p>
+<h4 id="mf-113-canal-parado">Quando um canal para</h4>
+<p>Um canal pode parar: o servidor recusa o e-mail, ou a conta de WhatsApp é bloqueada. Quem é avisado é o <strong>dono do serviço</strong>, porque é quem pode consertar: o owner da organização, se o WhatsApp é o próprio; o administrador da instância, se é o número da Maind ou o e-mail da instância. Quando o serviço é da Maind, o owner da organização não recebe esse aviso. A regra é a mesma dos outros serviços, em <a href="#mf-101-quando-um-servico-para">Quando um serviço para</a>.</p>
+<h4 id="mf-113-rastro">Cada entrega fica registrada</h4>
+<p>Cada entrega vai para o rastro da Auditoria (MF-116): quem enviou, o quê (o painel ou o artefato), para quem, por qual conector e quando. O conteúdo do que foi entregue não vai para o rastro. É assim que o owner vê o que saiu da organização e para quem.</p>
+
+<h3 id="mf-113-controle">A empresa no controle do que sai</h3>
+<p>O Horus <strong>só lê</strong> os bancos de dados da empresa: nunca altera um dado nem age nos sistemas dela (veja <a href="#mf-104-so-le">Só ler, nunca alterar</a>). Mandar um alerta por e-mail ou pelo WhatsApp é informação que sai, e não mexe nos sistemas. E a saída também tem dono:</p>
+<ul>
+  <li><strong>O canal:</strong> nada sai por um conector que o owner não ligou.</li>
+  <li><strong>O destino:</strong> só pessoas da organização recebem, por nome ou por grupo.</li>
+  <li><strong>O contato:</strong> o owner pode passar a aprovar cada contato antes de ele valer.</li>
+  <li><strong>Quem envia:</strong> o botão dos conectores fica nas roles, e o owner o desliga para quem quiser.</li>
+  <li><strong>A prova:</strong> o rastro mostra o que saiu, por onde e a quem.</li>
+</ul>
+
+<h3 id="mf-113-bastidores">Nos bastidores, sem complicar</h3>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>Um contrato só entre quem produz e quem leva.</strong> O agendamento e o agente entregam ao conector a peça pronta e a lista de destinatários. O conector acha o contato aprovado de cada pessoa, transporta e grava a entrega no rastro no mesmo passo, sem consultar fonte de dados, sem chamar o motor de análise e sem desenhar nada.</li>
+  <li><strong>Um caminho só para todos os e-mails.</strong> A recuperação de senha, os avisos, os convites e o conector saem pelo mesmo envio, nessa ordem de vez: o conector vai por último, em lote. O domínio de quem envia é autenticado, para o e-mail não cair no lixo eletrônico.</li>
+  <li><strong>O e-mail sabe até o servidor.</strong> O Horus sabe se o servidor de e-mail aceitou ou recusou a mensagem. Uma devolução que aconteça depois, como uma caixa que não existe, não volta ao Horus.</li>
+  <li><strong>Uma porta só para o WhatsApp.</strong> Uma única peça do Horus fala com a Meta, e o chat e o conector a usam sem depender um do outro. Cada envio entra numa fila, que tenta de novo na falha passageira. O PDF sobe ao próprio WhatsApp, sem um endereço público do Horus, e a Meta informa se a mensagem foi enviada, entregue, lida ou falhou.</li>
+  <li><strong>Mensagens-padrão do próprio Horus.</strong> O Horus traz um conjunto fixo de mensagens-padrão em português, criado na conta da organização quando o owner liga o WhatsApp: a organização não escreve nem aprova mensagem nenhuma. O conector envia sempre por elas, e por isso o aviso chega mesmo a quem não escreveu ao Horus nas últimas 24 horas. A Meta aprova cada mensagem-padrão e decide a categoria dela.</li>
+  <li><strong>O que já existe e o que é novo.</strong> O envio de e-mail e o ritmo dele vêm do Horus de hoje, e o relatório agendado vira o primeiro caso de conector. O conector de WhatsApp e o contato aprovado de cada pessoa em cada canal são novos.</li>
+</ul>
+
+<h3 id="mf-113-limites">O que os Conectores de saída não fazem</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não fazem</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Criar o conteúdo</strong></td><td>O PDF é do painel (<a href="#mf-112">MF-112</a>), e o alerta, do agente (<a href="#mf-115">MF-115</a>). O conector só leva.</td></tr>
+      <tr class="zebra"><td><strong>Cortar ou reduzir o artefato</strong></td><td>O que não cabe no canal não sai por ali, e o autor é avisado.</td></tr>
+      <tr class="zebra"><td><strong>Decidir quando enviar</strong></td><td>É do Módulo de Agendamentos de Agentes (<a href="#mf-114">MF-114</a>).</td></tr>
+      <tr class="zebra"><td><strong>Entregar a quem não usa o Horus</strong></td><td>Todo destinatário é uma pessoa da organização. Um cliente da empresa, por exemplo, não recebe.</td></tr>
+      <tr class="zebra"><td><strong>Mandar os e-mails da conta</strong></td><td>O convite, a recuperação de senha e os avisos da conta saem pelo e-mail da instância (<a href="#mf-101">MF-101</a>).</td></tr>
+      <tr class="zebra"><td><strong>Conversar pelo WhatsApp</strong></td><td>Receber perguntas é do Chat pelo WhatsApp (<a href="#mf-111">MF-111</a>). Quem não pode conversar e escreve ao Horus recebe uma resposta fixa, sem dado nenhum, que aponta para o app.</td></tr>
+      <tr class="zebra"><td><strong>Entregar pelo Teams ou pelo Google Chat</strong></td><td>Chegam na versão 2.1, nos Conectores de chat corporativo (MF-122). Outros, como o Slack, não têm versão prevista.</td></tr>
+      <tr class="zebra"><td><strong>Agir nos sistemas da empresa</strong></td><td>O conector leva informação; o Horus nunca altera um dado da empresa.</td></tr>
+      <tr class="zebra"><td><strong>Funcionar com nada saindo da casa da empresa</strong></td><td>O modo em que nada sai da casa do cliente não tem versão prevista.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="mf-113-ligadas">Funcionalidades ligadas a esta</h4>
+<p>Os conectores fecham uma corrente de quatro funcionalidades: o agente trabalha, o agendamento diz quando, o conector entrega e o painel mostra.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="#mf-114">Módulo de Agendamentos de Agentes (MF-114)</a></td><td>É o agendamento que diz quando e chama o conector com o artefato pronto.</td></tr>
+      <tr class="zebra"><td><a href="#mf-115">Agentes ativos (MF-115)</a></td><td>O agente produz boa parte do que o conector leva: o PDF com gráficos e o alerta.</td></tr>
+      <tr class="zebra"><td><a href="#mf-112">Boards e Relatórios (MF-112)</a></td><td>O PDF automático do painel chega a quem o recebe pelo conector.</td></tr>
+      <tr class="zebra"><td><a href="#mf-111">Chat pelo WhatsApp (MF-111)</a></td><td>O conector de WhatsApp usa a mesma conta da organização que o chat liga, e o mesmo número de cada pessoa.</td></tr>
+      <tr class="zebra"><td><a href="#mf-102">Organizações, pessoas e papéis (MF-102)</a></td><td>Guarda o contato no perfil, o papel de owner, os grupos de destino e o botão das roles.</td></tr>
+      <tr class="zebra"><td><a href="#mf-103">Licenças e planos (MF-103)</a></td><td>O tipo de assento diz quem recebe e quem cria envios: a prata e o bronze recebem alertas e PDFs. As mensagens pelo número da Maind se pagam à parte.</td></tr>
+      <tr class="zebra"><td><a href="#mf-101">Administração da instância (MF-101)</a></td><td>O e-mail sai pelo servidor da instância, e é lá que a Maind mede, por organização, o custo do WhatsApp que repassa.</td></tr>
+      <tr class="zebra"><td>Auditoria (MF-116)</td><td>Registra cada entrega: por qual conector e a quem.</td></tr>
+      <tr class="zebra"><td>Conectores de chat corporativo (MF-122)</td><td>Na versão 2.1, o Teams e o Google Chat entram como canais novos deste mesmo carteiro.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Ainda em definição</b><p>As regras desta página estão decididas. Ficam para o desenho técnico o tamanho máximo de cada canal e o texto do aviso ao autor, por onde chega o aviso quando um canal para (a área de avisos do Horus ou o e-mail) e o caminho técnico pelo qual o Horus chega ao WhatsApp, que a Maind ainda estuda.</p></div>
+</div>
+
+<h3 id="mf-113-faq">Perguntas frequentes</h3>
+<div class="faq">
+  <details open>
+    <summary>Quem não usa o Horus pode receber os relatórios e os alertas?</summary>
+    <div class="faq-body"><p>Não. Os conectores só entregam a pessoas da organização, por nome ou por grupo; um cliente da empresa, por exemplo, não recebe. Dentro da organização, todos os tipos de assento recebem, inclusive o bronze, que só vê os painéis prontos.</p></div>
+  </details>
+  <details>
+    <summary>Quem decide por onde a informação da empresa sai?</summary>
+    <div class="faq-body"><p>O owner da organização. Só ele liga os conectores, e nada sai por um canal que ele não ligou. Ele também pode passar a aprovar cada contato antes de valer e desligar, nas roles, o botão de enviar pelos conectores. Cada entrega fica no rastro, com o conector e o destinatário.</p></div>
+  </details>
+  <details>
+    <summary>Preciso de um número de WhatsApp próprio? Quem paga as mensagens?</summary>
+    <div class="faq-body"><p>Não necessariamente. O conector usa a conta de WhatsApp que a organização liga no Chat pelo WhatsApp: o número próprio ou, se o owner autorizar, o número da Maind, por cuja conta as mensagens passam. A organização paga as mensagens que gerar: com o número próprio, direto à Meta; com o da Maind, a Maind repassa o custo, numa cobrança fora do Horus.</p></div>
+  </details>
+  <details>
+    <summary>E se o PDF for grande demais para o e-mail?</summary>
+    <div class="faq-body"><p>Ele não sai por e-mail e não é cortado: o Horus avisa o autor. Quem receberia fica sem o PDF por aquele canal até o autor reduzir o painel ou o texto do alerta. O mesmo vale para um alerta maior que a mensagem do WhatsApp.</p></div>
+  </details>
+  <details>
+    <summary>Como sei o que foi enviado, e a quem?</summary>
+    <div class="faq-body"><p>Pelo rastro da Auditoria (MF-116), que registra cada entrega: quem enviou, o quê, para quem, por qual conector e quando, sem o conteúdo. No e-mail, o Horus sabe se o servidor aceitou ou recusou a mensagem; no WhatsApp, a Meta informa se ela foi enviada, entregue, lida ou falhou.</p></div>
+  </details>
+  <details>
+    <summary>Dá para receber no Teams ou no Google Chat?</summary>
+    <div class="faq-body"><p>Na versão 2.0, não: os canais são o e-mail e o WhatsApp. O Teams e o Google Chat chegam na versão 2.1, nos Conectores de chat corporativo (MF-122), que usam este mesmo carteiro. Outros, como o Slack, não têm versão prevista.</p></div>
+  </details>
+</div>

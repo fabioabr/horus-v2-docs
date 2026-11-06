@@ -1,0 +1,172 @@
+<p>Uma tabela com a margem de cada região, mês a mês, obriga quem lê a comparar número por número para achar a região que caiu. Num gráfico, ela aparece na hora. No Horus, a resposta já chega assim: junto com o texto, vem o desenho que deixa o resultado claro, com os números do banco da empresa.</p>
+<p>Esta página trata da forma da resposta: os <strong>blocos visuais</strong>. Eles não são enfeite. São o que deixa a pessoa entender o resultado sem esforço e levar a mesma figura para a reunião, para o celular e para o papel, e por isso fazem parte da promessa do Horus.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Versão 2.0, em construção</b><p>O que está aqui é o que a versão 2.0 do Horus vai entregar. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
+</div>
+
+<h3 id="mf-108-o-que-e">O que é, em poucas palavras</h3>
+<p>Respostas visuais é o jeito como o Horus mostra o resultado de uma pergunta. Junto com o texto, cada resposta traz <strong>até dois blocos visuais</strong>: um gráfico, uma tabela, um indicador, um mapa de calor, um chaveamento ou um fluxo. Esta funcionalidade cuida de cinco coisas:</p>
+<ul>
+  <li><strong>Os seis tipos de bloco</strong>, que já existem no Horus de hoje e vêm inteiros para a versão 2.0.</li>
+  <li><strong>Os números do banco.</strong> A IA escolhe a forma, mas quem põe os números no bloco é o Horus, com o resultado da consulta.</li>
+  <li><strong>Um desenho honesto.</strong> Sem dado, não há gráfico: o Horus diz isso numa frase. E um bloco com defeito nunca quebra a tela.</li>
+  <li><strong>Um desenho só, em todo lugar.</strong> A tela, a imagem do WhatsApp e os PDFs mostram a mesma figura, com os mesmos números.</li>
+  <li><strong>O tema dos gráficos</strong> de cada organização: a paleta de cores que ela escolhe.</li>
+</ul>
+<p>Os blocos já existem na conversa de análise, a tela em que a pessoa pergunta e o Horus responde (<a href="#mf-107">Perguntar aos dados em português, MF-107</a>). O que muda na versão 2.0 é o alcance: o mesmo desenho passa a sair como imagem no WhatsApp e como PDF nos painéis (boards) e nos agentes, sem refazer nada.</p>
+<h4 id="mf-108-quem-e-quem">Quem vê e quem ajusta</h4>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quem</th><th>O que faz com os blocos</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Owner, gestor, membro ouro e membro prata</strong></td><td>Perguntam e recebem os blocos na conversa, na Pergunta rápida e no WhatsApp. Baixam a resposta, se a role deixar.</td></tr>
+      <tr class="zebra"><td><strong>Membro bronze</strong></td><td>Não pergunta, mas vê os blocos nos painéis que outras pessoas criaram e compartilharam.</td></tr>
+      <tr class="zebra"><td><strong>Dono do painel</strong></td><td>Fixa a resposta no painel que ele criou, onde ela vira um cartão.</td></tr>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>Ajusta o tema dos gráficos nas preferências da organização e decide, nas roles, quem pode baixar.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Os tipos de assento estão explicados em <a href="#mf-101-assentos">Os assentos: quem pode fazer o quê</a>, na página da Administração da instância.</p>
+
+<h3 id="mf-108-tipos">Os seis tipos de bloco</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Tipo</th><th>O que mostra</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Gráfico</strong></td><td>Os números desenhados, em quinze variantes que vêm prontas do Horus de hoje. Na tela, o gráfico é vivo: dá para passar o mouse e trocar a série.</td></tr>
+      <tr class="zebra"><td><strong>Tabela</strong></td><td>Os números em linhas e colunas.</td></tr>
+      <tr class="zebra"><td><strong>Indicador (KPI)</strong></td><td>Um número em destaque, como a margem do mês.</td></tr>
+      <tr class="zebra"><td><strong>Mapa de calor</strong></td><td>Uma grade em que a cor mostra a intensidade.</td></tr>
+      <tr class="zebra"><td><strong>Chaveamento</strong></td><td>A chave de confrontos, como a de um campeonato.</td></tr>
+      <tr class="zebra"><td><strong>Fluxo</strong></td><td>O desenho de um processo, com os números do banco em cada etapa.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Cada resposta traz <strong>no máximo dois blocos</strong>, ao lado do texto. Os seis tipos e as quinze variantes vêm prontos e não se editam: um tipo novo seria uma capacidade nova, decidida à parte.</p>
+<h4 id="mf-108-fluxo">O fluxo nasce do modelo semântico</h4>
+<p>O fluxo só aparece para um processo que o <a href="#mf-104-modelo-semantico">modelo semântico</a> da fonte descreve, e cada etapa vem com os números do banco. Se o modelo semântico não descreve o processo, não há fluxo para ele. E o fluxo só aparece quando a pergunta vai aos dados da empresa. Quem escreve o modelo semântico é o time de dados, como conta a página das fontes (<a href="#mf-104">Conectar as fontes vivas, MF-104</a>).</p>
+
+<h3 id="mf-108-como-funciona">Uma resposta, do pedido ao desenho</h3>
+<p>Digamos que a gestora Carla, da área comercial de uma rede de lojas, quer saber como foi a margem por região nos últimos 12 meses.</p>
+<ol class="steps">
+  <li><div><h4>A Carla pergunta</h4><p>Escreve a pergunta na conversa de análise. Poderia fazer o mesmo na Pergunta rápida ou no WhatsApp.</p></div></li>
+  <li><div><h4>A IA escolhe a forma</h4><p>O modelo de IA da organização escreve a consulta ao banco e o plano da resposta: quais blocos ela vai ter, no máximo dois. Isso acontece antes de a consulta rodar.</p></div></li>
+  <li><div><h4>O Horus põe os números</h4><p>A consulta roda no banco da empresa, e o Horus põe nos blocos os números que voltaram. O palpite do modelo fica no texto e nunca entra num bloco.</p></div></li>
+  <li><div><h4>A tela desenha</h4><p>A Carla recebe um indicador com a margem do mês, um gráfico com os 12 meses por região e um texto curto.</p></div></li>
+  <li><div><h4>A resposta vai adiante</h4><p>Ela baixa a resposta, se a role deixar, ou a fixa no painel dela, onde a resposta vira um cartão. No carro, pergunta pelo WhatsApp e recebe o mesmo gráfico como imagem, com o link para abrir a resposta no app.</p></div></li>
+</ol>
+<p>O mesmo caminho em desenho: quem escolhe a forma, quem põe os números, o que acontece quando não há o que mostrar e os três lugares onde o mesmo desenho aparece.</p>
+<dx-diagrama ref="mf-108-do-pedido-ao-desenho"></dx-diagrama>
+<h4 id="mf-108-numeros">A IA escolhe a forma; os números são do banco</h4>
+<p>É a regra que sustenta a confiança no gráfico: <strong>o modelo de IA escolhe a forma e escreve a consulta, mas os números do bloco são os do resultado</strong>. O que a IA arrisca além dos dados, uma hipótese ou uma especulação, fica no texto, com rótulo, conforme o <a href="#mf-104-teto">nível de inferência</a>. A regra vale também para os agentes (MF-115): o PDF de um agente só leva blocos que o Horus calculou.</p>
+<h4 id="mf-108-sem-desenho">Quando não há o que desenhar</h4>
+<ul>
+  <li><strong>Sem dado, sem desenho.</strong> Quando a consulta não tem o que mostrar, o Horus diz isso numa frase, em vez de desenhar um gráfico vazio.</li>
+  <li><strong>Um bloco com defeito não quebra a tela.</strong> Ele é descartado, e a resposta segue com o texto.</li>
+</ul>
+
+<h3 id="mf-108-em-todo-lugar">Um desenho só, em todo lugar</h3>
+<p>Os blocos de uma resposta aparecem em vários lugares do Horus, e em todos é <strong>o mesmo desenho</strong>, com os mesmos números:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Onde</th><th>Como o bloco chega</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Conversa de análise</strong> (MF-107)</td><td>Ao vivo, ao lado do texto, com o gráfico interativo.</td></tr>
+      <tr class="zebra"><td><strong>Pergunta rápida</strong> (MF-110)</td><td>Com os mesmos gráficos, tabelas e indicadores da conversa.</td></tr>
+      <tr class="zebra"><td><strong>Painéis</strong> (MF-112)</td><td>Como cartão, quando o dono do painel fixa a resposta nele.</td></tr>
+      <tr class="zebra"><td><strong>WhatsApp</strong> (MF-111)</td><td>Cada bloco chega como imagem fiel à tela, com o link para abrir a resposta no app. O texto vem na mensagem.</td></tr>
+      <tr class="zebra"><td><strong>PDF dos painéis e dos agentes</strong> (MF-112 e MF-115)</td><td>Impresso a partir da mesma montagem da tela.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>A prova de que funciona é simples: o mesmo bloco, com os mesmos números, aparece igual na tela, na imagem do WhatsApp e no PDF.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Ponto de atenção</b><p>No WhatsApp, o bloco é uma imagem: passar o mouse e trocar a série só funcionam no app, e uma tabela grande ou um fluxo podem ficar difíceis de ler na tela do celular. Por isso a mensagem traz o link, que abre a resposta viva no app e pede a entrada no Horus se a pessoa não estiver conectada. O link não carrega dado nenhum: só aponta para a conversa.</p></div>
+</div>
+<h4 id="mf-108-baixar">Baixar e fixar</h4>
+<p>A pessoa pode <strong>baixar</strong> a resposta em CSV, imagem ou PDF, se a role dela deixar: “Baixar” é um dos botões que o owner liga ou desliga (veja <a href="#mf-102-roles">Roles: o que cada pessoa pode usar</a>). <strong>Fixar</strong> a resposta num painel não é botão de role: só o dono do painel, quem o criou, faz isso. A prata e o bronze, que não criam painéis, não veem esse controle.</p>
+<h4 id="mf-108-fonte-a-vista">O número da empresa e o fato de fora</h4>
+<p>A resposta vem com a fonte à vista. O bloco mostra o número da empresa, que saiu do banco. O que veio da web, quando a pesquisa está ligada, aparece à parte, com o link e a data de publicação, como conta a página <a href="#mf-109">A web como fonte (MF-109)</a>.</p>
+
+<h3 id="mf-108-tema">O tema dos gráficos</h3>
+<p>Cada organização <strong>mantém o tema dos seus gráficos</strong>, a paleta de cores que ela escolhe, como já acontece no Horus de hoje. Quem ajusta é o owner da organização, nas preferências dela. Uma organização que usa uma paleta de azuis, por exemplo, continua com os azuis nos gráficos dela na versão 2.0.</p>
+<p>O resto da tela segue a Maind: na versão 2.0, a interface e a marca do Horus são as da Maind (veja <a href="#mf-101-marca-e-email">A marca e o e-mail</a>). O tema do cliente para o produto inteiro não tem versão prevista.</p>
+
+<h3 id="mf-108-bastidores">Nos bastidores, sem complicar</h3>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>Quase tudo já existe.</strong> Os seis tipos e as quinze variantes vêm do Horus de hoje, sem edição. O novo é o servidor reproduzir o mesmo desenho fora da tela, para a imagem do WhatsApp e para o PDF.</li>
+  <li><strong>A IA planeja, o Horus preenche.</strong> A IA devolve o plano dos blocos junto com a consulta; uma peça do Horus pega o resultado do banco e põe os números em cada bloco, pelo plano.</li>
+  <li><strong>Uma leitura tolerante.</strong> O Horus lê a resposta da IA de um jeito que aceita defeito: o bloco com problema fica de fora, e o resto aparece.</li>
+  <li><strong>Um navegador sem tela.</strong> Para a imagem e o PDF, o servidor abre a mesma montagem da tela num navegador que roda sem tela, o mesmo que o Horus de hoje já usa para imprimir os relatórios, e a fotografa ou a imprime. Por isso a figura é idêntica: ela é a própria tela.</li>
+  <li><strong>Uma fila no horário de pico.</strong> Esse desenho fora da tela pesa no servidor, que limita quantos saem ao mesmo tempo. No pico, as imagens e os PDFs esperam a vez.</li>
+  <li><strong>A imagem viaja pelo WhatsApp.</strong> As imagens dos blocos sobem ao próprio WhatsApp, e nenhum endereço público do Horus serve a figura.</li>
+</ul>
+
+<h3 id="mf-108-limites">O que esta funcionalidade não faz</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Pôr mais de dois blocos numa resposta</strong></td><td>Cada resposta traz no máximo dois. Painéis com muitos blocos são dos Boards e Relatórios (MF-112).</td></tr>
+      <tr class="zebra"><td><strong>Criar um tipo de bloco fora dos seis</strong></td><td>Os seis tipos e as quinze variantes vêm prontos e não se editam. Um tipo novo é uma capacidade nova, decidida à parte.</td></tr>
+      <tr class="zebra"><td><strong>Mostrar no bloco um número que não veio do banco</strong></td><td>Hipótese e especulação ficam no texto, com rótulo.</td></tr>
+      <tr class="zebra"><td><strong>Desenhar a Análise avançada</strong></td><td>Essa segunda leitura, feita com o resultado na mão (MF-107), fica em texto, e nada dela vira gráfico.</td></tr>
+      <tr class="zebra"><td><strong>Investigar uma variação a partir do bloco</strong></td><td>A ação “investigar” nos blocos da resposta chega com a Investigação guiada (MF-119), na versão 2.1.</td></tr>
+      <tr class="zebra"><td><strong>Vestir o produto inteiro com as cores do cliente</strong></td><td>Só os gráficos seguem a paleta da organização. A interface e a marca são as da Maind, e o tema do cliente para o produto inteiro não tem versão prevista.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="mf-108-ligadas">Funcionalidades ligadas a esta</h4>
+<p>A mesma peça serve à conversa, aos painéis, ao WhatsApp e aos agentes: todo canal novo já nasce com visual. As páginas das outras funcionalidades entram aqui conforme forem escritas.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="#mf-107">Perguntar aos dados em português (MF-107)</a></td><td>É a conversa que consulta o banco e entrega os números que o bloco desenha.</td></tr>
+      <tr class="zebra"><td><a href="#mf-104">Conectar as fontes vivas (MF-104)</a></td><td>Os números de todo bloco vêm das fontes, e o fluxo nasce do modelo semântico de cada uma.</td></tr>
+      <tr class="zebra"><td><a href="#mf-105">IA sob controle da organização (MF-105)</a></td><td>O modelo que escreve a consulta e o plano dos blocos é o que a organização escolheu para essa tarefa.</td></tr>
+      <tr class="zebra"><td><a href="#mf-102">Organizações, pessoas e papéis (MF-102)</a></td><td>O botão “Baixar” mora nas roles; fixar no painel é só do dono dele.</td></tr>
+      <tr class="zebra"><td><a href="#mf-109">A web como fonte (MF-109)</a></td><td>O bloco mostra o número da empresa, e o fato de fora vem à parte, com link e data.</td></tr>
+      <tr class="zebra"><td><a href="#mf-110">Pergunta rápida (MF-110)</a></td><td>A resposta da Pergunta rápida traz os mesmos gráficos, tabelas e indicadores da conversa.</td></tr>
+      <tr class="zebra"><td>Chat pelo WhatsApp (MF-111)</td><td>Cada bloco chega ao WhatsApp como imagem, com o link para abrir a resposta no app.</td></tr>
+      <tr class="zebra"><td>Boards e Relatórios (MF-112)</td><td>Os cartões dos painéis são blocos, e o PDF sai da mesma montagem.</td></tr>
+      <tr class="zebra"><td>Agentes ativos (MF-115)</td><td>O PDF do agente leva os blocos que o Horus calculou.</td></tr>
+      <tr class="zebra"><td>Investigação guiada (MF-119)</td><td>Na versão 2.1, a ação “investigar” fica nos blocos da resposta, no número e no gráfico que mudaram.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Ainda em definição</b><p><strong>Celular e tablet.</strong> O Horus vale em qualquer tela, e a meta é a pessoa entender a resposta no computador, no celular e no tablet sem perder a clareza do visual. Como cada tela, com os seus gráficos e tabelas, se comporta em cada aparelho fica com o desenho técnico: o Horus de hoje ainda não foi testado na tela do celular, e essa prova entra nos testes de ponta a ponta da versão 2.0.</p></div>
+</div>
+
+<h3 id="mf-108-faq">Perguntas frequentes</h3>
+<div class="faq">
+  <details open>
+    <summary>O gráfico que chega no WhatsApp ou no PDF é o mesmo da tela?</summary>
+    <div class="faq-body"><p>É. O Horus desenha a resposta uma vez só: para a imagem do WhatsApp e para o PDF, o servidor fotografa ou imprime a mesma montagem da tela, com os mesmos números. No WhatsApp, cada bloco chega como imagem, com o link para abrir a resposta no app, onde o gráfico é interativo.</p></div>
+  </details>
+  <details>
+    <summary>Quem decide se a resposta vem em gráfico, tabela ou indicador?</summary>
+    <div class="faq-body"><p>O modelo de IA da organização, ao escrever a consulta: ele escolhe a forma, com no máximo dois blocos por resposta. Os números, quem põe é o Horus, com o resultado do banco. Hipótese e especulação ficam no texto, com rótulo, e nunca entram num bloco.</p></div>
+  </details>
+  <details>
+    <summary>E se a consulta não encontrar nada?</summary>
+    <div class="faq-body"><p>O Horus diz isso numa frase, em vez de desenhar um gráfico vazio. E, se um bloco vier com defeito, ele é descartado e a resposta segue com o texto: a tela nunca quebra por causa de um bloco.</p></div>
+  </details>
+  <details>
+    <summary>Podemos usar as cores da nossa empresa nos gráficos?</summary>
+    <div class="faq-body"><p>Nos gráficos, sim. Cada organização mantém o tema dos seus gráficos, a paleta que ela escolhe, e quem o ajusta é o owner, nas preferências da organização. A interface e a marca do Horus continuam as da Maind na versão 2.0, e o tema do cliente para o produto inteiro não tem versão prevista.</p></div>
+  </details>
+  <details>
+    <summary>Quem não pergunta também vê os gráficos?</summary>
+    <div class="faq-body"><p>Vê. O membro bronze não pergunta, mas vê os blocos nos painéis que outras pessoas criaram e compartilharam. Baixar a resposta em CSV, imagem ou PDF depende da role de cada pessoa, que o owner configura.</p></div>
+  </details>
+  <details>
+    <summary>Dá para ter mais de dois gráficos numa resposta, ou um tipo de gráfico novo?</summary>
+    <div class="faq-body"><p>Não. Cada resposta traz no máximo dois blocos, e os seis tipos e as quinze variantes vêm prontos, sem edição; um tipo novo seria uma capacidade nova, decidida à parte. Para acompanhar muitos números juntos, o caminho são os painéis dos Boards e Relatórios (MF-112), em que cada cartão é um bloco.</p></div>
+  </details>
+</div>

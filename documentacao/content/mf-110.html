@@ -1,0 +1,176 @@
+<p>Numa reunião de resultado, a gestora olha o painel de vendas e surge a dúvida: por que esta filial caiu? No Horus, a pergunta se faz na <strong>conversa de análise</strong>, a tela onde a pessoa escreve em português e recebe a resposta em texto, gráfico ou tabela. Quem está num painel ou na Home precisa sair dali para perguntar.</p>
+<p>A <strong>Pergunta rápida</strong> leva a pergunta até onde a pessoa já está. Um botão flutuante nas telas do Horus abre um <strong>popup</strong>, uma janela pequena sobre a tela, com a mesma conversa de análise. A dúvida se resolve quando aparece: a pessoa pergunta, lê a resposta, fecha o popup e continua. Só vai para o histórico o que ela escolher salvar.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Versão 2.0, em construção</b><p>O que está aqui é o que a versão 2.0 do Horus vai entregar. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
+</div>
+
+<h3 id="mf-110-o-que-e">O que é, em poucas palavras</h3>
+<p>A Pergunta rápida é um atalho para a conversa de análise, a partir de quase qualquer tela. Ela se resume em cinco pontos:</p>
+<ul>
+  <li><strong>Um botão em todas as telas do app</strong>, menos na própria conversa de análise, onde ele seria repetido.</li>
+  <li><strong>A mesma conversa, numa janela pequena.</strong> O popup traz tudo o que a conversa oferece, dentro do que a role da pessoa liga.</li>
+  <li><strong>Independente da tela.</strong> O popup não sabe o que está atrás dele, e por isso a pessoa escreve a pergunta inteira.</li>
+  <li><strong>A conversa espera.</strong> Ela fica no popup até a pessoa limpá-la, e na hora de limpar a pessoa escolhe salvá-la ou apagá-la.</li>
+  <li><strong>A pergunta respondida conta</strong> na medida de autonomia da organização, salva ou não.</li>
+</ul>
+<h4 id="mf-110-quem-tem">Quem tem o botão</h4>
+<p>O botão segue as mesmas regras da conversa: o tipo de assento vem primeiro, e a role liga ou desliga dentro do que ele permite (as regras estão em <a href="#mf-102-regras-das-roles">As regras das roles</a>).</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quem</th><th>Tem o botão?</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td><span class="badge badge--success">Sim</span> O owner não depende de roles: usa tudo.</td></tr>
+      <tr class="zebra"><td><strong>Gestor, membro ouro e membro prata</strong></td><td><span class="badge badge--success">Sim</span> Quando a role da pessoa liga a Pergunta rápida. A role padrão, com que a organização nasce, já a traz ligada.</td></tr>
+      <tr class="zebra"><td><strong>Membro bronze</strong></td><td><span class="badge badge--warning">Não</span> Seja qual for a role. O bronze não faz perguntas de análise: vê os painéis que outras pessoas criaram e compartilharam.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Quem configura é o owner: ele mantém a Pergunta rápida ligada na role padrão, ou a liga nas roles que monta, com os controles que cada uma libera. Os tipos de assento estão em <a href="#mf-101-assentos">Os assentos: quem pode fazer o quê</a>.</p>
+
+<h3 id="mf-110-na-pratica">Uma dúvida, do painel à resposta</h3>
+<p>Digamos que a Carla, gestora de vendas de uma rede de lojas, acompanha o board de vendas da semana e vê a filial Centro 12% abaixo da semana anterior.</p>
+<ol class="steps">
+  <li><div><h4>Abre o botão</h4><p>Sem sair do board, a Carla abre o botão da Pergunta rápida, e o popup aparece sobre a tela.</p></div></li>
+  <li><div><h4>Escreve a pergunta inteira</h4><p>Ela escreve “por que a filial Centro caiu?”. O popup não vê o board atrás dele; por isso a filial vai escrita na pergunta.</p></div></li>
+  <li><div><h4>Recebe a resposta</h4><p>A resposta chega no popup, com o gráfico e a fonte à vista, como na conversa. Se quiser, ela marca “Gostei”, “Não gostei” ou “Reportar”.</p></div></li>
+  <li><div><h4>Fecha e segue</h4><p>A Carla fecha o popup e continua no board. A conversa fica esperando por ela, mesmo que ela troque de tela.</p></div></li>
+  <li><div><h4>Limpa e escolhe</h4><p>Ao terminar, ela limpa a conversa sem salvar. A pergunta conta assim mesmo na medida de autonomia.</p></div></li>
+</ol>
+<p>Em outra pergunta, a Carla prefere guardar o que descobriu: ao limpar, ela salva a conversa, que vai para o histórico, e a continua na tela de análise.</p>
+<h4 id="mf-110-pergunta-inteira">Por que escrever a pergunta inteira</h4>
+<p>O popup abre a mesma conversa em qualquer tela e não sabe o que a pessoa está vendo. Não dá para marcar um gráfico e perguntar “por que esta caiu?”: a pessoa escreve o contexto, com a filial, o produto ou o período. É o caminho mais simples, e assim o popup não depende do que cada tela mostra.</p>
+
+<h3 id="mf-110-conversa">A conversa do popup: fica, vai para o histórico ou some</h3>
+<p>A conversa do popup tem regras próprias, para a janela ficar leve, sem encher o histórico, e sem a pessoa perder uma resposta por fechar a janela:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>O que a pessoa faz</th><th>O que acontece com a conversa</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Fecha o popup</strong></td><td>A conversa continua lá, à espera. Se uma resposta estava chegando, fechar não a corta.</td></tr>
+      <tr class="zebra"><td><strong>Troca de tela</strong></td><td>A conversa continua no popup. Trocar de tela também não corta a resposta que está chegando.</td></tr>
+      <tr class="zebra"><td><span class="badge badge--success">Limpa e salva</span></td><td>A conversa vira uma conversa do histórico: aparece na tela de análise e pode ser continuada lá.</td></tr>
+      <tr class="zebra"><td><span class="badge badge--warning">Limpa sem salvar</span></td><td>A conversa é apagada de vez. Ficam só a contagem da pergunta, sem o texto, e a resposta que a pessoa tenha reportado, que já foi para o owner.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>O popup tem <strong>uma conversa por vez</strong>, e ela fica até ser limpa.</p>
+
+<h3 id="mf-110-o-que-oferece">Tudo o que a conversa oferece</h3>
+<p>O popup não é uma versão reduzida da conversa: é a própria conversa de análise, numa janela menor. Dentro do que a role da pessoa liga, ele oferece:</p>
+<ul>
+  <li><strong>Os modos de perguntar</strong>, aos dados ou em conversa, com a pesquisa na web como um interruptor ao lado.</li>
+  <li><strong>O nível de inferência</strong>, até onde a resposta vai além dos números, de 1 a 5, dentro do teto de cada fonte (veja <a href="#mf-104-teto">O teto de inferência</a>).</li>
+  <li><strong>A Análise avançada</strong>, uma segunda leitura do resultado, mais demorada.</li>
+  <li><strong>A escolha do modelo de IA</strong>, entre os que a organização aceita (veja <a href="#mf-105-na-conversa">Na conversa</a>).</li>
+  <li><strong>As mesmas respostas visuais</strong>: os gráficos, as tabelas e os indicadores da conversa.</li>
+  <li><strong>O retorno sobre a resposta</strong>: “Gostei”, “Não gostei” ou “Reportar”, como em qualquer resposta de análise.</li>
+</ul>
+<p>Cada um desses controles é da conversa e está explicado em <a href="#mf-107">Perguntar aos dados em português (MF-107)</a>.</p>
+<h4 id="mf-110-fixar">Fixar uma resposta num board</h4>
+<p>Como na conversa, <strong>só o dono do board</strong>, o autor dele, fixa ali uma resposta recebida no popup. Fixar é editar o board, e só o autor edita. Quem não cria boards, como o membro prata, não vê o controle. Fixar não é um botão das roles.</p>
+<h4 id="mf-110-dados">Os dados que a pergunta alcança</h4>
+<p>Na versão 2.0, toda pergunta feita no popup usa os dados da organização inteira: quem pode perguntar alcança todas as fontes dela, como na conversa (veja <a href="#mf-104-quem-ve">Quem vê os dados de cada fonte</a>). O recorte por pessoa vem com a Segurança dos dados por pessoa (MF-106), na versão 2.1.</p>
+
+<h3 id="mf-110-medida">A pergunta conta, salva ou não</h3>
+<p>A Pergunta rápida existe para um uso mais dinâmico das perguntas, e a medida não pode deixar esse uso de fora. Por isso, a pergunta respondida no popup entra na <strong>medida de autonomia</strong>, a contagem das perguntas de análise respondidas que aparece na Home da organização (MF-117), mesmo que a conversa seja apagada depois. A regra do que conta é a mesma da conversa e do WhatsApp:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Conta</th><th>Não conta</th></tr></thead>
+    <tbody>
+      <tr class="zebra">
+        <td><ul>
+          <li>A pergunta que trouxe dado da empresa, com resultado.</li>
+          <li>A pergunta que trouxe um fato da web, com resultado.</li>
+        </ul></td>
+        <td><ul>
+          <li>A consulta que volta vazia.</li>
+          <li>A falha.</li>
+          <li>A conversa sem dado nem web, como um “oi, tudo bem?”.</li>
+        </ul></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>Na Home, a contagem aparece dividida por canal: a conversa de análise no app, a Pergunta rápida e o WhatsApp. É o sinal de que a Pergunta rápida está sendo usada.</p>
+<h4 id="mf-110-reporte">O reporte não se perde</h4>
+<p>Quem reporta uma resposta do popup faz o mesmo que na conversa, e o reporte chega ao owner da organização. A resposta reportada fica guardada para o owner analisar, <strong>mesmo que a conversa seja apagada depois</strong>. A exceção é quem é excluído da organização: os reportes dele que o owner ainda não analisou saem junto com a pessoa (veja <a href="#mf-102-mudancas">Quando alguém muda de faixa ou sai</a>).</p>
+
+<h3 id="mf-110-bastidores">Nos bastidores, sem complicar</h3>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>Um motor só para todos os canais.</strong> A conversa, a Pergunta rápida, o WhatsApp, os cartões dos boards e os agentes chamam o mesmo motor de análise. Por isso, as regras da resposta, como os níveis, a web com link e data, o retorno e a contagem, valem igual em todo lugar.</li>
+  <li><strong>A mesma peça de tela.</strong> A caixa da pergunta e o cartão da resposta da conversa viram uma peça só, usada pela tela de análise e pelo popup. Uma correção vale nos dois lugares.</li>
+  <li><strong>A resposta não mora na janela.</strong> A resposta que está chegando fica guardada no próprio app, e não na janela do popup: é por isso que fechar o popup ou trocar de tela não a corta.</li>
+  <li><strong>A conversa fica no servidor, fora do histórico.</strong> Enquanto não é salva nem limpa, a conversa do popup fica guardada no servidor, marcada como do popup e fora da lista do histórico. Salvar a põe na lista; limpar a apaga de vez.</li>
+  <li><strong>Contar sem guardar o texto.</strong> Ao fim de cada resposta, o Horus registra o canal e se a pergunta foi respondida, sem a pergunta e sem a resposta. É assim que a pergunta descartada continua contando.</li>
+  <li><strong>O botão obedece ao servidor.</strong> A tela pergunta ao servidor o que a pessoa pode e só esconde o que ele nega, como em todo o Horus (veja <a href="#mf-102-bastidores">os bastidores das roles</a>).</li>
+  <li><strong>O que já existe e o que é novo.</strong> O motor que responde com os números do banco, a caixa da pergunta e o cartão da resposta vêm do Horus de hoje. O botão, o popup e a conversa do popup são novos, e nada depende de um serviço de fora do Horus.</li>
+</ul>
+
+<h3 id="mf-110-limites">O que a Pergunta rápida não faz</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Entender o que está na tela</strong></td><td>O popup não sabe em que tela a pessoa está. Não dá para apontar um gráfico e perguntar “por que esta caiu?”: a pergunta vai escrita inteira.</td></tr>
+      <tr class="zebra"><td><strong>Abrir duas conversas ao mesmo tempo</strong></td><td>O popup tem uma conversa por vez, que fica até ser limpa.</td></tr>
+      <tr class="zebra"><td><strong>Aparecer para o membro bronze</strong></td><td>O bronze não faz perguntas de análise, seja qual for a role (veja <a href="#mf-103-faixas">As três faixas de membro</a>).</td></tr>
+      <tr class="zebra"><td><strong>Aparecer na conversa de análise</strong></td><td>Lá a conversa já está na tela, e o botão seria repetido.</td></tr>
+      <tr class="zebra"><td><strong>Guardar tudo no histórico</strong></td><td>Só vai para o histórico o que a pessoa salva. No Chat pelo WhatsApp (MF-111) é diferente: lá tudo entra no histórico.</td></tr>
+      <tr class="zebra"><td><strong>Fixar no board de outra pessoa</strong></td><td>Só o dono do board fixa uma resposta nele.</td></tr>
+      <tr class="zebra"><td><strong>Investigar o porquê passo a passo</strong></td><td>É da Investigação guiada (MF-119), que chega na versão 2.1.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="mf-110-ligadas">Funcionalidades ligadas a esta</h4>
+<p>A Pergunta rápida é um canal da conversa de análise e depende dela. As páginas das outras funcionalidades entram aqui conforme forem escritas.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="#mf-107">Perguntar aos dados em português (MF-107)</a></td><td>O popup é a conversa de análise dela, com o mesmo motor, os mesmos controles e o mesmo retorno.</td></tr>
+      <tr class="zebra"><td><a href="#mf-108">Respostas visuais (MF-108)</a></td><td>A resposta no popup traz os mesmos gráficos, tabelas e indicadores da conversa.</td></tr>
+      <tr class="zebra"><td><a href="#mf-102">Organizações, pessoas e papéis (MF-102)</a></td><td>O botão da Pergunta rápida mora nas roles do owner, e a role padrão já nasce com ele ligado.</td></tr>
+      <tr class="zebra"><td><a href="#mf-103">Licenças e planos (MF-103)</a></td><td>O tipo de assento vem antes da role: o membro bronze não ganha o botão.</td></tr>
+      <tr class="zebra"><td>Chat pelo WhatsApp (MF-111)</td><td>É o outro canal novo da mesma conversa. Lá tudo entra no histórico; aqui, a pessoa escolhe salvar.</td></tr>
+      <tr class="zebra"><td>Boards e Relatórios (MF-112)</td><td>O dono do board fixa nele uma resposta do popup, como na conversa.</td></tr>
+      <tr class="zebra"><td>Home da organização (MF-117)</td><td>A medida de autonomia conta as perguntas respondidas no popup, salvas ou não, e mostra a divisão por canal.</td></tr>
+      <tr class="zebra"><td>Bases de demonstração (MF-118)</td><td>As organizações de exemplo ganham um cenário da Pergunta rápida.</td></tr>
+      <tr class="zebra"><td>Segurança dos dados por pessoa (MF-106)</td><td>Na versão 2.1, o que cada pessoa vê dos dados passa a valer também no popup.</td></tr>
+      <tr class="zebra"><td>Investigação guiada (MF-119)</td><td>Na versão 2.1, descobre o porquê de uma mudança, passo a passo, a partir de “investigar” na resposta.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Na implantação</b><p>Um ponto desta página trata de dados pessoais: quem é excluído da organização leva junto os reportes que o owner ainda não analisou, inclusive os feitos no popup. A regra vale como está. Durante a implantação da organização, vale a empresa consultar o jurídico dela sobre esse ponto.</p></div>
+</div>
+
+<h3 id="mf-110-faq">Perguntas frequentes</h3>
+<div class="faq">
+  <details open>
+    <summary>Preciso sair do painel para fazer uma pergunta?</summary>
+    <div class="faq-body"><p>Não. O botão da Pergunta rápida aparece em todas as telas do app, menos na própria conversa de análise. Ele abre um popup com a mesma conversa: você pergunta, lê a resposta, fecha o popup e continua no painel.</p></div>
+  </details>
+  <details>
+    <summary>O popup sabe o que estou vendo na tela?</summary>
+    <div class="faq-body"><p>Não. O popup abre a mesma conversa em qualquer tela e não vê o que está atrás dele. Escreva a pergunta inteira, com a filial, o produto ou o período: em vez de “por que esta caiu?”, “por que a filial Centro caiu?”.</p></div>
+  </details>
+  <details>
+    <summary>Se eu fechar o popup, perco a conversa?</summary>
+    <div class="faq-body"><p>Não. A conversa fica no popup até você limpá-la, mesmo que feche a janela ou troque de tela, e fechar não corta a resposta que está chegando. Ao limpar, você escolhe: salvar, e a conversa vai para o histórico, onde pode ser continuada na tela de análise, ou apagar de vez.</p></div>
+  </details>
+  <details>
+    <summary>A pergunta que eu não salvo conta para alguma coisa?</summary>
+    <div class="faq-body"><p>Conta na medida de autonomia da organização, salva ou não, quando a resposta trouxe dado da empresa ou fato da web, com resultado. A consulta que volta vazia, a falha e a conversa sem dado nem web não contam. Da pergunta apagada fica só a contagem, sem o texto; a resposta que você reportou continua guardada para o owner analisar.</p></div>
+  </details>
+  <details>
+    <summary>Todas as pessoas da organização têm o botão?</summary>
+    <div class="faq-body"><p>Têm o owner, o gestor e os membros ouro e prata, quando a role da pessoa liga a Pergunta rápida; a role padrão, com que a organização nasce, já a traz ligada. O owner pode desligá-la nas roles que monta. O membro bronze não tem o botão, seja qual for a role, porque não faz perguntas de análise.</p></div>
+  </details>
+  <details>
+    <summary>O popup tem menos recursos que a conversa completa?</summary>
+    <div class="faq-body"><p>Não. Ele traz tudo o que a conversa oferece, dentro do que a sua role liga: os modos de perguntar e a pesquisa na web, o nível de inferência, a Análise avançada e a escolha do modelo de IA, com as mesmas respostas em gráfico, tabela e texto. Fixar uma resposta num board também funciona como na conversa: só o dono do board fixa.</p></div>
+  </details>
+</div>
