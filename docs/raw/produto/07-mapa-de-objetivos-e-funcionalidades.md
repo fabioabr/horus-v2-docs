@@ -48,6 +48,7 @@ As funcionalidades estão agrupadas em **oito objetivos**, propostos pelo PO e c
 | O1 | `MF-107:Perguntar aos dados em português` | A conversa de análise, com os dois modos (dados e conversa) e a pesquisa na web, os cinco níveis de inferência e a Análise avançada | base | v2.0 | `D-021`, `D-215` |
 | O1 | `MF-107:Perguntar aos dados em português` | Resposta em segundos na reunião | 1 | v2.0 | `D-126` |
 | O1 | `MF-107:Perguntar aos dados em português` | Retorno do usuário: 👍🏻, 👎🏻 e 🚫, com o reporte ao owner | 2 | v2.0 | `D-129` |
+| O1 | `MF-107:Perguntar aos dados em português` | Exportar a conversa em PDF ou HTML, para levá-la a outras pessoas sem compartilhá-la | — | v2.0 | `D-249`, `D-250` |
 | O1 | `MF-108:Respostas visuais` | Gráficos, tabelas, KPIs, mapa de calor, chaveamento e fluxo | base | v2.0 | `D-021` |
 | O1 | `MF-110:Pergunta rápida` | Perguntar de qualquer tela, num botão flutuante | 14 | v2.0 | `D-089` |
 | O1 | `MF-111:Chat pelo WhatsApp` | Conversar com o Horus pelo WhatsApp | 18 | v2.0 | `D-099` |
@@ -57,7 +58,7 @@ As funcionalidades estão agrupadas em **oito objetivos**, propostos pelo PO e c
 | O1 | `MF-105:IA sob controle da organização` | As conexões de IA, de duas origens (a da organização, que ela paga, e a da instância, que a Maind paga), o modelo por função, o consumo e o custo | base | v2.0 | `D-021`, `D-216`, `D-217`, `D-246` |
 | O2 | `MF-106:Segurança dos dados por pessoa` | Acesso configurado dentro do Horus (etapa 1) | 10 | v2.1 | `D-028`, `D-145` |
 | O2 | `MF-106:Segurança dos dados por pessoa` | O interruptor geral, os grupos por claims, a liberação de dados do gestor no board, o registro dessas liberações e a demonstração da segurança | — | v2.1 | `D-199` |
-| O2 | `MF-116:Auditoria` | O rastro de quem entregou o quê e de quem abriu | 17 | v2.0 | `D-093` |
+| O2 | `MF-116:Auditoria` | O rastro de quem entregou o quê, de quem abriu e de quem exportou uma conversa | 17 | v2.0 | `D-093`, `D-252` |
 | O3 | `MF-112:Boards e Relatórios` | Boards e relatórios como uma coisa só: o board vivo e em PDF e a publicação (a liberação de dados do gestor é da `MF-106`) | 8 | v2.0 | `D-058`, `D-145`, `D-199` |
 | O4 | `MF-115:Agentes ativos` | O trabalhador de IA que extrai, analisa e avisa | 7 | v2.0 | `D-062` |
 | O4 | `MF-114:Módulo de Agendamentos de Agentes` | O relógio: quando gerar e enviar | 13 | v2.0 | `D-060` |

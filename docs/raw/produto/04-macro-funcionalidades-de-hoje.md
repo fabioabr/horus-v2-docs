@@ -32,7 +32,7 @@ Os números são os da nova numeração. A `MF-006` e a `MF-008`, substituídas,
 
 | MF | O que entrega hoje | Situação | Problema do norte que atende |
 | --- | --- | --- | --- |
-| 💬 **MF-107:Perguntar aos dados em português** | Conversa de análise com várias fontes; três modos (dados, web, conversa); cinco níveis de inferência; “Análise avançada”; sugestões de próximas perguntas; ver o SQL; baixar CSV, imagem e PDF da resposta e da conversa | ✅ | nº 1, e nº 2 em parte |
+| 💬 **MF-107:Perguntar aos dados em português** | Conversa de análise com várias fontes; três modos (dados, web, conversa); cinco níveis de inferência; “Análise avançada”; sugestões de próximas perguntas; ver o SQL; baixar o CSV e a imagem de um bloco da resposta (o PDF só existe no board; a v2.0 acrescenta a exportação da conversa em PDF ou HTML, `D-250`) | ✅ | nº 1, e nº 2 em parte |
 | 🎨 **MF-108:Respostas visuais** | 15 variantes de gráfico, tabela, KPI, mapa de calor, chaveamento e fluxo (workflow); no máximo 2 blocos por resposta; tema dos gráficos por organização | ✅ | nº 1 (é o valor central da promessa) |
 | 🔌 **MF-104:Conectar as fontes vivas** | SQL Server, PostgreSQL, Oracle, MongoDB e BigQuery respondem; Athena só conecta; páginas web; túnel SSH; idade mínima do dado; credencial conferida como somente leitura; modelo semântico por fonte | ✅ (Athena 🟡) | base de tudo |
 | 🌐 **MF-109:A web como fonte** | Modo web lê as páginas cadastradas; a pesquisa web do compositor complementa a resposta | 🟡 | nº 1 (lacunas 5 e 6 do inventário) |
