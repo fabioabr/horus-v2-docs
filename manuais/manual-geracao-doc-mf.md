@@ -1,6 +1,6 @@
 # Manual de geração do documento MF-xxx: o roteiro e a forma padrão
 
-Situação: 🟡 para conferência do dono · Data: 06/11/2026 · Vale para: as 23 mfs (18 da v2.0 e 5 da v2.1)
+Situação: ✅ published · Data: 06/11/2026 · Vale para: as 23 mfs (18 da v2.0 e 5 da v2.1)
 
 Um **documento MF-xxx** é a página que explica, em linguagem simples, o que uma macro funcionalidade (mf) faz: `MF-101`
 é a página da Administração da instância. Este manual **registra, sem mudar**, o formato e as regras com que as 23

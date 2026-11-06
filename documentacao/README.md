@@ -4,7 +4,7 @@ Esta pasta é a **documentação para quem vai usar ou contratar o Horus**: uma 
 simples, com perguntas frequentes e, quando um fluxo ajuda, um diagrama. Ela é **gerada com o plugin DocX** (design da Kinto) e é
 **separada do portal de `docs/`**, que continua como está.
 
-**Situação:** em refinamento. Escritas: **as 18 macro funcionalidades da v2.0** (MF-101 a MF-105, MF-107 a MF-118 e MF-120) e **as 5 da v2.1** (MF-106, 119, 121, 122 e 123). As páginas da v2.1 levam o aviso “Versão 2.1, em construção” e dizem em qual das duas ondas a funcionalidade chega (a MF-121 é da segunda; as demais, da primeira).
+**Situação:** ✅ published (finalizada em 06/11/2026 e no ar no GitHub Pages). Escritas: **as 18 macro funcionalidades da v2.0** (MF-101 a MF-105, MF-107 a MF-118 e MF-120) e **as 5 da v2.1** (MF-106, 119, 121, 122 e 123). As páginas da v2.1 levam o aviso “Versão 2.1, em construção” e dizem em qual das duas ondas a funcionalidade chega (a MF-121 é da segunda; as demais, da primeira).
 
 ## O que há aqui
 

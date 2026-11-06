@@ -1,6 +1,6 @@
 # Manuais de geração dos documentos de cada mf
 
-Situação: 🟡 proposta ao dono · Data: 06/11/2026
+Data: 06/11/2026 · A situação de cada família está na tabela abaixo.
 
 Cada macro funcionalidade (mf) tem **dois** documentos em HTML, e cada um tem o seu manual. Os dois manuais moram aqui,
 juntos, para quem for gerar as páginas (uma pessoa ou um agente) achar tudo num lugar só.
@@ -11,6 +11,7 @@ partes: **1 · A forma padrão**, **2 · O roteiro** e **3 · A régua** (as reg
 
 | | **MF-xxx** · produto | **ARQ-xxx** · arquitetura |
 | --- | --- | --- |
+| **Situação** | ✅ **published**: as 23 páginas estão finalizadas e no ar | 🟡 proposta ao dono: nenhum documento escrito ainda |
 | **Para quem é** | Quem vai usar ou contratar o Horus | O time técnico, o arquiteto e o dono |
 | **O manual** | [`manual-geracao-doc-mf.md`](manual-geracao-doc-mf.md) | [`manual-geracao-doc-arq.md`](manual-geracao-doc-arq.md) |
 | **O que copiar** | O molde `documentacao/content/mf-101.html` | O esqueleto [`_modelo.md`](../docs/raw/arquitetura/mfs/_modelo.md) e o fragmento do anexo do manual |
