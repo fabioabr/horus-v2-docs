@@ -18,6 +18,8 @@ documentacao/
 └── (a saída gerada fica em ../docs, que o GitHub Pages serve; não se edita à mão)
 ```
 
+O manual de como escrever, revisar e gerar cada página (MF-xxx) está em [`../manuais/manual-geracao-doc-mf.md`](../manuais/manual-geracao-doc-mf.md).
+
 A marca (logos e cor do Horus) vem de `.claude/plugins-data/kbr-docs/docs-brand.yml`, na raiz do repositório.
 
 ## O formato de cada página de MF
