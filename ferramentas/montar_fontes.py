@@ -65,6 +65,21 @@ LEITURA = "docs/leitura"
 REPO_BLOB = "https://github.com/fabioabr/horus-v2-docs/blob/main/"  # o arquivo .md, quando ele não é página do portal
 VISAO_GERAL = (f"{LEITURA}/visao-geral.md", "visao-geral", "O Horus v2", "O que o Horus v2 é, para quem, que problemas resolve, como funciona e as 19 macro funcionalidades.", "Comece aqui", False)
 # O emoji do título de uma página de leitura vira o ícone do assunto no índice da página (Font Awesome 5).
+# Os emojis dos cartões da entrada (e das linhas do modo Lista): um por documento e um por macro funcionalidade.
+EMOJI_DOC = {
+    "visao-geral": "🔭", "pasta-v2": "🗂️",
+    "produto-temas": "🧠", "produto-norte": "🧭", "produto-lacunas": "🕳️", "produto-mfs-hoje": "📍", "produto-v20": "🚀",
+    "produto-versoes": "🔀", "produto-mapa": "🗺️", "produto-backlog": "📌", "backlog-atividades": "📝",
+    "arquitetura": "🏛️", "arquitetura-01": "🎯", "arquitetura-02": "📜", "arquitetura-03": "📏",
+    "arquitetura-04": "💻", "arquitetura-05": "✨", "arquitetura-06": "🗄️", "arquitetura-07": "🛡️", "arquitetura-08": "🔌",
+    "arquitetura-09": "🏗️", "arquitetura-10": "🚢", "arquitetura-11": "📡", "arquitetura-12": "🧪", "arquitetura-13": "💰",
+    "arquitetura-14": "✅",
+}
+EMOJI_MF = {
+    "MF-101": "🏷️", "MF-102": "🏢", "MF-103": "🎫", "MF-104": "🔗", "MF-105": "🤖", "MF-106": "🔐", "MF-107": "💬",
+    "MF-108": "📊", "MF-109": "🌐", "MF-110": "⚡", "MF-111": "📱", "MF-112": "📋", "MF-113": "📤", "MF-114": "⏰",
+    "MF-115": "🦾", "MF-116": "🧾", "MF-117": "🏠", "MF-118": "🗃️", "MF-119": "🔍",
+}
 ICONES_LEITURA = {"🧭": "compass", "✨": "star", "📈": "chart-line", "🚶": "walking", "🧩": "puzzle-piece", "🔗": "link",
                   "🚧": "ban", "⏳": "hourglass-half", "📚": "book", "👥": "users", "🎯": "bullseye", "⚙": "cogs", "🧱": "cubes",
                   "🗓": "calendar-alt", "🏢": "building"}
@@ -430,6 +445,8 @@ def main() -> int:
         s = {"id": d["sid"], "title": d["titulo"], "summary": d["resumo"], "category": d["categoria"], "source": f"content/{d['sid']}.html"}
         if d["destaque"]:
             s["featured"] = True
+        if d["sid"] in EMOJI_DOC:
+            s["emoji"] = EMOJI_DOC[d["sid"]]
         secoes.append(s)
     # Os logos horizontais do Horus: o de texto escuro para o fundo claro, o de texto claro para o topo do portal.
     marca_dir = raiz.resolve() / "docs" / "marca"
@@ -579,6 +596,8 @@ def main() -> int:
         produto = next((a for a in (["entregas"] if extensao else ["o-que-e", "entregas", "objetivos", "decisoes-produto"]) if a in assuntos), None)
         arquitetura = next((a for a in ("arquitetura", "decisoes-arquitetura", "v1") if a in assuntos), None)
         c = {"code": codigo, "title": nome, "summary": resumo, "badge": selo, "links": []}
+        if codigo in EMOJI_MF:
+            c["emoji"] = EMOJI_MF[codigo]
         if produto:
             c["links"].append({"label": "Produto", "href": f"#{pid}-{produto}"})
         if arquitetura:
@@ -606,19 +625,19 @@ def main() -> int:
     # A região "Visão" da entrada: um cartão por tópico da página "O Horus v2" (o Comece aqui). O resumo é escrito à mão: o
     # primeiro parágrafo de cada tópico ("Três problemas, nesta ordem:") não serve de resumo. O id é o do tópico, sem o prefixo.
     visao_topicos = [
-        ("o-que-e-o-horus", "O que é o Horus", "Um chat de análise: pergunte do jeito que fala e receba gráfico, tabela, indicador ou texto, com a fonte de cada número."),
-        ("para-quem", "Para quem", "O gestor de área, o executivo e o comprador."),
-        ("que-problemas-resolve", "Que problemas resolve", "A pergunta de análise na hora, a investigação do porquê e o aviso quando algo muda."),
-        ("como-funciona-em-grandes-linhas", "Como funciona, em grandes linhas", "Do dado ligado ao aviso que chega sozinho, em seis passos."),
-        ("as-macro-funcionalidades", "As macro funcionalidades", f"As {len(paginas_mf)} mf: cada uma entrega um valor inteiro a alguém, e elas se agrupam em camadas."),
-        ("as-entregas-v20-e-v21", "As entregas: v2.0 e v2.1", "A v2.0 sai inteira, de uma vez, em SaaS; a v2.1 reúne o que ficou fora dela."),
-        ("como-o-horus-e-entregue", "Como o Horus é entregue", "Marca branca, uma versão só em SaaS ou on-premises e várias organizações por instância."),
-        ("o-que-o-horus-nao-e", "O que o Horus não é", "Só lê: não altera nada, não arruma os dados, não inventa número e não decide por você."),
-        ("para-saber-mais", "Para saber mais", "Os documentos que aprofundam a visão: o norte do produto, os temas, a v2.0 consolidada e mais."),
+        ("o-que-e-o-horus", "💡", "O que é o Horus", "Um chat de análise: pergunte do jeito que fala e receba gráfico, tabela, indicador ou texto, com a fonte de cada número."),
+        ("para-quem", "👥", "Para quem", "O gestor de área, o executivo e o comprador."),
+        ("que-problemas-resolve", "🎯", "Que problemas resolve", "A pergunta de análise na hora, a investigação do porquê e o aviso quando algo muda."),
+        ("como-funciona-em-grandes-linhas", "⚙️", "Como funciona, em grandes linhas", "Do dado ligado ao aviso que chega sozinho, em seis passos."),
+        ("as-macro-funcionalidades", "🧩", "As macro funcionalidades", f"As {len(paginas_mf)} mf: cada uma entrega um valor inteiro a alguém, e elas se agrupam em camadas."),
+        ("as-entregas-v20-e-v21", "🚀", "As entregas: v2.0 e v2.1", "A v2.0 sai inteira, de uma vez, em SaaS; a v2.1 reúne o que ficou fora dela."),
+        ("como-o-horus-e-entregue", "📦", "Como o Horus é entregue", "Marca branca, uma versão só em SaaS ou on-premises e várias organizações por instância."),
+        ("o-que-o-horus-nao-e", "🚫", "O que o Horus não é", "Só lê: não altera nada, não arruma os dados, não inventa número e não decide por você."),
+        ("para-saber-mais", "📚", "Para saber mais", "Os documentos que aprofundam a visão: o norte do produto, os temas, a v2.0 consolidada e mais."),
     ]
-    visao = [{"code": f"{n:02d}", "title": titulo, "summary": resumo, "href": f"visao-geral.html#visao-geral-{ident}",
+    visao = [{"code": f"{n:02d}", "emoji": emoji, "title": titulo, "summary": resumo, "href": f"visao-geral.html#visao-geral-{ident}",
               "links": [{"label": "Ler", "href": f"#visao-geral-{ident}"}]}
-             for n, (ident, titulo, resumo) in enumerate(visao_topicos, 1)]
+             for n, (ident, emoji, titulo, resumo) in enumerate(visao_topicos, 1)]
     config = {
         "schema_version": 1, "language": "pt-BR", "layout": "portal",
         "project": {

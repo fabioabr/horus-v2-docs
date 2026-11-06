@@ -26,6 +26,7 @@
           "items": [
             {
               "code": "01",
+              "emoji": "💡",
               "title": "O que é o Horus",
               "summary": "Um chat de análise: pergunte do jeito que fala e receba gráfico, tabela, indicador ou texto, com a fonte de cada número.",
               "href": "visao-geral.html#visao-geral-o-que-e-o-horus",
@@ -38,6 +39,7 @@
             },
             {
               "code": "02",
+              "emoji": "👥",
               "title": "Para quem",
               "summary": "O gestor de área, o executivo e o comprador.",
               "href": "visao-geral.html#visao-geral-para-quem",
@@ -50,6 +52,7 @@
             },
             {
               "code": "03",
+              "emoji": "🎯",
               "title": "Que problemas resolve",
               "summary": "A pergunta de análise na hora, a investigação do porquê e o aviso quando algo muda.",
               "href": "visao-geral.html#visao-geral-que-problemas-resolve",
@@ -62,6 +65,7 @@
             },
             {
               "code": "04",
+              "emoji": "⚙️",
               "title": "Como funciona, em grandes linhas",
               "summary": "Do dado ligado ao aviso que chega sozinho, em seis passos.",
               "href": "visao-geral.html#visao-geral-como-funciona-em-grandes-linhas",
@@ -74,6 +78,7 @@
             },
             {
               "code": "05",
+              "emoji": "🧩",
               "title": "As macro funcionalidades",
               "summary": "As 19 mf: cada uma entrega um valor inteiro a alguém, e elas se agrupam em camadas.",
               "href": "visao-geral.html#visao-geral-as-macro-funcionalidades",
@@ -86,6 +91,7 @@
             },
             {
               "code": "06",
+              "emoji": "🚀",
               "title": "As entregas: v2.0 e v2.1",
               "summary": "A v2.0 sai inteira, de uma vez, em SaaS; a v2.1 reúne o que ficou fora dela.",
               "href": "visao-geral.html#visao-geral-as-entregas-v20-e-v21",
@@ -98,6 +104,7 @@
             },
             {
               "code": "07",
+              "emoji": "📦",
               "title": "Como o Horus é entregue",
               "summary": "Marca branca, uma versão só em SaaS ou on-premises e várias organizações por instância.",
               "href": "visao-geral.html#visao-geral-como-o-horus-e-entregue",
@@ -110,6 +117,7 @@
             },
             {
               "code": "08",
+              "emoji": "🚫",
               "title": "O que o Horus não é",
               "summary": "Só lê: não altera nada, não arruma os dados, não inventa número e não decide por você.",
               "href": "visao-geral.html#visao-geral-o-que-o-horus-nao-e",
@@ -122,6 +130,7 @@
             },
             {
               "code": "09",
+              "emoji": "📚",
               "title": "Para saber mais",
               "summary": "Os documentos que aprofundam a visão: o norte do produto, os temas, a v2.0 consolidada e mais.",
               "href": "visao-geral.html#visao-geral-para-saber-mais",
@@ -153,6 +162,7 @@
                   "href": "#mf-101-inventario-arquitetura"
                 }
               ],
+              "emoji": "🏷️",
               "id": "mf-101",
               "source": "content/mf-101.html"
             },
@@ -171,6 +181,7 @@
                   "href": "#mf-102-inventario-arquitetura"
                 }
               ],
+              "emoji": "🏢",
               "id": "mf-102",
               "source": "content/mf-102.html"
             },
@@ -189,6 +200,7 @@
                   "href": "#mf-103-inventario-arquitetura"
                 }
               ],
+              "emoji": "🎫",
               "id": "mf-103",
               "source": "content/mf-103.html"
             },
@@ -207,6 +219,7 @@
                   "href": "#mf-104-inventario-arquitetura"
                 }
               ],
+              "emoji": "🔗",
               "id": "mf-104",
               "source": "content/mf-104.html"
             },
@@ -225,6 +238,7 @@
                   "href": "#mf-105-inventario-arquitetura"
                 }
               ],
+              "emoji": "🤖",
               "id": "mf-105",
               "source": "content/mf-105.html"
             },
@@ -243,6 +257,7 @@
                   "href": "#mf-107-inventario-arquitetura"
                 }
               ],
+              "emoji": "💬",
               "id": "mf-107",
               "source": "content/mf-107.html"
             },
@@ -261,6 +276,7 @@
                   "href": "#mf-108-inventario-arquitetura"
                 }
               ],
+              "emoji": "📊",
               "id": "mf-108",
               "source": "content/mf-108.html"
             },
@@ -279,6 +295,7 @@
                   "href": "#mf-109-inventario-arquitetura"
                 }
               ],
+              "emoji": "🌐",
               "id": "mf-109",
               "source": "content/mf-109.html"
             },
@@ -297,6 +314,7 @@
                   "href": "#mf-110-inventario-arquitetura"
                 }
               ],
+              "emoji": "⚡",
               "id": "mf-110",
               "source": "content/mf-110.html"
             },
@@ -315,6 +333,7 @@
                   "href": "#mf-111-inventario-arquitetura"
                 }
               ],
+              "emoji": "📱",
               "id": "mf-111",
               "source": "content/mf-111.html"
             },
@@ -333,6 +352,7 @@
                   "href": "#mf-112-inventario-arquitetura"
                 }
               ],
+              "emoji": "📋",
               "id": "mf-112",
               "source": "content/mf-112.html"
             },
@@ -351,6 +371,7 @@
                   "href": "#mf-113-inventario-arquitetura"
                 }
               ],
+              "emoji": "📤",
               "id": "mf-113",
               "source": "content/mf-113.html"
             },
@@ -369,6 +390,7 @@
                   "href": "#mf-114-inventario-arquitetura"
                 }
               ],
+              "emoji": "⏰",
               "id": "mf-114",
               "source": "content/mf-114.html"
             },
@@ -387,6 +409,7 @@
                   "href": "#mf-115-inventario-arquitetura"
                 }
               ],
+              "emoji": "🦾",
               "id": "mf-115",
               "source": "content/mf-115.html"
             },
@@ -405,6 +428,7 @@
                   "href": "#mf-116-inventario-arquitetura"
                 }
               ],
+              "emoji": "🧾",
               "id": "mf-116",
               "source": "content/mf-116.html"
             },
@@ -423,6 +447,7 @@
                   "href": "#mf-117-inventario-arquitetura"
                 }
               ],
+              "emoji": "🏠",
               "id": "mf-117",
               "source": "content/mf-117.html"
             },
@@ -441,6 +466,7 @@
                   "href": "#mf-118-inventario-arquitetura"
                 }
               ],
+              "emoji": "🗃️",
               "id": "mf-118",
               "source": "content/mf-118.html"
             }
@@ -465,6 +491,7 @@
                   "href": "#mf-101-inventario-arquitetura"
                 }
               ],
+              "emoji": "🏷️",
               "href": "#mf-101"
             },
             {
@@ -482,6 +509,7 @@
                   "href": "#mf-103-inventario-arquitetura"
                 }
               ],
+              "emoji": "🎫",
               "href": "#mf-103"
             },
             {
@@ -499,6 +527,7 @@
                   "href": "#mf-104-inventario-arquitetura"
                 }
               ],
+              "emoji": "🔗",
               "href": "#mf-104"
             },
             {
@@ -516,6 +545,7 @@
                   "href": "#mf-105-inventario-arquitetura"
                 }
               ],
+              "emoji": "🤖",
               "href": "#mf-105"
             },
             {
@@ -533,6 +563,7 @@
                   "href": "#mf-106-inventario-arquitetura"
                 }
               ],
+              "emoji": "🔐",
               "id": "mf-106",
               "source": "content/mf-106.html"
             },
@@ -551,6 +582,7 @@
                   "href": "#mf-113-inventario-arquitetura"
                 }
               ],
+              "emoji": "📤",
               "href": "#mf-113"
             },
             {
@@ -568,6 +600,7 @@
                   "href": "#mf-119-inventario-arquitetura"
                 }
               ],
+              "emoji": "🔍",
               "id": "mf-119",
               "source": "content/mf-119.html"
             }
@@ -732,42 +765,48 @@
       "title": "O Horus v2",
       "summary": "O que o Horus v2 é, para quem, que problemas resolve, como funciona e as 19 macro funcionalidades.",
       "category": "Comece aqui",
-      "source": "content/visao-geral.html"
+      "source": "content/visao-geral.html",
+      "emoji": "🔭"
     },
     {
       "id": "pasta-v2",
       "title": "A pasta da v2",
       "summary": "Os documentos de visão e as decisões de produto do Horus v2, e como a pasta se organiza.",
       "category": "Comece aqui",
-      "source": "content/pasta-v2.html"
+      "source": "content/pasta-v2.html",
+      "emoji": "🗂️"
     },
     {
       "id": "produto-temas",
       "title": "Temas da visão de produto",
       "summary": "O propósito a validar e os temas que a visão do Horus precisa responder.",
       "category": "Produto",
-      "source": "content/produto-temas.html"
+      "source": "content/produto-temas.html",
+      "emoji": "🧠"
     },
     {
       "id": "produto-norte",
       "title": "Norte do produto",
       "summary": "Por que o Horus existe, para quem, o que promete e como saberemos que deu certo.",
       "category": "Produto",
-      "source": "content/produto-norte.html"
+      "source": "content/produto-norte.html",
+      "emoji": "🧭"
     },
     {
       "id": "produto-lacunas",
       "title": "Inventário de lacunas",
       "summary": "O que o norte afirma, comparado com o que o Horus faz hoje.",
       "category": "Produto",
-      "source": "content/produto-lacunas.html"
+      "source": "content/produto-lacunas.html",
+      "emoji": "🕳️"
     },
     {
       "id": "produto-mfs-hoje",
       "title": "Macro funcionalidades de hoje",
       "summary": "O que o Horus já entrega hoje, em linguagem de valor.",
       "category": "Produto",
-      "source": "content/produto-mfs-hoje.html"
+      "source": "content/produto-mfs-hoje.html",
+      "emoji": "📍"
     },
     {
       "id": "produto-v20",
@@ -775,42 +814,48 @@
       "summary": "O que a v2.0 é: o que entra, o que fica fora, as regras já decididas e os riscos.",
       "category": "Produto",
       "source": "content/produto-v20.html",
-      "featured": true
+      "featured": true,
+      "emoji": "🚀"
     },
     {
       "id": "produto-versoes",
       "title": "As versões, mf a mf",
       "summary": "Uma tabela por versão, com as macro funcionalidades da v2.0 e da v2.1.",
       "category": "Produto",
-      "source": "content/produto-versoes.html"
+      "source": "content/produto-versoes.html",
+      "emoji": "🔀"
     },
     {
       "id": "produto-mapa",
       "title": "Mapa de objetivos e funcionalidades",
       "summary": "Para cada objetivo do produto, as funcionalidades que o cumprem e a entrega de cada uma.",
       "category": "Produto",
-      "source": "content/produto-mapa.html"
+      "source": "content/produto-mapa.html",
+      "emoji": "🗺️"
     },
     {
       "id": "produto-backlog",
       "title": "Backlog estratégico",
       "summary": "O registro das decisões de produto: o que o Horus entrega, para quem e em que ordem.",
       "category": "Produto",
-      "source": "content/produto-backlog.html"
+      "source": "content/produto-backlog.html",
+      "emoji": "📌"
     },
     {
       "id": "backlog-atividades",
       "title": "Backlog de atividades",
       "summary": "Reservado aos épicos, às histórias e às tasks, que vêm depois da arquitetura.",
       "category": "Produto",
-      "source": "content/backlog-atividades.html"
+      "source": "content/backlog-atividades.html",
+      "emoji": "📝"
     },
     {
       "id": "arquitetura",
       "title": "A pasta da arquitetura",
       "summary": "Os documentos do arquiteto de soluções, a situação de cada um e os números do registro.",
       "category": "Arquitetura · visão e decisões",
-      "source": "content/arquitetura.html"
+      "source": "content/arquitetura.html",
+      "emoji": "🏛️"
     },
     {
       "id": "arquitetura-01",
@@ -818,7 +863,8 @@
       "summary": "Como o Horus v2 atinge os objetivos do produto: as entregas, os marcos e a fila do dono.",
       "category": "Arquitetura · visão e decisões",
       "source": "content/arquitetura-01.html",
-      "featured": true
+      "featured": true,
+      "emoji": "🎯"
     },
     {
       "id": "arquitetura-02",
@@ -826,91 +872,104 @@
       "summary": "As decisões de tecnologia, cada uma com quem decide, as opções e o porquê.",
       "category": "Arquitetura · visão e decisões",
       "source": "content/arquitetura-02.html",
-      "featured": true
+      "featured": true,
+      "emoji": "📜"
     },
     {
       "id": "arquitetura-03",
       "title": "03 · Metas de qualidade",
       "summary": "Disponibilidade, recuperação, volume, rapidez e custo por organização, e como se mede cada um.",
       "category": "Arquitetura · visão e decisões",
-      "source": "content/arquitetura-03.html"
+      "source": "content/arquitetura-03.html",
+      "emoji": "📏"
     },
     {
       "id": "arquitetura-04",
       "title": "04 · Software",
       "summary": "Os módulos, os componentes e os contratos do servidor e do front.",
       "category": "Arquitetura · construção",
-      "source": "content/arquitetura-04.html"
+      "source": "content/arquitetura-04.html",
+      "emoji": "💻"
     },
     {
       "id": "arquitetura-05",
       "title": "05 · Motor de análise e IA",
       "summary": "Como a pergunta vira resposta: o motor, o modelo semântico, a web, o agente e os provedores de IA.",
       "category": "Arquitetura · construção",
-      "source": "content/arquitetura-05.html"
+      "source": "content/arquitetura-05.html",
+      "emoji": "✨"
     },
     {
       "id": "arquitetura-06",
       "title": "06 · Dados",
       "summary": "O que o Horus guarda, de quem é cada dado, como as organizações ficam separadas e por quanto tempo.",
       "category": "Arquitetura · construção",
-      "source": "content/arquitetura-06.html"
+      "source": "content/arquitetura-06.html",
+      "emoji": "🗄️"
     },
     {
       "id": "arquitetura-07",
       "title": "07 · Segurança",
       "summary": "Quem entra, o que cada pessoa pode fazer e o que cada uma vê.",
       "category": "Arquitetura · construção",
-      "source": "content/arquitetura-07.html"
+      "source": "content/arquitetura-07.html",
+      "emoji": "🛡️"
     },
     {
       "id": "arquitetura-08",
       "title": "08 · Integrações",
       "summary": "O e-mail, a Meta e o WhatsApp, os provedores de IA, os bancos dos clientes e a web.",
       "category": "Arquitetura · construção",
-      "source": "content/arquitetura-08.html"
+      "source": "content/arquitetura-08.html",
+      "emoji": "🔌"
     },
     {
       "id": "arquitetura-09",
       "title": "09 · Infraestrutura e ambientes",
       "summary": "Onde o Horus roda: a VPS da construção com o minikube, a produção real na nuvem e o on-premises.",
       "category": "Arquitetura · operação",
-      "source": "content/arquitetura-09.html"
+      "source": "content/arquitetura-09.html",
+      "emoji": "🏗️"
     },
     {
       "id": "arquitetura-10",
       "title": "10 · Publicação e operação",
       "summary": "Como uma versão chega a uma instância, a cópia de segurança, o acesso e os incidentes.",
       "category": "Arquitetura · operação",
-      "source": "content/arquitetura-10.html"
+      "source": "content/arquitetura-10.html",
+      "emoji": "🚢"
     },
     {
       "id": "arquitetura-11",
       "title": "11 · Observabilidade",
       "summary": "O que se mede, quem é avisado e quando, e o que a telemetria nunca carrega.",
       "category": "Arquitetura · operação",
-      "source": "content/arquitetura-11.html"
+      "source": "content/arquitetura-11.html",
+      "emoji": "📡"
     },
     {
       "id": "arquitetura-12",
       "title": "12 · Qualidade e testes",
       "summary": "Como cada publicação se prova antes de subir, sem chamar modelo de IA pago.",
       "category": "Arquitetura · operação",
-      "source": "content/arquitetura-12.html"
+      "source": "content/arquitetura-12.html",
+      "emoji": "🧪"
     },
     {
       "id": "arquitetura-13",
       "title": "13 · Custo de operação",
       "summary": "Quanto custa operar, por organização e por componente, e o orçamento da produção real.",
       "category": "Arquitetura · operação",
-      "source": "content/arquitetura-13.html"
+      "source": "content/arquitetura-13.html",
+      "emoji": "💰"
     },
     {
       "id": "arquitetura-14",
       "title": "14 · Conferência do produto",
       "summary": "As respostas do arquiteto às pendências do PO, os itens a devolver e as verificações pendentes.",
       "category": "Arquitetura · conferência",
-      "source": "content/arquitetura-14.html"
+      "source": "content/arquitetura-14.html",
+      "emoji": "✅"
     },
     {
       "id": "mf-101-inventario",
