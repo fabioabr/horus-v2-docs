@@ -47,7 +47,7 @@
     <thead><tr><th>Tecnologia</th><th>Quando</th><th>Observação</th></tr></thead>
     <tbody>
       <tr class="zebra"><td><strong>SQL Server, PostgreSQL, Oracle, MongoDB e BigQuery</strong></td><td><span class="badge badge--success">Versão 2.0</span></td><td>Respondem às perguntas de análise.</td></tr>
-      <tr class="zebra"><td><strong>AWS Athena</strong></td><td><span class="badge badge--info">Versão 2.1</span></td><td>Não aparece na versão 2.0. Chega na 2.1, já respondendo às perguntas, numa funcionalidade própria (MF-123).</td></tr>
+      <tr class="zebra"><td><strong>AWS Athena</strong></td><td><span class="badge badge--info">Versão 2.1</span></td><td>Não aparece na versão 2.0. Chega na 2.1, já respondendo às perguntas, numa funcionalidade própria (<a href="#mf-123">MF-123</a>).</td></tr>
       <tr class="zebra"><td><strong>Outras tecnologias</strong></td><td><span class="badge">Sem previsão</span></td><td>Nenhuma outra está prevista. Uma tecnologia nova depende de uma decisão do produto.</td></tr>
     </tbody>
   </table>
@@ -96,7 +96,7 @@
   <li><strong>A role só baixa o teto, nunca sobe.</strong> A role é o pacote de permissões que o owner monta, botão a botão; ela pode baixar o teto para quem a tem.</li>
   <li><strong>Vale sempre o menor</strong>, inclusive quando a conversa usa várias fontes.</li>
   <li><strong>Não há um teto único da organização.</strong> Para limitar todo mundo de uma vez, o owner baixa o limite nas roles.</li>
-  <li><strong>Os agentes seguem outra regra.</strong> Os trabalhos automáticos de IA (MF-115) usam o nível que o autor do agente escolheu.</li>
+  <li><strong>Os agentes seguem outra regra.</strong> Os trabalhos automáticos de IA (<a href="#mf-115">MF-115</a>) usam o nível que o autor do agente escolheu.</li>
 </ul>
 <p>Por exemplo: o banco de vendas aceita até o nível 3, e o financeiro, até o 1. A role “Comercial” baixa o limite para o 2. Quem tem essa role recebe, no máximo, o nível 2 nas vendas e o 1 no financeiro.</p>
 <h4 id="mf-104-idade-minima">A idade mínima do dado</h4>
@@ -129,26 +129,26 @@
       <tr class="zebra"><td><strong>Montar o modelo semântico sozinha</strong></td><td>É do time de dados, que o escreve fora do Horus. Um assistente que ajude a montá-lo não está na versão 2.0.</td></tr>
       <tr class="zebra"><td><strong>Conectar por VPN ou pela rede privada de uma nuvem</strong></td><td>Fica fora da versão 2.0. Os caminhos são o endereço público e o túnel SSH.</td></tr>
       <tr class="zebra"><td><strong>Recortar os dados por pessoa</strong></td><td>É da <a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a>, na versão 2.1. Na versão 2.0, vale a organização inteira.</td></tr>
-      <tr class="zebra"><td><strong>Responder com o AWS Athena</strong></td><td>Chega na versão 2.1, numa funcionalidade própria (MF-123).</td></tr>
+      <tr class="zebra"><td><strong>Responder com o AWS Athena</strong></td><td>Chega na versão 2.1, numa funcionalidade própria (<a href="#mf-123">MF-123</a>).</td></tr>
       <tr class="zebra"><td><strong>Alcançar a rede interna da casa do cliente</strong></td><td>Na versão 2.1, o <a href="#mf-121">Middleware na casa do contratante (MF-121)</a> leva as fontes ao banco que não pode sair de casa. Alcançar a rede interna diretamente só seria possível com o Horus instalado inteiro na casa do cliente, que não tem versão prevista: só volta se um cliente exigir que nada saia de casa, nem a pergunta.</td></tr>
     </tbody>
   </table>
 </div>
 <h4 id="mf-104-ligadas">Funcionalidades ligadas a esta</h4>
-<p>Sem fonte, não há resposta: quase tudo o que o Horus mostra começa aqui. As páginas das outras funcionalidades entram conforme forem escritas.</p>
+<p>Sem fonte, não há resposta: quase tudo o que o Horus mostra começa aqui.</p>
 <div class="table-wrap">
   <table class="t">
     <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
     <tbody>
       <tr class="zebra"><td><a href="#mf-101">Administração da instância (MF-101)</a></td><td>A Maind vê as organizações em números, sem ver os dados das fontes. Quando uma fonte deixa de conectar, quem é avisado é o owner da organização.</td></tr>
-      <tr class="zebra"><td>Perguntar aos dados em português (MF-107)</td><td>A conversa transforma a pergunta numa consulta a estas fontes, guiada pelo modelo semântico.</td></tr>
-      <tr class="zebra"><td>IA sob controle da organização (MF-105)</td><td>A IA escreve a consulta e o texto; os números saem da fonte.</td></tr>
-      <tr class="zebra"><td>Respostas visuais (MF-108)</td><td>Os números de todo gráfico e de toda tabela da resposta vêm das fontes.</td></tr>
-      <tr class="zebra"><td>A web como fonte (MF-109)</td><td>Os bancos dão o número da empresa, e a web, o contexto de fora. A web entra pela pesquisa da IA, e não como fonte cadastrada aqui.</td></tr>
-      <tr class="zebra"><td>Boards e Relatórios (MF-112)</td><td>Os cartões dos painéis consultam as mesmas fontes e reaproveitam o resultado dentro da idade mínima do dado.</td></tr>
-      <tr class="zebra"><td>Agentes ativos (MF-115)</td><td>O agente extrai os dados das fontes desta funcionalidade.</td></tr>
-      <tr class="zebra"><td>Bases de demonstração (MF-118)</td><td>As bases entram nas organizações de exemplo como fontes comuns, pelos mesmos conectores dos clientes.</td></tr>
-      <tr class="zebra"><td>Faixa de avisos e números (MF-120, nome provisório)</td><td>Os números do negócio que a faixa mostra saem das fontes da organização.</td></tr>
+      <tr class="zebra"><td><a href="#mf-107">Perguntar aos dados em português (MF-107)</a></td><td>A conversa transforma a pergunta numa consulta a estas fontes, guiada pelo modelo semântico.</td></tr>
+      <tr class="zebra"><td><a href="#mf-105">IA sob controle da organização (MF-105)</a></td><td>A IA escreve a consulta e o texto; os números saem da fonte.</td></tr>
+      <tr class="zebra"><td><a href="#mf-108">Respostas visuais (MF-108)</a></td><td>Os números de todo gráfico e de toda tabela da resposta vêm das fontes.</td></tr>
+      <tr class="zebra"><td><a href="#mf-109">A web como fonte (MF-109)</a></td><td>Os bancos dão o número da empresa, e a web, o contexto de fora. A web entra pela pesquisa da IA, e não como fonte cadastrada aqui.</td></tr>
+      <tr class="zebra"><td><a href="#mf-112">Boards e Relatórios (MF-112)</a></td><td>Os cartões dos painéis consultam as mesmas fontes e reaproveitam o resultado dentro da idade mínima do dado.</td></tr>
+      <tr class="zebra"><td><a href="#mf-115">Agentes ativos (MF-115)</a></td><td>O agente extrai os dados das fontes desta funcionalidade.</td></tr>
+      <tr class="zebra"><td><a href="#mf-118">Bases de demonstração (MF-118)</a></td><td>As bases entram nas organizações de exemplo como fontes comuns, pelos mesmos conectores dos clientes.</td></tr>
+      <tr class="zebra"><td><a href="#mf-120">Faixa de avisos e números (MF-120, nome provisório)</a></td><td>Os números do negócio que a faixa mostra saem das fontes da organização.</td></tr>
       <tr class="zebra"><td><a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a></td><td>Na versão 2.1, recorta o que cada pessoa vê de cada fonte.</td></tr>
       <tr class="zebra"><td><a href="#mf-121">Middleware na casa do contratante (MF-121)</a></td><td>Na versão 2.1, as fontes alcançam por ele o banco que não pode sair da casa do cliente.</td></tr>
       <tr class="zebra"><td><a href="#mf-123">Fonte AWS Athena (MF-123)</a></td><td>Na versão 2.1, o Athena chega terminado, sobre a base desta funcionalidade.</td></tr>
@@ -157,7 +157,7 @@
 </div>
 <div class="callout callout--neutral">
   <span class="ico">•</span>
-  <div><b>Ainda em definição</b><p><strong>Páginas da web como fonte.</strong> Na versão 2.0, a web entra pela pesquisa da IA (MF-109), quando autorizada, e não como uma fonte cadastrada aqui. Se haverá um tipo de fonte para cadastrar páginas da web escolhidas ainda está em definição.</p><p><strong>O arquivo do modelo semântico.</strong> O formato do arquivo e o jeito de carregá-lo no Horus ainda serão definidos no desenho técnico.</p></div>
+  <div><b>Ainda em definição</b><p><strong>Páginas da web como fonte.</strong> Na versão 2.0, a web entra pela pesquisa da IA (<a href="#mf-109">MF-109</a>), quando autorizada, e não como uma fonte cadastrada aqui. Se haverá um tipo de fonte para cadastrar páginas da web escolhidas ainda está em definição.</p><p><strong>O arquivo do modelo semântico.</strong> O formato do arquivo e o jeito de carregá-lo no Horus ainda serão definidos no desenho técnico.</p></div>
 </div>
 
 <h3 id="mf-104-faq">Perguntas frequentes</h3>

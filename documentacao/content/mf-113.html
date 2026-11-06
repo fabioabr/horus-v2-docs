@@ -8,7 +8,7 @@
 <h3 id="mf-113-o-que-e">O que é, em poucas palavras</h3>
 <p>Os Conectores de saída são os canais por onde o Horus entrega o que produz. A funcionalidade cabe em seis pontos:</p>
 <ul>
-  <li><strong>Dois canais na versão 2.0:</strong> o e-mail e o WhatsApp. O Teams e o Google Chat chegam na versão 2.1, numa funcionalidade própria (MF-122); outros, como o Slack, não têm versão prevista.</li>
+  <li><strong>Dois canais na versão 2.0:</strong> o e-mail e o WhatsApp. O Teams e o Google Chat chegam na versão 2.1, numa funcionalidade própria (<a href="#mf-122">MF-122</a>); outros, como o Slack, não têm versão prevista.</li>
   <li><strong>Só transporta.</strong> O conector leva a peça pronta que outra parte do Horus fez, como o PDF de um painel ou o alerta de um agente, sem mudar nada.</li>
   <li><strong>Só entrega a pessoas da organização</strong>, por nome ou por grupo, inclusive aos membros prata e bronze, que recebem mas não criam envios.</li>
   <li><strong>Só o owner liga.</strong> Nada sai por um canal que o owner da organização não ligou.</li>
@@ -24,7 +24,7 @@
       <tr class="zebra"><td><strong>Artefato</strong></td><td>A peça pronta que o conector leva: o PDF de um board (painel) ou o alerta de um agente, o trabalho automático de IA. Quem faz o artefato é o painel ou o agente, nunca o conector.</td></tr>
       <tr class="zebra"><td><strong>Contato</strong></td><td>O endereço de cada pessoa num conector: o e-mail dela ou o número de WhatsApp. Ela mesma o informa no perfil.</td></tr>
       <tr class="zebra"><td><strong>Mensagem-padrão</strong></td><td>Um modelo de mensagem que a Meta, a dona do WhatsApp, aprova antes do uso. É por ela que o Horus manda os avisos e os PDFs pelo WhatsApp.</td></tr>
-      <tr class="zebra"><td><strong>Rastro</strong></td><td>O registro da Auditoria (MF-116) de quem entregou o quê a quem, sem o conteúdo do que foi entregue.</td></tr>
+      <tr class="zebra"><td><strong>Rastro</strong></td><td>O registro da <a href="#mf-116">Auditoria (MF-116)</a> de quem entregou o quê a quem, sem o conteúdo do que foi entregue.</td></tr>
     </tbody>
   </table>
 </div>
@@ -83,7 +83,7 @@
 <h4 id="mf-113-email">O conector de e-mail</h4>
 <p>O e-mail sai pelo mesmo serviço que já manda os convites, a recuperação de senha e os avisos da conta, e de que a Maind cuida na <a href="#mf-101-marca-e-email">Administração da instância</a>. São coisas diferentes, porém: os e-mails da conta saem pelo e-mail da instância, e não pelo conector que o owner liga. O conector leva só o que um agendamento ou um agente produziu, com o nome da organização no assunto e o PDF anexo.</p>
 <h4 id="mf-113-whatsapp">O conector de WhatsApp</h4>
-<p>O conector de WhatsApp não tem conta própria: usa a mesma conta da organização que o Chat pelo WhatsApp (MF-111) liga. Pode ser o <strong>número próprio</strong> da organização, que é o padrão, ou o <strong>número da Maind</strong>, que o owner autoriza sabendo que as mensagens passam pela conta da Maind. Cada envio é uma mensagem-padrão aprovada pela Meta e paga por mensagem. A organização paga as mensagens que gerar:</p>
+<p>O conector de WhatsApp não tem conta própria: usa a mesma conta da organização que o <a href="#mf-111">Chat pelo WhatsApp (MF-111)</a> liga. Pode ser o <strong>número próprio</strong> da organização, que é o padrão, ou o <strong>número da Maind</strong>, que o owner autoriza sabendo que as mensagens passam pela conta da Maind. Cada envio é uma mensagem-padrão aprovada pela Meta e paga por mensagem. A organização paga as mensagens que gerar:</p>
 <ul>
   <li><strong>Com o número próprio,</strong> paga diretamente à Meta.</li>
   <li><strong>Com o número da Maind,</strong> a Maind lhe repassa o custo, numa cobrança fora do Horus (veja <a href="#mf-103-o-que-inclui">O que o assento inclui, e o que se paga à parte</a>).</li>
@@ -100,7 +100,7 @@
 <h4 id="mf-113-canal-parado">Quando um canal para</h4>
 <p>Um canal pode parar: o servidor recusa o e-mail, ou a conta de WhatsApp é bloqueada. Quem é avisado é o <strong>dono do serviço</strong>, porque é quem pode consertar: o owner da organização, se o WhatsApp é o próprio; o administrador da instância, se é o número da Maind ou o e-mail da instância. Quando o serviço é da Maind, o owner da organização não recebe esse aviso. A regra é a mesma dos outros serviços, em <a href="#mf-101-quando-um-servico-para">Quando um serviço para</a>.</p>
 <h4 id="mf-113-rastro">Cada entrega fica registrada</h4>
-<p>Cada entrega vai para o rastro da Auditoria (MF-116): quem enviou, o quê (o painel ou o artefato), para quem, por qual conector e quando. O conteúdo do que foi entregue não vai para o rastro. É assim que o owner vê o que saiu da organização e para quem.</p>
+<p>Cada entrega vai para o rastro da <a href="#mf-116">Auditoria (MF-116)</a>: quem enviou, o quê (o painel ou o artefato), para quem, por qual conector e quando. O conteúdo do que foi entregue não vai para o rastro. É assim que o owner vê o que saiu da organização e para quem.</p>
 
 <h3 id="mf-113-controle">A empresa no controle do que sai</h3>
 <p>O Horus <strong>só lê</strong> os bancos de dados da empresa: nunca altera um dado nem age nos sistemas dela (veja <a href="#mf-104-so-le">Só ler, nunca alterar</a>). Mandar um alerta por e-mail ou pelo WhatsApp é informação que sai, e não mexe nos sistemas. E a saída também tem dono:</p>
@@ -153,7 +153,7 @@
       <tr class="zebra"><td><a href="#mf-102">Organizações, pessoas e papéis (MF-102)</a></td><td>Guarda o contato no perfil, o papel de owner, os grupos de destino e o botão das roles.</td></tr>
       <tr class="zebra"><td><a href="#mf-103">Licenças e planos (MF-103)</a></td><td>O tipo de assento diz quem recebe e quem cria envios: a prata e o bronze recebem alertas e PDFs. As mensagens pelo número da Maind se pagam à parte.</td></tr>
       <tr class="zebra"><td><a href="#mf-101">Administração da instância (MF-101)</a></td><td>O e-mail sai pelo servidor da instância, e é lá que a Maind mede, por organização, o custo do WhatsApp que repassa.</td></tr>
-      <tr class="zebra"><td>Auditoria (MF-116)</td><td>Registra cada entrega: por qual conector e a quem.</td></tr>
+      <tr class="zebra"><td><a href="#mf-116">Auditoria (MF-116)</a></td><td>Registra cada entrega: por qual conector e a quem.</td></tr>
       <tr class="zebra"><td><a href="#mf-122">Conectores de chat corporativo (MF-122)</a></td><td>Na versão 2.1, o Teams e o Google Chat entram como canais novos deste mesmo carteiro.</td></tr>
     </tbody>
   </table>
@@ -183,7 +183,7 @@
   </details>
   <details>
     <summary>Como sei o que foi enviado, e a quem?</summary>
-    <div class="faq-body"><p>Pelo rastro da Auditoria (MF-116), que registra cada entrega: quem enviou, o quê, para quem, por qual conector e quando, sem o conteúdo. No e-mail, o Horus sabe se o servidor aceitou ou recusou a mensagem; no WhatsApp, a Meta informa se ela foi enviada, entregue, lida ou falhou.</p></div>
+    <div class="faq-body"><p>Pelo rastro da <a href="#mf-116">Auditoria (MF-116)</a>, que registra cada entrega: quem enviou, o quê, para quem, por qual conector e quando, sem o conteúdo. No e-mail, o Horus sabe se o servidor aceitou ou recusou a mensagem; no WhatsApp, a Meta informa se ela foi enviada, entregue, lida ou falhou.</p></div>
   </details>
   <details>
     <summary>Dá para receber no Teams ou no Google Chat?</summary>

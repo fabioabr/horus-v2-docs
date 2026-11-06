@@ -116,7 +116,7 @@
   <li><strong>A tarefa de IA dos agentes faz duas coisas.</strong> Lê as instruções, devolvendo as perguntas e a condição de aviso, e conduz cada execução. As duas usam o modelo que o owner escolheu para os agentes (veja <a href="#mf-105-tarefas">Um modelo para cada tarefa</a>).</li>
   <li><strong>O gráfico é do Horus, não do modelo.</strong> O modelo do agente recebe o texto e os números de cada resposta e, no fim, aponta os gráficos que quer pelo identificador que o Horus deu a cada um. Um gráfico que o Horus não calculou não existe para ele.</li>
   <li><strong>O PDF é a mesma montagem da tela.</strong> O Horus abre o desenho num navegador sem tela e o imprime, como faz com o PDF dos painéis.</li>
-  <li><strong>A vez de cada organização.</strong> Cada execução é um trabalho na mesma fila dos agendamentos (MF-114), e a fila reparte a vez entre as organizações: os agentes de segunda de manhã de uma organização grande não ocupam a fila inteira.</li>
+  <li><strong>A vez de cada organização.</strong> Cada execução é um trabalho na mesma fila dos agendamentos (<a href="#mf-114">MF-114</a>), e a fila reparte a vez entre as organizações: os agentes de segunda de manhã de uma organização grande não ocupam a fila inteira.</li>
   <li><strong>Fora da contagem de respondidas.</strong> As perguntas que os agentes fazem não contam como perguntas de análise respondidas (veja <a href="#mf-107-respondidas">As perguntas respondidas</a>). A Maind acompanha, em números, quantas vezes os agentes rodaram.</li>
   <li><strong>Tudo é novo.</strong> Nada disso existe no Horus de hoje. O agente reaproveita o motor que já responde com os números do banco e a impressão em PDF; são novos a leitura das instruções, o ciclo de perguntas e o alerta rotulado.</li>
 </ul>
@@ -127,7 +127,7 @@
     <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
     <tbody>
       <tr class="zebra"><td><strong>Agir nos sistemas da empresa</strong></td><td>O agente só lê. Mandar um PDF ou um alerta é informação que sai, e não mexe nos sistemas (veja <a href="#mf-104-so-le">Só ler, nunca alterar</a>).</td></tr>
-      <tr class="zebra"><td><strong>Decidir quando roda nem por onde entrega</strong></td><td>Quando roda é do agendamento (MF-114); por onde sai, dos conectores de saída (MF-113).</td></tr>
+      <tr class="zebra"><td><strong>Decidir quando roda nem por onde entrega</strong></td><td>Quando roda é do agendamento (<a href="#mf-114">MF-114</a>); por onde sai, dos <a href="#mf-113">conectores de saída (MF-113)</a>.</td></tr>
       <tr class="zebra"><td><strong>Entregar a quem não é usuário do Horus</strong></td><td>Os conectores só entregam a usuários do Horus.</td></tr>
       <tr class="zebra"><td><strong>Nascer de um formulário sem IA</strong></td><td>Todo agente usa IA. O formulário fica para depois, sem versão, se o mercado pedir.</td></tr>
       <tr class="zebra"><td><strong>Transferir o agente para outra pessoa</strong></td><td>Não existe em nenhuma versão: quem é excluído perde os agentes, e os de quem é rebaixado ficam desabilitados.</td></tr>
@@ -150,8 +150,8 @@
       <tr class="zebra"><td><a href="#mf-105">IA sob controle da organização (MF-105)</a></td><td>O owner escolhe o modelo dos agentes, e o consumo é pago pelo dono da conexão de IA.</td></tr>
       <tr class="zebra"><td><a href="#mf-104">Conectar as fontes vivas (MF-104)</a></td><td>O agente extrai os dados das mesmas fontes da organização.</td></tr>
       <tr class="zebra"><td><a href="#mf-103">Licenças e planos (MF-103)</a></td><td>No corte, os agentes param; quando o autor passa a prata ou a bronze, ficam desabilitados.</td></tr>
-      <tr class="zebra"><td>Auditoria (MF-116)</td><td>Registra o que o agente enviou, por qual conector e a quem.</td></tr>
-      <tr class="zebra"><td>Bases de demonstração (MF-118)</td><td>As organizações de exemplo ganham um cenário próprio para mostrar o agente.</td></tr>
+      <tr class="zebra"><td><a href="#mf-116">Auditoria (MF-116)</a></td><td>Registra o que o agente enviou, por qual conector e a quem.</td></tr>
+      <tr class="zebra"><td><a href="#mf-118">Bases de demonstração (MF-118)</a></td><td>As organizações de exemplo ganham um cenário próprio para mostrar o agente.</td></tr>
     </tbody>
   </table>
 </div>

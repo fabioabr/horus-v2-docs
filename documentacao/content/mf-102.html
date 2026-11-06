@@ -57,7 +57,7 @@
     <tbody>
       <tr class="zebra"><td><span class="badge badge--warning">Rebaixada</span></td><td>A pessoa passa de ouro a prata ou a bronze e continua na organização. O que ela criou fica com ela, mas <strong>desabilitado</strong>: não abre nem roda, e a única ação possível é excluir.</td></tr>
       <tr class="zebra"><td><span class="badge badge--success">Volta ao ouro</span></td><td>Nada volta sozinho. Ela reativa o que quiser, um item por vez.</td></tr>
-      <tr class="zebra"><td><span class="badge badge--danger">Excluída</span></td><td>Quem sai ou é retirado da organização perde em definitivo o que criou. Saem junto o rastro dela na Auditoria (MF-116) e os reportes de resposta errada que o owner ainda não analisou.</td></tr>
+      <tr class="zebra"><td><span class="badge badge--danger">Excluída</span></td><td>Quem sai ou é retirado da organização perde em definitivo o que criou. Saem junto o rastro dela na <a href="#mf-116">Auditoria (MF-116)</a> e os reportes de resposta errada que o owner ainda não analisou.</td></tr>
       <tr class="zebra"><td><span class="badge badge--info">Gestor que sai</span></td><td>A equipe dele vai para o gestor que o owner indicar ou, sem indicação, para a quarentena. Os grupos dele deixam de existir.</td></tr>
     </tbody>
   </table>
@@ -94,9 +94,9 @@
       <tr class="zebra"><td><strong>Modelo de IA</strong></td><td>Escolher o modelo de IA na conversa.</td></tr>
       <tr class="zebra"><td><strong>Ver o SQL</strong></td><td>Ver a consulta que o Horus montou para responder.</td></tr>
       <tr class="zebra"><td><strong>Baixar</strong></td><td>Baixar a resposta e a conversa em CSV, imagem ou PDF.</td></tr>
-      <tr class="zebra"><td><strong>Pergunta rápida</strong></td><td>Perguntar a partir de outras telas do Horus (MF-110).</td></tr>
-      <tr class="zebra"><td><strong>WhatsApp</strong></td><td>Conversar com o Horus pelo WhatsApp (MF-111), depois que o owner liga o canal.</td></tr>
-      <tr class="zebra"><td><strong>Conectores de saída</strong></td><td>Enviar pelos conectores de saída, que na versão 2.0 são o e-mail e o WhatsApp (MF-113).</td></tr>
+      <tr class="zebra"><td><strong>Pergunta rápida</strong></td><td>Perguntar a partir de outras telas do Horus (<a href="#mf-110">MF-110</a>).</td></tr>
+      <tr class="zebra"><td><strong>WhatsApp</strong></td><td>Conversar com o Horus pelo WhatsApp (<a href="#mf-111">MF-111</a>), depois que o owner liga o canal.</td></tr>
+      <tr class="zebra"><td><strong>Conectores de saída</strong></td><td>Enviar pelos conectores de saída, que na versão 2.0 são o e-mail e o WhatsApp (<a href="#mf-113">MF-113</a>).</td></tr>
     </tbody>
   </table>
 </div>
@@ -143,7 +143,7 @@
     <tbody>
       <tr class="zebra"><td><strong>Criar organizações</strong></td><td>Quem cria é a Maind, na <a href="#mf-101">Administração da instância</a> (MF-101).</td></tr>
       <tr class="zebra"><td><strong>Entrar com a conta da empresa</strong></td><td>O login corporativo, e as roles que chegam por ele, são da <a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a>, na versão 2.1. Na versão 2.0, a pessoa entra com e-mail e senha ou com o Google, e as roles vêm do cadastro.</td></tr>
-      <tr class="zebra"><td><strong>Separar os dados por pessoa</strong></td><td>Também é da MF-106, na versão 2.1, assim como os grupos pela região ou pela loja e as colunas dessas características na planilha de convites.</td></tr>
+      <tr class="zebra"><td><strong>Separar os dados por pessoa</strong></td><td>Também é da <a href="#mf-106">MF-106</a>, na versão 2.1, assim como os grupos pela região ou pela loja e as colunas dessas características na planilha de convites.</td></tr>
       <tr class="zebra"><td><strong>Gestor de gestor</strong></td><td>A hierarquia tem um nível só: owner, gestores e as carteiras deles.</td></tr>
       <tr class="zebra"><td><strong>Role que tira, ou ordem entre roles</strong></td><td>As roles só somam, e quem as cria e atribui é sempre o owner, nunca o gestor.</td></tr>
       <tr class="zebra"><td><strong>Limitar por número de perguntas ou por custo</strong></td><td>Não há esse limite por pessoa. O que existe é o <a href="#mf-101-aviso-de-custo">aviso de custo</a> da organização, para a Maind.</td></tr>
@@ -158,14 +158,14 @@
     <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
     <tbody>
       <tr class="zebra"><td><a href="#mf-101">Administração da instância (MF-101)</a></td><td>Lá a Maind cria a organização e libera os assentos; aqui, o owner cuida das pessoas.</td></tr>
-      <tr class="zebra"><td>Licenças e planos (MF-103)</td><td>A cobrança por assento usa os papéis, o convite e a quarentena daqui; em troca, o tipo de assento é o teto do que a role libera.</td></tr>
+      <tr class="zebra"><td><a href="#mf-103">Licenças e planos (MF-103)</a></td><td>A cobrança por assento usa os papéis, o convite e a quarentena daqui; em troca, o tipo de assento é o teto do que a role libera.</td></tr>
       <tr class="zebra"><td><a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a></td><td>Na versão 2.1, decide o que cada pessoa vê, enquanto a role continua decidindo o que ela usa.</td></tr>
-      <tr class="zebra"><td>Perguntar aos dados em português (MF-107)</td><td>As roles ligam e desligam os botões da conversa, e a área de avisos recebe o “recebido” dos reportes.</td></tr>
-      <tr class="zebra"><td>Chat pelo WhatsApp (MF-111)</td><td>O botão de conversar pelo WhatsApp mora nas roles, e o número fica no perfil.</td></tr>
-      <tr class="zebra"><td>Boards e Relatórios (MF-112)</td><td>Publicar para um grupo, ou para as pessoas que o gestor gere, e os boards públicos da quarentena saem daqui.</td></tr>
-      <tr class="zebra"><td>Conectores de saída (MF-113) e Agendamentos de agentes (MF-114)</td><td>Os grupos são o destino dos PDFs e dos alertas, e o contato de cada pessoa fica no perfil.</td></tr>
-      <tr class="zebra"><td>Auditoria (MF-116)</td><td>O owner e o gestor que a Auditoria conhece são os daqui; o rastro de quem é excluído sai junto com a pessoa.</td></tr>
-      <tr class="zebra"><td>Home da organização (MF-117)</td><td>A divisão dos números por gestor vem das carteiras.</td></tr>
+      <tr class="zebra"><td><a href="#mf-107">Perguntar aos dados em português (MF-107)</a></td><td>As roles ligam e desligam os botões da conversa, e a área de avisos recebe o “recebido” dos reportes.</td></tr>
+      <tr class="zebra"><td><a href="#mf-111">Chat pelo WhatsApp (MF-111)</a></td><td>O botão de conversar pelo WhatsApp mora nas roles, e o número fica no perfil.</td></tr>
+      <tr class="zebra"><td><a href="#mf-112">Boards e Relatórios (MF-112)</a></td><td>Publicar para um grupo, ou para as pessoas que o gestor gere, e os boards públicos da quarentena saem daqui.</td></tr>
+      <tr class="zebra"><td><a href="#mf-113">Conectores de saída (MF-113)</a> e <a href="#mf-114">Agendamentos de agentes (MF-114)</a></td><td>Os grupos são o destino dos PDFs e dos alertas, e o contato de cada pessoa fica no perfil.</td></tr>
+      <tr class="zebra"><td><a href="#mf-116">Auditoria (MF-116)</a></td><td>O owner e o gestor que a Auditoria conhece são os daqui; o rastro de quem é excluído sai junto com a pessoa.</td></tr>
+      <tr class="zebra"><td><a href="#mf-117">Home da organização (MF-117)</a></td><td>A divisão dos números por gestor vem das carteiras.</td></tr>
     </tbody>
   </table>
 </div>

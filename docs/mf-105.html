@@ -115,7 +115,7 @@
 <p>Cada chamada à IA fica registrada <strong>só em números</strong>, sem o conteúdo da pergunta nem da resposta. Quando o provedor informa o custo da chamada, o Horus guarda esse valor. Quando não informa (o Amazon Bedrock, por exemplo, nunca informa), o Horus <strong>estima</strong> o custo pelo preço público do modelo e marca o número como estimado, para ninguém confundir o medido com o calculado.</p>
 <p>Quem vê esses números depende de quem paga a conexão:</p>
 <ul>
-  <li><strong>O owner da organização</strong> vê o consumo e o custo da conexão própria, a que a organização paga. Da conexão da instância, não vê nada de IA; o uso das pessoas ele acompanha pela Home da organização (MF-117).</li>
+  <li><strong>O owner da organização</strong> vê o consumo e o custo da conexão própria, a que a organização paga. Da conexão da instância, não vê nada de IA; o uso das pessoas ele acompanha pela <a href="mf-117.html">Home da organização (MF-117)</a>.</li>
   <li><strong>A Maind</strong> acompanha o custo de IA do mês de cada organização, na Administração da instância, e é avisada quando ele passa de um limite (veja <a href="mf-101.html#mf-101-aviso-de-custo">O aviso de custo</a>).</li>
 </ul>
 <h3 class="doc-h3" id="mf-105-sem-teto">Sem corte automático</h3>
@@ -147,15 +147,15 @@
       <tr class="zebra"><td><strong>Tirar o número do modelo de IA</strong></td><td>Os números vêm sempre do banco da empresa. A IA escreve a consulta e o texto.</td></tr>
       <tr class="zebra"><td><strong>Cortar o gasto sozinha</strong></td><td>Há o aviso de custo à Maind e os limites técnicos de cada execução, mas nenhum teto automático de custo.</td></tr>
       <tr class="zebra"><td><strong>Deixar a organização editar a conexão da instância</strong></td><td>Ela chega como a Maind a cadastrou. Quem quer outra coisa cadastra a conexão própria.</td></tr>
-      <tr class="zebra"><td><strong>Mostrar ao owner o consumo da conexão da instância</strong></td><td>Quem acompanha esse custo é a Maind. O owner vê o uso das pessoas pela Home da organização (MF-117).</td></tr>
+      <tr class="zebra"><td><strong>Mostrar ao owner o consumo da conexão da instância</strong></td><td>Quem acompanha esse custo é a Maind. O owner vê o uso das pessoas pela <a href="mf-117.html">Home da organização (MF-117)</a>.</td></tr>
       <tr class="zebra"><td><strong>Ligar direto à Anthropic, à OpenAI ou ao Google</strong></td><td>Os modelos desses fabricantes chegam pelo OpenRouter.</td></tr>
       <tr class="zebra"><td><strong>Garantir que a IA processe os dados no Brasil</strong></td><td>O OpenRouter encaminha as chamadas a fornecedores de vários países, e nem o Amazon Bedrock na região de São Paulo mantém no país o processamento dos modelos Claude.</td></tr>
-      <tr class="zebra"><td><strong>Rodar a IA inteira dentro da casa do cliente</strong></td><td>O modo em que nada sai da casa do cliente, nem a pergunta, não tem versão prevista e só volta se um cliente exigir o Horus instalado inteiro. Na versão 2.1, o middleware (MF-121) vai levar o Horus também à IA do próprio cliente.</td></tr>
+      <tr class="zebra"><td><strong>Rodar a IA inteira dentro da casa do cliente</strong></td><td>O modo em que nada sai da casa do cliente, nem a pergunta, não tem versão prevista e só volta se um cliente exigir o Horus instalado inteiro. Na versão 2.1, o middleware (<a href="mf-121.html">MF-121</a>) vai levar o Horus também à IA do próprio cliente.</td></tr>
     </tbody>
   </table>
 </div>
 <h3 class="doc-h3" id="mf-105-ligadas">Funcionalidades ligadas a esta</h3>
-<p>A IA sob controle da organização serve de base a várias outras funcionalidades. As páginas delas entram aqui conforme forem escritas.</p>
+<p>A IA sob controle da organização serve de base a várias outras funcionalidades. O nome de cada uma leva à página dela.</p>
 <div class="table-wrap">
   <table class="t">
     <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
@@ -164,9 +164,9 @@
       <tr class="zebra"><td><a href="mf-102.html">Organizações, pessoas e papéis (MF-102)</a></td><td>O botão de escolher o modelo na conversa mora nas roles.</td></tr>
       <tr class="zebra"><td><a href="mf-103.html">Licenças e planos (MF-103)</a></td><td>Na organização que usa a conexão da instância, a Maind paga o consumo de IA; na que usa a conexão própria, a organização o paga.</td></tr>
       <tr class="zebra"><td><a href="mf-104.html">Conectar as fontes vivas (MF-104)</a></td><td>A IA escreve a consulta, e a fonte dá os números.</td></tr>
-      <tr class="zebra"><td>Perguntar aos dados em português (MF-107)</td><td>Cada etapa da resposta usa o modelo que a organização escolheu.</td></tr>
-      <tr class="zebra"><td>A web como fonte (MF-109)</td><td>A pesquisa na web só existe quando o provedor da IA pesquisa por conta própria.</td></tr>
-      <tr class="zebra"><td>Agentes ativos (MF-115)</td><td>O modelo que segue as instruções do agente é escolha do owner, e o consumo dos agentes entra no custo da organização.</td></tr>
+      <tr class="zebra"><td><a href="mf-107.html">Perguntar aos dados em português (MF-107)</a></td><td>Cada etapa da resposta usa o modelo que a organização escolheu.</td></tr>
+      <tr class="zebra"><td><a href="mf-109.html">A web como fonte (MF-109)</a></td><td>A pesquisa na web só existe quando o provedor da IA pesquisa por conta própria.</td></tr>
+      <tr class="zebra"><td><a href="mf-115.html">Agentes ativos (MF-115)</a></td><td>O modelo que segue as instruções do agente é escolha do owner, e o consumo dos agentes entra no custo da organização.</td></tr>
       <tr class="zebra"><td><a href="mf-106.html">Segurança dos dados por pessoa (MF-106)</a></td><td>Na versão 2.1, a IA que transforma a regra de acesso numa consulta protegida, e a confere, será a da organização.</td></tr>
       <tr class="zebra"><td><a href="mf-121.html">Middleware na casa do contratante (MF-121)</a></td><td>Na versão 2.1, leva o Horus também ao modelo de IA do próprio cliente.</td></tr>
     </tbody>
@@ -201,7 +201,7 @@
   </details>
   <details>
     <summary>A IA processa os dados da minha empresa no Brasil?</summary>
-    <div class="faq-body"><p>Na versão 2.0, o Horus não garante isso. O OpenRouter encaminha as chamadas a fornecedores de vários países, e nem o Amazon Bedrock na região de São Paulo mantém no país o processamento dos modelos Claude. Para quem precisa usar uma IA dentro de casa, a versão 2.1 traz o middleware (MF-121), que leva o Horus também à IA do próprio cliente.</p></div>
+    <div class="faq-body"><p>Na versão 2.0, o Horus não garante isso. O OpenRouter encaminha as chamadas a fornecedores de vários países, e nem o Amazon Bedrock na região de São Paulo mantém no país o processamento dos modelos Claude. Para quem precisa usar uma IA dentro de casa, a versão 2.1 traz o middleware (<a href="mf-121.html">MF-121</a>), que leva o Horus também à IA do próprio cliente.</p></div>
   </details>
 </div>
 </div><nav class="rel-grid dx-vizinhas" aria-label="Páginas vizinhas"><a class="rel-card dx-anterior" href="mf-104.html"><span class="cat">Anterior</span><h5>Conectar as fontes vivas</h5><span class="arrow">←</span></a><a class="rel-card dx-proxima" href="mf-107.html"><span class="cat">Próxima</span><h5>Perguntar aos dados em português</h5><span class="arrow">→</span></a></nav>
