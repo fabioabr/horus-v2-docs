@@ -8,7 +8,7 @@ O que se constrói, e por quê, está em [`../produto/`](../produto/), a começa
 
 Última atualização: 02/11/2026 (sexta rodada: os documentos 12, 13 e 14; os catorze documentos da lista estão escritos).
 
-**Em números:** 97 decisões no [registro](02-registro-de-decisoes.md) (31 ✅, 54 🟢, 6 🟡 e 6 ⚪); as 6 🟡 esperam o dono na [fila por urgência](01-estrategia-da-solucao.md) (seção 8.1); 30 itens a devolver ao PO (A-01 a A-30) e 19 verificações pendentes (V-01 a V-19), consolidados na [conferência do produto](14-conferencia-do-produto.md).
+**Em números:** 97 decisões no [registro](02-registro-de-decisoes.md) (32 ✅, 54 🟢, 5 🟡 e 6 ⚪); as 5 🟡 esperam o dono na [fila por urgência](01-estrategia-da-solucao.md) (seção 8.1); 30 itens a devolver ao PO (A-01 a A-30) e 19 verificações pendentes (V-01 a V-19), consolidados na [conferência do produto](14-conferencia-do-produto.md).
 
 ## Os documentos
 
@@ -17,7 +17,7 @@ A lista foi aprovada pelo dono em 02/11/2026.
 | Nº | Documento | O que responde | Precisa existir | Situação |
 | --- | --- | --- | --- | --- |
 | 01 | Estratégia da solução | A solução numa página; como cada objetivo é atingido; o que se reaproveita da v1.xx; os marcos | Antes de começar | 🟢 Escrito e atualizado em 02/11/2026 · a fila do dono com as 31 decisões 🟡, por urgência e com o que cada uma trava · os itens a devolver ao PO apontados para o documento 14 |
-| 02 | Registro de decisões (`ARQ-nnn`) | Cada decisão de tecnologia, quem decidiu e por quê | Antes de começar, e vivo | 🟢 Vivo · `ARQ-001` a `ARQ-097` (31 ✅, 54 🟢, 6 🟡, 6 ⚪) · notas datadas: três de 02/11/2026 (na `ARQ-049`, na `ARQ-051` e na `ARQ-073`) e cento e vinte e duas de 03/11/2026, em sessenta e duas decisões, pelas escolhas do dono no dia |
+| 02 | Registro de decisões (`ARQ-nnn`) | Cada decisão de tecnologia, quem decidiu e por quê | Antes de começar, e vivo | 🟢 Vivo · `ARQ-001` a `ARQ-097` (32 ✅, 54 🟢, 5 🟡, 6 ⚪) · notas datadas: três de 02/11/2026 (na `ARQ-049`, na `ARQ-051` e na `ARQ-073`) e cento e vinte e duas de 03/11/2026, em sessenta e duas decisões, pelas escolhas do dono no dia |
 | 03 | Metas de qualidade | Disponibilidade, volume, crescimento, rapidez e custo por organização | Antes de começar | 🟢 Escrito em 02/11/2026 · 4 metas 🟡 com o dono (`ARQ-014` a `ARQ-017`) · os preços e o rateio do custo saíram no documento 13 |
 | 04 | Software | Os módulos, os componentes e os contratos, camada a camada | Antes de começar | 🟢 Escrito em 02/11/2026 · 5 decisões (`ARQ-018` a `ARQ-022`): 4 🟢 e a `ARQ-021` ⚪, substituída em 03/11/2026 pela `ARQ-095` 🟢 (os dois papéis em várias réplicas) |
 | 05 | Motor de análise e IA | Como a pergunta vira resposta | Antes do marco do motor | 🟢 Escrito em 02/11/2026 · 10 decisões (`ARQ-023` a `ARQ-032`), nenhuma 🟡 com o dono · a `ARQ-027` ✅ pelo dono em 03/11/2026 (a pesquisa na web pela busca nativa da conexão) |

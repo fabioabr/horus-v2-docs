@@ -2,7 +2,7 @@
 
 Situação: 🔎 levantamento preliminar do **Horus de hoje, a v1.xx**: é a referência do que já existe e pode ser reaproveitado no Horus v2.xx (`D-134`). O arquiteto de soluções confere o que se reaproveita (`P-003`).
 
-Última atualização: 02/11/2026.
+Última atualização: 05/11/2026 (as `MF-120` a `MF-123` entram na tabela de conversão).
 
 Este documento responde: **o que o Horus já entrega hoje, em linguagem de valor**, e como isso se encaixa no [norte](02-norte-do-produto.md). Segue a `D-003`: o produto de hoje é o ponto de partida, não o limite. Ele não decide o que entra na v2.0; só mostra o terreno.
 
@@ -13,9 +13,9 @@ Este documento responde: **o que o Horus já entrega hoje, em linguagem de valor
 
 “mf” é a abreviação de macro funcionalidade, adotada pelo dono. Cada mf tem **número fixo**, que nunca é reaproveitado, e se cita sempre assim: `MF-106:Segurança dos dados por pessoa` (número, dois-pontos e nome, sem espaço).
 
-- Uma mf nova ganha o próximo número (hoje, `MF-120`).
+- Uma mf nova ganha o próximo número (hoje, `MF-124`).
 - Se duas mfs se fundirem, a nova ganha número novo, e as antigas ficam marcadas como substituídas.
-- **A numeração foi refeita duas vezes**: em 01/11/2026 (`D-100` a `D-102`), de `MF-01` a `MF-19`, em ordem de leitura; e em 02/11/2026 (`D-137` a `D-139`), **de `MF-101` a `MF-119`**, pela entrega em que a mf entra e pela importância para a fundação. Os números anteriores só valem na [tabela de conversão](#tabela-de-conversão-da-numeração). Se uma conversa ou nota antiga cita `MF-005` ou `MF-13`, leia `MF-106:Segurança dos dados por pessoa`.
+- **A numeração foi refeita duas vezes**: em 01/11/2026 (`D-100` a `D-102`), de `MF-01` a `MF-19`, em ordem de leitura; e em 02/11/2026 (`D-137` a `D-139`), **de `MF-101` a `MF-119`**, pela entrega em que a mf entra e pela importância para a fundação; e as mfs que nasceram em 05/11/2026 ganharam o número seguinte, da `MF-120` à `MF-123`. Os números anteriores só valem na [tabela de conversão](#tabela-de-conversão-da-numeração). Se uma conversa ou nota antiga cita `MF-005` ou `MF-13`, leia `MF-106:Segurança dos dados por pessoa`.
 
 ## Como este levantamento foi feito
 
@@ -49,7 +49,7 @@ Fora do mapa, por não serem funcionalidade para o cliente: a observabilidade (G
 
 ## Tabela de conversão da numeração
 
-As 19 mfs vivas, na **ordem de construção do Horus v2**: primeiro a entrega em que entram, depois a importância para a fundação (`D-137` a `D-139`, 02/11/2026). A coluna "01/11" traz a numeração anterior, em ordem de leitura (`D-100` a `D-102`), e a "Original", a primeira, de três dígitos começando com zero.
+As 23 mfs vivas, na **ordem de construção do Horus v2**: primeiro a entrega em que entram, depois a importância para a fundação (`D-137` a `D-139`, 02/11/2026). A coluna "01/11" traz a numeração anterior, em ordem de leitura (`D-100` a `D-102`), e a "Original", a primeira, de três dígitos começando com zero.
 
 | Novo | Mf | 01/11 | Original | Camada |
 | --- | --- | --- | --- | --- |
@@ -72,6 +72,10 @@ As 19 mfs vivas, na **ordem de construção do Horus v2**: primeiro a entrega em
 | `MF-117` | Home da organização | `MF-18` | `MF-007` | 📈 Prova e controle |
 | `MF-118` | Bases de demonstração | `MF-19` | `MF-012` | 📈 Prova e controle |
 | `MF-119` | Investigação guiada | `MF-05` | `MF-019` | 🔵 v2.1 |
+| `MF-120` | Faixa de avisos e números (nome provisório) | — | — | 📌 Acompanhar e avisar |
+| `MF-121` | Middleware na casa do contratante (nome provisório) | — | — | 🔌 Dados e IA |
+| `MF-122` | Conectores de chat corporativo (nome provisório) | — | — | 📌 Acompanhar e avisar |
+| `MF-123` | Fonte AWS Athena (nome provisório) | — | — | 🔌 Dados e IA |
 
 Duas mfs foram substituídas e **não ganharam número novo**; ficam só aqui, com o número original:
 
@@ -81,6 +85,8 @@ Duas mfs foram substituídas e **não ganharam número novo**; ficam só aqui, c
 | `MF-008` | Relatórios em PDF agendados | ⚪ Substituída pela `MF-112:Boards e Relatórios` (`D-058`) |
 
 ## O que o dono já disse sobre cada mf (31/10/2026)
+
+> Esta tabela guarda o que o dono disse em 31/10/2026. Decisões posteriores mudam alguns pontos (por exemplo, os cinco tipos de assento, `D-194`; o Teams e o Google Chat na `MF-122`, `D-198`; a liberação de dados do gestor na `MF-106`, `D-199`; o fim da área da organização que recebia o que a pessoa deixava e da transferência: quem é excluído perde o que criou, e quem passa a prata ou a bronze o mantém desabilitado, `D-206` a `D-209`; os modos, que passam a ser dois, dados e conversa, com a web como o interruptor "pesquisar na web", `D-215`). Vale o [backlog estratégico](backlog-estrategico.md).
 
 | MF | Direção | Onde está registrado |
 | --- | --- | --- |

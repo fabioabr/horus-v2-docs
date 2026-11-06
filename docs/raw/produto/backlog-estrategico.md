@@ -4,7 +4,7 @@ Registro das decisões de produto: o que o Horus entrega, para quem e em que ord
 
 Aqui entram decisões de **valor** (visão, público, macro funcionalidades, versões, preço, cortes). Tarefas e escolhas de **como construir** pertencem ao arquiteto de soluções e não são registradas neste arquivo.
 
-Última atualização: 03/11/2026.
+Última atualização: 06/11/2026.
 
 ## Como ler e manter
 
@@ -19,7 +19,8 @@ Aqui entram decisões de **valor** (visão, público, macro funcionalidades, ver
 - **Onde ficam os documentos** (`D-140`, `D-141`): na pasta da v2, que vai virar um repositório próprio. O produto fica em `docs/produto/` e a arquitetura em `docs/arquitetura/`; `docs/backlog/` fica reservada para as atividades, que o dono e um agilista definem depois da arquitetura (`D-142`); as skills ficam em `.claude/skills/`. Os caminhos de código citados nos documentos de produto são do repositório `horus`, a v1.xx.
 - **Estes documentos definem o Horus v2.xx** (`D-134`). O Horus de hoje é a v1.xx: ponto de partida e fonte de reaproveitamento. O entregável é um mapa de objetivos e funcionalidades para iniciar o desenvolvimento de forma estruturada.
 - **Este trabalho é só documentação.** O dono deixou claro (01/11/2026) que nada de desenvolvimento começa aqui. “Fechar a v2.0” quer dizer **fechar a definição da v2.0** nos documentos; construir é assunto de outro momento e do arquiteto de soluções.
-- **A numeração das mfs foi refeita duas vezes.** Em 01/11/2026 (`D-100` a `D-102`), em ordem de leitura, de `MF-01` a `MF-19`. Em 02/11/2026 (`D-137` a `D-139`), pela entrega em que a mf entra e pela importância para a fundação do novo Horus: **de `MF-101` a `MF-119`**. A regra de número fixo vale a partir desta última, e a próxima mf nova é a `MF-120`. Os números anteriores (os de dois dígitos e os de três que começam com zero, `MF-001` a `MF-021`) só valem na tabela de conversão do mapa. Em todas as decisões, as citações de mf foram trocadas pelos números novos, e o conteúdo das decisões não mudou; as decisões das próprias renumerações (`D-100` a `D-102` e `D-137` a `D-139`) mantêm os números da época. A `MF-006` e a `MF-008`, substituídas, não ganharam número novo e aparecem com o número mais antigo.
+- **A numeração das mfs foi refeita duas vezes.** Em 01/11/2026 (`D-100` a `D-102`), em ordem de leitura, de `MF-01` a `MF-19`. Em 02/11/2026 (`D-137` a `D-139`), pela entrega em que a mf entra e pela importância para a fundação do novo Horus: **de `MF-101` a `MF-119`**. A regra de número fixo vale a partir desta última, a `MF-120` foi dada à faixa de avisos e números (`D-152`, nome provisório), a `MF-121`, ao middleware na casa do contratante (`D-196`, nome provisório), a `MF-122`, aos conectores de chat corporativo, e a `MF-123`, ao AWS Athena (`D-198`, nomes provisórios), e a próxima mf nova é a `MF-124`. Os números anteriores (os de dois dígitos e os de três que começam com zero, `MF-001` a `MF-021`) só valem na tabela de conversão do mapa. Em todas as decisões, as citações de mf foram trocadas pelos números novos, e o conteúdo das decisões não mudou; as decisões das próprias renumerações (`D-100` a `D-102` e `D-137` a `D-139`) mantêm os números da época. A `MF-006` e a `MF-008`, substituídas, não ganharam número novo e aparecem com o número mais antigo.
+- **Os números `D-138` e `D-139` foram usados duas vezes** (achado na revisão de 05/11/2026): outra sessão registrou as decisões do MVP da v1.xx (`D-138`, "A v1.xx fecha como MVP no HML…", e `D-139`, "No MVP da v1.xx, as seis peças pela metade saem todas da tela") quando a renumeração das mfs já tinha as suas (`D-138`, "O número novo das mfs tem três dígitos…", e `D-139`, "Tabela de conversão das mfs…"). Nenhuma foi renumerada, para não quebrar as citações: cite sempre `D-138 (MVP)`, `D-139 (MVP)`, `D-138 (numeração)` ou `D-139 (conversão)`. Do `D-140` em diante os números são únicos.
 
 ## Pendências e impasses
 
@@ -35,14 +36,87 @@ Tudo o que está aberto, num lugar só. A skill **lista esta seção no início 
 | `P-002` | 🕓 Pendência | Confirmar o inventário de lacunas com o arquiteto de soluções e medir o tempo de resposta. *Com a `D-125`, a medição deixou de ser condição para escrever uma meta: “em segundos” é uma comparação com o pedido ao time de dados* | `D-003` | Arquiteto de soluções | 30/10/2026 |
 | `P-003` | 🕓 Pendência | Confirmar o mapa das mfs de hoje e o que está previsto e não construído (levantado pelo PO em 31/10/2026). *Com a `D-134`, o mapa de hoje é a referência do que a v1.xx já tem; a parte do dono deixou de ser necessária (leitura confirmada em 02/11/2026), e fica a do arquiteto: o que da v1.xx se reaproveita* | Pedido do dono, 30/10/2026; `D-134` | Arquiteto de soluções | 30/10/2026 |
 | `P-008` | 🕓 Pendência | **Para o arquiteto de soluções:** confirmar vinte e sete hipóteses técnicas levantadas pelo PO. (a) O editor de relatórios comporta o que o board faz hoje (`D-018`). (b) Os eventos de uso da MF-117:Home da organização servem à medida de autonomia ([mapa](04-macro-funcionalidades-de-hoje.md)). (c) O que a MF-106:Segurança dos dados por pessoa já cobre de cada etapa da `D-025` (documento semântico de segurança, claims de origem SSO, controles de acesso das tecnologias de dados). (d) Calcular e explicar o “vale a mais restritiva” quando as duas fontes de regra divergem (`D-026`). (e) Os grupos generalizam o “Quem abre” que o board corporativo já tem (`D-029`). (f) A saída por e-mail que existe hoje (o relatório agendado) serve de ponto de partida para os conectores de saída, e confirmar para quem esse relatório vai hoje, já que o conector só entrega a usuários do Horus (`D-033`, `D-035`). (g) A agenda que o relatório em PDF já tem hoje (MF-008) serve de base para o agendador único (`D-036`). (h) O painel corporativo ainda roda com acesso total e o pessoal, no escopo do autor, como no registro de 01/10/2026, o que decide quem pode publicar um board (`P-005`). (i) O que muda no código ao tirar do owner a edição do painel corporativo e criar o “desabilitar” (`D-043`). (j) O convite (nominal, por link e QR) e a planilha de convites comportam a indicação do gestor, e dá para ter uma área de quarentena para quem ainda não tem gestor (`D-047`). (k) Um mesmo usuário pode acumular os papéis de owner e de gestor, e a organização pode ser dona de boards num espaço próprio (`D-048`). (l) A matriz de permissões por papel que o código já tem comporta roles que o owner configura para liberar ou limitar funcionalidades (`D-050`), botão a botão (os sete interruptores da `D-110`), com a soma quando a pessoa tem mais de uma role (`D-111`), a role padrão para quem não tem outra, que o owner edita e não apaga (`D-112`), e a cópia de uma role ao criar outra (`D-113`). (m) O cadastro do usuário já guarda a informação que as roles e as claims do login corporativo carregam, e o owner consegue configurar o mapeamento dos campos do JWT para o cadastro (`D-052`); com a `D-118`, na v2.0 vale só a parte do cadastro, e o mapeamento do JWT fica para a etapa 2 da segurança. (n) Todo board, de qualquer tamanho, pode ser impresso em PDF a partir da mesma montagem (`D-057`). (o) Com que alcance de dados rodam os boards da organização e os agendamentos do owner, que não é dono de dados (`D-048`, `D-059`). (p) Renderizar gráficos em segundo plano, nos agentes, com as mesmas bibliotecas do front (`D-061`). (q) O ciclo de consultas e análise controlado pelo modelo, com um JSON final de instruções de renderização por tipo de saída do agendamento, é viável com a configuração de IA por função (`D-061`). (r) O motor de conversa responde de um popup, em qualquer tela do app (`D-065`), com todos os controles da conversa de análise (`D-088`). (s) O produto comporta guardar os assentos da organização, conferi-los contra as pessoas e desabilitar os usuários e pausar os agendamentos, alertas e agentes quando o administrador do SaaS desativa os assentos (`D-075`), liberados por um painel de controle da instância, no modo SaaS e sem data de expiração (`D-066` a `D-068`). (t) A organização comporta mais de um owner e os quatro tipos de assento: owner, gestor, membro full e membro leitor, este último só vendo boards de outras pessoas (`D-069`). (u) O gestor pode criar o convite (hoje o papel de gestor nasce sem a chave dos convites), com fluxo de aprovação do owner e reserva do assento por N dias, e o mesmo fluxo vale para trocar o tipo de assento de quem já entrou (`D-071`, `D-072`). (v) O motor de conversa decompõe uma variação nas partes que mais a explicam (por loja, produto, período) e guia a pessoa passo a passo (`D-081`). (w) O produto registra quem viu e quem entregou o quê sem guardar conteúdo de conversa, já que a telemetria hoje nunca carrega conteúdo (`D-082`). (x) O produto recebe a pergunta do WhatsApp, liga o número à pessoa e devolve a resposta com gráficos e tabelas em imagem (aproveitando a hipótese (p)), tanto pela conta de WhatsApp Business de cada organização quanto pela conta compartilhada da Maind, quando a organização a autoriza, e o custo do canal oficial do WhatsApp, incluindo as respostas demoradas da Análise avançada dentro das janelas de resposta (`D-084`, `D-097`, `D-098`); e as mensagens que o Horus inicia pelo conector de WhatsApp, os avisos e os PDFs, com os modelos aprovados e o custo próprio (`D-124`). (y) O produto conta a pergunta respondida sem guardar o conteúdo da conversa descartada na pergunta rápida, e guarda a resposta reportada até o owner analisá-la (`D-087`). (z) O produto tem, ou passa a ter, uma área de avisos dentro do Horus, na conta da pessoa, e uma preferência no perfil para receber esses avisos por e-mail, enviados pelo e-mail da instância (`D-128`). (aa) O motor de conversa consegue separar o fato vindo da web, que entra em qualquer nível de inferência com link e data, da causa vinda de fora dos dados, que só entra a partir do nível 4 (`D-130`) | `D-018`, `D-025`, `D-026`, `D-029`, `D-033`, `D-036`, `D-065` a `D-072`, `D-081`, `D-082`, `D-084`, `D-087`, `D-097`, `D-098`, `D-110` a `D-114`, `D-118`, `D-128`, `D-130` e mapa das mfs | Arquiteto de soluções | 31/10/2026 |
-| `P-016` | 🕓 Pendência | Definir como ativar os assentos numa instalação **on-premises**, na infraestrutura do cliente (o arquivo com chave foi deixado de lado por ora). Até lá, o on-premises fica sem o controle de assentos | `D-067` | Dono, com o arquiteto de soluções para a viabilidade. Não trava a v2.0, que é SaaS primeiro (`D-016`). **Trava a v2.1**, porque o on-premises (a nº 5) entrou nela (`D-121`) | 31/10/2026 |
-| `P-018` | 🕓 Pendência | Definição macro da **MF-119:Investigação guiada** (nova): quem ganha, que decisão passa a ser possível, prova de valor, retorno, o que não inclui e do que depende | `D-081` | Dono. **Adiada pelo dono em 01/11/2026**, porque pede muita conversa. Pode esperar: não trava as outras definições. Ponto de partida quando voltar: “por onde a pessoa começa a investigação na v2.0?” ficou sem resposta (A, pelo número ou gráfico que mudou, recomendada; B, pela pergunta em texto; C, pelo aviso de um agente). **Se a `MF-119` entrar na v2.0, a definição vira condição para fechar a v2.0** (`D-104`); com o alcance da v2.0 só no problema nº 1 (`D-106`), ela fica para a versão seguinte. **Com a `D-121`, a `MF-119` está na v2.1, e esta definição trava a v2.1** | 01/11/2026 |
-| `P-022` | 🕓 Pendência | Definir o **preço em reais** do plano único, por tipo de assento. Precisa da visão de mercado, que segue em aberto para o PO, e do primeiro cliente | `D-116` | Dono e comercial da Maind, com a visão de mercado (o PO pode pesquisar o mercado se o dono pedir, opção C da `D-116`). **Pode esperar:** o preço fica fora dos documentos de produto e não trava a v2.0 | 02/11/2026 |
+| `P-022` | 🕓 Pendência | Definir o **preço em reais** do plano único, por tipo de assento (*com a `D-216`, a IA só entra no preço nas organizações que usam a conexão da instância: o preço precisa dizer se muda para quem traz a própria IA*). Precisa da visão de mercado, que segue em aberto para o PO, e do primeiro cliente | `D-116` | Dono e comercial da Maind, com a visão de mercado (o PO pode pesquisar o mercado se o dono pedir, opção C da `D-116`). **Pode esperar:** o preço fica fora dos documentos de produto e não trava a v2.0 | 02/11/2026 |
+| `P-028` | 🕓 Pendência | **Sincronizar a arquitetura e o portal com as decisões `D-146` a `D-240`** *(a parte do PO, o inventário `04`, `05`, `06` e `07` e as páginas de leitura, ficou pronta em 05/11/2026, até a `D-240`; a arquitetura também precisa acompanhar o que mudou da `D-204` à `D-240`: sem transferência e sem área que recebe o que sai, `D-206` a `D-211`; a IA da organização ou da instância, `D-216` e `D-217`; a web como interruptor, `D-215`; o PDF de uma página só, `D-229`; o grupo dinâmico por tipo de assento, `D-235`; a planilha de convites só do owner, `D-236`)*: o documento 01 (a seção 4 lista 19 mfs, põe a marca completa e o interruptor na `MF-101` e tem o marco de marca), o 04, o 05 e o 14, a nota de "backlog congelado" dos documentos 01 e 14 e do README da arquitetura (os itens `A-02`, `A-21` e `A-29` do 14 viraram `I-015`, `P-025` e `P-026`); e o portal, cujo `montar_fontes.py` está fixo em 19 mfs e lê a lista da seção 4 do documento 01 | `D-146` a `D-240` | Arquiteto de soluções (arquitetura) e PO (o portal, depois do 01) | 05/11/2026 |
+| `P-029` | 🕓 Pendência | **Numerar os 24 itens restantes do documento 14** (`A-nn` sem número), que o backlog congelado não pôde receber. Os impasses `A-03`, `A-04` e `A-11` já ganharam número em 05/11/2026 (`I-016`, `I-017` e `I-018`); na revisão das mfs da v2.0, também em 05/11/2026, os itens `A-08`, `A-10`, `A-13`, `A-14`, `A-16`, `A-17`, `A-18`, `A-19`, `A-22`, `A-23`, `A-24` e `A-30` viraram impasses (`I-030` a `I-043`) | Documento 14 (arquitetura), seção 4 | PO | 05/11/2026 |
+| `P-032` | 🕓 Pendência | **Para o arquiteto de soluções:** como a conta de IA da Maind chega às organizações do SaaS (hoje a v1.xx tem a conexão de IA de cada organização) e o que acontece com a conexão que uma organização já cadastra. *A `D-216` respondeu o lado do produto: há conexão da organização (a organização paga) e conexão da instância (a Maind paga), disponibilizada a uma ou mais organizações e sem edição no nível da organização* | `D-159`, `D-216` | Arquiteto de soluções | 05/11/2026 |
+| `P-033` | 🕓 Pendência | **Para o arquiteto de soluções:** dimensionar o AWS Athena na v2.1: o conector, o dialeto, a segurança por pessoa (que hoje só cobre o SQL Server) e o que isso pede do resto da v2.1 | `D-161` | Arquiteto de soluções | 05/11/2026 |
+| `P-034` | 🕓 Pendência | **Para o arquiteto de soluções:** conferir o que é a "fonte de páginas web" da v1.xx (a conexão do tipo `web`, que o chat lê no lugar de planejar uma consulta), se a `ARQ-027` a cobre, e decidir se o tipo de fonte `web` some ou continua | `D-162` | Arquiteto de soluções | 05/11/2026 |
+| `P-035` | 🕓 Pendência | **Para o arquiteto de soluções:** como o motor calcula o board público em nome do owner que o publicou (`D-164`). *Com a `D-209`, o board some junto com o owner que sai: deixou de ser dúvida o que acontece nesse caso* | `D-164`, `D-048` | Arquiteto de soluções | 05/11/2026 |
+| `P-036` | 🕓 Pendência | **Para o arquiteto de soluções:** como a faixa calcula os cards de número com o acesso de cada pessoa sem pesar na abertura da tela (reaproveitar o cálculo por escopo, o ritmo de atualização) | `D-167` | Arquiteto de soluções | 05/11/2026 |
+| `P-037` | 🕓 Pendência | **Para o arquiteto de soluções:** o arquivo de licença do on-premises: o formato, a assinatura, a importação e a conferência sem internet, e o que fazer com um arquivo adulterado (`D-175`) | `D-175`, `P-016` | Arquiteto de soluções | 05/11/2026 |
+| `P-038` | 🕓 Pendência | **Para o arquiteto de soluções:** como o Teams e o Google Chat se integram como conectores de saída (a forma de integrar, a autenticação, a aprovação da TI do cliente e o que cada um entrega: texto, imagem e link) (`D-182`) | `D-182`, `D-124`, `ARQ-046` | Arquiteto de soluções | 05/11/2026 |
+| `P-039` | 🕓 Pendência | **Para o arquiteto de soluções:** o provedor de IA compatível com o protocolo da OpenAI que o contratante aponta no modo "tudo dentro": a conexão, a guarda de rede (o modelo mora na rede interna), os modelos que o Horus prova e a qualidade mínima de resposta (`D-185`) | `D-185`, `ARQ-051` | Arquiteto de soluções | 05/11/2026 |
+| `P-040` | 🕓 Pendência | **Para o arquiteto de soluções:** a viabilidade do middleware na casa do contratante (`D-188`): quais partes do motor de análise rodam nele, como ele se conecta ao Horus sem abrir porta no cliente, como se atualiza e o que acontece com as decisões `D-175`, `D-176`, `D-185` a `D-187`, a `ARQ-060` e a `ARQ-074`. Parte do impasse `I-020` | `D-188`, `I-020`, `ARQ-052` (opção 3) | Arquiteto de soluções | 05/11/2026 |
+| `P-042` | 🕓 Pendência | **Para o arquiteto de soluções:** a imagem do middleware (`D-195`): **o protocolo (servidor MCP, API REST ou gRPC, de preferência gRPC, `D-196`)**, o endereço público, o par de chaves cadastrado no Horus por organização, a rotação das chaves, o bloqueio por IP e porta, a atualização da imagem pelo cliente e o que o Horus faz quando o middleware está fora do ar. Parte da `P-040` | `D-195`, `P-040` | Arquiteto de soluções | 05/11/2026 |
+| `P-044` | 🕓 Pendência | **Para o arquiteto de soluções:** conferir se apagar tudo de quem é excluído (`D-210`) convive com a guarda técnica do registro de acesso (seis meses, `ARQ-035`) e com as cópias de segurança; e o que a Auditoria, o aviso de abertura e a medida de autonomia precisam mudar. *O lado jurídico passou ao setup de cada cliente (`D-247`)* | `D-209`, `D-210`, `ARQ-035`, `D-247` | Arquiteto de soluções | 05/11/2026 |
+| `P-046` | 🕓 Pendência | **Definir os componentes da faixa de avisos e números:** o catálogo (KPIs, ícones etc.), as regras de cada um (inclusive a hora de fim e a retirada à mão do aviso do owner da organização) e o gesto e o visual da faixa. O dono disse que "ainda vamos definir" (`D-213`) | `D-213`, `D-212`, `D-174` | Dono, com o PO e o arquiteto de soluções | 05/11/2026 |
 
 ### Fechados
 
 | Nº | O que era | Como fechou | Em |
 | --- | --- | --- | --- |
+| `P-045` | O jurídico da Maind confirmar que o owner ler as conversas de todos, sem aviso especial à pessoa (`D-223`), é aceitável diante da proteção de dados pessoais, e se o aviso de privacidade da instância precisa dizer isso | O dono manteve a regra e pediu que a documentação e o setup indiquem ao cliente consultar o jurídico dele (`D-247`); o aviso de privacidade da instância segue com a `A-16` do documento 14 | 06/11/2026 |
+| `I-065` | Onde ficam os boards de exemplo das bases de demonstração | O dono escolheu, com a opção recomendada, que ficam no espaço da organização, publicados (`D-245`) | 05/11/2026 |
+| `I-064` | O que a pessoa vê enquanto o agendamento ou o agente espera o sim do owner | O dono escolheu, com a opção recomendada, que o item aparece marcado "aguardando aprovação do owner" e depois "ativo" ou "recusado" (`D-244`) | 05/11/2026 |
+| `I-063` | O que a tela mostra quando a pesquisa na web não traz fato nenhum | O dono escolheu, com a opção recomendada, que a resposta sai com os dados da empresa e um aviso curto (`D-243`) | 05/11/2026 |
+| `I-062` | O cartão do board que usa um fato da web: guarda os fatos ou pesquisa de novo a cada atualização? | O dono escolheu, com a opção recomendada, que o cartão guarda os fatos da resposta, com a data à vista, e não pesquisa de novo (`D-242`) | 05/11/2026 |
+| `I-061` | O que o owner da organização vê do consumo de IA: da conexão própria e da conexão da instância | O dono escolheu, com a opção recomendada, que o owner vê consumo e custo só da conexão que a organização paga (`D-241`) | 05/11/2026 |
+| `I-057` | Quem fica sabendo quando um serviço da organização, que não é a IA, para (`A-22` do documento 14) | O dono escolheu, com a opção recomendada, que é avisado o dono do serviço, como na IA (`D-240`) | 05/11/2026 |
+| `I-060` | A Home da organização mostra a divisão das perguntas respondidas por canal (a conversa de análise, a Pergunta rápida e o WhatsApp)? | O dono escolheu, com a opção recomendada, que a Home mostra a divisão por canal (`D-239`) | 05/11/2026 |
+| `I-047` | Quem mais vê a medida de autonomia (o gestor da própria equipe, o comprador) e se a Home mostra a divisão por canal (conversa, Pergunta rápida, WhatsApp) | Primeira parte respondida pelo dono, com a opção recomendada: o gestor vê a medida da própria equipe (`D-238`). A divisão por canal virou o `I-060` | 05/11/2026 |
+| `I-046` | O tema dos gráficos por organização fica na v2.0, já que o tema do contratante está sem versão? | O dono escolheu, com a opção recomendada, que o tema dos gráficos por organização fica como na v1.xx (`D-237`) | 05/11/2026 |
+| `I-059` | A planilha de convites em lote: quem a usa, se cada linha traz o tipo de assento e o gestor, e se o lote passa pela aprovação e pela reserva do assento | O dono escolheu, com a opção recomendada, que a planilha é só do owner, cada linha traz o tipo de assento e o gestor, o lote reserva os assentos e a linha sem vaga fica de fora (`D-236`) | 05/11/2026 |
+| `I-045` | Os grupos dinâmicos aceitam o tipo de assento como regra; e a planilha de convites em lote: quem a usa e se cada linha traz o tipo de assento e o gestor | Primeira metade respondida pelo dono, com a opção recomendada: o tipo de assento vira regra de grupo dinâmico (`D-235`). A planilha de convites virou o `I-059` | 05/11/2026 |
+| `I-044` | Um teto automático de custo, por agente ou por organização, entra na v2.0 (`D-216`)? | O dono escolheu, com a opção recomendada, que não entra: ficam os tetos técnicos por execução e o aviso de custo (`D-234`) | 05/11/2026 |
+| `I-058` | A DRE de usina segue na vitrine da v2.0, sendo que só duas organizações de exemplo chegam à v2.0? | O dono escolheu, com a opção recomendada, que a DRE de usina sai e ficam a rede de lojas e a frota (`D-233`) | 05/11/2026 |
+| `I-043` | Os cenários e os boards de exemplo das bases de demonstração, e se a DRE de usina segue na vitrine da v2.0 (`A-14` do documento 14) | Primeira parte respondida pelo dono, com a opção recomendada: um cenário para cada prova de valor da v2.0 (`D-232`). A DRE de usina virou o `I-058` | 05/11/2026 |
+| `I-042` | O aviso de abertura do rastro da Auditoria: onde fica o documento, se há texto padrão, se o primeiro acesso pede ciência (`A-30` do documento 14) | O dono escolheu, com a opção recomendada, o texto padrão do Horus, que o owner pode trocar, sem pedir ciência no primeiro acesso (`D-231`) | 05/11/2026 |
+| `I-056` | Como o autor aprova o cartão que descreve em texto (`A-23`, item 2, do documento 14) | O dono escolheu, com a opção recomendada, que o autor vê o resultado antes de salvar e salvar é a aprovação, sem estado à parte (`D-230`) | 05/11/2026 |
+| `I-041` | O board maior que a folha vira PDF reduzido ou em várias folhas, e como o autor aprova o cartão que descreve em texto (`A-23` do documento 14) | Primeira metade respondida pelo dono, com uma sugestão dele: o PDF tem uma página só, do tamanho do board (`D-229`). A segunda metade virou o `I-056` | 05/11/2026 |
+| `I-039` | O padrão de nascimento da organização: os interruptores de aprovação (conectores, publicação do gestor) e a role padrão com o botão do WhatsApp nascem ligados? | O dono escolheu, com a opção recomendada, que todos nascem liberados e o owner restringe (`D-228`) | 05/11/2026 |
+| `I-055` | O artefato que não cabe no canal (um PDF maior que o anexo do e-mail, um alerta maior que a mensagem do WhatsApp) | O dono escolheu, com a opção recomendada, não entregar naquele canal e avisar o autor, sem cortar nem alterar o artefato (`D-227`) | 05/11/2026 |
+| `I-038` | Quando uma execução de agente ou de agendamento falha ou passa do teto, e quando o artefato não cabe no canal: o que recebem o autor e os destinatários (`A-10` e `A-19` do documento 14) | Primeira metade respondida pelo dono, com a opção recomendada: só o autor recebe o aviso de falha, e os destinatários não recebem nada (`D-226`). A segunda metade virou o `I-055` | 05/11/2026 |
+| `I-037` | O que recebe quem escreve no WhatsApp sem número ligado, sem o botão da role ou como membro bronze (`A-18` do documento 14) | O dono escolheu, com a opção recomendada, uma resposta fixa, sem dado, que aponta para o app (`D-225`) | 05/11/2026 |
+| `I-036` | O número de WhatsApp: um só por pessoa em cada organização, para a conversa e para os avisos, e como fica quem está em duas organizações no número da Maind (`A-17` do documento 14) | O dono escolheu, com a opção recomendada, que o telefone fica ligado a uma organização por vez, com aviso à pessoa; o número é um só para a conversa e os avisos (`D-224`) | 05/11/2026 |
+| `I-035` | O owner da organização continua lendo as conversas de todos, e a pessoa é avisada? (`A-16`, item 2, do documento 14) | O dono escolheu que o owner continua lendo, sem aviso especial à pessoa, contra a recomendação do PO (`D-223`). Abriu a `P-045` | 05/11/2026 |
+| `I-034` | O que conta como pergunta de análise respondida na medida de autonomia (`A-08` do documento 14) | O dono escolheu, com a opção recomendada, contar só a resposta que trouxe dado ou web, e não a consulta vazia, a falha nem a conversa sem fonte (`D-222`) | 05/11/2026 |
+| `I-033` | Fixar uma resposta num board: é um botão da role ou segue o tipo de assento (`A-24` do documento 14) | O dono respondeu fora das opções: só o dono do board fixa uma resposta nele, e não é um botão das roles (`D-221`) | 05/11/2026 |
+| `I-032` | O teto de inferência: o "teto da organização" de que as roles falam, ou o teto de cada fonte de dados, como hoje (`A-13` do documento 14) | O dono escolheu, com a opção recomendada, o teto de cada fonte, e a role só pode baixá-lo (`D-220`) | 05/11/2026 |
+| `I-031` | Quem escreve o modelo semântico de uma organização (o "time de dados") e com qual assento | O dono escolheu, com a opção recomendada, que o modelo é escrito fora do Horus e o owner da organização o carrega (`D-219`) | 05/11/2026 |
+| `I-030` | Quem é avisado quando a IA da organização para (chave recusada ou falta de crédito) | O dono escolheu, com a opção recomendada, que é avisado o dono da conexão: o owner da organização, se a conexão é dela, ou o administrador da instância, se é da instância (`D-218`) | 05/11/2026 |
+| `I-054` | Quando uma organização é criada, ela já nasce com a conexão de IA da instância disponível, ou fica sem IA até o administrador disponibilizar uma? | O dono escolheu, com a opção recomendada, que a organização nasce sem IA e o administrador da instância disponibiliza uma conexão ao criá-la (`D-217`) | 05/11/2026 |
+| `I-029` | A Maind limita os modelos de IA que cada organização pode aceitar, agora que a Maind paga a IA? | O dono corrigiu a premissa: há conexão da organização (ela paga) e conexão da instância (a Maind paga), disponibilizada a uma ou mais organizações e sem edição no nível da organização (`D-216`) | 05/11/2026 |
+| `I-028` | O modo web depois de a web virar pesquisa do modelo (`D-162`): o botão da role passa a ser "pesquisar na web", valendo nos outros modos? | O dono escolheu, com a opção recomendada, que a web vira um interruptor ao lado dos dados e que os modos passam a ser dois: dados e conversa (`D-215`) | 05/11/2026 |
+| `I-027` | O que a visão de cobrança do owner da organização mostra na v2.0 | O dono escolheu, com a opção recomendada, só a contagem de assentos por tipo: tem, usa e livres (`D-214`) | 05/11/2026 |
+| `I-026` | O aviso do owner da organização na faixa: texto livre, com hora de fim opcional e retirada à mão, como o da instância? | O dono respondeu fora das opções: a faixa é um contêiner de componentes, o aviso é o componente de texto livre, e os outros (KPIs, ícones) serão definidos depois (`D-213`) | 05/11/2026 |
+| `I-025` | Os "números do negócio" da faixa: o owner escolhe a métrica e o período do modelo semântico, ou os cards são fixos do produto? | O dono escolheu, com a opção recomendada, que o owner aponta o card para uma métrica do modelo semântico e escolhe o período (`D-212`) | 05/11/2026 |
+| `I-053` | O total de perguntas respondidas da organização, quando uma pessoa é excluída: a parte dela some ou o total segue como número sem dono? | O dono escolheu, com a opção recomendada, que o total e a série mensal seguem como número sem dono (`D-211`) | 05/11/2026 |
+| `I-052` | O que a organização guarda de quem sai (o rastro da Auditoria, os reportes pendentes e a contagem da medida de autonomia) | O dono escolheu apagar tudo junto com a pessoa, contra a recomendação do PO (`D-210`). Abriu o `I-053` e a `P-044` | 05/11/2026 |
+| `I-050` | A transferência do que a pessoa criou, que saiu da v2.0: ela volta na v2.1 como mf própria ou fica sem versão? | O dono respondeu fora das opções: não há transferência, nem na v2.1; quem é excluído perde em definitivo e quem é rebaixado só desabilita (`D-209`) | 05/11/2026 |
+| `I-040` | O board público quando o owner da organização que o publicou sai da organização | Sem objeto: o que a pessoa criou se perde na saída, e o board público some com o owner que o publicou (`D-206`, `D-209`) | 05/11/2026 |
+| `I-049` | Quem volta a ser ouro depois de ter passado a prata ou a bronze: o que ficou desabilitado volta a funcionar? | O dono escolheu, com a opção recomendada, que ela reativa um a um e nada volta sozinho (`D-208`) | 05/11/2026 |
+| `I-051` | Quem passa de ouro a prata ou a bronze e continua na organização: perde o que criou ou o que criou fica guardado? | O dono respondeu fora das opções: o que criou fica vinculado a ela, desabilitado, sem uso, e só pode ser excluído (`D-207`) | 05/11/2026 |
+| `I-048` | Quando o novo dono de um agendamento é um gestor, o que acontece com os destinatários fora da carteira dele | O dono respondeu que, na v2.0, quem sai da organização perde o que criou e não há transferência (`D-206`): sem objeto | 05/11/2026 |
+| `I-024` | Para quem o owner da organização pode transferir o que ficou na área da organização, já que a prata e o bronze não criam (`D-203`) e só o gestor e o owner entregam a outras pessoas (`D-059`) | O dono escolheu que só se transfere a outro owner ou a um gestor, contra a recomendação do PO (`D-205`). Abriu o `I-048` e o `I-049` | 05/11/2026 |
+| `I-023` | A `MF-120:Faixa de avisos e números` era dada como a mais fácil de cortar, mas o aviso da instância vai só pela faixa e a `MF-101` depende dela | O dono escolheu que a `MF-120` sai da lista de cortes e fica na v2.0 como parte indispensável (`D-204`) | 05/11/2026 |
+| `P-043` | Completar a definição macro da `MF-122:Conectores de chat corporativo` e da `MF-123:Fonte AWS Athena` | O dono confirmou a definição proposta pelo PO (`D-201`) | 05/11/2026 |
+| `I-022` | O que o membro prata pode fazer além de perguntar e o que acontece com o que o ouro criou ao mudar de faixa | O dono escolheu que a prata pergunta (app, Pergunta rápida e WhatsApp), investiga e recebe alertas e PDFs, e não cria nada: criar é do ouro; e que quem passa de ouro a prata ou a bronze deixa o que criou na área da organização (`D-203`) | 05/11/2026 |
+| `I-021` | Aplicar a regra "uma mf não se divide em duas versões" (`D-197`) às partes que ainda estavam na v2.1 | O dono escolheu que o Teams e o Google Chat viram a `MF-122` e o Athena a `MF-123` (`D-198`), e que o interruptor geral e as demais peças da segurança por pessoa passam à `MF-106` (`D-199`). As partes da casa do contratante seguem sem versão (`D-188`) | 05/11/2026 |
+| `P-018` | Definição macro da `MF-119:Investigação guiada` | O dono respondeu as três dúvidas de desenho (`D-177` a `D-179`) e confirmou a definição completa (`D-180`) | 05/11/2026 |
+| `P-016` | Como ativar os assentos numa instalação on-premises | O dono escolheu um arquivo de licença com chave, sem internet (`D-175`), com um teto por tipo de assento para a instância inteira, que o administrador do cliente reparte entre as organizações (`D-176`) | 05/11/2026 |
+| `P-027` | Definição macro da `MF-120:Faixa de avisos e números` (nova, nome provisório) | O dono respondeu as sete dúvidas de desenho (`D-167` a `D-173`) e confirmou a definição completa (`D-174`) | 05/11/2026 |
+| `P-031` | Em que formato o administrador baixa o relatório da organização | O dono escolheu a planilha e o PDF (`D-166`) | 05/11/2026 |
+| `P-030` | Quando o aviso da instância sai da faixa | O dono escolheu os dois: hora de fim opcional e retirar à mão a qualquer momento (`D-165`) | 05/11/2026 |
+| `P-041` | O "controle de criação de instâncias mais eficiente" (`D-192`) | O dono respondeu que era uma confusão dele: a configuração fica na organização (`D-193`, `D-195`), e o SaaS é uma instância só. Sem objeto | 05/11/2026 |
+| `I-020` | Como o Horus chega à infraestrutura do contratante | O dono propôs, e o impasse se fechou com: o Horus fica sempre no SaaS da Maind, e a casa do contratante é atendida por um **middleware** (`D-188`), um servidor MCP em imagem de container da Maind (`D-190`, `D-195`); só a pergunta e a resposta pronta saem, e o owner da organização pode permitir mais (`D-189`, `D-193`); as permissões e a conexão são da organização (`D-195`); a instalação completa só volta se um cliente exigir | 05/11/2026 |
+| `I-019` | O que os boards públicos mostram à quarentena | O dono escolheu que o board público calcula os dados com o acesso do owner que o tornou público, e que o owner responde pelo que publica (`D-164`) | 05/11/2026 |
+| `I-018` | Com que alcance de dados roda o espaço da organização (`A-11` do documento 14) | O dono escolheu que os boards do espaço da organização usam o acesso de quem os abre (`D-163`). A leitura do PO sobre os agendamentos e os agentes foi confirmada pelo dono em 05/11/2026 (`D-163.1`); o efeito sobre os boards públicos da quarentena virou o `I-019` | 05/11/2026 |
+| `I-017` | As duas fontes que o MVP tira da tela (`A-04` do documento 14): a fonte de páginas web e o AWS Athena | O dono decidiu que o Athena entra, terminado, na v2.1 (`D-161`) e que a web como fonte entra na v2.0, como o modelo poder sair à web quando autorizado (`D-162`) | 05/11/2026 |
+| `I-016` | De quem é cada custo no SaaS (`A-03` do documento 14): a IA e o WhatsApp | O dono escolheu que a Maind paga a IA de todas as organizações e a embute no preço do assento (`D-159`), e que a organização que usa o número da Maind no WhatsApp paga as mensagens que gerar (`D-160`) | 05/11/2026 |
+| `P-026` | O painel de controle do owner da instância, com o uso (`A-29`): o que mostra, o aviso de custo e se é mf nova | O dono respondeu com a ideia dos cards configuráveis em duas categorias (`D-152`). Os números e o aviso de custo ficam na MF-101 como Instance Cards prontos, por leitura do PO (`D-153`, proposta); o que falta (quais números o owner pode mostrar e onde) passou para a `P-027` | 05/11/2026 |
+| `P-025` | Como a instância fala com todas as pessoas quando ela para (`A-21`) | O dono decidiu o aviso da instância na v2.0, em faixa contínua e só pela faixa (`D-151`), e ampliou a faixa na `MF-120` (`D-152`); a página de manutenção e o corte da página de estado seguem como proposta (`D-154`) | 05/11/2026 |
+| `I-015` | Quem cria organizações no SaaS (`A-02`) | O dono escolheu a opção A: só o administrador da instância (`D-146`) | 05/11/2026 |
 | `P-023` | Definição macro das quatro candidatas essenciais do problema nº 1, que entraram na v2.0 sem definição no formato da mf | O dono decidiu que “em segundos” é comparação com o pedido ao time de dados (`D-125`), os motivos do reporte (`D-127`), o aviso de “recebido” a quem reporta (`D-128`), que o fato da web entra em qualquer nível (`D-130`) e que o saving se calcula fora do produto (`D-132`), e confirmou as quatro definições: nº 1 (`D-126`), nº 2 (`D-129`), nº 3 (`D-131`) e nº 4 (`D-133`) | 02/11/2026 |
 | `P-024` | Quais conectores de saída entram na v2.0 | O dono escolheu a opção A: o e-mail e o WhatsApp (`D-124`) | 02/11/2026 |
 | `I-013` | O assento de owner grátis é um por instalação (`D-069`) ou um por organização (`D-074`, `D-080`, `D-117`)? | O dono escolheu a opção A: um por organização (`D-123`) | 02/11/2026 |
@@ -94,8 +168,1409 @@ Situação: proposta | decidida | substituída por D-nnn | revogada · Data: dd/
 **Reabrir quando:** condição que justifica rever.
 ```
 
+### D-248 · O owner liga, nas preferências da organização, a aprovação automática dos convites
+Situação: 🟢 decidida (resposta do dono em 06/11/2026) · Data: 06/11/2026 · Versão: v2.0
+
+**Decisão:** o **owner da organização** pode **ligar, nas preferências da organização, uma opção de aprovar automaticamente os convites** que os gestores pedem. Leitura do PO *(a confirmar com o dono)*: sem a opção ligada, o owner aprova cada convite, como já decidido (`D-071`); a opção é um dos tipos de aprovação que o owner liga ou desliga (`D-039`).
+**Contexto:** ao escrever a documentação das mfs da v2.0 (06/11/2026), duas páginas (`MF-102`, `MF-103`) acharam uma lacuna: a `D-228` diz que todos os interruptores da organização nascem liberados, mas lista só três, e nenhum é a aprovação dos convites dos gestores. O PO perguntou se ela nasce automática ou manual. O dono respondeu com o desenho: "o owner pode configurar em preferências uma opção de aceitar automaticamente os convites".
+**Opções avaliadas:** sem pontuação (dois caminhos sobre como a aprovação nasce): nasce manual, com o owner ligando a automática (recomendação do PO) · nasce automática. **O dono respondeu pelo desenho da preferência**, sem dizer como ela nasce; a leitura de que nasce desligada é do PO.
+**Por que esta:** o owner decide quanto controle quer sobre quem ocupa um assento pago, e o gestor não reserva assento sem ele saber, a menos que o owner abra mão disso. Abre-se mão da entrada mais rápida da equipe no primeiro dia: ⚠️ o owner vira a espera, até ligar a opção.
+**Fica de fora / adiado:** o nome e o lugar exato da opção nas preferências (desenho do arquiteto); se a opção vale também para as trocas de tipo de assento pedidas pelo gestor (`D-072`).
+**Completa a `D-071` e a `D-228`:** diz como a aprovação do convite se liga e, pela leitura do PO, como nasce.
+**Hipóteses a validar:** 🔎 que o owner ligue a opção quando a equipe crescer; 🔎 que a leitura de que ela nasce desligada seja a do dono.
+**Prova de valor:** o gestor pede um convite e o owner o aprova; depois o owner liga a opção, e o convite seguinte sai sem aprovação, com o assento guardado.
+**Reabrir quando:** os gestores reclamarem da espera pela aprovação, ou o dono quiser que a opção nasça ligada.
+
+### D-247 · Os três pontos que dependiam do jurídico seguem como decididos, e a documentação e o setup indicam ao cliente consultar o jurídico dele
+Situação: 🟢 decidida (resposta do dono em 06/11/2026; ele escolheu um caminho fora das opções propostas) · Data: 06/11/2026 · Versão: v2.0
+
+**Decisão:** ficam **mantidas** as três regras que dependiam da confirmação do jurídico da Maind: o **owner da organização lê as conversas de todos, sem aviso especial à pessoa** (`D-223`); **quem é excluído tem os registros apagados junto** (`D-210`); e a **Maind vê o nome de quem ocupa cada assento** (`D-157`). Em vez de esperar o jurídico da Maind, a **documentação e o setup (a implantação) de cada organização passam a indicar que o cliente deve consultar o jurídico dele** sobre esses três pontos.
+**Contexto:** ao fechar as pendências para finalizar a documentação das mfs da v2.0 (06/11/2026), o PO perguntou se as confirmações do jurídico seguravam a finalização. O dono respondeu: "mantenha a decisão tomada e coloque um indicador de que possivelmente devemos consultar o jurídico do cliente durante o setup".
+**Opções avaliadas:** sem pontuação (três caminhos sobre como tratar o que depende do jurídico): finalizar com o aviso "ainda em definição" (recomendação do PO) · esperar o jurídico · tirar as afirmações das páginas. **O dono escolheu um quarto caminho:** manter as regras e remeter a consulta ao jurídico do cliente, no setup.
+**Por que esta:** o tratamento de dados pessoais depende do contrato e da política de cada cliente, e a consulta no setup põe a pergunta onde ela tem resposta. Abre-se mão de uma resposta única do jurídico da Maind antes da v2.0: ⚠️ se um cliente disser não, a regra pode ter de mudar para ele.
+**Fica de fora / adiado:** o texto do indicador no setup e o lugar onde ele aparece no produto (desenho do arquiteto); o aviso de privacidade da instância, que segue com a `A-16` do documento 14; a conferência técnica da exclusão contra a guarda de seis meses do registro de acesso e as cópias de segurança, que segue na `P-044`, só do arquiteto.
+**Fecha:** a `P-045`. **Reduz** a `P-044` ao lado técnico, do arquiteto.
+**Hipóteses a validar:** 🔎 que a consulta ao jurídico do cliente aconteça no setup e não vire impedimento para fechar contrato; 🔎 que o indicador na documentação baste.
+**Prova de valor:** a documentação da v2.0 traz o indicador nas páginas das mfs envolvidas, e o roteiro de implantação de uma organização pede ao cliente que consulte o jurídico dele sobre os três pontos.
+**Reabrir quando:** um cliente ou o jurídico da Maind exigir o aviso à pessoa, o nome mascarado no relatório ou a guarda do registro de quem sai.
+
+### D-246 · Definição macro da MF-105:IA sob controle da organização
+Situação: 🟢 decidida (proposta do PO, confirmada pelo dono em 05/11/2026) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** a `MF-105:IA sob controle da organização`, que era base herdada (`D-021`) e mudou com as `D-216` a `D-218`, `D-234` e `D-241`, fica definida assim:
+- **O que é:** a conexão da organização com os modelos de IA que respondem às perguntas de análise e rodam os agentes. Há **duas origens de conexão**: a da **organização**, que o owner da organização cadastra e **a organização paga**; e a da **instância**, que o administrador da instância cadastra e **disponibiliza a uma ou mais organizações**, e **a Maind paga**; a organização não edita a da instância (`D-216`). A organização **nasce sem IA**, e o administrador disponibiliza uma ao criá-la (`D-217`). O **owner da organização escolhe os modelos** que a organização aceita, dentro das conexões que ela tem, e as roles liberam o modelo a cada pessoa (`D-110`).
+- **Quem ganha:** o **owner da organização**, que decide qual IA a empresa usa e vê o consumo e o custo do que paga (`D-241`); a **Maind**, que decide a quem paga a IA e acompanha o custo pelo aviso (`D-153`); e as **pessoas**, que perguntam desde o primeiro dia.
+- **Decisão que passa a ser possível:** a empresa usa o próprio contrato de IA e paga o consumo, ou usa o da Maind, sem trocar de produto.
+- **Prova de valor:** o administrador cria a organização do cliente Alfa e disponibiliza a conexão da instância; a owner Carla faz a primeira pergunta de análise no primeiro dia. A organização do cliente Beta cadastra o próprio provedor de IA e vê o consumo e o custo dele. Quando a IA para, é avisado o dono da conexão (`D-218`).
+- **Retorno para o negócio:** a Maind controla a quem paga a IA e atrai o cliente que já tem contrato de IA; o consumo de quem traz a própria IA não pesa no custo de atender (`D-216`).
+- **O que não inclui:** o modo "tudo dentro", sem versão (`D-188`); o teto automático de custo, que não entra na v2.0 (`D-234`); o owner ver o consumo da conexão da instância (`D-241`); a pesquisa na web, que é da `MF-109`; o middleware na casa do contratante, que é a `MF-121`, na v2.1.
+- **Depende de:** `MF-101:Administração da instância` (o administrador cadastra e disponibiliza a conexão da instância); `MF-102:Organizações, pessoas e papéis` (o owner da organização e as roles).
+- **Valor:** **essencial**: sem IA conectada a organização não responde nenhuma pergunta de análise.
+**Contexto:** as páginas de leitura da v2.0 (05/11/2026) mostraram que a `MF-105` seguia "só no mapa", como base herdada, mas seu comportamento mudou com a regra das duas origens da IA, e não havia uma definição que juntasse as decisões.
+**Opções avaliadas:** definição direta, sem pontuação (o conteúdo já foi decidido nas decisões citadas).
+**Por que esta:** junta num lugar só o que o owner, o administrador e as pessoas podem fazer com a IA, que estava espalhado em seis decisões.
+**Fica de fora / adiado:** a forma de a conexão da instância chegar às organizações (`P-032`, do arquiteto); o preço do assento para quem traz a própria IA (`P-022`).
+**Hipóteses a validar:** 🔎 que as organizações com contrato de IA próprio queiram usá-lo; 🔎 que a Maind queira disponibilizar a conexão da instância a todas, ao menos no começo.
+**Reabrir quando:** o preço do assento for definido, ou o arquiteto devolver restrição à regra das duas origens.
+
+### D-245 · Os boards de exemplo das organizações de demonstração ficam no espaço da organização, publicados
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-065`. Os **boards de exemplo** das organizações de demonstração (a rede de lojas e a frota, `D-233`) nascem **no espaço da organização, publicados** para todos que entram. Como, na v2.0, todas as pessoas da organização veem os mesmos dados (`D-163`), qualquer membro de exemplo vê tudo pronto.
+**Completa a `D-232`:** os cenários das bases de demonstração; responde ao item `A-14` do documento 14.
+**Contexto:** as páginas de leitura da v2.0 (05/11/2026) traziam a dúvida na `MF-118`; a hipótese era essa.
+**Opções avaliadas:** sem pontuação (duas opções): **A. No espaço da organização, publicados** (escolhida; recomendação do PO) · B. Cada membro de exemplo tem os dele.
+**Por que esta:** qualquer membro de exemplo vê os boards prontos, sem depender de quem os "criou". Abre-se mão de mostrar o board pessoal de um membro ouro: ⚠️ o que o membro ouro cria para si não aparece nos boards de exemplo.
+**Fica de fora / adiado:** boards pessoais de exemplo, se o vendedor precisar mostrar o que o ouro cria.
+**Hipóteses a validar:** 🔎 que o espaço da organização baste para a demonstração.
+**Prova de valor:** o vendedor da Maind entra na organização da rede de lojas e vê os boards de vendas e de estoque já prontos e publicados.
+**Reabrir quando:** o vendedor precisar mostrar o board pessoal de um membro ouro.
+
+### D-244 · O agendamento ou o agente que espera o sim do owner aparece marcado "aguardando aprovação"
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-064`. Quando o owner liga a aprovação (`D-038`, `D-039`), o **agendamento ou o agente** que a pessoa cria **aparece na lista dela marcado "aguardando aprovação do owner"** e **não roda**. Quando o owner decide, a marca passa a **"ativo"** ou a **"recusado"**.
+**Completa a `D-038` e a `D-039`:** que deixaram "o que o usuário vê enquanto espera" fora.
+**Contexto:** as páginas de leitura da v2.0 (05/11/2026) traziam a dúvida na `MF-114`. Como a organização nasce com a aprovação automática (`D-228`), isso só acontece para o owner que a liga.
+**Opções avaliadas:** sem pontuação (duas opções): **A. Aparece marcado "aguardando aprovação"** (escolhida; recomendação do PO) · B. Só aparece depois de aprovado.
+**Por que esta:** a pessoa sabe por que nada sai e o que está pendente. Abre-se mão de nenhum estado novo: ⚠️ "aguardando aprovação" e "recusado" são estados a mais para construir e explicar.
+**Fica de fora / adiado:** se a pessoa é avisada quando o owner decide, e por qual canal: é do desenho do arquiteto.
+**Hipóteses a validar:** 🔎 que o owner dê conta de aprovar sem virar gargalo (a mesma hipótese da `D-038`).
+**Prova de valor:** a gestora Carla salva um agendamento; ele aparece marcado "aguardando aprovação do owner"; o owner Marcos aprova, e a marca passa a "ativo".
+**Reabrir quando:** os owners reclamarem do gargalo da aprovação.
+
+### D-243 · Se a pesquisa na web não traz fato, a resposta sai com os dados da empresa e um aviso curto
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-063`. Quando o interruptor "pesquisar na web" está ligado e a **pesquisa não traz nenhum fato**, a resposta **sai com os dados da empresa** e traz **um aviso curto** dizendo que a pesquisa na web não trouxe fatos.
+**Completa a `D-130`, a `D-162` e a `D-215`:** o fato da web entra com link e data (`D-130`), e a web é um interruptor (`D-215`); esta diz o caso sem fato.
+**Contexto:** as páginas de leitura da v2.0 (05/11/2026) traziam a dúvida na `MF-109`.
+**Opções avaliadas:** sem pontuação (três caminhos): **A. A resposta com os dados e um aviso curto** (escolhida; recomendação do PO) · B. A resposta sem aviso sobre a web · C. O Horus diz que não conseguiu responder.
+**Por que esta:** a pessoa sabe que a web foi tentada e não achou, e não fica sem a parte da empresa; mantém a regra de confiança de mostrar limites. Abre-se mão de uma resposta mais limpa: ⚠️ uma linha a mais.
+**Fica de fora / adiado:** o texto exato do aviso.
+**Hipóteses a validar:** 🔎 que o aviso curto não incomode quem liga a pesquisa por hábito.
+**Prova de valor:** a gestora Carla liga a pesquisa, e a busca não acha o índice do setor; a resposta traz o número da empresa e a frase "a pesquisa na web não trouxe fatos".
+**Reabrir quando:** a mensagem confundir as pessoas.
+
+### D-242 · O cartão do board guarda os fatos da web da resposta que o originou, com a data à vista, e não pesquisa de novo
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-062`. O **cartão do board** que nasce de uma resposta com **fato da web** **guarda os fatos que a resposta trouxe**, com o **link e a data à vista**, e **não pesquisa a web de novo** a cada atualização. Só os números da empresa se recalculam.
+**Completa a `D-130` e a `D-162`:** o fato da web entra com link e data; esta diz o que o cartão faz com ele. Responde ao item `A-09` do documento 14.
+**Contexto:** as páginas de leitura da v2.0 (05/11/2026) traziam a dúvida na `MF-109`: o cartão se recalcula, mas o fato da web veio de uma pesquisa.
+**Opções avaliadas:** sem pontuação (três caminhos): **A. Guarda os fatos, com a data à vista** (escolhida; recomendação do PO) · B. Pesquisa de novo a cada atualização · C. O fato da web não entra no cartão.
+**Por que esta:** sem custo de pesquisa a cada atualização e sem o fato mudar sozinho. Abre-se mão de o fato estar sempre atual: ⚠️ o fato envelhece, e a data à vista avisa quem olha o board.
+**Fica de fora / adiado:** uma forma de o autor atualizar o fato à mão, se pedirem.
+**Hipóteses a validar:** 🔎 que a data à vista baste para a pessoa saber que o fato pode estar velho.
+**Prova de valor:** a gestora Carla fixa "vendas de outubro contra a inflação do mês"; o cartão se recalcula toda noite, e a inflação continua a de outubro, com o link e a data à vista.
+**Reabrir quando:** os autores reclamarem de fatos velhos nos boards.
+
+### D-241 · O owner da organização vê o consumo e o custo de IA só da conexão que a organização paga
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-061`. O **owner da organização** vê o **consumo e o custo de IA da conexão da organização**, a própria, que a organização paga, como hoje. Da **conexão da instância** ele **não vê nada de IA**, nem consumo nem custo: quem acompanha é a Maind, pelo aviso de custo da administração (`D-153`).
+**Completa a `D-214` e a `D-216`:** a visão de cobrança do owner mostra só a contagem de assentos (`D-214`), e a IA tem duas origens (`D-216`).
+**Contexto:** as páginas de leitura da v2.0 (05/11/2026) traziam a dúvida na `MF-105`: depois de a Maind deixar de pagar a IA de todas as organizações (`D-216`), o que o owner vê do consumo.
+**Opções avaliadas:** sem pontuação (três caminhos sobre o que o owner vê): **A. Só o que a organização paga** (escolhida; recomendação do PO) · B. O consumo das duas, sem o custo da Maind · C. O consumo e o custo das duas.
+**Por que esta:** o owner vê o que paga, e o custo da Maind com a conexão da instância não aparece para o cliente (como na `D-214`). Abre-se mão de o owner saber quanto a equipe usa a IA da Maind: ⚠️ ele só sabe pelo uso que a Home da organização mostra (a medida de autonomia).
+**Fica de fora / adiado:** o owner ver o consumo da conexão da instância, se os owners pedirem.
+**Hipóteses a validar:** 🔎 que o painel de consumo da v1.xx sirva à conexão própria sem mudar.
+**Prova de valor:** a organização do cliente Alfa tem a própria conexão de IA e vê o consumo e o custo dela; a organização do cliente Beta usa a conexão da instância e não vê nada de IA além da contagem de assentos e da Home.
+**Reabrir quando:** owners que usam a conexão da instância pedirem para ver o consumo.
+
+### D-240 · Quando outro serviço da organização para, é avisado o dono do serviço
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-057`. Quando um serviço da organização que **não é a IA** para (a conta de WhatsApp com a nota de qualidade rebaixada ou bloqueada, a fonte de dados que deixou de conectar, o e-mail recusado pelo servidor), é **avisado o dono do serviço**, como na IA (`D-218`): o **owner da organização**, para a **fonte de dados** e para o **WhatsApp próprio** da organização; o **administrador da instância**, para o **número de WhatsApp compartilhado da Maind** e para o **e-mail da instância**.
+**Completa a `D-218`:** e responde ao resto do item `A-22` do documento 14.
+**Contexto:** a `D-218` resolveu a IA; o `I-057` guardava os outros serviços que a organização usa.
+**Opções avaliadas:** sem pontuação (três caminhos): **A. O dono do serviço** (escolhida; recomendação do PO) · B. Sempre o owner da organização, e o administrador quando o serviço é da instância · C. Ninguém; a falha aparece na resposta.
+**Por que esta:** o aviso vai a quem pode consertar, igual à regra da IA. Abre-se mão de avisar o owner da organização quando o serviço é da Maind: ⚠️ quem usa o número da Maind vê o canal parar sem aviso ao owner.
+**Fica de fora / adiado:** por qual canal o aviso chega (a área de avisos, o e-mail da instância) e a lista exata de situações: são do desenho do arquiteto (`A-22`).
+**Hipóteses a validar:** 🔎 que o owner da organização perceba pela resposta quando o serviço da Maind para.
+**Prova de valor:** a Meta bloqueia a conta de WhatsApp da organização do cliente Alfa; o owner dela é avisado. Se bloqueia o número da Maind, o administrador da instância é avisado.
+**Reabrir quando:** owners que usam serviços da Maind reclamarem de não saber por que um canal parou.
+
+### D-239 · A Home mostra as perguntas respondidas divididas por canal
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-060`. A **Home da organização** mostra a **divisão das perguntas de análise respondidas por canal**: a **conversa de análise** no app, a **Pergunta rápida** e o **WhatsApp**. O canal já é guardado em cada resposta, sem o texto (`D-133`). Quem vê a divisão segue a `D-238`.
+**Completa a `D-133` e a `D-238`:** e responde ao pedido de uma divisão por canal da `MF-117`.
+**Contexto:** a revisão das mfs da v2.0 (05/11/2026) achou a dúvida na `MF-117`: o canal é guardado, mas nenhuma decisão dizia se a Home o mostra.
+**Opções avaliadas:** sem pontuação (duas opções): **A. Sim, mostra a divisão por canal** (escolhida; recomendação do PO) · B. Não, só o total.
+**Por que esta:** é o sinal de sucesso da Pergunta rápida e do WhatsApp, e o dado já é guardado. Abre-se mão de uma Home mais enxuta: ⚠️ um card a mais.
+**Fica de fora / adiado:** outras divisões, como por área ou por horário.
+**Hipóteses a validar:** 🔎 que a divisão por canal ajude o owner a decidir se mantém um canal ligado.
+**Prova de valor:** o owner Marcos vê que, das 1.200 perguntas de outubro, 700 vieram da conversa, 300 da Pergunta rápida e 200 do WhatsApp.
+**Reabrir quando:** os owners não usarem a divisão, ou pedirem outras.
+
+### D-238 · O gestor vê a medida de autonomia da própria equipe
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** responde à primeira metade do `I-047`. Na Home da organização, o **owner** vê a **medida de autonomia** da organização inteira e a divisão por gestor e por pessoa (`D-133`); o **gestor** vê a medida e a divisão por pessoa **da equipe que ele gere**, como nos boards. Os **membros** (ouro, prata e bronze) não veem a divisão. O **comprador** acompanha pelo relatório da Maind, fora do produto (`D-132`).
+**Completa a `D-133`:** que dava o detalhe só ao owner.
+**Contexto:** a revisão das mfs da v2.0 (05/11/2026) achou a dúvida na `MF-117`: se o gestor vê a medida da própria equipe e como o comprador a acompanha. A divisão por canal virou o `I-060`.
+**Opções avaliadas:** sem pontuação (duas opções): **A. O gestor vê a da própria equipe** (escolhida; recomendação do PO) · B. Só o owner vê.
+**Por que esta:** o gestor acompanha a adoção da equipe e age onde a qualidade cai. Abre-se mão de a contagem ficar só com quem decide: ⚠️ o gestor vê quanto cada pessoa da equipe pergunta.
+**Fica de fora / adiado:** a divisão por canal (`I-060`); o que a medida da pessoa excluída mostra, que segue a `D-211` (o total fica como número sem dono).
+**Hipóteses a validar:** 🔎 que ver a contagem por pessoa não leve a equipe a perguntar por pressão e não por necessidade.
+**Prova de valor:** o gestor Pedro abre a Home e vê quantas perguntas a equipe dele teve em outubro e a qualidade das respostas; o owner Marcos vê a organização inteira.
+**Reabrir quando:** as equipes reclamarem de ver a própria contagem exposta ao gestor.
+
+### D-237 · O tema dos gráficos por organização fica na v2.0, como na v1.xx
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-046`. Cada organização **mantém o tema dos gráficos** (a paleta que ela escolhe), como na v1.xx, na base herdada das Respostas visuais (`MF-108`, `D-021`). A **interface e a marca seguem as da Maind** (`D-200`). O tema do contratante para o produto inteiro continua sem versão (`D-183`).
+**Completa a `D-021` e a `D-200`:** a base herdada e a marca da Maind.
+**Contexto:** a revisão das mfs da v2.0 (05/11/2026) achou que a página da `MF-108` trazia o tema da organização nos gráficos como base herdada, enquanto o tema do contratante estava sem versão.
+**Opções avaliadas:** sem pontuação (duas opções): **A. Fica como na v1.xx** (escolhida; recomendação do PO) · B. Sai: os gráficos usam o tema da Maind.
+**Por que esta:** nada a retirar da base herdada, e o cliente não perde o que já tem. Abre-se mão de uma identidade só: ⚠️ há gráficos com a paleta do cliente numa interface da Maind.
+**Fica de fora / adiado:** o tema do contratante para a interface inteira, sem versão (`D-183`).
+**Hipóteses a validar:** 🔎 que a paleta do cliente nos gráficos não destoe da interface da Maind.
+**Prova de valor:** a organização do cliente Alfa continua com a paleta de azuis nos gráficos dela, dentro da interface da Maind.
+**Reabrir quando:** a identidade única da Maind for prioridade, ou o tema do contratante voltar como mf própria.
+
+### D-236 · A planilha de convites em lote é do owner da organização
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-059`. A **planilha de convites em lote** é uma ferramenta **só do owner da organização**. **Cada linha traz o tipo de assento e o gestor** da pessoa; o lote **reserva os assentos** como o convite individual (`D-078`); a **linha sem vaga do tipo fica de fora** (`D-070`). O **gestor convida um a um** e o owner aprova (`D-071`). Na v2.0 a planilha não tem as colunas de claims (`D-199`).
+**Completa a `D-056` e a `D-071`:** e responde à letra (j) da `P-008` do lado do produto.
+**Contexto:** a revisão das mfs da v2.0 (05/11/2026) achou que a `MF-102` dizia que "a planilha convida em lote" sem dizer quem a usa nem como o lote conversa com a aprovação e a reserva.
+**Opções avaliadas:** sem pontuação (duas opções): **A. Só o owner da organização** (escolhida; recomendação do PO) · B. O owner e o gestor, com o owner aprovando o lote.
+**Por que esta:** o lote é para implantar uma organização, e o owner não precisa aprovar o que ele mesmo envia: não há fluxo de aprovação de lote. Abre-se mão de o gestor convidar rápido: ⚠️ o gestor com equipe grande convida um a um.
+**Fica de fora / adiado:** o gestor usar a planilha, se pedirem; o formato da planilha e a validação são do arquiteto (`P-008`, letra (j)).
+**Hipóteses a validar:** 🔎 que a planilha do owner baste para a implantação de organizações grandes.
+**Prova de valor:** a owner Carla envia uma planilha com 60 pessoas, cada uma com o tipo de assento e o gestor; os assentos são reservados, e as linhas sem vaga ficam de fora, com a lista do que faltou.
+**Reabrir quando:** gestores com equipes grandes pedirem para usar a planilha.
+
+### D-235 · O grupo dinâmico aceita o tipo de assento como regra
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** responde à primeira metade do `I-045`. A regra do **grupo dinâmico** (o que se atualiza sozinho, `D-029`) aceita, na v2.0, o **tipo de assento**: **owner, gestor, ouro, prata ou bronze**. A regra que já existia (o papel) fica compreendida por esta.
+**Completa a `D-029` e a `D-056`:** e a `D-194`, que criou os cinco tipos de assento.
+**Contexto:** a revisão das mfs da v2.0 (05/11/2026) achou que o grupo dinâmico seguia o papel (owner, gestor, membro), sem dizer se aceita os três tipos de membro. A segunda metade, a planilha de convites em lote, virou o `I-059`.
+**Opções avaliadas:** sem pontuação (duas opções): **A. Sim, o tipo de assento vira regra** (escolhida; recomendação do PO) · B. Não, só o papel.
+**Por que esta:** a owner monta "todo bronze" ou "todo ouro" e o grupo se atualiza quando o assento muda. Abre-se mão de nada relevante: ⚠️ o grupo passa a mudar de membros quando o tipo de assento de alguém muda.
+**Fica de fora / adiado:** outras regras de grupo (por exemplo, por gestor ou por data de entrada), se pedirem.
+**Hipóteses a validar:** 🔎 que o motor de grupos da v1.xx aceite o tipo de assento como atributo.
+**Prova de valor:** a owner Carla monta o grupo "todo bronze" e agenda o PDF semanal para ele; quando alguém passa a bronze, entra no grupo sozinho.
+**Reabrir quando:** os owners pedirem outras regras para o grupo.
+
+### D-234 · O teto automático de custo da IA não entra na v2.0; fica o aviso de custo
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-044`. **Não há teto automático de custo da IA** na v2.0, nem por agente nem por organização. Ficam os **tetos técnicos por execução** do arquiteto (`ARQ-030`) e o **aviso de custo** por organização na administração da instância (`D-153`), que só avisa e não corta nada sozinho. Quem responde age à mão.
+**Completa a `D-062` e a `D-153`:** a `D-062` deixou o teto "a pontuar"; a `D-153` criou o aviso de custo.
+**Contexto:** a revisão das mfs da v2.0 (05/11/2026) achou a dúvida na `MF-115`. Com a `D-216`, a Maind paga a IA só das organizações que usam a conexão da instância; nas demais, quem paga é a organização.
+**Opções avaliadas:** sem pontuação (três caminhos): **A. Não entra; fica o aviso de custo** (escolhida; recomendação do PO) · B. Teto por organização · C. Teto por agente.
+**Por que esta:** a v2.0 já é grande, e um teto automático pode pausar sem querer um agente importante. Abre-se mão de um freio automático: ⚠️ um agente com erro pode gastar até alguém ver o aviso de custo.
+**Fica de fora / adiado:** o teto automático, por agente ou por organização; sem versão, volta se o custo surpreender.
+**Hipóteses a validar:** 🔎 que o aviso de custo, somado aos tetos por execução, contenha um agente com erro a tempo.
+**Prova de valor:** um agente da Carla dobra o consumo; o aviso de custo da organização aparece na administração da instância, e a Maind age à mão.
+**Reabrir quando:** um agente com erro causar um custo que o aviso não conteve a tempo.
+
+### D-233 · A DRE de usina sai da vitrine da v2.0: ficam a rede de lojas e a frota
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-058`. A vitrine das bases de demonstração (`MF-118`) tem, na v2.0, **só duas organizações de exemplo**: a **rede de lojas** (McDonald's) e a **frota** (Global Fleet). A **DRE de usina sai** da vitrine da v2.0.
+**Completa a `D-232` e a `D-021`:** e responde ao item `A-14` do documento 14.
+**Contexto:** a página da `MF-118` dizia que só duas organizações de exemplo chegam à v2.0, sem dizer se a DRE de usina segue na vitrine.
+**Opções avaliadas:** sem pontuação (duas opções): **A. Sai da v2.0; ficam as duas organizações** (escolhida; recomendação do PO) · B. Fica como terceira organização de exemplo.
+**Por que esta:** menos organizações para preparar e manter com os cenários novos (`D-232`). Abre-se mão de um exemplo do ramo de energia: ⚠️ o vendedor que visitar um cliente desse ramo mostra a rede de lojas ou a frota.
+**Fica de fora / adiado:** a DRE de usina volta à vitrine se um cliente do ramo pedir; sem versão.
+**Hipóteses a validar:** 🔎 que duas organizações de exemplo cubram as demonstrações da v2.0.
+**Prova de valor:** a vitrine da v2.0 tem a rede de lojas e a frota, ambas com os cenários novos.
+**Reabrir quando:** houver cliente do ramo de energia que peça um exemplo próprio.
+
+### D-232 · Cada prova de valor da v2.0 ganha um cenário nas bases de demonstração
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** responde à parte dos cenários do `I-043`. As **bases de demonstração** (`MF-118`) ganham, na v2.0, **um cenário para cada prova de valor da v2.0**: os agentes, o WhatsApp, o rastro da Auditoria, a faixa de avisos e números, a Pergunta rápida e os assentos prata e bronze, além do que a base herdada já mostra. O **PO escreve a lista de cenários, mf a mf**, a partir das provas de valor das 18 mfs, na página da `MF-118`. A demonstração da segurança por pessoa continua fora (`D-199`).
+**Completa a `D-021` e a `D-199`:** a base herdada e a retirada da demonstração da segurança.
+**Contexto:** a revisão das mfs da v2.0 (05/11/2026) achou que a página da `MF-118` prometia cenários dos agentes, do WhatsApp e do rastro, enquanto o inventário só dizia "base herdada, sem a demonstração da segurança por pessoa".
+**Opções avaliadas:** sem pontuação (três caminhos): **A. Um cenário para cada prova de valor da v2.0** (escolhida; recomendação do PO) · B. Só o que o cliente vê primeiro (chat, boards e faixa) · C. As bases ficam como na v1.xx.
+**Por que esta:** o vendedor demonstra tudo o que a v2.0 promete, em dado fictício, inclusive a parte de acompanhar e avisar. Abre-se mão de preparo barato: ⚠️ preparar dado e conta de exemplo, inclusive de WhatsApp, dá trabalho.
+**Fica de fora / adiado:** a DRE de usina na vitrine (`I-058`); a lista detalhada de cenários (o PO a escreve na página); a leitura 🔎 de que os boards de exemplo ficam publicados no espaço da organização, que segue como hipótese da página.
+**Hipóteses a validar:** 🔎 que seja viável ter uma conta de WhatsApp de exemplo; 🔎 que, com o SaaS numa instância só (`D-193`), as organizações de exemplo vivam na instância da Maind e a regra de "nunca na instância do contratante, salvo pedido" perca o sentido.
+**Prova de valor:** o vendedor da Maind mostra, na organização de exemplo, um agente que avisa quando as vendas do Sul caem 10%, o envio por e-mail e a Auditoria registrando a entrega.
+**Reabrir quando:** o trabalho de preparar os cenários pesar, e a opção de mostrar só o que o cliente vê primeiro voltar à mesa.
+
+### D-231 · O aviso de abertura da Auditoria tem texto padrão do Horus e não pede ciência no primeiro acesso
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-042`. O Horus traz um **texto padrão** do aviso de que a Auditoria registra **quem abriu o quê** (`D-090`), já **publicado**, que o **owner da organização pode trocar** pelo dele. A pessoa o encontra por um **link**; o **primeiro acesso não pede ciência** (não há tela de "li e aceito"). Assim, a abertura nunca é registrada sem um aviso publicado.
+**Completa a `D-090` e a `ARQ-043`:** e responde ao item `A-30` do documento 14. A exclusão da conta ficou resolvida pela `D-210`.
+**Contexto:** a revisão das mfs da v2.0 (05/11/2026) achou a mesma dúvida em duas páginas (`MF-112` e `MF-116`): onde fica o documento, se há texto padrão e se o primeiro acesso pede ciência.
+**Opções avaliadas:** sem pontuação (três caminhos): **A. Texto padrão, sem pedir ciência** (escolhida; recomendação do PO) · B. Texto padrão e ciência no primeiro acesso · C. Sem texto padrão: o owner publica o dele.
+**Por que esta:** a abertura é sempre registrada com um aviso publicado, sem uma tela de aceite para todas as pessoas. Abre-se mão da prova de que a pessoa leu: ⚠️ o Horus não consegue provar que ela foi avisada.
+**Fica de fora / adiado:** o texto jurídico do aviso e o lugar exato do link, que são do jurídico da Maind e do arquiteto; a ciência no primeiro acesso, se o jurídico exigir.
+**Hipóteses a validar:** 🔎 que o aviso sem ciência baste diante da proteção de dados pessoais (`P-045`, do jurídico, trata de assunto parecido).
+**Prova de valor:** o gestor Pedro abre um board; no rodapé do Horus há o link do aviso padrão, e a owner Carla pode trocar o texto pelo da empresa dela.
+**Reabrir quando:** o jurídico da Maind ou de um cliente exigir a ciência da pessoa.
+
+### D-230 · No cartão descrito em texto, o autor vê o resultado antes de salvar, e salvar é aprovar
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-056`. No **cartão do board escrito por descrição**, o Horus **mostra o resultado ao autor antes de salvar**, e **salvar é a aprovação**, sem um estado à parte (rascunho, aguardando aprovação). A regra é a mesma para todo cartão do editor único: o de resposta e o de descrição.
+**Completa a `D-057` e a `D-058`:** o board e o relatório de hoje se fundem num editor só; esta diz como a região por descrição entra, e responde ao item `A-23`, 2, do documento 14.
+**Contexto:** no relatório de hoje, cada região de dado só fica pronta quando o gestor aprova a receita (a consulta montada), que nunca vai ao navegador; o cartão do board nasce de uma resposta já calculada, sem aprovação.
+**Opções avaliadas:** sem pontuação (três caminhos sobre a aprovação): **A. Vê o resultado e salvar é aprovar** (escolhida; recomendação do PO) · B. Aprovação à parte, como no relatório de hoje · C. Sem aprovação, vai direto ao board.
+**Por que esta:** uma regra só para o editor, sem estado novo para construir e explicar. Abre-se mão do passo de conferência separado: ⚠️ o autor pode salvar sem conferir direito o que o Horus montou.
+**Fica de fora / adiado:** um aviso quando o Horus não tiver certeza do que montou, se o arquiteto propuser.
+**Hipóteses a validar:** 🔎 que ver o resultado antes de salvar baste para o autor perceber uma consulta errada.
+**Prova de valor:** o gestor Pedro descreve "margem por loja no trimestre", vê o gráfico montado e, ao salvar, o cartão passa a valer no board, sem outra etapa.
+**Reabrir quando:** cartões com consulta errada chegarem a boards publicados.
+
+### D-229 · O board maior que a folha vira um PDF de uma página só, do tamanho do board
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026; a ideia veio dele, "não dá pro tamanho da folha do PDF aumentar?", e virou a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** responde à primeira metade do `I-041`. O **PDF de um board maior que a folha** tem **uma página só, do tamanho do board**: a folha **cresce** até caber, sem reduzir o board e sem cortar cartão. Completa a `D-057` (todo board, de qualquer tamanho, pode ser impresso em PDF a partir da mesma montagem).
+**Contexto:** a `D-057` deixou de fora como um board grande vira PDF (item `A-23`, 1, do documento 14). O dono perguntou se o tamanho da folha podia aumentar; a arquitetura já registra que a impressão sem tela, feita pelo navegador, imprime qualquer tamanho (`ARQ-007`).
+**Opções avaliadas:** sem pontuação (três caminhos): **A. A folha cresce até caber o board** (escolhida; sugestão do dono) · B. Várias folhas A4, sem cortar cartão (recomendação do PO antes da sugestão) · C. Uma folha A4, reduzida para caber.
+**Por que esta:** o PDF fica legível na tela e no celular, como uma foto fiel do board, sem reduzir nem cortar. Abre-se mão do formato A4: ⚠️ impresso, a impressora reduz a página, e uma página muito maior que a folha pode ficar pequena no papel.
+**Fica de fora / adiado:** um limite para o tamanho da página (um board enorme) e o aviso ao autor quando o PDF passar do teto de tamanho do canal (`D-227`).
+**Hipóteses a validar:** 🔎 que a leitura em tela, a principal, baste; 🔎 que um board muito alto continue legível no celular.
+**Prova de valor:** o board de vendas da Carla, com 12 cartões, sai num PDF de uma página só, do tamanho dele, com todos os cartões legíveis.
+**Reabrir quando:** os autores pedirem impressão em A4 ou o PDF ficar grande demais para os canais.
+
+### D-228 · A organização nasce com os interruptores liberados, e o owner restringe
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-039`. Quando uma organização é criada, **todos os interruptores nascem liberados** e **o owner da organização restringe o que quiser**: (1) a **aprovação dos contatos** dos conectores nasce **automática** (`D-038`, `D-039`); (2) o **gestor pode publicar** boards (`D-042`); (3) a **role padrão** nasce com **tudo ligado**, inclusive o botão do WhatsApp (`D-112`), que só funciona depois que o owner liga o canal (`D-097`).
+**Completa a `D-038`, a `D-039`, a `D-042` e a `D-112`:** diziam o que cada interruptor faz; esta diz como ele nasce.
+**Contexto:** a revisão das mfs da v2.0 (05/11/2026) achou a dúvida de como nascem os interruptores em quatro páginas (`MF-112` a `MF-115`); a role padrão foi decidida antes de existirem o botão do WhatsApp e o dos conectores de saída.
+**Opções avaliadas:** sem pontuação (três caminhos sobre o nascimento): **A. Todos liberados; o owner restringe** (escolhida; recomendação do PO) · B. Todos travados; o owner libera · C. Os que custam nascem travados.
+**Por que esta:** tudo funciona no primeiro dia e a regra é uma só. Abre-se mão de segurança por padrão: ⚠️ o owner que não olhar as configurações deixa tudo aberto, inclusive o que gera custo, que só gasta depois que o owner liga o canal.
+**Fica de fora / adiado:** uma tela de revisão das configurações no primeiro acesso do owner.
+**Hipóteses a validar:** 🔎 que os owners revisem as configurações depois do primeiro dia.
+**Prova de valor:** a Maind cria a organização do cliente Alfa; o gestor Pedro, convidado pela owner Carla, já publica um board e cadastra o contato dele sem esperar aprovação.
+**Reabrir quando:** um cliente reclamar de ter começado com tudo liberado, ou o custo de um canal ligado por padrão surpreender.
+
+### D-227 · O artefato que não cabe no canal não é entregue naquele canal, e o autor é avisado
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-055`. Quando o **artefato não cabe no canal** (um PDF maior que o anexo do e-mail, um alerta maior que a mensagem do WhatsApp), o Horus **não o entrega naquele canal**, **não o corta nem o altera** e **avisa o autor**, como numa falha (`D-226`). O conector segue só transportando (`D-035`).
+**Completa a `D-035` e a `D-226`:** e responde ao item `A-19` do documento 14.
+**Contexto:** segunda metade do `I-038`: a revisão das mfs da v2.0 (05/11/2026) achou a dúvida nas páginas dos conectores (`MF-113`) e dos agentes (`MF-115`).
+**Opções avaliadas:** sem pontuação (três caminhos sobre o artefato grande): **A. Não entrega naquele canal e avisa o autor** (escolhida; recomendação do PO) · B. Entrega um link para abrir no Horus · C. Reduz o artefato para caber.
+**Por que esta:** o conector não passa a alterar o artefato, e ninguém recebe um PDF cortado. Abre-se mão de o destinatário receber algo: ⚠️ ele fica sem o PDF até o autor reduzir o board ou o texto do alerta.
+**Fica de fora / adiado:** o tamanho máximo de cada canal e o texto do aviso ao autor: são do desenho do arquiteto; o link para o Horus, se os autores pedirem.
+**Hipóteses a validar:** 🔎 que poucos artefatos passem do limite dos canais.
+**Prova de valor:** o PDF do board de fim de ano passa do anexo do e-mail; o Horus não o envia por e-mail, e a gestora Carla recebe o aviso.
+**Reabrir quando:** os autores reclamarem de artefatos que não chegam, e a opção do link voltar à mesa.
+
+### D-226 · Quando a execução de um agendamento ou agente falha, só o autor recebe o aviso
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** responde à primeira metade do `I-038`. Quando a **execução de um agendamento ou de um agente falha** (erro ou passou do teto da execução), os **destinatários não recebem nada** naquela rodada e **só o autor recebe o aviso de falha**. A **próxima rodada segue no horário normal**.
+**Completa a `D-060` e a `D-062`:** e responde ao item `A-10` do documento 14.
+**Contexto:** a revisão das mfs da v2.0 (05/11/2026) achou a dúvida nas páginas dos agendamentos e dos agentes (`MF-114` e `MF-115`). A segunda metade do `I-038`, o artefato que não cabe no canal, virou o `I-055`.
+**Opções avaliadas:** sem pontuação (duas opções): **A. Só o autor recebe o aviso** (escolhida; recomendação do PO) · B. O autor e os destinatários recebem aviso.
+**Por que esta:** ninguém recebe um PDF quebrado ou uma mensagem confusa, e quem pode consertar fica sabendo. Abre-se mão de avisar os destinatários: ⚠️ eles ficam sem o PDF e não sabem por quê.
+**Fica de fora / adiado:** por qual canal o aviso chega ao autor; quantas tentativas o Horus faz antes de desistir de uma rodada; o tamanho do alerta pelo WhatsApp: são do desenho do arquiteto.
+**Hipóteses a validar:** 🔎 que o autor veja o aviso a tempo de consertar antes da próxima rodada.
+**Prova de valor:** o PDF de segunda da gestora Carla falha; os 8 destinatários não recebem nada e a Carla recebe o aviso de falha; na segunda seguinte, o PDF sai normalmente.
+**Reabrir quando:** os destinatários reclamarem de não saber por que o relatório não veio.
+
+### D-225 · Quem escreve no WhatsApp sem poder conversar recebe uma resposta fixa que aponta para o app
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-037`. Quem escreve para o número de WhatsApp do Horus e **não pode conversar** (sem o número ligado, sem o botão do WhatsApp na role ou como membro bronze) recebe **uma resposta fixa, sem dado nenhum**, que diz que o Horus não conversa com aquele número e **aponta para o app** (ligar o número ou pedir acesso ao owner). A mesma mensagem vale para todos esses casos.
+**Completa a `D-094` e a `D-203`:** e responde ao item `A-18` do documento 14.
+**Contexto:** a revisão das mfs da v2.0 (05/11/2026) achou a dúvida na `MF-111`: o bronze não pergunta, e o canal só abre a quem tem o número ligado e o botão. O bronze, porém, recebe PDFs pelo WhatsApp (`D-079`), então pode responder ao que recebeu.
+**Opções avaliadas:** sem pontuação (três caminhos sobre a resposta): **A. Uma resposta fixa que aponta o app** (escolhida; recomendação do PO) · B. Silêncio · C. Resposta só a quem tem número ligado.
+**Por que esta:** ninguém fica sem entender por que o Horus não respondeu. Abre-se mão de não responder a números desconhecidos: ⚠️ um número que ninguém ligou também recebe a mensagem, que não revela dado nenhum.
+**Fica de fora / adiado:** o texto exato da mensagem e se ela cabe nas mensagens-padrão que a Meta aprova: são do desenho do arquiteto.
+**Hipóteses a validar:** 🔎 que a mensagem fixa seja suficiente para o bronze entender; 🔎 que o custo da resposta fixa seja desprezível.
+**Prova de valor:** o Rui, membro bronze, escreve "vendas de outubro?" no WhatsApp e recebe a mensagem fixa que diz que o Horus não conversa por ali e aponta para o app.
+**Reabrir quando:** números desconhecidos gerarem custo ou abuso, ou o bronze pedir uma resposta diferente.
+
+### D-224 · No WhatsApp, o telefone da pessoa fica ligado a uma organização por vez; é o mesmo número da conversa e dos avisos
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-036`. O **telefone de uma pessoa fica ligado a uma organização por vez**: ligá-lo numa organização **move a ligação** das outras, com **aviso à pessoa**. Assim, no número de WhatsApp compartilhado da Maind, o Horus sempre sabe qual organização responde (`D-097.2`). E a pessoa tem **um número só**, que serve à **conversa e aos avisos** dos conectores (`D-094.2`); não há um número para cada uso.
+**Completa a `D-094` e a `D-097`:** e responde ao item `A-17` do documento 14.
+**Contexto:** a revisão das mfs da v2.0 (05/11/2026) achou a dúvida em três páginas (`MF-111`, `MF-113` e `MF-118`): o Horus reconhece a organização pelo número de quem escreve, e uma pessoa pode estar em duas organizações. A primeira metade (um número só) já estava respondida pela leitura `D-094.2`, confirmada.
+**Opções avaliadas:** sem pontuação (três caminhos sobre quem está em duas organizações): **A. O número fica numa organização por vez** (escolhida; recomendação do PO) · B. O Horus pergunta a organização na conversa · C. Com duas organizações, só o número próprio.
+**Por que esta:** o Horus sempre sabe qual organização responde, sem menu dentro do WhatsApp. Abre-se mão de a pessoa usar o mesmo telefone nas duas ao mesmo tempo: ⚠️ o consultor que atende duas organizações religa o número ao trocar de uma para outra.
+**Fica de fora / adiado:** o texto do aviso à pessoa e a mensagem que ela recebe no WhatsApp quando o número foi movido: são do desenho do arquiteto.
+**Hipóteses a validar:** 🔎 que poucas pessoas estejam em duas organizações no número da Maind; 🔎 que religar o número seja simples.
+**Prova de valor:** o consultor Davi liga o telefone na organização Beta; a ligação com a Alfa sai, ele é avisado, e as perguntas dele no WhatsApp passam a ser respondidas pela Beta.
+**Reabrir quando:** muitas pessoas estiverem em duas organizações e reclamarem de religar o número.
+
+### D-223 · O owner da organização continua lendo as conversas de todos, sem aviso especial à pessoa
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, contra a recomendação do PO, que era ler e avisar a pessoa) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-035`. O **owner da organização continua lendo as conversas de todas as pessoas** da organização, como na v1.xx, e **nada de especial é mostrado à pessoa** sobre isso: não há aviso de privacidade que diga que o owner lê.
+**Contexto:** a revisão das mfs da v2.0 (05/11/2026) achou a dúvida em duas páginas (`MF-102` e `MF-107`; item `A-16`, 2, do documento 14): a regra veio da v1.xx sem decisão para a v2.0 e toca a proteção de dados pessoais.
+**Opções avaliadas:** sem pontuação (três caminhos sobre a leitura): A. Lê, e a pessoa é avisada (recomendação do PO) · **B. Lê, sem aviso especial** (escolhida pelo dono) · C. O owner não lê as conversas.
+**Por que esta:** mantém o que a v1.xx faz e não cria tela nem texto novo. Abre-se mão da transparência: ⚠️ a pessoa não sabe que o owner lê o que ela pergunta, o que cria risco com a proteção de dados pessoais, e quem pergunta sobre algo sensível pode se sentir vigiado quando descobrir.
+**Fica de fora / adiado:** um aviso de privacidade sobre a leitura; o aviso de abertura da Auditoria é outra coisa (`I-042`).
+**Hipóteses a validar:** 🔎 que ler as conversas sem aviso especial seja aceitável diante da proteção de dados pessoais (`P-045`, do jurídico); 🔎 que as pessoas não deixem de perguntar por isso.
+**Prova de valor:** a owner Carla abre a lista de conversas da organização e lê a conversa de um membro; o membro não vê nenhum aviso sobre isso.
+**Reabrir quando:** o jurídico da Maind exigir o aviso, ou um cliente o pedir, ou as perguntas dos membros caírem depois que eles descobrirem a leitura.
+
+### D-222 · Conta como pergunta de análise respondida só a que trouxe dado da empresa ou fato da web
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-034`. Na **medida de autonomia** (`D-133`), conta como **pergunta de análise respondida** só a resposta que **trouxe dado da empresa ou fato da web, com resultado**. **Não contam**: a consulta que volta **vazia**, a **falha** (`D-004`) e a **conversa sem dado nem web**. Vale na conversa, na Pergunta rápida, salva ou não (`D-087`), e no WhatsApp.
+**Completa a `D-004` e a `D-133`:** e responde ao item `A-08` do documento 14.
+**Contexto:** a revisão das mfs da v2.0 (05/11/2026) achou a mesma dúvida em três páginas (`MF-107`, `MF-110` e `MF-117`), cada uma com uma lista de casos diferente.
+**Opções avaliadas:** sem pontuação (três caminhos sobre o que conta): **A. Só a que trouxe dado ou web** (escolhida; recomendação do PO) · B. Conta também a consulta vazia · C. Conta tudo o que o Horus respondeu.
+**Por que esta:** o número mede análise de verdade e não infla com "oi, tudo bem?". Abre-se mão de contar uma resposta correta de "não há vendas nesse período": ⚠️ uma pergunta bem respondida, mas sem dado, não entra na medida.
+**Fica de fora / adiado:** nada.
+**Hipóteses a validar:** 🔎 que o número sem as respostas vazias continue refletindo o uso; 🔎 que o motor consiga distinguir a consulta vazia da que tem resultado.
+**Prova de valor:** o Rui pergunta "vendas por região em outubro" e a resposta com dados conta; pergunta "vendas do Sul em 2019", que volta vazia, e "oi, tudo bem?", e nenhuma das duas conta.
+**Reabrir quando:** a medida de autonomia parecer baixa demais para o cliente, ou a consulta vazia ficar frequente.
+
+### D-221 · Só o dono do board fixa uma resposta nele; não é um botão das roles
+Situação: 🟢 decidida (resposta do dono em 05/11/2026 à pergunta do `I-033`, fora das opções oferecidas; o texto dele vale como veio: "O dono do board") · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-033`. **Fixar uma resposta num board** (guardar o gráfico ou a tabela da conversa no painel) é permitido **só ao dono do board**, o autor dele. Como a prata e o bronze não criam boards (`D-203`), eles não têm board em que fixar e não veem o controle. **Não é um botão das roles**: elas continuam com nove botões. Vale na conversa e na Pergunta rápida, que herda o controle (`D-088`).
+**Completa a `D-203` e a `D-044`:** só o autor edita o board (`D-044`); fixar é editá-lo.
+**Contexto:** a revisão das mfs da v2.0 (05/11/2026) achou a mesma dúvida em três páginas (`MF-102`, `MF-108`, `MF-110`): o item `A-24` do documento 14 perguntava se fixar é um botão da role ou segue o tipo de assento.
+**Opções avaliadas:** sem pontuação (a resposta veio fora das opções). Oferecidas: segue o tipo de assento (recomendação do PO) · vira o décimo botão das roles. A resposta se aproxima da primeira, com a regra de quem pode: o dono do board.
+**Por que esta:** fixar é editar o board, e quem edita um board é só o autor; assim não há botão novo nem regra a mais. Abre-se mão de fixar no board de outra pessoa: ⚠️ um gestor não consegue fixar uma resposta num board que o owner ou outro gestor criou.
+**Fica de fora / adiado:** fixar num board de outra pessoa.
+**Hipóteses a validar:** 🔎 que "dono do board" seja o autor do board; no espaço da organização, o owner da organização (`D-048`).
+**Prova de valor:** a gestora Carla fixa uma resposta no board dela; o Rui, membro prata, vê a resposta mas não vê o controle de fixar.
+**Reabrir quando:** as pessoas pedirem para fixar num board de outra pessoa.
+
+### D-220 · O teto do nível de inferência é o de cada fonte; a role só pode baixá-lo
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-032`. O **teto do nível de inferência é o de cada fonte de dados**, como na v1.xx: quem conhece o dado o define na fonte. O botão de nível máximo da **role** (`D-110`) pode **baixar** esse teto para a pessoa, **nunca subir**; vale sempre o **menor**. Não há um teto único da organização, e o "teto da organização" de que as roles falam é o teto das fontes. O agente segue livre do teto (`D-024`).
+**Completa a `D-111` e a `D-024`:** e responde ao item `A-13` do documento 14.
+**Contexto:** a revisão das mfs da v2.0 (05/11/2026) achou a mesma dúvida em três páginas de leitura (`MF-102`, `MF-104` e `MF-107`): as roles falavam num teto da organização, e o teto, hoje, é de cada fonte.
+**Opções avaliadas:** sem pontuação (três caminhos sobre onde mora o teto): **A. Teto de cada fonte, e a role só baixa** (escolhida; recomendação do PO) · B. Um teto único da organização · C. Os dois tetos, vale o menor.
+**Por que esta:** nada novo para construir e o dono do dado continua mandando no dado. Abre-se mão de um botão único "nunca passe do nível 2" para a organização inteira: ⚠️ para limitar tudo, o owner baixa a role, não a fonte.
+**Fica de fora / adiado:** um teto único da organização, se os owners pedirem.
+**Hipóteses a validar:** 🔎 que baixar pela role baste para o owner que quer limitar a organização inteira.
+**Prova de valor:** o banco de vendas aceita até o nível 3 e o financeiro, até o 1; a role "Comercial" baixa o limite para o 2; o grupo Comercial recebe o nível 2 nas vendas e o 1 no financeiro.
+**Reabrir quando:** owners pedirem um teto único para a organização inteira.
+
+### D-219 · O modelo semântico é escrito fora do Horus e o owner da organização o carrega
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-031`. O **time de dados**, do cliente ou da Maind na implantação, **escreve o modelo semântico fora do Horus** e entrega o arquivo; o **owner da organização o carrega** na organização, como dono do modelo (`D-013`). Ninguém de fora entra na organização para escrevê-lo, nenhum assento novo é criado para isso, e a Maind segue sem ver os dados das conexões (`D-193`).
+**Completa a `D-083.1` e a `D-193`:** dizem que o time de dados escreve o modelo e que a Maind não vê os dados das conexões; esta diz como as duas coisas convivem.
+**Contexto:** a revisão das mfs da v2.0 (05/11/2026) achou que a `MF-104` listava o time de dados entre quem usa a mf, sem dizer com que assento ele escreve o modelo.
+**Opções avaliadas:** sem pontuação (três caminhos sobre onde se escreve): **A. Fora do Horus; o owner carrega o arquivo** (escolhida; recomendação do PO) · B. O time de dados entra como owner da organização · C. Um acesso novo, só para o modelo.
+**Por que esta:** mantém a regra de que a Maind não vê os dados do cliente e não cria papel nem assento. Abre-se mão de o time de dados testar o modelo contra os dados reais dentro do Horus: ⚠️ quem escreve o modelo só o vê funcionando depois que o owner o carrega.
+**Fica de fora / adiado:** um acesso de modelagem, se os times de dados pedirem; o formato do arquivo e o carregamento são do arquiteto.
+**Hipóteses a validar:** 🔎 que escrever o modelo sem testá-lo nos dados reais não atrase a implantação.
+**Prova de valor:** a analista Bia, da Maind, entrega o arquivo do modelo; a owner Carla o carrega na organização, e o Horus passa a responder com as definições da empresa.
+**Reabrir quando:** as implantações atrasarem por falta de teste dentro do Horus.
+
+### D-218 · Quando a IA para, é avisado o dono da conexão
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-030`. Quando a IA de uma organização para (chave recusada ou falta de crédito), é **avisado o dono da conexão**: o **owner da organização**, se a conexão é da organização, e o **administrador da instância** (a Maind), se é da instância (`D-216`). O owner de uma organização que usa a conexão da instância não recebe aviso.
+**Completa a `D-216`:** dá a cada conexão o responsável por saber que ela parou.
+**Contexto:** o item `A-22` do documento 14 partia de que a chave, a conta e a fonte eram da organização; a `D-216` mostrou que a conexão pode ser da instância.
+**Opções avaliadas:** sem pontuação (duas opções): **A. O dono da conexão** (escolhida; recomendação do PO) · B. O dono da conexão e, sempre, o owner da organização.
+**Por que esta:** o aviso vai a quem pode consertar, sem ruído para os outros. Abre-se mão de avisar o owner da organização quando a conexão é da instância: ⚠️ ele vê a IA parar sem ter sido avisado.
+**Fica de fora / adiado:** por qual canal o aviso chega (a área de avisos, o e-mail da instância) e o que a pessoa vê na tela quando a IA para: são do desenho do arquiteto (`A-22`).
+**Hipóteses a validar:** 🔎 que a pessoa que perguntou entenda que a IA está indisponível, mesmo sem aviso ao owner.
+**Prova de valor:** o crédito da conexão da instância acaba, e o administrador da instância é avisado; nenhum owner de organização recebe o aviso.
+**Reabrir quando:** owners de organizações que usam a conexão da instância reclamarem de não saber por que a IA parou.
+
+### D-217 · A organização nasce sem IA; o administrador da instância disponibiliza uma conexão ao criá-la
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-054`. Uma organização **nasce sem IA**. No mesmo passo em que **cria a organização e libera os assentos** (`D-146`, `D-080`), o **administrador da instância escolhe se disponibiliza** a ela uma conexão de IA da instância (`D-216`). A organização que traz a própria IA cadastra a conexão dela depois, pelo owner da organização.
+**Completa a `D-216` e a `D-146`:** criar a organização passa a incluir a escolha da conexão de IA da instância.
+**Contexto:** a `D-216` criou a conexão da instância, disponibilizada por organização, sem dizer o que a organização recém-criada tem.
+**Opções avaliadas:** sem pontuação (três caminhos sobre a origem da primeira IA): **A. O administrador disponibiliza ao criar** (escolhida; recomendação do PO) · B. Nasce com a conexão padrão da instância · C. A organização traz a própria.
+**Por que esta:** a Maind decide, caso a caso, a quem paga a IA, no passo em que já cria a organização. Abre-se mão do funcionamento automático no primeiro dia: ⚠️ se o administrador esquecer de disponibilizar uma conexão, o owner da organização não consegue fazer a primeira pergunta de análise até ele fazer ou até o owner cadastrar a dele.
+**Fica de fora / adiado:** o aviso, ao administrador, de uma organização sem IA nenhuma; a forma de a conexão chegar à organização (`P-032`, do arquiteto).
+**Hipóteses a validar:** 🔎 que o administrador não esqueça o passo da IA; 🔎 que uma organização sem IA seja visível na administração.
+**Prova de valor:** o administrador da instância cria a organização do cliente Alfa, libera 10 assentos e disponibiliza a conexão de IA da instância; a owner Carla faz a primeira pergunta de análise no primeiro dia.
+**Reabrir quando:** organizações novas ficarem sem IA por esquecimento, e a opção de uma conexão padrão voltar à mesa.
+
+### D-216 · A IA pode ser da organização ou da instância: a Maind não paga a IA 100% das vezes
+Situação: 🟢 decidida (resposta do dono em 05/11/2026 à pergunta do `I-029`, fora das opções oferecidas; ele corrigiu a premissa da `D-159`; o texto dele vale como veio: "Não é verdade que é a Maind que vai pagar o modelo 100% das vezes. Será possível o owner da org cadastrar o provedor de IA desejado na ORG. Será possível também cadastrar um provedor de IA no nível da Instância, e via owner da instância disponibilizar ou não para uma ou mais ORGs. No entanto uma conexão de IA de instância compartilhada com a ORG não permite edição em nível de Org.") · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-029`. Há **duas origens de conexão de IA**: (1) a **conexão da organização**, que o **owner da organização** cadastra com o provedor de IA que quiser; **quem paga é a organização**; (2) a **conexão da instância**, que o **owner da instância** (a Maind) cadastra no nível da instância e **disponibiliza ou não a uma ou mais organizações**; **quem paga é a Maind**. Uma conexão da instância compartilhada com a organização **não pode ser editada no nível da organização**.
+**Substitui em parte a `D-159`:** que dizia que a Maind paga a IA de todas as organizações e a embute no preço do assento, deixando a conta própria da organização para depois. Isso vale só para as organizações que usam a conexão da instância; a conta própria da organização existe na v2.0.
+**Responde ao `I-029`:** quem define os modelos que a organização pode aceitar: ficam os modelos das conexões que ela tem, as dela e as que a instância lhe disponibiliza. A Maind controla o que paga decidindo o que disponibiliza; não limita o que a organização paga com a conexão própria.
+**Contexto:** a pergunta do `I-029` (a Maind limita os modelos?) partia da `D-159`. O dono explicou que há uma conexão da organização e uma da instância, e que a da instância é disponibilizada por organização.
+**Opções avaliadas:** sem pontuação (a resposta veio fora das opções). Oferecidas: a Maind define a lista (recomendação do PO) · o owner escolhe livremente · a Maind escolhe o modelo.
+**Por que esta:** a organização que já tem contrato com um provedor de IA pode usá-lo e arcar com o custo, e a Maind decide a quem paga a IA. Abre-se mão de um preço do assento que embuta a IA em todos os casos: ⚠️ o preço do assento passa a depender de a organização usar ou não a conexão da instância (`P-022`).
+**Fica de fora / adiado:** se a organização nova nasce já com a conexão da instância ou sem IA até o administrador disponibilizar uma (`I-054`); quem é avisado quando a IA para, que agora depende de quem é a conexão (`I-030`); o teto automático de custo (`I-044`); o preço do assento para quem traz a IA própria (`P-022`); a forma de a conexão da instância chegar às organizações (`P-032`, do arquiteto).
+**Hipóteses a validar:** 🔎 que as organizações que trazem a própria IA aceitem pagar o consumo; 🔎 que a Maind queira disponibilizar a conexão da instância a todas, ao menos no começo.
+**Prova de valor:** a Maind cadastra um provedor de IA na instância e o disponibiliza à organização da Carla, que o usa sem editá-lo; a organização de outro cliente cadastra o próprio provedor e paga o consumo.
+**Reabrir quando:** o preço do assento for definido, ou as organizações pedirem para editar a conexão da instância.
+
+### D-215 · A web deixa de ser um modo de perguntar e vira um interruptor "pesquisar na web", ao lado dos dados
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-028`. Os **modos de perguntar** passam a ser **dois: dados e conversa**. A **web** deixa de ser um modo e vira um **interruptor "pesquisar na web"**, que a pessoa liga dentro da conversa e que roda **ao lado** da consulta aos dados (ou da conversa), quando a instância e a role autorizam (`D-162`). Na role, o botão que liga os modos passa a incluir a **pesquisa na web** no lugar do modo web; a contagem de nove botões (`D-110`, `D-122.1`) não muda.
+**Completa a `D-162`:** que fez da web o modelo sair à internet quando autorizado e deixou o cadastro de páginas de fora.
+**Contexto:** a revisão das mfs da v2.0 (05/11/2026) achou que a `MF-107` descrevia a web como um dos três modos, enquanto a `MF-109` a descrevia como pesquisa ao lado da consulta ao banco.
+**Opções avaliadas:** sem pontuação (duas opções): **A. Interruptor ao lado dos dados** (escolhida; recomendação do PO) · B. Continua um modo à parte.
+**Por que esta:** a pergunta que cruza o número da empresa com um fato de fora (por exemplo, as vendas de outubro e a inflação do mês) cabe numa resposta só, com link e data do fato. Abre-se mão do desenho dos três modos que quem usa a v1 conhece: ⚠️ a tela de perguntar muda.
+**Fica de fora / adiado:** o tipo de fonte de páginas web da v1.xx: o arquiteto confere se some ou continua (`P-034`).
+**Hipóteses a validar:** 🔎 que a pessoa entenda que a pesquisa na web é um complemento, e não um lugar de onde vêm os números da empresa.
+**Prova de valor:** a gestora Carla liga "pesquisar na web" e pergunta se as vendas de outubro acompanharam a inflação; a resposta traz o número da empresa e o índice de fora, com link e data.
+**Reabrir quando:** as pessoas pedirem para perguntar só à web, sem consultar os dados.
+
+### D-214 · A visão de cobrança do owner da organização mostra só a contagem de assentos
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-027`. A **visão de cobrança** (de billing) do owner da organização (`D-193`) mostra **só a contagem de assentos**: para cada tipo (owner, gestor, ouro, prata e bronze), **quantos a organização tem, quantos usa e quantos estão livres** (`D-070`). Não mostra o custo, o relatório nem a história dos assentos, que ficam com o administrador da instância (`D-149`, `D-157`, `D-166`); o uso do Horus está na Home da organização (`MF-117`).
+**Completa a `D-193`:** que deu a visão de billing ao owner da organização sem dizer o que há nela.
+**Contexto:** a revisão das mfs da v2.0 (05/11/2026) achou a mesma dúvida em três páginas de leitura (`MF-101`, `MF-103` e `MF-105`).
+**Opções avaliadas:** sem pontuação (três caminhos sobre o que se mostra): **A. Só a contagem de assentos** (escolhida; recomendação do PO) · B. A contagem mais o uso do período · C. Tudo o que a Maind vê da organização.
+**Por que esta:** a Maind paga a IA e a embute no assento (`D-159`); mostrar o custo ao cliente exporia a margem, e a história de cada pessoa é só da administração. Abre-se mão de o owner conferir o custo e o uso na cobrança: ⚠️ para ver o uso, ele usa a Home da organização.
+**Fica de fora / adiado:** o preço em reais (`P-022`); mostrar o uso do período na cobrança, se os owners pedirem.
+**Hipóteses a validar:** 🔎 que a contagem de assentos baste para o owner conferir a fatura.
+**Prova de valor:** a owner Carla abre a cobrança e vê, por tipo de assento, quantos tem, quantos usa e quantos estão livres.
+**Reabrir quando:** owners pedirem o uso, o custo ou a história na cobrança.
+
+### D-213 · A faixa é um contêiner de componentes; o aviso do owner da organização é o componente "caixa de texto livre"
+Situação: 🟢 decidida (resposta do dono em 05/11/2026 à pergunta do `I-026`, fora das opções oferecidas; o texto dele vale como veio: "A faixa será um container para componentes que ainda vamos criar... um deles é um box de texto livre... ainda vamos definir outros como KPIs, ícones, etc") · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-026`. A faixa de avisos e números (`MF-120`) é um **contêiner de componentes** que ainda serão criados. O **aviso do owner da organização** não tem regra própria: é o componente **"caixa de texto livre"**, um dos componentes do catálogo da faixa (`D-173`). Os **demais componentes, como KPIs e ícones, ainda serão definidos**, e as regras de cada componente (por exemplo, hora de fim e retirada à mão, que o aviso da instância já tem, `D-165`) são definidas junto com o componente.
+**Completa a `D-170`, a `D-173` e a `D-212`:** a lista e as regras dos componentes ficam para a definição deles; o card de número (`D-212`) é um deles.
+**Contexto:** a pergunta do `I-026` (o aviso do owner da organização: texto livre, hora de fim, retirada à mão). O dono respondeu descrevendo o modelo da faixa como um contêiner, e não escolheu uma das três opções.
+**Opções avaliadas:** sem pontuação (a resposta veio fora das opções). Oferecidas: texto livre com fim opcional e retirada à mão, como o da instância (recomendação do PO) · texto livre com hora de fim obrigatória · só avisos prontos do catálogo.
+**Por que esta:** a faixa nasce como um espaço de componentes, e cada um se define a seu tempo, em vez de a faixa fixar as regras de um aviso antes de existir o catálogo. Abre-se mão de fechar já o comportamento do aviso do owner da organização: ⚠️ a hora de fim e a retirada à mão dele ficam em aberto até a definição do componente.
+**Fica de fora / adiado:** a lista dos componentes (KPIs, ícones, etc.) e as regras de cada um, inclusive o ciclo de vida do aviso do owner da organização. É o que a página da `MF-120` já declara como "os componentes do catálogo" em "Ainda a decidir".
+**Hipóteses a validar:** 🔎 que um contêiner de componentes, definidos aos poucos, caiba na v2.0 sem pedir corte (`D-204`).
+**Prova de valor:** a owner Carla escreve, num componente de texto livre da faixa, "Fechamento do mês: lancem as despesas até sexta", e todas as pessoas da organização que não esconderam a faixa o veem.
+**Reabrir quando:** o catálogo de componentes for desenhado, ou os owners pedirem um aviso com hora de fim obrigatória.
+
+### D-212 · Num card de número da faixa, o owner escolhe a métrica do modelo semântico e o período
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-025`. O **card de número** da faixa de avisos e números (`MF-120`) é um **componente pronto do catálogo da faixa**; o owner da organização o aponta para uma **métrica já definida no modelo semântico** da organização (por exemplo, vendas ou margem) e escolhe o **período** (por exemplo, ontem, a semana, o mês). Escolher a métrica e o período **não é criar componente**: o owner segue sem criar componentes próprios (`D-170`).
+**Completa a `D-170` e a `D-171`:** elas diziam que o owner só escolhe quais cards passam e em que ordem; esta diz o que ele informa em cada card de número.
+**Contexto:** a revisão das mfs da v2.0 (05/11/2026) achou que o exemplo da página da `MF-120` mostrava o owner escolhendo "as vendas de ontem e a margem do mês", sem que nenhuma decisão dissesse como um componente genérico sabe qual é a "margem" de cada empresa.
+**Opções avaliadas:** sem pontuação (três caminhos sobre um ponto): **A. A métrica do modelo semântico e o período** (escolhida; recomendação do PO) · B. Só números de uso do Horus, sem número do negócio · C. O resultado de uma pergunta de análise já salva.
+**Por que esta:** o número do negócio aparece na faixa com a definição que a empresa deu (o significado de "margem" é da empresa), sem componente novo. Abre-se mão de a faixa funcionar numa organização sem modelo semântico: ⚠️ sem a métrica definida, só aparecem os números de uso.
+**Fica de fora / adiado:** o owner criar componentes próprios; a lista dos componentes do catálogo.
+**Hipóteses a validar:** 🔎 que as métricas mais pedidas já existam nos modelos semânticos das organizações; 🔎 que o motor de cards que a v1.xx já tem sirva a esse card (a conferir com o arquiteto, `P-036`).
+**Prova de valor:** a owner Carla escolhe, na tela de configuração da faixa, o card de número "Vendas" para "ontem" e o card "Margem" para "o mês", e a faixa mostra os dois com a definição da empresa.
+**Reabrir quando:** as organizações não tiverem as métricas no modelo semântico ou pedirem números que o modelo não traz.
+
+### D-211 · O total de perguntas respondidas da organização segue como número sem dono quando alguém é excluído
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-053`. Quando uma pessoa é excluída, o **total de perguntas de análise respondidas da organização**, e a série mensal que a Home mostra, **continuam como estavam**: o número fica **sem dono**, sem ligação com a pessoa (sem nome, sem conversa, sem o que ela avaliou). O que se apaga é a ligação com a pessoa, não o número agregado.
+**Completa a `D-210`**, que apaga os registros da pessoa; e **preserva a `D-133`** (a medida de autonomia).
+**Contexto:** a `D-210` apagou a contagem que é da pessoa; sem esta decisão, o total de um mês passado encolheria quando alguém saísse.
+**Opções avaliadas:** sem pontuação (duas opções): **A. Segue como número sem dono** (escolhida; recomendação do PO) · B. A parte da pessoa some do total.
+**Por que esta:** a medida de sucesso e a economia calculada com o cliente (`D-132`) não mudam para trás. Abre-se mão de apagar até o número: ⚠️ a organização guarda um total que veio de uma pessoa apagada, sem dado pessoal.
+**Fica de fora / adiado:** a proteção de dados pessoais confirmar que um número agregado sem ligação com a pessoa está fora do que se apaga (`P-044`).
+**Hipóteses a validar:** 🔎 que o número agregado, sem ligação com a pessoa, não seja dado pessoal.
+**Prova de valor:** o Pedro, que respondeu 300 das 1.200 perguntas de outubro, é excluído em novembro; a Home continua mostrando 1.200 em outubro.
+**Reabrir quando:** o jurídico ou a proteção de dados pessoais exigirem apagar também o agregado.
+
+### D-210 · Quem é excluído leva consigo os registros dele: o rastro, os reportes pendentes e a contagem
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, contra a recomendação do PO, que era guardar tudo, com o nome) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-052`. Quando uma pessoa é **excluída da organização**, os **registros dela são apagados junto**: o rastro da Auditoria (o que ela entregou e o que ela abriu), os reportes de resposta errada que ela fez e o owner ainda não analisou, e a contagem da medida de autonomia que é dela. Completa a `D-206` e a `D-209` (quem é excluído perde em definitivo).
+**Substitui em parte** a `D-087` (que guardava a resposta reportada até o owner analisá-la) e a proposta do arquiteto de manter o rastro de quem pede a exclusão da conta até vencer o prazo do owner (`A-16`, item 3, do documento 14).
+**Contexto:** a `D-206` e a `D-209` fizeram quem sai perder o que criou; faltava dizer se a organização guarda os registros que não são criação da pessoa.
+**Opções avaliadas:** sem pontuação (três caminhos sobre o que se guarda): A. Guarda tudo, com o nome, até o prazo do rastro (recomendação do PO) · B. Guarda sem o nome · **C. Apaga tudo junto com a pessoa** (escolhida pelo dono).
+**Por que esta:** quem sai leva tudo, sem guarda de dado pessoal, sem exceção para explicar. Abre-se mão do histórico: ⚠️ a Auditoria perde o que a pessoa entregou e abriu (o owner não consegue mais ver quem entregou o quê); o reporte pendente se perde antes de ser analisado; e a contagem de perguntas respondidas pode cair (`I-053`).
+**Fica de fora / adiado:** se o total da organização na medida de autonomia cai ou segue como número sem dono (`I-053`); e se apagar tudo respeita a guarda que a lei exige do registro de acesso (a `ARQ-035` fixa seis meses) e as cópias de segurança (`P-044`, do arquiteto).
+**Hipóteses a validar:** 🔎 que as organizações aceitem perder o histórico de quem sai; 🔎 que a exclusão de dados da pessoa seja compatível com a guarda legal (`P-044`).
+**Prova de valor:** o gestor Pedro é excluído; a Auditoria deixa de mostrar o que ele entregou e abriu, e os reportes dele que ninguém analisou desaparecem.
+**Reabrir quando:** a Auditoria ficar sem utilidade por causa dos buracos, o jurídico exigir guarda, ou os owners pedirem para guardar o histórico sem o nome.
+
+### D-209 · Não há transferência: quem é excluído perde em definitivo, e quem é rebaixado só desabilita
+Situação: 🟢 decidida (resposta do dono em 05/11/2026 à pergunta do `I-050`, fora das opções oferecidas; o texto dele vale como veio: "na verdade tínhamos definido o seguinte... uma pessoa excluída perde em definitivo. Se ela é rebaixada, apenas desabilitamos.") · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-050` e o `I-040`. O Horus **não tem transferência** do que a pessoa criou, nem na v2.0 nem na v2.1:
+- **Quem é excluído da organização perde em definitivo** o que criou: boards, conversas, agendamentos e agentes (`D-206`).
+- **Quem é rebaixado** (de ouro a prata ou a bronze) **tem o que criou desabilitado**, vinculado a ela e só para excluir (`D-207`); se voltar a ser ouro, reativa um a um (`D-208`).
+- Não nasce a `MF-124` e a v2.1 não ganha mf de transferência. O board que o owner publicou e que calcula com o acesso dele (`D-164`) **some junto com o owner que sai**.
+**Completa a `D-206`**, retirando dela a ideia de a transferência voltar "na v2.1".
+**Contexto:** o PO perguntou se a transferência voltaria na v2.1 como mf própria (`D-197`). O dono respondeu que a regra já era essa: excluído perde em definitivo, rebaixado desabilita.
+**Opções avaliadas:** sem pontuação (a resposta veio fora das opções). Oferecidas: mf própria na v2.1 (recomendação do PO) · sem versão · não volta. A resposta equivale à terceira, com a regra dos dois casos.
+**Por que esta:** simplifica para sempre: sem transferência, sem área da organização que recebe o que sai, sem regra de quem recebe. Abre-se mão de o owner salvar o trabalho de quem sai: ⚠️ um gestor que sai leva o board que compartilhou e o PDF que agendava para a equipe; um board público some com o owner que o publicou, e quem estava na quarentena deixa de vê-lo.
+**Fica de fora / adiado:** o que a organização guarda de quem sai (o rastro, os reportes pendentes e a medida de autonomia), no `I-052`.
+**Hipóteses a validar:** 🔎 que owners e gestores aceitem perder o trabalho de quem sai; 🔎 que a leitura de "perde" seja excluir os dados da pessoa (e não escondê-los), a confirmar com o arquiteto e com a proteção de dados pessoais.
+**Prova de valor:** o gestor Pedro é excluído da organização, e os boards e agendamentos dele deixam de existir; nenhum owner recebe nada para transferir.
+**Reabrir quando:** uma organização perder trabalho importante com a saída de uma pessoa e pedir para recuperá-lo.
+
+### D-208 · Quem volta a ser ouro reativa, um a um, o que ficou desabilitado
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-049`. Quando uma pessoa que passou de ouro a prata ou a bronze **volta a ser ouro**, o que ficou desabilitado (`D-207`) **não volta sozinho**: ela **reativa cada item**, um a um, quando quiser. Mantém a leitura `D-073.2` ("nada volta sozinho").
+**Completa a `D-207`.**
+**Contexto:** a `D-207` deixou o que a pessoa criou vinculado e desabilitado; faltava dizer o que acontece na volta ao ouro.
+**Opções avaliadas:** sem pontuação (três caminhos sobre um estado): **A. Ela reativa um a um** (escolhida; recomendação do PO) · B. Tudo volta sozinho · C. Continua só para excluir.
+**Por que esta:** nenhum agente ou agendamento antigo volta a gastar a IA que a Maind paga (`D-159`) sem que alguém peça. Abre-se mão da volta automática: ⚠️ quem recupera o assento reativa item por item.
+**Fica de fora / adiado:** reativar vários de uma vez, se pedirem.
+**Hipóteses a validar:** 🔎 que reativar um a um não incomode a quem tem muitos itens.
+**Prova de valor:** a Júlia volta a ser ouro, e os 4 boards e o agendamento continuam desabilitados até ela reativá-los, um por um.
+**Reabrir quando:** owners ou membros reclamarem de reativar muitos itens.
+
+### D-207 · Quem passa de ouro a prata ou a bronze mantém o que criou, desabilitado e só para excluir
+Situação: 🟢 decidida (resposta do dono em 05/11/2026 à pergunta do `I-051`, fora das opções oferecidas; o texto dele vale como veio: "Mantém vinculado mas fica desabilitado sem a possibilidade de uso (permitindo apenas exclusão)") · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-051`. Quando uma pessoa passa de ouro a prata ou a bronze e **continua na organização**, o que ela criou (boards, relatórios, agendamentos e agentes) **continua vinculado a ela, mas fica desabilitado, sem possibilidade de uso**. A **única ação permitida é excluir**. Os agendamentos e os agentes deixam de rodar.
+**Substitui em parte** a `D-203` (a segunda parte, que mandava o que a pessoa criou para a área da organização, com agendamentos e agentes pausados até o owner transferir ou excluir) e a `D-073` (a mesma regra, para a passagem de membro full a leitor). Quem **sai** da organização segue a `D-206`: perde tudo.
+**Contexto:** a `D-206` tirou a área da organização e a transferência da v2.0, e a passagem de faixa dependia dela. As três opções oferecidas eram: perder tudo como quem sai, só trocar depois de apagar, ou guardar o que criou só para ver. O dono respondeu com uma quarta, que mantém o trabalho sem custo e sem uso.
+**Opções avaliadas:** sem pontuação (a resposta veio fora das opções). Oferecidas: perder tudo como quem sai (recomendação do PO) · a troca só depois de a pessoa apagar · guardado, só para ver.
+**Por que esta:** reduzir um assento não apaga trabalho, e o que criou não consome a IA que a Maind paga (`D-159`) enquanto a pessoa não tem o assento que cria. Abre-se mão de uma regra só para quem sai e para quem muda de faixa: ⚠️ a v2.0 passa a ter um estado a mais (desabilitado e vinculado) para construir e explicar.
+**Fica de fora / adiado:** se, ao voltar a ser ouro, o que ficou desabilitado volta a funcionar (`I-049`).
+**Hipóteses a validar:** 🔎 que "desabilitado" siga o comportamento do board desabilitado da `D-044` e da `D-045`: no lugar do board aparece o aviso de board desativado para quem o abrir; 🔎 que a pessoa veja a lista do que ficou desabilitado para poder excluir, mesmo sem poder abrir.
+**Prova de valor:** a Júlia, ouro com 4 boards e 1 agendamento, passa a prata; os 4 boards e o agendamento continuam dela, mas desabilitados, e ela só consegue excluí-los.
+**Reabrir quando:** owners reclamarem de reduzir o assento sem poder aproveitar o que a pessoa criou.
+
+### D-206 · Na v2.0, quem sai da organização perde o que criou: não há transferência
+Situação: 🟢 decidida (resposta do dono em 05/11/2026 à pergunta do `I-048`: "vamos simplificar isso na v2.1... uma pessoa que sai da org, perde os boards, conversas, agendamentos, etc... mais fácil pra primeira versão"; o texto dele vale como veio) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-048`. Na v2.0, a pessoa que **sai da organização perde o que criou**: os **boards, as conversas, os agendamentos, os agentes** e o mais que for dela. **Não há transferência** e a área da organização **não recebe** o que as pessoas deixam. É a versão mais simples para a primeira entrega.
+**Substitui** a `D-205` (que ficou sem objeto) e, para quem sai da organização, a parte da `D-044`, da `D-045` e da `D-073` que mandava o que a pessoa criou para a área da organização, onde o owner transferia ou excluía. Os agendamentos e agentes "pausados até o owner transferir" também deixam de existir na v2.0.
+**Contexto:** a pergunta do `I-048` (o que acontece com os destinatários que o gestor novo não gere) nasceu da transferência da `D-205`. O dono preferiu tirar a transferência da v2.0 a regular seus detalhes.
+**Opções avaliadas:** sem pontuação (a resposta veio fora das opções). As opções oferecidas eram sobre a transferência: tirar os destinatários fora da carteira, recusar a transferência, ou o owner liberar e responder.
+**Por que esta:** menos regra para construir e para explicar; quem sai leva embora o que era dele. Abre-se mão de o owner salvar o trabalho de quem sai: ⚠️ um gestor que sai faz sumir o board que ele compartilhou com a equipe e o PDF que ele agendava para ela.
+**Fica de fora / adiado:** a transferência. O dono falou em "simplificar na v2.1": se ela volta e como (uma mf própria, pela `D-197`) é o `I-050`. O que acontece com quem passa de ouro a prata ou a bronze, que continua na organização, é o `I-051`. O que a organização guarda de quem sai (o rastro da Auditoria, os reportes pendentes e a contagem da medida de autonomia) é o `I-052`.
+**Hipóteses a validar:** 🔎 que perder o que criou, sem aviso nem transferência, não afaste owners e gestores; o aviso antes de a pessoa sair é um detalhe de desenho do arquiteto.
+**Prova de valor:** o analista Rui sai da organização, e os boards, as conversas e os agendamentos dele deixam de existir; nada dele aparece na área da organização.
+**Reabrir quando:** uma organização perder trabalho importante com a saída de uma pessoa e pedir a transferência.
+
+### D-205 · O owner da organização só transfere o que ficou na área da organização a outro owner ou a um gestor
+Situação: ⚪ substituída por `D-206` (era 🟢 decidida em 05/11/2026, contra a recomendação do PO, que era "owner, gestor ou ouro"; o dono tirou a transferência da v2.0) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-024`. Quando o owner da organização transfere o que ficou na **área da organização** (agendamentos, agentes e boards de quem saiu, `D-044`, `D-045`, ou de quem passou de ouro a prata ou a bronze, `D-073`, `D-203`), só pode transferi-lo a **outro owner** ou a um **gestor**. O membro ouro, a prata e o bronze não recebem. O que não for transferido continua pausado ou é excluído.
+**Substitui em parte** a `D-045` e a `D-073`, que diziam que o owner transfere "para qualquer pessoa da organização".
+**Contexto:** a revisão das mfs da v2.0 (05/11/2026) achou que a transferência para "qualquer pessoa" batia com a `D-203` (a prata e o bronze não criam) e com a `D-059` (só o gestor e o owner entregam dados a outras pessoas, e o ouro agenda só para si). Quem recebe um agendamento de equipe precisa poder entregá-lo à equipe.
+**Opções avaliadas** (sem pontuação: três caminhos sobre quem recebe): A. Owner, gestor ou ouro (recomendação do PO: só quem cria, `D-203`; o agendamento de equipe perderia destinatários nas mãos de um ouro) · **B. Só owner ou gestor** (escolhida pelo dono: só recebe quem pode entregar a outras pessoas, `D-059`) · C. Qualquer pessoa, como antes (contradiz a `D-203`: a prata e o bronze ficariam donos de agente e agendamento que não podem editar, com a IA paga pela Maind, `D-159`).
+**Por que esta:** o que sai sozinho para outras pessoas fica com quem pode entregar a outras pessoas. Abre-se mão de o membro ouro herdar um board ou um agendamento: ⚠️ uma organização sem gestor só passa o que ficou a um owner.
+**Fica de fora / adiado:** o que acontece com os destinatários que o novo dono não alcança (`I-048`); e como a pessoa que volta a ser ouro recebe de volta o que criou, já que a `D-073.2` dizia que o owner "devolve à mão, transferindo" (`I-049`).
+**Hipóteses a validar:** 🔎 que toda organização tenha, ao menos, um owner ou um gestor para receber.
+**Prova de valor:** o gestor Pedro sai, e a owner Carla transfere o agendamento da equipe dele a outro gestor; o sistema não lhe oferece um membro ouro, prata ou bronze como destino.
+**Reabrir quando:** organizações pequenas, sem gestor, pedirem que o ouro herde o que ficou.
+
+### D-204 · A MF-120 sai da lista de cortes: o aviso da instância só chega às pessoas por ela
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-023`. A `MF-120:Faixa de avisos e números` **deixa de ser a candidata a corte** da v2.0 e fica nela como parte indispensável: o aviso da instância vai **só pela faixa** (`D-151`), e a `MF-101:Administração da instância`, essencial, depende dela (`D-202`).
+**Substitui em parte a `D-174`**, que dava a `MF-120` como a mf mais fácil de cortar e a classificava como "acelera": o valor dela passa a **indispensável à v2.0**, pelo aviso da instância.
+**Contexto:** a revisão das mfs da v2.0 (05/11/2026) achou que a `D-174` e o documento 05 davam a `MF-120` como cortável, enquanto a prova de valor da `MF-101` mostra o aviso da instância aparecendo na faixa. Cortar a `MF-120` deixaria a `MF-101` sem canal para o aviso.
+**Opções avaliadas** (sem pontuação: o caso é pequeno e as três opções diferem numa escolha só): **A. A `MF-120` sai da lista de cortes** (escolhida; recomendação do PO) · B. Corte possível, com um aviso mínimo dentro da `MF-101` (o aviso seria construído duas vezes) · C. Corte possível, e o aviso volta por e-mail aos owners (desfaz parte da `D-151`; o aviso passa a depender de a pessoa ler o e-mail).
+**Por que esta:** mantém a prova de valor da `MF-101` e o aviso sem e-mail (`D-151`) sem construir duas vezes. Abre-se mão da folga de cortar escopo: ⚠️ se a v2.0 apertar, o corte sai de outra mf.
+**Fica de fora / adiado:** nada.
+**Hipóteses a validar:** 🔎 que o custo da faixa, sobretudo o cálculo dos cards de número por pessoa (`P-036`), caiba na v2.0 sem pedir corte.
+**Prova de valor:** a Maind publica um aviso de manutenção e ele aparece na faixa de todas as pessoas que não a esconderam, sem e-mail.
+**Reabrir quando:** o arquiteto dimensionar a `MF-120` e o custo for desproporcional; então a opção B volta à mesa.
+
+### D-203 · O membro prata pergunta e investiga, e criar é do ouro; quem muda de faixa deixa o que criou na área da organização
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com as opções recomendadas nas duas perguntas) · Data: 05/11/2026 · Versão: v2.0 (a investigação é da `MF-119`, v2.1) · ⚠️ a segunda parte (o que a pessoa criou vai para a área da organização) foi substituída pela `D-207`
+
+**Decisão:** fecha o `I-022`.
+- **O membro prata** usa o chat (no app, na Pergunta rápida e no WhatsApp), usa a **Investigação guiada** (`MF-119`, quando chegar) e **recebe alertas e PDFs**. **Não cria** board, relatório, agendamento nem agente. Cada faixa soma uma coisa: o **bronze vê**, a **prata pergunta**, o **ouro cria** (`D-193`, `D-194`).
+- **Quem passa de ouro a prata ou a bronze** deixa o que criou (boards, relatórios, agendamentos e agentes) na **área da organização**, e os agendamentos e os agentes ficam pausados até o owner transferi-los ou excluí-los. É a regra da `D-073`, que só tratava da passagem de membro full a leitor, estendida a toda passagem para uma faixa que não cria.
+**Completa a `D-194`** (que deixou de fora o que a prata faz) **e estende a `D-073`**.
+**Contexto:** impasse `I-022`, achado pelas páginas de leitura. A `D-194` dizia só que a prata pergunta e não cria boards nem relatórios.
+**Opções avaliadas** (nota de 0 a 100, pesos da `D-015`; notas do PO, em hipótese). *O que a prata faz:* **B. Pergunta e investiga; criar é do ouro: 72 (escolhida; recomendação do PO)** · A. Prata = ouro sem boards e relatórios: 60 · C. Decidir ponto a ponto: 56. *Quem muda de faixa:* **A. O que criou vai para a área da organização: 72 (escolhida; recomendação do PO)** · B. Fica com a pessoa, só para ver: 50.
+**Por que esta:** a escada fica simples de explicar e de cobrar, e a Maind não paga a IA de agentes criados por quem só pergunta (`D-159`). Abre-se mão de a prata automatizar avisos: ⚠️ quem quer um aviso periódico precisa de um assento de ouro.
+**Fica de fora / adiado:** o preço da prata (`P-022`).
+**Hipóteses a validar:** 🔎 que a diferença entre prata e ouro seja entendida e aceita como cobrável (`D-194`).
+**Prova de valor:** o membro prata pergunta, investiga e recebe alertas e PDFs, e não vê a opção de criar boards, relatórios, agendamentos nem agentes; ao passar de ouro a prata, o que ele criou aparece na área da organização.
+**Reabrir quando:** clientes pedirem avisos periódicos sem assento de ouro, ou a prata e o ouro passarem a ser cobrados do mesmo jeito.
+
+### D-202 · Definição macro da MF-101:Administração da instância
+Situação: 🟢 decidida (proposta do PO, confirmada pelo dono em 05/11/2026) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** a `MF-101:Administração da instância`, que era base herdada (`D-021`) e cresceu com as decisões `D-146` a `D-166`, fica definida assim:
+- **O que é:** o painel de quem opera o Horus, que no SaaS é um **funcionário da Maind** (o administrador da instância, `D-147`, `D-193`). Nele, a Maind **cria e administra as organizações** (`D-146`, `D-148`), **libera, reduz e corta os assentos** de cada uma (`D-080`), **vê o uso e o custo** de cada organização e **baixa o relatório** dela, em planilha e PDF, com a história dos assentos (`D-149`, `D-153`, `D-157`, `D-166`), **publica o aviso da instância** (`D-151`, `D-165`), cuida do **e-mail do produto** (`D-155`) e da **marca da Maind** (`D-200`), e pode **perguntar ao próprio Horus** sobre a história da instância (`D-158`).
+- **Quem ganha:** o **administrador da instância** (a Maind), que opera o SaaS sem planilha nem chamado; de forma indireta, o **owner da organização**, que recebe os assentos e os avisos.
+- **Decisão que passa a ser possível:** saber quanto cada organização usa e custa, liberar ou cortar assentos, abrir uma organização nova e avisar todo mundo de uma manutenção, tudo num lugar só.
+- **Prova de valor:** a Maind cria uma organização, libera os assentos dela, acompanha o uso e o custo, baixa o relatório em planilha e PDF e publica um aviso de manutenção que aparece na faixa de todas as pessoas.
+- **Retorno para o negócio:** controle da receita e do custo por organização (a cobrança por assento depende dele, `D-080`) e menos suporte para operar o SaaS.
+- **O que não inclui:** ver os dados das conexões das organizações (`D-193`); a marca completa do contratante, sem versão (`D-200`); o interruptor geral da segurança, que é da `MF-106` (`D-199`); o middleware e a instalação no cliente (`D-188`, `D-195`); a página pública do estado da instância (`D-154`); o preço (`P-022`).
+- **Depende de:** `MF-102:Organizações, pessoas e papéis` (as pessoas e os papéis); `MF-103:Licenças e planos` (os assentos); `MF-120:Faixa de avisos e números` (onde o aviso aparece).
+- **Valor:** **essencial** para operar o SaaS: sem ela a Maind não cria organizações nem libera assentos.
+**Contexto:** o agente que reescreveu a página de leitura da `MF-101` notou que ela não tinha definição macro no formato da mf, só as decisões espalhadas.
+**Opções avaliadas:** definição direta, sem pontuação (o conteúdo já foi decidido nas decisões citadas).
+**Por que esta:** reúne num lugar só o que a `MF-101` é depois da `D-197`, sem decidir nada novo de valor.
+**Hipóteses a validar:** 🔎 que o administrador da instância não precise ver os dados das conexões para dar suporte (`D-193`).
+**Reabrir quando:** o suporte da Maind pedir ver mais, ou o dono quiser mudar o que a mf inclui.
+
+### D-201 · Definição macro da MF-122:Conectores de chat corporativo e da MF-123:Fonte AWS Athena
+Situação: 🟢 decidida (proposta do PO, confirmada pelo dono em 05/11/2026) · Data: 05/11/2026 · Versão: v2.1 (onda 1)
+
+**Decisão:** as duas mfs novas da `D-198` ficam definidas assim. Com ela, a `P-043` se fechou.
+
+**`MF-122:Conectores de chat corporativo`** (nome provisório)
+- **O que é:** dois conectores novos para o "carteiro" da `MF-113`: o **Microsoft Teams** e o **Google Chat**. O agente e o agendamento entregam o aviso, o PDF ou a imagem a um canal do Teams ou a um espaço do Google Chat, **só a usuários do Horus** (`D-035`).
+- **Quem ganha:** o **gestor e os membros** que recebem avisos onde a equipe já conversa; o **owner da organização**, que liga o conector, com a aprovação da TI do cliente (`D-124`).
+- **Decisão que passa a ser possível:** receber o aviso no chat da empresa, sem depender de abrir o e-mail ou o WhatsApp.
+- **Prova de valor:** o aviso de um agente chega a um canal do Teams e a um espaço do Google Chat (`D-182`).
+- **Retorno para o negócio:** adoção e retenção, porque o aviso chega onde a equipe já está; abre as empresas que vivem no Teams ou no Google Workspace (a Maind, primeiro cliente, usa o Google Workspace).
+- **O que não inclui:** outros conectores (o Slack, por exemplo); entregar a quem não é usuário do Horus; conversar com o Horus pelo chat corporativo (isso é a `MF-111`, no WhatsApp, `D-099`); o desenho técnico da integração (do arquiteto, `P-038`).
+- **Depende de:** `MF-113:Conectores de Saída` (o carteiro); `MF-114` e `MF-115` (o que gera o aviso); a aprovação da TI de cada cliente.
+- **Valor:** **expande**.
+
+**`MF-123:Fonte AWS Athena`** (nome provisório)
+- **O que é:** o **AWS Athena** passa a **responder perguntas de análise**, como as outras fontes vivas (hoje ele só cadastra, `D-161`).
+- **Quem ganha:** o **gestor e o executivo** de uma organização cujos dados estão no Athena; o **owner**, que conecta a fonte.
+- **Decisão que passa a ser possível:** perguntar em português aos dados que estão no AWS, sem pedir ao time de dados.
+- **Prova de valor:** uma organização conecta um Athena e recebe uma resposta de análise (`D-161`).
+- **Retorno para o negócio:** abre as empresas com dados no AWS. ⚠️ Não há demanda conhecida (`D-161`).
+- **O que não inclui:** outras fontes novas; a segurança por pessoa no Athena além do que a `MF-106` cobrir (hoje só cobre o SQL Server, `P-033`); o desenho técnico do conector e do dialeto (do arquiteto, `P-033`).
+- **Depende de:** `MF-104:Conectar as fontes vivas` (a base das fontes); `MF-107:Perguntar aos dados em português`; `MF-106:Segurança dos dados por pessoa`.
+- **Valor:** **expande**.
+
+**Contexto:** a `D-198` criou as duas mfs a partir das partes da `MF-113` e da `MF-104`, e a `P-043` pedia a definição no formato da mf. O conteúdo vem das `D-182` e `D-161`; o PO só reuniu e completou o que o formato pede.
+**Opções avaliadas:** definição direta, sem pontuação (o conteúdo já foi decidido pelo dono nas `D-161` e `D-182`).
+**Por que esta:** cumpre o formato da mf sem decidir nada novo de valor. Abre-se mão de nada.
+**Hipóteses a validar:** 🔎 que o Teams e o Google Chat saiam juntos, numa mf só; 🔎 que a `MF-123` caiba na onda 1 junto da `MF-106` (`P-033`).
+**Reabrir quando:** a onda 1 apertar, ou um dos dois conectores de chat pedir tratamento diferente.
+
+### D-200 · Na v2.0 a marca é a da Maind; a marca completa do contratante fica sem versão
+Situação: 🟢 decidida (dita pelo dono em 05/11/2026; escolheu contra a recomendação do PO, que era a marca por organização) · Data: 05/11/2026 · Versão: v2.0 (a marca da Maind) e sem versão (a marca do contratante)
+
+**Decisão:** na v2.0, **a marca do produto é a da Maind**: o nome, os logos e o rodapé que o administrador da instância configura (`D-011`) e o e-mail do produto valem para todas as organizações. A **marca completa do contratante** (`D-183`: logo, nome e e-mail do cliente em todo o produto, até no remetente) **sai da v2.0 e da v2.1 e fica sem versão**: o dono vai pensar depois em como mudar isso.
+- **A `MF-101:Administração da instância` continua inteira na v2.0** (`D-197`), agora sem a marca completa.
+- 🔎 *Leitura do PO, a confirmar:* se a marca do contratante voltar, volta como **mf própria**, e não como parte da `MF-101` (`D-197`). O logo de cada organização, que o backend já guarda, não muda com esta decisão.
+**Contexto:** a `D-197` trouxe a marca completa para a v2.0 e deixou uma hipótese: a marca é da instância ou de cada organização? O PO recomendou a marca por organização. O dono respondeu que, na v2.0, ela é da Maind. O SaaS é uma instância só da Maind (`D-192`, `D-193`).
+**Opções avaliadas:** resposta do dono, sem pontuação. A recomendação do PO (a marca por organização) não foi a escolhida.
+**Por que esta:** a v2.0 sai com menos escopo e o SaaS tem uma marca só. Abre-se mão de o cliente ver a própria marca no produto e no remetente das mensagens: ⚠️ o white label da `D-007` fica sem entrega até lá.
+**Consequências:**
+- A `D-183` e o trecho da `D-197` sobre a marca completa ficam substituídos neste ponto; a `D-121` (a nº 6) e a `D-181` ficam sem a marca. O tema (as cores e a aparência) continua sem versão, como a `D-183` o deixou.
+- O objetivo da v2.1 (`D-136`) cita "a própria marca", e o mapa de objetivos (`07`) também: a ajustar na `P-028`.
+- O modelo de dados da `MF-101` não reserva coluna para a marca do contratante.
+**Hipóteses a validar:** 🔎 que o primeiro cliente, a própria Maind (`D-009`), e os seguintes aceitem a marca da Maind no SaaS.
+**Prova de valor:** a v2.0 sai sem tela nem coluna de marca do contratante, e nenhum cliente deixa de comprar por isso.
+**Reabrir quando:** um cliente exigir a própria marca, ou o dono decidir como mudar isso.
+
+### D-199 · O interruptor geral e as demais peças da segurança por pessoa passam a ser da MF-106, na v2.1
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada nas duas perguntas) · Data: 05/11/2026 · Versão: v2.1
+
+**Decisão:** para cumprir a `D-197`, tudo o que só vale com a segurança por pessoa passa a ser da `MF-106:Segurança dos dados por pessoa`, inteira na v2.1 (`D-145`). Saem das mfs da v2.0 e entram nela:
+- o **interruptor geral da segurança** (estava na `MF-101:Administração da instância`);
+- os **grupos dinâmicos por claims** e as **colunas de claims da planilha de convites** (estavam na `MF-102:Organizações, pessoas e papéis`, `D-019`, `D-056`);
+- a **liberação de dados do gestor no board** (`D-051`, `D-053`, `D-054`; estava na `MF-112:Boards e Relatórios`);
+- o **registro dessas liberações no rastro** (estava na `MF-116:Auditoria`, `D-090`, `D-093`);
+- a **demonstração da segurança por pessoa** (estava na `MF-118:Bases de demonstração`).
+**As cinco mfs da v2.0 ficam inteiras**: a `MF-101`, a `MF-102`, a `MF-112`, a `MF-116` e a `MF-118` não têm mais nada na v2.1. As definições dessas peças continuam valendo como foram decididas; só mudam de mf. As dependências que outras mfs têm da `MF-106` (a `D-145` as lista) são dependências, e não partes: ficam como estão.
+**Contexto:** fecha o `I-021`. O `06-versoes.md` listava o interruptor na `MF-101` e na `MF-106`, e a `D-145` deixou outras peças nas mfs de origem, com a volta marcada para a v2.1.
+**Opções avaliadas** (nota de 0 a 100, pesos da `D-015`; notas do PO, em hipótese). *Interruptor:* **A. Da `MF-106`: 66 (escolhida; recomendação do PO)** · B. Da `MF-101`, na v2.0: 54. *Demais peças:* **A. Passam à `MF-106`: 68 (escolhida; recomendação do PO)** · B. Cada peça vira mf própria na v2.1: 59.
+**Por que esta:** o interruptor e as peças só têm efeito com a segurança por pessoa, então a mf dela é onde fazem sentido, e a v2.0 não carrega peça sem uso. Abre-se mão de uma `MF-106` enxuta: ⚠️ ela passa a reunir regras que estavam espalhadas em cinco mfs.
+**Fica de fora / adiado:** as partes da casa do contratante (`MF-103`, `MF-104` e `MF-105`), sem versão desde a `D-188`.
+**Hipóteses a validar:** 🔎 que o administrador da instância aceite não ter o interruptor até a v2.1, já que na v2.0 a organização é a fronteira dos dados.
+**Prova de valor:** a v2.0 sai sem nenhum interruptor ou tela que dependa da segurança por pessoa.
+**Reabrir quando:** a `MF-106` crescer a ponto de pedir divisão em duas mfs.
+
+### D-198 · Teams e Google Chat viram a MF-122 e o Athena vira a MF-123, ambas na v2.1
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.1 (onda 1)
+
+**Decisão:** para cumprir a `D-197`, as duas partes da v2.1 que pertenciam a mfs da v2.0 viram **mfs próprias** na onda 1 da v2.1 (`D-181`):
+- **`MF-122:Conectores de chat corporativo`** (nome provisório): o **Microsoft Teams** e o **Google Chat** como conectores de saída, como definiu a `D-182`. Usam o mesmo "carteiro" da `MF-113` (`D-041`), com a aprovação da TI de cada cliente (`D-124`).
+- **`MF-123:Fonte AWS Athena`** (nome provisório): o **AWS Athena terminado**, respondendo perguntas de análise, como definiu a `D-161`.
+- **A `MF-113:Conectores de Saída` fica inteira na v2.0**, com o e-mail e o WhatsApp (`D-124`). **A `MF-104:Conectar as fontes vivas` fica inteira na v2.0**, sem o Athena. A próxima mf livre passa a ser a `MF-124`.
+**Depende de:** a `MF-122` depende da `MF-113` (o carteiro); a `MF-123` depende da `MF-104` (o conector) e da `MF-106:Segurança dos dados por pessoa` (que hoje só cobre o SQL Server, `P-033`).
+**Contexto:** primeira aplicação da `D-197` (`I-021`). O dono já tinha escolhido as versões das duas partes (`D-161`, `D-182`) e quis mantê-las.
+**Opções avaliadas** (nota de 0 a 100, pesos da `D-015`; notas do PO, em hipótese): **A. Cada parte vira mf nova na v2.1: 66 (escolhida; recomendação do PO)** · C. Decidir mf a mf: 60 · B. As partes sobem para a v2.0: 50.
+**Por que esta:** mantém as datas que o dono escolheu e não engorda a v2.0, que já ganhou a marca completa (`D-197`). Abre-se mão de ter menos mfs: ⚠️ são duas mfs novas, pequenas, para acompanhar.
+**Fica de fora / adiado:** outros conectores (Slack, por exemplo, `D-182`) e as partes da casa do contratante (`MF-103`, `MF-104` e `MF-105`), sem versão desde a `D-188`. 🔎 *Leitura do PO, a confirmar:* se a porta de volta abrir, essas partes entram como mf própria, e não como parte das mfs da v2.0.
+**Hipóteses a validar:** 🔎 que o Teams e o Google Chat saiam juntos, numa mf só; 🔎 que a `MF-123` caiba na onda 1 junto da segurança por pessoa (`P-033`).
+**Prova de valor:** a `MF-122`: o aviso de um agente chega a um canal do Teams e a um espaço do Google Chat. A `MF-123`: uma organização conecta um Athena e recebe uma resposta de análise.
+**Reabrir quando:** a onda 1 da v2.1 apertar e o dono quiser tirar uma das duas, ou os dois conectores de chat pedirem tratamentos diferentes.
+
+### D-197 · Uma macro funcionalidade não se divide em duas versões; a MF-101 fica inteira na v2.0
+Situação: 🟢 decidida (regra dita pelo dono em 05/11/2026; a aplicação às outras mfs foi o `I-021`, fechado; a marca completa saiu da `MF-101` pela `D-200`) · Data: 05/11/2026 · Versão: geral
+
+**Decisão:** cada mf pertence a **uma versão só**. Não existe mf com uma parte na v2.0 e outra na v2.1: a parte que o dono quer numa versão diferente **vira uma mf nova** ou **sobe para a versão da mf**, e a escolha é do dono, mf a mf (`I-021`).
+- **A `MF-101:Administração da instância` fica inteira na v2.0**, com a marca completa do contratante: logo, nome e e-mail em todo o produto, inclusive o remetente das mensagens (`D-183`). O tema (as cores e a aparência) continua sem versão.
+- **Substitui a leitura da `D-137`** ("uma mf entra na entrega em que aparece primeiro; as que têm partes na v2.1 contam como da v2.0") e a `D-137.1` do documento da v2.0.
+**Contexto:** o dono disse "MF 101 de administração da instância fica na v2.0" e, ao ver a marca completa ainda listada para ela na v2.1, explicou a regra por trás: uma mf não se divide em duas versões. Hoje o `06-versoes.md` lista a `MF-101`, a `MF-103`, a `MF-104`, a `MF-105` e a `MF-113` nas duas tabelas.
+**Opções avaliadas:** regra do dono, sem pontuação (ele decidiu direto).
+**Por que esta:** cada mf tem uma versão só, e quem lê o plano não precisa somar pedaços. Abre-se mão de cortar escopo por parte de mf: ⚠️ a v2.0 cresce com a marca completa, e o que o dono quiser numa versão diferente tem de virar mf própria.
+**Consequências:**
+- A marca completa (`D-183`) passa da onda 1 da v2.1 para a v2.0; a `D-181` e a `D-121` perdem esse item. O modelo de dados da `MF-101` deixa de reservar as colunas da marca e passa a tê-las (a ajustar, `P-028`).
+- Ficam com parte em outra versão e dependem do `I-021`: a `MF-113` (Teams e Google Chat na onda 1 da v2.1, `D-182`), a `MF-104` (o AWS Athena na v2.1, `D-161`) e o interruptor geral da segurança, que o `06-versoes.md` lista em duas mfs (`D-145`). As partes da casa do contratante (`MF-103`, `MF-104` e `MF-105`) estão sem versão desde a `D-188` (a porta de volta).
+**Hipóteses a validar:** 🔎 que a marca completa, como a `D-183` a definiu para "o contratante", continue fazendo sentido no SaaS de uma instância só da Maind (`D-192`, `D-193`): a marca é da instância ou de cada organização?
+**Prova de valor:** nenhuma mf aparece em mais de uma versão no `06-versoes.md`.
+**Reabrir quando:** uma parte de mf não puder virar mf nova nem subir de versão sem quebrar uma dependência.
+
+### D-196 · Definição macro da MF-121:Middleware na casa do contratante
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com um ajuste dele: o protocolo fica em aberto) · Data: 05/11/2026 · Versão: v2.1 (onda 2)
+
+**Decisão:** a `MF-121:Middleware na casa do contratante` (nome provisório, mf nova) fica definida assim. Com ela, a onda 2 da v2.1 (`D-181`, `D-188`) está definida.
+- **O que é:** uma **imagem de container** que a Maind disponibiliza e o cliente instala na infraestrutura dele (`D-195`). Ela expõe um **endereço público** e um **par de chaves cadastrado no Horus SaaS**, na organização (`D-195`). O Horus a usa para chegar aos **dados, à internet e à IA** do cliente (`D-190`), e o cliente governa o caminho por **IP e porta**. **O protocolo fica em aberto**: pode ser um servidor MCP, uma API REST ou gRPC, **de preferência gRPC**; a escolha é do arquiteto (`P-042`).
+- **Quem ganha:** o **cliente com exigência de privacidade e segurança**, que mantém a governança pela cibersegurança e pela infraestrutura dele; o **owner da organização**, que conecta e configura; as pessoas perguntam como sempre.
+- **Decisão que passa a ser possível:** usar o Horus SaaS sobre dados e modelos de IA que **não podem sair de casa**, sem instalar o Horus no cliente.
+- **A regra do que sai:** só a **pergunta** e a **resposta pronta** (`D-189`); o **owner da organização** pode permitir o comando da consulta, o CSV e outras saídas; o funcionário da Maind, que administra a instância, **não liga nem vê** (`D-193`, `D-195`).
+- **Prova de valor:** um cliente de cibersegurança rígida instala a imagem, cadastra a chave no Horus, libera só o IP do Horus no firewall e faz uma pergunta de análise sobre o banco interno, e nada além da pergunta e da resposta pronta sai.
+- **Retorno para o negócio:** abre os clientes que exigiam on-premises ou "tudo dentro", **com uma frota só** e sem operar uma instalação por cliente.
+- **O que não inclui:** a instalação completa do Horus no cliente, que só volta se um cliente exigir (`D-188`) e leva consigo o arquivo de licença e a rede interna (`D-175`, `D-176`, `D-186`, `D-187`); instância dedicada por cliente; middleware por instância (é por organização); o desenho técnico e o protocolo (do arquiteto, `P-040`, `P-042`).
+- **Depende de:** `MF-104:Conectar as fontes vivas` (as fontes alcançam o banco pelo middleware); `MF-105:IA sob controle da organização` (o modelo do cliente, `D-185`); `MF-109:A web como fonte` (a saída para a internet); `MF-106:Segurança dos dados por pessoa`; as configurações da organização.
+- **Valor:** **expande**: amplia o público a quem exige privacidade.
+**Corrige a redação das `D-190` e `D-195`:** elas diziam "servidor MCP". O dono deixou o protocolo em aberto.
+**Contexto:** o dono propôs o middleware (`I-020`, fechado) e, ao ver a definição, ajustou só o protocolo.
+**Por que esta:** abre o Horus a quem exige privacidade sem instalar o Horus no cliente e com uma frota só. Abre-se mão do "tudo dentro" total: ⚠️ ele só existe na instalação completa, a porta de volta; e o endereço do middleware é público, protegido por chave e por IP e porta.
+**Hipóteses a validar:** 🔎 que a TI dos clientes aceite hospedar a imagem e expor um endereço público protegido; 🔎 que o protocolo escolhido atravesse os proxies e firewalls corporativos (o gRPC pede HTTP/2).
+**Reabrir quando:** a TI dos clientes recusar o endereço público, ou o protocolo escolhido não atravessar a rede dos clientes.
+
+### D-195 · O middleware é uma imagem de container da Maind, com endereço público e par de chaves; as permissões e a conexão são da organização
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com um acréscimo dele; o protocolo "servidor MCP" ficou em aberto pela `D-196`) · Data: 05/11/2026 · Versão: v2.1 (onda 2)
+
+**Decisão:** o dono **confirmou** as leituras da `D-193`: as **permissões de saída** (`D-189`) e a **conexão do middleware** são **configurações da organização**, do owner dela, funcionário do cliente; o **middleware é por organização**; o funcionário da Maind, que administra a instância, **não liga nem vê** essas saídas. E **acrescentou**: o middleware é uma **imagem de container disponibilizada pela Maind**, que o cliente instala. Ela expõe um **endereço público** e um **par de chaves**, que é **cadastrado no Horus SaaS** (na organização), o que permite à infraestrutura do cliente **bloquear por IP e porta**.
+**Contexto:** quinta dúvida do `I-020`, a última. Com ela, o `I-020` se fechou: o Horus chega ao cliente por um middleware, e a instalação completa só volta se um cliente exigir (`D-188`).
+**Por que esta:** o cliente instala uma imagem pronta, sem Kubernetes, e governa o acesso por IP e porta, com a chave que ele mesmo cadastra. Abre-se mão de um middleware que só conecta de dentro para fora: ⚠️ o endereço é público, e a proteção depende da chave e do bloqueio por IP e porta.
+**Fica de fora / adiado:** o desenho técnico da imagem, das chaves e da atualização (do arquiteto, `P-040`, `P-042`); o que sai de cada ferramenta do middleware.
+**Hipóteses a validar:** 🔎 que a TI dos clientes aceite expor um endereço público protegido por chave e por IP; 🔎 que o cliente atualize a imagem quando a Maind publicar uma nova.
+**Prova de valor:** o owner de uma organização instala a imagem, cadastra a chave no Horus, o cliente libera só o IP do Horus no firewall, e a pessoa faz uma pergunta de análise sobre o banco dele.
+**Reabrir quando:** a TI dos clientes recusar o endereço público, ou a atualização da imagem por parte do cliente falhar com frequência.
+
+### D-194 · Os tipos de assento passam a ser cinco: owner, gestor e os membros ouro, prata e bronze
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026; escolheu contra a recomendação do PO, que era a prata como role do membro full; o que a prata faz foi decidido na `D-203`; a leitura do PO sobre o ouro e o bronze foi confirmada pelo dono em 05/11/2026) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** os **tipos de assento** passam a ser **cinco**: **owner**, **gestor**, **membro ouro**, **membro prata** e **membro bronze**. O ouro faz perguntas e cria boards e relatórios para si, sem compartilhar; a **prata** faz perguntas, mas **não cria boards nem relatórios**; o bronze só exibe os dashboards já criados e compartilhados (`D-193`). A Maind libera, reduz e conta cada tipo à parte (`D-067`, `D-068`).
+**Substitui em parte a `D-069`**, que tinha quatro tipos (owner, gestor, membro full e membro leitor). Leitura do PO *(a confirmar com o dono)*: o **ouro** é o que a `D-069` chamava de membro full e o **bronze**, o membro leitor; e os nomes ouro, prata e bronze são os nomes dos tipos, no lugar de "membro full" e "membro leitor".
+**Contexto:** o dono descreveu os papéis na `D-193`, e a prata não existia como tipo. O PO perguntou se ela seria um quinto tipo ou uma role do membro full (nota 77 contra 66).
+**Opções avaliadas** (nota de 0 a 100, pesos da `D-015`): B. A prata é uma role do membro full: 77 (recomendação do PO) · **A. A prata é um quinto tipo de assento: 66 (escolhida)**.
+**Por que esta:** os nomes ouro, prata e bronze viram a oferta por faixa, e a contagem de cada tipo fica explícita. Abre-se mão de um modelo com quatro tipos: ⚠️ o modelo de dados, as telas e a cobrança ganham um tipo novo, e a prata precisa de um preço (`P-022`).
+**Fica de fora / adiado:** o preço da prata; quem pergunta e quem conta para o limiar de custo por assento que pergunta (a prata pergunta, e o bronze não).
+**Hipóteses a validar:** 🔎 que a Maind queira cobrar a prata diferente do ouro e do bronze.
+**Prova de valor:** a Maind libera assentos de prata a uma organização, e o membro de prata pergunta e não vê a opção de criar boards nem relatórios.
+**Reabrir quando:** a prata e o ouro passarem a ser cobrados do mesmo jeito, ou os clientes não distinguirem os dois.
+
+### D-193 · O SaaS é uma instância só, da Maind; o owner da organização, funcionário do cliente, a configura, inclusive o middleware
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, em resposta própria, que desfez a leitura de instância por cliente) · Data: 05/11/2026 · Versão: geral e v2.1 (onda 2)
+
+**Decisão:** o dono descreveu o modelo assim, e ele vale:
+- O **SaaS é hospedado pela Maind e atende a todos os clientes dela**: é uma instância só. **Alguns clientes** poderão usar o **middleware** (`D-188`, `D-190`) para intermediar o Horus SaaS e os dados e a IA deles.
+- O **usuário da instância do SaaS é um funcionário da Maind**, com **visão macro de todas as organizações** e **sem visão dos dados das conexões** de dados.
+- Na **organização**, quem a configura é o **owner da organização**, que é um **funcionário do cliente**. Ele tem a **visão de billing** e das **configurações** da organização.
+- Abaixo do owner, **por enquanto**: os **gestores**, que criam e gerem grupos de membros, fazem perguntas e análises, criam boards e os compartilham com os grupos de que são donos; e os **membros**, em três faixas: **ouro** (faz perguntas e cria boards e relatórios para si, sem compartilhar), **prata** (faz perguntas, sem criar boards nem relatórios) e **bronze** (só exibe os dashboards já criados e compartilhados).
+**Desfaz:** a leitura de que o cliente do middleware teria uma instância própria do Horus (`D-191`, `D-192`). O pedido de "um controle de criação de instâncias mais eficiente" da `D-192` fica entendido, **a confirmar**, como a criação de organizações no SaaS (`MF-101`, `D-146`); a `P-041` fica sujeita a essa confirmação.
+**Leituras do PO** *(a confirmar com o dono)*: (1) as **permissões de saída** da `D-189` (o comando da consulta, o CSV e outras) e a **conexão do middleware** são configurações **da organização**, do owner dela, e não do administrador da instância (a Maind): a `D-191` as dava ao "dono da instância"; (2) o middleware é **por organização**, e não por instância; (3) as três faixas de membro têm uma **diferença para a `D-069`** (quatro tipos de assento: owner, gestor, membro full e membro leitor): a prata (pergunta, mas não cria boards nem relatórios) não existe hoje como tipo. É a dúvida seguinte.
+**Contexto:** quinta dúvida do `I-020`. O PO perguntou o que o cliente recebe quando a Maind liga uma saída extra; o dono respondeu que a pergunta partia de uma confusão, e descreveu o modelo.
+**Por que esta:** o cliente configura o que é dele, e a Maind mantém a visão macro sem ver os dados. Abre-se mão de a Maind ligar as saídas por ele: ⚠️ o suporte da Maind depende de o owner da organização liberar o que for preciso.
+**Fica de fora / adiado:** a instância dedicada por cliente; a visão de billing do owner (o que ela inclui).
+**Hipóteses a validar:** 🔎 que os owners das organizações aceitem configurar o middleware e as saídas.
+**Prova de valor:** o owner de uma organização conecta o middleware dele ao Horus SaaS, liga a saída do CSV, e o funcionário da Maind continua sem ver os dados das conexões.
+**Reabrir quando:** um cliente precisar de uma instância própria, ou o suporte da Maind não funcionar sem ver mais.
+
+### D-192 · O Horus fica no SaaS da Maind, que é a dona das instâncias; o cliente tem o middleware, e a Maind precisa criar instâncias com mais eficiência
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, em resposta própria: ele corrigiu a leitura do PO; a decisão foi desfeita em parte pela `D-193`: o SaaS é uma instância só, e o pedido de criação de instâncias está a confirmar) · Data: 05/11/2026 · Versão: v2.1 (onda 2)
+
+**Decisão:** o **Horus fica no SaaS**, na infraestrutura da Maind, que continua **dona das instâncias** (`D-013`). **O cliente não é dono de uma instância do Horus**: ele hospeda o **middleware** (`D-190`) na infraestrutura dele. A Maind precisa de um **controle de criação de instâncias mais eficiente** do que o de hoje.
+**Corrige a leitura do PO na `D-191`:** o PO tinha lido que o cliente do middleware tem a sua instância, da qual é o dono. O dono respondeu que não. A `D-191` continua valendo no resto: as permissões de saída moram no Horus, nas configurações da instância, e o middleware é por instância, e não por organização.
+**Contexto:** confirmação final da terceira dúvida do `I-020`. O PO perguntou duas vezes quem é o dono da instância, e a resposta desfez a leitura de que o cliente seria o dono.
+**Por que esta:** o Horus continua uma frota só, operada pela Maind, e o cliente governa o caminho pelo middleware (IP e porta). Abre-se mão de o cliente ser o dono do que sai: ⚠️ quem liga as saídas da `D-189` é o dono da instância, a Maind, e o cliente só se protege pelo contrato e pelo controle do middleware (por exemplo, cortando o acesso por IP e porta). Essa lacuna é a dúvida seguinte.
+**Fica de fora / adiado:** a instância dedicada de propriedade do cliente.
+**Hipóteses a validar:** 🔎 que a cibersegurança do cliente aceite que a Maind ligue as saídas, com o controle do middleware como limite.
+**Prova de valor:** a Maind cria uma instância para um cliente em pouco tempo, e o cliente conecta o middleware a ela.
+**Reabrir quando:** um cliente exigir ser dono da instância, ou o controle de criação de instâncias não der conta do volume.
+
+### D-191 · As permissões de saída moram no Horus, nas configurações da instância, e o middleware é por instância
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, em resposta própria, fora das opções do PO; a leitura do PO sobre o cliente ter a sua instância foi corrigida pela `D-192`; a parte que dá as permissões ao dono da instância foi corrigida pela `D-193`) · Data: 05/11/2026 · Versão: v2.1 (onda 2)
+
+**Decisão:** as **permissões do que pode sair da casa do cliente** (`D-189`: o comando da consulta gerada, o CSV dos dados e outras saídas) **moram no Horus**, nas **configurações da instância**, e quem as liga é o **dono da instância**. O **middleware é por instância**, e **não por organização** (por enquanto): uma instância tem um middleware, que serve às organizações dela.
+**Corrige a leitura do PO na `D-190`:** o PO tinha lido que "não há instância dedicada por cliente". A leitura estava errada: se o middleware é por instância e o dono da instância decide o que sai, o cliente do middleware tem **a sua instância**. Se ela é hospedada pela Maind (o Horus "permanece SaaS") e o cliente é o dono, é a dúvida de confirmação seguinte do `I-020`.
+**Contexto:** quarta dúvida do `I-020`. O PO propôs a permissão no middleware, configurada pela TI do cliente (nota 79), nos dois níveis (72) ou no Horus pelo owner da organização (55). O dono respondeu: no Horus, pelo dono da instância.
+**Por que esta:** a configuração fica no produto e na mão de quem é dono da instância, e o middleware serve a todas as organizações dela. Abre-se mão de a TI do cliente controlar a permissão no próprio middleware: ⚠️ a governança de cibersegurança do cliente cobre o caminho (IP e porta, `D-190`), mas não o que o Horus pede.
+**Fica de fora / adiado:** o middleware por organização.
+**Hipóteses a validar:** 🔎 que o dono da instância seja alguém que a cibersegurança do cliente aceite como responsável pelo que sai.
+**Prova de valor:** o dono de uma instância liga, na configuração dela, a saída do comando da consulta, e as pessoas passam a ver o SQL na resposta; desligada, não vêem.
+**Reabrir quando:** um cliente precisar de middlewares diferentes para organizações da mesma instância, ou a TI de um cliente exigir controlar a permissão no middleware.
+
+### D-190 · O middleware é um servidor MCP na infraestrutura do cliente; o Horus continua SaaS e o usa para chegar aos dados, à internet e à IA
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, em resposta própria, fora das opções do PO; a leitura do PO sobre a instância dedicada foi corrigida pela `D-191`; o protocolo "servidor MCP" ficou em aberto pela `D-196`) · Data: 05/11/2026 · Versão: v2.1 (onda 2)
+
+**Decisão:** o **middleware** (`D-188`) é um **servidor MCP**, hospedado **na infraestrutura do cliente**, com **permissão de acesso por IP e porta**, configurada ponto a ponto: o cliente define quem alcança o middleware e o que o middleware alcança. O **Horus continua SaaS**: ele usa o middleware **para acessar os dados do cliente e para sair para a internet e para a IA**. Assim, o time de cibersegurança e de infraestrutura do cliente governa todo o caminho de saída do que é dele.
+**Contexto:** terceira dúvida do `I-020`. O PO perguntou se o cliente do middleware teria uma instância própria, hospedada pela Maind, com o cliente como administrador (nota 76), ou se usaria a instância compartilhada (62). O dono respondeu fora das duas: o Horus **permanece SaaS**, e o que muda é o middleware do cliente. Não há instância dedicada por cliente.
+**Leitura do PO** *(a confirmar com o dono)*: o middleware é a **porta única** do cliente: tudo o que o Horus lê dos dados dele, e tudo o que vai à internet e à IA em nome dele, passa por ele. Isso é compatível com a `D-189`: o Horus pede, e o middleware acessa os dados, a IA e a internet e devolve a resposta pronta.
+**Por que esta:** o cliente mantém a governança sobre o que sai, com as ferramentas que a TI dele já usa (regras de IP e porta), e a Maind opera uma frota só. Abre-se mão de a Maind controlar a qualidade do caminho: ⚠️ a disponibilidade e o desempenho do middleware dependem da infraestrutura do cliente.
+**Fica de fora / adiado:** onde moram as permissões de saída da `D-189` (no middleware ou no Horus), que é a dúvida seguinte; a instância dedicada por cliente.
+**Hipóteses a validar:** 🔎 que a TI dos clientes aceite hospedar um servidor MCP; 🔎 que o desempenho da pergunta de análise, passando pelo middleware, seja aceitável.
+**Prova de valor:** um cliente instala o middleware, libera o IP do Horus no firewall e faz uma pergunta de análise que acessa o banco dele sem nenhuma porta aberta além da combinada.
+**Reabrir quando:** a TI dos clientes não aceitar hospedar o middleware, ou o desempenho pelo middleware não servir.
+
+### D-189 · Pelo middleware, só a pergunta e a resposta pronta saem da casa do cliente; o dono da instância pode permitir mais
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, em resposta própria: a opção recomendada, com uma extensão dele) · Data: 05/11/2026 · Versão: v2.1 (onda 2)
+
+**Decisão:** pelo middleware (`D-188`), **o que sai da casa do cliente para a Maind é só a pergunta e a resposta pronta**, os blocos que a pessoa vê. O **dono da instância** pode **permitir mais, nas configurações da instância**: o **comando da consulta gerada**, o **CSV dos dados** e **outras saídas que possam ser consideradas vazamento**. Cada saída é uma permissão do dono da instância; sem ela, a saída não acontece.
+**Leitura do PO** *(a confirmar com o dono)*: cada saída é uma permissão **separada, desligada por padrão**, e quem a liga assume a responsabilidade (como o gestor, `D-054`, e o owner, `D-164`). A lista completa das saídas que contam como vazamento (por exemplo, o esquema, as linhas lidas e a cópia de um resultado para o suporte) fica para o desenho. **Quem é o dono da instância do cliente do middleware** é a dúvida seguinte do `I-020`.
+**Contexto:** segunda dúvida do `I-020`. O PO propôs três portas: só a resposta pronta (nota 78), também o SQL e o esquema (71) e também as linhas (58). O dono escolheu a primeira como padrão e acrescentou que o dono da instância pode abrir as outras.
+**Por que esta:** o padrão é a promessa que a cibersegurança do cliente aceita, e o dono da instância decide, instância por instância, o que mais pode sair. Abre-se mão de um suporte da Maind com visão do que acontece no cliente: ⚠️ no padrão, o suporte fica no escuro, e só vê mais se o dono da instância permitir.
+**Fica de fora / adiado:** a lista completa das saídas; como o suporte da Maind diagnostica um erro sem ver o esquema.
+**Hipóteses a validar:** 🔎 que os clientes aceitem a pergunta e a resposta pronta passarem pela Maind; 🔎 que os donos de instância liberem o que o suporte precisa quando precisar.
+**Prova de valor:** um cliente de cibersegurança rígida usa o Horus pelo middleware e confirma que nada além da pergunta e da resposta saiu de casa; depois, o dono da instância libera o CSV de um resultado.
+**Reabrir quando:** o suporte não conseguir diagnosticar erros sem ver o esquema, ou um cliente exigir que nem a pergunta saia.
+
+### D-188 · A casa do contratante é atendida primeiro por um middleware; a instalação completa do Horus só volta se um cliente exigir
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada; a ideia do middleware é do dono) · Data: 05/11/2026 · Versão: v2.1 (onda 2)
+
+**Decisão:** a onda 2 da v2.1 (`D-181`) passa a ser um **middleware**: uma peça instalada na infraestrutura do contratante, que conversa com o Horus e vai até o modelo de IA, às bases de dados e às análises, para o time de cibersegurança e de infraestrutura do cliente manter a governança. O **Horus fica sempre na Maind**, em uma frota e uma versão só. A **instalação completa do Horus no contratante** (o on-premises da `D-007`) **só volta se um cliente exigir** que nada, nem a pergunta, saia de casa.
+**Substitui em parte a `D-181`:** a composição da onda 2 (a ativação dos assentos no on-premises, a rede interna e o "tudo dentro"). As decisões `D-175`, `D-176`, `D-185`, `D-186` e `D-187` valem para a instalação completa, que passa a ser a porta de volta, e deixam de ser da onda 2.
+**Contexto:** impasse `I-020`. O dono propôs o middleware ao ver as opções do que a Maind exige do contratante (a `ARQ-060` pedia um Kubernetes). O padrão tem precedente (o gateway de dados local do Power BI) e a `ARQ-052` o listou como a opção 3, deixada de fora por ser "quase o on-premises".
+**Opções avaliadas** (nota provisória de 0 a 100, pesos da `D-015`, com a suposição de que o middleware executa e o Horus orquestra): **C. Primeiro o middleware, a instalação completa só se um cliente exigir: 77 (escolhida; recomendação do PO)** · A. O middleware substitui de vez: 75 · B. As duas formas convivem na onda 2: 68. C e A ficaram a menos de 5 pontos, e o desempate foi a reversibilidade.
+**Por que esta:** atende à maior parte dos clientes com uma frota só e deixa a instalação completa como porta de volta. Abre-se mão do "tudo dentro" total: ⚠️ com o Horus na Maind, a pergunta e a resposta passam por ela, e só o dado bruto fica em casa.
+**Fica de fora / adiado:** a instalação completa, até um cliente exigi-la; o desenho do middleware (o que ele faz e o que sai da casa do cliente), que são as dúvidas seguintes do `I-020`.
+**Hipóteses a validar:** 🔎 que a maioria dos clientes aceite que a pergunta e a resposta passem pela Maind.
+**Prova de valor:** um cliente que não admite os dados fora de casa usa o Horus pelo middleware, sem instalar o Horus.
+**Reabrir quando:** um cliente exigir que nada saia de casa, nem a pergunta, ou o middleware não der conta do que o on-premises daria.
+
+### D-187 · O owner da organização alcança qualquer endereço interno; o administrador da instância não limita as redes
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026; escolheu contra a recomendação do PO) · Data: 05/11/2026 · Versão: v2.1 (onda 2)
+
+**Decisão:** no on-premises, o **owner da organização** que autoriza uma fonte (`D-186`) pode apontá-la para **qualquer endereço interno** da rede do contratante. O **administrador da instância não limita** as redes que os owners alcançam: não há uma lista de redes permitidas.
+**Contexto:** segunda parte da dúvida da `MF-104:Conectar as fontes vivas` na onda 2 da v2.1. A `D-040` usa dois andares para os conectores de saída (o administrador libera o tipo, e o owner liga dentro do que foi liberado); o PO propôs o mesmo desenho para a rede interna.
+**Opções avaliadas** (nota de 0 a 100, pesos da `D-015`): A. O administrador define as redes permitidas, e o owner escolhe dentro delas: 77 (recomendação do PO) · **B. O owner alcança qualquer endereço interno: 58 (escolhida)**.
+**Por que esta:** uma configuração a menos, e a confiança fica com o owner de cada organização. Abre-se mão de proteger servidores que o contratante não queria expostos: ⚠️ um owner pode apontar uma fonte para um servidor que não devia alcançar, e a guarda de rede só confere o endereço de cada operação.
+**Fica de fora / adiado:** a lista de redes permitidas, definida pelo administrador da instância.
+**Hipóteses a validar:** 🔎 que os owners das organizações do cliente apontem só o que devem.
+**Prova de valor:** o owner de uma organização autoriza uma fonte a um banco da rede interna sem precisar do administrador da instância.
+**Reabrir quando:** um owner apontar uma fonte para um servidor que o contratante não queria exposto, ou um cliente exigir limitar as redes.
+
+### D-186 · O owner de cada organização autoriza, fonte por fonte, o alcance à rede interna
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026; escolheu contra a recomendação do PO, a opção de menor nota) · Data: 05/11/2026 · Versão: v2.1 (onda 2)
+
+**Decisão:** no on-premises, é o **owner de cada organização** quem **autoriza, fonte por fonte**, que a fonte alcance a rede interna do contratante. Sem a autorização, a fonte não alcança endereço interno, como hoje (`ARQ-052`).
+**Contexto:** parte da `MF-104:Conectar as fontes vivas` na onda 2 da v2.1 (`D-181`). A guarda de rede da v1.xx impede a fonte da organização de alcançar endereços internos; no on-premises, o banco do contratante mora na rede dele.
+**Opções avaliadas** (nota de 0 a 100, pesos da `D-015`): A. O administrador da instância libera, com uma chave só: 71 (recomendação do PO) · B. O administrador libera, organização por organização: 69 · **C. O owner de cada organização libera, fonte por fonte: 54 (escolhida)**.
+**Por que esta:** a decisão fica com quem conhece a fonte e a organização. Abre-se mão de um controle central: ⚠️ o owner da organização poderia apontar uma fonte para qualquer servidor da rede, mesmo um que não devesse alcançar. Esse risco é a dúvida seguinte.
+**Fica de fora / adiado:** a chave única da instância; a liberação por organização pelo administrador.
+**Hipóteses a validar:** 🔎 que os owners das organizações do cliente saibam o que podem apontar.
+**Prova de valor:** o owner de uma organização autoriza uma fonte a alcançar o banco na rede interna do cliente, e a fonte responde; sem a autorização, a fonte é recusada.
+**Reabrir quando:** uma fonte alcançar na rede interna um servidor que o contratante não queria exposto.
+
+### D-185 · No modo "tudo dentro", o contratante traz o próprio modelo de IA
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.1 (onda 2)
+
+**Decisão:** no modo **"tudo dentro"** (`D-010`), a IA vem de **um modelo que o contratante traz**: ele aponta o endereço do modelo dele, que fala o protocolo compatível com o da OpenAI, e o Horus o usa como mais uma conexão de IA da organização. A Maind **não empacota modelo nem máquina**. No modo, **nada sai** da infraestrutura do contratante: a pesquisa na web fica desligada e os conectores de saída ficam bloqueados até a instância liberar (`D-040`).
+**Contexto:** a `ARQ-051` deixou "a IA dentro de casa da v2.1" para ser escolhida com o dono. A `D-010` criou o modo e adiou o que ele oferece.
+**Opções avaliadas** (nota de 0 a 100, pesos da `D-015`): **A. O contratante traz o próprio modelo: 81 (escolhida; recomendação do PO)** · C. Só o Amazon Bedrock na conta do contratante: 64 · B. A Maind entrega um modelo no pacote: 61.
+**Por que esta:** não obriga a Maind a empacotar modelo nem máquina com GPU, e o contratante usa o que já tem ou escolhe o modelo que a segurança dele aceita. Abre-se mão de uma qualidade garantida: ⚠️ um modelo menor, em casa, responde pior que os de hoje, e o Horus não promete a mesma qualidade nesse modo.
+**Fica de fora / adiado:** a Maind fornecer ou recomendar um modelo; a qualidade mínima aceita (`P-039`).
+**Hipóteses a validar:** 🔎 que os contratantes que exigem "tudo dentro" já tenham um modelo próprio; 🔎 que a qualidade de um modelo em casa sirva à pergunta de análise.
+**Prova de valor:** um contratante em "tudo dentro" aponta o modelo dele, faz uma pergunta de análise e recebe a resposta sem que nada saia de casa.
+**Reabrir quando:** os contratantes não tiverem modelo próprio, ou a qualidade em casa não servir.
+
+### D-184 · O login corporativo da onda 1 é só OpenID Connect; o SAML só com decisão nova
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.1 (onda 1)
+
+**Decisão:** o login corporativo da `MF-106:Segurança dos dados por pessoa` (etapa 2, onda 1 da v2.1, `D-181`) usa **só o OpenID Connect**, ligado em cada organização pelo owner (`D-027`). O **SAML** só entra por decisão nova, quando um cliente-âncora o exigir.
+**Contexto:** a `ARQ-054` propôs o protocolo, e a escolha muda o que o cliente precisa ter para ligar o login da empresa. Os grandes provedores de identidade de empresa falam OpenID Connect 🔎 (Microsoft Entra ID, Google Workspace, Okta). A Maind, o primeiro cliente (`D-009`), usa o Google Workspace.
+**Opções avaliadas** (nota de 0 a 100, pesos da `D-015`): **A. Só OpenID Connect: 70 (escolhida; recomendação do PO, por desempate de reversibilidade)** · B. OpenID Connect e SAML: 69 · C. Um intermediário de identidade na frente: 54. A e B ficaram a menos de 5 pontos.
+**Por que esta:** cobre os provedores comuns sem peça nova na stack. Abre-se mão de quem só tem SAML: ⚠️ um cliente que só tenha SAML fica de fora até uma decisão nova.
+**Fica de fora / adiado:** o SAML; o intermediário de identidade.
+**Hipóteses a validar:** 🔎 que os clientes grandes usem provedores que falam OpenID Connect; 🔎 que o provedor do primeiro cliente da onda 1 o fale.
+**Prova de valor:** uma pessoa de uma organização com o login da empresa ligado entra com o crachá da empresa, e o Horus lê dali a role dela.
+**Reabrir quando:** um cliente-âncora exigir SAML ou outro protocolo.
+
+### D-183 · A marca completa da onda 1 é logo, nome e e-mail em todo o produto; o tema continua sem versão
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada; a marca passou da v2.1 para a v2.0 pela `D-197` e depois ficou sem versão pela `D-200`) · Data: 05/11/2026 · Versão: v2.1 (onda 1), depois v2.0 (`D-197`), depois sem versão (`D-200`)
+
+**Decisão:** a marca completa do contratante (`MF-101:Administração da instância`, onda 1 da v2.1, `D-181`) leva o **logo, o nome e o e-mail do contratante a todo o produto**, inclusive ao remetente das mensagens que o Horus envia. O **tema** (as cores e a aparência) **continua fora**, sem versão definida, como a `D-011` deixou.
+**Contexto:** o `06-versoes.md` dizia "logo, nome e e-mail em todo o produto", e a `D-011` deixou o tema para "uma versão futura, ainda a ordenar". Como não há v2.2, o tema precisava de uma casa; o dono o manteve sem versão.
+**Opções avaliadas** (nota de 0 a 100, pesos da `D-015`): **A. Logo, nome e e-mail, sem o tema: 75 (escolhida; recomendação do PO)** · B. Também a cor principal: 67 · C. A aparência completa: 55.
+**Por que esta:** entrega a marca do contratante com pouco trabalho, que é o que a `D-011` queria. Abre-se mão de o produto ter a cor do contratante: ⚠️ o produto continua com a aparência do Horus.
+**Fica de fora / adiado:** o tema do contratante, sem versão.
+**Hipóteses a validar:** 🔎 que os clientes não exijam uma cor própria.
+**Prova de valor:** o contratante vê a própria marca em todo o produto e no remetente das mensagens, e o usuário final não encontra a marca da Maind.
+**Reabrir quando:** um cliente exigir cor ou aparência próprias.
+
+### D-182 · A onda 1 da v2.1 acrescenta o Teams e o Google Chat como conectores de saída
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026; escolheu contra a recomendação do PO, que era só o Google Chat; virou a `MF-122` pela `D-198`) · Data: 05/11/2026 · Versão: v2.1 (onda 1)
+
+**Decisão:** na onda 1 da v2.1 (`D-181`), a `MF-113:Conectores de Saída` acrescenta o **Microsoft Teams** e o **Google Chat** ao e-mail e ao WhatsApp da v2.0 (`D-124`).
+**Contexto:** o `06-versoes.md` trazia só "os demais conectores, como Teams e Google Chat 🔎". A Maind, o primeiro cliente (`D-009`), usa o Google Workspace; cada conector novo depende da aprovação da TI do cliente (`D-124`).
+**Opções avaliadas** (nota de 0 a 100, pesos da `D-015`): **A. Teams e Google Chat: 74 (escolhida)** · B. Só o Google Chat: 70 (recomendação do PO, por desempate de aprendizado) · C. Nenhum conector novo: 62. A e B ficaram a menos de 5 pontos.
+**Por que esta:** cobre as duas plataformas de chat corporativo mais comuns de uma vez. Abre-se mão de uma onda 1 mais enxuta: ⚠️ são duas integrações novas, sem aprendizado prévio de um primeiro conector, e a demanda pelo Teams é hipótese.
+**Fica de fora / adiado:** outros conectores (Slack, por exemplo).
+**Hipóteses a validar:** 🔎 que os clientes usem o Teams; 🔎 que a TI dos clientes aprove os dois.
+**Prova de valor:** o aviso de um agente chega a um canal do Teams e a um espaço do Google Chat.
+**Reabrir quando:** a TI de um cliente não aprovar um dos dois, ou a onda 1 apertar.
+
+### D-181 · A v2.1 sai em duas ondas: o SaaS primeiro, depois a casa do contratante
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada; a composição da onda 2 foi substituída pela `D-188`, a marca completa da onda 1 passou para a v2.0 pela `D-197` e depois ficou sem versão pela `D-200`, e os conectores de chat e o Athena viraram a `MF-122` e a `MF-123` pela `D-198`) · Data: 05/11/2026 · Versão: v2.1
+
+**Decisão:** a v2.1 sai em **duas ondas**. A **onda 1, o SaaS**, leva a `MF-119:Investigação guiada` (`D-180`), a `MF-106:Segurança dos dados por pessoa` nas duas etapas, a marca completa do contratante (`MF-101`), os demais conectores de saída (`MF-113`) e o AWS Athena (`MF-104`, `D-161`). A **onda 2, a casa do contratante**, leva a ativação dos assentos no on-premises (`MF-103`, `D-175`, `D-176`), a fonte alcançando a rede interna (`MF-104`) e o modo "tudo dentro" (`MF-105`).
+**Contexto:** o que trava a v2.1 no `06-versoes.md` incluía "a forma de entrega (de uma vez só ou em ondas)", que não tinha sido decidida. Para a v2.0, o dono escolheu uma entrega só (`D-109`). A v2.1 é grande e tem duas naturezas: o que serve ao SaaS e o que só faz sentido na casa do contratante, que espera um primeiro contratante-âncora (`ARQ-060`).
+**Opções avaliadas** (nota de 0 a 100, pesos da `D-015`): **B. Em duas ondas, o SaaS primeiro: 80 (escolhida; recomendação do PO)** · C. Cada mf sai quando ficar pronta: 71 · A. De uma vez só, como a v2.0: 54.
+**Por que esta:** o valor chega mais cedo, e o on-premises espera quem o peça. Abre-se mão de uma v2.1 coesa numa entrega só: ⚠️ são duas entregas para coordenar.
+**Fica de fora / adiado:** a divisão da onda 1 em partes menores; a data de cada onda.
+**Hipóteses a validar:** 🔎 que a segurança por pessoa seja o que mais pese na onda 1; 🔎 que um contratante-âncora peça o on-premises depois da onda 1.
+**Prova de valor:** a onda 1 chega a um cliente em SaaS sem esperar a casa do contratante.
+**Reabrir quando:** um contratante-âncora exigir o on-premises antes da onda 1, ou a onda 1 crescer a ponto de pedir outra divisão.
+
+### D-180 · Definição macro da MF-119:Investigação guiada
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026) · Data: 05/11/2026 · Versão: v2.1
+
+**Decisão:** a `MF-119:Investigação guiada` fica definida assim. Com ela, a `P-018` se fechou.
+- **O que é:** a pessoa vê que um número ou gráfico mudou e aciona **"investigar"** na resposta (`D-177`). O Horus a conduz **passo a passo** (`D-178`): mostra as partes que mais explicam a variação (por loja, produto, período), a pessoa escolhe qual aprofundar, e cada passo traz a fonte à vista. O caminho **fica na conversa** (`D-179`).
+- **Quem ganha:** quem faz perguntas de análise: **owner, gestor e membro full** (`D-069`). O membro leitor só vê boards, então não investiga. Qualquer área.
+- **Decisão que passa a ser possível:** descobrir o **porquê** de uma variação sem abrir chamado à área de dados (`D-081`).
+- **Prova de valor:** a gestora vê a margem do Sul cair numa resposta, aciona "investigar" e, em poucos passos, chega às lojas e ao produto que explicam a queda, cada passo com a fonte, sem chamado.
+- **Retorno para o negócio:** autonomia (menos pedidos ao time de dados, `D-125`) e retenção: atende ao problema nº 2 do norte, que era o único sem nenhuma mf.
+- **O que não inclui:** começar por pergunta em texto ou por aviso de agente (a pergunta em texto continua pela conversa); a decomposição inteira de uma vez; só a conclusão; fixar o caminho num board (`D-177` a `D-179`).
+- **Depende de:** `MF-107:Perguntar aos dados em português`; `MF-108:Respostas visuais` (a ação "investigar" nos blocos); `MF-106:Segurança dos dados por pessoa` (cada passo no acesso de quem investiga); `MF-109:A web como fonte` e o nível de inferência (a causa vinda de fora dos dados só aparece a partir do nível 4, `D-130`).
+- **Valor:** **essencial** para a promessa do problema nº 2 do norte.
+- **A nota:** a nota provisória (61, `D-104`) continua; só seria refeita se a mf voltasse a disputar a v2.0.
+**Contexto:** a necessidade nasceu na `D-081`, e a definição foi adiada pelo dono (`D-104`) por pedir muita conversa. As três dúvidas de desenho foram respondidas em 05/11/2026 (`D-177` a `D-179`), e o dono confirmou a definição completa.
+**Por que esta:** entrega o caminho guiado de "o que mudou e por quê" que a conversa de hoje não dá, sem refazer a conversa: o caminho continua nela. Abre-se mão de levar a investigação a um board e de começar por aviso de agente.
+**Hipóteses a validar:** 🔎 *(técnica, do arquiteto, `P-008`, letra (v))* que o motor comporte decompor uma variação nas partes que mais a explicam; 🔎 que o gestor chegue ao porquê sem abrir chamado.
+**Reabrir quando:** o arquiteto derrubar a hipótese técnica, ou a medida de autonomia mostrar que a conversa já dá conta do problema nº 2.
+
+### D-179 · O caminho da investigação guiada fica na conversa, como qualquer resposta
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.1
+
+**Decisão:** o caminho percorrido numa investigação guiada (`MF-119:Investigação guiada`) **fica salvo na conversa**, como qualquer resposta do Horus, e a pessoa o reabre e continua. Fixar o caminho num board não entra na primeira entrega.
+**Contexto:** terceira dúvida da `P-018`. A conversa já fica salva, e a pessoa já pode fixar uma resposta num board (`MF-112:Boards e Relatórios`).
+**Opções avaliadas** (nota de 0 a 100, pesos da `D-015`): **A. Só na conversa: 76 (escolhida; recomendação do PO)** · B. Na conversa, e a pessoa pode fixar o caminho num board: 74. A e B ficaram a menos de 5 pontos, e o desempate foi a reversibilidade.
+**Por que esta:** reaproveita o que existe e mantém a primeira entrega enxuta. Abre-se mão de levar o caminho à reunião de resultado num board: ⚠️ para mostrar a investigação a outros, a pessoa compartilha a conversa ou fixa as respostas uma a uma.
+**Fica de fora / adiado:** fixar o caminho inteiro num board, com os passos e as fontes.
+**Hipóteses a validar:** 🔎 que a pessoa queira mostrar a investigação a outras.
+**Prova de valor:** a pessoa fecha a conversa, volta no dia seguinte e continua a investigação de onde parou.
+**Reabrir quando:** as pessoas pedirem para fixar o caminho num board.
+
+### D-178 · A investigação guiada conduz a pessoa passo a passo, e ela escolhe qual parte aprofundar
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.1
+
+**Decisão:** na `MF-119:Investigação guiada`, o Horus conduz a pessoa **passo a passo**: mostra as partes que mais explicam a variação (por loja, produto, período) e a **pessoa escolhe qual aprofundar**. **Cada passo traz a fonte à vista**, como toda resposta do Horus.
+**Contexto:** segunda dúvida da `P-018`. A `D-081` já descrevia o caminho como passo a passo.
+**Opções avaliadas** (nota de 0 a 100, pesos da `D-015`): **A. Passo a passo: 79 (escolhida; recomendação do PO)** · B. De uma vez, a decomposição inteira numa resposta: 74 · C. Só a conclusão: 53.
+**Por que esta:** a pessoa mantém o controle e vê de onde vem cada parte, o que serve ao invariante "confiança antes de beleza". Abre-se mão da rapidez de uma resposta única.
+**Fica de fora / adiado:** a decomposição completa numa resposta só; entregar só a conclusão.
+**Hipóteses a validar:** 🔎 que o passo a passo não canse quem quer só o resultado; 🔎 *(técnica, do arquiteto, `P-008`)* que o motor comporte decompor a variação nas partes que mais a explicam.
+**Prova de valor:** a gestora aciona "investigar" e, em poucos passos, escolhe as lojas e o produto que explicam a queda, cada passo com a fonte.
+**Reabrir quando:** as pessoas pedirem a decomposição inteira de uma vez.
+
+### D-177 · A investigação guiada começa pelo número ou gráfico que mudou
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.1
+
+**Decisão:** na primeira entrega da `MF-119:Investigação guiada`, a pessoa **começa pelo número ou gráfico que mudou**: a resposta traz uma ação "investigar" que leva da variação ao porquê. Começar por uma pergunta em texto e por um aviso de agente não ficam proibidos; só não são a primeira porta.
+**Contexto:** primeira dúvida da `P-018`, a que ficou sem resposta desde a `D-104`. A conversa de hoje já responde a perguntas em sequência, mas não tem um caminho guiado de "o que mudou e por quê" (`D-081`).
+**Opções avaliadas** (nota de 0 a 100, pesos da `D-015`): **A. Pelo número ou gráfico que mudou: 80 (escolhida; recomendação do PO)** · B. Pela pergunta em texto: 70 · C. Pelo aviso de um agente: 65.
+**Por que esta:** é o momento da descoberta, e entrega o que a conversa de hoje não dá. Abre-se mão de começar pelo aviso do agente, que ligaria os problemas nº 2 e nº 3.
+**Fica de fora / adiado:** começar pela pergunta em texto e pelo aviso de um agente.
+**Hipóteses a validar:** 🔎 que a pessoa queira investigar a partir do número que viu.
+**Prova de valor:** a gestora vê a margem do Sul cair numa resposta, aciona "investigar" e chega às lojas e ao produto que explicam a queda, sem abrir chamado.
+**Reabrir quando:** as pessoas investigarem mais por pergunta em texto ou por aviso do que pelo número.
+
+### D-176 · O arquivo de licença do on-premises traz um teto por tipo de assento para a instância inteira
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada; a leitura do PO sobre o assento de owner está a confirmar) · Data: 05/11/2026 · Versão: v2.1
+
+**Decisão:** o arquivo de licença do on-premises (`D-175`) traz um **teto por tipo de assento para a instância inteira**: gestor, membro full e membro leitor (`D-069`). O **administrador da instância do contratante reparte** esses assentos entre as organizações dele, no mesmo painel do SaaS. A Maind não precisa saber quantas organizações existem.
+**Leitura do PO** *(a confirmar com o dono)*: o assento de owner, que é grátis em cada organização (`D-123`), **não conta no teto**.
+**Contexto:** segunda parte da pendência `P-016`. No SaaS, a Maind libera os assentos por organização e por tipo; no on-premises, quem cria as organizações é o administrador do cliente (`D-146`).
+**Opções avaliadas** (nota de 0 a 100, pesos da `D-015`): **A. Um teto por tipo, para a instância inteira: 75 (escolhida; recomendação do PO)** · C. Um teto total, sem distinguir o tipo: 65 · B. Um teto por tipo e por organização: 62.
+**Por que esta:** o cliente reparte os assentos como já faz no SaaS, e a Maind não emite um arquivo novo a cada organização. Abre-se mão de conferir a divisão entre as organizações: ⚠️ ela é do cliente.
+**Fica de fora / adiado:** o teto por organização; o que acontece com a organização cujos assentos o cliente reduz abaixo do ocupado (vale a `D-076`).
+**Hipóteses a validar:** 🔎 que os clientes on-premises tenham mais de uma organização.
+**Prova de valor:** o administrador de um cliente on-premises importa o arquivo e reparte os assentos entre duas organizações, sem passar do teto de nenhum tipo.
+**Reabrir quando:** um cliente exigir que a Maind controle o teto de cada organização.
+
+### D-175 · No on-premises, a Maind controla os assentos por um arquivo de licença com chave
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026; escolheu contra a recomendação do PO, que era não ter trava técnica; a opção escolhida teve a nota mais alta, por 1 ponto) · Data: 05/11/2026 · Versão: v2.1
+
+**Decisão:** numa instalação **on-premises**, a Maind emite um **arquivo de licença com chave**, que o administrador da instância do contratante importa. O arquivo dá o **teto de assentos** e funciona **sem internet**. Retoma a ideia do arquivo com chave que a `D-067` deixou de lado "por ora". No SaaS nada muda: o painel da instância libera os assentos (`D-067`, `D-068`).
+**Contexto:** primeira parte da pendência `P-016`. No on-premises, a instância é operada pelo próprio cliente, que poderia liberar mais assentos do que contratou. A versão é a mesma nas duas formas de entrega (`D-017`), o produto não tem data de expiração (`D-068`) e a cobrança fica fora do produto (`D-080`).
+**Opções avaliadas** (nota de 0 a 100, pesos da `D-015`): **B. Arquivo de licença com chave: 69 (escolhida)** · A. Sem trava técnica, com o limite contratual: 68 (recomendação do PO, por desempate de reversibilidade) · C. Ativação online, a instância consulta a Maind: 57. B e A ficaram a menos de 5 pontos.
+**Por que esta:** protege a receita e funciona sem internet, o que combina com o modo "tudo dentro" (`D-010`). Abre-se mão de uma v2.1 mais enxuta: ⚠️ é uma peça nova (assinar, importar e conferir o arquivo), e a v2.1 já leva o on-premises, a marca completa e o Athena (`D-121`, `D-161`).
+**Fica de fora / adiado:** o que o arquivo traz (o teto vale para a instância ou para cada organização), que é a dúvida seguinte da `P-016`; uma data de validade do arquivo (o produto não tem expiração, `D-068`).
+**Hipóteses a validar:** 🔎 que os contratantes aceitem um arquivo emitido pela Maind; 🔎 que a peça caiba na v2.1 (`P-037`).
+**Prova de valor:** um cliente on-premises importa o arquivo, libera assentos até o teto e não consegue passar dele.
+**Reabrir quando:** um cliente recusar o arquivo, ou a v2.1 não comportar a peça.
+
+### D-174 · Definição macro da MF-120:Faixa de avisos e números
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026; em parte substituída pela `D-204`: a mf deixa de ser a mais fácil de cortar e passa a indispensável) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** a `MF-120:Faixa de avisos e números` (nome provisório) fica definida assim. Com ela, a `P-027` se fechou.
+- **O que é:** uma faixa contínua abaixo do cabeçalho, que passa **avisos** e **números do negócio**, com cards em duas categorias, cada uma com identidade visual própria: os **Instance Cards**, que o owner da instância configura, e os **Organization Cards**, que o owner da organização configura (`D-152`).
+- **Quem ganha:** **todas as pessoas**, que veem os avisos e, dos números, só o que o acesso delas permite; **o owner da instância e o owner da organização**, que montam a faixa.
+- **Decisão que passa a ser possível:** saber o que importa sem abrir nada nem perguntar (um aviso de manutenção, o número do dia); e o owner falar com todos sem mandar e-mail (`D-151`).
+- **Prova de valor:** o aviso da instância aparece na faixa de todas as pessoas; o owner monta uma faixa com cinco cards, e cada pessoa vê só o que o acesso dela permite; poucas pessoas escondem a faixa.
+- **Retorno para o negócio:** adoção (a faixa lembra o Horus a cada tela) e menos aviso por e-mail.
+- **O que não inclui:** e-mail aos owners (`D-151`); horário por card (`D-171`); edição na própria faixa (`D-172`); componentes criados pelo owner e cards da Home na faixa (`D-170`, `D-173`); a página de manutenção (`D-154`).
+- **Depende de:** `MF-101:Administração da instância` (o aviso da instância e a configuração dos Instance Cards); as preferências da organização (a configuração dos Organization Cards); `MF-106:Segurança dos dados por pessoa` (o acesso de quem vê, `D-167`); `MF-104:Conectar as fontes vivas`.
+- **Valor:** **acelera**: aumenta a adoção, mas a v2.0 entrega valor sem ela.
+- **As regras decididas:** os avisos são públicos (`D-170`), com hora de fim opcional e retirada à mão (`D-165`); os cards de número usam o acesso de quem vê a faixa (`D-167`) e o card sem acesso não aparece (`D-169`); a pessoa pode esconder a faixa inteira (`D-168`); o planejamento define quais cards passam e em que ordem (`D-171`), se monta em telas separadas (`D-172`) e usa um catálogo próprio de componentes (`D-173`).
+**Contexto:** a ideia do dono de uma faixa contínua, o "painel infinito", nasceu da dúvida sobre o aviso da instância (`D-151`) e cresceu na `D-152`. As dúvidas de desenho foram respondidas em 05/11/2026 (`D-167` a `D-173`), e o dono confirmou a definição completa.
+**Por que esta:** junta numa mf só o que é a mesma coisa para a pessoa (o que passa na faixa) e a separa da `MF-101` (quem administra a instância). Abre-se mão de ela ser essencial: ⚠️ é a mf mais fácil de cortar se a v2.0 apertar, e traz dois custos que o dono escolheu: dois catálogos (`D-173`) e números diferentes por pessoa, calculados um a um (`P-036`).
+**Hipóteses a validar:** 🔎 que as pessoas não estranhem faixas diferentes; 🔎 que o catálogo próprio seja pequeno o bastante.
+**Reabrir quando:** a v2.0 apertar a ponto de cortar mfs que não são essenciais, ou o cálculo por pessoa pesar.
+
+### D-173 · A faixa tem um catálogo próprio de componentes, separado do da Home
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026; escolheu contra a recomendação do PO, que era um catálogo só com a Home) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** os componentes com que o owner monta a faixa de avisos e números (`MF-120`, nome provisório, `D-170`) formam um **catálogo próprio da faixa**, separado do catálogo de cards da Home (`MF-117:Home da organização`). Os cards de número da faixa são pensados para o formato dela.
+**Contexto:** sétima e última dúvida da `P-027`, sobre a relação com a `MF-117` e a `MF-112`.
+**Opções avaliadas** (nota de 0 a 100, pesos da `D-015`): A. Um catálogo só, com a Home: 87 (recomendação do PO) · **B. Um catálogo próprio da faixa: 62 (escolhida)**.
+**Por que esta:** o dono quer componentes feitos para o formato da faixa, e não cards da Home espremidos. Abre-se mão de reaproveitar: ⚠️ é um segundo conjunto de componentes para construir e manter, e o owner passa a ter dois catálogos.
+**Fica de fora / adiado:** reaproveitar um card da Home na faixa.
+**Hipóteses a validar:** 🔎 que o catálogo próprio da faixa seja pequeno o bastante para o custo de mantê-lo valer a pena.
+**Prova de valor:** o owner escolhe, na tela de configuração da faixa, componentes feitos para ela, e a faixa os mostra.
+**Reabrir quando:** os dois catálogos passarem a ter os mesmos componentes, ou o custo de manter dois pesar.
+
+### D-172 · O planejamento de exibição da faixa se monta em telas de configuração separadas
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026; escolheu contra a recomendação do PO, que era montar na própria faixa, em modo de edição) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** o planejamento de exibição da faixa (`MF-120`, nome provisório, `D-170`, `D-171`) se monta em **telas de configuração separadas**: o owner da instância monta os **Instance Cards** na administração da instância (`MF-101:Administração da instância`), e o owner da organização monta os **Organization Cards** nas preferências da organização. A faixa em si não tem modo de edição.
+**Contexto:** sexta dúvida da `P-027`. Mudar ou criar um gesto é decisão do dono.
+**Opções avaliadas** (nota de 0 a 100, pesos da `D-015`): B. Na própria faixa, em modo de edição: 74 (recomendação do PO) · **A. Em telas de configuração separadas: 70 (escolhida)** · C. Dentro da Home da organização: 67. A e B ficaram a menos de 5 pontos.
+**Por que esta:** a configuração fica num lugar previsível e à parte do que as pessoas veem, e a faixa continua só de leitura. Abre-se mão de ver o resultado enquanto se monta: ⚠️ o owner configura sem ver a faixa como ela fica.
+**Fica de fora / adiado:** uma prévia da faixa dentro da tela de configuração; um modo de edição na própria faixa.
+**Hipóteses a validar:** 🔎 que o owner acerte a montagem sem ver a faixa ao vivo.
+**Prova de valor:** o owner da organização monta, na tela de preferências, uma faixa com cinco cards, e as pessoas a veem como montada.
+**Reabrir quando:** os owners errarem a montagem com frequência ou pedirem para editar na própria faixa.
+
+### D-171 · O planejamento de exibição da faixa define só quais cards passam e em que ordem
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** o **planejamento de exibição** que o owner monta na faixa (`MF-120`, nome provisório, `D-170`) define **quais cards passam e em que ordem**. Não define dias nem horários por card. O horário de um aviso continua sendo o dele (`D-165`).
+**Contexto:** quinta dúvida da `P-027`: o tamanho do "planejamento de exibição" que o dono citou na `D-170`.
+**Opções avaliadas** (nota de 0 a 100, pesos da `D-015`): **A. Só quais cards e em que ordem: 77 (escolhida)** · B. Também quando cada card aparece: 62.
+**Por que esta:** é simples de montar e de entender, e o aviso já tem datas próprias. Abre-se mão de mostrar um card só em certos dias ou horas.
+**Fica de fora / adiado:** horários e dias por card.
+**Hipóteses a validar:** 🔎 que os owners não precisem de horário por card.
+**Prova de valor:** o owner monta uma faixa com cinco cards numa ordem e as pessoas os veem nessa ordem.
+**Reabrir quando:** os owners pedirem horários por card.
+
+### D-170 · Os avisos da faixa são públicos, e o owner monta um planejamento de exibição com os componentes que o produto oferece
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, em resposta própria, fora das opções do PO) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** na faixa de avisos e números (`MF-120`, nome provisório, `D-152`): (1) os **avisos são públicos**: todas as pessoas os veem; (2) **o owner decide o que colocar** na faixa, o owner da instância nos Instance Cards e o owner da organização nos Organization Cards; (3) a faixa é montada por **N componentes que o produto disponibiliza**, com os quais o owner monta um **planejamento de exibição dos dados**.
+**Leitura do PO** *(a confirmar com o dono)*: quem vê cada card de número é **quem tem acesso à fonte dele** (`D-167`, `D-169`). Os números da instância, que só os administradores acessam, só eles veem. Não há uma configuração de público por card. O que o "planejamento de exibição" inclui (só quais cards e em que ordem, ou também quando cada um aparece) é a dúvida seguinte da `P-027`.
+**Contexto:** quarta dúvida da `P-027` (quem vê cada categoria). O PO perguntou se os números da instância são só dos administradores ou também do owner da organização (notas 79 e 72); o dono respondeu fora das duas.
+**Por que esta:** o owner conhece o que importa à organização, e os componentes prontos mantêm a faixa consistente e sujeita ao acesso por pessoa. Abre-se mão de uma regra fixa de público por categoria: ⚠️ cada owner pode montar faixas muito diferentes.
+**Fica de fora / adiado:** o owner criar componentes próprios (só os que o produto oferece); a lista dos componentes.
+**Hipóteses a validar:** 🔎 que um catálogo de componentes prontos baste.
+**Prova de valor:** o owner da organização monta uma faixa com dois avisos e três números, e cada pessoa vê só o que o acesso dela permite.
+**Reabrir quando:** os owners pedirem componentes que o catálogo não tem.
+
+### D-169 · O card de número ao qual a pessoa não tem acesso não aparece na faixa dela
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** na faixa de avisos e números (`MF-120`, nome provisório), o card de número ao qual a pessoa **não tem acesso não aparece**: a faixa dela mostra só o que ela pode ver, e ninguém descobre que existe um número que não pode ver.
+**Contexto:** terceira dúvida da `P-027`, consequência da `D-167` (os cards de número usam o acesso de quem vê a faixa).
+**Opções avaliadas** (nota de 0 a 100, pesos da `D-015`): **A. O card some: 80 (escolhida)** · B. O card aparece vazio, com "sem acesso": 60.
+**Por que esta:** o título de um card já é informação do negócio ("Margem do Sul"), e a faixa fica limpa. Abre-se mão da transparência de quem quer saber o que não vê: ⚠️ faixas de pessoas diferentes ficam diferentes.
+**Fica de fora / adiado:** um aviso de que há cards escondidos.
+**Hipóteses a validar:** 🔎 que as pessoas não estranhem faixas diferentes.
+**Prova de valor:** uma pessoa sem acesso à fonte de um card abre a faixa e não vê nem o card nem o título dele.
+**Reabrir quando:** pessoas pedirem para saber que existem números que não veem.
+
+### D-168 · Cada pessoa pode esconder a faixa de avisos e números inteira
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026; escolheu contra a recomendação do PO, que era esconder só os números) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** cada pessoa pode **esconder a faixa inteira** (`MF-120`, nome provisório, `D-152`), avisos e números, e mostrá-la de novo quando quiser. Leitura do PO *(a confirmar com o dono)*: a faixa nasce visível, e a escolha é uma preferência da própria pessoa, no perfil.
+**Contexto:** segunda dúvida da `P-027`. A faixa traz avisos, que precisam chegar (`D-151`), e números, que são conveniência.
+**Opções avaliadas** (nota de 0 a 100, pesos da `D-015`): C. A pessoa esconde os números, mas não os avisos: 78 (recomendação do PO) · B. Não esconde nada: 64 · **A. Esconde a faixa inteira: 60 (escolhida)**.
+**Por que esta:** o dono quis que cada pessoa decida o que ocupa a própria tela. Abre-se mão de que todo aviso chegue a todas as pessoas: ⚠️ quem esconde a faixa não vê o aviso da instância nem o do owner. O aviso de indisponibilidade chega pela página de manutenção (`D-154`), que não depende da faixa.
+**Fica de fora / adiado:** uma exceção para avisos críticos (hoje não há).
+**Hipóteses a validar:** 🔎 que poucas pessoas escondam a faixa; 🔎 que a página de manutenção cubra os avisos que não podem ser perdidos.
+**Prova de valor:** uma pessoa esconde a faixa, e ela continua escondida na sessão seguinte.
+**Reabrir quando:** um aviso importante deixar de chegar por causa da faixa escondida.
+
+### D-167 · Os cards de número da faixa calculam os dados com o acesso de quem vê a faixa
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026; escolheu contra a recomendação do PO, que era o acesso do owner que configurou o card) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** na faixa de avisos e números (`MF-120`, nome provisório, `D-152`), os cards de **número do negócio** calculam os dados com o **acesso de quem vê a faixa**: cada pessoa vê só o que o acesso dela permite. Os **avisos** (da instância e do owner da organização) não dependem de acesso: todos os veem.
+**Contexto:** primeira dúvida da `P-027`. O dono decidiu dois casos parecidos em sentidos diferentes: o board do espaço da organização usa o acesso de quem abre (`D-163`) e o board público, o do owner que o publicou (`D-164`).
+**Opções avaliadas** (nota de 0 a 100, pesos da `D-015`): B. O acesso do owner que configurou o card: 80 (recomendação do PO) · **A. O acesso de quem vê a faixa: 73 (escolhida)** · C. O owner escolhe, card a card: 71.
+**Por que esta:** segue o invariante de que quem pergunta vê só o que pode ver e evita que um owner libere dados pela faixa sem perceber. Abre-se mão de que todos vejam os mesmos números: ⚠️ a faixa mostra números diferentes, ou nada, a pessoas diferentes, e o cálculo é por pessoa (`P-036`).
+**Fica de fora / adiado:** o que a pessoa sem acesso à fonte de um card vê no lugar dele (um card vazio ou nenhum card); fica entre as dúvidas que a `P-027` ainda tem.
+**Hipóteses a validar:** 🔎 que calcular os cards por pessoa não pese na abertura da tela.
+**Prova de valor:** duas pessoas com acessos diferentes veem a mesma faixa com números diferentes, cada uma só com o que o acesso dela permite.
+**Reabrir quando:** os owners reclamarem de que a faixa não mostra o mesmo número a todos, ou o cálculo por pessoa pesar.
+
+### D-166 · O relatório da organização se baixa em planilha e em PDF
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026; escolheu contra a recomendação do PO, que era só a planilha) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** o administrador da instância baixa o relatório da organização (`D-149`, `D-157`) em **planilha** e em **PDF**.
+**Contexto:** pendência `P-031` (Q14 da modelagem da `MF-101:Administração da instância`). O relatório traz o uso e o custo e a história completa dos assentos, com nomes. A Maind o usa para conferir a cobrança e para guardar o que ficou antes de excluir uma organização.
+**Opções avaliadas** (nota de 0 a 100, pesos da `D-015`): A. Só planilha: 76 (recomendação do PO) · B. Só PDF: 72 · **C. Planilha e PDF: 69 (escolhida)**. A e B ficaram a menos de 5 pontos.
+**Por que esta:** a planilha serve à conferência da cobrança, que pede somar e filtrar; o PDF serve a guardar e a mostrar o que ficou antes da exclusão. Abre-se mão de uma primeira entrega mais enxuta: ⚠️ são dois geradores.
+**Fica de fora / adiado:** outros formatos.
+**Hipóteses a validar:** 🔎 que a conferência da cobrança seja o uso principal da planilha e a guarda, o do PDF.
+**Prova de valor:** o administrador baixa os dois arquivos de uma organização antes de excluí-la, e os números batem.
+**Reabrir quando:** um dos dois formatos não for usado.
+
+### D-165 · O aviso da instância pode ter hora de fim opcional e ser retirado à mão a qualquer momento
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** o administrador da instância pode marcar uma **hora de fim opcional** no aviso que passa na faixa e pode **retirá-lo à mão a qualquer momento**. Sem hora de fim, o aviso fica até ser retirado.
+**Contexto:** pendência `P-030` (Q13 da modelagem da `MF-101:Administração da instância`). A `D-151` fez o aviso passar só pela faixa, e a `D-152` ampliou a faixa. O modelo de dados já guarda os dois (o horário de fim e o evento `retirado`).
+**Opções avaliadas** (nota de 0 a 100, pesos da `D-015`): **C. Os dois, horário opcional e retirar à mão: 73 (escolhida)** · A. Só o horário de fim, obrigatório: 64 · B. Só à mão: 60.
+**Por que esta:** serve ao aviso de manutenção, que tem hora de acabar, e ao de instabilidade, que não tem, com uma data opcional e um botão. ⚠️ Um aviso sem hora de fim pode ficar esquecido na faixa.
+**Fica de fora / adiado:** um limite máximo de duração para o aviso sem hora de fim.
+**Hipóteses a validar:** 🔎 que o administrador use os dois casos.
+**Prova de valor:** o administrador publica um aviso de manutenção com hora de fim e um de instabilidade sem hora de fim, e retira o segundo à mão.
+**Reabrir quando:** ficarem avisos esquecidos na faixa.
+
+### D-164 · O board público calcula os dados com o acesso do owner que o tornou público
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** o board que o owner define como **público** (`D-048`), e que até a quarentena vê, **calcula os dados com o acesso do owner que o tornou público**, e mostra os mesmos números a todas as pessoas que o abrem. O owner **responde pelo que publica**, como o gestor responde pelo que libera (`D-054`). Os outros boards do espaço da organização seguem a `D-163`.
+**Contexto:** impasse `I-019`. A `D-163` manda calcular o board com o acesso de quem o abre, e quem está na quarentena não tem acesso a dados: o board público apareceria vazio para quem a `D-048` quis atender.
+**Opções avaliadas** (nota de 0 a 100, pesos da `D-015`): **B. O acesso do owner que o tornou público: 73 (escolhida)** · C. O owner escolhe, board a board, entre o acesso de quem abre e o dele: 68 · A. O acesso de quem abre: 64.
+**Por que esta:** o board público faz o que a `D-048` prometeu, e a responsabilidade fica com quem o publicou, por escolha explícita. Abre-se mão de uma regra única: ⚠️ este é o único caso em que um board entrega dados a quem não tem permissão para vê-los.
+**Fica de fora / adiado:** o owner escolher, board a board, com qual acesso o board público roda (opção C).
+**Hipóteses a validar:** 🔎 que o owner tenha acesso aos dados que publica (a `D-048` diz que o owner não é dono de dados); 🔎 que os owners entendam que publicar um board é liberar os números dele.
+**Prova de valor:** um membro em quarentena abre um board público e vê os números, e o registro mostra qual owner o publicou.
+**Reabrir quando:** um cliente quiser que o board público respeite o acesso de quem abre, ou o owner publicar um board com dado que não devia.
+
+### D-163 · Os boards do espaço da organização calculam os dados com o acesso de quem os abre
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada; a leitura do PO sobre os agendamentos e os agentes foi confirmada pelo dono em 05/11/2026, junto com a de que, na v2.0, todas as pessoas da organização veem os mesmos dados, porque a organização é a fronteira, `D-145`) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** um board que está no **espaço da organização** (porque o autor saiu ou passou a leitor, `D-044`, `D-073`) **calcula os dados com o acesso de quem o abre**: cada pessoa vê só o que o acesso dela permite, e o mesmo board pode mostrar números diferentes a pessoas diferentes.
+**Leitura do PO** *(a confirmar com o dono)*: os agendamentos e os agentes que vão para o espaço da organização ficam **pausados** (`D-073`) e, quando o owner os transfere (`D-044`), passam a rodar **em nome de quem os recebeu**, com o acesso dessa pessoa.
+**Contexto:** impasse `I-018` (`A-11` do documento 14, letra (o) da `P-008`). O owner não é dono de dados (`D-048`), e o board perde o autor quando ele sai. A v1.xx roda o painel corporativo com acesso total.
+**Opções avaliadas** (nota de 0 a 100, pesos da `D-015`): **A. O acesso de quem abre: 78 (escolhida; era a recomendação do arquiteto e a do PO)** · B. Acesso total: 59 · C. O acesso do último autor, congelado: 51.
+**Por que esta:** segue o invariante de que quem pergunta vê só o que pode ver e evita que o acesso de quem saiu da empresa continue valendo. Abre-se mão de números iguais para todos.
+**Fica de fora / adiado:** o que os boards públicos mostram à quarentena (`D-048`): com o acesso de quem abre, quem está na quarentena não tem dados a ver. É o `I-019`.
+**Hipóteses a validar:** 🔎 que o mesmo board mostrar números diferentes por pessoa seja bem aceito.
+**Prova de valor:** dois membros com acessos diferentes abrem o mesmo board da organização e cada um vê só o que o seu acesso permite.
+**Reabrir quando:** clientes estranharem números diferentes no mesmo board.
+
+### D-162 · A web como fonte entra na v2.0 como o modelo poder sair à web quando autorizado
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, em resposta própria: esclareceu o que a peça é e que ela entra na v2.0) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** o que o documento 14 chamava de "fonte de páginas web" entra na **v2.0**, entendido como **o modelo poder sair para a web quando autorizado**: a pesquisa na web já decidida (`D-130`, `D-131`) e desenhada na `ARQ-027`, em que só a pergunta vai à busca do provedor, o fato volta com o link e a data, e a pesquisa só roda onde a instância e a role da pessoa a autorizam. O dono a considera simples, e a v2.0 a entrega terminada.
+**Contexto:** segunda parte do impasse `I-017` (`A-04` do documento 14). O PO a tinha descrito como um cadastro de páginas escolhidas, a partir do código da v1.xx (uma conexão do tipo `web`, que o chat lê no lugar de planejar uma consulta). O dono esclareceu que, para ele, a peça é a saída do modelo para a web quando autorizada.
+**Opções avaliadas:** o PO propôs A (fora da v2.0), C (v2.1) e B (terminada na v2.0), com notas 68, 65 e 52. O dono respondeu fora das opções, com a leitura acima, que coincide com a B sem o cadastro de páginas.
+**Por que esta:** a saída para a web autorizada é o que a pessoa espera de "a web como fonte" (`MF-109:A web como fonte`), já está desenhada e custa pouco. Abre-se mão de nada novo: o cadastro de páginas escolhidas, se existir como tipo de fonte, é assunto do arquiteto (`P-034`).
+**Fica de fora / adiado:** o cadastro de páginas específicas como tipo de fonte, até o arquiteto confirmar o que a v1.xx tem e se a `ARQ-027` o cobre.
+**Hipóteses a validar:** 🔎 que a "fonte de páginas web" da v1.xx e "o modelo sair à web" sejam, para o cliente, a mesma coisa.
+**Prova de valor:** a pessoa liga a pesquisa na web e recebe um fato de fora com link e data (`D-130`).
+**Reabrir quando:** um cliente pedir para cadastrar páginas específicas como fonte.
+
+### D-161 · O AWS Athena sai da v2.0 e entra, terminado, na v2.1
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026; escolheu contra a recomendação do PO, que era deixá-lo fora até um cliente pedir; virou a `MF-123` pela `D-198`) · Data: 05/11/2026 · Versão: v2.1
+
+**Decisão:** o AWS Athena **não entra na v2.0**: ele passa a ser entregue **terminado na v2.1**, ou seja, o Horus passa a responder perguntas de análise com ele. Até lá, continua fora da tela, como no MVP (`D-139`), e a base herdada da v2.0 (`D-021`) deixa de contá-lo.
+**Contexto:** primeira parte do impasse `I-017` (`A-04` do documento 14). Hoje o Athena só cadastra: o Horus não responde nada com ele. A v2.0 o contava como parte da `MF-104:Conectar as fontes vivas`, que é base herdada.
+**Opções avaliadas** (nota de 0 a 100, pesos da `D-015`): A. Fora da v2.0, volta quando um cliente pedir: 68 (recomendação do PO) · **C. Entra na v2.1: 65 (escolhida)** · B. Entra terminado na v2.0: 47. A e C ficaram a menos de 5 pontos.
+**Por que esta:** o dono quer a fonte entregue, com data, e não à espera de um cliente; a v2.0 não atrasa. Abre-se mão de espaço na v2.1: ⚠️ ela já leva o on-premises e a marca completa (`D-121`) e agora também uma fonte sem demanda conhecida.
+**Fica de fora / adiado:** o Athena na v2.0.
+**Hipóteses a validar:** 🔎 que haja organização que queira o Athena na v2.1; 🔎 que o conector e a segurança por pessoa, que hoje só cobre o SQL Server, caibam na v2.1 (do arquiteto, `P-033`).
+**Prova de valor:** uma organização conecta um Athena e recebe uma resposta de análise.
+**Reabrir quando:** a v2.1 não comportar o conector junto do resto, ou nenhum cliente o pedir até a v2.1.
+
+### D-160 · Quando a organização usa o número de WhatsApp da Maind, ela paga as mensagens que gerar
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** quando uma organização **autoriza o uso do número da Maind** no WhatsApp (`D-097`), ela **paga as mensagens que gerar**: a Maind repassa o custo cobrado pela Meta, medido por organização na `MF-101:Administração da instância` (`ARQ-084`), e a cobrança fica **fora do produto** (`D-080`, `D-116`). Quem usa o **próprio número** paga a Meta diretamente, como já decidido na `D-097`.
+**Contexto:** segunda parte do impasse `I-016` (`A-03` do documento 14), a primeira foi a `D-159`. A conta da Maind no WhatsApp custa de US$ 70 a 250 por mês para a instância inteira 🔎 (documento 13), e usar o número da Maind é uma escolha da organização, ao contrário da IA.
+**Opções avaliadas** (nota de 0 a 100, pesos da `D-015`): **B. A organização paga o que usar: 75 (escolhida)** · A. A Maind absorve e embute no assento: 66.
+**Por que esta:** o custo fica transparente por organização, e a Maind não subsidia uma conveniência que o cliente escolheu. Abre-se mão da simplicidade de um preço só: a Maind precisa cobrar por fora do plano de assentos o que a organização consumir.
+**Fica de fora / adiado:** como e quando a Maind faz a cobrança (é comercial e financeiro, fora do produto); uma franquia de mensagens incluída no assento.
+**Hipóteses a validar:** 🔎 a faixa de custo da conta da Maind; 🔎 o volume de mensagens que agentes e avisos geram por organização.
+**Prova de valor:** a Maind consulta, na `MF-101`, o custo de WhatsApp de uma organização que usa o número dela e o repassa.
+**Reabrir quando:** o custo repassado desestimular o uso do número da Maind, ou a Maind quiser incluir uma franquia no assento.
+
+### D-159 · No SaaS, a Maind paga a IA de todas as organizações e a embute no preço do assento
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção recomendada; em parte substituída pela `D-216`: a Maind paga só a conexão da instância, e a organização pode ter a dela) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** no SaaS, a **conta do provedor de IA é da Maind**: ela paga a IA de todas as organizações, e o custo vai **embutido no preço do assento** (`D-115`). A organização não abre conta no provedor nem compra crédito para obter a primeira resposta de análise. O **aviso de custo** da `MF-101:Administração da instância` (`ARQ-017`) vigia o consumo de cada organização. No on-premises, o contratante é o dono da instância e paga a própria conta.
+**Contexto:** primeira parte do impasse `I-016` (`A-03` do documento 14). No envelope do primeiro ano, a IA é quase todo o custo variável, de US$ 220 a 770 por organização por mês 🔎 (documento 13). A segunda parte, o WhatsApp, segue aberta no `I-016`.
+**Opções avaliadas** (nota de 0 a 100, pesos da `D-015`): **B. A Maind paga a IA e embute no assento: 77 (escolhida)** · C. A organização escolhe entre a conta da Maind e a própria: 73 · A. O cliente traz a própria conta: 54. B e C ficaram a menos de 5 pontos, e o desempate foi a reversibilidade: B pode virar C depois, e C não volta a B sem tirar uma função de quem já a usa.
+**Por que esta:** o cliente não tem trabalho nenhum antes da primeira resposta útil, que é o critério de maior peso. Abre-se mão de que a Maind carrega o risco do consumo: se uma organização usar muito mais que o previsto, quem paga é a Maind, e o preço do assento (`P-022`) precisa cobrir a média.
+**Fica de fora / adiado:** a organização trazer a própria conta de IA (opção C), que pode entrar depois sem desfazer esta decisão.
+**Hipóteses a validar:** 🔎 a faixa de US$ 220 a 770 por organização por mês; 🔎 que o preço do assento cubra o consumo médio.
+**Prova de valor:** uma organização nova faz a primeira pergunta de análise sem abrir conta em provedor de IA.
+**Reabrir quando:** o consumo médio por organização passar do que o preço do assento cobre, ou clientes exigirem usar a própria conta.
+
+### D-158 · O administrador da instância pergunta ao próprio Horus sobre a história dos dados da instância
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, ao seguir as recomendações) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** o administrador da instância faz perguntas em linguagem natural ao próprio Horus sobre a **história** da instância: quem ocupou cada assento e quando, os cortes e as reativações, os administradores, os limiares de custo cruzados, as mudanças de situação das organizações. A resposta traz o **nome** de quem ocupou (`D-157`). Para isso a história tem um banco próprio, consultável como uma fonte de dados (`ARQ-097`).
+**Contexto:** na modelagem da `MF-101:Administração da instância`, o dono pediu que os dados representem o processo e o histórico, e que se possa apontar para um momento do tempo; e lembrou que o próprio Horus será usado para perguntar sobre esses dados. Esta decisão substitui as dúvidas Q16 e Q17 da modelagem (a Maind consulta o registro de administração e os avisos de custo por uma tela).
+**Opções avaliadas:** A) o Horus pergunta sobre o banco de log (recomendada, escolhida) · B) uma tela própria para cada consulta (a Q16 e a Q17 originais). Sem pontuação: decisão pequena e reversível.
+**Por que esta:** reaproveita o que o produto já faz, em vez de construir telas de consulta. Abre-se mão de relatórios prontos para cada pergunta: a resposta é tão boa quanto o Planejador entende o modelo da história.
+**Fica de fora / adiado:** o owner da organização perguntar sobre a história da organização dele (pediria regra por linha, que hoje só existe para SQL Server); o rastro da `MF-116`, que continua na organização (`D-091`).
+**Hipóteses a validar:** 🔎 que o Planejador responda bem sobre as tabelas de log; 🔎 que a guarda de rede aceite o banco de log como fonte da instância.
+**Prova de valor:** o administrador pergunta "quem ocupava os assentos da organização X em 15/05?" e recebe a lista com os nomes.
+**Reabrir quando:** o Planejador errar a pergunta com frequência, ou o owner da organização pedir o mesmo para a organização dele.
+
+### D-157 · O relatório da organização mostra a história completa dos assentos, com o nome de quem os ocupou
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026; escolheu contra a recomendação do PO; a leitura sobre a `D-091.1` foi confirmada pelo dono em 05/11/2026) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** o relatório da organização (`D-149`) mostra, além dos assentos de hoje, a **história de cada assento**: quem o ocupou (com o nome da pessoa) e quando, as reservas por convite, as devoluções, os cortes e as reativações. Substitui **só** o trecho da `D-149` que dizia "sem histórico"; o resto da `D-149` segue (relatório a qualquer momento, uso apagado junto com a organização).
+**Contexto:** o dono corrigiu a modelagem da `MF-101:Administração da instância` em 05/11/2026: os dados precisam representar o processo e guardar o histórico, e cada assento passou a ser um registro, com o membro que o ocupa, a situação e a ocupação. Com a história gravada, a dúvida (Q15) foi se o relatório a mostra e com que detalhe.
+**Opções avaliadas:** A) só a situação de hoje, com a história gravada e sem tela · B) a história em números, mês a mês, sem nome de pessoa (recomendação do PO) · **C) a história completa, com nomes (escolhida pelo dono)**. Sem pontuação: decisão pequena e reversível (a tela some sem perder a história gravada).
+**Por que esta:** a Maind confere a cobrança e o suporte responde, para qualquer mês, quem ocupava cada assento. Abre-se mão de ficar só com números: ⚠️ o administrador da instância passa a ver o nome de quem ocupa cada assento de cada organização.
+**Leitura do PO** *(confirmada pelo dono em 05/11/2026)*: isso não fere a `D-091.1`, que impede o owner da instância de consultar o **rastro de auditoria** das organizações. Quem ocupa um assento é dado de licenciamento, não conteúdo de conversa, de board nem de rastro, e a pessoa e a conta já são da instância (`ARQ-033`). O relatório segue sem conteúdo de organização.
+**Fica de fora / adiado:** o relatório para o **owner da organização** (continua decisão à parte, como na `D-149`); o conteúdo das conversas, dos boards e do rastro.
+**Hipóteses a validar:** 🔎 que os clientes aceitem que a Maind veja o nome de quem ocupa cada assento (no on-premises, o administrador é do contratante); 🔎 que o aviso de privacidade do produto cubra isso (LGPD, a conferir com o arquiteto no documento 07, Segurança).
+**Prova de valor:** o administrador baixa o relatório de uma organização e confere, assento a assento, quem o ocupou e quando, inclusive o corte e a reativação.
+**Reabrir quando:** um cliente recusar que a Maind veja o nome dos membros dele, ou a LGPD exigir minimização.
+
+### D-156 · Quatro dúvidas da modelagem da MF-101 já tinham resposta nas decisões anteriores
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, ao seguir as recomendações; era proposta, leitura do PO) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** a modelagem de dados da `MF-101:Administração da instância` segue quatro leituras que decorrem de decisões já tomadas: (1) o `EmailContato` e o `Copyright` da v1.xx **não migram**, porque as páginas institucional e de propaganda saíram do produto (`D-011`); o rodapé da marca continua; (2) o painel **não marca** qual assento é o grátis, porque o preço fica fora do produto (`D-116`) e o produto só garante que a organização nasce com um assento de owner (`D-123`); (3) a **aparência** (o tema) fica fora da v2.0, como a `D-011` deixou para uma versão futura; (4) a **pergunta de análise respondida** é contada como na medida de autonomia da `MF-117:Home da organização` (`D-133`).
+**Contexto:** a modelagem de dados da MF-101 (documento `modelo-de-dados/mf-101-gestao-da-instancia.md`, no repositório do backend da v2, de 05/11/2026) levantou doze dúvidas; estas quatro (Q4, Q8, Q10 e Q12) não precisaram de pergunta ao dono.
+**Opções avaliadas:** nenhuma bifurcação: cada leitura repete uma decisão do dono. Sem pontuação.
+**Por que esta:** reabrir uma decisão do dono sem fato novo não agrega valor; a leitura só a aplica ao modelo.
+**Fica de fora / adiado:** o tema da marca (`D-011`) e o preço (`D-116`).
+**Hipóteses a validar:** nenhuma nova.
+**Prova de valor:** o modelo da MF-101 sai sem coluna de contato, de aviso legal, de tema nem de assento grátis, e a contagem de perguntas é a mesma da MF-117.
+**Reabrir quando:** o dono pedir uma delas, ou a `D-133` mudar a definição de pergunta respondida.
+
+### D-155 · O ritmo de envio de e-mail e o tempo de guarda do cache de prompt continuam na administração da instância
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, ao seguir as recomendações; era proposta, do PO) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** o administrador da instância continua ajustando, pela tela de administração, os dois parâmetros que a v1.xx já tem: o **ritmo de envio de e-mail** da instância (de 1 a 600 por minuto; padrão 60) e o **tempo de guarda do cache de prompt**, isto é, por quanto tempo o produto reaproveita a parte repetida das instruções enviadas à IA (cinco minutos, uma hora ou desligado; padrão uma hora).
+**Contexto:** dúvida Q5 da modelagem da MF-101. A `ARQ-046` fez do ritmo de e-mail o orçamento da instância, e as duas telas existem hoje na administração da v1.xx.
+**Opções avaliadas:** manter os dois, como estão (recomendação do PO) · tirá-los da administração. Sem pontuação: decisão pequena e reversível.
+**Por que esta:** não há ganho em esconder um ajuste que o administrador já usa. Abre-se mão de nada.
+**Fica de fora / adiado:** qualquer parâmetro novo de desempenho.
+**Hipóteses a validar:** 🔎 que os dois seguem úteis ao administrador da v2.0.
+**Prova de valor:** o administrador muda o ritmo de e-mail e o tempo do cache sem mexer em arquivo.
+**Reabrir quando:** o arquiteto de soluções mostrar que um deles deixou de fazer sentido.
+
+### D-154 · Durante uma manutenção, uma página com a hora de volta substitui o app; a página pública do estado da instância fica fora da v2.0
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, ao seguir as recomendações; era proposta, do PO) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** quando a instância para para uma troca ou uma janela de manutenção, quem abre o app vê uma **página com o motivo e a hora de volta**, no lugar da tela de entrada funcionando com as respostas falhando. A **página pública do estado da instância** (um endereço aberto que mostra se o Horus está de pé) **fica fora da v2.0**.
+**Contexto:** pendência `A-21` (agora `P-025`). Hoje, com a API parada, o servidor da web segue mostrando a tela de entrada e as respostas falham, e a pessoa conclui que o Horus quebrou (`horus@318db52b:infra/README.md`, "Sintoma que engana"). A `D-151` cobre o aviso antes da parada; esta cobre o durante. As duas partes são a recomendação do arquiteto de soluções (documento 14, `A-21`).
+**Opções avaliadas:** a página de manutenção com a hora de volta (recomendada) · seguir como hoje · a página de manutenção mais a página pública do estado (cortada por ora). Sem pontuação: o caso é pequeno e o arquiteto já recomendou.
+**Por que esta:** protege a confiança com custo pequeno; a página pública do estado serve a quem não é da casa e não resolve o caso principal. Abre-se mão de um endereço de estado para os contratantes.
+**Fica de fora / adiado:** a página pública do estado; o aviso por e-mail aos owners (`D-151`).
+**Hipóteses a validar:** 🔎 que as janelas de manutenção serão frequentes o bastante no começo para a página valer o custo.
+**Prova de valor:** numa parada de manutenção, ninguém abre o app e vê uma tela de entrada funcionando seguida de falha; vê a hora de volta.
+**Reabrir quando:** um contratante exigir uma página pública do estado, ou um incidente mostrar que só o aviso não basta.
+
+### D-153 · Os números de uso, os assentos e o aviso de custo continuam na MF-101 e viram Instance Cards prontos
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, ao seguir as recomendações; era proposta, leitura do PO) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** o que o administrador da instância precisa ver de cada organização continua na `MF-101` como **dado** e como **card pronto da categoria Instance Cards** (`D-152`): os assentos liberados e ocupados por tipo; as perguntas de análise respondidas; as execuções de agente; o custo de IA do mês; as mensagens de WhatsApp e o custo; e os envios de e-mail (só a quantidade, porque o e-mail não conta em dinheiro, `ARQ-084`). Soma-se o **aviso de custo**: a Maind é avisada quando uma organização passa de um limite que ela ajusta caso a caso, e nada se corta sozinho (`ARQ-017`). A montagem do painel é da `MF-120`. Só números, nunca conteúdo (`D-091.1`), e o custo fixo de operação não entra (`ARQ-084`).
+**Contexto:** pendência `A-29` (agora `P-026`). A hipótese era o painel mostrar esses números por organização e por mês. Perguntado entre os seis números como tela fixa (A) e só o essencial (B), o dono respondeu com outra ideia: o owner configura a exibição com componentes e KPIs previamente criados, em duas categorias (`D-152`). Esta decisão é a leitura do PO: os números viram o catálogo inicial dos Instance Cards, dentro da MF-101; quais o owner pode mostrar e onde é assunto da `MF-120` (`P-027`).
+**Opções avaliadas:** A) os seis números como tela fixa · B) só assentos e custo de IA · cards prontos e configuráveis (a ideia do dono, `D-152`). Sem pontuação, porque a resposta do dono mudou a forma da pergunta.
+**Por que esta:** casa com o que o dono pediu (cards prontos) sem espalhar o dado por mais de uma mf: quem produz o número é a MF-101; quem monta a tela é a MF-120.
+**Fica de fora / adiado:** a montagem e a configuração do painel (`MF-120`, `P-027`); o histórico de assentos mês a mês (`D-149`).
+**Hipóteses a validar:** 🔎 que esses números bastam ao primeiro catálogo; 🔎 que o motor de cards que a v1.xx já tem na Home da organização serve também à categoria da instância (a confirmar com o arquiteto de soluções).
+**Prova de valor:** o administrador da instância vê, por organização e por mês, esses números e o aviso de custo, só em números.
+**Reabrir quando:** o dono quiser outros números no catálogo, ou o aviso de custo se mostrar ruidoso.
+
+### D-152 · A faixa de avisos e números entra na v2.0 como a MF-120 (provisória), com cards prontos em duas categorias
+Situação: 🟢 decidida (o dono escolheu em 05/11/2026; a definição da mf está pendente, `P-027`) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** a v2.0 tem uma **faixa contínua** ("painel infinito") logo abaixo do cabeçalho do app, que passa informações diversas: os **avisos** e os **números do negócio** da organização. Os itens são **cards prontos** (componentes e KPIs previamente criados), e o owner configura a exibição, em duas categorias: **Instance Cards**, que só o owner da instância configura, e **Organization Cards**, que só o owner da organização configura. Cada categoria tem **identificação visual própria**, para distinguir o aviso do owner da instância do aviso do owner da organização. É uma **macro funcionalidade nova, a `MF-120`** (o próximo número livre; o nome é provisório), e fica fora da `MF-101`.
+**Contexto:** ao decidir o aviso da instância (`D-151`), o dono ampliou a ideia: em vez de uma faixa só de manutenção, um canal permanente dentro do app. Perguntado o que pode passar nela, escolheu a opção C: avisos mais os números do negócio da organização. Depois explicou as duas categorias de card. Objetivo da versão: a v2.0 resolve o problema nº 1 do norte (`D-106`); esta mf amplia o que a pessoa vê sem pedir.
+**Opções avaliadas:** A) só avisos do administrador da instância (recomendação do PO) · B) avisos do administrador e do owner de cada organização · C) avisos e números do negócio (escolhida pelo dono). Sem pontuação: a opção C é uma mf nova e ainda sem definição.
+**Por que esta:** é a decisão do dono. Leitura do PO: dá vida ao app, reaproveita a ideia de card pronto que o produto já usa e separa o que é da instância do que é da organização. Abre-se mão de uma v2.0 mais enxuta: a lista ganha uma mf, como a `D-119` e a `D-122` já fizeram.
+**Consequências:**
+- A faixa mostra a cada pessoa **só os números que ela já pode ver** no produto: a segurança por pessoa (`D-025`, `MF-106:Segurança dos dados por pessoa`) vale aqui, e duas pessoas da mesma organização podem ver faixas diferentes.
+- Todo número na faixa deve poder ser aberto para mostrar **origem e período**, como em qualquer resposta do produto.
+- Texto em movimento contínuo precisa poder ser **pausado**; o gesto e o visual são do dono e do arquiteto.
+**Fica de fora / adiado:** a definição macro (quem ganha, que decisão passa a ser possível, prova de valor, retorno, o que não inclui e do que depende): `P-027`; quem vê cada categoria; a montagem e o lugar de configurar; a relação com a Home da organização (`MF-117`) e com os boards (`MF-112`).
+**Hipóteses a validar:** 🔎 que o motor de cards da Home da v1.xx serve a esta mf (arquiteto de soluções); 🔎 que números do negócio na faixa ajudam a decidir, e não só enfeitam.
+**Prova de valor:** *a definir na `P-027`.*
+**Reabrir quando:** a definição da MF-120 mostrar que ela não cabe na v2.0.
+
+### D-151 · O aviso da instância entra na v2.0, em faixa contínua abaixo do cabeçalho, só pela faixa
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** a v2.0 tem um **aviso da instância**: o administrador da instância escreve o texto, a data e a hora, e o aviso aparece para todas as pessoas na faixa contínua abaixo do cabeçalho (`D-152`). Vai **só pela faixa**: não há aviso por e-mail aos owners.
+**Contexto:** pendência `A-21` (agora `P-025`). O produto só tem a área de avisos de cada conta (`D-128`); não tem um aviso geral da instância, e a pessoa que abre o app durante uma parada vê a tela de entrada funcionando e as respostas falhando. Objetivo da versão: a v2.0 abre com confiança desde o primeiro cliente (`D-105`). O dono quis o aviso na v2.0 e deu à faixa o formato de painel contínuo.
+**Opções avaliadas** (pesos da `D-015`; notas de 0 a 5, quase todas hipótese do PO):
+
+| Opção | Missão (25) | Tempo (25) | Confiança (20) | Retorno (15) | Aprendizado (5) | Alavancagem (10) | Total |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| A. Entra na v2.0, em faixa no topo do app | 3 | 4 | 4 | 3 | 4 | 3 | **70** |
+| B. Fica para a v2.1 | 3 | 2 | 3 | 3 | 5 | 3 | 57 |
+| C. Não entra no produto | 2 | 3 | 1 | 1 | 4 | 1 | 38 |
+
+- **A.** Prós: protege a confiança desde o primeiro cliente; custo pequeno. Contras: mais um item numa v2.0 que já é grande. Certa quando as janelas de manutenção podem vir antes da v2.1.
+- **B.** Prós: v2.0 mais enxuta. Contras: a primeira janela pode acontecer antes da v2.1. Certa se a abertura da v2.0 for tão restrita que dê para avisar por fora.
+- **C.** Prós: nada a construir. Contras: quem não recebe o aviso por fora fica no escuro.
+
+Sobre o canal, uma segunda escolha: **também por e-mail aos owners** (recomendação do PO, pelo e-mail da instância) ou **só pela faixa**. O dono escolheu **só pela faixa**.
+**Por que esta:** é a opção que ganha em tempo até o valor e em confiança. Abre-se mão de avisar por e-mail quem não abre o app.
+**Fica de fora / adiado:** o aviso por e-mail aos owners (escolha do dono, contra a recomendação do PO); a página pública do estado (`D-154`).
+**Hipóteses a validar:** 🔎 que as janelas de manutenção serão frequentes no começo; 🔎 que a faixa basta num incidente, sem e-mail.
+**Prova de valor:** na véspera de uma manutenção, quem abre o app vê a faixa com o horário; na hora, ninguém acha que o Horus quebrou.
+**Reabrir quando:** um incidente exigir falar com quem não abre o app (voltar ao aviso por e-mail aos owners, `ARQ-068`).
+
+### D-150 · O uso e o custo diários ficam guardados enquanto a organização existir
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** o painel e o relatório de uso guardam o uso e o custo de cada organização, **por dia**, **enquanto a organização existir**, sem prazo. O dia é contado no horário de Brasília (escolha técnica do arquiteto de soluções).
+**Contexto:** dúvida Q7 da modelagem da MF-101. A proposta era guardar 25 meses, a mesma regra do consumo de IA (`ARQ-035`), para comparar um mês com o mesmo mês do ano anterior.
+**Opções avaliadas:** A) 25 meses (recomendação do PO) · B) enquanto a organização existir (escolhida pelo dono). Sem pontuação: decisão pequena.
+**Por que esta:** é a decisão do dono. Leitura do PO: o volume é pequeno (cerca de 66 mil linhas por ano para 30 organizações), não precisa de rotina de limpeza e o relatório (`D-149`) ganha todo o histórico. Abre-se mão de uma regra única de retenção com o consumo de IA.
+**Consequências:** o consumo bruto de IA, nos bancos das organizações, segue com 25 meses (`ARQ-035`); o arquiteto de soluções ajusta a retenção do resumo no banco mestre.
+**Fica de fora / adiado:** o histórico dos assentos (`D-149`).
+**Hipóteses a validar:** 🔎 que a tabela cresce devagar o bastante para nunca pesar.
+**Prova de valor:** o administrador consulta o uso de uma organização de três anos atrás.
+**Reabrir quando:** o volume crescer a ponto de pesar, ou a Maind pedir um prazo.
+
+### D-149 · A Maind tem um relatório da organização, para ver e baixar a qualquer momento; excluir a organização apaga o uso junto
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026; a leitura de quem vê o relatório é do PO, a confirmar) · **o trecho "sem histórico" dos assentos foi substituído pela `D-157`** · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** o administrador da instância tem um **relatório de cada organização**, para ver e baixar **a qualquer momento**, só com números, nunca conteúdo (`D-091.1`). Por isso, **excluir uma organização apaga também o uso e o custo dela**: a Maind pode baixar o relatório antes. O relatório mostra os assentos **como estão hoje, sem histórico** mês a mês.
+**Contexto:** dúvidas Q9 e Q2 da modelagem da MF-101. A regra de arquitetura é "tudo sai" quando a organização é excluída (`ARQ-037`), mas a Maind pode precisar fechar a fatura do mês. O dono respondeu com uma terceira via: um relatório disponível a qualquer momento, e a exclusão fica segura. Sobre o histórico, perguntado se o relatório mostra os assentos mês a mês, escolheu que não.
+**Opções avaliadas:** Q9) A. o uso some junto, a fatura fecha fora e antes (recomendada) · B. os totais mensais ficam · **o relatório sempre disponível, com o uso somando junto (a ideia do dono, escolhida)**. Q2) A. histórico dos assentos mês a mês e datas de corte (recomendação do PO) · B. só a situação de hoje (escolhida). Sem pontuação: decisões pequenas e reversíveis.
+**Por que esta:** o relatório resolve a dúvida da fatura sem tabela de sobra nem exceção ao "tudo sai". Abre-se mão do histórico de assentos: ⚠️ sem ele, a Maind só vê a situação de hoje, e conferir a cobrança de meses passados exige guardar a conta por fora, já que o preço fica fora do produto (`D-116`).
+**Fica de fora / adiado:** o histórico de assentos mês a mês; o relatório para o **owner da organização** (leitura do PO: o relatório é do administrador da instância; se o dono quiser o owner da organização vendo o próprio uso, é uma decisão nova).
+**Hipóteses a validar:** 🔎 que o relatório sem histórico de assentos basta à conciliação da cobrança.
+**Prova de valor:** o administrador baixa o relatório de uma organização, exclui a organização e não resta dado de uso dela.
+**Reabrir quando:** a Maind não conseguir conferir uma fatura por falta do histórico de assentos.
+
+### D-148 · A organização tem três situações, e cortar é inativar a organização inteira
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** a organização tem **três situações**: **em configuração** (recém-criada, ainda sem o responsável ou sem as fontes; é o começo de toda organização), **ativa** e **inativa**. O administrador da instância marca a organização como ativa quando achar que está pronta; "em configuração" não bloqueia ninguém. **Cortar é inativar a organização inteira**: as pessoas perdem o acesso, os agendamentos, os alertas e os agentes dela param, nada se apaga e reativar devolve tudo.
+**Contexto:** dúvida Q3 da modelagem da MF-101, em duas partes. O corte já estava decidido (`D-068`, `D-075`: o administrador desativa os assentos de uma organização) e a leitura "a organização inteira" só confirma. "Em configuração" é a situação que o painel de hoje já mostra. Com a `D-146`, toda organização nasce pelas mãos do administrador e passa por essa fase.
+**Opções avaliadas:** A) manter as três situações (recomendada, escolhida) · B) só ativa e inativa. Sem pontuação: decisão pequena e reversível.
+**Por que esta:** o painel do administrador separa quem ainda não começou a usar de quem usa, e a Maind sabe a quem dar um empurrão. Abre-se mão de um estado a menos para explicar.
+**Fica de fora / adiado:** o corte por tipo de assento (a `D-075` descreve o corte da organização toda).
+**Hipóteses a validar:** 🔎 que o administrador queira a lista de organizações "em configuração".
+**Prova de valor:** a Maind cria cinco setores numa segunda e, na sexta, o painel mostra quantos ainda estão em configuração.
+**Reabrir quando:** a Maind pedir cortar só alguns tipos de assento.
+
+### D-147 · A instância tem um papel de administrador só; "owner da instância" é o nome comercial
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** a instância tem **um papel só: o administrador da instância**. "Owner da instância" (`D-013`) é o nome comercial da Maind, não um papel à parte. Todos os administradores têm os mesmos poderes, inclusive promover e remover outros administradores, e a instância nunca fica sem administrador.
+**Contexto:** dúvida Q1 da modelagem da MF-101. A MF-101 usa os termos "owner da instância" e "administradores da instância", e nenhuma decisão dá poderes diferentes a eles. A `D-068` já leu o "administrador do SaaS" como o owner da instância, com os administradores da instância.
+**Opções avaliadas** (pesos da `D-015`; notas de 0 a 5, quase todas hipótese do PO):
+
+| Opção | Missão (25) | Tempo (25) | Confiança (20) | Retorno (15) | Aprendizado (5) | Alavancagem (10) | Total |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| A. Um papel só | 3 | 4 | 3 | 3 | 4 | 3 | **66** |
+| B. Dois papéis: owner e administrador | 3 | 3 | 4 | 3 | 2 | 3 | 63 |
+
+- **A.** Prós: simples de explicar e de operar; criar o segundo papel depois é acrescentar uma coluna. Contras: qualquer administrador promove ou remove outro; a proteção é a regra de que a instância nunca fica sem administrador. Certa quando os administradores são poucos e de confiança.
+- **B.** Prós: só o owner promove e remove administradores. Contras: mais regra, mais tela, mais explicação; difícil de desfazer. Certa se o suporte nunca puder remover quem manda na instância.
+
+**Por que esta:** empate técnico (diferença de 3 pontos, menor que 5); desempatou o aprendizado e a reversibilidade, em que A ganha. Abre-se mão da proteção extra de um papel acima dos administradores.
+**Fica de fora / adiado:** um segundo papel de administração.
+**Hipóteses a validar:** 🔎 que a Maind terá poucos administradores, todos de confiança.
+**Prova de valor:** a Maind opera a instância com uma lista só de administradores, sem pedir um papel acima.
+**Reabrir quando:** algum poder precisar ser exclusivo de um papel mais alto (por exemplo, promover e remover administradores).
+
+### D-146 · Só o administrador da instância cria organizações
+Situação: 🟢 decidida (o dono escolheu a opção A em 05/11/2026) · Data: 05/11/2026 · Versão: v2.0
+
+**Decisão:** só o **administrador da instância** cria organizações. No SaaS, é a Maind; no on-premises, é o administrador do contratante. Com ela, o `I-015` se fechou.
+**Contexto:** impasse `A-02` do documento 14 (agora `I-015`). Hoje qualquer pessoa logada cria uma organização e vira owner dela (`horus@318db52b:apps/server/Horus.Api/Endpoints/OrgEndpoints.cs`). A `D-123` supõe que, no SaaS, quem cria as organizações é a Maind, e com o assento de owner grátis por organização isso precisava virar regra. Objetivo da versão: a v2.0 cobra por assentos desde o primeiro cliente (`D-107`).
+**Opções avaliadas** (pesos da `D-015`; notas de 0 a 5, quase todas hipótese do PO):
+
+| Opção | Missão (25) | Tempo (25) | Confiança (20) | Retorno (15) | Aprendizado (5) | Alavancagem (10) | Total |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| A. Só o administrador da instância | 3 | 3 | 4 | 4 | 4 | 4 | **70** |
+| C. O administrador cria, mais um pedido de nova organização aprovado por ele | 3 | 3 | 4 | 3 | 3 | 3 | 64 |
+| B. Qualquer pessoa logada, como na v1.xx | 3 | 4 | 1 | 1 | 2 | 2 | 48 |
+
+- **A.** Prós: casa com a `D-123`, a `D-013` e a `D-068`; protege a receita do assento grátis; vale no SaaS e no on-premises; é reversível (abrir o autoatendimento depois). Contras: cada setor novo espera um operador criar a organização. Certa quando o primeiro contratante tem poucos setores (`D-009`).
+- **C.** Prós: reduz a espera sem perder o controle. Contras: é funcionalidade nova que ninguém pediu (tela e fila de pedidos). Certa se o comercial pedir autoatendimento para setores já no primeiro cliente.
+- **B.** Prós: nenhuma espera. Contras: contradiz a premissa da `D-123`; a Maind perde o controle da cobrança; difícil voltar atrás depois que as pessoas são owners.
+
+**Por que esta:** ganha em governança e em retorno, e é a única que a `D-123` supunha. Abre-se mão do autoatendimento de setores.
+**Fica de fora / adiado:** o pedido de nova organização pelo owner (opção C) e o autoatendimento (opção B).
+**Hipóteses a validar:** 🔎 que a espera por um operador não incomoda com um contratante só e poucos setores.
+**Prova de valor:** uma empresa com cinco setores pede as cinco organizações à Maind, e cada uma nasce com o seu owner grátis; nenhuma organização aparece sem a Maind saber.
+**Reabrir quando:** o comercial pedir autoatendimento de setores, ou algum cliente reclamar da espera.
+
 ### D-139 · No MVP da v1.xx, as seis peças pela metade saem todas da tela
-Situação: 🟢 decidida · Data: 02/11/2026 · Versão: v1.xx (MVP)
+Situação: 🟢 decidida · Data: 02/11/2026 · Versão: v1.xx (MVP) · ⚠️ número repetido: cite como `D-139 (MVP)`
 
 **Decisão:** as seis peças que hoje aparecem na tela e não funcionam até o fim **saem todas da tela** no MVP (`D-138`): a fonte AWS Athena; a fonte de páginas web; a dica do campo Rede que anuncia redes privadas; os três provedores de IA "em breve" (Anthropic, OpenAI e Gemini); as preferências "Tabela-gêmea sempre aberta" e "Animação ao desenhar"; o campo "Período" do cabeçalho do relatório.
 **Contexto:** a `D-138` escolheu tirar da tela, em vez de terminar, o que está pela metade. Faltava saber se alguma peça era condição de uso de algum cliente.
@@ -107,7 +1582,7 @@ Situação: 🟢 decidida · Data: 02/11/2026 · Versão: v1.xx (MVP)
 **Reabrir quando:** um cliente pedir uma delas como condição de uso.
 
 ### D-138 · A v1.xx fecha como MVP no HML: o que existe funciona bem, e o que está pela metade sai da tela
-Situação: 🟢 decidida (o dono escolheu a opção A em 02/11/2026) · Data: 02/11/2026 · Versão: v1.xx (MVP)
+Situação: 🟢 decidida (o dono escolheu a opção A em 02/11/2026) · Data: 02/11/2026 · Versão: v1.xx (MVP) · ⚠️ número repetido: cite como `D-138 (MVP)`
 
 **Decisão:** fechar o Horus de hoje (v1.xx) como MVP no HML com uma promessa só: *pergunte e receba a resposta certa, com a origem, sem nada na tela que prometa e não entregue*. Entram quatro frentes, nesta ordem: (1) a confiança da resposta; (2) a vitrine limpa, em que o que está pela metade na tela **sai da tela** em vez de ser terminado; (3) a segurança mínima de quem pergunta e de onde o Horus roda; (4) a operação que sustenta o HML. Nenhuma mf nova entra, e o que está desligado continua desligado.
 
@@ -136,7 +1611,7 @@ Situação: 🟢 decidida (o dono escolheu a opção A em 02/11/2026) · Data: 0
 **Reabrir quando:** um cliente pedir uma das peças tiradas da tela como condição de uso, ou o desenvolvimento da v2.0 começar antes de o MVP fechar.
 
 ### D-145 · A MF-106 inteira na v2.1 e, na v2.0, a organização como fronteira dos dados
-Situação: 🟢 decidida · Data: 03/11/2026 · Versão: v2.0 e v2.1
+Situação: 🟢 decidida (as peças da segurança por pessoa que moravam em outras mfs passaram à `MF-106` pela `D-199`) · Data: 03/11/2026 · Versão: v2.0 e v2.1
 
 **Decisão:** a `MF-106:Segurança dos dados por pessoa`, nas duas etapas, vai inteira para a v2.1, e o código dela sai da v2.0 (`ARQ-090`, confirmada pelo dono em 03/11/2026). Na v2.0, **a organização é a fronteira dos dados**: quem pode perguntar alcança todas as fontes da sua organização, e quem precisar separar os dados de dois setores usa uma organização para cada um (`D-008`).
 
@@ -254,7 +1729,7 @@ Situação: 🟢 decidida · Data: 02/11/2026 · Versão: geral
 **Reabrir quando:** o dono decidir manter a v2 no repositório da v1.xx.
 
 ### D-139 · Tabela de conversão das mfs: a ordem de construção do Horus v2
-Situação: 🟢 decidida (confirmada pelo dono em 02/11/2026) · Data: 02/11/2026 · Versão: geral
+Situação: 🟢 decidida (confirmada pelo dono em 02/11/2026) · Data: 02/11/2026 · Versão: geral · ⚠️ número repetido: cite como `D-139 (conversão)`
 
 **Decisão:** a numeração nova (`D-137`, `D-138`) fica assim, por camadas da fundação.
 
@@ -287,7 +1762,7 @@ Situação: 🟢 decidida (confirmada pelo dono em 02/11/2026) · Data: 02/11/20
 **Reabrir quando:** o arquiteto mostrar uma dependência que inverta a ordem de duas mfs.
 
 ### D-138 · O número novo das mfs tem três dígitos, de MF-101 a MF-119
-Situação: 🟢 decidida · Data: 02/11/2026 · Versão: geral
+Situação: 🟢 decidida · Data: 02/11/2026 · Versão: geral · ⚠️ número repetido: cite como `D-138 (numeração)`
 
 **Decisão:** a numeração nova (`D-137`) usa **três dígitos, começando em 101**: as mfs vão de `MF-101` a `MF-119`. Uma mf nova ganha o próximo número livre, a partir de `MF-120`. A citação continua no formato `MF-nnn:Nome`.
 
@@ -321,10 +1796,12 @@ Situação: 🟢 decidida (o critério; o formato do número e a tabela de conve
 
 **Leitura do PO** *(confirmada pelo dono em 02/11/2026)*: 🔎 uma mf “entra” na entrega em que aparece primeiro. As que têm partes na v2.1 (`MF-06`, `MF-08`, `MF-12`, `MF-13`, `MF-16` e `MF-17`) contam como da v2.0, e só a `MF-05:Investigação guiada` é da v2.1.
 
+⚪ **Marcada em 05/11/2026:** essa leitura foi substituída pela `D-197`: uma mf não se divide em duas versões.
+
 **Reabrir quando:** a ordem de construção que o arquiteto definir for muito diferente da ordem dos números.
 
 ### D-136 · Os objetivos do Horus v2 ficam confirmados: o da v2.0, o da v2.1 e os oito objetivos do mapa
-Situação: 🟢 decidida (confirmada pelo dono em 02/11/2026) · Data: 02/11/2026 · Versão: geral
+Situação: 🟢 decidida (confirmada pelo dono em 02/11/2026; em 05/11/2026 o dono confirmou que o objetivo da v2.1 perde "a própria marca", `D-200`, e troca "os dados dentro de casa" por um middleware, `D-188`) · Data: 02/11/2026 · Versão: geral
 
 **Decisão:** valem os objetivos propostos pelo PO no [mapa de objetivos e funcionalidades](07-mapa-de-objetivos-e-funcionalidades.md):
 - **v2.0:** o gestor e o executivo **perguntam e têm a resposta na hora**, **acompanham o negócio** em boards e **são avisados** quando algo muda. A resposta é confiável, com a fonte à vista, e cada um vê só o que pode ver. A empresa mede a adoção e paga por assento.
@@ -700,7 +2177,7 @@ A v2.0 passa a ter **catorze candidatas**, e a v2.1, **quatro** (as nº 5, 6, 11
 **Reabrir quando:** o arquiteto estimar a v2.0 inteira acima do que o dono tolera, ou o custo de IA dos agentes surpreender os owners.
 
 ### D-121 · Tudo o que ficou fora da v2.0 vai para a v2.1
-Situação: 🟢 decidida (as nº 7, 12 e 13, o aviso, voltaram para a v2.0 pela `D-122`; a v2.1 ficou com quatro candidatas) · Data: 02/11/2026 · Versão: v2.1
+Situação: 🟢 decidida (as nº 7, 12 e 13, o aviso, voltaram para a v2.0 pela `D-122`; a v2.1 ficou com quatro candidatas; a nº 6, a marca completa, passou para a v2.0 pela `D-197` e depois ficou sem versão pela `D-200`) · Data: 02/11/2026 · Versão: v2.1
 
 **Decisão:** as mfs e as partes de mf que ficaram fora da v2.0 **vão todas para a v2.1**. A v2.1 reúne sete candidatas:
 - a nº 16, `MF-119:Investigação guiada` (61, provisória);
@@ -1975,7 +3452,7 @@ Situação: 🟢 decidida · Data: 31/10/2026 · Versão: a pontuar
 **Reabrir quando:** as organizações de uma pessoa só passarem a usar o produto inteiro de graça e isso pesar na receita.
 
 ### D-073 · Quando alguém passa de membro full a leitor, o que ela criou vai para a área da organização
-Situação: 🟢 decidida (as leituras do PO foram confirmadas pelo dono em 02/11/2026) · Data: 31/10/2026 · Versão: a pontuar
+Situação: 🟢 decidida (as leituras do PO foram confirmadas pelo dono em 02/11/2026; a regra foi estendida a toda passagem para uma faixa que não cria pela `D-203`; a transferência "para qualquer pessoa" foi substituída em parte pela `D-205`, e a área da organização saiu da v2.0 pelas `D-206` e `D-207`) · Data: 31/10/2026 · Versão: a pontuar
 
 **Decisão:** quando uma pessoa passa de **membro full a membro leitor** (`D-072`), os **boards, alertas e agendamentos que ela criou** vão para a **área da organização**. É a mesma regra de quando o autor sai da organização (`D-044`, `D-045`): o owner **transfere** para qualquer pessoa da organização ou **exclui**, e os agendamentos ficam **pausados** ali.
 
@@ -2078,7 +3555,7 @@ Situação: 🟢 decidida · Data: 31/10/2026 · Versão: a pontuar
 **Reabrir quando:** os clientes reclamarem de esperar a liberação, o que seria o sinal para voltar à opção de deixar entrar e avisar.
 
 ### D-069 · Os assentos têm quatro tipos: owner, gestor, membro full e membro leitor; a instalação traz um assento de owner grátis
-Situação: 🟢 decidida (a diretriz; os detalhes seguem em perguntas na `P-014`; o assento de owner grátis é **um por organização**, pela `D-123`, de 02/11/2026, que fechou o `I-013`) · Data: 31/10/2026 · Versão: a pontuar
+Situação: 🟢 decidida · **os tipos de assento passaram a ser cinco pela `D-194`** (a diretriz; os detalhes seguem em perguntas na `P-014`; o assento de owner grátis é **um por organização**, pela `D-123`, de 02/11/2026, que fechou o `I-013`) · Data: 31/10/2026 · Versão: a pontuar
 
 **Decisão:**
 - Há **quatro tipos de assento**: **owner**, **gestor**, **membro full** e **membro leitor**.
@@ -2668,7 +4145,7 @@ Situação: 🟢 decidida (a diretriz; a primeira parte foi substituída pela `D
 **Reabrir quando:** owners pedirem a hierarquia vinda do login corporativo, ou a transferência só pelo owner virar gargalo.
 
 ### D-045 · No lugar do board desabilitado entra um texto de aviso; o board sem autor mantém o status
-Situação: 🟢 decidida · Data: 31/10/2026 · Versão: a pontuar
+Situação: 🟢 decidida (a transferência "para qualquer pessoa" foi substituída em parte pela `D-205`, e a área da organização saiu da v2.0 pela `D-206`) · Data: 31/10/2026 · Versão: a pontuar
 
 **Decisão:**
 - No lugar da saída de um board desabilitado entra **um texto avisando que o board está desativado**.
