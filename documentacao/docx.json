@@ -6,7 +6,7 @@
   "project": {
     "name": "Horus v2",
     "description": "As funcionalidades do Horus v2 explicadas uma a uma, em linguagem simples: o que cada uma faz, como funciona na prática e as dúvidas mais comuns.",
-    "version": "2.0 em desenho, sem versão publicada",
+    "version": "2.0 e 2.1 em desenho, sem versão publicada",
     "owner": "Maind Tech",
     "updated": "2026-11-06",
     "eyebrow": "Maind Horus · Horus v2",
@@ -345,6 +345,102 @@
               ]
             }
           ]
+        },
+        {
+          "label": "v2.1",
+          "text": "A versão que vem depois da 2.0: 5 macro funcionalidades, todas explicadas aqui. Quatro chegam na primeira onda, a do Horus como serviço da Maind, e uma na segunda, a de quem precisa que os dados fiquem em casa.",
+          "items": [
+            {
+              "id": "mf-106",
+              "source": "content/mf-106.html",
+              "code": "MF-106",
+              "badge": "v2.1",
+              "title": "Segurança dos dados por pessoa",
+              "summary": "Cada pessoa vê, nos dados da empresa, só o que lhe cabe, pela regra que o owner escreve em português no Horus ou pelas regras que a empresa já tem.",
+              "links": [
+                {
+                  "label": "Uma regra, do texto à resposta",
+                  "href": "#mf-106-na-pratica"
+                },
+                {
+                  "label": "Perguntas frequentes",
+                  "href": "#mf-106-faq"
+                }
+              ]
+            },
+            {
+              "id": "mf-119",
+              "source": "content/mf-119.html",
+              "code": "MF-119",
+              "badge": "v2.1",
+              "title": "Investigação guiada",
+              "summary": "Numa resposta em que um número ou gráfico mudou, a pessoa aciona “investigar” e chega ao porquê passo a passo, escolhendo o que aprofundar, com a fonte de cada passo.",
+              "links": [
+                {
+                  "label": "Uma investigação, do número ao porquê",
+                  "href": "#mf-119-na-pratica"
+                },
+                {
+                  "label": "Perguntas frequentes",
+                  "href": "#mf-119-faq"
+                }
+              ]
+            },
+            {
+              "id": "mf-121",
+              "source": "content/mf-121.html",
+              "code": "MF-121",
+              "badge": "v2.1",
+              "title": "Middleware na casa do contratante",
+              "summary": "Uma peça que a TI do cliente instala na própria infraestrutura para o Horus, que continua no serviço da Maind, chegar aos dados, à IA e à internet da empresa, com só a pergunta e a resposta pronta passando pela Maind.",
+              "links": [
+                {
+                  "label": "Do middleware à primeira resposta",
+                  "href": "#mf-121-na-pratica"
+                },
+                {
+                  "label": "Perguntas frequentes",
+                  "href": "#mf-121-faq"
+                }
+              ]
+            },
+            {
+              "id": "mf-122",
+              "source": "content/mf-122.html",
+              "code": "MF-122",
+              "badge": "v2.1",
+              "title": "Conectores de chat corporativo",
+              "summary": "O aviso de um agente, o PDF de um board ou uma imagem chegam a um canal do Microsoft Teams ou a um espaço do Google Chat, só a usuários do Horus e só pelos conectores que o owner ligou, com a aprovação da TI da empresa.",
+              "links": [
+                {
+                  "label": "Um alerta, do agente ao canal da equipe",
+                  "href": "#mf-122-na-pratica"
+                },
+                {
+                  "label": "Perguntas frequentes",
+                  "href": "#mf-122-faq"
+                }
+              ]
+            },
+            {
+              "id": "mf-123",
+              "source": "content/mf-123.html",
+              "code": "MF-123",
+              "badge": "v2.1",
+              "title": "Fonte AWS Athena",
+              "summary": "O AWS Athena deixa de só se cadastrar e passa a responder às perguntas de análise, como as outras fontes vivas, para quem guarda os dados na nuvem da Amazon perguntar em português.",
+              "links": [
+                {
+                  "label": "Do Athena à primeira resposta",
+                  "href": "#mf-123-na-pratica"
+                },
+                {
+                  "label": "Perguntas frequentes",
+                  "href": "#mf-123-faq"
+                }
+              ]
+            }
+          ]
         }
       ]
     }
@@ -439,6 +535,30 @@
       "title": "Das perguntas à Home da organização",
       "description": "Os três lugares onde se pergunta, o que o Horus registra no fim de cada pergunta, o que conta e o que fica fora, o que a Home mostra ao owner e ao gestor e a economia calculada fora, com a Maind",
       "source": "diagramas/mf-117-das-perguntas-a-home.html"
+    },
+    {
+      "id": "mf-106-da-regra-a-resposta",
+      "title": "Da regra escrita à resposta de cada pessoa",
+      "description": "A Maind permite, o owner liga, escreve e aprova a regra e dá as características; a cada pergunta, o Horus reescreve a consulta, um segundo modelo confere e, se algo falha, a resposta não sai",
+      "source": "diagramas/mf-106-da-regra-a-resposta.html"
+    },
+    {
+      "id": "mf-119-do-numero-ao-porque",
+      "title": "Do número que mudou ao porquê",
+      "description": "Quem investiga aciona “investigar” no número ou gráfico que mudou, o Horus mostra as partes que mais pesam, a pessoa escolhe qual aprofundar até chegar ao porquê, e o caminho fica salvo na conversa para continuar outro dia",
+      "source": "diagramas/mf-119-do-numero-ao-porque.html"
+    },
+    {
+      "id": "mf-121-o-caminho-pelo-middleware",
+      "title": "O caminho pelo middleware",
+      "description": "Os dois lados: o que a TI e o owner preparam uma vez e, a cada pergunta, o caminho da Maind até a casa do cliente e de volta, com só a pergunta e a resposta pronta passando pela Maind",
+      "source": "diagramas/mf-121-o-caminho-pelo-middleware.html"
+    },
+    {
+      "id": "mf-122-do-aviso-ao-chat",
+      "title": "Do aviso ao chat da equipe",
+      "description": "A TI da empresa aprova o conector, o owner o liga, quem monta o aviso escolhe o Teams ou o Google Chat como destino, o agente ou o agendamento entrega o artefato pronto e o carteiro do Horus o leva ao canal em que a equipe já conversa",
+      "source": "diagramas/mf-122-do-aviso-ao-chat.html"
     }
   ],
   "sections": [

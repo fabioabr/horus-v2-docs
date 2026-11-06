@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-menu="vertical">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="DocX 0.4.0" />
+<meta name="description" content="As funcionalidades do Horus v2 explicadas uma a uma, em linguagem simples: o que cada uma faz, como funciona na prática e as dúvidas mais comuns." />
+<link rel="icon" href="assets/logo-claro.svg" />
+<title>MF-122 · Conectores de chat corporativo — Horus v2</title>
+<script>
+(function () {
+  try {
+    var raiz = document.documentElement;
+    var tema = localStorage.getItem('kinto-theme');
+    var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    raiz.setAttribute('data-theme', tema || (escuro ? 'dark' : 'light'));
+    raiz.setAttribute('data-menu', localStorage.getItem('kinto-menu') || 'vertical');
+    var ws = parseInt(localStorage.getItem('kinto-side-w'), 10);
+    var wt = parseInt(localStorage.getItem('kinto-toc-w'), 10);
+    if (ws) raiz.style.setProperty('--side-w-user', ws + 'px');
+    if (wt) raiz.style.setProperty('--toc-w-user', wt + 'px');
+  } catch (e) { /* localStorage bloqueado: ficam os atributos do <html> */ }
+})();
+</script>
+<link rel="stylesheet" href="assets/docs.css" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="assets/docx-kbr.css" />
+</head>
+<body>
+<header class="hdr"><div class="hdr-brand"><a class="hdr-logo" href="index.html" aria-label="Horus v2"><img class="logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /></a><div class="div"></div><div class="doc-meta"><b>Horus v2 · Documentação</b><small>Maind Horus</small></div></div><div class="hdr-center"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-topo" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><div class="hdr-actions"><div class="menu-toggle" role="group" aria-label="Menu"><button data-set="vertical" aria-label="Menu vertical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button><button data-set="horizontal" aria-label="Menu horizontal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></button></div><div class="theme-toggle" role="group" aria-label="Tema"><button data-set="light" aria-label="Claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button><button data-set="dark" aria-label="Escuro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header>
+<div class="shell">
+<aside class="side"><nav aria-label="Páginas da documentação"><h6>Horus v2</h6><ul><li><a href="index.html">Início</a></li></ul><h6>Para começar</h6><ul><li><a href="como-ler.html">Como ler esta documentação</a></li></ul><h6>v2.0</h6><ul class="side-sub"><li><a href="mf-101.html">MF-101 · Administração da instância</a></li><li><a href="mf-102.html">MF-102 · Organizações, pessoas e papéis</a></li><li><a href="mf-103.html">MF-103 · Licenças e planos</a></li><li><a href="mf-104.html">MF-104 · Conectar as fontes vivas</a></li><li><a href="mf-105.html">MF-105 · IA sob controle da organização</a></li><li><a href="mf-107.html">MF-107 · Perguntar aos dados em português</a></li><li><a href="mf-108.html">MF-108 · Respostas visuais</a></li><li><a href="mf-109.html">MF-109 · A web como fonte</a></li><li><a href="mf-110.html">MF-110 · Pergunta rápida</a></li><li><a href="mf-111.html">MF-111 · Chat pelo WhatsApp</a></li><li><a href="mf-112.html">MF-112 · Boards e Relatórios</a></li><li><a href="mf-113.html">MF-113 · Conectores de Saída</a></li><li><a href="mf-114.html">MF-114 · Módulo de Agendamentos de Agentes</a></li><li><a href="mf-115.html">MF-115 · Agentes ativos</a></li><li><a href="mf-116.html">MF-116 · Auditoria</a></li><li><a href="mf-117.html">MF-117 · Home da organização</a></li><li><a href="mf-118.html">MF-118 · Bases de demonstração</a></li><li><a href="mf-120.html">MF-120 · Faixa de avisos e números</a></li></ul><h6>v2.1</h6><ul class="side-sub"><li><a href="mf-106.html">MF-106 · Segurança dos dados por pessoa</a></li><li><a href="mf-119.html">MF-119 · Investigação guiada</a></li><li><a href="mf-121.html">MF-121 · Middleware na casa do contratante</a></li><li><a href="mf-122.html" class="active">MF-122 · Conectores de chat corporativo</a></li><li><a href="mf-123.html">MF-123 · Fonte AWS Athena</a></li></ul></nav></aside>
+<main class="content doc">
+<div class="dx-busca-movel"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-movel" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><nav class="crumbs" aria-label="Trilha"><a href="index.html">Horus v2</a><span class="sep">/</span><span>v2.1</span><span class="sep">/</span><span class="now">Conectores de chat corporativo</span></nav><span class="doc-eyebrow">v2.1</span><div class="dx-macro-topo"><span class="dx-codigo">MF-122</span><span class="dx-selo">v2.1</span></div><h1 class="doc-h1">Conectores de chat corporativo</h1><p class="doc-lead">O aviso de um agente, o PDF de um board ou uma imagem chegam a um canal do Microsoft Teams ou a um espaço do Google Chat, só a usuários do Horus e só pelos conectores que o owner ligou, com a aprovação da TI da empresa.</p><section class="dx-assuntos" aria-labelledby="dx-assuntos-titulo"><h2 id="dx-assuntos-titulo">Explore os assuntos</h2><div class="dx-assuntos-grade"><div class="dx-assunto"><h3><a href="#mf-122-o-que-e">O que é, em poucas palavras</a><small>2 tópicos</small></h3><ul><li><a href="#mf-122-hoje-e-depois">Como é hoje e o que passa a existir</a></li><li><a href="#mf-122-quem-e-quem">Quem faz o quê</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-122-na-pratica">Um alerta, do agente ao canal da equipe</a><small>1 tópico</small></h3><ul><li><a href="#mf-122-canais">Os dois canais lado a lado</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-122-mesmo-carteiro">O mesmo carteiro, com as mesmas regras</a><small>1 tópico</small></h3><ul><li><a href="#mf-122-nao-conversa">Recebe, mas não conversa</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-122-bastidores">Nos bastidores, sem complicar</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-122-limites">O que esta funcionalidade não faz</a><small>1 tópico</small></h3><ul><li><a href="#mf-122-ligadas">Funcionalidades ligadas a esta</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-122-faq">Perguntas frequentes</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div></div></section><div id="dx-topo"><p>Pense no mural de uma equipe: é ali que todo mundo olha durante o dia, combina a semana e lê os recados. Em muitas empresas, esse mural é um chat corporativo, como um canal do Microsoft Teams ou um espaço do Google Chat. Os <strong>Conectores de chat corporativo</strong> levam até esse mural o aviso de um agente, o PDF de um board ou uma imagem, para a equipe receber onde já conversa, sem depender de abrir o e-mail ou o WhatsApp.</p>
+<p>É o mesmo carteiro dos <a href="mf-113.html">Conectores de saída (MF-113)</a>, com duas caixas de correio novas. Onde a comparação para: ele continua entregando só a quem é usuário do Horus. Um exemplo, com personagens ilustrativos: quando as vendas do Sul caem 10% (valor ilustrativo), o alerta do agente chega ao canal da equipe no Teams, onde a gestora Carla já conversa com o time, sem ela precisar abrir o e-mail. O nome desta funcionalidade ainda é provisório. Ela chega na primeira das duas ondas da versão 2.1, a do Horus como serviço da Maind.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Versão 2.1, em construção</b><p>O que está aqui é o que a versão 2.1 do Horus vai entregar, depois da 2.0. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-122-o-que-e">O que é, em poucas palavras</h2>
+<p>Esta funcionalidade acrescenta dois <a href="como-ler.html#glossario">conectores de saída</a> ao Horus. Ela cabe em seis pontos:</p>
+<ul>
+  <li><strong>Dois canais novos, numa funcionalidade só:</strong> o Microsoft Teams e o Google Chat.</li>
+  <li><strong>O que levam:</strong> o aviso, o PDF ou a imagem que um agente ou um agendamento lhes entrega, isto é, o <a href="como-ler.html#glossario">artefato</a>.</li>
+  <li><strong>Para onde:</strong> um canal do Teams ou um espaço do Google Chat.</li>
+  <li><strong>Só transportam:</strong> como os outros conectores, levam o que lhes entregam pronto, sem mudar nada.</li>
+  <li><strong>Só para usuários do Horus:</strong> a entrega vai a pessoas da organização no Horus, nunca a quem está fora dele.</li>
+  <li><strong>Quem liga:</strong> o owner da organização, e cada conector depende da aprovação da TI da empresa.</li>
+</ul>
+<p>E o que eles <strong>não</strong> são: um jeito de conversar com o Horus. O Teams e o Google Chat só recebem; conversar com o Horus fora do app é pelo <a href="mf-111.html">Chat pelo WhatsApp (MF-111)</a>.</p>
+<h3 class="doc-h3" id="mf-122-hoje-e-depois">Como é hoje e o que passa a existir</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quando</th><th>Por onde o Horus entrega o que produz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>No Horus de hoje</strong></td><td>Só pelo e-mail do relatório agendado.</td></tr>
+      <tr class="zebra"><td><strong>Na versão 2.0</strong></td><td>Pelo e-mail e pelo WhatsApp, nos <a href="mf-113.html">Conectores de saída (MF-113)</a>. Nenhum dos dois chega ao chat da empresa.</td></tr>
+      <tr class="zebra"><td><strong>Na versão 2.1</strong></td><td>Também pelo Microsoft Teams e pelo Google Chat, nesta funcionalidade, sobre o mesmo carteiro.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="mf-122-quem-e-quem">Quem faz o quê</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quem</th><th>O que faz com estes conectores</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>TI da empresa</strong></td><td>Aprova cada conector, o do Teams e o do Google Chat. O owner combina essa aprovação com ela.</td></tr>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>Liga o conector no Horus, com a aprovação da TI. Nada sai por um canal que ele não ligou.</td></tr>
+      <tr class="zebra"><td><strong>Quem cria agentes e agendamentos</strong></td><td>Escolhe o conector do Teams ou do Google Chat como destino, ao criar o agente ou o agendamento, como na versão 2.0. Quem pode criar, e para quem, está em <a href="mf-114.html#mf-114-quem-e-quem">Quem agenda, e para quem</a>.</td></tr>
+      <tr class="zebra"><td><strong>Gestor e membros</strong></td><td>Recebem o aviso, o PDF ou a imagem no chat em que a equipe já conversa.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="doc-h2" id="mf-122-na-pratica">Um alerta, do agente ao canal da equipe</h2>
+<p>O Marcos é o owner da área comercial de uma rede de lojas, e a Carla é gestora de vendas (personagens ilustrativos). A equipe da Carla conversa num canal do Teams. Os passos abaixo são os de hoje e podem mudar com o desenho técnico.</p>
+<ol class="steps">
+  <li><div><h4>O owner combina com a TI</h4><p>O Marcos combina com a TI da empresa a aprovação do conector do Teams.</p></div></li>
+  <li><div><h4>O owner liga o conector</h4><p>Com o sim da TI, ele liga o conector do Teams no Horus.</p></div></li>
+  <li><div><h4>A gestora cria o agente</h4><p>A Carla cria um agente que acompanha as vendas do Sul, do mesmo jeito que na versão 2.0 (veja <a href="mf-115.html#mf-115-um-agente">Um agente, do texto à entrega</a>).</p></div></li>
+  <li><div><h4>Escolhe o Teams como destino</h4><p>Ao agendar o agente, ela escolhe o conector do Teams como destino: o canal da equipe.</p></div></li>
+  <li><div><h4>O agente entrega, e o conector leva</h4><p>Na semana em que as vendas do Sul caem 10% (valor ilustrativo), o agente entrega o alerta pronto ao conector, que o leva como recebeu.</p></div></li>
+  <li><div><h4>A equipe vê no canal</h4><p>O alerta aparece no canal da equipe no Teams, onde a Carla já conversa com o time, sem ela precisar abrir o e-mail.</p></div></li>
+</ol>
+<p>O mesmo caminho em desenho, com quem age em cada passo: a TI da empresa, o owner, quem monta o aviso, o carteiro do Horus e a equipe.</p>
+<figure class="dx-diagrama"><figcaption><b>Do aviso ao chat da equipe</b> <span>A TI da empresa aprova o conector, o owner o liga, quem monta o aviso escolhe o Teams ou o Google Chat como destino, o agente ou o agendamento entrega o artefato pronto e o carteiro do Horus o leva ao canal em que a equipe já conversa</span><a href="media/diagramas/mf-122-do-aviso-ao-chat.html" target="_blank" rel="noopener">Abrir em tela cheia ↗</a></figcaption><iframe src="media/diagramas/mf-122-do-aviso-ao-chat.html?embutido=1" title="Do aviso ao chat da equipe" loading="lazy"></iframe></figure>
+<h3 class="doc-h3" id="mf-122-canais">Os dois canais lado a lado</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Sobre o canal</th><th>Microsoft Teams</th><th>Google Chat</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Para onde vai</strong></td><td>Um canal do Teams.</td><td>Um espaço do Google Chat.</td></tr>
+      <tr class="zebra"><td><strong>O que leva</strong></td><td>O aviso, o PDF ou a imagem que o agente ou o agendamento entregou.</td><td>O mesmo.</td></tr>
+      <tr class="zebra"><td><strong>Antes de ligar</strong></td><td>A aprovação da TI da empresa.</td><td>A aprovação da TI da empresa.</td></tr>
+      <tr class="zebra"><td><strong>Como se integra ao Horus</strong></td><td><span class="badge">Em definição</span> A forma técnica ainda será definida.</td><td><span class="badge">Em definição</span> A forma técnica ainda será definida.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="doc-h2" id="mf-122-mesmo-carteiro">O mesmo carteiro, com as mesmas regras</h2>
+<p>Os dois conectores novos não trazem outro jeito de entregar: entram no carteiro dos <a href="mf-113.html">Conectores de saída (MF-113)</a>, com as mesmas regras do e-mail e do WhatsApp. As que mais pesam aqui:</p>
+<ul>
+  <li><strong>Só transporta.</strong> O conector leva a peça pronta como recebeu. O conteúdo é do agente (<a href="mf-115.html">MF-115</a>) e do board (<a href="mf-112.html">MF-112</a>), e o momento de enviar é do agendamento (<a href="mf-114.html">MF-114</a>).</li>
+  <li><strong>Só a usuários do Horus.</strong> A entrega vai a pessoas da organização no Horus, nunca a quem está fora dele.</li>
+  <li><strong>Só o owner liga.</strong> Nada sai por um canal que o owner da organização não ligou, e cada conector novo depende da aprovação da TI da empresa.</li>
+</ul>
+<p>As demais regras do carteiro estão em <a href="mf-113.html#mf-113-quando-nao-da">Quando a entrega não dá certo</a> e em <a href="mf-113.html#mf-113-controle">A empresa no controle do que sai</a>.</p>
+<h3 class="doc-h3" id="mf-122-nao-conversa">Recebe, mas não conversa</h3>
+<p>O Teams e o Google Chat <strong>só recebem</strong>: ninguém faz uma pergunta ao Horus por eles. Conversar com o Horus fora do app é pelo <a href="mf-111.html">Chat pelo WhatsApp (MF-111)</a>, e conversar pelo Teams ou pelo Google Chat não tem versão prevista.</p>
+
+<h2 class="doc-h2" id="mf-122-bastidores">Nos bastidores, sem complicar</h2>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>Um contrato só entre quem produz e quem leva.</strong> O agendamento e o agente entregam ao carteiro a peça pronta, e o conector só a transporta (veja <a href="mf-113.html#mf-113-bastidores">os bastidores dos Conectores de saída</a>). O Teams e o Google Chat são, cada um, mais uma peça de transporte sobre esse mesmo contrato: um conector novo só aprende a transportar.</li>
+  <li><strong>O que já existe e o que é novo.</strong> A base é o carteiro da versão 2.0, com o e-mail e o WhatsApp. Os dois conectores são novos, e a forma técnica de integrar cada um ainda será definida.</li>
+  <li><strong>A TI da empresa no circuito.</strong> Cada conector depende da aprovação da TI de cada cliente, e o aviso chega num canal que a TI da empresa aprovou.</li>
+</ul>
+
+<h2 class="doc-h2" id="mf-122-limites">O que esta funcionalidade não faz</h2>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Entregar por outros chats, como o Slack</strong></td><td>Outros conectores não têm versão prevista.</td></tr>
+      <tr class="zebra"><td><strong>Entregar a quem não é usuário do Horus</strong></td><td>A entrega vai só a pessoas da organização no Horus.</td></tr>
+      <tr class="zebra"><td><strong>Conversar com o Horus pelo chat corporativo</strong></td><td>O Teams e o Google Chat só recebem. Conversar fora do app é pelo Chat pelo WhatsApp (<a href="mf-111.html">MF-111</a>).</td></tr>
+      <tr class="zebra"><td><strong>Criar o conteúdo ou decidir quando enviar</strong></td><td>O conteúdo é do agente (<a href="mf-115.html">MF-115</a>) e do board (<a href="mf-112.html">MF-112</a>); o momento, do agendamento (<a href="mf-114.html">MF-114</a>).</td></tr>
+      <tr class="zebra"><td><strong>Funcionar sem a TI da empresa</strong></td><td>Cada conector depende da aprovação dela, e só o owner da organização o liga.</td></tr>
+      <tr class="zebra"><td><strong>Chegar na versão 2.0</strong></td><td>Na versão 2.0, os canais são o e-mail e o WhatsApp (<a href="mf-113.html">MF-113</a>).</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="mf-122-ligadas">Funcionalidades ligadas a esta</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="mf-113.html">Conectores de saída (MF-113)</a></td><td>É o carteiro: os dois conectores novos usam o mesmo do e-mail e do WhatsApp, com as mesmas regras.</td></tr>
+      <tr class="zebra"><td><a href="mf-115.html">Agentes ativos (MF-115)</a></td><td>É o agente que gera boa parte do que chega ao chat, como o aviso e o PDF com gráficos.</td></tr>
+      <tr class="zebra"><td><a href="mf-114.html">Módulo de Agendamentos de Agentes (MF-114)</a></td><td>É o agendamento que diz quando entregar e chama o conector.</td></tr>
+      <tr class="zebra"><td><a href="mf-112.html">Boards e Relatórios (MF-112)</a></td><td>O PDF de um board é uma das peças que podem chegar ao chat.</td></tr>
+      <tr class="zebra"><td><a href="mf-111.html">Chat pelo WhatsApp (MF-111)</a></td><td>Completa esta: conversar com o Horus fora do app é pelo WhatsApp; o Teams e o Google Chat só recebem.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Ainda em definição</b><p><strong>Os dois juntos.</strong> A previsão é que o Teams e o Google Chat cheguem juntos, nesta mesma funcionalidade. Isso ainda será confirmado no desenho técnico: se um dos dois pedir um tratamento diferente, eles podem ser separados.</p><p><strong>Como cada um se integra, e o que chega.</strong> A forma técnica de ligar cada chat ao Horus ainda será definida, com a autenticação, o jeito de a TI da empresa dar a aprovação e o que cada um leva: o texto, a imagem e o link.</p><p><strong>O canal e a regra dos usuários do Horus.</strong> Como a entrega a um canal do Teams ou a um espaço do Google Chat respeita a regra de entregar só a pessoas da organização no Horus ainda será definido.</p><p><strong>O nome.</strong> “Conectores de chat corporativo” é um nome provisório.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-122-faq">Perguntas frequentes</h2>
+<div class="faq">
+  <details open>
+    <summary>Vou poder receber os alertas do Horus no Teams ou no Google Chat?</summary>
+    <div class="faq-body"><p>Sim, a partir da versão 2.1. O agente e o agendamento passam a entregar o aviso, o PDF ou a imagem num canal do Teams ou num espaço do Google Chat. Na versão 2.0, os canais são o e-mail e o WhatsApp, nos Conectores de saída (MF-113).</p></div>
+  </details>
+  <details>
+    <summary>Dá para fazer perguntas ao Horus pelo Teams ou pelo Google Chat?</summary>
+    <div class="faq-body"><p>Não. Os dois só recebem o que o Horus entrega. Para conversar com o Horus fora do app, o caminho é o Chat pelo WhatsApp (MF-111); conversar pelo Teams ou pelo Google Chat não tem versão prevista.</p></div>
+  </details>
+  <details>
+    <summary>Quem decide se o Horus pode mandar coisas ao chat da empresa?</summary>
+    <div class="faq-body"><p>O owner da organização, junto com a TI da empresa. Cada conector depende da aprovação da TI, e só o owner o liga no Horus. Nada sai por um canal que o owner não ligou.</p></div>
+  </details>
+  <details>
+    <summary>Quem está no canal, mas não usa o Horus, vai receber?</summary>
+    <div class="faq-body"><p>A regra é a do carteiro: a entrega vai só a usuários do Horus, nunca a quem está fora dele. Como essa regra vale quando o destino é um canal do Teams ou um espaço do Google Chat ainda está em definição.</p></div>
+  </details>
+  <details>
+    <summary>O Horus resume ou muda o que chega ao chat?</summary>
+    <div class="faq-body"><p>Não. O conector só transporta: leva o aviso, o PDF ou a imagem como recebeu, sem mudar nada. O conteúdo é feito pelo agente ou pelo board, e quem decide quando enviar é o agendamento.</p></div>
+  </details>
+  <details>
+    <summary>E o Slack, ou outro chat?</summary>
+    <div class="faq-body"><p>Não têm versão prevista. Esta funcionalidade traz só o Microsoft Teams e o Google Chat.</p></div>
+  </details>
+</div>
+</div><nav class="rel-grid dx-vizinhas" aria-label="Páginas vizinhas"><a class="rel-card dx-anterior" href="mf-121.html"><span class="cat">Anterior</span><h5>Middleware na casa do contratante</h5><span class="arrow">←</span></a><a class="rel-card dx-proxima" href="mf-123.html"><span class="cat">Próxima</span><h5>Fonte AWS Athena</h5><span class="arrow">→</span></a></nav>
+<footer class="ds-footer"><div class="ftr-brand"><img class="ftr-logo logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="ftr-logo logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /><div class="ftr-divider"></div><div class="ftr-meta"><b>Maind Horus · Horus v2 · versões 2.0 e 2.1 em desenho</b></div></div><div class="ftr-center"><span class="ftr-tag">v2.0 e 2.1 em desenho, sem versão publicada · 06/11/2026</span></div><div class="ftr-author"><div class="avatar">MT</div><div class="ftr-author-info"><b>Maind Tech</b><span>Horus v2</span></div></div></footer>
+</main>
+<aside class="toc"><h6>Neste artigo</h6><ul><li><a href="#mf-122-o-que-e">O que é, em poucas palavras</a></li><li class="lvl-3"><a href="#mf-122-hoje-e-depois">Como é hoje e o que passa a existir</a></li><li class="lvl-3"><a href="#mf-122-quem-e-quem">Quem faz o quê</a></li><li><a href="#mf-122-na-pratica">Um alerta, do agente ao canal da equipe</a></li><li class="lvl-3"><a href="#mf-122-canais">Os dois canais lado a lado</a></li><li><a href="#mf-122-mesmo-carteiro">O mesmo carteiro, com as mesmas regras</a></li><li class="lvl-3"><a href="#mf-122-nao-conversa">Recebe, mas não conversa</a></li><li><a href="#mf-122-bastidores">Nos bastidores, sem complicar</a></li><li><a href="#mf-122-limites">O que esta funcionalidade não faz</a></li><li class="lvl-3"><a href="#mf-122-ligadas">Funcionalidades ligadas a esta</a></li><li><a href="#mf-122-faq">Perguntas frequentes</a></li></ul></aside>
+</div>
+<div class="toast" id="toast">Copiado ✓</div>
+<script src="assets/busca.js"></script>
+<script src="assets/docs.js"></script>
+<script src="assets/docx-kbr.js"></script>
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-menu="vertical">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="DocX 0.4.0" />
+<meta name="description" content="As funcionalidades do Horus v2 explicadas uma a uma, em linguagem simples: o que cada uma faz, como funciona na prática e as dúvidas mais comuns." />
+<link rel="icon" href="assets/logo-claro.svg" />
+<title>MF-106 · Segurança dos dados por pessoa — Horus v2</title>
+<script>
+(function () {
+  try {
+    var raiz = document.documentElement;
+    var tema = localStorage.getItem('kinto-theme');
+    var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    raiz.setAttribute('data-theme', tema || (escuro ? 'dark' : 'light'));
+    raiz.setAttribute('data-menu', localStorage.getItem('kinto-menu') || 'vertical');
+    var ws = parseInt(localStorage.getItem('kinto-side-w'), 10);
+    var wt = parseInt(localStorage.getItem('kinto-toc-w'), 10);
+    if (ws) raiz.style.setProperty('--side-w-user', ws + 'px');
+    if (wt) raiz.style.setProperty('--toc-w-user', wt + 'px');
+  } catch (e) { /* localStorage bloqueado: ficam os atributos do <html> */ }
+})();
+</script>
+<link rel="stylesheet" href="assets/docs.css" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="assets/docx-kbr.css" />
+</head>
+<body>
+<header class="hdr"><div class="hdr-brand"><a class="hdr-logo" href="index.html" aria-label="Horus v2"><img class="logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /></a><div class="div"></div><div class="doc-meta"><b>Horus v2 · Documentação</b><small>Maind Horus</small></div></div><div class="hdr-center"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-topo" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><div class="hdr-actions"><div class="menu-toggle" role="group" aria-label="Menu"><button data-set="vertical" aria-label="Menu vertical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button><button data-set="horizontal" aria-label="Menu horizontal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></button></div><div class="theme-toggle" role="group" aria-label="Tema"><button data-set="light" aria-label="Claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button><button data-set="dark" aria-label="Escuro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header>
+<div class="shell">
+<aside class="side"><nav aria-label="Páginas da documentação"><h6>Horus v2</h6><ul><li><a href="index.html">Início</a></li></ul><h6>Para começar</h6><ul><li><a href="como-ler.html">Como ler esta documentação</a></li></ul><h6>v2.0</h6><ul class="side-sub"><li><a href="mf-101.html">MF-101 · Administração da instância</a></li><li><a href="mf-102.html">MF-102 · Organizações, pessoas e papéis</a></li><li><a href="mf-103.html">MF-103 · Licenças e planos</a></li><li><a href="mf-104.html">MF-104 · Conectar as fontes vivas</a></li><li><a href="mf-105.html">MF-105 · IA sob controle da organização</a></li><li><a href="mf-107.html">MF-107 · Perguntar aos dados em português</a></li><li><a href="mf-108.html">MF-108 · Respostas visuais</a></li><li><a href="mf-109.html">MF-109 · A web como fonte</a></li><li><a href="mf-110.html">MF-110 · Pergunta rápida</a></li><li><a href="mf-111.html">MF-111 · Chat pelo WhatsApp</a></li><li><a href="mf-112.html">MF-112 · Boards e Relatórios</a></li><li><a href="mf-113.html">MF-113 · Conectores de Saída</a></li><li><a href="mf-114.html">MF-114 · Módulo de Agendamentos de Agentes</a></li><li><a href="mf-115.html">MF-115 · Agentes ativos</a></li><li><a href="mf-116.html">MF-116 · Auditoria</a></li><li><a href="mf-117.html">MF-117 · Home da organização</a></li><li><a href="mf-118.html">MF-118 · Bases de demonstração</a></li><li><a href="mf-120.html">MF-120 · Faixa de avisos e números</a></li></ul><h6>v2.1</h6><ul class="side-sub"><li><a href="mf-106.html" class="active">MF-106 · Segurança dos dados por pessoa</a></li><li><a href="mf-119.html">MF-119 · Investigação guiada</a></li><li><a href="mf-121.html">MF-121 · Middleware na casa do contratante</a></li><li><a href="mf-122.html">MF-122 · Conectores de chat corporativo</a></li><li><a href="mf-123.html">MF-123 · Fonte AWS Athena</a></li></ul></nav></aside>
+<main class="content doc">
+<div class="dx-busca-movel"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-movel" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><nav class="crumbs" aria-label="Trilha"><a href="index.html">Horus v2</a><span class="sep">/</span><span>v2.1</span><span class="sep">/</span><span class="now">Segurança dos dados por pessoa</span></nav><span class="doc-eyebrow">v2.1</span><div class="dx-macro-topo"><span class="dx-codigo">MF-106</span><span class="dx-selo">v2.1</span></div><h1 class="doc-h1">Segurança dos dados por pessoa</h1><p class="doc-lead">Cada pessoa vê, nos dados da empresa, só o que lhe cabe, pela regra que o owner escreve em português no Horus ou pelas regras que a empresa já tem.</p><section class="dx-assuntos" aria-labelledby="dx-assuntos-titulo"><h2 id="dx-assuntos-titulo">Explore os assuntos</h2><div class="dx-assuntos-grade"><div class="dx-assunto"><h3><a href="#mf-106-o-que-e">O que é, em poucas palavras</a><small>2 tópicos</small></h3><ul><li><a href="#mf-106-palavras">As palavras desta página</a></li><li><a href="#mf-106-quem-e-quem">Quem faz o quê</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-106-hoje">O que a versão 2.0 já faz, e o que a 2.1 acrescenta</a><small>1 tópico</small></h3><ul><li><a href="#mf-106-etapas">Duas etapas</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-106-na-pratica">Uma regra, do texto à resposta</a><small>2 tópicos</small></h3><ul><li><a href="#mf-106-conferida">Conferida, e fechada na dúvida</a></li><li><a href="#mf-106-aviso">Quando a resposta é limitada</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-106-caracteristicas">As características e os grupos</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-106-canais">Em todo lugar onde o Horus responde</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-106-liberacao">A liberação do gestor no board</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-106-login">A segunda etapa: o login e as regras da empresa</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-106-demonstracao">A demonstração</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-106-bastidores">Nos bastidores, sem complicar</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-106-limites">O que esta funcionalidade não faz</a><small>1 tópico</small></h3><ul><li><a href="#mf-106-ligadas">Funcionalidades ligadas a esta</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-106-faq">Perguntas frequentes</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div></div></section><div id="dx-topo"><p>Se a organização é um andar do prédio do Horus, esta funcionalidade põe fechadura nas salas do andar. É como o crachá de um prédio: o mesmo elevador leva todos, mas cada crachá só abre as salas da pessoa. No Horus, a diferença é que a sala fechada nem aparece, e um aviso diz que a resposta foi limitada. A gestora do Sul pergunta a venda da semana e recebe só as lojas do Sul; o diretor faz a mesma pergunta e recebe todas.</p>
+<p>Com isso, o gestor e o executivo perguntam sem receio de ver ou mostrar o que não podem, e a empresa pode abrir o Horus a mais gente, inclusive às áreas de finanças e de pessoas. Quem já tem regras de acesso no banco e no login da empresa não precisa recriá-las: o Horus as soma às dele. Esta página conta como a regra nasce, como ela vale a cada pergunta e o que fica de fora.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Versão 2.1, em construção</b><p>O que está aqui é o que a versão 2.1 do Horus vai entregar, depois da 2.0. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham. Esta funcionalidade chega na primeira onda da versão 2.1, a do Horus como serviço da Maind.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-106-o-que-e">O que é, em poucas palavras</h2>
+<p>A Segurança dos dados por pessoa faz cada pessoa ver, nos dados da empresa, só o que lhe cabe, pela regra escrita no Horus ou pelas regras que a empresa já tem. Ela reúne tudo o que só vale com essa proteção:</p>
+<ul>
+  <li><strong>A regra em português.</strong> O owner da organização escreve quem vê o quê, a inteligência artificial transforma o texto em regra, e a regra só vale com a aprovação dele.</li>
+  <li><strong>O interruptor geral.</strong> A Maind permite a proteção na instância, e cada owner a liga na sua organização.</li>
+  <li><strong>As características de cada pessoa</strong>, como a região ou a loja, e os grupos que se atualizam por elas.</li>
+  <li><strong>A consulta conferida, e fechada na dúvida.</strong> Se algo falha, a resposta não sai.</li>
+  <li><strong>A liberação do gestor no board</strong>, com o registro de cada liberação no rastro da Auditoria.</li>
+  <li><strong>O login da empresa</strong>, na segunda etapa, valendo junto com as regras do Horus.</li>
+  <li><strong>A demonstração</strong> do “cada um vê só o que pode”, nas organizações de exemplo.</li>
+</ul>
+<h3 class="doc-h3" id="mf-106-palavras">As palavras desta página</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Palavra</th><th>O que quer dizer aqui</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Característica</strong></td><td>O que diz o que cada pessoa pode ver: a região, a loja. Nos materiais técnicos, aparece como “claim”. O owner a dá a cada pessoa ou, na segunda etapa, ela chega pelo login da empresa.</td></tr>
+      <tr class="zebra"><td><strong>Documento de segurança</strong></td><td>O texto em português, um para cada base, em que o owner escreve quem vê o quê. Fica ao lado do <a href="como-ler.html#glossario">modelo semântico</a> da base.</td></tr>
+      <tr class="zebra"><td><strong>Recorte de acesso</strong></td><td>As características que limitaram uma resposta ou um board, como “região = Sul”.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="mf-106-quem-e-quem">Quem faz o quê</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quem</th><th>O que faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Administrador da instância</strong> (a Maind)</td><td>Permite a proteção na instância, pelo interruptor geral.</td></tr>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>Liga a proteção na organização dele, escreve e aprova as regras, dá as características a cada pessoa, monta os grupos por elas, confere o que outra pessoa vê e responde à revisão. Na segunda etapa, liga o login da empresa e diz de onde vêm as roles.</td></tr>
+      <tr class="zebra"><td><strong>Gestor</strong></td><td>Libera, no board que publica, o que ele mesmo vê, e responde por isso.</td></tr>
+      <tr class="zebra"><td><strong>Owner, gestor, membro ouro e membro prata</strong></td><td>Perguntam e recebem só o que lhes cabe.</td></tr>
+      <tr class="zebra"><td><strong>Membro bronze</strong></td><td>Não pergunta: vê os boards de outras pessoas, que seguem as mesmas regras.</td></tr>
+      <tr class="zebra"><td><strong>TI e segurança da empresa</strong></td><td>Mantêm o login e os controles de acesso que a empresa já tem. Na segunda etapa, o Horus os soma, sem que a TI os recrie.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Os tipos de assento estão em <a href="mf-101.html#mf-101-assentos">Os assentos: quem pode fazer o quê</a>.</p>
+
+<h2 class="doc-h2" id="mf-106-hoje">O que a versão 2.0 já faz, e o que a 2.1 acrescenta</h2>
+<p>Na versão 2.0, a <strong>organização é a fronteira dos dados</strong>: quem pode perguntar alcança tudo o que as fontes da organização têm, e quem precisa separar os dados de dois setores dá a cada um a sua organização (veja <a href="mf-104.html#mf-104-quem-ve">Quem vê os dados de cada fonte</a>). Antes da versão 2.1, ninguém tem dado restrito por pessoa, nem nas demonstrações. A barreira contra a rede interna, a porta única até o banco e o cofre das credenciais já estão na versão 2.0, em <a href="mf-104.html#mf-104-so-le">Conectar as fontes vivas</a>.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Assunto</th><th>Na versão 2.0</th><th>Com a versão 2.1</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>O que cada pessoa vê</strong></td><td>Os dados da organização inteira.</td><td>Só o que lhe cabe, pela regra do Horus e pelas regras da empresa.</td></tr>
+      <tr class="zebra"><td><strong>Os boards e a faixa</strong></td><td>As regras de “acesso de quem abre ou vê” já valem, mas todos da organização veem os mesmos números.</td><td>Os números mudam de uma pessoa para outra, e o número fora do alcance some da faixa.</td></tr>
+      <tr class="zebra"><td><strong>Os grupos que se atualizam sozinhos</strong></td><td>Seguem só o tipo de assento.</td><td>Também seguem as características, como a região ou a loja.</td></tr>
+      <tr class="zebra"><td><strong>A planilha de convites</strong></td><td>Serve só aos convites em lote.</td><td>Ganha as colunas das características.</td></tr>
+      <tr class="zebra"><td><strong>A entrada</strong></td><td>E-mail e senha ou conta Google.</td><td>Também o login da empresa, na segunda etapa.</td></tr>
+      <tr class="zebra"><td><strong>A liberação do gestor</strong></td><td>Não tem efeito, porque todo board mostra a organização inteira.</td><td>Vale dentro do board que o gestor publica e fica no rastro.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="mf-106-etapas">Duas etapas</h3>
+<p>A proteção vem em duas etapas, as duas na primeira onda da versão 2.1. O básico vem primeiro.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Sobre a etapa</th><th>1. A regra escrita no Horus</th><th>2. As regras que a empresa já tem</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Para quem serve</strong></td><td>Para a empresa que não tem controle de acesso próprio.</td><td>Para a empresa que já tem, e não quer refazê-lo.</td></tr>
+      <tr class="zebra"><td><strong>De onde vem a regra</strong></td><td>Do documento de segurança que o owner escreve, base a base.</td><td>Do login da empresa e dos controles de acesso dos próprios bancos, somados às regras do Horus.</td></tr>
+      <tr class="zebra"><td><strong>De onde vêm as características</strong></td><td>O owner as dá, uma a uma ou pela planilha de convites.</td><td>Chegam pelo login da empresa, junto com as roles.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="doc-h2" id="mf-106-na-pratica">Uma regra, do texto à resposta</h2>
+<p>Um exemplo, com personagens ilustrativos. O Marcos é o owner da área comercial de uma rede de lojas, e a Carla é gestora de vendas da região Sul.</p>
+<ol class="steps">
+  <li><div><h4>A proteção é ligada</h4><p>A Maind permite a proteção na instância, e o Marcos a liga na organização dele.</p></div></li>
+  <li><div><h4>O owner escreve a regra</h4><p>No documento de segurança da base de vendas, ao lado do modelo semântico, o Marcos escreve em português: “cada gestor vê só as lojas da própria região”.</p></div></li>
+  <li><div><h4>A IA transforma, o owner aprova</h4><p>A inteligência artificial transforma o texto numa regra. Ela só passa a valer quando o Marcos a aprova.</p></div></li>
+  <li><div><h4>Cada pessoa ganha as suas características</h4><p>O Marcos dá à Carla a característica “região = Sul”. Pode fazer isso pessoa a pessoa ou pelas colunas da planilha de convites.</p></div></li>
+  <li><div><h4>O owner confere</h4><p>Depois, o Marcos vê o Horus como a Carla o veria. E revisa a consulta que o Horus não protegeu sozinho.</p></div></li>
+  <li><div><h4>A pessoa pergunta</h4><p>A Carla pergunta a venda da semana por loja e recebe só as lojas do Sul, com o aviso “Resposta limitada aos dados que você pode ver”.</p></div></li>
+</ol>
+<p>O mesmo caminho em desenho, com quem age em cada passo e o que o Horus faz a cada pergunta: reescrever a consulta, conferi-la e, se algo falhar, não responder.</p>
+<figure class="dx-diagrama"><figcaption><b>Da regra escrita à resposta de cada pessoa</b> <span>A Maind permite, o owner liga, escreve e aprova a regra e dá as características; a cada pergunta, o Horus reescreve a consulta, um segundo modelo confere e, se algo falha, a resposta não sai</span><a href="media/diagramas/mf-106-da-regra-a-resposta.html" target="_blank" rel="noopener">Abrir em tela cheia ↗</a></figcaption><iframe src="media/diagramas/mf-106-da-regra-a-resposta.html?embutido=1" title="Da regra escrita à resposta de cada pessoa" loading="lazy"></iframe></figure>
+<h3 class="doc-h3" id="mf-106-conferida">Conferida, e fechada na dúvida</h3>
+<p>Quando quem pergunta tem restrição, o Horus não confia só na primeira tentativa:</p>
+<ul>
+  <li><strong>A consulta é reescrita com a regra.</strong> A pergunta da Carla vira uma consulta ao banco que já traz dentro dela o limite “só o Sul”.</li>
+  <li><strong>Um segundo modelo de IA confere</strong> a consulta reescrita antes de ela ir ao banco.</li>
+  <li><strong>Se algo falha, a resposta não sai.</strong> Na dúvida, o Horus fecha.</li>
+</ul>
+<h3 class="doc-h3" id="mf-106-aviso">Quando a resposta é limitada</h3>
+<p>A resposta limitada pela regra do Horus traz o aviso “Resposta limitada aos dados que você pode ver”, para a pessoa saber que a resposta foi limitada. Na organização com o login da empresa ligado, o aviso diz também <strong>qual regra do Horus limitou</strong> a resposta e acrescenta que <strong>as regras da empresa também valem</strong>, porque o banco da empresa devolve menos sem dizer por quê. Já na faixa de avisos e números, o card a que a pessoa não tem acesso some, nem o título aparece (veja <a href="mf-120.html#mf-120-quem-ve">Quem vê o quê</a>, na página da faixa).</p>
+
+<h2 class="doc-h2" id="mf-106-caracteristicas">As características e os grupos</h2>
+<ul>
+  <li><strong>O owner dá as características</strong>, uma a uma ou pelas colunas da planilha de convites, que é só dele (veja <a href="mf-102.html#mf-102-lote">A planilha de convites em lote</a>).</li>
+  <li><strong>Na segunda etapa, elas chegam pelo login da empresa</strong>, junto com as roles, e o owner não precisa digitá-las.</li>
+  <li><strong>Os grupos que se atualizam sozinhos</strong> podem seguir a região ou a loja da pessoa, para publicar boards e enviar relatórios e alertas. Os grupos estão explicados em <a href="mf-102.html#mf-102-grupos">Grupos: para quem vai cada coisa</a>.</li>
+</ul>
+<p>Por exemplo: o Marcos monta o grupo “Região Sul”, que reúne quem tem “região = Sul”, e agenda para ele o PDF semanal. Quem passa a ter essa característica entra no grupo sem ninguém mexer.</p>
+<p>A role continua decidindo o que a pessoa <strong>usa</strong>, como ver a consulta montada ou baixar a resposta (veja <a href="mf-102.html#mf-102-roles">Roles: o que cada pessoa pode usar</a>). Esta funcionalidade decide o que ela <strong>vê</strong>.</p>
+
+<h2 class="doc-h2" id="mf-106-canais">Em todo lugar onde o Horus responde</h2>
+<p>A conversa, a Pergunta rápida, o WhatsApp, os boards, os agentes e os números da faixa passam pela mesma proteção. O que muda é de quem é o acesso que vale em cada lugar:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Onde</th><th>Com o acesso de quem</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>A conversa, a Pergunta rápida e o WhatsApp</strong></td><td>De quem pergunta.</td></tr>
+      <tr class="zebra"><td><strong>O board do espaço da organização</strong></td><td>De quem o abre: o mesmo board mostra números diferentes a pessoas diferentes (veja <a href="mf-112.html#mf-112-dados">Os dados do board</a>).</td></tr>
+      <tr class="zebra"><td><strong>O board público</strong></td><td>Do owner que o publicou, com os mesmos números para todos que o abrem (veja <a href="mf-112.html#mf-112-publicos">Os boards públicos</a>).</td></tr>
+      <tr class="zebra"><td><strong>O board que o gestor publica</strong></td><td>Do gestor, para quem está na visibilidade publicada: é a liberação, explicada abaixo.</td></tr>
+      <tr class="zebra"><td><strong>Os números da faixa</strong></td><td>De quem olha a faixa; o número fora do alcance some.</td></tr>
+      <tr class="zebra"><td><strong>Os agendamentos e os agentes</strong></td><td>De quem os criou, lido na hora de cada rodada.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Ver a consulta de um cartão, baixar o CSV dele e continuar a pergunta na conversa a partir dele ficam fora do board e seguem só o acesso de quem pede (veja <a href="mf-112.html#mf-112-fronteira">O que sai do board segue a pessoa</a>).</p>
+
+<h2 class="doc-h2" id="mf-106-liberacao">A liberação do gestor no board</h2>
+<p>No board que o <strong>gestor</strong> publica, quem abre vê o que ele vê, mesmo acima das travas que a empresa pôs no banco. O mesmo vale para o PDF desse board que ele envia. A responsabilidade é do gestor, e ele só libera o que ele mesmo vê. Fora do board, cada um fica no que pode ver.</p>
+<p>Um exemplo, com personagens ilustrativos: a Carla vê todas as lojas do Sul, e o João, da equipe dela, só a loja dele. A Carla publica para a equipe um board com todas as lojas do Sul, e o João o abre e vê todas. Na conversa, quando o João pergunta pelas mesmas lojas, recebe só a dele.</p>
+<ul>
+  <li><strong>Cada liberação fica no rastro da Auditoria</strong>, com o recorte de acesso de quem liberou. É o que deixa o owner responder “quem recebeu o board de vendas com os dados do Sul?” (veja <a href="mf-116.html#mf-116-o-que-registra">O que entra no rastro</a>).</li>
+  <li><strong>O owner mantém o controle:</strong> decide se os gestores podem publicar e pode desabilitar qualquer board (veja <a href="mf-112.html#mf-112-visibilidades">As quatro visibilidades</a> e <a href="mf-112.html#mf-112-editar">Editar, desabilitar e o espaço da organização</a>).</li>
+</ul>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Ponto de atenção</b><p>Dentro do board publicado pelo gestor, vale o que ele vê, mesmo quando a TI da empresa colocou uma trava no banco. A responsabilidade é do gestor, e cada liberação fica no rastro da Auditoria.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-106-login">A segunda etapa: o login e as regras da empresa</h2>
+<ul>
+  <li><strong>O login da empresa se liga por organização.</strong> Cada owner liga o da sua, e diz de onde, no login da empresa, vêm as roles das pessoas.</li>
+  <li><strong>Só pelo padrão OpenID Connect.</strong> O SAML, padrão de sistemas mais antigos, só entra com uma decisão nova, quando um cliente o exigir.</li>
+  <li><strong>O login só prova quem a pessoa é.</strong> Só entra quem foi convidado, como na versão 2.0: quem chega pelo login da empresa sem convite não entra e não ocupa assento.</li>
+  <li><strong>Vale a role que o login traz.</strong> Se a role do cadastro do Horus e a do login da empresa discordam, vale a do login, e quem chega sem valor mapeado cai na role padrão da organização.</li>
+  <li><strong>A sessão se confirma com a empresa a cada 8 horas.</strong> Se a empresa desligou a pessoa, ela precisa entrar de novo e não consegue.</li>
+  <li><strong>A fonte que não aceita a identidade da pessoa</strong> continua disponível, protegida só pela regra do Horus, e o owner é avisado, ao ligar o login da empresa, de que nessa fonte as regras do banco da empresa não valem.</li>
+  <li><strong>As regras da empresa e as do Horus valem juntas, e vale a mais restritiva.</strong> O Horus nunca dá mais do que a empresa deu, e o owner ainda pode esconder, no Horus, mais do que a empresa esconde.</li>
+  <li><strong>A exceção é a liberação do gestor</strong>, só dentro do board que ele publica. Nas perguntas e em todo lugar fora do board, continua valendo a mais restritiva.</li>
+</ul>
+
+<h2 class="doc-h2" id="mf-106-demonstracao">A demonstração</h2>
+<p>As organizações de exemplo das <a href="mf-118.html#mf-118-demonstracao">Bases de demonstração</a> ganham as regras e as características dos membros de exemplo. Com isso, a Maind volta a mostrar, numa demonstração, o “cada um vê só o que pode”.</p>
+
+<h2 class="doc-h2" id="mf-106-bastidores">Nos bastidores, sem complicar</h2>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>O que já existe e o que é novo.</strong> A primeira etapa existe no Horus de hoje, com a regra em português, a conferência, o “ver como outra pessoa”, a revisão e a planilha das características, e volta refeita sobre a versão 2. A segunda etapa é nova: o login da empresa não existe no Horus de hoje.</li>
+  <li><strong>Um caminho só até o banco.</strong> Todo canal passa pelo mesmo motor de análise, e a consulta protegida vai ao banco pela mesma porta única de qualquer consulta, a que recusa escrita (veja <a href="mf-104.html#mf-104-so-le">Só ler, nunca alterar</a>).</li>
+  <li><strong>A característica nunca vira texto.</strong> A região ou a loja da pessoa entra na consulta como um valor à parte, nunca escrita dentro dela, e não vai aos registros técnicos do sistema. O recorte de acesso também não.</li>
+  <li><strong>Quem confere é de outra família.</strong> O modelo de IA que confere a consulta é de uma família diferente do que a escreveu.</li>
+  <li><strong>O acesso é lido na hora.</strong> O que cada pessoa pode ver se calcula a cada pedido, e nada se guarda de um pedido para outro.</li>
+</ul>
+
+<h2 class="doc-h2" id="mf-106-limites">O que esta funcionalidade não faz</h2>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Criar ou mudar regras no banco ou no login da empresa</strong></td><td>Nem cria usuários lá. Essas regras e esses usuários continuam com a empresa; o Horus usa o que ela já definiu.</td></tr>
+      <tr class="zebra"><td><strong>Substituir a segurança do banco</strong></td><td>O Horus se soma a ela, e vale a mais restritiva.</td></tr>
+      <tr class="zebra"><td><strong>Decidir o que a pessoa usa</strong></td><td>Os botões da conversa são da role, em <a href="mf-102.html#mf-102-roles">Organizações, pessoas e papéis</a>. Aqui se decide o que a pessoa vê.</td></tr>
+      <tr class="zebra"><td><strong>Aceitar o login da empresa pelo SAML</strong></td><td>Só o OpenID Connect. O SAML depende de uma decisão nova, quando um cliente o exigir.</td></tr>
+      <tr class="zebra"><td><strong>Proteger qualquer banco de dados</strong></td><td>No Horus de hoje, a proteção cobre o SQL Server. Os outros bancos estão em definição, a começar pelo AWS Athena (MF-123).</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="mf-106-ligadas">Funcionalidades ligadas a esta</h3>
+<p>Esta funcionalidade toca quase tudo o que mostra dados. As principais ligações:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="mf-101.html">Administração da instância (MF-101)</a></td><td>A Maind, que opera a instância, é quem permite esta proteção, pelo interruptor geral.</td></tr>
+      <tr class="zebra"><td><a href="mf-102.html">Organizações, pessoas e papéis (MF-102)</a></td><td>A role decide o que a pessoa usa, e esta funcionalidade, o que ela vê. Os grupos ganham as características, e a planilha de convites, as colunas delas.</td></tr>
+      <tr class="zebra"><td><a href="mf-104.html">Conectar as fontes vivas (MF-104)</a></td><td>A regra vale sobre cada fonte, e a consulta protegida passa pela mesma porta única até o banco.</td></tr>
+      <tr class="zebra"><td><a href="mf-105.html">IA sob controle da organização (MF-105)</a></td><td>A IA que transforma o texto em regra e confere as consultas segue as conexões de IA da organização.</td></tr>
+      <tr class="zebra"><td><a href="mf-110.html">Pergunta rápida (MF-110)</a>, <a href="mf-111.html">Chat pelo WhatsApp (MF-111)</a> e <a href="mf-115.html">Agentes ativos (MF-115)</a></td><td>Passam pela mesma proteção, cada um com o acesso que lhe cabe.</td></tr>
+      <tr class="zebra"><td><a href="mf-112.html">Boards e Relatórios (MF-112)</a></td><td>Os boards passam a mostrar números diferentes a pessoas diferentes, e a liberação do gestor vale dentro do board publicado e no PDF que ele envia.</td></tr>
+      <tr class="zebra"><td><a href="mf-116.html">Auditoria (MF-116)</a></td><td>O rastro passa a guardar cada liberação do gestor, com o recorte de acesso de quem liberou.</td></tr>
+      <tr class="zebra"><td><a href="mf-118.html">Bases de demonstração (MF-118)</a></td><td>As organizações de exemplo ganham as regras e as características que mostram esta proteção.</td></tr>
+      <tr class="zebra"><td><a href="mf-120.html">Faixa de avisos e números (MF-120, nome provisório)</a></td><td>Os números da faixa passam a ser os de cada pessoa, e o que ela não pode ver some.</td></tr>
+      <tr class="zebra"><td><a href="mf-119.html">Investigação guiada (MF-119)</a></td><td>Cada passo da investigação usa o acesso de quem investiga.</td></tr>
+      <tr class="zebra"><td><a href="mf-121.html">Middleware na casa do contratante (MF-121)</a></td><td>O middleware, da segunda onda da versão 2.1, conta com esta proteção.</td></tr>
+      <tr class="zebra"><td><a href="mf-123.html">Fonte AWS Athena (MF-123)</a></td><td>A fonte nova depende desta proteção, que hoje só cobre o SQL Server.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Ainda em definição</b><p><strong>O texto exato do aviso.</strong> O aviso de resposta limitada e a frase fixa sobre as regras da empresa terão o texto definido no desenho.</p><p><strong>Os bancos além do SQL Server.</strong> Quais outras tecnologias a proteção vai cobrir, a começar pelo AWS Athena, ainda está em definição.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-106-faq">Perguntas frequentes</h2>
+<div class="faq">
+  <details open>
+    <summary>Na versão 2.0, cada pessoa já vê só a parte dela dos dados?</summary>
+    <div class="faq-body"><p>Não. Na versão 2.0, a organização é a fronteira dos dados: quem pode perguntar alcança tudo o que as fontes da organização têm. Se dois setores precisam de dados separados, cada um ganha a sua organização. O recorte pessoa a pessoa chega com esta funcionalidade, na primeira onda da versão 2.1.</p></div>
+  </details>
+  <details>
+    <summary>Preciso saber programar ou escrever consultas para criar as regras?</summary>
+    <div class="faq-body"><p>Não. O owner da organização escreve em português quem vê o quê, num documento por base, ao lado do modelo semântico. A inteligência artificial transforma o texto em regra, que só vale com a aprovação dele. Depois, ele vê o Horus como outra pessoa o veria e revisa a consulta que o Horus não protegeu sozinho.</p></div>
+  </details>
+  <details>
+    <summary>E se a proteção falhar? A pessoa vê o dado assim mesmo?</summary>
+    <div class="faq-body"><p>Não. A consulta de quem tem restrição é reescrita com a regra e conferida por um segundo modelo de IA antes de ir ao banco. Se algo falha, a resposta não sai: na dúvida, o Horus fecha. Quando a resposta sai limitada, ela traz o aviso “Resposta limitada aos dados que você pode ver”.</p></div>
+  </details>
+  <details>
+    <summary>A proteção vale para qualquer banco de dados?</summary>
+    <div class="faq-body"><p>No Horus de hoje, a proteção cobre o SQL Server. Quais outras tecnologias ela vai cobrir, a começar pelo AWS Athena, ainda está em definição. As tecnologias que o Horus lê estão em <a href="mf-104.html#mf-104-tecnologias">As tecnologias que o Horus lê</a>.</p></div>
+  </details>
+  <details>
+    <summary>Já temos regras de acesso no banco e no login da empresa. Vamos ter de recriá-las no Horus?</summary>
+    <div class="faq-body"><p>Não. Na segunda etapa, o owner liga o login da empresa na organização, pelo padrão OpenID Connect, e as características e as roles chegam por ele. As regras da empresa e as do Horus valem juntas, e vale a mais restritiva: o Horus nunca dá mais do que a empresa deu. O login pelo SAML depende de uma decisão nova.</p></div>
+  </details>
+  <details>
+    <summary>Um gestor pode mostrar a alguém um dado que essa pessoa não vê?</summary>
+    <div class="faq-body"><p>Pode, só dentro do board que ele publica e no PDF desse board que ele envia. Quem abre vê o que o gestor vê, mesmo acima das travas da empresa, e a responsabilidade é dele. Cada liberação fica no rastro da Auditoria, que só o owner consulta. Fora do board, cada pessoa fica no que pode ver, e o owner decide se os gestores podem publicar.</p></div>
+  </details>
+</div>
+</div><nav class="rel-grid dx-vizinhas" aria-label="Páginas vizinhas"><a class="rel-card dx-anterior" href="mf-120.html"><span class="cat">Anterior</span><h5>Faixa de avisos e números</h5><span class="arrow">←</span></a><a class="rel-card dx-proxima" href="mf-119.html"><span class="cat">Próxima</span><h5>Investigação guiada</h5><span class="arrow">→</span></a></nav>
+<footer class="ds-footer"><div class="ftr-brand"><img class="ftr-logo logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="ftr-logo logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /><div class="ftr-divider"></div><div class="ftr-meta"><b>Maind Horus · Horus v2 · versões 2.0 e 2.1 em desenho</b></div></div><div class="ftr-center"><span class="ftr-tag">v2.0 e 2.1 em desenho, sem versão publicada · 06/11/2026</span></div><div class="ftr-author"><div class="avatar">MT</div><div class="ftr-author-info"><b>Maind Tech</b><span>Horus v2</span></div></div></footer>
+</main>
+<aside class="toc"><h6>Neste artigo</h6><ul><li><a href="#mf-106-o-que-e">O que é, em poucas palavras</a></li><li class="lvl-3"><a href="#mf-106-palavras">As palavras desta página</a></li><li class="lvl-3"><a href="#mf-106-quem-e-quem">Quem faz o quê</a></li><li><a href="#mf-106-hoje">O que a versão 2.0 já faz, e o que a 2.1 acrescenta</a></li><li class="lvl-3"><a href="#mf-106-etapas">Duas etapas</a></li><li><a href="#mf-106-na-pratica">Uma regra, do texto à resposta</a></li><li class="lvl-3"><a href="#mf-106-conferida">Conferida, e fechada na dúvida</a></li><li class="lvl-3"><a href="#mf-106-aviso">Quando a resposta é limitada</a></li><li><a href="#mf-106-caracteristicas">As características e os grupos</a></li><li><a href="#mf-106-canais">Em todo lugar onde o Horus responde</a></li><li><a href="#mf-106-liberacao">A liberação do gestor no board</a></li><li><a href="#mf-106-login">A segunda etapa: o login e as regras da empresa</a></li><li><a href="#mf-106-demonstracao">A demonstração</a></li><li><a href="#mf-106-bastidores">Nos bastidores, sem complicar</a></li><li><a href="#mf-106-limites">O que esta funcionalidade não faz</a></li><li class="lvl-3"><a href="#mf-106-ligadas">Funcionalidades ligadas a esta</a></li><li><a href="#mf-106-faq">Perguntas frequentes</a></li></ul></aside>
+</div>
+<div class="toast" id="toast">Copiado ✓</div>
+<script src="assets/busca.js"></script>
+<script src="assets/docs.js"></script>
+<script src="assets/docx-kbr.js"></script>
+</body>
+</html>

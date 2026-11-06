@@ -64,7 +64,7 @@
     </tbody>
   </table>
 </div>
-<p>Uma rede privada, como uma VPN ou a conexão privada de uma nuvem, fica fora da versão 2.0. Para o banco que não pode sair de casa, a versão 2.1 traz o Middleware na casa do contratante (MF-121): uma peça da Maind que o cliente instala na própria infraestrutura e pela qual as fontes alcançam esse banco, com o Horus continuando no serviço da Maind.</p>
+<p>Uma rede privada, como uma VPN ou a conexão privada de uma nuvem, fica fora da versão 2.0. Para o banco que não pode sair de casa, a versão 2.1 traz o <a href="#mf-121">Middleware na casa do contratante (MF-121)</a>: uma peça da Maind que o cliente instala na própria infraestrutura e pela qual as fontes alcançam esse banco, com o Horus continuando no serviço da Maind.</p>
 
 <h3 id="mf-104-so-le">Só ler, nunca alterar</h3>
 <p>A credencial só de leitura é como o acesso de “só consulta” que o banco dá ao contador: ele vê o extrato, mas não faz transferência. A diferença é que o Horus não confia na palavra de quem cadastra: ele confere, no próprio banco, que a credencial só lê.</p>
@@ -106,7 +106,7 @@
 <p>Na versão 2.0, a <strong>organização é a fronteira dos dados</strong>. Cada organização guarda as suas fontes num espaço só dela, e nenhuma enxerga as de outra. Dentro da organização, quem pode perguntar vê tudo o que a fonte tem: o tipo de assento e as roles decidem quem pergunta, e não que parte dos dados cada um vê.</p>
 <div class="callout callout--info">
   <span class="ico">i</span>
-  <div><b>Precisa separar os dados de dois setores?</b><p>Na versão 2.0, cada setor ganha a sua própria organização. O recorte por pessoa, em que cada um vê só a sua parte de uma fonte, vem com a Segurança dos dados por pessoa (MF-106), na versão 2.1.</p></div>
+  <div><b>Precisa separar os dados de dois setores?</b><p>Na versão 2.0, cada setor ganha a sua própria organização. O recorte por pessoa, em que cada um vê só a sua parte de uma fonte, vem com a <a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a>, na versão 2.1.</p></div>
 </div>
 
 <h3 id="mf-104-bastidores">Nos bastidores, sem complicar</h3>
@@ -128,9 +128,9 @@
       <tr class="zebra"><td><strong>Escrever nos bancos</strong></td><td>O Horus só lê: nunca altera um dado nem age nos sistemas da empresa.</td></tr>
       <tr class="zebra"><td><strong>Montar o modelo semântico sozinha</strong></td><td>É do time de dados, que o escreve fora do Horus. Um assistente que ajude a montá-lo não está na versão 2.0.</td></tr>
       <tr class="zebra"><td><strong>Conectar por VPN ou pela rede privada de uma nuvem</strong></td><td>Fica fora da versão 2.0. Os caminhos são o endereço público e o túnel SSH.</td></tr>
-      <tr class="zebra"><td><strong>Recortar os dados por pessoa</strong></td><td>É da Segurança dos dados por pessoa (MF-106), na versão 2.1. Na versão 2.0, vale a organização inteira.</td></tr>
+      <tr class="zebra"><td><strong>Recortar os dados por pessoa</strong></td><td>É da <a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a>, na versão 2.1. Na versão 2.0, vale a organização inteira.</td></tr>
       <tr class="zebra"><td><strong>Responder com o AWS Athena</strong></td><td>Chega na versão 2.1, numa funcionalidade própria (MF-123).</td></tr>
-      <tr class="zebra"><td><strong>Alcançar a rede interna da casa do cliente</strong></td><td>Na versão 2.1, o Middleware na casa do contratante (MF-121) leva as fontes ao banco que não pode sair de casa. Alcançar a rede interna diretamente só seria possível com o Horus instalado inteiro na casa do cliente, que não tem versão prevista: só volta se um cliente exigir que nada saia de casa, nem a pergunta.</td></tr>
+      <tr class="zebra"><td><strong>Alcançar a rede interna da casa do cliente</strong></td><td>Na versão 2.1, o <a href="#mf-121">Middleware na casa do contratante (MF-121)</a> leva as fontes ao banco que não pode sair de casa. Alcançar a rede interna diretamente só seria possível com o Horus instalado inteiro na casa do cliente, que não tem versão prevista: só volta se um cliente exigir que nada saia de casa, nem a pergunta.</td></tr>
     </tbody>
   </table>
 </div>
@@ -149,9 +149,9 @@
       <tr class="zebra"><td>Agentes ativos (MF-115)</td><td>O agente extrai os dados das fontes desta funcionalidade.</td></tr>
       <tr class="zebra"><td>Bases de demonstração (MF-118)</td><td>As bases entram nas organizações de exemplo como fontes comuns, pelos mesmos conectores dos clientes.</td></tr>
       <tr class="zebra"><td>Faixa de avisos e números (MF-120, nome provisório)</td><td>Os números do negócio que a faixa mostra saem das fontes da organização.</td></tr>
-      <tr class="zebra"><td>Segurança dos dados por pessoa (MF-106)</td><td>Na versão 2.1, recorta o que cada pessoa vê de cada fonte.</td></tr>
-      <tr class="zebra"><td>Middleware na casa do contratante (MF-121)</td><td>Na versão 2.1, as fontes alcançam por ele o banco que não pode sair da casa do cliente.</td></tr>
-      <tr class="zebra"><td>Fonte AWS Athena (MF-123)</td><td>Na versão 2.1, o Athena chega terminado, sobre a base desta funcionalidade.</td></tr>
+      <tr class="zebra"><td><a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a></td><td>Na versão 2.1, recorta o que cada pessoa vê de cada fonte.</td></tr>
+      <tr class="zebra"><td><a href="#mf-121">Middleware na casa do contratante (MF-121)</a></td><td>Na versão 2.1, as fontes alcançam por ele o banco que não pode sair da casa do cliente.</td></tr>
+      <tr class="zebra"><td><a href="#mf-123">Fonte AWS Athena (MF-123)</a></td><td>Na versão 2.1, o Athena chega terminado, sobre a base desta funcionalidade.</td></tr>
     </tbody>
   </table>
 </div>
@@ -168,7 +168,7 @@
   </details>
   <details>
     <summary>Precisamos expor o nosso banco na internet?</summary>
-    <div class="faq-body"><p>Não necessariamente. Se o banco não está na internet, o Horus chega a ele pelo túnel SSH, uma passagem segura pela máquina de entrada da sua rede. Se está, a sua TI libera no firewall o endereço de onde o Horus sai. VPN e rede privada de nuvem ficam fora da versão 2.0; para o banco que não pode sair de casa, a versão 2.1 traz o Middleware na casa do contratante (MF-121).</p></div>
+    <div class="faq-body"><p>Não necessariamente. Se o banco não está na internet, o Horus chega a ele pelo túnel SSH, uma passagem segura pela máquina de entrada da sua rede. Se está, a sua TI libera no firewall o endereço de onde o Horus sai. VPN e rede privada de nuvem ficam fora da versão 2.0; para o banco que não pode sair de casa, a versão 2.1 traz o <a href="#mf-121">Middleware na casa do contratante (MF-121)</a>.</p></div>
   </details>
   <details>
     <summary>Quais bancos de dados o Horus consegue ler?</summary>
@@ -184,6 +184,6 @@
   </details>
   <details>
     <summary>Todas as pessoas da organização veem todos os dados das fontes?</summary>
-    <div class="faq-body"><p>Na versão 2.0, sim: quem pode perguntar vê tudo o que a fonte tem, e o tipo de assento e as roles decidem quem pergunta. Para separar os dados de dois setores, cada um ganha a sua própria organização. O recorte por pessoa chega na versão 2.1, com a Segurança dos dados por pessoa (MF-106).</p></div>
+    <div class="faq-body"><p>Na versão 2.0, sim: quem pode perguntar vê tudo o que a fonte tem, e o tipo de assento e as roles decidem quem pergunta. Para separar os dados de dois setores, cada um ganha a sua própria organização. O recorte por pessoa chega na versão 2.1, com a <a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a>.</p></div>
   </details>
 </div>

@@ -54,7 +54,7 @@ textos:
   cabecalho: ""
   # Última linha do rodapé, em todas as páginas. Aceita {ano} e {data},
   # trocados na hora da geração — evita documento com ano congelado.
-  rodape: "Maind Horus · Horus v2 · versão 2.0 em desenho"
+  rodape: "Maind Horus · Horus v2 · versões 2.0 e 2.1 em desenho"
 
 autoria:
   # Nome que assina o documento, no rodapé e na ficha do Front Matter.

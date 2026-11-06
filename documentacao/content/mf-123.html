@@ -1,0 +1,123 @@
+<p>Imagine uma rede de lojas que guarda os dados de vendas na nuvem da Amazon. Na segunda-feira, a gestora quer saber quanto cada loja vendeu na semana. Sem um jeito de perguntar direto a esses dados, o caminho é pedir ao time de dados, que consulta, exporta uma planilha e a manda de volta.</p>
+<p>O <strong>AWS Athena</strong> é o serviço da Amazon (AWS) para consultar dados guardados na nuvem dela. Com esta funcionalidade, ele passa a ser mais uma <strong>fonte viva</strong> do Horus, como os outros bancos da empresa que o Horus consulta na hora da pergunta: a gestora pergunta em português, e o número sai do Athena. O nome desta funcionalidade ainda é provisório, e ela está prevista para a primeira onda da versão 2.1, a do Horus como serviço da Maind.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Versão 2.1, em construção</b><p>O que está aqui é o que a versão 2.1 do Horus vai entregar, depois da 2.0. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
+</div>
+
+<h3 id="mf-123-o-que-e">O que é, em poucas palavras</h3>
+<p>Esta funcionalidade termina o Athena no Horus: ele deixa de só se cadastrar e passa a responder. Ela cuida de quatro coisas:</p>
+<ul>
+  <li><strong>Responder com o Athena.</strong> O Athena passa a responder às perguntas de análise, as perguntas sobre os números da empresa.</li>
+  <li><strong>Entrar como as outras fontes.</strong> O Athena segue a mesma base das fontes vivas, a de <a href="#mf-104">Conectar as fontes vivas (MF-104)</a>.</li>
+  <li><strong>Usar a mesma conversa.</strong> A pergunta passa pelo mesmo motor de <a href="#mf-107">Perguntar aos dados em português (MF-107)</a>, que a transforma numa consulta à fonte.</li>
+  <li><strong>Só ler.</strong> Como em toda fonte, o Horus nunca altera um dado do Athena.</li>
+</ul>
+<h4 id="mf-123-hoje-e-depois">Como é hoje e o que passa a existir</h4>
+<p>No Horus de hoje, o Athena até se cadastra, mas o Horus não responde nada com ele, e por isso ele saiu da tela. A versão 2.0 não o traz. A versão 2.1 o entrega terminado:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Sobre</th><th>Na versão 2.0</th><th>Na versão 2.1, com esta funcionalidade</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>As tecnologias que respondem</strong></td><td>Cinco: SQL Server, PostgreSQL, Oracle, MongoDB e BigQuery (veja <a href="#mf-104-tecnologias">As tecnologias que o Horus lê</a>).</td><td>As mesmas cinco e o AWS Athena.</td></tr>
+      <tr class="zebra"><td><strong>O Athena</strong></td><td><span class="badge">Fora</span> Não aparece.</td><td><span class="badge badge--info">Versão 2.1</span> Responde às perguntas de análise, como as outras fontes vivas.</td></tr>
+      <tr class="zebra"><td><strong>Quem conecta</strong></td><td>O owner da organização conecta as fontes.</td><td>O owner da organização conecta também o Athena.</td></tr>
+      <tr class="zebra"><td><strong>O recorte por pessoa</strong></td><td>Não há: a organização é a fronteira dos dados (veja <a href="#mf-104-quem-ve">Quem vê os dados de cada fonte</a>).</td><td>Vem da <a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a>. No Athena, vale o que ela cobrir.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="mf-123-quem-e-quem">Quem faz o quê</h4>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quem</th><th>O que faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>Conecta o Athena como uma fonte da organização e, como em toda fonte, carrega o modelo semântico dele.</td></tr>
+      <tr class="zebra"><td><strong>Time de dados</strong></td><td>Como em toda fonte, escreve o <a href="#glossario">modelo semântico</a> do Athena, o dicionário que explica ao Horus o que cada coluna significa na empresa, e o entrega ao owner (veja <a href="#mf-104-modelo-semantico">O modelo semântico</a>).</td></tr>
+      <tr class="zebra"><td><strong>Quem pergunta</strong></td><td>Escolhe o Athena entre as fontes da conversa e pergunta. Quem pode perguntar está em <a href="#mf-107-quem-pergunta">Quem pergunta, e onde</a>.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Quem mais ganha é quem decide com os dados guardados na AWS, como o gestor e o executivo: passa a perguntar em português a esses dados, sem pedir ao time de dados. Para a empresa, os dados que estão na AWS entram nas respostas como os dos outros bancos.</p>
+
+<h3 id="mf-123-na-pratica">Do Athena à primeira resposta</h3>
+<p>Um exemplo, com personagens ilustrativos. Os dados de vendas de uma rede de lojas ficam na AWS. O Marcos é o owner da área comercial, e a Carla é gestora de vendas.</p>
+<ol class="steps">
+  <li><div><h4>O owner conecta o Athena</h4><p>O Marcos conecta o Athena como uma fonte da organização.</p></div></li>
+  <li><div><h4>O time de dados escreve o modelo semântico</h4><p>Como em toda fonte, o time de dados escreve o dicionário que explica ao Horus o que cada coluna do Athena quer dizer na empresa, como o que conta como venda e o que é uma loja. O Marcos carrega o modelo na fonte.</p></div></li>
+  <li><div><h4>A gestora escolhe o Athena e pergunta</h4><p>A Carla abre a conversa de análise, escolhe o Athena entre as fontes e pergunta quanto cada loja vendeu na semana.</p></div></li>
+  <li><div><h4>O Horus consulta o Athena, só para ler</h4><p>O mesmo motor da conversa transforma a pergunta numa consulta ao Athena. Nada no Athena é alterado.</p></div></li>
+  <li><div><h4>A resposta chega com a fonte à vista</h4><p>O número sai do Athena, sem ninguém exportar planilha, e a fonte aparece na resposta, como em qualquer resposta do Horus.</p></div></li>
+</ol>
+<p>Como uma fonte viva funciona, do cadastro à primeira resposta, está em <a href="#mf-104-uma-fonte">Uma fonte, do cadastro à primeira resposta</a>.</p>
+<h4 id="mf-123-mesma-conversa">Para quem pergunta, é a conversa de sempre</h4>
+<p>O gestor pergunta ao Athena como pergunta a qualquer outra fonte. A pergunta passa pelo mesmo motor da conversa de análise, que a transforma numa consulta à fonte, e a resposta vem com a fonte à vista. Como a conversa funciona está em <a href="#mf-107">Perguntar aos dados em português (MF-107)</a>.</p>
+
+<h3 id="mf-123-quem-ve">Quem vê os dados do Athena</h3>
+<p>Na versão 2.0, a organização é a fronteira dos dados: dentro dela, quem pode perguntar vê tudo o que a fonte tem (veja <a href="#mf-104-quem-ve">Quem vê os dados de cada fonte</a>). Na versão 2.1, o recorte por pessoa, em que cada um vê só a sua parte de uma fonte, chega com a <a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a>.</p>
+<p>No Athena, vale o que essa segurança cobrir. Hoje, ela cobre só o SQL Server, e o que ela vai cobrir no Athena ainda está em definição.</p>
+
+<h3 id="mf-123-bastidores">Nos bastidores, sem complicar</h3>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>Uma fonte a mais, na mesma base.</strong> O Athena entra como mais uma fonte viva, sobre a base de <a href="#mf-104">Conectar as fontes vivas (MF-104)</a>.</li>
+  <li><strong>Um motor só para as perguntas.</strong> A pergunta ao Athena passa pelo mesmo motor de análise que responde às outras fontes (<a href="#mf-107">MF-107</a>).</li>
+  <li><strong>Só leitura.</strong> Como em toda fonte, o Horus nunca altera um dado do Athena (veja <a href="#mf-104-so-le">Só ler, nunca alterar</a>).</li>
+  <li><strong>O que já existe e o que é novo.</strong> Do Horus de hoje vêm o cadastro do Athena, que só guarda a conexão, e a base das fontes vivas. É novo fazer o Athena responder: a peça que conversa com ele e o jeito de escrever a consulta na língua dele. A forma técnica dessas duas partes ainda será definida.</li>
+</ul>
+
+<h3 id="mf-123-limites">O que esta funcionalidade não faz</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Trazer outras fontes novas</strong></td><td>Só o Athena entra. Uma tecnologia nova depende de uma decisão do produto (veja <a href="#mf-104-tecnologias">As tecnologias que o Horus lê</a>).</td></tr>
+      <tr class="zebra"><td><strong>Escrever nos dados da AWS</strong></td><td>O Horus só lê: nunca altera um dado do Athena.</td></tr>
+      <tr class="zebra"><td><strong>Recortar os dados por pessoa além do que a MF-106 cobrir</strong></td><td>O recorte vem da <a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a>, que hoje cobre só o SQL Server.</td></tr>
+      <tr class="zebra"><td><strong>Entrar na versão 2.0</strong></td><td>Na versão 2.0, o Athena fica fora. Ele está previsto para a primeira onda da versão 2.1.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="mf-123-ligadas">Funcionalidades ligadas a esta</h4>
+<p>Esta funcionalidade depende de três outras:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="#mf-104">Conectar as fontes vivas (MF-104)</a></td><td>É a base das fontes; o Athena passa a ser mais uma delas.</td></tr>
+      <tr class="zebra"><td><a href="#mf-107">Perguntar aos dados em português (MF-107)</a></td><td>É a conversa que transforma a pergunta numa consulta ao Athena.</td></tr>
+      <tr class="zebra"><td><a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a></td><td>Na versão 2.1, o recorte do que cada pessoa vê no Athena vem dela, que hoje cobre só o SQL Server.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Ainda em definição</b><p><strong>O recorte por pessoa no Athena.</strong> A <a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a> hoje cobre só o SQL Server. O que ela vai cobrir no Athena ainda será definido.</p><p><strong>A forma técnica da ligação.</strong> Como o Horus conversa com o Athena e escreve a consulta na língua dele ainda será definido.</p><p><strong>A confirmação da onda.</strong> A previsão é a primeira onda da versão 2.1. Ela será confirmada quando a parte técnica for dimensionada.</p></div>
+</div>
+
+<h3 id="mf-123-faq">Perguntas frequentes</h3>
+<div class="faq">
+  <details open>
+    <summary>Os dados da minha empresa estão na AWS. O Horus consegue responder com eles?</summary>
+    <div class="faq-body"><p>Com esta funcionalidade, sim: o AWS Athena passa a responder às perguntas de análise, como as outras fontes vivas. Ela está prevista para a primeira onda da versão 2.1. Na versão 2.0, o Athena fica fora, e as fontes que respondem são SQL Server, PostgreSQL, Oracle, MongoDB e BigQuery.</p></div>
+  </details>
+  <details>
+    <summary>O Horus pode alterar ou apagar dados no Athena?</summary>
+    <div class="faq-body"><p>Não. Como em toda fonte, o Horus só lê: ele consulta o Athena para responder à pergunta e nunca altera um dado dele. O Athena segue a mesma base das outras fontes vivas, contada em Conectar as fontes vivas (MF-104).</p></div>
+  </details>
+  <details>
+    <summary>Quem conecta o Athena, e o que precisa ser preparado?</summary>
+    <div class="faq-body"><p>O owner da organização conecta o Athena como uma fonte da organização. Como em toda fonte, o time de dados, da sua empresa ou da Maind na implantação, escreve o modelo semântico, o dicionário que explica ao Horus o que cada coluna significa, e o owner o carrega. A forma técnica da ligação com o Athena ainda será definida.</p></div>
+  </details>
+  <details>
+    <summary>Perguntar ao Athena é diferente de perguntar às outras fontes?</summary>
+    <div class="faq-body"><p>Para quem pergunta, não. A pessoa escolhe o Athena entre as fontes da conversa e pergunta como pergunta a qualquer outra fonte. A pergunta passa pelo mesmo motor da conversa de análise, e a resposta vem com a fonte à vista, como em qualquer resposta do Horus.</p></div>
+  </details>
+  <details>
+    <summary>Cada pessoa vai ver só a sua parte dos dados do Athena?</summary>
+    <div class="faq-body"><p>Depende do que a <a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a>, também da versão 2.1, cobrir no Athena. Hoje, essa segurança cobre só o SQL Server, e o que ela vai cobrir no Athena ainda está em definição. Na versão 2.0, sem recorte por pessoa, a organização é a fronteira dos dados.</p></div>
+  </details>
+  <details>
+    <summary>Esta funcionalidade traz outras fontes novas?</summary>
+    <div class="faq-body"><p>Não. Ela traz só o Athena. Nenhuma outra tecnologia está prevista, e uma tecnologia nova depende de uma decisão do produto.</p></div>
+  </details>
+</div>

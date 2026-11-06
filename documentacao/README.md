@@ -4,7 +4,7 @@ Esta pasta é a **documentação para quem vai usar ou contratar o Horus**: uma 
 simples, com perguntas frequentes e, quando um fluxo ajuda, um diagrama. Ela é **gerada com o plugin DocX** (design da Kinto) e é
 **separada do portal de `docs/`**, que continua como está.
 
-**Situação:** em refinamento. Escritas: **as 18 macro funcionalidades da v2.0** (MF-101 a MF-105, MF-107 a MF-118 e MF-120). Ficam de fora as 5 da v2.1 (MF-106, 119, 121, 122 e 123), que aparecem nas páginas só como “chega na versão 2.1”.
+**Situação:** em refinamento. Escritas: **as 18 macro funcionalidades da v2.0** (MF-101 a MF-105, MF-107 a MF-118 e MF-120) e **as 5 da v2.1** (MF-106, 119, 121, 122 e 123). As páginas da v2.1 levam o aviso “Versão 2.1, em construção” e dizem em qual das duas ondas a funcionalidade chega (a MF-121 é da segunda; as demais, da primeira).
 
 ## O que há aqui
 
@@ -13,7 +13,7 @@ documentacao/
 ├── docx.json              ← a configuração do portal (as macro funcionalidades, as seções, os diagramas)
 ├── content/               ← os fragmentos HTML, que são a fonte editável
 │   ├── como-ler.html      ← o que é uma MF, como cada página é organizada, o glossário
-│   └── mf-101.html … mf-120.html   ← uma página por macro funcionalidade
+│   └── mf-101.html … mf-123.html   ← uma página por macro funcionalidade (v2.0 e v2.1)
 ├── diagramas/             ← os diagramas (fonte JSON do Archify, em fontes/, e a página pronta de cada um)
 └── (a saída gerada fica em ../docs, que o GitHub Pages serve; não se edita à mão)
 ```
@@ -121,6 +121,7 @@ mais recente e específica.
 | O retorno, o reporte, os três motivos, o “recebido” | `D-005`, `D-014`, `D-127`, `D-128`, `D-129`, `D-087`; `ARQ-028` |
 | As perguntas respondidas; a divisão por gestor e por pessoa | `D-004`, `D-222`, `D-133`, `D-132`, `D-087`, `D-238`; `ARQ-029` |
 | As conversas, o prazo, o owner que lê; aviso “Na implantação” | `D-095`, `D-223`, `D-247`; `ARQ-035`; `06-dados.md` §3.3 |
+| Levar a conversa a outras pessoas: exportar em PDF ou HTML, sem compartilhá-la | `D-249` a `D-252` (quem exporta: o botão “Baixar”; a exportação fica no rastro, e o download de uma resposta não) |
 | Nos bastidores; o que não faz | `ARQ-006`, `ARQ-024`, `ARQ-028`, `ARQ-029`, `ARQ-035`, `ARQ-013`; `D-125`, `D-128`, `D-145`, `ARQ-090`; leitura da MF-107 |
 
 ### MF-108 · Respostas visuais
@@ -234,7 +235,7 @@ mais recente e específica.
 |---|---|
 | O que é, os seis pontos, quem vê o rastro | leitura da MF-116; `D-082`, `D-090`, `D-091`, `D-093`, `D-054`; `ARQ-009` |
 | Quem recebeu o board de outubro? (passos) | `D-093`, `D-092`, `D-231`; `ARQ-035` |
-| O que entra e o que fica de fora; a tela da auditoria | `D-090`, `D-122`, `D-093`, `D-199`; `ARQ-035` |
+| O que entra e o que fica de fora (inclusive a exportação de conversa, que entra, e o download de uma resposta, que não); a tela da auditoria | `D-090`, `D-122`, `D-093`, `D-199`, `D-252`; `ARQ-035` |
 | Um rastro que serve de prova; o prazo; encurtar apaga | `D-092`, `D-093`, `D-210`; `ARQ-009`, `ARQ-035`; `06-dados.md` §3.3 |
 | O aviso de que a abertura é registrada | `D-090`, `D-231`; `ARQ-043` |
 | Quando alguém é excluído; aviso “Na implantação” | `D-209`, `D-210`, `D-211`, `D-247`; `P-044` (lado técnico) |
@@ -278,6 +279,82 @@ mais recente e específica.
 | Os números da instância (Instance Cards) | `D-153`, `D-170` (leitura do PO, ainda a confirmar) |
 | Esconder a faixa e a página de manutenção | `D-168`, `D-154` |
 
+### MF-106 · Segurança dos dados por pessoa (v2.1)
+
+| Assunto da página | Fonte |
+|---|---|
+| O que é, as palavras, quem faz o quê | leitura da MF-106; `D-025`, `D-028`, `D-194`, `D-199` |
+| O que a v2.0 já faz e o que a 2.1 acrescenta | `D-145`, `D-163`, `D-164`, `D-167`, `D-169` (leitura `D-163.2`), `D-019`, `D-118`, `D-199`; `ARQ-090` |
+| Duas etapas, as duas na onda 1 | `D-025`, `D-121`, `D-181`; `06-versoes.md` |
+| Uma regra, do texto à resposta (os passos) | leitura da MF-106; `D-025`, `D-028`, `D-199`; `04-macro-funcionalidades-de-hoje.md` (linha da MF-106); `07-seguranca.md` §3.3 |
+| Conferida e fechada na dúvida; o aviso de resposta limitada (com o login da empresa: a regra do Horus e a frase sobre a empresa) | `ARQ-032`; `05-motor-de-analise-e-ia.md` §3.11; `14-conferencia-do-produto.md` §1 (d); `D-169`, `D-256` |
+| As características e os grupos | `D-019`, `D-052`, `D-145`, `D-199` |
+| Em todo lugar onde o Horus responde (com o acesso de quem) | `ARQ-032`, `ARQ-041`; `D-053`, `D-058`, `D-060`, `D-163`, `D-164`, `D-167`, `D-169` |
+| A liberação do gestor no board | `D-042`, `D-043`, `D-051`, `D-053`, `D-054`, `D-059`, `D-090`, `D-091`, `D-093`, `D-199`; `ARQ-042` |
+| A segunda etapa: o login e as regras da empresa (só entra quem foi convidado; vale a role do login; a sessão a cada 8 horas; a fonte sem identidade) | `D-025`, `D-026`, `D-027`, `D-052`, `D-118`, `D-184`, `D-253`, `D-254`, `D-255`, `D-257`; `ARQ-038`, `ARQ-054` |
+| A demonstração | `D-199`; `ARQ-089`, `ARQ-090` |
+| Nos bastidores | `ARQ-032`, `ARQ-039`, `ARQ-041`, `ARQ-042`, `ARQ-090`; `05-motor-de-analise-e-ia.md` §3.11; `01-estrategia-da-solucao.md` (linha da MF-106); `14-conferencia-do-produto.md` §1 (c); `07-seguranca.md` (os valores de característica só viajam como parâmetro) |
+| O que não faz; funcionalidades ligadas | `D-028`, `D-114`, `D-184`, `D-180`, `D-196`, `D-198`, `D-201`; `P-033` |
+| Ainda em definição | `P-033`; o “Ainda a decidir” da leitura. O `A-20` e o `A-25` do documento 14 foram fechados em 06/11/2026 (`D-253` a `D-257`) |
+| Diagrama “Da regra escrita à resposta de cada pessoa” | `D-025`, `D-028`, `D-199`; `ARQ-032`; `05-motor-de-analise-e-ia.md` §3.11 |
+
+### MF-119 · Investigação guiada (v2.1)
+
+| Assunto da página | Fonte |
+|---|---|
+| O que é: “investigar” na resposta, passo a passo, a pessoa escolhe, fonte em cada passo, caminho na conversa | `D-081`, `D-177`, `D-178`, `D-179`, `D-180`; leitura da MF-119 |
+| Quem investiga (a prata sim, o bronze não) | `D-194`, `D-203`; leitura |
+| v2.1, onda 1, junto com a MF-106 | `D-121`, `D-181`; `05-v2.0-consolidada.md`, `06-versoes.md`, `07-mapa-de-objetivos-e-funcionalidades.md` |
+| O que a v2.0 já faz e o que a 2.1 acrescenta | `D-081`, `D-106`, `D-122`, `D-089`, `D-099`; páginas da MF-104, 107, 110 e 111 |
+| Até onde enxerga: o modelo semântico e o time de dados | `D-083`; leitura; `14-conferencia-do-produto.md`, letra (v) |
+| Fato e palpite: causa de fora só a partir do nível 4 | `D-130`, `ARQ-025`; `05-motor-de-analise-e-ia.md` §3.5 |
+| Cada passo no acesso de quem investiga | `D-180`, `D-181`; leitura |
+| Nos bastidores (um modo novo do mesmo motor; forma técnica a definir) | `ARQ-006`, `ARQ-023`; `01-estrategia-da-solucao.md` (O5, M11), `04-software.md` §3.6, `05-motor-de-analise-e-ia.md` §3.12, `14-conferencia-do-produto.md` §3 |
+| O que não faz; “Ainda em definição”; mostrar a investigação a outras pessoas (exportar a conversa, sem compartilhá-la) | `D-177`, `D-178`, `D-179`, `D-180`, `D-249`; leitura (“Ainda a decidir”) |
+| Diagrama “Do número que mudou ao porquê” | `D-177`, `D-178`, `D-179`; leitura da MF-119 |
+
+### MF-121 · Middleware na casa do contratante (v2.1, onda 2; nome provisório)
+
+| Assunto da página | Fonte |
+|---|---|
+| O que é, para quem, as cinco coisas, nome provisório, onda 2 | leitura da MF-121; `D-196`, `D-181`, `D-188`, `D-195` |
+| Como é hoje e o que passa a existir | leitura da MF-121; `ARQ-052`; `D-188`, `D-190`, `D-196`; páginas da MF-104, 105 e 109 |
+| Quem faz o quê (TI, owner, quem pergunta, administrador) | `D-190`, `D-193`, `D-195`, `D-196` |
+| Do middleware instalado à primeira resposta (o hospital) | leitura da MF-121 (exemplo e passos); `D-195`, `D-196` |
+| O que sai da casa do cliente; saídas extras; o suporte da Maind | `D-189`, `D-193`, `D-195`, `D-196` |
+| Quem controla o caminho; endereço público; um middleware por organização; disponibilidade | `D-190`, `D-193`, `D-195`, `D-196` |
+| Nos bastidores | `D-188`, `D-190`, `D-192`, `D-193`, `D-195`; protocolo em aberto: `D-196`, `P-042` |
+| O que não faz | `D-188`, `D-193`, `D-195`, `D-196`; instalação completa: `D-175`, `D-176`, `D-186`, `D-187`; `06-versoes.md` (“Sem versão”) |
+| Funcionalidades ligadas | leitura da MF-121; `D-196` |
+| “Ainda em definição” | `D-189`, `D-195`, `D-196`; `P-040`, `P-042`; `06-versoes.md` (“O que trava a v2.1”) |
+| Diagrama “O caminho pelo middleware” | `D-189`, `D-190`, `D-193`, `D-195`, `D-196`; leitura da MF-121 |
+
+### MF-122 · Conectores de chat corporativo (v2.1, onda 1; nome provisório)
+
+| Assunto da página | Fonte |
+|---|---|
+| O que é, os dois canais, como é hoje, quem faz o quê | leitura da MF-122; `D-201`, `D-198`, `D-182`, `D-124`, `D-041`, `D-035`; `06-versoes.md` (onda 1); `07-mapa-de-objetivos-e-funcionalidades.md` (O4) |
+| A onda e o nome provisório | `D-181`, `D-198`, `D-201` |
+| Um alerta, do agente ao canal (passos e diagrama) | leitura da MF-122 (“Como se usa”); `D-201`, `D-124`, `D-037` |
+| O mesmo carteiro, com as mesmas regras | leitura (relacionadas: MF-113); `D-041`, `D-035`, `D-198` |
+| Recebe, mas não conversa | `D-201`, `D-099` |
+| Nos bastidores | `ARQ-022`; `08-integracoes.md` §5; `01-estrategia-da-solucao.md` §6 (M12); `D-124` |
+| O que não faz; funcionalidades ligadas | `D-201`, `D-182` (Slack), `D-198`; `05-v2.0-consolidada.md` (outros conectores sem versão) |
+| “Ainda em definição” | `D-201` e `D-198` (hipótese dos dois juntos), `P-038`; `06-versoes.md` (“O que trava a v2.1”) |
+
+### MF-123 · Fonte AWS Athena (v2.1, onda 1; nome provisório)
+
+| Assunto da página | Fonte |
+|---|---|
+| O que é; hoje × v2.1; quem faz o quê; os passos | leitura da MF-123; `D-201`, `D-161`, `D-198`; `D-139` (MVP da v1.xx); `D-083`, `D-219` |
+| As tecnologias (cinco na v2.0, o Athena na v2.1); a onda 1 | `D-161`, `D-181`, `D-198`, `D-201`; `ARQ-052`; `06-versoes.md`; `05-v2.0-consolidada.md` |
+| Quem vê os dados do Athena (recorte pela MF-106, hoje só SQL Server) | `D-145`, `D-198`, `D-201`; `P-033` |
+| Nos bastidores (o cadastro herdado; a ligação e a “língua” da consulta são novas) | `D-161`; `08-integracoes.md` §3.5; `P-033`; `06-versoes.md` (“O que trava a v2.1”) |
+| O que não faz; funcionalidades ligadas | `D-201`, `D-198`, `D-161`; `08-integracoes.md` §3.5 |
+| “Ainda em definição” | `P-033`; hipótese de caber na onda 1: `D-198`, `D-201` |
+
+**Escolha editorial (v2.1):** as páginas não repetem a “prova de valor”, o grau de complexidade, as notas das decisões nem as hipóteses de negócio da leitura (por exemplo, que ainda não há demanda conhecida pelo Athena): são conversa interna de produto, e não explicação ao cliente.
+
 ## Pontos em aberto que as páginas declaram
 
 **Indicador “Na implantação” (decisão do dono, 06/11/2026):** as regras que tratam de dados pessoais ficam como decididas, e as páginas
@@ -304,14 +381,34 @@ o owner ler as conversas de todos sem aviso e apagar tudo de quem sai (MF-102) e
 | MF-117 | (nada além do indicador “Na implantação”, pela contagem de quem é excluído) |
 | MF-118 | O detalhe de cada cenário; se é viável uma conta de WhatsApp de exemplo; se duas organizações e os boards do espaço da organização bastam |
 | MF-120 | O catálogo da faixa (indicadores, ícones e as regras de cada componente, inclusive se o aviso do owner terá hora de fim); o movimento e a aparência; quem vê os números da instância (leitura do PO a confirmar); o nome (provisório) |
+| MF-106 | O texto exato do aviso de resposta limitada e da frase sobre as regras da empresa; os bancos além do SQL Server, a começar pelo Athena |
+| MF-119 | Se a investigação chega à Pergunta rápida e ao WhatsApp; a forma técnica do modo de investigação |
+| MF-121 | A “língua” em que o Horus e o middleware conversam; quais outras saídas, além do comando da consulta e da planilha, pedem permissão; o que o Horus faz quando o middleware cai ou muda e como a imagem nova chega; o nome (provisório) |
+| MF-122 | Se o Teams e o Google Chat chegam juntos; a forma técnica de integrar cada um (autenticação, aprovação da TI, o que cada um leva); como a entrega a um canal ou espaço respeita o “só a usuários do Horus”; o contato da pessoa em cada canal; o nome (provisório) |
+| MF-123 | O que a Segurança dos dados por pessoa cobre no Athena; a forma técnica da ligação com o Athena; a confirmação da onda 1; o nome (provisório) |
+
+### Divergências nas fontes, achadas ao escrever a v2.1
+
+As páginas seguem a decisão mais recente e específica. O que ficou desatualizado nas fontes (e entra na P-028):
+
+- `D-180` (Investigação guiada) ainda diz “owner, gestor e membro full” e “membro leitor”, o vocabulário de quatro tipos de assento; a página segue `D-194` e `D-203` (a prata investiga, o bronze não).
+- Os documentos de arquitetura (01, 04, 05 e 14) ainda dizem que o desenho da Investigação guiada “espera a P-018”, que o backlog dá por fechada (`D-180`).
+- `07-seguranca.md` §3.3 chama a primeira etapa da MF-106 de “na v2.0” (superado por `D-145` e `ARQ-090`), e §3.4 manda o board de quem sai para o espaço da organização (contradiz `D-206` a `D-209`). `D-164` chama o board público de “o único caso” de entrega acima da permissão, o que conflita com a liberação do gestor.
+- “Compartilhar a conversa”, dado pela `D-179` como jeito de mostrar uma investigação a outras pessoas, contradizia a decisão do dono de 14/10/2026 (a conversa nunca é compartilhada). Fechado em 06/11/2026 pela `D-249` (impasse `I-066`): mostra-se exportando a conversa em PDF ou HTML, em um primeiro momento, e a página da MF-119 já diz isso. A exportação ficou na MF-107, na v2.0 (`D-250`, que fechou o `I-067`), e as páginas das MF-107 e MF-119 já dizem isso. O código da v1.xx só baixa o CSV e a imagem de um bloco (o PDF só existe no board), e o inventário (04 e 05) dizia o contrário: corrigido.
+- A MF-106 diz que a IA que transforma a regra e confere a consulta “segue as conexões de IA da organização”; a revisão da v2.0 (`D-216` e `D-217`) admite IA da organização ou da instância.
+- “Executivo”, citado como quem ganha com as MF-106 e MF-123, não é um tipo de assento; as páginas usam a palavra no sentido comum.
+- Não está dito se o Athena vale nos boards, na Pergunta rápida, no WhatsApp e nos agentes, nem se valem para ele o “Testar”, o teto de inferência e a idade mínima do dado. As páginas não afirmam nada disso.
+- `D-189` (“cada saída é uma permissão separada, desligada por padrão”) e a “porta única” da `D-190` seguem como leitura do PO a confirmar; a página da MF-121 afirma só o que a `D-195` e a `D-196` dizem.
 
 ## Como gerar de novo
 
-Da pasta `documentacao/`, com o plugin DocX instalado (`docx@maindtech`, 0.4.0 ou superior):
+Da pasta `documentacao/`, com o plugin DocX instalado (`docx@maindtech`, 0.4.0 ou superior). Para **testar**, gere na pasta local `site/` (ignorada pelo git); para **publicar**, gere em `../docs`, que o GitHub Pages serve:
 
 ```
-python <plugin docx>/scripts/docx.py gerar --config docx.json
+python <plugin docx>/scripts/docx.py gerar --config docx.json                  # teste, em site/
 python <plugin docx>/scripts/docx.py validar --site site
+python <plugin docx>/scripts/docx.py gerar --config docx.json --saida ../docs   # publicação
+python <plugin docx>/scripts/docx.py validar --site ../docs
 ```
 
 Para os diagramas: a fonte é o JSON em `diagramas/fontes/`. Se mudar, refaça o `finalize` do Archify e a casca (`archify-maind`) e gere

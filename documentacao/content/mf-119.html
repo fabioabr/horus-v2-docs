@@ -1,0 +1,158 @@
+<p>A fatura do cartão chega bem mais alta que a do mês passado. Ninguém descobre o motivo olhando o total: a gente abre o extrato, vê que a diferença está quase toda no supermercado, abre o supermercado e encontra duas compras grandes. Cada passo apontou o próximo, até o “por que veio tão alta?” ter resposta. Onde a comparação para: o Horus só enxerga o que está nas fontes de dados da empresa, e o que acontece fora delas, como um concorrente que abriu na mesma rua, não aparece como fato.</p>
+<p>A <strong>Investigação guiada</strong> leva esse jeito de procurar para dentro do Horus. Quando uma resposta mostra que um número ou um gráfico mudou, a pessoa aciona <strong>“investigar”</strong> nele. O Horus mostra as partes que mais explicam a variação, como loja, produto ou período; a pessoa escolhe qual aprofundar, e o Horus dá o passo seguinte, até a causa. No dia a dia, a gestora segue o fio na própria reunião de resultado, em vez de esperar dias por um relatório da área de dados.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Versão 2.1, em construção</b><p>O que está aqui é o que a versão 2.1 do Horus vai entregar, depois da 2.0. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
+</div>
+<p>A versão 2.1 sai em duas ondas, e a Investigação guiada chega na primeira, a do Horus como serviço da Maind, junto com a <a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a>.</p>
+
+<h3 id="mf-119-o-que-e">O que é, em poucas palavras</h3>
+<p>A Investigação guiada é um jeito novo de o Horus responder, dentro da mesma <a href="#glossario">conversa de análise</a> em que a pessoa já pergunta. Ela cuida de cinco coisas:</p>
+<ul>
+  <li><strong>Começar pelo que mudou.</strong> A porta é a própria resposta: a ação “investigar” fica no número ou no gráfico que mudou.</li>
+  <li><strong>Mostrar o que mais pesa.</strong> O Horus aponta as partes que mais explicam a variação, como uma loja, um produto ou um período.</li>
+  <li><strong>Deixar a pessoa conduzir.</strong> Um passo de cada vez, ela escolhe qual parte aprofundar, sem ter de adivinhar a próxima pergunta.</li>
+  <li><strong>Mostrar a fonte de cada passo,</strong> como toda resposta do Horus, para a pessoa saber de onde veio cada número.</li>
+  <li><strong>Guardar o caminho na conversa,</strong> como qualquer resposta, para a pessoa reabri-lo e continuar quando quiser.</li>
+</ul>
+<p>O ganho é para quem usa e para a empresa: a pessoa chega sozinha ao porquê de uma variação, em vez de esperar dias por um chamado, e a área de dados recebe menos pedidos.</p>
+<h4 id="mf-119-quem-investiga">Quem investiga, e quem faz o quê</h4>
+<p>Investiga quem faz perguntas de análise, em qualquer área da empresa. Os tipos de assento estão explicados em <a href="#mf-101-assentos">Os assentos: quem pode fazer o quê</a>.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quem</th><th>O que faz na investigação</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Owner da organização, gestor, membro ouro e membro prata</strong></td><td>Acionam “investigar” numa resposta, escolhem a cada passo qual parte aprofundar e reabrem o caminho na conversa para continuar.</td></tr>
+      <tr class="zebra"><td><strong>Membro bronze</strong></td><td>Não investiga: só vê os boards que outras pessoas já criaram e compartilharam.</td></tr>
+      <tr class="zebra"><td><strong>O Horus</strong></td><td>Mostra as partes que mais explicam a variação, com a fonte de cada passo, no acesso de quem investiga.</td></tr>
+      <tr class="zebra"><td><strong>Time de dados</strong> (do cliente, ou da Maind na implantação)</td><td>Escreve e corrige o modelo semântico de cada fonte, que diz por quais partes uma variação pode ser quebrada. Quem o carrega no Horus é o owner (veja <a href="#mf-104-modelo-semantico">O modelo semântico</a>).</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="mf-119-antes-e-depois">O que a versão 2.0 já faz e o que a 2.1 acrescenta</h4>
+<p>A versão 2.0 é o ponto de partida. Nela, já dá para buscar o porquê de uma variação, mas o caminho depende de a pessoa saber qual pergunta fazer em seguida.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Sobre o porquê de uma variação</th><th>Na versão 2.0</th><th>Com a Investigação guiada, na 2.1</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Por onde se começa</strong></td><td>Por uma nova pergunta na conversa de análise (<a href="#mf-107">MF-107</a>).</td><td>Pela ação “investigar”, no número ou no gráfico da resposta que mudou.</td></tr>
+      <tr class="zebra"><td><strong>Quem decide o próximo passo</strong></td><td>A pessoa, que escolhe a pergunta seguinte. Ajudam as sugestões de próxima pergunta e a <a href="#mf-107-analise-avancada">Análise avançada</a>, uma segunda leitura, mais demorada, de uma resposta.</td><td>O Horus mostra as partes que mais explicam a variação, e a pessoa escolhe qual aprofundar.</td></tr>
+      <tr class="zebra"><td><strong>O caminho</strong></td><td>Uma pergunta depois da outra, sem um caminho do “o que mudou” ao “por quê”.</td><td>Um passo de cada vez, até a causa, guardado na conversa.</td></tr>
+      <tr class="zebra"><td><strong>Quem vê o quê</strong></td><td>Toda pergunta vê os dados da organização inteira (veja <a href="#mf-104-quem-ve">Quem vê os dados de cada fonte</a>).</td><td>Cada passo usa o acesso de quem investiga, pela <a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a>, que chega na mesma onda.</td></tr>
+      <tr class="zebra"><td><strong>Na Pergunta rápida e no WhatsApp</strong></td><td>Os dois canais trazem a conversa, sem a investigação.</td><td>Se a investigação chega a eles ainda está em definição.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 id="mf-119-na-pratica">Uma investigação, do número ao porquê</h3>
+<p>Um exemplo, com personagens e números ilustrativos. A Carla é gestora de vendas na área comercial de uma rede de lojas, e está na reunião de resultado do mês.</p>
+<ol class="steps">
+  <li><div><h4>Ela vê o número mudar</h4><p>A Carla pergunta, na conversa de análise, pela margem por região. No gráfico da resposta, a margem do Sul aparece em queda.</p></div></li>
+  <li><div><h4>Aciona “investigar”</h4><p>No próprio gráfico que mudou, ela aciona “investigar”. Não precisa escrever uma pergunta nova nem saber qual seria a próxima.</p></div></li>
+  <li><div><h4>O Horus mostra o que mais pesa</h4><p>Vêm as partes que mais explicam a queda, como as lojas, os produtos e o período, cada uma com a fonte à vista.</p></div></li>
+  <li><div><h4>Ela escolhe o que aprofundar</h4><p>A Carla escolhe as lojas, e o Horus dá o passo seguinte. Ela repete a escolha a cada passo, sempre decidindo qual parte abrir.</p></div></li>
+  <li><div><h4>Chega ao porquê</h4><p>Em poucos passos, ela chega às três lojas e ao produto que explicam a queda, cada passo com a fonte, sem abrir chamado à área de dados.</p></div></li>
+  <li><div><h4>O caminho fica na conversa</h4><p>A reunião termina. No dia seguinte, a Carla reabre a conversa e continua a investigação de onde parou.</p></div></li>
+</ol>
+<p>O mesmo caminho em desenho: quem age em cada passo, o laço em que a pessoa escolhe outra parte para aprofundar e o caminho que fica guardado na conversa.</p>
+<dx-diagrama ref="mf-119-do-numero-ao-porque"></dx-diagrama>
+<h4 id="mf-119-ate-onde">Até onde o Horus enxerga</h4>
+<p>O Horus só quebra a variação pelas partes que o <a href="#mf-104-modelo-semantico">modelo semântico</a> de cada fonte descreve: o documento que explica ao Horus o que cada tabela e cada coluna querem dizer na empresa. O que o modelo semântico não descreve fica de fora da investigação, e montar e corrigir esse documento continua com o time de dados.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Ponto de atenção</b><p>A investigação depende do modelo semântico de cada fonte, porque o Horus só quebra a variação pelas partes que ele descreve. Se o modelo de uma fonte não descreve, por exemplo, o vendedor, a investigação não chega ao vendedor.</p></div>
+</div>
+
+<h3 id="mf-119-confianca">As mesmas regras de confiança da conversa</h3>
+<p>A investigação não é um Horus à parte. Ela responde com as fontes e as regras de confiança da conversa de análise, e cada passo mostra de onde veio o número, como toda resposta (veja <a href="#mf-107-numeros">Os números vêm do banco</a>).</p>
+<h4 id="mf-119-fato-e-palpite">Fato e palpite, separados</h4>
+<p>O <a href="#glossario">nível de inferência</a> diz até onde o texto pode ir além do número. Na investigação, vale a mesma régua da conversa (veja <a href="#mf-107-niveis">Os níveis de inferência na conversa</a>):</p>
+<ul>
+  <li><strong>As partes que explicam a variação</strong> vêm dos dados das fontes da empresa, com a fonte à vista em cada passo.</li>
+  <li><strong>A causa vinda de fora dos dados</strong> só aparece a partir do nível 4, num parágrafo rotulado como hipótese.</li>
+  <li><strong>O fato da web</strong>, quando entra, vem com o link e a data, separado do dado da empresa (veja <a href="#mf-109">A web como fonte (MF-109)</a>).</li>
+</ul>
+<p>No exemplo da Carla: no nível padrão, o 2, a investigação mostra as lojas e o produto que explicam a queda, mas não atribui a queda a algo de fora, como um concorrente que abriu na região. Uma explicação assim só aparece se o nível que vale na investigação da Carla for o 4 ou mais, e sempre marcada como hipótese.</p>
+<h4 id="mf-119-acesso">Cada um vê só o que pode</h4>
+<p>Cada passo da investigação usa o <strong>acesso de quem investiga</strong>, pela <a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a>, que chega na mesma onda da versão 2.1. As regras desse recorte, e até onde ele vale, estão na página dela.</p>
+
+<h3 id="mf-119-caminho">O caminho fica na conversa</h3>
+<p>O caminho de cada investigação fica <strong>salvo na conversa</strong>, como qualquer resposta do Horus. A pessoa fecha a conversa, volta outro dia, reabre e continua de onde parou. A pergunta em texto segue pela conversa de sempre.</p>
+<ul>
+  <li><strong>O caminho não vai para um board.</strong> Fixar o caminho inteiro num board, com os passos e as fontes, não entra nesta primeira entrega.</li>
+  <li><strong>A conversa não é compartilhada.</strong> Ela continua sendo da pessoa que investigou. Para mostrar o caminho a outras pessoas, a pessoa exporta a conversa em PDF ou HTML, um recurso da própria conversa que já chega na versão 2.0 (veja <a href="#mf-107-exportar">Levar a conversa a outras pessoas</a>); também pode fixar as respostas, uma a uma, num board de que é dona (veja <a href="#mf-107-fixar">Guardar a resposta num painel</a>).</li>
+</ul>
+
+<h3 id="mf-119-bastidores">Nos bastidores, sem complicar</h3>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>Um jeito novo do mesmo motor.</strong> A conversa, a Pergunta rápida, o WhatsApp, os boards e os agentes já chamam um motor de análise só. A investigação é um modo novo desse mesmo motor, que quebra a variação nas partes que mais a explicam, sem nada de fora do Horus.</li>
+  <li><strong>As partes vêm do modelo semântico.</strong> É o modelo semântico de cada fonte que diz por quais partes uma variação pode ser quebrada.</li>
+  <li><strong>O que já existe.</strong> A conversa, que já guarda as respostas, as sugestões de próxima pergunta e a Análise avançada são o ponto de partida.</li>
+  <li><strong>O que é novo.</strong> O modo de investigação em si. A forma técnica dele ainda será definida.</li>
+  <li><strong>O que precisa estar pronto antes.</strong> A versão 2.0, a Segurança dos dados por pessoa, que chega na mesma onda, e o modelo semântico de cada fonte.</li>
+</ul>
+
+<h3 id="mf-119-limites">O que a Investigação guiada não faz</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Entrar na versão 2.0</strong></td><td>A 2.0 resolve a pergunta na hora, o acompanhamento e o aviso. A investigação chega na versão 2.1, na primeira onda.</td></tr>
+      <tr class="zebra"><td><strong>Começar por uma pergunta em texto ou pelo aviso de um agente</strong></td><td>Nesta primeira entrega, a porta é o número ou o gráfico que mudou. A pergunta em texto segue pela conversa de sempre, e começar pelo aviso de um agente (MF-115) não é a porta desta entrega.</td></tr>
+      <tr class="zebra"><td><strong>Entregar tudo de uma vez, ou só a conclusão</strong></td><td>O caminho é passo a passo, e a pessoa escolhe cada parte que aprofunda, vendo a fonte de cada uma.</td></tr>
+      <tr class="zebra"><td><strong>Fixar o caminho num board</strong></td><td>O caminho fica na conversa. Para mostrá-lo, a pessoa pode fixar as respostas uma a uma (<a href="#mf-112">Boards e Relatórios, MF-112</a>) ou exportar a conversa em PDF ou HTML (veja <a href="#mf-107-exportar">Levar a conversa a outras pessoas</a>).</td></tr>
+      <tr class="zebra"><td><strong>Enxergar além das fontes</strong></td><td>Só entram as partes que o modelo semântico descreve. Uma causa de fora dos dados só aparece como hipótese, a partir do nível 4.</td></tr>
+      <tr class="zebra"><td><strong>Agir ou corrigir</strong></td><td>Mostra o porquê, mas não corrige o número nem mexe nos sistemas da empresa. Montar e corrigir o modelo semântico continua com o time de dados.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="mf-119-ligadas">Funcionalidades ligadas a esta</h4>
+<p>A investigação depende de quatro funcionalidades e se completa com outras. As principais:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="#mf-107">Perguntar aos dados em português (MF-107)</a></td><td>A investigação parte da mesma conversa de análise e do mesmo motor, e o caminho fica guardado nela.</td></tr>
+      <tr class="zebra"><td><a href="#mf-108">Respostas visuais (MF-108)</a></td><td>A ação “investigar” fica nos blocos da resposta, no número e no gráfico que mudaram.</td></tr>
+      <tr class="zebra"><td><a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a></td><td>Cada passo usa o acesso de quem investiga. Chega na mesma onda.</td></tr>
+      <tr class="zebra"><td><a href="#mf-104">Conectar as fontes vivas (MF-104)</a></td><td>O modelo semântico de cada fonte diz por quais partes a variação pode ser quebrada.</td></tr>
+      <tr class="zebra"><td><a href="#mf-109">A web como fonte (MF-109)</a></td><td>O fato de fora, com link e data, ajuda a explicar a variação, separado do dado da empresa.</td></tr>
+      <tr class="zebra"><td><a href="#mf-115">Agentes ativos (MF-115)</a></td><td>O agente avisa que algo mudou, e a investigação explica o porquê. Começar pelo aviso não é a porta desta primeira entrega.</td></tr>
+      <tr class="zebra"><td><a href="#mf-112">Boards e Relatórios (MF-112)</a></td><td>O caminho não vai para um board; quem é dono de um board pode fixar nele as respostas, uma a uma.</td></tr>
+      <tr class="zebra"><td><a href="#mf-110">Pergunta rápida (MF-110)</a> e <a href="#mf-111">Chat pelo WhatsApp (MF-111)</a></td><td>São canais da mesma conversa que, na versão 2.0, não trazem a investigação.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Ainda em definição</b><p><strong>A investigação na Pergunta rápida e no WhatsApp.</strong> Na versão 2.0, esses dois canais trazem a conversa, mas não a investigação. Se ela chega a eles ainda está em definição.</p><p><strong>A forma técnica.</strong> Como o Horus encontra as partes que mais explicam uma variação ainda será definido no desenho técnico desta funcionalidade.</p><p><strong>Outras portas, depois.</strong> Começar a investigação por uma pergunta em texto ou pelo aviso de um agente, e levar o caminho inteiro a um board, ficaram para depois desta primeira entrega.</p></div>
+</div>
+
+<h3 id="mf-119-faq">Perguntas frequentes</h3>
+<div class="faq">
+  <details open>
+    <summary>Preciso saber qual pergunta fazer para descobrir o porquê de uma variação?</summary>
+    <div class="faq-body"><p>Não. Você aciona “investigar” no número ou no gráfico da resposta que mudou, e o Horus mostra as partes que mais explicam a variação, como loja, produto ou período. Você escolhe qual aprofundar, e o Horus dá o passo seguinte, até a causa. Cada passo traz a fonte à vista.</p></div>
+  </details>
+  <details>
+    <summary>Por quais partes o Horus consegue quebrar uma variação?</summary>
+    <div class="faq-body"><p>Pelas que o modelo semântico de cada fonte descreve, o documento que explica ao Horus o que cada coluna significa na empresa. O que ele não descreve fica de fora. Montar e corrigir esse documento é trabalho do time de dados, do cliente ou da Maind na implantação.</p></div>
+  </details>
+  <details>
+    <summary>O Horus pode dizer que a queda foi por causa de algo de fora, como um concorrente?</summary>
+    <div class="faq-body"><p>Só como hipótese. O Horus enxerga o que está nas fontes da empresa, e a causa vinda de fora dos dados só aparece a partir do nível de inferência 4, num parágrafo rotulado como hipótese. O fato que vem da web entra com o link e a data, separado do dado da empresa.</p></div>
+  </details>
+  <details>
+    <summary>Posso parar no meio e continuar depois? E mostrar o caminho a outras pessoas?</summary>
+    <div class="faq-body"><p>Pode parar e continuar: o caminho fica salvo na conversa, como qualquer resposta, e você o reabre de onde parou. Nesta primeira entrega, o caminho não vai para um board, e a conversa não é compartilhada. Para mostrá-lo a outras pessoas, você pode fixar as respostas, uma a uma, num board de que é dono ou exportar a conversa em PDF ou HTML, um recurso da própria conversa que já chega na versão 2.0.</p></div>
+  </details>
+  <details>
+    <summary>Quem pode investigar? Todos veem os mesmos dados?</summary>
+    <div class="faq-body"><p>Investigam o owner da organização, o gestor e os membros ouro e prata, em qualquer área. O membro bronze, que só vê os boards compartilhados, não investiga. Cada passo usa o acesso de quem investiga, pela <a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a>, que chega na mesma onda da versão 2.1.</p></div>
+  </details>
+  <details>
+    <summary>Dá para investigar pelo WhatsApp ou pela Pergunta rápida?</summary>
+    <div class="faq-body"><p>Na versão 2.0, esses dois canais trazem a conversa, sem a investigação. Se a investigação chega a eles ainda está em definição. Por enquanto, a investigação começa numa resposta da conversa de análise, no número ou no gráfico que mudou.</p></div>
+  </details>
+</div>
