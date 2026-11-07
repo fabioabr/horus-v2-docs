@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "language": "pt-BR",
+  "layout": "portal",
+  "design": "kbr",
+  "project": {
+    "name": "Horus v2",
+    "description": "A arquitetura da plataforma Horus v2: os componentes, as conexões e as decisões, em diagramas, com a infraestrutura separada de cada organização.",
+    "version": "2.0 e 2.1 em desenho, sem versão publicada",
+    "owner": "Maind Tech",
+    "updated": "2026-11-07",
+    "eyebrow": "Maind Horus · Arquitetura",
+    "hero_title": "A arquitetura do Horus v2"
+  },
+  "diagrams": [
+    {
+      "id": "arq-geral-infra-separada",
+      "title": "A infraestrutura separada de cada organização",
+      "description": "As três zonas do rascunho do dono (o SaaS, o middleware de cada organização e a casa do cliente) e o que trafega entre elas, pelas D-258 a D-270.",
+      "source": "diagramas/arq-geral-infra-separada.html"
+    },
+    {
+      "id": "arq-geral-criar-organizacao",
+      "title": "Criar uma organização e ligá-la ao seu middleware",
+      "description": "Do administrador da instância criando a organização até a primeira pergunta: certificado, handshake, assentos, pessoas, bancos e IA (D-258).",
+      "source": "diagramas/arq-geral-criar-organizacao.html"
+    },
+    {
+      "id": "arq-geral-modulos",
+      "title": "Os módulos e a direção das dependências",
+      "description": "Os módulos do executável do SaaS, quem pode chamar quem e o que foi para o middleware de cada organização (MF-121, v2.0).",
+      "source": "diagramas/arq-geral-modulos.html"
+    },
+    {
+      "id": "arq-geral-execucao",
+      "title": "Como roda: os dois papéis, a fila e os bancos",
+      "description": "Atender e Trabalhar, a caixa de saída e a fila, os três bancos do SaaS, o Registro de organizações e o middleware com a sua base.",
+      "source": "diagramas/arq-geral-execucao.html"
+    },
+    {
+      "id": "arq-geral-dados-e-historia",
+      "title": "Onde mora cada dado e como a história chega",
+      "description": "O que fica no middleware de cada organização (pessoas, configuração e credenciais) e o que fica no SaaS (banco mestre, banco da organização e banco de log), o que cruza entre os dois e o caminho da história até o log.",
+      "source": "diagramas/arq-geral-dados-e-historia.html"
+    },
+    {
+      "id": "arq-geral-pergunta-resposta",
+      "title": "Da pergunta à resposta",
+      "description": "O turno de uma pergunta de análise com a infraestrutura separada: o SaaS confere a permissão e manda só a pergunta, o ciclo da análise roda no middleware da organização e só a resposta pronta volta.",
+      "source": "diagramas/arq-geral-pergunta-resposta.html"
+    },
+    {
+      "id": "arq-geral-segundo-plano",
+      "title": "O que roda sozinho: do agendamento à entrega",
+      "description": "Do agendamento à entrega, em segundo plano: fila durável, papel Trabalhar, o agente que analisa pelo middleware da organização, artefato, conectores, rastro, aviso de falha, corte e aviso de IA parada.",
+      "source": "diagramas/arq-geral-segundo-plano.html"
+    },
+    {
+      "id": "arq-geral-seguranca",
+      "title": "Segurança em camadas",
+      "description": "De fora para dentro: o endereço com token, o login da organização no middleware, o vínculo por certificado, o avaliador de permissões no SaaS e a segurança por pessoa no middleware (v2.1), o cofre das credenciais e o rastro e a telemetria sem conteúdo.",
+      "source": "diagramas/arq-geral-seguranca.html"
+    },
+    {
+      "id": "arq-geral-integracoes",
+      "title": "Com quem o Horus conversa fora",
+      "description": "O SaaS fala com a Meta, o e-mail e os conectores; os bancos, a IA e a web só pelo Middleware da organização, que guarda as credenciais; quem paga e quem é avisado (v2.0 e v2.1).",
+      "source": "diagramas/arq-geral-integracoes.html"
+    },
+    {
+      "id": "arq-geral-implantacao",
+      "title": "Onde roda: ambientes e instâncias",
+      "description": "O SaaS nos ambientes de sempre, com a mesma imagem e chart, e um Middleware da organização por organização, na Maind ou na casa do cliente, achado pelo Registro de organizações.",
+      "source": "diagramas/arq-geral-implantacao.html"
+    }
+  ],
+  "sections": [
+    {
+      "id": "arquitetura-geral",
+      "title": "Arquitetura geral da plataforma",
+      "summary": "Dez diagramas: a infraestrutura separada, como uma organização é criada, os módulos, como roda, os dados, a pergunta, o que roda sozinho, a segurança, as integrações e a implantação. Proposta para análise do dono.",
+      "category": "Arquitetura",
+      "source": "content/arquitetura-geral.html"
+    }
+  ]
+}
