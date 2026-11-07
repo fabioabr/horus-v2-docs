@@ -500,13 +500,13 @@
           "label": "Fora do Horus (TI e time de dados do cliente)"
         },
         "frontend": {
-          "label": "Pessoas da organização no Horus"
+          "label": "Quem configura e quem pergunta"
         },
         "security": {
           "label": "Conferência"
         },
         "backend": {
-          "label": "O Horus"
+          "label": "O middleware da organização"
         },
         "database": {
           "label": "Banco de dados do cliente"
@@ -521,7 +521,7 @@
     },
     {
       "id": "owner",
-      "label": "Owner da organização"
+      "label": "Owner ou time da Maind"
     },
     {
       "id": "pessoa",
@@ -529,7 +529,7 @@
     },
     {
       "id": "horus",
-      "label": "O Horus"
+      "label": "O middleware da organização"
     }
   ],
   "phases": [
@@ -585,7 +585,7 @@
       "type": "frontend",
       "icon": "person",
       "label": "Cadastra a fonte",
-      "sublabel": "Caminho e credencial só de leitura",
+      "sublabel": "No front do middleware",
       "width": 220
     },
     {
@@ -617,7 +617,7 @@
       "yOffset": -55,
       "type": "frontend",
       "icon": "person",
-      "label": "Carrega o modelo semântico",
+      "label": "O owner carrega o modelo",
       "sublabel": "O arquivo que o time de dados entregou",
       "width": 220
     },
@@ -764,16 +764,17 @@
       "dot": "cyan",
       "title": "Quem faz o quê",
       "items": [
-        "A TI do cliente decide por onde o Horus entra: libera no firewall o endereço de onde o Horus sai ou dá passagem pelo túnel SSH.",
-        "O time de dados, do cliente ou da Maind na implantação, escreve o modelo semântico fora do Horus e entrega o arquivo.",
-        "O owner da organização cadastra a fonte, testa, ajusta e carrega o modelo. Depois, quem pode perguntar escolhe as fontes na conversa."
+        "A TI do cliente decide o caminho até o banco: o endereço liberado no firewall ou o túnel SSH.",
+        "O time de dados, do cliente ou da Maind na implantação, escreve o modelo semântico fora do Horus e entrega o arquivo ao owner, que o carrega.",
+        "No front do middleware, quem configura a fonte a cadastra, testa e ajusta: o owner da organização, com o middleware na casa do cliente, ou o time da Maind, na hospedagem da Maind.",
+        "As consultas rodam no middleware da organização: o Horus não alcança o banco direto. Quem pode perguntar escolhe as fontes na conversa."
       ]
     },
     {
       "dot": "emerald",
       "title": "Só ler, nunca alterar",
       "items": [
-        "A credencial é só de leitura e fica cifrada no cofre. O Testar confere, no próprio banco, que ela só lê, sem gastar IA.",
+        "A credencial é só de leitura e fica cifrada no middleware, fora do Horus. O Testar confere, no próprio banco, que ela só lê, sem gastar IA.",
         "Toda consulta passa por uma porta única, que recusa escrita e traz até 500 linhas em até 30 segundos."
       ]
     },
@@ -782,7 +783,7 @@
       "title": "A idade mínima do dado",
       "items": [
         "Cada fonte define um intervalo. Dentro dele, a mesma consulta reaproveita o resultado já buscado, em vez de perguntar de novo ao banco.",
-        "Fora dele, ou numa consulta nova, o Horus vai ao banco na hora."
+        "Fora dele, ou numa consulta nova, a consulta vai ao banco na hora."
       ]
     }
   ]

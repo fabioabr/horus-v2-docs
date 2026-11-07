@@ -2,7 +2,7 @@
 
 Situação: 🔎 levantamento preliminar do **Horus de hoje, a v1.xx**: é a referência do que já existe e pode ser reaproveitado no Horus v2.xx (`D-134`). O arquiteto de soluções confere o que se reaproveita (`P-003`).
 
-Última atualização: 05/11/2026 (as `MF-120` a `MF-123` entram na tabela de conversão).
+Última atualização: 07/11/2026 (as `D-258` a `D-269`: a `MF-121` passa da v2.1 para a v2.0, como o middleware de toda organização, e o nome dela passa a ser "Middleware da organização" (`D-270`); a nota sobre o que o dono disse em 31/10/2026 ganha o que mudou; antes, em 05/11/2026, as `MF-120` a `MF-123` entram na tabela de conversão).
 
 Este documento responde: **o que o Horus já entrega hoje, em linguagem de valor**, e como isso se encaixa no [norte](02-norte-do-produto.md). Segue a `D-003`: o produto de hoje é o ponto de partida, não o limite. Ele não decide o que entra na v2.0; só mostra o terreno.
 
@@ -73,7 +73,7 @@ As 23 mfs vivas, na **ordem de construção do Horus v2**: primeiro a entrega em
 | `MF-118` | Bases de demonstração | `MF-19` | `MF-012` | 📈 Prova e controle |
 | `MF-119` | Investigação guiada | `MF-05` | `MF-019` | 🔵 v2.1 |
 | `MF-120` | Faixa de avisos e números (nome provisório) | — | — | 📌 Acompanhar e avisar |
-| `MF-121` | Middleware na casa do contratante (nome provisório) | — | — | 🔌 Dados e IA |
+| `MF-121` | Middleware da organização (nome decidido em 07/11/2026, `D-270`: é o middleware de toda organização, na Maind ou na casa do cliente, e está na v2.0, `D-258` a `D-260`) | — | — | 🔌 Dados e IA |
 | `MF-122` | Conectores de chat corporativo (nome provisório) | — | — | 📌 Acompanhar e avisar |
 | `MF-123` | Fonte AWS Athena (nome provisório) | — | — | 🔌 Dados e IA |
 
@@ -86,7 +86,7 @@ Duas mfs foram substituídas e **não ganharam número novo**; ficam só aqui, c
 
 ## O que o dono já disse sobre cada mf (31/10/2026)
 
-> Esta tabela guarda o que o dono disse em 31/10/2026. Decisões posteriores mudam alguns pontos (por exemplo, os cinco tipos de assento, `D-194`; o Teams e o Google Chat na `MF-122`, `D-198`; a liberação de dados do gestor na `MF-106`, `D-199`; o fim da área da organização que recebia o que a pessoa deixava e da transferência: quem é excluído perde o que criou, e quem passa a prata ou a bronze o mantém desabilitado, `D-206` a `D-209`; os modos, que passam a ser dois, dados e conversa, com a web como o interruptor "pesquisar na web", `D-215`). Vale o [backlog estratégico](backlog-estrategico.md).
+> Esta tabela guarda o que o dono disse em 31/10/2026. Decisões posteriores mudam alguns pontos (por exemplo, os cinco tipos de assento, `D-194`; o Teams e o Google Chat na `MF-122`, `D-198`; a liberação de dados do gestor na `MF-106`, `D-199`; o fim da área da organização que recebia o que a pessoa deixava e da transferência: quem é excluído perde o que criou, e quem passa a prata ou a bronze o mantém desabilitado, `D-206` a `D-209`; os modos, que passam a ser dois, dados e conversa, com a web como o interruptor "pesquisar na web", `D-215`; o middleware em toda organização desde a v2.0, com a `MF-121` inteira na v2.0, `D-258` a `D-260`; as pessoas geridas pelo owner no front do middleware, e o convite e a troca do tipo de assento pedidos pelo gestor no Horus, `D-261` e `D-262`; os bancos e a IA configurados no front do middleware, sem a conexão da instância, `D-264` a `D-268`; e até mais dois owners além do primeiro, cada um num assento de owner contratado, `D-269`). Vale o [backlog estratégico](backlog-estrategico.md).
 
 | MF | Direção | Onde está registrado |
 | --- | --- | --- |

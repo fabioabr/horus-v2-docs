@@ -8,7 +8,7 @@ objetivos: [O7]
 quem_usa: [owner da organização, gestor, membro ouro, membro prata, membro bronze]
 complexidade: alta
 relacionadas: [MF-101, MF-103, MF-106, MF-112, MF-111, MF-114, MF-105, MF-107, MF-109, MF-110, MF-113, MF-116, MF-117, MF-118, MF-120, MF-121]
-atualizado: 2026-11-05
+atualizado: 2026-11-07
 fontes:
   - docs/raw/produto/04-macro-funcionalidades-de-hoje.md
   - docs/raw/produto/05-v2.0-consolidada.md
@@ -36,22 +36,33 @@ confunde com o owner da instância, a Maind, que cuida da instalação na Admini
 os dados das organizações. Hoje qualquer pessoa com conta cria uma organização, os papéis são fixos e só o owner
 convida.
 
-Na v2.0, só o owner da instância cria organizações. O **gestor** gere a sua **carteira** de pessoas e cria os
-convites delas, que o owner aprova. Os membros vêm em três faixas: o **ouro** pergunta e cria boards (os painéis de
-acompanhamento) e relatórios para si, sem compartilhar; o **prata** pergunta no app, na Pergunta rápida (MF-110) e
+Na v2.0, só o owner da instância cria organizações, e as pessoas de cada organização ficam guardadas no
+**middleware** dela, fora do Horus. O middleware, a peça do Middleware da organização (MF-121), fica entre o Horus e
+os bancos da organização: guarda quem são as pessoas, os bancos e a IA e responde pelo caminho até eles. O owner
+cadastra e gere as pessoas no **front do middleware**, um aplicativo de configuração separado do Horus, e só ele usa
+esse aplicativo; quem mais trabalha na organização usa só o Horus.
+
+O **gestor** gere a sua **carteira** de pessoas e cria os convites delas pelo Horus, e o owner os aprova no front do
+middleware. Os membros vêm em três faixas: o **ouro** pergunta e cria boards (os painéis de acompanhamento) e
+relatórios para si, sem compartilhar; o **prata** pergunta no app, na Pergunta rápida (MF-110) e
 no WhatsApp, usa a Investigação guiada (MF-119) quando ela chegar, na v2.1, e recebe alertas e PDFs, mas não cria
 boards, relatórios, agendamentos nem agentes (os trabalhos automáticos de IA); o **bronze** só vê os boards já
 compartilhados e recebe alertas e PDFs. Cada faixa soma uma coisa: o bronze vê, o prata pergunta, o ouro cria. Quem
 chega sem gestor espera na **quarentena**. E o owner monta **roles**, pacotes que ligam ou desligam botões da conversa.
 
-> 📌 **Exemplo:** o Marcos, owner da área comercial, convida a Carla como gestora. Ela convida a equipe, o Marcos
-> aprova, e a Ana entra na carteira da Carla como membro prata e já pergunta. O Marcos copia a role padrão, desliga
-> ver o SQL e baixar e dá essa role ao estagiário Léo, que pergunta, mas não baixa.
+> 📌 **Exemplo:** o Marcos, owner da área comercial, convida a Carla como gestora, no front do middleware. Ela
+> convida a equipe pelo Horus, o Marcos aprova no front do middleware, e a Ana entra na carteira da Carla como
+> membro prata e já pergunta. O Marcos copia a role padrão, desliga ver o SQL e baixar e dá essa role ao estagiário
+> Léo, que pergunta, mas não baixa.
 
 ## ✨ Características
 
 - **Os papéis:** owner, gestor e membro, nas faixas ouro, prata e bronze. O owner não é gestor, mas vê todos os
   membros e pode ser gestor também. O ouro e o bronze seguem as regras do antigo membro full e do antigo leitor.
+- **Os owners:** além do primeiro, a organização pode ter no máximo mais dois, cada um num assento de owner
+  contratado. O owner entra sempre com usuário e senha; os owners ligados ao login da empresa chegam na v2.1.
+- **Onde as pessoas ficam:** no middleware da organização, fora do Horus. O owner as cadastra e gere no front do
+  middleware; o gestor convida e pede a troca de tipo de assento pelo Horus, e o owner aprova lá.
 - **Um gestor por membro:** só o owner muda uma pessoa de gestor; se um gestor sai, a equipe vai para quem o owner
   indicar, ou para a quarentena.
 - **Quem sai:** quem é **excluído** (sai ou é retirado da organização) perde em definitivo o que criou e os
@@ -62,8 +73,9 @@ chega sem gestor espera na **quarentena**. E o owner monta **roles**, pacotes qu
 - **Quem é rebaixado:** quem passa de ouro a prata ou a bronze continua na organização e mantém o que criou
   vinculado a si, mas **desabilitado**: não se abre nem roda, e a única ação é excluir. Se voltar a ser ouro,
   reativa cada item, um a um; nada volta sozinho.
-- **O convite:** o gestor convida um a um e escolhe o tipo de assento; o owner aprova ou deixa a aprovação
-  automática. O assento, a vaga de uso das Licenças e planos (MF-103), fica guardado por um prazo.
+- **O convite:** o gestor convida um a um, pelo Horus, e escolhe o tipo de assento; o owner aprova no front do
+  middleware, onde a pessoa é cadastrada, ou deixa a aprovação automática. O assento, a vaga de uso das Licenças e
+  planos (MF-103), fica guardado por um prazo. A troca do tipo de assento segue o mesmo caminho.
 - **A planilha de convites em lote:** é só do owner. Cada linha traz o tipo de assento e o gestor da pessoa; o lote
   reserva os assentos como o convite individual, e a linha sem vaga do tipo fica de fora.
 - **A quarentena:** quem entra sem gestor vê só o perfil e os boards públicos, até o owner ou um gestor o pôr numa
@@ -105,22 +117,24 @@ role restrita pergunta sem baixar nada.
 
 **O owner:**
 
-1. Recebe a organização, criada pela Maind, já com o seu assento.
-2. Convida os gestores e, se quiser, a organização inteira de uma vez, pela planilha de convites em lote.
+1. Recebe a organização, criada pela Maind, já com o seu assento, e entra no front do middleware com usuário e senha.
+2. Cadastra os gestores e, se quiser, até dois outros owners no front do middleware; pode convidar a organização
+   inteira de uma vez, pela planilha de convites em lote.
 3. Restringe o que nasce liberado, ajusta a role padrão, cria as outras roles e as atribui.
-4. Aprova os convites, ou deixa a aprovação automática.
+4. Aprova, no front do middleware, os convites e as trocas de tipo de assento que os gestores pedem, ou deixa a
+   aprovação automática.
 5. Tira pessoas da quarentena e monta os grupos da organização.
 
 **O gestor:**
 
-1. Cria os convites, um a um, e escolhe o tipo de assento: membro ouro, prata ou bronze.
+1. Cria os convites pelo Horus, um a um, e escolhe o tipo de assento: membro ouro, prata ou bronze.
 2. Aprovado o convite, a pessoa aceita e entra na carteira dele.
-3. Monta grupos com a equipe.
+3. Pede pelo Horus a troca do tipo de assento de quem gere, e monta grupos com a equipe.
 
 ```mermaid
 flowchart LR
-  z[Maind cria a organização com o owner] --> a[Gestor cria o convite]
-  a --> b[Owner aprova]
+  z[Maind cria a organização com o owner] --> a[Gestor cria o convite no Horus]
+  a --> b[Owner aprova no front do middleware]
   b --> c[E-mail sai e o assento fica guardado]
   c --> d[Pessoa entra na carteira do gestor]
   d --> e[Usa o que o assento e as roles ligam]
@@ -132,8 +146,9 @@ flowchart LR
 
 As organizações, o login, os convites, a foto e a planilha vêm da v1. A tabela fixa de permissões vira um porteiro
 único, a quem toda tela, canal e trabalho automático pergunta "esta pessoa pode isto?", e a carteira, a quarentena,
-os grupos, as roles e a área de avisos são novos. Não depende de ninguém de fora, mas quase todas as mfs novas
-dependem dela.
+os grupos, as roles e a área de avisos são novos. O cadastro das pessoas muda de lugar, para o middleware da
+organização, e o Horus passa a buscar lá o nome de quem aparece nas telas dele; não depende de ninguém de fora, mas
+quase todas as mfs novas dependem dela.
 
 > ⚠️ É a leitura do PO a partir dos documentos de arquitetura. A estimativa de esforço é do arquiteto.
 
@@ -141,7 +156,7 @@ dependem dela.
 
 | mf | Como se relaciona |
 | --- | --- |
-| Administração da instância (MF-101) | **é a base de**: lá a Maind cria as organizações e cuida da instância e da marca; aqui, o owner cuida das pessoas de cada organização. |
+| Administração da instância (MF-101) | **é a base de**: lá a Maind cria as organizações e cuida da instância e da marca; aqui, o owner cuida das pessoas de cada organização, no front do middleware. |
 | Licenças e planos (MF-103) | **é a base de**: a cobrança por assento usa os papéis, o convite e a quarentena; em troca, o tipo de assento é o teto do que a role libera. |
 | Segurança dos dados por pessoa (MF-106) | **complementa**, na v2.1: a role decide o que a pessoa usa, e a segurança decidirá o que ela vê; é dela que vêm os grupos pelas características da pessoa (a região, a loja), as colunas dessas características na planilha de convites e as roles que chegam pelo login da empresa. |
 | Boards e Relatórios (MF-112) | **é a base de**: publicar para um grupo ou para "Pessoas geridas por mim" e os boards públicos da quarentena saem daqui. |
@@ -156,13 +171,13 @@ dependem dela.
 | Home da organização (MF-117) | **é a base de**: a divisão por gestor vem da equipe de cada um. |
 | Bases de demonstração (MF-118) | **é a base de**: os membros de exemplo chegam com papel, tipo de assento, gestor e roles. |
 | Faixa de avisos e números (MF-120) | **é a base de**: o owner da organização, que monta os Organization Cards nas preferências da organização, é daqui. |
-| Middleware na casa do contratante (MF-121) | **complementa**, na v2.1: quem conecta o middleware e decide o que mais pode sair da casa do cliente é o owner da organização, e não a Maind. |
+| Middleware da organização (MF-121) | **depende de**: as pessoas da organização ficam guardadas no middleware, e o owner as cadastra e gere no front dele, onde também aprova os convites e as trocas de assento que os gestores pedem pelo Horus. |
 
 ## 🚧 O que ela não faz
 
 - **Criar organizações:** é do owner da instância, na Administração da instância (MF-101).
-- **O login corporativo**, as roles que chegam por ele e os grupos pelas características da pessoa: são da
-  Segurança dos dados por pessoa (MF-106), na v2.1.
+- **O login corporativo**, as roles e os owners que chegam por ele e os grupos pelas características da pessoa:
+  são da Segurança dos dados por pessoa (MF-106), na v2.1.
 - **Gestor de gestor:** a hierarquia tem um nível só.
 - **Role que tira** o que outra deu, prioridade entre roles ou gestor que cria roles.
 - **Limite por perguntas ou por custo.**
@@ -173,6 +188,8 @@ dependem dela.
   sem aviso especial à pessoa, e sobre apagar tudo de quem sai; o produto parte das duas regras como estão.
 - Falta o arquiteto conferir se apagar tudo de quem é excluído convive com a guarda técnica do registro de acesso e
   as cópias de segurança.
+- 🔎 a confirmar com o dono: além das pessoas, o que mais do trabalho do owner vai para o front do middleware (as
+  roles, os grupos da organização, a planilha de convites em lote) e o que fica no Horus.
 
 ## 📚 Para saber mais
 
@@ -188,6 +205,13 @@ dependem dela.
     assento como regra) e **D-236** (a planilha de convites em lote é só do owner; cada linha traz o tipo de assento
     e o gestor, o lote reserva os assentos, a linha sem vaga fica de fora, e o gestor convida um a um).
   - **D-118** (o login corporativo fora da v2.0) e **D-184** (o login corporativo da MF-106 só por OpenID Connect).
+  - **D-258** (toda organização usa um middleware desde a v2.0; as configurações de autenticação ficam nele, e o
+    owner da organização entra sempre por usuário e senha), **D-261** (as pessoas ficam isoladas no middleware, fora
+    do SaaS, e o owner as cadastra e gere no front dele), **D-262** (só o owner usa o front do middleware; o gestor
+    cria o convite e pede a troca do tipo de assento pelo Horus, e o owner aprova lá; o e-mail do convidado passa
+    pelo SaaS a caminho do middleware) e **D-269** (no máximo mais dois owners além do primeiro, cada um num assento
+    de owner contratado; os ligados ao login da empresa, na v2.1). **P-048**: o que o SaaS guarda de cada pessoa e
+    como mostra o nome dela (do arquiteto).
   - **D-146** (só o administrador da instância cria organizações), **D-147** ("owner da instância" é o nome
     comercial do administrador) e **D-193** (o SaaS é uma instância só, da Maind; o owner da organização é
     funcionário do cliente e a configura).
@@ -200,7 +224,8 @@ dependem dela.
   - **D-019**, **D-029**, **D-032**, **D-049** e **D-055**: os grupos e os seus usos.
   - **D-069**, **D-072**, **D-074** e **D-078**: os tipos de assento, a troca, quem acumula owner e gestor, a
     reserva.
-  - **D-195** (a conexão do middleware e as permissões de saída são da organização).
+  - **D-195** (a conexão do middleware e as permissões de saída são da organização), substituída em parte pela
+    **D-258** (a chave do middleware nasce com a organização, e a Maind faz a troca).
   - **D-128** (a área de avisos e a preferência de e-mail), **D-013** (os dois níveis de owner), **D-048** (a
     quarentena e os boards públicos), **D-044** e **D-045** (remover uma pessoa; a parte que mandava o que ela
     criou para a área da organização foi substituída pela **D-206**).
@@ -216,7 +241,8 @@ dependem dela.
     jurídico dele no setup, sobre a leitura das conversas e o apagar de quem sai) e **P-044** (apagar tudo de quem é
     excluído diante da guarda técnica do registro de acesso, do arquiteto).
 - `docs/raw/produto/04-macro-funcionalidades-de-hoje.md`: o que a v1.xx entrega e a direção do dono.
-- `docs/raw/produto/05-v2.0-consolidada.md`: §1, §4 (o passo 2), §5.1 e §5.2 (as regras), §7 e §8 (os riscos).
+- `docs/raw/produto/05-v2.0-consolidada.md`: §1, §4 (o passo 2), §5.1 e §5.2 (as regras), §5.17 (o middleware de
+  cada organização), §7 e §8 (os riscos).
 - `docs/raw/produto/06-versoes.md` (a candidata nº 9), `docs/raw/produto/07-mapa-de-objetivos-e-funcionalidades.md` (o
   objetivo O7) e `docs/raw/produto/03-inventario-de-lacunas.md` (a candidata 9).
 - `docs/raw/arquitetura/01-estrategia-da-solucao.md`: §4 (a linha da MF-102) e §6 (o marco M1, Plataforma).

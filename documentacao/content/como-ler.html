@@ -23,7 +23,7 @@
       <tr class="zebra"><td><strong>Instância</strong></td><td>Uma instalação do Horus. Na versão 2.0, o Horus funciona como serviço (SaaS) e há uma instância só, a da Maind, onde vivem todas as organizações.</td></tr>
       <tr class="zebra"><td><strong>Organização</strong></td><td>O espaço de uma empresa, de um setor ou de um cliente dentro do Horus, com as pessoas, as fontes de dados e os painéis dela. Uma organização não enxerga a outra.</td></tr>
       <tr class="zebra"><td><strong>Administrador da instância</strong></td><td>Funcionário da Maind que opera a instância. Vê todas as organizações em números, sem ver os dados delas. Em alguns materiais aparece como “owner da instância”.</td></tr>
-      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>Pessoa da empresa cliente que cuida da organização dela: convida as pessoas e configura as preferências.</td></tr>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>Pessoa da empresa cliente que cuida da organização dela: cadastra as pessoas no front do middleware e configura as preferências.</td></tr>
       <tr class="zebra"><td><strong>Assento</strong></td><td>Uma vaga de uso contratada. Cada pessoa que usa o Horus ocupa um assento, de um de cinco tipos: owner, gestor, membro ouro, membro prata ou membro bronze.</td></tr>
       <tr class="zebra"><td><strong>Gestor</strong></td><td>Pessoa da empresa cliente que cuida de uma equipe: convida as pessoas dela, monta grupos e abre os painéis de quem gere.</td></tr>
       <tr class="zebra"><td><strong>Membro</strong></td><td>Quem usa o Horus sem cuidar de equipe. Há três faixas: o bronze vê, a prata pergunta e o ouro cria.</td></tr>
@@ -53,7 +53,6 @@
       <tr class="zebra"><td><strong>Organização de exemplo</strong></td><td>Organização de uma empresa que não existe, com dados inventados, usada pela Maind para demonstrar e testar o Horus.</td></tr>
       <tr class="zebra"><td><strong>Reporte</strong></td><td>O aviso que a pessoa dá quando uma resposta parece errada. Vai ao owner da organização, com uma cópia da resposta.</td></tr>
       <tr class="zebra"><td><strong>Medida de autonomia</strong></td><td>A contagem, na Home da organização, das perguntas de análise respondidas com dado da empresa ou fato da web.</td></tr>
-      <tr class="zebra"><td><strong>Onda (da versão 2.1)</strong></td><td>Cada uma das duas entregas da versão 2.1. A primeira é a do Horus como serviço da Maind; a segunda, a da casa do contratante, para quem precisa que os dados fiquem em casa.</td></tr>
       <tr class="zebra"><td><strong>Característica</strong></td><td>O que diz o que cada pessoa pode ver nos dados da empresa, como a região ou a loja. Nos materiais técnicos, aparece como “claim”.</td></tr>
       <tr class="zebra"><td><strong>Documento de segurança</strong></td><td>O texto em português, um para cada base, em que o owner escreve quem vê o quê. Fica ao lado do modelo semântico da base.</td></tr>
       <tr class="zebra"><td><strong>Recorte de acesso</strong></td><td>As características que limitaram uma resposta ou um board, como “região = Sul”.</td></tr>
@@ -61,9 +60,10 @@
       <tr class="zebra"><td><strong>Investigação guiada</strong></td><td>O caminho, passo a passo, a partir de “investigar” numa resposta, do número que mudou até o porquê.</td></tr>
       <tr class="zebra"><td><strong>Fonte viva</strong></td><td>Um banco da empresa que o Horus consulta na hora da pergunta, e não uma cópia exportada.</td></tr>
       <tr class="zebra"><td><strong>AWS Athena</strong></td><td>O serviço da Amazon (AWS) para consultar dados guardados na nuvem dela. Na versão 2.1, passa a ser uma fonte viva do Horus.</td></tr>
-      <tr class="zebra"><td><strong>Middleware</strong></td><td>Uma peça que a empresa instala na própria infraestrutura e pela qual o Horus, que continua no serviço da Maind, chega aos dados, à internet e à IA dela.</td></tr>
+      <tr class="zebra"><td><strong>Middleware</strong></td><td>Uma peça separada do Horus que cada organização tem. Ela guarda as pessoas, os bancos e a IA da organização, e é por ela que o Horus chega a eles. Pode ficar na infraestrutura da Maind ou na da própria empresa.</td></tr>
+      <tr class="zebra"><td><strong>Front do middleware</strong></td><td>O aplicativo do middleware, separado do Horus, em que o owner da organização cadastra as pessoas. Os bancos e a IA também se configuram nele: pela organização, se o middleware está na casa dela, ou pelo time da Maind, se está na infraestrutura da Maind.</td></tr>
       <tr class="zebra"><td><strong>Imagem de container</strong></td><td>Um pacote pronto para rodar, que a Maind disponibiliza e a TI do cliente instala.</td></tr>
-      <tr class="zebra"><td><strong>Saída extra</strong></td><td>O que pode sair da casa do cliente além da pergunta e da resposta pronta, como o comando da consulta e a planilha (CSV). Só sai com a permissão do owner, saída por saída.</td></tr>
+      <tr class="zebra"><td><strong>Saída extra</strong></td><td>O que pode sair do middleware para o Horus além da pergunta e da resposta pronta, como o comando da consulta e a planilha (CSV). Só sai com a permissão do owner, saída por saída.</td></tr>
       <tr class="zebra"><td><strong>Chat corporativo</strong></td><td>O aplicativo de conversa da empresa, como o Microsoft Teams ou o Google Chat.</td></tr>
     </tbody>
   </table>

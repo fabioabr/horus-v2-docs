@@ -10,16 +10,18 @@
 <ul>
   <li><strong>Ligar os bancos da empresa.</strong> São cinco tecnologias na versão 2.0, por um de dois caminhos que a TI do cliente escolhe.</li>
   <li><strong>Garantir que o Horus só leia.</strong> A credencial é só de leitura, o Horus confere isso no próprio banco, e toda consulta passa por uma porta que recusa escrita.</li>
-  <li><strong>Guardar a credencial no cofre.</strong> Ela fica cifrada e nunca volta à tela.</li>
+  <li><strong>Guardar a credencial fora do Horus.</strong> Ela fica cifrada no middleware da organização e nunca volta à tela.</li>
   <li><strong>Dar a cada fonte o seu modelo semântico</strong>, o documento que explica ao Horus o que cada tabela e cada palavra querem dizer na empresa.</li>
   <li><strong>Ajustar cada fonte:</strong> até onde o Horus pode interpretar além do número e por quanto tempo um resultado recente pode ser reaproveitado.</li>
 </ul>
+<p>Na versão 2.0, tudo isso acontece no <strong>middleware</strong> da organização, a peça que fica entre o Horus e os bancos de dados dela (veja <a href="#mf-121">Middleware da organização (MF-121)</a>). As fontes se configuram no <strong>front do middleware</strong>, um aplicativo da organização que fica fora do Horus, e as consultas rodam dentro do middleware: o Horus não alcança o banco direto.</p>
 <h4 id="mf-104-quem-e-quem">Quem faz o quê</h4>
 <div class="table-wrap">
   <table class="t">
     <thead><tr><th>Quem</th><th>O que faz</th></tr></thead>
     <tbody>
-      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>Cadastra as fontes, testa a conexão, ajusta cada fonte e carrega o modelo semântico.</td></tr>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>Com o middleware na casa do cliente, cadastra as fontes no front do middleware, testa a conexão e ajusta cada fonte. Carrega o modelo semântico.</td></tr>
+      <tr class="zebra"><td><strong>Time da Maind</strong> (suporte técnico)</td><td>Na hospedagem da Maind, cadastra, testa e ajusta as fontes no front do middleware, como suporte técnico antes e depois da venda.</td></tr>
       <tr class="zebra"><td><strong>Time de dados</strong></td><td>É o time do cliente ou, na implantação, o da Maind. Escreve o modelo semântico fora do Horus e entrega o arquivo ao owner, sem entrar na organização nem ganhar assento para isso.</td></tr>
       <tr class="zebra"><td><strong>TI do cliente</strong></td><td>Decide por onde o Horus chega ao banco e libera esse caminho.</td></tr>
       <tr class="zebra"><td><strong>Owner, gestor, membro ouro e membro prata</strong></td><td>Escolhem as fontes na conversa e perguntam.</td></tr>
@@ -30,14 +32,15 @@
 <p>Os tipos de assento estão explicados em <a href="#mf-101-assentos">Os assentos: quem pode fazer o quê</a>, na página da Administração da instância.</p>
 
 <h3 id="mf-104-uma-fonte">Uma fonte, do cadastro à primeira resposta</h3>
-<p>Digamos que o Marcos, owner da área comercial de uma rede de lojas, vai ligar o banco de vendas, que a TI da empresa não expõe na internet.</p>
+<p>Digamos que o Marcos, owner da área comercial de uma rede de lojas, vai ligar o banco de vendas, que a TI da empresa não expõe na internet. Por isso, a empresa hospeda o middleware da área na casa dela, e quem configura as fontes é o Marcos.</p>
 <ol class="steps">
-  <li><div><h4>O owner cadastra a fonte</h4><p>O Marcos escolhe a tecnologia do banco e o caminho (aqui, o túnel SSH, porque o banco não está na internet) e informa uma credencial só de leitura, que vai cifrada para o cofre.</p></div></li>
+  <li><div><h4>O owner cadastra a fonte</h4><p>No front do middleware, o Marcos escolhe a tecnologia do banco e o caminho que a TI liberou e informa uma credencial só de leitura, que fica cifrada no middleware, fora do Horus.</p></div></li>
   <li><div><h4>Testa a conexão</h4><p>Ele clica em “Testar”. O Horus confere que a conexão responde e que a credencial só lê, sem gastar nada de inteligência artificial.</p></div></li>
   <li><div><h4>Ajusta a fonte</h4><p>Define o teto de inferência e a idade mínima do dado dessa fonte, explicados mais abaixo.</p></div></li>
   <li><div><h4>Carrega o modelo semântico</h4><p>O time de dados escreve o modelo fora do Horus e entrega o arquivo. O Marcos o carrega na fonte.</p></div></li>
   <li><div><h4>As pessoas perguntam</h4><p>A gestora Carla escolhe o banco de vendas na conversa e pergunta quanto cada loja vendeu na semana. O número sai do banco, na hora.</p></div></li>
 </ol>
+<p>Na hospedagem da Maind, os três primeiros passos são do time da Maind, como suporte técnico antes e depois da venda.</p>
 <p>O mesmo caminho em desenho, com quem faz cada passo e o que o Horus decide a cada pergunta: ir ao banco ou reaproveitar um resultado recente.</p>
 <dx-diagrama ref="mf-104-da-fonte-a-resposta"></dx-diagrama>
 <p>Se um dia a fonte deixar de conectar, quem é avisado é o owner da organização, que é quem pode consertá-la (veja <a href="#mf-101-quando-um-servico-para">Quando um serviço para</a>).</p>
@@ -54,17 +57,17 @@
 </div>
 
 <h3 id="mf-104-caminhos">Dois caminhos até o banco</h3>
-<p>O Horus roda no serviço da Maind, e o banco fica com o cliente, na casa dele ou na nuvem dele. Entre um e outro há dois caminhos, e quem escolhe é a TI do cliente:</p>
+<p>O banco fica com o cliente, na casa dele ou na nuvem dele. Desde a versão 2.0, quem chega até ele é o middleware da organização, e não o Horus direto. Os dois caminhos de hoje continuam, e quem escolhe é a TI do cliente:</p>
 <div class="table-wrap">
   <table class="t">
     <thead><tr><th>Sobre o caminho</th><th>Endereço público</th><th>Túnel SSH</th></tr></thead>
     <tbody>
-      <tr class="zebra"><td><strong>Como funciona</strong></td><td>O banco tem um endereço na internet, e a TI libera no firewall o endereço de onde o Horus sai.</td><td>O Horus passa por uma máquina de entrada da rede do cliente, numa passagem segura, até chegar ao banco.</td></tr>
+      <tr class="zebra"><td><strong>Como funciona</strong></td><td>O banco tem um endereço na internet, e a TI libera no firewall o endereço de onde a consulta vem.</td><td>A consulta passa por uma máquina de entrada da rede do cliente, numa passagem segura, até chegar ao banco.</td></tr>
       <tr class="zebra"><td><strong>Para quem serve</strong></td><td>Para quem já expõe o banco na internet.</td><td>Para quem não expõe o banco na internet.</td></tr>
     </tbody>
   </table>
 </div>
-<p>Uma rede privada, como uma VPN ou a conexão privada de uma nuvem, fica fora da versão 2.0. Para o banco que não pode sair de casa, a versão 2.1 traz o <a href="#mf-121">Middleware na casa do contratante (MF-121)</a>: uma peça da Maind que o cliente instala na própria infraestrutura e pela qual as fontes alcançam esse banco, com o Horus continuando no serviço da Maind.</p>
+<p>Uma rede privada, como uma VPN ou a conexão privada de uma nuvem, fica fora da versão 2.0. Para o banco que não pode ficar exposto fora de casa, a empresa pode hospedar o middleware da organização na casa dela (veja <a href="#mf-121-hospedagem">Na Maind ou na casa do cliente</a>): ele fica do lado de dentro, e o Horus continua no serviço da Maind.</p>
 
 <h3 id="mf-104-so-le">Só ler, nunca alterar</h3>
 <p>A credencial só de leitura é como o acesso de “só consulta” que o banco dá ao contador: ele vê o extrato, mas não faz transferência. A diferença é que o Horus não confia na palavra de quem cadastra: ele confere, no próprio banco, que a credencial só lê.</p>
@@ -73,14 +76,14 @@
   <li><strong>Uma porta única até o banco.</strong> Toda consulta passa por ela, que recusa escrita e traz até 500 linhas em até 30 segundos.</li>
   <li><strong>Os bancos ficam intocados.</strong> O Horus nunca altera um dado nem age nos sistemas da empresa. Mandar um aviso por e-mail ou WhatsApp é informação que sai, e não mexe nos sistemas.</li>
 </ul>
-<h4 id="mf-104-cofre">A credencial fica no cofre</h4>
-<p>A credencial de cada fonte é guardada cifrada, num cofre, e nunca volta à tela. O administrador da instância, o funcionário da Maind que opera o Horus, vê todas as organizações em números, mas não os dados das fontes delas (veja <a href="#mf-101-uso-e-custo">Uso, custo e relatório</a>).</p>
+<h4 id="mf-104-cofre">A credencial fica fora do Horus</h4>
+<p>A credencial de cada fonte é guardada cifrada no middleware da organização, fora do Horus, e nunca volta à tela. O administrador da instância, o funcionário da Maind que opera o Horus, vê todas as organizações em números, mas não os dados das fontes delas (veja <a href="#mf-101-uso-e-custo">Uso, custo e relatório</a>). Na hospedagem da Maind, porém, é o time da Maind que configura as fontes, e ele conhece as credenciais delas; com o middleware na casa do cliente, quem as configura é a própria organização.</p>
 
 <h3 id="mf-104-modelo-semantico">O modelo semântico: o dicionário de cada fonte</h3>
 <p>Um banco guarda tabelas e colunas com nomes técnicos. O que é “faturamento” na sua empresa? O que conta como “loja ativa”? O <strong>modelo semântico</strong> é o documento que explica isso ao Horus. Há um para cada fonte, e o Horus o lê a cada pergunta, para transformar a pergunta em português numa consulta certa ao banco.</p>
 <ul>
   <li><strong>Quem escreve é o time de dados</strong>, do cliente ou da Maind na implantação, fora do Horus. Ele entrega o arquivo, e ninguém de fora entra na organização nem ganha assento para isso.</li>
-  <li><strong>Quem carrega é o owner da organização</strong>, que é o dono do modelo dentro do Horus.</li>
+  <li><strong>Quem carrega é o owner da organização</strong>, que é o dono do modelo.</li>
   <li><strong>Melhorar o modelo é trabalho do time de dados.</strong> A versão 2.0 não tem um assistente que monte ou melhore o modelo sozinho.</li>
   <li><strong>Quando uma resposta parece errada</strong>, a pessoa pode reportá-la, e o owner analisa se a falha está no modelo semântico ou nos dados.</li>
 </ul>
@@ -103,7 +106,7 @@
 <p>Cada fonte define um intervalo. Dentro dele, a mesma consulta reaproveita o resultado já buscado, em vez de perguntar de novo ao banco; passado o intervalo, ou numa consulta nova, o Horus vai ao banco. Os painéis seguem a mesma regra: os cartões reaproveitam o resultado dentro da idade mínima do dado da fonte.</p>
 
 <h3 id="mf-104-quem-ve">Quem vê os dados de cada fonte</h3>
-<p>Na versão 2.0, a <strong>organização é a fronteira dos dados</strong>. Cada organização guarda as suas fontes num espaço só dela, e nenhuma enxerga as de outra. Dentro da organização, quem pode perguntar vê tudo o que a fonte tem: o tipo de assento e as roles decidem quem pergunta, e não que parte dos dados cada um vê.</p>
+<p>Na versão 2.0, a <strong>organização é a fronteira dos dados</strong>. Cada organização guarda as suas fontes no seu próprio middleware, e nenhuma enxerga as de outra. Dentro da organização, quem pode perguntar vê tudo o que a fonte tem: o tipo de assento e as roles decidem quem pergunta, e não que parte dos dados cada um vê.</p>
 <div class="callout callout--info">
   <span class="ico">i</span>
   <div><b>Precisa separar os dados de dois setores?</b><p>Na versão 2.0, cada setor ganha a sua própria organização. O recorte por pessoa, em que cada um vê só a sua parte de uma fonte, vem com a <a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a>, na versão 2.1.</p></div>
@@ -112,11 +115,10 @@
 <h3 id="mf-104-bastidores">Nos bastidores, sem complicar</h3>
 <p>Só o bastante da tecnologia para a história fazer sentido:</p>
 <ul>
-  <li><strong>Quase tudo já existe.</strong> Os conectores, o túnel, a barreira de rede, o cofre, o reaproveitamento das consultas e o modelo semântico vêm do Horus de hoje. Na versão 2.0, o que muda é o acesso, para respeitar o espaço de cada organização.</li>
-  <li><strong>Cada organização no seu espaço.</strong> O cadastro das fontes e os resultados guardados para reaproveitar ficam no banco da própria organização, que nenhuma outra alcança (veja <a href="#mf-101-bastidores">os bastidores da Administração da instância</a>).</li>
-  <li><strong>Um caminho só até o banco do cliente.</strong> Só um componente do Horus executa consultas no banco do cliente, e testes automáticos garantem que nenhum outro o faça.</li>
+  <li><strong>Quase tudo já existe.</strong> Os conectores, o túnel, a barreira de rede, o cofre, o reaproveitamento das consultas e o modelo semântico vêm do Horus de hoje. Na versão 2.0, muda o acesso, para respeitar o espaço de cada organização, e muda o lugar: o cadastro vai para o front do middleware, e as consultas rodam no middleware.</li>
+  <li><strong>Cada organização no seu middleware.</strong> O cadastro das fontes fica no middleware da própria organização, e nenhuma outra o alcança (veja <a href="#mf-121-caminho">Quem controla o caminho</a>, na página do middleware).</li>
+  <li><strong>Um caminho só até o banco do cliente.</strong> Só um componente executa consultas no banco do cliente, e testes automáticos garantem que nenhum outro o faça.</li>
   <li><strong>A fonte não aponta para dentro.</strong> Uma fonte nunca alcança a rede interna da máquina onde o Horus roda: uma barreira confere o endereço a cada operação, e uma regra da própria máquina fecha o que sobrar.</li>
-  <li><strong>Um endereço de saída estável.</strong> O endereço de onde o Horus sai é mantido o mesmo, porque é ele que a TI do cliente libera no firewall.</li>
   <li><strong>O teste não gasta IA.</strong> O “Testar” fala só com o banco, sem chamar o modelo de inteligência artificial.</li>
 </ul>
 
@@ -130,7 +132,7 @@
       <tr class="zebra"><td><strong>Conectar por VPN ou pela rede privada de uma nuvem</strong></td><td>Fica fora da versão 2.0. Os caminhos são o endereço público e o túnel SSH.</td></tr>
       <tr class="zebra"><td><strong>Recortar os dados por pessoa</strong></td><td>É da <a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a>, na versão 2.1. Na versão 2.0, vale a organização inteira.</td></tr>
       <tr class="zebra"><td><strong>Responder com o AWS Athena</strong></td><td>Chega na versão 2.1, numa funcionalidade própria (<a href="#mf-123">MF-123</a>).</td></tr>
-      <tr class="zebra"><td><strong>Alcançar a rede interna da casa do cliente</strong></td><td>Na versão 2.1, o <a href="#mf-121">Middleware na casa do contratante (MF-121)</a> leva as fontes ao banco que não pode sair de casa. Alcançar a rede interna diretamente só seria possível com o Horus instalado inteiro na casa do cliente, que não tem versão prevista: só volta se um cliente exigir que nada saia de casa, nem a pergunta.</td></tr>
+      <tr class="zebra"><td><strong>Alcançar direto a rede interna da casa do cliente</strong></td><td>Com o middleware na casa do cliente, as consultas chegam por ele ao banco que não pode sair de casa (veja <a href="#mf-121">Middleware da organização (MF-121)</a>). Alcançar a rede interna diretamente só seria possível com o Horus instalado inteiro na casa do cliente, que não tem versão prevista: só volta se um cliente exigir que nada saia de casa, nem a pergunta.</td></tr>
     </tbody>
   </table>
 </div>
@@ -142,7 +144,7 @@
     <tbody>
       <tr class="zebra"><td><a href="#mf-101">Administração da instância (MF-101)</a></td><td>A Maind vê as organizações em números, sem ver os dados das fontes. Quando uma fonte deixa de conectar, quem é avisado é o owner da organização.</td></tr>
       <tr class="zebra"><td><a href="#mf-107">Perguntar aos dados em português (MF-107)</a></td><td>A conversa transforma a pergunta numa consulta a estas fontes, guiada pelo modelo semântico.</td></tr>
-      <tr class="zebra"><td><a href="#mf-105">IA sob controle da organização (MF-105)</a></td><td>A IA escreve a consulta e o texto; os números saem da fonte.</td></tr>
+      <tr class="zebra"><td><a href="#mf-105">IA sob controle da organização (MF-105)</a></td><td>A IA escreve a consulta e o texto; os números saem da fonte. As duas se configuram no front do middleware.</td></tr>
       <tr class="zebra"><td><a href="#mf-108">Respostas visuais (MF-108)</a></td><td>Os números de todo gráfico e de toda tabela da resposta vêm das fontes.</td></tr>
       <tr class="zebra"><td><a href="#mf-109">A web como fonte (MF-109)</a></td><td>Os bancos dão o número da empresa, e a web, o contexto de fora. A web entra pela pesquisa da IA, e não como fonte cadastrada aqui.</td></tr>
       <tr class="zebra"><td><a href="#mf-112">Boards e Relatórios (MF-112)</a></td><td>Os cartões dos painéis consultam as mesmas fontes e reaproveitam o resultado dentro da idade mínima do dado.</td></tr>
@@ -150,14 +152,14 @@
       <tr class="zebra"><td><a href="#mf-118">Bases de demonstração (MF-118)</a></td><td>As bases entram nas organizações de exemplo como fontes comuns, pelos mesmos conectores dos clientes.</td></tr>
       <tr class="zebra"><td><a href="#mf-120">Faixa de avisos e números (MF-120, nome provisório)</a></td><td>Os números do negócio que a faixa mostra saem das fontes da organização.</td></tr>
       <tr class="zebra"><td><a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a></td><td>Na versão 2.1, recorta o que cada pessoa vê de cada fonte.</td></tr>
-      <tr class="zebra"><td><a href="#mf-121">Middleware na casa do contratante (MF-121)</a></td><td>Na versão 2.1, as fontes alcançam por ele o banco que não pode sair da casa do cliente.</td></tr>
+      <tr class="zebra"><td><a href="#mf-121">Middleware da organização (MF-121)</a></td><td>Desde a versão 2.0, as fontes se configuram no front do middleware, e as consultas chegam ao banco por ele, inclusive ao que não pode sair da casa do cliente.</td></tr>
       <tr class="zebra"><td><a href="#mf-123">Fonte AWS Athena (MF-123)</a></td><td>Na versão 2.1, o Athena chega terminado, sobre a base desta funcionalidade.</td></tr>
     </tbody>
   </table>
 </div>
 <div class="callout callout--neutral">
   <span class="ico">•</span>
-  <div><b>Ainda em definição</b><p><strong>Páginas da web como fonte.</strong> Na versão 2.0, a web entra pela pesquisa da IA (<a href="#mf-109">MF-109</a>), quando autorizada, e não como uma fonte cadastrada aqui. Se haverá um tipo de fonte para cadastrar páginas da web escolhidas ainda está em definição.</p><p><strong>O arquivo do modelo semântico.</strong> O formato do arquivo e o jeito de carregá-lo no Horus ainda serão definidos no desenho técnico.</p></div>
+  <div><b>Ainda em definição</b><p><strong>Páginas da web como fonte.</strong> Na versão 2.0, a web entra pela pesquisa da IA (<a href="#mf-109">MF-109</a>), quando autorizada, e não como uma fonte cadastrada aqui. Se haverá um tipo de fonte para cadastrar páginas da web escolhidas ainda está em definição.</p><p><strong>O arquivo do modelo semântico.</strong> O formato do arquivo e o jeito de carregá-lo ainda serão definidos no desenho técnico. Com as fontes no front do middleware, também está em definição onde o modelo se carrega e quem o carrega na hospedagem da Maind.</p></div>
 </div>
 
 <h3 id="mf-104-faq">Perguntas frequentes</h3>
@@ -168,7 +170,7 @@
   </details>
   <details>
     <summary>Precisamos expor o nosso banco na internet?</summary>
-    <div class="faq-body"><p>Não necessariamente. Se o banco não está na internet, o Horus chega a ele pelo túnel SSH, uma passagem segura pela máquina de entrada da sua rede. Se está, a sua TI libera no firewall o endereço de onde o Horus sai. VPN e rede privada de nuvem ficam fora da versão 2.0; para o banco que não pode sair de casa, a versão 2.1 traz o <a href="#mf-121">Middleware na casa do contratante (MF-121)</a>.</p></div>
+    <div class="faq-body"><p>Não necessariamente. As consultas chegam ao banco pelo middleware da sua organização (<a href="#mf-121">MF-121</a>), e não direto do Horus. Se a sua empresa hospedar o middleware na casa dela, o banco não precisa ficar exposto fora dela. Os caminhos que a TI escolhe são o túnel SSH, uma passagem segura pela máquina de entrada da sua rede, e o endereço liberado no firewall; VPN e rede privada de nuvem ficam fora da versão 2.0.</p></div>
   </details>
   <details>
     <summary>Quais bancos de dados o Horus consegue ler?</summary>
@@ -176,11 +178,11 @@
   </details>
   <details>
     <summary>A Maind vê os dados das nossas fontes?</summary>
-    <div class="faq-body"><p>Não. O administrador da instância, o funcionário da Maind que opera o Horus, vê as organizações em números, sem ver os dados das fontes. A credencial fica cifrada num cofre e nunca volta à tela. Mesmo quando o time de dados da Maind escreve o modelo semântico na implantação, ele trabalha fora do Horus e entrega o arquivo ao owner, sem entrar na organização.</p></div>
+    <div class="faq-body"><p>Depende de onde fica o middleware. O administrador da instância, o funcionário da Maind que opera o Horus, vê as organizações em números, sem ver os dados das fontes, e a credencial fica cifrada no middleware da organização, fora do Horus. Com o middleware na casa da sua empresa, quem configura as fontes é a sua organização; na hospedagem da Maind, é o time da Maind, que conhece as credenciais. E, quando o time de dados da Maind escreve o modelo semântico, ele trabalha fora do Horus e entrega o arquivo ao owner, sem entrar na organização.</p></div>
   </details>
   <details>
     <summary>O número da resposta é sempre o de agora?</summary>
-    <div class="faq-body"><p>Ele sai do próprio banco, e não de uma cópia exportada. A exceção é a idade mínima do dado: dentro do intervalo que a fonte define, a mesma consulta reaproveita o resultado já buscado, em vez de ir de novo ao banco. Quem ajusta esse intervalo é o owner, na configuração da fonte.</p></div>
+    <div class="faq-body"><p>Ele sai do próprio banco, e não de uma cópia exportada. A exceção é a idade mínima do dado: dentro do intervalo que a fonte define, a mesma consulta reaproveita o resultado já buscado, em vez de ir de novo ao banco. Quem ajusta esse intervalo é quem configura a fonte, no front do middleware.</p></div>
   </details>
   <details>
     <summary>Todas as pessoas da organização veem todos os dados das fontes?</summary>

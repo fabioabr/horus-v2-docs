@@ -497,7 +497,10 @@
     "legend": {
       "entries": {
         "backend": {
-          "label": "Maind (administração)"
+          "label": "Time da Maind"
+        },
+        "cloud": {
+          "label": "Front do middleware"
         },
         "external": {
           "label": "Owner da organização"
@@ -506,7 +509,7 @@
           "label": "Quem pergunta"
         },
         "messagebus": {
-          "label": "O Horus, por dentro"
+          "label": "O middleware, por dentro"
         }
       }
     }
@@ -514,11 +517,11 @@
   "lanes": [
     {
       "id": "maind",
-      "label": "Maind (administração)"
+      "label": "Time da Maind"
     },
     {
-      "id": "horus",
-      "label": "O Horus, por dentro"
+      "id": "front",
+      "label": "Front do middleware"
     },
     {
       "id": "owner",
@@ -527,37 +530,31 @@
     {
       "id": "pessoa",
       "label": "Quem pergunta"
+    },
+    {
+      "id": "horus",
+      "label": "O middleware, por dentro"
     }
   ],
   "mainPath": [
-    "cadastraInstancia",
-    "disponibiliza",
+    "propria",
+    "configura",
     "curadoria",
     "padrao",
     "pergunta",
     "tarefas",
-    "registra"
+    "registra",
+    "consumoOwner"
   ],
   "nodes": [
     {
-      "id": "cadastraInstancia",
+      "id": "chaveMaind",
       "lane": "maind",
       "col": 0,
       "type": "backend",
-      "yOffset": -55,
       "icon": "briefcase",
-      "label": "Cadastra a IA da instância",
-      "sublabel": "Uma conexão de IA que a Maind paga"
-    },
-    {
-      "id": "disponibiliza",
-      "lane": "maind",
-      "col": 0,
-      "type": "backend",
-      "yOffset": 55,
-      "icon": "briefcase",
-      "label": "Disponibiliza à organização",
-      "sublabel": "Ao criá-la; ela nasce sem IA"
+      "label": "A Maind dá uma chave",
+      "sublabel": "De provedor de IA; a Maind paga"
     },
     {
       "id": "propria",
@@ -565,22 +562,30 @@
       "col": 0,
       "type": "external",
       "icon": "person",
-      "label": "Ou cadastra a conexão própria",
-      "sublabel": "Provedor à escolha; a organização paga"
+      "label": "Ou a chave da organização",
+      "sublabel": "Do provedor dela; ela paga"
+    },
+    {
+      "id": "configura",
+      "lane": "front",
+      "col": 1,
+      "type": "cloud",
+      "label": "A IA é configurada",
+      "sublabel": "Pelo owner ou pelo time da Maind"
     },
     {
       "id": "curadoria",
       "lane": "owner",
-      "col": 1,
+      "col": 2,
       "type": "external",
       "icon": "person",
       "label": "Escolhe os modelos aceitos",
-      "sublabel": "Dentro das conexões da organização"
+      "sublabel": "Dentro da conexão da organização"
     },
     {
       "id": "padrao",
       "lane": "owner",
-      "col": 2,
+      "col": 3,
       "type": "external",
       "icon": "person",
       "label": "Define o modelo padrão",
@@ -607,18 +612,19 @@
       "id": "registra",
       "lane": "horus",
       "col": 4,
+      "yOffset": -55,
       "type": "messagebus",
       "label": "Registra cada chamada",
       "sublabel": "Só números, sem o conteúdo"
     },
     {
-      "id": "custoMaind",
-      "lane": "maind",
+      "id": "parada",
+      "lane": "horus",
       "col": 4,
-      "type": "backend",
-      "icon": "briefcase",
-      "label": "Acompanha o custo",
-      "sublabel": "De cada organização; aviso sem corte"
+      "yOffset": 55,
+      "type": "messagebus",
+      "label": "Se a IA para",
+      "sublabel": "Chave recusada ou sem crédito"
     },
     {
       "id": "consumoOwner",
@@ -627,30 +633,50 @@
       "type": "external",
       "icon": "person",
       "label": "Vê o consumo e o custo",
-      "sublabel": "Só da conexão própria"
+      "sublabel": "De toda a IA da organização"
+    },
+    {
+      "id": "avisoOwner",
+      "lane": "owner",
+      "col": 5,
+      "type": "external",
+      "icon": "person",
+      "label": "O owner é avisado",
+      "sublabel": "Sempre"
+    },
+    {
+      "id": "avisoMaind",
+      "lane": "maind",
+      "col": 5,
+      "type": "backend",
+      "icon": "briefcase",
+      "label": "O time da Maind é avisado",
+      "sublabel": "Se a chave é da Maind"
     }
   ],
   "edges": [
     {
-      "id": "cadastra-disponibiliza",
-      "from": "cadastraInstancia",
-      "to": "disponibiliza",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "instancia-curadoria",
-      "from": "disponibiliza",
-      "to": "curadoria",
-      "label": "conexão da instância",
+      "id": "maind-configura",
+      "from": "chaveMaind",
+      "to": "configura",
+      "label": "a Maind paga",
       "fromSide": "right",
       "toSide": "top"
     },
     {
-      "id": "propria-curadoria",
+      "id": "propria-configura",
       "from": "propria",
+      "to": "configura",
+      "label": "a organização paga",
+      "fromSide": "right",
+      "toSide": "bottom"
+    },
+    {
+      "id": "configura-curadoria",
+      "from": "configura",
       "to": "curadoria",
-      "label": "conexão própria"
+      "fromSide": "right",
+      "toSide": "top"
     },
     {
       "id": "curadoria-padrao",
@@ -662,14 +688,14 @@
       "from": "padrao",
       "to": "pergunta",
       "fromSide": "bottom",
-      "toSide": "left"
+      "toSide": "top"
     },
     {
       "id": "pergunta-tarefas",
       "from": "pergunta",
       "to": "tarefas",
-      "fromSide": "top",
-      "toSide": "bottom"
+      "fromSide": "bottom",
+      "toSide": "top"
     },
     {
       "id": "tarefas-registra",
@@ -677,31 +703,47 @@
       "to": "registra"
     },
     {
-      "id": "registra-maind",
-      "from": "registra",
-      "to": "custoMaind",
-      "label": "custo do mês",
-      "role": "branch",
-      "fromSide": "top",
-      "toSide": "bottom"
+      "id": "tarefas-parada",
+      "from": "tarefas",
+      "to": "parada",
+      "role": "branch"
     },
     {
       "id": "registra-owner",
       "from": "registra",
       "to": "consumoOwner",
-      "label": "conexão própria",
+      "label": "toda a IA",
+      "fromSide": "top",
+      "toSide": "bottom"
+    },
+    {
+      "id": "parada-owner",
+      "from": "parada",
+      "to": "avisoOwner",
+      "label": "sempre",
       "role": "branch",
-      "fromSide": "bottom",
-      "toSide": "top"
+      "fromSide": "right",
+      "toSide": "bottom"
+    },
+    {
+      "id": "parada-maind",
+      "from": "parada",
+      "to": "avisoMaind",
+      "label": "chave da Maind",
+      "role": "branch",
+      "fromSide": "right",
+      "toSide": "right",
+      "route": "outside-right"
     }
   ],
   "cards": [
     {
       "dot": "cyan",
-      "title": "Duas origens de IA",
+      "title": "De onde vem a chave",
       "items": [
-        "A conexão da instância é cadastrada e paga pela Maind, que escolhe, organização a organização, a quem a disponibiliza. A organização a usa como veio, sem editar.",
-        "A conexão própria é cadastrada pelo owner da organização, com o provedor que ele quiser, e a organização paga o consumo."
+        "A IA é sempre da organização: não há mais uma conexão de IA da instância.",
+        "A chave da organização vem do provedor com que ela tem contrato, e a organização paga o consumo. A Maind pode dar uma chave de provedor, e quem a paga é a Maind.",
+        "A conexão é configurada no front do middleware: pelo owner, com o middleware na casa do cliente, ou pelo time da Maind, na hospedagem da Maind."
       ]
     },
     {
@@ -714,11 +756,11 @@
     },
     {
       "dot": "amber",
-      "title": "Quem vê o consumo",
+      "title": "Consumo, custo e avisos",
       "items": [
-        "O Horus registra cada chamada à IA só em números, sem o conteúdo. Quando o provedor não informa o custo, o Horus o estima pelo preço público e marca a estimativa.",
-        "A Maind acompanha o custo do mês de cada organização e é avisada acima de um limite; nada se corta sozinho.",
-        "O owner vê o consumo e o custo só da conexão própria."
+        "Cada chamada à IA fica registrada só em números, sem o conteúdo. Quando o provedor não informa o custo, ele é estimado pelo preço público, e a estimativa fica marcada.",
+        "O owner vê o consumo e o custo de toda a IA da organização: da chave que ela paga e da que a Maind dá.",
+        "Quando a IA para, o owner é sempre avisado; se a chave é da Maind, o time da Maind também, para repor o crédito. Nada se corta sozinho."
       ]
     }
   ]

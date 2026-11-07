@@ -603,8 +603,8 @@
       "dot": "cyan",
       "title": "Quem move o assento",
       "items": [
-        "A Maind libera e retira assentos, tipo a tipo, no painel da administração.",
-        "O owner da organização aprova os convites e as trocas de tipo, ou convida direto, sem aprovação.",
+        "A Maind libera e retira assentos, tipo a tipo, no painel da administração, e eles vão ao middleware da organização.",
+        "O owner da organização aprova, no front do middleware, os convites e as trocas de tipo, ou convida direto, sem aprovação.",
         "A pessoa convidada aceita o convite dentro do prazo da reserva."
       ]
     },

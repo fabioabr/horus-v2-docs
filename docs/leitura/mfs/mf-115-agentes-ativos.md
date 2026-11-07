@@ -8,7 +8,7 @@ objetivos: [O4]
 quem_usa: [gestor, membro ouro, owner da organização, membro prata, membro bronze]
 complexidade: alta
 relacionadas: [MF-114, MF-113, MF-112, MF-107, MF-108, MF-109, MF-105, MF-116, MF-103, MF-118, MF-104]
-atualizado: 2026-11-05
+atualizado: 2026-11-07
 fontes:
   - docs/raw/produto/04-macro-funcionalidades-de-hoje.md
   - docs/raw/produto/05-v2.0-consolidada.md
@@ -75,9 +75,10 @@ resto chega sozinho.
 - **Quem é rebaixado** (passa de ouro a prata ou a bronze e continua na organização): os agentes que criou continuam
   vinculados a ele, mas **desabilitados**: não rodam, e a única ação é excluí-los, porque a prata e o bronze não
   criam agentes. Se voltar a ser ouro, reativa um a um; nada volta sozinho.
-- **O custo:** cada execução consome IA, às vezes mais que uma conversa. Paga quem é dono da conexão de IA: a
-  organização, se a conexão é dela; a Maind, se é uma conexão da instância que a Maind disponibiliza à organização e
-  embute no preço do assento. O owner escolhe o modelo de IA dos agentes entre os das conexões que a organização tem.
+- **O custo:** cada execução consome IA, às vezes mais que uma conversa. A IA é sempre da organização, e quem paga
+  depende da chave de acesso ao provedor de IA: a organização paga a chave própria, e a Maind paga a chave que ela dá
+  à organização. O owner vê o consumo e o custo de toda a IA da organização, das duas chaves. O owner escolhe o modelo
+  de IA dos agentes entre os das conexões que a organização tem.
 - **Sem teto automático de custo:** nenhum agente nem organização é cortado sozinho por gastar demais. Valem os
   tetos de cada execução e o aviso de custo da Administração da instância (MF-101), que avisa a Maind e não
   corta nada sozinho.
@@ -90,8 +91,7 @@ resto chega sozinho.
 - **Para o Horus como produto:** preenche o aviso, um dos três problemas que o Horus se propõe a resolver, hoje
   vazio.
 
-**Como vamos saber que funcionou:** a cena da Carla acontece de verdade e, nas organizações que usam a conexão de IA
-da instância, o custo de IA dos agentes cabe no preço do assento.
+**Como vamos saber que funcionou:** a cena da Carla acontece de verdade.
 
 ## 🚶 Como se usa no Horus
 
@@ -138,7 +138,7 @@ quando, o conector entrega e o board mostra.
 | Perguntar aos dados em português (MF-107) | **depende de**: o agente pergunta ao mesmo motor da conversa de análise. |
 | Respostas visuais (MF-108) | **depende de**: os gráficos do PDF do agente são os mesmos da conversa. |
 | A web como fonte (MF-109) | **depende de**: o fato que vem da web, com o link e a data, vale também no que o agente entrega. |
-| IA sob controle da organização (MF-105) | **depende de**: é ali que a organização tem as conexões de IA, a dela ou a que a instância lhe disponibiliza, e que o owner escolhe o modelo dos agentes; o consumo é pago pelo dono da conexão. |
+| IA sob controle da organização (MF-105) | **depende de**: é ali que fica a IA da organização, com a chave própria ou a que a Maind lhe dá, e que o owner escolhe o modelo dos agentes; a organização paga a chave própria, e a Maind, a que dá. |
 | Auditoria (MF-116) | **é a base de**: registra o que o agente enviou, por qual conector e a quem. |
 | Licenças e planos (MF-103) | **é a base de**: no corte, quando os assentos da organização são desativados, os agentes param e voltam do próximo horário quando ela volta; quando a pessoa passa a prata ou a bronze, os agentes dela ficam desabilitados. |
 | Bases de demonstração (MF-118) | **complementa**: as organizações de exemplo ganham cenários próprios para mostrar o agente nas provas de valor da v2.0. |
@@ -155,7 +155,7 @@ quando, o conector entrega e o board mostra.
 
 ## ⏳ Ainda a decidir
 
-Nada a decidir.
+- **Que custo de IA o aviso de custo à Maind passa a acompanhar,** agora que não há conexão da instância. 🔎 a confirmar com o dono.
 
 ## 📚 Para saber mais
 
@@ -164,8 +164,12 @@ Nada a decidir.
   e o nível livre, fechou o `I-004`); a `D-061` (como se cria e como roda); a `D-063` (todo agente usa IA); a `D-064`
   (o agente ao lado do PDF do board no agendamento); a `D-073` (de full a leitor, substituída em parte pela `D-207`);
   a `D-122` (entra na v2.0); a `D-145` (na v2.0, a organização é a fronteira dos dados); a `D-159` (a Maind paga a IA
-  e a embute no assento, hoje só na conexão da instância) e a `D-216` (as duas origens da conexão de IA: a da
-  organização, que ela paga, e a da instância, que a Maind paga); a `D-163`, cuja leitura sobre o agente pausado e
+  e a embute no assento) e a `D-216` (as duas origens da conexão de IA: a da organização, que ela paga, e a da
+  instância, que a Maind paga), as duas substituídas em parte pela `D-266` (não há mais conexão da instância: a IA é
+  sempre da organização, configurada no front do middleware, `D-265`); a `D-264` e a `D-267` (a Maind pode dar à
+  organização uma chave de provedor de IA, que ela paga, e o owner vê o consumo e o custo de toda a IA, o que
+  substitui em parte a `D-241`); o aviso de custo à Maind sem a conexão da instância segue em aberto (o 🔎 da §5.12 da
+  v2.0 consolidada); a `D-163`, cuja leitura sobre o agente pausado e
   transferido ficou sem efeito pelas `D-206` a `D-209`; a `D-193` (o owner da organização é funcionário do cliente);
   a `D-194` (os cinco tipos de assento; que o ouro é o antigo membro full e o bronze, o antigo membro leitor, é
   leitura confirmada pelo dono em 05/11/2026); a `D-203` (a prata e o bronze não criam agentes; a parte do espaço da
@@ -174,7 +178,7 @@ Nada a decidir.
   é avisado); a `D-227` (o que não cabe no canal não é entregue nele); a `D-244` (o que aguarda o sim do owner aparece marcado "aguardando aprovação"); a `D-228` (a aprovação nasce automática); a
   `D-234` (sem teto automático de custo; ficam os tetos por execução e o aviso de custo); a `D-197` (a mf inteira
   numa versão só, a v2.0); as letras (p) e (q) da `P-008`.
-- [A v2.0 consolidada](../../raw/produto/05-v2.0-consolidada.md): §4 (passo 9), §5.9, §7 e §8 (o risco do custo).
+- [A v2.0 consolidada](../../raw/produto/05-v2.0-consolidada.md): §4 (passo 9), §5.9, §5.12 e §5.14 (a IA), §7 e §8 (o risco do custo).
   [Mapa das mfs](../../raw/produto/04-macro-funcionalidades-de-hoje.md) ("O que o dono já disse" e o problema nº 3),
   [versões](../../raw/produto/06-versoes.md), [objetivos](../../raw/produto/07-mapa-de-objetivos-e-funcionalidades.md) (O4) e
   [lacunas](../../raw/produto/03-inventario-de-lacunas.md) (candidata nº 7).

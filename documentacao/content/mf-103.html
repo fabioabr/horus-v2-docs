@@ -10,18 +10,19 @@
 <ul>
   <li><strong>Um plano só.</strong> A versão 2.0 tem um plano, com tudo o que ela oferece. Ninguém escolhe plano: a empresa paga pelos assentos, por tipo.</li>
   <li><strong>Cinco tipos de assento.</strong> Owner, gestor e três faixas de membro: ouro, prata e bronze. O que cada tipo faz está em <a href="#mf-101-assentos">Os assentos: quem pode fazer o quê</a>.</li>
-  <li><strong>O primeiro owner não paga.</strong> Cada organização nasce com o assento do primeiro owner grátis. Os demais assentos, inclusive o de um segundo owner, são pagos.</li>
+  <li><strong>O primeiro owner não paga.</strong> Cada organização nasce com o assento do primeiro owner grátis. Os demais assentos são pagos, inclusive os de até mais dois owners.</li>
   <li><strong>Sem vaga, não entra.</strong> Se não há assento livre de um tipo, ninguém passa a ocupá-lo até a Maind liberar mais.</li>
   <li><strong>Sem data de validade.</strong> O Horus não tem vencimento. Renovar, dar prazo e cortar são decisões comerciais da Maind; o produto só executa o corte.</li>
 </ul>
 <h4 id="mf-103-quem-e-quem">Quem cuida de quê</h4>
+<p>Os assentos que a Maind libera vão ao <strong>middleware</strong> da organização, a peça que fica entre o Horus e os bancos dela: ela guarda quem são as pessoas, os bancos e a IA, e responde pelo caminho até eles (<a href="#mf-121">Middleware da organização, MF-121</a>). É lá, no <strong>front do middleware</strong>, um aplicativo de configuração separado do Horus, que o owner cadastra as pessoas.</p>
 <div class="table-wrap">
   <table class="t">
     <thead><tr><th>Quem</th><th>O que faz com os assentos</th></tr></thead>
     <tbody>
       <tr class="zebra"><td><strong>A Maind</strong> (o administrador da instância)</td><td>Combina os assentos com o cliente, fora do produto; cria a organização e libera a quantidade de cada tipo; libera mais, reduz e, se for o caso, corta a organização. Tudo pelo painel da <a href="#mf-101-liberar-assentos">Administração da instância</a>.</td></tr>
-      <tr class="zebra"><td><strong>O owner da organização</strong></td><td>Acompanha a contagem dos assentos, aprova os convites e as trocas de tipo que os gestores pedem, define o prazo da reserva e pede mais assentos à Maind quando precisa.</td></tr>
-      <tr class="zebra"><td><strong>O gestor</strong></td><td>Cria o convite de quem vai entrar na equipe dele, escolhendo o tipo de assento, e pede a troca de tipo de uma pessoa.</td></tr>
+      <tr class="zebra"><td><strong>O owner da organização</strong></td><td>Acompanha a contagem dos assentos, aprova no front do middleware os convites e as trocas de tipo que os gestores pedem, define o prazo da reserva e pede mais assentos à Maind quando precisa.</td></tr>
+      <tr class="zebra"><td><strong>O gestor</strong></td><td>Cria pelo Horus o convite de quem vai entrar na equipe dele, escolhendo o tipo de assento, e pede a troca de tipo de uma pessoa.</td></tr>
       <tr class="zebra"><td><strong>A pessoa convidada</strong></td><td>Aceita o convite dentro do prazo e passa a ocupar o assento.</td></tr>
     </tbody>
   </table>
@@ -45,7 +46,7 @@
 <h4 id="mf-103-contas">Como os assentos se contam</h4>
 <ul>
   <li><strong>Quem é owner e gestor ao mesmo tempo ocupa um assento só</strong>, o de owner. Numa equipe pequena, o owner que também gere pessoas não paga duas vezes.</li>
-  <li><strong>A organização pode ter mais de um owner.</strong> Só o primeiro é grátis; o segundo ocupa um assento de owner pago.</li>
+  <li><strong>A organização pode ter até mais dois owners além do primeiro.</strong> Só o primeiro é grátis; cada owner a mais ocupa um assento de owner contratado, contado e cobrado como qualquer outro. Os owners que entram pelo login da empresa chegam na versão 2.1.</li>
   <li><strong>Quem entra sem gestor já ocupa o assento.</strong> Quando o owner convida alguém sem indicar o gestor, a pessoa espera na quarentena (a área de espera onde ela só vê o próprio perfil e os boards públicos da organização), mas o assento do tipo do convite já é dela.</li>
   <li><strong>O assento guardado conta como ocupado.</strong> Enquanto um convite aprovado espera a resposta, a vaga não está livre para outro convite nem pode ser retirada.</li>
 </ul>
@@ -53,8 +54,8 @@
 <h3 id="mf-103-convite">Como uma pessoa ganha um assento</h3>
 <p>Todo assento novo é ocupado por meio de um convite. O caminho mais comum é o do gestor que chama alguém para a equipe dele:</p>
 <ol class="steps">
-  <li><div><h4>O gestor cria o convite</h4><p>Ele escolhe o tipo de assento da pessoa, mesmo que não haja vaga livre daquele tipo. Assentos de owner e de gestor, só o owner da organização dá.</p></div></li>
-  <li><div><h4>O owner aprova</h4><p>Para aprovar, precisa haver assento livre do tipo pedido. Se falta, o pedido pendente mostra que falta vaga, e o owner pede mais à Maind. Se o owner recusa, nada é enviado e nenhum assento é guardado.</p></div></li>
+  <li><div><h4>O gestor cria o convite</h4><p>Pelo Horus, ele escolhe o tipo de assento da pessoa, mesmo que não haja vaga livre daquele tipo. Assentos de owner e de gestor, só o owner da organização dá.</p></div></li>
+  <li><div><h4>O owner aprova</h4><p>O owner aprova no front do middleware, onde a pessoa é cadastrada. Para aprovar, precisa haver assento livre do tipo pedido. Se falta, o pedido pendente mostra que falta vaga, e o owner pede mais à Maind. Se o owner recusa, nada é enviado e nenhum assento é guardado.</p></div></li>
   <li><div><h4>O e-mail sai e o assento fica guardado</h4><p>Aprovado o convite, a pessoa recebe o e-mail, e o assento fica reservado para ela pelo prazo que o owner definiu.</p></div></li>
   <li><div><h4>A pessoa aceita</h4><p>Ela ocupa o assento e entra na equipe do gestor que a convidou. Se não aceitar no prazo, o convite expira, a vaga volta a ficar livre e o gestor pode pedir de novo.</p></div></li>
 </ol>
@@ -65,7 +66,7 @@
 <dx-diagrama ref="mf-103-vida-de-um-assento"></dx-diagrama>
 
 <h3 id="mf-103-troca">Mudar o tipo de assento</h3>
-<p>Trocar o tipo de quem já está dentro segue o mesmo caminho do convite: o gestor pede, o owner aprova, e precisa haver vaga do tipo novo. Como a pessoa já está na organização, não há reserva: aprovada a troca, ela ocupa o assento novo na hora, e o antigo fica livre. A regra vale nos dois sentidos, para subir e para descer de faixa, e o owner pode trocar o tipo de qualquer pessoa sem pedido.</p>
+<p>Trocar o tipo de quem já está dentro segue o mesmo caminho do convite: o gestor pede pelo Horus, o owner aprova no front do middleware, e precisa haver vaga do tipo novo. Como a pessoa já está na organização, não há reserva: aprovada a troca, ela ocupa o assento novo na hora, e o antigo fica livre. A regra vale nos dois sentidos, para subir e para descer de faixa, e o owner pode trocar o tipo de qualquer pessoa sem pedido.</p>
 <h4 id="mf-103-o-que-criou">O que acontece com o que a pessoa criou</h4>
 <div class="table-wrap">
   <table class="t">
@@ -122,14 +123,14 @@
     <thead><tr><th>Item</th><th>Como fica</th></tr></thead>
     <tbody>
       <tr class="zebra"><td><strong>As funcionalidades da versão 2.0</strong></td><td>Todas, no plano único. O que cada pessoa usa é ajustado pelas roles, dentro do teto do tipo de assento.</td></tr>
-      <tr class="zebra"><td><strong>A IA pela conexão da instância</strong></td><td>Vai embutida no preço do assento. A Maind cadastra e paga essa conexão, e a organização não abre conta em provedor de IA.</td></tr>
-      <tr class="zebra"><td><strong>A IA pela conexão da própria organização</strong></td><td>A organização paga o consumo dela, com o provedor que escolheu.</td></tr>
+      <tr class="zebra"><td><strong>A IA com a chave da própria organização</strong></td><td>A organização paga o consumo dela, com o provedor que escolheu.</td></tr>
+      <tr class="zebra"><td><strong>A IA com a chave que a Maind dá</strong></td><td>A Maind paga o consumo. Se essa IA entra no preço do assento ainda está em definição.</td></tr>
       <tr class="zebra"><td><strong>As mensagens pelo número de WhatsApp da Maind</strong></td><td>Pagas à parte, fora do produto: a Maind repassa o custo das mensagens que a organização gerar.</td></tr>
       <tr class="zebra"><td><strong>O WhatsApp com número próprio</strong></td><td>A organização paga diretamente o próprio número.</td></tr>
     </tbody>
   </table>
 </div>
-<p>As duas origens da conexão de IA, e quem vê o consumo de cada uma, estão em <a href="#mf-101-ia">A inteligência artificial: da instância ou a sua</a>.</p>
+<p>A IA é sempre da organização, e quem a configura e quem vê o consumo de cada chave estão em <a href="#mf-101-ia">A inteligência artificial é sempre da organização</a>.</p>
 
 <h3 id="mf-103-bastidores">Nos bastidores, sem complicar</h3>
 <p>Só o bastante da tecnologia para a história fazer sentido:</p>
@@ -137,7 +138,7 @@
   <li><strong>Um porteiro só para o “pode?”.</strong> Toda tela, todo canal (o app, a Pergunta rápida, o WhatsApp) e todo trabalho automático perguntam à mesma peça do servidor se a pessoa pode fazer alguma coisa, e a tela só esconde o que ela nega. É por isso que o bronze não pergunta em canal nenhum: a regra mora num lugar só.</li>
   <li><strong>Primeiro o assento, depois o resto.</strong> O porteiro confere, nesta ordem, se a organização está cortada e qual é o tipo de assento da pessoa; depois o papel dela e a equipe que ela gere; e por fim as roles. A primeira resposta “não” encerra a conta, e se alguma conferência falha, a resposta também é não.</li>
   <li><strong>O corte é uma marca na organização.</strong> Cortar não mexe pessoa por pessoa: marca a organização inteira, e o porteiro lê essa marca antes de tudo. Os agendamentos e os agentes ficam pausados e, quando a organização volta, retomam do próximo horário, sem refazer o que perderam.</li>
-  <li><strong>A vaga se confere num lugar só.</strong> A quantidade que a Maind libera é copiada para o banco da própria organização, e é ali que o convite confere se há vaga, numa operação só.</li>
+  <li><strong>A vaga vai para o middleware.</strong> A quantidade que a Maind libera vai ao middleware da organização, onde o owner cadastra as pessoas. A forma técnica de o convite conferir se há vaga ainda será definida.</li>
   <li><strong>A história fica com a Maind.</strong> Quem ocupou cada assento, desde quando, os convites, as devoluções, os cortes e as reativações vão para o <a href="#mf-101-relatorio">relatório da organização</a>, que é da administração.</li>
 </ul>
 
@@ -148,12 +149,12 @@
     <tbody>
       <tr class="zebra"><td><strong>Cobrar e receber</strong></td><td>O preço, a fatura, o pagamento e o repasse do WhatsApp ficam com o comercial da Maind, fora do produto.</td></tr>
       <tr class="zebra"><td><strong>Oferecer vários planos</strong></td><td>Há um plano só, sem nome próprio e sem escolha de plano no painel. Nomes, escolha e limites por plano ficam para quando houver mais de um.</td></tr>
-      <tr class="zebra"><td><strong>Cobrar pelo uso do mês</strong></td><td>A conta é por assento, e não por pergunta ou por consumo. Quem traz a própria IA paga o consumo dela, e as mensagens pelo número de WhatsApp da Maind se pagam à parte.</td></tr>
+      <tr class="zebra"><td><strong>Cobrar pelo uso do mês</strong></td><td>A conta é por assento, e não por pergunta ou por consumo. Quem usa a própria chave de IA paga o consumo dela, e as mensagens pelo número de WhatsApp da Maind se pagam à parte.</td></tr>
       <tr class="zebra"><td><strong>Ter data de validade</strong></td><td>Não há vencimento dentro do Horus. Renovação, prazo de tolerância e corte são decisões comerciais da Maind.</td></tr>
       <tr class="zebra"><td><strong>Receber pedidos de assento</strong></td><td>Não há botão nem fila de pedidos no Horus: o owner pede mais por contato comercial.</td></tr>
       <tr class="zebra"><td><strong>Cortar um tipo de assento só</strong></td><td>O corte é sempre da organização inteira.</td></tr>
       <tr class="zebra"><td><strong>Transferir o que alguém criou</strong></td><td>Não há transferência, nem na versão 2.0 nem na 2.1: quem é excluído perde o que criou.</td></tr>
-      <tr class="zebra"><td><strong>Ativar assentos numa instalação na casa do cliente</strong></td><td>O Horus roda no serviço da Maind. A instalação completa na casa do cliente, com os assentos ativados por um arquivo de licença, não tem versão prevista e só volta se um cliente exigir que nada saia de casa, nem a pergunta. Quem precisa manter os dados em casa usa o middleware (<a href="#mf-121">MF-121</a>, versão 2.1).</td></tr>
+      <tr class="zebra"><td><strong>Ativar assentos numa instalação na casa do cliente</strong></td><td>O Horus roda no serviço da Maind. A instalação completa na casa do cliente, com os assentos ativados por um arquivo de licença, não tem versão prevista e só volta se um cliente exigir que nada saia de casa, nem a pergunta. Quem precisa manter os dados em casa hospeda lá o middleware da organização (<a href="#mf-121">MF-121</a>), já na versão 2.0.</td></tr>
     </tbody>
   </table>
 </div>
@@ -165,26 +166,27 @@
     <tbody>
       <tr class="zebra"><td><a href="#mf-101">Administração da instância (MF-101)</a></td><td>O painel onde a Maind cria a organização e libera, reduz e corta os assentos fica lá, junto com o relatório e a história dos assentos.</td></tr>
       <tr class="zebra"><td><a href="#mf-102">Organizações, pessoas e papéis (MF-102)</a></td><td>O convite, a aprovação, a quarentena, os papéis e as roles vêm de lá. O tipo de assento é o teto do que as roles liberam, e os grupos que se atualizam sozinhos podem usar o tipo de assento como regra, como “todo bronze”.</td></tr>
-      <tr class="zebra"><td><a href="#mf-105">IA sob controle da organização (MF-105)</a></td><td>A conexão de IA da instância vai embutida no preço do assento; a conexão que a organização cadastra é paga por ela.</td></tr>
+      <tr class="zebra"><td><a href="#mf-105">IA sob controle da organização (MF-105)</a></td><td>A IA é sempre da organização: a chave própria, a organização paga; a chave que a Maind dá, a Maind paga.</td></tr>
       <tr class="zebra"><td><a href="#mf-112">Boards e Relatórios (MF-112)</a></td><td>O que o rebaixado criou fica desabilitado, só para excluir, até ele voltar a ser ouro e reativar item por item.</td></tr>
       <tr class="zebra"><td><a href="#mf-114">Módulo de Agendamentos de Agentes (MF-114)</a> e <a href="#mf-115">Agentes ativos (MF-115)</a></td><td>Param no corte e voltam do próximo horário; os de quem foi rebaixado deixam de rodar.</td></tr>
       <tr class="zebra"><td><a href="#mf-113">Conectores de Saída (MF-113)</a></td><td>É por eles que a prata e o bronze recebem alertas e PDFs, por e-mail e pelo WhatsApp.</td></tr>
       <tr class="zebra"><td><a href="#mf-110">Pergunta rápida (MF-110)</a> e <a href="#mf-111">Chat pelo WhatsApp (MF-111)</a></td><td>O tipo de assento decide quem pergunta: o bronze não ganha o botão da Pergunta rápida nem conversa pelo WhatsApp.</td></tr>
       <tr class="zebra"><td><a href="#mf-117">Home da organização (MF-117)</a></td><td>O uso do Horus aparece lá, e não na visão de cobrança.</td></tr>
       <tr class="zebra"><td><a href="#mf-119">Investigação guiada (MF-119)</a></td><td>Chega na versão 2.1, e a prata vai usá-la.</td></tr>
+      <tr class="zebra"><td><a href="#mf-121">Middleware da organização (MF-121)</a></td><td>Os assentos que a Maind libera vão ao middleware da organização, onde o owner cadastra as pessoas e aprova os convites e as trocas de tipo.</td></tr>
     </tbody>
   </table>
 </div>
 <div class="callout callout--neutral">
   <span class="ico">•</span>
-  <div><b>Ainda em definição</b><p>O preço dos assentos é combinado em contrato, e a Maind ainda fecha dois pontos dele: se o assento prata, que é novo, terá um preço diferente do ouro e do bronze, e se o preço do assento muda para a organização que traz a própria IA e paga o consumo dela. Também falta definir os números do prazo inicial e do prazo máximo da reserva.</p></div>
+  <div><b>Ainda em definição</b><p>O preço dos assentos é combinado em contrato, e a Maind ainda fecha dois pontos dele: se o assento prata, que é novo, terá um preço diferente do ouro e do bronze, e se a IA da chave que a Maind dá, e paga, entra no preço do assento. Também falta definir os números do prazo inicial e do prazo máximo da reserva.</p></div>
 </div>
 
 <h3 id="mf-103-faq">Perguntas frequentes</h3>
 <div class="faq">
   <details open>
     <summary>Quanto custa e como é cobrado?</summary>
-    <div class="faq-body"><p>O valor é combinado em contrato com a Maind e não aparece no Horus. A regra é simples: um plano só, com tudo o que a versão 2.0 oferece, pago por assento e por tipo de assento, e o primeiro owner de cada organização não paga. Se a organização usa a IA da instância, a IA já vai no preço do assento; se traz a própria, paga o consumo dela.</p></div>
+    <div class="faq-body"><p>O valor é combinado em contrato com a Maind e não aparece no Horus. A regra é simples: um plano só, com tudo o que a versão 2.0 oferece, pago por assento e por tipo de assento. Só o primeiro owner de cada organização não paga; os owners a mais, no máximo dois, ocupam assentos de owner contratados. A IA é sempre da organização: com a chave própria, ela paga o consumo; com uma chave que a Maind lhe dê, quem paga é a Maind.</p></div>
   </details>
   <details>
     <summary>O que acontece quando os assentos de um tipo acabam?</summary>

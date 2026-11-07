@@ -8,7 +8,7 @@ objetivos: [O2, O8]
 quem_usa: [owner da instância, owner da organização, gestor, membro ouro, membro prata, membro bronze, TI e segurança do contratante]
 complexidade: alta
 relacionadas: [MF-101, MF-102, MF-104, MF-105, MF-112, MF-116, MF-118, MF-120, MF-121, MF-123]
-atualizado: 2026-11-05
+atualizado: 2026-11-07
 fontes:
   - docs/raw/produto/03-inventario-de-lacunas.md
   - docs/raw/produto/04-macro-funcionalidades-de-hoje.md
@@ -32,12 +32,17 @@ fontes:
 
 ## 🧭 O que é
 
-Esta macro funcionalidade (mf) é inteira da v2.1, na primeira onda, a do Horus contratado como serviço. **Até lá, a
-organização é a fronteira dos dados:** quem pode perguntar alcança tudo o que as **fontes de dados** dela têm (os
-bancos da empresa ligados ao Horus). A barreira contra a rede interna, a porta única até o banco e o cofre das
-credenciais ficam na v2.0, em Conectar as fontes vivas (MF-104).
+Esta macro funcionalidade (mf) é inteira da v2.1, a versão que vem depois da v2.0. **Até lá, a organização é a
+fronteira dos dados:** quem pode perguntar alcança tudo o que as **fontes de dados** dela têm (os bancos da empresa
+ligados ao Horus). A barreira contra a rede interna e a porta única até o banco ficam na v2.0, em Conectar as fontes
+vivas (MF-104).
 
-Ela reúne tudo o que só vale com essa proteção: o interruptor geral, as regras, as características das pessoas e
+Desde a v2.0, cada organização chega aos bancos pelo seu **middleware**, o Middleware da organização (MF-121): a peça
+que fica entre o Horus e os bancos da organização, que guarda quem são as pessoas, os bancos e a IA e responde pelo
+caminho até eles. Na v2.0, ele já confere quem entra, guarda as pessoas e dá o acesso aos bancos. Esta mf roda dentro
+dele e acrescenta o que faltava: quem vê o quê dentro de cada banco.
+
+A mf reúne tudo o que só vale com essa proteção: o interruptor geral, as regras, as características das pessoas e
 os grupos por elas, a liberação do gestor no board, o registro dela no rastro e a demonstração. E vem em duas
 etapas. Na primeira, o **owner da organização**, que cuida das pessoas e dos dados de um setor ou de um cliente,
 escreve em português quem vê o quê, num documento por base, ao lado do **modelo semântico**, o texto que explica ao
@@ -70,12 +75,15 @@ A regra se apoia nas **claims**, as características que dizem o que cada pessoa
   os vê, e o número fora do alcance some da faixa; o board público usa o do owner que o publicou. Na v2.0 essas
   regras já valem, mas todos da organização veem os mesmos dados.
 - **O login da empresa, por organização:** na segunda etapa, cada owner liga o da sua organização, só pelo padrão
-  OpenID Connect. As regras da empresa e as do Horus valem juntas, e vale a mais restritiva: o Horus nunca dá mais
-  do que a empresa deu. O login só autentica: só entra quem foi convidado. Quando a role do cadastro e a do login
-  discordam, vale a do login, e quem chega sem valor mapeado cai na role padrão. A sessão se confirma com a empresa a
-  cada 8 horas, e quem ela desliga precisa entrar de novo e não consegue. Com o login ligado, o aviso de resposta
-  limitada diz qual regra do Horus limitou e que as regras da empresa também valem; e a fonte cuja tecnologia não
-  aceita a identidade da pessoa fica só com a regra do Horus, com o owner avisado ao ligar o login.
+  OpenID Connect, e essa configuração fica no middleware, como toda configuração de entrada. As regras da empresa e
+  as do Horus valem juntas, e vale a mais restritiva: o Horus nunca dá mais do que a empresa deu. O login só
+  autentica: só entra quem foi convidado. O owner da organização continua entrando sempre por usuário e senha; os
+  outros owners que ele cadastra, no máximo mais dois, cada um num assento de owner contratado, ficam ligados ao
+  login da empresa. Quando a role do cadastro e a do login discordam, vale a do login, e quem chega sem valor
+  mapeado cai na role padrão. A sessão se confirma com a empresa a cada 8 horas, e quem ela desliga precisa entrar de
+  novo e não consegue. Com o login ligado, o aviso de resposta limitada diz qual regra do Horus limitou e que as
+  regras da empresa também valem; e a fonte cuja tecnologia não aceita a identidade da pessoa fica só com a regra do
+  Horus, com o owner avisado ao ligar o login.
 - **A liberação do gestor no board:** no board que o **gestor** publica, quem abre vê o que ele vê, mesmo acima das
   travas da empresa, e a responsabilidade é dele; cada liberação fica no rastro da Auditoria (MF-116), com o recorte
   de acesso de quem liberou. Fora do board, cada um fica no que pode ver.
@@ -119,8 +127,8 @@ flowchart LR
 ## 🧩 Grau de complexidade: alta
 
 🔴 A primeira etapa existe inteira na v1 e volta do código de hoje. O peso está em transplantá-la de uma vez sobre
-um Horus que mudou, com canais novos que precisam todos passar por ela: um canal que escape vaza dado de uma pessoa
-para outra. A segunda etapa é nova e depende de terceiros que o Horus não controla: o login de cada empresa e cada
+um Horus que mudou, agora dentro do middleware de cada organização, com canais novos que precisam todos passar por
+ela: um canal que escape vaza dado de uma pessoa para outra. A segunda etapa é nova e depende de terceiros que o Horus não controla: o login de cada empresa e cada
 tecnologia de banco aceitar a identidade da pessoa.
 
 > ⚠️ É a leitura do PO a partir dos documentos de arquitetura. A estimativa de esforço é do arquiteto.
@@ -132,12 +140,12 @@ tecnologia de banco aceitar a identidade da pessoa.
 | Administração da instância (MF-101) | **complementa**: o owner da instância, que cuida da instalação ali, é quem permite esta proteção pelo interruptor geral |
 | Organizações, pessoas e papéis (MF-102) | **complementa**: a role decide o que a pessoa usa, e esta mf, o que ela vê; os grupos ganham as características da pessoa, a planilha de convites ganha as colunas delas, e as roles podem chegar pelo login da empresa |
 | Conectar as fontes vivas (MF-104) | **depende de**: a regra vale sobre cada fonte, e a consulta protegida passa pela mesma porta única até o banco |
-| IA sob controle da organização (MF-105) | **depende de**: a IA que transforma o texto em regra e confere as consultas segue as conexões de IA da organização |
+| IA sob controle da organização (MF-105) | **depende de**: a IA que transforma o texto em regra e confere as consultas é a IA da organização, configurada no middleware dela |
 | Boards e Relatórios (MF-112) | **complementa**: os boards passam a mostrar números diferentes a pessoas diferentes, e a liberação do gestor vale dentro do board publicado e no PDF que ele envia |
 | Auditoria (MF-116) | **complementa**: o rastro passa a guardar cada liberação do gestor, com o recorte de acesso de quem liberou |
 | Bases de demonstração (MF-118) | **complementa**: as organizações de exemplo ganham as regras e as características que mostram esta proteção |
 | Faixa de avisos e números (MF-120) | **complementa**: os números da faixa passam a ser os de cada pessoa, e o que ela não pode ver some |
-| Middleware na casa do contratante (MF-121) | **é a base de**: o middleware da segunda onda da v2.1 conta com esta proteção |
+| Middleware da organização (MF-121) | **depende de**: a proteção roda no middleware de cada organização, que chega na v2.0 e já guarda as pessoas e dá o caminho até os bancos |
 | Fonte AWS Athena (MF-123) | **é a base de**: a fonte nova depende desta proteção, que hoje só cobre o SQL Server |
 
 ## 🚧 O que ela não faz
@@ -151,6 +159,8 @@ tecnologia de banco aceitar a identidade da pessoa.
 ## ⏳ Ainda a decidir
 
 - **Os bancos que a proteção cobre além do SQL Server**, a começar pelo AWS Athena.
+- **Onde o owner escreve as regras e dá as características:** no Horus ou no front do middleware, o aplicativo em
+  que ele já gere as pessoas. 🔎 a confirmar com o dono.
 
 ## 📚 Para saber mais
 
@@ -178,10 +188,18 @@ tecnologia de banco aceitar a identidade da pessoa.
     board público com o acesso do owner que o publicou), com a leitura **D-163.2** do documento da v2.0, confirmada
     pelo dono em 05/11/2026.
   - **D-194** (os tipos de assento: ouro, prata e bronze).
-  - **D-196** (a MF-121 depende desta mf), **D-198** e **D-201** (a MF-123 depende desta mf).
+  - **D-263** (esta mf continua na v2.1, roda no middleware, e a dependência se inverte: ela passa a depender da
+    MF-121, que subiu inteira para a v2.0 pela **D-260**; a **D-196** fazia a MF-121 depender desta mf), **D-198** e
+    **D-201** (a MF-123 depende desta mf).
+  - **D-258** (o middleware em toda organização desde a v2.0; as configurações de entrada ficam nele; o owner da
+    organização e o administrador da instância entram sempre por usuário e senha; os outros owners, ligados ao login
+    da empresa, na v2.1), **D-261** (as pessoas ficam no middleware, e o owner as gere pelo front dele), **D-266** (a
+    IA é sempre da organização, configurada no middleware) e **D-269** (no máximo mais dois owners, cada um num
+    assento de owner contratado). Onde o owner escreve as regras e dá as características não está decidido
+    (🔎 a confirmar com o dono; o que o SaaS guarda de cada pessoa é a **P-048**, do arquiteto).
   - **P-033** (a proteção no AWS Athena, que hoje só cobre o SQL Server) e **P-008**, letras c e d.
-- `docs/raw/produto/05-v2.0-consolidada.md` (§3.1, §5.2, §5.4, §6 e as dependências), `06-versoes.md` (a onda 1 da
-  v2.1), `04-macro-funcionalidades-de-hoje.md` (o mapa e o que o dono disse), `03-inventario-de-lacunas.md`
+- `docs/raw/produto/05-v2.0-consolidada.md` (§3.1, §5.2, §5.4, §5.17, §6 e as dependências), `06-versoes.md` (a
+  onda 1 da v2.1, que tem as quatro mfs da v2.1), `04-macro-funcionalidades-de-hoje.md` (o mapa e o que o dono disse), `03-inventario-de-lacunas.md`
   (candidatas nº 10 e 11) e `07-mapa-de-objetivos-e-funcionalidades.md` (O2 e O8). ⚠️ O 03, o 04 e o 07 ainda não
   listam as peças que a D-199 trouxe a esta mf.
 - `docs/raw/arquitetura/01-estrategia-da-solucao.md` (§3, §4 e o marco M8), `04-software.md` (§3.2 e §3.6),

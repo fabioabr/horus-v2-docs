@@ -2,7 +2,7 @@
 <p>Com isso, o gestor e o executivo perguntam sem receio de ver ou mostrar o que não podem, e a empresa pode abrir o Horus a mais gente, inclusive às áreas de finanças e de pessoas. Quem já tem regras de acesso no banco e no login da empresa não precisa recriá-las: o Horus as soma às dele. Esta página conta como a regra nasce, como ela vale a cada pergunta e o que fica de fora.</p>
 <div class="callout callout--info">
   <span class="ico">i</span>
-  <div><b>Versão 2.1, em construção</b><p>O que está aqui é o que a versão 2.1 do Horus vai entregar, depois da 2.0. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham. Esta funcionalidade chega na primeira onda da versão 2.1, a do Horus como serviço da Maind.</p></div>
+  <div><b>Versão 2.1, em construção</b><p>O que está aqui é o que a versão 2.1 do Horus vai entregar, depois da 2.0. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
 </div>
 
 <h3 id="mf-106-o-que-e">O que é, em poucas palavras</h3>
@@ -44,7 +44,8 @@
 <p>Os tipos de assento estão em <a href="#mf-101-assentos">Os assentos: quem pode fazer o quê</a>.</p>
 
 <h3 id="mf-106-hoje">O que a versão 2.0 já faz, e o que a 2.1 acrescenta</h3>
-<p>Na versão 2.0, a <strong>organização é a fronteira dos dados</strong>: quem pode perguntar alcança tudo o que as fontes da organização têm, e quem precisa separar os dados de dois setores dá a cada um a sua organização (veja <a href="#mf-104-quem-ve">Quem vê os dados de cada fonte</a>). Antes da versão 2.1, ninguém tem dado restrito por pessoa, nem nas demonstrações. A barreira contra a rede interna, a porta única até o banco e o cofre das credenciais já estão na versão 2.0, em <a href="#mf-104-so-le">Conectar as fontes vivas</a>.</p>
+<p>Na versão 2.0, a <strong>organização é a fronteira dos dados</strong>: quem pode perguntar alcança tudo o que as fontes da organização têm, e quem precisa separar os dados de dois setores dá a cada um a sua organização (veja <a href="#mf-104-quem-ve">Quem vê os dados de cada fonte</a>). Antes da versão 2.1, ninguém tem dado restrito por pessoa, nem nas demonstrações. A barreira contra a rede interna e a porta única até o banco já estão na versão 2.0, em <a href="#mf-104-so-le">Conectar as fontes vivas</a>.</p>
+<p>Também desde a versão 2.0, cada organização chega aos bancos pelo seu <strong>middleware</strong>, o <a href="#mf-121">Middleware da organização (MF-121)</a>: a peça que fica entre o Horus e os bancos da organização, que guarda quem são as pessoas, os bancos e a IA e responde pelo caminho até eles. Na versão 2.0, ele já confere quem entra, guarda as pessoas e dá o acesso aos bancos. Esta funcionalidade roda dentro dele e acrescenta o que faltava: quem vê o quê dentro de cada banco.</p>
 <div class="table-wrap">
   <table class="t">
     <thead><tr><th>Assunto</th><th>Na versão 2.0</th><th>Com a versão 2.1</th></tr></thead>
@@ -53,13 +54,13 @@
       <tr class="zebra"><td><strong>Os boards e a faixa</strong></td><td>As regras de “acesso de quem abre ou vê” já valem, mas todos da organização veem os mesmos números.</td><td>Os números mudam de uma pessoa para outra, e o número fora do alcance some da faixa.</td></tr>
       <tr class="zebra"><td><strong>Os grupos que se atualizam sozinhos</strong></td><td>Seguem só o tipo de assento.</td><td>Também seguem as características, como a região ou a loja.</td></tr>
       <tr class="zebra"><td><strong>A planilha de convites</strong></td><td>Serve só aos convites em lote.</td><td>Ganha as colunas das características.</td></tr>
-      <tr class="zebra"><td><strong>A entrada</strong></td><td>E-mail e senha ou conta Google.</td><td>Também o login da empresa, na segunda etapa.</td></tr>
+      <tr class="zebra"><td><strong>A entrada</strong></td><td>E-mail e senha ou conta Google.</td><td>Também o login da empresa, na segunda etapa. O owner da organização continua entrando por usuário e senha.</td></tr>
       <tr class="zebra"><td><strong>A liberação do gestor</strong></td><td>Não tem efeito, porque todo board mostra a organização inteira.</td><td>Vale dentro do board que o gestor publica e fica no rastro.</td></tr>
     </tbody>
   </table>
 </div>
 <h4 id="mf-106-etapas">Duas etapas</h4>
-<p>A proteção vem em duas etapas, as duas na primeira onda da versão 2.1. O básico vem primeiro.</p>
+<p>A proteção vem em duas etapas, as duas na versão 2.1. O básico vem primeiro.</p>
 <div class="table-wrap">
   <table class="t">
     <thead><tr><th>Sobre a etapa</th><th>1. A regra escrita no Horus</th><th>2. As regras que a empresa já tem</th></tr></thead>
@@ -133,7 +134,8 @@
 
 <h3 id="mf-106-login">A segunda etapa: o login e as regras da empresa</h3>
 <ul>
-  <li><strong>O login da empresa se liga por organização.</strong> Cada owner liga o da sua, e diz de onde, no login da empresa, vêm as roles das pessoas.</li>
+  <li><strong>O login da empresa se liga por organização.</strong> Cada owner liga o da sua, e diz de onde, no login da empresa, vêm as roles das pessoas. Essa configuração fica no middleware da organização, como toda configuração de entrada.</li>
+  <li><strong>O owner continua entrando por usuário e senha.</strong> Mesmo com o login da empresa ligado, o owner da organização entra sempre por usuário e senha. Os outros owners que ele cadastra, no máximo mais dois, cada um num assento de owner contratado (veja <a href="#mf-103">Licenças e planos</a>), ficam ligados ao login da empresa.</li>
   <li><strong>Só pelo padrão OpenID Connect.</strong> O SAML, padrão de sistemas mais antigos, só entra com uma decisão nova, quando um cliente o exigir.</li>
   <li><strong>O login só prova quem a pessoa é.</strong> Só entra quem foi convidado, como na versão 2.0: quem chega pelo login da empresa sem convite não entra e não ocupa assento.</li>
   <li><strong>Vale a role que o login traz.</strong> Se a role do cadastro do Horus e a do login da empresa discordam, vale a do login, e quem chega sem valor mapeado cai na role padrão da organização.</li>
@@ -151,6 +153,7 @@
 <ul>
   <li><strong>O que já existe e o que é novo.</strong> A primeira etapa existe no Horus de hoje, com a regra em português, a conferência, o “ver como outra pessoa”, a revisão e a planilha das características, e volta refeita sobre a versão 2. A segunda etapa é nova: o login da empresa não existe no Horus de hoje.</li>
   <li><strong>Um caminho só até o banco.</strong> Todo canal passa pelo mesmo motor de análise, e a consulta protegida vai ao banco pela mesma porta única de qualquer consulta, a que recusa escrita (veja <a href="#mf-104-so-le">Só ler, nunca alterar</a>).</li>
+  <li><strong>A regra vale dentro do middleware.</strong> A proteção roda no middleware da organização, onde já rodam as consultas e o modelo de IA.</li>
   <li><strong>A característica nunca vira texto.</strong> A região ou a loja da pessoa entra na consulta como um valor à parte, nunca escrita dentro dela, e não vai aos registros técnicos do sistema. O recorte de acesso também não.</li>
   <li><strong>Quem confere é de outra família.</strong> O modelo de IA que confere a consulta é de uma família diferente do que a escreveu.</li>
   <li><strong>O acesso é lido na hora.</strong> O que cada pessoa pode ver se calcula a cada pedido, e nada se guarda de um pedido para outro.</li>
@@ -178,28 +181,28 @@
       <tr class="zebra"><td><a href="#mf-101">Administração da instância (MF-101)</a></td><td>A Maind, que opera a instância, é quem permite esta proteção, pelo interruptor geral.</td></tr>
       <tr class="zebra"><td><a href="#mf-102">Organizações, pessoas e papéis (MF-102)</a></td><td>A role decide o que a pessoa usa, e esta funcionalidade, o que ela vê. Os grupos ganham as características, e a planilha de convites, as colunas delas.</td></tr>
       <tr class="zebra"><td><a href="#mf-104">Conectar as fontes vivas (MF-104)</a></td><td>A regra vale sobre cada fonte, e a consulta protegida passa pela mesma porta única até o banco.</td></tr>
-      <tr class="zebra"><td><a href="#mf-105">IA sob controle da organização (MF-105)</a></td><td>A IA que transforma o texto em regra e confere as consultas segue as conexões de IA da organização.</td></tr>
+      <tr class="zebra"><td><a href="#mf-105">IA sob controle da organização (MF-105)</a></td><td>A IA que transforma o texto em regra e confere as consultas é a IA da organização, configurada no middleware dela.</td></tr>
       <tr class="zebra"><td><a href="#mf-110">Pergunta rápida (MF-110)</a>, <a href="#mf-111">Chat pelo WhatsApp (MF-111)</a> e <a href="#mf-115">Agentes ativos (MF-115)</a></td><td>Passam pela mesma proteção, cada um com o acesso que lhe cabe.</td></tr>
       <tr class="zebra"><td><a href="#mf-112">Boards e Relatórios (MF-112)</a></td><td>Os boards passam a mostrar números diferentes a pessoas diferentes, e a liberação do gestor vale dentro do board publicado e no PDF que ele envia.</td></tr>
       <tr class="zebra"><td><a href="#mf-116">Auditoria (MF-116)</a></td><td>O rastro passa a guardar cada liberação do gestor, com o recorte de acesso de quem liberou.</td></tr>
       <tr class="zebra"><td><a href="#mf-118">Bases de demonstração (MF-118)</a></td><td>As organizações de exemplo ganham as regras e as características que mostram esta proteção.</td></tr>
       <tr class="zebra"><td><a href="#mf-120">Faixa de avisos e números (MF-120, nome provisório)</a></td><td>Os números da faixa passam a ser os de cada pessoa, e o que ela não pode ver some.</td></tr>
       <tr class="zebra"><td><a href="#mf-119">Investigação guiada (MF-119)</a></td><td>Cada passo da investigação usa o acesso de quem investiga.</td></tr>
-      <tr class="zebra"><td><a href="#mf-121">Middleware na casa do contratante (MF-121)</a></td><td>O middleware, da segunda onda da versão 2.1, conta com esta proteção.</td></tr>
+      <tr class="zebra"><td><a href="#mf-121">Middleware da organização (MF-121)</a></td><td>Esta funcionalidade depende dele: a proteção roda no middleware de cada organização, que chega na versão 2.0 e já guarda as pessoas e dá o caminho até os bancos.</td></tr>
       <tr class="zebra"><td><a href="#mf-123">Fonte AWS Athena (MF-123)</a></td><td>A fonte nova depende desta proteção, que hoje só cobre o SQL Server.</td></tr>
     </tbody>
   </table>
 </div>
 <div class="callout callout--neutral">
   <span class="ico">•</span>
-  <div><b>Ainda em definição</b><p><strong>O texto exato do aviso.</strong> O aviso de resposta limitada e a frase fixa sobre as regras da empresa terão o texto definido no desenho.</p><p><strong>Os bancos além do SQL Server.</strong> Quais outras tecnologias a proteção vai cobrir, a começar pelo AWS Athena, ainda está em definição.</p></div>
+  <div><b>Ainda em definição</b><p><strong>O texto exato do aviso.</strong> O aviso de resposta limitada e a frase fixa sobre as regras da empresa terão o texto definido no desenho.</p><p><strong>Os bancos além do SQL Server.</strong> Quais outras tecnologias a proteção vai cobrir, a começar pelo AWS Athena, ainda está em definição.</p><p><strong>Onde o owner cuida das regras e das características.</strong> As pessoas da organização ficam no middleware, e o owner as gere num segundo aplicativo, o front do middleware. Se as regras e as características das pessoas também serão cuidadas lá, ou no Horus, ainda está em definição.</p></div>
 </div>
 
 <h3 id="mf-106-faq">Perguntas frequentes</h3>
 <div class="faq">
   <details open>
     <summary>Na versão 2.0, cada pessoa já vê só a parte dela dos dados?</summary>
-    <div class="faq-body"><p>Não. Na versão 2.0, a organização é a fronteira dos dados: quem pode perguntar alcança tudo o que as fontes da organização têm. Se dois setores precisam de dados separados, cada um ganha a sua organização. O recorte pessoa a pessoa chega com esta funcionalidade, na primeira onda da versão 2.1.</p></div>
+    <div class="faq-body"><p>Não. Na versão 2.0, a organização é a fronteira dos dados: quem pode perguntar alcança tudo o que as fontes da organização têm. Se dois setores precisam de dados separados, cada um ganha a sua organização. O recorte pessoa a pessoa chega com esta funcionalidade, na versão 2.1.</p></div>
   </details>
   <details>
     <summary>Preciso saber programar ou escrever consultas para criar as regras?</summary>

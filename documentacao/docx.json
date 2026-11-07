@@ -18,7 +18,7 @@
       "groups": [
         {
           "label": "v2.0",
-          "text": "A primeira entrega do Horus v2: 18 macro funcionalidades, todas explicadas aqui.",
+          "text": "A primeira entrega do Horus v2: 19 macro funcionalidades, todas explicadas aqui.",
           "items": [
             {
               "id": "mf-101",
@@ -44,7 +44,7 @@
               "code": "MF-102",
               "badge": "v2.0",
               "title": "Organizações, pessoas e papéis",
-              "summary": "Como a equipe entra e se organiza no Horus: o gestor convida, o owner aprova, os grupos dizem para quem vai cada coisa e as roles, o que cada um pode usar.",
+              "summary": "Como a equipe entra e se organiza no Horus: o gestor convida, o owner aprova e cadastra as pessoas no front do middleware, os grupos dizem para quem vai cada coisa e as roles, o que cada um pode usar.",
               "links": [
                 {
                   "label": "Como uma pessoa entra",
@@ -80,7 +80,7 @@
               "code": "MF-104",
               "badge": "v2.0",
               "title": "Conectar as fontes vivas",
-              "summary": "Ligar o Horus aos bancos de dados da empresa, só para ler, para que cada resposta traga o número de agora.",
+              "summary": "Ligar o Horus aos bancos de dados da empresa, só para ler, para que cada resposta traga o número de agora; os bancos se configuram no front do middleware.",
               "links": [
                 {
                   "label": "Da fonte à resposta",
@@ -98,7 +98,7 @@
               "code": "MF-105",
               "badge": "v2.0",
               "title": "IA sob controle da organização",
-              "summary": "A organização escolhe qual modelo de IA faz cada tarefa do Horus, na conexão que a Maind lhe disponibiliza ou na que ela mesma cadastra e paga.",
+              "summary": "A organização escolhe qual modelo de IA faz cada tarefa do Horus, com a chave que ela cadastra e paga ou a que a Maind lhe dá, configurada no front do middleware.",
               "links": [
                 {
                   "label": "O que o owner escolhe",
@@ -343,12 +343,30 @@
                   "href": "#mf-120-faq"
                 }
               ]
+            },
+            {
+              "id": "mf-121",
+              "source": "content/mf-121.html",
+              "code": "MF-121",
+              "badge": "v2.0",
+              "title": "Middleware da organização",
+              "summary": "Uma peça separada do Horus que cada organização tem: ela guarda as pessoas, os bancos e a IA da organização e responde pelo caminho até eles, na infraestrutura da Maind ou na da própria empresa, com só a pergunta e a resposta pronta voltando ao Horus.",
+              "links": [
+                {
+                  "label": "Da organização criada à primeira resposta",
+                  "href": "#mf-121-na-pratica"
+                },
+                {
+                  "label": "Perguntas frequentes",
+                  "href": "#mf-121-faq"
+                }
+              ]
             }
           ]
         },
         {
           "label": "v2.1",
-          "text": "A versão que vem depois da 2.0: 5 macro funcionalidades, todas explicadas aqui. Quatro chegam na primeira onda, a do Horus como serviço da Maind, e uma na segunda, a de quem precisa que os dados fiquem em casa.",
+          "text": "A versão que vem depois da 2.0: 4 macro funcionalidades, todas explicadas aqui.",
           "items": [
             {
               "id": "mf-106",
@@ -383,24 +401,6 @@
                 {
                   "label": "Perguntas frequentes",
                   "href": "#mf-119-faq"
-                }
-              ]
-            },
-            {
-              "id": "mf-121",
-              "source": "content/mf-121.html",
-              "code": "MF-121",
-              "badge": "v2.1",
-              "title": "Middleware na casa do contratante",
-              "summary": "Uma peça que a TI do cliente instala na própria infraestrutura para o Horus, que continua no serviço da Maind, chegar aos dados, à IA e à internet da empresa, com só a pergunta e a resposta pronta passando pela Maind.",
-              "links": [
-                {
-                  "label": "Do middleware à primeira resposta",
-                  "href": "#mf-121-na-pratica"
-                },
-                {
-                  "label": "Perguntas frequentes",
-                  "href": "#mf-121-faq"
                 }
               ]
             },
@@ -467,13 +467,13 @@
     {
       "id": "mf-104-da-fonte-a-resposta",
       "title": "Da fonte cadastrada à resposta",
-      "description": "Quem prepara a fonte, do cadastro ao modelo semântico, e o que o Horus faz a cada pergunta: vai ao banco ou reaproveita um resultado recente",
+      "description": "Quem prepara a fonte no front do middleware, do cadastro ao modelo semântico, e o que o middleware faz a cada pergunta: vai ao banco ou reaproveita um resultado recente",
       "source": "diagramas/mf-104-da-fonte-a-resposta.html"
     },
     {
       "id": "mf-105-da-conexao-ao-custo",
       "title": "A IA da organização, da conexão ao custo",
-      "description": "As duas origens da conexão de IA, as escolhas do owner, a pergunta e quem vê o consumo",
+      "description": "De onde vem a chave, as escolhas do owner, a pergunta, o consumo à vista do owner e quem é avisado quando a IA para",
       "source": "diagramas/mf-105-da-conexao-ao-custo.html"
     },
     {
@@ -551,7 +551,7 @@
     {
       "id": "mf-121-o-caminho-pelo-middleware",
       "title": "O caminho pelo middleware",
-      "description": "Os dois lados: o que a TI e o owner preparam uma vez e, a cada pergunta, o caminho da Maind até a casa do cliente e de volta, com só a pergunta e a resposta pronta passando pela Maind",
+      "description": "Da organização criada à primeira resposta: a Maind cria a organização e a liga ao middleware dela, o owner cadastra as pessoas, os bancos e a IA são configurados no front, e só a pergunta e a resposta pronta passam pelo Horus",
       "source": "diagramas/mf-121-o-caminho-pelo-middleware.html"
     },
     {

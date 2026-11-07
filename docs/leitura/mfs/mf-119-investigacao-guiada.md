@@ -8,7 +8,7 @@ objetivos: [O5]
 quem_usa: [owner da organização, gestor, membro ouro]
 complexidade: média (provisória)
 relacionadas: [MF-107, MF-108, MF-106, MF-104, MF-109, MF-115, MF-112, MF-110, MF-111]
-atualizado: 2026-11-05
+atualizado: 2026-11-07
 fontes:
   - docs/raw/produto/02-norte-do-produto.md
   - docs/raw/produto/03-inventario-de-lacunas.md
@@ -68,8 +68,8 @@ No dia a dia, o gestor segue o fio na própria reunião, em vez de esperar dias 
   **ouro** (quem pergunta e cria boards e relatórios para si) e **prata** (quem pergunta, sem criar). O **membro
   bronze**, que só exibe os dashboards já criados e compartilhados, não investiga.
 - **Cada um vê só o que pode:** cada passo usa o acesso de quem investiga, pela Segurança dos dados por pessoa
-  (MF-106), que chega junto, na mesma onda.
-- **Quando chega:** na v2.1, a entrega que vem depois da v2.0, na primeira onda, a do Horus na nuvem da Maind.
+  (MF-106), que também chega na v2.1.
+- **Quando chega:** na v2.1, a entrega que vem depois da v2.0.
 
 ## 📈 O valor que gera
 
@@ -105,7 +105,7 @@ flowchart LR
 Da v1 se reaproveitam a conversa de análise, que já guarda as respostas, as sugestões de próxima pergunta e a
 Análise avançada, como ponto de partida. É novo o modo de investigação, dentro do mesmo motor que responde em todos
 os canais, que quebra a variação nas partes que mais a explicam, sem nada de fora do Horus. Depende da v2.0 pronta,
-da Segurança dos dados por pessoa, que chega na mesma onda, e do modelo semântico de cada fonte, porque o Horus só
+da Segurança dos dados por pessoa, que chega na mesma versão, e do modelo semântico de cada fonte, porque o Horus só
 quebra a variação pelas partes que ele descreve.
 
 > ⚠️ É a leitura do PO a partir dos documentos de arquitetura, e é provisória: a arquitetura ainda não desenhou esta
@@ -143,8 +143,8 @@ quebra a variação pelas partes que ele descreve.
   investigar o porquê de uma variação (`D-001`, `D-006`).
 - [Backlog estratégico](../../raw/produto/backlog-estrategico.md): `D-180` (a definição macro, que fechou a `P-018`);
   `D-177` (começa pelo número ou gráfico que mudou, pela ação "investigar"); `D-178` (passo a passo, e a pessoa
-  escolhe qual parte aprofundar); `D-179` (o caminho fica na conversa, sem fixar num board); `D-249` (a conversa nunca é compartilhada; para mostrar o caminho, exporta-se a conversa em PDF ou HTML); `D-181` (a v2.1 em duas
-  ondas, a `MF-119` na onda 1, a do SaaS); `D-194` e `D-203` (os cinco tipos de assento; a prata pergunta e investiga, e o
+  escolhe qual parte aprofundar); `D-179` (o caminho fica na conversa, sem fixar num board); `D-249` (a conversa nunca é compartilhada; para mostrar o caminho, exporta-se a conversa em PDF ou HTML); `D-181` (a `MF-119` na
+  v2.1, com as outras mfs da antiga onda 1; a onda 2 ficou sem mfs quando a `MF-121` subiu para a v2.0, `D-260`); `D-194` e `D-203` (os cinco tipos de assento; a prata pergunta e investiga, e o
   bronze não); `D-197` (cada mf numa versão só);
   `D-081` (a necessidade); `I-008` e `D-104` (a nota provisória, que continua); `D-105` (a pontuação: 61, a 5 pontos
   do corte, com premissas do PO); `D-106` e `D-122` (a v2.0 sem a investigação); `D-121` (a v2.1, que substitui a
@@ -153,7 +153,7 @@ quebra a variação pelas partes que ele descreve.
 - [Lacunas](../../raw/produto/03-inventario-de-lacunas.md) (a candidata nº 16);
   [mapa das mfs](../../raw/produto/04-macro-funcionalidades-de-hoje.md) (o problema nº 2 contra o que existe);
   [a v2.0 consolidada](../../raw/produto/05-v2.0-consolidada.md), §2, §6 e §9; [versões](../../raw/produto/06-versoes.md)
-  (a v2.1, onda 1); [objetivos](../../raw/produto/07-mapa-de-objetivos-e-funcionalidades.md) (O5).
+  (a v2.1); [objetivos](../../raw/produto/07-mapa-de-objetivos-e-funcionalidades.md) (O5).
 - Arquitetura: [estratégia](../../raw/arquitetura/01-estrategia-da-solucao.md), §3 (O5), §4 e o marco M11 (`ARQ-006`);
   [software](../../raw/arquitetura/04-software.md), §3.6; [motor](../../raw/arquitetura/05-motor-de-analise-e-ia.md), §3.5
   (os níveis, `ARQ-025`) e §3.12; [conferência](../../raw/arquitetura/14-conferencia-do-produto.md): a letra (v) da

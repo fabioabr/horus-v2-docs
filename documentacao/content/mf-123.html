@@ -1,5 +1,5 @@
 <p>Imagine uma rede de lojas que guarda os dados de vendas na nuvem da Amazon. Na segunda-feira, a gestora quer saber quanto cada loja vendeu na semana. Sem um jeito de perguntar direto a esses dados, o caminho é pedir ao time de dados, que consulta, exporta uma planilha e a manda de volta.</p>
-<p>O <strong>AWS Athena</strong> é o serviço da Amazon (AWS) para consultar dados guardados na nuvem dela. Com esta funcionalidade, ele passa a ser mais uma <strong>fonte viva</strong> do Horus, como os outros bancos da empresa que o Horus consulta na hora da pergunta: a gestora pergunta em português, e o número sai do Athena. O nome desta funcionalidade ainda é provisório, e ela está prevista para a primeira onda da versão 2.1, a do Horus como serviço da Maind.</p>
+<p>O <strong>AWS Athena</strong> é o serviço da Amazon (AWS) para consultar dados guardados na nuvem dela. Com esta funcionalidade, ele passa a ser mais uma <strong>fonte viva</strong> do Horus, como os outros bancos da empresa que o Horus consulta na hora da pergunta: a gestora pergunta em português, e o número sai do Athena. O nome desta funcionalidade ainda é provisório, e ela está prevista para a versão 2.1.</p>
 <div class="callout callout--info">
   <span class="ico">i</span>
   <div><b>Versão 2.1, em construção</b><p>O que está aqui é o que a versão 2.1 do Horus vai entregar, depois da 2.0. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
@@ -21,7 +21,7 @@
     <tbody>
       <tr class="zebra"><td><strong>As tecnologias que respondem</strong></td><td>Cinco: SQL Server, PostgreSQL, Oracle, MongoDB e BigQuery (veja <a href="#mf-104-tecnologias">As tecnologias que o Horus lê</a>).</td><td>As mesmas cinco e o AWS Athena.</td></tr>
       <tr class="zebra"><td><strong>O Athena</strong></td><td><span class="badge">Fora</span> Não aparece.</td><td><span class="badge badge--info">Versão 2.1</span> Responde às perguntas de análise, como as outras fontes vivas.</td></tr>
-      <tr class="zebra"><td><strong>Quem conecta</strong></td><td>O owner da organização conecta as fontes.</td><td>O owner da organização conecta também o Athena.</td></tr>
+      <tr class="zebra"><td><strong>Quem conecta</strong></td><td>As fontes são conectadas no <strong>front do middleware</strong>, o aplicativo do <a href="#mf-121">Middleware da organização (MF-121)</a>, a peça que fica entre o Horus e os bancos da organização. Conecta o owner da organização, com o middleware na casa do cliente, ou o time da Maind, na hospedagem da Maind.</td><td>O Athena é conectado do mesmo jeito, como mais uma fonte.</td></tr>
       <tr class="zebra"><td><strong>O recorte por pessoa</strong></td><td>Não há: a organização é a fronteira dos dados (veja <a href="#mf-104-quem-ve">Quem vê os dados de cada fonte</a>).</td><td>Vem da <a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a>. No Athena, vale o que ela cobrir.</td></tr>
     </tbody>
   </table>
@@ -31,7 +31,8 @@
   <table class="t">
     <thead><tr><th>Quem</th><th>O que faz</th></tr></thead>
     <tbody>
-      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>Conecta o Athena como uma fonte da organização e, como em toda fonte, carrega o modelo semântico dele.</td></tr>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>Com o middleware na casa do cliente, conecta o Athena como uma fonte da organização, no front do middleware. Como em toda fonte, carrega o modelo semântico dele.</td></tr>
+      <tr class="zebra"><td><strong>Time da Maind</strong></td><td>Na hospedagem da Maind, conecta o Athena no front do middleware, como suporte técnico antes e depois da venda.</td></tr>
       <tr class="zebra"><td><strong>Time de dados</strong></td><td>Como em toda fonte, escreve o <a href="#glossario">modelo semântico</a> do Athena, o dicionário que explica ao Horus o que cada coluna significa na empresa, e o entrega ao owner (veja <a href="#mf-104-modelo-semantico">O modelo semântico</a>).</td></tr>
       <tr class="zebra"><td><strong>Quem pergunta</strong></td><td>Escolhe o Athena entre as fontes da conversa e pergunta. Quem pode perguntar está em <a href="#mf-107-quem-pergunta">Quem pergunta, e onde</a>.</td></tr>
     </tbody>
@@ -42,7 +43,7 @@
 <h3 id="mf-123-na-pratica">Do Athena à primeira resposta</h3>
 <p>Um exemplo, com personagens ilustrativos. Os dados de vendas de uma rede de lojas ficam na AWS. O Marcos é o owner da área comercial, e a Carla é gestora de vendas.</p>
 <ol class="steps">
-  <li><div><h4>O owner conecta o Athena</h4><p>O Marcos conecta o Athena como uma fonte da organização.</p></div></li>
+  <li><div><h4>O owner conecta o Athena</h4><p>Com o middleware na casa da empresa, o Marcos conecta o Athena como uma fonte da organização, no front do middleware. Na hospedagem da Maind, quem conecta é o time da Maind.</p></div></li>
   <li><div><h4>O time de dados escreve o modelo semântico</h4><p>Como em toda fonte, o time de dados escreve o dicionário que explica ao Horus o que cada coluna do Athena quer dizer na empresa, como o que conta como venda e o que é uma loja. O Marcos carrega o modelo na fonte.</p></div></li>
   <li><div><h4>A gestora escolhe o Athena e pergunta</h4><p>A Carla abre a conversa de análise, escolhe o Athena entre as fontes e pergunta quanto cada loja vendeu na semana.</p></div></li>
   <li><div><h4>O Horus consulta o Athena, só para ler</h4><p>O mesmo motor da conversa transforma a pergunta numa consulta ao Athena. Nada no Athena é alterado.</p></div></li>
@@ -73,12 +74,12 @@
       <tr class="zebra"><td><strong>Trazer outras fontes novas</strong></td><td>Só o Athena entra. Uma tecnologia nova depende de uma decisão do produto (veja <a href="#mf-104-tecnologias">As tecnologias que o Horus lê</a>).</td></tr>
       <tr class="zebra"><td><strong>Escrever nos dados da AWS</strong></td><td>O Horus só lê: nunca altera um dado do Athena.</td></tr>
       <tr class="zebra"><td><strong>Recortar os dados por pessoa além do que a <a href="#mf-106">MF-106</a> cobrir</strong></td><td>O recorte vem da <a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a>, que hoje cobre só o SQL Server.</td></tr>
-      <tr class="zebra"><td><strong>Entrar na versão 2.0</strong></td><td>Na versão 2.0, o Athena fica fora. Ele está previsto para a primeira onda da versão 2.1.</td></tr>
+      <tr class="zebra"><td><strong>Entrar na versão 2.0</strong></td><td>Na versão 2.0, o Athena fica fora. Ele está previsto para a versão 2.1.</td></tr>
     </tbody>
   </table>
 </div>
 <h4 id="mf-123-ligadas">Funcionalidades ligadas a esta</h4>
-<p>Esta funcionalidade depende de três outras:</p>
+<p>Esta funcionalidade depende de quatro outras:</p>
 <div class="table-wrap">
   <table class="t">
     <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
@@ -86,19 +87,20 @@
       <tr class="zebra"><td><a href="#mf-104">Conectar as fontes vivas (MF-104)</a></td><td>É a base das fontes; o Athena passa a ser mais uma delas.</td></tr>
       <tr class="zebra"><td><a href="#mf-107">Perguntar aos dados em português (MF-107)</a></td><td>É a conversa que transforma a pergunta numa consulta ao Athena.</td></tr>
       <tr class="zebra"><td><a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a></td><td>Na versão 2.1, o recorte do que cada pessoa vê no Athena vem dela, que hoje cobre só o SQL Server.</td></tr>
+      <tr class="zebra"><td><a href="#mf-121">Middleware da organização (MF-121)</a></td><td>O Athena, como toda fonte, é conectado no front do middleware, e as consultas a ele rodam no middleware.</td></tr>
     </tbody>
   </table>
 </div>
 <div class="callout callout--neutral">
   <span class="ico">•</span>
-  <div><b>Ainda em definição</b><p><strong>O recorte por pessoa no Athena.</strong> A <a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a> hoje cobre só o SQL Server. O que ela vai cobrir no Athena ainda será definido.</p><p><strong>A forma técnica da ligação.</strong> Como o Horus conversa com o Athena e escreve a consulta na língua dele ainda será definido.</p><p><strong>A confirmação da onda.</strong> A previsão é a primeira onda da versão 2.1. Ela será confirmada quando a parte técnica for dimensionada.</p></div>
+  <div><b>Ainda em definição</b><p><strong>O recorte por pessoa no Athena.</strong> A <a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a> hoje cobre só o SQL Server. O que ela vai cobrir no Athena ainda será definido.</p><p><strong>A forma técnica da ligação.</strong> Como o Horus conversa com o Athena e escreve a consulta na língua dele ainda será definido.</p><p><strong>A confirmação da versão.</strong> A previsão é a versão 2.1. Ela será confirmada quando a parte técnica for dimensionada.</p></div>
 </div>
 
 <h3 id="mf-123-faq">Perguntas frequentes</h3>
 <div class="faq">
   <details open>
     <summary>Os dados da minha empresa estão na AWS. O Horus consegue responder com eles?</summary>
-    <div class="faq-body"><p>Com esta funcionalidade, sim: o AWS Athena passa a responder às perguntas de análise, como as outras fontes vivas. Ela está prevista para a primeira onda da versão 2.1. Na versão 2.0, o Athena fica fora, e as fontes que respondem são SQL Server, PostgreSQL, Oracle, MongoDB e BigQuery.</p></div>
+    <div class="faq-body"><p>Com esta funcionalidade, sim: o AWS Athena passa a responder às perguntas de análise, como as outras fontes vivas. Ela está prevista para a versão 2.1. Na versão 2.0, o Athena fica fora, e as fontes que respondem são SQL Server, PostgreSQL, Oracle, MongoDB e BigQuery.</p></div>
   </details>
   <details>
     <summary>O Horus pode alterar ou apagar dados no Athena?</summary>
@@ -106,7 +108,7 @@
   </details>
   <details>
     <summary>Quem conecta o Athena, e o que precisa ser preparado?</summary>
-    <div class="faq-body"><p>O owner da organização conecta o Athena como uma fonte da organização. Como em toda fonte, o time de dados, da sua empresa ou da Maind na implantação, escreve o modelo semântico, o dicionário que explica ao Horus o que cada coluna significa, e o owner o carrega. A forma técnica da ligação com o Athena ainda será definida.</p></div>
+    <div class="faq-body"><p>O Athena é conectado como uma fonte da organização, no front do middleware: pelo owner da organização, com o middleware na casa do cliente, ou pelo time da Maind, na hospedagem da Maind. Como em toda fonte, o time de dados, da sua empresa ou da Maind na implantação, escreve o modelo semântico, o dicionário que explica ao Horus o que cada coluna significa, e o owner o carrega. A forma técnica da ligação com o Athena ainda será definida.</p></div>
   </details>
   <details>
     <summary>Perguntar ao Athena é diferente de perguntar às outras fontes?</summary>

@@ -503,7 +503,7 @@
           "label": "Pessoas da organização no Horus"
         },
         "backend": {
-          "label": "O Horus"
+          "label": "O Horus e o middleware"
         },
         "security": {
           "label": "Aprovação e conferência"
@@ -529,7 +529,7 @@
     },
     {
       "id": "horus",
-      "label": "O Horus"
+      "label": "O Horus e o middleware"
     }
   ],
   "phases": [
@@ -793,7 +793,7 @@
       "dot": "rose",
       "title": "Conferida, e fechada na dúvida",
       "items": [
-        "A consulta de quem tem restrição é reescrita com a regra e conferida por um segundo modelo de IA antes de ir ao banco.",
+        "Na versão 2.1, a proteção roda dentro do middleware da organização: a consulta de quem tem restrição é reescrita com a regra e conferida por um segundo modelo de IA antes de ir ao banco.",
         "Se algo falha, a resposta não sai. A resposta limitada traz o aviso “Resposta limitada aos dados que você pode ver”."
       ]
     },

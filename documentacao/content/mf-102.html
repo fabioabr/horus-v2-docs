@@ -10,11 +10,24 @@
 <ul>
   <li><strong>Quem é quem.</strong> Cada pessoa tem um papel (owner, gestor ou membro) e, se for membro, uma faixa: ouro, prata ou bronze.</li>
   <li><strong>Quem cuida de quem.</strong> Cada membro tem um gestor, e a equipe de um gestor se chama <strong>carteira</strong>.</li>
-  <li><strong>Como se entra.</strong> Só por convite: o gestor convida a equipe dele, e o owner aprova.</li>
+  <li><strong>Como se entra.</strong> Só por convite: o gestor convida a equipe dele pelo Horus, e o owner aprova.</li>
   <li><strong>Para quem vai cada coisa.</strong> Os <strong>grupos</strong> dizem quem abre um painel e quem recebe um relatório ou um alerta.</li>
   <li><strong>O que cada um pode usar.</strong> As <strong>roles</strong> são pacotes de botões que o owner liga ou desliga, como ver a consulta montada ou baixar a resposta.</li>
 </ul>
 <p>Criar a organização não é daqui: quem cria é a Maind, na <a href="#mf-101-uma-organizacao">Administração da instância</a>. Esta funcionalidade começa quando a organização chega ao owner.</p>
+
+<h4 id="mf-102-onde-ficam">Onde as pessoas ficam</h4>
+<p>Na versão 2.0, as pessoas de cada organização ficam guardadas no <strong>middleware</strong> dela, fora do Horus. O middleware é a peça que fica entre o Horus e os bancos da organização: ela guarda quem são as pessoas, os bancos e a IA, e responde pelo caminho até eles (<a href="#mf-121">Middleware da organização, MF-121</a>). O owner cadastra e gere as pessoas no <strong>front do middleware</strong>, um aplicativo de configuração separado do Horus. Só ele usa esse aplicativo; o resto da organização trabalha só no Horus.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quem</th><th>Onde trabalha</th><th>O que faz com as pessoas</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Owner</strong></td><td>No front do middleware e no Horus.</td><td>Cadastra e gere as pessoas e aprova os convites e as trocas de tipo de assento que os gestores pedem.</td></tr>
+      <tr class="zebra"><td><strong>Gestor</strong></td><td>Só no Horus.</td><td>Cria os convites da equipe e pede a troca do tipo de assento de quem gere.</td></tr>
+      <tr class="zebra"><td><strong>Membro</strong></td><td>Só no Horus.</td><td>Entra pelo convite e usa o que o assento e as roles dele ligam.</td></tr>
+    </tbody>
+  </table>
+</div>
 
 <h4 id="mf-102-quem-e-quem">Os papéis, um por um</h4>
 <p>O <strong>papel</strong> diz sobre quem a pessoa age. O <strong>tipo de assento</strong> diz o que ela pode fazer. Os dois andam juntos, mas não são a mesma coisa.</p>
@@ -22,20 +35,20 @@
   <table class="t">
     <thead><tr><th>Papel</th><th>Sobre quem age e o que faz</th></tr></thead>
     <tbody>
-      <tr class="zebra"><td><strong>Owner</strong></td><td>Responde pela organização. Vê todos os membros, convida, aprova convites, cria as roles e os grupos da organização e muda uma pessoa de gestor. Uma organização pode ter mais de um owner.</td></tr>
-      <tr class="zebra"><td><strong>Gestor</strong></td><td>Cuida da carteira dele: convida a equipe, monta grupos com ela, abre os painéis (boards) de quem gere e pode desabilitá-los.</td></tr>
+      <tr class="zebra"><td><strong>Owner</strong></td><td>Responde pela organização. Vê todos os membros, convida, aprova convites, cria as roles e os grupos da organização e muda uma pessoa de gestor. Além do primeiro, a organização pode ter no máximo mais dois owners.</td></tr>
+      <tr class="zebra"><td><strong>Gestor</strong></td><td>Cuida da carteira dele: convida a equipe pelo Horus, monta grupos com ela, abre os painéis (boards) de quem gere e pode desabilitá-los.</td></tr>
       <tr class="zebra"><td><strong>Membro</strong></td><td>Age só sobre si. A faixa diz o que ele faz: o <strong>bronze</strong> vê, a <strong>prata</strong> pergunta, o <strong>ouro</strong> cria.</td></tr>
     </tbody>
   </table>
 </div>
-<p>O owner não é gestor, mas pode ser também, por exemplo quando a equipe é pequena. Nesse caso, ocupa um assento só, o de owner. O que cada faixa de membro faz, em detalhe, está em <a href="#mf-101-assentos">Os assentos: quem pode fazer o quê</a>. E o owner da organização não se confunde com o administrador da instância, que é da Maind: a diferença está em <a href="#mf-101-quem-e-quem">Quem opera e quem usa</a>.</p>
+<p>O owner não é gestor, mas pode ser também, por exemplo quando a equipe é pequena. Nesse caso, ocupa um assento só, o de owner. Cada owner além do primeiro ocupa um assento de owner contratado, como explica <a href="#mf-103-contas">Como os assentos se contam</a>. O que cada faixa de membro faz, em detalhe, está em <a href="#mf-101-assentos">Os assentos: quem pode fazer o quê</a>. E o owner da organização não se confunde com o administrador da instância, que é da Maind: a diferença está em <a href="#mf-101-quem-e-quem">Quem opera e quem usa</a>.</p>
 
 <h3 id="mf-102-convite">Como uma pessoa entra</h3>
 <p>Digamos que a área comercial de uma rede de lojas acabou de receber a organização dela. O Marcos é o owner, a Carla é a gestora de vendas, e a Ana vai entrar na equipe da Carla.</p>
 <ol class="steps">
-  <li><div><h4>O owner convida os gestores</h4><p>O Marcos convida a Carla num assento de gestora. Só o owner convida gestores e outros owners, e o convite dele não passa por aprovação.</p></div></li>
-  <li><div><h4>O gestor cria os convites da equipe</h4><p>A Carla convida a Ana, uma pessoa por vez, e escolhe o tipo de assento dela entre membro ouro, prata ou bronze: para a Ana, prata. Ela pode pedir mesmo que, naquele momento, não haja vaga livre do tipo.</p></div></li>
-  <li><div><h4>O owner aprova</h4><p>O Marcos aprova o convite, ou liga, nas preferências da organização, a aprovação automática dos convites. Para aprovar, precisa haver um assento livre do tipo pedido; se faltar, ele pede mais à Maind, fora do Horus. Se ele recusar, nada é enviado.</p></div></li>
+  <li><div><h4>O owner convida os gestores</h4><p>O Marcos entra no front do middleware com usuário e senha e convida a Carla num assento de gestora. Só o owner convida gestores e outros owners, e o convite dele não passa por aprovação.</p></div></li>
+  <li><div><h4>O gestor cria os convites da equipe</h4><p>A Carla convida a Ana pelo Horus, uma pessoa por vez, e escolhe o tipo de assento dela entre membro ouro, prata ou bronze: para a Ana, prata. Ela pode pedir mesmo que, naquele momento, não haja vaga livre do tipo.</p></div></li>
+  <li><div><h4>O owner aprova</h4><p>O Marcos aprova o convite no front do middleware, onde a Ana é cadastrada, ou liga, nas preferências da organização, a aprovação automática dos convites. Para aprovar, precisa haver um assento livre do tipo pedido; se faltar, ele pede mais à Maind, fora do Horus. Se ele recusar, nada é enviado.</p></div></li>
   <li><div><h4>O e-mail sai e o assento fica guardado</h4><p>O convite chega à Ana por e-mail, e o assento fica reservado para ela pelo prazo que o owner definiu nas preferências da organização. Se ela não aceitar a tempo, o convite expira, o assento volta a ficar livre, e a Carla pede de novo.</p></div></li>
   <li><div><h4>A pessoa entra na carteira do gestor</h4><p>A Ana aceita, entra com e-mail e senha ou com a conta Google, e já cai na carteira da Carla, que a convidou. Com o assento de prata, ela pergunta desde o primeiro dia.</p></div></li>
 </ol>
@@ -47,7 +60,7 @@
 <h4 id="mf-102-quarentena">A quarentena</h4>
 <p>Quem entra sem gestor espera na <strong>quarentena</strong>. Acontece quando o owner convida alguém sem indicar o gestor, ou quando um gestor sai e o owner não indica quem passa a cuidar da equipe dele. Na quarentena, a pessoa vê só o próprio perfil e os <strong>boards públicos</strong>, que são os painéis que o owner abre para a organização inteira. Ela já ocupa o assento do tipo do convite. Sai da quarentena quando o owner ou um gestor a põe numa carteira.</p>
 <h4 id="mf-102-trocar">Trocar de faixa ou de gestor</h4>
-<p>Trocar o tipo de assento de quem já está dentro segue o caminho do convite: o gestor pede, o owner aprova, e precisa haver vaga livre no tipo novo. Aprovada a troca, o assento antigo volta a ficar livre na hora. O owner também pode trocar direto. Já mudar uma pessoa de um gestor para outro é só com o owner, e ela sai dos grupos do gestor anterior.</p>
+<p>Trocar o tipo de assento de quem já está dentro segue o caminho do convite: o gestor pede pelo Horus, o owner aprova no front do middleware, e precisa haver vaga livre no tipo novo. Aprovada a troca, o assento antigo volta a ficar livre na hora. O owner também pode trocar direto. Já mudar uma pessoa de um gestor para outro é só com o owner, e ela sai dos grupos do gestor anterior.</p>
 
 <h3 id="mf-102-mudancas">Quando alguém muda de faixa ou sai</h3>
 <p>O que acontece com o que a pessoa criou (painéis, relatórios, conversas, agendamentos e agentes, que são os trabalhos automáticos de IA) depende do caso:</p>
@@ -124,7 +137,7 @@
   <div><b>O owner lê as conversas</b><p>O owner da organização lê as conversas de todas as pessoas da organização com o Horus, como já acontece hoje, e nada de especial avisa a pessoa disso. A Maind não lê: ela só vê números, como conta a página da <a href="#mf-101-uso-e-custo">Administração da instância</a>.</p></div>
 </div>
 <h4 id="mf-102-perfil">O perfil e os avisos</h4>
-<p>Só cria conta quem tem convite para o próprio e-mail. A pessoa entra com e-mail e senha ou com a conta Google. No perfil ficam a foto, o número de WhatsApp, que ela mesma liga e confirma com um código, os contatos que usa nos envios e a escolha de receber, ou não, os avisos do Horus por e-mail. Os avisos também aparecem dentro do próprio Horus: por exemplo, o “recebido” de quem reporta uma resposta errada.</p>
+<p>Só cria conta quem tem convite para o próprio e-mail. A pessoa entra com e-mail e senha ou com a conta Google; o owner entra sempre com usuário e senha. No perfil ficam a foto, o número de WhatsApp, que ela mesma liga e confirma com um código, os contatos que usa nos envios e a escolha de receber, ou não, os avisos do Horus por e-mail. Os avisos também aparecem dentro do próprio Horus: por exemplo, o “recebido” de quem reporta uma resposta errada.</p>
 
 <h3 id="mf-102-bastidores">Nos bastidores, sem complicar</h3>
 <p>Só o bastante da tecnologia para a história fazer sentido:</p>
@@ -133,7 +146,8 @@
   <li><strong>A conta tem ordem.</strong> O porteiro olha primeiro a situação da organização e o tipo de assento, que é o teto; depois o papel e a carteira, que dizem sobre quem a pessoa age e se ela está na quarentena; por fim, as roles. O primeiro “não” encerra a conta, e, na dúvida, a resposta é “não pode”.</li>
   <li><strong>Mudar vale na hora.</strong> O papel é relido a cada pedido: tirar um poder de alguém vale no ato, sem esperar a pessoa sair e entrar de novo.</li>
   <li><strong>O trabalho automático roda como quem o criou.</strong> Um agendamento ou um agente usa as permissões do autor, lidas na hora em que roda.</li>
-  <li><strong>O que já existe e o que é novo.</strong> As organizações, a entrada com senha ou Google, os convites, a foto e a planilha já existem no Horus de hoje. A carteira, a quarentena, os grupos, as roles e a área de avisos são novos.</li>
+  <li><strong>As pessoas moram no middleware.</strong> O cadastro das pessoas fica no middleware da organização, e não no serviço do Horus. O convite que o gestor cria passa pelo Horus a caminho de lá. O que o Horus precisa saber de cada pessoa para funcionar, como o nome que aparece nas telas, ainda será definido do lado técnico.</li>
+  <li><strong>O que já existe e o que é novo.</strong> As organizações, a entrada com senha ou Google, os convites, a foto e a planilha já existem no Horus de hoje. A carteira, a quarentena, os grupos, as roles, a área de avisos e o cadastro das pessoas no middleware são novos.</li>
 </ul>
 
 <h3 id="mf-102-limites">O que esta funcionalidade não faz</h3>
@@ -142,7 +156,8 @@
     <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
     <tbody>
       <tr class="zebra"><td><strong>Criar organizações</strong></td><td>Quem cria é a Maind, na <a href="#mf-101">Administração da instância</a> (MF-101).</td></tr>
-      <tr class="zebra"><td><strong>Entrar com a conta da empresa</strong></td><td>O login corporativo, e as roles que chegam por ele, são da <a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a>, na versão 2.1. Na versão 2.0, a pessoa entra com e-mail e senha ou com o Google, e as roles vêm do cadastro.</td></tr>
+      <tr class="zebra"><td><strong>Entrar com a conta da empresa</strong></td><td>O login corporativo, e as roles e os owners que chegam por ele, são da <a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a>, na versão 2.1. Na versão 2.0, a pessoa entra com e-mail e senha ou com o Google, e as roles vêm do cadastro.</td></tr>
+      <tr class="zebra"><td><strong>Dar ao gestor o front do middleware</strong></td><td>Só o owner usa o front do middleware. O gestor convida e pede a troca do tipo de assento pelo Horus.</td></tr>
       <tr class="zebra"><td><strong>Separar os dados por pessoa</strong></td><td>Também é da <a href="#mf-106">MF-106</a>, na versão 2.1, assim como os grupos pela região ou pela loja e as colunas dessas características na planilha de convites.</td></tr>
       <tr class="zebra"><td><strong>Gestor de gestor</strong></td><td>A hierarquia tem um nível só: owner, gestores e as carteiras deles.</td></tr>
       <tr class="zebra"><td><strong>Role que tira, ou ordem entre roles</strong></td><td>As roles só somam, e quem as cria e atribui é sempre o owner, nunca o gestor.</td></tr>
@@ -166,8 +181,13 @@
       <tr class="zebra"><td><a href="#mf-113">Conectores de saída (MF-113)</a> e <a href="#mf-114">Agendamentos de agentes (MF-114)</a></td><td>Os grupos são o destino dos PDFs e dos alertas, e o contato de cada pessoa fica no perfil.</td></tr>
       <tr class="zebra"><td><a href="#mf-116">Auditoria (MF-116)</a></td><td>O owner e o gestor que a Auditoria conhece são os daqui; o rastro de quem é excluído sai junto com a pessoa.</td></tr>
       <tr class="zebra"><td><a href="#mf-117">Home da organização (MF-117)</a></td><td>A divisão dos números por gestor vem das carteiras.</td></tr>
+      <tr class="zebra"><td><a href="#mf-121">Middleware da organização (MF-121)</a></td><td>As pessoas da organização ficam guardadas no middleware, e o owner as cadastra e gere no front dele.</td></tr>
     </tbody>
   </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Ainda em definição</b><p>O owner cadastra e gere as pessoas no front do middleware. Ainda se define se outras tarefas dele também passam para lá, como as roles, os grupos da organização e a planilha de convites em lote, ou se ficam no Horus.</p></div>
 </div>
 <div class="callout callout--neutral">
   <span class="ico">•</span>
@@ -178,7 +198,7 @@
 <div class="faq">
   <details open>
     <summary>Vou ter de aprovar cada pessoa que entra na organização?</summary>
-    <div class="faq-body"><p>Não necessariamente. O gestor cria os convites da equipe e o owner os aprova, mas o owner pode ligar, nas preferências da organização, a aprovação automática dos convites. Os convites que o próprio owner faz não passam por aprovação. Em qualquer caso, só entra quem tem um assento livre do tipo pedido.</p></div>
+    <div class="faq-body"><p>Não necessariamente. O gestor cria os convites da equipe pelo Horus e o owner os aprova no front do middleware, mas o owner pode ligar, nas preferências da organização, a aprovação automática dos convites. Os convites que o próprio owner faz não passam por aprovação. Em qualquer caso, só entra quem tem um assento livre do tipo pedido.</p></div>
   </details>
   <details>
     <summary>O owner da minha empresa consegue ler as minhas conversas com o Horus?</summary>
@@ -193,8 +213,8 @@
     <div class="faq-body"><p>Pode, com uma role. O owner copia a role padrão, desliga “Ver o SQL” e “Baixar” e atribui a nova role ao estagiário, que continua perguntando. Só lembre que as roles somam: se ele tiver outra role que liga o “Baixar”, ele baixa.</p></div>
   </details>
   <details>
-    <summary>Dá para cada pessoa ver só uma parte dos dados, como a própria loja?</summary>
-    <div class="faq-body"><p>Na versão 2.0, não dentro de uma mesma organização: toda pergunta usa os dados da organização inteira. Se dois setores precisam de dados separados, cada um ganha a sua organização. A separação pessoa a pessoa chega com a <a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a>, na versão 2.1.</p></div>
+    <summary>Onde ficam guardados os dados das pessoas da minha organização?</summary>
+    <div class="faq-body"><p>No middleware da organização, fora do serviço do Horus. Ele fica numa estrutura separada, hospedada pela Maind ou na casa da sua empresa. O owner cadastra e gere as pessoas no front do middleware, e só ele usa esse aplicativo. O convite que um gestor cria passa pelo Horus a caminho do middleware.</p></div>
   </details>
   <details>
     <summary>As pessoas podem entrar com a conta da empresa, sem criar senha?</summary>

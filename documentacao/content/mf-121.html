@@ -1,25 +1,28 @@
-<p>Pense no arquivo de um hospital. Os prontuários não saem do prédio, nunca. Quem precisa de uma informação faz a pergunta no balcão; um funcionário de dentro vai ao arquivo, consulta o que precisa e devolve só a resposta. A pergunta e a resposta passam pelo balcão; os prontuários ficam onde estão. E é o hospital que decide quem chega ao balcão e até onde o funcionário pode ir.</p>
-<p>O Middleware na casa do contratante faz esse papel para o Horus. É uma peça que a empresa instala na própria infraestrutura e pela qual o Horus, que continua no serviço da Maind, chega aos dados, à internet e à inteligência artificial (IA) da empresa. O nome da funcionalidade ainda é provisório. Ela chega na segunda onda da versão 2.1, a de quem precisa que os dados fiquem em casa, depois da onda do Horus como serviço.</p>
-<div class="callout callout--info"><span class="ico">i</span><div><b>Versão 2.1, em construção</b><p>O que está aqui é o que a versão 2.1 do Horus vai entregar, depois da 2.0. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div></div>
+<p>Pense num prédio comercial com várias empresas. O prédio é de todas, mas cada empresa tem a sua recepção: é ela que sabe quem trabalha ali, guarda as chaves das salas e busca lá dentro o que se pede. A administração do prédio leva o pedido à recepção certa e devolve a resposta, sem guardar a lista de funcionários de cada empresa. E a recepção pode ficar no saguão, cuidada pelo prédio, ou no andar da própria empresa, cuidada por ela.</p>
+<p>O Middleware da organização faz esse papel no Horus. O <strong>middleware</strong> é a peça que fica entre o Horus e os bancos de dados da organização: ele guarda quem são as pessoas, os bancos e a inteligência artificial (IA) da organização, e responde pelo caminho até eles. Desde a versão 2.0, toda organização tem o seu, separado do Horus, hospedado pela Maind ou na casa do cliente.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Versão 2.0, em construção</b><p>O que está aqui é o que a versão 2.0 do Horus vai entregar. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
+</div>
 
 <h3 id="mf-121-o-que-e">O que é, em poucas palavras</h3>
-<p>O <strong>middleware</strong> é uma peça intermediária que a Maind entrega como uma <strong>imagem de container</strong>, um pacote pronto para rodar, e que a TI do cliente instala na infraestrutura da empresa. É feito para o cliente com exigência de privacidade e segurança, que mantém a governança pela própria cibersegurança e pela própria infraestrutura. Ele cuida de cinco coisas:</p>
+<p>O middleware fica numa infraestrutura separada do Horus, que continua no serviço da Maind. Junto dele vem o <strong>front do middleware</strong>, um segundo aplicativo, também fora do Horus, onde se cuida das pessoas, dos bancos e da IA da organização. O middleware cuida de cinco coisas:</p>
 <ul>
-  <li><strong>Levar o Horus ao que é da casa.</strong> O Horus passa pelo middleware para chegar aos dados, à internet e à IA do cliente.</li>
-  <li><strong>Deixar o Horus onde está.</strong> O Horus continua no serviço da Maind; a empresa instala só o middleware, e não o Horus.</li>
-  <li><strong>Pôr a TI do cliente no comando do caminho.</strong> É ela quem decide, por IP e porta, quem chega ao middleware e aonde ele chega.</li>
-  <li><strong>Deixar passar só a pergunta e a resposta pronta.</strong> É o que passa pela Maind, por padrão: o dado bruto fica em casa.</li>
-  <li><strong>Deixar o owner decidir o que mais sai.</strong> Qualquer saída além dessas depende de uma permissão do owner da organização, saída por saída.</li>
+  <li><strong>Guardar as pessoas da organização.</strong> Elas ficam no middleware, isoladas, fora do Horus, e o owner da organização as gere pelo front do middleware.</li>
+  <li><strong>Guardar os bancos e a IA.</strong> A configuração das fontes de dados e da IA é feita no front do middleware, e não no Horus.</li>
+  <li><strong>Fazer o caminho até os dados.</strong> O ciclo da análise, com o modelo de IA e as consultas ao banco, roda dentro do middleware. O Horus não alcança o banco direto.</li>
+  <li><strong>Deixar chegar ao Horus só a pergunta e a resposta pronta.</strong> É o que chega, por padrão. Qualquer saída a mais depende de uma permissão do owner da organização, saída por saída.</li>
+  <li><strong>Servir a uma organização só.</strong> Cada organização tem o seu middleware, também na hospedagem da Maind, e nenhum serve a duas.</li>
 </ul>
 <h4 id="mf-121-hoje-e-depois">Como é hoje e o que passa a existir</h4>
 <div class="table-wrap">
   <table class="t">
-    <thead><tr><th>Sobre</th><th>Hoje, na versão 2.0</th><th>Com o middleware, na versão 2.1</th></tr></thead>
+    <thead><tr><th>Sobre</th><th>No Horus de hoje</th><th>Com o middleware, na versão 2.0</th></tr></thead>
     <tbody>
-      <tr class="zebra"><td><strong>Onde o Horus roda</strong></td><td>No serviço da Maind.</td><td>No serviço da Maind, do mesmo jeito.</td></tr>
-      <tr class="zebra"><td><strong>Como chega ao banco</strong></td><td>Pelo endereço público do banco ou pelo túnel SSH (veja <a href="#mf-104-caminhos">Dois caminhos até o banco</a>).</td><td>Pelo middleware, que fica na casa do cliente.</td></tr>
-      <tr class="zebra"><td><strong>A IA e a internet</strong></td><td>Pelos provedores de IA que a organização usa (veja <a href="#mf-105-provedores">Os provedores da versão 2.0</a>) e pela pesquisa deles na web.</td><td>O Horus chega também à IA e à internet do cliente pelo middleware.</td></tr>
-      <tr class="zebra"><td><strong>A empresa que não admite os dados fora de casa</strong></td><td>Fica de fora, ou precisaria do Horus instalado inteiro dentro dela.</td><td>Usa o Horus como serviço, com o dado bruto em casa.</td></tr>
+      <tr class="zebra"><td><strong>Onde ficam as pessoas da organização</strong></td><td>No próprio Horus.</td><td>No middleware da organização, fora do Horus.</td></tr>
+      <tr class="zebra"><td><strong>Onde se configuram os bancos e a IA</strong></td><td>No Horus, pelo owner da organização.</td><td>No front do middleware, pelo owner ou, na hospedagem da Maind, pelo time da Maind.</td></tr>
+      <tr class="zebra"><td><strong>Como o Horus chega ao banco</strong></td><td>Direto, pelo endereço público do banco ou pelo túnel SSH (veja <a href="#mf-104-caminhos">Dois caminhos até o banco</a>).</td><td>Pelo middleware da organização, onde as consultas rodam.</td></tr>
+      <tr class="zebra"><td><strong>A empresa que não admite os dados fora de casa</strong></td><td>Fica de fora, ou precisaria do Horus instalado inteiro dentro dela.</td><td>Hospeda o middleware em casa e usa o Horus como serviço, com o dado bruto em casa.</td></tr>
     </tbody>
   </table>
 </div>
@@ -28,28 +31,48 @@
   <table class="t">
     <thead><tr><th>Quem</th><th>O que faz</th></tr></thead>
     <tbody>
-      <tr class="zebra"><td><strong>TI do cliente</strong></td><td>Instala e atualiza a imagem do middleware e decide, por IP e porta, quem chega a ele e aonde ele chega: os bancos, a IA, a internet.</td></tr>
-      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>Cadastra no Horus o par de chaves do middleware e decide, nas configurações da organização, se algo mais pode sair além da pergunta e da resposta.</td></tr>
-      <tr class="zebra"><td><strong>Quem pergunta</strong></td><td>Pergunta como sempre. Para essa pessoa, nada muda: o Horus chega aos dados pelo middleware, e ela recebe a resposta pronta.</td></tr>
-      <tr class="zebra"><td><strong>Administrador da instância</strong> (a Maind)</td><td>Continua vendo as organizações em números. Não liga nem vê as saídas do middleware, nem os dados das conexões.</td></tr>
+      <tr class="zebra"><td><strong>Administrador da instância</strong> (a Maind)</td><td>Cria a organização no Horus e a liga ao middleware dela; libera os assentos contratados, que vão ao middleware. Entra sempre por usuário e senha.</td></tr>
+      <tr class="zebra"><td><strong>Time da Maind</strong></td><td>Na hospedagem da Maind, sobe o middleware de cada organização e, como suporte técnico antes e depois da venda, configura os bancos e a IA no front do middleware.</td></tr>
+      <tr class="zebra"><td><strong>TI do cliente</strong></td><td>Na casa do cliente, instala e atualiza o middleware, um pacote pronto que a Maind entrega (uma imagem de container), e decide, por IP e porta, quem chega a ele e aonde ele chega.</td></tr>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>É o único da organização que usa o front do middleware. Entra sempre por usuário e senha, cadastra e gere as pessoas, aprova os convites e as trocas de assento que o gestor pede e decide se algo mais pode sair além da pergunta e da resposta. Com o middleware na casa do cliente, configura também os bancos e a IA.</td></tr>
+      <tr class="zebra"><td><strong>Gestor</strong></td><td>Cria os convites da equipe e pede a troca do tipo de assento pelo Horus, sem usar o front do middleware.</td></tr>
+      <tr class="zebra"><td><strong>Quem pergunta</strong></td><td>Pergunta como sempre, no Horus. Para essa pessoa, nada muda: o Horus chega aos dados pelo middleware, e ela recebe a resposta pronta.</td></tr>
     </tbody>
   </table>
 </div>
 
-<h3 id="mf-121-na-pratica">Do middleware instalado à primeira resposta</h3>
-<p>Um exemplo, com personagens ilustrativos. Um hospital não admite que os dados dos pacientes saiam da rede dele. A Helena é a owner da organização do hospital no Horus.</p>
+<h3 id="mf-121-na-pratica">Da organização criada à primeira resposta</h3>
+<p>Um exemplo, com personagens ilustrativos. A Maind vai criar a organização da área comercial de uma rede de lojas, com o middleware hospedado por ela. O Marcos será o owner da organização, e a Carla, uma das gestoras.</p>
 <ol class="steps">
-  <li><div><h4>A TI instala a imagem</h4><p>A TI do hospital instala a imagem do middleware na infraestrutura dele. O middleware ganha um endereço público e um par de chaves.</p></div></li>
-  <li><div><h4>A owner cadastra a chave</h4><p>A Helena cadastra no Horus, na organização, o par de chaves do middleware. A conexão com o middleware passa a ser da organização.</p></div></li>
-  <li><div><h4>A TI libera só o Horus</h4><p>No firewall, a TI libera só o endereço do Horus, por IP e porta, e decide aonde o middleware pode chegar.</p></div></li>
-  <li><div><h4>A owner decide o que mais sai</h4><p>Nas configurações da organização, a Helena deixa tudo como vem: nenhuma saída extra. Só a pergunta e a resposta pronta vão passar pela Maind.</p></div></li>
-  <li><div><h4>A diretora pergunta</h4><p>A diretora do hospital pergunta quantas internações houve no mês. A resposta chega, e nada além da pergunta e da resposta pronta saiu de casa.</p></div></li>
+  <li><div><h4>O middleware sobe</h4><p>O time da Maind sobe o middleware da organização, numa infraestrutura separada do Horus. Se a empresa preferisse hospedá-lo em casa, a TI dela instalaria o pacote pronto que a Maind entrega.</p></div></li>
+  <li><div><h4>A Maind cria a organização</h4><p>O administrador da instância cria a organização no Horus. A criação a liga ao middleware dela, numa troca segura que as duas pontas confirmam: é assim que o Horus aprende a chegar ao middleware certo.</p></div></li>
+  <li><div><h4>A Maind libera os assentos</h4><p>Os assentos contratados, o de owner, os de gestor e os de membro, vão ao middleware da organização.</p></div></li>
+  <li><div><h4>O owner cadastra as pessoas</h4><p>O Marcos entra no front do middleware, com usuário e senha, e cadastra as pessoas da área, entre elas a Carla, num assento de gestora.</p></div></li>
+  <li><div><h4>O banco e a IA são configurados</h4><p>No front do middleware, o time da Maind configura o banco de vendas e a IA da organização, como suporte técnico da implantação.</p></div></li>
+  <li><div><h4>A gestora pergunta</h4><p>A Carla entra pelo endereço da organização, que a leva ao middleware certo, e pergunta quanto cada loja vendeu na semana. O ciclo da análise roda no middleware, e ao Horus chegam só a pergunta e a resposta pronta.</p></div></li>
 </ol>
-<p>O mesmo caminho em desenho, com os dois lados: o que fica com a Maind, onde o Horus roda, e o que fica na casa do cliente, onde estão o middleware e os dados.</p>
+<p>Num hospital que não admite os dados dos pacientes fora da rede dele, o caminho é o mesmo, com duas diferenças: a TI do hospital instala o middleware na casa dele, e a owner da organização configura ela mesma o banco e a IA no front do middleware. Nada além da pergunta e da resposta pronta sai de lá.</p>
+<p>O mesmo caminho em desenho: o que fica com o Horus, o que fica no middleware da organização e o que volta a quem perguntou.</p>
 <dx-diagrama ref="mf-121-o-caminho-pelo-middleware"></dx-diagrama>
 
-<h3 id="mf-121-o-que-sai">O que sai da casa do cliente</h3>
-<p>Por padrão, o que passa pela Maind é só a <strong>pergunta</strong> e a <strong>resposta pronta</strong>, os blocos que a pessoa vê na tela. O dado bruto fica em casa. Cada saída a mais é uma permissão separada, que o owner da organização dá nas configurações da organização no Horus; sem ela, a saída não acontece.</p>
+<h3 id="mf-121-hospedagem">Na Maind ou na casa do cliente</h3>
+<p>O middleware é o mesmo nos dois lugares, e, para o produto, onde ele fica não importa, desde que a rede o alcance. O que muda é quem cuida dele:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Sobre</th><th>Hospedado pela Maind</th><th>Na casa do cliente</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Para quem é</strong></td><td>As organizações do Horus como serviço.</td><td>O cliente que não quer os bancos expostos fora de casa.</td></tr>
+      <tr class="zebra"><td><strong>Quem sobe e mantém o middleware</strong></td><td>O time da Maind.</td><td>A TI do cliente, que instala o pacote pronto da Maind e o atualiza.</td></tr>
+      <tr class="zebra"><td><strong>Quem configura os bancos e a IA</strong></td><td>O time da Maind, como suporte técnico antes e depois da venda.</td><td>O owner da organização.</td></tr>
+      <tr class="zebra"><td><strong>Quem cuida das pessoas</strong></td><td>O owner da organização, no front do middleware.</td><td>O owner da organização, no front do middleware.</td></tr>
+      <tr class="zebra"><td><strong>O que chega ao Horus</strong></td><td>Só a pergunta e a resposta pronta, por padrão.</td><td>Só a pergunta e a resposta pronta, por padrão.</td></tr>
+      <tr class="zebra"><td><strong>O que a Maind vê</strong></td><td>A Maind opera o middleware, e o time dela conhece as credenciais dos bancos e da IA que configura.</td><td>O funcionário da Maind não liga nem vê as saídas do middleware, nem os dados das conexões; só vê mais se o owner liberar uma saída.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 id="mf-121-o-que-sai">O que chega ao Horus</h3>
+<p>O <strong>ciclo da análise</strong>, o trabalho do modelo de IA e as consultas ao banco, roda dentro do middleware. Por padrão, o que chega ao Horus é só a <strong>pergunta</strong> e a <strong>resposta pronta</strong>, os blocos que a pessoa vê na tela. O dado bruto fica no middleware. Cada saída a mais é uma permissão separada, que o owner da organização dá no front do middleware; sem ela, a saída não acontece.</p>
 <div class="table-wrap">
   <table class="t">
     <thead><tr><th>O que pode sair</th><th>Por padrão</th><th>Quem decide</th></tr></thead>
@@ -62,27 +85,37 @@
     </tbody>
   </table>
 </div>
-<p>O administrador da instância, o funcionário da Maind que opera o Horus, não liga nem vê essas saídas, que são configurações da organização (sobre os dois papéis, veja <a href="#mf-101-quem-e-quem">Quem opera e quem usa</a>).</p>
 <div class="callout callout--warning">
   <span class="ico">!</span>
-  <div><b>O suporte da Maind no padrão</b><p>Sem as saídas extras, o suporte da Maind não vê o que acontece na casa do cliente. Para ver mais, ele depende de o owner da organização liberar a saída necessária.</p></div>
+  <div><b>Ponto de atenção</b><p>A promessa de que a Maind não vê o que acontece no middleware só vale com ele na casa do cliente: lá, sem as saídas extras, nem o suporte da Maind vê o que se passa. Na hospedagem da Maind, é a Maind que opera o middleware, e o time dela configura os bancos e a IA da organização e conhece as credenciais deles.</p></div>
 </div>
+
+<h3 id="mf-121-pessoas">As pessoas ficam no middleware</h3>
+<p>As pessoas da organização ficam isoladas no middleware, fora do Horus, e quem cuida delas é quem é da organização.</p>
+<ul>
+  <li><strong>Só o owner usa o front do middleware.</strong> Ele cadastra e gere as pessoas da organização e aprova o que o gestor pede.</li>
+  <li><strong>O gestor continua no Horus.</strong> Ele cria os convites da equipe e pede a troca do tipo de assento pelo Horus, e o owner aprova no front do middleware. No caminho, o e-mail de quem é convidado passa pelo Horus até chegar ao middleware.</li>
+  <li><strong>No máximo três owners.</strong> O primeiro owner pode cadastrar até mais dois, e cada um ocupa um assento de owner contratado (veja <a href="#mf-103">Licenças e planos (MF-103)</a>).</li>
+  <li><strong>A entrada é por usuário e senha.</strong> As configurações de autenticação ficam no middleware. O owner da organização e o administrador da instância entram sempre por usuário e senha; o login da empresa chega na versão 2.1, com a <a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a>.</li>
+</ul>
+<p>Como a gestão de pessoas funciona, com os papéis, os grupos e os convites, está na página de <a href="#mf-102">Organizações, pessoas e papéis (MF-102)</a>.</p>
 
 <h3 id="mf-121-caminho">Quem controla o caminho</h3>
 <ul>
-  <li><strong>A TI governa por IP e porta.</strong> Do Horus até os dados, a internet e a IA do cliente, o caminho é o que a TI libera.</li>
-  <li><strong>O endereço é público e protegido.</strong> O middleware tem um endereço público, protegido pela chave cadastrada no Horus e pelo bloqueio por IP e porta.</li>
-  <li><strong>Um middleware por organização.</strong> O middleware e a conexão com ele são de uma organização, e quem os configura é o owner dela. Um middleware não serve a várias organizações.</li>
-  <li><strong>A casa do cliente sustenta o middleware.</strong> Como ele roda na infraestrutura da empresa, a disponibilidade e a velocidade dele ficam com ela.</li>
+  <li><strong>O endereço leva à organização certa.</strong> O endereço do Horus é o mesmo para todas as organizações; o endereço de acesso de cada uma leva a pessoa ao middleware e à organização certos.</li>
+  <li><strong>Na casa do cliente, a TI governa por IP e porta.</strong> Do Horus até os dados, a internet e a IA do cliente, o caminho é o que a TI libera.</li>
+  <li><strong>Um middleware por organização.</strong> Também na hospedagem da Maind, cada organização tem o seu, e as credenciais e as regras de uma não ficam ao alcance de outra.</li>
+  <li><strong>A casa do cliente sustenta o middleware.</strong> Quando ele roda na infraestrutura da empresa, a disponibilidade e a velocidade dele ficam com ela.</li>
 </ul>
 
 <h3 id="mf-121-bastidores">Nos bastidores, sem complicar</h3>
 <p>Só o bastante da tecnologia para a história fazer sentido:</p>
 <ul>
-  <li><strong>Um Horus só.</strong> O Horus continua numa frota e numa versão só, no serviço da Maind. O cliente do middleware não ganha uma instância própria nem é dono de uma.</li>
-  <li><strong>Uma imagem pronta.</strong> A Maind disponibiliza a imagem do middleware, e o cliente a instala e a atualiza na infraestrutura dele.</li>
-  <li><strong>Um caminho para os dados, a IA e a internet.</strong> Para a organização que usa o middleware, as fontes de dados (<a href="#mf-104">MF-104</a>), a IA (<a href="#mf-105">MF-105</a>) e a saída para a web (<a href="#mf-109">MF-109</a>) passam por ele.</li>
-  <li><strong>A conversa entre o Horus e o middleware.</strong> A forma técnica dessa conversa ainda será definida, junto com o resto do desenho técnico desta funcionalidade.</li>
+  <li><strong>Três lugares separados.</strong> O Horus, com as telas, o motor e o banco do serviço; o middleware de cada organização, com a base de configuração e o front; e o que é da própria organização, como os bancos de dados e os provedores de IA.</li>
+  <li><strong>Um Horus só.</strong> O Horus continua numa instância só, no serviço da Maind, onde vivem todas as organizações. O cliente não ganha uma instância própria do Horus.</li>
+  <li><strong>Um pacote pronto, para quem hospeda em casa.</strong> A Maind entrega o middleware como uma imagem pronta para rodar, e a TI do cliente a instala e a atualiza.</li>
+  <li><strong>Um caminho para os dados, a IA e a internet.</strong> As fontes de dados (<a href="#mf-104">MF-104</a>), a IA (<a href="#mf-105">MF-105</a>) e a saída para a web (<a href="#mf-109">MF-109</a>) passam pelo middleware.</li>
+  <li><strong>A ligação entre o Horus e o middleware.</strong> Nasce quando a Maind cria a organização e é confirmada pelas duas pontas. A forma técnica dessa ligação e da conversa entre os dois ainda será definida, junto com o resto do desenho técnico desta funcionalidade.</li>
 </ul>
 
 <h3 id="mf-121-limites">O que o middleware não faz</h3>
@@ -90,58 +123,61 @@
   <table class="t">
     <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
     <tbody>
-      <tr class="zebra"><td><strong>Deixar tudo em casa</strong></td><td>A pergunta e a resposta pronta passam pela Maind. Quem exige que nem a pergunta saia precisa da instalação completa do Horus na empresa, que não tem versão prevista e só volta se um cliente a exigir.</td></tr>
+      <tr class="zebra"><td><strong>Deixar tudo em casa</strong></td><td>A pergunta e a resposta pronta chegam ao Horus. Quem exige que nem a pergunta saia precisa da instalação completa do Horus na empresa, que não tem versão prevista e só volta se um cliente a exigir.</td></tr>
       <tr class="zebra"><td><strong>Instalar o Horus no cliente</strong></td><td>A ativação dos assentos por arquivo de licença e a fonte alcançando a rede interna ficam com a instalação completa, sem versão prevista.</td></tr>
       <tr class="zebra"><td><strong>Dar a cada cliente uma instância própria</strong></td><td>O serviço é uma instância só, a da Maind, onde vivem todas as organizações.</td></tr>
-      <tr class="zebra"><td><strong>Servir a várias organizações</strong></td><td>Cada middleware é de uma organização.</td></tr>
-      <tr class="zebra"><td><strong>Abrir as saídas pela Maind</strong></td><td>Quem permite uma saída a mais é o owner da organização. O administrador da instância não liga nem vê essas saídas.</td></tr>
+      <tr class="zebra"><td><strong>Servir a várias organizações</strong></td><td>Cada middleware é de uma organização, também na hospedagem da Maind.</td></tr>
+      <tr class="zebra"><td><strong>Recortar o que cada pessoa vê dentro do banco</strong></td><td>É da <a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a>, na versão 2.1, que vai rodar no middleware. Na versão 2.0, a organização é a fronteira dos dados.</td></tr>
+      <tr class="zebra"><td><strong>Ligar o login da empresa</strong></td><td>Chega na versão 2.1. Na versão 2.0, o owner da organização e o administrador da instância entram por usuário e senha.</td></tr>
+      <tr class="zebra"><td><strong>Abrir as saídas pela Maind</strong></td><td>Quem permite uma saída a mais é o owner da organização, no front do middleware.</td></tr>
     </tbody>
   </table>
 </div>
 <h4 id="mf-121-ligadas">Funcionalidades ligadas a esta</h4>
-<p>O middleware é um caminho: quase tudo o que passa por ele é de outra funcionalidade.</p>
+<p>O middleware é o caminho de toda organização: quase tudo o que passa por ele é de outra funcionalidade.</p>
 <div class="table-wrap">
   <table class="t">
     <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
     <tbody>
-      <tr class="zebra"><td><a href="#mf-104">Conectar as fontes vivas (MF-104)</a></td><td>As fontes da organização alcançam pelo middleware o banco que não pode sair da casa do cliente.</td></tr>
-      <tr class="zebra"><td><a href="#mf-105">IA sob controle da organização (MF-105)</a></td><td>O Horus chega pelo middleware também à IA do cliente.</td></tr>
+      <tr class="zebra"><td><a href="#mf-101">Administração da instância (MF-101)</a></td><td>O administrador da instância cria a organização e a liga ao middleware dela, libera os assentos e entra sempre por usuário e senha.</td></tr>
+      <tr class="zebra"><td><a href="#mf-102">Organizações, pessoas e papéis (MF-102)</a></td><td>As pessoas ficam no middleware, e o owner as gere pelo front dele. O gestor convida e pede a troca do tipo de assento pelo Horus.</td></tr>
+      <tr class="zebra"><td><a href="#mf-103">Licenças e planos (MF-103)</a></td><td>Os assentos liberados vão ao middleware, e cada owner além do primeiro ocupa um assento de owner contratado.</td></tr>
+      <tr class="zebra"><td><a href="#mf-104">Conectar as fontes vivas (MF-104)</a></td><td>As fontes são configuradas no front do middleware e alcançam o banco por ele.</td></tr>
+      <tr class="zebra"><td><a href="#mf-105">IA sob controle da organização (MF-105)</a></td><td>A IA da organização é configurada no front do middleware, e o modelo trabalha no ciclo da análise, dentro dele.</td></tr>
       <tr class="zebra"><td><a href="#mf-109">A web como fonte (MF-109)</a></td><td>A saída do Horus para a internet também passa pelo middleware.</td></tr>
-      <tr class="zebra"><td><a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a></td><td>O recorte do que cada pessoa vê é de lá, e chega antes, na primeira onda da versão 2.1.</td></tr>
-      <tr class="zebra"><td><a href="#mf-102">Organizações, pessoas e papéis (MF-102)</a></td><td>O owner e as configurações da organização guardam a conexão com o middleware e as permissões de saída.</td></tr>
-      <tr class="zebra"><td><a href="#mf-101">Administração da instância (MF-101)</a></td><td>Quem administra a instância vê todas as organizações em números, mas não liga nem vê as saídas do middleware, nem os dados das conexões.</td></tr>
+      <tr class="zebra"><td><a href="#mf-106">Segurança dos dados por pessoa (MF-106)</a></td><td>Na versão 2.1, o recorte do que cada pessoa vê dentro do banco roda no middleware e depende dele.</td></tr>
     </tbody>
   </table>
 </div>
 <div class="callout callout--neutral">
   <span class="ico">•</span>
-  <div><b>Ainda em definição</b><p><strong>A conversa entre o Horus e o middleware.</strong> A forma técnica em que os dois se falam ainda será definida.</p><p><strong>As saídas extras.</strong> Além do comando da consulta e da planilha, quais outras saídas contam como vazamento e pedem a permissão do owner.</p><p><strong>Quando o middleware falha ou muda.</strong> O que o Horus faz quando o middleware do cliente está fora do ar, e como a imagem nova chega ao cliente.</p></div>
+  <div><b>Ainda em definição</b><p><strong>A forma técnica.</strong> Como o Horus e o middleware se ligam e conversam, e como o middleware se atualiza.</p><p><strong>Quando o middleware sai do ar.</strong> O que a pessoa vê quando o middleware da organização está fora do ar.</p><p><strong>As saídas extras.</strong> Além do comando da consulta e da planilha, quais outras saídas contam como vazamento e pedem a permissão do owner.</p><p><strong>O que o Horus guarda de cada pessoa.</strong> Com as pessoas no middleware, o que o Horus precisa saber de cada uma para funcionar, e como mostra o nome dela nas telas.</p></div>
 </div>
 
 <h3 id="mf-121-faq">Perguntas frequentes</h3>
 <div class="faq">
   <details open>
-    <summary>Com o middleware, os dados da minha empresa saem de casa?</summary>
-    <div class="faq-body"><p>Por padrão, não. O que passa pela Maind é só a pergunta e a resposta pronta, os blocos que a pessoa vê; o dado bruto fica em casa. O comando da consulta, os dados em planilha e outras saídas só saem se o owner da sua organização der a permissão, saída por saída.</p></div>
+    <summary>Os dados da minha empresa chegam ao Horus?</summary>
+    <div class="faq-body"><p>Por padrão, não. As consultas ao banco rodam no middleware da sua organização, e ao Horus chegam só a pergunta e a resposta pronta, os blocos que a pessoa vê. O comando da consulta, os dados em planilha e outras saídas só saem se o owner da sua organização der a permissão, saída por saída.</p></div>
   </details>
   <details>
-    <summary>Preciso instalar o Horus inteiro na minha empresa?</summary>
-    <div class="faq-body"><p>Não. A sua TI instala só o middleware, uma imagem pronta que a Maind disponibiliza, e o Horus continua no serviço da Maind. Quem exige que nem a pergunta saia de casa precisa da instalação completa do Horus, que não tem versão prevista e só volta se um cliente a exigir.</p></div>
+    <summary>Precisamos instalar alguma coisa na nossa empresa?</summary>
+    <div class="faq-body"><p>Não necessariamente. Na hospedagem da Maind, o time da Maind sobe e mantém o middleware da sua organização. Se a sua empresa não quer os bancos expostos fora de casa, a TI dela instala o middleware, um pacote pronto que a Maind entrega, e o atualiza. O Horus inteiro instalado na empresa não tem versão prevista e só volta se um cliente o exigir.</p></div>
   </details>
   <details>
-    <summary>Quem controla quem chega ao middleware?</summary>
-    <div class="faq-body"><p>A sua TI, por IP e porta: ela decide quem chega ao middleware e aonde ele chega. No firewall, ela libera só o endereço do Horus. O endereço do middleware é público, e o que o protege é a chave cadastrada no Horus pelo owner da organização e esse bloqueio por IP e porta.</p></div>
+    <summary>Quem configura os bancos e a IA da nossa organização?</summary>
+    <div class="faq-body"><p>A configuração é sempre feita no front do middleware, e não no Horus. Com o middleware na casa da sua empresa, quem configura é o owner da organização. Na hospedagem da Maind, é o time da Maind, como suporte técnico antes e depois da venda.</p></div>
   </details>
   <details>
-    <summary>A Maind consegue ver o que acontece dentro da minha empresa?</summary>
-    <div class="faq-body"><p>No padrão, não. O administrador da instância vê as organizações em números, não liga nem vê as saídas do middleware e não vê os dados das conexões. Até o suporte da Maind fica sem ver o que acontece na sua casa: para ver mais, depende de o owner da organização liberar a saída necessária.</p></div>
+    <summary>A Maind consegue ver o que acontece no middleware?</summary>
+    <div class="faq-body"><p>Depende de onde ele fica. Na casa da sua empresa, não: o funcionário da Maind não liga nem vê as saídas do middleware, nem os dados das conexões, e o suporte só vê mais se o owner liberar uma saída. Na hospedagem da Maind, é a Maind que opera o middleware, e o time dela conhece as credenciais dos bancos e da IA que configura.</p></div>
   </details>
   <details>
-    <summary>Um middleware pode atender a várias organizações?</summary>
-    <div class="faq-body"><p>Não. Cada middleware é de uma organização, e a conexão com ele é configurada pelo owner dela, nas configurações da organização. A sua empresa também não ganha uma instância própria do Horus: o serviço é uma instância só, a da Maind.</p></div>
+    <summary>Onde ficam os dados das pessoas da organização?</summary>
+    <div class="faq-body"><p>No middleware da sua organização, isolados, fora do Horus. Só o owner usa o front do middleware, onde cadastra e gere as pessoas. O gestor convida pelo Horus, e o owner aprova no front do middleware; no caminho, o e-mail de quem é convidado passa pelo Horus.</p></div>
   </details>
   <details>
     <summary>E se o middleware sair do ar?</summary>
-    <div class="faq-body"><p>O que o Horus faz quando o middleware está fora do ar ainda está em definição, assim como o jeito de a imagem nova chegar à sua empresa. O que já está decidido: o middleware roda na infraestrutura da sua empresa, e a disponibilidade e a velocidade dele ficam com ela.</p></div>
+    <div class="faq-body"><p>O que a pessoa vê quando o middleware está fora do ar ainda está em definição, assim como o jeito de o middleware se atualizar. O que já está decidido: com o middleware na casa da sua empresa, a disponibilidade e a velocidade dele ficam com a infraestrutura dela.</p></div>
   </details>
 </div>

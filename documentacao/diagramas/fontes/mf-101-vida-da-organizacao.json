@@ -541,7 +541,7 @@
       "type": "backend",
       "icon": "briefcase",
       "label": "A Maind cria a organização",
-      "sublabel": "Nasce em configuração, com o assento do primeiro owner e sem IA",
+      "sublabel": "Nasce em configuração, com o primeiro owner e o seu middleware",
       "width": 312
     },
     {
@@ -552,7 +552,7 @@
       "type": "backend",
       "icon": "briefcase",
       "label": "Libera os assentos",
-      "sublabel": "Tipo a tipo; a conexão de IA da instância é opcional",
+      "sublabel": "Tipo a tipo; os assentos vão ao middleware da organização",
       "width": 312
     },
     {
@@ -572,8 +572,8 @@
       "col": 1,
       "type": "external",
       "icon": "person",
-      "label": "O owner convida as pessoas",
-      "sublabel": "Dentro dos assentos liberados"
+      "label": "O owner cadastra as pessoas",
+      "sublabel": "No front do middleware, nos assentos"
     },
     {
       "id": "acompanhar",
@@ -678,7 +678,7 @@
       "title": "Quem faz o quê",
       "items": [
         "A Maind (a administração) cria a organização, libera os assentos, marca a organização como ativa, acompanha o uso e o custo e decide suspender e reativar.",
-        "O owner da organização, que é uma pessoa do cliente, convida as pessoas, dentro dos assentos liberados."
+        "O owner da organização, que é uma pessoa do cliente, cadastra as pessoas no front do middleware, dentro dos assentos liberados."
       ]
     },
     {

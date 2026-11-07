@@ -8,7 +8,7 @@ objetivos: [O4]
 quem_usa: [owner da organização, gestor, membro ouro, membro prata, membro bronze]
 complexidade: alta
 relacionadas: [MF-114, MF-115, MF-112, MF-111, MF-102, MF-103, MF-101, MF-116, MF-122]
-atualizado: 2026-11-05
+atualizado: 2026-11-07
 fontes:
   - docs/raw/produto/04-macro-funcionalidades-de-hoje.md
   - docs/raw/produto/05-v2.0-consolidada.md
@@ -156,7 +156,7 @@ Nada a decidir.
   `D-033` a `D-035` (a mf, o "só transporta" e o "só a usuários do Horus"); as `D-038` a `D-040` (o contato, a
   aprovação por tipo e o "tudo dentro"); a `D-079` (o membro leitor recebe); a `D-122` (entra na v2.0, com a leitura
   `D-122.1`, o nono botão das roles); a `D-124` (o e-mail e o WhatsApp, fechou a `P-024`, com a leitura da mesma
-  conta); a `D-121` e a `D-182` (o Teams e o Google Chat na onda 1 da v2.1; outros, como o Slack, adiados); a
+  conta); a `D-121` e a `D-182` (o Teams e o Google Chat na v2.1; outros, como o Slack, adiados); a
   `D-197` e a `D-198` (uma mf numa versão só: o Teams e o Google Chat viram a `MF-122`, e esta mf fica inteira na
   v2.0); a `D-201`, a definição da `MF-122`; a `D-160` (quem usa o número da Maind paga as mensagens que
   gerar); a `D-193` e a `D-194` (os cinco tipos de assento; o ouro é o antigo membro full e o bronze, o antigo

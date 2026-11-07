@@ -4,7 +4,7 @@ Esta pasta é a **documentação para quem vai usar ou contratar o Horus**: uma 
 simples, com perguntas frequentes e, quando um fluxo ajuda, um diagrama. Ela é **gerada com o plugin DocX** (design da Kinto) e é
 **separada do portal de `docs/`**, que continua como está.
 
-**Situação:** ✅ published (finalizada em 06/11/2026 e no ar no GitHub Pages). Escritas: **as 18 macro funcionalidades da v2.0** (MF-101 a MF-105, MF-107 a MF-118 e MF-120) e **as 5 da v2.1** (MF-106, 119, 121, 122 e 123). As páginas da v2.1 levam o aviso “Versão 2.1, em construção” e dizem em qual das duas ondas a funcionalidade chega (a MF-121 é da segunda; as demais, da primeira).
+**Situação:** ✅ published (finalizada em 06/11/2026 e no ar no GitHub Pages). Escritas: **as 19 macro funcionalidades da v2.0** (MF-101 a MF-105, MF-107 a MF-118, MF-120 e MF-121) e **as 4 da v2.1** (MF-106, 119, 122 e 123). As páginas da v2.1 levam o aviso “Versão 2.1, em construção”, sem falar de onda. ⚠️ **Em 07/11/2026** as decisões `D-258` a `D-270` (o middleware em toda organização, a MF-121 na v2.0, as pessoas, os bancos e a IA no front do middleware, o fim da conexão da instância) mudaram 13 páginas **só nas fontes e no site local**: o que está no GitHub Pages ainda é a versão de 06/11/2026, até a ordem de publicar do dono. Veja “Atualização de 07/11/2026”, abaixo.
 
 ## O que há aqui
 
@@ -287,7 +287,7 @@ mais recente e específica.
 |---|---|
 | O que é, as palavras, quem faz o quê | leitura da MF-106; `D-025`, `D-028`, `D-194`, `D-199` |
 | O que a v2.0 já faz e o que a 2.1 acrescenta | `D-145`, `D-163`, `D-164`, `D-167`, `D-169` (leitura `D-163.2`), `D-019`, `D-118`, `D-199`; `ARQ-090` |
-| Duas etapas, as duas na onda 1 | `D-025`, `D-121`, `D-181`; `06-versoes.md` |
+| Duas etapas, as duas na v2.1 | `D-025`, `D-121`, `D-181`; `06-versoes.md` |
 | Uma regra, do texto à resposta (os passos) | leitura da MF-106; `D-025`, `D-028`, `D-199`; `04-macro-funcionalidades-de-hoje.md` (linha da MF-106); `07-seguranca.md` §3.3 |
 | Conferida e fechada na dúvida; o aviso de resposta limitada (com o login da empresa: a regra do Horus e a frase sobre a empresa) | `ARQ-032`; `05-motor-de-analise-e-ia.md` §3.11; `14-conferencia-do-produto.md` §1 (d); `D-169`, `D-256` |
 | As características e os grupos | `D-019`, `D-052`, `D-145`, `D-199` |
@@ -306,7 +306,7 @@ mais recente e específica.
 |---|---|
 | O que é: “investigar” na resposta, passo a passo, a pessoa escolhe, fonte em cada passo, caminho na conversa | `D-081`, `D-177`, `D-178`, `D-179`, `D-180`; leitura da MF-119 |
 | Quem investiga (a prata sim, o bronze não) | `D-194`, `D-203`; leitura |
-| v2.1, onda 1, junto com a MF-106 | `D-121`, `D-181`; `05-v2.0-consolidada.md`, `06-versoes.md`, `07-mapa-de-objetivos-e-funcionalidades.md` |
+| v2.1, junto com a MF-106 | `D-121`, `D-181`; `05-v2.0-consolidada.md`, `06-versoes.md`, `07-mapa-de-objetivos-e-funcionalidades.md` |
 | O que a v2.0 já faz e o que a 2.1 acrescenta | `D-081`, `D-106`, `D-122`, `D-089`, `D-099`; páginas da MF-104, 107, 110 e 111 |
 | Até onde enxerga: o modelo semântico e o time de dados | `D-083`; leitura; `14-conferencia-do-produto.md`, letra (v) |
 | Fato e palpite: causa de fora só a partir do nível 4 | `D-130`, `ARQ-025`; `05-motor-de-analise-e-ia.md` §3.5 |
@@ -315,11 +315,11 @@ mais recente e específica.
 | O que não faz; “Ainda em definição”; mostrar a investigação a outras pessoas (exportar a conversa, sem compartilhá-la) | `D-177`, `D-178`, `D-179`, `D-180`, `D-249`; leitura (“Ainda a decidir”) |
 | Diagrama “Do número que mudou ao porquê” | `D-177`, `D-178`, `D-179`; leitura da MF-119 |
 
-### MF-121 · Middleware na casa do contratante (v2.1, onda 2; nome provisório)
+### MF-121 · Middleware da organização (v2.0; nome decidido em 07/11/2026, `D-270`)
 
 | Assunto da página | Fonte |
 |---|---|
-| O que é, para quem, as cinco coisas, nome provisório, onda 2 | leitura da MF-121; `D-196`, `D-181`, `D-188`, `D-195` |
+| O que é, para quem, as cinco coisas, nome decidido, v2.0 (era a onda 2) | leitura da MF-121; `D-196`, `D-181`, `D-188`, `D-195` |
 | Como é hoje e o que passa a existir | leitura da MF-121; `ARQ-052`; `D-188`, `D-190`, `D-196`; páginas da MF-104, 105 e 109 |
 | Quem faz o quê (TI, owner, quem pergunta, administrador) | `D-190`, `D-193`, `D-195`, `D-196` |
 | Do middleware instalado à primeira resposta (o hospital) | leitura da MF-121 (exemplo e passos); `D-195`, `D-196` |
@@ -331,12 +331,12 @@ mais recente e específica.
 | “Ainda em definição” | `D-189`, `D-195`, `D-196`; `P-040`, `P-042`; `06-versoes.md` (“O que trava a v2.1”) |
 | Diagrama “O caminho pelo middleware” | `D-189`, `D-190`, `D-193`, `D-195`, `D-196`; leitura da MF-121 |
 
-### MF-122 · Conectores de chat corporativo (v2.1, onda 1; nome provisório)
+### MF-122 · Conectores de chat corporativo (v2.1; nome provisório)
 
 | Assunto da página | Fonte |
 |---|---|
-| O que é, os dois canais, como é hoje, quem faz o quê | leitura da MF-122; `D-201`, `D-198`, `D-182`, `D-124`, `D-041`, `D-035`; `06-versoes.md` (onda 1); `07-mapa-de-objetivos-e-funcionalidades.md` (O4) |
-| A onda e o nome provisório | `D-181`, `D-198`, `D-201` |
+| O que é, os dois canais, como é hoje, quem faz o quê | leitura da MF-122; `D-201`, `D-198`, `D-182`, `D-124`, `D-041`, `D-035`; `06-versoes.md`; `07-mapa-de-objetivos-e-funcionalidades.md` (O4) |
+| A versão e o nome provisório | `D-181`, `D-198`, `D-201` |
 | Um alerta, do agente ao canal (passos e diagrama) | leitura da MF-122 (“Como se usa”); `D-201`, `D-124`, `D-037` |
 | O mesmo carteiro, com as mesmas regras | leitura (relacionadas: MF-113); `D-041`, `D-035`, `D-198` |
 | Recebe, mas não conversa | `D-201`, `D-099` |
@@ -344,18 +344,38 @@ mais recente e específica.
 | O que não faz; funcionalidades ligadas | `D-201`, `D-182` (Slack), `D-198`; `05-v2.0-consolidada.md` (outros conectores sem versão) |
 | “Ainda em definição” | `D-201` e `D-198` (hipótese dos dois juntos), `P-038`; `06-versoes.md` (“O que trava a v2.1”) |
 
-### MF-123 · Fonte AWS Athena (v2.1, onda 1; nome provisório)
+### MF-123 · Fonte AWS Athena (v2.1; nome provisório)
 
 | Assunto da página | Fonte |
 |---|---|
 | O que é; hoje × v2.1; quem faz o quê; os passos | leitura da MF-123; `D-201`, `D-161`, `D-198`; `D-139` (MVP da v1.xx); `D-083`, `D-219` |
-| As tecnologias (cinco na v2.0, o Athena na v2.1); a onda 1 | `D-161`, `D-181`, `D-198`, `D-201`; `ARQ-052`; `06-versoes.md`; `05-v2.0-consolidada.md` |
+| As tecnologias (cinco na v2.0, o Athena na v2.1); a versão | `D-161`, `D-181`, `D-198`, `D-201`; `ARQ-052`; `06-versoes.md`; `05-v2.0-consolidada.md` |
 | Quem vê os dados do Athena (recorte pela MF-106, hoje só SQL Server) | `D-145`, `D-198`, `D-201`; `P-033` |
 | Nos bastidores (o cadastro herdado; a ligação e a “língua” da consulta são novas) | `D-161`; `08-integracoes.md` §3.5; `P-033`; `06-versoes.md` (“O que trava a v2.1”) |
 | O que não faz; funcionalidades ligadas | `D-201`, `D-198`, `D-161`; `08-integracoes.md` §3.5 |
-| “Ainda em definição” | `P-033`; hipótese de caber na onda 1: `D-198`, `D-201` |
+| “Ainda em definição” | `P-033`; hipótese de caber na v2.1: `D-198`, `D-201` |
 
 **Escolha editorial (v2.1):** as páginas não repetem a “prova de valor”, o grau de complexidade, as notas das decisões nem as hipóteses de negócio da leitura (por exemplo, que ainda não há demanda conhecida pelo Athena): são conversa interna de produto, e não explicação ao cliente.
+
+## Atualização de 07/11/2026 (`D-258` a `D-270`): o que mudou em cada página
+
+Só nas fontes e no site local; **não publicado**. Cada linha diz o que a página passou a dizer e a decisão que a sustenta.
+
+| Página | O que mudou | Decisões |
+|---|---|---|
+| MF-101 | A criação da organização gera o certificado e a chave de instalação; os assentos vão ao middleware; o administrador entra por usuário e senha; some o cadastro de IA da instância; o aviso de IA parada vai também ao time da Maind; diagrama “A vida de uma organização” refeito | `D-258`, `D-259`, `D-261`, `D-265` a `D-268` |
+| MF-102 | O owner cadastra as pessoas no front do middleware; o gestor convida e pede a troca pelo Horus; até mais dois owners | `D-261`, `D-262`, `D-269`, `D-258` |
+| MF-103 | Os assentos vão ao middleware; owners adicionais em assento contratado; a IA da Maind e o preço ficam na `P-022` | `D-258`, `D-267`, `D-269` |
+| MF-104 | Os bancos se configuram no front do middleware (owner ou time da Maind); as consultas rodam no middleware; a credencial fica fora do Horus | `D-258`, `D-259`, `D-265` |
+| MF-105 | A IA é sempre da organização, configurada no middleware; a chave da organização ou a que a Maind dá e paga; o owner vê o consumo de toda a IA; avisos | `D-264` a `D-268` |
+| MF-106 | Segue na v2.1 e passa a depender da MF-121; roda no middleware | `D-263`, `D-258`, `D-261`, `D-269` |
+| MF-109 | A saída para a internet passa pelo middleware | `D-258` a `D-260`, `D-264` a `D-266` |
+| MF-113 | Só a leitura (a data da versão); o fragmento não mudou | `D-181`, `D-260` |
+| MF-115 | O custo e o aviso de IA: sem “embute no preço”; o owner vê o consumo de toda a IA | `D-264` a `D-268` |
+| MF-119, MF-122, MF-123 | Saiu o conceito de onda; a MF-123 conecta a fonte no front do middleware | `D-181`, `D-260`, `D-265`, `D-258` |
+| MF-121 | Sobe inteira para a v2.0 como “Middleware da organização”: um por organização, na Maind ou na casa do cliente; as pessoas, os bancos e a IA se configuram no front dele; só a pergunta e a resposta pronta voltam ao Horus; diagrama refeito | `D-258` a `D-263`, `D-265`, `D-270`, `D-189` |
+
+O glossário (`como-ler.html`) ganhou “Front do middleware”, perdeu “Onda (da versão 2.1)” e teve “Middleware”, “Owner da organização” e “Saída extra” reescritos.
 
 ## Pontos em aberto que as páginas declaram
 
@@ -365,11 +385,11 @@ o owner ler as conversas de todos sem aviso e apagar tudo de quem sai (MF-102) e
 
 | Página | O que ainda não está fechado |
 |---|---|
-| MF-101 | (nada além do indicador “Na implantação”) |
-| MF-102 | Do lado técnico, o arquiteto confere se apagar tudo de quem sai convive com a guarda do registro de acesso e das cópias de segurança |
-| MF-103 | O preço do assento prata e se o preço muda para quem traz a própria IA; os números do prazo da reserva |
-| MF-104 | Se haverá fonte de páginas da web cadastradas; o formato do arquivo do modelo semântico |
-| MF-105 | O preço para quem traz a própria IA; por onde o aviso chega ao dono da conexão quando a IA para; como a falha aparece na tela |
+| MF-101 | De onde o relatório da Maind tira o nome de quem ocupa o assento, agora que as pessoas ficam no middleware; que custo de IA o painel de uso e o aviso de custo ainda mostram, sem a conexão da instância (mais o indicador “Na implantação”) |
+| MF-102 | O que mais do trabalho do owner (roles, grupos da organização, planilha em lote) vai para o front do middleware, além das pessoas; do lado técnico, o arquiteto confere se apagar tudo de quem sai convive com a guarda do registro de acesso e das cópias de segurança |
+| MF-103 | O preço do assento prata e se a IA que a Maind dá entra no preço do assento; os números do prazo da reserva |
+| MF-104 | Se haverá fonte de páginas da web cadastradas; o formato do arquivo do modelo semântico; onde se carrega o modelo semântico e quem o carrega na hospedagem da Maind |
+| MF-105 | Se a IA que a Maind dá entra no preço do assento; por onde o aviso chega ao owner e ao time da Maind quando a IA para; como a falha aparece na tela; onde ficam a curadoria dos modelos, o modelo padrão e o de cada tarefa, e quem os escolhe na hospedagem da Maind; que custo de IA o aviso de custo da Maind ainda alcança |
 | MF-107 | (nada além do indicador “Na implantação”, pela leitura das conversas pelo owner) |
 | MF-108 | Como cada tela, com gráficos e tabelas, se comporta no celular e no tablet (desenho técnico e testes de ponta a ponta) |
 | MF-109 | Se haverá fonte de páginas da web cadastradas e o destino do tipo de fonte `web` do Horus de hoje |
@@ -378,16 +398,16 @@ o owner ler as conversas de todos sem aviso e apagar tudo de quem sai (MF-102) e
 | MF-112 | Se, em “Pessoas específicas”, o gestor escolhe qualquer pessoa ou só as que gere; o limite de tamanho da página do PDF de um board muito grande |
 | MF-113 | O tamanho máximo de cada canal e o texto do aviso ao autor; por onde chega o aviso quando um canal para; o caminho técnico até o WhatsApp |
 | MF-114 | Se a pessoa é avisada quando o owner aprova ou recusa; por qual canal chega o aviso de falha; quantas vezes o Horus tenta antes de dar uma rodada por perdida; o texto do aviso de board desativado |
-| MF-115 | Os limites técnicos de cada execução (a calibrar); por onde o autor recebe o aviso de falha; se é avisado da aprovação ou recusa; o tamanho máximo do PDF e do alerta em cada canal |
+| MF-115 | O que o aviso de custo da Administração da instância ainda acompanha, sem a conexão da instância; os limites técnicos de cada execução (a calibrar); por onde o autor recebe o aviso de falha; se é avisado da aprovação ou recusa; o tamanho máximo do PDF e do alerta em cada canal |
 | MF-116 | Se o que a pessoa vê pelo WhatsApp entra no rastro; o texto final do aviso padrão e o lugar do link (mais o indicador “Na implantação”) |
 | MF-117 | (nada além do indicador “Na implantação”, pela contagem de quem é excluído) |
 | MF-118 | O detalhe de cada cenário; se é viável uma conta de WhatsApp de exemplo; se duas organizações e os boards do espaço da organização bastam |
 | MF-120 | O catálogo da faixa (indicadores, ícones e as regras de cada componente, inclusive se o aviso do owner terá hora de fim); o movimento e a aparência; quem vê os números da instância (leitura do PO a confirmar); o nome (provisório) |
-| MF-106 | O texto exato do aviso de resposta limitada e da frase sobre as regras da empresa; os bancos além do SQL Server, a começar pelo Athena |
+| MF-106 | Onde o owner escreve as regras e as características das pessoas (no Horus ou no front do middleware); o texto exato do aviso de resposta limitada e da frase sobre as regras da empresa; os bancos além do SQL Server, a começar pelo Athena |
 | MF-119 | Se a investigação chega à Pergunta rápida e ao WhatsApp; a forma técnica do modo de investigação |
-| MF-121 | A “língua” em que o Horus e o middleware conversam; quais outras saídas, além do comando da consulta e da planilha, pedem permissão; o que o Horus faz quando o middleware cai ou muda e como a imagem nova chega; o nome (provisório) |
+| MF-121 | A “língua” em que o Horus e o middleware conversam; quais outras saídas, além do comando da consulta e da planilha, pedem permissão; o que o Horus faz quando o middleware cai ou muda (e o login da organização cai junto) e como a atualização chega; como cada organização ganha o seu middleware ao ser criada; o que o Horus guarda de cada pessoa |
 | MF-122 | Se o Teams e o Google Chat chegam juntos; a forma técnica de integrar cada um (autenticação, aprovação da TI, o que cada um leva); como a entrega a um canal ou espaço respeita o “só a usuários do Horus”; o contato da pessoa em cada canal; o nome (provisório) |
-| MF-123 | O que a Segurança dos dados por pessoa cobre no Athena; a forma técnica da ligação com o Athena; a confirmação da onda 1; o nome (provisório) |
+| MF-123 | O que a Segurança dos dados por pessoa cobre no Athena; a forma técnica da ligação com o Athena; a confirmação da versão; o nome (provisório) |
 
 ### Divergências nas fontes, achadas ao escrever a v2.1
 

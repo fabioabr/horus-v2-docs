@@ -497,22 +497,22 @@
     "legend": {
       "entries": {
         "frontend": {
-          "label": "Pessoas da organização no Horus"
+          "label": "Pessoas da organização, no Horus"
         },
         "backend": {
-          "label": "O Horus, no serviço da Maind"
+          "label": "Na Maind: o Horus"
         },
-        "external": {
-          "label": "A TI do cliente"
+        "cloud": {
+          "label": "Front do middleware"
+        },
+        "messagebus": {
+          "label": "O middleware da organização"
         },
         "security": {
           "label": "Controle do que passa"
         },
-        "messagebus": {
-          "label": "O middleware, na casa do cliente"
-        },
         "database": {
-          "label": "Dados, IA e internet do cliente"
+          "label": "Bancos e IA da organização"
         }
       }
     }
@@ -527,12 +527,16 @@
       "label": "Na Maind: o Horus, como serviço"
     },
     {
+      "id": "front",
+      "label": "Front do middleware"
+    },
+    {
       "id": "casa",
-      "label": "Na casa do cliente: a TI e o middleware"
+      "label": "O middleware da organização, na Maind ou na casa do cliente"
     },
     {
       "id": "alcance",
-      "label": "Aonde o middleware chega, pelo caminho da TI"
+      "label": "Bancos e IA da organização"
     }
   ],
   "phases": [
@@ -540,20 +544,20 @@
       "id": "preparar",
       "label": "Preparar (uma vez)",
       "fromCol": 0,
-      "toCol": 1
+      "toCol": 2
     },
     {
       "id": "a_cada_pergunta",
       "label": "A cada pergunta",
-      "fromCol": 2,
-      "toCol": 4,
+      "fromCol": 3,
+      "toCol": 5,
       "variant": "emphasis"
     }
   ],
   "mainPath": [
-    "instalar",
-    "chave",
-    "saidas",
+    "criar",
+    "ligar",
+    "cadastrar",
     "perguntar",
     "horus",
     "middleware",
@@ -562,54 +566,63 @@
   ],
   "nodes": [
     {
-      "id": "instalar",
-      "lane": "casa",
+      "id": "criar",
+      "lane": "maind",
       "col": 0,
-      "type": "external",
+      "type": "backend",
       "icon": "briefcase",
-      "label": "A TI instala o middleware",
-      "sublabel": "Uma imagem pronta, da Maind"
+      "label": "A Maind cria a organização",
+      "sublabel": "E gera o certificado da ligação"
     },
     {
-      "id": "liberar",
+      "id": "subir",
+      "lane": "casa",
+      "col": 0,
+      "type": "messagebus",
+      "label": "O middleware sobe",
+      "sublabel": "Na Maind ou na casa do cliente"
+    },
+    {
+      "id": "ligar",
       "lane": "casa",
       "col": 1,
       "type": "security",
       "icon": "security",
-      "label": "A TI libera só o Horus",
-      "sublabel": "No firewall, por IP e porta"
+      "label": "Horus e middleware se ligam",
+      "sublabel": "As duas pontas confirmam"
     },
     {
-      "id": "chave",
-      "lane": "pessoas",
-      "col": 0,
-      "type": "frontend",
+      "id": "cadastrar",
+      "lane": "front",
+      "col": 2,
+      "yOffset": -55,
+      "type": "cloud",
       "icon": "person",
-      "label": "O owner cadastra a chave",
-      "sublabel": "O par de chaves, no Horus"
+      "label": "O owner cadastra as pessoas",
+      "sublabel": "Entra com usuário e senha"
     },
     {
-      "id": "saidas",
-      "lane": "pessoas",
-      "col": 1,
-      "type": "frontend",
-      "icon": "person",
-      "label": "O owner decide o que mais sai",
-      "sublabel": "Uma a uma; por padrão, nada"
+      "id": "configurar",
+      "lane": "front",
+      "col": 2,
+      "yOffset": 55,
+      "type": "cloud",
+      "label": "Bancos e IA configurados",
+      "sublabel": "Pelo owner ou pelo time da Maind"
     },
     {
       "id": "perguntar",
       "lane": "pessoas",
-      "col": 2,
+      "col": 3,
       "type": "frontend",
       "icon": "person",
       "label": "Pergunta como sempre",
-      "sublabel": "Owner, gestor ou membro ouro ou prata"
+      "sublabel": "Pelo endereço da organização"
     },
     {
       "id": "horus",
       "lane": "maind",
-      "col": 2,
+      "col": 3,
       "type": "backend",
       "label": "O Horus leva a pergunta",
       "sublabel": "Ao middleware da organização"
@@ -617,33 +630,33 @@
     {
       "id": "middleware",
       "lane": "casa",
-      "col": 3,
+      "col": 4,
       "type": "messagebus",
-      "label": "O middleware faz o caminho",
-      "sublabel": "Até os dados, a IA e a internet"
+      "label": "O ciclo da análise roda aqui",
+      "sublabel": "O modelo de IA e as consultas"
     },
     {
       "id": "dados",
       "lane": "alcance",
-      "col": 3,
+      "col": 4,
       "type": "database",
       "icon": "database",
-      "label": "Os dados, a IA e a internet",
-      "sublabel": "O dado bruto fica em casa"
+      "label": "Os bancos e a IA",
+      "sublabel": "O dado bruto fica no middleware"
     },
     {
       "id": "portao",
       "lane": "maind",
-      "col": 4,
+      "col": 5,
       "type": "security",
       "icon": "security",
-      "label": "O que chega à Maind",
+      "label": "O que chega ao Horus",
       "sublabel": "Só a resposta pronta, por padrão"
     },
     {
       "id": "resposta",
       "lane": "pessoas",
-      "col": 4,
+      "col": 5,
       "type": "frontend",
       "icon": "person",
       "label": "Recebe a resposta pronta",
@@ -652,38 +665,38 @@
   ],
   "edges": [
     {
-      "id": "instalar-chave",
-      "from": "instalar",
-      "to": "chave",
-      "label": "par de chaves",
-      "fromSide": "top",
-      "toSide": "bottom"
+      "id": "criar-ligar",
+      "from": "criar",
+      "to": "ligar",
+      "label": "o certificado",
+      "toSide": "top"
     },
     {
-      "id": "instalar-liberar",
-      "from": "instalar",
-      "to": "liberar",
+      "id": "subir-ligar",
+      "from": "subir",
+      "to": "ligar",
       "role": "branch"
     },
     {
-      "id": "chave-saidas",
-      "from": "chave",
-      "to": "saidas"
+      "id": "ligar-cadastrar",
+      "from": "ligar",
+      "to": "cadastrar",
+      "label": "assentos liberados"
     },
     {
-      "id": "saidas-perguntar",
-      "from": "saidas",
+      "id": "ligar-configurar",
+      "from": "ligar",
+      "to": "configurar",
+      "role": "branch"
+    },
+    {
+      "id": "cadastrar-perguntar",
+      "from": "cadastrar",
       "to": "perguntar",
       "label": "tudo pronto",
-      "variant": "emphasis"
-    },
-    {
-      "id": "liberar-middleware",
-      "from": "liberar",
-      "to": "middleware",
-      "label": "por IP e porta",
-      "variant": "security",
-      "role": "branch"
+      "variant": "emphasis",
+      "fromSide": "top",
+      "toSide": "left"
     },
     {
       "id": "perguntar-horus",
@@ -707,7 +720,7 @@
       "id": "middleware-dados",
       "from": "middleware",
       "to": "dados",
-      "label": "busca em casa",
+      "label": "consultas e IA",
       "fromSide": "bottom",
       "toSide": "top",
       "role": "branch"
@@ -737,25 +750,27 @@
       "dot": "cyan",
       "title": "Quem faz o quê",
       "items": [
-        "A TI do cliente instala a imagem do middleware e decide, por IP e porta, quem chega a ele e aonde ele chega.",
-        "O owner da organização cadastra no Horus o par de chaves do middleware e decide se algo mais pode sair.",
+        "A Maind cria a organização, que se liga ao middleware dela, e libera os assentos contratados, que vão ao middleware.",
+        "O middleware sobe na Maind, pelo time da Maind, ou na casa do cliente, pela TI dele, que instala o pacote pronto da Maind.",
+        "No front do middleware, o owner cadastra as pessoas; os bancos e a IA são configurados pelo owner ou, na hospedagem da Maind, pelo time da Maind.",
         "Quem pergunta faz a pergunta como sempre: para essa pessoa, nada muda."
       ]
     },
     {
       "dot": "emerald",
-      "title": "O que sai de casa",
+      "title": "O que chega ao Horus",
       "items": [
-        "Por padrão, só a pergunta e a resposta pronta passam pela Maind; o dado bruto fica na casa do cliente.",
-        "O comando da consulta, a planilha (CSV) e outras saídas só saem se o owner permitir, uma a uma.",
-        "O administrador da instância, o funcionário da Maind, não liga nem vê essas saídas."
+        "O ciclo da análise, com o modelo de IA e as consultas, roda dentro do middleware.",
+        "Por padrão, só a pergunta e a resposta pronta chegam ao Horus; o dado bruto fica no middleware.",
+        "O comando da consulta, a planilha (CSV) e outras saídas só saem se o owner permitir, uma a uma."
       ]
     },
     {
       "dot": "amber",
       "title": "Um middleware por organização",
       "items": [
-        "O middleware e a conexão com ele são de uma organização só.",
+        "Cada organização tem o seu middleware, também na hospedagem da Maind.",
+        "Na casa do cliente, a TI governa o caminho por IP e porta, e a Maind não liga nem vê as saídas; na hospedagem da Maind, é a Maind que opera o middleware.",
         "O Horus continua no serviço da Maind: o cliente não ganha uma instância própria."
       ]
     }

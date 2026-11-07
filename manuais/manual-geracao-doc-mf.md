@@ -1,6 +1,6 @@
 # Manual de geração do documento MF-xxx: o roteiro e a forma padrão
 
-Situação: ✅ published · Data: 06/11/2026 · Vale para: as 23 mfs (18 da v2.0 e 5 da v2.1)
+Situação: ✅ published · Data: 06/11/2026 · Vale para: as 23 mfs (19 da v2.0 e 4 da v2.1)
 
 Um **documento MF-xxx** é a página que explica, em linguagem simples, o que uma macro funcionalidade (mf) faz: `MF-101`
 é a página da Administração da instância. Este manual **registra, sem mudar**, o formato e as regras com que as 23
@@ -55,7 +55,7 @@ sempre esta:
 6. **Perguntas frequentes** (`mf-nnn-faq`): sempre a última.
 
 - **Tamanho:** de 170 a 230 linhas de HTML (linhas longas) para a mf bem definida; de 110 a 170 para a de definição
-  ainda fina (como as MF-121, 122 e 123). Proporcional ao que está decidido; sem encher linguiça.
+  ainda fina (como as MF-122 e 123). Proporcional ao que está decidido; sem encher linguiça.
 - **Ids:** `h3` por assunto e `h4` por tópico, **todos** começando por `mf-nnn-` e **únicos no site inteiro**. O
   fragmento não tem `h1` nem `h2` (o gerador os põe) e começa em `h3`.
 - **FAQ:** **seis** perguntas que um possível cliente realmente faria, resposta direta de duas a quatro frases, só com
@@ -118,17 +118,15 @@ confirmam. Sem fluxo que o justifique, não se faz: as MF-110, 118, 120 e 123 n�
 
 ## 6. A versão 2.1
 
-A v2.0 já tem as 18 páginas, e a v2.1 é a continuação delas. Para as 5 mfs da v2.1 (MF-106, 119, 121, 122 e 123), valem
+A v2.0 tem as 19 páginas (a da MF-121 passou da v2.1 para a v2.0 em 07/11/2026), e a v2.1 é a continuação delas. Para as 4 mfs da v2.1 (MF-106, 119, 122 e 123), valem
 todas as regras deste manual **e mais estas**:
 
 1. **O aviso de abertura** é este (mesma marcação do da v2.0): `<b>Versão 2.1, em construção</b>` — "O que está aqui é o
    que a versão 2.1 do Horus vai entregar, depois da 2.0. O produto ainda está sendo construído, e o texto é revisado
-   conforme as decisões se fecham." Pode somar **uma frase** dizendo em qual **onda** a mf chega (a v2.1 sai em duas: a
-   primeira, com o Horus como serviço da Maind; a segunda, para quem precisa que os dados fiquem em casa). Confirme a
-   onda nas decisões; a MF-121 é da onda 2 e as demais, da onda 1. Sem datas.
+   conforme as decisões se fecham." Não fale de onda: a v2.1 tem 4 mfs, todas da antiga primeira onda, e a onda 2 ficou sem mfs (a MF-121 subiu para a v2.0). Sem datas.
 2. **"Como é hoje" e "o que passa a existir".** A v2.0 é o ponto de partida: diga o que ela já faz sobre o assunto e o
    que a v2.1 acrescenta, sem contradizer as páginas da v2.0.
-3. **Nome provisório.** As MF-121, 122 e 123 têm nome provisório (a MF-120, da v2.0, também): diga **uma vez**, perto do
+3. **Nome provisório.** As MF-122 e 123 têm nome provisório (a MF-120, da v2.0, também; a MF-121 tem o nome decidido, "Middleware da organização"): diga **uma vez**, perto do
    começo. Não invente outro.
 4. **O que não se traduz para a página** (é conversa interna de produto): a "prova de valor", o "grau de complexidade" e
    o aviso "é a leitura do PO", as notas e pontuações de decisão, as hipóteses de negócio ("ajuda a reter o cliente",
@@ -150,8 +148,8 @@ Seis fases. As quatro primeiras já foram cumpridas; a quinta é publicação; a
 | Fase | O que se fez ou se faz | O que sai | Andamento em 06/11/2026 |
 | --- | --- | --- | --- |
 | **1 · Molde** | Escreve-se **uma** página (a MF-101) até o dono aprovar o formato; depois as MF-102 a 105 o confirmam | O molde `mf-101.html`, este formato | ✅ Aprovado nas MF-101 a 105 |
-| **2 · v2.0, em levas** | As outras mfs da v2.0, em levas de quatro a cinco, um agente por mf, com o molde pronto: MF-107 a 110; MF-111 a 115; MF-116, 117, 118 e 120 | As 18 páginas da v2.0 | ✅ 18 de 18 |
-| **3 · v2.1** | As 5 mfs da v2.1, com o adendo da seção 6 | As 5 páginas da v2.1 | ✅ 5 de 5 |
+| **2 · v2.0, em levas** | As outras mfs da v2.0, em levas de quatro a cinco, um agente por mf, com o molde pronto: MF-107 a 110; MF-111 a 115; MF-116, 117, 118 e 120 | As 19 páginas da v2.0 | ✅ 18 de 19 (a da MF-121 passou da v2.1 para a v2.0 e está reescrita, só no site local) |
+| **3 · v2.1** | As 4 mfs da v2.1 (MF-106, 119, 122 e 123), com o adendo da seção 6 | As 4 páginas da v2.1 | ✅ 4 de 4 |
 | **4 · Integração** | Quem integra atualiza `docx.json`, `README.md` e glossário uma vez por leva, gera, valida e olha | O site conferido | ✅ Cumprida a cada leva |
 | **5 · Publicação** | **Só com ordem do dono** (seção 15): `gerar --saida ../docs`, commit nomeando os caminhos, push | O site no Pages | ✅ v2.0 em `11358d2` e v2.1 em `8ef9012`, ambos em 06/11/2026 |
 | **6 · Rotina de atualização** | Sempre que uma decisão muda o que a mf faz (seção 8, rotina B) | A página em dia | ▶️ Contínua |

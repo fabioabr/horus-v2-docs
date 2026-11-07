@@ -544,7 +544,7 @@
       "type": "backend",
       "icon": "briefcase",
       "label": "A Maind cria a organização",
-      "sublabel": "Já com o assento do primeiro owner"
+      "sublabel": "Com o primeiro owner e o seu middleware"
     },
     {
       "id": "maisAssentos",
@@ -562,7 +562,7 @@
       "type": "frontend",
       "icon": "person",
       "label": "O owner convida direto",
-      "sublabel": "Sem aprovação; indica o gestor ou não"
+      "sublabel": "No front do middleware; sem aprovação"
     },
     {
       "id": "aprova",
@@ -571,7 +571,7 @@
       "type": "frontend",
       "icon": "person",
       "label": "O owner aprova",
-      "sublabel": "Ou deixa a aprovação automática"
+      "sublabel": "No front; ou deixa automática"
     },
     {
       "id": "gestorConvida",
@@ -580,7 +580,7 @@
       "type": "messagebus",
       "icon": "person",
       "label": "O gestor cria o convite",
-      "sublabel": "Um a um; escolhe ouro, prata ou bronze"
+      "sublabel": "Pelo Horus; ouro, prata ou bronze"
     },
     {
       "id": "carteira",
@@ -710,8 +710,8 @@
       "title": "Quem faz o quê",
       "items": [
         "A Maind cria a organização, já com o owner, e libera mais assentos quando faltam.",
-        "O owner convida direto, sem aprovação: é ele quem convida os gestores e os outros owners. Também aprova os convites dos gestores, ou deixa a aprovação automática.",
-        "O gestor convida a equipe dele um a um e escolhe o tipo de assento de cada pessoa: membro ouro, prata ou bronze."
+        "O owner cadastra e convida as pessoas no front do middleware, sem aprovação: é ele quem convida os gestores e os outros owners (no máximo mais dois, cada um num assento de owner contratado). Também aprova, no front do middleware, os convites que os gestores criam pelo Horus, ou deixa a aprovação automática.",
+        "O gestor convida a equipe dele pelo Horus, um a um, e escolhe o tipo de assento de cada pessoa: membro ouro, prata ou bronze."
       ]
     },
     {

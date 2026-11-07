@@ -8,7 +8,7 @@ objetivos: [O4]
 quem_usa: [owner da organização, gestor, membros]
 complexidade: alta (provisória)
 relacionadas: [MF-113, MF-115, MF-114, MF-111]
-atualizado: 2026-11-05
+atualizado: 2026-11-07
 fontes:
   - docs/raw/produto/06-versoes.md
   - docs/raw/produto/07-mapa-de-objetivos-e-funcionalidades.md
@@ -52,7 +52,7 @@ conectores novos, o agente e o agendamento entregam o artefato num canal do Team
   já conversa.
 - **Não é conversa:** ninguém pergunta ao Horus pelo Teams nem pelo Google Chat; conversar fora do app é o Chat pelo
   WhatsApp (MF-111).
-- **Quando chega:** na onda 1 da v2.1, a do SaaS; na v2.0, só há o e-mail e o WhatsApp.
+- **Quando chega:** na v2.1; na v2.0, só há o e-mail e o WhatsApp.
 
 ## 📈 O valor que gera
 
@@ -126,12 +126,12 @@ vez, sem a experiência de uma primeira.
 ## 📚 Para saber mais
 
 - [Backlog estratégico](../../raw/produto/backlog-estrategico.md): `D-201`, a definição macro, confirmada pelo dono (fechou a `P-043`); `D-198`, o Teams e o Google Chat viram a
-  `MF-122` (nome provisório), na onda 1, com o mesmo carteiro da `MF-113`; `D-182`, os dois conectores na onda 1 (o
+  `MF-122` (nome provisório), na v2.1, com o mesmo carteiro da `MF-113`; `D-182`, os dois conectores na v2.1 (o
   dono escolheu os dois, contra a recomendação de só o Google Chat), com a prova de valor; `D-124`, o e-mail e o
   WhatsApp na v2.0 e a aprovação da TI do cliente para cada conector novo; `D-041` e `D-035`, o carteiro, que só
   transporta e só entrega a usuários do Horus; `D-099`, o Chat pelo WhatsApp; `D-197`, uma mf numa versão só; `D-181`,
-  as duas ondas; `P-038`, como os dois se integram (do arquiteto).
-- [Versões](../../raw/produto/06-versoes.md): a onda 1 da v2.1 e "O que trava a v2.1";
+  as duas ondas, das quais a segunda ficou sem mfs quando a `MF-121` subiu para a v2.0 (`D-260`); `P-038`, como os dois se integram (do arquiteto).
+- [Versões](../../raw/produto/06-versoes.md): a v2.1 e "O que trava a v2.1";
   [objetivos](../../raw/produto/07-mapa-de-objetivos-e-funcionalidades.md) (O4, "os demais conectores").
 - Arquitetura: [estratégia](../../raw/arquitetura/01-estrategia-da-solucao.md), §6, o marco M12 ("Os outros
   conectores"); [registro](../../raw/arquitetura/02-registro-de-decisoes.md), `ARQ-022` (toda entrega é um artefato
