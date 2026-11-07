@@ -8,7 +8,7 @@ objetivos: [O6]
 quem_usa: [owner da instância, comprador]
 complexidade: baixa
 relacionadas: [MF-104, MF-102, MF-103, MF-117, MF-116, MF-111, MF-115, MF-110, MF-120, MF-106]
-atualizado: 2026-11-05
+atualizado: 2026-11-07
 fontes:
   - docs/raw/produto/04-macro-funcionalidades-de-hoje.md
   - docs/raw/produto/05-v2.0-consolidada.md
@@ -40,7 +40,9 @@ estivessem vendendo agora.
 WhatsApp e ao rastro da Auditoria (MF-116). A vitrine fica só com as duas **organizações de exemplo**, a da rede de
 lojas (McDonald's) e a da frota (Global Fleet), e a DRE de usina sai dela. As duas passam a nascer prontas em todo
 ambiente do Horus, do de testes ao de produção, com as fontes, os modelos semânticos (o dicionário que explica ao
-Horus o que cada tabela e cada termo significam), os membros de exemplo e os boards.
+Horus o que cada tabela e cada termo significam), os membros de exemplo e os boards. Como toda organização, cada uma
+nasce em configuração e só passa a ativa depois de três condições: o middleware ligado, ao menos uma fonte e a IA
+configuradas.
 
 **Como fica o dia a dia.** A Maind, pelo **owner da instância** (o funcionário dela que administra o Horus em nuvem
 e vê todas as organizações por cima), entra nelas por convite e demonstra o produto ao **comprador**, quem aprova e
@@ -62,7 +64,8 @@ paga a contratação.
 - **Dado que se move:** parte das bases recebe dados a cada 10 minutos, para haver "ontem" e "hoje".
 - **Prontas em qualquer ambiente:** um comando cria as organizações de exemplo do zero; rodado de novo, não
   duplica nada nem desfaz o que a Maind ajustou na tela.
-- **Sem segredos:** as chaves de IA e do WhatsApp não vêm junto; a Maind as cadastra em cada ambiente.
+- **Sem segredos:** as chaves de IA e do WhatsApp não vêm junto; a Maind as cadastra em cada ambiente (🔎 a
+  confirmar com o dono; ver "Ainda a decidir").
 - **Uma vitrine só:** as bases ficam num servidor da Maind e servem, só para leitura, a todos os ambientes dela.
 - **Só para demonstração e prova:** só as organizações de exemplo as veem; nunca viram fonte de um cliente.
 - **Banco de prova:** cada etapa da construção da v2.0 só se dá por pronta quando funciona nessas bases.
@@ -112,15 +115,17 @@ se demonstra nela.
 1. Os roteiros geram as bases, e a carga de 10 em 10 minutos as mantém em dia.
 2. O comando monta as organizações de exemplo em cada ambiente novo.
 3. A Maind cadastra as chaves de IA e convida a própria equipe.
-4. Na demonstração, percorre com o comprador os cenários: a conversa, a Pergunta rápida, os boards, o WhatsApp, os
+4. Com o middleware ligado, as fontes e a IA configuradas, cada organização de exemplo passa a ativa.
+5. Na demonstração, percorre com o comprador os cenários: a conversa, a Pergunta rápida, os boards, o WhatsApp, os
    agentes, a auditoria, a faixa e a Home.
 
 ```mermaid
 flowchart LR
   g[Roteiros geram as bases] --> i[Dados novos a cada 10 minutos]
-  i --> s[Organizações de exemplo criadas no ambiente]
+  i --> s[Organizações de exemplo criadas no ambiente, em configuração]
   s --> c[Maind cadastra as chaves e entra por convite]
-  c --> d[Demonstração ao comprador]
+  c --> a[Middleware ligado, fontes e IA configuradas: organização ativa]
+  a --> d[Demonstração ao comprador]
 ```
 
 ## 🧩 Grau de complexidade: baixa
@@ -153,7 +158,9 @@ fora entra no caminho; o cuidado é manter o comando em dia quando muda o jeito 
 
 ## ⏳ Ainda a decidir
 
-Nada a decidir.
+- **Quem cadastra as chaves de IA nas organizações de exemplo:** em toda organização, quem configura a IA, inclusive
+  a chave que a Maind dá, é o owner dela; falta dizer quem é o owner das organizações de exemplo e se é ele quem
+  cadastra as chaves que esta página põe com a Maind. 🔎 a confirmar com o dono
 
 ## 📚 Para saber mais
 
@@ -164,7 +171,10 @@ Nada a decidir.
   `MF-106`, e esta mf fica inteira na v2.0 (`D-197`); `D-193`, o SaaS como uma instância só, da Maind, cujo
   funcionário a administra; `D-232`, um cenário para cada prova de valor da v2.0, com a lista escrita nesta página,
   e os boards de exemplo publicados no espaço da organização (`D-245`); `D-233`, a vitrine da v2.0 só com a rede
-  de lojas e a frota, e a DRE de usina fora.
+  de lojas e a frota, e a DRE de usina fora; `D-277`, toda organização nasce em configuração e só passa a ativa com
+  o middleware ligado, ao menos um banco e a IA configurados, e as organizações de exemplo também precisam cumprir as
+  condições; `D-273`, quem configura os bancos e a IA é o owner da organização (🔎 quem é o owner das organizações
+  de exemplo).
 - [A v2.0 consolidada](../../raw/produto/05-v2.0-consolidada.md): §1 (mf a mf), §3.2 (a base herdada), §8 (o primeiro
   valor só no fim) e §10, parte A (`D-109.2`). [Mapa das mfs](../../raw/produto/04-macro-funcionalidades-de-hoje.md): o
   mapa ("apoio à venda") e a tabela de conversão. [Versões](../../raw/produto/06-versoes.md) e

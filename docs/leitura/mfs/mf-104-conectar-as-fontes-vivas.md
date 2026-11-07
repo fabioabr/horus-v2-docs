@@ -43,11 +43,11 @@ entrega o arquivo, e ninguém de fora entra na organização para isso.
 
 O que muda na v2.0 é o lugar. Toda organização chega aos bancos pelo **middleware** dela, a peça que fica entre o
 Horus e os bancos da organização, do Middleware da organização (MF-121): as consultas rodam dentro dele, e o Horus
-não alcança o banco direto. As fontes se configuram no **front do middleware**, o aplicativo da organização que fica
-fora do Horus: pelo **owner da organização**, que cuida das pessoas e dos dados de um setor ou de um cliente, quando
-o middleware fica na casa do cliente; ou pelo time da Maind, como suporte técnico antes e depois da venda, quando a
-Maind o hospeda. O owner carrega o modelo semântico de cada fonte. Cada organização guarda as suas fontes no seu
-próprio middleware, e nenhuma enxerga as de outra.
+não alcança o banco direto. As fontes se configuram no **front do middleware**, o aplicativo do middleware que fica
+fora do Horus, pelo **owner da organização**, que cuida das pessoas e dos dados de um setor ou de um cliente, em
+qualquer hospedagem: com o middleware na casa do cliente ou hospedado pela Maind. O time da Maind dá suporte técnico,
+antes e depois da venda, mas não configura as fontes pelo owner. O owner carrega o modelo semântico de cada fonte. As
+fontes de cada organização ficam no middleware, isoladas das de outras organizações, e nenhuma enxerga as de outra.
 
 > 💡 A credencial só de leitura é como o acesso de "só consulta" que o banco dá ao contador: ele vê o extrato, mas
 > não faz transferência. Onde a comparação falha: o Horus não confia na palavra de quem cadastra e confere com o
@@ -73,8 +73,9 @@ próprio middleware, e nenhuma enxerga as de outra.
 - **Credencial fora do Horus:** fica no middleware da organização, cifrada, e nunca volta à tela; o botão "Testar"
   confere a conexão sem gastar IA.
 - **O que a Maind vê:** o funcionário da Maind que administra a instância vê todas as organizações em números, sem os
-  dados das fontes delas. Na hospedagem da Maind, porém, o time da Maind configura as fontes e conhece as credenciais
-  delas; com o middleware na casa do cliente, não.
+  dados das fontes delas. Quem configura as fontes é o owner, em qualquer hospedagem, e o time da Maind não conhece as
+  credenciais por rotina; na hospedagem da Maind, porém, quem opera o middleware segue podendo, tecnicamente,
+  alcançá-las; com o middleware na casa do cliente, não.
 - **Um modelo semântico por fonte:** escrito fora do Horus e carregado pelo owner; o Horus o lê a cada pergunta, e
   melhorá-lo é do time de dados.
 - **Um teto de inferência por fonte:** até onde o Horus pode interpretar além do número. A **role** da pessoa, o
@@ -99,14 +100,13 @@ enxerga a de outra.
 
 ## 🚶 Como se usa no Horus
 
-**Quem configura a fonte**, no front do middleware (o owner da organização, com o middleware na casa do cliente; o
-time da Maind, na hospedagem da Maind):
+**O owner da organização**, no front do middleware, em qualquer hospedagem (com o suporte técnico do time da Maind,
+se precisar):
 
 1. Cadastra a fonte: a tecnologia, o caminho e a credencial só de leitura.
 2. Clica em "Testar": o Horus confere que conecta e que a credencial só lê.
 3. Ajusta o teto de inferência e a idade mínima do dado.
-
-**O owner da organização** carrega o modelo semântico que o time de dados escreveu fora do Horus.
+4. Carrega o modelo semântico que o time de dados escreveu fora do Horus.
 
 **Quem pergunta** (o owner, o **gestor** e os membros **ouro** e **prata**, os tipos de assento de membro que podem
 perguntar; o membro **bronze** só exibe os dashboards já criados e compartilhados) escolhe as fontes na conversa e
@@ -163,7 +163,7 @@ foi para uma mf própria.
 - **A fonte de páginas da web:** o cadastro de páginas fica fora da v2.0, porque a web entra pela pesquisa do modelo;
   falta o arquiteto conferir o que fazer com o tipo de fonte que o Horus de hoje tem.
 - **Onde se carrega o modelo semântico:** as fontes passaram para o front do middleware, mas falta dizer se o modelo
-  semântico vai junto e quem o carrega na hospedagem da Maind. 🔎 a confirmar com o dono
+  semântico vai junto ou fica no Horus; quem o carrega é o owner, em qualquer hospedagem. 🔎 a confirmar com o dono
 
 ## 📚 Para saber mais
 
@@ -174,13 +174,15 @@ foi para uma mf própria.
   v2.1) e **D-201** (a definição da `MF-123`); **D-162** (a web como fonte é o modelo
   sair à web; o cadastro de páginas fica de fora); **D-186**, **D-187** e **D-188** (a rede interna do contratante,
   só na instalação completa, sem versão); **D-258** (toda organização chega aos dados pelo middleware, desde a v2.0,
-  e o ciclo da análise, com as consultas, roda dentro dele); **D-259** (um middleware por organização); **D-260** (a
-  `MF-121` na v2.0); **D-265** (as fontes configuradas no front do middleware, pela organização ou, na hospedagem da
-  Maind, pelo time da Maind, que conhece as credenciais); **D-196** (o middleware depende das fontes; em parte
-  substituída pelas **D-258** a **D-263**); **D-193** (o funcionário da Maind não vê os dados das conexões; em parte
+  e o ciclo da análise, com as consultas, roda dentro dele); **D-272** (o middleware atende várias organizações, cada
+  uma isolada, e substitui a **D-259**, que dava um middleware por organização); **D-260** (a `MF-121` na v2.0);
+  **D-265** (as fontes configuradas no front do middleware), em parte substituída pela **D-273** (em qualquer
+  hospedagem, quem configura as fontes é o owner da organização; o time da Maind só dá suporte, e quem opera o
+  middleware da Maind segue podendo, tecnicamente, alcançar as credenciais); **D-196** (o middleware depende das fontes; em parte
   substituída pelas **D-258** e **D-265**); **D-194** (os tipos de assento ouro, prata e bronze); **D-083**
   (o modelo semântico com o time de dados); **D-219** (o time de dados escreve o modelo fora do Horus, e o owner da
-  organização o carrega; onde ele se carrega, com as fontes no front do middleware, está em aberto 🔎); **D-013** (o
+  organização o carrega, em qualquer hospedagem desde a **D-273**; onde ele se carrega, com as fontes no front do
+  middleware, está em aberto 🔎); **D-013** (o
   owner da organização); **D-138** e **D-139** (MVP da v1.xx: o Athena e as páginas web fora da tela); **D-110** (os
   botões da role); **D-220** (o teto de inferência é o de cada fonte, e a role só o baixa); **D-145** (a organização é
   a fronteira dos dados na v2.0; a segurança por pessoa inteira na v2.1); **D-240** (quando a fonte para, é avisado o

@@ -544,7 +544,7 @@
       "type": "backend",
       "icon": "briefcase",
       "label": "A Maind cria a organização",
-      "sublabel": "Com o primeiro owner e o seu middleware"
+      "sublabel": "Com o primeiro owner, ligada ao middleware"
     },
     {
       "id": "maisAssentos",

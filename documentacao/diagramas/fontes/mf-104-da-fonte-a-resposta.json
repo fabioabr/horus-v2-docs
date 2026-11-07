@@ -521,7 +521,7 @@
     },
     {
       "id": "owner",
-      "label": "Owner ou time da Maind"
+      "label": "Owner da organização"
     },
     {
       "id": "pessoa",
@@ -766,7 +766,7 @@
       "items": [
         "A TI do cliente decide o caminho até o banco: o endereço liberado no firewall ou o túnel SSH.",
         "O time de dados, do cliente ou da Maind na implantação, escreve o modelo semântico fora do Horus e entrega o arquivo ao owner, que o carrega.",
-        "No front do middleware, quem configura a fonte a cadastra, testa e ajusta: o owner da organização, com o middleware na casa do cliente, ou o time da Maind, na hospedagem da Maind.",
+        "No front do middleware, o owner da organização cadastra, testa e ajusta a fonte, em qualquer hospedagem; o time da Maind só dá suporte.",
         "As consultas rodam no middleware da organização: o Horus não alcança o banco direto. Quem pode perguntar escolhe as fontes na conversa."
       ]
     },

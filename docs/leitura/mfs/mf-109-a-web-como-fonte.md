@@ -70,7 +70,7 @@ vinda de fora, só a partir do nível 4.
   compartilhados.
 - **Segue o provedor de IA:** a busca é a do provedor de IA que a organização usa, e quando ele não pesquisa, como o
   Amazon Bedrock, a opção não aparece.
-- **Pelo middleware:** toda organização chega à IA pelo seu **middleware**, a peça que fica entre o Horus e os bancos
+- **Pelo middleware:** toda organização chega à IA pelo **middleware**, a peça que fica entre o Horus e os bancos
   da organização, que guarda quem são as pessoas, os bancos e a IA e responde pelo caminho até eles; a saída para a
   internet também passa por ele.
 - **Só a pergunta sai:** à busca vai só o texto da pergunta, nunca dados do banco nem o modelo semântico, o
@@ -122,12 +122,12 @@ nem traz parceiro novo.
 | mf | Como se relaciona |
 | --- | --- |
 | Perguntar aos dados em português (MF-107) | **depende de**: a web entra na mesma conversa e obedece aos mesmos níveis de inferência |
-| IA sob controle da organização (MF-105) | **depende de**: a busca é a do provedor de IA que a organização usa, configurado no middleware dela |
+| IA sob controle da organização (MF-105) | **depende de**: a busca é a do provedor de IA que a organização usa, configurado pelo owner no front do middleware |
 | Organizações, pessoas e papéis (MF-102) | **depende de**: a pesquisa na web faz parte do botão da role que libera os modos da conversa |
 | Conectar as fontes vivas (MF-104) | **complementa**: os bancos dão o número da empresa, e a web, o contexto de fora; a web não é cadastrada como fonte ali |
 | Respostas visuais (MF-108) | **complementa**: o bloco mostra o número da empresa, e o fato de fora vem à parte, com link e data |
 | Chat pelo WhatsApp (MF-111), Boards e Relatórios (MF-112) e Agentes ativos (MF-115) | **é a base de**: o fato com link e data vale também na mensagem, no cartão e no que o agente entrega |
-| Middleware da organização (MF-121) | **é a base de**: desde a v2.0, toda organização tem o seu middleware, hospedado pela Maind ou na casa do cliente, e a saída para a internet passa por ele |
+| Middleware da organização (MF-121) | **é a base de**: desde a v2.0, toda organização usa um middleware, hospedado pela Maind ou na casa do cliente, e a saída para a internet passa por ele |
 
 ## 🚧 O que ela não faz
 
@@ -150,7 +150,7 @@ nem traz parceiro novo.
 | `docs/raw/produto/02-norte-do-produto.md`, as fontes | A web como fonte viva, ao lado dos bancos, e os usos dela |
 | `docs/raw/produto/04-macro-funcionalidades-de-hoje.md`, o mapa e a tabela de conversão | O que a mf entrega hoje e a camada dela |
 | `docs/raw/produto/05-v2.0-consolidada.md`, §3.1, §3.2, §4, §5.4 e §7 | A candidata nº 3, a base herdada, o passo 5 da prova de valor, a regra da web e o middleware, que depende desta mf para a saída à internet |
-| `docs/raw/produto/backlog-estrategico.md` | A web como fonte na v2.0 é o modelo sair à web quando a instância e a role autorizam, e o cadastro de páginas fica de fora (`D-162`; a fonte de páginas é a pendência `P-034`, do arquiteto); a definição macro da web como fonte viva completa (`D-131`); o link e a data (`D-006`); `D-242` e `D-243` (o cartão guarda os fatos, e a resposta sem fatos leva um aviso); o fato em qualquer nível (`D-130`, leituras `D-130.1` e `D-130.2`); o modo web nas roles (`D-110`), que vira a pesquisa na web, um interruptor ao lado dos dados, no botão dos modos da conversa (`D-215`); os modos da instância (`D-010`); a IA da organização (`D-159` e `D-216`, substituídas em parte pelas `D-264` a `D-266`: a IA é sempre da organização, configurada no front do middleware, e a conexão da instância deixou de existir); os tipos de assento ouro, prata e bronze (`D-194`); o middleware, que depende da web para sair à internet (`D-190`, `D-196`) e que, pelas `D-258` a `D-260`, está em toda organização desde a v2.0, um por organização (o nome é a `D-270`); a base herdada (`D-021`) |
+| `docs/raw/produto/backlog-estrategico.md` | A web como fonte na v2.0 é o modelo sair à web quando a instância e a role autorizam, e o cadastro de páginas fica de fora (`D-162`; a fonte de páginas é a pendência `P-034`, do arquiteto); a definição macro da web como fonte viva completa (`D-131`); o link e a data (`D-006`); `D-242` e `D-243` (o cartão guarda os fatos, e a resposta sem fatos leva um aviso); o fato em qualquer nível (`D-130`, leituras `D-130.1` e `D-130.2`); o modo web nas roles (`D-110`), que vira a pesquisa na web, um interruptor ao lado dos dados, no botão dos modos da conversa (`D-215`); os modos da instância (`D-010`); a IA da organização (`D-159` e `D-216`, substituídas em parte pelas `D-264` a `D-266`: a IA é sempre da organização, configurada no front do middleware, e a conexão da instância deixou de existir); os tipos de assento ouro, prata e bronze (`D-194`); o middleware, que depende da web para sair à internet (`D-190`, `D-196`) e que, pelas `D-258` a `D-260`, está em toda organização desde a v2.0, atendendo várias organizações, cada uma isolada (`D-272`, que substitui a `D-259`, um por organização; o nome é a `D-270`), com a IA configurada pelo owner em qualquer hospedagem (`D-273`); a base herdada (`D-021`) |
 | `docs/raw/produto/03-inventario-de-lacunas.md`, linhas 5 e 6 | A lacuna da web em todos os usos e da data |
 | `docs/raw/produto/06-versoes.md` e `07-mapa-de-objetivos-e-funcionalidades.md` | A mf na v2.0, com o modelo saindo à web quando autorizado, no objetivo O1 |
 | `docs/raw/arquitetura/02-registro-de-decisoes.md`, `ARQ-025` a `ARQ-027` | O nível em toda etapa que escreve texto, a web como etapa própria e a busca nativa da conexão de IA, escolhida pelo dono |

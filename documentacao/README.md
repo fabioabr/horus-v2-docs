@@ -40,7 +40,7 @@ mais recente e específica.
 
 | Assunto da página | Fonte |
 |---|---|
-| O que é, as seis coisas que a administração faz, os limites | leitura da MF-101 |
+| O que é, as sete coisas que a administração faz, os limites | leitura da MF-101; `D-280` |
 | As situações da organização, suspender e excluir | `D-148`, `D-149`; `ARQ-037` |
 | Os cinco tipos de assento | `D-069`, `D-193`, `D-194`, `D-203` |
 | A IA da instância e a da organização | `D-216`, `D-217`, `D-218`, `D-241` |
@@ -324,7 +324,7 @@ mais recente e específica.
 | Quem faz o quê (TI, owner, quem pergunta, administrador) | `D-190`, `D-193`, `D-195`, `D-196` |
 | Do middleware instalado à primeira resposta (o hospital) | leitura da MF-121 (exemplo e passos); `D-195`, `D-196` |
 | O que sai da casa do cliente; saídas extras; o suporte da Maind | `D-189`, `D-193`, `D-195`, `D-196` |
-| Quem controla o caminho; endereço público; um middleware por organização; disponibilidade | `D-190`, `D-193`, `D-195`, `D-196` |
+| Quem controla o caminho; endereço público; um middleware para várias organizações; disponibilidade | `D-190`, `D-193`, `D-195`, `D-196`, `D-272` |
 | Nos bastidores | `D-188`, `D-190`, `D-192`, `D-193`, `D-195`; protocolo em aberto: `D-196`, `P-042` |
 | O que não faz | `D-188`, `D-193`, `D-195`, `D-196`; instalação completa: `D-175`, `D-176`, `D-186`, `D-187`; `06-versoes.md` (“Sem versão”) |
 | Funcionalidades ligadas | leitura da MF-121; `D-196` |
@@ -363,33 +363,47 @@ Só nas fontes e no site local; **não publicado**. Cada linha diz o que a pági
 
 | Página | O que mudou | Decisões |
 |---|---|---|
-| MF-101 | A criação da organização gera o certificado e a chave de instalação; os assentos vão ao middleware; o administrador entra por usuário e senha; some o cadastro de IA da instância; o aviso de IA parada vai também ao time da Maind; diagrama “A vida de uma organização” refeito | `D-258`, `D-259`, `D-261`, `D-265` a `D-268` |
+| MF-101 | A criação da organização gera o certificado e a chave de instalação; os assentos vão ao middleware; o administrador entra por usuário e senha; some o cadastro de IA da instância; o aviso de IA parada vai também ao time da Maind; diagrama “A vida de uma organização” refeito (reescrita completa em 07/11/2026, abaixo) | `D-258`, `D-261`, `D-265` a `D-268` |
 | MF-102 | O owner cadastra as pessoas no front do middleware; o gestor convida e pede a troca pelo Horus; até mais dois owners | `D-261`, `D-262`, `D-269`, `D-258` |
 | MF-103 | Os assentos vão ao middleware; owners adicionais em assento contratado; a IA da Maind e o preço ficam na `P-022` | `D-258`, `D-267`, `D-269` |
-| MF-104 | Os bancos se configuram no front do middleware (owner ou time da Maind); as consultas rodam no middleware; a credencial fica fora do Horus | `D-258`, `D-259`, `D-265` |
+| MF-104 | Os bancos se configuram no front do middleware (o owner, em qualquer hospedagem, `D-273`); as consultas rodam no middleware; a credencial fica fora do Horus | `D-258`, `D-265`, `D-273` |
 | MF-105 | A IA é sempre da organização, configurada no middleware; a chave da organização ou a que a Maind dá e paga; o owner vê o consumo de toda a IA; avisos | `D-264` a `D-268` |
 | MF-106 | Segue na v2.1 e passa a depender da MF-121; roda no middleware | `D-263`, `D-258`, `D-261`, `D-269` |
 | MF-109 | A saída para a internet passa pelo middleware | `D-258` a `D-260`, `D-264` a `D-266` |
 | MF-113 | Só a leitura (a data da versão); o fragmento não mudou | `D-181`, `D-260` |
 | MF-115 | O custo e o aviso de IA: sem “embute no preço”; o owner vê o consumo de toda a IA | `D-264` a `D-268` |
 | MF-119, MF-122, MF-123 | Saiu o conceito de onda; a MF-123 conecta a fonte no front do middleware | `D-181`, `D-260`, `D-265`, `D-258` |
-| MF-121 | Sobe inteira para a v2.0 como “Middleware da organização”: um por organização, na Maind ou na casa do cliente; as pessoas, os bancos e a IA se configuram no front dele; só a pergunta e a resposta pronta voltam ao Horus; diagrama refeito | `D-258` a `D-263`, `D-265`, `D-270`, `D-189` |
+| MF-121 | Sobe inteira para a v2.0 como “Middleware da organização”: um middleware para várias organizações, na Maind ou na casa do cliente (`D-272`); as pessoas, os bancos e a IA se configuram no front dele; só a pergunta e a resposta pronta voltam ao Horus; diagrama refeito | `D-258` a `D-263`, `D-265`, `D-270`, `D-189` |
 
 O glossário (`como-ler.html`) ganhou “Front do middleware”, perdeu “Onda (da versão 2.1)” e teve “Middleware”, “Owner da organização” e “Saída extra” reescritos.
+
+### Segunda rodada de 07/11/2026 (`D-271` a `D-280`): a reescrita da MF-101
+
+Também só nas fontes e no site local; **não publicado**. O dono pediu a reescrita da MF-101 com a estrutura nova, e as decisões abriram outras mudanças.
+
+| Página | O que mudou | Decisões |
+|---|---|---|
+| MF-101 | **Reescrita inteira** pela definição nova: a criação liga a organização ao middleware e cria o usuário do owner; só passa a ativa com o middleware ligado e os bancos e a IA configurados; o painel mostra o estado e a versão do middleware; o relatório sem o nome de quem ocupa o assento; o custo de IA só das chaves que a Maind dá; a pergunta ao Horus com uma chave da instância só para isso; excluir apaga também no middleware; seção nova “O middleware à vista”; diagrama refeito; sai o aviso “Na implantação” desta página | `D-280` (substitui a `D-202`), `D-271` a `D-279` |
+| MF-121 | Um middleware que atende várias organizações (a `D-259` saiu); o owner o acessa também na hospedagem da Maind, com o usuário que a Maind cria; quem configura bancos e IA é o owner, e o time da Maind só dá suporte; o estado à vista da Maind; excluir apaga no middleware; diagrama refeito | `D-271`, `D-272`, `D-273`, `D-275`, `D-277`, `D-278` |
+| MF-104, MF-105, MF-123 | Quem configura é o owner, em qualquer hospedagem; na MF-105, a Maind vê só o consumo das chaves que dá; diagramas da MF-104 e da MF-105 refeitos | `D-273`, `D-279`, `D-276` |
+| MF-109, MF-102, MF-103 | Ajustes de redação (middleware para várias organizações; a história dos assentos sem nome); o diagrama da MF-102 ajustado | `D-272`, `D-274` |
+| MF-118 | A organização de exemplo só passa a ativa depois das três condições | `D-277` |
+
+O glossário (`como-ler.html`) teve “Middleware” e “Front do middleware” reescritos.
 
 ## Pontos em aberto que as páginas declaram
 
 **Indicador “Na implantação” (decisão do dono, 06/11/2026):** as regras que tratam de dados pessoais ficam como decididas, e as páginas
-indicam que o cliente deve consultar o jurídico dele durante o setup. Estão nele: a Maind ver o nome de quem ocupa cada assento (MF-101),
+indicam que o cliente deve consultar o jurídico dele durante o setup. Estão nele (o item da MF-101, a Maind ver o nome de quem ocupa cada assento, saiu em 07/11/2026, `D-274`):
 o owner ler as conversas de todos sem aviso e apagar tudo de quem sai (MF-102) e, quando for escrita, a MF-116 (Auditoria).
 
 | Página | O que ainda não está fechado |
 |---|---|
-| MF-101 | De onde o relatório da Maind tira o nome de quem ocupa o assento, agora que as pessoas ficam no middleware; que custo de IA o painel de uso e o aviso de custo ainda mostram, sem a conexão da instância (mais o indicador “Na implantação”) |
+| MF-101 | Quem marca a organização como ativa depois das três condições (leitura do PO: a Maind); quem cria o usuário do owner quando o middleware está na casa do cliente |
 | MF-102 | O que mais do trabalho do owner (roles, grupos da organização, planilha em lote) vai para o front do middleware, além das pessoas; do lado técnico, o arquiteto confere se apagar tudo de quem sai convive com a guarda do registro de acesso e das cópias de segurança |
 | MF-103 | O preço do assento prata e se a IA que a Maind dá entra no preço do assento; os números do prazo da reserva |
-| MF-104 | Se haverá fonte de páginas da web cadastradas; o formato do arquivo do modelo semântico; onde se carrega o modelo semântico e quem o carrega na hospedagem da Maind |
-| MF-105 | Se a IA que a Maind dá entra no preço do assento; por onde o aviso chega ao owner e ao time da Maind quando a IA para; como a falha aparece na tela; onde ficam a curadoria dos modelos, o modelo padrão e o de cada tarefa, e quem os escolhe na hospedagem da Maind; que custo de IA o aviso de custo da Maind ainda alcança |
+| MF-104 | Se haverá fonte de páginas da web cadastradas; o formato do arquivo do modelo semântico; onde se carrega o modelo semântico (no Horus ou no front do middleware) |
+| MF-105 | Se a IA que a Maind dá entra no preço do assento; por onde o aviso chega ao owner e ao time da Maind quando a IA para; como a falha aparece na tela; onde ficam a curadoria dos modelos, o modelo padrão e o de cada tarefa |
 | MF-107 | (nada além do indicador “Na implantação”, pela leitura das conversas pelo owner) |
 | MF-108 | Como cada tela, com gráficos e tabelas, se comporta no celular e no tablet (desenho técnico e testes de ponta a ponta) |
 | MF-109 | Se haverá fonte de páginas da web cadastradas e o destino do tipo de fonte `web` do Horus de hoje |
@@ -405,7 +419,7 @@ o owner ler as conversas de todos sem aviso e apagar tudo de quem sai (MF-102) e
 | MF-120 | O catálogo da faixa (indicadores, ícones e as regras de cada componente, inclusive se o aviso do owner terá hora de fim); o movimento e a aparência; quem vê os números da instância (leitura do PO a confirmar); o nome (provisório) |
 | MF-106 | Onde o owner escreve as regras e as características das pessoas (no Horus ou no front do middleware); o texto exato do aviso de resposta limitada e da frase sobre as regras da empresa; os bancos além do SQL Server, a começar pelo Athena |
 | MF-119 | Se a investigação chega à Pergunta rápida e ao WhatsApp; a forma técnica do modo de investigação |
-| MF-121 | A “língua” em que o Horus e o middleware conversam; quais outras saídas, além do comando da consulta e da planilha, pedem permissão; o que o Horus faz quando o middleware cai ou muda (e o login da organização cai junto) e como a atualização chega; como cada organização ganha o seu middleware ao ser criada; o que o Horus guarda de cada pessoa |
+| MF-121 | A “língua” em que o Horus e o middleware conversam; quais outras saídas, além do comando da consulta e da planilha, pedem permissão; o que o Horus faz quando o middleware cai ou muda (e o login da organização cai junto) e como a atualização chega; como uma organização é adicionada a um middleware já em pé; o que o Horus guarda de cada pessoa |
 | MF-122 | Se o Teams e o Google Chat chegam juntos; a forma técnica de integrar cada um (autenticação, aprovação da TI, o que cada um leva); como a entrega a um canal ou espaço respeita o “só a usuários do Horus”; o contato da pessoa em cada canal; o nome (provisório) |
 | MF-123 | O que a Segurança dos dados por pessoa cobre no Athena; a forma técnica da ligação com o Athena; a confirmação da versão; o nome (provisório) |
 

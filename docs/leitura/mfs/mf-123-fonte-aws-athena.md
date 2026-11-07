@@ -34,10 +34,10 @@ bancos da empresa que o Horus consulta na hora da pergunta.
 
 **Como fica o dia a dia.** O Athena é conectado como toda fonte, no **front do middleware**, o aplicativo do
 **Middleware da organização** (MF-121): a peça que fica entre o Horus e os bancos da organização, guarda quem são as
-pessoas, os bancos e a IA dela e responde pelo caminho até eles. Quem conecta depende de onde o middleware está: com
-ele na casa do cliente, o **owner da organização**, o funcionário do cliente que administra a organização; na
-hospedagem da Maind, o time da Maind, como suporte técnico. Depois, o gestor pergunta ao Athena como pergunta a
-qualquer outra fonte.
+pessoas, os bancos e a IA dela e responde pelo caminho até eles. Quem conecta é o **owner da organização**, o
+funcionário do cliente que administra a organização, em qualquer hospedagem, com o middleware na casa do cliente ou
+hospedado pela Maind; o time da Maind dá suporte técnico, mas não conecta por ele. Depois, o gestor pergunta ao
+Athena como pergunta a qualquer outra fonte.
 
 > 📌 **Exemplo** *(personagens ilustrativos)*: os dados de vendas de uma rede de lojas ficam na AWS. O
 > Athena é conectado no front do middleware da organização, e a gestora Carla pergunta quanto cada loja vendeu na
@@ -48,8 +48,8 @@ qualquer outra fonte.
 - **O que muda:** o Athena deixa de só se cadastrar e passa a responder perguntas de análise.
 - **Como as outras fontes:** segue a base das fontes vivas, a de Conectar as fontes vivas (MF-104).
 - **Só lê:** como em toda fonte, o Horus nunca altera um dado do Athena.
-- **Quem conecta:** como em toda fonte, a conexão é feita no front do middleware: pelo owner da organização, com o
-  middleware na casa do cliente, ou pelo time da Maind, na hospedagem da Maind.
+- **Quem conecta:** como em toda fonte, a conexão é feita no front do middleware pelo owner da organização, em
+  qualquer hospedagem; o time da Maind dá suporte técnico, antes e depois da venda.
 - **Quem ganha:** o **gestor**, quem responde por uma equipe, e o **executivo** de uma organização cujos dados estão
   no Athena.
 - **A mesma conversa:** a pergunta passa pelo mesmo motor de Perguntar aos dados em português (MF-107), que
@@ -70,8 +70,7 @@ qualquer outra fonte.
 
 ## 🚶 Como se usa no Horus
 
-**Quem conecta a fonte** (o owner da organização, com o middleware na casa do cliente, ou o time da Maind, na
-hospedagem da Maind):
+**O owner da organização**, que conecta a fonte em qualquer hospedagem:
 
 1. Conecta o Athena como uma fonte da organização, no front do middleware.
 2. Como em toda fonte, passa-a ao time de dados, que escreve o **modelo semântico**, o dicionário que explica ao
@@ -125,8 +124,9 @@ pessoa, que hoje só cobre o SQL Server, e de caber na v2.1 junto dela; de fora,
 
 - [Backlog estratégico](../../raw/produto/backlog-estrategico.md): `D-201`, a definição macro, confirmada pelo dono (fechou a `P-043`); `D-198`, o Athena vira a `MF-123` (nome
   provisório), na v2.1, dependendo da `MF-104` e da `MF-106`; `D-265`, os bancos configurados no front do
-  middleware, pela organização ou, na hospedagem da Maind, pelo time da Maind (o owner deixa de conectar as fontes
-  pelo Horus, como dizia a `D-201`), e `D-258`, as consultas rodando no middleware; `D-161`, o Athena sai da v2.0 e entra terminado na
+  middleware (o owner deixa de conectar as fontes pelo Horus, como dizia a `D-201`), em parte substituída pela
+  `D-273` (em qualquer hospedagem, quem configura os bancos é o owner da organização, e o time da Maind só dá
+  suporte), e `D-258`, as consultas rodando no middleware; `D-161`, o Athena sai da v2.0 e entra terminado na
   v2.1 (o dono escolheu contra a recomendação de deixá-lo fora até um cliente pedir), sem demanda conhecida; `D-139 (MVP da v1.xx)`,
   o Athena fora da tela no MVP da v1.xx; `I-017`, fechado; `D-083`, o modelo semântico com o time de dados; `D-145`, a
   segurança por pessoa inteira na v2.1; `D-197`, uma mf numa versão só; `P-033`, dimensionar o conector, o dialeto e a

@@ -527,9 +527,11 @@
   ],
   "mainPath": [
     "criar",
-    "liberar",
+    "ligar",
+    "configurar",
     "ativar",
-    "convidar",
+    "liberar",
+    "cadastrar",
     "acompanhar"
   ],
   "nodes": [
@@ -541,50 +543,65 @@
       "type": "backend",
       "icon": "briefcase",
       "label": "A Maind cria a organização",
-      "sublabel": "Nasce em configuração, com o primeiro owner e o seu middleware",
-      "width": 312
+      "sublabel": "Nasce em configuração"
     },
     {
-      "id": "liberar",
+      "id": "ligar",
       "lane": "maind",
       "col": 0,
       "yOffset": 0,
       "type": "backend",
       "icon": "briefcase",
-      "label": "Libera os assentos",
-      "sublabel": "Tipo a tipo; os assentos vão ao middleware da organização",
-      "width": 312
+      "label": "Liga ao middleware",
+      "sublabel": "O painel o mostra no ar"
     },
     {
-      "id": "ativar",
-      "lane": "maind",
-      "col": 0,
-      "yOffset": 110,
-      "type": "backend",
-      "icon": "briefcase",
-      "label": "Marca como ativa",
-      "sublabel": "A Maind a dá por pronta",
-      "width": 312
-    },
-    {
-      "id": "convidar",
+      "id": "configurar",
       "lane": "cliente",
       "col": 1,
       "type": "external",
       "icon": "person",
-      "label": "O owner cadastra as pessoas",
-      "sublabel": "No front do middleware, nos assentos"
+      "label": "Configura banco e IA",
+      "sublabel": "No front do middleware"
+    },
+    {
+      "id": "ativar",
+      "lane": "maind",
+      "col": 2,
+      "yOffset": -110,
+      "type": "backend",
+      "icon": "success",
+      "label": "A organização fica ativa",
+      "sublabel": "Com as três condições"
+    },
+    {
+      "id": "liberar",
+      "lane": "maind",
+      "col": 2,
+      "yOffset": 0,
+      "type": "backend",
+      "icon": "briefcase",
+      "label": "Libera os assentos",
+      "sublabel": "Eles vão ao middleware"
+    },
+    {
+      "id": "cadastrar",
+      "lane": "cliente",
+      "col": 3,
+      "type": "external",
+      "icon": "person",
+      "label": "Cadastra as pessoas",
+      "sublabel": "Dentro dos assentos"
     },
     {
       "id": "acompanhar",
       "lane": "maind",
-      "col": 3,
+      "col": 4,
       "yOffset": 0,
       "type": "backend",
       "icon": "briefcase",
       "label": "Acompanha uso e custo",
-      "sublabel": "Só números; baixa o relatório quando precisa",
-      "width": 220
+      "sublabel": "Só números, sem nomes"
     },
     {
       "id": "inativar",
@@ -594,8 +611,7 @@
       "type": "backend",
       "icon": "briefcase",
       "label": "Inativa a organização",
-      "sublabel": "Acesso, agendamentos, alertas e agentes param; nada se apaga",
-      "width": 300
+      "sublabel": "Nada se apaga"
     },
     {
       "id": "reativar",
@@ -605,44 +621,52 @@
       "type": "backend",
       "icon": "briefcase",
       "label": "Reativa a organização",
-      "sublabel": "Tudo volta como estava",
-      "width": 300
+      "sublabel": "Tudo volta como estava"
     }
   ],
   "edges": [
     {
-      "id": "criar-liberar",
+      "id": "criar-ligar",
       "from": "criar",
-      "to": "liberar",
-      "label": "combinado com o cliente",
+      "to": "ligar",
       "fromSide": "bottom",
       "toSide": "top"
     },
     {
-      "id": "liberar-ativar",
-      "from": "liberar",
+      "id": "ligar-configurar",
+      "from": "ligar",
+      "to": "configurar"
+    },
+    {
+      "id": "configurar-ativar",
+      "from": "configurar",
       "to": "ativar",
+      "label": "banco e IA prontos"
+    },
+    {
+      "id": "ativar-liberar",
+      "from": "ativar",
+      "to": "liberar",
+      "label": "combinado",
       "fromSide": "bottom",
       "toSide": "top"
     },
     {
-      "id": "ativar-convidar",
-      "from": "ativar",
-      "to": "convidar"
+      "id": "liberar-cadastrar",
+      "from": "liberar",
+      "to": "cadastrar"
     },
     {
-      "id": "convidar-acompanhar",
-      "from": "convidar",
+      "id": "cadastrar-acompanhar",
+      "from": "cadastrar",
       "to": "acompanhar"
     },
     {
       "id": "mais-assentos",
       "from": "acompanhar",
       "to": "liberar",
-      "label": "cliente pede mais assentos",
-      "role": "return",
-      "fromSide": "left",
-      "toSide": "right"
+      "label": "mais assentos",
+      "role": "return"
     },
     {
       "id": "contrato-suspenso",
@@ -677,25 +701,25 @@
       "dot": "cyan",
       "title": "Quem faz o quê",
       "items": [
-        "A Maind (a administração) cria a organização, libera os assentos, marca a organização como ativa, acompanha o uso e o custo e decide suspender e reativar.",
-        "O owner da organização, que é uma pessoa do cliente, cadastra as pessoas no front do middleware, dentro dos assentos liberados."
+        "A Maind (a administração) cria a organização, que se liga ao middleware, libera os assentos, acompanha o uso e o custo e decide suspender e reativar.",
+        "O owner da organização, uma pessoa do cliente, configura o banco e a IA e cadastra as pessoas no front do middleware, em qualquer hospedagem. O time da Maind dá suporte, mas não configura por ele."
       ]
     },
     {
       "dot": "emerald",
-      "title": "O laço de mais assentos",
+      "title": "Quando a organização fica ativa",
       "items": [
-        "Quando o cliente precisa de mais gente usando o Horus, pede mais assentos, e a Maind os libera pelo mesmo painel, tipo a tipo.",
-        "O número de um tipo nunca fica abaixo do que já está ocupado."
+        "Ela nasce em configuração e só passa a ativa com três condições: o middleware ligado, ao menos um banco configurado e a IA configurada.",
+        "Quando o cliente precisa de mais gente usando o Horus, pede mais assentos, e a Maind os libera pelo mesmo painel, tipo a tipo, nunca abaixo do que já está ocupado."
       ]
     },
     {
       "dot": "rose",
-      "title": "Suspender e reativar",
+      "title": "Suspender, reativar e excluir",
       "items": [
         "Se o contrato for suspenso, a organização inteira é inativada: ninguém entra, e os agendamentos, os alertas e os agentes param, mas nada se apaga.",
         "Reativar devolve tudo como estava.",
-        "Excluir a organização é outra coisa, definitiva, e não faz parte deste desenho."
+        "Excluir a organização é outra coisa, definitiva, e não faz parte deste desenho: apaga também tudo o que é dela no middleware."
       ]
     }
   ]

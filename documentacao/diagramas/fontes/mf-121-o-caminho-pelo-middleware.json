@@ -608,7 +608,7 @@
       "yOffset": 55,
       "type": "cloud",
       "label": "Bancos e IA configurados",
-      "sublabel": "Pelo owner ou pelo time da Maind"
+      "sublabel": "Pelo owner da organização"
     },
     {
       "id": "perguntar",
@@ -751,8 +751,8 @@
       "title": "Quem faz o quê",
       "items": [
         "A Maind cria a organização, que se liga ao middleware dela, e libera os assentos contratados, que vão ao middleware.",
-        "O middleware sobe na Maind, pelo time da Maind, ou na casa do cliente, pela TI dele, que instala o pacote pronto da Maind.",
-        "No front do middleware, o owner cadastra as pessoas; os bancos e a IA são configurados pelo owner ou, na hospedagem da Maind, pelo time da Maind.",
+        "O middleware fica na Maind, que o opera, ou na casa do cliente, onde a TI dele instala o pacote pronto da Maind.",
+        "No front do middleware, o owner cadastra as pessoas e configura os bancos e a IA, em qualquer hospedagem; o time da Maind só dá suporte.",
         "Quem pergunta faz a pergunta como sempre: para essa pessoa, nada muda."
       ]
     },
@@ -767,9 +767,9 @@
     },
     {
       "dot": "amber",
-      "title": "Um middleware por organização",
+      "title": "Um middleware para várias organizações",
       "items": [
-        "Cada organização tem o seu middleware, também na hospedagem da Maind.",
+        "O middleware da Maind atende todas as organizações do SaaS, cada uma isolada pelo seu certificado; o do cliente atende as organizações dele.",
         "Na casa do cliente, a TI governa o caminho por IP e porta, e a Maind não liga nem vê as saídas; na hospedagem da Maind, é a Maind que opera o middleware.",
         "O Horus continua no serviço da Maind: o cliente não ganha uma instância própria."
       ]

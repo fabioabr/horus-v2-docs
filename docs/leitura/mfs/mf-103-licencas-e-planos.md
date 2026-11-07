@@ -72,8 +72,8 @@ uma chave de provedor, e essa a Maind paga. Se a IA dada pela Maind entra no pre
   única ação é excluir. Se voltar a ser ouro, reativa cada item, um a um; nada volta sozinho. Já quem é
   **excluído**, porque sai ou é retirado da organização, perde em definitivo o que criou: nada passa a outra pessoa.
 - **A visão de cobrança:** o owner da organização vê só a contagem dos assentos: de cada tipo, quantos tem, quantos
-  usa e quantos estão livres. O custo, o relatório e a história dos assentos ficam com a Maind, e o uso do Horus
-  aparece na Home da organização (MF-117).
+  usa e quantos estão livres. O custo, o relatório e a história dos assentos ficam com a Maind, em números e sem o
+  nome de quem ocupou cada assento, e o uso do Horus aparece na Home da organização (MF-117).
 - **Reduzir:** não dá para reduzir abaixo do ocupado, e os reservados contam como ocupados; o owner da organização
   desocupa antes.
 - **O corte:** cortar é inativar a organização inteira: as pessoas perdem o acesso, e os agendamentos, os alertas e
@@ -181,7 +181,8 @@ de fora, e os assentos liberados vão ao Middleware da organização (MF-121), o
   - **D-206** a **D-209** (não há transferência: quem é excluído perde em definitivo o que criou; quem é rebaixado
     o mantém vinculado e desabilitado, só para excluir, e o reativa um a um se voltar a ser ouro).
   - **D-214** (a visão de cobrança do owner da organização mostra só a contagem de assentos por tipo: quantos tem,
-    usa e estão livres).
+    usa e estão livres) e **D-274** (o relatório da organização, com a Maind, mostra a história dos assentos em
+    números, mês a mês, sem o nome de quem os ocupou; substitui em parte a **D-157**).
   - **D-123** (o owner grátis por organização), **D-070** e **D-077** (sem vaga, não entra; o pedido fora do
     produto), **D-071**, **D-072** e **D-078** (o convite, a troca e a reserva), **D-073** (de full, hoje ouro, a
     leitor, hoje bronze), **D-074** (owner e gestor num assento só), **D-075** e **D-076** (o corte e a redução),

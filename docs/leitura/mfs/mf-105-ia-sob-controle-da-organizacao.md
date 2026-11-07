@@ -37,17 +37,17 @@ resposta; os números saem sempre da **fonte de dados**, o banco da empresa liga
 
 No Horus de hoje, cada organização liga a sua **conexão de IA**, a própria conta num provedor de modelos: o
 OpenRouter, que reúne vários fabricantes, ou o Amazon Bedrock. Na v2.0, a IA é **sempre da organização**: cada
-organização tem a sua configuração de IA no **front do middleware**, o aplicativo da organização que fica fora do
-Horus, junto do Middleware da organização (MF-121), a peça que fica entre o Horus e os bancos e a IA dela. Não há mais
-uma conexão de IA da Maind para várias organizações. Quem configura depende de onde o middleware fica:
-
-- **Na casa do cliente:** a própria organização, pelo **owner da organização**, que cuida das pessoas e dos dados de
-  um setor ou de um cliente.
-- **Na hospedagem da Maind:** o **time da Maind**, como suporte técnico antes e depois da venda.
+organização tem a sua configuração de IA no **front do middleware**, o aplicativo que fica fora do Horus, junto do
+Middleware da organização (MF-121), a peça que fica entre o Horus e os bancos e a IA dela. Não há mais uma conexão de
+IA da Maind para várias organizações. Quem configura é sempre o **owner da organização**, que cuida das pessoas e dos
+dados de um setor ou de um cliente, em qualquer hospedagem, com o middleware na casa do cliente ou hospedado pela
+Maind. O **time da Maind** dá suporte técnico, antes e depois da venda, mas não configura pelo owner, nem mesmo a
+chave que a Maind dá: quem a cadastra também é o owner.
 
 A chave do provedor pode ter dois donos. A organização pode usar a **chave própria**, de um provedor com que tenha
 contrato, e então **paga o consumo**. Ou a **Maind pode lhe dar uma chave de provedor**, e quem **paga é a Maind**. Nos
-dois casos, o owner da organização **vê o consumo e o custo de toda a IA** dela.
+dois casos, o owner da organização **vê o consumo e o custo de toda a IA** dela. A Maind vê, no painel dela, só o
+consumo das chaves que ela dá; o da chave que a organização paga não aparece para a Maind.
 
 O owner da organização escolhe os modelos aceitos, entre os da conexão que a organização tem, e o de cada tarefa. A
 v2.0 acrescenta o modelo dos agentes e o custo de cada organização. O ciclo da análise, com o modelo de IA e as
@@ -63,13 +63,16 @@ consultas, roda dentro do middleware.
 > tem contrato; aceita três modelos e deixa o mais econômico como padrão; para montar a consulta ao banco, escolhe um
 > mais forte. A gestora Carla, cuja role permite, troca o modelo numa pergunta difícil, e a organização paga o
 > consumo. Já a área financeira, outra organização da mesma rede, tem o middleware hospedado pela Maind, que lhe dá uma
-> chave de provedor e a paga; o time da Maind a configura. No fim do mês, a owner da área financeira vê quanto a área
-> consumiu e quanto custou, mesmo sendo a Maind quem paga.
+> chave de provedor e a paga; a owner da área a cadastra no front do middleware. No fim do mês, a owner da área
+> financeira vê quanto a área consumiu e quanto custou, mesmo sendo a Maind quem paga, e a Maind vê esse consumo no
+> painel dela; o da área comercial, que usa a chave própria, a Maind não vê.
 
 ## ✨ Características
 
-- **A IA é sempre da organização:** configurada no front do middleware, pelo owner, com o middleware na casa do
-  cliente, ou pelo time da Maind, na hospedagem da Maind. Não há conexão de IA da instância.
+- **A IA é sempre da organização:** configurada no front do middleware pelo owner, em qualquer hospedagem, com o
+  suporte técnico do time da Maind. Não há conexão de IA da instância para as organizações: a chave de IA que a Maind
+  cadastra no nível da instância serve só à pergunta do administrador sobre a história da instância, e nenhuma
+  organização a usa.
 - **Dois donos da chave:** a da organização, que ela paga; e a que a Maind lhe dá, que a Maind paga. Ao criar a
   organização, a Maind já não escolhe se lhe disponibiliza uma IA: esse passo deixou de existir.
 - **Curadoria:** o owner escolhe os modelos que a organização aceita, entre os da conexão que ela tem, e, no
@@ -88,8 +91,11 @@ consultas, roda dentro do middleware.
   pelo preço público e marca a estimativa.
 - **O que o owner da organização vê:** o consumo e o custo de toda a IA da organização, da chave que ela paga e da que
   a Maind dá.
+- **O que a Maind vê:** no painel de uso e custo da Administração da instância (MF-101), por organização, o consumo e o
+  custo só das chaves que ela dá; o consumo da chave que a organização paga não aparece para a Maind.
 - **Sem teto automático:** fora os tetos técnicos de cada execução, não há teto automático de custo, nem por agente nem
-  por organização: nada se corta sozinho. A Maind segue com o aviso de custo da Administração da instância (MF-101).
+  por organização: nada se corta sozinho. A Maind segue com o aviso de custo da Administração da instância, que
+  alcança só o consumo das chaves que ela dá.
 - **Quando a IA para,** por chave recusada ou falta de crédito, o owner da organização é sempre avisado; se a chave é a
   que a Maind dá, o time da Maind também é avisado, para repor o crédito.
 
@@ -98,27 +104,23 @@ consultas, roda dentro do middleware.
 - **Para quem usa:** a resposta vem do modelo em que a organização confia, sem troca escondida.
 - **Para a empresa que contrata o Horus:** usa o provedor com que já tem contrato, pagando o consumo, ou a chave que a
   Maind lhe dá e paga; escolhe, tarefa a tarefa, o modelo de que precisa; e vê o consumo e o custo de toda a IA dela.
-- **Para o Horus como produto:** a IA é quase todo o custo variável; a Maind decide a quem dá uma chave, e medir a IA
-  por organização mostra quanto custa atender cada uma.
+- **Para o Horus como produto:** a IA é quase todo o custo variável; a Maind decide a quem dá uma chave, e o painel
+  dela mostra, por organização, quanto custa a IA das chaves que ela dá.
 
-**Como vamos saber que funcionou:** o time da Maind configura, no front do middleware, a IA de uma organização nova
-com a chave que a Maind dá, e o owner faz a primeira pergunta de análise; outra organização, com a chave própria,
-pergunta e paga o consumo; e o owner de cada uma vê o consumo e o custo do mês, medido ou estimado.
+**Como vamos saber que funcionou:** o owner de uma organização nova configura, no front do middleware, a IA com a
+chave que a Maind dá e faz a primeira pergunta de análise; outra organização, com a chave própria, pergunta e paga o
+consumo; o owner de cada uma vê o consumo e o custo do mês, medido ou estimado, e a Maind vê só o da chave que ela dá.
 
 ## 🚶 Como se usa no Horus
 
-**Quem configura a IA**, no front do middleware (o owner da organização, com o middleware na casa do cliente; o time
-da Maind, na hospedagem da Maind):
+**O owner da organização**, em qualquer hospedagem (com o suporte técnico do time da Maind, se precisar):
 
-1. Configura a conexão com o provedor, com a chave da organização ou com a que a Maind dá.
-
-**O owner da organização:**
-
-1. Escolhe os modelos aceitos, entre os da conexão que a organização tem, e, no OpenRouter, a empresa preferida de
+1. Configura, no front do middleware, a conexão com o provedor, com a chave da organização ou com a que a Maind dá.
+2. Escolhe os modelos aceitos, entre os da conexão que a organização tem, e, no OpenRouter, a empresa preferida de
    cada um.
-2. Define o modelo padrão.
-3. Dá, se quiser, um modelo próprio a cada tarefa, inclusive a dos agentes.
-4. Acompanha o consumo e o custo de toda a IA da organização.
+3. Define o modelo padrão.
+4. Dá, se quiser, um modelo próprio a cada tarefa, inclusive a dos agentes.
+5. Acompanha o consumo e o custo de toda a IA da organização.
 
 **Quem pergunta** (o owner, o **gestor** e os membros **ouro** e **prata**, os tipos de assento de membro que podem
 perguntar) usa o modelo padrão, ou troca na conversa, se a role deixar.
@@ -150,7 +152,7 @@ da pesquisa na web, a estimativa de custo, o custo por organização e a configu
 | A web como fonte (MF-109) | **é a base de**: a pesquisa na web só existe quando o provedor da IA pesquisa por conta própria |
 | Agentes ativos (MF-115) | **é a base de**: o modelo que segue as instruções do agente é escolha do owner, e o consumo dele entra no custo da organização |
 | Organizações, pessoas e papéis (MF-102) | **depende de**: o botão de escolher o modelo na conversa mora nas roles |
-| Administração da instância (MF-101) | **complementa**: a Maind cria a organização sem o passo de disponibilizar uma IA, segue com o aviso de custo e, quando a IA com a chave dela para, é avisada |
+| Administração da instância (MF-101) | **complementa**: a Maind cria a organização sem o passo de disponibilizar uma IA, vê no painel o consumo e o custo só das chaves que dá, com o aviso de custo sobre eles, e, quando a IA com a chave dela para, é avisada |
 | Licenças e planos (MF-103) | **complementa**: a chave da organização, ela paga; a que a Maind dá, a Maind paga |
 | Segurança dos dados por pessoa (MF-106) | **é a base de**: na v2.1, a IA que transforma a regra de acesso em consulta protegida e a confere é a da organização |
 | Middleware da organização (MF-121) | **é a base de**: a IA da organização é configurada no front do middleware, e o modelo trabalha no ciclo da análise, dentro dele |
@@ -158,10 +160,11 @@ da pesquisa na web, a estimativa de custo, o custo por organização e a configu
 ## 🚧 O que ela não faz
 
 - **Tirar o número do modelo:** os números vêm sempre do banco.
-- **Cortar o gasto sozinha:** há o aviso de custo à Maind e os tetos técnicos de cada execução, mas nenhum teto
-  automático de custo.
+- **Cortar o gasto sozinha:** há o aviso de custo à Maind, sobre as chaves que ela dá, e os tetos técnicos de cada
+  execução, mas nenhum teto automático de custo.
 - **Ter uma IA da instância:** não há mais uma conexão de IA da Maind para várias organizações; cada organização tem a
-  sua configuração.
+  sua configuração. A chave que a Maind cadastra na instância serve só à pergunta do administrador sobre a história
+  da instância.
 - **Ligar direto à Anthropic, à OpenAI ou ao Google:** os modelos deles chegam pelo OpenRouter.
 - **Garantir que o dado não saia do país:** a região de São Paulo do Bedrock não basta para os modelos Claude.
 - **O modo "tudo dentro",** em que nada sai da casa do contratante, nem a pergunta: fica sem versão e só volta se um
@@ -170,10 +173,7 @@ da pesquisa na web, a estimativa de custo, o custo por organização e a configu
 ## ⏳ Ainda a decidir
 
 - **Onde o owner faz as escolhas e vê o custo:** se a curadoria, o modelo padrão e o de cada tarefa ficam no Horus ou
-  no front do middleware, e quem os escolhe na hospedagem da Maind (🔎 a confirmar com o dono); a tela do consumo é do
-  arquiteto.
-- **O aviso de custo da Maind:** que custo de IA ele ainda alcança, agora que a chave pode ser da organização. 🔎 a
-  confirmar com o dono
+  no front do middleware (🔎 a confirmar com o dono); a tela do consumo é do arquiteto.
 - **O preço do assento:** se a IA que a Maind dá entra nele; é do comercial da Maind.
 
 ## 📚 Para saber mais
@@ -183,8 +183,13 @@ da pesquisa na web, a estimativa de custo, o custo por organização e a configu
   construído" (outros provedores).
 - `docs/raw/produto/backlog-estrategico.md`: **D-021** (base herdada); **D-264** (com o middleware fora da Maind, a
   organização configura a IA, e a Maind pode lhe dar uma chave de provedor); **D-265** (os bancos e a IA configurados
-  no front do middleware, pela organização ou, na hospedagem da Maind, pelo time da Maind); **D-266** (a conexão da
-  instância deixa de existir, e some o passo de disponibilizar uma conexão ao criar a organização); **D-267** (a chave
+  no front do middleware), em parte substituída pela **D-273** (em qualquer hospedagem, quem configura a IA é o owner
+  da organização, inclusive a chave que a Maind dá; o time da Maind só dá suporte); **D-266** (a conexão da
+  instância deixa de existir, e some o passo de disponibilizar uma conexão ao criar a organização), com a exceção
+  estreita da **D-276** (uma chave de IA da instância, que a Maind paga, só para a pergunta do administrador sobre a
+  história da instância; nenhuma organização a usa); **D-279** (o painel de uso e custo da Maind mostra, por
+  organização, só o consumo das chaves que ela dá, e o aviso de custo alcança só isso; fechou o 🔎 do aviso de
+  custo); **D-267** (a chave
   que a Maind dá, a Maind paga, e o owner vê o consumo e o custo de toda a IA; onde fica essa tela é do arquiteto);
   **D-268** (quando a IA para, o owner é sempre avisado, e o time da Maind também, se a chave é dela); **D-246** (a
   definição macro da `MF-105`, em parte substituída pelas **D-264** a **D-268**); **D-216** (as duas origens da
@@ -193,7 +198,7 @@ da pesquisa na web, a estimativa de custo, o custo por organização e a configu
   substituída pela **D-267**); **D-218** (quando a IA para, é avisado o dono da conexão, em parte substituída pela
   **D-268**); **D-159** (a Maind pagava a IA de todas as organizações; em parte substituída pela **D-216**);
   **D-234** (sem teto automático de custo; ficam os tetos por execução e o aviso de custo); **D-153** (o custo de IA
-  do mês e o aviso de custo na `MF-101`; que custo ele alcança sem a conexão da instância está em aberto 🔎);
+  do mês e o aviso de custo na `MF-101`, que, pela **D-279**, alcança só as chaves que a Maind dá);
   **D-258** (o ciclo da análise, com o modelo, roda dentro do middleware); **D-193** (o funcionário da Maind na
   instância, sem ver os dados, e o owner da organização, com a visão de billing); **D-214** (a visão de cobrança do
   owner mostra só a contagem de assentos); **D-194** (os tipos de assento ouro, prata e bronze); **D-197** (a mf

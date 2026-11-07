@@ -26,7 +26,7 @@
               "code": "MF-101",
               "badge": "v2.0",
               "title": "Administração da instância",
-              "summary": "A sala de controle do Horus: criar organizações, liberar assentos, acompanhar o uso e avisar antes de uma parada.",
+              "summary": "A sala de controle do Horus: criar organizações e ligá-las ao middleware, liberar assentos, acompanhar o estado do middleware, o uso e o custo, e avisar antes de uma parada.",
               "links": [
                 {
                   "label": "Os assentos",
@@ -80,7 +80,7 @@
               "code": "MF-104",
               "badge": "v2.0",
               "title": "Conectar as fontes vivas",
-              "summary": "Ligar o Horus aos bancos de dados da empresa, só para ler, para que cada resposta traga o número de agora; os bancos se configuram no front do middleware.",
+              "summary": "Ligar o Horus aos bancos de dados da empresa, só para ler, para que cada resposta traga o número de agora; o owner configura os bancos no front do middleware.",
               "links": [
                 {
                   "label": "Da fonte à resposta",
@@ -98,7 +98,7 @@
               "code": "MF-105",
               "badge": "v2.0",
               "title": "IA sob controle da organização",
-              "summary": "A organização escolhe qual modelo de IA faz cada tarefa do Horus, com a chave que ela cadastra e paga ou a que a Maind lhe dá, configurada no front do middleware.",
+              "summary": "A organização escolhe qual modelo de IA faz cada tarefa do Horus, com a chave que ela cadastra e paga ou a que a Maind lhe dá, configurada pelo owner no front do middleware.",
               "links": [
                 {
                   "label": "O que o owner escolhe",
@@ -350,7 +350,7 @@
               "code": "MF-121",
               "badge": "v2.0",
               "title": "Middleware da organização",
-              "summary": "Uma peça separada do Horus que cada organização tem: ela guarda as pessoas, os bancos e a IA da organização e responde pelo caminho até eles, na infraestrutura da Maind ou na da própria empresa, com só a pergunta e a resposta pronta voltando ao Horus.",
+              "summary": "Uma peça separada do Horus que atende várias organizações: guarda as pessoas, os bancos e a IA de cada uma e responde pelo caminho até eles, na infraestrutura da Maind ou na da própria empresa, com só a pergunta e a resposta pronta voltando ao Horus.",
               "links": [
                 {
                   "label": "Da organização criada à primeira resposta",
@@ -449,7 +449,7 @@
     {
       "id": "mf-101-vida-da-organizacao",
       "title": "A vida de uma organização",
-      "description": "Da criação ao dia a dia, com os laços de mais assentos e de suspender e reativar",
+      "description": "Da criação, já ligada ao middleware, até a organização ativa e o dia a dia, com os laços de mais assentos e de suspender e reativar",
       "source": "diagramas/mf-101-vida-da-organizacao.html"
     },
     {
@@ -467,7 +467,7 @@
     {
       "id": "mf-104-da-fonte-a-resposta",
       "title": "Da fonte cadastrada à resposta",
-      "description": "Quem prepara a fonte no front do middleware, do cadastro ao modelo semântico, e o que o middleware faz a cada pergunta: vai ao banco ou reaproveita um resultado recente",
+      "description": "Quem prepara a fonte, do cadastro pelo owner no front do middleware ao modelo semântico, e o que o middleware faz a cada pergunta: vai ao banco ou reaproveita um resultado recente",
       "source": "diagramas/mf-104-da-fonte-a-resposta.html"
     },
     {
@@ -551,7 +551,7 @@
     {
       "id": "mf-121-o-caminho-pelo-middleware",
       "title": "O caminho pelo middleware",
-      "description": "Da organização criada à primeira resposta: a Maind cria a organização e a liga ao middleware dela, o owner cadastra as pessoas, os bancos e a IA são configurados no front, e só a pergunta e a resposta pronta passam pelo Horus",
+      "description": "Da organização criada à primeira resposta: a Maind liga a organização ao middleware, o owner cadastra as pessoas e configura os bancos e a IA, e só a pergunta e a resposta pronta passam pelo Horus",
       "source": "diagramas/mf-121-o-caminho-pelo-middleware.html"
     },
     {

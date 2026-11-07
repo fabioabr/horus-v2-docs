@@ -37,7 +37,8 @@ os dados das organizações. Hoje qualquer pessoa com conta cria uma organizaç�
 convida.
 
 Na v2.0, só o owner da instância cria organizações, e as pessoas de cada organização ficam guardadas no
-**middleware** dela, fora do Horus. O middleware, a peça do Middleware da organização (MF-121), fica entre o Horus e
+**middleware**, fora do Horus e isoladas das de outras organizações. O middleware, a peça do Middleware da
+organização (MF-121), fica entre o Horus e
 os bancos da organização: guarda quem são as pessoas, os bancos e a IA e responde pelo caminho até eles. O owner
 cadastra e gere as pessoas no **front do middleware**, um aplicativo de configuração separado do Horus, e só ele usa
 esse aplicativo; quem mais trabalha na organização usa só o Horus.
@@ -206,7 +207,8 @@ quase todas as mfs novas dependem dela.
     e o gestor, o lote reserva os assentos, a linha sem vaga fica de fora, e o gestor convida um a um).
   - **D-118** (o login corporativo fora da v2.0) e **D-184** (o login corporativo da MF-106 só por OpenID Connect).
   - **D-258** (toda organização usa um middleware desde a v2.0; as configurações de autenticação ficam nele, e o
-    owner da organização entra sempre por usuário e senha), **D-261** (as pessoas ficam isoladas no middleware, fora
+    owner da organização entra sempre por usuário e senha), **D-272** (o middleware atende várias organizações, cada
+    uma isolada; substitui a **D-259**), **D-261** (as pessoas ficam isoladas no middleware, fora
     do SaaS, e o owner as cadastra e gere no front dele), **D-262** (só o owner usa o front do middleware; o gestor
     cria o convite e pede a troca do tipo de assento pelo Horus, e o owner aprova lá; o e-mail do convidado passa
     pelo SaaS a caminho do middleware) e **D-269** (no máximo mais dois owners além do primeiro, cada um num assento

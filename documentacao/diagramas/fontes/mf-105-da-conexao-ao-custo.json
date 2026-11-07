@@ -571,7 +571,7 @@
       "col": 1,
       "type": "cloud",
       "label": "A IA é configurada",
-      "sublabel": "Pelo owner ou pelo time da Maind"
+      "sublabel": "Pelo owner da organização"
     },
     {
       "id": "curadoria",
@@ -743,7 +743,7 @@
       "items": [
         "A IA é sempre da organização: não há mais uma conexão de IA da instância.",
         "A chave da organização vem do provedor com que ela tem contrato, e a organização paga o consumo. A Maind pode dar uma chave de provedor, e quem a paga é a Maind.",
-        "A conexão é configurada no front do middleware: pelo owner, com o middleware na casa do cliente, ou pelo time da Maind, na hospedagem da Maind."
+        "A conexão é configurada pelo owner, no front do middleware, em qualquer hospedagem; o time da Maind só dá suporte."
       ]
     },
     {

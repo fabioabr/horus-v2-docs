@@ -52,12 +52,21 @@ Tudo o que está aberto, num lugar só. A skill **lista esta seção no início 
 | `P-044` | 🕓 Pendência | **Para o arquiteto de soluções:** conferir se apagar tudo de quem é excluído (`D-210`) convive com a guarda técnica do registro de acesso (seis meses, `ARQ-035`) e com as cópias de segurança; e o que a Auditoria, o aviso de abertura e a medida de autonomia precisam mudar. *O lado jurídico passou ao setup de cada cliente (`D-247`)* | `D-209`, `D-210`, `ARQ-035`, `D-247` | Arquiteto de soluções | 05/11/2026 |
 | `P-046` | 🕓 Pendência | **Definir os componentes da faixa de avisos e números:** o catálogo (KPIs, ícones etc.), as regras de cada um (inclusive a hora de fim e a retirada à mão do aviso do owner da organização) e o gesto e o visual da faixa. O dono disse que "ainda vamos definir" (`D-213`) | `D-213`, `D-212`, `D-174` | Dono, com o PO e o arquiteto de soluções | 05/11/2026 |
 | `P-047` | 🕓 Pendência | **Para o arquiteto de soluções:** a viabilidade e o desenho da exportação da conversa em PDF ou HTML na `MF-107` da v2.0 (`D-250`): o que o arquivo leva (as respostas, os gráficos e as tabelas, as fontes), se reaproveita o desenho único dos gráficos e a geração de PDF do board, o registro da exportação no rastro da Auditoria (`D-252`) e o que isso pede do resto da v2.0. O código da v1.xx só baixa o CSV e a imagem de um bloco; o PDF só existe no board | `D-250`, `D-249` | Arquiteto de soluções | 06/11/2026 |
-| `P-048` | 🕓 Pendência | **Para o arquiteto de soluções:** o fluxo do dono (`D-258`): como o SaaS e o middleware sobem em infraestruturas separadas e como isso convive com o chart único e a `ARQ-060`; o formato, a rotação e a revogação do certificado, a chave de instalação, o handshake e a troca dos arquivos assinados; o endereço da organização com token (o que ele carrega e como não vaza em registro e histórico) e o que vai na sessão (só o necessário para encaminhar, sem endereço nem porta da infraestrutura); quem emite a sessão; o que a pessoa vê e o que o Horus faz com o middleware fora do ar, já que o login da organização cai junto; a atualização do middleware; a criação automática de um middleware para cada organização nova (`D-259`); o que o SaaS guarda de cada pessoa (`D-261`), se ele só repassa o e-mail do convite sem guardá-lo (`D-262`) e como mostra o nome dela sem guardá-lo (a Home da organização, o rastro da Auditoria, a medida de autonomia); e o que muda na `P-040` e na `P-042` | `D-258`, `P-040`, `P-042`, `ARQ-060` | Arquiteto de soluções | 07/11/2026 |
+| `P-048` | 🕓 Pendência | **Para o arquiteto de soluções:** o fluxo do dono (`D-258`): como o SaaS e o middleware sobem em infraestruturas separadas e como isso convive com o chart único e a `ARQ-060`; o formato, a rotação e a revogação do certificado, a chave de instalação, o handshake e a troca dos arquivos assinados; o endereço da organização com token (o que ele carrega e como não vaza em registro e histórico) e o que vai na sessão (só o necessário para encaminhar, sem endereço nem porta da infraestrutura); quem emite a sessão; o que a pessoa vê e o que o Horus faz com o middleware fora do ar, já que o login da organização cai junto; a atualização do middleware; a criação automática de um middleware para cada organização nova (`D-259`); o que o SaaS guarda de cada pessoa (`D-261`), se ele só repassa o e-mail do convite sem guardá-lo (`D-262`) e como mostra o nome dela sem guardá-lo (a Home da organização, o rastro da Auditoria, a medida de autonomia); a revisão da `ARQ-097`, cuja dimensão de pessoas do banco de log não pode guardar o nome (`D-274`); onde roda a pergunta do administrador sobre a história da instância (`D-276`), que lê o banco de log e não passa por middleware; e o que muda na `P-040` e na `P-042` | `D-258`, `P-040`, `P-042`, `ARQ-060` | Arquiteto de soluções | 07/11/2026 |
 
 ### Fechados
 
 | Nº | O que era | Como fechou | Em |
 | --- | --- | --- | --- |
+| `I-093` | O painel de uso e custo da instância mostra o consumo de IA das chaves que a Maind dá, por organização (e só dessas)? | O dono escolheu, com a opção recomendada, que **sim**, só das chaves que a Maind dá (`D-279`) | 07/11/2026 |
+| `I-092` | Excluir uma organização apaga também o middleware dela e tudo o que há nele (pessoas e configuração), além do uso (`D-149`)? | O dono escolheu, com a opção recomendada, que **sim**: apaga tudo o que há dela no middleware (`D-278`) | 07/11/2026 |
+| `I-091` | A organização só passa a ativa depois de o middleware estar ligado (handshake confirmado) e os bancos e a IA configurados, ou a Maind a marca como ativa quando quiser (`D-148`)? | O dono escolheu a opção B, contra a recomendação do PO (a A): **só depois de o middleware estar ligado e de os bancos e a IA estarem configurados** (`D-277`) | 07/11/2026 |
+| `I-090` | O administrador da instância ainda pergunta ao próprio Horus sobre a história da instância (`D-158`), já que não há mais conexão de IA da instância (`D-266`)? | O dono escolheu a opção B, contra a recomendação do PO (a A): **sim, com uma chave de IA que a Maind cadastra só para isso** (`D-276`) | 07/11/2026 |
+| `I-089` | O painel da instância mostra o estado do middleware de cada organização (no ar ou fora, versão)? | O dono escolheu, com a opção recomendada, que **sim**: o painel mostra o estado e a versão (`D-275`) | 07/11/2026 |
+| `I-088` | A Maind continua vendo, no relatório da organização, o nome de quem ocupa cada assento (`D-157`), agora que as pessoas ficam no middleware, fora do SaaS (`D-261`)? | O dono escolheu, com a opção recomendada, que **não**: a Maind vê só a história dos assentos em números, sem o nome (`D-274`) | 07/11/2026 |
+| `I-095` | Na hospedagem da Maind, quem configura os bancos e a IA de cada organização: o owner da organização, com o usuário que a Maind cria, ou o time da Maind, por ele, como suporte? | O dono escolheu, com a opção recomendada, que **é o owner da organização**, em qualquer hospedagem; o time da Maind só dá suporte (`D-273`) | 07/11/2026 |
+| `I-094` | O middleware passa a ser multi-organização em qualquer hospedagem (o da Maind atende as organizações do SaaS, e o do cliente, as organizações dele), o que substitui a `D-259` (um middleware por organização)? | O dono escolheu, com a opção recomendada, que **sim: o middleware é multi-organização em qualquer hospedagem** (`D-272`); a `D-259` sai | 07/11/2026 |
+| `I-087` | Na hospedagem da Maind, quem do time da Maind configura os bancos e a IA de cada organização no front do middleware: o administrador da instância ou um papel de suporte à parte? | O dono respondeu fora das opções: **o middleware é o mesmo em qualquer hospedagem, a diferença é só o local físico, e o owner da organização acessa o front do middleware também na Maind, com um usuário que a Maind cria** (`D-271`). Abriu o `I-094` e o `I-095` | 07/11/2026 |
 | `I-080` | O owner adicional ligado ao login da empresa (no máximo mais dois, no fluxo do dono) ocupa um assento de owner pago, ou é à parte? | O dono escolheu, com a opção recomendada, que **cada owner adicional ocupa um assento de owner contratado**; só o primeiro é grátis (`D-269`) | 07/11/2026 |
 | `I-086` | Quem é avisado quando a IA de uma organização para (chave recusada, falta de crédito), agora que não há conexão da instância e o time da Maind configura na hospedagem dela? | O dono escolheu, com a opção recomendada, que **o owner da organização é sempre avisado e, se a chave é da Maind, o time da Maind também** (`D-268`) | 07/11/2026 |
 | `I-084` | Uma chave de provedor de IA que a Maind dá à organização, em qualquer hospedagem: quem paga e quem vê o consumo? | O dono escolheu a opção B, contra a recomendação do PO (a A): **a Maind paga, e o owner da organização também vê o consumo e o custo** (`D-267`) | 07/11/2026 |
@@ -191,6 +200,125 @@ Situação: proposta | decidida | substituída por D-nnn | revogada · Data: dd/
 **Reabrir quando:** condição que justifica rever.
 ```
 
+### D-280 · Definição macro revisada da MF-101:Administração da instância, com o middleware
+Situação: 🟢 decidida (proposta do PO, confirmada pelo dono em 07/11/2026) · Data: 07/11/2026 · Versão: v2.0
+
+**Decisão:** a `MF-101:Administração da instância` fica redefinida assim, reunindo o que o dono decidiu em 07/11/2026 (`D-258` a `D-279`). Esta entrada **substitui a `D-202`**.
+- **O que é:** o painel de quem opera o SaaS, um **funcionário da Maind** (o administrador da instância, `D-147`), que **entra por usuário e senha** (`D-258`). Nele, a Maind:
+  - **cria as organizações** (`D-146`): a criação **liga a organização ao middleware** (o certificado e a chave de instalação, `D-258`) e **cria o usuário do owner** no front do middleware (`D-271`); a organização nasce em configuração e **só passa a ativa** com o middleware ligado e os bancos e a IA configurados pelo owner (`D-277`, `D-273`);
+  - **libera, reduz e corta os assentos** (`D-080`), que vão ao middleware (`D-258`); **corta** a organização inteira ao inativá-la (`D-148`);
+  - **vê o estado e a versão do middleware** de cada organização (`D-275`);
+  - **vê o uso e o custo**, inclusive o consumo de IA **das chaves que a Maind dá**, e **baixa o relatório** em planilha e PDF, com a história dos assentos **em números, sem o nome de quem os ocupou** (`D-149`, `D-153`, `D-274`, `D-279`);
+  - **publica o aviso da instância** (`D-151`), cuida do **e-mail do produto** (`D-155`) e da **marca da Maind** (`D-200`);
+  - **pergunta ao próprio Horus** sobre a história da instância, com uma chave de IA da instância usada só para isso (`D-158`, `D-276`);
+  - **exclui a organização**, o que apaga também tudo o que há dela no middleware (`D-278`).
+- **Quem ganha:** o **administrador da instância** (a Maind), que opera o SaaS sem planilha nem chamado; de forma indireta, o **owner da organização**, que recebe o middleware, os assentos e os avisos.
+- **Decisão que passa a ser possível:** abrir uma organização nova e ligá-la ao seu middleware, saber se ele está no ar, liberar ou cortar assentos, ver quanto cada organização usa e custa, e avisar todo mundo de uma manutenção, tudo num lugar só.
+- **Prova de valor:** a Maind cria uma organização, vê o middleware ligado, o owner configura o banco e a IA e a organização vira ativa; a Maind libera os assentos, acompanha o uso e o custo, baixa o relatório e publica um aviso que aparece na faixa de todas as pessoas.
+- **Retorno para o negócio:** controle da receita e do custo por organização e menos suporte para operar o SaaS, com um middleware só para as organizações do SaaS (`D-272`).
+- **O que não inclui:** o nome de quem ocupa o assento (`D-274`); ver as conexões e as credenciais das organizações, que o owner configura (`D-273`); a conexão de IA para as organizações, que não existe mais (`D-266`); a marca completa do contratante, sem versão (`D-200`); o interruptor geral da segurança, que é da `MF-106` (`D-199`); a página pública do estado da instância (`D-154`); o preço (`P-022`).
+- **Depende de:** `MF-102:Organizações, pessoas e papéis`; `MF-103:Licenças e planos`; `MF-120:Faixa de avisos e números` (onde o aviso aparece); `MF-121:Middleware da organização` (a criação liga a organização a ele).
+- **Valor:** **essencial** para operar o SaaS: sem ela a Maind não cria organizações, não as liga ao middleware nem libera assentos.
+**Contexto:** o dono pediu, em 07/11/2026, que a `MF-101` fosse reescrita considerando a estrutura nova. A `D-202`, de 05/11/2026, excluía o middleware e supunha que o administrador não precisa ver as conexões das organizações.
+**Opções avaliadas:** definição direta, sem pontuação: reúne decisões já tomadas.
+**Por que esta:** põe num lugar só o que a `MF-101` é depois do middleware. Não decide nada novo de valor.
+**Hipóteses a validar:** 🔎 que o isolamento por certificado baste entre as organizações do SaaS (`D-272`); 🔎 que o owner consiga configurar sozinho o banco e a IA (`D-273`); 🔎 que a cobrança se confira só com contagens, sem nome (`D-274`).
+**Reabrir quando:** o suporte da Maind pedir ver mais, ou o dono quiser mudar o que a mf inclui.
+
+### D-279 · O painel de uso e custo da instância mostra o consumo de IA só das chaves que a Maind dá
+Situação: 🟢 decidida (resposta do dono em 07/11/2026, com a opção recomendada) · Data: 07/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-093`. O painel de uso e custo da instância (`MF-101`) mostra, por organização, o **consumo e o custo de IA das chaves que a Maind dá** (`D-264`, `D-267`), e o **aviso de custo** (`D-153`) alcança só isso. O consumo da chave que a própria organização paga **não aparece no painel da Maind**: é da organização (`D-267`).
+**Contexto:** sem a conexão da instância (`D-266`), o que sobrou de custo de IA para a Maind são as chaves que ela dá, e as páginas da `MF-101` e da `MF-105` deixavam em aberto o que o aviso de custo ainda alcança.
+**Opções avaliadas** (sem pontuação): **A. só das chaves que a Maind dá (recomendação do PO, escolhida pelo dono)** · B. o painel não traz custo de IA.
+**Por que esta:** a Maind paga essas chaves e precisa ver quanto cada organização consome. Abre-se mão de: ⚠️ a Maind não vê o consumo de IA das organizações que trazem a própria chave.
+**Afeta:** `D-153` (o aviso de custo e os Instance Cards), `D-267`, `MF-101`, `MF-105`.
+**Reabrir quando:** a Maind precisar ver todo o consumo de IA, inclusive o das chaves das organizações.
+
+### D-278 · Excluir uma organização apaga também tudo o que há dela no middleware
+Situação: 🟢 decidida (resposta do dono em 07/11/2026, com a opção recomendada) · Data: 07/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-092`. Excluir uma organização apaga, além do uso no SaaS (`D-149`), **tudo o que há dela no middleware**: as pessoas, os bancos e a IA configurados e a configuração. Como o middleware é compartilhado (`D-272`), a exclusão apaga **só o que é daquela organização**. **Completa a `D-149`.**
+**Contexto:** com as pessoas, os bancos e a IA no middleware (`D-258`, `D-261`, `D-265`), excluir só o uso deixaria dado pessoal e credenciais de uma organização que não existe mais.
+**Opções avaliadas** (sem pontuação): **A. apaga tudo, também no middleware (recomendação do PO, escolhida pelo dono)** · B. o que está no middleware fica.
+**Por que esta:** é coerente com "quem é excluído perde tudo" (`D-209`, `D-210`) e não deixa dado pessoal para trás. Abre-se mão de: ⚠️ uma exclusão por engano leva também a configuração, sem volta; ⚠️ a guarda técnica do registro de acesso e as cópias de segurança (`P-044`) passam a valer também para o middleware.
+**Afeta:** `D-149`, `D-209`, `D-210`, `P-044`, `MF-101`, `MF-102`.
+**Reabrir quando:** uma exclusão por engano custar um cliente.
+
+### D-277 · A organização só passa a ativa depois de o middleware ligado e dos bancos e da IA configurados
+Situação: 🟢 decidida (resposta do dono em 07/11/2026, contra a recomendação do PO, que era a opção A) · Data: 07/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-091`. Uma organização **nasce em configuração e só passa a ativa depois de três condições**: o **middleware ligado** (o handshake com o SaaS confirmado, `D-258`), ao menos **um banco configurado** e a **IA configurada**, pelo owner (`D-273`). **Altera em parte a `D-148`**, em que a Maind a marcava como ativa quando a dava por pronta. 🔎 Leitura do PO, a confirmar com o dono: cumpridas as condições, a Maind a marca como ativa (a trava é automática; o ato segue sendo dela).
+**Contexto:** com o middleware em toda organização, uma organização pode nascer sem conseguir responder. O PO recomendava manter a ativação como a `D-148`, com o estado do middleware à vista (`D-275`).
+**Opções avaliadas** (sem pontuação): A. a Maind a marca como ativa quando quiser (`D-148`; recomendação do PO) · **B. só depois das condições (escolhida pelo dono)**.
+**Por que esta:** não se ativa uma organização que não consegue responder. Abre-se mão de: ⚠️ a ativação depende de o owner configurar o banco e a IA; ⚠️ a Maind não ativa por conta própria uma organização incompleta, e as organizações de exemplo também precisam cumprir as condições.
+**Afeta:** `D-148`, `MF-101`, `MF-118`, `MF-121`.
+**Reabrir quando:** a trava atrapalhar a entrada de um cliente.
+
+### D-276 · A pergunta do administrador sobre a história da instância continua, com uma chave de IA que a Maind cadastra só para isso
+Situação: 🟢 decidida (resposta do dono em 07/11/2026, contra a recomendação do PO, que era a opção A) · Data: 07/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-090`. O administrador da instância **continua perguntando ao próprio Horus sobre a história da instância** (`D-158`). Para isso, a Maind **cadastra uma chave de IA no nível da instância, usada só para essa pergunta**, e paga por ela. A decisão **não traz de volta a conexão da instância para as organizações** (`D-266`): nenhuma organização usa essa chave.
+**Contexto:** a `D-158` supunha a IA da instância, que a `D-266` extinguiu. O PO recomendava tirar a pergunta da v2.0; o dono preferiu mantê-la.
+**Opções avaliadas** (sem pontuação): A. a pergunta sai da v2.0, sem versão (recomendação do PO) · **B. continua, com uma chave só para isso (escolhida pelo dono)**.
+**Por que esta:** a Maind mantém a pergunta em português sobre a história da instância. Abre-se mão de: ⚠️ volta um cadastro de IA no painel da instância, de alcance estreito; ⚠️ a pergunta lê a história guardada no SaaS (o banco de log) e não passa por middleware de organização nenhum; como ela roda é do arquiteto (`P-048`).
+**Afeta:** `D-158` (volta a valer), `D-266` (segue: nenhuma organização usa a chave da instância), `MF-101`, `P-048`, a arquitetura geral (o administrador e o banco de log).
+**Hipóteses a validar:** 🔎 que a Maind use a pergunta o bastante para valer o custo da chave.
+**Reabrir quando:** a Maind não usar a pergunta, ou o custo pesar.
+
+### D-275 · O painel da instância mostra o estado e a versão do middleware de cada organização
+Situação: 🟢 decidida (resposta do dono em 07/11/2026, com a opção recomendada) · Data: 07/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-089`. O painel da instância (`MF-101`) mostra, para cada organização, o **estado do middleware dela** (no ar ou fora) e a **versão** que ele informa: o da Maind, que atende as organizações do SaaS, e, nas organizações que usam o da casa do cliente, o desse cliente, enquanto o SaaS o alcança (`D-272`). **Quem é avisado quando ele para** segue a `D-240`: o dono do serviço (a Maind, no middleware dela; o cliente, no dele).
+**Contexto:** o login e os dados de toda organização passam pelo middleware (`D-258`, `D-261`), e a Maind opera o dela. Sem o estado à vista, a Maind descobriria a queda por fora do produto.
+**Opções avaliadas** (sem pontuação): **A. mostra o estado e a versão (recomendação do PO, escolhida pelo dono)** · B. fora do painel, na observabilidade da infraestrutura.
+**Por que esta:** a peça mais crítica do SaaS fica à vista de quem opera. Abre-se mão de: ⚠️ o painel deixa de ser só assentos, uso e custo; o que o SaaS consegue saber do middleware do cliente depende de como ele o alcança (`P-042`, `P-048`).
+**Afeta:** `MF-101`, `D-240`, `P-040`, `P-042`, `P-048`.
+**Reabrir quando:** o estado do middleware do cliente não puder ser medido de fora.
+
+### D-274 · O relatório da organização mostra a história dos assentos sem o nome de quem os ocupou
+Situação: 🟢 decidida (resposta do dono em 07/11/2026, com a opção recomendada) · Data: 07/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-088`. O relatório da organização (`D-149`) mostra a **história dos assentos em números** (as ocupações, as reservas por convite, as devoluções, os cortes e as reativações, mês a mês), **sem o nome de quem os ocupou**: a Maind não vê o nome de quem ocupa cada assento. **Substitui em parte a `D-157`**, que mostrava o nome, e resolve o conflito dela com a `D-261` e a `ARQ-097` (o banco de log não guarda o nome da pessoa).
+**Contexto:** as pessoas ficam isoladas no middleware, fora do SaaS (`D-261`), e a `D-157` fazia a Maind ver o nome de quem ocupa cada assento. Era a opção B da `D-157`, que o PO recomendara e o dono preferira não seguir em 05/11/2026.
+**Opções avaliadas** (sem pontuação): **A. sem nome (recomendação do PO, escolhida pelo dono)** · B. com o nome, informado pelo middleware ao SaaS (`D-157`).
+**Por que esta:** é coerente com as pessoas fora do SaaS, e o indicador "na implantação" sobre a Maind ver o nome (`D-247`) deixa de existir. Abre-se mão de: ⚠️ a Maind não confere mais a cobrança assento a assento com nome, e o suporte não responde "quem ocupava o assento".
+**Afeta:** `D-157`, `D-247` (o indicador da `MF-101`), `ARQ-097` (a dimensão de pessoas do banco de log, do arquiteto, `P-048`), `MF-101`, a arquitetura geral (o diagrama de dados e história).
+**Hipóteses a validar:** 🔎 que a cobrança se confira só com contagens.
+**Reabrir quando:** a Maind não conseguir conferir a cobrança, ou um cliente contestar um assento.
+
+### D-273 · Em qualquer hospedagem, quem configura os bancos e a IA é o owner da organização; o time da Maind só dá suporte
+Situação: 🟢 decidida (resposta do dono em 07/11/2026, com a opção recomendada) · Data: 07/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-095`. Os bancos e a IA são configurados **pelo owner da organização, no front do middleware, em qualquer hospedagem** (na Maind, com o usuário que a Maind cria, `D-271`). O **time da Maind dá suporte técnico, antes e depois da venda, mas não configura por ele**. A chave de IA que a Maind dá (`D-264`) é cadastrada pelo owner. **Substitui em parte a `D-265`**, que punha o time da Maind como quem configura na hospedagem da Maind.
+**Contexto:** a `D-271` disse que o owner acessa o front do middleware também na Maind. O PO perguntou, então, quem configura: o owner ou o time da Maind, por ele.
+**Opções avaliadas** (sem pontuação): **A. o owner da organização (recomendação do PO, escolhida pelo dono)** · B. o time da Maind, por ele (`D-265`).
+**Por que esta:** o front e a responsabilidade são os mesmos nas duas hospedagens, e o time da Maind deixa de conhecer, por rotina, as credenciais dos bancos de cada cliente. Abre-se mão de: ⚠️ o owner da organização precisa saber configurar um banco e uma IA, com o apoio da Maind; ⚠️ quem opera o middleware da Maind segue podendo, tecnicamente, alcançar as credenciais (a promessa "a Maind não vê", `D-189`, só vale com o middleware na casa do cliente).
+**Afeta:** `D-265`, `D-264`, `D-268` (o aviso ao time da Maind segue), `MF-101`, `MF-104`, `MF-105`, `MF-121`, a arquitetura geral (o nó "Time da Maind").
+**Hipóteses a validar:** 🔎 que o owner consiga configurar sozinho, com a documentação e o suporte.
+**Reabrir quando:** os owners não conseguirem configurar sozinhos e o suporte virar o caminho de sempre.
+
+### D-272 · O middleware é multi-organização em qualquer hospedagem; a D-259 sai
+Situação: 🟢 decidida (resposta do dono em 07/11/2026, com a opção recomendada) · Data: 07/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-094`. Em qualquer hospedagem, o **middleware atende várias organizações**: o da **Maind** atende **todas as organizações do SaaS**, cada uma isolada pelo seu certificado (`D-258`), e o do **cliente** atende as **organizações dele** (`D-008`). A diferença entre as hospedagens é só o local físico. **Substitui a `D-259`** (um middleware por organização); na hospedagem da Maind a frota volta a ser única (o retorno da `D-196`).
+**Contexto:** ao reescrever a `MF-101`, o dono disse que o middleware será multi-organização em qualquer hospedagem, o que contradizia a `D-259`, decidida no mesmo dia. O passo 4 do fluxo da `D-258` (importar o certificado "replica a org no middleware") já supunha isso.
+**Opções avaliadas** (sem pontuação): **A. multi-organização (recomendação do PO, escolhida pelo dono)** · B. um por organização (`D-259`).
+**Por que esta:** uma frota só, e criar uma organização não exige subir um middleware novo. Abre-se mão de: ⚠️ um ponto único na hospedagem da Maind: se o middleware for invadido, expõe as credenciais e as regras de todas as organizações do SaaS; quem exigir mais isolamento usa o middleware na casa dele.
+**Afeta:** `D-259` (substituída), `D-258` (passo 1: sobe um só), `D-196` (volta o retorno "uma frota só"), `D-265`, `P-048` (a "criação automática de um middleware por organização" vira "adicionar a organização ao middleware"), o documento 01, os diagramas da arquitetura geral (execução, infraestrutura separada, criar organização, segurança, implantação) e as páginas da `MF-101` e da `MF-121`.
+**Hipóteses a validar:** 🔎 que o isolamento por certificado baste entre as organizações do SaaS; 🔎 que a Maind opere um middleware só sem ele virar ponto único de falha.
+**Reabrir quando:** um cliente do SaaS exigir um middleware só dele, ou houver um incidente de isolamento.
+
+### D-271 · O owner da organização acessa o front do middleware também na hospedagem da Maind; a Maind cria o usuário dele
+Situação: 🟢 decidida (resposta do dono em 07/11/2026, fora das opções) · Data: 07/11/2026 · Versão: v2.0
+
+**Decisão:** fecha o `I-087`. A diferença entre o middleware hospedado pela Maind e o da casa do cliente é **só o local físico da implantação**: o front do middleware é o mesmo, e **o owner da organização o acessa nas duas hospedagens**. Na hospedagem da Maind, **a Maind cria o usuário** com que o owner entra no front do middleware.
+**Contexto:** a reescrita da `MF-101` (pedido do dono, 07/11/2026) levou o PO a perguntar quem do time da Maind configura os bancos e a IA na hospedagem da Maind: o administrador da instância ou um papel de suporte à parte. O dono respondeu fora das opções: o owner da organização tem acesso ao front, como no cliente, e o middleware será multi-organização em qualquer hospedagem (o que muda a `D-259`: `I-094`).
+**Por que esta:** uma peça só e a mesma experiência nas duas hospedagens, sem um segundo papel na Maind.
+**Fica de fora / adiado:** se, na hospedagem da Maind, é o owner ou o time da Maind quem configura os bancos e a IA (`I-095`, que revê a `D-265`); se o middleware atende várias organizações (`I-094`).
+**Afeta:** `D-265`, `D-259`, `D-193`, `D-202`, `MF-101`, `MF-121`.
+**Reabrir quando:** o owner não conseguir configurar sozinho e o suporte da Maind virar o caminho de sempre.
+
 ### D-270 · A MF-121 passa a se chamar "Middleware da organização"
 Situação: 🟢 decidida (resposta do dono em 07/11/2026, contra a recomendação do PO, que era "Dados e pessoas sob a guarda da organização") · Data: 07/11/2026 · Versão: v2.0
 
@@ -233,7 +361,7 @@ Situação: 🟢 decidida (resposta do dono em 07/11/2026, contra a recomendaç�
 **Reabrir quando:** a visibilidade do custo da Maind para o cliente virar um problema comercial.
 
 ### D-266 · A conexão da instância deixa de existir: a IA é sempre da organização, configurada no middleware
-Situação: 🟢 decidida (resposta do dono em 07/11/2026, com a opção recomendada) · Data: 07/11/2026 · Versão: v2.0
+Situação: 🟢 decidida (resposta do dono em 07/11/2026, com a opção recomendada; a `D-276` abre uma exceção estreita: uma chave de IA da instância só para a pergunta do administrador sobre a história da instância) · Data: 07/11/2026 · Versão: v2.0
 
 **Decisão:** fecha o `I-085`. **Não há mais conexão de IA no nível da instância.** Cada organização tem a sua configuração de IA no front do middleware (`D-265`). Quando a Maind paga, o time dela coloca a chave da Maind nessa configuração (`D-264`); quem paga e quem vê o consumo é o `I-084`. Some o cadastro de IA do painel da instância (`MF-101`) e o passo de "disponibilizar uma conexão" ao criar a organização.
 **Substitui em parte:** a `D-216` (as duas origens de IA: sobra só a da organização) e a `D-217` (a organização nasce sem IA e o administrador da instância disponibiliza uma conexão: agora a IA é configurada no middleware, pela própria organização ou pelo time da Maind).
@@ -244,7 +372,7 @@ Situação: 🟢 decidida (resposta do dono em 07/11/2026, com a opção recomen
 **Reabrir quando:** a Maind precisar de um controle central do modelo e do gasto.
 
 ### D-265 · Os bancos e a IA são sempre configurados no front do middleware; quem configura é a organização ou, na hospedagem da Maind, o time da Maind
-Situação: 🟢 decidida (resposta do dono em 07/11/2026, fora das opções) · Data: 07/11/2026 · Versão: v2.0
+Situação: ⚪ substituída em parte pela `D-273` (em qualquer hospedagem, quem configura é o owner da organização; o time da Maind só dá suporte) · antes: 🟢 decidida (resposta do dono em 07/11/2026, fora das opções) · Data: 07/11/2026 · Versão: v2.0
 
 **Decisão:** fecha o `I-083`. **Em qualquer hospedagem, a configuração dos bancos (as fontes de dados) e da IA é feita no front do middleware**, e não no Horus. **Quem configura depende de onde o middleware está:** com o middleware **fora da Maind**, é a organização (`D-264`); com o middleware **hospedado pela Maind** ("full SaaS"), é o **time da Maind**, como suporte técnico de pré e de pós-venda.
 **Contexto:** o PO perguntou se, com o middleware hospedado pela Maind, a IA seguia como na `D-216` (a Maind cadastra a conexão da instância e a disponibiliza). O dono respondeu fora das opções: a regra é uma só, e o que muda é quem a executa.
@@ -309,7 +437,7 @@ Situação: 🟢 decidida (resposta do dono em 07/11/2026, contra a recomendaç�
 **Reabrir quando:** a v2.0 não couber com a casa do cliente.
 
 ### D-259 · Cada organização tem o seu próprio middleware, também na hospedagem da Maind
-Situação: 🟢 decidida (resposta do dono em 07/11/2026, contra a recomendação do PO, que era a opção A) · Data: 07/11/2026 · Versão: v2.0
+Situação: ⚪ substituída pela `D-272` (o middleware é multi-organização em qualquer hospedagem) · antes: 🟢 decidida (resposta do dono em 07/11/2026, contra a recomendação do PO, que era a opção A) · Data: 07/11/2026 · Versão: v2.0
 
 **Decisão:** fecha o `I-077`. Na hospedagem da Maind, **cada organização tem o seu próprio middleware**, com a sua base de configuração. Não há middleware compartilhado entre organizações. Confirma a `D-196` ("o middleware é por organização") e passa a valer também para o SaaS, não só para a casa do cliente.
 **Contexto:** o passo 4 do fluxo do dono (`D-258`: o certificado "replica a org no middleware") sugeria um middleware só para todas as organizações do SaaS. O dono escolheu um para cada.
@@ -472,7 +600,7 @@ Situação: 🟢 decidida (resposta do dono em 06/11/2026) · Data: 06/11/2026 �
 **Reabrir quando:** os gestores reclamarem da espera pela aprovação, ou o dono quiser que a opção nasça ligada.
 
 ### D-247 · Os três pontos que dependiam do jurídico seguem como decididos, e a documentação e o setup indicam ao cliente consultar o jurídico dele
-Situação: 🟢 decidida (resposta do dono em 06/11/2026; ele escolheu um caminho fora das opções propostas) · Data: 06/11/2026 · Versão: v2.0
+Situação: 🟢 decidida (resposta do dono em 06/11/2026; ele escolheu um caminho fora das opções propostas; a `D-274` tirou dele o ponto "a Maind vê o nome de quem ocupa o assento", e restam dois pontos) · Data: 06/11/2026 · Versão: v2.0
 
 **Decisão:** ficam **mantidas** as três regras que dependiam da confirmação do jurídico da Maind: o **owner da organização lê as conversas de todos, sem aviso especial à pessoa** (`D-223`); **quem é excluído tem os registros apagados junto** (`D-210`); e a **Maind vê o nome de quem ocupa cada assento** (`D-157`). Em vez de esperar o jurídico da Maind, a **documentação e o setup (a implantação) de cada organização passam a indicar que o cliente deve consultar o jurídico dele** sobre esses três pontos.
 **Contexto:** ao fechar as pendências para finalizar a documentação das mfs da v2.0 (06/11/2026), o PO perguntou se as confirmações do jurídico seguravam a finalização. O dono respondeu: "mantenha a decisão tomada e coloque um indicador de que possivelmente devemos consultar o jurídico do cliente durante o setup".
@@ -1067,7 +1195,7 @@ Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com as opções r
 **Reabrir quando:** clientes pedirem avisos periódicos sem assento de ouro, ou a prata e o ouro passarem a ser cobrados do mesmo jeito.
 
 ### D-202 · Definição macro da MF-101:Administração da instância
-Situação: 🟢 decidida (proposta do PO, confirmada pelo dono em 05/11/2026) · Data: 05/11/2026 · Versão: v2.0
+Situação: ⚪ substituída pela `D-280` (a `MF-101` com o middleware) · antes: 🟢 decidida (proposta do PO, confirmada pelo dono em 05/11/2026) · Data: 05/11/2026 · Versão: v2.0
 
 **Decisão:** a `MF-101:Administração da instância`, que era base herdada (`D-021`) e cresceu com as decisões `D-146` a `D-166`, fica definida assim:
 - **O que é:** o painel de quem opera o Horus, que no SaaS é um **funcionário da Maind** (o administrador da instância, `D-147`, `D-193`). Nele, a Maind **cria e administra as organizações** (`D-146`, `D-148`), **libera, reduz e corta os assentos** de cada uma (`D-080`), **vê o uso e o custo** de cada organização e **baixa o relatório** dela, em planilha e PDF, com a história dos assentos (`D-149`, `D-153`, `D-157`, `D-166`), **publica o aviso da instância** (`D-151`, `D-165`), cuida do **e-mail do produto** (`D-155`) e da **marca da Maind** (`D-200`), e pode **perguntar ao próprio Horus** sobre a história da instância (`D-158`).
@@ -1666,7 +1794,7 @@ Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, com a opção rec
 **Reabrir quando:** o consumo médio por organização passar do que o preço do assento cobre, ou clientes exigirem usar a própria conta.
 
 ### D-158 · O administrador da instância pergunta ao próprio Horus sobre a história dos dados da instância
-Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, ao seguir as recomendações) · Data: 05/11/2026 · Versão: v2.0
+Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, ao seguir as recomendações; a `D-274` tirou o nome de quem ocupa o assento da resposta, e a `D-276` a manteve, com uma chave de IA da instância só para ela) · Data: 05/11/2026 · Versão: v2.0
 
 **Decisão:** o administrador da instância faz perguntas em linguagem natural ao próprio Horus sobre a **história** da instância: quem ocupou cada assento e quando, os cortes e as reativações, os administradores, os limiares de custo cruzados, as mudanças de situação das organizações. A resposta traz o **nome** de quem ocupou (`D-157`). Para isso a história tem um banco próprio, consultável como uma fonte de dados (`ARQ-097`).
 **Contexto:** na modelagem da `MF-101:Administração da instância`, o dono pediu que os dados representem o processo e o histórico, e que se possa apontar para um momento do tempo; e lembrou que o próprio Horus será usado para perguntar sobre esses dados. Esta decisão substitui as dúvidas Q16 e Q17 da modelagem (a Maind consulta o registro de administração e os avisos de custo por uma tela).
@@ -1678,7 +1806,7 @@ Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, ao seguir as reco
 **Reabrir quando:** o Planejador errar a pergunta com frequência, ou o owner da organização pedir o mesmo para a organização dele.
 
 ### D-157 · O relatório da organização mostra a história completa dos assentos, com o nome de quem os ocupou
-Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026; escolheu contra a recomendação do PO; a leitura sobre a `D-091.1` foi confirmada pelo dono em 05/11/2026) · Data: 05/11/2026 · Versão: v2.0
+Situação: ⚪ substituída em parte pela `D-274` (a história segue, mas sem o nome de quem ocupou o assento) · antes: 🟢 decidida (confirmada pelo dono em 05/11/2026; escolheu contra a recomendação do PO; a leitura sobre a `D-091.1` foi confirmada pelo dono em 05/11/2026) · Data: 05/11/2026 · Versão: v2.0
 
 **Decisão:** o relatório da organização (`D-149`) mostra, além dos assentos de hoje, a **história de cada assento**: quem o ocupou (com o nome da pessoa) e quando, as reservas por convite, as devoluções, os cortes e as reativações. Substitui **só** o trecho da `D-149` que dizia "sem histórico"; o resto da `D-149` segue (relatório a qualquer momento, uso apagado junto com a organização).
 **Contexto:** o dono corrigiu a modelagem da `MF-101:Administração da instância` em 05/11/2026: os dados precisam representar o processo e guardar o histórico, e cada assento passou a ser um registro, com o membro que o ocupa, a situação e a ocupação. Com a história gravada, a dúvida (Q15) foi se o relatório a mostra e com que detalhe.
@@ -1804,7 +1932,7 @@ Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026; a leitura de quem
 **Reabrir quando:** a Maind não conseguir conferir uma fatura por falta do histórico de assentos.
 
 ### D-148 · A organização tem três situações, e cortar é inativar a organização inteira
-Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026) · Data: 05/11/2026 · Versão: v2.0
+Situação: ⚪ substituída em parte pela `D-277` (a organização só passa a ativa depois de o middleware ligado e dos bancos e da IA configurados) · antes: 🟢 decidida (confirmada pelo dono em 05/11/2026) · Data: 05/11/2026 · Versão: v2.0
 
 **Decisão:** a organização tem **três situações**: **em configuração** (recém-criada, ainda sem o responsável ou sem as fontes; é o começo de toda organização), **ativa** e **inativa**. O administrador da instância marca a organização como ativa quando achar que está pronta; "em configuração" não bloqueia ninguém. **Cortar é inativar a organização inteira**: as pessoas perdem o acesso, os agendamentos, os alertas e os agentes dela param, nada se apaga e reativar devolve tudo.
 **Contexto:** dúvida Q3 da modelagem da MF-101, em duas partes. O corte já estava decidido (`D-068`, `D-075`: o administrador desativa os assentos de uma organização) e a leitura "a organização inteira" só confirma. "Em configuração" é a situação que o painel de hoje já mostra. Com a `D-146`, toda organização nasce pelas mãos do administrador e passa por essa fase.

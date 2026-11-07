@@ -57,15 +57,16 @@ Dentro do produto, cada pessoa tem um **papel**. Uma **instância** é uma insta
 instância só, a da Maind, e nela vivem as **organizações** de todos os clientes: cada organização é um cliente ou um
 setor de um cliente.
 
-Cada organização tem também o seu **middleware**: a peça que fica entre o Horus e os bancos da organização; ela
-guarda quem são as pessoas, os bancos e a inteligência artificial (IA), e responde pelo caminho até eles. As
-pessoas, os bancos e a IA se configuram no **front do middleware**, um segundo aplicativo, separado do Horus (mais
-em "Como o Horus é entregue").
+Toda organização passa também por um **middleware**: a peça que fica entre o Horus e os bancos da organização; ela
+guarda quem são as pessoas, os bancos e a inteligência artificial (IA) de cada organização que atende, e responde
+pelo caminho até eles. Um mesmo middleware atende várias organizações, cada uma isolada das outras. As pessoas, os
+bancos e a IA se configuram no **front do middleware**, um segundo aplicativo, separado do Horus, que o owner da
+organização usa (mais em "Como o Horus é entregue").
 
 | Papel | Quem é | O que faz no Horus |
 | --- | --- | --- |
-| 🏷️ **Owner da instância** | Um funcionário da Maind, que administra a instância (no produto, o administrador da instância) | Cria as organizações, e a criação prepara o middleware de cada uma; libera e desativa os assentos, que vão ao middleware; cuida da marca da Maind e publica o aviso da instância; entra sempre por usuário e senha; vê os números de todas as organizações (assentos, uso e custo), mas nunca os dados das conexões nem o conteúdo |
-| 🔑 **Owner da organização** | Um funcionário do cliente, que configura a organização | No front do middleware, cadastra e gere as pessoas, aprova os convites e as trocas de assento que os gestores pedem e, quando o middleware fica na casa do cliente, configura as fontes de dados e a IA (na hospedagem da Maind, quem as configura é o time da Maind). Define as preferências, cria as roles (os perfis de uso, logo abaixo), monta a faixa de avisos e números, recebe os reportes de resposta errada, consulta a auditoria (o rastro do que foi entregue), vê o consumo e o custo de toda a IA da organização e tem a visão de billing, a da cobrança da organização, que mostra a contagem dos assentos. Entra sempre por usuário e senha |
+| 🏷️ **Owner da instância** | Um funcionário da Maind, que administra a instância (no produto, o administrador da instância) | Cria as organizações: a criação liga a organização ao middleware e cria o usuário com que o owner dela entra no front do middleware; a organização nasce em configuração e só passa a ativa quando o middleware está ligado e o owner já configurou um banco e a IA. Libera e desativa os assentos, que vão ao middleware; vê, para cada organização, se o middleware que a atende está no ar e em que versão; cuida da marca da Maind e publica o aviso da instância; pergunta ao próprio Horus sobre a história da instância; exclui a organização, o que apaga também tudo o que há dela no middleware; entra sempre por usuário e senha; vê os números de todas as organizações (assentos, uso e custo; da IA, só o consumo das chaves que a Maind dá), mas nunca os dados das conexões, o conteúdo nem o nome de quem ocupa cada assento |
+| 🔑 **Owner da organização** | Um funcionário do cliente, que configura a organização | No front do middleware, onde quer que ele fique, cadastra e gere as pessoas, aprova os convites e as trocas de assento que os gestores pedem e configura as fontes de dados e a IA, com o suporte do time da Maind. Define as preferências, cria as roles (os perfis de uso, logo abaixo), monta a faixa de avisos e números, recebe os reportes de resposta errada, consulta a auditoria (o rastro do que foi entregue), vê o consumo e o custo de toda a IA da organização e tem a visão de billing, a da cobrança da organização, que mostra a contagem dos assentos. Entra sempre por usuário e senha |
 | 👔 **Gestor** | Quem responde por uma equipe, a sua carteira | Faz perguntas de análise; cria pelo Horus os convites da equipe e pede a troca do tipo de assento, e o owner aprova no front do middleware; monta grupos com quem gere; publica boards (painéis de gráficos) para os grupos de que é dono, se o owner permitir; agenda envios para a equipe; vê a medida de autonomia da equipe |
 | 🥇 **Membro ouro** | Quem usa o Horus no dia a dia | Faz perguntas de análise e cria boards, relatórios, agendamentos e alertas só para si, sem compartilhar; entre os membros, só o ouro cria |
 | 🥈 **Membro prata** | Quem pergunta, sem montar painéis | Faz perguntas de análise, no app, na Pergunta rápida e no WhatsApp, e recebe alertas e PDFs; não cria boards, relatórios, agendamentos nem agentes |
@@ -128,14 +129,14 @@ flowchart LR
 ```
 
 1. **Conectar os dados.** Os bancos da empresa chegam ao Horus pelo middleware da organização, com uma credencial
-   que só permite ler, e se configuram no front do middleware: pela própria organização, quando o middleware fica na
-   casa dela, ou pelo time da Maind, como suporte técnico antes e depois da venda, quando a Maind o hospeda. Cada
+   que só permite ler, e se configuram no front do middleware, pelo owner da organização, onde quer que o middleware
+   fique; o time da Maind dá suporte técnico antes e depois da venda, mas não configura no lugar dele. Cada
    fonte tem um **modelo semântico**: o dicionário que explica ao Horus o que cada coluna significa na empresa
    ("faturamento", "margem"). Quem o escreve é o time de dados, da empresa ou da Maind, fora do Horus, e o owner da
    organização o carrega. A IA é sempre da organização e se configura no mesmo lugar, o front do middleware: a
    organização usa a chave do provedor de IA que quiser e paga por ela, ou a Maind lhe dá uma chave de provedor, que
-   a Maind paga. Nos dois casos, o owner da organização vê o consumo e o custo de toda a IA. O owner escolhe os
-   modelos de IA de cada tarefa.
+   a Maind paga e o owner cadastra. Nos dois casos, o owner da organização vê o consumo e o custo de toda a IA; a
+   Maind vê só o da chave que ela dá. O owner escolhe os modelos de IA de cada tarefa.
 
    > 💡 É como explicar o vocabulário da casa a um funcionário novo antes do primeiro relatório. **Onde a analogia
    > para:** o Horus não aprimora o dicionário sozinho; quem o escreve e o corrige são pessoas.
@@ -168,7 +169,8 @@ flowchart LR
 6. **Medir e prestar contas.** A Home da organização mostra a medida de autonomia, dividida por canal (a conversa
    de análise, a Pergunta rápida e o WhatsApp), e a qualidade das respostas. A **auditoria** guarda quem entregou o
    quê a quem e quem abriu, sem o conteúdo; só o owner da organização a consulta, e nem ele altera um registro. Do
-   lado da Maind, o owner da instância acompanha, só em números, os assentos, o uso e o custo de cada organização.
+   lado da Maind, o owner da instância acompanha, só em números, os assentos, o uso e o custo de cada organização,
+   sem o nome de quem ocupa cada assento.
 
 ## 🧱 As macro funcionalidades
 
@@ -179,13 +181,13 @@ ainda são provisórios.
 
 | Camada | Macro funcionalidade | O que faz | Entrega |
 | --- | --- | --- | --- |
-| 🧱 **Plataforma:** quem entra e como se cobra | [Administração da instância](mfs/mf-101-administracao-da-instancia.md) (MF-101) | A marca da Maind, os administradores, a criação das organizações, que prepara o middleware de cada uma, o envio de e-mail, o aviso da instância e o painel em que a Maind libera os assentos e acompanha cada organização | v2.0 |
+| 🧱 **Plataforma:** quem entra e como se cobra | [Administração da instância](mfs/mf-101-administracao-da-instancia.md) (MF-101) | A marca da Maind, os administradores, a criação das organizações, que as liga ao middleware, o envio de e-mail, o aviso da instância e o painel em que a Maind libera os assentos e acompanha cada organização, inclusive se o middleware que a atende está no ar | v2.0 |
 | | [Organizações, pessoas e papéis](mfs/mf-102-organizacoes-pessoas-e-papeis.md) (MF-102) | As organizações, os convites, a equipe de cada gestor, os grupos e as roles; as pessoas ficam no middleware, e o owner as gere no front dele | v2.0 |
 | | [Licenças e planos](mfs/mf-103-licencas-e-planos.md) (MF-103) | A cobrança por assento, em cinco tipos, num plano só, com até mais dois owners além do primeiro, cada um num assento de owner contratado | v2.0 |
 | 🔌 **Dados e IA:** de onde vêm os dados | [Conectar as fontes vivas](mfs/mf-104-conectar-as-fontes-vivas.md) (MF-104) | Os bancos da empresa, só para leitura, cada um com o seu modelo semântico, configurados no front do middleware | v2.0 |
 | | [IA sob controle da organização](mfs/mf-105-ia-sob-controle-da-organizacao.md) (MF-105) | A IA da organização, configurada no front do middleware, com a chave dela ou com uma que a Maind dá e paga, e os modelos de IA de cada tarefa | v2.0 |
 | | [Segurança dos dados por pessoa](mfs/mf-106-seguranca-dos-dados-por-pessoa.md) (MF-106) | Cada pessoa vê só os dados que pode ver, por regras configuradas no Horus e pelas que vêm do login da empresa; roda no middleware | v2.1 |
-| | [Middleware da organização](mfs/mf-121-middleware-da-organizacao.md) (MF-121) | O middleware de cada organização, hospedado pela Maind ou na casa do cliente: por ele a organização chega à entrada no Horus, aos dados e à IA, e ao Horus chegam só a pergunta e a resposta pronta | v2.0 |
+| | [Middleware da organização](mfs/mf-121-middleware-da-organizacao.md) (MF-121) | O middleware por onde passa toda organização, hospedado pela Maind, um só para todas as organizações do SaaS, ou na casa do cliente: por ele a organização chega à entrada no Horus, aos dados e à IA, e ao Horus chegam só a pergunta e a resposta pronta | v2.0 |
 | | [Fonte AWS Athena](mfs/mf-123-fonte-aws-athena.md) (MF-123) | O AWS Athena, o serviço de consulta de dados da Amazon, passa a responder perguntas de análise como as outras fontes | v2.1 |
 | 💬 **Motor de análise:** a pergunta de análise vira resposta | [Perguntar aos dados em português](mfs/mf-107-perguntar-aos-dados-em-portugues.md) (MF-107) | A conversa de análise, sobre os bancos e a web, com o retorno 👍🏻 👎🏻 🚫 de quem pergunta | v2.0 |
 | | [Respostas visuais](mfs/mf-108-respostas-visuais.md) (MF-108) | Gráficos, tabelas, indicadores, mapa de calor (a grade em que a cor mostra a intensidade), chaveamento (o quadro de confrontos de um torneio) e fluxo (um diagrama de etapas), até dois por resposta | v2.0 |
@@ -206,7 +208,7 @@ ainda são provisórios.
 ## 🗓️ As entregas: v2.0 e v2.1
 
 A v2.0, com 19 mfs, resolve o primeiro problema, o terceiro e o acompanhamento, e sai inteira, de uma vez, em SaaS.
-Desde ela, toda organização tem o seu middleware, hospedado pela Maind ou na casa do cliente. A v2.1, com 4 mfs,
+Desde ela, toda organização passa por um middleware, hospedado pela Maind ou na casa do cliente. A v2.1, com 4 mfs,
 reúne tudo o que ficou fora dela, a começar pela investigação. As quatro são da primeira onda, a do SaaS; a segunda
 onda, que era a da casa do contratante, ficou sem mfs, porque o middleware subiu para a v2.0.
 
@@ -214,8 +216,8 @@ onda, que era a da casa do contratante, ficou sem mfs, porque o middleware subiu
 | --- | --- | --- |
 | **A promessa** | Perguntar e ter a resposta na hora, acompanhar o negócio em boards e ser avisado quando algo muda, com a fonte à vista. A empresa mede a adoção e paga por assento. Quem precisa pode manter os dados e a IA em casa, pelo middleware, sem instalar o Horus lá | Descobrir o porquê de uma mudança, passo a passo; cada pessoa ver só os dados que pode ver, entrando com o login da empresa; receber os avisos no chat da empresa |
 | **Os problemas** | A pergunta de análise na hora, o aviso e o acompanhamento recorrente | A investigação |
-| **O que traz** | A conversa de análise com o retorno de quem pergunta; as respostas visuais; a web com link e data; a Pergunta rápida e o WhatsApp; os boards em PDF; os agentes, os agendamentos e os envios por e-mail e WhatsApp; a faixa de avisos e números; as pessoas, os grupos e as roles; a cobrança por assento, em cinco tipos; a auditoria; a medida de autonomia; as bases de demonstração; a marca da Maind; o middleware de cada organização | A investigação guiada; a segurança dos dados por pessoa, com o login corporativo; o Teams e o Google Chat como conectores de saída; a fonte AWS Athena |
-| **Onde roda** | O Horus em SaaS, na infraestrutura da Maind; o middleware de cada organização, na Maind ou na infraestrutura do cliente | Como na v2.0 |
+| **O que traz** | A conversa de análise com o retorno de quem pergunta; as respostas visuais; a web com link e data; a Pergunta rápida e o WhatsApp; os boards em PDF; os agentes, os agendamentos e os envios por e-mail e WhatsApp; a faixa de avisos e números; as pessoas, os grupos e as roles; a cobrança por assento, em cinco tipos; a auditoria; a medida de autonomia; as bases de demonstração; a marca da Maind; o middleware por onde passa toda organização | A investigação guiada; a segurança dos dados por pessoa, com o login corporativo; o Teams e o Google Chat como conectores de saída; a fonte AWS Athena |
+| **Onde roda** | O Horus em SaaS, na infraestrutura da Maind; o middleware, na Maind ou na infraestrutura do cliente | Como na v2.0 |
 
 ➖ **Sem versão, por enquanto:** a instalação completa do Horus no cliente, com o modo "tudo dentro"; a marca
 completa do contratante; e o tema do contratante, as cores e a aparência. Não há v2.2 por ora.
@@ -231,40 +233,46 @@ completa do contratante; e o tema do contratante, as cores e a aparência. Não 
 
 - 🧩 **Uma instância só, a da Maind.** O Horus roda em **SaaS**, na infraestrutura da Maind, e o cliente o usa pela
   internet. É uma instância só, que atende a todos os clientes. Quem a administra é um funcionário da Maind, o owner
-  da instância, que vê os números de todas as organizações, mas não os dados das conexões. Quem configura cada
-  organização é o owner dela, funcionário do cliente; na hospedagem da Maind, os bancos e a IA são configurados pelo
-  time da Maind.
+  da instância, que vê os números de todas as organizações, mas não os dados das conexões nem o nome de quem ocupa
+  cada assento. Quem configura cada organização é o owner dela, funcionário do cliente, inclusive os bancos e a IA,
+  em qualquer hospedagem; o time da Maind dá suporte.
 - 🗂️ **Várias organizações numa instância.** Cada organização tem as próprias configurações, num banco de dados só
-  dela, e o seu próprio middleware, onde ficam as pessoas dela, para que nada de uma apareça na outra. Só a Maind
-  cria organizações. O primeiro contratante é a empresa que usa o Horus por dentro, um setor por organização; a
-  revenda vem depois.
+  dela, e as pessoas dela ficam no middleware, isoladas das de outras organizações, para que nada de uma apareça na
+  outra. Só a Maind cria organizações. O primeiro contratante é a empresa que usa o Horus por dentro, um setor por
+  organização; a revenda vem depois.
 
   > 💡 A instância é um prédio da Maind, e cada organização é uma sala com chave própria. A Maind cuida da portaria e
-  > sabe quem ocupa cada sala, mas não abre as gavetas. **Onde a analogia para:** cada sala tem o seu próprio arquivo,
-  > o middleware, que pode ficar no prédio ou na casa do cliente; quando ele fica em casa, só atravessam a rua a
-  > pergunta e a resposta pronta, e quando fica no prédio, é a Maind que cuida dele.
+  > sabe quem ocupa cada sala, mas não abre as gavetas. **Onde a analogia para:** as gavetas ficam num arquivo à
+  > parte, o middleware. No prédio, um arquivo só guarda as gavetas de todas as salas, cada uma com a sua chave; na
+  > casa do cliente, o arquivo é dele. Quando ele fica em casa, só atravessam a rua a pergunta e a resposta pronta, e
+  > quando fica no prédio, é a Maind que cuida dele.
 
 - 🏷️ **Com a marca da Maind, na v2.0.** O Horus é uma plataforma de *white label*, uma marca branca: pode levar a
   marca de quem contrata. Na v2.0, porém, a marca é a da Maind: o nome, os logos, o rodapé e o e-mail do produto
   valem para todas as organizações. A marca completa do contratante (logo, nome e e-mail em todo o produto, até no
   remetente) está sem versão. A frase da promessa, hoje "Informação na palma da mão", fica na comunicação comercial
   da Maind, fora das telas.
-- 🔐 **Um middleware para cada organização.** Desde a v2.0, toda organização chega à entrada no Horus, aos dados e à
-  IA pelo seu Middleware da organização (MF-121), separado do Horus. Cada organização tem o seu, que não se divide
-  com nenhuma outra. A Maind o hospeda, ou o cliente o hospeda na casa dele, se preferir que os bancos não fiquem
-  expostos; o funcionamento é o mesmo nos dois casos. Na casa do cliente, a TI dele instala um pacote pronto da
-  Maind. A consulta e o modelo de IA rodam dentro do middleware, e ao Horus chegam só a pergunta e a resposta pronta;
-  o owner da organização pode permitir mais, como o comando da consulta ou o arquivo CSV com os dados.
+- 🔐 **Um middleware, separado do Horus.** Desde a v2.0, toda organização chega à entrada no Horus, aos dados e à
+  IA pelo Middleware da organização (MF-121), separado do Horus. Um mesmo middleware atende várias organizações,
+  cada uma isolada das outras pelo seu certificado digital: o da Maind atende todas as organizações do SaaS, e o do
+  cliente, as organizações desse cliente. A Maind o hospeda, ou o cliente o hospeda na casa dele, se preferir que os
+  bancos não fiquem expostos; a diferença é só o lugar, e o funcionamento é o mesmo nos dois casos. Na casa do
+  cliente, a TI dele instala um pacote pronto da Maind. A consulta e o modelo de IA rodam dentro do middleware, e ao
+  Horus chegam só a pergunta e a resposta pronta; o owner da organização pode permitir mais, como o comando da
+  consulta ou o arquivo CSV com os dados.
 
-  Só o owner da organização usa o front do middleware: ele cadastra e gere as pessoas, que ficam no middleware, fora
-  do Horus, e aprova os convites e as trocas de assento que o gestor pede pelo Horus. Os bancos e a IA, quem os
-  configura é a organização, quando o middleware fica na casa dela, ou o time da Maind, como suporte técnico antes e
-  depois da venda, quando a Maind o hospeda. O owner da organização e o owner da instância entram sempre por usuário
-  e senha.
+  Só o owner da organização usa o front do middleware, nas duas hospedagens; na da Maind, entra com o usuário que a
+  Maind cria para ele. Ele cadastra e gere as pessoas, que ficam no middleware, fora do Horus, aprova os convites e as
+  trocas de assento que o gestor pede pelo Horus e configura os bancos e a IA; o time da Maind dá suporte técnico
+  antes e depois da venda, mas não configura no lugar dele. A organização nasce em configuração e só passa a ativa
+  quando o middleware está ligado e o owner já configurou ao menos um banco e a IA. Excluir a organização apaga
+  também tudo o que há dela no middleware: as pessoas, os bancos, a IA e a configuração. O owner da organização e o
+  owner da instância entram sempre por usuário e senha.
 
   > ⚠️ A promessa de que o funcionário da Maind não liga nem vê o que passa pelo middleware só vale com o middleware
-  > na casa do cliente. Quando a Maind o hospeda, é ela que o opera, e o time dela conhece as credenciais dos bancos e
-  > da IA.
+  > na casa do cliente. Quando a Maind o hospeda, é ela que o opera: mesmo sem configurar os bancos e a IA, quem opera
+  > o middleware consegue, tecnicamente, alcançar as credenciais deles. E, como ele é um só para todas as
+  > organizações do SaaS, uma invasão exporia todas; quem exigir mais isolamento usa o middleware na casa dele.
 
   A **instalação completa** do Horus no cliente (on-premises) está sem versão. É a porta de volta: só volta se um
   cliente exigir que nada, nem a pergunta, saia de casa, e traz com ela o modo "tudo dentro", em que a IA vem de um
@@ -315,19 +323,26 @@ completa do contratante; e o tema do contratante, as cores e a aparência. Não 
   segurança por pessoa inteira na v2.1) e `D-199` (as peças da segurança por pessoa reunidas na `MF-106`);
   - uma mf, uma versão, e as mfs novas: `D-197`, `D-198` (`MF-122` e `MF-123`), `D-152` e `D-174` (`MF-120`), `D-180`
     (`MF-119`), `D-196` (`MF-121`, que subiu inteira para a v2.0 pela `D-260` e tem o nome decidido na `D-270`) e
-    `D-201` (definição da `MF-122` e da `MF-123`) e `D-202` (definição da `MF-101`);
+    `D-201` (definição da `MF-122` e da `MF-123`) e `D-280` (definição da `MF-101`, com o middleware, que substitui a
+    `D-202`);
   - a faixa: `D-204` (indispensável à v2.0), `D-212` (o card de número) e `D-213` (o contêiner de componentes e a
     caixa de texto livre);
   - as duas ondas da v2.1: `D-181` e `D-188`; a onda 2 ficou sem mfs com a `D-260` (🔎 se a v2.1 passa a ter uma
     onda só, a confirmar com o dono);
   - o SaaS de uma instância só e os papéis da instância e da organização: `D-146`, `D-147`, `D-148` e `D-193`; o
-    owner da organização e o administrador da instância entram sempre por usuário e senha: `D-258`;
+    owner da organização e o administrador da instância entram sempre por usuário e senha: `D-258`; a organização só
+    passa a ativa com o middleware ligado, um banco e a IA configurados: `D-277`; o estado e a versão do middleware
+    no painel da instância: `D-275`; o relatório da organização sem o nome de quem ocupa o assento: `D-274`; a
+    pergunta do administrador sobre a história da instância, com uma chave de IA só para isso: `D-158` e `D-276`;
+    excluir a organização apaga também o que há dela no middleware: `D-278`;
   - a marca: `D-007`, `D-011`, `D-183` e `D-200` (a marca da Maind na v2.0);
   - o middleware: `D-188` a `D-196` (a definição de origem, na casa do contratante, em parte substituída), `D-258`
-    (toda organização usa o seu middleware desde a v2.0), `D-259` (um por organização, também na hospedagem da
-    Maind), `D-260` (a `MF-121` inteira na v2.0), `D-261` e `D-262` (as pessoas no middleware, geridas pelo owner no
-    front dele; o gestor convida pelo Horus), `D-263` (a `MF-106` passa a depender da `MF-121`) e `D-265` (os bancos
-    e a IA configurados no front do middleware, pela organização ou pelo time da Maind); `D-010`, `D-175`, `D-176` e
+    (toda organização usa o middleware desde a v2.0), `D-272` (o middleware é multi-organização em qualquer
+    hospedagem; substitui a `D-259`, um por organização), `D-260` (a `MF-121` inteira na v2.0), `D-261` e `D-262` (as
+    pessoas no middleware, geridas pelo owner no front dele; o gestor convida pelo Horus), `D-271` (o owner usa o
+    front do middleware também na hospedagem da Maind), `D-263` (a `MF-106` passa a depender da `MF-121`) e `D-265` e
+    `D-273` (os bancos e a IA configurados no front do middleware, pelo owner da organização em qualquer hospedagem;
+    o time da Maind só dá suporte); `D-010`, `D-175`, `D-176` e
     `D-185` a `D-187` (a instalação completa e o modo "tudo dentro", sem versão);
   - formas de entrega: `D-012`, `D-016` e `D-017`;
   - organizações e os dois níveis de owner: `D-008`, `D-009` e `D-013`;
@@ -340,8 +355,9 @@ completa do contratante; e o tema do contratante, as cores e a aparência. Não 
     além do primeiro, cada um num assento de owner contratado);
   - os custos em SaaS: `D-264` a `D-268` (a IA é sempre da organização, configurada no front do middleware; a conexão
     da instância deixou de existir; a chave de provedor que a Maind dá, ela paga; o owner vê o consumo e o custo de
-    toda a IA; quem é avisado quando a IA para), que substituem em parte as `D-159`, `D-216`, `D-217` e `D-241`; se a
-    IA dada pela Maind entra no preço do assento é a `P-022`; e `D-160` (o WhatsApp);
+    toda a IA; quem é avisado quando a IA para), que substituem em parte as `D-159`, `D-216`, `D-217` e `D-241`;
+    `D-279` (a Maind vê só o consumo de IA das chaves que ela dá); se a IA dada pela Maind entra no preço do assento é
+    a `P-022`; e `D-160` (o WhatsApp);
   - o modelo semântico: `D-219` (escrito fora do Horus e carregado pelo owner da organização); o teto de inferência
     de cada fonte: `D-220`;
   - o acesso dos boards e da faixa: `D-163`, `D-164`, `D-167` e `D-169`; a web como fonte: `D-162`;

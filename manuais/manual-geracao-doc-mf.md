@@ -70,7 +70,7 @@ Copie a marcação da página que já tem o aviso; o CSS depende da estrutura ex
 | **Versão 2.0, em construção** | Toda página da v2.0, logo depois da abertura | `callout--info` | `mf-101.html` |
 | **Versão 2.1, em construção** | Toda página da v2.1 (texto na seção 6) | `callout--info` | uma página da v2.1 |
 | **Ainda em definição** | O que as fontes deixam em aberto e importa a um cliente, dito em linguagem de cliente | `callout--neutral` | `mf-104.html`, `mf-105.html` |
-| **Na implantação** | Os três pontos de dados pessoais (seção 11) | `callout--neutral` | `mf-102.html` |
+| **Na implantação** | Os dois pontos de dados pessoais (seção 11) | `callout--neutral` | `mf-102.html` |
 | **Ponto de atenção** | Um risco prático que o leitor não pode perder | `callout--warning` | `mf-101.html` |
 
 ## 4. A marcação
@@ -233,9 +233,10 @@ A página **nunca decide**: ela sai de documentos do repositório, nesta ordem d
 - **Não repita o que outra página já explica** (assentos, IA da instância, avisos, convites, roles, fontes, modelos):
   aponte por link e acrescente só o que é novo da mf. Leia o que as páginas vizinhas dizem (`grep -n "MF-nnn"
   content/*.html`) e **não as contradiga**.
-- **Dados pessoais (decisão do dono, `D-247`).** Se a página tocar em um destes três pontos, a regra fica **como
+- **Dados pessoais (decisão do dono, `D-247`).** Se a página tocar em um destes dois pontos, a regra fica **como
   decidida** e entra o aviso "Na implantação": (1) o owner da organização lê as conversas de todos, sem aviso especial à
-  pessoa; (2) quem é excluído tem os registros apagados junto; (3) a Maind vê o nome de quem ocupa cada assento. **Não**
+  pessoa; (2) quem é excluído tem os registros apagados junto. (O terceiro ponto, a Maind ver o nome de quem ocupa cada
+  assento, saiu em 07/11/2026: a `D-274` tirou o nome do relatório.) **Não**
   escreva "o jurídico ainda confirma".
 - **Convite do gestor (`D-248`).** O owner pode ligar, nas preferências da organização, a aprovação automática dos
   convites. Não diga como ela nasce.
@@ -299,7 +300,7 @@ python "<plugin docx>/scripts/docx.py" validar --site ../docs
 4. **Seis** perguntas no FAQ, a primeira aberta.
 5. Nenhuma palavra de preço ("embutido no preço", valores em reais) e nenhum nome de instituição real ao lado de número.
 6. Nenhum estouro horizontal no celular; a busca acha texto de outras páginas.
-7. O aviso "Na implantação" está nas páginas que tocam os três pontos de dados pessoais (hoje: MF-101, 102, 107, 110,
+7. O aviso "Na implantação" está nas páginas que tocam os dois pontos de dados pessoais (hoje: MF-102, 107, 110,
    111, 116 e 117).
 
 **Visuais:** abra por HTTP local (o Playwright não abre `file:`) e veja desktop e celular, os temas claro e escuro, a
