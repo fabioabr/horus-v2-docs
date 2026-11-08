@@ -512,7 +512,7 @@
           "label": "Banco ou base: no SaaS, o Postgres 17; no middleware, a base dele"
         },
         "cloud": {
-          "label": "Middleware da organização, fora do SaaS"
+          "label": "Middleware, fora do SaaS: atende várias organizações"
         }
       }
     },
@@ -540,7 +540,7 @@
           "mw",
           "base"
         ],
-        "note": "Os dois papéis acham o middleware pelo Registro de organizações; vai a pergunta, volta a resposta pronta (D-189, D-258)."
+        "note": "Os dois papéis acham pelo Registro o middleware que atende a organização; vai a pergunta, volta a resposta pronta (D-189, D-272)."
       },
       {
         "id": "segundo-plano",
@@ -645,9 +645,9 @@
     {
       "id": "mw",
       "type": "cloud",
-      "label": "Middleware da organização",
-      "sublabel": "roda o ciclo da análise: IA e consultas",
-      "tag": "um por organização, na Maind ou no cliente · MF-121 · v2.0",
+      "label": "Middleware",
+      "sublabel": "atende várias organizações",
+      "tag": "IA e consultas · Maind ou cliente · D-272 · v2.0",
       "pos": [
         40,
         370
@@ -706,8 +706,8 @@
       "id": "base",
       "type": "database",
       "label": "Base de configuração",
-      "sublabel": "membros e detalhes da organização",
-      "tag": "do middleware, fora do SaaS · D-258 · v2.0",
+      "sublabel": "várias organizações, isoladas",
+      "tag": "membros e detalhes · fora do SaaS · D-258, D-272 · v2.0",
       "pos": [
         40,
         534
@@ -916,10 +916,10 @@
       "items": [
         "O mesmo executável do SaaS sobe em dois papéis, Atender e Trabalhar, cada um com duas réplicas ou mais na produção real, em zonas diferentes; na VPS uma réplica de cada basta, e a homologação roda duas do Atender (ARQ-004, ARQ-095, documento 09 §3.3).",
         "O navegador e a Meta só chegam ao Atender, atrás da entrada do cluster; o Trabalhar não tem entrada de fora e só recebe trabalho pela fila (ARQ-094). A pessoa chega pelo endereço da organização: o endereço do SaaS é o mesmo para todas, e um token nele leva à organização e ao middleware certos (D-258, passo 5).",
-        "Os dois papéis falam com o Middleware da organização, que roda fora do SaaS, um por organização, hospedado pela Maind ou pelo cliente (MF-121, v2.0; D-258, D-259, D-260). Vai só a pergunta e volta a resposta pronta, os blocos que a pessoa vê, com a contagem do uso de IA, sem conteúdo, para o consumo e o custo (D-189, D-267). O ciclo da análise, o modelo de IA e as consultas, roda dentro dele (D-258).",
+        "Os dois papéis falam com o Middleware, que roda fora do SaaS e atende várias organizações em qualquer hospedagem: o da Maind atende todas as organizações do SaaS, cada uma isolada pelo seu certificado, e o do cliente atende as organizações dele; a diferença é só o local físico (a MF-121, Middleware da organização, v2.0; D-258, D-260, D-272). Vai só a pergunta e volta a resposta pronta, os blocos que a pessoa vê, com a contagem do uso de IA, sem conteúdo, para o consumo e o custo (D-189, D-267). O ciclo da análise, o modelo de IA e as consultas, roda dentro dele (D-258).",
         "O Atender chama o middleware no turno da conversa do app e do popup; o Trabalhar, no turno do WhatsApp, nos agentes e nos agendamentos, que são os trabalhos dele (documento 04 §3.4, ARQ-024).",
-        "O SaaS acha o middleware de cada organização pelo Registro de organizações: o endereço, a porta e a chave pública que ele aprende quando a organização é criada e o certificado é trocado com o middleware (D-258, passos 2 e 3). O desenho liga só o Atender ao Registro; o Trabalhar o lê do mesmo jeito, porque também chama o middleware.",
-        "O middleware tem a própria base, a Base de configuração, com os membros e os detalhes da organização (D-258). As pessoas, a autenticação e a configuração dos bancos e da IA ficam no middleware, fora do SaaS (D-258, passo 6; D-261; D-265).",
+        "O SaaS acha, pelo Registro de organizações, o middleware que atende cada organização: o endereço, a porta e a chave pública que ele aprende quando a organização é criada e adicionada ao middleware, ao importar o certificado nele, com o handshake nas duas pontas (D-258, passos 2 e 3; D-272). O desenho liga só o Atender ao Registro; o Trabalhar o lê do mesmo jeito, porque também chama o middleware.",
+        "O middleware tem a própria base, a Base de configuração, que guarda os membros e os detalhes de várias organizações, isoladas umas das outras (D-258, D-272); excluir uma organização apaga, no middleware, só o que é dela (D-278). As pessoas, a autenticação e a configuração dos bancos e da IA ficam no middleware, fora do SaaS, e quem configura os bancos e a IA é o owner da organização, no Front do middleware, em qualquer hospedagem (D-258, passo 6; D-261; D-265; D-273).",
         "O que precisa valer em todas as réplicas mora no Postgres: os limites de taxa e o anel de chaves no Banco mestre; a parada de uma resposta e a geração nova chegam à réplica que transmite por um aviso do Postgres (NOTIFY), sem gravação (ARQ-095). O que só acelera fica na memória de cada réplica (o cache do resumo das fontes); o que é do pod fica no pod (os tokens de renderização, servidos no loopback ao Chromium do mesmo pod). Se a réplica que transmite cai, a resposta fica gravada como interrompida (ARQ-095).",
         "Três bancos no mesmo Postgres do SaaS: o Banco mestre, com o mapa; um Banco da organização por organização, com login só dele e o estado de hoje (a conversa, os boards, o rastro); e o Banco de log, com a história, só de inclusão (ARQ-010, ARQ-088, ARQ-097)."
       ]
@@ -941,14 +941,15 @@
       "dot": "amber",
       "title": "O que ficou de fora e o que aguarda",
       "items": [
-        "Fora do desenho, para ele caber: os bancos corporativos e os provedores de IA, que o middleware alcança, os bancos só para leitura (D-258); o Front do middleware, onde o owner, ou o time da Maind na hospedagem dela, configura as pessoas, os bancos e a IA (D-261, D-265); e o servidor de e-mail, ao qual os dois papéis saem pela regra de rede dos pods (documento 09 §3.3).",
+        "Fora do desenho, para ele caber: os bancos corporativos e os provedores de IA, que o middleware alcança, os bancos só para leitura (D-258); o Front do middleware, o mesmo nas duas hospedagens, onde o owner da organização configura as pessoas, os bancos e a IA, e o time da Maind só dá suporte; na hospedagem da Maind, é a Maind que cria o usuário do owner (D-261, D-271, D-273); e o servidor de e-mail, ao qual os dois papéis saem pela regra de rede dos pods (documento 09 §3.3).",
+        "Também fora do desenho, para ele caber em 13 nós: o painel da instância (MF-101) mostra, para cada organização, o estado do middleware que a atende, no ar ou fora, e a versão que ele informa, enquanto o SaaS o alcança; quando ele para, é avisado o dono do serviço, a Maind no dela e o cliente no dele (D-275, D-240). Como o SaaS mede esse estado, sobretudo no middleware do cliente, depende do protocolo e é do arquiteto (P-042, P-048).",
         "As pessoas e o login, que a ARQ-088 punha no Banco mestre, e as fontes e as credenciais, que ela punha no Banco da organização, saem do SaaS e vão ao middleware (D-258, D-261, D-265). O que o SaaS ainda guarda de cada pessoa, e como mostra o nome dela sem guardá-lo, é da P-048.",
         "O Registro de organizações aparece à parte. Pela regra da ARQ-088, o que é da instância mora no Banco mestre, como o endereço do banco de cada organização, e ele ficaria lá; nenhuma decisão o diz ainda (P-048). Se as réplicas guardam o endereço em memória também não está dito.",
-        "Em aberto (P-042, P-048): o protocolo do middleware (pontos gRPC e um servidor MCP com ferramentas, gRPC de preferência); se a resposta pronta chega transmitida ou de uma vez; em que papel e por qual caminho os assentos liberados chegam ao middleware (D-258, passo 4); o que a Base de configuração usa como tecnologia; o que o Horus faz com o middleware fora do ar, quando o login da organização cai junto; e onde o owner vê o consumo e o custo de toda a IA, no Horus ou no front do middleware (D-267).",
+        "Em aberto (P-042, P-048): o protocolo do middleware (pontos gRPC e um servidor MCP com ferramentas, gRPC de preferência); se a resposta pronta chega transmitida ou de uma vez; em que papel e por qual caminho os assentos liberados chegam ao middleware (D-258, passo 4); o que a Base de configuração usa como tecnologia; o que o Horus faz com o middleware fora do ar, quando cai junto o login das organizações que ele atende; e onde o owner vê o consumo e o custo de toda a IA, no Horus ou no front do middleware (D-267).",
         "Aguarda o dono (proposta do arquiteto, P-048): a sessão da pessoa emitida pelo middleware e conferida pelo SaaS com a chave pública do Registro, levando só o identificador da organização, sem endereço nem porta; e o token do endereço como identificador, nunca como credencial. Por isso a ligação do Atender ao Banco mestre já não diz \"sessão\" (a ARQ-038 mantinha a sessão da v1.xx).",
-        "O administrador da instância perguntar ao próprio Horus sobre a história, lendo o Banco de log como uma fonte da instância (D-158, ARQ-097), ficou sem caminho: a IA agora é sempre da organização, no middleware, e não há mais conexão de IA da instância (D-266). Fica para a P-048.",
+        "O administrador da instância continua perguntando ao próprio Horus sobre a história da instância, com uma chave de IA cadastrada no nível da instância só para isso, que a Maind paga; nenhuma organização usa essa chave (D-158, D-276, D-266). A pergunta lê a história guardada no SaaS, o Banco de log, e não passa por middleware de organização nenhum; como ela roda, em que papel e onde fica a chave, é do arquiteto (P-048), e por isso o desenho não traz esse caminho.",
         "Em que papel roda o Repassador: as fontes não dizem (ARQ-088, documento 06 §3.6). A tarefa das migrações, a observabilidade e a cópia fora do Horus são de outros diagramas (documentos 09, 10 e 11). A compilação de segurança, o pré-aquecimento e a conferência diária, que o documento 04 põe no Trabalhar, são da MF-106, na v2.1, que passa a rodar no middleware (D-263).",
-        "O desenho técnico da exportação da conversa em PDF ou HTML (D-250) espera o arquiteto (P-047). Seguem como hipótese o pool pequeno de conexões por organização (ARQ-088), o tempo de drenagem de cada réplica (ARQ-063) e a Maind operar o middleware de todas as organizações sem ele virar ponto único de falha (D-258)."
+        "O desenho técnico da exportação da conversa em PDF ou HTML (D-250) espera o arquiteto (P-047). Seguem como hipótese o pool pequeno de conexões por organização (ARQ-088), o tempo de drenagem de cada réplica (ARQ-063), o isolamento por certificado bastar entre as organizações do SaaS e a Maind operar um middleware só para todas elas sem ele virar ponto único de falha (D-272)."
       ]
     }
   ]

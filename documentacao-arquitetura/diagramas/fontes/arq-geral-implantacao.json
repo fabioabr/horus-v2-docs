@@ -506,7 +506,7 @@
           "label": "Registro de organizações"
         },
         "messagebus": {
-          "label": "Middleware da organização"
+          "label": "Middleware"
         },
         "external": {
           "label": "Fora do Horus: imagens da Maind"
@@ -524,7 +524,7 @@
           "registro",
           "bancos"
         ],
-        "note": "Na Maind ou na casa do cliente: a mesma imagem e o mesmo contrato; o SaaS guarda onde cada um mora (D-258, D-259, D-260)."
+        "note": "A Maind sobe um para as organizações do SaaS; o cliente, o dele, para as dele: a mesma imagem e o mesmo contrato (D-258, D-260, D-272)."
       },
       {
         "id": "como-a-versao-chega",
@@ -648,9 +648,9 @@
     {
       "id": "mw_maind",
       "type": "messagebus",
-      "label": "Middleware da organização",
-      "sublabel": "um por organização · D-259",
-      "tag": "a Maind o opera · D-265",
+      "label": "Middleware",
+      "sublabel": "todas as organizações do SaaS",
+      "tag": "um só, a Maind opera · D-272",
       "pos": [
         40,
         570
@@ -678,8 +678,8 @@
     {
       "id": "mw_cliente",
       "type": "messagebus",
-      "label": "Middleware da organização",
-      "sublabel": "mesmo contrato · D-258, D-260",
+      "label": "Middleware",
+      "sublabel": "as organizações do cliente",
       "tag": "a TI governa IP e porta · D-196",
       "pos": [
         760,
@@ -819,10 +819,10 @@
       "dot": "cyan",
       "title": "O que o desenho mostra",
       "items": [
-        "Duas coisas rodam em lugares diferentes: o SaaS do Horus, nos ambientes de sempre, e o Middleware da organização, um por organização, numa infraestrutura lógica separada do SaaS (D-258, passo 1; D-259).",
+        "Duas coisas rodam em lugares diferentes: o SaaS do Horus, nos ambientes de sempre, e o middleware, numa infraestrutura lógica separada do SaaS, que atende várias organizações (D-258, passo 1; D-272).",
         "O SaaS: a mesma imagem de container e o mesmo chart do Helm em toda instância, e entre uma e outra muda só a configuração e o estado (ARQ-094). O CI compila uma vez, a homologação aprova e a produção só aceita a imagem aprovada (ARQ-061). Na construção, tudo no minikube da VPS de hoje, com o Postgres fora dele, e a v2.0 num subdomínio próprio, ao lado da v1.xx (ARQ-055, ARQ-065, ARQ-093). Com a primeira organização paga, um Kubernetes gerenciado e o Postgres gerenciado, em São Paulo (ARQ-092, ARQ-093).",
-        "O middleware: a mesma imagem da Maind e o mesmo contrato em qualquer hospedagem (D-195, D-258, D-260). A Maind o sobe na infraestrutura dela, um para cada organização, também para as organizações do SaaS (D-259), e o opera (D-258, D-265); ou a TI do cliente o instala na casa dele e governa o caminho por IP e porta (D-195, D-196, D-260). Para o produto, a localização é irrelevante, desde que a rede o alcance (D-258).",
-        "O Registro de organizações, no SaaS, guarda onde mora cada middleware e a chave pública dele. O administrador da instância cria a organização no SaaS, e a criação gera o certificado digital e a chave de instalação cifrada; o certificado é importado no middleware, que devolve um arquivo de configuração assinado e cifrado (endereço, porta), e as duas pontas confirmam o handshake (D-146; D-258, passos 2 e 3).",
+        "O middleware: a mesma imagem da Maind e o mesmo contrato em qualquer hospedagem (D-195, D-258, D-260). A Maind sobe um só na infraestrutura dela, para todas as organizações do SaaS, cada uma isolada pelo seu certificado, e o opera (D-258, D-272); o cliente instala o dele na casa dele, para as organizações dele, e a TI governa o caminho por IP e porta (D-195, D-196, D-260, D-272). A diferença entre as hospedagens é só o local físico: para o produto, a localização é irrelevante, desde que a rede o alcance (D-258, D-272).",
+        "O Registro de organizações, no SaaS, guarda onde mora cada middleware e a chave pública dele. O administrador da instância cria a organização no SaaS, e a criação gera o certificado digital e a chave de instalação cifrada; o certificado é importado no middleware, que devolve um arquivo de configuração assinado e cifrado (endereço, porta), e as duas pontas confirmam o handshake (D-146; D-258, passos 2 e 3). Criar uma organização não sobe um middleware novo: importar o certificado adiciona a organização ao middleware que já existe (D-272).",
         "Os bancos corporativos ficam onde a organização os tem, e o middleware os lê só para leitura: de dentro de casa ou, na hospedagem da Maind, pela rede (D-258, ARQ-052). Os provedores de IA, que o middleware também chama, ficam no diagrama das integrações."
       ]
     },
@@ -831,7 +831,8 @@
       "title": "Imediato, segundo plano, v2.0 e v2.1",
       "items": [
         "Imediato: a publicação manual em cada instância e a leitura e a gravação no Postgres. Em segundo plano, e fora do desenho para caber: a telemetria para a stack de observabilidade da máquina (ARQ-069), as cópias de segurança, que a infra de cada instância faz fora do Horus (ARQ-086, ARQ-087), e a sonda de fora, de outro provedor, a partir da primeira produção real (ARQ-070, ARQ-071).",
-        "v2.0: o SaaS e o middleware de toda organização, na Maind ou na casa do cliente (MF-121:Middleware da organização; D-258, D-260, D-270). A v2.0 passa a ter 19 mfs.",
+        "v2.0: o SaaS e o middleware, o da Maind para as organizações do SaaS e o da casa do cliente para as organizações dele (a MF-121, Middleware da organização; D-258, D-260, D-270, D-272). A v2.0 passa a ter 19 mfs.",
+        "v2.0, fora do desenho (o painel não é um ambiente): o painel da instância (MF-101) mostra, para cada organização, o estado do middleware que a atende, no ar ou fora, e a versão que ele informa, enquanto o SaaS o alcança; quando ele para, é avisado o dono do serviço: a Maind, no dela; o cliente, no dele (D-275, D-240).",
         "v2.1: a segurança dos dados por pessoa, que roda no middleware e passa a depender da MF-121 (MF-106, D-263). A v2.1 fica com quatro mfs (MF-106, MF-119, MF-122 e MF-123), sem onda 2: leitura do PO, a confirmar.",
         "Sem versão: a instalação completa do Horus no cliente (D-188), que o documento 09 e a ARQ-060 ainda tratam como entrega da v2.1. Não está desenhada."
       ]
@@ -840,11 +841,12 @@
       "dot": "amber",
       "title": "O que ficou de fora e o que aguarda o dono",
       "items": [
-        "Em aberto (P-048): como o SaaS e o middleware sobem. O dono falou em docker compose para os dois; a arquitetura tinha o chart único do Helm para o SaaS (ARQ-094) e, para o cliente, a ARQ-060, que é do on-premises. Nada foi decidido: o desenho diz só que o middleware é uma imagem, sem dizer como ela é empacotada nem como sobe.",
-        "Em aberto (P-048, P-042, P-040): como cada organização nova ganha o seu middleware sem trabalho manual (D-259); o formato, a rotação e a revogação do certificado e da chave de instalação; a atualização do middleware, na Maind e no cliente; o que o Horus faz com o middleware fora do ar, já que o login da organização cai junto; a cópia de segurança e a observabilidade do middleware.",
-        "Aguarda o dono: a nuvem e o orçamento (ARQ-085, adiada para a primeira produção real); a ARQ-060 e a ARQ-074, que perdem o objeto com a D-188; e a proposta do arquiteto de que o SaaS guarde onde mora cada middleware e a sessão da pessoa leve só o identificador da organização, sem endereço nem porta (P-048).",
-        "A promessa de que o funcionário da Maind não liga nem vê (D-189, D-196) só vale com o middleware na casa do cliente: na hospedagem da Maind, é a Maind que o opera e configura bancos e IA (D-258, D-265).",
-        "Fora do desenho, para caber: a v1.xx e a entrada da VPS, que separa as duas pelo nome (ARQ-065), as bases de demonstração e a ingestão contínua (ARQ-059), o executor do CI (ARQ-082), a sonda, a observabilidade e a cópia. Sem fonte: quem paga o middleware na hospedagem da Maind."
+        "Em aberto (P-048, proposta 1): como o SaaS e o middleware sobem. O dono falou em docker compose para os dois; a arquitetura tinha o chart único do Helm para o SaaS (ARQ-094) e, para o cliente, a ARQ-060, que é do on-premises. Nada foi decidido: o desenho diz só que o middleware é uma imagem, sem dizer como ela é empacotada nem como sobe.",
+        "Em aberto (P-048, P-042, P-040): como cada organização nova é adicionada ao middleware sem trabalho manual, ao importar o certificado dela (D-272); o formato, a rotação e a revogação do certificado e da chave de instalação; a atualização do middleware, na Maind e no cliente (proposta 8); o que o Horus faz com o middleware fora do ar, já que o login da organização cai junto (proposta 5); a cópia de segurança e a observabilidade do middleware, e como as cópias convivem com a exclusão de uma organização, que apaga também o que é dela no middleware (D-278, P-044).",
+        "Aguarda o dono: a nuvem e o orçamento (ARQ-085, adiada para a primeira produção real), em que o custo do middleware muda: na Maind ele é um só, compartilhado pelas organizações do SaaS, e não soma mais um por organização (D-272); quem o paga, na Maind e na casa do cliente, segue sem fonte. Também a ARQ-060 e a ARQ-074, que perdem o objeto com a D-188, e a proposta do arquiteto de que o SaaS guarde onde mora cada middleware e a sessão da pessoa leve só o identificador da organização, sem endereço nem porta (proposta 3, P-048).",
+        "A promessa de que o funcionário da Maind não liga nem vê (D-189, D-196) só vale com o middleware na casa do cliente: na hospedagem da Maind, a Maind o opera, e quem o opera pode, tecnicamente, alcançar as credenciais, embora quem configura os bancos e a IA seja sempre o owner da organização (D-258, D-273).",
+        "Risco novo (D-272): o middleware da Maind é um ponto único na hospedagem dela; se for invadido, expõe as credenciais e as regras de todas as organizações do SaaS, e quem exigir mais isolamento usa o middleware na casa dele. Hipóteses 🔎 da D-272: que o isolamento por certificado baste entre as organizações do SaaS e que a Maind opere um middleware só sem ele virar ponto único de falha.",
+        "Fora do desenho, para caber: a v1.xx e a entrada da VPS, que separa as duas pelo nome (ARQ-065), as bases de demonstração e a ingestão contínua (ARQ-059), o executor do CI (ARQ-082), a sonda, a observabilidade e a cópia, e o painel da instância (D-275)."
       ]
     }
   ]

@@ -512,7 +512,7 @@
           "owner",
           "front"
         ],
-        "note": "A pessoa entra pelo endereço com token; o login é da organização, no middleware; owner e administrador, por usuário e senha (D-258)."
+        "note": "Endereço com token; o login é da organização, no middleware; owner e administrador, por usuário e senha; na Maind, ela cria o do owner."
       },
       {
         "id": "vinculo",
@@ -522,7 +522,7 @@
           "reg",
           "mw"
         ],
-        "note": "Criar a organização gera o certificado; o middleware devolve o arquivo assinado e as pontas confirmam o handshake (D-146, D-258)."
+        "note": "O certificado adiciona a organização ao middleware e a isola das outras; volta o arquivo assinado e há o handshake (D-258, D-272)."
       },
       {
         "id": "permissao",
@@ -542,7 +542,7 @@
           "cofre",
           "bancos"
         ],
-        "note": "As credenciais dos bancos e da IA ficam no cofre do middleware, fora do SaaS; dos bancos, só leitura (D-001, D-258, D-265)."
+        "note": "O owner cadastra as credenciais dos bancos e da IA no cofre do middleware, fora do SaaS; dos bancos, só leitura (D-001, D-258, D-273)."
       },
       {
         "id": "prova",
@@ -562,7 +562,7 @@
       "icon": "person",
       "label": "Administrador da instância",
       "sublabel": "usuário e senha, sempre",
-      "tag": "Maind · cria a organização · D-146",
+      "tag": "Maind · cria a org. e o owner · D-146 · D-271",
       "pos": [
         40,
         40
@@ -637,9 +637,9 @@
     {
       "id": "mw",
       "type": "security",
-      "label": "Middleware da organização",
-      "sublabel": "autoridade de identidade",
-      "tag": "quem emite a sessão: P-048",
+      "label": "Middleware",
+      "sublabel": "atende várias organizações",
+      "tag": "identidade · isola por certificado · D-272",
       "pos": [
         680,
         200
@@ -653,8 +653,8 @@
       "id": "front",
       "type": "frontend",
       "label": "Front do middleware",
-      "sublabel": "owner, ou o time da Maind",
-      "tag": "D-261 · D-262 · D-265",
+      "sublabel": "o owner, em qualquer hospedagem",
+      "tag": "D-261 · D-262 · D-271 · D-273",
       "pos": [
         975,
         200
@@ -699,7 +699,7 @@
       "type": "security",
       "label": "Cofre do middleware",
       "sublabel": "credenciais dos bancos e da IA",
-      "tag": "fora do SaaS · D-258 · D-265",
+      "tag": "fora do SaaS · D-258 · D-273",
       "pos": [
         975,
         360
@@ -754,7 +754,7 @@
     },
     {
       "kind": "region",
-      "label": "Middleware da organização: a Maind só não vê se ele está no cliente",
+      "label": "Middleware: organizações isoladas pelo certificado; a Maind só não vê no cliente",
       "wraps": [
         "mw",
         "front",
@@ -860,13 +860,14 @@
       "title": "O que o desenho mostra, de fora para dentro",
       "items": [
         "A pessoa chega ao Horus pelo endereço da organização, que leva um token para direcioná-la ao middleware e à organização certos; o endereço do SaaS é o mesmo para todas (D-258).",
-        "O login é da organização: as configurações de autenticação ficam no Middleware da organização, que é a autoridade de identidade dela, e as pessoas ficam isoladas nele, fora do SaaS (D-258, D-261). O owner da organização e o administrador da instância entram sempre por usuário e senha (D-258); o owner pode ter até mais dois owners, cada um num assento de owner (D-269).",
-        "O vínculo de confiança nasce de um certificado: o administrador da instância cria a organização (D-146), e a criação gera o certificado digital e uma chave de instalação cifrada; o certificado é importado no middleware, que devolve um arquivo de configuração assinado e cifrado, com o endereço e a porta, e as duas pontas confirmam o handshake (D-258). Guardar no Registro de organizações o endereço, a porta e a chave pública de cada middleware é a proposta do arquiteto que aguarda o dono (P-048).",
+        "O login é da organização: as configurações de autenticação ficam no Middleware, que é a autoridade de identidade das organizações que ele atende, e as pessoas ficam isoladas nele, fora do SaaS (D-258, D-261, D-272). O owner da organização e o administrador da instância entram sempre por usuário e senha (D-258). O Front do middleware é o mesmo nas duas hospedagens, e o owner o acessa nas duas; na hospedagem da Maind, é a Maind que cria o usuário com que ele entra (D-271). O owner pode ter até mais dois owners, cada um num assento de owner (D-269).",
+        "O vínculo de confiança nasce de um certificado: o administrador da instância cria a organização (D-146), e a criação gera o certificado digital e uma chave de instalação cifrada; importar o certificado no middleware adiciona a organização a ele, e o middleware devolve um arquivo de configuração assinado e cifrado, com o endereço e a porta, e as duas pontas confirmam o handshake (D-258, D-272). Guardar no Registro de organizações o endereço, a porta e a chave pública do middleware que atende cada organização é a proposta do arquiteto que aguarda o dono (P-048).",
+        "O middleware atende várias organizações em qualquer hospedagem: o da Maind atende todas as organizações do SaaS, e o do cliente, as organizações dele; a diferença é só o local físico (D-272). Dentro do middleware, cada organização fica isolada das outras pelo seu certificado (D-258, D-272); que esse isolamento baste entre as organizações do SaaS é hipótese a validar (D-272). No SaaS, o banco de cada organização, com login só dela, e o filtro global seguem como segunda trava (ARQ-010, ARQ-034, ARQ-088; no diagrama dos dados).",
         "O Avaliador de permissões segue sendo a porta única do pode?, no SaaS: toda tela, todo canal e todo trabalho perguntam a ele; ele lê o assento, o papel e as roles, a primeira leitura que nega encerra a conta, e a falha fecha (ARQ-008, ARQ-039). É a permissão de função.",
         "A segurança dos dados por pessoa (MF-106) é a terceira camada, o quem vê o quê dentro do banco: chega na v2.1 e roda no middleware, e a MF-106 passa a depender da MF-121 (D-263, ARQ-090).",
-        "O Cofre do middleware guarda as credenciais dos bancos e da IA, configuradas no Front do middleware pela organização ou, na hospedagem da Maind, pelo time da Maind; elas ficam fora do SaaS (D-258, D-265). Dos bancos corporativos, só leitura (D-001).",
+        "O Cofre do middleware guarda as credenciais dos bancos e da IA, que o owner da organização configura no Front do middleware em qualquer hospedagem, inclusive a chave de IA que a Maind dá; o time da Maind dá suporte, antes e depois da venda, mas não configura por ele (D-264, D-273). As credenciais ficam fora do SaaS (D-258), e dos bancos corporativos só se lê (D-001).",
         "O rastro registra cada entrega e cada abertura, sem conteúdo e só de acréscimo, e só o owner da organização o consulta (ARQ-009, D-091); a exportação da conversa também entra nele (D-252). A telemetria nunca carrega o conteúdo da conversa, pessoa nem conversa como rótulo, valor de claim, número de WhatsApp, e-mail nem segredo (ARQ-073).",
-        "A promessa de que o funcionário da Maind não liga nem vê (D-189, D-196) só vale com o middleware na casa do cliente. Na hospedagem da Maind, a Maind opera o middleware, e o time dela configura e conhece as credenciais dos bancos e da IA (D-258, D-265)."
+        "A promessa de que o funcionário da Maind não liga nem vê (D-189, D-196) só vale no middleware do cliente. Na hospedagem da Maind, o time dela já não configura os bancos e a IA, mas quem opera o middleware da Maind segue podendo, tecnicamente, alcançar as credenciais (D-258, D-273)."
       ]
     },
     {
@@ -876,8 +877,8 @@
         "As cores das linhas: verde, o caminho de cada pedido; vermelha tracejada, credencial, certificado ou acesso restrito; roxa tracejada, o que só chega na v2.1; cinza, o resto.",
         "Uma vez, ao criar a organização: o certificado, a chave de instalação, o arquivo assinado e o handshake (D-258).",
         "A cada pedido, imediato: o endereço com o token, o login quando ainda não há sessão, e o pode? ao avaliador (D-258, ARQ-008). O rastro grava na mesma transação da entrega ou da abertura, e nenhuma entrega escapa dele (ARQ-009).",
-        "Cada organização tem o seu middleware, também na hospedagem da Maind: a credencial e as regras de uma não ficam ao alcance de outra (D-259). No SaaS, o banco de cada organização, com login só dela, e o filtro global seguem como segunda trava (ARQ-010, ARQ-034, ARQ-088; no diagrama dos dados).",
-        "v2.0: o middleware de toda organização (MF-121, Middleware da organização: D-260, D-270), com o login, o front e o cofre; o avaliador pela função. Na v2.0, a organização é a fronteira dos dados: quem pode perguntar alcança todos os bancos dela (D-145, ARQ-090).",
+        "Uma vez, ao excluir a organização: apaga-se, além do uso no SaaS, tudo o que há dela no middleware, as pessoas, os bancos e a IA configurados e a configuração, e só o que é dela, porque o middleware é compartilhado (D-149, D-278). A guarda técnica do registro de acesso e as cópias de segurança (P-044) passam a valer também para o middleware (D-278).",
+        "v2.0: o middleware, que atende várias organizações (a MF-121, Middleware da organização: D-260, D-270, D-272), com o login, o front e o cofre; o avaliador pela função. Na v2.0, a organização é a fronteira dos dados: quem pode perguntar alcança todos os bancos dela (D-145, ARQ-090).",
         "v2.1: a segurança dos dados por pessoa, no middleware (MF-106, D-263), e o login da empresa por OpenID Connect (D-118, D-184), com os owners ligados a ele (D-258, D-269): só autentica quem foi convidado (D-253), vale a role que ele traz (D-254), e a sessão nascida por ele se confirma a cada 8 horas (D-255).",
         "Sem versão: a instalação completa do Horus no cliente (D-188)."
       ]
@@ -887,10 +888,11 @@
       "title": "O que ficou de fora e o que espera decisão",
       "items": [
         "Aguarda o dono (proposta do arquiteto, P-048): o SaaS guarda o endereço de cada middleware no Registro de organizações, a sessão leva só o identificador da organização, sem endereço nem porta, e o token do endereço é só um identificador, nunca uma credencial.",
-        "Com o arquiteto (P-048): quem emite a sessão e como o SaaS a confere; o formato, a rotação e a revogação do certificado, a chave de instalação e o handshake; o que a pessoa vê com o middleware fora do ar, já que o login da organização cai junto; de onde o avaliador lê o assento, o papel e as roles, com as pessoas fora do SaaS (D-261). O protocolo do contrato, gRPC de preferência, é a P-042.",
+        "Risco: um ponto único na hospedagem da Maind. Se o middleware dela for invadido, ficam expostas as credenciais e as regras de todas as organizações do SaaS; quem exigir mais isolamento usa o middleware na casa dele (D-272). Que a Maind opere um middleware só sem ele virar ponto único de falha também é hipótese a validar (D-272).",
+        "Com o arquiteto (P-048): quem emite a sessão e como o SaaS a confere; o formato, a rotação e a revogação do certificado, a chave de instalação e o handshake; o que a pessoa vê com o middleware fora do ar, já que cai junto o login das organizações que ele atende; de onde o avaliador lê o assento, o papel e as roles, com as pessoas fora do SaaS (D-261); e onde roda a pergunta do administrador sobre a história da instância, com a chave de IA da instância cadastrada só para ela, que não passa por middleware nenhum (D-276, a exceção estreita à D-266). O protocolo do contrato, gRPC de preferência, é a P-042.",
         "Aguarda o dono: ARQ-040, a chave única da segurança por pessoa, adiada para a v2.1. A Semântica de Segurança por dentro (ARQ-032, ARQ-041, ARQ-042) é da v2.1 e não está desenhada; onde o owner escreverá as regras por pessoa não está decidido.",
-        "Lacunas: onde se autentica o administrador da instância, se as configurações de autenticação ficam no middleware de cada organização (a D-258 diz só usuário e senha); como o cofre do middleware cifra as credenciais; e o que a telemetria do middleware pode mandar, já que da casa do cliente só saem a pergunta e a resposta pronta (D-189).",
-        "A LGPD e o jurídico seguem como decididos (D-247): o owner lê as conversas (D-223), quem é excluído leva os registros dele (D-210), e a parte técnica de apagar é a P-044. Com as pessoas fora do SaaS, de onde o relatório da Maind tira o nome de quem ocupa cada assento (D-157) é da P-048.",
+        "Lacunas: onde se autentica o administrador da instância, no SaaS ou no middleware (a D-258 diz só usuário e senha); como o cofre do middleware cifra as credenciais e as separa entre as organizações que ele guarda; e o que a telemetria do middleware pode mandar, já que da casa do cliente só saem a pergunta e a resposta pronta (D-189).",
+        "A LGPD e o jurídico seguem como decididos (D-247): o owner lê as conversas (D-223), quem é excluído leva os registros dele (D-210), e a parte técnica de apagar é a P-044, que agora alcança também o middleware (D-278). A Maind não vê o nome de quem ocupa o assento: o relatório da organização mostra a história dos assentos em números (D-274, que substitui em parte a D-157). Resta ao arquiteto a revisão da dimensão de pessoas do banco de log, que guardava o nome (ARQ-097, P-048).",
         "Fora do desenho: os provedores de IA, cuja chave fica no cofre (D-264 a D-267); o isolamento por banco no SaaS e o banco de log, que estão no diagrama dos dados; e o gestor, que cria o convite pelo Horus, enquanto só o owner usa o Front do middleware (D-262)."
       ]
     }
