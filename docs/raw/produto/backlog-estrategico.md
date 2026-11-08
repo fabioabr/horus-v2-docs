@@ -4,7 +4,7 @@ Registro das decisões de produto: o que o Horus entrega, para quem e em que ord
 
 Aqui entram decisões de **valor** (visão, público, macro funcionalidades, versões, preço, cortes). Tarefas e escolhas de **como construir** pertencem ao arquiteto de soluções e não são registradas neste arquivo.
 
-Última atualização: 07/11/2026.
+Última atualização: 08/11/2026.
 
 ## Como ler e manter
 
@@ -19,7 +19,7 @@ Aqui entram decisões de **valor** (visão, público, macro funcionalidades, ver
 - **Onde ficam os documentos** (`D-140`, `D-141`): na pasta da v2, que vai virar um repositório próprio. O produto fica em `docs/produto/` e a arquitetura em `docs/arquitetura/`; `docs/backlog/` fica reservada para as atividades, que o dono e um agilista definem depois da arquitetura (`D-142`); as skills ficam em `.claude/skills/`. Os caminhos de código citados nos documentos de produto são do repositório `horus`, a v1.xx.
 - **Estes documentos definem o Horus v2.xx** (`D-134`). O Horus de hoje é a v1.xx: ponto de partida e fonte de reaproveitamento. O entregável é um mapa de objetivos e funcionalidades para iniciar o desenvolvimento de forma estruturada.
 - **Este trabalho é só documentação.** O dono deixou claro (01/11/2026) que nada de desenvolvimento começa aqui. “Fechar a v2.0” quer dizer **fechar a definição da v2.0** nos documentos; construir é assunto de outro momento e do arquiteto de soluções.
-- **A numeração das mfs foi refeita duas vezes.** Em 01/11/2026 (`D-100` a `D-102`), em ordem de leitura, de `MF-01` a `MF-19`. Em 02/11/2026 (`D-137` a `D-139`), pela entrega em que a mf entra e pela importância para a fundação do novo Horus: **de `MF-101` a `MF-119`**. A regra de número fixo vale a partir desta última, a `MF-120` foi dada à faixa de avisos e números (`D-152`, nome provisório), a `MF-121`, ao middleware (`D-196`; hoje `MF-121:Middleware da organização`, `D-270`), a `MF-122`, aos conectores de chat corporativo, e a `MF-123`, ao AWS Athena (`D-198`, nomes provisórios), e a próxima mf nova é a `MF-124`. Os números anteriores (os de dois dígitos e os de três que começam com zero, `MF-001` a `MF-021`) só valem na tabela de conversão do mapa. Em todas as decisões, as citações de mf foram trocadas pelos números novos, e o conteúdo das decisões não mudou; as decisões das próprias renumerações (`D-100` a `D-102` e `D-137` a `D-139`) mantêm os números da época. A `MF-006` e a `MF-008`, substituídas, não ganharam número novo e aparecem com o número mais antigo.
+- **A numeração das mfs foi refeita duas vezes.** Em 01/11/2026 (`D-100` a `D-102`), em ordem de leitura, de `MF-01` a `MF-19`. Em 02/11/2026 (`D-137` a `D-139`), pela entrega em que a mf entra e pela importância para a fundação do novo Horus: **de `MF-101` a `MF-119`**. A regra de número fixo vale a partir desta última, a `MF-120` foi dada à faixa de avisos e números (`D-152`, nome provisório), a `MF-121`, ao middleware (`D-196`; hoje `MF-121:Middleware da organização`, `D-270`), a `MF-122`, aos conectores de chat corporativo, a `MF-123`, ao AWS Athena (`D-198`), e a `MF-124`, aos servidores MCP da organização (`D-282`; nomes provisórios), e a próxima mf nova é a `MF-125`. Os números anteriores (os de dois dígitos e os de três que começam com zero, `MF-001` a `MF-021`) só valem na tabela de conversão do mapa. Em todas as decisões, as citações de mf foram trocadas pelos números novos, e o conteúdo das decisões não mudou; as decisões das próprias renumerações (`D-100` a `D-102` e `D-137` a `D-139`) mantêm os números da época. A `MF-006` e a `MF-008`, substituídas, não ganharam número novo e aparecem com o número mais antigo.
 - **Os números `D-138` e `D-139` foram usados duas vezes** (achado na revisão de 05/11/2026): outra sessão registrou as decisões do MVP da v1.xx (`D-138`, "A v1.xx fecha como MVP no HML…", e `D-139`, "No MVP da v1.xx, as seis peças pela metade saem todas da tela") quando a renumeração das mfs já tinha as suas (`D-138`, "O número novo das mfs tem três dígitos…", e `D-139`, "Tabela de conversão das mfs…"). Nenhuma foi renumerada, para não quebrar as citações: cite sempre `D-138 (MVP)`, `D-139 (MVP)`, `D-138 (numeração)` ou `D-139 (conversão)`. Do `D-140` em diante os números são únicos.
 
 ## Pendências e impasses
@@ -48,16 +48,21 @@ Tudo o que está aberto, num lugar só. A skill **lista esta seção no início 
 | `P-038` | 🕓 Pendência | **Para o arquiteto de soluções:** como o Teams e o Google Chat se integram como conectores de saída (a forma de integrar, a autenticação, a aprovação da TI do cliente e o que cada um entrega: texto, imagem e link) (`D-182`) | `D-182`, `D-124`, `ARQ-046` | Arquiteto de soluções | 05/11/2026 |
 | `P-039` | 🕓 Pendência | **Para o arquiteto de soluções:** o provedor de IA compatível com o protocolo da OpenAI que o contratante aponta no modo "tudo dentro": a conexão, a guarda de rede (o modelo mora na rede interna), os modelos que o Horus prova e a qualidade mínima de resposta (`D-185`) | `D-185`, `ARQ-051` | Arquiteto de soluções | 05/11/2026 |
 | `P-040` | 🕓 Pendência | **Para o arquiteto de soluções:** a viabilidade do middleware na casa do contratante (`D-188`): quais partes do motor de análise rodam nele, como ele se conecta ao Horus sem abrir porta no cliente, como se atualiza e o que acontece com as decisões `D-175`, `D-176`, `D-185` a `D-187`, a `ARQ-060` e a `ARQ-074`. Parte do impasse `I-020`. *Em 07/11/2026, o dono confirmou o lado do produto: o ciclo da análise (o modelo de IA e as consultas) roda dentro do middleware, e ao Horus chega só a pergunta e a resposta pronta (`D-189`, `D-196`). O rascunho dele traz ainda uma base de configuração e um aplicativo de setup na casa do cliente, decididos nas `D-258` a `D-269` (o desenho técnico segue na `P-048`)* | `D-188`, `I-020`, `ARQ-052` (opção 3) | Arquiteto de soluções | 05/11/2026 |
-| `P-042` | 🕓 Pendência | **Para o arquiteto de soluções:** a imagem do middleware (`D-195`): **o protocolo (servidor MCP, API REST ou gRPC, de preferência gRPC, `D-196`)**, o endereço público, o par de chaves cadastrado no Horus por organização, a rotação das chaves, o bloqueio por IP e porta, a atualização da imagem pelo cliente e o que o Horus faz quando o middleware está fora do ar. Parte da `P-040` | `D-195`, `P-040` | Arquiteto de soluções | 05/11/2026 |
+| `P-042` | 🕓 Pendência | **Para o arquiteto de soluções:** a imagem do middleware (`D-195`): **o protocolo, que a `ARQ-099` fechou como gRPC (o servidor MCP saiu do contrato, `D-281`)**, o endereço público, o par de chaves cadastrado no Horus por organização, a rotação das chaves, o bloqueio por IP e porta, a atualização da imagem pelo cliente e o que o Horus faz quando o middleware está fora do ar. Parte da `P-040` | `D-195`, `P-040` | Arquiteto de soluções | 05/11/2026 |
 | `P-044` | 🕓 Pendência | **Para o arquiteto de soluções:** conferir se apagar tudo de quem é excluído (`D-210`) convive com a guarda técnica do registro de acesso (seis meses, `ARQ-035`) e com as cópias de segurança; e o que a Auditoria, o aviso de abertura e a medida de autonomia precisam mudar. *O lado jurídico passou ao setup de cada cliente (`D-247`)* | `D-209`, `D-210`, `ARQ-035`, `D-247` | Arquiteto de soluções | 05/11/2026 |
 | `P-046` | 🕓 Pendência | **Definir os componentes da faixa de avisos e números:** o catálogo (KPIs, ícones etc.), as regras de cada um (inclusive a hora de fim e a retirada à mão do aviso do owner da organização) e o gesto e o visual da faixa. O dono disse que "ainda vamos definir" (`D-213`) | `D-213`, `D-212`, `D-174` | Dono, com o PO e o arquiteto de soluções | 05/11/2026 |
 | `P-047` | 🕓 Pendência | **Para o arquiteto de soluções:** a viabilidade e o desenho da exportação da conversa em PDF ou HTML na `MF-107` da v2.0 (`D-250`): o que o arquivo leva (as respostas, os gráficos e as tabelas, as fontes), se reaproveita o desenho único dos gráficos e a geração de PDF do board, o registro da exportação no rastro da Auditoria (`D-252`) e o que isso pede do resto da v2.0. O código da v1.xx só baixa o CSV e a imagem de um bloco; o PDF só existe no board | `D-250`, `D-249` | Arquiteto de soluções | 06/11/2026 |
-| `P-048` | 🕓 Pendência | **Para o arquiteto de soluções:** o fluxo do dono (`D-258`): como o SaaS e o middleware sobem em infraestruturas separadas e como isso convive com o chart único e a `ARQ-060`; o formato, a rotação e a revogação do certificado, a chave de instalação, o handshake e a troca dos arquivos assinados; o endereço da organização com token (o que ele carrega e como não vaza em registro e histórico) e o que vai na sessão (só o necessário para encaminhar, sem endereço nem porta da infraestrutura); quem emite a sessão; o que a pessoa vê e o que o Horus faz com o middleware fora do ar, já que o login da organização cai junto; a atualização do middleware; como se adiciona uma organização nova ao middleware que já atende as outras, ao importar o certificado (a `D-272` trocou a criação automática de um middleware por organização, da `D-259`); o que o SaaS guarda de cada pessoa (`D-261`), se ele só repassa o e-mail do convite sem guardá-lo (`D-262`) e como mostra o nome dela sem guardá-lo (a Home da organização, o rastro da Auditoria, a medida de autonomia); a revisão da `ARQ-097`, cuja dimensão de pessoas do banco de log não pode guardar o nome (`D-274`); onde roda a pergunta do administrador sobre a história da instância (`D-276`), que lê o banco de log e não passa por middleware; e o que muda na `P-040` e na `P-042` | `D-258`, `P-040`, `P-042`, `ARQ-060` | Arquiteto de soluções | 07/11/2026 |
+| `P-048` | 🕓 Pendência | **Para o arquiteto de soluções:** o fluxo do dono (`D-258`): como o SaaS e o middleware sobem em infraestruturas separadas e como isso convive com o chart único e a `ARQ-060`; a chave de instalação, o handshake e a troca dos arquivos assinados (o formato, a rotação e a revogação do certificado passaram à `P-049`); o endereço da organização com token (o que ele carrega e como não vaza em registro e histórico) e o que vai na sessão (só o necessário para encaminhar, sem endereço nem porta da infraestrutura); quem emite a sessão; o que o Horus faz com o middleware fora do ar (o que a pessoa vê já está decidido: `D-283`, `ARQ-104`, `ARQ-106`); a atualização do middleware; como se adiciona uma organização nova ao middleware que já atende as outras, ao importar o certificado (a `D-272` trocou a criação automática de um middleware por organização, da `D-259`); o que o SaaS guarda de cada pessoa (`D-261`), se ele só repassa o e-mail do convite sem guardá-lo (`D-262`) e como mostra o nome dela sem guardá-lo (a Home da organização, o rastro da Auditoria, a medida de autonomia); a revisão da `ARQ-097`, cuja dimensão de pessoas do banco de log não pode guardar o nome (`D-274`; decidido na `ARQ-109`: o SaaS guarda de cada pessoa só um código); onde roda a pergunta do administrador sobre a história da instância (`D-276`), que lê o banco de log e não passa por middleware; e o que muda na `P-040` e na `P-042` | `D-258`, `P-040`, `P-042`, `ARQ-060` | Arquiteto de soluções | 07/11/2026 |
+| `P-049` | 🕓 Pendência | **Para o arquiteto de soluções, com o dono:** a política de segurança do certificado do vínculo entre o SaaS e o middleware: o formato, a rotação e a revogação, e o que a organização escolhe em cada um. *O dono disse que isso é **escolha da organização** e adiou o assunto em 08/11/2026 ("não faz sentido falar sobre isso agora"): decide-se ao escrever as ADRs da `MF-121` (seção 15 do documento de arquitetura da mf).* Parte da `P-048` | `D-258`, `P-048`, `P-042` | Arquiteto de soluções, com o dono | 08/11/2026 |
+| `P-050` | 🕓 Pendência | **Para o arquiteto de soluções:** como o middleware aplica a lista de ferramentas que o owner liberou em cada servidor MCP da organização (`D-289`): mostrar ao modelo só as liberadas, recusar as outras, bloquear a ferramenta nova que o servidor passar a oferecer depois do cadastro, registrar cada chamada no rastro e fazer o resultado entrar na resposta com origem e período. Parte da `MF-124` | `D-289`, `D-286`, `D-281`, `ARQ-099` | Arquiteto de soluções | 08/11/2026 |
 
 ### Fechados
 
 | Nº | O que era | Como fechou | Em |
 | --- | --- | --- | --- |
+| `I-098` | Quem, na organização, pode usar cada servidor MCP cadastrado nas perguntas de análise, diante de que cada pessoa vê só o que pode ver? | O dono escolheu, com a opção recomendada: **o owner libera cada servidor por role, e o servidor novo nasce desligado para todos** (`D-288`) | 08/11/2026 |
+| `I-097` | O que um servidor MCP cadastrado pela organização pode ler e fazer, diante da regra de só leitura (`D-001`) e de que os dados não saem da organização (`D-189`), e quem o cadastra no middleware? | O dono escolheu, com as opções recomendadas: **o servidor só lê** (`D-286`) e **só o owner da organização o cadastra**, no front do middleware (`D-287`). Abriu-se o `I-098` (quem usa cada servidor) | 08/11/2026 |
+| `I-096` | Em que versão e em que mf entra o cadastro de servidores MCP da organização (`D-281`): uma mf nova, parte da `MF-104` ou do front do middleware, ou sem versão? | O dono escolheu, com a opção recomendada, que é **uma mf nova, a `MF-124`, da v2.1** (`D-282`). Segue aberto o `I-097` (segurança) | 07/11/2026 |
 | `I-093` | O painel de uso e custo da instância mostra o consumo de IA das chaves que a Maind dá, por organização (e só dessas)? | O dono escolheu, com a opção recomendada, que **sim**, só das chaves que a Maind dá (`D-279`) | 07/11/2026 |
 | `I-092` | Excluir uma organização apaga também o middleware dela e tudo o que há nele (pessoas e configuração), além do uso (`D-149`)? | O dono escolheu, com a opção recomendada, que **sim**: apaga tudo o que há dela no middleware (`D-278`) | 07/11/2026 |
 | `I-091` | A organização só passa a ativa depois de o middleware estar ligado (handshake confirmado) e os bancos e a IA configurados, ou a Maind a marca como ativa quando quiser (`D-148`)? | O dono escolheu a opção B, contra a recomendação do PO (a A): **só depois de o middleware estar ligado e de os bancos e a IA estarem configurados** (`D-277`) | 07/11/2026 |
@@ -187,6 +192,48 @@ Tudo o que está aberto, num lugar só. A skill **lista esta seção no início 
 Mais recente no topo. Formato de cada entrada:
 
 ```markdown
+### D-293 · Quando uma rodada é pulada com o middleware fora do ar, só o dono do agendamento é avisado
+Situação: 🟢 decidida (resposta do dono em 08/11/2026, com a opção recomendada pelo arquiteto) · Data: 08/11/2026 · Versão: v2.0
+
+**Decisão:** quando uma rodada de agendamento, alerta ou agente é **pulada** porque o middleware ficou fora além da espera de uma hora (`D-285`), **só o dono do agendamento é avisado**, na **área de avisos do Horus** (`D-128`), com a hora e o motivo; por e-mail, só se a pessoa já recebe avisos por e-mail. Os destinatários do relatório **não** são avisados.
+**Contexto:** a `D-285` registrava o motivo só no rastro e deixava em aberto se alguém era avisado.
+**Opções avaliadas** (sem pontuação): **A. só o dono do agendamento (recomendação do arquiteto, escolhida pelo dono)** · B. o dono e os destinatários · C. ninguém, só o rastro.
+**Por que esta:** quem responde pela rodada sabe por que faltou, sem ruído para os destinatários. Abre-se mão de: ⚠️ os destinatários descobrem pela ausência.
+**Afeta:** `D-285`, `D-128`; a `ARQ-120`.
+**Reabrir quando:** os destinatários pedirem aviso, ou os donos reclamarem de saber tarde.
+
+### D-292 · Um middleware desatualizado é recusado pelo SaaS, com aviso: vale a versão atual e a anterior
+Situação: 🟢 decidida (resposta do dono em 08/11/2026, com a opção recomendada pelo arquiteto) · Data: 08/11/2026 · Versão: v2.0
+
+**Decisão:** o SaaS funciona com o middleware na **versão atual e na anterior**. Com uma versão **mais velha**, a organização não funciona e a pessoa vê o aviso próprio "a versão do middleware precisa ser atualizada": o LED de status fica vermelho com o texto "Atualização necessária", a página de status mostra o motivo, sem a versão (`D-283`), e o painel da instância mostra o motivo e a versão (`D-275`). Quem atualiza é quem hospeda: a Maind no middleware dela, o cliente no dele.
+**Contexto:** o middleware na casa do cliente é atualizado pela TI dele, no tempo dela, e o SaaS é atualizado com frequência pela Maind.
+**Opções avaliadas** (sem pontuação): **A. a versão atual e a anterior, com recusa e aviso (recomendação do arquiteto, escolhida pelo dono)** · B. sempre a mesma versão nos dois · C. sem garantia de compatibilidade.
+**Por que esta:** o cliente tem tempo de atualizar sem surpresa, e a Maind não carrega todas as versões antigas. Abre-se mão de: ⚠️ o cliente que não atualiza a tempo perde o uso até atualizar.
+**Fica de fora / adiado:** quantas versões a janela cobre (duas é o ponto de partida); a janela por contrato com o cliente.
+**Afeta:** `D-275`, `D-283`, `D-284`, `MF-101`, `MF-121`; a `ARQ-114`.
+**Reabrir quando:** clientes não conseguirem atualizar dentro da janela.
+
+### D-291 · A mecânica de login é configuração da organização no middleware: usuário e senha e Google na v2.0; o login da empresa na v2.1
+Situação: 🟢 decidida (resposta do dono em 08/11/2026: a direção, dele; o alcance, com a opção recomendada pelo arquiteto) · Data: 08/11/2026 · Versão: v2.0
+
+**Decisão:** o middleware terá um **módulo de configuração**, o mesmo front do owner, que inclui **definir a mecânica de autenticação** da organização. Na v2.0 há **usuário e senha e Google**, que o owner liga ou desliga; o **login da empresa (OpenID Connect)** entra na v2.1 como mais um mecanismo do mesmo módulo (`D-184`). O owner e o administrador da instância entram sempre por usuário e senha (`D-258`).
+**Contexto:** com o login no middleware (`D-258`), a pergunta era se o Google continuaria para os membros. O dono respondeu que a mecânica de autenticação é configuração, e não uma decisão fixa.
+**Opções avaliadas** (sem pontuação): **A. usuário e senha e Google; OIDC na v2.1 (recomendação do arquiteto, escolhida pelo dono)** · B. os três já na v2.0 · C. só usuário e senha.
+**Por que esta:** mantém o que a v1.xx tem (`D-118`) e deixa o login da empresa para a v2.1 (`D-184`), sem refazer o login. Abre-se mão de: ⚠️ o owner que quer o Google precisa de um cadastro dele no Google.
+**Afeta:** `D-118`, `D-184`, `D-258`, `MF-106` (etapa 2), `MF-121`, `MF-102`; a `ARQ-111`.
+**Reabrir quando:** um cliente pedir outro mecanismo na v2.0, ou o OpenID Connect for puxado para a v2.0.
+
+### D-290 · O owner recebe o primeiro acesso por um link de uso único, entregue pela Maind
+Situação: 🟢 decidida (resposta do dono em 08/11/2026, com a opção recomendada pelo arquiteto) · Data: 08/11/2026 · Versão: v2.0
+
+**Decisão:** na hospedagem da Maind, ao criar o usuário do owner no front do middleware (`D-271`, `D-280`), a Maind recebe um **link de primeiro acesso, de uso único e validade curta**, e o **entrega ao owner por fora** (pelo e-mail ou WhatsApp dela). O owner abre o link e **define a própria senha**. Nenhuma senha passa pela Maind. Na casa do cliente vale o mesmo, com a TI do cliente no papel da Maind.
+**Contexto:** a `D-271` disse que a Maind cria o usuário do owner no middleware, mas não como o owner recebe o acesso e define a senha.
+**Opções avaliadas** (sem pontuação): **A. link de uso único entregue pela Maind (recomendação do arquiteto, escolhida pelo dono)** · B. convite por e-mail enviado pelo SaaS · C. senha provisória definida pela Maind.
+**Por que esta:** a senha e o link não passam por mais ninguém. Abre-se mão de: ⚠️ a entrega do link é manual.
+**Afeta:** `D-271`, `D-280`, `MF-101`, `MF-121`; a `ARQ-110`.
+**Prova de valor:** a Maind cria uma organização, entrega o link, e o owner entra e define a senha sem a Maind conhecê-la.
+**Reabrir quando:** a Maind criar tantas organizações que a entrega manual pese.
+
 ### D-000 · Título curto da decisão
 Situação: proposta | decidida | substituída por D-nnn | revogada · Data: dd/mm/aaaa · Versão: v2.n ou “geral”
 
@@ -199,6 +246,129 @@ Situação: proposta | decidida | substituída por D-nnn | revogada · Data: dd/
 **Prova de valor:** sinal observável que mostrará se acertamos.
 **Reabrir quando:** condição que justifica rever.
 ```
+
+### D-289 · O Horus só deixa o modelo chamar as ferramentas dos servidores MCP que o owner liberou, uma a uma; a garantia de que elas só leem é da organização
+Situação: 🟢 decidida (resposta do dono em 08/11/2026, com a opção recomendada pelo PO, ao ver que o Horus não controla o que um servidor MCP faz por dentro) · Data: 08/11/2026 · Versão: v2.1 (`MF-124`) · Substitui em parte a `D-286`
+
+**Decisão:** ao cadastrar um servidor MCP (`D-287`), o middleware **lista as ferramentas** dele. **Todas nascem bloqueadas**, e o **owner libera, uma a uma, as que são de leitura**. A marca "só leitura" que o servidor traz só **pré-seleciona**: a ferramenta sem a marca pede um aviso extra antes de liberar. O **modelo só vê e só consegue chamar as ferramentas liberadas**; o middleware recusa as demais. O cadastro avisa que a **garantia de verdade de que uma ferramenta só lê é a credencial de leitura do servidor**, que é da organização, e não do Horus. A promessa do produto passa a ser: **"o Horus só chama o que o owner declarou como leitura"**. *Leitura do PO, a confirmar com o dono:* a ferramenta nova que o servidor passar a oferecer depois do cadastro também nasce bloqueada, e cada chamada de ferramenta fica no rastro da Auditoria.
+**Contexto:** o dono observou que um servidor MCP pode ter ferramentas de leitura e de escrita, que o Horus não interfere nisso e que quem usa o MCP na prática é o modelo de IA, que usa o harness (o middleware) só para o trabalho braçal. A `D-286` prometia "só lê" mais do que o Horus consegue garantir: ele controla o que o modelo vê e chama, e não o que a ferramenta faz por dentro.
+**Opções avaliadas** (sem pontuação): **A. a lista liberada pelo owner, ferramenta a ferramenta (recomendação do PO, escolhida pelo dono)** · B. só servidor inteiramente de leitura (se qualquer ferramenta não se declarar leitura, o servidor é recusado) · C. sem garantia do Horus para o MCP (o "só lê" da `D-022` vale só para os bancos).
+**Por que esta:** o Horus controla a porta que é dele, o que o modelo vê e chama, e a garantia final fica com quem tem a chave do sistema, a organização. Abre-se mão de: ⚠️ a promessa deixa de ser "o Horus nunca age nos sistemas" e vira "o Horus só chama o que o owner declarou como leitura"; ⚠️ o owner responde por essa declaração, e o Horus não consegue provar que a ferramenta só lê.
+**Fica de fora / adiado:** como o middleware aplica a lista, bloqueia a ferramenta nova e registra as chamadas (`P-050`); a exigência de prova, e não declaração, de que a ferramenta só lê.
+**Afeta:** `D-286` (substituída em parte), `D-022` (o "só lê" para o MCP passa a valer como a promessa acima), `D-287`, `D-288`, `MF-124`, `MF-121`.
+**Hipóteses a validar:** 🔎 que o owner saiba distinguir as ferramentas de leitura; 🔎 que os clientes de cibersegurança aceitem uma promessa por lista.
+**Prova de valor:** o owner cadastra um servidor com ferramentas mistas, libera só as de leitura, e o modelo não consegue chamar as de escrita.
+**Reabrir quando:** um cliente exigir prova, e não declaração, de que a ferramenta só lê, ou um incidente de escrita ocorrer por um servidor MCP.
+
+### D-288 · O owner libera cada servidor MCP por role; um servidor novo nasce desligado para todos
+Situação: 🟢 decidida (resposta do dono em 08/11/2026, com a opção recomendada pelo PO) · Data: 08/11/2026 · Versão: v2.1 (`MF-124`)
+
+**Decisão:** fecha o `I-098`. Um servidor MCP recém-cadastrado (`D-287`) **nasce desligado para todas as pessoas**. O **owner da organização escolhe, por servidor, quais roles** (`D-050`) **podem usá-lo** nas perguntas de análise. Quem não tem a role não recebe nenhuma resposta enriquecida por aquele servidor.
+**Contexto:** o Horus garante que cada pessoa vê só o que pode ver. Um servidor MCP responde a partir de sistemas que o Horus não conhece, então a regra do "quem usa o quê" precisava de dono. O dono já havia decidido que o servidor só lê (`D-286`) e que só o owner o cadastra (`D-287`).
+**Opções avaliadas** (sem pontuação): **A. o owner libera por servidor, pelas roles (recomendação do PO, escolhida pelo dono)** · B. todas as pessoas, ao cadastrar · C. o próprio servidor decide, por pessoa.
+**Por que esta:** cada pessoa só alcança o que o owner liberou, e o Horus não precisa conhecer as regras internas de cada servidor. Abre-se mão de: ⚠️ mais uma configuração do owner a cada servidor; ⚠️ quem tem a role vê tudo o que aquele servidor devolve, e as regras mais finas ficam com a organização, que pode dividir a informação em mais de um servidor.
+**Fica de fora / adiado:** que o servidor filtre por pessoa (opção C), que fica como evolução; a segurança dos dados por pessoa (`MF-106`) não cobre o que um servidor MCP devolve; como as roles ganham o interruptor "usar este servidor" é do arquiteto e da mf.
+**Afeta:** `D-050`, `D-286`, `D-287`, `MF-124`, `MF-106`.
+**Hipóteses a validar:** 🔎 que dividir a informação em mais de um servidor baste às organizações com regras finas.
+**Prova de valor:** o owner cadastra um servidor, libera uma role, e só quem tem essa role recebe respostas que usam o servidor.
+**Reabrir quando:** organizações pedirem regras por pessoa dentro de um mesmo servidor, ou o owner achar pesado liberar servidor por servidor.
+
+### D-287 · Só o owner da organização cadastra os servidores MCP, no front do middleware
+Situação: 🟢 decidida (resposta do dono em 08/11/2026, com a opção recomendada pelo PO) · Data: 08/11/2026 · Versão: v2.1 (`MF-124`)
+
+**Decisão:** segunda metade do `I-097`, que a `D-286` abriu. **Só o owner da organização cadastra e gere os servidores MCP**, no front do middleware, como os bancos de dados e a IA (`D-273`). O gestor segue só no Horus (`D-262`) e não cadastra servidor.
+**Contexto:** cadastrar um servidor MCP dá ao Horus o endereço e o acesso a um sistema da casa da organização.
+**Opções avaliadas** (sem pontuação): **A. só o owner (recomendação do PO, escolhida pelo dono)** · B. o gestor pede pelo Horus e o owner aprova.
+**Por que esta:** quem dá acesso a um sistema da casa é quem responde pela organização, e não se cria um fluxo de pedido e aprovação a mais numa mf da v2.1. Abre-se mão de: ⚠️ o gestor que precisa de um servidor novo depende do owner.
+**Fica de fora / adiado:** quem, na organização, pode fazer a IA consultar cada servidor (`I-098`).
+**Afeta:** `D-281`, `D-282`, `D-273`, `D-262`, `MF-124`, `MF-121`.
+**Prova de valor:** o owner cadastra um servidor MCP da organização no front do middleware, sem ajuda da Maind.
+**Reabrir quando:** os gestores pedirem para cadastrar, ou o owner virar gargalo.
+
+### D-286 · Os servidores MCP da organização só leem; nenhuma ação sobre os sistemas dela
+Situação: 🟢 decidida (resposta do dono em 08/11/2026, com a opção recomendada pelo PO; substituída em parte pela `D-289`) · Data: 08/11/2026 · Versão: v2.1 (`MF-124`)
+
+**Decisão:** primeira metade do `I-097`. Os servidores MCP que a organização cadastra (`D-281`) **só entregam informação ao Horus**: nenhuma ação que altere algo nos sistemas da organização. Vale para eles o "só lê" da `D-022`. O que o servidor devolve sai da casa da organização só como parte da resposta pronta, como as demais fontes (`D-189`).
+**Contexto:** o dono quis que a organização cadastre servidores MCP próprios para customizar a extração de informação (`D-281`). A `D-022` dá ao Horus a promessa de nunca alterar dados nem executar ações nos sistemas da empresa, e a dúvida era se o servidor MCP, que pode oferecer ações, quebraria essa promessa.
+**Opções avaliadas** (sem pontuação): **A. só lê (recomendação do PO, escolhida pelo dono)** · B. lê e age, com cada ação desligada por padrão e ligada pelo owner.
+**Por que esta:** mantém a garantia que o cliente mais quer, a de que os sistemas dele ficam intocados. Abre-se mão de: ⚠️ o Horus não abre um chamado nem atualiza um cadastro a pedido da pessoa; isso só voltaria com uma decisão nova que reabra a `D-022`.
+**Fica de fora / adiado:** quem cadastra o servidor (a segunda metade do `I-097`); como o middleware garante que só usa ferramentas de leitura (`P-050`).
+**Afeta:** `D-281`, `D-282`, `D-022`, `MF-124`, `MF-121`.
+**Hipóteses a validar:** 🔎 que as organizações tenham o que consultar sem precisar de ação.
+**Prova de valor:** uma organização cadastra um servidor MCP e uma pergunta de análise é respondida com o que só ele sabe, sem que nada mude nos sistemas dela.
+**Reabrir quando:** clientes pedirem para o Horus agir nos sistemas deles, ou a promessa do "só lê" deixar de ser exigida.
+**Nota de 08/11/2026:** a `D-289` substitui esta decisão em parte: o Horus não controla o que um servidor MCP faz por dentro, e a promessa passa a ser que ele só chama as ferramentas que o owner liberou como de leitura. O resto (o servidor não age por vontade do Horus, e a `D-287`, quem cadastra) não muda.
+
+### D-285 · A rodada que cai com o middleware fora espera até uma hora: se ele volta, roda atrasada; senão, é pulada
+Situação: 🟢 decidida (resposta do dono em 08/11/2026, com a opção recomendada pelo arquiteto) · Data: 08/11/2026 · Versão: v2.0
+
+**Decisão:** quando o middleware da organização está fora na hora marcada de um **agendamento, alerta ou agente**, o Horus **espera até uma hora depois da hora marcada** (ou até a próxima rodada da mesma agenda, se ela vier antes). Se o middleware volta nesse prazo, a rodada **roda uma vez, atrasada**, e o relatório ou o aviso **diz que atrasou** ("Gerado às 08h20, previsto 08h00"). Passado o prazo, a rodada é **pulada** e a agenda segue. Nos dois casos o rastro da Auditoria registra o motivo. Nunca roda mais de uma rodada atrasada por agenda: não há rajada.
+**Contexto:** na pausa por assentos desativados (`D-075`), as rodadas perdidas não se refazem, e essa pausa é uma escolha da Maind. A queda do middleware não é escolha de ninguém, e uma queda de vinte minutos às 8h não deve fazer o relatório do dia faltar.
+**Opções avaliadas** (sem pontuação): **A. tenta de novo por uma hora (recomendação do arquiteto, escolhida pelo dono)** · B. pula a rodada e segue a agenda · C. refaz tudo que perdeu quando volta.
+**Por que esta:** cobre a queda curta sem rajada de relatórios, de mensagens (o WhatsApp tem custo) nem de gasto de IA. Abre-se mão de: ⚠️ o relatório pode chegar fora de hora, dizendo que atrasou.
+**Fica de fora / adiado:** o valor exato da janela (uma hora é o ponto de partida); o texto do aviso de atraso; se o dono do agendamento é avisado quando a rodada é pulada (hoje só o rastro registra); em qual mf moram as regras (depois que a arquitetura fechar).
+**Afeta:** `D-075` (a pausa por assentos não muda), `D-267`, `D-283`; a `ARQ-108`; `MF-121` e as mfs dos agendamentos, alertas e agentes.
+**Hipóteses a validar:** 🔎 que uma hora cubra a maioria das quedas; 🔎 que um relatório atrasado seja bem-vindo e não confunda.
+**Prova de valor:** numa queda curta do middleware, o relatório chega atrasado e diz que atrasou, em vez de faltar.
+**Reabrir quando:** quedas de mais de uma hora fizerem faltar relatório com frequência, ou os clientes pedirem para refazer as rodadas perdidas.
+
+### D-284 · A tela de entrada mostra um LED com o status do middleware: verde, amarelo ou vermelho, sempre com texto
+Situação: 🟢 decidida (resposta do dono em 08/11/2026, com a opção recomendada pelo arquiteto; a ideia do LED foi do dono) · Data: 08/11/2026 · Versão: v2.0
+
+**Decisão:** a **tela de entrada** da organização mostra um **LED com o status do middleware**: **verde** ("No ar"), **amarelo** ("Instável": o Horus o alcança, mas com falhas ou lentidão nos últimos minutos) e **vermelho** ("Fora do ar"). Há **sempre um texto ao lado da cor**. Clicar no LED abre a página de status da organização (`D-283`), que mostra os mesmos três valores. Com o amarelo a pessoa entra normalmente; com o vermelho vale o aviso da `D-283`.
+**Contexto:** o dono propôs o LED depois de a `D-283` pôr o status numa página aberta: a pessoa vê o estado antes de tentar entrar. O amarelo precisou de definição, porque a `D-275` só conhecia "no ar" e "fora".
+**Opções avaliadas** (sem pontuação): **A. amarelo é "instável" (recomendação do arquiteto, escolhida pelo dono)** · B. amarelo é "em manutenção anunciada" · C. só verde e vermelho.
+**Por que esta:** avisa antes de cair e explica o login lento ou intermitente. Abre-se mão de: ⚠️ o ponto em que "no ar" vira "instável" precisa ser calibrado com o uso.
+**Fica de fora / adiado:** a manutenção anunciada como estado próprio; se a página lista os períodos de instabilidade; em qual mf mora o LED (depois que a arquitetura fechar).
+**Afeta:** `D-283`; `D-275` (o estado do painel da instância ganha o valor "instável"); `MF-121`; a `ARQ-107`.
+**Hipóteses a validar:** 🔎 que o amarelo não dê alarme falso; 🔎 que a pessoa entenda "instável".
+**Reabrir quando:** o amarelo der alarme falso demais, ou as paradas planejadas pedirem um estado próprio.
+
+### D-283 · Com o middleware da organização fora do ar, a pessoa vê um aviso próprio, e cada organização tem uma página de status aberta
+Situação: 🟢 decidida (resposta do dono em 08/11/2026, com a opção recomendada pelo arquiteto; o direcionamento da página pelo endereço da organização, como o da tela de entrada, foi ideia do dono) · Data: 08/11/2026 · Versão: v2.0
+
+**Decisão:** (1) quando o middleware da organização está fora do ar, a tela de entrada e o app mostram um **aviso próprio**, e não um erro: a conexão da organização com o Horus está fora do ar desde a última vez que o Horus a alcançou, o restante do Horus segue no ar, a pessoa deve procurar o owner da organização, e há um botão para tentar de novo. (2) Cada organização tem uma **página de status no endereço dela, sem login**: se o middleware está no ar ou fora, desde quando, o último contato e as últimas quedas (início, fim e duração). A página **não mostra versão nem nome de pessoa**; a versão fica no painel da instância, para o administrador (`D-275`). Com o middleware compartilhado da Maind, a queda alcança todas as organizações do SaaS de uma vez; com o da casa do cliente, só a dele.
+**Contexto:** o login da organização mora no middleware (`D-258`), então cai junto. A `D-154` protege a confiança durante a manutenção do SaaS (uma página com a hora de volta), mas não cobre a queda do middleware da organização. O dono notou que uma tela de status atrás do login não abre justamente quando o middleware está fora, e propôs usar o mesmo conceito de direcionamento da tela de login (`D-258`).
+**Opções avaliadas** (sem pontuação): **A. aviso próprio mais a página de status antes do login (recomendação do arquiteto, escolhida pelo dono)** · B. uma tela de status dentro do Horus, atrás do login · C. só o aviso, sem página de status.
+**Por que esta:** protege a confiança: a pessoa sabe onde está o problema, quem é chamado é a TI do cliente, e não a Maind, e o status abre mesmo com o middleware fora. Abre-se mão de: ⚠️ quem tem o endereço da organização vê quando ela caiu e por quanto tempo.
+**Fica de fora / adiado:** o que acontece com os agendamentos e os agentes enquanto o middleware está fora; por quanto tempo se guarda o histórico de quedas; a página pública de estado da instância (`D-154`), que segue fora da v2.0; em qual mf moram o aviso e a página (depois que a arquitetura fechar).
+**Afeta:** `D-154` (reaberta em parte: a página de estado, agora por organização), `D-240` (quem é avisado segue igual), `D-275`, `MF-121`; a `ARQ-104` e a `ARQ-106`.
+**Hipóteses a validar:** 🔎 que o aviso evite o chamado à Maind por um problema que está na casa do cliente; 🔎 que os clientes aceitem as quedas à vista de quem tem o endereço.
+**Prova de valor:** numa queda do middleware, a pessoa abre o endereço da organização e lê o que houve, em vez de um erro.
+**Reabrir quando:** um cliente não aceitar que as quedas fiquem à vista de quem tem o endereço, ou a página pedir mais do que início, fim e duração.
+**Nota de 08/11/2026:** a página de status mostra as quedas dos **últimos noventa dias**; as mais antigas são apagadas (`ARQ-121`, resposta do dono).
+
+### D-282 · O cadastro de servidores MCP da organização é a MF-124, da v2.1
+Situação: 🟢 decidida (resposta do dono em 07/11/2026, com a opção recomendada) · Data: 07/11/2026 · Versão: v2.1
+
+**Decisão:** fecha o `I-096`. O cadastro de servidores MCP da organização (`D-281`) é uma **mf nova, a `MF-124:Servidores MCP da organização`** (nome provisório), da **v2.1**. A v2.1 passa a ter **5 mfs** (`MF-106`, `MF-119`, `MF-122`, `MF-123` e `MF-124`) e o produto, **24**. **Definição macro (rascunho do PO, a confirmar com o dono):**
+- **Quem ganha:** o **owner da organização**, que customiza como o Horus extrai informação e agrega o conhecimento e o processo da organização.
+- **Decisão que passa a ser possível:** usar na análise fontes e ferramentas que só a organização tem, sem esperar o Horus prever cada caso.
+- **O que é:** o owner cadastra, no front do middleware, servidores MCP que ficam na infraestrutura da organização (`D-281`); o contrato entre o SaaS e o middleware segue gRPC (`ARQ-099`).
+- **Prova de valor:** uma organização cadastra um servidor MCP dela e uma pergunta é respondida com o que só ele sabe. 🔎
+- **O que não inclui:** o servidor MCP como protocolo do contrato (`ARQ-099`); servidores MCP no SaaS ou da Maind; a decisão do que um servidor da organização pode ler e fazer (`I-097`).
+- **Depende de:** `MF-121:Middleware da organização` (o cadastro é nele); a segurança do `I-097`; `MF-104` (as fontes de dados).
+- **Valor:** **expande**: amplia os casos de uso, e a v2.1 não depende dela para entregar a promessa.
+**Contexto:** o dono deu a direção na `D-281` e deixou a versão em aberto (`I-096`). O PO recomendou a v2.1 como mf nova.
+**Opções avaliadas** (sem pontuação): **A. v2.1, mf nova (recomendação do PO, escolhida pelo dono)** · B. v2.0, dentro da `MF-105` · C. sem versão por enquanto.
+**Por que esta:** a v2.0 já tem 19 mfs e a segurança do MCP (`I-097`) não está decidida; a mf nasce depois de o middleware estar de pé e provado. Abre-se mão de: ⚠️ a organização só customiza a extração com servidores MCP a partir da v2.1.
+**Fica de fora / adiado:** a segurança e quem cadastra (`I-097`); o nome definitivo da mf; a página da `MF-124` no site de produto (`P-028`).
+**Afeta:** `D-281` (a versão), `MF-121`, `MF-104`, o inventário de produto (`04`, `06`, `07` e a visão geral), o documento 01 e os diagramas da arquitetura geral.
+**Hipóteses a validar:** 🔎 que organizações queiram cadastrar o próprio servidor MCP; 🔎 que o owner consiga fazê-lo sozinho.
+**Reabrir quando:** a segurança do `I-097` for decidida e um cliente pedir antes da v2.1, ou nenhuma organização tiver servidor MCP.
+**Nota de 07/11/2026:** a dependência é da `MF-104:Conectar as fontes vivas` (as fontes de dados), e não da `MF-105` (a IA), que o rascunho do PO citou por engano; corrigido também na `D-281` e no `I-096`. A decisão é a mesma.
+
+### D-281 · A organização poderá cadastrar os próprios servidores MCP, que ficam na infraestrutura dela, para customizar a extração de informação
+Situação: 🟢 decidida (direção dada pelo dono em 07/11/2026; a `D-282` definiu a versão, v2.1, na `MF-124`; a segurança segue em aberto, `I-097`) · Data: 07/11/2026 · Versão: v2.1 (`D-282`)
+
+**Decisão:** a **organização poderá cadastrar servidores MCP próprios**, para ampliar o leque de formas de extrair informação e customizar a análise: cada organização agrega o **conhecimento** e o **processo** dela dentro do Horus. Os servidores MCP **ficam na infraestrutura da organização** (a terceira zona do rascunho da `D-258`, com as pessoas, os bancos corporativos e os provedores de IA), e **o cadastro de cada servidor é feito no middleware**, no front dele, como a configuração dos bancos e da IA (`D-273`). É uma funcionalidade da organização, e **não** uma peça do contrato entre o SaaS e o middleware: o servidor MCP com ferramentas que o rascunho mostrava dentro do middleware sai do desenho, e o contrato é gRPC (`ARQ-099`).
+**Contexto:** ao ver a arquitetura geral, o dono disse que a ideia do servidor MCP no diagrama talvez não tenha sido boa: o que ele queria era permitir que a organização cadastre servidores MCP próprios. Em seguida precisou que eles ficam na infraestrutura da organização e que o cadastro é feito no middleware.
+**Opções avaliadas** (sem pontuação): direção dada pelo dono, sem alternativas avaliadas.
+**Por que esta:** cada organização customiza a extração e agrega o que sabe, sem o Horus ter de prever cada caso, e o servidor, na casa da organização, mantém o dado onde está, como os bancos (`D-189`). Abre-se mão de: ⚠️ ainda sem decisão: o que um servidor MCP da organização pode ler e fazer, diante da regra de só leitura (`D-001`) e de que os dados não saem da organização (`D-189`) (`I-097`).
+**Fica de fora / adiado:** a versão e se é uma mf nova (a próxima é a `MF-124`), parte da `MF-104` ou do front do middleware (`I-096`); quem cadastra (🔎 leitura do PO: o owner, como os bancos e a IA, `D-273`; `I-097`); como o middleware chama o servidor durante a análise; o que isso muda no custo e no tempo da resposta.
+**Afeta:** `D-001`, `D-189`, `D-190`, `D-195`, `D-196` (o protocolo "servidor MCP" não volta como contrato: é gRPC, `ARQ-099`), `D-273`, `MF-104`, `MF-121`, `P-042`, a arquitetura geral (infraestrutura separada).
+**Hipóteses a validar:** 🔎 que as organizações tenham, ou queiram ter, servidores MCP próprios; 🔎 que cadastrar um não abra um caminho para o dado sair da organização.
+**Reabrir quando:** nenhuma organização cadastrar um servidor MCP, ou o cadastro pedir um segundo canal além do middleware.
 
 ### D-280 · Definição macro revisada da MF-101:Administração da instância, com o middleware
 Situação: 🟢 decidida (proposta do PO, confirmada pelo dono em 07/11/2026) · Data: 07/11/2026 · Versão: v2.0
@@ -1311,7 +1481,7 @@ Situação: 🟢 decidida (regra dita pelo dono em 05/11/2026; a aplicação às
 **Reabrir quando:** uma parte de mf não puder virar mf nova nem subir de versão sem quebrar uma dependência.
 
 ### D-196 · Definição macro da MF-121:Middleware na casa do contratante
-Situação: ⚪ substituída em parte pelas `D-258`, `D-259`, `D-260` e `D-263` (a `MF-121` sobe inteira para a v2.0; é um middleware por organização, na Maind ou na casa do cliente; e ela deixa de depender da `MF-106`) · antes: 🟢 decidida (confirmada pelo dono em 05/11/2026, com um ajuste dele: o protocolo fica em aberto) · Data: 05/11/2026 · Versão: v2.1 (onda 2)
+Situação: ⚪ substituída em parte pelas `D-258`, `D-260`, `D-263` e `D-272` (a `MF-121` sobe inteira para a v2.0; o middleware atende várias organizações, na Maind ou na casa do cliente; e ela deixa de depender da `MF-106`) e pela `D-281` (o servidor MCP não é o protocolo do contrato, que é gRPC, `ARQ-099`) · antes: 🟢 decidida (confirmada pelo dono em 05/11/2026, com um ajuste dele: o protocolo fica em aberto) · Data: 05/11/2026 · Versão: v2.1 (onda 2)
 
 **Decisão:** a `MF-121:Middleware na casa do contratante` (nome provisório, mf nova) fica definida assim. Com ela, a onda 2 da v2.1 (`D-181`, `D-188`) está definida.
 - **O que é:** uma **imagem de container** que a Maind disponibiliza e o cliente instala na infraestrutura dele (`D-195`). Ela expõe um **endereço público** e um **par de chaves cadastrado no Horus SaaS**, na organização (`D-195`). O Horus a usa para chegar aos **dados, à internet e à IA** do cliente (`D-190`), e o cliente governa o caminho por **IP e porta**. **O protocolo fica em aberto**: pode ser um servidor MCP, uma API REST ou gRPC, **de preferência gRPC**; a escolha é do arquiteto (`P-042`).
@@ -1853,6 +2023,7 @@ Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, ao seguir as reco
 **Hipóteses a validar:** 🔎 que as janelas de manutenção serão frequentes o bastante no começo para a página valer o custo.
 **Prova de valor:** numa parada de manutenção, ninguém abre o app e vê uma tela de entrada funcionando seguida de falha; vê a hora de volta.
 **Reabrir quando:** um contratante exigir uma página pública do estado, ou um incidente mostrar que só o aviso não basta.
+**Nota de 08/11/2026:** a `D-283` põe na v2.0 uma página de status **por organização**, no endereço dela, para o middleware dela; a página pública do estado **da instância** segue fora da v2.0. O resto desta decisão (a página de manutenção do SaaS) não muda.
 
 ### D-153 · Os números de uso, os assentos e o aviso de custo continuam na MF-101 e viram Instance Cards prontos
 Situação: 🟢 decidida (confirmada pelo dono em 05/11/2026, ao seguir as recomendações; era proposta, leitura do PO) · Data: 05/11/2026 · Versão: v2.0
