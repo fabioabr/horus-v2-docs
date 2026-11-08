@@ -1,42 +1,121 @@
 <h3 id="pergunta-resposta-frase">Em uma frase</h3>
 <p>Esta parte mostra o caminho de uma pergunta de análise, a pergunta que a pessoa faz ao Horus no chat. Só a pergunta sai do <strong>SaaS</strong>, a parte do Horus que as pessoas usam, hospedada pela Maind. A análise roda no <strong>middleware</strong>, a parte que busca os dados no banco de dados da organização, e só a resposta pronta volta. (<code>D-189</code>, <code>D-258</code>)</p>
+<p>É o caminho que mais se repete no Horus: cada "quanto vendemos em outubro?" o percorre do começo ao fim, e a página mostra quem faz cada passo e o que acontece quando algo sai do esperado.</p>
 
 <h3 id="pergunta-resposta-desenho">O desenho</h3>
-<p>O desenho mostra, de cima para baixo, quem fala com quem e em que ordem.</p>
+<p>O desenho é de sequência: lê-se de cima para baixo, como uma linha do tempo, e mostra quem fala com quem e em que ordem.</p>
 <dx-diagrama ref="arq-geral-pergunta-resposta"></dx-diagrama>
 <ul>
-  <li><strong>Cada coluna é uma peça:</strong> no SaaS, o Atender, a parte que responde na hora, e o Avaliador de permissões; o middleware; o serviço de IA, de fora; e os bancos da organização.</li>
-  <li><strong>As faixas de 1 a 4</strong> são as etapas; as sem número, os desvios.</li>
-  <li><strong>A legenda dá o sentido das setas:</strong> caminho principal, resposta, permissão e tracejada. A tracejada só ocorre em alguns casos: web ligada, falha, sem contato ou segundo plano.</li>
-  <li><strong>O Registro de organizações</strong>, o cadastro em que o SaaS guarda o endereço de cada middleware, e <strong>o banco da organização</strong> estão nas notas das setas, que abrem ao clicar.</li>
+  <li><strong>Cada coluna é uma peça.</strong> Da esquerda para a direita: o Atender e o Avaliador de permissões, no SaaS; o middleware; o provedor de IA, o serviço de inteligência artificial de fora; e os bancos corporativos, os bancos de dados da própria organização.</li>
+  <li><strong>A linha tracejada que desce de cada peça é o tempo passando.</strong> A barra colorida sobre ela marca o trecho em que a peça está trabalhando.</li>
+  <li><strong>Cada seta é um recado de uma peça para outra.</strong> O nome fica em cima; embaixo, uma nota curta diz o que vai nele, com o código da decisão. Na visão geral o texto fica pequeno: para ler, basta aproximar com a roda do mouse.</li>
+  <li><strong>As faixas numeradas de 1 a 4 são as etapas do caminho normal:</strong> o pedido e a permissão, a ida da pergunta, o ciclo no middleware e a volta da resposta. As faixas sem número são os desvios, que só acontecem em alguns casos: o middleware fora do ar, a pesquisa na web, a consulta que falha e a leitura depois da consulta.</li>
+  <li><strong>A legenda, embaixo, dá o sentido das setas.</strong> A verde contínua é o caminho principal; a cinza tracejada, uma resposta que volta; a vermelha tracejada, a permissão; a roxa tracejada só acontece em alguns casos: com a web ligada, quando a consulta falha, sem contato com o middleware ou em segundo plano.</li>
+  <li><strong>Duas peças não têm coluna</strong> e aparecem só nas notas: o Registro de organizações, o cadastro em que o SaaS guarda o endereço de cada middleware, e o banco da organização no SaaS, onde a resposta fica gravada.</li>
+  <li><strong>Ficam fora do desenho</strong> a pergunta do owner da instância, o funcionário da Maind que administra a instalação, sobre a história de uso do Horus, que não passa por middleware, e o modo conversa, sem fonte de dados. (<code>D-276</code>, <code>D-215</code>)</li>
 </ul>
 
 <h3 id="pergunta-resposta-como-funciona">Como funciona</h3>
 
+<h4 id="pergunta-resposta-pecas">As peças do caminho e o que cada uma faz</h4>
+<p><strong>Em resumo:</strong> no SaaS ficam a tela e quem decide se a pessoa pode perguntar; no middleware fica tudo o que toca os dados da empresa e a inteligência artificial.</p>
+<ul>
+  <li><strong>O Atender</strong> é o papel do servidor do Horus que responde na hora: recebe a pergunta, encaminha e mostra a resposta à medida que ela chega. (<code>ARQ-004</code>, <code>ARQ-024</code>)</li>
+  <li><strong>O Avaliador de permissões</strong> é o único ponto do SaaS que responde "esta pessoa pode isto?". Toda tela, todo canal e todo trabalho em segundo plano perguntam a ele. (<code>ARQ-008</code>)</li>
+  <li><strong>O middleware</strong> guarda as senhas dos bancos da empresa e a chave da IA, cadastradas pelo owner da organização, e faz a análise. (<code>D-189</code>, <code>D-273</code>)</li>
+  <li><strong>O provedor de IA</strong> é a conta de inteligência artificial que a organização contratou, ou a chave que a Maind dá a ela e paga. Só o middleware fala com ele. (<code>D-266</code>, <code>D-267</code>)</li>
+  <li><strong>Os bancos corporativos</strong>, como o de vendas ou o financeiro, o Horus só lê: nunca altera um dado nem executa uma ação nos sistemas da empresa. (<code>D-022</code>)</li>
+</ul>
+<p><strong>As pessoas.</strong> O <strong>owner da organização</strong>, que administra a organização no Horus, configura o middleware: os bancos, a IA e quem pode entrar. A <strong>TI do cliente</strong>, a equipe de tecnologia da empresa, cuida do middleware quando ele fica na rede dela. A <strong>equipe da Maind</strong> dá suporte. (<code>D-273</code>, <code>ARQ-104</code>)</p>
+
 <h4 id="pergunta-resposta-quando-pergunta">O que acontece quando alguém pergunta?</h4>
-<p>O Atender recebe a pergunta. O <strong>Avaliador de permissões</strong> diz se a pessoa pode perguntar, sem consultar o middleware. Na dúvida, ele nega. (<code>ARQ-008</code>)</p>
-<p>Para isso, o SaaS guarda de cada pessoa só um código, sem nome. O código traz o tipo de assento, que é a licença dela, as permissões e os grupos, que o middleware atualiza. (<code>ARQ-109</code>, <code>ARQ-123</code>)</p>
-<p>Do acesso da pessoa, o SaaS só sabe qual é a organização. Com isso, acha o endereço do middleware no Registro de organizações, e esse endereço nunca aparece para quem usa. Ele foi combinado pelo <strong>certificado</strong>, uma identidade digital que prova quem é quem. (<code>ARQ-102</code>, <code>ARQ-124</code>)</p>
+<p><strong>Em resumo:</strong> antes de tudo, o SaaS confere sozinho se a pessoa pode perguntar e descobre qual é o middleware da organização dela. Nada disso exige chamar o middleware, e nada passa pelo navegador.</p>
+<p><strong>Quem decide se a pessoa pode.</strong> O Atender recebe a pergunta, do app ou da Pergunta rápida, a janela de pergunta que abre em qualquer tela do Horus. O Avaliador de permissões responde se a pessoa pode, sem consultar o middleware. Na dúvida, nega. (<code>ARQ-008</code>, <code>ARQ-123</code>)</p>
+<p><strong>O que o SaaS sabe da pessoa.</strong> Nem o nome nem o e-mail. De cada pessoa, o SaaS guarda só um código, que não deriva de nenhum dos dois, e, ligados a ele (<code>ARQ-109</code>, <code>ARQ-123</code>):</p>
+<ul>
+  <li>o <strong>tipo de assento</strong>, a vaga paga que a pessoa ocupa, que vem antes de qualquer outra regra;</li>
+  <li>as <strong>permissões</strong> que as roles dela liberam; as roles são os papéis que o owner da organização monta, botão a botão;</li>
+  <li>os <strong>grupos</strong> dela e a <strong>carteira do gestor</strong>, as pessoas que um gestor acompanha.</li>
+</ul>
+<p>O middleware envia esses dados a cada mudança, e, depois de uma queda dele, o SaaS pede tudo de novo para conferir. Os nomes ficam no middleware. (<code>ARQ-123</code>, <code>ARQ-109</code>)</p>
+<p><strong>Por que é assim.</strong> A mesma pergunta, "pode?", chega de cinco lugares, entre eles o WhatsApp, os agentes e os agendamentos; só um ponto único garante a mesma resposta em todos. E, com a tabela de códigos, o SaaS decide sozinho, sem saber quem é a pessoa. O que se abre mão: o SaaS guarda, ligado ao código, o que a pessoa pode fazer, mas nunca quem ela é. (<code>ARQ-008</code>, <code>ARQ-123</code>)</p>
+<div class="callout callout--info"><span class="ico">i</span><div><b>Analogia</b><p>É como a portaria de um prédio comercial com uma lista de crachás: o porteiro confere se o crachá dá acesso ao andar sem interfonar para a empresa lá em cima. A analogia para aqui: a lista do Avaliador não traz nomes, só códigos, e quem a mantém em dia é o middleware, que manda cada mudança assim que ela acontece.</p></div></div>
+<p><strong>Quanto a IA pode interpretar.</strong> Junto com a permissão vale o nível de inferência, o quanto a IA pode ir além do que os números dizem. Vale o menor de três: o que a pessoa pediu, o máximo que as roles dela liberam e o teto de cada fonte de dados. A role pode baixar o teto, nunca subir. Por exemplo: o banco de vendas aceita até o nível 3, e o financeiro, até o 1; a role "Comercial" baixa o limite para o 2; quem a tem recebe o nível 2 nas vendas e o 1 no financeiro. (<code>ARQ-025</code>, <code>D-220</code>)</p>
+<p><strong>Como o SaaS acha o middleware certo.</strong> A sessão da pessoa, o registro de que ela entrou, carrega só o identificador da organização. Com ele, o SaaS consulta o Registro de organizações e acha o endereço e a porta do middleware, que nunca vão ao navegador. Esse endereço foi combinado na criação da organização, pelo certificado, uma espécie de carteira de identidade digital que prova a cada lado que o outro é quem diz ser. (<code>ARQ-102</code>, <code>ARQ-124</code>)</p>
+<p><strong>Por que o endereço fica fora da sessão.</strong> Na sessão, o endereço da rede de um cliente passaria pelo navegador de cada pessoa, e mudá-lo obrigaria todos a entrar de novo. Em troca, o SaaS mantém o cadastro. (<code>ARQ-102</code>)</p>
 
 <h4 id="pergunta-resposta-no-middleware">O que o middleware faz com a pergunta?</h4>
-<p>A análise roda toda no middleware, com a IA e os bancos da organização. As senhas de acesso ficam lá, cadastradas pelo <strong>owner da organização</strong>, a pessoa que administra a organização no Horus. (<code>D-189</code>, <code>D-273</code>)</p>
-<p>A IA escreve a consulta e o texto, mas <strong>os números vêm sempre do banco</strong>. A consulta que falha ou volta vazia ganha uma tentativa de conserto. Com a web ligada, cada fato traz link e data. (<code>D-022</code>, <code>D-215</code>)</p>
-<p>O middleware, na Maind ou na casa do cliente, atende várias organizações. Elas ficam separadas por uma etiqueta em cada registro, um filtro em toda consulta e uma chave própria, que tranca as senhas. (<code>D-272</code>, <code>ARQ-103</code>)</p>
+<p><strong>Em resumo:</strong> a análise roda toda no middleware. A IA escreve a consulta e o texto, o banco da empresa dá os números, e o middleware devolve a resposta pronta.</p>
+<p><strong>O ciclo, passo a passo.</strong> No middleware, a pergunta passa por estas trocas, que formam a faixa 3 do desenho (<code>D-258</code>, <code>D-273</code>):</p>
+<ol>
+  <li>O middleware manda a pergunta à IA da organização, configurada pelo owner da organização.</li>
+  <li>A IA devolve a consulta, o pedido escrito na linguagem do banco; o plano dos blocos que a pessoa vai ver, como um gráfico ou uma tabela; e a prosa de abertura, o texto que introduz a resposta.</li>
+  <li>O middleware roda a consulta no banco corporativo, com a senha que o owner da organização cadastrou, com dois limites: no máximo 500 linhas e 30 segundos.</li>
+  <li>O banco devolve as linhas, o resultado. É delas que saem os números da resposta.</li>
+</ol>
+<p><strong>Os números vêm sempre do banco.</strong> A IA escreve a consulta, o plano e o texto, mas nunca os números. Por isso o gráfico mostra o que está nos dados da empresa, e não o que a IA supõe.</p>
+<div class="callout callout--info"><span class="ico">i</span><div><b>Analogia</b><p>É como um analista que redige o relatório, mas copia cada número da planilha oficial, nunca de cabeça. A analogia para aqui: no Horus, quem redige não tem acesso livre ao arquivo; o pedido ao banco passa pelo middleware, que só roda consultas de leitura, com limite de tamanho e de tempo.</p></div></div>
+<p><strong>Por que a análise roda no middleware.</strong> Consultar o banco exige a senha dele, e usar a IA, a chave dela. Se a análise rodasse no SaaS, as duas teriam de sair da empresa. No middleware, elas ficam onde a organização as cadastrou, e o SaaS nunca se conecta ao banco da empresa: faz o pedido e recebe o resultado. (<code>D-189</code>, <code>D-258</code>)</p>
+<p><strong>O que se abre mão.</strong> No padrão, o suporte da Maind não vê a consulta nem os dados, e só vê mais se as saídas extras forem liberadas. E a promessa de que a Maind não vê as senhas só vale por inteiro com o middleware na casa do cliente: no da Maind, quem o opera ainda poderia, tecnicamente, alcançá-las. (<code>D-189</code>, <code>D-273</code>)</p>
+<p><strong>Várias organizações no mesmo middleware.</strong> O da Maind atende todas as organizações que usam o Horus pela Maind; o do cliente, as dele. Uma etiqueta em cada registro, um filtro em toda consulta e uma chave própria de cada organização, que tranca as senhas dela, as mantêm separadas. O que se ganha e o que se arrisca está em <a href="#infra-separada">A infraestrutura separada</a>. (<code>D-272</code>, <code>ARQ-103</code>)</p>
+
+<h4 id="pergunta-resposta-desvios">Quando a consulta falha e quando entra a web</h4>
+<p><strong>Em resumo:</strong> a consulta que falha ou volta vazia ganha uma tentativa de conserto. A pesquisa na web, quando ligada, traz fatos de fora, cada um com link e data, ao lado dos números da empresa.</p>
+<p><strong>Uma tentativa de conserto.</strong> Se a consulta escrita pela IA dá erro no banco ou volta sem nenhuma linha, o middleware pede à IA uma única tentativa de consertá-la e refazer o plano, e a consulta nova roda de novo no banco.</p>
+<p><strong>A pesquisa na web.</strong> Quando a role permite, a pessoa pode ligar o interruptor "pesquisar na web", para cruzar um número da empresa com um fato de fora. A busca é a do próprio serviço de IA da organização, no middleware, e corre ao mesmo tempo que a consulta. A ela vai só o texto da pergunta, nunca as linhas do banco. Se o serviço de IA não tem busca própria, como o Amazon Bedrock, a opção não aparece. (<code>D-215</code>, <code>ARQ-027</code>, <code>ARQ-026</code>)</p>
+<p><strong>Fato com link e data.</strong> Cada fato vem com o link da fonte e a data de publicação, lida na própria página; sem data, o Horus avisa que não conseguiu identificá-la. Uma conferência tira do texto todo link que não esteja na lista de fatos. Se a pesquisa não traz fato nenhum, a resposta sai com os dados da empresa e um aviso curto. (<code>D-006</code>, <code>ARQ-026</code>, <code>D-243</code>)</p>
+<p><strong>A leitura depois da consulta.</strong> Com a Análise avançada ligada, uma opção que pede a leitura do resultado real, ou com a web, entra mais uma etapa: ela olha o resultado e escreve uma seção que junta os números e os fatos de fora. O fato da web entra em qualquer nível de inferência; uma causa vinda de fora dos dados, só do nível 4 em diante. (<code>ARQ-025</code>, <code>ARQ-026</code>)</p>
+<p><strong>Um exemplo, passo a passo.</strong> A gerente financeira de uma rede de supermercados liga "pesquisar na web" e pergunta se as vendas de outubro acompanharam a inflação do mês.</p>
+<ol>
+  <li>O Avaliador de permissões confere que a role dela permite a pesquisa.</li>
+  <li>No middleware, o texto da pergunta vai à busca do serviço de IA da organização; ao mesmo tempo, a IA escreve a consulta das vendas de outubro, que roda no banco da rede.</li>
+  <li>O banco devolve as vendas; a busca devolve o índice de inflação, com o link e a data da publicação.</li>
+  <li>A leitura depois da consulta compara os dois. Como o nível da gerente fica abaixo do 4, a resposta mostra o fato, mas não arrisca uma causa vinda de fora dos dados.</li>
+  <li>A gerente vê o gráfico das vendas e, separado, o índice com o link e a data. Sem o índice, veria os dados da empresa e um aviso curto.</li>
+</ol>
 
 <h4 id="pergunta-resposta-o-que-volta">O que volta para a pessoa?</h4>
-<p>Volta só a resposta pronta, que o SaaS guarda e mostra ao vivo. Junto vem a contagem de uso da IA, sem o conteúdo, com que o owner da organização vê o consumo e o custo no Horus. (<code>ARQ-024</code>, <code>ARQ-117</code>)</p>
-<p>Se a IA parar, o owner da organização é avisado, e a equipe da Maind também, se a chave da IA for da Maind. Nomes de pessoas não passam por aqui. (<code>D-268</code>, <code>ARQ-109</code>)</p>
+<p><strong>Em resumo:</strong> volta só a resposta pronta, que a pessoa vê chegar na tela, e uma contagem de uso da IA, sem conteúdo nenhum.</p>
+<p><strong>A resposta pronta.</strong> São os blocos que a pessoa vê: o texto, o gráfico, a tabela. O Atender a grava no banco da organização no SaaS antes de terminar e a mostra ao vivo, à medida que chega. A consulta usada e o resultado inteiro em planilha (CSV) não voltam: são saídas extras, desligadas; quem pode ligá-las está em <a href="#infra-separada">A infraestrutura separada</a>. (<code>D-189</code>, <code>ARQ-024</code>, <code>ARQ-116</code>)</p>
+<p><strong>A contagem de uso da IA.</strong> Em separado, o middleware manda uma linha de contagem: a hora, o modelo de IA, os tokens, a medida de quanto texto a IA processou, e de quem é a chave, da organização ou da Maind. Não vão a pergunta nem a resposta. Com ela, o owner da organização vê o consumo e o custo de toda a IA da organização no próprio Horus, na tela que a versão atual já tem. Com o middleware fora do ar, a contagem chega atrasada e se completa quando ele volta. (<code>ARQ-117</code>, <code>D-267</code>)</p>
+<p><strong>Por que só a contagem.</strong> O owner da organização vê o gasto num lugar só, e o aviso de custo tem o uso de que precisa, sem conteúdo no SaaS. O que se abre mão: o SaaS passa a saber quanto a organização usa da própria chave, ainda que não o que foi perguntado. (<code>ARQ-117</code>)</p>
+<p><strong>Quando a IA para.</strong> Se a chave é recusada ou o crédito acaba, o aviso chega pelo mesmo caminho. O owner da organização o vê na área de avisos, dentro do Horus, e, se preferir, por e-mail; se a chave é a que a Maind dá, a equipe da Maind também é avisada, no painel da instância, a tela em que a Maind administra o Horus. (<code>ARQ-117</code>, <code>D-268</code>, <code>ARQ-118</code>)</p>
+<p><strong>O retorno da pessoa.</strong> Os botões de gostei, não gostei e reportar ficam no SaaS, e o reporte guarda uma cópia da resposta para o owner da organização. (<code>ARQ-028</code>)</p>
+
+<h4 id="pergunta-resposta-exemplo">O caminho inteiro, num exemplo</h4>
+<p><strong>Um exemplo, passo a passo.</strong> O diretor financeiro de uma rede de farmácias pergunta: "qual foi o faturamento de outubro, por loja?".</p>
+<ol>
+  <li>O Avaliador de permissões olha a linha do código do diretor: o tipo de assento dele permite perguntar, e as roles liberam o chat. A resposta é sim, sem chamar o middleware.</li>
+  <li>O SaaS lê, na sessão, só o identificador da organização "Farmácias", acha no Registro de organizações o middleware dela e manda a pergunta. O navegador do diretor nunca vê esse endereço.</li>
+  <li>No middleware, a IA escreve a consulta do faturamento por loja, o plano de um gráfico de barras e o texto de abertura.</li>
+  <li>O middleware roda a consulta no banco de vendas, com a senha que o owner da organização cadastrou, e recebe uma linha por loja.</li>
+  <li>A resposta pronta, com os números dessas linhas, volta ao SaaS. O Atender a grava e a mostra ao diretor à medida que chega.</li>
+  <li>Em separado, chega a linha de contagem, que o owner da organização vê, somada às outras, na tela de consumo da IA.</li>
+</ol>
+<p>O SaaS nunca viu a senha do banco nem a tabela de vendas: só a pergunta e a resposta pronta. (<code>D-189</code>)</p>
+
+<h4 id="pergunta-resposta-na-tela-ou-nao">Na tela ou em segundo plano</h4>
+<p><strong>Em resumo:</strong> no app e na Pergunta rápida, a resposta aparece ao vivo; no WhatsApp e nos agentes, o mesmo caminho roda em segundo plano.</p>
+<p>Nesses dois, ele roda no Trabalhar, o papel do servidor que trabalha sem tela, como um trabalho numa fila. Quem olha a tela precisa ver a resposta chegando; quem não olha precisa da garantia de que nada se perde, mesmo que o servidor pare no meio. O resto está em <a href="#segundo-plano">O que roda sozinho</a>. (<code>ARQ-024</code>, <code>ARQ-005</code>)</p>
 
 <h4 id="pergunta-resposta-middleware-fora">E se o middleware cair?</h4>
-<p>O SaaS acompanha o middleware em três estados: no ar, instável e fora do ar. Fora do ar, a pergunta não chega. Um aviso manda procurar o owner da organização e diz que o resto do Horus segue no ar. Um botão tenta de novo. A queda do middleware da Maind alcança todas as organizações dele. (<code>ARQ-104</code>, <code>ARQ-107</code>)</p>
+<p><strong>Em resumo:</strong> com o middleware fora do ar, a pergunta não chega a ele. No lugar da resposta, a pessoa vê um aviso que diz onde está o problema e a quem recorrer.</p>
+<p><strong>Os três estados.</strong> O SaaS classifica o contato com o middleware de cada organização em três estados: no ar; instável, com falhas ou lentidão nos últimos minutos; e fora do ar, sem contato. A tela de entrada os mostra numa luz verde, amarela ou vermelha, sempre com o texto ao lado, para quem não distingue as cores. Com a amarela, a pessoa usa o Horus normalmente; a luz só avisa. (<code>ARQ-107</code>)</p>
+<p><strong>O que a pessoa vê com o middleware fora.</strong> No lugar das respostas, um aviso próprio diz que a conexão da organização está fora do ar desde a hora do último contato, que o restante do Horus segue no ar e que é preciso procurar o owner da organização; um botão tenta de novo. O aviso não mostra endereço, porta nem detalhe da infraestrutura. (<code>ARQ-104</code>)</p>
+<p>Clicar na luz abre a página de status, no endereço da organização, sem login: o estado, desde quando, o último contato e as últimas quedas, guardadas por noventa dias. O SaaS a responde sozinho; por isso ela abre justamente quando o middleware está fora. (<code>ARQ-106</code>, <code>ARQ-121</code>)</p>
+<p><strong>Por que um aviso, e não um erro.</strong> Com um erro qualquer, a pessoa concluiria que errou a senha ou que o Horus inteiro quebrou. Com o aviso, quem é chamado é quem cuida do middleware, a TI do cliente quando ele fica na casa do cliente, e não a Maind. O preço é o SaaS ter de distinguir a queda do middleware de uma manutenção do Horus inteiro. (<code>ARQ-104</code>)</p>
+<div class="callout callout--info"><span class="ico">i</span><div><b>Analogia</b><p>É como o aviso de linha interrompida numa estação de metrô: diz qual linha parou, desde quando, e que as outras seguem funcionando. A analogia para aqui: o aviso do Horus não promete hora de volta, porque a queda do middleware não é planejada.</p></div></div>
+<p><strong>Quem já estava dentro.</strong> O login também mora no middleware; com ele fora, ninguém da organização entra. Quem já estava com a sessão aberta continua dentro, mas toda tela que depende do middleware mostra o aviso. (<code>ARQ-111</code>, <code>ARQ-109</code>, <code>ARQ-104</code>)</p>
+<p><strong>Quando o middleware está desatualizado.</strong> O SaaS conversa com a versão atual do middleware e com a anterior. Uma mais velha é recusada: a luz fica vermelha com o texto "Atualização necessária", e quem hospeda o middleware o atualiza. (<code>ARQ-114</code>)</p>
+<p><strong>Uma queda, várias organizações.</strong> Se o middleware da Maind cai, o aviso aparece para todas as organizações que ele atende. Isso é aceito na versão 2.0, num servidor só, e deixa de acontecer na produção real, a fase seguinte, numa nuvem pública, com várias cópias dele. A queda não gera e-mail ao owner da organização. (<code>ARQ-104</code>, <code>D-272</code>, <code>ARQ-112</code>, <code>ARQ-118</code>)</p>
 
 <h3 id="pergunta-resposta-falta-decidir">O que falta decidir nesta parte</h3>
 <p>O arquiteto do Horus decide como o Horus é construído por dentro.</p>
 <ul>
   <li><strong>Cabe ao arquiteto do Horus decidir:</strong>
     <ul>
-      <li>onde ficam as etapas da análise além da IA e das consultas: no SaaS ou no middleware (<code>P-040</code>, <code>P-048</code>);</li>
-      <li>o que o middleware manda ao SaaS enquanto a resposta se forma (<code>P-042</code>, <code>P-048</code>).</li>
+      <li>onde ficam as etapas da análise além da IA e das consultas: no SaaS ou no middleware (<code>P-040</code>, <code>P-048</code>). <em>O que está em jogo:</em> a IA e as consultas já rodam no middleware, e só a pergunta e a resposta pronta atravessam o canal (<code>D-189</code>, <code>D-258</code>). As outras etapas do Motor de análise, o conjunto de passos que transforma a pergunta em resposta, ainda não têm lado, e por isso não aparecem no desenho. A decisão diz quanto da análise a TI do cliente passa a hospedar quando o middleware fica na casa dela; a etapa que ficar no SaaS terá de trabalhar só com o que atravessa o canal.</li>
+      <li>o que o middleware manda ao SaaS enquanto a resposta se forma (<code>P-042</code>, <code>P-048</code>). <em>O que está em jogo:</em> a tela mostra a resposta ao vivo, enquanto ela se forma (<code>ARQ-024</code>), e o canal entre o SaaS e o middleware permite que ela chegue em pedaços (<code>ARQ-099</code>). A decisão diz o que, desses pedaços, atravessa o canal enquanto a análise roda, sem quebrar a regra de que só a pergunta e a resposta pronta saem do middleware (<code>D-189</code>).</li>
     </ul>
   </li>
   <li><strong>Também depende, e está explicado em outras páginas:</strong> a separação entre as organizações de um mesmo middleware e quem liga as saídas extras, como baixar o resultado em planilha (<a href="#infra-separada">A infraestrutura separada</a>); a política do certificado e a chave única da proteção dos dados por pessoa, na v2.1 (<a href="#seguranca">Segurança em camadas</a>); onde ficam a explicação dos dados para a IA e a lista de modelos de IA, e como a IA chama, na v2.1, os programas da organização (<a href="#modulos">Os módulos</a>); onde ficam as permissões de cada código e como o SaaS mede o estado do middleware (<a href="#execucao">Como roda</a>); onde roda a pergunta sobre a história de uso do Horus (<a href="#dados">Onde mora cada dado</a>); se a fonte de páginas web continua (<a href="#integracoes">Com quem conversa fora</a>); e a conferência jurídica do código que sobra de quem é excluído (<a href="#criar-organizacao">Criar uma organização</a>).</li>

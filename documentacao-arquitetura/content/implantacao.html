@@ -1,71 +1,142 @@
 <h3 id="implantacao-frase">Em uma frase</h3>
-<p>O Horus roda em duas fases. Na v2.0, o SaaS, a parte que as pessoas usam, e o middleware da Maind, que busca os dados da empresa, ficam num servidor alugado. Na produção real, vão para uma nuvem, em várias cópias.</p>
+<p>O Horus roda em duas fases. Na v2.0, o <strong>SaaS</strong>, a parte que as pessoas usam, e o <strong>middleware</strong> da Maind, a parte que busca os dados no banco da empresa cliente, rodam num servidor alugado, um de cada. Na <strong>produção real</strong>, que começa com a primeira organização que pagar, os dois vão para uma nuvem pública, em várias cópias ao mesmo tempo. (<code>ARQ-112</code>)</p>
+<p>Em qualquer fase, o programa é o mesmo: muda só onde ele roda e quantas cópias dele rodam juntas. O middleware que uma empresa prefira ter dentro da própria rede já vale na v2.0 e roda do mesmo jeito nas duas fases. (<code>ARQ-113</code>, <code>D-260</code>)</p>
 
 <h3 id="implantacao-desenho">O desenho</h3>
-<p>O desenho mostra onde cada parte roda e como chega uma versão nova. Cada instalação que roda sozinha é uma instância.</p>
+<p>O desenho mostra onde cada parte do Horus roda em cada fase, como uma versão nova chega até lá e como o SaaS alcança cada middleware. Cada instalação que roda sozinha, com o seu endereço e os seus dados, é uma <strong>instância</strong>.</p>
 <dx-diagrama ref="arq-geral-implantacao"></dx-diagrama>
 <ul>
-  <li><strong>Os grupos grandes são os lugares:</strong> a v2.0 à esquerda, a produção real à direita e a casa do cliente embaixo.</li>
-  <li><strong>Duas molduras menores</strong> separam, no servidor alugado, o pacote do SaaS e o do middleware.</li>
-  <li><strong>A cor diz o tipo da peça,</strong> conforme a legenda.</li>
-  <li><strong>As setas destacadas</strong> levam a versão nova ao teste e ao uso real.</li>
-  <li><strong>As setas de segurança</strong> são o canal entre o SaaS e cada middleware.</li>
+  <li><strong>As três molduras grandes são os lugares.</strong> À esquerda, o servidor alugado da v2.0, "sem meta de disponibilidade". À direita, a produção real, numa nuvem pública, com a meta de 99,9% por mês. Embaixo, a casa do cliente, onde a TI do cliente, a equipe de tecnologia da empresa, roda o middleware dela.</li>
+  <li><strong>Duas molduras tracejadas, dentro do servidor alugado,</strong> separam os dois pacotes isolados: o do SaaS e o do middleware, cada um com o seu banco. O nome delas, "docker compose", é o do arquivo que liga os programas numa máquina, cada um no seu pacote.</li>
+  <li><strong>Cada bloco é um cartão.</strong> No alto do cartão ficam o nome da peça e a tecnologia que ela usa; no meio, o que ela faz; embaixo, etiquetas curtas. Na visão geral o texto fica pequeno: para ler, basta aproximar com a roda do mouse ou clicar no cartão, que abre o detalhe. A legenda, embaixo, separa as peças em quatro tipos: o SaaS, os bancos, o middleware e o que fica fora do Horus.</li>
+  <li><strong>As setas verdes e mais grossas</strong> seguem o caminho de uma versão nova: da esteira automática do GitHub, o serviço que guarda o código do Horus, no alto, para a homologação, a área de teste, e daí para o uso real, no servidor alugado ou na nuvem. O uso real da v2.0 aparece como "PRD da v2.0", de produção.</li>
+  <li><strong>As setas vermelhas tracejadas</strong> são o canal protegido entre o SaaS e cada middleware. O texto delas diz "contrato gRPC" ou "gRPC · TLS": gRPC é o nome do canal, com regras fixas sobre o que passa por ele, e TLS é a conexão cifrada, embaralhada para quem está de fora.</li>
+  <li><strong>As setas cinzas</strong> ligam cada programa ao seu banco ("dados") e o middleware do cliente aos bancos da empresa, só pelo que está na lista de permitidos.</li>
+  <li><strong>Três visões guiadas,</strong> na aba Explicações, destacam um recorte de cada vez: "As duas fases da Maind", "Como a versão chega" e "A casa do cliente". Para caber, ficam fora do desenho a ligação do middleware da Maind aos bancos das empresas, as cópias de segurança e o serviço que testa o Horus de fora.</li>
 </ul>
 
 <h3 id="implantacao-como-funciona">Como funciona</h3>
 
-<h4 id="implantacao-duas-fases">O que muda da v2.0 para a produção real</h4>
-<div class="table-wrap">
-  <table class="t">
-    <thead><tr><th>Peça</th><th>Na v2.0 (servidor alugado)</th><th>Na produção real (nuvem)</th></tr></thead>
-    <tbody>
-      <tr class="zebra"><td>SaaS e middleware da Maind</td><td>Um pacote de cada</td><td>Várias cópias de cada</td></tr>
-      <tr class="zebra"><td>Banco do SaaS</td><td>No próprio servidor</td><td>Cuidado pela nuvem, em São Paulo</td></tr>
-    </tbody>
-  </table>
-</div>
-<p>Na v2.0, o mesmo servidor serve à construção, ao teste e ao uso real. Ele tem um endereço próprio, ao lado da versão de hoje. Cada parte roda num pacote isolado (docker compose). Se a máquina para, tudo para, o que é aceito agora. (<code>ARQ-112</code>, <code>ARQ-055</code>, <code>ARQ-056</code>, <code>ARQ-065</code>, <code>ARQ-098</code>)</p>
-<p>A produção real começa com a primeira organização paga. Nela, um serviço da nuvem que cuida dos servidores sozinho (Kubernetes gerenciado) mantém várias cópias de cada parte. Se uma cai, outra atende. (<code>ARQ-092</code>, <code>ARQ-093</code>, <code>ARQ-112</code>)</p>
+<h4 id="implantacao-duas-fases">As duas fases: o servidor alugado agora, a nuvem depois</h4>
+<p><strong>Em resumo:</strong> enquanto nenhuma organização paga pelo Horus, ele roda do jeito mais simples, num servidor só. Com a primeira organização paga, ele passa a uma nuvem, em várias cópias, para não parar quando uma peça falha. (<code>ARQ-092</code>, <code>ARQ-112</code>)</p>
+<p><strong>Quem é quem.</strong></p>
+<ul>
+  <li><strong>O servidor alugado</strong> (a VPS) é uma máquina alugada num provedor de hospedagem. Nele a v2 é construída, testada e usada na v2.0. (<code>ARQ-055</code>)</li>
+  <li><strong>A imagem</strong> é a versão pronta de cada parte, montada uma vez só e guardada como um pacote fechado. O SaaS tem a sua, e o middleware, a dele. (<code>ARQ-101</code>, <code>ARQ-113</code>)</li>
+  <li><strong>O Kubernetes gerenciado</strong> é um serviço da nuvem que mantém várias cópias do mesmo programa rodando e põe outra no lugar da que cair. Cada cópia se chama réplica. (<code>ARQ-093</code>)</li>
+  <li><strong>O PostgreSQL 17</strong> é o programa de banco de dados do Horus. Na nuvem, quem cuida dele é o provedor, e por isso ele se chama Postgres gerenciado. (<code>ARQ-093</code>)</li>
+</ul>
+<p><strong>O que muda de uma fase para a outra.</strong></p>
+<ul>
+  <li><strong>O SaaS e o middleware da Maind:</strong> na v2.0, um de cada, em docker compose; na produção real, várias cópias de cada, no Kubernetes gerenciado. (<code>ARQ-112</code>)</li>
+  <li><strong>O banco do SaaS:</strong> na v2.0, no próprio servidor; na produção real, cuidado pela nuvem, na região de São Paulo, com uma cópia reserva que assume sozinha se o principal falhar. (<code>ARQ-056</code>, <code>ARQ-093</code>)</li>
+  <li><strong>O tempo no ar:</strong> na v2.0, sem promessa; na produção real, 99,9% do mês. (<code>ARQ-122</code>)</li>
+  <li><strong>O middleware na casa do cliente:</strong> não muda. Roda em docker compose nas duas fases, e quem cuida dele é a TI do cliente. (<code>ARQ-100</code>, <code>ARQ-112</code>)</li>
+</ul>
+<p><strong>Por que é assim.</strong> A regra é ser simples agora e ter disponibilidade quando houver produção real. Um servidor só não precisa da maquinaria de uma nuvem com várias cópias, que dá trabalho para operar. Com organização pagando, a troca vale: na nuvem, a cópia reserva, a troca automática e as várias cópias vêm prontas. O que se abre mão, na v2.0, é de um Horus que não para. (<code>ARQ-092</code>, <code>ARQ-101</code>, <code>ARQ-112</code>)</p>
+<div class="callout callout--info"><span class="ico">i</span><div><b>Analogia</b><p>É como comparar uma agência bancária com um caixa só e outra com vários. Com um caixa só, se ele precisa sair, a fila para; com vários, um cobre o outro sem o cliente perceber. A analogia para aqui: no Horus, as cópias são idênticas, a troca é automática, e o banco de dados também ganha a sua cópia reserva.</p></div></div>
+<p><strong>Um código só para as duas fases.</strong> O código da v2.0 já nasce pronto para várias cópias, mesmo com um servidor só. Por exemplo, o pedido de parar uma resposta no meio vale em todas as cópias, porque fica anotado no banco, e não na memória de uma delas. Assim, a passagem para a nuvem não exige reescrever peças no meio da mudança. Em troca, a v2.0 fica um pouco menos simples. (<code>ARQ-113</code>)</p>
+
+<h4 id="implantacao-servidor-alugado">O que roda no servidor alugado</h4>
+<p><strong>Em resumo:</strong> na v2.0, uma máquina só reúne o teste e o uso real do Horus, ao lado da versão de hoje. Se ela para, tudo para, e isso é aceito nesta fase. (<code>ARQ-055</code>, <code>ARQ-098</code>)</p>
+<p><strong>O que há na máquina.</strong></p>
+<ul>
+  <li><strong>A homologação,</strong> onde cada versão nova é provada antes de chegar a quem usa, com endereço, banco e senhas próprios. (<code>ARQ-055</code>)</li>
+  <li><strong>O uso real da v2.0:</strong> o SaaS, um só, com os dois papéis do servidor: <em>Atender</em>, que responde na hora, e <em>Trabalhar</em>, que cuida do que roda sozinho. (<code>ARQ-004</code>, <code>ARQ-098</code>)</li>
+  <li><strong>O banco do SaaS,</strong> um PostgreSQL 17 na mesma máquina, com o banco mestre, o de cada organização e o de log, explicados em <a href="#dados">Onde mora cada dado</a>. (<code>ARQ-056</code>)</li>
+  <li><strong>O middleware da Maind,</strong> um só para todas as organizações do SaaS, com a base de configuração dele, o banco onde ficam as pessoas e as senhas que ele usa. (<code>D-272</code>, <code>ARQ-103</code>)</li>
+  <li><strong>A versão de hoje, a v1.xx,</strong> que continua no endereço de hoje. A v2.0 abre num endereço próprio, ao lado, e a entrada da máquina separa as duas pelo nome do endereço. (<code>ARQ-065</code>)</li>
+</ul>
+<p><strong>O SaaS e o middleware separados, mesmo na mesma máquina.</strong> Cada um roda no seu pacote, com a sua rede e o seu banco, e nenhum lê o banco do outro. O único caminho entre eles é o canal protegido, com o certificado, uma espécie de carteira de identidade digital. Essa separação ainda espera uma confirmação, explicada em <a href="#infra-separada">A infraestrutura separada</a>. (<code>ARQ-127</code>)</p>
+<p><strong>Por que sem divisão de recursos.</strong> Nenhuma instalação desta fase é produção real: todas contam como teste. Por isso, as instâncias dividem toda a memória e todo o processamento da máquina, sem um teto para cada uma, e nada precisa ser calibrado. (<code>ARQ-056</code>)</p>
+<p><strong>Quando dá errado.</strong> O preço dessa simplicidade é que a máquina é um ponto único de falha:</p>
+<ul>
+  <li><strong>Se a máquina para,</strong> param juntos o SaaS, o middleware da Maind e a homologação. (<code>ARQ-098</code>, <code>ARQ-127</code>)</li>
+  <li><strong>Se uma instância passa do limite,</strong> num ensaio pesado ou num programa que consome memória sem parar, ela pode derrubar as outras. (<code>ARQ-056</code>)</li>
+  <li><strong>O trabalho pendente não se perde:</strong> ele fica guardado na fila de tarefas, dentro do banco. (<code>ARQ-005</code>)</li>
+</ul>
+
+<h4 id="implantacao-producao-real">A produção real, na nuvem</h4>
+<p><strong>Em resumo:</strong> a produção real começa com a primeira organização paga, numa nuvem pública ainda a escolher. Nela, o SaaS e o middleware da Maind rodam em várias cópias, e o banco tem uma cópia reserva. (<code>ARQ-092</code>, <code>ARQ-112</code>)</p>
+<ul>
+  <li><strong>O SaaS</strong> roda em várias cópias no Kubernetes gerenciado. Se uma cai, outra atende. (<code>ARQ-112</code>)</li>
+  <li><strong>O middleware da Maind</strong> também roda em várias cópias e continua atendendo todas as organizações do SaaS. Onde fica o banco dele na nuvem ainda não está decidido; por isso o desenho não o liga a banco nenhum. (<code>ARQ-112</code>, <code>ARQ-127</code>)</li>
+  <li><strong>O banco do SaaS</strong> é o Postgres gerenciado, em São Paulo, com a cópia reserva que assume sozinha. (<code>ARQ-093</code>)</li>
+  <li><strong>O SaaS e o middleware da Maind</strong> ficam em áreas separadas da nuvem, com a rede entre eles restrita ao canal. (<code>ARQ-127</code>)</li>
+  <li><strong>A homologação se refaz na nuvem</strong> antes da primeira organização paga, para que o que roda ali seja o que foi provado. (<code>ARQ-092</code>)</li>
+</ul>
+<p><strong>Por que uma nuvem.</strong> A outra saída seria a Maind escrever e manter um roteiro próprio de troca entre duas máquinas, e cada falha dele seria dela. Na nuvem, isso vem pronto. Em troca, a Maind passa a operar peças novas: o conjunto de máquinas, as atualizações do Kubernetes e a entrada do tráfego. E o Horus usa só o que roda igual em qualquer máquina com Docker, o programa que roda os pacotes isolados, e PostgreSQL 17, para que trocar de nuvem depois continue possível. (<code>ARQ-092</code>, <code>ARQ-093</code>, <code>ARQ-096</code>)</p>
 
 <h4 id="implantacao-no-ar">Quanto tempo o Horus fica no ar</h4>
-<ul>
-  <li><strong>Na v2.0, sem promessa.</strong> Um serviço de fora testa o Horus a cada minuto. (<code>ARQ-122</code>, <code>ARQ-070</code>)</li>
-  <li><strong>Na produção real, 99,9% do mês,</strong> o que admite cerca de 43 minutos fora do ar, para o SaaS e o middleware da Maind. O middleware do cliente fica de fora, porque é o cliente quem cuida dele. (<code>ARQ-122</code>)</li>
-  <li><strong>Na v2.0, cada versão nova ou falha da máquina tira o SaaS do ar</strong> por alguns minutos, ainda a medir. Na produção real, a troca é sem corte. Nas duas fases, nenhum trabalho se perde. (<code>ARQ-063</code>, <code>ARQ-098</code>, <code>ARQ-005</code>)</li>
-</ul>
+<p><strong>Em resumo:</strong> na v2.0 não há promessa de tempo no ar. Na produção real, a meta é ficar no ar 99,9% do mês, o que admite cerca de 43 minutos fora do ar, para o SaaS e o middleware da Maind. O middleware do cliente fica fora da meta, porque quem o opera é a TI do cliente. (<code>ARQ-122</code>)</p>
+<p><strong>Quem mede.</strong> A sonda de fora, um serviço de monitoramento de outro provedor, testa o Horus a cada minuto, de duas regiões ou mais. O Horus conta como fora do ar quando a sonda falha dois minutos seguidos nas duas regiões; é essa conta que mede os 99,9%. Na v2.0, a sonda mede e registra, mas nenhum número é prometido. (<code>ARQ-070</code>, <code>ARQ-122</code>)</p>
+<p><strong>Por que a promessa só na nuvem.</strong> A meta só vale onde a infraestrutura consegue cumpri-la. Com um servidor só, cada versão nova e cada falha da máquina tiram o SaaS do ar por alguns minutos. O que se abre mão é de ter um número para mostrar na v2.0. (<code>ARQ-122</code>)</p>
+<p><strong>Um exemplo, passo a passo: uma versão nova na v2.0.</strong> A gerente de uma rede de lojas está usando o Horus quando a Maind publica uma versão nova do SaaS.</p>
+<ol>
+  <li>O papel Trabalhar para de pegar tarefas novas, espera por cerca de dois minutos o que já está em andamento e devolve o resto à fila. (<code>ARQ-063</code>)</li>
+  <li>O papel Atender para de aceitar perguntas novas e espera, por cerca de um minuto, as respostas que estão chegando às telas; a que for cortada fica gravada como interrompida. (<code>ARQ-063</code>)</li>
+  <li>Com um servidor só, não há outra cópia para assumir: durante a espera e a subida da versão nova, o SaaS fica fora do ar, e a gerente não consegue usar o Horus. Quanto tempo isso dura ainda está a medir. (<code>ARQ-098</code>, <code>ARQ-122</code>)</li>
+  <li>A versão nova sobe. O que voltou à fila roda de novo, sem efeito em dobro: um aviso não deixa de sair nem sai duas vezes. (<code>ARQ-005</code>, <code>ARQ-063</code>)</li>
+</ol>
+<p><strong>Na produção real, a mesma troca é sem corte:</strong> a cópia nova fica pronta antes de a velha sair. (<code>ARQ-063</code>, <code>ARQ-113</code>)</p>
 
 <h4 id="implantacao-versao-nova">Como uma versão nova chega</h4>
-<ul>
-  <li>Cada parte é montada uma vez, como um pacote pronto que roda igual em todo lugar. (<code>ARQ-101</code>, <code>ARQ-113</code>)</li>
-  <li>O pacote passa pelo teste, e o uso real só aceita o aprovado. (<code>ARQ-061</code>)</li>
-  <li>A esteira automática de publicação escolhe como rodar e quantas cópias, sem mexer no pacote. Por isso, o código da v2.0 já nasce pronto para várias cópias. (<code>ARQ-113</code>)</li>
-  <li>As senhas nunca vão no pacote. Saem de um cofre no GitHub, onde fica o código do Horus, para um arquivo protegido no servidor ou para um cofre da nuvem. (<code>ARQ-044</code>, <code>ARQ-115</code>)</li>
-</ul>
+<p><strong>Em resumo:</strong> cada parte do Horus é montada uma vez só, provada no teste e só então instalada no uso real, sem mudança no meio do caminho. (<code>ARQ-061</code>, <code>ARQ-113</code>)</p>
+<p><strong>Quem é quem.</strong> O código do Horus fica no <strong>GitHub</strong>, um serviço que guarda o código e cada mudança feita nele. O <strong>CI/CD</strong> é a esteira automática de publicação do GitHub: monta a imagem, roda os testes e a leva a cada lugar. (<code>ARQ-076</code>, <code>ARQ-113</code>)</p>
+<p><strong>Por que é assim.</strong> Como a imagem nunca é montada de novo, o que a homologação provou é, byte a byte, o que o uso real instala. E a aprovação fica registrada ao lado da imagem, no GitHub, sem depender de as máquinas se enxergarem. Em troca, o registro passa a depender do GitHub. (<code>ARQ-061</code>)</p>
+<p><strong>Um exemplo, passo a passo.</strong> Uma correção num gráfico precisa chegar às organizações.</p>
+<ol>
+  <li>A correção entra no código. A esteira monta a imagem, só se todos os testes passarem, e confere que nenhuma senha foi parar dentro dela. (<code>ARQ-076</code>, <code>ARQ-115</code>)</li>
+  <li>A imagem vai primeiro à homologação. Se a publicação ali sai saudável, fica registrada ao lado da imagem como "aprovada na homologação". (<code>ARQ-061</code>)</li>
+  <li>O uso real só aceita uma imagem com esse registro, e uma aprovação vale para todas as instâncias. (<code>ARQ-061</code>)</li>
+  <li>A esteira escolhe como rodar e quantas cópias, sem mexer na imagem: na v2.0, docker compose; na produção real, o Kubernetes. Antes da troca, ela grava na máquina as senhas que o Horus usa. (<code>ARQ-061</code>, <code>ARQ-113</code>, <code>ARQ-115</code>)</li>
+</ol>
+<p><strong>Quando dá errado.</strong> Uma correção urgente pode pular a homologação, mas só com a frase de confirmação digitada inteira, e fica registrada como "sem homologação". O disparo é manual e pede confirmação no uso real. Assim, uma mudança que nunca rodou no teste não chega por engano a quem usa. (<code>ARQ-061</code>)</p>
+
+<h4 id="implantacao-segredos-e-copias">As senhas do próprio Horus e as cópias de segurança</h4>
+<p><strong>Em resumo:</strong> as senhas que o Horus usa para funcionar nunca vão dentro da imagem, e a cópia de segurança fica com quem hospeda cada instância, fora do Horus. (<code>ARQ-086</code>, <code>ARQ-115</code>)</p>
+<p><strong>Os segredos.</strong> São as senhas e chaves de que o próprio Horus precisa, como a do serviço de e-mail e as dos bancos do SaaS. Ficam num cofre do GitHub, de onde ninguém consegue lê-las de volta. A cada publicação, a esteira as grava num arquivo do servidor alugado que só o root, o usuário principal da máquina, lê; na produção real, vão para o cofre do Kubernetes. Na casa do cliente, os segredos do middleware ficam com a TI do cliente, e a Maind não os conhece. (<code>ARQ-044</code>, <code>ARQ-115</code>)</p>
+<p>As senhas de cada organização, como a do banco de vendas de uma empresa ou a chave da inteligência artificial (IA) dela, não fazem esse caminho: quem as cadastra é o owner da organização, no middleware, e elas ficam trancadas com uma chave só daquela organização. (<code>D-273</code>, <code>ARQ-103</code>)</p>
+<p><strong>Por que assim.</strong> O caminho usa o que já existe, sem fornecedor novo. Abre-se mão de um cofre que registre cada leitura, e quem tem o acesso de root à máquina consegue ler o arquivo. (<code>ARQ-044</code>, <code>ARQ-115</code>)</p>
+<p><strong>As cópias de segurança.</strong> O Horus não faz nem guarda cópia de segurança: quem hospeda cada instância a configura. A Maind cuida da cópia do SaaS e do middleware dela, no provedor do servidor alugado, fora da máquina do Horus, e, na produção real, pela nuvem, com mais uma cópia fora dela. A TI do cliente cuida da base do middleware que hospeda. O risco aceito: sem a cópia configurada, uma pane leva tudo. (<code>ARQ-086</code>, <code>ARQ-096</code>, <code>ARQ-125</code>)</p>
 
 <h4 id="implantacao-no-cliente">O middleware na casa do cliente</h4>
-<p>O middleware na casa do cliente já vale na v2.0. Ele atende as organizações daquele cliente e roda sempre num pacote isolado. (<code>D-260</code>, <code>D-272</code>, <code>ARQ-100</code>)</p>
-<p>A TI do cliente, a equipe de tecnologia da empresa, precisa de:</p>
+<p><strong>Em resumo:</strong> uma empresa que não quer que a senha do próprio banco saia de casa pode rodar o middleware dentro da rede dela, já na v2.0. É o mesmo programa do middleware da Maind e atende as organizações daquela empresa. (<code>D-260</code>, <code>D-272</code>, <code>ARQ-100</code>)</p>
+<p><strong>Por que um docker compose.</strong> O middleware precisa poder ser instalado por qualquer TI: basta uma máquina com Docker, sem montar um Kubernetes. Em troca, trocar a versão, reiniciar e copiar a base ficam por conta de quem hospeda, sem ajuda automática. (<code>ARQ-100</code>, <code>ARQ-126</code>)</p>
+<p><strong>O que a TI do cliente precisa ter.</strong> (<code>ARQ-126</code>)</p>
 <ul>
-  <li>uma máquina com Docker, o programa que roda os pacotes;</li>
-  <li>um endereço cifrado na internet, liberado só para o SaaS;</li>
-  <li>saída para os bancos e a IA, só para o que estiver numa lista de liberados;</li>
-  <li>um arquivo de senhas protegido;</li>
-  <li>o relógio certo, de que depende o certificado, a identidade digital do vínculo;</li>
-  <li>a própria cópia de segurança do banco do middleware. (<code>ARQ-126</code>, <code>ARQ-116</code>, <code>ARQ-115</code>, <code>ARQ-086</code>)</li>
+  <li><strong>Uma máquina com Docker.</strong> A base de configuração do middleware fica no mesmo pacote ou num PostgreSQL 17 que a TI indicar, ponto ainda a confirmar.</li>
+  <li><strong>Um endereço e uma porta na internet,</strong> com conexão cifrada, liberados no firewall, a barreira de rede da empresa, só para o SaaS.</li>
+  <li><strong>A saída para os bancos e para a IA,</strong> só para o que estiver numa lista de permitidos. (<code>ARQ-116</code>)</li>
+  <li><strong>Um arquivo com as senhas do middleware,</strong> que só o root lê. (<code>ARQ-115</code>)</li>
+  <li><strong>O relógio da máquina certo,</strong> porque o certificado depende dele.</li>
+  <li><strong>A própria cópia de segurança da base do middleware.</strong> (<code>ARQ-086</code>)</li>
 </ul>
-<p>O cliente atualiza o middleware no tempo dele, porque o SaaS aceita a versão atual e a anterior. (<code>ARQ-100</code>, <code>ARQ-114</code>)</p>
+<p><strong>Um exemplo, passo a passo.</strong> A TI de uma rede de farmácias decide hospedar o middleware dentro da própria rede.</p>
+<ol>
+  <li>A TI prepara uma máquina com Docker e sobe o middleware a partir da mesma imagem que a Maind usa. (<code>ARQ-100</code>)</li>
+  <li>A TI libera o endereço do middleware só para o SaaS e monta a lista do que ele pode alcançar: o banco de vendas da rede e o serviço de IA. (<code>ARQ-116</code>, <code>ARQ-126</code>)</li>
+  <li>O owner da instância, o funcionário da Maind que cria as organizações, cria a da rede no SaaS. A TI importa o certificado dela na tela de configuração do middleware, e os dois lados passam a se reconhecer, como explica <a href="#infra-separada">A infraestrutura separada</a>. (<code>ARQ-124</code>)</li>
+  <li>Meses depois, a Maind publica uma versão nova do SaaS. O middleware da rede, ainda na versão anterior, continua funcionando, porque o SaaS conversa com a versão atual do middleware e com a anterior. A TI atualiza quando puder. (<code>ARQ-114</code>)</li>
+</ol>
+<p><strong>Quando dá errado.</strong></p>
+<ul>
+  <li><strong>Se o middleware fica mais velho do que a versão anterior,</strong> o SaaS recusa a conversa. A luz da tela de entrada fica vermelha com o texto "Atualização necessária", a página de status mostra o motivo, e o painel da Maind, o motivo e a versão. (<code>ARQ-114</code>)</li>
+  <li><strong>Para investigar um erro,</strong> a Maind vê só o que o SaaS mede: o estado, a versão, as quedas e a contagem de uso da IA. Se ela pedir, o owner da organização ou a TI do cliente gera um pacote de diagnóstico, sem conversa, sem a estrutura dos bancos e sem senha, e o envia. A Maind não o puxa sozinha. (<code>ARQ-119</code>)</li>
+</ul>
 
 <h3 id="implantacao-falta-decidir">O que falta decidir nesta parte</h3>
 <p>O dono do Horus decide infraestrutura, segurança, preço e o que as pessoas veem; o arquiteto do Horus decide como o Horus é construído por dentro.</p>
 <ul>
-  <li><strong>Falta o dono do Horus escolher:</strong> a nuvem pública da produção real, a data e o orçamento para operá-la. É a única fase com a meta de 99,9% do tempo no ar. (<code>ARQ-085</code>, <code>ARQ-122</code>)</li>
-  <li><strong>Falta o dono do Horus decidir:</strong> quem paga o middleware, o da Maind e o da casa do cliente. Ainda não há decisão registrada.</li>
+  <li><strong>Falta o dono do Horus escolher:</strong> a nuvem pública da produção real, a data e o orçamento para operá-la. É a única fase com a meta de 99,9% do tempo no ar. <em>O que está em jogo:</em> enquanto a escolha não vem, o Horus fica no servidor alugado, sem número de tempo no ar para prometer. A proposta guardada é a Google Cloud, a mais barata sem compromisso de prazo e a mais simples de operar entre as que atendem o que se pede ao banco; a regra de não ficar preso a uma nuvem mantém a troca possível depois. (<code>ARQ-085</code>, <code>ARQ-096</code>, <code>ARQ-122</code>)</li>
+  <li><strong>Falta o dono do Horus decidir:</strong> quem paga o middleware, o da Maind e o da casa do cliente. Ainda não há decisão registrada. <em>O que está em jogo:</em> também não há opções registradas. O que já se sabe é o trabalho que vem junto e fica com quem hospeda o middleware: a máquina, a troca de versão, o reinício e a cópia de segurança da base dele. (<code>ARQ-100</code>, <code>ARQ-126</code>)</li>
   <li><strong>Falta o dono do Horus decidir:</strong> o que fazer se um cliente pedir o Horus inteiro instalado em casa, pedido que hoje não tem versão.
     <ul>
       <li>Como seria essa instalação. (<code>ARQ-060</code>, <code>D-188</code>)</li>
       <li>O que a Maind veria dela. (<code>ARQ-074</code>)</li>
     </ul>
+    <em>O que está em jogo:</em> esse pedido só viria de um cliente que exija que nada saia de casa, nem a pergunta, porque com o middleware a pergunta e a resposta pronta ainda passam pela Maind. A proposta guardada usa a mesma versão do Horus num Kubernetes da empresa, o que pede à TI do cliente bem mais do que o middleware, e deixa a Maind ver o que se passa ali só com o acesso que o cliente conceder. (<code>D-188</code>, <code>ARQ-060</code>, <code>ARQ-074</code>)
   </li>
-  <li><strong>Falta o arquiteto do Horus fechar:</strong> a lista final do que a TI do cliente precisa, inclusive onde fica o banco do middleware dela. (<code>ARQ-126</code>)</li>
+  <li><strong>Falta o arquiteto do Horus fechar:</strong> a lista final do que a TI do cliente precisa, inclusive onde fica o banco do middleware dela. (<code>ARQ-126</code>) <em>O que está em jogo:</em> a lista atual é o mínimo de que a imagem precisa e cabe em qualquer TI, sem Kubernetes; em troca, o firewall e a conexão cifrada dependem da TI do cliente. Ela é revista se um cliente não tiver Docker ou pedir um Kubernetes.</li>
   <li><strong>Também depende, e está explicado em outras páginas:</strong> a confirmação de que o SaaS e o middleware da Maind ficam separados em rede e em banco, também na nuvem (<a href="#infra-separada">A infraestrutura separada</a>); onde fica, na nuvem, o banco do middleware da Maind, por isso ausente do desenho, e a atualização dos documentos técnicos para as duas fases (<a href="#execucao">Como roda</a>); em que módulo fica cada peça nova (<a href="#modulos">Os módulos</a>); e se apagar tudo de uma organização excluída convive com as cópias de segurança (<a href="#criar-organizacao">Criar uma organização</a>).</li>
 </ul>

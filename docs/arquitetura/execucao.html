@@ -31,93 +31,175 @@
 <div class="shell">
 <aside class="side"><nav aria-label="Páginas da documentação"><h6>Horus v2</h6><ul><li><a href="index.html">Início</a></li></ul><h6>Comece por aqui</h6><ul><li><a href="quem-e-quem.html">Quem é quem e como ler</a></li></ul><h6>A base: onde e como roda</h6><ul><li><a href="infra-separada.html">A infraestrutura separada</a></li><li><a href="modulos.html">Os módulos</a></li><li><a href="execucao.html" class="active">Como roda</a></li><li><a href="implantacao.html">Onde roda</a></li></ul><h6>O Horus em ação</h6><ul><li><a href="pergunta-resposta.html">Da pergunta à resposta</a></li><li><a href="segundo-plano.html">O que roda sozinho</a></li><li><a href="integracoes.html">Com quem conversa fora</a></li></ul><h6>Organizações, dados e segurança</h6><ul><li><a href="criar-organizacao.html">Criar uma organização</a></li><li><a href="dados.html">Onde mora cada dado</a></li><li><a href="seguranca.html">Segurança em camadas</a></li></ul><h6>Decisões e acompanhamento</h6><ul><li><a href="falta-decidir.html">O que falta decidir, por papel</a></li><li><a href="sobre.html">Sobre este documento</a></li></ul></nav></aside>
 <main class="content doc">
-<div class="dx-busca-movel"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-movel" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><nav class="crumbs" aria-label="Trilha"><a href="index.html">Horus v2</a><span class="sep">/</span><span>A base: onde e como roda</span><span class="sep">/</span><span class="now">Como roda</span></nav><span class="doc-eyebrow">A base: onde e como roda</span><h1 class="doc-h1">Como roda</h1><p class="doc-lead">Os dois papéis de cada servidor, a fila de tarefas e os bancos de dados.</p><section class="dx-assuntos" aria-labelledby="dx-assuntos-titulo"><h2 id="dx-assuntos-titulo">Explore os assuntos</h2><div class="dx-assuntos-grade"><div class="dx-assunto"><h3><a href="#execucao-frase">Em uma frase</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#execucao-desenho">O desenho</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#execucao-como-funciona">Como funciona</a><small>6 tópicos</small></h3><ul><li><a href="#execucao-papeis">Os dois papéis: Atender e Trabalhar</a></li><li><a href="#execucao-fases">Um servidor agora, várias cópias depois</a></li><li><a href="#execucao-fila">Por que nenhum trabalho se perde</a></li><li><a href="#execucao-bancos">Onde ficam os bancos</a></li><li><a href="#execucao-registro">Como o SaaS acha o middleware</a></li><li><a href="#execucao-queda">O que acontece quando o middleware cai?</a></li></ul></div><div class="dx-assunto"><h3><a href="#execucao-falta-decidir">O que falta decidir nesta parte</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div></div></section><div id="dx-topo"><h2 class="doc-h2" id="execucao-frase">Em uma frase</h2>
-<p>O servidor do SaaS, a parte do Horus que as pessoas usam e que a Maind hospeda, é um programa só em dois papéis: um atende as pessoas na hora, o outro faz o trabalho que roda sozinho.</p>
-<p>O que não acontece na hora entra numa <strong>fila</strong>, uma lista de tarefas esperando a vez, gravada no banco. Por isso nada se perde quando o servidor para.</p>
+<div class="dx-busca-movel"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-movel" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><nav class="crumbs" aria-label="Trilha"><a href="index.html">Horus v2</a><span class="sep">/</span><span>A base: onde e como roda</span><span class="sep">/</span><span class="now">Como roda</span></nav><span class="doc-eyebrow">A base: onde e como roda</span><h1 class="doc-h1">Como roda</h1><p class="doc-lead">Os dois papéis de cada servidor, a fila de tarefas e os bancos de dados.</p><section class="dx-assuntos" aria-labelledby="dx-assuntos-titulo"><h2 id="dx-assuntos-titulo">Explore os assuntos</h2><div class="dx-assuntos-grade"><div class="dx-assunto"><h3><a href="#execucao-frase">Em uma frase</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#execucao-desenho">O desenho</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#execucao-como-funciona">Como funciona</a><small>8 tópicos</small></h3><ul><li><a href="#execucao-papeis">Os dois papéis: Atender e Trabalhar</a></li><li><a href="#execucao-fases">Um servidor agora, várias cópias depois</a></li><li><a href="#execucao-troca">O que acontece numa troca de versão</a></li><li><a href="#execucao-fila">Por que nenhum trabalho se perde: a caixa de saída e a fila</a></li><li><a href="#execucao-bancos">Onde ficam os bancos</a></li><li><a href="#execucao-registro">Como o SaaS acha o middleware de cada organização</a></li><li><a href="#execucao-queda">O que a pessoa vê quando o middleware cai</a></li><li><a href="#execucao-rodada">O que acontece com o que roda sozinho durante uma queda</a></li></ul></div><div class="dx-assunto"><h3><a href="#execucao-falta-decidir">O que falta decidir nesta parte</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div></div></section><div id="dx-topo"><h2 class="doc-h2" id="execucao-frase">Em uma frase</h2>
+<p>O servidor do SaaS, a parte do Horus que as pessoas usam e que a Maind hospeda, é um programa só que trabalha em dois papéis: <strong>Atender</strong> responde na hora a quem está usando, e <strong>Trabalhar</strong> faz o que roda sozinho, como os relatórios agendados. (<code>ARQ-004</code>)</p>
+<p>O que não acontece na hora entra numa <strong>fila</strong>, uma lista de tarefas esperando a vez, gravada no banco de dados. Por isso nada se perde quando o servidor para ou troca de versão. (<code>ARQ-005</code>, <code>ARQ-063</code>)</p>
 
 <h2 class="doc-h2" id="execucao-desenho">O desenho</h2>
-<p>O desenho mostra o servidor do SaaS no centro, os bancos ao redor e, à esquerda, o <strong>middleware</strong>, a parte que busca os dados no banco da empresa.</p>
+<p>O desenho mostra o servidor do SaaS na coluna do meio, os bancos ao redor e, à esquerda, o <strong>middleware</strong>, a parte que guarda as senhas e busca os dados no banco da empresa.</p>
 <figure class="dx-diagrama"><figcaption><b>Como roda: os dois papéis, a fila e os bancos</b> <span>Os dois papéis de cada servidor, a fila de tarefas e os bancos de dados.</span><a href="media/diagramas/arq-geral-execucao.html" target="_blank" rel="noopener">Abrir em tela cheia ↗</a></figcaption><iframe src="media/diagramas/arq-geral-execucao.html?embutido=1" title="Como roda: os dois papéis, a fila e os bancos" loading="lazy"></iframe></figure>
 <ul>
-  <li><strong>A área grande</strong> é o servidor do SaaS, com os dois papéis; <strong>a área "fora do SaaS"</strong> guarda o middleware e a base dele. Cada cor é um tipo de peça, explicado na legenda.</li>
-  <li><strong>Linha contínua:</strong> o que acontece na hora. <strong>Tracejada:</strong> o que acontece depois, pela fila. <strong>Destacada:</strong> o caminho de uma pergunta.</li>
-  <li><strong>O Registro de organizações</strong> aparece à parte só para ser visto, mas mora no Banco mestre. <strong>Cinco vistas prontas</strong> destacam uma parte de cada vez.</li>
+  <li><strong>As duas molduras.</strong> A do meio é o servidor do SaaS, com o Atender, o Trabalhar, o Estado do middleware e o Desenho fora da tela. A da esquerda, "fora do SaaS", guarda o middleware e a base de configuração dele. Soltos ficam o navegador e o WhatsApp, que são de fora do Horus, e os bancos do SaaS.</li>
+  <li><strong>Cada bloco é um cartão.</strong> No alto ficam o nome da peça e a tecnologia, como "ASP.NET Core · .NET 10", a do servidor, ou "PostgreSQL 17", o programa de banco de dados; no meio, o que a peça faz; embaixo, etiquetas curtas. Para ler, basta aproximar com a roda do mouse ou clicar no cartão. A legenda, embaixo do desenho, separa as peças em seis tipos.</li>
+  <li><strong>As setas verdes e mais grossas</strong> seguem o caminho de uma pergunta feita no app: do navegador ao Atender, do Atender ao middleware e a resposta de volta ao navegador. <strong>As cinza e contínuas</strong> são o que acontece na hora, durante o pedido.</li>
+  <li><strong>As setas roxas tracejadas</strong> são o que acontece depois, pela fila: do Banco da organização ao Repassador, dele à Fila, da Fila ao Trabalhar e do Trabalhar ao Banco de log.</li>
+  <li><strong>O Registro de organizações e a Fila durável</strong> aparecem à parte só para serem vistos: os dois moram no Banco mestre.</li>
+  <li><strong>O texto em cada seta</strong> diz o que passa por ela, como "mudança + caixa de saída". <strong>Cinco vistas prontas</strong> acendem uma parte do desenho de cada vez.</li>
 </ul>
 
 <h2 class="doc-h2" id="execucao-como-funciona">Como funciona</h2>
 
 <h3 class="doc-h3" id="execucao-papeis">Os dois papéis: Atender e Trabalhar</h3>
+<p><strong>Em resumo:</strong> o mesmo programa trabalha em dois papéis. O Atender recebe quem chega de fora e responde na hora; o Trabalhar nunca recebe ninguém de fora e só faz as tarefas da fila. (<code>ARQ-004</code>)</p>
+<p><strong>Quem é quem.</strong></p>
 <ul>
-  <li><strong>Atender</strong> recebe o navegador e o WhatsApp. No app, responde na hora, aos pedaços, enquanto escreve. A mensagem do WhatsApp ele grava e põe na fila. (<code>ARQ-004</code>, <code>ARQ-024</code>)</li>
-  <li><strong>Trabalhar</strong> não recebe nada de fora. Só pega tarefas da fila: o WhatsApp, os agendamentos, os agentes, os PDFs e os envios. (<code>ARQ-004</code>)</li>
+  <li><strong>Atender</strong> recebe o navegador das pessoas e as mensagens do WhatsApp. Na conversa do app, responde na hora, por uma transmissão ao vivo que mostra a resposta enquanto ela chega: é a seta "resposta por SSE". A mensagem do WhatsApp, ele confere, grava e põe na fila. (<code>ARQ-024</code>, <code>ARQ-048</code>)</li>
+  <li><strong>Trabalhar</strong> não recebe nada de fora. Só pega tarefas da fila: o WhatsApp, os agendamentos, os agentes, os PDFs e os envios. Os agentes são rotinas em que a IA faz várias perguntas sozinha e entrega um resultado. (<code>ARQ-004</code>, <code>ARQ-030</code>)</li>
+  <li><strong>Desenho fora da tela</strong> é um navegador sem tela, o Chromium, que abre a mesma montagem da tela do app e a fotografa ou imprime. Por isso a imagem do WhatsApp e o PDF de um painel saem iguais ao que a pessoa vê. (<code>ARQ-007</code>)</li>
 </ul>
-<div class="callout callout--info">
-  <span class="ico">i</span>
-  <div><b>Como num restaurante</b><p>O garçom atende a mesa; a cozinha só trabalha pelos pedidos pendurados. A comparação para aí, porque os dois papéis são o mesmo programa.</p></div>
-</div>
+<p><strong>Por que é assim.</strong> Na segunda de manhã, muitos agentes e PDFs rodam ao mesmo tempo; num processo só, esse peso chegaria a quem espera uma resposta numa reunião. Separados, o pico do Trabalhar não deixa lenta a conversa. E quem olha a tela precisa ver a resposta chegando, enquanto o WhatsApp e o agente, sem ninguém diante da tela, precisam da garantia de que nada se perde. Abre-se mão da simplicidade de um processo só. (<code>ARQ-004</code>, <code>ARQ-024</code>)</p>
+<div class="callout callout--info"><span class="ico">i</span><div><b>Analogia</b><p>É como uma farmácia de manipulação: o balconista atende quem está no balcão, na hora; o laboratório, nos fundos, prepara as fórmulas pela ordem dos pedidos e nunca atende ninguém. A analogia para aqui: no Horus, balcão e laboratório são o mesmo programa, que pode fazer os dois papéis ao mesmo tempo ou separados, só por configuração.</p></div></div>
+<p><strong>Um exemplo, passo a passo.</strong> Numa segunda de manhã, a gerente de uma loja pergunta pelo app, e um vendedor da mesma rede pergunta pelo WhatsApp.</p>
+<ol>
+  <li>O Atender leva a pergunta da gerente ao middleware e devolve a resposta à tela dela, ao vivo. (<code>ARQ-024</code>)</li>
+  <li>A mensagem do vendedor chega da Meta, a empresa do WhatsApp. O Atender confere que veio mesmo da Meta, grava a mensagem e o pedido de resposta juntos e só então confirma o recebimento. (<code>ARQ-048</code>)</li>
+  <li>O Trabalhar pega o pedido à frente dos relatórios da manhã, porque alguém está esperando, e leva a pergunta ao middleware. (<code>ARQ-095</code>)</li>
+  <li>Se a resposta tem um gráfico, o Desenho fora da tela faz a imagem, e o Trabalhar manda texto e imagem ao vendedor pela Meta. (<code>ARQ-007</code>, <code>ARQ-048</code>)</li>
+</ol>
+<p><strong>Quando dá errado.</strong> Se a Meta manda a mesma mensagem duas vezes, a repetida é descartada. Se o envio falha por um problema passageiro, o Trabalhar tenta de novo; numa falha definitiva, desiste e registra o motivo. (<code>ARQ-048</code>)</p>
 
 <h3 class="doc-h3" id="execucao-fases">Um servidor agora, várias cópias depois</h3>
-<p>O pacote do programa é o mesmo em toda fase; muda só o jeito de instalar. (<code>ARQ-113</code>)</p>
+<p><strong>Em resumo:</strong> o pacote do programa é o mesmo em toda fase; muda só o jeito de instalar. Hoje roda uma cópia só, num servidor alugado; na produção real, várias cópias ao mesmo tempo, numa nuvem pública. (<code>ARQ-113</code>)</p>
+<p><strong>Quem é quem.</strong></p>
 <ul>
-  <li><strong>Na VPS</strong>, o servidor alugado da construção, dos testes e da v2.0, roda uma cópia só, num pacote isolado, o docker compose. Cada troca de versão ou falha da máquina tira o SaaS do ar por um tempo que se mede, mas não se promete. (<code>ARQ-098</code>, <code>ARQ-112</code>, <code>ARQ-122</code>)</li>
-  <li><strong>Na produção real</strong>, numa nuvem ainda a escolher, os dois papéis ganham réplicas, cópias rodando ao mesmo tempo, num serviço que administra vários servidores sozinho, o Kubernetes gerenciado. A meta passa a 99,9% do mês no ar. (<code>ARQ-112</code>, <code>ARQ-122</code>)</li>
-  <li><strong>O middleware da Maind</strong> segue as duas fases, com a mesma meta. O que o cliente hospeda fica sempre em docker compose, fora da meta. (<code>ARQ-100</code>, <code>ARQ-112</code>, <code>ARQ-122</code>)</li>
+  <li><strong>A VPS</strong> é o servidor alugado da construção, dos testes e da v2.0. Nela roda uma cópia só, instalada com <strong>docker compose</strong>, um arquivo que diz à máquina quais pacotes ligar, cada um isolado no seu contêiner. (<code>ARQ-098</code>, <code>ARQ-112</code>)</li>
+  <li><strong>A produção real</strong> fica numa nuvem pública ainda a escolher. Nela, os dois papéis ganham réplicas, cópias rodando ao mesmo tempo, num <strong>Kubernetes gerenciado</strong>: um serviço da nuvem que administra vários servidores sozinho, reinicia o que cai e troca a versão de cópia em cópia. (<code>ARQ-101</code>, <code>ARQ-112</code>)</li>
+  <li><strong>O middleware da Maind</strong> segue as mesmas duas fases. O que o cliente hospeda fica sempre em docker compose. (<code>ARQ-100</code>, <code>ARQ-112</code>)</li>
 </ul>
-<p>Por isso o código já nasce pronto para réplicas. Parar uma resposta e os limites de pedidos passam pelo banco e valem em todas as cópias. O cache, a cópia guardada perto para responder mais rápido, fica em cada réplica. (<code>ARQ-113</code>)</p>
-<p>As senhas do programa nunca vão no pacote. (<code>ARQ-115</code>)</p>
+<p><strong>A meta de tempo no ar.</strong> Na VPS não há meta: cada troca de versão ou falha da máquina tira o SaaS do ar por um tempo que se mede, mas não se promete. Na produção real, a meta é de 99,9% do mês no ar para o SaaS e o middleware da Maind, o que, num mês de 30 dias, deixa pouco mais de 43 minutos de folga. O middleware do cliente fica fora da meta, porque quem o opera é ele. (<code>ARQ-098</code>, <code>ARQ-122</code>)</p>
+<p><strong>Por que é assim.</strong> Um servidor só tem menos peças e menos operação: a escolha é ser simples agora e ganhar disponibilidade quando houver produção real. Mesmo assim, o código já nasce pronto para várias cópias: parar uma resposta e os limites de pedidos, como quantas tentativas de entrada se aceitam, passam pelo banco e valem em todas as cópias. O cache, uma cópia de dados guardada perto para responder mais rápido, fica em cada réplica. Abre-se mão de uma v2.0 mais simples, para não refazer essas peças na mudança de fase. (<code>ARQ-112</code>, <code>ARQ-113</code>)</p>
+<p><strong>As senhas do programa nunca vão no pacote.</strong> Na VPS, a publicação automática as grava num arquivo da máquina que só o usuário principal lê, e o docker compose as entrega ao programa. No middleware do cliente, quem as guarda é a TI do cliente, a equipe de tecnologia da empresa, e a Maind não as conhece. (<code>ARQ-115</code>)</p>
 
-<h3 class="doc-h3" id="execucao-fila">Por que nenhum trabalho se perde</h3>
-<p>Uma <strong>organização</strong> é o cadastro de uma empresa cliente no Horus. Toda mudança grava, de uma vez, o estado de hoje e o pedido de trabalho na caixa de saída do banco da organização.</p>
-<p>O Repassador leva o pedido à fila, e o Trabalhar o atende, tentando de novo se falhar. Cada organização tem a sua vez, e o que alguém espera passa na frente. Na troca de versão, o servidor termina o que está em curso e devolve o resto à fila. (<code>ARQ-005</code>, <code>ARQ-063</code>, <code>ARQ-088</code>, <code>ARQ-095</code>)</p>
+<h3 class="doc-h3" id="execucao-troca">O que acontece numa troca de versão</h3>
+<p><strong>Em resumo:</strong> na troca, o servidor termina o que está em curso por um tempo curto e devolve o resto à fila, que roda de novo na versão nova. Na VPS, o SaaS fica fora do ar durante essa espera e a subida; na produção real, a cópia nova fica pronta antes de a velha sair, sem corte. (<code>ARQ-063</code>, <code>ARQ-098</code>)</p>
+<p><strong>Por que drenar.</strong> Drenar é parar de aceitar trabalho novo e esperar o que já começou. Sem isso, o que estava em curso se repetiria inteiro, um agente pagaria de novo as perguntas que já fez, e a resposta que estava chegando seria cortada sem registro. Abre-se mão de uma troca instantânea. (<code>ARQ-063</code>)</p>
+<p><strong>Um exemplo, passo a passo.</strong> A equipe da Maind publica uma versão nova na VPS às 22h. O diretor financeiro de uma rede de supermercados tem um relatório agendado para as 22h, e uma pessoa está no meio de uma pergunta pelo app.</p>
+<ol>
+  <li>O Trabalhar para de pegar tarefas e espera as que estão em curso por cerca de dois minutos. O que não terminar volta à fila e roda de novo na versão nova, sem efeito em dobro. (<code>ARQ-063</code>)</li>
+  <li>O Atender para de aceitar perguntas novas e espera as respostas em curso por cerca de um minuto; a que for cortada fica gravada como interrompida. (<code>ARQ-063</code>)</li>
+  <li>Uma mensagem de WhatsApp que chega nessa hora não se perde: como o Atender só confirma à Meta depois de gravar, a Meta a manda de novo. (<code>ARQ-063</code>)</li>
+  <li>O relatório das 22h começa quando o Trabalhar da versão nova sobe, um pouco depois da hora. (<code>ARQ-063</code>)</li>
+</ol>
+<p><strong>Quando dá errado.</strong> Se a máquina da VPS falha, o SaaS fica fora do ar até ela voltar. As tarefas esperam na fila, no banco, até o Trabalhar voltar. (<code>ARQ-005</code>, <code>ARQ-098</code>)</p>
+
+<h3 class="doc-h3" id="execucao-fila">Por que nenhum trabalho se perde: a caixa de saída e a fila</h3>
+<p><strong>Em resumo:</strong> toda mudança grava, numa operação só, o estado de hoje e o pedido de trabalho que ela gera. O Repassador leva o pedido à fila, e o Trabalhar o atende, tentando de novo se falhar. (<code>ARQ-005</code>, <code>ARQ-088</code>)</p>
+<p><strong>Quem é quem.</strong> Uma <strong>organização</strong> é o cadastro de uma empresa cliente no Horus.</p>
+<ul>
+  <li><strong>A caixa de saída</strong> fica no banco de cada organização. Nela, o pedido é gravado junto com a mudança: ou as duas coisas ficam gravadas, ou nenhuma. (<code>ARQ-005</code>)</li>
+  <li><strong>O Repassador</strong> é uma rotina do SaaS que leva cada pedido das caixas de saída para a fila. (<code>ARQ-088</code>)</li>
+  <li><strong>A Fila durável</strong> mora no Banco mestre e é uma só para todas as organizações. Guarda o tipo de tarefa, a organização e a prioridade, nunca o conteúdo. (<code>ARQ-088</code>)</li>
+  <li><strong>O Trabalhar</strong> pega cada tarefa uma vez só e a trava, para nenhuma outra cópia pegar a mesma. Se falha, tenta de novo; se desiste, deixa o motivo. (<code>ARQ-005</code>)</li>
+</ul>
+<p><strong>Cada organização tem a sua vez.</strong> A fila reparte o trabalho para uma organização com muitos relatórios não atrasar as outras. E o que alguém está esperando, como a resposta do WhatsApp, passa à frente do que roda em lote: agendamentos, agentes, PDFs e envios. (<code>ARQ-095</code>)</p>
+<p><strong>Por que é assim.</strong> Os avisos são uma promessa da v2.0, e a garantia de "não perder, não duplicar" tem de morar no mesmo banco que guarda a mudança. Tarefas só na memória do programa se perderiam numa queda. Abre-se mão de uma ferramenta pronta de agendamento e de um desenho sem o Repassador, que é uma peça a mais. (<code>ARQ-005</code>, <code>ARQ-088</code>)</p>
+<div class="callout callout--info"><span class="ico">i</span><div><b>Analogia</b><p>É como a caixa de saída de correspondência de um escritório: quem escreve a carta a deixa na caixa, o mensageiro a leva ao correio central, e o correio entrega pela ordem. A analogia para aqui: no Horus, registrar a mudança e deixar o pedido na caixa é um gesto só, que acontece inteiro ou não acontece, e o "correio central" dá a vez a cada organização.</p></div></div>
+<p><strong>Um exemplo, passo a passo.</strong> O owner da instância, o funcionário da Maind que define as regras gerais da instalação e cria as organizações, libera mais dez assentos, as vagas pagas, para uma rede de farmácias.</p>
+<ol>
+  <li>O Atender grava, no banco da farmácia, os assentos novos e, na mesma operação, o pedido de registrar essa mudança na história. (<code>ARQ-097</code>)</li>
+  <li>O Repassador leva o pedido à Fila, no Banco mestre. (<code>ARQ-088</code>)</li>
+  <li>O Trabalhar pega o pedido na vez da farmácia e grava a mudança no Banco de log, segundos depois, uma vez só. Se cair no meio, o pedido volta à fila e é refeito sem duplicar nada. (<code>ARQ-005</code>, <code>ARQ-097</code>)</li>
+</ol>
+<p><strong>Quando dá errado.</strong> A idade do pedido mais antigo parado numa caixa de saída é medida e vira um alerta de operação, para a demora não passar despercebida. (<code>ARQ-097</code>)</p>
 
 <h3 class="doc-h3" id="execucao-bancos">Onde ficam os bancos</h3>
-<p>O SaaS tem três bancos. (<code>ARQ-010</code>, <code>ARQ-088</code>, <code>ARQ-097</code>)</p>
+<p><strong>Em resumo:</strong> o SaaS tem três tipos de banco, no mesmo PostgreSQL 17: o Banco mestre, um banco para cada organização e o Banco de log. A base de configuração do middleware fica à parte, e um lado não entra no banco do outro. (<code>ARQ-010</code>, <code>ARQ-088</code>, <code>ARQ-097</code>)</p>
+<p><strong>Quem é quem.</strong></p>
 <ul>
-  <li><strong>Banco mestre:</strong> o mapa das organizações, a fila, os limites, as chaves que trancam os dados, o Registro de organizações e as quedas do middleware.</li>
-  <li><strong>Banco da organização:</strong> um para cada uma, com acesso só dela, com o estado de hoje e a caixa de saída.</li>
-  <li><strong>Banco de log:</strong> a história, que chega segundos depois. Nele só se acrescenta.</li>
+  <li><strong>Banco mestre</strong>: o mapa das organizações, a fila, os limites de pedidos, o anel de chaves, o conjunto de chaves que tranca os dados guardados, o Registro de organizações e as quedas do middleware. (<code>ARQ-088</code>, <code>ARQ-121</code>)</li>
+  <li><strong>Banco da organização</strong>: um para cada uma, com um login só dele, que não alcança o banco de outra organização. Guarda o estado de hoje, como as conversas e os painéis, e a caixa de saída. (<code>ARQ-010</code>)</li>
+  <li><strong>Banco de log</strong>: a história de cada mudança, que chega segundos depois. Nele só se acrescenta, e das pessoas guarda só o código, nunca o nome. (<code>ARQ-097</code>, <code>ARQ-109</code>)</li>
+  <li><strong>Base de configuração</strong>, a do middleware: fica num banco à parte. Nem o SaaS entra nela, nem o middleware nos bancos do SaaS; só o contrato, o canal com regras fixas entre os dois, os liga. (<code>ARQ-103</code>, <code>ARQ-127</code>)</li>
 </ul>
-<p>A <strong>Base de configuração</strong> do middleware fica num banco à parte. Nem o SaaS entra nela, nem o middleware nos bancos do SaaS. (<code>ARQ-103</code>, <code>ARQ-127</code>)</p>
+<p><strong>Por que é assim.</strong> Com cada organização no seu banco e com o seu login, um erro de programa não alcança os dados de outra, e apagar ou restaurar uma organização é mexer num banco só. Por segurança, cada registro ainda leva a marca da organização, conferida por um filtro em toda consulta. Com a história à parte, dá para ver como uma coisa estava em qualquer data. Abre-se mão da simplicidade de um banco só e da gravação imediata da história. (<code>ARQ-010</code>, <code>ARQ-088</code>, <code>ARQ-097</code>)</p>
+<div class="callout callout--info"><span class="ico">i</span><div><b>Analogia</b><p>É como os cofres de aluguel de um banco: cada cliente tem o seu cofre e a sua chave, e a gerência guarda só o livro que diz onde fica cada cofre. A analogia para aqui: no Horus, além da chave de cada cofre, cada papel guardado lá dentro leva a marca da organização, conferida a cada consulta.</p></div></div>
+<p><strong>Um exemplo, passo a passo.</strong> Uma pessoa de uma rede de farmácias abre a lista das conversas dela.</p>
+<ol>
+  <li>O Atender vê, na sessão, de que organização ela é, e procura no mapa do Banco mestre o endereço e o login do banco da farmácia. (<code>ARQ-088</code>)</li>
+  <li>Abre esse banco com o login da farmácia, que não alcança nenhum outro. (<code>ARQ-010</code>)</li>
+  <li>Lê as conversas, e o filtro confere a marca da farmácia em cada uma. (<code>ARQ-088</code>)</li>
+</ol>
+<p><strong>Quando dá errado.</strong> Sem organização definida no pedido, a consulta é recusada, em vez de abrir qualquer banco. Se o banco de uma organização não responde, só ela fica fechada, com o motivo. E o login de cada organização protege contra o erro de programa, mas não contra quem tomar o servidor, que guarda o login de todas. (<code>ARQ-010</code>, <code>ARQ-088</code>)</p>
 
-<h3 class="doc-h3" id="execucao-registro">Como o SaaS acha o middleware</h3>
-<p>Pelo Registro de organizações. A entrada da pessoa leva só o código da organização; o endereço do middleware nunca vai ao navegador. (<code>ARQ-102</code>)</p>
-<p>O SaaS fala com a versão atual do middleware e com a anterior. Uma mais velha é recusada, com o aviso "Atualização necessária". (<code>ARQ-114</code>)</p>
+<h3 class="doc-h3" id="execucao-registro">Como o SaaS acha o middleware de cada organização</h3>
+<p><strong>Em resumo:</strong> o SaaS anota, no Registro de organizações, onde fica o middleware de cada uma. A entrada da pessoa leva só o código da organização, e o endereço do middleware nunca vai ao navegador. (<code>ARQ-102</code>)</p>
+<p><strong>Quem é quem.</strong> A <strong>sessão</strong> é a credencial digital que o navegador apresenta a cada pedido, depois do login; ela é emitida pelo middleware e leva só o código da organização. O <strong>Registro de organizações</strong>, no Banco mestre, guarda o endereço, a porta e a chave pública do middleware de cada organização, uma espécie de assinatura conhecida com que o SaaS confere a sessão. (<code>ARQ-102</code>)</p>
+<p><strong>Por que é assim.</strong> Se a sessão levasse o endereço e a porta, eles passariam pelo navegador de cada pessoa, inclusive os da casa do cliente, e trocar o endereço obrigaria todos a entrar de novo. Abre-se mão de uma sessão que se basta sozinha: o SaaS precisa consultar o Registro. (<code>ARQ-102</code>)</p>
+<p><strong>As versões do canal.</strong> O SaaS fala com a versão atual do middleware e com a anterior; uma mais velha é recusada, com o aviso "Atualização necessária". Quem atualiza é quem hospeda: a Maind, no dela; o cliente, no dele. Assim, quem hospeda tem tempo de atualizar, e a Maind não carrega todas as versões antigas. (<code>ARQ-114</code>)</p>
+<p><strong>Um exemplo, passo a passo.</strong> Uma rede de farmácias hospeda o próprio middleware, e a TI da farmácia demora a atualizá-lo.</p>
+<ol>
+  <li>A Maind publica uma versão nova do SaaS. O middleware da farmácia fica uma versão atrás e continua funcionando. (<code>ARQ-114</code>)</li>
+  <li>Numa publicação seguinte, ele fica duas versões atrás, e o SaaS passa a recusá-lo: a luz da tela de entrada fica vermelha, com o texto "Atualização necessária". (<code>ARQ-107</code>, <code>ARQ-114</code>)</li>
+  <li>A TI da farmácia troca o pacote do middleware pelo novo e o reinicia, e o SaaS volta a conversar com ele. (<code>ARQ-114</code>)</li>
+</ol>
 
-<h3 class="doc-h3" id="execucao-queda">O que acontece quando o middleware cai?</h3>
+<h3 class="doc-h3" id="execucao-queda">O que a pessoa vê quando o middleware cai</h3>
+<p><strong>Em resumo:</strong> o SaaS acompanha o estado do middleware de cada organização e o mostra numa luz na tela de entrada, numa página de status sem login e num aviso próprio no lugar das respostas. Tudo isso funciona com o middleware fora, porque quem guarda o estado é o SaaS. (<code>ARQ-104</code>, <code>ARQ-106</code>, <code>ARQ-107</code>)</p>
+<p><strong>Quem é quem.</strong></p>
 <ul>
-  <li>O SaaS dá a ele um de três estados, no ar, instável ou fora do ar, pelas falhas e pela demora dos contatos que já faz. (<code>ARQ-107</code>)</li>
-  <li>O estado aparece numa luz da tela de entrada, sempre com texto, e numa página de status sem login. No vermelho, um aviso próprio toma o lugar das respostas. A versão aparece só no painel da instância, a tela em que a Maind acompanha a instalação. (<code>ARQ-104</code>, <code>ARQ-106</code>, <code>ARQ-107</code>, <code>ARQ-114</code>)</li>
-  <li>As quedas ficam noventa dias no Banco mestre. Por isso a luz, a página e o aviso funcionam com o middleware fora. (<code>ARQ-106</code>, <code>ARQ-121</code>)</li>
-  <li>A rodada de um agendamento, alerta ou agente espera até uma hora. Se o middleware volta, roda uma vez e diz que atrasou. Se não, é pulada, com o motivo registrado, e só quem responde pelo agendamento é avisado. (<code>ARQ-108</code>, <code>ARQ-120</code>)</li>
+  <li><strong>O estado</strong> tem três valores: no ar, instável ou fora do ar. O SaaS decide pelas falhas e pela demora dos contatos que já faz com o middleware. (<code>ARQ-107</code>)</li>
+  <li><strong>A luz</strong> da tela de entrada é verde, amarela ou vermelha, sempre com um texto ao lado, para quem não distingue as cores. Com o amarelo, a pessoa entra normalmente. (<code>ARQ-107</code>)</li>
+  <li><strong>A página de status</strong> abre sem login e mostra desde quando o middleware está no ar ou fora, o último contato e as quedas recentes. Não mostra a versão, que aparece só no painel da instância, a tela em que a Maind acompanha a instalação. (<code>ARQ-106</code>, <code>ARQ-114</code>)</li>
+  <li><strong>O aviso próprio</strong>, com o vermelho, toma o lugar das respostas: diz desde quando a conexão está fora, que o resto do Horus segue no ar e que a pessoa deve procurar o owner da organização, a pessoa que administra a organização no Horus. (<code>ARQ-104</code>)</li>
 </ul>
+<p><strong>Por que é assim.</strong> O login mora no middleware e cai junto com ele: uma tela de status atrás do login não abriria justamente quando mais importa. Sem aviso, a pessoa acharia que errou a senha ou que o Horus inteiro quebrou. As quedas ficam noventa dias no Banco mestre, e por isso a luz, a página e o aviso funcionam com o middleware fora. Abre-se mão de esconder as quedas: quem tem o endereço da organização vê quando ela caiu. (<code>ARQ-104</code>, <code>ARQ-106</code>, <code>ARQ-121</code>)</p>
+<p><strong>Um exemplo, passo a passo.</strong> Às 9h, a gerente de uma loja abre o Horus. O middleware da organização está fora do ar desde as 8h52.</p>
+<ol>
+  <li>A tela de entrada mostra a luz vermelha, com o texto "Fora do ar". (<code>ARQ-107</code>)</li>
+  <li>Ela clica na luz, e a página de status diz: fora do ar desde as 8h52. (<code>ARQ-106</code>)</li>
+  <li>No lugar da entrada, ela vê o aviso, que pede para procurar o owner da organização e oferece um botão de tentar de novo. (<code>ARQ-104</code>)</li>
+</ol>
+<p><strong>Quando dá errado para todos.</strong> O middleware da Maind atende todas as organizações do SaaS, então uma queda dele alcança todas de uma vez. Com o middleware da casa do cliente, só as organizações dele. (<code>ARQ-104</code>, <code>ARQ-107</code>)</p>
+
+<h3 class="doc-h3" id="execucao-rodada">O que acontece com o que roda sozinho durante uma queda</h3>
+<p><strong>Em resumo:</strong> a rodada de um agendamento, alerta ou agente espera até uma hora. Se o middleware volta, roda uma vez e diz que atrasou; se não, é pulada, com o motivo registrado, e só quem responde pelo agendamento é avisado. (<code>ARQ-108</code>, <code>ARQ-120</code>)</p>
+<p><strong>Por que é assim.</strong> Pular de imediato faria faltar o relatório do dia numa queda de vinte minutos. Refazer tudo depois de uma queda longa traria uma rajada de relatórios velhos e de mensagens, e o WhatsApp e a IA têm custo. Abre-se mão de o relatório chegar sempre na hora. Nunca roda mais de uma rodada atrasada por agenda, e quem receberia o relatório não é avisado do pulo. (<code>ARQ-108</code>, <code>ARQ-120</code>)</p>
+<div class="callout callout--info"><span class="ico">i</span><div><b>Analogia</b><p>É como um voo segurado pelo mau tempo: a companhia espera um pouco; se o tempo abre, o avião sai atrasado e o atraso fica anunciado; se não abre, o voo é cancelado, e o do dia seguinte sai no horário. A analogia para aqui: no Horus, nunca saem dois voos juntos para recuperar o perdido, e o cancelamento é avisado só a quem marcou a viagem.</p></div></div>
+<p><strong>Um exemplo, passo a passo.</strong> O diretor financeiro de uma rede de supermercados recebe todo dia, às 8h, um relatório de vendas que ele mesmo agendou. O middleware cai às 7h50.</p>
+<ol>
+  <li>Às 8h, a rodada fica esperando na fila; o SaaS não insiste enquanto o estado está vermelho. (<code>ARQ-108</code>)</li>
+  <li>Se o middleware volta às 8h20, o relatório roda uma vez e chega dizendo "Gerado às 08h20, previsto 08h00". (<code>ARQ-108</code>)</li>
+  <li>Se o middleware só volta às 9h30, a rodada é pulada às 9h, e o motivo fica registrado. Quando o diretor financeiro entra no Horus, encontra na área de avisos a hora e o motivo. (<code>ARQ-108</code>, <code>ARQ-120</code>)</li>
+</ol>
+<p><strong>Quando dá errado.</strong> Com o middleware fora, também não saem e-mails, porque o SaaS não guarda os endereços: o middleware os entrega só na hora do envio. E a contagem de uso de IA que não chegou aparece quando o middleware volta. (<code>ARQ-117</code>, <code>ARQ-118</code>)</p>
 
 <h2 class="doc-h2" id="execucao-falta-decidir">O que falta decidir nesta parte</h2>
 <p>O arquiteto do Horus decide como o Horus é construído por dentro.</p>
 <ul>
-  <li><strong>Cabe ao arquiteto do Horus decidir por qual papel passa cada conversa com o middleware:</strong>
+  <li><strong>Falta o arquiteto do Horus decidir por qual papel passa cada conversa com o middleware.</strong> <em>O que está em jogo:</em> pelo Atender, a conversa acontece na hora; pelo Trabalhar, vira uma tarefa da fila, que não se perde, mas não é instantânea. (<code>ARQ-024</code>)
     <ul>
-      <li>os assentos liberados, as vagas pagas da organização, a caminho do middleware (<code>P-048</code>);</li>
-      <li>a medida do estado, e como medir o do middleware da casa do cliente (<code>P-042</code>);</li>
-      <li>a mudança das permissões e o aviso de IA parada, a caminho do SaaS (<code>ARQ-117</code>, <code>ARQ-123</code>);</li>
-      <li>o e-mail de recuperação de senha, e quem o manda (<code>P-048</code>).</li>
+      <li>os assentos liberados, as vagas pagas da organização, a caminho do middleware, onde o owner da organização cadastra as pessoas (<code>P-048</code>);</li>
+      <li>a medida do estado, e como medir o do middleware da casa do cliente, de quem a Maind só vê o que o SaaS mede (<code>P-042</code>, <code>ARQ-119</code>);</li>
+      <li>a mudança das permissões e o aviso de IA parada, a caminho do SaaS; uma mudança atrasada deixa a pessoa, por um tempo, com a permissão antiga (<code>ARQ-117</code>, <code>ARQ-123</code>);</li>
+      <li>o e-mail de recuperação de senha, e quem o manda, já que o login mora no middleware e os e-mails saem do SaaS (<code>P-048</code>, <code>ARQ-118</code>).</li>
     </ul>
   </li>
-  <li><strong>Cabe ao arquiteto do Horus decidir onde moram e rodam algumas peças:</strong>
+  <li><strong>Falta o arquiteto do Horus decidir onde moram e rodam algumas peças.</strong> <em>O que está em jogo:</em> o Banco mestre guarda o que cruza organizações, e o da organização, o que é só dela; o lugar de cada peça diz qual proteção vale para ela. (<code>ARQ-088</code>)
     <ul>
-      <li>o banco do estado do middleware e o das permissões de cada pessoa (<code>ARQ-107</code>, <code>ARQ-123</code>);</li>
-      <li>o papel do Repassador, e se o Banco mestre também usa caixa de saída (<code>ARQ-088</code>);</li>
-      <li>o ponto em que a história é gravada, que o modelo de dados da administração da instância descreve de outro jeito (<code>MF-101</code>, <code>ARQ-097</code>);</li>
-      <li>a tecnologia da Base de configuração e o lugar dela na produção real (<code>ARQ-127</code>);</li>
-      <li>se o servidor guarda na memória o endereço lido no Registro (<code>ARQ-102</code>).</li>
+      <li>o banco do estado do middleware e o das permissões de cada pessoa, que por isso ainda não aparecem no desenho (<code>ARQ-107</code>, <code>ARQ-123</code>);</li>
+      <li>o papel do Repassador, e se o Banco mestre também usa caixa de saída, a peça que faz a mudança e o pedido nascerem juntos (<code>ARQ-088</code>);</li>
+      <li>o ponto em que a história é gravada, que o modelo de dados da administração da instância descreve de outro jeito; o ponto único de gravação é uma das garantias de que a história confere com o estado de hoje (<code>MF-101</code>, <code>ARQ-097</code>);</li>
+      <li>a tecnologia da Base de configuração e o lugar dela na produção real: um banco gerenciado à parte do banco do SaaS ou um serviço dentro do Kubernetes (<code>ARQ-127</code>);</li>
+      <li>se o servidor guarda na memória o endereço lido no Registro, para não consultá-lo a cada pedido (<code>ARQ-102</code>).</li>
     </ul>
   </li>
-  <li><strong>Falta o arquiteto do Horus desenhar:</strong> a exportação da conversa em PDF ou HTML. (<code>D-250</code>, <code>P-047</code>)</li>
-  <li><strong>Falta o arquiteto do Horus atualizar:</strong> os documentos técnicos que ainda não descrevem as duas fases. (<code>P-028</code>)</li>
-  <li><strong>Falta o arquiteto do Horus calibrar, com o uso:</strong> o ponto em que "no ar" vira "instável", a espera de uma hora da rodada, quantas versões do middleware o SaaS aceita e os limites do agente. (<code>ARQ-107</code>, <code>ARQ-108</code>, <code>ARQ-114</code>, <code>ARQ-030</code>)</li>
-  <li><strong>Falta o arquiteto do Horus confirmar na prática:</strong>
+  <li><strong>Falta o arquiteto do Horus desenhar:</strong> a exportação da conversa em PDF ou HTML. (<code>D-250</code>, <code>P-047</code>) <em>O que está em jogo:</em> ela está prometida na v2.0, mas hoje o Horus só baixa a planilha e a imagem de um bloco da resposta; se não couber na v2.0, a decisão é reaberta. (<code>D-250</code>)</li>
+  <li><strong>Falta o arquiteto do Horus atualizar:</strong> os documentos técnicos que ainda não descrevem as duas fases. (<code>P-028</code>) <em>O que está em jogo:</em> eles ainda falam de réplicas e de Kubernetes também na VPS; até serem refeitos, vale o registro de decisões. (<code>ARQ-101</code>)</li>
+  <li><strong>Falta o arquiteto do Horus calibrar, com o uso:</strong> o ponto em que "no ar" vira "instável", a espera de uma hora da rodada, quantas versões do middleware o SaaS aceita e os limites do agente. (<code>ARQ-107</code>, <code>ARQ-108</code>, <code>ARQ-114</code>, <code>ARQ-030</code>) <em>O que está em jogo:</em> um amarelo sensível demais dá alarme falso, uma espera curta faz faltar relatório, e uma janela de versões estreita aperta quem hospeda o middleware. (<code>ARQ-107</code>, <code>ARQ-108</code>, <code>ARQ-114</code>)</li>
+  <li><strong>Falta o arquiteto do Horus confirmar na prática:</strong> <em>O que está em jogo:</em> estas medidas sustentam três escolhas, um banco por organização, um servidor só na VPS e o código pronto para réplicas; se alguma falhar, a escolha é reaberta. (<code>ARQ-088</code>, <code>ARQ-098</code>, <code>ARQ-113</code>)
     <ul>
       <li>que bastam poucas conexões abertas com o banco de cada organização (<code>ARQ-088</code>);</li>
-      <li>que a troca de versão na VPS tira o SaaS do ar por até dois minutos, mais a subida (<code>ARQ-063</code>, <code>ARQ-098</code>);</li>
+      <li>que a troca de versão na VPS tira o SaaS do ar por até dois minutos, mais a subida, dentro do que os clientes toleram (<code>ARQ-063</code>, <code>ARQ-098</code>);</li>
       <li>que preparar o código para réplicas não pesa na v2.0 (<code>ARQ-113</code>).</li>
     </ul>
   </li>
@@ -126,7 +208,7 @@
 </div><nav class="rel-grid dx-vizinhas" aria-label="Páginas vizinhas"><a class="rel-card dx-anterior" href="modulos.html"><span class="cat">Anterior</span><h5>Os módulos</h5><span class="arrow">←</span></a><a class="rel-card dx-proxima" href="implantacao.html"><span class="cat">Próxima</span><h5>Onde roda</h5><span class="arrow">→</span></a></nav>
 <footer class="ds-footer"><div class="ftr-brand"><img class="ftr-logo logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="ftr-logo logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /><div class="ftr-divider"></div><div class="ftr-meta"><b>Maind Horus · Horus v2 · versões 2.0 e 2.1 em desenho</b></div></div><div class="ftr-center"><span class="ftr-tag">v2.0 e 2.1 em desenho, sem versão publicada · 08/11/2026</span></div><div class="ftr-author"><div class="avatar">MT</div><div class="ftr-author-info"><b>Maind Tech</b><span>Horus v2</span></div></div></footer>
 </main>
-<aside class="toc"><h6>Neste artigo</h6><ul><li><a href="#execucao-frase">Em uma frase</a></li><li><a href="#execucao-desenho">O desenho</a></li><li><a href="#execucao-como-funciona">Como funciona</a></li><li class="lvl-3"><a href="#execucao-papeis">Os dois papéis: Atender e Trabalhar</a></li><li class="lvl-3"><a href="#execucao-fases">Um servidor agora, várias cópias depois</a></li><li class="lvl-3"><a href="#execucao-fila">Por que nenhum trabalho se perde</a></li><li class="lvl-3"><a href="#execucao-bancos">Onde ficam os bancos</a></li><li class="lvl-3"><a href="#execucao-registro">Como o SaaS acha o middleware</a></li><li class="lvl-3"><a href="#execucao-queda">O que acontece quando o middleware cai?</a></li><li><a href="#execucao-falta-decidir">O que falta decidir nesta parte</a></li></ul></aside>
+<aside class="toc"><h6>Neste artigo</h6><ul><li><a href="#execucao-frase">Em uma frase</a></li><li><a href="#execucao-desenho">O desenho</a></li><li><a href="#execucao-como-funciona">Como funciona</a></li><li class="lvl-3"><a href="#execucao-papeis">Os dois papéis: Atender e Trabalhar</a></li><li class="lvl-3"><a href="#execucao-fases">Um servidor agora, várias cópias depois</a></li><li class="lvl-3"><a href="#execucao-troca">O que acontece numa troca de versão</a></li><li class="lvl-3"><a href="#execucao-fila">Por que nenhum trabalho se perde: a caixa de saída e a fila</a></li><li class="lvl-3"><a href="#execucao-bancos">Onde ficam os bancos</a></li><li class="lvl-3"><a href="#execucao-registro">Como o SaaS acha o middleware de cada organização</a></li><li class="lvl-3"><a href="#execucao-queda">O que a pessoa vê quando o middleware cai</a></li><li class="lvl-3"><a href="#execucao-rodada">O que acontece com o que roda sozinho durante uma queda</a></li><li><a href="#execucao-falta-decidir">O que falta decidir nesta parte</a></li></ul></aside>
 </div>
 <div class="toast" id="toast">Copiado ✓</div>
 <script src="assets/busca.js"></script>

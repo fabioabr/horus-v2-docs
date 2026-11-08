@@ -1,57 +1,128 @@
 <h3 id="criar-organizacao-frase">Em uma frase</h3>
-<p>Uma <strong>organização</strong> é o cadastro de uma empresa cliente no Horus. Criá-la é ligá-la ao <strong>middleware</strong>, a parte que busca os dados no banco da empresa e conversa com o <strong>SaaS</strong>, a parte do Horus que as pessoas usam, hospedada pela Maind. Excluí-la apaga tudo o que é dela, também no middleware.</p>
+<p>Uma <strong>organização</strong> é o cadastro de uma empresa cliente no Horus, com as pessoas, os bancos de dados e a inteligência artificial (IA) dela. Criá-la é ligá-la ao <strong>middleware</strong>, a parte do Horus que confere o login, guarda as senhas da empresa e busca os dados no banco dela. O middleware conversa com o <strong>SaaS</strong>, a parte do Horus que as pessoas usam pela internet, hospedada pela Maind. Excluí-la apaga tudo o que é dela, também no middleware. (<code>D-146</code>, <code>D-258</code>, <code>D-278</code>)</p>
+<p>Esta página segue a organização do começo ao fim. Ela nasce <strong>em configuração</strong> e passa a <strong>ativa</strong> quando consegue responder. Se for excluída, fica <strong>em exclusão</strong> até o middleware confirmar que apagou tudo, e só então está <strong>excluída</strong>. (<code>D-277</code>, <code>ARQ-125</code>)</p>
 
 <h3 id="criar-organizacao-desenho">O desenho</h3>
-<p>O desenho é uma sequência: o tempo corre de cima para baixo, e cada seta é um passo.</p>
+<p>O desenho é uma sequência: conta a história em ordem, com o tempo correndo de cima para baixo. Cada seta é um passo.</p>
 <dx-diagrama ref="arq-geral-criar-organizacao"></dx-diagrama>
 <ul>
-  <li><strong>As colunas</strong> são quem participa: o owner da instância, funcionário da Maind que opera o painel do Horus; o SaaS; o middleware; o owner da organização, a pessoa que administra a organização no Horus; e a pessoa que pergunta.</li>
-  <li><strong>As cinco faixas numeradas</strong> são as etapas, da criação à exclusão.</li>
-  <li><strong>A cor da seta</strong> diz o tipo de passo, conforme a legenda: caminho principal, identidade, resposta ou cadastro.</li>
-  <li><strong>A seta tracejada</strong> é um passo feito por fora do sistema ou que ainda espera confirmação.</li>
-  <li><strong>Cada seta</strong> traz uma nota com o código da decisão.</li>
+  <li><strong>As cinco colunas são quem participa,</strong> da esquerda para a direita: o owner da instância, funcionário da Maind que opera o painel do Horus; o SaaS; o middleware; o owner da organização, a pessoa do cliente que administra a organização; e a pessoa que pergunta. A barra grossa sobre a linha de uma coluna marca quando aquele participante está em ação.</li>
+  <li><strong>As cinco molduras numeradas são as etapas:</strong> a organização nasce e entra no middleware; o owner da organização ganha acesso e configura o banco e a IA; a organização fica ativa e recebe os assentos e as pessoas; a primeira pergunta; e a exclusão.</li>
+  <li><strong>Cada seta</strong> vai de quem age para quem recebe. O texto acima dela diz o que acontece; a nota miúda abaixo resume a regra e traz o código da decisão. Para ler as notas, basta aproximar com a roda do mouse; clicar no nome de uma coluna lista o que ela envia e o que recebe.</li>
+  <li><strong>As cores seguem a legenda,</strong> no pé do desenho. Verde é o caminho principal. Vermelha e tracejada é confiança e identidade: o certificado, a senha, o login. Cinza e contínua é cadastro e configuração; cinza e tracejada, resposta. Roxa e tracejada é o passo feito por fora do sistema, ou que ainda espera a confirmação do dono do Horus.</li>
+  <li><strong>O desenho segue o caminho do middleware da Maind.</strong> A TI do cliente não tem coluna própria: quando o middleware fica na casa do cliente, ela faz os passos que as notas indicam.</li>
 </ul>
 
 <h3 id="criar-organizacao-como-funciona">Como funciona</h3>
-<h4 id="criar-organizacao-nasce">Como a organização nasce e se liga ao middleware?</h4>
-<p>Só o owner da instância cria organizações, e cada uma nasce <strong>em configuração</strong>. Ela entra no middleware que já existe: o da Maind atende todas as organizações do SaaS, e o de um cliente, as daquele cliente. (<code>D-146</code>, <code>D-272</code>, <code>D-277</code>)</p>
+
+<h4 id="criar-organizacao-nasce">Como a organização nasce e se liga ao middleware</h4>
+<p><strong>Em resumo:</strong> o owner da instância cria a organização no SaaS. A criação gera um certificado; com ele, o middleware passa a ter a organização e devolve o próprio endereço num arquivo assinado. Os dois lados se reconhecem num aperto de mão, e o vínculo está feito. (<code>D-146</code>, <code>ARQ-124</code>)</p>
+<p><strong>Quem é quem.</strong></p>
+<ul>
+  <li>O <strong>certificado</strong> é uma espécie de carteira de identidade digital da organização: prova, na conversa entre o SaaS e o middleware, que cada lado é quem diz ser. Com ele vai uma <strong>chave de instalação</strong>, trancada com o certificado e de uso único, com os dados de que o middleware precisa.</li>
+  <li>O <strong>arquivo de configuração assinado</strong> é a resposta do middleware. Leva o endereço e a porta dele, o número da entrada certa naquele endereço, e prova pela assinatura de onde veio.</li>
+  <li>O <strong>Registro de organizações</strong> é a lista, guardada no SaaS, de onde fica o middleware de cada organização: o endereço, a porta e a chave pública, um código com que o SaaS confere o que o middleware assina. (<code>ARQ-102</code>)</li>
+</ul>
+<p><strong>Quem cria.</strong> Na versão de hoje do Horus, qualquer pessoa que entra pode criar uma organização e se tornar o owner dela. Na v2.0, só o owner da instância cria organizações, e é essa criação que gera o certificado que liga a organização ao middleware, como explicado a seguir. (<code>D-146</code>, <code>ARQ-124</code>)</p>
+<p><strong>Por que um middleware que já existe, e por dois caminhos.</strong> O middleware da Maind atende todas as organizações que usam o Horus pela Maind: criar uma organização é só cadastrá-la nele, com uma marca própria em cada registro e uma chave só dela, que tranca as senhas dos bancos e da IA. Na Maind, o SaaS entrega o certificado sozinho, pelo contrato, o canal com regras fixas entre as duas partes. Na casa do cliente, o SaaS não entra na rede da empresa, e a TI do cliente importa o arquivo do certificado. Abre-se mão de um caminho único para que a Maind crie organizações sem passo à mão. (<code>D-272</code>, <code>ARQ-103</code>, <code>ARQ-124</code>)</p>
+<div class="callout callout--info"><span class="ico">i</span><div><b>Analogia</b><p>É como dois escritórios que começam a trabalhar juntos e trocam crachás. O SaaS manda o crachá da organização nova; o middleware devolve um cartão assinado com o próprio endereço; dali em diante, um confere o crachá do outro antes de conversar. A analogia para aqui: no Horus, a conferência é feita por programa, sem ninguém olhando, e um crachá trocado é recusado na hora.</p></div></div>
+<p><strong>Um exemplo, passo a passo.</strong> A Distribuidora Aurora, de alimentos, contrata o Horus com o middleware da Maind.</p>
 <ol>
-  <li>A criação gera um <strong>certificado</strong>, uma identidade digital que prova quem é quem, e uma chave de instalação, de uso único.</li>
-  <li>Com o middleware na Maind, o SaaS os entrega sozinho, pelo canal combinado entre os dois. No cliente, a TI do cliente, a equipe de tecnologia da empresa, importa o arquivo, porque o cliente não deixa o SaaS entrar na rede dele.</li>
-  <li>O middleware cria a organização, com uma chave só dela para trancar as senhas dos bancos e da IA, o serviço de inteligência artificial que monta as respostas. Depois devolve um arquivo assinado e trancado, que prova a origem e leva o endereço do middleware. O SaaS anota esse endereço no Registro de organizações, a lista de onde fica cada middleware.</li>
-  <li>As duas partes fazem o <strong>aperto de mão</strong> em que se reconhecem. Repetir a importação não duplica a organização. (<code>ARQ-102</code>, <code>ARQ-103</code>, <code>ARQ-124</code>)</li>
+  <li>Paulo, o owner da instância, cria a organização "Distribuidora Aurora". Ela nasce em configuração.</li>
+  <li>O SaaS gera o certificado e a chave de instalação e os entrega ao middleware da Maind pelo contrato.</li>
+  <li>O middleware cria a Aurora dentro dele, com a marca e a chave dela, e devolve o arquivo assinado.</li>
+  <li>O SaaS grava o endereço, a porta e a chave pública no Registro de organizações.</li>
+  <li>Os dois lados confirmam o aperto de mão: a primeira das três condições para a Aurora ficar ativa está cumprida. (<code>D-277</code>, <code>ARQ-124</code>)</li>
 </ol>
-<p>Como cada middleware roda, na Maind ou no cliente, está em <a href="#implantacao">Onde roda</a>. (<code>ARQ-100</code>, <code>ARQ-112</code>)</p>
+<p>Se fosse uma indústria com o middleware na própria rede, só o segundo passo mudaria: a TI do cliente importaria o arquivo do certificado. Por onde o arquivo assinado volta ao SaaS, nesse caso, ainda falta decidir.</p>
+<p><strong>Quando dá errado.</strong> Importar o mesmo certificado duas vezes não cria duas organizações. Um certificado que não confere com a organização é recusado, e o aperto de mão falha; sem ele, a organização não passa a ativa. As duas situações são testadas antes de cada etapa da construção ser dada por pronta. (<code>ARQ-124</code>, <code>ARQ-079</code>)</p>
+<p><strong>O que ainda está em aberto:</strong> falta o arquiteto do Horus decidir o caminho do certificado na casa do cliente. A política do certificado, com o formato, a troca e o cancelamento, está em <a href="#seguranca">Segurança em camadas</a>. (<code>P-048</code>, <code>P-049</code>)</p>
 
-<h4 id="criar-organizacao-primeiro-acesso">Como o owner da organização entra pela primeira vez?</h4>
-<p>O owner da instância cria o usuário do owner da organização, e o middleware gera um link que vale uma vez só e por pouco tempo. A Maind o entrega por e-mail ou WhatsApp, por fora do sistema.</p>
-<p>O owner da organização cria a própria senha, que não passa pela Maind, e o link não passa pelo SaaS. No cliente, a TI do cliente faz o papel do owner da instância. (<code>D-271</code>, <code>D-280</code>, <code>ARQ-110</code>)</p>
+<h4 id="criar-organizacao-primeiro-acesso">Como o owner da organização entra pela primeira vez</h4>
+<p><strong>Em resumo:</strong> o owner da instância cria o usuário do owner da organização no middleware, que gera um link de primeiro acesso, de uso único e validade curta. A Maind entrega o link por fora do sistema, e o owner da organização cria a própria senha. (<code>D-271</code>, <code>ARQ-110</code>)</p>
+<p><strong>Quem é quem.</strong> Na Maind, quem cria o usuário é o owner da instância, na tela de configuração do middleware; na casa do cliente, é a TI do cliente. O link é gerado pelo middleware e entregue pelo e-mail ou pelo WhatsApp da própria Maind. (<code>D-280</code>, <code>ARQ-110</code>)</p>
+<p><strong>Por que é assim.</strong> Um convite por e-mail enviado pelo SaaS faria o e-mail do owner da organização e o link passarem pelo SaaS, que não deve lidar com dados de pessoa. Uma senha provisória faria a Maind conhecer a senha inicial e a deixaria circular por mensagem. Com o link, nenhuma senha passa pela Maind e nada passa pelo SaaS. Abre-se mão da entrega automática: a entrega manual serve enquanto a Maind cria poucas organizações. (<code>ARQ-110</code>)</p>
+<p>O owner da organização e o owner da instância entram sempre com usuário e senha, nunca por um login de terceiros, como o do Google. Desligar as outras formas de entrar nunca tira deles essa entrada. (<code>D-258</code>, <code>ARQ-111</code>)</p>
+<p><strong>Um exemplo, passo a passo.</strong> Renata, diretora financeira da Aurora, vai ser a owner da organização.</p>
+<ol>
+  <li>Paulo cria o usuário de Renata na tela de configuração do middleware.</li>
+  <li>O middleware gera o link, e Paulo o manda a Renata pelo WhatsApp da Maind. O SaaS não vê nada disso.</li>
+  <li>Renata abre o link e cria a própria senha, que ninguém na Maind conhece.</li>
+  <li>O link deixa de valer assim que é usado.</li>
+</ol>
+<p><strong>Quando dá errado.</strong> Se o link vence antes de ser usado, ou se alguém tenta usá-lo de novo, ele não abre; quem criou o usuário gera outro. (<code>ARQ-110</code>)</p>
+<p><strong>O que ainda está em aberto:</strong> falta o arquiteto do Horus decidir quanto tempo vale o link e onde o owner da instância faz login. (<code>ARQ-110</code>, <code>P-048</code>)</p>
 
-<h4 id="criar-organizacao-ativa">Quando a organização passa a ativa?</h4>
-<p>O owner da organização configura, na tela do middleware, ao menos um banco e a IA, e escolhe como as pessoas fazem login. A Maind só dá suporte e não configura no lugar dele. (<code>D-273</code>, <code>ARQ-111</code>)</p>
-<p>A organização só passa a <strong>ativa</strong> com três condições: o aperto de mão, um banco configurado e a IA configurada. Cadastrar as pessoas não é condição. As organizações de exemplo, das demonstrações, seguem o mesmo caminho. (<code>D-277</code>, <code>ARQ-089</code>)</p>
+<h4 id="criar-organizacao-ativa">Quando a organização passa a ativa: o banco, a IA e o login</h4>
+<p><strong>Em resumo:</strong> a organização só passa a ativa com três condições: o aperto de mão entre o SaaS e o middleware, ao menos um banco e a IA, os dois configurados pelo owner da organização na tela do middleware. Cadastrar as pessoas não é condição. (<code>D-273</code>, <code>D-277</code>)</p>
+<p><strong>O que o owner da organização configura.</strong></p>
+<ul>
+  <li><strong>O banco de dados</strong> é onde a empresa guarda as informações dela, como vendas e clientes. O Horus só o lê, nunca o altera, e a senha dele fica no middleware, trancada com a chave da organização. (<code>D-001</code>, <code>ARQ-103</code>)</li>
+  <li><strong>A IA</strong> é o serviço de inteligência artificial que entende a pergunta e monta a resposta. Usá-la pede uma chave, uma espécie de senha de acesso ao fornecedor. A chave pode ser da organização ou uma que a Maind dá e paga; mesmo essa é cadastrada pelo owner da organização, que vê o consumo e o custo de toda a IA dela. (<code>D-264</code>, <code>D-266</code>, <code>D-267</code>)</li>
+  <li><strong>O login das pessoas:</strong> na v2.0, usuário e senha e a conta do Google; na v2.1, também o login da empresa, pelo padrão chamado OpenID Connect. Cada forma tem um interruptor por organização. (<code>ARQ-111</code>)</li>
+</ul>
+<p><strong>Por que as três condições.</strong> Sem banco, não há de onde tirar a resposta; sem IA, ninguém entende a pergunta. A regra evita ativar uma organização que não responde. Abre-se mão de ativar logo: a ativação depende do owner da organização, e a Maind não ativa sozinha uma organização incompleta, nem as de exemplo, usadas nas demonstrações. (<code>D-277</code>, <code>ARQ-089</code>)</p>
+<p><strong>Por que quem configura é o owner da organização.</strong> A tela e a responsabilidade ficam iguais nas duas hospedagens, e a equipe da Maind deixa de conhecer, por rotina, as senhas dos bancos dos clientes. Abre-se mão de duas coisas: o owner da organização precisa aprender a configurar um banco e uma IA, com o suporte da Maind; e quem opera o middleware da Maind ainda poderia, tecnicamente, alcançar as senhas, então a promessa de que a Maind não as vê só vale por inteiro com o middleware na casa do cliente. (<code>D-273</code>, <code>D-189</code>)</p>
+<p><strong>Quem marca como ativa.</strong> A trava é automática: o sistema só libera a ativação com as três condições cumpridas. O PO propõe que, daí em diante, quem marca a organização como ativa continue sendo a Maind; falta o dono do Horus confirmar, e por isso essa seta é roxa e tracejada no desenho. (<code>D-277</code>)</p>
+<div class="callout callout--info"><span class="ico">i</span><div><b>Analogia</b><p>É como uma loja nova que só abre as portas depois de conferidas três coisas: a energia ligada, o estoque na prateleira e o caixa funcionando. A analogia para aqui: no Horus, quem confere as três condições é o próprio sistema, e ainda falta confirmar quem dá o "pode abrir" depois da conferência.</p></div></div>
+<p><strong>Um exemplo, passo a passo.</strong></p>
+<ol>
+  <li>O aperto de mão da Aurora foi confirmado na criação: primeira condição.</li>
+  <li>Renata cadastra a ligação com o banco de vendas da Aurora. Com uma dúvida, pede ajuda ao suporte da Maind, que a orienta sem preencher nada por ela. Segunda condição.</li>
+  <li>Renata cadastra a chave de IA que a Maind deu à Aurora e liga o login pelo Google. Terceira condição.</li>
+  <li>O sistema libera a ativação, e Paulo, da Maind, marca a Aurora como ativa, como o PO propõe. Ninguém da Aurora foi cadastrado ainda, e isso não impede nada.</li>
+</ol>
+<p><strong>Quando dá errado.</strong> Se a IA nunca é cadastrada, a Aurora continua em configuração, e ninguém dela consegue perguntar. Depois de ativa, se a chave de IA é recusada ou o crédito acaba, o owner da organização é avisado; se a chave é a da Maind, a equipe da Maind também, para repor o crédito. (<code>D-268</code>, <code>D-277</code>)</p>
+<p><strong>O que ainda está em aberto:</strong> falta o arquiteto do Horus decidir como o SaaS sabe que o banco e a IA estão configurados sem ver as senhas; falta o dono do Horus confirmar quem marca a organização como ativa; e falta o PO conferir, com o uso, que o owner da organização configura tudo isso sozinho. (<code>D-273</code>, <code>D-277</code>, <code>P-048</code>)</p>
 
-<h4 id="criar-organizacao-primeira-pergunta">Como as pessoas chegam à primeira pergunta?</h4>
-<p>O owner da instância libera os <strong>assentos</strong>, as vagas de uso que a empresa contratou, e eles vão ao middleware. Ali o owner da organização cadastra as pessoas, com o nome e o e-mail. O SaaS conhece cada pessoa só por um código e recebe, a cada mudança, o que ela pode fazer, sem nomes. (<code>D-261</code>, <code>ARQ-109</code>, <code>ARQ-123</code>)</p>
-<p>A pessoa entra pelo endereço da organização e faz login no middleware. O passe de entrada que recebe, a prova temporária de que fez login, leva só o código da organização. Ao SaaS chegam só a pergunta e a resposta pronta, porque a análise roda no middleware. (<code>D-189</code>, <code>ARQ-102</code>, <code>ARQ-111</code>)</p>
+<h4 id="criar-organizacao-primeira-pergunta">Como as pessoas chegam à primeira pergunta</h4>
+<p><strong>Em resumo:</strong> o owner da instância libera os assentos contratados, e eles vão ao middleware, onde o owner da organização cadastra as pessoas. Cada pessoa entra pelo endereço da organização, faz login no middleware e pergunta. Ao SaaS chegam só um código por pessoa, a pergunta e a resposta pronta. (<code>D-189</code>, <code>D-258</code>, <code>D-261</code>, <code>ARQ-109</code>)</p>
+<p><strong>Quem é quem.</strong></p>
+<ul>
+  <li>O <strong>assento</strong> é a vaga contratada que uma pessoa ocupa. Há cinco tipos: o de owner da organização, o de gestor e os de membro ouro, prata e bronze, e o owner da instância libera, reduz e corta cada um à parte. O owner da organização pode dar o mesmo papel a no máximo mais duas pessoas, cada uma num assento contratado de owner da organização. (<code>D-194</code>, <code>D-269</code>, <code>D-280</code>)</li>
+  <li>O <strong>gestor</strong> convida pessoas pelo Horus e escolhe o tipo de assento; quem aprova é o owner da organização, na tela do middleware. O e-mail do convidado atravessa o SaaS sem ser gravado. (<code>D-262</code>, <code>ARQ-109</code>)</li>
+  <li>O <strong>código da pessoa</strong> é gerado pelo middleware e não deriva do nome nem do e-mail. Para cada código, o SaaS guarda só o tipo de assento, as permissões e os grupos, que o middleware envia a cada mudança. (<code>ARQ-109</code>, <code>ARQ-123</code>)</li>
+  <li>O <strong>endereço da organização</strong> é o do SaaS com um código no fim, o token, que aponta a organização certa; ele só identifica, nunca serve de senha. O <strong>passe de entrada</strong> (a sessão), emitido pelo middleware depois do login, leva só o código da organização. (<code>D-258</code>, <code>ARQ-102</code>)</li>
+</ul>
+<p><strong>Por que é assim.</strong> As pessoas ficam com a própria organização, e o SaaS sabe o que cada código pode fazer sem saber quem é: responde sozinho a cada "esta pessoa pode fazer isto?" e conta os assentos ocupados. Quando uma tela mostra nomes, pede-os ao middleware na hora e não os grava. O passe sem endereço segue a mesma lógica: nada da infraestrutura do cliente passa pelo navegador. Abre-se mão de telas com nomes que funcionem sem o middleware. (<code>D-261</code>, <code>ARQ-102</code>, <code>ARQ-109</code>, <code>ARQ-123</code>)</p>
+<p><strong>Um exemplo, passo a passo.</strong> A Aurora contratou um assento de gestor e quinze de membro prata.</p>
+<ol>
+  <li>Paulo libera os assentos no SaaS, que os envia ao middleware. Renata cadastra a gerente comercial no assento de gestor.</li>
+  <li>A gerente convida pelo Horus um vendedor novo, Lucas, num assento prata, e Renata aprova. O middleware cadastra Lucas e envia ao SaaS só o código, o tipo de assento e as permissões dele.</li>
+  <li>Lucas abre o endereço da Aurora. A luz de estado da tela de entrada está verde, com o texto "No ar". Ele entra com a conta do Google, e o middleware emite o passe. (<code>ARQ-107</code>, <code>ARQ-111</code>)</li>
+  <li>Lucas pergunta: "quais foram os dez produtos mais vendidos na semana passada?". O SaaS envia só a pergunta ao middleware, que usa a IA, consulta o banco e devolve a resposta pronta. (<code>D-189</code>)</li>
+</ol>
+<p><strong>Quando dá errado.</strong> Como o login mora no middleware, com ele fora do ar ninguém da organização entra: a luz fica vermelha, e um aviso próprio diz desde quando a conexão caiu e que o resto do Horus segue no ar. Os detalhes estão em <a href="#infra-separada">A infraestrutura separada</a>. Quando o middleware volta, o SaaS pede a lista completa das permissões antes de aceitar mudanças, para conferir que a dele bate com a do middleware. (<code>ARQ-104</code>, <code>ARQ-107</code>, <code>ARQ-123</code>)</p>
+<p><strong>O que ainda está em aberto:</strong> falta o arquiteto do Horus decidir que partes da análise ficam em cada lado; o assunto está em <a href="#pergunta-resposta">Da pergunta à resposta</a>. (<code>P-040</code>)</p>
 
-<h4 id="criar-organizacao-exclusao">O que acontece quando a organização é excluída?</h4>
-<p>O owner da instância exclui a organização, e o SaaS manda o middleware apagar os dados e a chave dela, e só o que é dela. Até o middleware confirmar, o pedido se repete, sem apagar nada a mais, e o painel da instância mostra a organização "em exclusão". (<code>D-275</code>, <code>D-278</code>, <code>ARQ-125</code>)</p>
-<p>Sem a chave, as senhas ficam inúteis também nas cópias de segurança, e o resto da cópia some quando vence o prazo dela. No cliente, quem apaga as cópias é a TI do cliente. (<code>ARQ-086</code>, <code>ARQ-125</code>)</p>
+<h4 id="criar-organizacao-exclusao">O que acontece quando a organização é excluída</h4>
+<p><strong>Em resumo:</strong> o owner da instância exclui a organização, e o SaaS manda o middleware apagar tudo o que é dela, e só o que é dela, inclusive a chave que tranca as senhas. Até o middleware confirmar, o pedido se repete, e o painel da instância mostra a organização "em exclusão". (<code>D-278</code>, <code>ARQ-125</code>)</p>
+<p><strong>O que se apaga.</strong> No SaaS, o uso da organização. No middleware, as pessoas, os bancos e a IA configurados e a configuração: todos os registros com a marca dela, mais a chave dela. As outras organizações do mesmo middleware não são tocadas. (<code>D-149</code>, <code>D-278</code>, <code>ARQ-103</code>)</p>
+<p><strong>As cópias de segurança.</strong> O Horus não faz cópia de segurança: quem opera cada instalação a configura. Na Maind, a cópia da base do middleware segue a regra da cópia da instância. Como as senhas estão trancadas com a chave da organização, apagar a chave as inutiliza também nas cópias; o resto some quando a cópia vence. Na casa do cliente, a cópia é dele, e a TI do cliente a apaga. (<code>ARQ-086</code>, <code>ARQ-125</code>)</p>
+<p><strong>Por que é assim.</strong> Quem sai do Horus leva consigo o que é dele, sem deixar dados de pessoas nem senhas para trás. Apagar também as cópias já feitas exigiria refazer cada cópia inteira; apagar depois, numa faxina, guardaria o dado por mais tempo. Abre-se mão de duas coisas: o que está numa cópia vive até ela vencer, e uma exclusão por engano leva também a configuração, sem volta. (<code>D-210</code>, <code>D-278</code>, <code>ARQ-125</code>)</p>
+<div class="callout callout--info"><span class="ico">i</span><div><b>Analogia</b><p>É como destruir a única chave de um cofre: mesmo que exista uma cópia do cofre guardada em outro lugar, ninguém mais abre o que está trancado nela. A analogia para aqui: no Horus, a chave tranca só as senhas da organização; o restante da cópia continua guardado até a cópia vencer.</p></div></div>
+<p><strong>Um exemplo, passo a passo.</strong> A Aurora encerra o contrato.</p>
+<ol>
+  <li>Paulo exclui a Aurora no painel da instância, e o SaaS manda o middleware apagar os registros e a chave dela.</li>
+  <li>O middleware não responde naquela hora. A exclusão fica pendente, e o painel mostra a Aurora "em exclusão".</li>
+  <li>O SaaS repete o pedido; repetir nunca apaga nada a mais. (<code>ARQ-005</code>)</li>
+  <li>O middleware volta, apaga e confirma. Só então a Aurora fica excluída, e nas cópias de segurança da Maind as senhas dela já não abrem.</li>
+</ol>
+<p><strong>O que ainda está em aberto:</strong> falta o arquiteto do Horus conferir se essa exclusão basta para a LGPD, a lei brasileira de proteção de dados pessoais; o item está logo abaixo. (<code>P-044</code>)</p>
 
 <h3 id="criar-organizacao-falta-decidir">O que falta decidir nesta parte</h3>
 <p>O dono do Horus decide infraestrutura, segurança, preço e o que as pessoas veem. O PO cuida do que o produto entrega e da ordem em que entrega. O arquiteto do Horus decide como o Horus é construído por dentro.</p>
 <ul>
-  <li><strong>Falta o dono do Horus confirmar:</strong> quem marca a organização como ativa, depois que o sistema libera a ativação pelas três condições. O PO propõe que continue sendo a Maind. (<code>D-277</code>)</li>
+  <li><strong>Falta o dono do Horus confirmar:</strong> quem marca a organização como ativa, depois que o sistema libera a ativação pelas três condições. O PO propõe que continue sendo a Maind. <em>O que está em jogo:</em> a trava das três condições já está decidida e é automática; falta dizer se o último passo continua sendo um ato da Maind. A trava toda seria revista se atrapalhar a entrada de um cliente. (<code>D-277</code>)</li>
   <li><strong>Falta o arquiteto do Horus decidir:</strong>
     <ul>
-      <li><strong>Como o SaaS sabe que o banco e a IA estão configurados,</strong> sem ver as senhas, para liberar a ativação. (<code>D-277</code>, <code>P-048</code>)</li>
-      <li><strong>Como o certificado chega à TI do cliente</strong> e por onde o arquivo assinado volta ao SaaS. (<code>ARQ-124</code>, <code>P-048</code>)</li>
-      <li><strong>Onde o owner da instância faz login.</strong> Ele entra sempre por usuário e senha. (<code>ARQ-111</code>, <code>P-048</code>)</li>
-      <li><strong>Quanto tempo vale o link de primeiro acesso.</strong> Vencido o prazo, quem criou o usuário gera outro. (<code>ARQ-110</code>)</li>
+      <li><strong>Como o SaaS sabe que o banco e a IA estão configurados,</strong> sem ver as senhas, para liberar a ativação. <em>O que está em jogo:</em> o aperto de mão só prova a primeira condição; sem essa resposta, o SaaS não libera a ativação sozinho, e a solução precisa manter as senhas só no middleware. (<code>D-277</code>, <code>P-048</code>)</li>
+      <li><strong>Como o certificado chega à TI do cliente</strong> e por onde o arquivo assinado volta ao SaaS. <em>O que está em jogo:</em> é o único passo do vínculo feito à mão, e por isso esse caminho ainda fica fora do desenho. A escolha de dois caminhos seria revista se um cliente exigir um caminho só, ou se a Maind passar a criar muitas organizações com falhas no aperto de mão. (<code>ARQ-124</code>, <code>P-048</code>)</li>
+      <li><strong>Onde o owner da instância faz login.</strong> Ele entra sempre por usuário e senha. <em>O que está em jogo:</em> o login das pessoas das organizações mora no middleware, que emite o passe de entrada delas; o owner da instância opera o painel do SaaS, e onde a conta dele é conferida faz parte do desenho técnico que ainda falta fechar. (<code>ARQ-102</code>, <code>ARQ-111</code>, <code>P-048</code>)</li>
+      <li><strong>Quanto tempo vale o link de primeiro acesso.</strong> Vencido o prazo, quem criou o usuário gera outro. <em>O que está em jogo:</em> o prazo é um valor a calibrar; a entrega manual do link seria revista se a Maind passar a criar muitas organizações por semana, ou se um cliente exigir o convite por e-mail. (<code>ARQ-110</code>)</li>
     </ul>
   </li>
-  <li><strong>Falta o arquiteto do Horus conferir:</strong> se a exclusão basta para a LGPD, a lei brasileira de proteção de dados pessoais. Restam as cópias de segurança, até vencerem, e o código de cada pessoa no SaaS, que já não aponta para ninguém. A parte jurídica fica com o jurídico de cada cliente, consultado na implantação. (<code>P-044</code>, <code>D-210</code>, <code>D-247</code>, <code>ARQ-109</code>, <code>ARQ-125</code>)</li>
-  <li><strong>Falta o PO conferir, com o uso:</strong> que o owner da organização consegue configurar sozinho o banco e a IA, com o suporte da Maind. (<code>D-273</code>)</li>
-  <li><strong>Também depende, e está explicado em outras páginas:</strong> a política do certificado: o formato, a troca e o cancelamento (<a href="#seguranca">Segurança em camadas</a>).</li>
+  <li><strong>Falta o arquiteto do Horus conferir:</strong> se a exclusão basta para a LGPD, a lei brasileira de proteção de dados pessoais. Restam as cópias de segurança, até vencerem, e o código de cada pessoa no SaaS, que já não aponta para ninguém. A parte jurídica fica com o jurídico de cada cliente, consultado na implantação. <em>O que está em jogo:</em> se a conferência exigir apagar as cópias antes do prazo, a forma da exclusão terá de mudar; se exigir mais do que o código, muda o que o SaaS guarda de cada pessoa. Se o jurídico de um cliente disser não, a regra pode ter de mudar para ele. (<code>P-044</code>, <code>D-210</code>, <code>D-247</code>, <code>ARQ-109</code>, <code>ARQ-125</code>)</li>
+  <li><strong>Falta o PO conferir, com o uso:</strong> que o owner da organização consegue configurar sozinho o banco e a IA, com o suporte da Maind. <em>O que está em jogo:</em> se os owners da organização não conseguirem e o suporte virar o caminho de sempre, a decisão de quem configura volta à mesa. A alternativa era a equipe da Maind configurar por eles, o que a faria conhecer as senhas dos bancos de cada cliente. (<code>D-273</code>, <code>D-265</code>)</li>
+  <li><strong>Também depende, e está explicado em outras páginas:</strong> a política do certificado, com o formato, a troca e o cancelamento (<a href="#seguranca">Segurança em camadas</a>); e que partes da análise ficam em cada lado (<a href="#pergunta-resposta">Da pergunta à resposta</a>).</li>
 </ul>

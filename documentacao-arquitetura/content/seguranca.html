@@ -1,53 +1,125 @@
 <h3 id="seguranca-frase">Em uma frase</h3>
-<p>Esta parte mostra como o Horus confere quem entra, o que cada pessoa pode fazer e onde guarda as senhas dos bancos e da IA. Assim, os dados de um cliente não vazam nem se misturam com os de outro.</p>
+<p>Esta parte mostra como o Horus confere quem entra, o que cada pessoa pode fazer, onde guarda as senhas dos bancos e da inteligência artificial (IA) e o que fica registrado. São várias proteções, uma atrás da outra, para que os dados de um cliente não vazem nem se misturem com os de outro.</p>
+<p>Todas se apoiam na separação entre as duas partes do Horus. O <strong>SaaS</strong> é a parte que as pessoas usam, hospedada pela Maind. O <strong>middleware</strong> é a parte que confere quem entra, guarda as senhas e consulta os bancos da empresa, e pode ficar na Maind ou na casa do cliente. (<code>D-258</code>) Essa separação está em <a href="#infra-separada">A infraestrutura separada</a>.</p>
 
 <h3 id="seguranca-desenho">O desenho</h3>
-<p>O desenho segue quem entra no Horus, de fora para dentro.</p>
+<p>O desenho segue quem entra no Horus, de fora para dentro: da esquerda, onde está a pessoa, para a direita, onde ficam o cofre e os bancos.</p>
 <dx-diagrama ref="arq-geral-seguranca"></dx-diagrama>
 <ul>
-  <li><strong>Grupos.</strong> O SaaS é a parte do Horus que as pessoas usam, hospedada pela Maind. O middleware busca os dados no banco da empresa e conversa com o SaaS. A casa da organização guarda os bancos dela.</li>
-  <li><strong>Cores.</strong> Na legenda, "Frontend" é tela, "Backend" é programa e "Fora do Horus" são as pessoas e os bancos.</li>
-  <li><strong>Linhas.</strong> Verde é o pedido, vermelha tracejada é senha ou certificado, roxa tracejada é da v2.1 e cinza é o resto.</li>
-  <li><strong>Cinco vistas prontas</strong> mostram uma parte por vez, da entrada ao que fica registrado.</li>
+  <li><strong>As três molduras são as áreas.</strong> No meio, a infraestrutura do SaaS, da Maind, com o Registro de organizações (a lista de onde fica cada middleware), a tela de entrada, o servidor, o avaliador de permissões e o rastro. À direita, o middleware, com a tela de configuração e o cofre. Embaixo, à direita, a casa da organização, com os bancos.</li>
+  <li><strong>As pessoas ficam fora das molduras.</strong> À esquerda, o owner da instância, o funcionário da Maind que cria as organizações, e a pessoa da organização; no alto, à direita, o owner da organização, que a administra do lado do cliente.</li>
+  <li><strong>Cada bloco é um cartão.</strong> No alto do cartão ficam o nome da peça e a tecnologia que ela usa; no meio, o que ela faz; embaixo, etiquetas curtas. Na visão geral o texto fica pequeno: para ler, basta aproximar com a roda do mouse ou clicar no cartão, que abre o detalhe. Na legenda, "Frontend" é uma tela, "Backend" é um programa, "Segurança" é uma peça que guarda ou confere algo, e "Fora do Horus" são as pessoas e os bancos.</li>
+  <li><strong>As setas verdes</strong> seguem o caminho de cada pedido. <strong>As vermelhas tracejadas</strong> são as de senha, login, acesso restrito ou certificado. <strong>A roxa tracejada</strong> é o que só chega na v2.1. <strong>As cinzas</strong> são as demais.</li>
+  <li><strong>Dois cartões juntam duas coisas, para caber:</strong> a tela de entrada reúne a luz e a página de status, e o rastro divide o cartão com as medições técnicas. Cinco vistas prontas acendem uma camada de cada vez.</li>
 </ul>
 
 <h3 id="seguranca-como-funciona">Como funciona</h3>
 
-<h4 id="seguranca-entrada">Como a pessoa entra?</h4>
-<p>O endereço da organização leva um código (token) que só a identifica e nunca serve de senha (<code>D-258</code>, <code>ARQ-102</code>).</p>
-<p>Antes do login, uma luz com texto diz se o middleware está "No ar", "Instável" ou "Fora do ar", e leva à página de status (<code>ARQ-106</code>, <code>ARQ-107</code>). Com o middleware parado, aparece um aviso no lugar das respostas (<code>ARQ-104</code>).</p>
-<p>Quem confere a senha é o middleware. Nele, o <strong>owner da organização</strong>, que administra uma organização (uma empresa cliente) no Horus, escolhe as formas de entrar. Na v2.0 são senha ou Google, e na v2.1 chega o login da empresa (<code>ARQ-111</code>).</p>
-<p>O owner da organização e o <strong>owner da instância</strong>, que define a marca e as regras gerais da instalação do Horus, entram sempre por senha (<code>D-258</code>). O primeiro acesso do owner da organização é um link de uso único, e nenhuma senha passa pela Maind (<code>ARQ-110</code>).</p>
+<h4 id="seguranca-camadas">As camadas, de fora para dentro</h4>
+<p><strong>Em resumo:</strong> quem chega ao Horus passa por seis barreiras, cada uma explicada a seguir: o endereço e a luz de estado; o login; o certificado entre o SaaS e o middleware; o avaliador de permissões; o cofre e a barreira de rede; e o rastro.</p>
+<div class="callout callout--info"><span class="ico">i</span><div><b>Analogia</b><p>É como uma agência bancária: o caixa confere o documento, o gerente diz o que cada cliente pode fazer, o dinheiro fica no cofre e um livro anota cada operação. A analogia para aqui: no Horus, o cofre pode ficar na casa da própria empresa cliente, e quem atende no balcão, o SaaS, nunca entra nele.</p></div></div>
 
-<h4 id="seguranca-certificado">O que liga o SaaS ao middleware?</h4>
-<p>Um certificado, uma identidade digital que prova quem é quem, nasce com a organização. Com o middleware na Maind, o SaaS o entrega sozinho. Com o middleware na casa do cliente, a TI do cliente o importa. Os dois se reconhecem num aperto de mão digital (<code>ARQ-124</code>).</p>
-<p>O SaaS só alcança o middleware pelo endereço guardado no Registro de organizações, e esse endereço nunca chega ao navegador (<code>ARQ-102</code>). O SaaS recusa um middleware desatualizado (<code>ARQ-114</code>).</p>
+<h4 id="seguranca-entrada">Como a pessoa entra</h4>
+<p><strong>Em resumo:</strong> a pessoa abre o endereço da organização, vê se a conexão está no ar e faz o login. Quem confere a senha é o middleware, e não o SaaS.</p>
+<p><strong>O endereço.</strong> É o mesmo para todas as empresas, com um código (token) que aponta para a organização certa. O código só identifica: nunca serve de senha e não fica gravado em registro nem em histórico. (<code>D-258</code>, <code>ARQ-102</code>)</p>
+<p><strong>A luz e a página de status.</strong> Antes do login, a tela de entrada mostra uma luz, sempre com texto ao lado da cor: "No ar", "Instável" (com falhas ou lentidão) ou "Fora do ar". Clicar nela abre a página de status, sem login, com as quedas dos últimos noventa dias, sem a versão do middleware e sem nome de ninguém. O SaaS a responde sozinho, por isso ela abre justamente quando o middleware está fora. (<code>ARQ-106</code>, <code>ARQ-107</code>, <code>ARQ-121</code>)</p>
+<p><strong>O login e o passe de entrada.</strong> O middleware confere a senha, ou o login pelo Google, e entrega a sessão, o passe que a pessoa usa enquanto está no Horus. O passe leva só o código da organização; o endereço do middleware fica no Registro e nunca passa pelo navegador. O SaaS confere o passe a cada pedido, com a chave pública guardada no Registro. (<code>ARQ-102</code>, <code>ARQ-111</code>)</p>
+<p><strong>Por que é assim.</strong> Com o login no middleware, o cadastro das pessoas e as senhas ficam fora do SaaS. (<code>D-261</code>) Com o passe levando só o código da organização, o endereço da casa do cliente nunca aparece no navegador, e mudá-lo não derruba quem já entrou. (<code>ARQ-102</code>)</p>
+<p><strong>As formas de entrar.</strong> O owner da organização, que a administra do lado do cliente, liga ou desliga cada uma. Na v2.0 são usuário e senha e Google. Na v2.1 chega o login da empresa (OpenID Connect), com a conta do trabalho, só para quem tem convite e com a sessão confirmada a cada 8 horas. (<code>ARQ-111</code>, <code>D-184</code>, <code>D-253</code> a <code>D-255</code>)</p>
+<p>O owner da organização e o owner da instância, o funcionário da Maind que define as regras gerais da instalação, entram sempre por usuário e senha. (<code>D-258</code>)</p>
+<p><strong>O primeiro acesso do owner da organização</strong> é um link que o middleware gera, que só funciona uma vez e que a Maind entrega por fora do sistema; ao abri-lo, ele cria a própria senha. Nenhuma senha passa pela Maind nem pelo SaaS. Na casa do cliente, quem faz o papel da Maind é a TI do cliente, a equipe de tecnologia da empresa. (<code>ARQ-110</code>)</p>
+<p><strong>Um exemplo, passo a passo.</strong> Uma analista de uma rede de lojas abre o Horus numa segunda de manhã.</p>
+<ol>
+  <li>Ela abre o endereço da organização. O código no endereço diz ao SaaS qual é a organização, e o Registro diz qual é o middleware dela. (<code>ARQ-102</code>)</li>
+  <li>A luz está amarela, "Instável". Ela entra normalmente: o amarelo só avisa. (<code>ARQ-107</code>)</li>
+  <li>Ela digita usuário e senha. O SaaS leva o login ao middleware, sem guardar a senha. (<code>ARQ-102</code>)</li>
+  <li>O middleware confere a senha e devolve o passe. Dali em diante, o SaaS o confere a cada pedido, sem perguntar de novo ao middleware. (<code>ARQ-102</code>)</li>
+</ol>
+<p><strong>Quando dá errado.</strong> Com a luz vermelha, aparece um aviso próprio: a conexão da organização está fora do ar desde certa hora, o resto do Horus segue no ar, e a pessoa deve procurar o owner da organização. O aviso não mostra endereço nem detalhe da infraestrutura. (<code>ARQ-104</code>) Se o link de primeiro acesso vence, a Maind gera outro. (<code>ARQ-110</code>)</p>
 
-<h4 id="seguranca-permissoes">Quem pode fazer o quê?</h4>
-<p>O avaliador de permissões, no SaaS, responde a todo "esta pessoa pode fazer isto?" (<code>ARQ-008</code>). Ele usa a licença, as permissões e os grupos que o middleware envia a cada mudança, sem nomes (<code>ARQ-123</code>). Para o SaaS, a pessoa é só um código (<code>ARQ-109</code>).</p>
-<p>Na v2.1 chega a segurança por pessoa: a regra de quem vê quais dados dentro do banco, aplicada no middleware (<code>D-263</code>).</p>
+<h4 id="seguranca-certificado">O que liga o SaaS ao middleware</h4>
+<p><strong>Em resumo:</strong> um certificado, uma espécie de carteira de identidade digital, nasce com a organização. O SaaS e o middleware só conversam depois de conferir, um no outro, a identidade certa.</p>
+<p><strong>Como o vínculo se faz.</strong> Ao criar a organização, o SaaS gera o certificado e uma chave de instalação, de uso único e cifrada, isto é, embaralhada de um jeito que só quem tem o certificado consegue ler. Com o middleware da Maind, o SaaS os entrega pelo canal, e o middleware cria a organização sozinho. Na casa do cliente, a TI do cliente importa o arquivo na tela de configuração do middleware. (<code>ARQ-124</code>)</p>
+<p>O middleware devolve um arquivo assinado, com o endereço e a porta dele, que o SaaS grava no Registro. Os dois lados confirmam o vínculo num aperto de mão digital, em que cada um confere a assinatura do outro. Só então se cumpre a primeira das três condições para a organização ficar ativa. (<code>ARQ-124</code>, <code>D-277</code>)</p>
+<p><strong>Por que dois caminhos.</strong> Na Maind, um middleware só atende todas as organizações, e criar uma não pode depender de um passo manual. Na casa do cliente, o SaaS não entra na rede da empresa, então quem importa o arquivo é a TI do cliente. (<code>ARQ-124</code>, <code>D-272</code>) Depois do vínculo, o SaaS só chega ao middleware pelo endereço do Registro, com o certificado; não há outra entrada. (<code>ARQ-116</code>)</p>
+<p><strong>Um exemplo, passo a passo.</strong> O owner da instância cria a organização "Farmácias", cujo middleware fica na casa do cliente.</p>
+<ol>
+  <li>O SaaS gera o certificado e a chave de instalação, e a TI da farmácia importa o arquivo na tela de configuração do middleware. (<code>ARQ-124</code>)</li>
+  <li>O middleware cria a organização e devolve o arquivo assinado. Por onde esse arquivo volta ao SaaS, no caso da casa do cliente, ainda falta decidir. (<code>P-049</code>)</li>
+  <li>O SaaS grava o arquivo no Registro, e os dois lados confirmam o aperto de mão. Se a TI importar o mesmo arquivo de novo, por engano, nada se duplica. (<code>ARQ-124</code>)</li>
+</ol>
+<p><strong>Quando dá errado.</strong> Com um certificado trocado, o aperto de mão falha, e o middleware recusa o certificado que não confere com a organização que já tem. (<code>ARQ-124</code>) O SaaS também recusa um middleware mais velho que a versão anterior, com a luz vermelha e o texto "Atualização necessária". (<code>ARQ-114</code>)</p>
 
-<h4 id="seguranca-senhas">Onde ficam as senhas, e o que fica registrado?</h4>
-<p>As senhas dos bancos e da IA ficam no cofre do middleware, embaralhadas com uma chave de cada organização. Quem as cadastra é o owner da organização, e não a Maind (<code>ARQ-103</code>, <code>D-273</code>).</p>
-<p>O Horus só lê os bancos e nunca os altera (<code>D-001</code>). Uma barreira de rede limita o que o middleware alcança. Saídas como a planilha (CSV) vêm desligadas (<code>ARQ-116</code>).</p>
-<p>O rastro, que registra o que o Horus fez, anota cada entrega sem o conteúdo. Só o owner da organização o lê (<code>ARQ-009</code>, <code>D-091</code>). As medições técnicas também não levam conteúdo (<code>ARQ-073</code>).</p>
-<p>Do middleware na casa do cliente, a Maind só vê o que o SaaS mede (<code>ARQ-119</code>). Excluir a organização apaga os dados e a chave dela no middleware (<code>ARQ-125</code>).</p>
+<h4 id="seguranca-permissoes">Quem pode fazer o quê</h4>
+<p><strong>Em resumo:</strong> uma peça só do SaaS, o avaliador de permissões, responde a todo "esta pessoa pode fazer isto?". Ele decide sem saber o nome de ninguém.</p>
+<p><strong>O que o avaliador lê, nesta ordem.</strong> (<code>ARQ-039</code>)</p>
+<ol>
+  <li><strong>O estado da organização e o tipo de assento.</strong> Se a organização está cortada, nada passa. O tipo de assento é a vaga paga que a pessoa ocupa e funciona como teto: quem tem assento de leitor não pergunta.</li>
+  <li><strong>O papel e a carteira:</strong> se a pessoa é, por exemplo, owner da organização ou gestor, e sobre quais pessoas um gestor age.</li>
+  <li><strong>As roles</strong>, os conjuntos de permissões que o owner da organização monta e dá às pessoas. Quando uma pessoa tem várias, elas se somam.</li>
+  <li><strong>O escopo dos dados</strong>, que só chega na v2.1, com a segurança por pessoa: a regra de quem vê quais dados dentro do banco, aplicada no middleware. (<code>D-263</code>)</li>
+</ol>
+<p>A primeira leitura que nega encerra a conta, e, se algo falha, a resposta é "não". (<code>ARQ-039</code>) Na v2.0, quem pode perguntar alcança todos os bancos da organização. (<code>ARQ-090</code>) Toda tela, todo canal e todo trabalho que roda sozinho perguntam ao avaliador: só um ponto único garante a mesma resposta em todos. (<code>ARQ-008</code>)</p>
+<p><strong>O que o SaaS guarda para decidir.</strong> Para o SaaS, a pessoa é só um código. A cada mudança, o middleware manda, para cada código, o tipo de assento, as permissões e os códigos dos grupos e da carteira. Os nomes ficam no middleware, e o SaaS os pede só na hora de mostrar. (<code>ARQ-109</code>, <code>ARQ-123</code>)</p>
+<p><strong>Por que é assim.</strong> Assim o SaaS decide cada pedido sozinho, sem que cada clique dependa do middleware, e conta os assentos ocupados. Abre-se mão de o SaaS não guardar nada sobre a pessoa: ele guarda o que ela pode fazer, não quem ela é. (<code>ARQ-123</code>)</p>
+<div class="callout callout--info"><span class="ico">i</span><div><b>Analogia</b><p>É como um porteiro com uma lista de crachás numerados: sabe que o crachá 4711 pode subir ao terceiro andar, mas não sabe de quem é o crachá. A analogia para aqui: no Horus, quando a lista muda, o middleware manda a lista nova na hora; e, se o porteiro ficou sem notícias por um tempo, pede a lista inteira antes de aceitar qualquer mudança.</p></div></div>
+<p><strong>Um exemplo, passo a passo.</strong> O owner da organização de uma rede de lojas tira de uma analista a role "Financeiro".</p>
+<ol>
+  <li>Ele faz a mudança na tela de configuração do middleware, onde as pessoas são cadastradas. (<code>D-261</code>)</li>
+  <li>O middleware manda ao SaaS as novas permissões do código da analista, sem o nome dela. Mandar o mesmo recado duas vezes não duplica nada. (<code>ARQ-123</code>)</li>
+  <li>Quando ela tenta abrir a análise de margem, o avaliador decide sozinho, com a tabela nova, e responde "não". A tela deixa de mostrar o botão. (<code>ARQ-008</code>)</li>
+</ol>
+<p><strong>Quando dá errado.</strong> Depois de uma queda do middleware, o SaaS pede a tabela inteira de novo antes de voltar a aceitar mudanças. (<code>ARQ-123</code>)</p>
 
-<h4 id="seguranca-ponto-fraco">Qual é o ponto fraco?</h4>
-<div class="callout callout--warning">
-  <span class="ico">!</span>
-  <div><b>A promessa tem um limite</b><p>A promessa de que a Maind não vê as senhas só vale com o middleware na casa do cliente (<code>D-273</code>).</p></div>
-</div>
-<p>O middleware da Maind guarda todas as organizações do SaaS numa base de dados só, separadas por uma marca e um filtro (<code>ARQ-103</code>). Se for invadido, ele expõe as senhas e as regras de todas.</p>
-<p>Quem quer mais isolamento hospeda o próprio middleware. Ainda falta provar que essa separação basta (<code>D-272</code>).</p>
-<p>Na v2.0, tudo roda num servidor só, e a queda dele para tudo. Esse risco some na produção real, com várias cópias rodando ao mesmo tempo (<code>ARQ-112</code>).</p>
+<h4 id="seguranca-senhas">Onde ficam as senhas, e até onde o middleware alcança</h4>
+<p><strong>Em resumo:</strong> as senhas dos bancos e da IA ficam no cofre do middleware, embaralhadas com uma chave de cada organização. Quem as cadastra é o owner da organização, e o middleware só alcança os endereços permitidos, sempre só para ler.</p>
+<p><strong>Como as organizações ficam separadas.</strong> A base de dados do middleware é uma só para todas as organizações que ele atende. Cada linha leva a marca da sua organização, e um filtro vale em toda consulta, sem depender de quem a escreve. Um teste automático, a cada mudança no programa, reprova a consulta sem filtro. E as senhas de cada organização são cifradas com uma chave só dela. A equipe da Maind não cadastra senhas: só dá suporte. (<code>ARQ-103</code>, <code>D-273</code>)</p>
+<p><strong>Por que é assim.</strong> Uma base só tem menos peças a operar e a copiar. Abre-se mão do isolamento que o SaaS tem, onde cada organização tem o seu banco: na base única, um filtro esquecido misturaria organizações, e por isso o filtro e o teste existem. (<code>ARQ-103</code>, <code>ARQ-010</code>)</p>
+<p><strong>Só ler, e só onde é permitido.</strong> O Horus só lê os bancos e nunca os altera. (<code>D-001</code>) O middleware da Maind recusa os endereços da rede interna da própria Maind; o da casa do cliente só alcança o que a TI do cliente pôs numa lista de permitidos. As saídas mais soltas, como baixar o resultado em planilha (CSV), vêm desligadas, e quem pode ligá-las ainda falta confirmar (<a href="#infra-separada">A infraestrutura separada</a>). (<code>ARQ-116</code>)</p>
+<p><strong>Os segredos da própria instalação</strong>, como a senha do serviço de e-mail, vêm do cofre de segredos do GitHub, onde o código é guardado, e o pacote do programa não leva nenhum. No middleware da casa do cliente, eles ficam com a TI do cliente, e a Maind não os conhece. (<code>ARQ-115</code>, <code>ARQ-044</code>)</p>
+<p><strong>Um exemplo, passo a passo.</strong> O owner da organização de uma rede de farmácias, com o middleware na casa dela, cadastra a senha do banco de vendas.</p>
+<ol>
+  <li>Na tela de configuração do middleware, digita o endereço e a senha do banco. O middleware a guarda no cofre, cifrada com a chave da organização, numa linha com a marca dela. (<code>D-273</code>, <code>ARQ-103</code>)</li>
+  <li>Nas perguntas seguintes, o middleware usa a senha para ler o banco, que a TI da farmácia pôs na lista de permitidos. O SaaS nunca vê a senha. (<code>ARQ-116</code>, <code>D-189</code>)</li>
+</ol>
+<p><strong>Quando dá errado.</strong> Uma saída desligada é recusada. (<code>ARQ-116</code>) Se só a base de configuração vazar, a chave de cada organização impede que as senhas de todas saiam juntas. (<code>ARQ-103</code>)</p>
+
+<h4 id="seguranca-rastro">O que fica registrado, e o que nunca fica</h4>
+<p><strong>Em resumo:</strong> o rastro anota cada entrega e cada abertura, sem o conteúdo, e só o owner da organização o consulta. As medições técnicas também nunca levam conteúdo nem dado pessoal.</p>
+<p><strong>O rastro.</strong> Cada entrega, como a publicação de um painel ou o envio de um agendamento, e cada abertura de painel ou relatório grava uma linha: quem, o quê, para quem, por onde e quando, nunca o conteúdo. Nada altera a linha; só o prazo de guarda que o owner da organização define a apaga. O rastro fica no banco de cada organização. (<code>ARQ-009</code>, <code>D-091</code>)</p>
+<p><strong>Por que é assim.</strong> O rastro só prova alguma coisa se nenhuma entrega escapar dele, por isso a linha é gravada no mesmo passo da entrega. (<code>ARQ-009</code>)</p>
+<p><strong>As medições técnicas</strong>, que mostram à equipe que opera o Horus se ele vai bem, nunca levam o conteúdo das conversas, o nome da pessoa, o número de WhatsApp, o e-mail nem segredo, e um teste confere isso antes de cada publicação. (<code>ARQ-073</code>)</p>
+<p><strong>Do middleware na casa do cliente</strong>, a Maind vê só o que o SaaS mede sozinho. Para investigar um erro, a TI do cliente gera um pacote de diagnóstico sem conteúdo e sem senhas, que pode conferir antes de enviar. (<code>ARQ-119</code>)</p>
+<p><strong>Um exemplo, passo a passo.</strong> A gestora de uma regional publica um painel de vendas para a equipe dela.</p>
+<ol>
+  <li>A publicação grava uma linha no rastro: quem publicou, qual painel, para quem e quando. (<code>ARQ-009</code>)</li>
+  <li>Um vendedor abre o painel às 9h12, e a abertura grava outra linha. (<code>ARQ-009</code>)</li>
+  <li>O owner da organização consulta o rastro e vê que o vendedor abriu o painel às 9h12, mas não vê os números. O nome aparece porque o SaaS o pede ao middleware na hora de mostrar. (<code>D-091</code>, <code>ARQ-109</code>)</li>
+</ol>
+
+<h4 id="seguranca-exclusao">Quando uma organização ou uma pessoa sai</h4>
+<p><strong>Em resumo:</strong> excluir uma organização apaga tudo o que há dela no middleware, inclusive a chave que tranca as senhas dela. Excluir uma pessoa apaga também os registros dela.</p>
+<p><strong>A organização.</strong> O SaaS manda o middleware apagar as linhas com a marca dela e a chave dela: as pessoas, os bancos, a IA e a configuração. Apagar a chave torna as senhas ilegíveis também nas cópias de segurança; na casa do cliente, as cópias são dele, e a TI do cliente as apaga. (<code>ARQ-125</code>, <code>D-278</code>)</p>
+<p><strong>Um exemplo, passo a passo.</strong> O owner da instância exclui uma organização num momento em que o middleware da Maind está parado.</p>
+<ol>
+  <li>O SaaS manda o pedido, e o middleware não responde. A exclusão fica pendente e é repetida, e a organização aparece "em exclusão" no painel da instância, onde a Maind acompanha as organizações. (<code>ARQ-125</code>)</li>
+  <li>O middleware volta, apaga as linhas e a chave e confirma. Só então o SaaS marca a organização como excluída. (<code>ARQ-125</code>)</li>
+</ol>
+<p><strong>A pessoa.</strong> Quando alguém é excluído, os registros dele vão junto: o rastro do que entregou e abriu, os relatos de resposta errada ainda não analisados e a parte dele na contagem de perguntas. O código que sobra no SaaS deixa de apontar para alguém. (<code>D-210</code>, <code>ARQ-109</code>)</p>
+<p><strong>Quando dá errado.</strong> Uma exclusão feita por engano leva também a configuração, sem volta. (<code>D-278</code>) Se apagar tudo convive com a guarda obrigatória do registro de acesso e com as cópias ainda está sendo conferido, como explica <a href="#criar-organizacao">Criar uma organização</a>. (<code>P-044</code>)</p>
+
+<h4 id="seguranca-ponto-fraco">O ponto fraco, e os riscos aceitos</h4>
+<p><strong>Em resumo:</strong> a proteção mais forte só vale com o middleware na casa do cliente. O da Maind concentra todas as organizações num lugar só, um risco aceito.</p>
+<p><strong>A promessa tem um limite.</strong> A promessa de que a Maind não vê as senhas só vale por inteiro com o middleware na casa do cliente. No da Maind, quem o opera ainda pode, tecnicamente, alcançá-las. (<code>D-273</code>, <code>D-189</code>)</p>
+<p><strong>Tudo num lugar só.</strong> O middleware da Maind guarda todas as organizações do SaaS numa base só: se ele for invadido, ficam expostas as senhas e as regras de todas. Ainda falta provar que a marca, o filtro e a chave bastam. A empresa que não aceita esse risco hospeda o próprio middleware. (<code>ARQ-103</code>, <code>D-272</code>)</p>
+<p><strong>Um servidor só, por enquanto.</strong> Na v2.0, o SaaS e o middleware da Maind rodam cada um numa máquina só, e uma falha para tudo; por isso não há meta de tempo no ar. Na produção real, os dois ganham cópias rodando ao mesmo tempo, e a meta passa a ser 99,9% do mês, pouco mais de 40 minutos fora do ar, no máximo. O middleware do cliente fica fora da meta. (<code>ARQ-112</code>, <code>ARQ-113</code>, <code>ARQ-122</code>)</p>
 
 <h3 id="seguranca-falta-decidir">O que falta decidir nesta parte</h3>
 <p>O dono do Horus decide infraestrutura, segurança, preço e o que as pessoas veem; o arquiteto do Horus, como o Horus é construído por dentro; e o PO, o que o produto entrega e em que ordem.</p>
 <ul>
-  <li><strong>Falta o dono do Horus decidir:</strong> se, na v2.1, a segurança por pessoa terá uma chave só de liga e desliga, no lugar das duas de hoje. (<code>ARQ-040</code>)</li>
-  <li><strong>Falta o dono do Horus decidir:</strong> onde, na v2.1, o owner da organização vai escrever as regras da segurança por pessoa. O PO propõe que seja numa tela.</li>
-  <li><strong>Falta o arquiteto do Horus definir, com o dono do Horus:</strong> a política do certificado, com o formato, a troca e o cancelamento. Uma parte dela fica à escolha de cada organização. (<code>P-049</code>)</li>
-  <li><strong>Falta o owner da organização consultar o jurídico da própria empresa:</strong> sobre as regras do Horus e a LGPD, a lei de proteção de dados pessoais. Os pontos são a leitura das conversas de todos pelo owner da organização, a exclusão dos registros de quem sai e o código da pessoa que fica no SaaS. (<code>D-223</code>, <code>D-210</code>, <code>D-247</code>, <code>ARQ-109</code>)</li>
+  <li><strong>Falta o dono do Horus decidir:</strong> se, na v2.1, a segurança por pessoa terá uma chave só de liga e desliga, no lugar das duas de hoje. <em>O que está em jogo:</em> hoje, duas chaves precisam estar ligadas juntas, e o estado em que só uma está ligada tem efeitos que só a regra explica. Com uma chave só, o owner da organização liga uma coisa só; em troca, a tela da organização muda, e desligar essa chave continua abrindo a todos, de uma vez, os dados restritos. (<code>ARQ-040</code>)</li>
+  <li><strong>Falta o dono do Horus decidir:</strong> onde, na v2.1, o owner da organização vai escrever as regras da segurança por pessoa. O PO propõe que seja numa tela. <em>O que está em jogo:</em> essas regras dizem quem vê quais dados dentro do banco, pessoa a pessoa, e rodam no middleware; o funcionamento interno dessa segurança é da v2.1 e ainda não está desenhado. (<code>D-263</code>, <code>ARQ-032</code>, <code>ARQ-041</code>, <code>ARQ-042</code>)</li>
+  <li><strong>Falta o arquiteto do Horus definir, com o dono do Horus:</strong> a política do certificado, com o formato, a troca e o cancelamento. Uma parte dela fica à escolha de cada organização. <em>O que está em jogo:</em> é o certificado que impede um impostor de se passar pelo middleware de uma organização, e, como parte da política fica à escolha de cada uma, o SaaS terá de conviver com escolhas diferentes. Junto sai por onde o arquivo assinado volta da casa do cliente. (<code>P-049</code>, <code>ARQ-124</code>)</li>
+  <li><strong>Falta o owner da organização consultar o jurídico da própria empresa:</strong> sobre as regras do Horus e a LGPD, a lei de proteção de dados pessoais. Os pontos são a leitura das conversas de todos pelo owner da organização, a exclusão dos registros de quem sai e o código da pessoa que fica no SaaS. <em>O que está em jogo:</em> as três regras seguem valendo como decididas; se o jurídico de um cliente disser não, a regra pode ter de mudar para ele. (<code>D-223</code>, <code>D-210</code>, <code>D-247</code>, <code>ARQ-109</code>)</li>
   <li><strong>Também depende, e está explicado em outras páginas:</strong> quem liga a planilha, a separação entre o SaaS e o middleware da Maind e a prova de que as organizações não se misturam (<a href="#infra-separada">A infraestrutura separada</a>); o login do owner da instância, o prazo do link de primeiro acesso, o caminho do certificado e a exclusão de quem sai (<a href="#criar-organizacao">Criar uma organização</a>); e onde ficam as permissões e os limites que o uso vai calibrar (<a href="#execucao">Como roda</a>).</li>
 </ul>

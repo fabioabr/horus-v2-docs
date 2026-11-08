@@ -1,84 +1,199 @@
 <h3 id="quem-e-quem-frase">Em uma frase</h3>
-<p>Esta documentação conta como o Horus é construído por dentro e foi escrita para quem não é da área de tecnologia. Esta página diz quem decide o quê e o que significam as palavras que mais se repetem.</p>
+<p>Esta documentação conta como o Horus é construído por dentro e foi escrita para quem não é da área de tecnologia. Esta página diz quem decide o quê, o que significam as palavras que mais se repetem e como ler os desenhos e as páginas.</p>
+<p>Vale lê-la primeiro. As outras páginas usam sempre os mesmos nomes de papel e as mesmas palavras, e cada um deles está explicado aqui, com um exemplo.</p>
 
 <h3 id="quem-e-quem-papeis">Os papéis</h3>
 <p>Cada pendência nas páginas diz de qual papel se espera uma ação. Os nomes são sempre estes, e um nunca troca de lugar com outro. A página <a href="#falta-decidir">O que falta decidir, por papel</a> junta todas as pendências.</p>
+<p>Os papéis formam três grupos: quem decide como o Horus é; quem usa e administra o Horus no dia a dia; e quem ajuda nos bastidores. Para cada papel, a lista diz o que ele faz, o que ele decide e uma situação em que ele aparece.</p>
+
 <h4 id="quem-e-quem-papeis-decide">Quem decide</h4>
-<div class="table-wrap">
-  <table class="t">
-    <thead><tr><th>Papel</th><th>O que decide</th></tr></thead>
-    <tbody>
-      <tr class="zebra"><td><strong>Dono do Horus</strong></td><td>Decide infraestrutura, segurança, preço e o que as pessoas veem.</td></tr>
-      <tr class="zebra"><td><strong>PO</strong> (responsável pelo produto)</td><td>Cuida do que o produto entrega e da ordem em que entrega.</td></tr>
-      <tr class="zebra"><td><strong>Arquiteto do Horus</strong></td><td>Decide como o Horus é construído por dentro.</td></tr>
-    </tbody>
-  </table>
-</div>
+<p>Três papéis decidem como o Horus é. Cada um tem a sua área, e uma mesma decisão pode passar por mais de um: o arquiteto do Horus ou o PO recomendam uma opção, e o dono do Horus confirma.</p>
+<p><strong>Dono do Horus</strong></p>
+<ul>
+  <li><em>O que faz:</em> tem a palavra final sobre o produto. Recebe as propostas do PO e do arquiteto do Horus, cada uma com as opções e uma recomendação, e escolhe.</li>
+  <li><em>O que decide:</em> infraestrutura, segurança, preço e o que as pessoas veem. Mudanças na tela que a pessoa usa, na segurança dos dados ou no que a Maind consegue ver passam por ele.</li>
+  <li><em>Uma situação:</em> a luz verde, amarela ou vermelha da tela de entrada, que mostra se o middleware está funcionando, muda o que a pessoa vê; por isso é uma decisão do dono do Horus. (<code>ARQ-107</code>) Hoje, por exemplo, falta ele confirmar que o SaaS e o middleware da Maind rodam separados também por dentro. (<code>ARQ-127</code>)</li>
+</ul>
+<p><strong>PO</strong> (o responsável pelo produto)</p>
+<ul>
+  <li><em>O que faz:</em> cuida do que o produto entrega e da ordem em que entrega. Organiza as grandes capacidades do produto, as macro funcionalidades, diz em que versão cada uma chega e registra as decisões de produto, as de código <code>D</code>.</li>
+  <li><em>O que decide:</em> o valor de cada parte e a prioridade entre elas. Quando a escolha muda o produto, leva as opções ao dono do Horus com uma recomendação.</li>
+  <li><em>Uma situação:</em> quando uma organização cumpre as três condições para ficar ativa, o PO propõe que quem a marca como ativa continue sendo a Maind, e o dono do Horus ainda vai confirmar. (<code>D-277</code>) Cabe também ao PO conferir, com o uso, que o owner da organização consegue configurar sozinho o banco e a IA. (<code>D-273</code>)</li>
+</ul>
+<p><strong>Arquiteto do Horus</strong></p>
+<ul>
+  <li><em>O que faz:</em> decide como o Horus é construído por dentro: as peças do programa, como elas se falam, onde cada dado mora e como tudo roda. Registra as decisões de arquitetura, as de código <code>ARQ</code>.</li>
+  <li><em>O que decide:</em> sozinho, o que é só de construção. Quando a escolha toca infraestrutura, segurança, preço ou o que as pessoas veem, ele recomenda uma opção e o dono do Horus confirma.</li>
+  <li><em>Uma situação:</em> o jeito como a organização se liga ao middleware, pelo certificado e pelo aperto de mão, é uma decisão do arquiteto do Horus. (<code>ARQ-124</code>) Já a separação entre o SaaS e o middleware da Maind, cada um com a sua rede e o seu banco, é uma proposta dele que espera o dono do Horus. (<code>ARQ-127</code>)</li>
+</ul>
+
 <h4 id="quem-e-quem-papeis-usa">Quem usa e administra</h4>
-<div class="table-wrap">
-  <table class="t">
-    <thead><tr><th>Papel</th><th>O que faz</th></tr></thead>
-    <tbody>
-      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>Administra uma organização, a empresa cliente, dentro do Horus.</td></tr>
-      <tr class="zebra"><td><strong>Owner da instância</strong></td><td>Funcionário da Maind que define a marca e as regras gerais de uma instalação do Horus.</td></tr>
-      <tr class="zebra"><td><strong>Gestor</strong></td><td>Cuida de um grupo de pessoas dentro de uma organização, por exemplo convidando gente.</td></tr>
-      <tr class="zebra"><td><strong>Pessoa que pergunta</strong></td><td>Usa o Horus para perguntar sobre os dados da empresa.</td></tr>
-    </tbody>
-  </table>
-</div>
+<p>Quatro papéis aparecem no uso do Horus. O owner da instância e o owner da organização têm nomes parecidos, mas trabalham em lados diferentes: o primeiro é da Maind, o segundo é do cliente.</p>
+<p><strong>Owner da organização</strong></p>
+<ul>
+  <li><em>O que faz:</em> administra uma organização, a empresa cliente, dentro do Horus. Trabalha em dois lugares: no Horus e na tela de configuração do middleware, que nenhuma outra pessoa da organização usa. Ali cadastra as pessoas, liga os bancos de dados e a IA e escolhe como as pessoas fazem login. Acompanha o consumo e o custo de toda a IA da organização. Entra sempre com usuário e senha. (<code>D-261</code>, <code>D-267</code>, <code>D-273</code>, <code>ARQ-111</code>)</li>
+  <li><em>O que decide:</em> quem da empresa usa o Horus, aprovando os convites dos gestores; quais bancos e qual IA a organização usa; e, a partir da v2.1, quais servidores MCP a organização cadastra, quem pode usá-los e quais ferramentas deles a IA pode chamar. Pode dar o mesmo papel a no máximo mais duas pessoas. (<code>D-262</code>, <code>D-269</code>, <code>D-287</code> a <code>D-289</code>)</li>
+  <li><em>Uma situação:</em> a diretora financeira de uma distribuidora recebe da Maind um link de primeiro acesso, cria a própria senha, liga o banco de vendas e a chave de IA e aprova o convite de um vendedor novo. A Maind dá suporte, mas não configura nada por ela. (<code>ARQ-110</code>, <code>D-273</code>)</li>
+</ul>
+<p><strong>Owner da instância</strong></p>
+<ul>
+  <li><em>O que faz:</em> é o funcionário da Maind que opera o painel da instância, o painel de controle do Horus. Define a marca e as regras gerais da instalação, cria e exclui as organizações, cria o usuário do owner da organização e libera, reduz e corta os assentos contratados. Também publica o aviso que aparece para todas as pessoas e acompanha o uso, o custo e o estado do middleware de cada organização. Entra sempre com usuário e senha. (<code>D-146</code>, <code>D-258</code>, <code>D-275</code>, <code>D-280</code>)</li>
+  <li><em>O que decide:</em> quando uma organização nasce ou é excluída e quantos assentos de cada tipo ela tem, conforme o contrato. Não decide o que fica dentro da organização: não configura bancos nem IA e não vê o nome de quem ocupa cada assento. (<code>D-273</code>, <code>D-274</code>)</li>
+  <li><em>Uma situação:</em> uma distribuidora contrata o Horus. O owner da instância cria a organização dela, cria o usuário da diretora que será a owner da organização e manda a ela o link de primeiro acesso pelo WhatsApp da Maind. Quando a organização fica ativa, libera os assentos contratados. Os detalhes estão em <a href="#criar-organizacao">Criar uma organização</a>.</li>
+</ul>
+<p><strong>Gestor</strong></p>
+<ul>
+  <li><em>O que faz:</em> cuida de um grupo de pessoas dentro de uma organização. Pelo Horus, convida pessoas novas, escolhe o tipo de assento delas e pede a troca de tipo quando precisa. Não usa a tela de configuração do middleware. (<code>D-262</code>)</li>
+  <li><em>O que decide:</em> quem convidar para o grupo e com que tipo de assento. A aprovação final é do owner da organização. (<code>D-262</code>)</li>
+  <li><em>Uma situação:</em> a gerente comercial convida um vendedor novo num assento de membro prata. O e-mail do vendedor passa pelo SaaS a caminho do middleware, sem ser gravado, e o owner da organização aprova o convite. (<code>D-262</code>, <code>ARQ-109</code>)</li>
+</ul>
+<p><strong>Pessoa que pergunta</strong></p>
+<ul>
+  <li><em>O que faz:</em> usa o Horus para perguntar sobre os dados da empresa e recebe a resposta pronta, em texto, gráfico ou tabela. Ocupa um assento, e o tipo dele diz o que ela pode fazer. (<code>D-194</code>)</li>
+  <li><em>O que decide:</em> o que perguntar. O que ela pode fazer depende do assento e das permissões que a organização deu a ela. (<code>ARQ-123</code>)</li>
+  <li><em>Uma situação:</em> a gerente de uma rede de lojas pergunta "quanto vendemos em outubro, por loja?" e recebe o gráfico. A pergunta e o gráfico passam pelo SaaS; a senha do banco e a consulta ficam no middleware. (<code>D-189</code>)</li>
+</ul>
+
 <h4 id="quem-e-quem-papeis-bastidores">Quem ajuda nos bastidores</h4>
-<div class="table-wrap">
-  <table class="t">
-    <thead><tr><th>Papel</th><th>O que faz</th></tr></thead>
-    <tbody>
-      <tr class="zebra"><td><strong>TI do cliente</strong></td><td>A equipe de tecnologia da empresa cliente, que cuida dos servidores e da rede dela.</td></tr>
-      <tr class="zebra"><td><strong>Equipe da Maind</strong></td><td>O time da Maind que dá suporte e acompanha as instalações.</td></tr>
-    </tbody>
-  </table>
-</div>
+<p>Dois papéis não usam o Horus para perguntar, mas fazem ele funcionar.</p>
+<p><strong>TI do cliente</strong></p>
+<ul>
+  <li><em>O que faz:</em> é a equipe de tecnologia da empresa cliente, que cuida dos servidores e da rede dela. Só entra em cena quando o middleware fica dentro da rede da empresa. Aí ela instala o middleware numa máquina com Docker, uma ferramenta que roda programas já empacotados; libera o endereço dele só para o SaaS; importa o certificado da organização; cria o usuário do owner da organização; e cuida das cópias de segurança. (<code>ARQ-100</code>, <code>ARQ-110</code>, <code>ARQ-124</code>, <code>ARQ-125</code>, <code>ARQ-126</code>)</li>
+  <li><em>O que decide:</em> em que máquina o middleware roda e quais endereços ele pode alcançar, como os bancos e os serviços de IA. (<code>ARQ-116</code>, <code>ARQ-126</code>)</li>
+  <li><em>Uma situação:</em> uma indústria química exige que a senha do banco nunca saia de casa. A TI dela instala o middleware na própria rede, libera o endereço só para o SaaS e importa o certificado. Se a indústria pedir ajuda à Maind, a TI gera um pacote de diagnóstico sem dado nenhum da empresa e o envia. (<code>ARQ-119</code>, <code>ARQ-124</code>, <code>ARQ-126</code>)</li>
+</ul>
+<p><strong>Equipe da Maind</strong></p>
+<ul>
+  <li><em>O que faz:</em> é o time da Maind que dá suporte e acompanha as instalações. Opera o middleware da Maind e orienta os clientes antes e depois da venda, sem configurar nada no lugar do owner da organização. (<code>D-258</code>, <code>D-273</code>)</li>
+  <li><em>O que decide:</em> nada do que fica dentro de uma organização: os bancos, a IA e as pessoas são do owner da organização. Do middleware na casa do cliente, a equipe da Maind vê só o que o SaaS consegue medir, como se ele está funcionando e em que versão. (<code>D-273</code>, <code>D-275</code>, <code>ARQ-119</code>)</li>
+  <li><em>Uma situação:</em> a chave de IA que a Maind deu a uma organização fica sem crédito. O owner da organização é avisado, e a equipe da Maind também, para repor o crédito. (<code>D-268</code>)</li>
+</ul>
 <p>O <strong>dono do Horus</strong> e o <strong>owner da organização</strong> são pessoas diferentes. O primeiro decide como o Horus é. O segundo administra uma empresa cliente dentro dele.</p>
 
 <h3 id="quem-e-quem-palavras">As palavras que mais aparecem</h3>
-<div class="table-wrap">
-  <table class="t">
-    <thead><tr><th>Termo</th><th>O que é</th></tr></thead>
-    <tbody>
-      <tr class="zebra"><td><strong>SaaS</strong></td><td>A parte do Horus que as pessoas usam, hospedada pela Maind.</td></tr>
-      <tr class="zebra"><td><strong>Middleware</strong></td><td>A parte que fica entre o SaaS e os dados da empresa. Ela busca as informações no banco, guarda as senhas dos bancos e da IA e confere o login. Pode ficar na Maind ou na casa do cliente.</td></tr>
-      <tr class="zebra"><td><strong>Organização</strong></td><td>Uma empresa cliente, ou um setor dela, dentro do Horus, com as suas pessoas, os seus bancos e a sua IA.</td></tr>
-      <tr class="zebra"><td><strong>Instância</strong></td><td>Uma instalação do Horus com a marca de quem o contratou. Ela comporta várias organizações.</td></tr>
-      <tr class="zebra"><td><strong>Certificado</strong></td><td>Uma identidade digital que prova quem é quem na conversa entre o SaaS e o middleware.</td></tr>
-      <tr class="zebra"><td><strong>Assento</strong></td><td>A vaga contratada que uma pessoa ocupa para usar o Horus. Há tipos de assento.</td></tr>
-      <tr class="zebra"><td><strong>Servidor MCP</strong></td><td>Um programa da organização que dá à IA outras fontes e ferramentas de consulta. Chega na v2.1.</td></tr>
-      <tr class="zebra"><td><strong>Modelo semântico</strong></td><td>A descrição do que cada dado da empresa significa, como “receita” ou “cliente ativo”, para a IA entender.</td></tr>
-      <tr class="zebra"><td><strong>VPS e produção real</strong></td><td>As duas fases de hospedagem. A VPS é um servidor alugado, um só, que vale agora. A produção real é uma nuvem pública com vários servidores, que ainda não tem data.</td></tr>
-      <tr class="zebra"><td><strong>Réplica</strong></td><td>Uma cópia do mesmo programa rodando ao mesmo tempo, para aguentar mais gente e não parar se uma falhar.</td></tr>
-      <tr class="zebra"><td><strong>v2.0 e v2.1</strong></td><td>As duas primeiras entregas do Horus.</td></tr>
-      <tr class="zebra"><td><strong>MF</strong> (macro funcionalidade)</td><td>Cada grande capacidade do produto.</td></tr>
-    </tbody>
-  </table>
-</div>
-<div class="callout callout--info">
-  <span class="ico">i</span>
-  <div><b>Para imaginar o middleware</b><p>É como a recepção de um prédio: o visitante não entra direto nos andares, e a recepção busca o que ele pediu. A comparação para aí, porque o middleware também faz a análise.</p></div>
-</div>
+<p>Cada palavra vem com o que ela é, para que serve e um exemplo ou uma comparação curta. A ordem segue o caminho de uma pergunta: primeiro as partes do Horus, depois a empresa cliente e, por fim, as palavras da hospedagem e das versões.</p>
+<p><strong>SaaS</strong></p>
+<ul>
+  <li><em>O que é:</em> a parte do Horus que as pessoas usam, hospedada pela Maind. O nome vem do inglês e quer dizer "software como serviço": o programa roda nos servidores de quem o oferece, e a pessoa só o abre no navegador.</li>
+  <li><em>Para que serve:</em> mostra as telas, recebe as perguntas e guarda as conversas, os painéis e a história do uso. Sabe onde fica o middleware de cada organização, mas não guarda senha de banco nem nome de pessoa. (<code>D-258</code>, <code>ARQ-109</code>)</li>
+  <li><em>Exemplo:</em> ao perguntar, a gerente de uma rede de lojas fala com o SaaS; ele recebe a pergunta e mostra o gráfico pronto.</li>
+</ul>
+<p><strong>Middleware</strong></p>
+<ul>
+  <li><em>O que é:</em> a parte que fica entre o SaaS e os dados da empresa. É o mesmo programa onde quer que rode: na Maind, onde um só atende todas as organizações que usam o Horus pela Maind, ou na casa do cliente. (<code>ARQ-100</code>, <code>D-272</code>)</li>
+  <li><em>Para que serve:</em> confere o login, guarda o cadastro das pessoas e as senhas dos bancos e da IA, e faz a análise: entende a pergunta, consulta o banco e monta a resposta. (<code>D-189</code>, <code>D-258</code>, <code>D-261</code>)</li>
+  <li><em>Exemplo:</em> a senha do banco de vendas de uma distribuidora fica no middleware; o SaaS nunca a vê.</li>
+</ul>
+<div class="callout callout--info"><span class="ico">i</span><div><b>Analogia</b><p>O middleware é como a recepção de um prédio: o visitante não entra direto nos andares, e a recepção busca o que ele pediu. A analogia para aqui: o middleware não só busca o que foi pedido; ele também entende a pergunta e monta a resposta.</p></div></div>
+<p><strong>Contrato entre o SaaS e o middleware</strong></p>
+<ul>
+  <li><em>O que é:</em> o único caminho por onde o SaaS e o middleware se falam, um canal de mensagens com regras fixas. Usa uma tecnologia chamada gRPC. (<code>ARQ-099</code>)</li>
+  <li><em>Para que serve:</em> dizer exatamente o que pode passar. De ida vão, por exemplo, a pergunta e os assentos liberados; de volta, a resposta pronta, a contagem do uso da IA e o estado e a versão do middleware. (<code>ARQ-099</code>, <code>ARQ-117</code>)</li>
+  <li><em>Exemplo:</em> por esse canal o SaaS recebe o gráfico das vendas, mas nunca a senha do banco nem a tabela inteira de vendas.</li>
+</ul>
+<p><strong>Registro de organizações</strong></p>
+<ul>
+  <li><em>O que é:</em> uma lista, guardada no SaaS, que anota para cada organização onde fica o middleware dela: o endereço, a porta e a chave pública. (<code>ARQ-102</code>)</li>
+  <li><em>Para que serve:</em> o SaaS a consulta para saber a que middleware mandar cada pedido. O endereço nunca chega ao navegador de ninguém.</li>
+  <li><em>Comparação:</em> é como a agenda de endereços de uma transportadora, que só o motorista consulta; o cliente sabe que a entrega chega, mas não vê a rota.</li>
+</ul>
+<p><strong>Certificado</strong></p>
+<ul>
+  <li><em>O que é:</em> uma espécie de carteira de identidade digital da organização, gerada pelo SaaS quando a organização é criada. (<code>ARQ-124</code>)</li>
+  <li><em>Para que serve:</em> provar, na conversa entre o SaaS e o middleware, que cada lado é quem diz ser. Os dois lados se reconhecem num aperto de mão digital (em inglês, handshake); sem ele, a organização não fica ativa. (<code>D-277</code>)</li>
+  <li><em>Exemplo:</em> um impostor que tentasse se passar pelo middleware de uma empresa seria recusado, porque não tem o certificado certo.</li>
+</ul>
+<p><strong>Organização</strong></p>
+<ul>
+  <li><em>O que é:</em> uma empresa cliente, ou um setor dela, dentro do Horus, com as suas pessoas, os seus bancos e a sua IA.</li>
+  <li><em>Para que serve:</em> manter separados os dados e as pessoas de cada cliente. Ela nasce em configuração e só passa a ativa com o middleware ligado, um banco e a IA configurados. (<code>D-277</code>)</li>
+  <li><em>Exemplo:</em> uma rede de farmácias que contrata o Horus vira uma organização, com o owner da organização dela, os assentos dela e o banco dela.</li>
+</ul>
+<p><strong>Instância</strong></p>
+<ul>
+  <li><em>O que é:</em> uma instalação do Horus, com marca e regras gerais próprias, que comporta várias organizações. O SaaS é uma instância só, a da Maind. (<code>D-200</code>)</li>
+  <li><em>Para que serve:</em> reunir o que vale para todas as organizações dela: a marca, as regras gerais, o aviso que aparece para todos e o painel de controle do owner da instância. (<code>D-280</code>)</li>
+  <li><em>Exemplo:</em> na v2.0, a marca é a da Maind para todas as organizações que usam o Horus pela Maind. (<code>D-200</code>)</li>
+</ul>
+<p><strong>Assento</strong></p>
+<ul>
+  <li><em>O que é:</em> a vaga contratada que uma pessoa ocupa para usar o Horus. Há cinco tipos: o de owner da organização, o de gestor e os de membro ouro, prata e bronze. (<code>D-194</code>)</li>
+  <li><em>Para que serve:</em> dizer o que a pessoa pode fazer no Horus. O ouro pergunta e cria painéis e relatórios para si; a prata pergunta, sem criar painéis nem relatórios; o bronze só vê os painéis já criados e compartilhados. Na arquitetura, o SaaS manda ao middleware a lista dos assentos liberados, e é por ela que o middleware sabe quem pode perguntar. (<code>D-194</code>, <code>ARQ-099</code>)</li>
+  <li><em>Exemplo:</em> uma distribuidora que contrata quinze assentos prata tem até quinze pessoas que perguntam, mas não montam painéis.</li>
+</ul>
+<p><strong>Banco de dados</strong></p>
+<ul>
+  <li><em>O que é:</em> o lugar onde a empresa guarda as informações dela, como vendas, estoque e clientes.</li>
+  <li><em>Para que serve:</em> é de onde saem as respostas. O Horus só lê os bancos, nunca os altera, e a senha de cada um fica no middleware. (<code>D-001</code>, <code>D-258</code>)</li>
+  <li><em>Exemplo:</em> o banco de vendas de uma rede de lojas, de onde sai o total de outubro por loja.</li>
+</ul>
+<p><strong>IA e chave de IA</strong></p>
+<ul>
+  <li><em>O que é:</em> a IA é o serviço de inteligência artificial que entende a pergunta e monta a resposta. A chave é a senha de acesso a esse serviço, dada pelo fornecedor da IA.</li>
+  <li><em>Para que serve:</em> sem a chave, a IA não responde. Cada organização tem a sua configuração de IA, no middleware; a Maind pode dar uma chave, que ela mesma paga. O owner da organização vê o consumo e o custo de toda a IA da organização. (<code>D-264</code>, <code>D-266</code>, <code>D-267</code>)</li>
+  <li><em>Exemplo:</em> se a chave fica sem crédito, o owner da organização é avisado; se a chave é a da Maind, a equipe da Maind também. (<code>D-268</code>)</li>
+</ul>
+<p><strong>Modelo semântico</strong></p>
+<ul>
+  <li><em>O que é:</em> a descrição do que cada dado da empresa significa, como "receita" ou "cliente ativo".</li>
+  <li><em>Para que serve:</em> é o que a IA usa para entender a pergunta e achar o dado certo no banco. Onde ele fica ainda falta decidir; o assunto está em <a href="#modulos">Os módulos</a>. (<code>P-048</code>)</li>
+  <li><em>Comparação:</em> é como a legenda de um mapa: sem ela, a IA vê colunas e números, mas não sabe o que cada um quer dizer.</li>
+</ul>
+<p><strong>Servidor MCP</strong></p>
+<ul>
+  <li><em>O que é:</em> um programa da própria organização, mantido na infraestrutura dela, que dá à IA outras fontes e ferramentas de consulta. Chega na v2.1. (<code>D-281</code>, <code>D-282</code>)</li>
+  <li><em>Para que serve:</em> deixar a organização ampliar o que a IA consegue consultar. Só lê: nenhuma ação sobre os sistemas da empresa. Só o owner da organização cadastra cada servidor, escolhe pelas roles (os grupos de permissão da organização) quem pode usá-lo e libera, uma a uma, as ferramentas que a IA pode chamar. A garantia de que cada ferramenta só lê é da organização, que mantém o servidor; o Horus garante que a IA só chama as ferramentas liberadas. (<code>D-286</code> a <code>D-289</code>)</li>
+  <li><em>Comparação:</em> é como uma caixa de ferramentas que a empresa empresta à IA, da qual o owner da organização escolhe, uma por uma, as ferramentas que ela pode tirar.</li>
+</ul>
+<p><strong>VPS e produção real</strong></p>
+<ul>
+  <li><em>O que é:</em> as duas fases da hospedagem. A VPS (do inglês "servidor privado virtual") é um servidor alugado, um só, que vale agora: na construção, na homologação (os testes antes de cada entrega) e na v2.0. A produção real é uma nuvem pública com vários servidores, que ainda não tem data nem nuvem escolhida. (<code>ARQ-085</code>, <code>ARQ-112</code>)</li>
+  <li><em>Para que serve:</em> começar simples e ganhar resistência a falhas depois. Na VPS não há meta de tempo no ar; na produção real, a meta é 99,9% do tempo no ar por mês para o SaaS e para o middleware da Maind. (<code>ARQ-122</code>)</li>
+  <li><em>Exemplo:</em> na VPS, se a máquina para, o SaaS para junto; na produção real, com várias cópias rodando, a queda de uma não derruba o serviço. (<code>ARQ-112</code>)</li>
+</ul>
+<p><strong>Réplica</strong></p>
+<ul>
+  <li><em>O que é:</em> uma cópia do mesmo programa rodando ao mesmo tempo que as outras.</li>
+  <li><em>Para que serve:</em> aguentar mais gente e não parar se uma cópia falhar. As réplicas chegam com a produção real, e o programa da v2.0 já nasce preparado para elas. (<code>ARQ-112</code>, <code>ARQ-113</code>)</li>
+  <li><em>Comparação:</em> é como um supermercado com vários caixas abertos: se um trava, a fila anda pelos outros.</li>
+</ul>
+<p><strong>v2.0 e v2.1</strong></p>
+<ul>
+  <li><em>O que é:</em> as duas primeiras entregas do Horus novo. A v2.0 vem primeiro, e a v2.1, depois. A versão em uso hoje é a v1.xx.</li>
+  <li><em>Para que serve:</em> dizer quando cada parte chega.</li>
+  <li><em>Exemplo:</em> o login pelo Google está na v2.0; o login da empresa, os servidores MCP e a segurança dos dados por pessoa ficam para a v2.1. (<code>ARQ-111</code>, <code>D-263</code>, <code>D-282</code>)</li>
+</ul>
+<p><strong>MF</strong> (macro funcionalidade)</p>
+<ul>
+  <li><em>O que é:</em> cada grande capacidade do produto, com um número e um nome.</li>
+  <li><em>Para que serve:</em> organizar o que cada versão entrega. Uma MF nunca se divide em duas versões: chega inteira numa só. (<code>D-197</code>)</li>
+  <li><em>Exemplo:</em> a MF-121, "Middleware da organização", e a MF-101, "Administração da instância", o painel do owner da instância. (<code>D-270</code>, <code>D-280</code>)</li>
+</ul>
 
 <h3 id="quem-e-quem-desenhos">Como ler os desenhos</h3>
 <p>Cada página de assunto traz um desenho, e cada desenho tem duas abas.</p>
 <ul>
-  <li><strong>Diagrama:</strong> clique nas caixas e nas ligações para ver o detalhe. A roda do mouse dá zoom e dá para arrastar o desenho.</li>
-  <li><strong>Explicações:</strong> três cartões dizem o que o desenho mostra, o que acontece na hora e o que acontece em segundo plano, e o que ficou de fora.</li>
-  <li><strong>O rótulo de cada seta</strong> é o nome do combinado entre as duas peças que ela liga.</li>
-  <li><strong>Setas tracejadas</strong> valem só em certas situações, que a legenda de cada desenho explica.</li>
-  <li><strong>Tela cheia:</strong> todo desenho abre em tela cheia pelo link “Abrir em tela cheia”, junto dele.</li>
+  <li><strong>Diagrama:</strong> o desenho em si. A roda do mouse aproxima e afasta. Na barra de ferramentas, a mão arrasta o desenho, a lupa acha uma peça pelo nome e os botões de mais e de menos mudam o tamanho.</li>
+  <li><strong>Explicações:</strong> três cartões de texto. O primeiro diz o que o desenho mostra; o segundo, o que acontece na hora e em segundo plano, quem faz cada passo ou o que vale em cada versão; o terceiro, o que falta decidir e o que ficou de fora.</li>
+</ul>
+<p>Os desenhos têm dois estilos.</p>
+<ul>
+  <li><strong>Os de arquitetura mostram cada bloco como um cartão.</strong> São os da infraestrutura separada, dos módulos, de como roda, de onde roda, das integrações, dos dados e da segurança. No alto do cartão ficam o nome da peça e a tecnologia que ela usa; no meio, o que ela faz, com uma nota curta; embaixo, etiquetas. As molduras agrupam os cartões por área, como a infraestrutura do SaaS e a da organização. Na visão geral o texto fica pequeno: para ler, basta aproximar com a roda do mouse ou clicar no cartão, que abre o detalhe.</li>
+  <li><strong>Os de sequência e de fluxo continuam no estilo clássico.</strong> São os de criar uma organização, da pergunta à resposta e do que roda sozinho. Nos de sequência, cada coluna é um participante, o tempo corre de cima para baixo e cada seta é um passo. Nos de fluxo, cada caixa é uma peça com o nome e uma linha curta, e as setas mostram o caminho do trabalho de uma para a outra. Clicar no nome de uma coluna ou numa caixa destaca as ligações dela e lista o que ela envia e o que recebe.</li>
+</ul>
+<p>Em todos os desenhos:</p>
+<ul>
+  <li><strong>O texto de cada seta</strong> diz o que passa por ela ou o que acontece naquele passo, por exemplo "pergunta · assentos" ou "cria a organização".</li>
+  <li><strong>A cor e o traço da seta</strong> dizem o tipo de ligação: o caminho principal, a segurança, o que vale só em certas situações. As cores mudam de um desenho para outro, e a legenda no pé de cada desenho diz o que cada uma significa ali.</li>
+  <li><strong>Tela cheia:</strong> todo desenho abre em tela cheia pelo link "Abrir em tela cheia", junto dele.</li>
 </ul>
 
 <h3 id="quem-e-quem-paginas">Como ler as páginas</h3>
 <p>Todas as páginas de assunto têm a mesma ordem, para quem lê uma saber ler as outras.</p>
 <ul>
   <li><strong>Em uma frase</strong> resume o assunto.</li>
-  <li><strong>O desenho</strong> explica o que cada forma, cor e seta significa.</li>
-  <li><strong>Como funciona</strong> conta o assunto em partes curtas.</li>
-  <li><strong>O que falta decidir nesta parte</strong> diz o que ainda está em aberto e de qual papel se espera a resposta.</li>
+  <li><strong>O desenho</strong> explica como ler o desenho daquela página: o que cada forma, cor e seta significa.</li>
+  <li><strong>Como funciona</strong> conta o assunto em tópicos. Cada tópico abre com um <strong>Em resumo</strong>, que se entende em dez segundos. Depois, quando cabe: <strong>quem é quem</strong>, as peças e as pessoas envolvidas; <strong>por que é assim</strong>, o problema que a escolha resolve e do que se abre mão; uma <strong>analogia</strong>, num quadro, que sempre diz onde a comparação para; <strong>um exemplo, passo a passo</strong>, com um personagem; <strong>quando dá errado</strong>, o que a pessoa vê e o que o sistema faz; e <strong>o que ainda está em aberto</strong>.</li>
+  <li><strong>O que falta decidir nesta parte</strong> diz o que ainda está em aberto e de qual papel se espera a resposta. Cada item traz <em>O que está em jogo</em>: por que a decisão importa e o que muda conforme ela for tomada.</li>
   <li><strong>Os códigos entre parênteses</strong> apontam para a decisão ou a pendência registrada. O começo de cada um diz o tipo: <code>ARQ</code> é decisão de arquitetura, <code>D</code> é decisão de produto, <code>P</code> é pendência e <code>MF</code> é macro funcionalidade. Quem só quer entender pode ignorá-los.</li>
 </ul>

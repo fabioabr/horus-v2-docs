@@ -1,66 +1,137 @@
 <h3 id="dados-frase">Em uma frase</h3>
-<p>Os dados do Horus moram em dois lugares. O <strong>middleware</strong>, a parte que busca os dados no banco da empresa e conversa com o SaaS, guarda as pessoas e as senhas dos bancos e da inteligência artificial (IA). O <strong>SaaS</strong>, a parte do Horus que as pessoas usam, hospedada pela Maind, guarda as conversas e a história, e conhece cada pessoa só por um código.</p>
+<p>Os dados do Horus moram em dois lugares. O <strong>middleware</strong>, a parte que busca os dados no banco da empresa e conversa com o SaaS, guarda as pessoas e as senhas dos bancos e da inteligência artificial (IA). O <strong>SaaS</strong>, a parte do Horus que as pessoas usam, hospedada pela Maind, guarda as conversas e a história, e conhece cada pessoa só por um código. (<code>D-261</code>, <code>ARQ-109</code>)</p>
+<p>A regra: o que diz quem é a pessoa, ou o que abre o banco da empresa, fica no middleware; o que o Horus usa no dia a dia fica no SaaS, sem nome de ninguém. Os dados da empresa, como as vendas, continuam nos bancos dela, que o Horus só lê. (<code>D-189</code>, <code>D-261</code>)</p>
 
 <h3 id="dados-desenho">O desenho</h3>
-<p>O desenho mostra onde cada dado fica e o que passa de um lugar a outro.</p>
+<p>O desenho mostra onde cada dado fica e o que passa de um lugar a outro, na hora e em segundo plano.</p>
 <dx-diagrama ref="arq-geral-dados-e-historia"></dx-diagrama>
 <ul>
-  <li><strong>As três áreas</strong> são as casas: a do middleware, na Maind ou no cliente; a da organização, a empresa cliente, com os bancos dela e a IA; e a do SaaS, da Maind.</li>
-  <li><strong>A cor de cada caixa</strong> diz o tipo da peça: banco de dados, segurança, programa, fila de tarefas ou algo "Fora do Horus".</li>
-  <li><strong>A cor de cada linha</strong> diz o que passa por ela: verde, o caminho principal; vermelha tracejada, dado pessoal ou da empresa; roxa tracejada, o que corre em segundo plano, sem ninguém esperando; cinza, o resto.</li>
-  <li><strong>Cinco vistas prontas</strong> destacam um assunto de cada vez, como "O caminho da história no SaaS".</li>
+  <li><strong>As três molduras são as casas.</strong> À esquerda, a do middleware, na Maind ou na casa do cliente, e, abaixo dela, a da organização, a empresa cliente, com os bancos dela e os serviços de IA. À direita, a maior, a infraestrutura do SaaS. O owner da instância, o funcionário da Maind que opera o painel do Horus, fica fora das molduras, ao lado do banco de log.</li>
+  <li><strong>Cada bloco é um cartão.</strong> No alto do cartão ficam o nome da peça e a tecnologia que ela usa; no meio, o que ela faz; embaixo, etiquetas curtas. Na visão geral o texto fica pequeno: para ler, basta aproximar com a roda do mouse ou clicar no cartão, que abre o detalhe. A legenda separa as peças em cinco tipos, entre eles "Barramento de mensagens", que é a fila de tarefas.</li>
+  <li><strong>As linhas verdes e mais grossas</strong> são o caminho na hora: a pergunta vai ao middleware, a resposta pronta volta, e o SaaS grava como as coisas ficaram.</li>
+  <li><strong>As linhas vermelhas tracejadas</strong> levam dado pessoal ou da empresa: as pessoas e a configuração, as linhas lidas dos bancos e os trechos que vão à IA.</li>
+  <li><strong>As linhas roxas tracejadas</strong> correm em segundo plano, sem ninguém esperando: é o caminho da história até o banco de log. <strong>As cinzas</strong> são o resto, como as vagas contratadas, as permissões e as quedas.</li>
+  <li><strong>Cinco visões guiadas,</strong> na aba Explicações, destacam um assunto de cada vez, como "O que fica no middleware" e "O caminho da história no SaaS".</li>
 </ul>
 
 <h3 id="dados-como-funciona">Como funciona</h3>
-<h4 id="dados-middleware">O que fica no middleware?</h4>
-<p>Numa <strong>base só</strong>, para todas as organizações que atende, o middleware guarda as pessoas, com nome e e-mail, o jeito de fazer login de cada organização e as senhas dos bancos e da IA. Quem cadastra tudo é o owner da organização, a pessoa que administra a organização no Horus. (<code>D-261</code>, <code>D-273</code>, <code>ARQ-109</code>, <code>ARQ-111</code>)</p>
-<p>Cada dado guardado leva a <strong>marca</strong> da organização, uma etiqueta que diz de quem ele é. Toda consulta passa por um filtro que só mostra os dados da organização em uso, e um teste automático falha se alguma consulta esquecer o filtro. As senhas ficam trancadas com uma chave por organização. (<code>ARQ-103</code>)</p>
-<p>Dos bancos da empresa, o middleware só lê. A IA recebe a pergunta e trechos enviados por ele, e ao SaaS chegam só a resposta pronta e a contagem de uso da IA, sem conteúdo. (<code>D-189</code>, <code>D-267</code>, <code>ARQ-117</code>)</p>
-<p>Excluir uma organização apaga, no middleware, só os dados e a chave dela, o que inutiliza as senhas também nas cópias de segurança. O passo a passo está em <a href="#criar-organizacao">Criar uma organização</a>. (<code>D-278</code>, <code>ARQ-125</code>)</p>
 
-<h4 id="dados-codigo">Como o SaaS reconhece alguém sem saber o nome?</h4>
-<p>No SaaS, cada pessoa é só um <strong>código</strong>, como um crachá numerado sem o nome impresso.</p>
-<p>As telas que mostram nomes os pedem ao middleware na hora, todos de uma vez, sem gravá-los: a página inicial da organização, o registro da Auditoria e a contagem das perguntas respondidas. O e-mail de um convite, aviso ou relatório só passa pelo SaaS no envio. (<code>D-262</code>, <code>ARQ-109</code>, <code>ARQ-118</code>)</p>
-<p>Ligado ao código, o SaaS guarda o que o middleware manda a cada mudança, sem nomes:</p>
+<h4 id="dados-middleware">O que fica no middleware, e como as organizações ficam separadas</h4>
+<p><strong>Em resumo:</strong> numa base só, para todas as organizações que atende, o middleware guarda quem são as pessoas, como cada organização faz login e as senhas dos bancos e da IA. Cada registro leva a marca da sua organização, e as senhas ficam trancadas com uma chave de cada uma. (<code>D-261</code>, <code>ARQ-103</code>)</p>
+<p><strong>O que fica lá.</strong> A <strong>base de configuração</strong>, o banco do próprio middleware, guarda as pessoas, com nome e e-mail; o jeito de fazer login que cada organização escolhe, na v2.0 usuário e senha ou o Google; as senhas dos bancos da empresa e a chave da IA, a senha que dá acesso ao serviço de inteligência artificial; e os nomes dos grupos e das roles, as permissões que dizem o que cada pessoa pode fazer. (<code>D-261</code>, <code>ARQ-111</code>, <code>ARQ-123</code>)</p>
+<p>Quem cadastra tudo é o owner da organização, a pessoa que administra a organização no Horus, na tela de configuração do middleware. A equipe da Maind dá suporte, mas não configura no lugar dele. (<code>D-273</code>)</p>
+<p><strong>Por que as pessoas ficam fora do SaaS.</strong> Separar quem guarda as pessoas de quem as atende é mais seguro: o SaaS, que todas as organizações dividem, não tem nome nem e-mail de ninguém. Em troca, o owner da organização usa dois aplicativos, o Horus e a tela do middleware, e toda tela do Horus que mostra um nome precisa pedi-lo ao middleware. (<code>D-261</code>)</p>
+<p><strong>Como as organizações ficam separadas numa base só.</strong> Três proteções trabalham juntas (<code>ARQ-103</code>):</p>
 <ul>
-  <li>o tipo de <strong>assento</strong>, a vaga contratada que a pessoa ocupa;</li>
-  <li>o que ela pode fazer;</li>
-  <li>os grupos dela;</li>
-  <li>as pessoas que cada gestor acompanha.</li>
+  <li><strong>A marca:</strong> cada registro leva uma etiqueta que diz de qual organização ele é.</li>
+  <li><strong>O filtro:</strong> toda consulta só enxerga os registros da organização em uso, sem depender de quem a escreveu. Um teste automático falha se alguma consulta ler sem o filtro.</li>
+  <li><strong>A chave por organização:</strong> as senhas de cada organização ficam cifradas, isto é, embaralhadas, com uma chave só dela, para que uma base invadida não entregue as senhas de todas.</li>
 </ul>
-<p>Assim, o SaaS decide sozinho cada pedido e conta os assentos ocupados. (<code>ARQ-123</code>)</p>
-
-<h4 id="dados-bancos-saas">Que bancos o SaaS tem?</h4>
-<ul>
-  <li><strong>Banco mestre:</strong> o que vale para todas as organizações. Guarda a lista delas, os assentos contratados em números, a cobrança e o Registro de organizações, com o endereço de cada middleware e a chave que confere os passes de entrada dele. O passe de entrada é a prova temporária de que a pessoa fez login. (<code>ARQ-088</code>, <code>ARQ-102</code>, <code>ARQ-124</code>)</li>
-  <li><strong>Banco de cada organização:</strong> o estado de hoje das conversas, dos painéis e das respostas prontas, aberto só com a senha própria dela e protegido também pelo filtro. (<code>ARQ-010</code>, <code>ARQ-088</code>)</li>
-  <li><strong>Banco de log:</strong> a história, em que só se acrescenta. A história de uma organização some com ela. (<code>ARQ-097</code>)</li>
-</ul>
-<p>O banco mestre guarda também o <strong>Registro de quedas</strong>, com as vezes em que o SaaS perdeu e recuperou o contato com o middleware. Cada anotação fica noventa dias, sem dado de pessoa, e a limpeza automática diária apaga as mais antigas. A página de status e a luz da tela de entrada o leem, por isso abrem mesmo com o middleware fora do ar. (<code>ARQ-035</code>, <code>ARQ-106</code>, <code>ARQ-121</code>)</p>
-
-<h4 id="dados-historia">Como a história chega ao banco de log?</h4>
+<div class="callout callout--info"><span class="ico">i</span><div><b>Analogia</b><p>É como o arquivo de um escritório de contabilidade que atende várias empresas. Todas as fichas ficam no mesmo móvel, cada uma com a etiqueta da sua empresa, e os documentos sigilosos de cada empresa vão num envelope com o lacre dela. A analogia para aqui: no Horus, quem confere a etiqueta é o próprio sistema, em toda consulta, e um teste automático reprova a consulta que esquecer de conferir.</p></div></div>
+<p><strong>Por que uma base só.</strong> Uma base por organização isolaria melhor, mas multiplicaria as bases a operar e a copiar. O risco da base única foi aceito: um filtro esquecido misturaria organizações, e uma invasão alcançaria todas. Quem quiser mais isolamento hospeda o middleware na própria casa. (<code>ARQ-103</code>, <code>D-272</code>)</p>
+<p><strong>O que sai dos bancos da empresa.</strong> O middleware só lê esses bancos. A IA recebe a pergunta e os trechos que ele envia. As linhas lidas não vão ao SaaS: a ele chegam só a resposta pronta e a contagem de uso da IA, sem a pergunta e sem a resposta. (<code>D-189</code>, <code>ARQ-117</code>)</p>
+<p><strong>Um exemplo, passo a passo.</strong> O owner da organização de uma rede de farmácias prepara o Horus para a equipe.</p>
 <ol>
-  <li>Cada mudança grava, de uma vez, o estado de hoje e um pedido na <strong>caixa de saída</strong> do banco da organização, uma lista de tarefas esperando a vez.</li>
-  <li>Uma peça leva o pedido à <strong>fila</strong> do banco mestre.</li>
-  <li>Um trabalho em segundo plano grava a história segundos depois.</li>
+  <li>Na tela de configuração do middleware, ele cadastra a gerente de compras, com nome e e-mail. O middleware grava o cadastro com a marca da rede e gera para ela um código sem significado, que é como o SaaS vai conhecê-la. (<code>ARQ-103</code>, <code>ARQ-109</code>)</li>
+  <li>Ele cadastra a ligação com o banco de vendas da rede e a chave da IA, e as duas senhas ficam cifradas com a chave da organização. (<code>ARQ-103</code>)</li>
+  <li>Quando o middleware da Maind atende uma pessoa de outra empresa, o filtro deixa de fora os registros da rede de farmácias. (<code>ARQ-103</code>)</li>
 </ol>
-<p>Repetir a gravação não duplica nada. (<code>ARQ-005</code>, <code>ARQ-088</code>, <code>ARQ-097</code>)</p>
 
-<h4 id="dados-quem-le">Quem lê a história?</h4>
-<p>O relatório da organização mostra a história dos assentos mês a mês, em números, sem o nome de quem os ocupou. (<code>D-274</code>)</p>
-<p>O owner da instância, funcionário da Maind que opera o painel do Horus, pergunta ao próprio Horus sobre a história da instalação. Usa uma chave de IA própria, a senha de acesso ao serviço, que a Maind paga e nenhuma organização usa.</p>
-<p>A pergunta lê o banco de log, não passa por middleware nenhum e volta só com códigos. Como a peça que a responde ainda não foi escolhida, o desenho a liga direto ao banco de log. (<code>D-158</code>, <code>D-266</code>, <code>D-276</code>, <code>ARQ-109</code>)</p>
+<h4 id="dados-codigo">Como o SaaS reconhece uma pessoa sem saber o nome</h4>
+<p><strong>Em resumo:</strong> no SaaS, cada pessoa é só um código. Quando uma tela precisa mostrar nomes, o SaaS os pede ao middleware na hora, todos de uma vez, e não os grava. (<code>ARQ-109</code>)</p>
+<p><strong>O código.</strong> É gerado pelo middleware e não tem significado: não sai do nome nem do e-mail, para que ninguém reconheça a pessoa por ele, e não muda com o tempo. (<code>ARQ-109</code>)</p>
+<p><strong>As telas que mostram nomes.</strong> São três: a página inicial da organização; o registro da Auditoria, que mostra o que cada pessoa entregou e abriu; e a contagem das perguntas respondidas. Elas pedem os nomes ao middleware ao abrir, numa chamada só para a tela inteira. (<code>D-262</code>, <code>ARQ-109</code>)</p>
+<p><strong>Os e-mails.</strong> O e-mail de um convite, de um aviso ou de um relatório agendado sai do SaaS, pelo e-mail do produto. O middleware entrega o endereço da pessoa só na hora do envio, e o SaaS não o grava em registro nem em histórico. (<code>D-262</code>, <code>ARQ-118</code>)</p>
+<p><strong>Por que é assim.</strong> Nenhum dado pessoal da organização fica no SaaS: excluir uma pessoa é apagar o cadastro dela no middleware, e a Maind, ao consultar a história, vê códigos. O que se abre mão é de telas com nome que funcionem sem o middleware. (<code>ARQ-109</code>)</p>
+<div class="callout callout--info"><span class="ico">i</span><div><b>Analogia</b><p>É como um crachá numerado, sem o nome impresso. A portaria sabe que o crachá 214 pode entrar no terceiro andar, mas, para saber de quem ele é, pergunta ao departamento pessoal. A analogia para aqui: no Horus, quem faz esse papel é o middleware, e a pergunta é feita uma vez para a tela inteira, nunca nome por nome.</p></div></div>
+<p><strong>Um exemplo, passo a passo.</strong> O owner da organização de uma rede de lojas abre o registro da Auditoria.</p>
+<ol>
+  <li>O SaaS lê, no banco da organização, as entregas e as aberturas do mês. Cada linha traz só o código de quem agiu. (<code>ARQ-109</code>)</li>
+  <li>O SaaS manda ao middleware a lista de códigos daquela tela, de uma vez só, e recebe os nomes. A tela os mostra, e o SaaS não os grava. (<code>ARQ-109</code>)</li>
+</ol>
+<p><strong>Quando dá errado.</strong> Com o middleware fora do ar, o SaaS não tem como buscar nomes. Na prática, isso não muda o que se vê, porque ninguém da organização consegue entrar nessa hora: o login também passa pelo middleware. E também não saem e-mails. (<code>ARQ-109</code>, <code>ARQ-118</code>)</p>
+
+<h4 id="dados-permissoes">O que o SaaS sabe sobre o que cada pessoa pode fazer</h4>
+<p><strong>Em resumo:</strong> ligado a cada código, o SaaS guarda o que precisa para decidir cada pedido sozinho, sem nome nenhum: o tipo de <strong>assento</strong>, a vaga contratada que a pessoa ocupa; o que ela pode fazer, conforme as roles que recebeu; os grupos dela; e as pessoas que cada gestor acompanha. O middleware manda essas informações a cada mudança. (<code>ARQ-123</code>)</p>
+<p><strong>Por que é assim.</strong> Com essa tabela, o SaaS decide cada pedido e conta os assentos ocupados sem chamar o middleware. Perguntar ao middleware a cada pedido deixaria tudo dependente dessa chamada. Levar as permissões no passe de entrada, a prova temporária de que a pessoa fez login, faria uma mudança só valer no login seguinte. Em troca, o SaaS guarda o que cada pessoa pode fazer, mas nunca quem ela é. (<code>ARQ-123</code>)</p>
+<p><strong>Um exemplo, passo a passo.</strong> O owner da organização de uma rede de lojas muda a role de um analista.</p>
+<ol>
+  <li>A mudança é feita na tela de configuração do middleware, onde ficam as roles. (<code>D-261</code>, <code>ARQ-123</code>)</li>
+  <li>O middleware manda ao SaaS o código do analista e o novo conjunto de permissões, sem o nome. (<code>ARQ-123</code>)</li>
+  <li>O SaaS atualiza a tabela e passa a decidir os pedidos do analista com a permissão nova. Se a mesma mudança chegar duas vezes, nada muda. (<code>ARQ-123</code>)</li>
+</ol>
+<p><strong>Quando dá errado.</strong> Com o middleware fora do ar, as mudanças não chegam. Quando ele volta, o SaaS pede a lista completa, para conferir a sua tabela, antes de voltar a aceitar mudanças. (<code>ARQ-123</code>)</p>
+
+<h4 id="dados-bancos-saas">Os três bancos do SaaS</h4>
+<p><strong>Em resumo:</strong> o SaaS tem um banco mestre, com o que vale para todas as organizações; um banco para cada organização, com como as coisas estão hoje; e um banco de log, com a história. (<code>ARQ-010</code>, <code>ARQ-088</code>, <code>ARQ-097</code>)</p>
+<ul>
+  <li><strong>Banco mestre:</strong> guarda a lista das organizações, os assentos contratados, em números, e a cobrança. Não tem pessoas nem login. Nele ficam também os dois registros explicados abaixo. (<code>ARQ-088</code>, <code>D-261</code>)</li>
+  <li><strong>Banco de cada organização:</strong> guarda o estado de hoje das conversas, dos painéis, das respostas prontas, do registro da Auditoria e dos agendamentos. Abre só com a senha própria daquela organização. (<code>ARQ-010</code>, <code>ARQ-088</code>)</li>
+  <li><strong>Banco de log:</strong> guarda a história, em que só se acrescenta. A história de uma organização fica enquanto ela existir e some com ela. (<code>ARQ-097</code>)</li>
+</ul>
+<p><strong>Por que um banco para cada organização.</strong> Assim, um erro no código não alcança os dados de outra organização, e apagar ou restaurar uma organização é mexer num banco só. Em troca, cada mudança na estrutura dos bancos roda uma vez por organização. Dentro de cada banco, a marca e o filtro valem como segunda trava. É o contrário do middleware, que guarda todas numa base só. (<code>ARQ-010</code>, <code>ARQ-088</code>, <code>ARQ-103</code>)</p>
+<p><strong>Os dois registros do banco mestre.</strong></p>
+<ul>
+  <li><strong>O Registro de organizações</strong> anota onde fica o middleware de cada organização: o endereço, a porta e a chave pública, que confere se um passe de entrada foi mesmo emitido por aquele middleware. Guarda também o arquivo assinado que o middleware devolve. O endereço nunca vai ao navegador. (<code>ARQ-102</code>, <code>ARQ-124</code>)</li>
+  <li><strong>O Registro de quedas</strong> anota as vezes em que o SaaS perdeu e recuperou o contato com o middleware: o início, o fim e a duração. Cada anotação fica noventa dias, sem dado de pessoa, e a limpeza automática diária apaga as mais antigas. A página de status e a luz da tela de entrada leem esse registro, por isso abrem mesmo com o middleware fora do ar. (<code>ARQ-106</code>, <code>ARQ-107</code>, <code>ARQ-121</code>)</li>
+</ul>
+<p><strong>Onde ficam e por quanto tempo.</strong> Os três bancos ficam no PostgreSQL 17, o programa de banco de dados, como explica <a href="#implantacao">Onde roda</a>. Cada tipo de dado tem um prazo, e a limpeza diária apaga o que passou dele; alguns, como o das conversas, o owner da organização ajusta. (<code>ARQ-035</code>, <code>ARQ-056</code>, <code>ARQ-097</code>)</p>
+<p><strong>Quando dá errado.</strong> A senha própria de cada banco protege contra um erro no código, e não contra quem tomar o servidor inteiro, que guarda as senhas de todos os bancos de organização. As pessoas e as senhas dos bancos das empresas, essas, não estão ali: ficam no middleware. (<code>ARQ-010</code>, <code>D-261</code>)</p>
+
+<h4 id="dados-historia">Como a história chega ao banco de log</h4>
+<p><strong>Em resumo:</strong> o banco da organização guarda só como as coisas estão hoje. Cada mudança deixa um pedido numa caixa de saída, e, segundos depois, um trabalho em segundo plano grava a mudança no banco de log, onde nada se altera: só se acrescenta. (<code>ARQ-005</code>, <code>ARQ-097</code>)</p>
+<p><strong>Quem é quem.</strong></p>
+<ul>
+  <li><strong>A caixa de saída</strong> é uma lista de pedidos no banco de cada organização, gravada junto com a mudança. (<code>ARQ-005</code>)</li>
+  <li><strong>A fila</strong> é a lista de tarefas do banco mestre, que reparte o trabalho entre as organizações. Uma peça leva cada pedido da caixa de saída até ela. (<code>ARQ-088</code>)</li>
+  <li><strong>O papel Trabalhar</strong> do servidor, o que cuida do que roda sozinho, pega cada tarefa da fila e grava a história. (<code>ARQ-004</code>, <code>ARQ-097</code>)</li>
+  <li><strong>O banco de log</strong> tem uma tabela para cada assunto, como os assentos. Cada linha diz o que aconteceu, quando, quem fez, só pelo código, e como a coisa ficou depois. (<code>ARQ-097</code>, <code>ARQ-109</code>)</li>
+</ul>
+<p><strong>Por que é assim.</strong> Com a história fora do banco do dia a dia, dá para saber como as coisas estavam em qualquer data, e o próprio Horus a consulta como qualquer banco. A caixa de saída faz a mudança e o pedido de gravar a história nascerem juntos, e nada se perde. Abre-se mão da gravação imediata: a história chega segundos depois. (<code>ARQ-005</code>, <code>ARQ-097</code>)</p>
+<div class="callout callout--info"><span class="ico">i</span><div><b>Analogia</b><p>É como o caixa de uma loja e o livro dos lançamentos. O caixa mostra quanto há agora; o livro guarda cada entrada e cada saída, e nada se apaga dele. A analogia para aqui: no Horus, o lançamento passa para o livro segundos depois, por um trabalho em segundo plano, e o livro de uma organização é jogado fora inteiro quando ela é excluída.</p></div></div>
+<p><strong>Um exemplo, passo a passo.</strong> Numa rede de lojas, uma vendedora convidada passa a ocupar um assento.</p>
+<ol>
+  <li>O SaaS muda, no banco da organização, o registro do assento, que passa a estar ocupado pelo código da vendedora. Na mesma gravação, deixa um pedido na caixa de saída: se uma das duas coisas falhar, nenhuma acontece. (<code>ARQ-005</code>, <code>ARQ-097</code>)</li>
+  <li>Em segundo plano, uma peça leva o pedido para a fila do banco mestre. (<code>ARQ-088</code>)</li>
+  <li>Segundos depois, o Trabalhar acrescenta uma linha à tabela dos assentos do banco de log: o que aconteceu, a hora, o código de quem fez e como o assento ficou. (<code>ARQ-097</code>)</li>
+  <li>No relatório da organização, essa ocupação entra na contagem do mês, sem o nome da vendedora. (<code>D-274</code>)</li>
+</ol>
+<p><strong>Quando dá errado.</strong></p>
+<ul>
+  <li><strong>Se a gravação se repete,</strong> por exemplo depois de uma queda no meio do trabalho, nada se duplica: cada pedido nasce com uma identidade própria. (<code>ARQ-097</code>)</li>
+  <li><strong>Ninguém reescreve a história:</strong> no banco de log, uma permissão só acrescenta, outra só lê, e a terceira só apaga, e apenas quando a organização é excluída. (<code>ARQ-097</code>)</li>
+  <li><strong>Testes conferem a história:</strong> toda noite, um teste reconstrói o estado de hoje a partir dela e o compara com o banco. Se a gravação atrasa, um alerta dispara. (<code>ARQ-097</code>)</li>
+</ul>
+
+<h4 id="dados-quem-le">Quem lê a história</h4>
+<p><strong>Em resumo:</strong> a história é lida pelo relatório da organização, só com números, e pela pergunta que o owner da instância faz ao próprio Horus. Nos dois, as pessoas aparecem só por código. (<code>D-274</code>, <code>D-276</code>, <code>ARQ-109</code>)</p>
+<p><strong>O relatório da organização.</strong> O owner da instância vê e baixa a qualquer momento um relatório de cada organização. Ele mostra a história dos assentos mês a mês, em números: as ocupações, as reservas por convite, as devoluções, os cortes e as reativações, sem o nome de quem ocupou cada assento. (<code>D-149</code>, <code>D-274</code>)</p>
+<p><strong>A pergunta do owner da instância.</strong> Ele pode perguntar ao próprio Horus, em português, sobre a história da instalação: quem ocupou cada assento e quando, os cortes, os administradores, os limites de custo ultrapassados e as mudanças de situação das organizações. A pergunta usa uma chave de IA que a Maind cadastra e paga só para isso; nenhuma organização a usa, e o consumo dela aparece numa linha à parte no painel da instância. (<code>D-158</code>, <code>D-266</code>, <code>D-276</code>, <code>ARQ-117</code>)</p>
+<p><strong>Por que pelo próprio Horus.</strong> Em vez de construir uma tela para cada consulta, a Maind reaproveita o que o produto já faz: responder perguntas sobre um banco. Abre-se mão de relatórios prontos: a resposta é tão boa quanto o Horus entende a estrutura da história. (<code>D-158</code>)</p>
+<p><strong>Um exemplo, passo a passo.</strong></p>
+<ol>
+  <li>O owner da instância pergunta quantos assentos da rede de farmácias foram cortados em setembro.</li>
+  <li>A pergunta não passa por middleware nenhum: ela vai à história guardada no próprio SaaS, o banco de log. (<code>D-276</code>)</li>
+  <li>A resposta chega com os números e, onde aparecem pessoas, só com os códigos delas. O custo entra na linha da chave da instância. (<code>ARQ-109</code>, <code>ARQ-117</code>)</li>
+</ol>
+<p><strong>Os limites.</strong> A Maind não vê o nome de quem ocupou cada assento, só as contagens. E o owner da organização não pode fazer a mesma pergunta sobre a própria organização: isso ficou de fora. (<code>D-158</code>, <code>D-274</code>)</p>
+
+<h4 id="dados-exclusao">O que some quando uma organização é excluída</h4>
+<p><strong>Em resumo:</strong> excluir uma organização apaga tudo o que há dela, no SaaS e no middleware, e só o que é dela. (<code>D-149</code>, <code>D-278</code>, <code>ARQ-125</code>)</p>
+<p><strong>Um exemplo, passo a passo.</strong> Uma rede de lojas encerra o contrato com a Maind.</p>
+<ol>
+  <li>O owner da instância baixa o relatório da organização, se quiser guardar os números, porque o uso e o custo dela também serão apagados. (<code>D-149</code>)</li>
+  <li>Ele exclui a organização. O SaaS pede ao middleware que apague os registros com a marca dela e a chave dela. (<code>D-278</code>, <code>ARQ-125</code>)</li>
+  <li>Se o middleware não responde, a exclusão fica pendente e é repetida até ele confirmar; até lá, o painel da instância mostra a organização "em exclusão". Com a confirmação, o SaaS a marca como excluída. (<code>ARQ-125</code>)</li>
+  <li>No SaaS, a organização sai do banco mestre, e o banco dela é apagado, com a senha própria. A história dela no banco de log some junto. (<code>ARQ-088</code>, <code>ARQ-097</code>)</li>
+</ol>
+<p><strong>E as cópias de segurança.</strong> O que já está numa cópia não é apagado na hora, mas as senhas da organização ficam ilegíveis também ali, porque a chave dela foi apagada. O resto vence no prazo da cópia. Na casa do cliente, as cópias são da TI do cliente, que as apaga. (<code>ARQ-086</code>, <code>ARQ-125</code>)</p>
+<p><strong>Quando dá errado.</strong> Uma exclusão por engano leva também a configuração do middleware, sem volta. E o código de cada pessoa que sobra no SaaS deixa de apontar para alguém; se isso basta para a LGPD, a lei brasileira de proteção de dados pessoais, ainda está em conferência, como explica <a href="#criar-organizacao">Criar uma organização</a>. (<code>D-278</code>, <code>ARQ-109</code>, <code>P-044</code>)</p>
 
 <h3 id="dados-falta-decidir">O que falta decidir nesta parte</h3>
-<p>O arquiteto do Horus decide como o Horus é construído por dentro. O PO cuida do que o produto entrega e da ordem em que entrega.</p>
+<p>O arquiteto do Horus decide como o Horus é construído por dentro.</p>
 <ul>
-  <li><strong>Falta o arquiteto do Horus decidir:</strong> onde e como roda a pergunta do owner da instância sobre a história da instalação. (<code>D-276</code>, <code>P-048</code>)</li>
-  <li><strong>Falta o arquiteto do Horus comprovar, nos testes:</strong> que a trava que barra os endereços da rede interna aceita o banco de log como fonte de dados dessa pergunta. (<code>D-158</code>)</li>
-  <li><strong>Falta o PO conferir, com o uso:</strong>
-    <ul>
-      <li>que a cobrança se confere só com números, sem nomes. (<code>D-274</code>)</li>
-      <li>que a Maind usa a pergunta sobre a história o bastante para valer o custo da chave. (<code>D-276</code>)</li>
-    </ul>
-  </li>
+  <li><strong>Falta o arquiteto do Horus decidir:</strong> onde e como roda a pergunta do owner da instância sobre a história da instalação. (<code>D-276</code>, <code>P-048</code>) <em>O que está em jogo:</em> a análise das perguntas das organizações roda dentro do middleware, e esta pergunta, por regra, não passa por middleware nenhum. Falta escolher a peça que a responde e se a resposta vem na hora ou em segundo plano; até lá, o desenho a liga direto ao banco de log. (<code>D-189</code>, <code>D-276</code>)</li>
+  <li><strong>Falta o arquiteto do Horus comprovar, nos testes:</strong> que a trava que barra os endereços da rede interna aceita o banco de log como fonte de dados dessa pergunta. (<code>D-158</code>) <em>O que está em jogo:</em> a trava recusa os endereços da rede interna da Maind, e o banco de log mora justamente ali, no mesmo PostgreSQL da instalação. Está prevista uma exceção para ele; se ela não funcionar, a trava barra a própria pergunta. (<code>ARQ-097</code>, <code>ARQ-116</code>)</li>
   <li><strong>Também depende, e está explicado em outras páginas:</strong> a separação entre os bancos do SaaS e do middleware da Maind, e a prova de que a marca, o filtro e a chave separam as organizações (<a href="#infra-separada">A infraestrutura separada</a>); onde moram o estado do middleware, as permissões por código, a caixa de saída do banco mestre e o banco do middleware da Maind na nuvem (<a href="#execucao">Como roda</a>); onde ficam a descrição dos bancos da empresa, a lista dos modelos de IA e o modelo padrão (<a href="#modulos">Os módulos</a>); e se a exclusão basta para a LGPD, a lei de proteção de dados pessoais (<a href="#criar-organizacao">Criar uma organização</a>).</li>
 </ul>
