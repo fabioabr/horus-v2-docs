@@ -506,7 +506,7 @@
           "label": "permissão"
         },
         "dashed": {
-          "label": "se ligada, se falhar ou em segundo plano"
+          "label": "se ligada, se falhar, sem contato ou em segundo plano"
         }
       }
     }
@@ -522,7 +522,7 @@
       "id": "avaliador",
       "type": "security",
       "label": "Avaliador de permissões",
-      "sublabel": "SaaS · assento e roles"
+      "sublabel": "SaaS · Permissões por código"
     },
     {
       "id": "middleware",
@@ -546,37 +546,42 @@
   "segments": [
     {
       "from": 150,
-      "to": 298,
+      "to": 304,
       "label": "1 · Pedido e pode?"
     },
     {
-      "from": 322,
-      "to": 412,
+      "from": 328,
+      "to": 418,
       "label": "2 · Só a pergunta sai do SaaS"
     },
     {
-      "from": 428,
-      "to": 578,
+      "from": 442,
+      "to": 560,
+      "label": "Se o middleware estiver fora"
+    },
+    {
+      "from": 584,
+      "to": 734,
       "label": "Se ligada: a web"
     },
     {
-      "from": 602,
-      "to": 912,
+      "from": 758,
+      "to": 1068,
       "label": "3 · O ciclo, no middleware"
     },
     {
-      "from": 936,
-      "to": 1018,
+      "from": 1092,
+      "to": 1174,
       "label": "Se falhar ou vier vazia"
     },
     {
-      "from": 1042,
-      "to": 1124,
+      "from": 1198,
+      "to": 1280,
       "label": "Com Análise avançada ou web"
     },
     {
-      "from": 1148,
-      "to": 1310,
+      "from": 1304,
+      "to": 1490,
       "label": "4 · Só a resposta pronta volta"
     }
   ],
@@ -588,31 +593,40 @@
       "y": 170,
       "label": "pode?",
       "variant": "security",
-      "note": "A pessoa pergunta no app ou no popup; o Atender pergunta pelo assento e pelas roles. A falha fecha (ARQ-008)."
+      "note": "No app ou no popup; o avaliador decide pelas Permissões por código (ARQ-123). A falha fecha (ARQ-008)."
     },
     {
       "id": "permissoes-efetivas",
       "from": "avaliador",
       "to": "atender",
-      "y": 238,
+      "y": 240,
       "label": "permissões efetivas",
       "variant": "return",
-      "note": "Botões, nível e assento já somados (D-220). Com as pessoas no middleware (D-261), a origem deles é a P-048."
+      "note": "Do Código da pessoa, sem nomes: assento, permissões e grupos, que o middleware envia a cada mudança (ARQ-123)."
     },
     {
       "id": "pergunta",
       "from": "atender",
       "to": "middleware",
-      "y": 344,
+      "y": 350,
       "label": "pergunta",
       "variant": "emphasis",
-      "note": "Só a pergunta sai (D-189), em nome da organização, que o middleware isola pelo certificado (D-258, D-272). Endereço pelo Registro de organizações: aguarda o dono (P-048)."
+      "note": "Só a pergunta sai (D-189). A sessão leva só o identificador da organização, e o endereço vem do Registro de organizações (ARQ-102)."
+    },
+    {
+      "id": "sem-contato",
+      "from": "atender",
+      "to": "middleware",
+      "y": 464,
+      "label": "sem contato · Aviso próprio",
+      "variant": "dashed",
+      "note": "Estado do middleware fora (ARQ-107): no lugar das respostas, o Aviso próprio, fora do ar desde o último contato, o resto do Horus no ar, procure o owner, tentar de novo; sem endereço nem porta (ARQ-104)."
     },
     {
       "id": "pesquisa-na-web",
       "from": "middleware",
       "to": "ia",
-      "y": 450,
+      "y": 606,
       "label": "pesquisa na web",
       "variant": "dashed",
       "note": "Se ligada e permitida (D-215): a busca nativa da conexão de IA, que mora no middleware (ARQ-027, D-266)."
@@ -621,7 +635,7 @@
       "id": "citacoes",
       "from": "ia",
       "to": "middleware",
-      "y": 518,
+      "y": 674,
       "label": "citações com link",
       "variant": "return",
       "note": "Fatos com link e data, ou o aviso de que a data não foi achada (D-006, ARQ-026)."
@@ -630,7 +644,7 @@
       "id": "plano-e-consulta",
       "from": "middleware",
       "to": "ia",
-      "y": 624,
+      "y": 780,
       "label": "plano e consulta",
       "variant": "emphasis",
       "note": "O ciclo da análise roda aqui, com a IA da organização, que o owner configura no front do middleware (D-258, D-273)."
@@ -639,7 +653,7 @@
       "id": "consulta-plano-prosa",
       "from": "ia",
       "to": "middleware",
-      "y": 704,
+      "y": 860,
       "label": "consulta, plano e prosa",
       "variant": "return",
       "note": "A IA escreve a consulta, o plano e a prosa de abertura; os números nunca vêm dela (doc. 05, §3.3)."
@@ -648,7 +662,7 @@
       "id": "consulta",
       "from": "middleware",
       "to": "bancos",
-      "y": 772,
+      "y": 928,
       "label": "consulta só de leitura",
       "variant": "emphasis",
       "note": "Com a credencial que o owner cadastrou no middleware (D-258, D-273); tetos de 500 linhas e 30 s (doc. 05, §3.3)."
@@ -657,7 +671,7 @@
       "id": "linhas",
       "from": "bancos",
       "to": "middleware",
-      "y": 852,
+      "y": 1008,
       "label": "linhas",
       "variant": "return",
       "note": "Os números da resposta vêm destas linhas. Quem vê o quê no banco: v2.1, no middleware (D-263)."
@@ -666,7 +680,7 @@
       "id": "reparo",
       "from": "middleware",
       "to": "ia",
-      "y": 958,
+      "y": 1114,
       "label": "reparo, uma vez",
       "variant": "dashed",
       "note": "Uma tentativa de consertar a consulta e refazer o plano; ela roda de novo no banco (doc. 05, §3.3)."
@@ -675,7 +689,7 @@
       "id": "leitura",
       "from": "middleware",
       "to": "ia",
-      "y": 1064,
+      "y": 1220,
       "label": "leitura pós-consulta",
       "variant": "dashed",
       "note": "O fato da web em qualquer nível; a causa de fora, só do nível 4 em diante (ARQ-025, ARQ-026)."
@@ -684,7 +698,7 @@
       "id": "resposta-pronta",
       "from": "middleware",
       "to": "atender",
-      "y": 1170,
+      "y": 1326,
       "label": "resposta pronta",
       "variant": "return",
       "note": "Os blocos que a pessoa vê (D-189). O Atender a grava no Banco da organização e a transmite por SSE (ARQ-024)."
@@ -693,47 +707,53 @@
       "id": "uso-de-ia",
       "from": "middleware",
       "to": "atender",
-      "y": 1250,
-      "label": "uso de IA",
+      "y": 1406,
+      "label": "uso de IA, só contagem",
       "variant": "dashed",
-      "note": "Só a contagem, sem conteúdo: o consumo e o custo de toda a IA (D-267). Vira o fato de uso, em lote (ARQ-029)."
+      "note": "Sem conteúdo: a hora, o modelo, os tokens e de quem é a chave (ARQ-117). O owner vê o consumo e o custo no Horus; a parada da IA chega pelo mesmo contrato."
     }
   ],
   "activations": [
     {
       "participant": "atender",
       "from": 165,
-      "to": 1256,
+      "to": 1412,
       "type": "frontend"
     },
     {
       "participant": "avaliador",
       "from": 165,
-      "to": 244,
+      "to": 246,
       "type": "security"
     },
     {
       "participant": "middleware",
-      "from": 339,
-      "to": 1256,
+      "from": 345,
+      "to": 420,
+      "type": "cloud"
+    },
+    {
+      "participant": "middleware",
+      "from": 601,
+      "to": 1412,
       "type": "cloud"
     },
     {
       "participant": "ia",
-      "from": 445,
-      "to": 524,
+      "from": 601,
+      "to": 680,
       "type": "external"
     },
     {
       "participant": "ia",
-      "from": 619,
-      "to": 710,
+      "from": 775,
+      "to": 866,
       "type": "external"
     },
     {
       "participant": "bancos",
-      "from": 767,
-      "to": 858,
+      "from": 923,
+      "to": 1014,
       "type": "database"
     }
   ],
@@ -743,20 +763,23 @@
       "title": "O que o desenho mostra",
       "items": [
         "O turno de uma pergunta de análise com a infraestrutura separada (D-258): o SaaS confere a permissão e manda só a pergunta; o ciclo da análise, com o modelo de IA e as consultas, roda dentro do middleware; só a resposta pronta volta (D-189).",
-        "O middleware atende várias organizações, com o mesmo contrato em qualquer hospedagem: o da Maind, todas as do SaaS; o do cliente, as organizações dele (D-258, D-260, D-272). A pergunta chega a ele em nome da organização da pessoa, e ele isola cada organização pelo certificado dela (D-258, D-272).",
-        "O SaaS aprende a chegar ao middleware no handshake feito ao criar a organização (D-258) e o acha pelo Registro de organizações: uma proposta do arquiteto, que aguarda o dono (proposta 3, P-048).",
-        "O Avaliador de permissões responde \"pode?\" pelo tipo de assento e pelas roles, e a falha fecha (ARQ-008); o nível efetivo é o menor entre o pedido, as roles e o teto de cada fonte (ARQ-025, D-220).",
+        "O middleware atende várias organizações, com o mesmo contrato, gRPC, em qualquer hospedagem: o da Maind, todas as do SaaS; o do cliente, as organizações dele (D-258, D-260, D-272, ARQ-099). A pergunta chega a ele em nome da organização da pessoa, cujo identificador a sessão leva (ARQ-102). Dentro do middleware, as organizações dividem uma base só, separadas pela marca da organização e por um filtro em toda consulta, e as credenciais se cifram com uma chave por organização; o certificado é o vínculo de confiança entre o SaaS e o middleware (D-258, ARQ-103).",
+        "O SaaS aprende o endereço, a porta e a chave pública do middleware no handshake feito ao criar a organização (D-258, ARQ-124) e os guarda no Registro de organizações, no banco mestre; acha o middleware certo consultando o registro, e confere com a chave pública dele a sessão que o middleware emite (ARQ-102).",
+        "O Avaliador de permissões responde \"pode?\" sozinho, sem chamar o middleware, pelas Permissões por código: para cada Código da pessoa, o tipo de assento, o conjunto de permissões e os identificadores dos grupos e da carteira do gestor, sem nomes, que o middleware envia a cada mudança, com uma reconciliação completa depois de uma queda (ARQ-123). A falha fecha (ARQ-008); o nível efetivo é o menor entre o pedido, as roles e o teto de cada fonte (ARQ-025, D-220).",
+        "No SaaS, a pessoa é só o Código da pessoa, sem nome nem e-mail (ARQ-109). O turno não mostra nomes de pessoas; as telas que os mostram (a Home da organização, o rastro da Auditoria, a medida de autonomia) os pedem ao middleware em lote, uma chamada por tela (ARQ-109), e os nomes dos grupos e das roles também (ARQ-123).",
+        "Com o Estado do middleware em fora do ar, a pergunta não chega: no lugar das respostas, o app mostra o Aviso próprio: a conexão da organização com o Horus está fora do ar desde o último contato, o restante do Horus segue no ar, a pessoa deve procurar o owner, e há um botão de tentar de novo; sem endereço nem porta (ARQ-104, ARQ-107). No middleware compartilhado da Maind, a queda alcança todas as organizações do SaaS de uma vez (ARQ-104, D-272).",
         "A IA escreve a consulta, o plano e a prosa; os números da resposta vêm só das linhas dos bancos corporativos, lidos só para leitura, com a credencial que o owner da organização configura no middleware, fora do SaaS (D-022, D-258, D-273).",
-        "A pesquisa na web, se ligada, usa a busca nativa da conexão de IA, que agora mora no middleware: não há mais conexão de IA da instância (ARQ-027, D-215, D-266). A consulta que falha ou vem vazia tem um reparo, uma vez."
+        "A pesquisa na web, se ligada, usa a busca nativa da conexão de IA, que mora no middleware: não há mais conexão de IA da instância para as organizações (ARQ-027, D-215, D-266). A consulta que falha ou vem vazia tem um reparo, uma vez."
       ]
     },
     {
       "dot": "emerald",
       "title": "Imediato e em segundo plano",
       "items": [
-        "Imediato, no papel Atender: o \"pode?\", a pergunta ao middleware, a resposta pronta, a gravação dela no Banco da organização antes do fim e a transmissão por SSE (ARQ-004, ARQ-024).",
-        "No WhatsApp e no agente, o mesmo turno roda como trabalho da fila, no papel Trabalhar (ARQ-024); o agente está no diagrama do que roda sozinho.",
-        "Em segundo plano: a contagem de uso de IA que o middleware devolve, sem conteúdo, para o consumo e o custo de toda a IA da organização (D-267), e o fato de uso do turno, que o SaaS grava em lote, sem a pergunta nem a resposta (ARQ-029).",
+        "Imediato, no papel Atender: o \"pode?\", decidido no SaaS pelas Permissões por código (ARQ-123), a pergunta ao middleware, a resposta pronta, a gravação dela no Banco da organização antes do fim e a transmissão por SSE (ARQ-004, ARQ-024); ou, sem contato com o middleware, o Aviso próprio (ARQ-104).",
+        "No WhatsApp e no agente, o mesmo turno roda como trabalho da fila, no papel Trabalhar (ARQ-024); o agente, e a espera de até uma hora quando o middleware está fora, estão no diagrama do que roda sozinho (ARQ-108).",
+        "Em segundo plano: a contagem de uso de IA que o middleware devolve, só como contagem, sem a pergunta nem a resposta: a hora, o modelo, os tokens e de quem é a chave, da organização ou da Maind (ARQ-117). O owner vê o consumo e o custo de toda a IA da organização no Horus, na tela que a v1.xx já tem (D-267, ARQ-117). Com o middleware fora do ar, a contagem não chega: o uso aparece com atraso e completa quando ele volta (ARQ-117). O fato de uso do turno o SaaS grava em lote, sem a pergunta nem a resposta (ARQ-029).",
+        "Pelo mesmo contrato chega a parada da IA (chave recusada ou falta de crédito): o owner é avisado na área de avisos do Horus e, se a chave é da Maind, o time da Maind, na área de avisos do painel da instância (ARQ-117, D-268).",
         "O retorno da pessoa (gostei, não gostei, reportar) continua no SaaS, gravado pela resposta, e o reporte guarda uma cópia dela para o owner (ARQ-028).",
         "Versão: tudo o que o desenho mostra é v2.0, inclusive o middleware (a MF-121, Middleware da organização; D-260, D-270, D-272). Quem vê o quê dentro do banco (MF-106) é v2.1 e roda no middleware (D-263)."
       ]
@@ -766,12 +789,12 @@
       "title": "O que ficou de fora e o que aguarda o dono",
       "items": [
         "O corte do motor: as decisões dizem só que o ciclo (o modelo de IA e as consultas) roda no middleware e que ao SaaS chegam a pergunta e a resposta pronta (D-189, D-258). Onde ficam o Condutor do turno e as outras etapas do Motor de análise segue em aberto, e por isso eles não aparecem (P-040, P-048).",
-        "O contrato do middleware não tem protocolo decidido: o rascunho do dono traz pontos de contrato gRPC e um servidor MCP com ferramentas, e a escolha é do arquiteto, gRPC de preferência (P-042, D-196).",
-        "Aguarda o dono (proposta 3 do arquiteto, P-048): a sessão, emitida pelo middleware e conferida pelo SaaS com a chave pública da organização, leva só o identificador da organização; o endereço e a porta ficam no Registro de organizações, nunca na sessão.",
-        "Sem decisão (P-048): o que o SaaS guarda de cada pessoa e de onde o avaliador lê as roles; o que a tela mostra com o middleware fora do ar (proposta 5); o que o middleware manda enquanto o ciclo roda; onde ficam o modelo semântico e a curadoria dos modelos de IA; onde o owner vê o consumo.",
-        "Hipótese 🔎 da D-272: que o isolamento por certificado baste entre as organizações que dividem o mesmo middleware. Como a pergunta leva a organização até ele não está decidido (propostas 2 e 3, P-042, P-048).",
+        "Fica de fora: os servidores MCP da organização (D-281). Ela poderá cadastrar servidores MCP próprios, que ficam na infraestrutura dela, com o cadastro no front do middleware; a versão é a v2.1, na MF-124 (D-282); o servidor só lê, só o owner o cadastra e libera as ferramentas uma a uma (D-286 a D-289); como o middleware os chama durante a análise segue na P-050, por isso o turno não os mostra. O servidor MCP do rascunho não é peça do contrato, que é gRPC (ARQ-099).",
+        "Sem decisão (P-048): o que o middleware manda enquanto o ciclo roda; onde ficam o modelo semântico e a curadoria dos modelos de IA.",
+        "A conferir com o jurídico (P-044): se o código que sobra no SaaS depois que o middleware apaga o cadastro da pessoa basta para a exclusão e para a LGPD (ARQ-109).",
+        "Hipótese 🔎 da D-272: que o isolamento baste entre as organizações que dividem o mesmo middleware, com o teste de isolamento no CI como segunda trava (ARQ-103). A política do certificado (o formato, a rotação e a revogação) é escolha da organização e fica adiada para as ADRs da MF-121 (P-049, ARQ-124).",
         "Não entra neste turno: a pergunta do administrador da instância sobre a história da instância (D-158, D-276). Ela lê a história guardada no SaaS, no banco de log, com uma chave de IA da instância só para isso, e não passa por middleware nenhum; como ela roda é da P-048.",
-        "Mais saídas além da resposta pronta (o comando da consulta, o CSV) só com permissão configurada no front do middleware (D-189, D-195, D-265). O modo conversa, sem fonte, e o retorno da pessoa ficaram fora do desenho."
+        "Mais saídas além da resposta pronta (o comando da consulta, o CSV) são interruptores da organização, desligados por padrão (D-189, ARQ-116); que quem os liga é o owner, no módulo de configuração do middleware, aguarda o dono (ARQ-116, D-193). O modo conversa, sem fonte, e o retorno da pessoa ficaram fora do desenho."
       ]
     }
   ]

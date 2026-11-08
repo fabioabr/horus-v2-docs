@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="generator" content="archify-maind skin">
 <title>Da pergunta à resposta</title>
-<script>(function(){var t=null;try{t=localStorage.getItem('archify-theme');}catch(e){}if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);if(window.parent!==window&&/[?&]embutido=1(&|$)/.test(location.search))document.documentElement.classList.add('mx-tema-da-pagina');})();</script>
+<script>(function(){var t=null;try{t=localStorage.getItem('archify-theme');}catch(e){}if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.setAttribute('data-theme',t);if(window.parent!==window&&/[?&]embutido=1(&|$)/.test(location.search)){document.documentElement.classList.add('mx-tema-da-pagina');try{var f=parseFloat(getComputedStyle(window.parent.document.body).fontSize);if(f>0&&f<14)document.documentElement.style.setProperty('--mx-esc',(f/14).toFixed(4));}catch(e){}}})();</script>
 <style>:root,
     [data-theme="dark"] {
       --bg: #020617;
@@ -165,6 +165,20 @@ code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12.5px;backgr
 .mx-texto p{margin:0 0 10px}
 .mx-texto li{margin:4px 0}
 .mx-vazio{color:var(--text-muted)}
+/* Rolagem no padrão do design da página (docs.css do DocX): fina, trilho transparente, miolo arredondado com "halo" da cor do fundo, e
+   segue o tema. Sem isto, a rolagem do iframe cai no padrão claro do navegador, branca sobre o tema escuro. */
+:root{--mx-rol:#3D4A55;--mx-rol-hover:#9CA8B0;color-scheme:dark}
+html[data-theme="light"]{--mx-rol:#C8D0D5;--mx-rol-hover:#7A8893;color-scheme:light}
+*{scrollbar-width:thin;scrollbar-color:var(--mx-rol) transparent}
+*::-webkit-scrollbar{width:10px;height:10px}
+*::-webkit-scrollbar-track{background:transparent}
+*::-webkit-scrollbar-thumb{background:var(--mx-rol);border-radius:999px;border:2px solid var(--bg)}
+*::-webkit-scrollbar-thumb:hover{background:var(--mx-rol-hover)}
+*::-webkit-scrollbar-corner{background:transparent}
+/* Embutida numa página (DocX: ?embutido=1), o texto das abas segue a escala do corpo dela: o do design kbr é 11px, e o da casca, 14px.
+   --mx-esc é lido do corpo da página que embute (a casca a ajusta no script); sem acesso a ela, vale 11/14. O zoom só alcança os painéis de
+   texto: o diagrama não muda de tamanho. Aberta sozinha (tela cheia), o texto continua em 14px. */
+html.mx-tema-da-pagina .mx-conteudo{zoom:var(--mx-esc,.7857)}
 @media (max-width:720px){.mx-head{flex-direction:column}.mx-acoes{justify-content:flex-start}.mx-grade-dados{grid-template-columns:1fr}.mx-busca{margin-left:0}}
 </style>
 </head>
@@ -5457,7 +5471,7 @@ html,body{overflow:hidden!important}
     <!-- Main Diagram -->
     <div class=&quot;diagram-container&quot; data-detail-level=&quot;read&quot;
          data-preset-badge-editorial-plate=&quot;ARCHIFY / PLACA 04&quot;>
-      <svg viewBox=&quot;0 0 1001 1408&quot; data-sequence-column-fit=&quot;spread&quot; data-reader-fit=&quot;width-first&quot; role=&quot;img&quot; lang=&quot;pt-BR&quot; aria-labelledby=&quot;archify-diagram-title archify-diagram-description&quot; data-animation=&quot;trace&quot; data-preset=&quot;classic&quot; data-quality-profile=&quot;showcase&quot; data-motion-choreography=&quot;sequence&quot;>
+      <svg viewBox=&quot;0 0 1001 1588&quot; data-sequence-column-fit=&quot;spread&quot; data-reader-fit=&quot;width-first&quot; role=&quot;img&quot; lang=&quot;pt-BR&quot; aria-labelledby=&quot;archify-diagram-title archify-diagram-description&quot; data-animation=&quot;trace&quot; data-preset=&quot;classic&quot; data-quality-profile=&quot;showcase&quot; data-motion-choreography=&quot;sequence&quot;>
         <title id=&quot;archify-diagram-title&quot;>Da pergunta à resposta</title>
         <desc id=&quot;archify-diagram-description&quot;>Um diagrama de sequência gerado pelo Archify.</desc>
         <!-- Definitions -->
@@ -5483,40 +5497,44 @@ html,body{overflow:hidden!important}
         <rect width=&quot;100%&quot; height=&quot;100%&quot; fill=&quot;url(#grid)&quot; />
 
         <!-- Time Segments -->
-        <rect data-graph-role=&quot;structural-frame&quot; data-composition-frame-kind=&quot;segment&quot; data-composition-frame-id=&quot;0&quot; x=&quot;48&quot; y=&quot;150&quot; width=&quot;905&quot; height=&quot;148&quot; rx=&quot;10&quot; class=&quot;c-lane&quot; stroke-width=&quot;1&quot;/>
+        <rect data-graph-role=&quot;structural-frame&quot; data-composition-frame-kind=&quot;segment&quot; data-composition-frame-id=&quot;0&quot; x=&quot;48&quot; y=&quot;150&quot; width=&quot;905&quot; height=&quot;154&quot; rx=&quot;10&quot; class=&quot;c-lane&quot; stroke-width=&quot;1&quot;/>
 
-        <rect data-graph-role=&quot;structural-frame&quot; data-composition-frame-kind=&quot;segment&quot; data-composition-frame-id=&quot;1&quot; x=&quot;48&quot; y=&quot;322&quot; width=&quot;905&quot; height=&quot;90&quot; rx=&quot;10&quot; class=&quot;c-lane&quot; stroke-width=&quot;1&quot;/>
+        <rect data-graph-role=&quot;structural-frame&quot; data-composition-frame-kind=&quot;segment&quot; data-composition-frame-id=&quot;1&quot; x=&quot;48&quot; y=&quot;328&quot; width=&quot;905&quot; height=&quot;90&quot; rx=&quot;10&quot; class=&quot;c-lane&quot; stroke-width=&quot;1&quot;/>
 
-        <rect data-graph-role=&quot;structural-frame&quot; data-composition-frame-kind=&quot;segment&quot; data-composition-frame-id=&quot;2&quot; x=&quot;48&quot; y=&quot;428&quot; width=&quot;905&quot; height=&quot;150&quot; rx=&quot;10&quot; class=&quot;c-lane&quot; stroke-width=&quot;1&quot;/>
+        <rect data-graph-role=&quot;structural-frame&quot; data-composition-frame-kind=&quot;segment&quot; data-composition-frame-id=&quot;2&quot; x=&quot;48&quot; y=&quot;442&quot; width=&quot;905&quot; height=&quot;118&quot; rx=&quot;10&quot; class=&quot;c-lane&quot; stroke-width=&quot;1&quot;/>
 
-        <rect data-graph-role=&quot;structural-frame&quot; data-composition-frame-kind=&quot;segment&quot; data-composition-frame-id=&quot;3&quot; x=&quot;48&quot; y=&quot;602&quot; width=&quot;905&quot; height=&quot;310&quot; rx=&quot;10&quot; class=&quot;c-lane&quot; stroke-width=&quot;1&quot;/>
+        <rect data-graph-role=&quot;structural-frame&quot; data-composition-frame-kind=&quot;segment&quot; data-composition-frame-id=&quot;3&quot; x=&quot;48&quot; y=&quot;584&quot; width=&quot;905&quot; height=&quot;150&quot; rx=&quot;10&quot; class=&quot;c-lane&quot; stroke-width=&quot;1&quot;/>
 
-        <rect data-graph-role=&quot;structural-frame&quot; data-composition-frame-kind=&quot;segment&quot; data-composition-frame-id=&quot;4&quot; x=&quot;48&quot; y=&quot;936&quot; width=&quot;905&quot; height=&quot;82&quot; rx=&quot;10&quot; class=&quot;c-lane&quot; stroke-width=&quot;1&quot;/>
+        <rect data-graph-role=&quot;structural-frame&quot; data-composition-frame-kind=&quot;segment&quot; data-composition-frame-id=&quot;4&quot; x=&quot;48&quot; y=&quot;758&quot; width=&quot;905&quot; height=&quot;310&quot; rx=&quot;10&quot; class=&quot;c-lane&quot; stroke-width=&quot;1&quot;/>
 
-        <rect data-graph-role=&quot;structural-frame&quot; data-composition-frame-kind=&quot;segment&quot; data-composition-frame-id=&quot;5&quot; x=&quot;48&quot; y=&quot;1042&quot; width=&quot;905&quot; height=&quot;82&quot; rx=&quot;10&quot; class=&quot;c-lane&quot; stroke-width=&quot;1&quot;/>
+        <rect data-graph-role=&quot;structural-frame&quot; data-composition-frame-kind=&quot;segment&quot; data-composition-frame-id=&quot;5&quot; x=&quot;48&quot; y=&quot;1092&quot; width=&quot;905&quot; height=&quot;82&quot; rx=&quot;10&quot; class=&quot;c-lane&quot; stroke-width=&quot;1&quot;/>
 
-        <rect data-graph-role=&quot;structural-frame&quot; data-composition-frame-kind=&quot;segment&quot; data-composition-frame-id=&quot;6&quot; x=&quot;48&quot; y=&quot;1148&quot; width=&quot;905&quot; height=&quot;162&quot; rx=&quot;10&quot; class=&quot;c-lane&quot; stroke-width=&quot;1&quot;/>
+        <rect data-graph-role=&quot;structural-frame&quot; data-composition-frame-kind=&quot;segment&quot; data-composition-frame-id=&quot;6&quot; x=&quot;48&quot; y=&quot;1198&quot; width=&quot;905&quot; height=&quot;82&quot; rx=&quot;10&quot; class=&quot;c-lane&quot; stroke-width=&quot;1&quot;/>
+
+        <rect data-graph-role=&quot;structural-frame&quot; data-composition-frame-kind=&quot;segment&quot; data-composition-frame-id=&quot;7&quot; x=&quot;48&quot; y=&quot;1304&quot; width=&quot;905&quot; height=&quot;186&quot; rx=&quot;10&quot; class=&quot;c-lane&quot; stroke-width=&quot;1&quot;/>
 
         <!-- Lifelines -->
-        <path d=&quot;M 137.5 142 L 137.5 1312&quot; class=&quot;a-default&quot; stroke-width=&quot;0.8&quot; stroke-dasharray=&quot;3,7&quot;/>
-        <path d=&quot;M 324.5 142 L 324.5 1312&quot; class=&quot;a-default&quot; stroke-width=&quot;0.8&quot; stroke-dasharray=&quot;3,7&quot;/>
-        <path d=&quot;M 511.5 142 L 511.5 1312&quot; class=&quot;a-default&quot; stroke-width=&quot;0.8&quot; stroke-dasharray=&quot;3,7&quot;/>
-        <path d=&quot;M 698.5 142 L 698.5 1312&quot; class=&quot;a-default&quot; stroke-width=&quot;0.8&quot; stroke-dasharray=&quot;3,7&quot;/>
-        <path d=&quot;M 885.5 142 L 885.5 1312&quot; class=&quot;a-default&quot; stroke-width=&quot;0.8&quot; stroke-dasharray=&quot;3,7&quot;/>
+        <path d=&quot;M 137.5 142 L 137.5 1492&quot; class=&quot;a-default&quot; stroke-width=&quot;0.8&quot; stroke-dasharray=&quot;3,7&quot;/>
+        <path d=&quot;M 324.5 142 L 324.5 1492&quot; class=&quot;a-default&quot; stroke-width=&quot;0.8&quot; stroke-dasharray=&quot;3,7&quot;/>
+        <path d=&quot;M 511.5 142 L 511.5 1492&quot; class=&quot;a-default&quot; stroke-width=&quot;0.8&quot; stroke-dasharray=&quot;3,7&quot;/>
+        <path d=&quot;M 698.5 142 L 698.5 1492&quot; class=&quot;a-default&quot; stroke-width=&quot;0.8&quot; stroke-dasharray=&quot;3,7&quot;/>
+        <path d=&quot;M 885.5 142 L 885.5 1492&quot; class=&quot;a-default&quot; stroke-width=&quot;0.8&quot; stroke-dasharray=&quot;3,7&quot;/>
 
         <!-- Activations -->
-        <rect x=&quot;132.5&quot; y=&quot;165&quot; width=&quot;10&quot; height=&quot;1091&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
-        <rect x=&quot;132.5&quot; y=&quot;165&quot; width=&quot;10&quot; height=&quot;1091&quot; rx=&quot;3&quot; class=&quot;c-frontend&quot; stroke-width=&quot;1&quot;/>
-        <rect x=&quot;319.5&quot; y=&quot;165&quot; width=&quot;10&quot; height=&quot;79&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
-        <rect x=&quot;319.5&quot; y=&quot;165&quot; width=&quot;10&quot; height=&quot;79&quot; rx=&quot;3&quot; class=&quot;c-security&quot; stroke-width=&quot;1&quot;/>
-        <rect x=&quot;506.5&quot; y=&quot;339&quot; width=&quot;10&quot; height=&quot;917&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
-        <rect x=&quot;506.5&quot; y=&quot;339&quot; width=&quot;10&quot; height=&quot;917&quot; rx=&quot;3&quot; class=&quot;c-cloud&quot; stroke-width=&quot;1&quot;/>
-        <rect x=&quot;693.5&quot; y=&quot;445&quot; width=&quot;10&quot; height=&quot;79&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
-        <rect x=&quot;693.5&quot; y=&quot;445&quot; width=&quot;10&quot; height=&quot;79&quot; rx=&quot;3&quot; class=&quot;c-external&quot; stroke-width=&quot;1&quot;/>
-        <rect x=&quot;693.5&quot; y=&quot;619&quot; width=&quot;10&quot; height=&quot;91&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
-        <rect x=&quot;693.5&quot; y=&quot;619&quot; width=&quot;10&quot; height=&quot;91&quot; rx=&quot;3&quot; class=&quot;c-external&quot; stroke-width=&quot;1&quot;/>
-        <rect x=&quot;880.5&quot; y=&quot;767&quot; width=&quot;10&quot; height=&quot;91&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
-        <rect x=&quot;880.5&quot; y=&quot;767&quot; width=&quot;10&quot; height=&quot;91&quot; rx=&quot;3&quot; class=&quot;c-database&quot; stroke-width=&quot;1&quot;/>
+        <rect x=&quot;132.5&quot; y=&quot;165&quot; width=&quot;10&quot; height=&quot;1247&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
+        <rect x=&quot;132.5&quot; y=&quot;165&quot; width=&quot;10&quot; height=&quot;1247&quot; rx=&quot;3&quot; class=&quot;c-frontend&quot; stroke-width=&quot;1&quot;/>
+        <rect x=&quot;319.5&quot; y=&quot;165&quot; width=&quot;10&quot; height=&quot;81&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
+        <rect x=&quot;319.5&quot; y=&quot;165&quot; width=&quot;10&quot; height=&quot;81&quot; rx=&quot;3&quot; class=&quot;c-security&quot; stroke-width=&quot;1&quot;/>
+        <rect x=&quot;506.5&quot; y=&quot;345&quot; width=&quot;10&quot; height=&quot;75&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
+        <rect x=&quot;506.5&quot; y=&quot;345&quot; width=&quot;10&quot; height=&quot;75&quot; rx=&quot;3&quot; class=&quot;c-cloud&quot; stroke-width=&quot;1&quot;/>
+        <rect x=&quot;506.5&quot; y=&quot;601&quot; width=&quot;10&quot; height=&quot;811&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
+        <rect x=&quot;506.5&quot; y=&quot;601&quot; width=&quot;10&quot; height=&quot;811&quot; rx=&quot;3&quot; class=&quot;c-cloud&quot; stroke-width=&quot;1&quot;/>
+        <rect x=&quot;693.5&quot; y=&quot;601&quot; width=&quot;10&quot; height=&quot;79&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
+        <rect x=&quot;693.5&quot; y=&quot;601&quot; width=&quot;10&quot; height=&quot;79&quot; rx=&quot;3&quot; class=&quot;c-external&quot; stroke-width=&quot;1&quot;/>
+        <rect x=&quot;693.5&quot; y=&quot;775&quot; width=&quot;10&quot; height=&quot;91&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
+        <rect x=&quot;693.5&quot; y=&quot;775&quot; width=&quot;10&quot; height=&quot;91&quot; rx=&quot;3&quot; class=&quot;c-external&quot; stroke-width=&quot;1&quot;/>
+        <rect x=&quot;880.5&quot; y=&quot;923&quot; width=&quot;10&quot; height=&quot;91&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
+        <rect x=&quot;880.5&quot; y=&quot;923&quot; width=&quot;10&quot; height=&quot;91&quot; rx=&quot;3&quot; class=&quot;c-database&quot; stroke-width=&quot;1&quot;/>
 
         <!-- Messages -->
         <g data-edge-from=&quot;atender&quot; data-edge-to=&quot;avaliador&quot; data-edge-label=&quot;pode?&quot; data-edge-key=&quot;0&quot; data-edge-id=&quot;pode&quot;>
@@ -5525,116 +5543,124 @@ html,body{overflow:hidden!important}
           <rect x=&quot;208.5&quot; y=&quot;150&quot; width=&quot;45&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
           <text x=&quot;231&quot; y=&quot;160&quot; class=&quot;t-edge-security&quot; font-size=&quot;11&quot; text-anchor=&quot;middle&quot;>pode?</text>
         </g>
-        <text data-detail=&quot;context&quot; x=&quot;156.5&quot; y=&quot;188&quot; class=&quot;t-muted&quot; font-size=&quot;7&quot;><tspan x=&quot;156.5&quot; dy=&quot;0&quot;>A pessoa pergunta no app ou no popup;</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>o Atender pergunta pelo assento e</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>pelas roles. A falha fecha (ARQ-008).</tspan></text>
+        <text data-detail=&quot;context&quot; x=&quot;156.5&quot; y=&quot;188&quot; class=&quot;t-muted&quot; font-size=&quot;7&quot;><tspan x=&quot;156.5&quot; dy=&quot;0&quot;>No app ou no popup; o avaliador</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>decide pelas Permissões por código</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>(ARQ-123). A falha fecha (ARQ-008).</tspan></text>
         </g>
 
         <g data-edge-from=&quot;avaliador&quot; data-edge-to=&quot;atender&quot; data-edge-label=&quot;permissões efetivas&quot; data-edge-key=&quot;1&quot; data-edge-id=&quot;permissoes-efetivas&quot;>
-          <path data-composition-edge-from=&quot;avaliador&quot; data-composition-edge-to=&quot;atender&quot; data-composition-edge-id=&quot;permissoes-efetivas&quot; data-composition-points=&quot;317.5,238;144.5,238&quot; d=&quot;M 317.5 238 L 144.5 238&quot; class=&quot;a-default&quot; data-animate=&quot;edge&quot; style=&quot;--step:1&quot; stroke-width=&quot;1.4&quot; stroke-dasharray=&quot;3,5&quot; marker-end=&quot;url(#arrowhead)&quot;/>
+          <path data-composition-edge-from=&quot;avaliador&quot; data-composition-edge-to=&quot;atender&quot; data-composition-edge-id=&quot;permissoes-efetivas&quot; data-composition-points=&quot;317.5,240;144.5,240&quot; d=&quot;M 317.5 240 L 144.5 240&quot; class=&quot;a-default&quot; data-animate=&quot;edge&quot; style=&quot;--step:1&quot; stroke-width=&quot;1.4&quot; stroke-dasharray=&quot;3,5&quot; marker-end=&quot;url(#arrowhead)&quot;/>
         <g data-detail=&quot;context&quot;>
-          <rect x=&quot;162.3&quot; y=&quot;218&quot; width=&quot;137.39999999999998&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
-          <text x=&quot;231&quot; y=&quot;228&quot; class=&quot;t-muted&quot; font-size=&quot;11&quot; text-anchor=&quot;middle&quot;>permissões efetivas</text>
+          <rect x=&quot;162.3&quot; y=&quot;220&quot; width=&quot;137.39999999999998&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
+          <text x=&quot;231&quot; y=&quot;230&quot; class=&quot;t-muted&quot; font-size=&quot;11&quot; text-anchor=&quot;middle&quot;>permissões efetivas</text>
         </g>
-        <text data-detail=&quot;context&quot; x=&quot;156.5&quot; y=&quot;256&quot; class=&quot;t-muted&quot; font-size=&quot;7&quot;><tspan x=&quot;156.5&quot; dy=&quot;0&quot;>Botões, nível e assento já somados</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>(D-220). Com as pessoas no middleware</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>(D-261), a origem deles é a P-048.</tspan></text>
+        <text data-detail=&quot;context&quot; x=&quot;156.5&quot; y=&quot;258&quot; class=&quot;t-muted&quot; font-size=&quot;7&quot;><tspan x=&quot;156.5&quot; dy=&quot;0&quot;>Do Código da pessoa, sem nomes:</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>assento, permissões e grupos, que o</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>middleware envia a cada mudança</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>(ARQ-123).</tspan></text>
         </g>
 
         <g data-edge-from=&quot;atender&quot; data-edge-to=&quot;middleware&quot; data-edge-label=&quot;pergunta&quot; data-edge-key=&quot;2&quot; data-edge-id=&quot;pergunta&quot;>
-          <path data-composition-edge-from=&quot;atender&quot; data-composition-edge-to=&quot;middleware&quot; data-composition-edge-id=&quot;pergunta&quot; data-composition-points=&quot;144.5,344;504.5,344&quot; d=&quot;M 144.5 344 L 504.5 344&quot; class=&quot;a-emphasis&quot; data-animate=&quot;edge&quot; style=&quot;--step:2&quot; stroke-width=&quot;1.8&quot; marker-end=&quot;url(#arrowhead-emphasis)&quot;/>
+          <path data-composition-edge-from=&quot;atender&quot; data-composition-edge-to=&quot;middleware&quot; data-composition-edge-id=&quot;pergunta&quot; data-composition-points=&quot;144.5,350;504.5,350&quot; d=&quot;M 144.5 350 L 504.5 350&quot; class=&quot;a-emphasis&quot; data-animate=&quot;edge&quot; style=&quot;--step:2&quot; stroke-width=&quot;1.8&quot; marker-end=&quot;url(#arrowhead-emphasis)&quot;/>
         <g data-detail=&quot;context&quot;>
-          <rect x=&quot;292.1&quot; y=&quot;324&quot; width=&quot;64.8&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
-          <text x=&quot;324.5&quot; y=&quot;334&quot; class=&quot;t-edge-emphasis&quot; font-size=&quot;11&quot; text-anchor=&quot;middle&quot;>pergunta</text>
+          <rect x=&quot;292.1&quot; y=&quot;330&quot; width=&quot;64.8&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
+          <text x=&quot;324.5&quot; y=&quot;340&quot; class=&quot;t-edge-emphasis&quot; font-size=&quot;11&quot; text-anchor=&quot;middle&quot;>pergunta</text>
         </g>
-        <rect data-detail=&quot;context&quot; data-graph-role=&quot;message-note-background&quot; x=&quot;154.5&quot; y=&quot;351.6&quot; width=&quot;159.4&quot; height=&quot;60.39999999999998&quot; rx=&quot;2&quot; class=&quot;c-mask&quot; pointer-events=&quot;none&quot;/>
-        <text data-detail=&quot;context&quot; x=&quot;156.5&quot; y=&quot;362&quot; class=&quot;t-muted&quot; font-size=&quot;7&quot;><tspan x=&quot;156.5&quot; dy=&quot;0&quot;>Só a pergunta sai (D-189), em nome da</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>organização, que o middleware isola</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>pelo certificado (D-258, D-272).</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>Endereço pelo Registro de</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>organizações: aguarda o dono (P-048).</tspan></text>
+        <text data-detail=&quot;context&quot; x=&quot;156.5&quot; y=&quot;368&quot; class=&quot;t-muted&quot; font-size=&quot;7&quot;><tspan x=&quot;156.5&quot; dy=&quot;0&quot;>Só a pergunta sai (D-189). A sessão</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>leva só o identificador da</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>organização, e o endereço vem do</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>Registro de organizações (ARQ-102).</tspan></text>
         </g>
 
-        <g data-edge-from=&quot;middleware&quot; data-edge-to=&quot;ia&quot; data-edge-label=&quot;pesquisa na web&quot; data-edge-key=&quot;3&quot; data-edge-id=&quot;pesquisa-na-web&quot;>
-          <path data-composition-edge-from=&quot;middleware&quot; data-composition-edge-to=&quot;ia&quot; data-composition-edge-id=&quot;pesquisa-na-web&quot; data-composition-points=&quot;518.5,450;691.5,450&quot; d=&quot;M 518.5 450 L 691.5 450&quot; class=&quot;a-dashed&quot; data-animate=&quot;edge&quot; style=&quot;--step:3&quot; stroke-width=&quot;1.4&quot; marker-end=&quot;url(#arrowhead-dashed)&quot;/>
+        <g data-edge-from=&quot;atender&quot; data-edge-to=&quot;middleware&quot; data-edge-label=&quot;sem contato · Aviso próprio&quot; data-edge-key=&quot;3&quot; data-edge-id=&quot;sem-contato&quot;>
+          <path data-composition-edge-from=&quot;atender&quot; data-composition-edge-to=&quot;middleware&quot; data-composition-edge-id=&quot;sem-contato&quot; data-composition-points=&quot;144.5,464;504.5,464&quot; d=&quot;M 144.5 464 L 504.5 464&quot; class=&quot;a-dashed&quot; data-animate=&quot;edge&quot; style=&quot;--step:3&quot; stroke-width=&quot;1.4&quot; marker-end=&quot;url(#arrowhead-dashed)&quot;/>
         <g data-detail=&quot;context&quot;>
-          <rect x=&quot;549.5&quot; y=&quot;430&quot; width=&quot;111&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
-          <text x=&quot;605&quot; y=&quot;440&quot; class=&quot;t-edge-dashed&quot; font-size=&quot;11&quot; text-anchor=&quot;middle&quot;>pesquisa na web</text>
+          <rect x=&quot;229.4&quot; y=&quot;444&quot; width=&quot;190.2&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
+          <text x=&quot;324.5&quot; y=&quot;454&quot; class=&quot;t-edge-dashed&quot; font-size=&quot;11&quot; text-anchor=&quot;middle&quot;>sem contato · Aviso próprio</text>
         </g>
-        <text data-detail=&quot;context&quot; x=&quot;530.5&quot; y=&quot;468&quot; class=&quot;t-muted&quot; font-size=&quot;7&quot;><tspan x=&quot;530.5&quot; dy=&quot;0&quot;>Se ligada e permitida (D-215): a</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>busca nativa da conexão de IA, que</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>mora no middleware (ARQ-027, D-266).</tspan></text>
+        <text data-detail=&quot;context&quot; x=&quot;156.5&quot; y=&quot;482&quot; class=&quot;t-muted&quot; font-size=&quot;7&quot;><tspan x=&quot;156.5&quot; dy=&quot;0&quot;>Estado do middleware fora (ARQ-107):</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>no lugar das respostas, o Aviso</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>próprio, fora do ar desde o último</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>contato, o resto do Horus no ar,</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>procure o owner, tentar de novo; sem</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>endereço nem porta (ARQ-104).</tspan></text>
         </g>
 
-        <g data-edge-from=&quot;ia&quot; data-edge-to=&quot;middleware&quot; data-edge-label=&quot;citações com link&quot; data-edge-key=&quot;4&quot; data-edge-id=&quot;citacoes&quot;>
-          <path data-composition-edge-from=&quot;ia&quot; data-composition-edge-to=&quot;middleware&quot; data-composition-edge-id=&quot;citacoes&quot; data-composition-points=&quot;691.5,518;518.5,518&quot; d=&quot;M 691.5 518 L 518.5 518&quot; class=&quot;a-default&quot; data-animate=&quot;edge&quot; style=&quot;--step:4&quot; stroke-width=&quot;1.4&quot; stroke-dasharray=&quot;3,5&quot; marker-end=&quot;url(#arrowhead)&quot;/>
+        <g data-edge-from=&quot;middleware&quot; data-edge-to=&quot;ia&quot; data-edge-label=&quot;pesquisa na web&quot; data-edge-key=&quot;4&quot; data-edge-id=&quot;pesquisa-na-web&quot;>
+          <path data-composition-edge-from=&quot;middleware&quot; data-composition-edge-to=&quot;ia&quot; data-composition-edge-id=&quot;pesquisa-na-web&quot; data-composition-points=&quot;518.5,606;691.5,606&quot; d=&quot;M 518.5 606 L 691.5 606&quot; class=&quot;a-dashed&quot; data-animate=&quot;edge&quot; style=&quot;--step:4&quot; stroke-width=&quot;1.4&quot; marker-end=&quot;url(#arrowhead-dashed)&quot;/>
         <g data-detail=&quot;context&quot;>
-          <rect x=&quot;542.9&quot; y=&quot;498&quot; width=&quot;124.19999999999999&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
-          <text x=&quot;605&quot; y=&quot;508&quot; class=&quot;t-muted&quot; font-size=&quot;11&quot; text-anchor=&quot;middle&quot;>citações com link</text>
+          <rect x=&quot;549.5&quot; y=&quot;586&quot; width=&quot;111&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
+          <text x=&quot;605&quot; y=&quot;596&quot; class=&quot;t-edge-dashed&quot; font-size=&quot;11&quot; text-anchor=&quot;middle&quot;>pesquisa na web</text>
         </g>
-        <text data-detail=&quot;context&quot; x=&quot;530.5&quot; y=&quot;536&quot; class=&quot;t-muted&quot; font-size=&quot;7&quot;><tspan x=&quot;530.5&quot; dy=&quot;0&quot;>Fatos com link e data, ou o aviso de</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>que a data não foi achada (D-006,</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>ARQ-026).</tspan></text>
+        <text data-detail=&quot;context&quot; x=&quot;530.5&quot; y=&quot;624&quot; class=&quot;t-muted&quot; font-size=&quot;7&quot;><tspan x=&quot;530.5&quot; dy=&quot;0&quot;>Se ligada e permitida (D-215): a</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>busca nativa da conexão de IA, que</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>mora no middleware (ARQ-027, D-266).</tspan></text>
         </g>
 
-        <g data-edge-from=&quot;middleware&quot; data-edge-to=&quot;ia&quot; data-edge-label=&quot;plano e consulta&quot; data-edge-key=&quot;5&quot; data-edge-id=&quot;plano-e-consulta&quot;>
-          <path data-composition-edge-from=&quot;middleware&quot; data-composition-edge-to=&quot;ia&quot; data-composition-edge-id=&quot;plano-e-consulta&quot; data-composition-points=&quot;518.5,624;691.5,624&quot; d=&quot;M 518.5 624 L 691.5 624&quot; class=&quot;a-emphasis&quot; data-animate=&quot;edge&quot; style=&quot;--step:5&quot; stroke-width=&quot;1.8&quot; marker-end=&quot;url(#arrowhead-emphasis)&quot;/>
+        <g data-edge-from=&quot;ia&quot; data-edge-to=&quot;middleware&quot; data-edge-label=&quot;citações com link&quot; data-edge-key=&quot;5&quot; data-edge-id=&quot;citacoes&quot;>
+          <path data-composition-edge-from=&quot;ia&quot; data-composition-edge-to=&quot;middleware&quot; data-composition-edge-id=&quot;citacoes&quot; data-composition-points=&quot;691.5,674;518.5,674&quot; d=&quot;M 691.5 674 L 518.5 674&quot; class=&quot;a-default&quot; data-animate=&quot;edge&quot; style=&quot;--step:5&quot; stroke-width=&quot;1.4&quot; stroke-dasharray=&quot;3,5&quot; marker-end=&quot;url(#arrowhead)&quot;/>
         <g data-detail=&quot;context&quot;>
-          <rect x=&quot;546.2&quot; y=&quot;604&quot; width=&quot;117.6&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
-          <text x=&quot;605&quot; y=&quot;614&quot; class=&quot;t-edge-emphasis&quot; font-size=&quot;11&quot; text-anchor=&quot;middle&quot;>plano e consulta</text>
+          <rect x=&quot;542.9&quot; y=&quot;654&quot; width=&quot;124.19999999999999&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
+          <text x=&quot;605&quot; y=&quot;664&quot; class=&quot;t-muted&quot; font-size=&quot;11&quot; text-anchor=&quot;middle&quot;>citações com link</text>
         </g>
-        <text data-detail=&quot;context&quot; x=&quot;530.5&quot; y=&quot;642&quot; class=&quot;t-muted&quot; font-size=&quot;7&quot;><tspan x=&quot;530.5&quot; dy=&quot;0&quot;>O ciclo da análise roda aqui, com a</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>IA da organização, que o owner</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>configura no front do middleware</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>(D-258, D-273).</tspan></text>
+        <text data-detail=&quot;context&quot; x=&quot;530.5&quot; y=&quot;692&quot; class=&quot;t-muted&quot; font-size=&quot;7&quot;><tspan x=&quot;530.5&quot; dy=&quot;0&quot;>Fatos com link e data, ou o aviso de</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>que a data não foi achada (D-006,</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>ARQ-026).</tspan></text>
         </g>
 
-        <g data-edge-from=&quot;ia&quot; data-edge-to=&quot;middleware&quot; data-edge-label=&quot;consulta, plano e prosa&quot; data-edge-key=&quot;6&quot; data-edge-id=&quot;consulta-plano-prosa&quot;>
-          <path data-composition-edge-from=&quot;ia&quot; data-composition-edge-to=&quot;middleware&quot; data-composition-edge-id=&quot;consulta-plano-prosa&quot; data-composition-points=&quot;691.5,704;518.5,704&quot; d=&quot;M 691.5 704 L 518.5 704&quot; class=&quot;a-default&quot; data-animate=&quot;edge&quot; style=&quot;--step:6&quot; stroke-width=&quot;1.4&quot; stroke-dasharray=&quot;3,5&quot; marker-end=&quot;url(#arrowhead)&quot;/>
+        <g data-edge-from=&quot;middleware&quot; data-edge-to=&quot;ia&quot; data-edge-label=&quot;plano e consulta&quot; data-edge-key=&quot;6&quot; data-edge-id=&quot;plano-e-consulta&quot;>
+          <path data-composition-edge-from=&quot;middleware&quot; data-composition-edge-to=&quot;ia&quot; data-composition-edge-id=&quot;plano-e-consulta&quot; data-composition-points=&quot;518.5,780;691.5,780&quot; d=&quot;M 518.5 780 L 691.5 780&quot; class=&quot;a-emphasis&quot; data-animate=&quot;edge&quot; style=&quot;--step:6&quot; stroke-width=&quot;1.8&quot; marker-end=&quot;url(#arrowhead-emphasis)&quot;/>
         <g data-detail=&quot;context&quot;>
-          <rect x=&quot;523.1&quot; y=&quot;684&quot; width=&quot;163.79999999999998&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
-          <text x=&quot;605&quot; y=&quot;694&quot; class=&quot;t-muted&quot; font-size=&quot;11&quot; text-anchor=&quot;middle&quot;>consulta, plano e prosa</text>
+          <rect x=&quot;546.2&quot; y=&quot;760&quot; width=&quot;117.6&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
+          <text x=&quot;605&quot; y=&quot;770&quot; class=&quot;t-edge-emphasis&quot; font-size=&quot;11&quot; text-anchor=&quot;middle&quot;>plano e consulta</text>
         </g>
-        <text data-detail=&quot;context&quot; x=&quot;530.5&quot; y=&quot;722&quot; class=&quot;t-muted&quot; font-size=&quot;7&quot;><tspan x=&quot;530.5&quot; dy=&quot;0&quot;>A IA escreve a consulta, o plano e a</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>prosa de abertura; os números nunca</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>vêm dela (doc. 05, §3.3).</tspan></text>
+        <text data-detail=&quot;context&quot; x=&quot;530.5&quot; y=&quot;798&quot; class=&quot;t-muted&quot; font-size=&quot;7&quot;><tspan x=&quot;530.5&quot; dy=&quot;0&quot;>O ciclo da análise roda aqui, com a</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>IA da organização, que o owner</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>configura no front do middleware</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>(D-258, D-273).</tspan></text>
         </g>
 
-        <g data-edge-from=&quot;middleware&quot; data-edge-to=&quot;bancos&quot; data-edge-label=&quot;consulta só de leitura&quot; data-edge-key=&quot;7&quot; data-edge-id=&quot;consulta&quot;>
-          <path data-composition-edge-from=&quot;middleware&quot; data-composition-edge-to=&quot;bancos&quot; data-composition-edge-id=&quot;consulta&quot; data-composition-points=&quot;518.5,772;878.5,772&quot; d=&quot;M 518.5 772 L 878.5 772&quot; class=&quot;a-emphasis&quot; data-animate=&quot;edge&quot; style=&quot;--step:7&quot; stroke-width=&quot;1.8&quot; marker-end=&quot;url(#arrowhead-emphasis)&quot;/>
+        <g data-edge-from=&quot;ia&quot; data-edge-to=&quot;middleware&quot; data-edge-label=&quot;consulta, plano e prosa&quot; data-edge-key=&quot;7&quot; data-edge-id=&quot;consulta-plano-prosa&quot;>
+          <path data-composition-edge-from=&quot;ia&quot; data-composition-edge-to=&quot;middleware&quot; data-composition-edge-id=&quot;consulta-plano-prosa&quot; data-composition-points=&quot;691.5,860;518.5,860&quot; d=&quot;M 691.5 860 L 518.5 860&quot; class=&quot;a-default&quot; data-animate=&quot;edge&quot; style=&quot;--step:7&quot; stroke-width=&quot;1.4&quot; stroke-dasharray=&quot;3,5&quot; marker-end=&quot;url(#arrowhead)&quot;/>
         <g data-detail=&quot;context&quot;>
-          <rect x=&quot;619.9&quot; y=&quot;752&quot; width=&quot;157.2&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
-          <text x=&quot;698.5&quot; y=&quot;762&quot; class=&quot;t-edge-emphasis&quot; font-size=&quot;11&quot; text-anchor=&quot;middle&quot;>consulta só de leitura</text>
+          <rect x=&quot;523.1&quot; y=&quot;840&quot; width=&quot;163.79999999999998&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
+          <text x=&quot;605&quot; y=&quot;850&quot; class=&quot;t-muted&quot; font-size=&quot;11&quot; text-anchor=&quot;middle&quot;>consulta, plano e prosa</text>
         </g>
-        <text data-detail=&quot;context&quot; x=&quot;530.5&quot; y=&quot;790&quot; class=&quot;t-muted&quot; font-size=&quot;7&quot;><tspan x=&quot;530.5&quot; dy=&quot;0&quot;>Com a credencial que o owner</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>cadastrou no middleware (D-258,</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>D-273); tetos de 500 linhas e 30 s</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>(doc. 05, §3.3).</tspan></text>
+        <text data-detail=&quot;context&quot; x=&quot;530.5&quot; y=&quot;878&quot; class=&quot;t-muted&quot; font-size=&quot;7&quot;><tspan x=&quot;530.5&quot; dy=&quot;0&quot;>A IA escreve a consulta, o plano e a</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>prosa de abertura; os números nunca</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>vêm dela (doc. 05, §3.3).</tspan></text>
         </g>
 
-        <g data-edge-from=&quot;bancos&quot; data-edge-to=&quot;middleware&quot; data-edge-label=&quot;linhas&quot; data-edge-key=&quot;8&quot; data-edge-id=&quot;linhas&quot;>
-          <path data-composition-edge-from=&quot;bancos&quot; data-composition-edge-to=&quot;middleware&quot; data-composition-edge-id=&quot;linhas&quot; data-composition-points=&quot;878.5,852;518.5,852&quot; d=&quot;M 878.5 852 L 518.5 852&quot; class=&quot;a-default&quot; data-animate=&quot;edge&quot; style=&quot;--step:8&quot; stroke-width=&quot;1.4&quot; stroke-dasharray=&quot;3,5&quot; marker-end=&quot;url(#arrowhead)&quot;/>
+        <g data-edge-from=&quot;middleware&quot; data-edge-to=&quot;bancos&quot; data-edge-label=&quot;consulta só de leitura&quot; data-edge-key=&quot;8&quot; data-edge-id=&quot;consulta&quot;>
+          <path data-composition-edge-from=&quot;middleware&quot; data-composition-edge-to=&quot;bancos&quot; data-composition-edge-id=&quot;consulta&quot; data-composition-points=&quot;518.5,928;878.5,928&quot; d=&quot;M 518.5 928 L 878.5 928&quot; class=&quot;a-emphasis&quot; data-animate=&quot;edge&quot; style=&quot;--step:8&quot; stroke-width=&quot;1.8&quot; marker-end=&quot;url(#arrowhead-emphasis)&quot;/>
         <g data-detail=&quot;context&quot;>
-          <rect x=&quot;672.7&quot; y=&quot;832&quot; width=&quot;51.599999999999994&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
-          <text x=&quot;698.5&quot; y=&quot;842&quot; class=&quot;t-muted&quot; font-size=&quot;11&quot; text-anchor=&quot;middle&quot;>linhas</text>
+          <rect x=&quot;619.9&quot; y=&quot;908&quot; width=&quot;157.2&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
+          <text x=&quot;698.5&quot; y=&quot;918&quot; class=&quot;t-edge-emphasis&quot; font-size=&quot;11&quot; text-anchor=&quot;middle&quot;>consulta só de leitura</text>
         </g>
-        <text data-detail=&quot;context&quot; x=&quot;530.5&quot; y=&quot;870&quot; class=&quot;t-muted&quot; font-size=&quot;7&quot;><tspan x=&quot;530.5&quot; dy=&quot;0&quot;>Os números da resposta vêm destas</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>linhas. Quem vê o quê no banco: v2.1,</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>no middleware (D-263).</tspan></text>
+        <text data-detail=&quot;context&quot; x=&quot;530.5&quot; y=&quot;946&quot; class=&quot;t-muted&quot; font-size=&quot;7&quot;><tspan x=&quot;530.5&quot; dy=&quot;0&quot;>Com a credencial que o owner</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>cadastrou no middleware (D-258,</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>D-273); tetos de 500 linhas e 30 s</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>(doc. 05, §3.3).</tspan></text>
         </g>
 
-        <g data-edge-from=&quot;middleware&quot; data-edge-to=&quot;ia&quot; data-edge-label=&quot;reparo, uma vez&quot; data-edge-key=&quot;9&quot; data-edge-id=&quot;reparo&quot;>
-          <path data-composition-edge-from=&quot;middleware&quot; data-composition-edge-to=&quot;ia&quot; data-composition-edge-id=&quot;reparo&quot; data-composition-points=&quot;518.5,958;691.5,958&quot; d=&quot;M 518.5 958 L 691.5 958&quot; class=&quot;a-dashed&quot; data-animate=&quot;edge&quot; style=&quot;--step:9&quot; stroke-width=&quot;1.4&quot; marker-end=&quot;url(#arrowhead-dashed)&quot;/>
+        <g data-edge-from=&quot;bancos&quot; data-edge-to=&quot;middleware&quot; data-edge-label=&quot;linhas&quot; data-edge-key=&quot;9&quot; data-edge-id=&quot;linhas&quot;>
+          <path data-composition-edge-from=&quot;bancos&quot; data-composition-edge-to=&quot;middleware&quot; data-composition-edge-id=&quot;linhas&quot; data-composition-points=&quot;878.5,1008;518.5,1008&quot; d=&quot;M 878.5 1008 L 518.5 1008&quot; class=&quot;a-default&quot; data-animate=&quot;edge&quot; style=&quot;--step:9&quot; stroke-width=&quot;1.4&quot; stroke-dasharray=&quot;3,5&quot; marker-end=&quot;url(#arrowhead)&quot;/>
         <g data-detail=&quot;context&quot;>
-          <rect x=&quot;549.5&quot; y=&quot;938&quot; width=&quot;111&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
-          <text x=&quot;605&quot; y=&quot;948&quot; class=&quot;t-edge-dashed&quot; font-size=&quot;11&quot; text-anchor=&quot;middle&quot;>reparo, uma vez</text>
+          <rect x=&quot;672.7&quot; y=&quot;988&quot; width=&quot;51.599999999999994&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
+          <text x=&quot;698.5&quot; y=&quot;998&quot; class=&quot;t-muted&quot; font-size=&quot;11&quot; text-anchor=&quot;middle&quot;>linhas</text>
         </g>
-        <text data-detail=&quot;context&quot; x=&quot;530.5&quot; y=&quot;976&quot; class=&quot;t-muted&quot; font-size=&quot;7&quot;><tspan x=&quot;530.5&quot; dy=&quot;0&quot;>Uma tentativa de consertar a consulta</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>e refazer o plano; ela roda de novo</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>no banco (doc. 05, §3.3).</tspan></text>
+        <text data-detail=&quot;context&quot; x=&quot;530.5&quot; y=&quot;1026&quot; class=&quot;t-muted&quot; font-size=&quot;7&quot;><tspan x=&quot;530.5&quot; dy=&quot;0&quot;>Os números da resposta vêm destas</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>linhas. Quem vê o quê no banco: v2.1,</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>no middleware (D-263).</tspan></text>
         </g>
 
-        <g data-edge-from=&quot;middleware&quot; data-edge-to=&quot;ia&quot; data-edge-label=&quot;leitura pós-consulta&quot; data-edge-key=&quot;10&quot; data-edge-id=&quot;leitura&quot;>
-          <path data-composition-edge-from=&quot;middleware&quot; data-composition-edge-to=&quot;ia&quot; data-composition-edge-id=&quot;leitura&quot; data-composition-points=&quot;518.5,1064;691.5,1064&quot; d=&quot;M 518.5 1064 L 691.5 1064&quot; class=&quot;a-dashed&quot; data-animate=&quot;edge&quot; style=&quot;--step:10&quot; stroke-width=&quot;1.4&quot; marker-end=&quot;url(#arrowhead-dashed)&quot;/>
+        <g data-edge-from=&quot;middleware&quot; data-edge-to=&quot;ia&quot; data-edge-label=&quot;reparo, uma vez&quot; data-edge-key=&quot;10&quot; data-edge-id=&quot;reparo&quot;>
+          <path data-composition-edge-from=&quot;middleware&quot; data-composition-edge-to=&quot;ia&quot; data-composition-edge-id=&quot;reparo&quot; data-composition-points=&quot;518.5,1114;691.5,1114&quot; d=&quot;M 518.5 1114 L 691.5 1114&quot; class=&quot;a-dashed&quot; data-animate=&quot;edge&quot; style=&quot;--step:10&quot; stroke-width=&quot;1.4&quot; marker-end=&quot;url(#arrowhead-dashed)&quot;/>
         <g data-detail=&quot;context&quot;>
-          <rect x=&quot;533&quot; y=&quot;1044&quot; width=&quot;144&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
-          <text x=&quot;605&quot; y=&quot;1054&quot; class=&quot;t-edge-dashed&quot; font-size=&quot;11&quot; text-anchor=&quot;middle&quot;>leitura pós-consulta</text>
+          <rect x=&quot;549.5&quot; y=&quot;1094&quot; width=&quot;111&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
+          <text x=&quot;605&quot; y=&quot;1104&quot; class=&quot;t-edge-dashed&quot; font-size=&quot;11&quot; text-anchor=&quot;middle&quot;>reparo, uma vez</text>
         </g>
-        <text data-detail=&quot;context&quot; x=&quot;530.5&quot; y=&quot;1082&quot; class=&quot;t-muted&quot; font-size=&quot;7&quot;><tspan x=&quot;530.5&quot; dy=&quot;0&quot;>O fato da web em qualquer nível; a</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>causa de fora, só do nível 4 em</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>diante (ARQ-025, ARQ-026).</tspan></text>
+        <text data-detail=&quot;context&quot; x=&quot;530.5&quot; y=&quot;1132&quot; class=&quot;t-muted&quot; font-size=&quot;7&quot;><tspan x=&quot;530.5&quot; dy=&quot;0&quot;>Uma tentativa de consertar a consulta</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>e refazer o plano; ela roda de novo</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>no banco (doc. 05, §3.3).</tspan></text>
         </g>
 
-        <g data-edge-from=&quot;middleware&quot; data-edge-to=&quot;atender&quot; data-edge-label=&quot;resposta pronta&quot; data-edge-key=&quot;11&quot; data-edge-id=&quot;resposta-pronta&quot;>
-          <path data-composition-edge-from=&quot;middleware&quot; data-composition-edge-to=&quot;atender&quot; data-composition-edge-id=&quot;resposta-pronta&quot; data-composition-points=&quot;504.5,1170;144.5,1170&quot; d=&quot;M 504.5 1170 L 144.5 1170&quot; class=&quot;a-default&quot; data-animate=&quot;edge&quot; style=&quot;--step:11&quot; stroke-width=&quot;1.4&quot; stroke-dasharray=&quot;3,5&quot; marker-end=&quot;url(#arrowhead)&quot;/>
+        <g data-edge-from=&quot;middleware&quot; data-edge-to=&quot;ia&quot; data-edge-label=&quot;leitura pós-consulta&quot; data-edge-key=&quot;11&quot; data-edge-id=&quot;leitura&quot;>
+          <path data-composition-edge-from=&quot;middleware&quot; data-composition-edge-to=&quot;ia&quot; data-composition-edge-id=&quot;leitura&quot; data-composition-points=&quot;518.5,1220;691.5,1220&quot; d=&quot;M 518.5 1220 L 691.5 1220&quot; class=&quot;a-dashed&quot; data-animate=&quot;edge&quot; style=&quot;--step:11&quot; stroke-width=&quot;1.4&quot; marker-end=&quot;url(#arrowhead-dashed)&quot;/>
         <g data-detail=&quot;context&quot;>
-          <rect x=&quot;269&quot; y=&quot;1150&quot; width=&quot;111&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
-          <text x=&quot;324.5&quot; y=&quot;1160&quot; class=&quot;t-muted&quot; font-size=&quot;11&quot; text-anchor=&quot;middle&quot;>resposta pronta</text>
+          <rect x=&quot;533&quot; y=&quot;1200&quot; width=&quot;144&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
+          <text x=&quot;605&quot; y=&quot;1210&quot; class=&quot;t-edge-dashed&quot; font-size=&quot;11&quot; text-anchor=&quot;middle&quot;>leitura pós-consulta</text>
         </g>
-        <text data-detail=&quot;context&quot; x=&quot;156.5&quot; y=&quot;1188&quot; class=&quot;t-muted&quot; font-size=&quot;7&quot;><tspan x=&quot;156.5&quot; dy=&quot;0&quot;>Os blocos que a pessoa vê (D-189). O</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>Atender a grava no Banco da</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>organização e a transmite por SSE</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>(ARQ-024).</tspan></text>
+        <text data-detail=&quot;context&quot; x=&quot;530.5&quot; y=&quot;1238&quot; class=&quot;t-muted&quot; font-size=&quot;7&quot;><tspan x=&quot;530.5&quot; dy=&quot;0&quot;>O fato da web em qualquer nível; a</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>causa de fora, só do nível 4 em</tspan><tspan x=&quot;530.5&quot; dy=&quot;11&quot;>diante (ARQ-025, ARQ-026).</tspan></text>
         </g>
 
-        <g data-edge-from=&quot;middleware&quot; data-edge-to=&quot;atender&quot; data-edge-label=&quot;uso de IA&quot; data-edge-key=&quot;12&quot; data-edge-id=&quot;uso-de-ia&quot;>
-          <path data-composition-edge-from=&quot;middleware&quot; data-composition-edge-to=&quot;atender&quot; data-composition-edge-id=&quot;uso-de-ia&quot; data-composition-points=&quot;504.5,1250;144.5,1250&quot; d=&quot;M 504.5 1250 L 144.5 1250&quot; class=&quot;a-dashed&quot; data-animate=&quot;edge&quot; style=&quot;--step:12&quot; stroke-width=&quot;1.4&quot; marker-end=&quot;url(#arrowhead-dashed)&quot;/>
+        <g data-edge-from=&quot;middleware&quot; data-edge-to=&quot;atender&quot; data-edge-label=&quot;resposta pronta&quot; data-edge-key=&quot;12&quot; data-edge-id=&quot;resposta-pronta&quot;>
+          <path data-composition-edge-from=&quot;middleware&quot; data-composition-edge-to=&quot;atender&quot; data-composition-edge-id=&quot;resposta-pronta&quot; data-composition-points=&quot;504.5,1326;144.5,1326&quot; d=&quot;M 504.5 1326 L 144.5 1326&quot; class=&quot;a-default&quot; data-animate=&quot;edge&quot; style=&quot;--step:12&quot; stroke-width=&quot;1.4&quot; stroke-dasharray=&quot;3,5&quot; marker-end=&quot;url(#arrowhead)&quot;/>
         <g data-detail=&quot;context&quot;>
-          <rect x=&quot;288.8&quot; y=&quot;1230&quot; width=&quot;71.4&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
-          <text x=&quot;324.5&quot; y=&quot;1240&quot; class=&quot;t-edge-dashed&quot; font-size=&quot;11&quot; text-anchor=&quot;middle&quot;>uso de IA</text>
+          <rect x=&quot;269&quot; y=&quot;1306&quot; width=&quot;111&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
+          <text x=&quot;324.5&quot; y=&quot;1316&quot; class=&quot;t-muted&quot; font-size=&quot;11&quot; text-anchor=&quot;middle&quot;>resposta pronta</text>
         </g>
-        <text data-detail=&quot;context&quot; x=&quot;156.5&quot; y=&quot;1268&quot; class=&quot;t-muted&quot; font-size=&quot;7&quot;><tspan x=&quot;156.5&quot; dy=&quot;0&quot;>Só a contagem, sem conteúdo: o</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>consumo e o custo de toda a IA</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>(D-267). Vira o fato de uso, em lote</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>(ARQ-029).</tspan></text>
+        <text data-detail=&quot;context&quot; x=&quot;156.5&quot; y=&quot;1344&quot; class=&quot;t-muted&quot; font-size=&quot;7&quot;><tspan x=&quot;156.5&quot; dy=&quot;0&quot;>Os blocos que a pessoa vê (D-189). O</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>Atender a grava no Banco da</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>organização e a transmite por SSE</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>(ARQ-024).</tspan></text>
+        </g>
+
+        <g data-edge-from=&quot;middleware&quot; data-edge-to=&quot;atender&quot; data-edge-label=&quot;uso de IA, só contagem&quot; data-edge-key=&quot;13&quot; data-edge-id=&quot;uso-de-ia&quot;>
+          <path data-composition-edge-from=&quot;middleware&quot; data-composition-edge-to=&quot;atender&quot; data-composition-edge-id=&quot;uso-de-ia&quot; data-composition-points=&quot;504.5,1406;144.5,1406&quot; d=&quot;M 504.5 1406 L 144.5 1406&quot; class=&quot;a-dashed&quot; data-animate=&quot;edge&quot; style=&quot;--step:12&quot; stroke-width=&quot;1.4&quot; marker-end=&quot;url(#arrowhead-dashed)&quot;/>
+        <g data-detail=&quot;context&quot;>
+          <rect x=&quot;245.9&quot; y=&quot;1386&quot; width=&quot;157.2&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
+          <text x=&quot;324.5&quot; y=&quot;1396&quot; class=&quot;t-edge-dashed&quot; font-size=&quot;11&quot; text-anchor=&quot;middle&quot;>uso de IA, só contagem</text>
+        </g>
+        <text data-detail=&quot;context&quot; x=&quot;156.5&quot; y=&quot;1424&quot; class=&quot;t-muted&quot; font-size=&quot;7&quot;><tspan x=&quot;156.5&quot; dy=&quot;0&quot;>Sem conteúdo: a hora, o modelo, os</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>tokens e de quem é a chave (ARQ-117).</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>O owner vê o consumo e o custo no</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>Horus; a parada da IA chega pelo</tspan><tspan x=&quot;156.5&quot; dy=&quot;11&quot;>mesmo contrato.</tspan></text>
         </g>
 
         <!-- Segment Labels -->
@@ -5643,28 +5669,32 @@ html,body{overflow:hidden!important}
           <text x=&quot;62&quot; y=&quot;147&quot; class=&quot;t-muted&quot; font-size=&quot;9&quot; font-weight=&quot;600&quot;>1 · Pedido e pode?</text>
         </g>
         <g data-graph-role=&quot;segment-label&quot; data-segment-id=&quot;1&quot;>
-          <rect x=&quot;56&quot; y=&quot;300&quot; width=&quot;164.8&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
-          <text x=&quot;62&quot; y=&quot;313&quot; class=&quot;t-muted&quot; font-size=&quot;9&quot; font-weight=&quot;600&quot;>2 · Só a pergunta sai do SaaS</text>
+          <rect x=&quot;56&quot; y=&quot;306&quot; width=&quot;164.8&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
+          <text x=&quot;62&quot; y=&quot;319&quot; class=&quot;t-muted&quot; font-size=&quot;9&quot; font-weight=&quot;600&quot;>2 · Só a pergunta sai do SaaS</text>
         </g>
         <g data-graph-role=&quot;segment-label&quot; data-segment-id=&quot;2&quot;>
-          <rect x=&quot;56&quot; y=&quot;406&quot; width=&quot;97.2&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
-          <text x=&quot;62&quot; y=&quot;419&quot; class=&quot;t-muted&quot; font-size=&quot;9&quot; font-weight=&quot;600&quot;>Se ligada: a web</text>
+          <rect x=&quot;56&quot; y=&quot;420&quot; width=&quot;159.6&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
+          <text x=&quot;62&quot; y=&quot;433&quot; class=&quot;t-muted&quot; font-size=&quot;9&quot; font-weight=&quot;600&quot;>Se o middleware estiver fora</text>
         </g>
         <g data-graph-role=&quot;segment-label&quot; data-segment-id=&quot;3&quot;>
-          <rect x=&quot;56&quot; y=&quot;580&quot; width=&quot;149.20000000000002&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
-          <text x=&quot;62&quot; y=&quot;593&quot; class=&quot;t-muted&quot; font-size=&quot;9&quot; font-weight=&quot;600&quot;>3 · O ciclo, no middleware</text>
+          <rect x=&quot;56&quot; y=&quot;562&quot; width=&quot;97.2&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
+          <text x=&quot;62&quot; y=&quot;575&quot; class=&quot;t-muted&quot; font-size=&quot;9&quot; font-weight=&quot;600&quot;>Se ligada: a web</text>
         </g>
         <g data-graph-role=&quot;segment-label&quot; data-segment-id=&quot;4&quot;>
-          <rect x=&quot;56&quot; y=&quot;914&quot; width=&quot;133.60000000000002&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
-          <text x=&quot;62&quot; y=&quot;927&quot; class=&quot;t-muted&quot; font-size=&quot;9&quot; font-weight=&quot;600&quot;>Se falhar ou vier vazia</text>
+          <rect x=&quot;56&quot; y=&quot;736&quot; width=&quot;149.20000000000002&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
+          <text x=&quot;62&quot; y=&quot;749&quot; class=&quot;t-muted&quot; font-size=&quot;9&quot; font-weight=&quot;600&quot;>3 · O ciclo, no middleware</text>
         </g>
         <g data-graph-role=&quot;segment-label&quot; data-segment-id=&quot;5&quot;>
-          <rect x=&quot;56&quot; y=&quot;1020&quot; width=&quot;154.4&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
-          <text x=&quot;62&quot; y=&quot;1033&quot; class=&quot;t-muted&quot; font-size=&quot;9&quot; font-weight=&quot;600&quot;>Com Análise avançada ou web</text>
+          <rect x=&quot;56&quot; y=&quot;1070&quot; width=&quot;133.60000000000002&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
+          <text x=&quot;62&quot; y=&quot;1083&quot; class=&quot;t-muted&quot; font-size=&quot;9&quot; font-weight=&quot;600&quot;>Se falhar ou vier vazia</text>
         </g>
         <g data-graph-role=&quot;segment-label&quot; data-segment-id=&quot;6&quot;>
-          <rect x=&quot;56&quot; y=&quot;1126&quot; width=&quot;170&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
-          <text x=&quot;62&quot; y=&quot;1139&quot; class=&quot;t-muted&quot; font-size=&quot;9&quot; font-weight=&quot;600&quot;>4 · Só a resposta pronta volta</text>
+          <rect x=&quot;56&quot; y=&quot;1176&quot; width=&quot;154.4&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
+          <text x=&quot;62&quot; y=&quot;1189&quot; class=&quot;t-muted&quot; font-size=&quot;9&quot; font-weight=&quot;600&quot;>Com Análise avançada ou web</text>
+        </g>
+        <g data-graph-role=&quot;segment-label&quot; data-segment-id=&quot;7&quot;>
+          <rect x=&quot;56&quot; y=&quot;1282&quot; width=&quot;170&quot; height=&quot;18&quot; rx=&quot;3&quot; class=&quot;c-mask&quot;/>
+          <text x=&quot;62&quot; y=&quot;1295&quot; class=&quot;t-muted&quot; font-size=&quot;9&quot; font-weight=&quot;600&quot;>4 · Só a resposta pronta volta</text>
         </g>
 
         <!-- Participants -->
@@ -5682,8 +5712,8 @@ html,body{overflow:hidden!important}
           <text data-detail=&quot;context&quot; x=&quot;137.5&quot; y=&quot;122&quot; class=&quot;t-muted&quot; font-size=&quot;7&quot; text-anchor=&quot;middle&quot;>SaaS · conversa no app, SSE</text>
         </g>
 
-        <g id=&quot;node-avaliador&quot; data-node-id=&quot;avaliador&quot; data-node-label=&quot;Avaliador de permissões&quot; tabindex=&quot;0&quot; role=&quot;button&quot; aria-label=&quot;Focar Avaliador de permissões, SaaS · assento e roles, Participante da sequência&quot; aria-pressed=&quot;false&quot; data-node-kind=&quot;security&quot; data-node-sublabel=&quot;SaaS · assento e roles&quot; data-node-context=&quot;Participante da sequência&quot;>
-          <title>Avaliador de permissões · SaaS · assento e roles · Participante da sequência</title>
+        <g id=&quot;node-avaliador&quot; data-node-id=&quot;avaliador&quot; data-node-label=&quot;Avaliador de permissões&quot; tabindex=&quot;0&quot; role=&quot;button&quot; aria-label=&quot;Focar Avaliador de permissões, SaaS · Permissões por código, Participante da sequência&quot; aria-pressed=&quot;false&quot; data-node-kind=&quot;security&quot; data-node-sublabel=&quot;SaaS · Permissões por código&quot; data-node-context=&quot;Participante da sequência&quot;>
+          <title>Avaliador de permissões · SaaS · Permissões por código · Participante da sequência</title>
           <rect x=&quot;249&quot; y=&quot;72&quot; width=&quot;151&quot; height=&quot;60&quot; rx=&quot;6&quot; class=&quot;c-mask&quot;/>
           <rect x=&quot;249&quot; y=&quot;72&quot; width=&quot;151&quot; height=&quot;60&quot; rx=&quot;6&quot; class=&quot;c-security&quot; data-animate=&quot;node&quot; style=&quot;--step:1&quot; stroke-width=&quot;1.5&quot;/>
           <g aria-hidden=&quot;true&quot; data-semantic-sigil=&quot;security&quot; class=&quot;semantic-sigil s-security&quot; transform=&quot;translate(255 78) scale(0.6875)&quot;>
@@ -5691,7 +5721,7 @@ html,body{overflow:hidden!important}
             <path d=&quot;m5.8 8 1.5 1.5 3-3&quot;/>
           </g>
           <text data-node-label=&quot;&quot; data-detail-anchor=&quot;&quot; x=&quot;324.5&quot; y=&quot;108&quot; class=&quot;t-primary&quot; font-size=&quot;10.3&quot; font-weight=&quot;600&quot; text-anchor=&quot;middle&quot;>Avaliador de permissões</text>
-          <text data-detail=&quot;context&quot; x=&quot;324.5&quot; y=&quot;122&quot; class=&quot;t-muted&quot; font-size=&quot;7&quot; text-anchor=&quot;middle&quot;>SaaS · assento e roles</text>
+          <text data-detail=&quot;context&quot; x=&quot;324.5&quot; y=&quot;122&quot; class=&quot;t-muted&quot; font-size=&quot;7&quot; text-anchor=&quot;middle&quot;>SaaS · Permissões por código</text>
         </g>
 
         <g id=&quot;node-middleware&quot; data-node-id=&quot;middleware&quot; data-node-label=&quot;Middleware&quot; tabindex=&quot;0&quot; role=&quot;button&quot; aria-label=&quot;Focar Middleware, atende várias organizações, Participante da sequência&quot; aria-pressed=&quot;false&quot; data-node-kind=&quot;cloud&quot; data-node-sublabel=&quot;atende várias organizações&quot; data-node-context=&quot;Participante da sequência&quot;>
@@ -5731,22 +5761,22 @@ html,body{overflow:hidden!important}
 
         <!-- Legend -->
         <g data-legend=&quot;&quot;>
-          <text x=&quot;40&quot; y=&quot;1334&quot; class=&quot;t-primary&quot; font-size=&quot;12&quot; font-weight=&quot;650&quot;>Legenda</text>
-          <g data-legend-semantic-kind=&quot;emphasis&quot; data-legend-x=&quot;40&quot; data-legend-baseline=&quot;1354&quot; data-legend-width=&quot;149&quot;>
-            <path d=&quot;M 40 1351 L 74 1351&quot; class=&quot;a-emphasis&quot; stroke-width=&quot;1.8&quot; marker-end=&quot;url(#arrowhead-emphasis)&quot;/>
-            <text x=&quot;83&quot; y=&quot;1354&quot; class=&quot;t-muted&quot; font-size=&quot;10&quot; font-weight=&quot;500&quot;>caminho principal</text>
+          <text x=&quot;40&quot; y=&quot;1514&quot; class=&quot;t-primary&quot; font-size=&quot;12&quot; font-weight=&quot;650&quot;>Legenda</text>
+          <g data-legend-semantic-kind=&quot;emphasis&quot; data-legend-x=&quot;40&quot; data-legend-baseline=&quot;1534&quot; data-legend-width=&quot;149&quot;>
+            <path d=&quot;M 40 1531 L 74 1531&quot; class=&quot;a-emphasis&quot; stroke-width=&quot;1.8&quot; marker-end=&quot;url(#arrowhead-emphasis)&quot;/>
+            <text x=&quot;83&quot; y=&quot;1534&quot; class=&quot;t-muted&quot; font-size=&quot;10&quot; font-weight=&quot;500&quot;>caminho principal</text>
           </g>
-          <g data-legend-semantic-kind=&quot;return&quot; data-legend-x=&quot;211&quot; data-legend-baseline=&quot;1354&quot; data-legend-width=&quot;93&quot;>
-            <path d=&quot;M 211 1351 L 245 1351&quot; class=&quot;a-default&quot; stroke-width=&quot;1.4&quot; stroke-dasharray=&quot;3,5&quot; marker-end=&quot;url(#arrowhead)&quot;/>
-            <text x=&quot;254&quot; y=&quot;1354&quot; class=&quot;t-muted&quot; font-size=&quot;10&quot; font-weight=&quot;500&quot;>resposta</text>
+          <g data-legend-semantic-kind=&quot;return&quot; data-legend-x=&quot;211&quot; data-legend-baseline=&quot;1534&quot; data-legend-width=&quot;93&quot;>
+            <path d=&quot;M 211 1531 L 245 1531&quot; class=&quot;a-default&quot; stroke-width=&quot;1.4&quot; stroke-dasharray=&quot;3,5&quot; marker-end=&quot;url(#arrowhead)&quot;/>
+            <text x=&quot;254&quot; y=&quot;1534&quot; class=&quot;t-muted&quot; font-size=&quot;10&quot; font-weight=&quot;500&quot;>resposta</text>
           </g>
-          <g data-legend-semantic-kind=&quot;security&quot; data-legend-x=&quot;326&quot; data-legend-baseline=&quot;1354&quot; data-legend-width=&quot;99&quot;>
-            <path d=&quot;M 326 1351 L 360 1351&quot; class=&quot;a-security&quot; stroke-width=&quot;1.4&quot; marker-end=&quot;url(#arrowhead-security)&quot;/>
-            <text x=&quot;369&quot; y=&quot;1354&quot; class=&quot;t-muted&quot; font-size=&quot;10&quot; font-weight=&quot;500&quot;>permissão</text>
+          <g data-legend-semantic-kind=&quot;security&quot; data-legend-x=&quot;326&quot; data-legend-baseline=&quot;1534&quot; data-legend-width=&quot;99&quot;>
+            <path d=&quot;M 326 1531 L 360 1531&quot; class=&quot;a-security&quot; stroke-width=&quot;1.4&quot; marker-end=&quot;url(#arrowhead-security)&quot;/>
+            <text x=&quot;369&quot; y=&quot;1534&quot; class=&quot;t-muted&quot; font-size=&quot;10&quot; font-weight=&quot;500&quot;>permissão</text>
           </g>
-          <g data-legend-semantic-kind=&quot;dashed&quot; data-legend-x=&quot;447&quot; data-legend-baseline=&quot;1354&quot; data-legend-width=&quot;291&quot;>
-            <path d=&quot;M 447 1351 L 481 1351&quot; class=&quot;a-dashed&quot; stroke-width=&quot;1.4&quot; marker-end=&quot;url(#arrowhead-dashed)&quot;/>
-            <text x=&quot;490&quot; y=&quot;1354&quot; class=&quot;t-muted&quot; font-size=&quot;10&quot; font-weight=&quot;500&quot;>se ligada, se falhar ou em segundo plano</text>
+          <g data-legend-semantic-kind=&quot;dashed&quot; data-legend-x=&quot;447&quot; data-legend-baseline=&quot;1534&quot; data-legend-width=&quot;372&quot;>
+            <path d=&quot;M 447 1531 L 481 1531&quot; class=&quot;a-dashed&quot; stroke-width=&quot;1.4&quot; marker-end=&quot;url(#arrowhead-dashed)&quot;/>
+            <text x=&quot;490&quot; y=&quot;1534&quot; class=&quot;t-muted&quot; font-size=&quot;10&quot; font-weight=&quot;500&quot;>se ligada, se falhar, sem contato ou em segundo plano</text>
           </g>
         </g>
       </svg>
@@ -5934,11 +5964,13 @@ html,body{overflow:hidden!important}
         </div>
         <ul>
           <li>O turno de uma pergunta de análise com a infraestrutura separada (D-258): o SaaS confere a permissão e manda só a pergunta; o ciclo da análise, com o modelo de IA e as consultas, roda dentro do middleware; só a resposta pronta volta (D-189).</li>
-          <li>O middleware atende várias organizações, com o mesmo contrato em qualquer hospedagem: o da Maind, todas as do SaaS; o do cliente, as organizações dele (D-258, D-260, D-272). A pergunta chega a ele em nome da organização da pessoa, e ele isola cada organização pelo certificado dela (D-258, D-272).</li>
-          <li>O SaaS aprende a chegar ao middleware no handshake feito ao criar a organização (D-258) e o acha pelo Registro de organizações: uma proposta do arquiteto, que aguarda o dono (proposta 3, P-048).</li>
-          <li>O Avaliador de permissões responde &amp;quot;pode?&amp;quot; pelo tipo de assento e pelas roles, e a falha fecha (ARQ-008); o nível efetivo é o menor entre o pedido, as roles e o teto de cada fonte (ARQ-025, D-220).</li>
+          <li>O middleware atende várias organizações, com o mesmo contrato, gRPC, em qualquer hospedagem: o da Maind, todas as do SaaS; o do cliente, as organizações dele (D-258, D-260, D-272, ARQ-099). A pergunta chega a ele em nome da organização da pessoa, cujo identificador a sessão leva (ARQ-102). Dentro do middleware, as organizações dividem uma base só, separadas pela marca da organização e por um filtro em toda consulta, e as credenciais se cifram com uma chave por organização; o certificado é o vínculo de confiança entre o SaaS e o middleware (D-258, ARQ-103).</li>
+          <li>O SaaS aprende o endereço, a porta e a chave pública do middleware no handshake feito ao criar a organização (D-258, ARQ-124) e os guarda no Registro de organizações, no banco mestre; acha o middleware certo consultando o registro, e confere com a chave pública dele a sessão que o middleware emite (ARQ-102).</li>
+          <li>O Avaliador de permissões responde &amp;quot;pode?&amp;quot; sozinho, sem chamar o middleware, pelas Permissões por código: para cada Código da pessoa, o tipo de assento, o conjunto de permissões e os identificadores dos grupos e da carteira do gestor, sem nomes, que o middleware envia a cada mudança, com uma reconciliação completa depois de uma queda (ARQ-123). A falha fecha (ARQ-008); o nível efetivo é o menor entre o pedido, as roles e o teto de cada fonte (ARQ-025, D-220).</li>
+          <li>No SaaS, a pessoa é só o Código da pessoa, sem nome nem e-mail (ARQ-109). O turno não mostra nomes de pessoas; as telas que os mostram (a Home da organização, o rastro da Auditoria, a medida de autonomia) os pedem ao middleware em lote, uma chamada por tela (ARQ-109), e os nomes dos grupos e das roles também (ARQ-123).</li>
+          <li>Com o Estado do middleware em fora do ar, a pergunta não chega: no lugar das respostas, o app mostra o Aviso próprio: a conexão da organização com o Horus está fora do ar desde o último contato, o restante do Horus segue no ar, a pessoa deve procurar o owner, e há um botão de tentar de novo; sem endereço nem porta (ARQ-104, ARQ-107). No middleware compartilhado da Maind, a queda alcança todas as organizações do SaaS de uma vez (ARQ-104, D-272).</li>
           <li>A IA escreve a consulta, o plano e a prosa; os números da resposta vêm só das linhas dos bancos corporativos, lidos só para leitura, com a credencial que o owner da organização configura no middleware, fora do SaaS (D-022, D-258, D-273).</li>
-          <li>A pesquisa na web, se ligada, usa a busca nativa da conexão de IA, que agora mora no middleware: não há mais conexão de IA da instância (ARQ-027, D-215, D-266). A consulta que falha ou vem vazia tem um reparo, uma vez.</li>
+          <li>A pesquisa na web, se ligada, usa a busca nativa da conexão de IA, que mora no middleware: não há mais conexão de IA da instância para as organizações (ARQ-027, D-215, D-266). A consulta que falha ou vem vazia tem um reparo, uma vez.</li>
         </ul>
       </div>
 
@@ -5948,9 +5980,10 @@ html,body{overflow:hidden!important}
           <h3>Imediato e em segundo plano</h3>
         </div>
         <ul>
-          <li>Imediato, no papel Atender: o &amp;quot;pode?&amp;quot;, a pergunta ao middleware, a resposta pronta, a gravação dela no Banco da organização antes do fim e a transmissão por SSE (ARQ-004, ARQ-024).</li>
-          <li>No WhatsApp e no agente, o mesmo turno roda como trabalho da fila, no papel Trabalhar (ARQ-024); o agente está no diagrama do que roda sozinho.</li>
-          <li>Em segundo plano: a contagem de uso de IA que o middleware devolve, sem conteúdo, para o consumo e o custo de toda a IA da organização (D-267), e o fato de uso do turno, que o SaaS grava em lote, sem a pergunta nem a resposta (ARQ-029).</li>
+          <li>Imediato, no papel Atender: o &amp;quot;pode?&amp;quot;, decidido no SaaS pelas Permissões por código (ARQ-123), a pergunta ao middleware, a resposta pronta, a gravação dela no Banco da organização antes do fim e a transmissão por SSE (ARQ-004, ARQ-024); ou, sem contato com o middleware, o Aviso próprio (ARQ-104).</li>
+          <li>No WhatsApp e no agente, o mesmo turno roda como trabalho da fila, no papel Trabalhar (ARQ-024); o agente, e a espera de até uma hora quando o middleware está fora, estão no diagrama do que roda sozinho (ARQ-108).</li>
+          <li>Em segundo plano: a contagem de uso de IA que o middleware devolve, só como contagem, sem a pergunta nem a resposta: a hora, o modelo, os tokens e de quem é a chave, da organização ou da Maind (ARQ-117). O owner vê o consumo e o custo de toda a IA da organização no Horus, na tela que a v1.xx já tem (D-267, ARQ-117). Com o middleware fora do ar, a contagem não chega: o uso aparece com atraso e completa quando ele volta (ARQ-117). O fato de uso do turno o SaaS grava em lote, sem a pergunta nem a resposta (ARQ-029).</li>
+          <li>Pelo mesmo contrato chega a parada da IA (chave recusada ou falta de crédito): o owner é avisado na área de avisos do Horus e, se a chave é da Maind, o time da Maind, na área de avisos do painel da instância (ARQ-117, D-268).</li>
           <li>O retorno da pessoa (gostei, não gostei, reportar) continua no SaaS, gravado pela resposta, e o reporte guarda uma cópia dela para o owner (ARQ-028).</li>
           <li>Versão: tudo o que o desenho mostra é v2.0, inclusive o middleware (a MF-121, Middleware da organização; D-260, D-270, D-272). Quem vê o quê dentro do banco (MF-106) é v2.1 e roda no middleware (D-263).</li>
         </ul>
@@ -5963,12 +5996,12 @@ html,body{overflow:hidden!important}
         </div>
         <ul>
           <li>O corte do motor: as decisões dizem só que o ciclo (o modelo de IA e as consultas) roda no middleware e que ao SaaS chegam a pergunta e a resposta pronta (D-189, D-258). Onde ficam o Condutor do turno e as outras etapas do Motor de análise segue em aberto, e por isso eles não aparecem (P-040, P-048).</li>
-          <li>O contrato do middleware não tem protocolo decidido: o rascunho do dono traz pontos de contrato gRPC e um servidor MCP com ferramentas, e a escolha é do arquiteto, gRPC de preferência (P-042, D-196).</li>
-          <li>Aguarda o dono (proposta 3 do arquiteto, P-048): a sessão, emitida pelo middleware e conferida pelo SaaS com a chave pública da organização, leva só o identificador da organização; o endereço e a porta ficam no Registro de organizações, nunca na sessão.</li>
-          <li>Sem decisão (P-048): o que o SaaS guarda de cada pessoa e de onde o avaliador lê as roles; o que a tela mostra com o middleware fora do ar (proposta 5); o que o middleware manda enquanto o ciclo roda; onde ficam o modelo semântico e a curadoria dos modelos de IA; onde o owner vê o consumo.</li>
-          <li>Hipótese 🔎 da D-272: que o isolamento por certificado baste entre as organizações que dividem o mesmo middleware. Como a pergunta leva a organização até ele não está decidido (propostas 2 e 3, P-042, P-048).</li>
+          <li>Fica de fora: os servidores MCP da organização (D-281). Ela poderá cadastrar servidores MCP próprios, que ficam na infraestrutura dela, com o cadastro no front do middleware; a versão é a v2.1, na MF-124 (D-282); o servidor só lê, só o owner o cadastra e libera as ferramentas uma a uma (D-286 a D-289); como o middleware os chama durante a análise segue na P-050, por isso o turno não os mostra. O servidor MCP do rascunho não é peça do contrato, que é gRPC (ARQ-099).</li>
+          <li>Sem decisão (P-048): o que o middleware manda enquanto o ciclo roda; onde ficam o modelo semântico e a curadoria dos modelos de IA.</li>
+          <li>A conferir com o jurídico (P-044): se o código que sobra no SaaS depois que o middleware apaga o cadastro da pessoa basta para a exclusão e para a LGPD (ARQ-109).</li>
+          <li>Hipótese 🔎 da D-272: que o isolamento baste entre as organizações que dividem o mesmo middleware, com o teste de isolamento no CI como segunda trava (ARQ-103). A política do certificado (o formato, a rotação e a revogação) é escolha da organização e fica adiada para as ADRs da MF-121 (P-049, ARQ-124).</li>
           <li>Não entra neste turno: a pergunta do administrador da instância sobre a história da instância (D-158, D-276). Ela lê a história guardada no SaaS, no banco de log, com uma chave de IA da instância só para isso, e não passa por middleware nenhum; como ela roda é da P-048.</li>
-          <li>Mais saídas além da resposta pronta (o comando da consulta, o CSV) só com permissão configurada no front do middleware (D-189, D-195, D-265). O modo conversa, sem fonte, e o retorno da pessoa ficaram fora do desenho.</li>
+          <li>Mais saídas além da resposta pronta (o comando da consulta, o CSV) são interruptores da organização, desligados por padrão (D-189, ARQ-116); que quem os liga é o owner, no módulo de configuração do middleware, aguarda o dono (ARQ-116, D-193). O modo conversa, sem fonte, e o retorno da pessoa ficaram fora do desenho.</li>
         </ul>
       </div>
     </div>
@@ -15329,7 +15362,7 @@ html,body{overflow:hidden!important}
 </script>
 </body>
 </html>
-"></iframe></section><section class="mx-painel" id="mx-p-explicacoes" role="tabpanel" aria-labelledby="mx-t-explicacoes" hidden><div class="mx-conteudo"><div class="mx-cartoes"><article class="mx-cartao" style="--cor:#22d3ee"><h3>O que o desenho mostra</h3><ul><li>O turno de uma pergunta de análise com a infraestrutura separada (D-258): o SaaS confere a permissão e manda só a pergunta; o ciclo da análise, com o modelo de IA e as consultas, roda dentro do middleware; só a resposta pronta volta (D-189).</li><li>O middleware atende várias organizações, com o mesmo contrato em qualquer hospedagem: o da Maind, todas as do SaaS; o do cliente, as organizações dele (D-258, D-260, D-272). A pergunta chega a ele em nome da organização da pessoa, e ele isola cada organização pelo certificado dela (D-258, D-272).</li><li>O SaaS aprende a chegar ao middleware no handshake feito ao criar a organização (D-258) e o acha pelo Registro de organizações: uma proposta do arquiteto, que aguarda o dono (proposta 3, P-048).</li><li>O Avaliador de permissões responde &quot;pode?&quot; pelo tipo de assento e pelas roles, e a falha fecha (ARQ-008); o nível efetivo é o menor entre o pedido, as roles e o teto de cada fonte (ARQ-025, D-220).</li><li>A IA escreve a consulta, o plano e a prosa; os números da resposta vêm só das linhas dos bancos corporativos, lidos só para leitura, com a credencial que o owner da organização configura no middleware, fora do SaaS (D-022, D-258, D-273).</li><li>A pesquisa na web, se ligada, usa a busca nativa da conexão de IA, que agora mora no middleware: não há mais conexão de IA da instância (ARQ-027, D-215, D-266). A consulta que falha ou vem vazia tem um reparo, uma vez.</li></ul></article><article class="mx-cartao" style="--cor:#34d399"><h3>Imediato e em segundo plano</h3><ul><li>Imediato, no papel Atender: o &quot;pode?&quot;, a pergunta ao middleware, a resposta pronta, a gravação dela no Banco da organização antes do fim e a transmissão por SSE (ARQ-004, ARQ-024).</li><li>No WhatsApp e no agente, o mesmo turno roda como trabalho da fila, no papel Trabalhar (ARQ-024); o agente está no diagrama do que roda sozinho.</li><li>Em segundo plano: a contagem de uso de IA que o middleware devolve, sem conteúdo, para o consumo e o custo de toda a IA da organização (D-267), e o fato de uso do turno, que o SaaS grava em lote, sem a pergunta nem a resposta (ARQ-029).</li><li>O retorno da pessoa (gostei, não gostei, reportar) continua no SaaS, gravado pela resposta, e o reporte guarda uma cópia dela para o owner (ARQ-028).</li><li>Versão: tudo o que o desenho mostra é v2.0, inclusive o middleware (a MF-121, Middleware da organização; D-260, D-270, D-272). Quem vê o quê dentro do banco (MF-106) é v2.1 e roda no middleware (D-263).</li></ul></article><article class="mx-cartao" style="--cor:#fbbf24"><h3>O que ficou de fora e o que aguarda o dono</h3><ul><li>O corte do motor: as decisões dizem só que o ciclo (o modelo de IA e as consultas) roda no middleware e que ao SaaS chegam a pergunta e a resposta pronta (D-189, D-258). Onde ficam o Condutor do turno e as outras etapas do Motor de análise segue em aberto, e por isso eles não aparecem (P-040, P-048).</li><li>O contrato do middleware não tem protocolo decidido: o rascunho do dono traz pontos de contrato gRPC e um servidor MCP com ferramentas, e a escolha é do arquiteto, gRPC de preferência (P-042, D-196).</li><li>Aguarda o dono (proposta 3 do arquiteto, P-048): a sessão, emitida pelo middleware e conferida pelo SaaS com a chave pública da organização, leva só o identificador da organização; o endereço e a porta ficam no Registro de organizações, nunca na sessão.</li><li>Sem decisão (P-048): o que o SaaS guarda de cada pessoa e de onde o avaliador lê as roles; o que a tela mostra com o middleware fora do ar (proposta 5); o que o middleware manda enquanto o ciclo roda; onde ficam o modelo semântico e a curadoria dos modelos de IA; onde o owner vê o consumo.</li><li>Hipótese 🔎 da D-272: que o isolamento por certificado baste entre as organizações que dividem o mesmo middleware. Como a pergunta leva a organização até ele não está decidido (propostas 2 e 3, P-042, P-048).</li><li>Não entra neste turno: a pergunta do administrador da instância sobre a história da instância (D-158, D-276). Ela lê a história guardada no SaaS, no banco de log, com uma chave de IA da instância só para isso, e não passa por middleware nenhum; como ela roda é da P-048.</li><li>Mais saídas além da resposta pronta (o comando da consulta, o CSV) só com permissão configurada no front do middleware (D-189, D-195, D-265). O modo conversa, sem fonte, e o retorno da pessoa ficaram fora do desenho.</li></ul></article></div></div></section></main>
+"></iframe></section><section class="mx-painel" id="mx-p-explicacoes" role="tabpanel" aria-labelledby="mx-t-explicacoes" hidden><div class="mx-conteudo"><div class="mx-cartoes"><article class="mx-cartao" style="--cor:#22d3ee"><h3>O que o desenho mostra</h3><ul><li>O turno de uma pergunta de análise com a infraestrutura separada (D-258): o SaaS confere a permissão e manda só a pergunta; o ciclo da análise, com o modelo de IA e as consultas, roda dentro do middleware; só a resposta pronta volta (D-189).</li><li>O middleware atende várias organizações, com o mesmo contrato, gRPC, em qualquer hospedagem: o da Maind, todas as do SaaS; o do cliente, as organizações dele (D-258, D-260, D-272, ARQ-099). A pergunta chega a ele em nome da organização da pessoa, cujo identificador a sessão leva (ARQ-102). Dentro do middleware, as organizações dividem uma base só, separadas pela marca da organização e por um filtro em toda consulta, e as credenciais se cifram com uma chave por organização; o certificado é o vínculo de confiança entre o SaaS e o middleware (D-258, ARQ-103).</li><li>O SaaS aprende o endereço, a porta e a chave pública do middleware no handshake feito ao criar a organização (D-258, ARQ-124) e os guarda no Registro de organizações, no banco mestre; acha o middleware certo consultando o registro, e confere com a chave pública dele a sessão que o middleware emite (ARQ-102).</li><li>O Avaliador de permissões responde &quot;pode?&quot; sozinho, sem chamar o middleware, pelas Permissões por código: para cada Código da pessoa, o tipo de assento, o conjunto de permissões e os identificadores dos grupos e da carteira do gestor, sem nomes, que o middleware envia a cada mudança, com uma reconciliação completa depois de uma queda (ARQ-123). A falha fecha (ARQ-008); o nível efetivo é o menor entre o pedido, as roles e o teto de cada fonte (ARQ-025, D-220).</li><li>No SaaS, a pessoa é só o Código da pessoa, sem nome nem e-mail (ARQ-109). O turno não mostra nomes de pessoas; as telas que os mostram (a Home da organização, o rastro da Auditoria, a medida de autonomia) os pedem ao middleware em lote, uma chamada por tela (ARQ-109), e os nomes dos grupos e das roles também (ARQ-123).</li><li>Com o Estado do middleware em fora do ar, a pergunta não chega: no lugar das respostas, o app mostra o Aviso próprio: a conexão da organização com o Horus está fora do ar desde o último contato, o restante do Horus segue no ar, a pessoa deve procurar o owner, e há um botão de tentar de novo; sem endereço nem porta (ARQ-104, ARQ-107). No middleware compartilhado da Maind, a queda alcança todas as organizações do SaaS de uma vez (ARQ-104, D-272).</li><li>A IA escreve a consulta, o plano e a prosa; os números da resposta vêm só das linhas dos bancos corporativos, lidos só para leitura, com a credencial que o owner da organização configura no middleware, fora do SaaS (D-022, D-258, D-273).</li><li>A pesquisa na web, se ligada, usa a busca nativa da conexão de IA, que mora no middleware: não há mais conexão de IA da instância para as organizações (ARQ-027, D-215, D-266). A consulta que falha ou vem vazia tem um reparo, uma vez.</li></ul></article><article class="mx-cartao" style="--cor:#34d399"><h3>Imediato e em segundo plano</h3><ul><li>Imediato, no papel Atender: o &quot;pode?&quot;, decidido no SaaS pelas Permissões por código (ARQ-123), a pergunta ao middleware, a resposta pronta, a gravação dela no Banco da organização antes do fim e a transmissão por SSE (ARQ-004, ARQ-024); ou, sem contato com o middleware, o Aviso próprio (ARQ-104).</li><li>No WhatsApp e no agente, o mesmo turno roda como trabalho da fila, no papel Trabalhar (ARQ-024); o agente, e a espera de até uma hora quando o middleware está fora, estão no diagrama do que roda sozinho (ARQ-108).</li><li>Em segundo plano: a contagem de uso de IA que o middleware devolve, só como contagem, sem a pergunta nem a resposta: a hora, o modelo, os tokens e de quem é a chave, da organização ou da Maind (ARQ-117). O owner vê o consumo e o custo de toda a IA da organização no Horus, na tela que a v1.xx já tem (D-267, ARQ-117). Com o middleware fora do ar, a contagem não chega: o uso aparece com atraso e completa quando ele volta (ARQ-117). O fato de uso do turno o SaaS grava em lote, sem a pergunta nem a resposta (ARQ-029).</li><li>Pelo mesmo contrato chega a parada da IA (chave recusada ou falta de crédito): o owner é avisado na área de avisos do Horus e, se a chave é da Maind, o time da Maind, na área de avisos do painel da instância (ARQ-117, D-268).</li><li>O retorno da pessoa (gostei, não gostei, reportar) continua no SaaS, gravado pela resposta, e o reporte guarda uma cópia dela para o owner (ARQ-028).</li><li>Versão: tudo o que o desenho mostra é v2.0, inclusive o middleware (a MF-121, Middleware da organização; D-260, D-270, D-272). Quem vê o quê dentro do banco (MF-106) é v2.1 e roda no middleware (D-263).</li></ul></article><article class="mx-cartao" style="--cor:#fbbf24"><h3>O que ficou de fora e o que aguarda o dono</h3><ul><li>O corte do motor: as decisões dizem só que o ciclo (o modelo de IA e as consultas) roda no middleware e que ao SaaS chegam a pergunta e a resposta pronta (D-189, D-258). Onde ficam o Condutor do turno e as outras etapas do Motor de análise segue em aberto, e por isso eles não aparecem (P-040, P-048).</li><li>Fica de fora: os servidores MCP da organização (D-281). Ela poderá cadastrar servidores MCP próprios, que ficam na infraestrutura dela, com o cadastro no front do middleware; a versão é a v2.1, na MF-124 (D-282); o servidor só lê, só o owner o cadastra e libera as ferramentas uma a uma (D-286 a D-289); como o middleware os chama durante a análise segue na P-050, por isso o turno não os mostra. O servidor MCP do rascunho não é peça do contrato, que é gRPC (ARQ-099).</li><li>Sem decisão (P-048): o que o middleware manda enquanto o ciclo roda; onde ficam o modelo semântico e a curadoria dos modelos de IA.</li><li>A conferir com o jurídico (P-044): se o código que sobra no SaaS depois que o middleware apaga o cadastro da pessoa basta para a exclusão e para a LGPD (ARQ-109).</li><li>Hipótese 🔎 da D-272: que o isolamento baste entre as organizações que dividem o mesmo middleware, com o teste de isolamento no CI como segunda trava (ARQ-103). A política do certificado (o formato, a rotação e a revogação) é escolha da organização e fica adiada para as ADRs da MF-121 (P-049, ARQ-124).</li><li>Não entra neste turno: a pergunta do administrador da instância sobre a história da instância (D-158, D-276). Ela lê a história guardada no SaaS, no banco de log, com uma chave de IA da instância só para isso, e não passa por middleware nenhum; como ela roda é da P-048.</li><li>Mais saídas além da resposta pronta (o comando da consulta, o CSV) são interruptores da organização, desligados por padrão (D-189, ARQ-116); que quem os liga é o owner, no módulo de configuração do middleware, aguarda o dono (ARQ-116, D-193). O modo conversa, sem fonte, e o retorno da pessoa ficaram fora do desenho.</li></ul></article></div></div></section></main>
 </div>
 <script>
 (function () {
@@ -15410,6 +15443,7 @@ html,body{overflow:hidden!important}
     if (!embutida || e.source !== window.parent || !m || m.tipo !== 'archify-maind:tema') return;
     pagina = true;
     document.documentElement.classList.add('mx-tema-da-pagina'); marcarInterno();   // a página que fala o protocolo manda no tema: esconde os botões de tema
+    try { var fp = parseFloat(getComputedStyle(window.parent.document.body).fontSize); if (fp > 0 && fp < 14) document.documentElement.style.setProperty('--mx-esc', (fp / 14).toFixed(4)); } catch (_) {}   // o texto das abas segue o corpo da página
     definirTema(m.tema);
   });
   if (embutida) { try { window.parent.postMessage({ tipo: 'archify-maind:pronto' }, '*'); } catch (_) {} }

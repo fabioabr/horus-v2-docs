@@ -1,8 +1,8 @@
 # Registro de decisões de arquitetura do Horus v2
 
-Situação: vivo · 97 decisões: 32 ✅ confirmadas pelo dono, 54 🟢 decididas pelo arquiteto, 5 🟡 propostas ao dono e 6 ⚪ substituídas (a `ARQ-015` e a `ARQ-064`, pela `ARQ-086`; a `ARQ-036`, pela `ARQ-089`; a `ARQ-091`, pela `ARQ-092`; a `ARQ-057`, pela `ARQ-094`; a `ARQ-021`, pela `ARQ-095`). Três decisões ganharam, em 02/11/2026, uma nota datada sobre uma premissa que mudou, sem mudar a decisão (`ARQ-049`, `ARQ-051` e `ARQ-073`); em 03/11/2026, nove ganharam uma nota pela `ARQ-086` (`ARQ-014`, `ARQ-035`, `ARQ-044`, `ARQ-056`, `ARQ-059`, `ARQ-070`, `ARQ-071`, `ARQ-080` e `ARQ-085`): nas propostas, o texto foi refeito junto; na `ARQ-080`, decidida, ficou só a nota. Outras seis ganharam nota pela escolha do dono na `ARQ-055` (`ARQ-056`, `ARQ-058`, `ARQ-059`, `ARQ-069`, `ARQ-082` e `ARQ-085`), com o texto da proposta refeito junto. E sete, pelas respostas do dono na `ARQ-056` e na `ARQ-059` (nenhuma instância de hoje é produção real; as bases de demonstração são uma só): `ARQ-014`, `ARQ-055`, `ARQ-058`, `ARQ-065`, `ARQ-070`, `ARQ-071` e `ARQ-085`. E doze, pela escolha do dono na `ARQ-010` (um banco por organização): `ARQ-005`, `ARQ-009`, `ARQ-033`, `ARQ-034`, `ARQ-036`, `ARQ-037`, `ARQ-044`, `ARQ-056`, `ARQ-062`, `ARQ-072`, `ARQ-073` e `ARQ-087`. E duas, pela escolha do dono na `ARQ-082` (o CI na VPS de hoje até a primeira produção real): `ARQ-076` e `ARQ-085`. E quatro, pela escolha do dono na `ARQ-044` (os segredos pelos Secrets do GitHub): `ARQ-061`, `ARQ-066`, `ARQ-067` e `ARQ-087`. E dez, pela escolha do dono na `ARQ-011` (sem conversão dos dados da v1.xx): `ARQ-002`, `ARQ-010`, `ARQ-034`, `ARQ-040`, `ARQ-042`, `ARQ-055`, `ARQ-062`, `ARQ-079`, `ARQ-086` e `ARQ-088`. E onze, pela escolha do dono na `ARQ-090` (a segurança por pessoa fora da v2.0): `ARQ-002`, `ARQ-008`, `ARQ-023`, `ARQ-031`, `ARQ-032`, `ARQ-039`, `ARQ-041`, `ARQ-042`, `ARQ-077`, `ARQ-081` e `ARQ-089`.
+Situação: vivo · 127 decisões: 54 ✅ confirmadas pelo dono, 61 🟢 decididas pelo arquiteto, 5 🟡 propostas ao dono e 7 ⚪ substituídas (a `ARQ-015` e a `ARQ-064`, pela `ARQ-086`; a `ARQ-036`, pela `ARQ-089`; a `ARQ-091`, pela `ARQ-092`; a `ARQ-057`, pela `ARQ-094`; a `ARQ-021`, pela `ARQ-095`; a `ARQ-105`, pela `ARQ-106`). Três decisões ganharam, em 02/11/2026, uma nota datada sobre uma premissa que mudou, sem mudar a decisão (`ARQ-049`, `ARQ-051` e `ARQ-073`); em 03/11/2026, nove ganharam uma nota pela `ARQ-086` (`ARQ-014`, `ARQ-035`, `ARQ-044`, `ARQ-056`, `ARQ-059`, `ARQ-070`, `ARQ-071`, `ARQ-080` e `ARQ-085`): nas propostas, o texto foi refeito junto; na `ARQ-080`, decidida, ficou só a nota. Outras seis ganharam nota pela escolha do dono na `ARQ-055` (`ARQ-056`, `ARQ-058`, `ARQ-059`, `ARQ-069`, `ARQ-082` e `ARQ-085`), com o texto da proposta refeito junto. E sete, pelas respostas do dono na `ARQ-056` e na `ARQ-059` (nenhuma instância de hoje é produção real; as bases de demonstração são uma só): `ARQ-014`, `ARQ-055`, `ARQ-058`, `ARQ-065`, `ARQ-070`, `ARQ-071` e `ARQ-085`. E doze, pela escolha do dono na `ARQ-010` (um banco por organização): `ARQ-005`, `ARQ-009`, `ARQ-033`, `ARQ-034`, `ARQ-036`, `ARQ-037`, `ARQ-044`, `ARQ-056`, `ARQ-062`, `ARQ-072`, `ARQ-073` e `ARQ-087`. E duas, pela escolha do dono na `ARQ-082` (o CI na VPS de hoje até a primeira produção real): `ARQ-076` e `ARQ-085`. E quatro, pela escolha do dono na `ARQ-044` (os segredos pelos Secrets do GitHub): `ARQ-061`, `ARQ-066`, `ARQ-067` e `ARQ-087`. E dez, pela escolha do dono na `ARQ-011` (sem conversão dos dados da v1.xx): `ARQ-002`, `ARQ-010`, `ARQ-034`, `ARQ-040`, `ARQ-042`, `ARQ-055`, `ARQ-062`, `ARQ-079`, `ARQ-086` e `ARQ-088`. E onze, pela escolha do dono na `ARQ-090` (a segurança por pessoa fora da v2.0): `ARQ-002`, `ARQ-008`, `ARQ-023`, `ARQ-031`, `ARQ-032`, `ARQ-039`, `ARQ-041`, `ARQ-042`, `ARQ-077`, `ARQ-081` e `ARQ-089`. E quatro, em 07/11/2026, pela escolha do dono na `ARQ-098` (o servidor do SaaS é um só, sem réplicas): `ARQ-014`, `ARQ-063`, `ARQ-093` e `ARQ-095`, esta com a parte das réplicas substituída e a regra da fila mantida. E duas, em 08/11/2026, pela escolha do dono na `ARQ-100` (o middleware sobe com docker compose): `ARQ-060` e `ARQ-094`. E quatro, também em 08/11/2026, pela `ARQ-101` (o SaaS sobe com docker compose): `ARQ-093`, `ARQ-094`, `ARQ-096` e `ARQ-100`.
 
-Última atualização: 03/11/2026 (o dono decidiu a `ARQ-096`, a solução sem ficar presa a uma nuvem, e adiou a escolha da nuvem, na `ARQ-085`, para a primeira produção real; antes, o arquiteto refez a `ARQ-085` com a V-19, que propõe a Google Cloud; o dono decidiu a `ARQ-065`, a v2.0 num subdomínio próprio, ao lado da v1.xx, na mesma VPS; antes dela, a `ARQ-068`, os incidentes com gravidade, responsável, prazos e registro, a `ARQ-071`, o plantão só para o que não pode esperar, e a `ARQ-070`, a sonda de fora num serviço de monitoramento de outro provedor, e a `ARQ-093` com a opção 2: o Kubernetes gerenciado e o Postgres gerenciado na produção real, e o minikube na VPS durante a construção; com ela, o arquiteto refez o pacote, pela `ARQ-094`, e os papéis em várias réplicas, pela `ARQ-095`, que substituem a `ARQ-057` e a `ARQ-021`, e a proposta do on-premises, `ARQ-060`. Antes, no mesmo dia: a `ARQ-092`, a produção real numa nuvem pública; a `ARQ-014`, 99,9%; a `ARQ-043`; a `ARQ-081`; a `ARQ-027`; a `ARQ-084`; a `ARQ-017`; a `ARQ-090`; a `ARQ-035`, a `ARQ-046` e a `ARQ-011`, com a `ARQ-089` 🟢; a `ARQ-067` fechou as decisões do M0; cento e vinte e duas notas de 03/11/2026, em sessenta e duas decisões, registram o que as escolhas do dia mudaram).
+Última atualização: 08/11/2026 (o arquiteto decidiu a `ARQ-127` 🟢, a separação do SaaS e do middleware da Maind em projetos, redes e bancos distintos; o arquiteto decidiu a `ARQ-126` 🟢, o que a TI do cliente precisa para rodar o middleware; o arquiteto decidiu a `ARQ-125` 🟢, a exclusão de uma organização no middleware e a cópia da base; o arquiteto decidiu a `ARQ-124` 🟢, o vínculo SaaS e middleware (certificado, chave de instalação, arquivo assinado e handshake); o dono decidiu a `ARQ-123`, o que o SaaS guarda ligado ao código da pessoa (assento, permissões e grupos, sem nomes); o dono decidiu a `ARQ-122`, a meta de disponibilidade (sem meta na VPS; 99,9% na produção real); o dono decidiu a `ARQ-121`, o histórico de quedas por noventa dias; o dono decidiu a `ARQ-120`, o aviso ao dono do agendamento quando uma rodada é pulada; o dono decidiu a `ARQ-119`, o que a Maind vê do middleware do cliente (só o estado e um pacote de diagnóstico sob pedido); o dono decidiu a `ARQ-118`, os e-mails que saem do SaaS com o endereço só em trânsito; o arquiteto decidiu a `ARQ-117` 🟢, o uso e o custo da IA como contagem, vistos pelo owner no Horus; o arquiteto decidiu a `ARQ-116` 🟢, a guarda de rede do middleware e as saídas extras; o arquiteto decidiu a `ARQ-115` 🟢, os segredos no docker compose, pelo mesmo mecanismo da `ARQ-044`; o dono decidiu a `ARQ-114`, o SaaS que fala com a versão atual e a anterior do middleware, e a `ARQ-113`, o código da v2.0 já preparado para réplicas e a imagem única em toda fase, e a `ARQ-112`, as duas fases da infraestrutura (VPS agora; Kubernetes gerenciado com réplicas na produção real), e a `ARQ-111`, a mecânica de login como configuração da organização no módulo do middleware (usuário e senha e Google na v2.0), e a `ARQ-110`, o primeiro acesso do owner por um link de uso único entregue pela Maind, e a `ARQ-109`, o SaaS guarda de cada pessoa só um código, sem nome nem e-mail (revê em parte a `ARQ-097`), e a `ARQ-108`, a rodada que cai com o middleware fora (espera até uma hora e roda atrasada, ou é pulada), e a `ARQ-107`, o LED de status do middleware na tela de entrada (verde, amarelo, vermelho), e a `ARQ-106`, a página de status do middleware no endereço da organização, sem login, que substituiu a `ARQ-105`, e a `ARQ-104`, o aviso próprio quando o middleware da organização está fora do ar, e a `ARQ-103`, o middleware com uma base só para todas as organizações, separadas por marca e filtro, e a `ARQ-102`, a sessão só com o identificador da organização, e a `ARQ-101`, o SaaS também com docker compose, sem Kubernetes nem chart, e a `ARQ-100`, o middleware com docker compose, a mesma imagem na Maind e no cliente; antes, em 07/11/2026, a `ARQ-099`, o contrato do middleware em gRPC, sem servidor MCP; antes, a `ARQ-098`, o servidor do SaaS como um só, sem réplicas, que substitui em parte a `ARQ-095` e a `ARQ-014`, com notas na `ARQ-063` e na `ARQ-093`; antes, em 03/11/2026, o dono decidiu a `ARQ-096`, a solução sem ficar presa a uma nuvem, e adiou a escolha da nuvem, na `ARQ-085`, para a primeira produção real; antes, o arquiteto refez a `ARQ-085` com a V-19, que propõe a Google Cloud; o dono decidiu a `ARQ-065`, a v2.0 num subdomínio próprio, ao lado da v1.xx, na mesma VPS; antes dela, a `ARQ-068`, os incidentes com gravidade, responsável, prazos e registro, a `ARQ-071`, o plantão só para o que não pode esperar, e a `ARQ-070`, a sonda de fora num serviço de monitoramento de outro provedor, e a `ARQ-093` com a opção 2: o Kubernetes gerenciado e o Postgres gerenciado na produção real, e o minikube na VPS durante a construção; com ela, o arquiteto refez o pacote, pela `ARQ-094`, e os papéis em várias réplicas, pela `ARQ-095`, que substituem a `ARQ-057` e a `ARQ-021`, e a proposta do on-premises, `ARQ-060`. Antes, no mesmo dia: a `ARQ-092`, a produção real numa nuvem pública; a `ARQ-014`, 99,9%; a `ARQ-043`; a `ARQ-081`; a `ARQ-027`; a `ARQ-084`; a `ARQ-017`; a `ARQ-090`; a `ARQ-035`, a `ARQ-046` e a `ARQ-011`, com a `ARQ-089` 🟢; a `ARQ-067` fechou as decisões do M0; cento e vinte e duas notas de 03/11/2026, em sessenta e duas decisões, registram o que as escolhas do dia mudaram).
 
 Este registro guarda as **decisões de tecnologia** do Horus v2, cada uma com quem decide, as opções e o porquê. O **quê** e o **porquê do produto** estão no [backlog estratégico](../produto/backlog-estrategico.md); a estratégia que costura estas decisões está em [01-estrategia-da-solucao.md](01-estrategia-da-solucao.md).
 
@@ -114,8 +114,39 @@ Este registro guarda as **decisões de tecnologia** do Horus v2, cada uma com qu
 | `ARQ-092` | A produção real do SaaS roda numa nuvem pública, com Kubernetes ou algo do tipo; a construção da v2 entrega na VPS de hoje | ✅ | Dono | Geral |
 | `ARQ-093` | Na produção real, o Horus roda num Kubernetes gerenciado de uma nuvem pública, com o Postgres gerenciado da mesma nuvem, na região de São Paulo; na construção, num minikube na VPS de hoje | ✅ | Dono | Geral |
 | `ARQ-094` | Toda instância roda a mesma imagem de container, compilada uma vez, e o mesmo chart do Helm; o que muda entre instâncias é só a configuração e o estado | 🟢 | Arquiteto | Geral |
-| `ARQ-095` | Os dois papéis rodam em duas réplicas ou mais: o que precisa valer em todas mora no Postgres, o que só acelera fica em cada uma, e a fila reparte o trabalho entre as organizações, com prioridade para quem espera | 🟢 | Arquiteto | Geral |
+| `ARQ-095` | Os dois papéis rodam em duas réplicas ou mais: o que precisa valer em todas mora no Postgres, o que só acelera fica em cada uma, e a fila reparte o trabalho entre as organizações, com prioridade para quem espera | 🟢, em parte substituída pela `ARQ-098` | Arquiteto | Geral |
 | `ARQ-096` | A solução não fica presa a uma nuvem: o chart, o banco, a fila, os segredos, a entrada e a telemetria usam só o que roda igual em qualquer Kubernetes e em qualquer Postgres 17, e a saída se prova | ✅ | Dono | Geral |
+| `ARQ-097` | A história mora num banco de log do próprio Postgres, uma tabela tipada por entidade e só de inclusão; o banco transacional guarda só o estado de hoje | ✅ | Dono | `MF-101` (e as mfs que entrarem no log) |
+| `ARQ-098` | O servidor do SaaS é um só, sem réplicas; o que pode existir em infraestruturas diferentes é o middleware | ✅ | Dono | Geral |
+| `ARQ-099` | O contrato entre o SaaS e o middleware é gRPC; o servidor MCP não é peça dele | ✅ | Dono | `MF-121` |
+| `ARQ-100` | O middleware sobe com um docker compose, a partir da mesma imagem, na Maind e na casa do cliente | ✅ | Dono | `MF-121` |
+| `ARQ-101` | O SaaS também sobe com docker compose, a partir da imagem compilada uma vez; o Kubernetes gerenciado e o chart saem | ✅ | Dono | Geral |
+| `ARQ-102` | A sessão da pessoa carrega só o identificador da organização; o SaaS guarda o endereço, a porta e a chave pública de cada middleware no Registro de organizações | ✅ | Dono | `MF-121` |
+| `ARQ-103` | O middleware guarda todas as organizações numa base só, separadas pela marca da organização e por um filtro | ✅ | Dono | `MF-121` |
+| `ARQ-104` | Com o middleware da organização fora do ar, a pessoa vê um aviso próprio, com a causa e a hora, e não um erro | ✅ | Dono | `MF-121` |
+| `ARQ-105` | O owner vê, dentro do Horus, uma tela com o status do middleware da organização, além do administrador da instância no painel | ⚪ (`ARQ-106`) | Dono | `MF-121` |
+| `ARQ-106` | A página de status do middleware fica no endereço da organização, sem login, e o SaaS a responde sozinho; a tela dentro do Horus sai | ✅ | Dono | `MF-121` |
+| `ARQ-107` | A tela de entrada mostra um LED com o status do middleware: verde (no ar), amarelo (instável) e vermelho (fora do ar), sempre com texto | ✅ | Dono | `MF-121` |
+| `ARQ-108` | A rodada de um agendamento, alerta ou agente que cai com o middleware fora espera até uma hora: se ele volta, roda uma vez, atrasada; senão, é pulada | ✅ | Dono | `MF-121` |
+| `ARQ-109` | O SaaS guarda de cada pessoa só um código, sem nome nem e-mail; o nome vem do middleware na hora de mostrar | ✅ | Dono | `MF-121` |
+| `ARQ-110` | O primeiro acesso do owner é um link de uso único, gerado pelo middleware e entregue pela Maind por fora | ✅ | Dono | `MF-121` |
+| `ARQ-111` | A mecânica de login é configuração da organização no módulo do middleware: na v2.0, usuário e senha e Google; o OpenID Connect entra na v2.1 | ✅ | Dono | `MF-121` |
+| `ARQ-112` | Na produção real, o SaaS e o middleware da Maind passam a Kubernetes gerenciado com réplicas; até lá, uma VPS com docker compose | ✅ | Dono | Geral |
+| `ARQ-113` | O código da v2.0 nasce preparado para réplicas, e a imagem é a mesma em toda fase: o que muda é a implantação | ✅ | Dono | Geral |
+| `ARQ-114` | O SaaS fala com a versão atual do middleware e com a anterior; uma versão mais velha é recusada, com aviso | ✅ | Dono | `MF-121` |
+| `ARQ-115` | No docker compose, os segredos seguem a ARQ-044: o CD grava o arquivo de ambiente da máquina, que o compose lê | 🟢 | Arquiteto | Geral |
+| `ARQ-116` | A guarda de rede fica no middleware (a de hoje na Maind; a lista da TI na casa do cliente); as saídas extras são interruptores da organização | 🟢 | Arquiteto | `MF-121` |
+| `ARQ-117` | O uso e o custo da IA chegam do middleware ao SaaS só como contagem; o owner os vê no Horus | 🟢 | Arquiteto | `MF-121` |
+| `ARQ-118` | Os e-mails do Horus saem do SaaS, pelo e-mail do produto; o middleware entrega o endereço só na hora do envio, e o SaaS não o grava | ✅ | Dono | `MF-121` |
+| `ARQ-119` | Do middleware na casa do cliente, a Maind vê só o que o SaaS mede, e o diagnóstico é um pacote que o cliente gera e envia sob pedido | ✅ | Dono | `MF-121` |
+| `ARQ-120` | Quando uma rodada é pulada com o middleware fora do ar, só o dono do agendamento é avisado, na área de avisos do Horus | ✅ | Dono | `MF-121` |
+| `ARQ-121` | O SaaS guarda o histórico das quedas do middleware por noventa dias | ✅ | Dono | `MF-121` |
+| `ARQ-122` | Sem meta de disponibilidade na VPS; na produção real, 99,9% por mês para o SaaS e para o middleware da Maind | ✅ | Dono | Geral |
+| `ARQ-123` | O SaaS guarda por código da pessoa o tipo de assento, as permissões e os grupos, sem nomes; o middleware os envia a cada mudança | ✅ | Dono | `MF-121` |
+| `ARQ-124` | O vínculo se faz pela criação da organização: certificado e chave de instalação, arquivo assinado de volta e handshake; na Maind, sem passo manual | 🟢 | Arquiteto | `MF-121` |
+| `ARQ-125` | A exclusão de uma organização apaga as linhas e a chave dela no middleware, repetida até confirmar; a cópia da base segue a ARQ-086 | 🟢 | Arquiteto | `MF-121` |
+| `ARQ-126` | O que a TI do cliente precisa para rodar o middleware: uma máquina com Docker, o endereço liberado só ao SaaS, a saída aos bancos e à IA, e os segredos | 🟢 | Arquiteto | `MF-121` |
+| `ARQ-127` | O SaaS e o middleware da Maind sobem em projetos, redes e bancos separados; só o contrato os liga | 🟢 | Arquiteto | Geral |
 
 ## Decisões
 
@@ -360,6 +391,7 @@ Situação: ✅ confirmada pelo dono em 03/11/2026, com a opção 2 (a recomenda
 **Nota de 03/11/2026:** a opção 1 citava a volta da `ARQ-015` (15 minutos e 4 horas); com a cópia fora do Horus (`ARQ-086`), a volta numa pane é a da cópia que a infra da instância configurar. A proposta é a mesma.
 **Nota de 03/11/2026 (2):** nenhuma instância de hoje é produção real: são todas de teste (o dono, em 03/11/2026, na `ARQ-056`). A meta vale a partir da primeira produção real, e a decisão foi para o M7 na fila do dono. A proposta é a mesma.
 **Nota de 03/11/2026 (3):** a produção real roda numa nuvem pública, com Kubernetes ou algo do tipo (`ARQ-092` ✅): as duas máquinas e o banco replicado vêm da plataforma, e não de um roteiro próprio. A decisão é a mesma.
+**Nota de 07/11/2026:** a `ARQ-098` ✅ põe o servidor do SaaS como um só, sem réplicas: as duas máquinas saem e a meta de 99,9% por mês deixa de valer. Uma meta nova, se o dono a quiser, é decisão nova. A decisão fica como o registro da meta anterior.
 
 ### ARQ-015 · Perder no máximo 15 minutos de dados e voltar ao ar em até 4 horas
 Situação: ⚪ substituída pela `ARQ-086` em 03/11/2026 (era 🟡, proposta ao dono) · Data: 02/11/2026 · Alcance: geral
@@ -906,6 +938,7 @@ Situação: 🟢 decidida pelo arquiteto · Data: 02/11/2026 · Alcance: `MF-102
 **Por que esta:** o segredo fica com quem opera a instância. Abre-se mão de um Google pronto no contratante.
 **Consequências:** documento 08 (3.6); a segunda VPS de hoje, sem domínio, não tem o Google, e ganha domínio na v2.0 (`ARQ-058`); documento 10 (a troca do segredo do Google).
 **Reabrir quando:** o Google mudar as regras do cliente OAuth, ou um cliente pedir o Google sem domínio próprio.
+**Nota de 08/11/2026:** a `ARQ-111` ✅ faz do login uma configuração da organização no módulo do middleware; o Google passa a ser um mecanismo que o owner liga ou desliga, e o cliente OAuth de quem opera segue como o padrão. A decisão é a mesma.
 
 ### ARQ-054 · O login corporativo da v2.1 é OpenID Connect, um por organização; SAML só com decisão nova
 Situação: ✅ confirmada pelo dono em 05/11/2026, com a opção 1, a recomendada (`D-184`) · Data: 02/11/2026 · Alcance: `MF-106` (etapa 2)
@@ -1034,6 +1067,7 @@ Situação: 🟡 proposta ao dono · Data: 02/11/2026 · Alcance: `MF-104`, `MF-
 **Consequências:** M10; documento 09 (3.8, a lista do que o contratante fornece); documento 10 (a atualização com e sem o acesso da Maind, as cópias no lugar da empresa); documento 11 (a observabilidade dentro do contratante, que só sai com a permissão dele); documento 12 (a imagem provada num Kubernetes sem saída); a `P-016`; sem um endereço HTTPS público para as notificações da Meta, o contratante fica sem o WhatsApp.
 **Reabrir quando:** o primeiro contratante recusar o Kubernetes, inclusive o de um nó, ou a `P-016` pedir uma peça que o chart não traga.
 **Nota de 03/11/2026:** com o SaaS no Kubernetes (`ARQ-093` ✅), a proposta se refez sobre a mesma imagem e o mesmo chart (`ARQ-094`): era o mesmo pacote numa máquina Linux, pelo systemd, e a opção do orquestrador estava fora por não estar na stack. O "Reabrir quando" de antes (o primeiro contratante exigir containers, "e então o SaaS também passa a eles") aconteceu pelo lado do SaaS.
+**Nota de 08/11/2026:** a instalação completa no cliente segue sem objeto (`D-188`); o que vai ao cliente é o middleware, que sobe com docker compose a partir da mesma imagem (`ARQ-100` ✅), e não sobre o chart. A decisão é a mesma.
 
 ### ARQ-061 · A publicação instala o pacote do CI, e a produção só aceita o pacote que a homologação registrou
 Situação: 🟢 decidida pelo arquiteto · Data: 02/11/2026 · Alcance: geral
@@ -1079,6 +1113,7 @@ Situação: 🟢 decidida pelo arquiteto · Data: 02/11/2026 · Alcance: geral
 **Consequências:** documento 10 (3.4); documento 05 (o estado do agente gravado a cada volta); documento 12 (o teste da troca com trabalho em curso); documento 11 (a idade da fila durante a troca).
 **Reabrir quando:** a drenagem passar do tempo que a troca tolera, ou o papel "atender" ganhar mais de um processo (`ARQ-021`).
 **Nota de 03/11/2026:** no Kubernetes (`ARQ-094`), a drenagem é o tempo de encerramento de cada réplica — dois minutos no "trabalhar" e um no "atender" 🔎 —, e a réplica nova fica pronta antes de a velha sair. A decisão é a mesma.
+**Nota de 07/11/2026:** com um servidor só (`ARQ-098` ✅), não há réplica nova pronta antes de a velha sair: a drenagem é a mesma, e o SaaS fica fora do ar durante ela e a subida. A decisão é a mesma.
 
 ### ARQ-064 · As cópias de segurança ficam no próprio provedor das VPS, fora da máquina do Horus, e a volta se ensaia a cada trimestre
 Situação: ⚪ substituída pela `ARQ-086` em 03/11/2026 (era ✅, confirmada pelo dono no mesmo dia, com a opção 2; a recomendação do arquiteto era a opção 1) · Data: 02/11/2026 · Alcance: geral
@@ -1560,7 +1595,7 @@ Situação: ✅ confirmada pelo dono em 03/11/2026 · Data: 03/11/2026 · Alcanc
 **Nota de 03/11/2026:** a forma ficou com a `ARQ-093` ✅ (o Kubernetes gerenciado e o Postgres gerenciado, com o minikube na construção), e o pacote e o papel "atender" se refizeram como `ARQ-094` e `ARQ-095`.
 
 ### ARQ-093 · Na produção real, o Horus roda num Kubernetes gerenciado de uma nuvem pública, com o Postgres gerenciado da mesma nuvem, na região de São Paulo; na construção, num minikube na VPS de hoje
-Situação: ✅ confirmada pelo dono em 03/11/2026, com a opção 2 (a recomendação do arquiteto era a 1) · Data: 03/11/2026 · Alcance: geral
+Situação: ✅ confirmada pelo dono em 03/11/2026, com a opção 2 (a recomendação do arquiteto era a 1), em parte substituída pela `ARQ-101` ✅ (sai o Kubernetes gerenciado; ficam o Postgres gerenciado e a região) · Data: 03/11/2026 · Alcance: geral
 **Quem decide:** dono (infraestrutura, fornecedor e custo). A premissa é a `ARQ-092` ✅.
 **Decisão:** a produção real roda num Kubernetes gerenciado — o EKS da AWS, o GKE do Google Cloud ou o AKS do Azure, a nuvem pela comparação de preço da V-19 🔎 —, com os dois papéis, "atender" e "trabalhar", como dois conjuntos de réplicas da mesma imagem, cada um com pelo menos duas réplicas em zonas diferentes (`ARQ-094`, `ARQ-095`). O banco mestre e os bancos das organizações (`ARQ-010`) ficam no Postgres gerenciado da mesma nuvem, com a réplica noutra zona e a troca automática dela. Tudo na região de São Paulo. A Maind opera o cluster: as atualizações de versão do Kubernetes, a entrada do tráfego, os certificados e os grupos de máquinas. Durante a construção, as instâncias da v2 na VPS de hoje rodam num minikube, com a mesma imagem e o mesmo chart da produção; o Postgres da VPS fica fora do minikube, como o gerenciado fica fora do cluster na nuvem, e a v1.xx continua como está até a v2.0 subir.
 **Atende a:** O1, O4, O8; `D-017`, `D-107`; `ARQ-010`, `ARQ-014`, `ARQ-055`, `ARQ-056`, `ARQ-060`, `ARQ-086`, `ARQ-092`.
@@ -1580,9 +1615,11 @@ Situação: ✅ confirmada pelo dono em 03/11/2026, com a opção 2 (a recomenda
 **Reabrir quando:** operar o cluster pesar mais que o tempo do time, ou a nuvem escolhida não sustentar os 99,9% com o Postgres gerenciado.
 **Nota de 03/11/2026:** proposta com a opção 1 e confirmada pelo dono com a opção 2, com o minikube na VPS durante a construção; o título, a decisão e o porquê foram refeitos pela escolha.
 **Nota de 03/11/2026 (2):** o Postgres gerenciado vale enquanto for o PostgreSQL 17 padrão, sem extensão nem login próprios da nuvem, e a entrada e o certificado são do cluster (`ARQ-096` ✅). A decisão é a mesma.
+**Nota de 07/11/2026:** a `ARQ-098` ✅ tira as réplicas: o Horus roda como um servidor só no Kubernetes gerenciado, e não mais como dois conjuntos de réplicas em zonas diferentes. O Kubernetes gerenciado, o Postgres gerenciado e a região seguem como estão.
+**Nota de 08/11/2026:** a `ARQ-101` ✅ tira o Kubernetes: o SaaS sobe com docker compose, a partir da imagem dele, como o middleware sobe da imagem dele. O Postgres gerenciado, a região de São Paulo e a nuvem pública da produção real (`ARQ-092`) seguem como estão.
 
 ### ARQ-094 · Toda instância roda a mesma imagem de container, compilada uma vez, e o mesmo chart do Helm; o que muda entre instâncias é só a configuração e o estado
-Situação: 🟢 decidida pelo arquiteto · Data: 03/11/2026 · Alcance: geral · Substitui a `ARQ-057`
+Situação: 🟢 decidida pelo arquiteto, em parte substituída pela `ARQ-101` ✅ (sai o chart do Helm; fica a imagem compilada uma vez) · Data: 03/11/2026 · Alcance: geral · Substitui a `ARQ-057`
 **Quem decide:** arquiteto (qualidade interna, dentro da `ARQ-093` ✅ do dono). Como se publica é do documento 10.
 **Decisão:** o CI compila o servidor, com o runtime do .NET, e o front uma vez por versão, e monta uma imagem de container com eles, o Chromium da versão do Playwright, as bibliotecas e as fontes do sistema, as migrações e o semeador (`ARQ-089`); a imagem tem identidade (o commit e o digest) e fica no registro de imagens do GitHub. A descrição da publicação é um chart do Helm, na mesma versão da imagem: os dois papéis como dois conjuntos de réplicas da mesma imagem, o "atender" atrás da entrada do cluster e o "trabalhar" sem entrada de fora; o passo das migrações (`ARQ-062`) como uma tarefa que roda antes da troca; e o front servido pelo "atender". O mesmo chart roda no minikube da VPS, no Kubernetes gerenciado da produção real e, na v2.1, no do contratante. O que muda entre instâncias é a configuração, num arquivo de valores por instância (o domínio, o modo "com serviços externos" ou "tudo dentro", o número de réplicas, as fontes do arquivo); os segredos, nos Secrets do Kubernetes, gravados pelo CD a partir dos do GitHub (`ARQ-044`); e o estado, que não mora nos pods: os bancos e o anel de chaves, guardado no banco mestre e cifrado pelo certificado (`ARQ-087`). A chave nova do anel nasce na tarefa das migrações, e as réplicas só leem. Daqui em diante, "o pacote" nestes documentos é essa dupla: a imagem e o chart.
 **Atende a:** O2, O8; `D-017`, `D-010`; `ARQ-003`, `ARQ-004`, `ARQ-044`, `ARQ-061`, `ARQ-087`, `ARQ-093`.
@@ -1598,10 +1635,13 @@ Situação: 🟢 decidida pelo arquiteto · Data: 03/11/2026 · Alcance: geral �
 - O contratante sem internet recebe a imagem como arquivo, conferida pelo digest; a imagem se prova num Kubernetes sem saída antes do M10 (documento 12).
 - Documento 09 (3.3 e 3.5); documento 10 (3.2 a 3.4); documento 12.
 **Reabrir quando:** uma instância precisar de um código que as outras não tenham, o que contrariaria a `D-017`, ou um contratante não puder rodar o Helm.
+**Nota de 08/11/2026:** o chart volta, só para a produção real, com o Kubernetes gerenciado (`ARQ-112` ✅); na fase da VPS (a v2.0), o SaaS sobe com docker compose (`ARQ-101`).
 **Nota de 03/11/2026:** o chart usa só os recursos padrão do Kubernetes, e o que é de cada nuvem mora só no arquivo de valores da instância (`ARQ-096` ✅). A decisão é a mesma.
+**Nota de 08/11/2026:** o chart do Helm passa a valer só para o SaaS: o middleware sobe com um docker compose, a partir da mesma imagem (`ARQ-100` ✅). A imagem compilada uma vez continua valendo para os dois.
+**Nota de 08/11/2026 (2):** a `ARQ-101` ✅ tira também o chart do SaaS: nada mais sobe por chart. A imagem compilada uma vez continua valendo para o SaaS e para o middleware.
 
 ### ARQ-095 · Os dois papéis rodam em duas réplicas ou mais: o que precisa valer em todas mora no Postgres, o que só acelera fica em cada uma, e a fila reparte o trabalho entre as organizações, com prioridade para quem espera
-Situação: 🟢 decidida pelo arquiteto · Data: 03/11/2026 · Alcance: geral · Substitui a `ARQ-021`
+Situação: 🟢 decidida pelo arquiteto, em parte substituída pela `ARQ-098` ✅ (sai a parte das réplicas; fica a regra da fila) · Data: 03/11/2026 · Alcance: geral · Substitui a `ARQ-021`
 **Quem decide:** arquiteto (a capacidade no código). Onde cada papel roda é do dono (`ARQ-093` ✅).
 **Decisão:** na produção real, o "atender" e o "trabalhar" rodam com pelo menos duas réplicas cada, em zonas diferentes; a homologação roda duas do "atender", para provar o que a produção roda. O que precisa valer em qualquer réplica passa pelo Postgres: a parada de uma resposta e a geração nova da mesma conversa, que hoje cancelam a transmissão na memória do processo (`horus@318db52b:apps/server/Horus.Core/Chat/StreamRegistry.cs`), chegam à réplica que transmite por um aviso do Postgres (o `NOTIFY`), sem gravação; os limites de taxa — a entrada, a recuperação de senha, as mensagens por pessoa e por organização, o teste de credencial —, que hoje contam na memória (`horus@318db52b:apps/server/Horus.Api/Program.cs`, `AddRateLimiter`), contam no banco mestre, por janela, com a chave resumida e sem conteúdo; e o anel de chaves fica no banco mestre (`ARQ-094`). O que só acelera fica em cada réplica: o cache do resumo das fontes, invalidado pela versão da fonte. O que é do pod fica no pod: os tokens de renderização, servidos no loopback ao Chromium do mesmo pod (`horus@318db52b:apps/server/Horus.Core/Relatorios/TokensDeRenderizacao.cs`). A transmissão fica na réplica que a abriu; se essa réplica cai, a resposta fica gravada como interrompida (`ARQ-029`), como na troca de versão (`ARQ-063`). Nenhum serviço supõe rodar sozinho: o que não pode rodar em dobro pega a vez no banco, como a reivindicação da agenda de hoje. A fila entrega o trabalho a todas as réplicas do "trabalhar" com concorrência limitada por organização e por tipo, e o que alguém espera (o turno e a imagem do WhatsApp) passa à frente do que roda em lote (agendamentos, agentes, PDFs e envios).
 **Atende a:** O1, O4; `D-098` e a leitura `D-098.3`, `D-122`; `ARQ-004`, `ARQ-005`, `ARQ-014`, `ARQ-016`, `ARQ-093`.
@@ -1614,6 +1654,8 @@ Situação: 🟢 decidida pelo arquiteto · Data: 03/11/2026 · Alcance: geral �
 - A `ARQ-021` passa a ⚪.
 - Documento 04 (3.4: o que cada papel roda e onde mora o que ele guarda); documento 09 (as réplicas de cada papel); documento 11 (as medidas da fila, por réplica); documento 12 (o componente diz se o estado dele é de todas as réplicas ou só da dele, e a homologação roda duas do "atender").
 **Reabrir quando:** a gravação dos limites pesar no Postgres, ou o uso passar da metade do envelope da `ARQ-016`.
+**Nota de 08/11/2026:** a `ARQ-113` ✅ restaura o que esta decisão pôs para valer em todas as réplicas (a parada de uma resposta, pelo aviso do Postgres, e os limites de taxa, no banco), que a `ARQ-098` tinha tirado.
+**Nota de 07/11/2026:** a `ARQ-098` ✅ substitui a parte das réplicas: sai a regra das duas réplicas por papel, e o que valia em todas pelo Postgres (a parada da resposta, os limites de taxa e o cache) volta à memória do processo. Fica a regra da fila: vez por organização e prioridade para quem espera.
 
 ### ARQ-096 · A solução não fica presa a uma nuvem: o chart, o banco, a fila, os segredos, a entrada e a telemetria usam só o que roda igual em qualquer Kubernetes e em qualquer Postgres 17, e a saída se prova
 Situação: ✅ confirmada pelo dono em 03/11/2026 (o princípio é dele; as regras que o cumprem, do arquiteto) · Data: 03/11/2026 · Alcance: geral
@@ -1641,6 +1683,7 @@ Situação: ✅ confirmada pelo dono em 03/11/2026 (o princípio é dele; as reg
 - Um teste no CI recusa, no chart, um recurso fora da lista padrão do Kubernetes e, no código, uma biblioteca própria de uma nuvem (documento 12).
 - Documentos 01, 09, 10, 12 e 13.
 **Reabrir quando:** um serviço próprio de uma nuvem trouxer um ganho que o dono queira pagar com a amarra.
+**Nota de 08/11/2026:** com o docker compose (`ARQ-101` ✅), a portabilidade vale para qualquer máquina com Docker e Postgres 17, e não mais para qualquer Kubernetes. O princípio é o mesmo.
 
 ### ARQ-097 · A história mora num banco de log do próprio Postgres, uma tabela tipada por entidade e só de inclusão; o banco transacional guarda só o estado de hoje
 Situação: ✅ confirmada pelo dono em 05/11/2026 (a direção, proposta por ele em conversa; a retenção e a fonte do Horus, ao seguir as recomendações) · Data: 05/11/2026 · Alcance: `MF-101` (e as mfs que entrarem no log)
@@ -1654,3 +1697,489 @@ Situação: ✅ confirmada pelo dono em 05/11/2026 (a direção, proposta por el
 **Por que esta:** o dono quis que a estrutura permita replicar a história e apontar para um momento do tempo, fora do banco transacional, e que o próprio Horus a consulte. Abre-se mão de uma tabela só e da gravação imediata.
 **Consequências:** documento 06 (o que se guarda: o banco de log; a `ARQ-088` perde o "teto copiado" e a soma dos assentos); `ARQ-035` ganha a retenção do log e a `ARQ-037`, o apagador; documentos 09 e 10 (mais um banco: login, migrações no passo da publicação e cópia junto do cluster); documento 11 (a idade do pedido mais antigo na caixa de saída vira métrica e alerta); documento 12 (os testes de paridade e de replay); documento 07 (o nome na dimensão de pessoas é dado pessoal e entra no inventário da `ARQ-045`); a guarda de rede ganha a exceção para o banco de log; a `MF-102` passa a ter o tipo de assento do membro como o do assento que ele ocupa. O modelo de dados está em `v2/src/backend/docs/modelo-de-dados/mf-101-gestao-da-instancia.md`.
 **Reabrir quando:** entrarem assuntos de alto volume (o rastro tem 10 mil registros por dia), os formatos variarem tanto que a tabela tipada vire peso, ou o Planejador errar a pergunta sobre o log com frequência.
+**Nota de 08/11/2026:** a `ARQ-109` ✅ revê esta decisão em parte: a dimensão de pessoas do banco de log guarda só o código da pessoa, e nunca o nome (`D-261`, `D-274`). O resto, a direção do banco de log, a retenção e a fonte do Horus, fica como está.
+
+### ARQ-098 · O servidor do SaaS é um só, sem réplicas; o que pode existir em infraestruturas diferentes é o middleware
+Situação: ✅ confirmada pelo dono em 07/11/2026, com a opção 2 (a recomendação do arquiteto era a opção 1) · Data: 07/11/2026 · Alcance: geral · Substitui em parte a `ARQ-095` e a `ARQ-014`
+**Quem decide:** dono (infraestrutura, disponibilidade e custo de operação).
+**Decisão:** o servidor do Horus no SaaS é **um só**: o mesmo executável, nos dois papéis, atender e trabalhar (`ARQ-004`), numa instância única, **sem réplicas**. Sai da `ARQ-095` a parte das réplicas (duas ou mais por papel, em zonas diferentes) e da `ARQ-014`, as duas máquinas: **a meta de 99,9% por mês deixa de valer**, e uma meta nova, se o dono a quiser, é decisão nova. Fica da `ARQ-095` a regra da fila: o trabalho se reparte entre as organizações, com vez por organização e prioridade para quem espera. O que pode existir em infraestruturas físicas diferentes é o **middleware**, na da Maind ou na de cada cliente (`D-258`, `D-260`, `D-272`). O banco gerenciado, o Kubernetes gerenciado e a nuvem seguem como a `ARQ-093` e a `ARQ-096` os definem.
+**Atende a:** `D-188` (o Horus roda sempre no SaaS) e `D-258` (o rascunho do dono, com o SaaS e o middleware em infraestruturas separadas); `ARQ-004`, `ARQ-005`, `ARQ-093`.
+**Opções:**
+1. **Um só, com o código pronto para réplicas** (a recomendação do arquiteto). ✅ O que a `ARQ-095` pôs no código continua, sem custo, e as duas réplicas se ligam quando um cliente exigir disponibilidade. ⚠️ Cada versão nova e cada falha da máquina derrubam o SaaS por um tempo, e a meta de 99,9% fica adiada.
+2. **Um só, e pronto.** **Escolhida pelo dono.** ✅ A arquitetura fica mais simples: sem aviso do Postgres para parar a resposta, sem limites de taxa contados no banco e sem cache por réplica. ⚠️ A meta de 99,9% sai, e voltar a ter réplicas depois é retrabalho.
+3. **Manter duas réplicas por papel** (a `ARQ-093` ✅ e a `ARQ-095`). ✅ Cumpre os 99,9% e troca a versão sem tirar o SaaS do ar. ⚠️ Mais peças e mais custo, e não é o que o dono rascunhou (`D-258`).
+**Por que esta:** a escolha do dono, em 07/11/2026, ao ver o desenho da infraestrutura separada: o servidor do SaaS é um só. Abre-se mão da disponibilidade de 99,9% e de atualizar o SaaS sem tirá-lo do ar.
+**Consequências:**
+- O que a `ARQ-095` pôs no Postgres para valer em todas as réplicas, a parada de uma resposta, os limites de taxa e o cache, volta à memória do processo, como na v1.xx (decisão do arquiteto, 🟢); o aviso do Postgres (o `NOTIFY`) e a contagem dos limites no banco mestre deixam de ser necessários. Continua no banco o que precisa durar: a fila e a caixa de saída (`ARQ-005`) e o anel de chaves, cifrado (`ARQ-087`).
+- A troca de versão (`ARQ-063`) segue drenando o trabalho em curso e devolvendo o resto à fila, mas, com um servidor só, não há réplica nova pronta antes de a velha sair: o SaaS fica fora do ar durante a drenagem (🔎 até dois minutos) e a subida; o mesmo vale para a falha da máquina. A sonda de fora (`ARQ-070`) segue medindo.
+- Documento 03 (a meta de disponibilidade), documento 09 (as réplicas e as zonas), documento 10 (a troca de versão sem corte), documento 11 (as medidas por réplica), documento 12 (a homologação roda duas do "atender") e documento 13 (o custo de uma réplica a menos) ainda falam de duas réplicas: ficam a refazer pela `P-028`.
+- Como o SaaS e o middleware sobem, em Kubernetes e chart ou no "docker compose" que o dono citou, segue em aberto (`P-048`).
+**Reabrir quando:** um contrato exigir disponibilidade que um servidor só não dê, uma queda custar um cliente, ou a troca de versão passar do tempo fora do ar que os clientes toleram.
+**Nota de 08/11/2026:** a meta de disponibilidade, que esta decisão tirou e deixava em aberto, foi decidida na `ARQ-122` ✅: sem meta na VPS e 99,9% por mês na produção real.
+**Nota de 08/11/2026:** a `ARQ-113` ✅ devolve ao código da v2.0 o que esta decisão tinha posto na memória do processo (a parada de uma resposta e os limites de taxa): ele nasce preparado para réplicas, mesmo com um servidor só.
+**Nota de 08/11/2026:** a `ARQ-112` ✅ limita esta decisão à fase da VPS (a construção, a homologação e a v2.0): na produção real, o SaaS passa a Kubernetes gerenciado com réplicas. Até lá, vale como está.
+
+### ARQ-099 · O contrato entre o SaaS e o middleware é gRPC; o servidor MCP não é peça dele
+Situação: ✅ confirmada pelo dono em 07/11/2026, com a opção 1 (a recomendação do arquiteto) · Data: 07/11/2026 · Alcance: geral (`MF-121`)
+**Quem decide:** arquiteto (o protocolo, `P-042`); o dono o confirmou ao tirar o servidor MCP do rascunho dele.
+**Decisão:** o contrato entre o SaaS e o middleware é **gRPC**: a pergunta e os assentos liberados, de ida; a resposta pronta, a contagem de uso de IA e o estado e a versão do middleware, de volta. O **servidor MCP com ferramentas** do rascunho do dono (`D-258`) **sai do desenho do middleware**: não é peça do contrato. Servidores MCP voltam como funcionalidade da organização, que os cadastra no middleware e os mantém na infraestrutura dela (`D-281`).
+**Atende a:** `D-189`, `D-196` (o protocolo ficou em aberto, gRPC de preferência), `D-258`, `D-267`, `D-275`, `D-281`; `P-042`.
+**Opções:**
+1. **Só gRPC** (recomendada, escolhida). ✅ O contrato é tipado e descreve cada chamada, a resposta pode chegar em pedaços, como a conversa pede, e roda no mesmo .NET da stack (`ARQ-001`). ⚠️ O contrato vira um arquivo de definição a manter nos dois lados.
+2. **Um servidor MCP com as ferramentas** (o rascunho do dono). ✅ Um padrão conhecido para um modelo de IA chamar ferramentas. ⚠️ Foi pensado para um modelo chamar ferramentas, e não para o SaaS chamar um serviço; mistura dois papéis num canal só.
+3. **API REST.** ✅ A mais simples de montar. ⚠️ O contrato não é tipado, e a resposta em pedaços pede um canal a mais.
+**Por que esta:** a escolha do dono, em 07/11/2026, ao tirar o servidor MCP do desenho: o contrato é gRPC. Abre-se mão de falar com o middleware pelo mesmo protocolo que um modelo usa para chamar ferramentas.
+**Consequências:** os diagramas da arquitetura geral e o documento 01 tiram o servidor MCP e as ferramentas do middleware; a `P-042` perde o protocolo (restam o endereço, o par de chaves, a rotação, a guarda de rede, a atualização e o middleware fora do ar); os documentos 04, 05 e 08 ainda descrevem o contrato sem protocolo e ficam pela `P-028`.
+**Reabrir quando:** o middleware precisar falar com o SaaS por mais de uma via, ou o gRPC não passar pela rede de um cliente (o bloqueio por IP e porta, `D-190`).
+**Nota de 08/11/2026:** do "middleware fora do ar", que restava da `P-042`, o que a pessoa vê já está decidido (`ARQ-104` ✅); resta o que o Horus faz com o que roda sozinho e como o SaaS mede o estado.
+
+### ARQ-100 · O middleware sobe com um docker compose, a partir da mesma imagem, na Maind e na casa do cliente
+Situação: ✅ confirmada pelo dono em 08/11/2026, com a opção 1 (a recomendação do arquiteto) · Data: 08/11/2026 · Alcance: geral (`MF-121`)
+**Quem decide:** dono (infraestrutura e o que a TI do cliente precisa ter).
+**Decisão:** o middleware é instalado **com um arquivo docker compose, a partir de uma imagem de container só**, tanto na hospedagem da Maind quanto na casa do cliente (`D-258`, `D-260`, `D-272`). O SaaS não muda por esta decisão: o chart do Helm e o Kubernetes gerenciado da `ARQ-093` e da `ARQ-094` seguem valendo para ele.
+**Atende a:** `D-190`, `D-195`, `D-258`, `D-260`, `D-272`; `ARQ-094`, `ARQ-099`.
+**Opções:**
+1. **Docker compose, com a mesma imagem** (recomendada, escolhida). ✅ É o que a TI do cliente instala sem montar um Kubernetes; a mesma imagem roda na Maind e no cliente; é o que o rascunho do dono mostra. ⚠️ O middleware tem um jeito de instalar à parte do SaaS; a troca da imagem, a cópia da base de configuração e o reinício ficam por conta de quem hospeda, sem o que o Kubernetes dá pronto.
+2. **O mesmo chart do SaaS, em Kubernetes.** ✅ Um jeito só de instalar tudo. ⚠️ A TI do cliente precisa ter ou montar um Kubernetes só para o middleware.
+**Por que esta:** a escolha do dono, em 08/11/2026: o middleware precisa ser instalável por qualquer TI. Abre-se mão de um jeito único de instalar tudo (`ARQ-094`).
+**Consequências:** a `ARQ-094` passa a valer só para o SaaS; a `P-048` perde "como o middleware sobe" (resta como o SaaS sobe); a atualização da imagem pelo cliente, a cópia da base de configuração, o reinício e a telemetria do middleware seguem as propostas 1 e 8 do documento 01; o documento 09 ainda descreve o chart único (`P-028`).
+**Reabrir quando:** a TI de um cliente exigir Kubernetes, ou o middleware da Maind precisar de mais de um servidor.
+**Nota de 08/11/2026:** o docker compose segue valendo para o middleware na casa do cliente. Para o middleware da Maind, vale na fase da VPS; na produção real ele passa a Kubernetes gerenciado com réplicas (`ARQ-112` ✅).
+**Nota de 08/11/2026:** a `ARQ-101` ✅ leva o SaaS ao mesmo jeito de subir: o chart não vale mais nem para ele.
+
+### ARQ-101 · O SaaS também sobe com docker compose, a partir da imagem compilada uma vez; o Kubernetes gerenciado e o chart saem
+Situação: ✅ confirmada pelo dono em 08/11/2026, com a opção 1 (a recomendação do arquiteto) · Data: 08/11/2026 · Alcance: geral · Substitui em parte a `ARQ-093` e a `ARQ-094`
+**Quem decide:** dono (infraestrutura e custo de operação).
+**Decisão:** o **servidor do SaaS** (um só, `ARQ-098`) sobe com **docker compose**, a partir da imagem de container dele, compilada uma vez (o middleware sobe da imagem dele, `ARQ-100`: cada um com a sua imagem e o seu arquivo docker compose), numa máquina, com o **Postgres gerenciado** fora dela. **Saem** o Kubernetes gerenciado (`ARQ-093`) e o chart do Helm (`ARQ-094`). **Ficam** o Postgres gerenciado, a região de São Paulo, a imagem compilada uma vez, a nuvem pública da produção real (`ARQ-092`), cuja escolha segue adiada (`ARQ-085`), e a portabilidade (`ARQ-096`).
+**Atende a:** `D-188`, `D-258`; `ARQ-092`, `ARQ-098`, `ARQ-100`.
+**Opções:**
+1. **Docker compose, como o middleware** (recomendada, escolhida). ✅ Um servidor só não precisa de cluster; um jeito só de subir o SaaS e o middleware, como no rascunho do dono; menos peças e menos operação. ⚠️ Reiniciar, trocar a versão e copiar passam a ser da Maind, sem o que o Kubernetes dá pronto (o reinício automático e a troca gradual); a máquina é um ponto único, o que a `ARQ-098` já aceitou.
+2. **Kubernetes gerenciado, como a `ARQ-093`.** ✅ Mantém a decisão de 03/11/2026. ⚠️ Um servidor só num cluster é mais peça do que precisa, e a Maind opera o cluster.
+**Por que esta:** a escolha do dono, em 08/11/2026: um jeito só de subir, o do rascunho dele. Abre-se mão de uma plataforma que reinicia e troca a versão sozinha.
+**Consequências (decididas pelo arquiteto, 🟢):**
+- O minikube da construção (`ARQ-056`, `ARQ-093`) deixa de ser necessário: a construção e a homologação da VPS sobem com o mesmo docker compose da produção.
+- Os segredos deixam de ser os Secrets do Kubernetes (nota da `ARQ-044`): passam a ser os do docker compose 🔎, e como se guardam e se trocam fica para os documentos 07 e 09.
+- Documentos 09 (o cluster, as zonas e o chart), 10 (a troca de versão com a réplica nova pronta e a volta do chart), 11, 12 e 13 (o custo do cluster) ainda descrevem Kubernetes: ficam a refazer pela `P-028`. A `ARQ-085` deixa de contar o cluster.
+- A `P-048` perde o "como o SaaS e o middleware sobem".
+**Reabrir quando:** o SaaS precisar de mais de um servidor (a `ARQ-098` voltar a ter réplicas), ou a Maind passar a operar vários SaaS.
+**Nota de 08/11/2026 (2):** o Postgres gerenciado vale na produção real (`ARQ-093`, `ARQ-112`); na fase da VPS, o Postgres do SaaS segue em container na própria VPS (`ARQ-056`).
+**Nota de 08/11/2026:** os segredos do docker compose, que esta decisão deixava em aberto (🔎), foram decididos na `ARQ-115` 🟢: seguem a `ARQ-044`.
+**Nota de 08/11/2026:** a `ARQ-112` ✅ limita esta decisão à fase da VPS: o Kubernetes gerenciado (`ARQ-093`) e o chart (`ARQ-094`) voltam, só para a produção real. O minikube da construção segue desnecessário.
+
+### ARQ-102 · A sessão da pessoa carrega só o identificador da organização; o SaaS guarda o endereço, a porta e a chave pública de cada middleware
+Situação: ✅ confirmada pelo dono em 08/11/2026, com a opção 1 (a recomendação do arquiteto; o passo 8 do rascunho dele punha o endereço e a porta na sessão) · Data: 08/11/2026 · Alcance: geral (`MF-121`)
+**Quem decide:** dono (segurança e o que passa pelo navegador).
+**Decisão:** o **JWT da sessão** da pessoa carrega **só o identificador da organização**. O **endereço, a porta e a chave pública** do middleware de cada organização ficam no **Registro de organizações**, no SaaS, aprendidos no handshake do certificado (`D-258`); o SaaS acha o middleware certo consultando o registro. Endereço e porta da infraestrutura nunca vão ao navegador.
+**Atende a:** `D-189`, `D-258`, `D-261`, `D-272`; `ARQ-099`, `P-048`.
+**Opções:**
+1. **Só o identificador da organização** (recomendada, escolhida). ✅ O endereço e a porta da casa do cliente não passam pelo navegador, e mudar o endereço de um middleware não invalida sessão. ⚠️ O SaaS passa a guardar o endereço, a porta e a chave pública de cada middleware.
+2. **Endereço, porta, organização e chave pública na sessão** (o passo 8 do rascunho). ✅ O SaaS chega ao middleware sem consultar um registro. ⚠️ O IP e a porta da casa do cliente ficam num token que passa pelo navegador, e trocar o endereço exige novas sessões.
+**Por que esta:** a escolha do dono, em 08/11/2026: nada da infraestrutura no navegador. Abre-se mão de uma sessão que se basta sozinha.
+**Consequências (decididas pelo arquiteto, 🟢):**
+- O Registro de organizações mora no banco mestre, como o resto do que é da instância (`ARQ-088`).
+- A sessão é emitida pelo middleware, que é a autoridade de identidade da organização (`D-258`, `D-261`), e o SaaS a confere com a chave pública da organização guardada no registro.
+- O token no endereço da organização é só um identificador, nunca uma credencial, e não fica nos registros nem no histórico.
+- Segue em aberto: se o login com o Google continua para os membros (`ARQ-053`), já que o owner e o administrador entram sempre por usuário e senha (`D-258`).
+**Reabrir quando:** o SaaS não conseguir consultar o registro a cada pedido sem custo que importe, ou um middleware precisar mudar de endereço com frequência.
+**Nota de 08/11/2026:** o que esta decisão deixava em aberto, se o login com o Google continua para os membros (`ARQ-053`), foi decidido na `ARQ-111` ✅ (o login é configuração da organização no módulo do middleware: Google na v2.0, OpenID Connect na v2.1); o primeiro acesso do owner, na `ARQ-110` ✅.
+
+### ARQ-103 · O middleware guarda todas as organizações numa base só, separadas pela marca da organização e por um filtro
+Situação: ✅ confirmada pelo dono em 08/11/2026, com a opção 2 (a recomendação do arquiteto era a opção 1) · Data: 08/11/2026 · Alcance: geral (`MF-121`)
+**Quem decide:** dono (segurança dos dados).
+**Decisão:** a base de configuração do middleware é **uma só**, para todas as organizações que ele atende (`D-272`): cada linha leva a **marca da organização**, e **um filtro** separa uma da outra.
+**Atende a:** `D-258`, `D-261`, `D-272`, `D-278`; `ARQ-010` (a decisão do SaaS, um banco por organização, que aqui não se repete).
+**Opções:**
+1. **Uma base de configuração por organização, com um login só dela** (a recomendação do arquiteto). ✅ Se uma base vaza ou um filtro falha, as outras não vêm junto; excluir uma organização é apagar a base dela. ⚠️ Mais bases a operar e a copiar no middleware da Maind.
+2. **Uma base só, com a marca da organização e um filtro** (escolhida pelo dono). ✅ Menos bases e menos peças no middleware. ⚠️ Um filtro esquecido numa consulta mistura organizações, e, se a base for invadida, todas vêm juntas.
+**Por que esta:** a escolha do dono, em 08/11/2026: menos peças no middleware. Abre-se mão do isolamento por base que o SaaS tem (`ARQ-010`); o ponto único do middleware da Maind já estava aceito (`D-272`).
+**Consequências:**
+- **Decididas pelo arquiteto (🟢), para cumprir a decisão:** o filtro vale em toda consulta, sem depender de quem a escreve (um filtro global); um teste de isolamento no CI falha se uma consulta lê sem o filtro, como a `ARQ-010` já exige no SaaS, como segunda trava; a exclusão de uma organização apaga só as linhas com a marca dela (`D-278`), e a `P-044` cobre as cópias.
+- **Proposta ao dono (🟡, a recomendação do arquiteto):** cifrar as credenciais dos bancos e da IA com **uma chave por organização**, e não uma só, para que a base invadida não entregue as credenciais de todas. Aguarda o dono.
+**Reabrir quando:** houver um incidente de isolamento, um cliente do SaaS exigir uma base só dele, ou o filtro falhar no teste.
+**Nota de 08/11/2026:** o dono confirmou a proposta (a opção recomendada): as credenciais dos bancos e da IA se cifram com **uma chave por organização**, e excluir uma organização apaga também a chave dela. A decisão é a mesma.
+
+### ARQ-104 · Com o middleware da organização fora do ar, a pessoa vê um aviso próprio, com a causa e a hora, e não um erro
+Situação: ✅ confirmada pelo dono em 08/11/2026, com a opção 1 (a recomendação do arquiteto) · Data: 08/11/2026 · Alcance: geral (`MF-121`)
+**Quem decide:** dono (muda o que a pessoa vê).
+**Decisão:** quando o SaaS não alcança o middleware de uma organização, a **tela de entrada** e o **app**, no lugar das respostas, mostram um **aviso próprio**: a conexão da organização com o Horus está fora do ar desde a hora em que o SaaS deixou de alcançá-la, o restante do Horus segue no ar, a pessoa deve procurar o owner da organização, e há um botão para tentar de novo.
+**Atende a:** `D-154` (a pessoa não conclui que o Horus quebrou), `D-189`, `D-240`, `D-258`, `D-272`, `D-275`; `ARQ-102`.
+**Opções:**
+1. **Aviso próprio, com a causa e a hora** (recomendada, escolhida). ✅ A pessoa não conclui que errou a senha nem que o Horus inteiro quebrou, e quem é chamado é a TI do cliente, e não a Maind. ⚠️ O SaaS precisa saber o estado do middleware (o painel da instância já o mostra, `D-275`).
+2. **A mesma página de manutenção do SaaS** (`D-154`). ✅ Nada novo a construir. ⚠️ A queda não é planejada, então não há "hora de volta"; a pessoa acha que o Horus caiu para todos, e a Maind recebe o chamado de um problema que está na casa do cliente.
+3. **Sem aviso: o erro aparece na hora de usar** (como a v1.xx faz hoje). ✅ Custo zero. ⚠️ O "sintoma que engana" da `D-154`: a pessoa acha que errou a senha ou que o Horus quebrou, e ninguém sabe a quem recorrer.
+**Por que esta:** a escolha do dono, em 08/11/2026, que seguiu a recomendação: a confiança vem de dizer onde está o problema. Abre-se mão de custo zero: o SaaS passa a distinguir a queda do middleware de uma manutenção do SaaS inteiro, que segue a `D-154`.
+**Consequências:**
+- **Decididas pelo arquiteto (🟢), para cumprir a decisão:** o aviso não mostra endereço, porta nem detalhe da infraestrutura (a sessão e o navegador nunca os levam, `ARQ-102`); a hora do aviso é a do último contato bem-sucedido do SaaS com o middleware, o mesmo estado que o painel da instância mostra (`D-275`); na hospedagem da Maind, com um middleware só para todas as organizações do SaaS (`D-272`), a queda alcança todas de uma vez e o aviso aparece para todas; a sessão que já estava aberta segue sendo conferida pelo SaaS (`ARQ-102`), mas toda tela que depende do middleware mostra o aviso.
+- **Proposta ao dono (🟡):** uma **tela no SaaS com o status do middleware**, ideia do dono (08/11/2026). O painel da instância (`MF-101`) já mostra o estado e a versão de cada middleware ao administrador da instância (`D-275`); falta decidir se outra pessoa também a vê.
+- **Segue em aberto no mesmo tema:** o que acontece com o que roda sozinho (os agendamentos e os agentes) enquanto o middleware está fora; e como o SaaS mede o estado do middleware do cliente (`P-042`, `P-048`).
+**Reabrir quando:** a pessoa confundir o aviso com uma queda do Horus inteiro nos testes de uso, ou o middleware cair com tanta frequência que a pessoa precise de acesso parcial ao que o SaaS guarda.
+**Nota de 08/11/2026:** o que esta decisão deixava em aberto, o que acontece com o que roda sozinho, foi decidido na `ARQ-108` ✅ e na `ARQ-120` ✅ (a rodada espera até uma hora e roda atrasada, senão é pulada, e só o dono do agendamento é avisado).
+**Nota de 08/11/2026:** a tela de status do middleware, que esta decisão deixava como proposta ao dono (🟡), foi decidida na `ARQ-105` ✅, que a `ARQ-106` substituiu no mesmo dia: a página de status ficou antes do login.
+
+### ARQ-105 · O owner vê, dentro do Horus, uma tela com o status do middleware da organização, além do administrador da instância
+Situação: ⚪ substituída pela `ARQ-106` em 08/11/2026 (era ✅, confirmada pelo dono no mesmo dia, com a opção 1; a ideia da tela foi do dono) · Data: 08/11/2026 · Alcance: geral (`MF-121`)
+**Quem decide:** dono (muda o que o owner vê e cria um histórico novo que alguém vai consultar).
+**Decisão:** o SaaS tem uma **tela de status do middleware da organização**, na área de administração dela, vista pelo **owner**: se está **no ar ou fora**, **desde quando**, a **versão**, o **último contato** do SaaS e as **últimas quedas** (início, fim e duração). O **administrador da instância** continua vendo o estado e a versão de todas as organizações no painel da instância (`D-275`).
+**Atende a:** `D-240`, `D-258`, `D-272`, `D-275`; `ARQ-102`, `ARQ-104`.
+**Opções:**
+1. **O owner, dentro do Horus** (recomendada, escolhida). ✅ O owner, e a TI do cliente quando o middleware é dela, acompanha a saúde sem abrir chamado, e a Maind não vira o balcão de toda queda. ⚠️ O login mora no middleware, então, com ele fora, o owner não entra e vê só o aviso da `ARQ-104`: a tela serve ao histórico e ao que está no ar.
+2. **Só o administrador da instância, no painel que já existe** (`D-275`). ✅ Nada novo a manter. ⚠️ O owner e a TI do cliente só sabem da queda quando alguém tenta entrar, e o cliente que hospeda o middleware não enxerga o histórico.
+3. **Uma página de estado por organização, aberta, sem login.** ✅ Funciona justamente quando o middleware está fora, porque mora no SaaS. ⚠️ Reabre a `D-154`, que deixou a página pública de estado fora da v2.0, e mostra a quem tiver o endereço se a organização está no ar.
+**Por que esta:** a escolha do dono, em 08/11/2026: quem opera o middleware vê a saúde dele. Abre-se mão de ver o estado com o middleware fora (o login cai junto): nesse caso vale o aviso da `ARQ-104`.
+**Consequências:**
+- **Decididas pelo arquiteto (🟢), para cumprir a decisão:** o SaaS guarda, por organização, o registro das quedas (quando perdeu e quando voltou a alcançar o middleware), no banco mestre, junto do que é da instância (`ARQ-088`); é um dado da instância, sem conteúdo de conversa e sem dado de pessoa; a tela lê esse registro e o estado que o painel da instância já usa (`D-275`); o estado vem do que o SaaS alcança, e como ele mede o do middleware do cliente segue na `P-042`.
+- **Segue em aberto, com a recomendação do arquiteto:** por quanto tempo se guarda o histórico das quedas (🔎); e se o gestor também vê a tela, ou só o owner (a decisão vale para o owner).
+- Em qual mf mora a tela fica para depois que a arquitetura fechar (as mfs seguem a regra de 08/11/2026).
+**Reabrir quando:** o cliente que hospeda o middleware pedir o estado com ele fora do ar (a opção 3), ou o histórico de quedas pedir mais do que início, fim e duração.
+**Nota de 08/11/2026:** o dono notou que a tela, atrás do login, não abre justamente quando o middleware está fora, já que o login mora nele; a `ARQ-106` põe o status antes do login e substitui esta decisão. O que fica dela: o registro das quedas no banco mestre e o painel da instância (`D-275`).
+
+### ARQ-106 · A página de status do middleware fica no endereço da organização, sem login, e o SaaS a responde sozinho; a tela dentro do Horus sai
+Situação: ✅ confirmada pelo dono em 08/11/2026, com a proposta do arquiteto (a ideia de usar o mesmo direcionamento do login foi do dono) · Data: 08/11/2026 · Alcance: geral (`MF-121`) · Substitui a `ARQ-105`
+**Quem decide:** dono (muda o que o owner vê e o que fica à vista de quem tem o endereço).
+**Decisão:** o status do middleware de cada organização tem uma **página no endereço da organização**, o mesmo da tela de entrada, **sem login**. Ela mostra se o middleware está **no ar ou fora**, **desde quando**, o **último contato** e as **últimas quedas** (início, fim e duração). **Não mostra versão nem nome de pessoa.** A tela de entrada e o aviso da `ARQ-104` levam a ela. O **SaaS a responde sozinho**, sem consultar o middleware. A **versão** fica só no painel do administrador da instância (`D-275`). A tela "dentro do Horus" da `ARQ-105` **deixa de existir**.
+**Atende a:** `D-154`, `D-240`, `D-258`, `D-272`, `D-275`; `ARQ-102`, `ARQ-104`.
+**Opções:**
+1. **A página de status antes do login, no endereço da organização** (recomendada, escolhida). ✅ Funciona justamente quando o middleware está fora, e não muda onde mora o login. ⚠️ O histórico de quedas deixa de ficar atrás de login: quem tem o endereço da organização vê quando ela caiu e por quanto tempo; reabre em parte a `D-154`, agora por organização.
+2. **A tela dentro do Horus, atrás do login** (a `ARQ-105`, substituída). ✅ Só quem entra a vê. ⚠️ O login mora no middleware, então ela não abre quando ele está fora, que é o caso que mais importa.
+3. **Só o aviso da tela de entrada** (`ARQ-104`), sem página de status. ✅ Nada novo a manter nem a expor. ⚠️ Sem histórico de quedas e sem como consultar uma queda em andamento além do aviso.
+**Por que esta:** a escolha do dono, em 08/11/2026: ele notou que a tela da `ARQ-105` não abre quando o middleware está fora e propôs usar o mesmo conceito de direcionamento da tela de login. O endereço da organização já diz ao SaaS qual é a organização e, pelo Registro, qual é o middleware dela, o compartilhado da Maind ou o da casa do cliente; nenhuma conta de pessoa é preciso. Abre-se mão de que o histórico de quedas fique atrás de login.
+**Consequências:**
+- **Decididas pelo arquiteto (🟢), para cumprir a decisão:** o direcionamento é o do login: o endereço da organização com o token (`D-258`), que o SaaS resolve no Registro de organizações (`ARQ-102`); o token só identifica, nunca autentica, e não fica nos registros nem no histórico; o SaaS responde a página lendo o último contato e o registro de quedas que ele mesmo guarda no banco mestre (`ARQ-088`), por isso ela abre com o middleware fora; o registro de quedas é dado da instância, sem conteúdo de conversa e sem dado de pessoa (a parte da `ARQ-105` que se mantém); com o middleware compartilhado da Maind (`D-272`), a página mostra o mesmo estado a todas as organizações do SaaS, e com o da casa do cliente, só o dele; o estado vem do que o SaaS alcança, e como ele mede o do middleware do cliente segue na `P-042`.
+- **Segue em aberto, com a recomendação do arquiteto:** por quanto tempo se guarda o histórico das quedas e quantas a página mostra (🔎). A pergunta "o gestor também vê a tela" deixa de existir, porque a página é aberta.
+- **Volta ao PO:** reabre em parte a `D-154` (página de estado fora da v2.0), agora por organização, e muda o que a pessoa vê; está no backlog (`D-283`).
+**Reabrir quando:** um cliente não aceitar que quem tem o endereço da organização veja as quedas, ou a página pedir mais do que início, fim e duração.
+**Nota de 08/11/2026:** a `ARQ-107` ✅ já define como o estado se classifica (no ar, instável ou fora, pela contagem de falhas e pelo tempo de resposta do contato que o SaaS faz); o que segue na `P-042` é como esse contato é feito com o middleware da casa do cliente.
+**Nota de 08/11/2026:** o prazo do histórico das quedas, que esta decisão deixava em aberto (🔎), foi decidido na `ARQ-121` ✅: noventa dias.
+**Nota de 08/11/2026:** a `ARQ-107` ✅ acrescenta o LED de status na tela de entrada e dá ao estado três valores (no ar, instável e fora do ar), que a página também mostra; onde esta decisão diz "no ar ou fora", leia os três.
+
+### ARQ-107 · A tela de entrada mostra um LED com o status do middleware: verde (no ar), amarelo (instável) e vermelho (fora do ar), sempre com texto
+Situação: ✅ confirmada pelo dono em 08/11/2026, com a opção 1 (a recomendação do arquiteto; a ideia do LED foi do dono) · Data: 08/11/2026 · Alcance: geral (`MF-121`)
+**Quem decide:** dono (muda o que a pessoa vê).
+**Decisão:** a **tela de entrada** da organização mostra um **LED com o status macro do middleware**: **verde** ("No ar"), **amarelo** ("Instável": o SaaS o alcança, mas com falhas ou lentidão nos últimos minutos) e **vermelho** ("Fora do ar": sem contato). **Sempre há um texto ao lado da cor**, para quem não distingue verde de vermelho. Clicar no LED abre a página de status (`ARQ-106`), que mostra os mesmos três valores. O LED lê o estado que o SaaS mantém, como o aviso (`ARQ-104`) e a página, por isso aparece mesmo com o middleware fora.
+**Atende a:** `D-154`, `D-258`, `D-272`, `D-275`; `ARQ-102`, `ARQ-104`, `ARQ-106`.
+**Opções:**
+1. **Amarelo é "instável"** (recomendada, escolhida). ✅ Avisa antes de cair e explica por que o login está lento ou falha de vez em quando; o SaaS já mede o contato, só precisa contar as falhas e o tempo de resposta. ⚠️ O limite entre verde e amarelo é uma escolha a calibrar.
+2. **Amarelo é "em manutenção anunciada".** ✅ Diferencia uma parada planejada de uma queda. ⚠️ O middleware precisa anunciar a parada pelo contrato, uma parada não anunciada continua vermelha, e a lentidão não é coberta.
+3. **Só verde e vermelho.** ✅ Nada a calibrar nem a anunciar. ⚠️ O login lento ou intermitente aparece como "no ar", e a pessoa não sabe por que falha.
+**Por que esta:** a escolha do dono, em 08/11/2026: a pessoa vê o estado antes de tentar entrar e sabe se o problema é a conexão da organização. Abre-se mão de um limite fixo: o ponto em que "no ar" vira "instável" precisa ser calibrado com o uso.
+**Consequências (decididas pelo arquiteto, 🟢):**
+- O estado que o SaaS mantém passa a ter **três valores**, os mesmos na tela de entrada, na página de status (`ARQ-106`) e no painel da instância (`D-275`, que dizia "no ar ou fora").
+- O SaaS decide "instável" pela contagem de falhas e pelo tempo de resposta do contato que ele já faz com o middleware; o limite e a janela são do arquiteto, calibrados com o uso (🔎).
+- Com o **amarelo**, a pessoa entra normalmente e o LED só avisa; com o **vermelho**, aparece o aviso da `ARQ-104`.
+- Com o middleware compartilhado da Maind (`D-272`), o LED é o mesmo para todas as organizações do SaaS.
+- **Segue em aberto:** se a página lista também os períodos de instabilidade, e não só as quedas (🔎); a manutenção anunciada (opção 2) fica como evolução possível.
+**Reabrir quando:** o amarelo der alarme falso demais ou a pessoa não o entender, ou as paradas planejadas pedirem um estado próprio.
+
+### ARQ-108 · A rodada que cai com o middleware fora espera até uma hora: se ele volta, roda uma vez, atrasada; senão, é pulada
+Situação: ✅ confirmada pelo dono em 08/11/2026, com a opção 1 (a recomendação do arquiteto) · Data: 08/11/2026 · Alcance: geral (`MF-121`)
+**Quem decide:** dono (muda o que a pessoa recebe e quando).
+**Decisão:** quando o middleware da organização está fora na hora marcada de um **agendamento, alerta ou agente**, o SaaS mantém a rodada na fila e **espera até uma hora depois da hora marcada**. Se o middleware volta nesse prazo, a rodada **roda uma vez, atrasada**, e o relatório ou o aviso **diz que atrasou** ("Gerado às 08h20, previsto 08h00"). Passado o prazo, a rodada é **pulada** e a agenda segue. Nos dois casos o **rastro** registra o motivo. Nunca roda mais de uma rodada atrasada por agenda.
+**Atende a:** `D-075` (a pausa por assentos: as rodadas perdidas não se refazem), `D-090` (o que saiu fica no rastro), `D-189`, `D-267`, `D-272`; `ARQ-005` (a fila), `ARQ-104`.
+**Opções:**
+1. **Tenta de novo por uma hora** (recomendada, escolhida). ✅ Cobre a queda curta, a mais comum, sem rajada de rodadas nem de custo de IA. ⚠️ O relatório pode chegar fora de hora, e a janela de uma hora é um valor a calibrar.
+2. **Pula a rodada e segue a agenda.** ✅ O mais simples, igual à pausa por assentos, nada a calibrar. ⚠️ O relatório de um dia falta mesmo numa queda de vinte minutos, e quem o espera só descobre pela ausência.
+3. **Refaz tudo que perdeu quando volta.** ✅ Nada deixa de rodar. ⚠️ Depois de uma queda longa chega uma rajada de relatórios velhos e de mensagens (o WhatsApp tem custo), com gasto de IA que ninguém planejou (`D-267`); vai contra o que a `D-075` fez na pausa.
+**Por que esta:** a escolha do dono, em 08/11/2026: a queda curta não faz o relatório faltar, e a queda longa não vira rajada. Abre-se mão de que o relatório chegue sempre na hora: pode vir atrasado, e dizendo que atrasou.
+**Consequências (decididas pelo arquiteto, 🟢):**
+- A espera usa a fila que já existe (`ARQ-005`): o trabalho fica pendente, com tentativas contadas, e, ao desistir, deixa o motivo; o SaaS não insiste enquanto o estado do middleware (`ARQ-107`) está vermelho, e tenta de novo quando ele sai dele.
+- O trabalho segue repetível sem efeito em dobro (`ARQ-005`): uma rodada atrasada nunca roda duas vezes.
+- Se a agenda for mais curta que a janela (por exemplo, a cada quinze minutos), a janela termina na **próxima rodada da mesma agenda**, para não rodar duas de uma vez.
+- Vale também para o alerta e o agente, que checam a condição na hora em que rodam; o aviso atrasado diz a hora em que foi gerado.
+- A pausa por assentos desativados (`D-075`) não muda: ali as rodadas perdidas seguem sem se refazer.
+- **Segue em aberto:** o valor da janela (uma hora é o ponto de partida, 🔎); o texto do aviso de atraso; e se o dono do agendamento é avisado quando a rodada é pulada (hoje só o rastro registra).
+**Reabrir quando:** quedas de mais de uma hora fizerem faltar relatório com frequência, ou os clientes pedirem para refazer as rodadas perdidas.
+**Nota de 08/11/2026:** quem é avisado quando a rodada é pulada, que esta decisão deixava em aberto, foi decidido na `ARQ-120` ✅: o dono do agendamento, na área de avisos.
+
+### ARQ-109 · O SaaS guarda de cada pessoa só um código, sem nome nem e-mail; o nome vem do middleware na hora de mostrar
+Situação: ✅ confirmada pelo dono em 08/11/2026, com a opção 1 (a recomendação do arquiteto) · Data: 08/11/2026 · Alcance: geral (`MF-121`) · Revê em parte a `ARQ-097`
+**Quem decide:** dono (dados pessoais, LGPD e o que a Maind enxerga).
+**Decisão:** o SaaS guarda de cada pessoa da organização **só um código** (um identificador), **sem nome e sem e-mail**. O **nome** que a Home da organização, o rastro da Auditoria e a medida de autonomia mostram à organização é **buscado no middleware na hora de exibir**. A **dimensão de pessoas do banco de log** guarda só o código. O **e-mail do convite** que o gestor cria só **passa** pelo SaaS a caminho do middleware, sem ser gravado.
+**Atende a:** `D-209`, `D-210`, `D-238`, `D-261`, `D-262`, `D-274`; `ARQ-097`, `ARQ-099`.
+**Opções:**
+1. **Só um código, sem nome nem e-mail** (recomendada, escolhida). ✅ Nenhum dado pessoal no SaaS, como a `D-261` quer; excluir uma pessoa (`D-210`) é apagar o cadastro no middleware; a dimensão de pessoas do log guarda só o código. ⚠️ Toda tela com nomes pede os nomes ao middleware; a Maind, ao consultar o log, vê códigos e não nomes. Com o middleware fora, ninguém da organização entra mesmo (o login cai junto), então isso não muda o que se vê nessa hora.
+2. **O código mais o nome de exibição, copiado do middleware.** ✅ As telas com nome não dependem de uma chamada ao middleware; a `ARQ-097` segue como está. ⚠️ O SaaS passa a guardar dado pessoal, contra o motivo da `D-261`; a exclusão precisa apagar também essas cópias e as de segurança (`P-044`); a Maind passa a poder ver o nome ao consultar o log.
+3. **O código, com o nome só em memória por pouco tempo.** ✅ Telas rápidas sem gravar dado pessoal. ⚠️ Uma peça a mais; o nome pode ficar velho até expirar; o reinício do SaaS (servidor único, `ARQ-098`) esvazia a memória e volta a depender do middleware.
+**Por que esta:** a escolha do dono, em 08/11/2026: nenhum dado pessoal da organização no SaaS. Abre-se mão de telas com nome que funcionem sem o middleware, e de a Maind ver nome ao consultar a história da instância.
+**Consequências (decididas pelo arquiteto, 🟢):**
+- O código é gerado pelo middleware, é opaco (não deriva do nome nem do e-mail) e estável, para que não se reconheça a pessoa por fora.
+- As telas com nomes pedem os nomes ao middleware **em lote**, uma chamada por tela e não por linha; o contrato gRPC (`ARQ-099`) ganha a chamada "nomes por código".
+- A pergunta do administrador ao log (`D-276`) e o relatório da Maind (`D-274`) leem códigos, e nunca nomes.
+- O código que sobra no SaaS depois que o middleware apaga o cadastro deixa de apontar para alguém; se isso basta para a exclusão de `D-210` e para a LGPD é a `P-044` (a conferência jurídica já aberta).
+- O inventário dos dados pessoais (`ARQ-045`) e o documento 06 passam a registrar que o SaaS tem só o código; ficam a refazer pela `P-028`.
+- **Segue em aberto:** onde moram a carteira, os grupos e as roles, e o que mais fica ligado ao código no SaaS (o tipo de assento, por exemplo).
+**Reabrir quando:** a latência de buscar os nomes pesar nas telas, o suporte da Maind precisar do nome para atender, ou a conferência jurídica (`P-044`) exigir mais do que o código.
+**Nota de 08/11/2026:** o e-mail de avisos e de relatórios também passa pelo SaaS só em trânsito, na hora do envio, e não é gravado (`ARQ-118` ✅), como o do convite (`D-262`).
+
+### ARQ-110 · O primeiro acesso do owner é um link de uso único, gerado pelo middleware e entregue pela Maind por fora
+Situação: ✅ confirmada pelo dono em 08/11/2026, com a opção 1 (a recomendação do arquiteto) · Data: 08/11/2026 · Alcance: geral (`MF-121`)
+**Quem decide:** dono (muda como o owner entra pela primeira vez e toca a segurança).
+**Decisão:** na hospedagem da Maind, quando o administrador da instância cria o usuário do owner no front do middleware (`D-271`, `D-280`), o middleware gera um **link de primeiro acesso, de uso único e de validade curta**. O administrador o **entrega ao owner por fora** (pelo e-mail ou pelo WhatsApp da própria Maind), e o owner o abre e **define a própria senha**. Nenhuma senha passa pela Maind e nada disso passa pelo SaaS.
+**Atende a:** `D-258`, `D-271`, `D-280`; `ARQ-102`, `ARQ-109`.
+**Opções:**
+1. **Link de uso único, entregue pela Maind** (recomendada, escolhida). ✅ Nenhuma senha passa pela Maind e nada passa pelo SaaS; o middleware não precisa enviar e-mail. ⚠️ A entrega do link é manual, o que serve enquanto a Maind cria poucas organizações.
+2. **Convite por e-mail, enviado pelo SaaS.** ✅ O owner recebe sozinho, sem entrega manual. ⚠️ O e-mail do owner e o link de primeiro acesso passam pelo SaaS, que não os guarda (`ARQ-109`) mas os vê em trânsito; o SaaS passa a falar de pessoa.
+3. **Senha provisória definida pela Maind.** ✅ O mais simples de construir. ⚠️ A Maind conhece a senha inicial, e a senha provisória circula por mensagem.
+**Por que esta:** a escolha do dono, em 08/11/2026, na recomendação do arquiteto: o primeiro acesso não deixa a senha nem o link em nenhum lugar a mais. Abre-se mão de uma entrega automática.
+**Consequências (decididas pelo arquiteto, 🟢):**
+- O link expira em pouco tempo (o prazo é a calibrar, 🔎) e deixa de valer ao ser usado; se expira, o administrador gera outro.
+- O middleware não envia e-mail para isso, e o SaaS nunca vê o link nem o e-mail do owner (`ARQ-109`).
+- Na casa do cliente vale o mesmo mecanismo, com a TI do cliente no papel do administrador da Maind.
+**Reabrir quando:** a Maind passar a criar muitas organizações por semana e a entrega manual pesar, ou um cliente exigir o convite por e-mail.
+
+### ARQ-111 · A mecânica de login é configuração da organização no módulo do middleware: na v2.0, usuário e senha e Google; o OpenID Connect entra na v2.1
+Situação: ✅ confirmada pelo dono em 08/11/2026 (a direção, dele: o middleware terá um módulo de configuração inclusive para definir a mecânica de autenticação; o alcance da v2.0, com a opção recomendada) · Data: 08/11/2026 · Alcance: geral (`MF-121`) · Revê em parte a `ARQ-053`
+**Quem decide:** dono (o que a pessoa vê ao entrar e a segurança do acesso).
+**Decisão:** a **mecânica de autenticação deixa de ser fixa e vira configuração da organização**, feita pelo owner no **módulo de configuração do middleware**, o mesmo front em que ele configura os bancos, a IA e os servidores MCP (`D-273`, `D-287`). Na **v2.0**, o módulo oferece **usuário e senha e Google**; o **OpenID Connect** (o login da empresa, um por organização, `ARQ-054`) entra na **v2.1** como mais um mecanismo do mesmo módulo. O **owner e o administrador da instância entram sempre por usuário e senha** (`D-258`).
+**Atende a:** `D-118`, `D-184`, `D-258`, `D-261`, `D-273`; `ARQ-053`, `ARQ-054`, `ARQ-102`.
+**Opções (o alcance da v2.0):**
+1. **Usuário e senha e Google; o OpenID Connect entra na v2.1** (recomendada, escolhida). ✅ Mantém o que a v1.xx tem (`D-118`) e o login da empresa na v2.1 (`D-184`), com a mecânica sendo configuração. ⚠️ O owner que quer o Google precisa de um cadastro dele no Google.
+2. **Usuário e senha, Google e OpenID Connect já na v2.0.** ✅ Entrega o login corporativo logo. ⚠️ Puxa para a v2.0 o que a `D-118` e a `D-184` deixaram na v2.1, numa v2.0 que já é grande.
+3. **Só usuário e senha na v2.0.** ✅ O menor escopo. ⚠️ Tira o Google que a v1.xx tem, contra a `D-118`.
+**Por que esta:** a escolha do dono, em 08/11/2026: o login é do módulo de configuração, e não de uma decisão fixa do SaaS. Abre-se mão de um Google pronto, sem cadastro, para quem o quiser.
+**Consequências (decididas pelo arquiteto, 🟢):**
+- Cada mecanismo tem um interruptor por organização, no módulo; desligar os outros nunca tira do owner e do administrador a entrada por usuário e senha.
+- O Google usa, por padrão, o cliente OAuth de quem opera o middleware, como a `ARQ-053` decidiu; a organização que quiser o dela o cadastra no módulo.
+- O módulo nasce preparado para receber o OpenID Connect da v2.1 como mais um mecanismo, sem refazer o login.
+- A sessão segue a `ARQ-102` (emitida pelo middleware), qualquer que seja o mecanismo.
+**Reabrir quando:** um cliente pedir outro mecanismo na v2.0, ou o OpenID Connect for puxado para a v2.0.
+
+### ARQ-112 · Na produção real, o SaaS e o middleware da Maind passam a Kubernetes gerenciado com réplicas, numa nuvem pública; até lá, uma VPS com docker compose
+Situação: ✅ confirmada pelo dono em 08/11/2026 (a direção, dele: "na v2.0 vamos usar uma VPS, mas quando estiver em produção real vamos para alguma cloud pública usando Kubernetes gerenciado e réplicas"; o alcance, na opção que cobre o SaaS e o middleware da Maind) · Data: 08/11/2026 · Alcance: geral · Substitui em parte a `ARQ-098`, a `ARQ-100` e a `ARQ-101`
+**Quem decide:** dono (infraestrutura, disponibilidade e custo de operação).
+**Decisão:** a infraestrutura tem **duas fases**. **(1) A construção, a homologação e a v2.0, na VPS:** o SaaS e o middleware da Maind sobem com docker compose, **um só cada** (`ARQ-098`, `ARQ-100`, `ARQ-101` valem como estão); o ponto único de falha é aceito. **(2) A produção real, numa nuvem pública** (a escolha da nuvem segue adiada, `ARQ-085`): o **SaaS e o middleware da Maind passam a Kubernetes gerenciado com réplicas**, com o Postgres gerenciado (`ARQ-093`); o ponto único de falha deixa de existir. O **middleware na casa do cliente segue em docker compose** (`ARQ-100`).
+**Atende a:** `D-188`, `D-258`, `D-272`; `ARQ-085`, `ARQ-092`, `ARQ-093`, `ARQ-096`.
+**Opções (o alcance da produção real):**
+1. **O SaaS e o middleware da Maind** (escolhida). ✅ Tira o ponto único de falha de onde ele pesa mais, e o SaaS e o middleware seguem o mesmo caminho. ⚠️ Traz de volta, só para a produção real, o Kubernetes gerenciado e o chart que a `ARQ-101` tinha tirado, e o retrabalho de voltar a ter réplicas (o que a `ARQ-098` registrava).
+2. **Só o middleware da Maind.** ✅ O SaaS segue simples, em docker compose. ⚠️ O SaaS continuaria sendo o ponto único de falha.
+**Por que esta:** a escolha do dono, em 08/11/2026: simples agora, disponibilidade quando houver produção real. Abre-se mão de não ter Kubernetes nem réplicas em lugar nenhum.
+**Consequências (decididas pelo arquiteto, 🟢):**
+- A `ARQ-098` e a `ARQ-101` valem até a produção real; o Kubernetes gerenciado (`ARQ-093`) e o chart (`ARQ-094`) voltam, só para ela. O minikube da construção segue desnecessário.
+- O ponto único de falha do middleware da Maind (a proposta 1 do documento 01) fica **aceito na v2.0 e deixa de existir na produção real**.
+- A meta de 99,9% de disponibilidade, que a `ARQ-098` tirou, pode voltar para a produção real: é a pergunta 12 desta rodada (documento 03).
+- O que a `ARQ-098` devolveu à memória do processo (a parada de uma resposta e os limites de taxa) precisa voltar a ser compartilhado entre réplicas, pelo banco, na produção real. O código da v2.0 já nasce preparado para isso (`ARQ-113` ✅).
+- A imagem é compilada uma vez e é a mesma em toda fase (`ARQ-092`, `ARQ-096`): o que muda de uma fase para a outra é a implantação (compose ou Kubernetes, quantas réplicas), escolhida pela estratégia de desenvolvimento e de CI/CD sem mexer na imagem (observação do dono, 08/11/2026).
+- Os documentos 09, 10, 11, 12 e 13 não mudam agora (`P-028`).
+**Reabrir quando:** a primeira produção real for definida (nuvem e data), ou a v2.0 precisar de réplicas antes.
+
+### ARQ-113 · O código da v2.0 nasce preparado para réplicas, e a imagem é a mesma em toda fase: o que muda é a implantação
+Situação: ✅ confirmada pelo dono em 08/11/2026, com a opção 1 (a recomendação do arquiteto); o dono lembrou que a estratégia de desenvolvimento e de CI/CD permite escolher a infraestrutura sem mudar a imagem · Data: 08/11/2026 · Alcance: geral · Substitui em parte a `ARQ-098` (e restaura o que a `ARQ-095` pôs)
+**Quem decide:** dono (disponibilidade e custo de operação; o que a v2.0 constrói).
+**Decisão:** o **código da v2.0 nasce preparado para réplicas**: a parada de uma resposta e os limites de taxa **valem em todas as réplicas**, pelo banco (o aviso do Postgres e a contagem dos limites no banco mestre, como a `ARQ-095` pôs), e o cache fica em cada réplica, invalidado pela versão da fonte, **mesmo rodando um servidor só**. A **imagem é compilada uma vez e é a mesma em toda fase** (a VPS com docker compose, a produção real com Kubernetes gerenciado, a casa do cliente): o que muda é a **implantação**, ou seja, o orquestrador e o número de réplicas, **escolhida pelo CI/CD** sem mexer na imagem (`ARQ-092`, `ARQ-096`).
+**Atende a:** `ARQ-092`, `ARQ-095`, `ARQ-096`, `ARQ-098`, `ARQ-112`.
+**Opções:**
+1. **Sim, já nasce preparado** (recomendada, escolhida). ✅ A passagem para a produção real não refaz essas peças no meio da migração, e a mesma imagem serve às duas fases. ⚠️ Desfaz parte da simplificação da `ARQ-098`: o aviso do Postgres e a contagem dos limites no banco voltam a ser peças da v2.0.
+2. **Não, a v2.0 fica na memória do processo.** ✅ A v2.0 fica mais simples. ⚠️ O retrabalho aparece na hora mais arriscada, a migração para a produção real, e sem data para ela; a imagem deixaria de ser a mesma nas duas fases.
+**Por que esta:** a escolha do dono, em 08/11/2026: a imagem é uma só, e o que se escolhe é a infraestrutura. Abre-se mão de a v2.0 ser mais simples.
+**Consequências (decididas pelo arquiteto, 🟢):**
+- Com um servidor só, o código roda como uma réplica; com duas, as mesmas peças valem entre elas. Não há um caminho de código para a VPS e outro para a produção real.
+- Entra no catálogo de provas (`ARQ-079`) a prova de que o "atender" e o "trabalhar" funcionam com duas instâncias, na homologação.
+- A troca de versão com drenagem (`ARQ-063`) fica pronta para a produção real; na VPS, com um servidor só, segue havendo o tempo fora do ar da troca (`ARQ-098`).
+- A meta de disponibilidade da produção real é a pergunta 12 desta rodada (documento 03).
+**Reabrir quando:** a preparação para réplicas pesar na v2.0, ou a produção real for descartada.
+
+### ARQ-114 · O SaaS fala com a versão atual do middleware e com a anterior; uma versão mais velha é recusada, com aviso
+Situação: ✅ confirmada pelo dono em 08/11/2026, com a opção 1 (a recomendação do arquiteto) · Data: 08/11/2026 · Alcance: geral (`MF-121`)
+**Quem decide:** dono (operação, e o que a pessoa vê quando o middleware está desatualizado).
+**Decisão:** o contrato entre o SaaS e o middleware (gRPC, `ARQ-099`) é **versionado**, e o SaaS fala com a **versão atual do middleware e com a anterior**. Com uma versão **mais velha**, o SaaS **recusa** e mostra o aviso próprio ("a versão do middleware precisa ser atualizada"): o LED fica vermelho com o texto "Atualização necessária" (`ARQ-107`), a página de status mostra o motivo, sem a versão (`ARQ-106`), e o painel da instância mostra o motivo e a versão (`D-275`). Quem atualiza e reinicia segue sendo quem hospeda, a Maind no dela e o cliente no dele (`ARQ-100`).
+**Atende a:** `D-258`, `D-272`, `D-275`; `ARQ-099`, `ARQ-100`, `ARQ-104`, `ARQ-106`, `ARQ-107`.
+**Opções:**
+1. **A versão atual e a anterior; a mais velha é recusada com aviso** (recomendada, escolhida). ✅ O cliente tem tempo de atualizar sem ser surpreendido, e a Maind não carrega todas as versões antigas. ⚠️ Cada versão nova do contrato precisa continuar compatível com a anterior; a janela de duas versões é um ponto de partida a calibrar.
+2. **Sempre a mesma versão nos dois.** ✅ Nenhum caso de versão misturada. ⚠️ Cada atualização do SaaS obriga todo cliente que hospeda o middleware a atualizar na mesma hora.
+3. **Sem garantia: cada um atualiza quando quiser.** ✅ Nada a manter. ⚠️ Uma atualização do SaaS pode quebrar a organização de um cliente sem aviso.
+**Por que esta:** a escolha do dono, em 08/11/2026: o cliente que hospeda o middleware atualiza no tempo dele, dentro de um limite. Abre-se mão de uma compatibilidade sem fim.
+**Consequências (decididas pelo arquiteto, 🟢):**
+- O SaaS descobre a versão do middleware pelo contrato (a `ARQ-099` já leva o estado e a versão de volta).
+- Entra no catálogo de provas (`ARQ-079`) a prova de que o SaaS atual fala com o middleware da versão anterior.
+- A Maind pode atualizar o SaaS e o middleware dela em qualquer ordem, porque a janela cobre o momento em que estão em versões diferentes.
+- O que é "uma versão" para a janela é a versão do contrato; o número de versões da janela é a calibrar (🔎).
+**Reabrir quando:** clientes não conseguirem atualizar dentro da janela, ou manter a compatibilidade com a versão anterior pesar na construção.
+
+### ARQ-115 · No docker compose, os segredos seguem a ARQ-044: o CD grava o arquivo de ambiente da máquina, que o compose lê; na produção real, nos Secrets do Kubernetes
+Situação: 🟢 decidida pelo arquiteto · Data: 08/11/2026 · Alcance: geral
+**Quem decide:** arquiteto (decorre da `ARQ-044` ✅ e da `ARQ-112` ✅; a origem dos segredos já é do dono).
+**Decisão:** a origem dos segredos continua a da `ARQ-044`: os **Secrets do ambiente no GitHub**. Na **VPS, com docker compose** (SaaS e middleware da Maind), o **CD grava o arquivo de ambiente da máquina**, legível só pelo root, e o **docker compose o lê** (`env_file`) e passa os valores aos contêineres como variáveis; **a imagem não leva segredo nenhum**. Na **produção real**, o CD grava os **Secrets do Kubernetes** (nota 2 da `ARQ-044`). No **middleware da casa do cliente**, os segredos da instância (o anel que cifra a chave de cada organização, `ARQ-103`) ficam com a **TI do cliente**, num arquivo de ambiente só do root, no formato que a imagem lê; a Maind não os conhece.
+**Atende a:** `ARQ-044`, `ARQ-101`, `ARQ-103`, `ARQ-112`, `ARQ-113`.
+**Opções:**
+1. **O arquivo de ambiente da máquina, gravado pelo CD** (recomendada, escolhida). ✅ Nenhuma peça nova; é o que a `ARQ-044` já decidiu, e a imagem fica sem segredo e igual em toda fase. ⚠️ Quem tem o root da máquina lê o arquivo.
+2. **Os arquivos de segredos do próprio docker compose.** ✅ O contêiner só vê o arquivo do segredo dele. ⚠️ Mais um formato a manter, só para a VPS, e a produção real teria outro.
+3. **Um cofre de segredos de terceiro** (por exemplo, o Vault). ✅ Cada leitura registrada. ⚠️ Fornecedor novo e peça nova a operar, que a `ARQ-044` evitou de propósito.
+**Por que esta:** o mecanismo já foi escolhido pelo dono; muda só quem lê o arquivo, o compose no lugar do systemd. Abre-se mão de um cofre com cada leitura registrada.
+**Consequências:**
+- Entra no CI uma verificação de que a imagem não contém segredo (catálogo de provas, `ARQ-079`).
+- Os documentos 07 e 09 descrevem o systemd e o Kubernetes: ficam a refazer pela `P-028`.
+**Reabrir quando:** um cliente exigir um cofre com cada leitura registrada, ou a Maind passar a operar muitas instâncias.
+
+### ARQ-116 · A guarda de rede fica no middleware: na Maind, a de hoje; na casa do cliente, só o IP e a porta que a TI dele permite; as saídas extras são interruptores da organização, desligados por padrão
+Situação: 🟢 decidida pelo arquiteto, a segunda parte (quem liga as saídas) a confirmar com o dono · Data: 08/11/2026 · Alcance: geral (`MF-121`)
+**Quem decide:** arquiteto (a guarda decorre da `ARQ-090` ✅, da `D-190` e da `D-195`); a quem pertence ligar as saídas extras é a leitura do PO na `D-193`, que o dono ainda não confirmou.
+**Decisão:** **(a) A guarda de rede.** Na hospedagem da Maind, o middleware usa a **guarda de rede da v1.xx**, que a `ARQ-090` manteve: ao conectar às fontes e aos provedores de IA, ela **recusa os endereços da rede interna**. Na casa do cliente, o middleware alcança **só o IP e a porta que a TI dele permite** (`D-190`, `D-195`): nega por padrão, com uma lista de permitidos. De fora, o SaaS só chega ao middleware pelo endereço e pela porta do Registro (`ARQ-102`), com o certificado (`D-258`); nenhuma outra entrada. **(b) As saídas extras** da `D-189` (o comando da consulta, o CSV e as que contem como vazamento) são **interruptores por organização, desligados por padrão**, ligados **pelo owner da organização no módulo de configuração do middleware**.
+**Atende a:** `D-189`, `D-190`, `D-193`, `D-195`, `D-273`; `ARQ-090`, `ARQ-102`.
+**Opções (a guarda):**
+1. **A guarda de hoje na Maind e a lista de permitidos na casa do cliente** (recomendada, escolhida). ✅ Cada hospedagem usa a guarda que cabe nela: a Maind protege a rede dela, e a TI do cliente decide o que o middleware alcança. ⚠️ O cliente precisa manter a lista.
+2. **A mesma guarda nos dois.** ✅ Uma regra só. ⚠️ O banco do cliente mora na rede interna dele, e a guarda o barraria.
+3. **Sem guarda no middleware do cliente.** ✅ Nada a configurar. ⚠️ O middleware alcançaria qualquer endereço da rede do cliente.
+**Por que esta:** a guarda existe e funciona (`ARQ-090`); muda só quem decide o alcance. Abre-se mão de uma regra única.
+**Consequências:**
+- Entram no catálogo de provas (`ARQ-079`): a guarda recusa endereço interno na Maind; o middleware do cliente recusa o que não está na lista; uma saída desligada é recusada.
+- Quem liga as saídas extras é a leitura do PO na `D-193`; o dono assumiu o owner como quem configura o middleware (`D-271`, `D-273`) mas não confirmou esta saída em particular. **A confirmar.**
+**Reabrir quando:** um cliente exigir que o administrador da instância também controle as saídas, ou a lista de permitidos pesar para a TI do cliente.
+
+### ARQ-117 · O uso e o custo da IA chegam do middleware ao SaaS só como contagem; o owner os vê no Horus, e a parada da chave da Maind chega à Maind pelo mesmo contrato
+Situação: 🟢 decidida pelo arquiteto · Data: 08/11/2026 · Alcance: geral (`MF-121`)
+**Quem decide:** arquiteto (a `D-267` deixou ao arquiteto onde a tela mora, `P-048`; o resto decorre da `D-268`, da `D-276` e da `D-279`). O canal do aviso por e-mail ao owner fica em aberto, porque o SaaS não guarda e-mail (`ARQ-109`).
+**Decisão:** (1) O middleware manda ao SaaS, pelo contrato (`ARQ-099`), o **uso de IA** como **contagem**, sem a pergunta nem a resposta: a hora, o modelo, os tokens e **de quem é a chave** (da organização ou da Maind). (2) O **owner vê o consumo e o custo de toda a IA da organização no Horus**, na tela que a v1.xx já tem (`D-267`). (3) O **painel da instância** mostra, por organização, só o consumo e o custo das **chaves que a Maind dá** (`D-279`); a **chave de IA da instância**, usada só na pergunta do administrador (`D-276`), aparece numa **linha à parte**, fora das organizações. (4) Quando a **IA de uma organização para** (chave recusada ou falta de crédito), o middleware avisa o SaaS **pelo mesmo contrato**; o SaaS mostra o aviso ao owner dentro do Horus (a área de avisos, `D-128`) e, **se a chave é da Maind**, avisa o time da Maind (`D-268`), pela área de avisos do painel da instância.
+**Atende a:** `D-128`, `D-153`, `D-267`, `D-268`, `D-276`, `D-279`; `ARQ-099`, `ARQ-109`.
+**Opções (onde o owner vê o consumo):**
+1. **No Horus, onde a v1.xx já o mostra** (recomendada, escolhida). ✅ A mesma tela de hoje; o aviso de custo (`D-153`) e a soma das chaves da Maind precisam do uso no SaaS de qualquer jeito. ⚠️ O SaaS passa a receber a contagem de uso, também da chave que a organização paga, sem conteúdo.
+2. **No front do middleware.** ✅ O SaaS sabe menos. ⚠️ O owner usa dois apps para ver o custo, e o SaaS não consegue somar as chaves da Maind nem avisar sobre custo.
+3. **Nos dois.** ✅ O owner escolhe onde olhar. ⚠️ Duas telas para manter.
+**Por que esta:** a tela de hoje, sem conteúdo no SaaS: só a contagem. Abre-se mão de o SaaS não saber nada do uso da chave da organização.
+**Consequências:**
+- O contrato "uso de IA" é sem conteúdo (a telemetria nunca leva conteúdo, `D-082`).
+- Com o middleware fora do ar, a contagem não chega: o uso aparece com atraso e completa quando ele volta.
+- **Em aberto:** o canal do aviso por e-mail ao owner (e ao time da Maind), já que o SaaS não guarda e-mail de pessoa (`ARQ-109`); é a próxima pergunta ao dono.
+**Reabrir quando:** o owner não achar o consumo na tela, ou um cliente não aceitar a contagem de uso da chave dele no SaaS.
+**Nota de 08/11/2026:** o canal do aviso por e-mail ao owner e ao time da Maind, que ficou em aberto, foi decidido na `ARQ-118` ✅: o SaaS envia com o endereço entregue pelo middleware na hora.
+
+### ARQ-118 · Os e-mails do Horus saem do SaaS, pelo e-mail do produto; o middleware entrega o endereço só na hora do envio, e o SaaS não o grava
+Situação: ✅ confirmada pelo dono em 08/11/2026, com a opção 1 (a recomendação do arquiteto) · Data: 08/11/2026 · Alcance: geral (`MF-121`)
+**Quem decide:** dono (dados pessoais em trânsito e de onde saem os e-mails).
+**Decisão:** os **e-mails do Horus às pessoas da organização** (os avisos por e-mail, `D-128`, e os relatórios agendados, `D-033`) **saem do SaaS, pelo e-mail do produto** (`D-155`). O **middleware entrega o endereço ao SaaS só na hora do envio**, e o **SaaS não o grava** (`ARQ-109`), como já vale para o e-mail do convite (`D-262`).
+**Atende a:** `D-033`, `D-128`, `D-155`, `D-262`; `ARQ-109`, `ARQ-117`.
+**Opções:**
+1. **Do SaaS, com o endereço só em trânsito** (recomendada, escolhida). ✅ Um só remetente e uma só configuração de e-mail para todas as organizações, inclusive as que usam o middleware do cliente. ⚠️ O endereço passa pelo SaaS em trânsito, como no convite; com o middleware fora do ar, o SaaS não tem o endereço e não envia.
+2. **Do middleware, com o e-mail de saída da organização.** ✅ O endereço nunca sai do middleware. ⚠️ Cada organização configura o próprio e-mail de saída, o e-mail do produto deixa de ser o remetente, e o SaaS precisa mandar ao middleware o conteúdo a enviar.
+**Por que esta:** a escolha do dono, em 08/11/2026: um remetente só. Abre-se mão de o endereço nunca passar pelo SaaS.
+**Consequências (decididas pelo arquiteto, 🟢):**
+- O endereço vai no pedido de envio e some com ele: não entra em registro, em histórico nem em telemetria do SaaS (como o token do endereço, `ARQ-102`).
+- Com o middleware fora do ar, não saem e-mails; a queda do middleware **não gera e-mail ao owner**: o aviso é o LED e a página de status (`ARQ-106`, `ARQ-107`), e o do time da Maind, o painel da instância (`D-275`). Quem hospeda o próprio middleware o monitora por conta própria. Um e-mail de contato da organização guardado no Registro, só para a queda, seria decisão nova.
+- O aviso de que a IA da organização parou chega ao owner dentro do Horus e, se ele preferir, por e-mail pelo mesmo caminho (o middleware está de pé nessa hora).
+**Reabrir quando:** um cliente não aceitar o endereço em trânsito pelo SaaS, ou a queda do middleware precisar de um e-mail ao owner.
+
+### ARQ-119 · Do middleware na casa do cliente, a Maind vê só o que o SaaS mede, e o diagnóstico de um erro é um pacote que o cliente gera e envia sob pedido
+Situação: ✅ confirmada pelo dono em 08/11/2026, com a opção 1 (a recomendação do arquiteto) · Data: 08/11/2026 · Alcance: geral (`MF-121`) · Traz ao middleware o que a `ARQ-074` propunha para a instalação completa
+**Quem decide:** dono (segurança, e o que sai da casa do cliente).
+**Decisão:** do **middleware na casa do cliente**, a Maind vê **só o que o SaaS mede sozinho**: o estado, a versão, o último contato e as quedas (`ARQ-106`, `D-275`) e a **contagem de uso de IA**, sem conteúdo (`ARQ-117`). Para diagnosticar um erro, o **owner ou a TI do cliente gera, no módulo de configuração do middleware, um pacote de diagnóstico** (registros técnicos **sem conteúdo, sem esquema e sem credencial**) e o **envia à Maind quando ela pedir**. Nenhuma telemetria sai contínua da casa do cliente.
+**Atende a:** `D-189`, `D-195`, `D-275`; `ARQ-074`, `ARQ-106`, `ARQ-117`.
+**Opções:**
+1. **Só o que o SaaS mede, mais um pacote de diagnóstico sob pedido** (recomendada, escolhida). ✅ Mantém a promessa de que nada além da pergunta e da resposta sai sem o cliente querer, e dá um caminho ao suporte. ⚠️ O diagnóstico depende de o cliente gerar e enviar o pacote.
+2. **Telemetria técnica contínua, sem conteúdo.** ✅ O suporte vê o problema antes do cliente. ⚠️ Abre um canal de saída permanente da casa do cliente, que a `D-189` evitou, e exige que a TI dele o aprove.
+3. **Nada além do estado.** ✅ Nenhum canal a mais. ⚠️ O suporte não tem como ajudar a diagnosticar, e a Maind descobre os problemas pelo chamado do cliente.
+**Por que esta:** a escolha do dono, em 08/11/2026: o cliente decide o que sai de casa. Abre-se mão de o suporte ver o problema por conta própria.
+**Consequências (decididas pelo arquiteto, 🟢):**
+- O pacote é um arquivo que a TI pode abrir e conferir antes de enviar; a Maind não o puxa.
+- Entra no catálogo de provas (`ARQ-079`) a prova de que o pacote não leva conteúdo de conversa, esquema nem credencial.
+- A telemetria do middleware que a Maind hospeda é da própria Maind (documento 11); a do middleware do cliente fica com ele.
+- A `ARQ-074` (🟡) segue só para a instalação completa, sem versão (`D-188`).
+**Reabrir quando:** o suporte não conseguir resolver erros só com o pacote, ou um cliente pedir telemetria contínua.
+
+### ARQ-120 · Quando uma rodada é pulada com o middleware fora do ar, só o dono do agendamento é avisado, na área de avisos do Horus
+Situação: ✅ confirmada pelo dono em 08/11/2026, com a opção 1 (a recomendação do arquiteto) · Data: 08/11/2026 · Alcance: geral (`MF-121`)
+**Quem decide:** dono (muda o que a pessoa recebe).
+**Decisão:** quando uma rodada de agendamento, alerta ou agente é **pulada** porque o middleware ficou fora além da espera de uma hora (`ARQ-108`), **só o dono do agendamento é avisado**, na **área de avisos do Horus** (`D-128`), com a hora e o motivo; **por e-mail**, só se a pessoa já recebe avisos por e-mail (`ARQ-118`). Os destinatários do relatório não são avisados.
+**Atende a:** `D-128`, `D-285`; `ARQ-108`, `ARQ-118`.
+**Opções:**
+1. **Só o dono do agendamento, na área de avisos** (recomendada, escolhida). ✅ Quem responde pela rodada sabe por que faltou, sem ruído para os destinatários. ⚠️ O aviso aparece quando o middleware volta e a pessoa entra; os destinatários descobrem pela ausência.
+2. **O dono e os destinatários.** ✅ Ninguém fica esperando em silêncio. ⚠️ Um relatório com muitos destinatários gera muitos avisos por uma queda que não é culpa deles.
+3. **Ninguém: só o rastro registra.** ✅ Nada novo a construir. ⚠️ O dono só descobre se consultar o rastro.
+**Por que esta:** a escolha do dono, em 08/11/2026: avisar quem responde pela rodada. Abre-se mão de avisar quem a espera.
+**Consequências (decididas pelo arquiteto, 🟢):** o aviso é gravado no SaaS (a rodada pulada vive na fila, `ARQ-005`) e não leva conteúdo; o e-mail, quando a preferência existe, segue o caminho da `ARQ-118`, com o middleware de pé.
+**Reabrir quando:** os donos reclamarem de só saber depois, ou os destinatários pedirem aviso.
+
+### ARQ-121 · O SaaS guarda o histórico das quedas do middleware por noventa dias
+Situação: ✅ confirmada pelo dono em 08/11/2026, com a opção 2 (a recomendação do arquiteto era a opção 1, doze meses) · Data: 08/11/2026 · Alcance: geral (`MF-121`)
+**Quem decide:** dono (dados e retenção).
+**Decisão:** o registro das quedas do middleware de cada organização (início, fim e duração), que a página de status mostra (`ARQ-106`), fica guardado no banco mestre por **noventa dias**; as quedas mais antigas são apagadas. A página mostra, portanto, as quedas do último trimestre.
+**Atende a:** `D-283`; `ARQ-035`, `ARQ-106`.
+**Opções:**
+1. **Doze meses** (recomendação do arquiteto). ✅ Cobre um ano de comparação e um ciclo de contrato, com volume pequeno. ⚠️ Mais dado guardado.
+2. **Noventa dias** (escolhida pelo dono). ✅ Menos dado guardado. ⚠️ Não dá para comparar com o ano anterior nem sustentar uma disputa de contrato de meses atrás.
+3. **Sem prazo.** ✅ Histórico completo. ⚠️ Dado que cresce sem fim, e a faxina da guarda de dados (`ARQ-035`) ganharia uma exceção.
+**Por que esta:** a escolha do dono, em 08/11/2026: guardar pouco. Abre-se mão de comparar quedas além do último trimestre.
+**Consequências (decididas pelo arquiteto, 🟢):** a faxina que a `ARQ-035` já tem passa a apagar também o registro de quedas com mais de noventa dias; é dado da instância, sem pessoa, e a regra entra no inventário (`ARQ-045`).
+**Reabrir quando:** um cliente contestar uma queda de mais de noventa dias atrás, ou o suporte precisar de mais histórico.
+
+### ARQ-122 · Sem meta de disponibilidade na VPS; na produção real, 99,9% por mês para o SaaS e para o middleware da Maind
+Situação: ✅ confirmada pelo dono em 08/11/2026, com a opção 1 (a recomendação do arquiteto) · Data: 08/11/2026 · Alcance: geral
+**Quem decide:** dono (disponibilidade e o que se promete ao cliente).
+**Decisão:** na **VPS** (a construção, a homologação e a v2.0), **sem meta numérica**: a sonda de fora (`ARQ-070`) mede e registra, e nenhum número é prometido. Na **produção real** (`ARQ-112`), a meta é **99,9% por mês** para o **SaaS** e para o **middleware da Maind**, medida pela sonda. O **middleware que o cliente hospeda não entra na meta**: quem o opera é ele.
+**Atende a:** `ARQ-070`, `ARQ-098`, `ARQ-112`, `ARQ-113`.
+**Opções:**
+1. **Sem meta na VPS; 99,9% por mês na produção real** (recomendada, escolhida). ✅ A meta só vale onde a infraestrutura consegue cumpri-la. ⚠️ Na v2.0 não há número a mostrar a um cliente que o peça.
+2. **99,9% desde a v2.0.** ✅ Um número para prometer desde o primeiro cliente. ⚠️ Com um servidor só e a troca de versão com tempo fora do ar, a meta não seria cumprida de forma confiável.
+3. **Sem meta numérica, nem na produção real.** ✅ Nenhum compromisso a cumprir. ⚠️ Um cliente corporativo costuma pedir o número no contrato, e a produção real teria disponibilidade e nada a mostrar.
+**Por que esta:** a escolha do dono, em 08/11/2026: prometer só o que a infraestrutura de cada fase cumpre. Abre-se mão de um número na v2.0.
+**Consequências (decididas pelo arquiteto, 🟢):**
+- O documento 03 (as metas de qualidade) passa a ter essa meta em duas fases; fica a refazer pela `P-028`.
+- Para cumprir os 99,9% na produção real, a troca de versão tem de ser sem corte, com a drenagem e as réplicas (`ARQ-063`, `ARQ-113`).
+- O tempo fora do ar na troca de versão da VPS (🔎, até dois minutos) é uma medida, e não uma meta.
+**Reabrir quando:** um cliente da v2.0 exigir um número de disponibilidade antes da produção real, ou a produção real não alcançar os 99,9%.
+
+### ARQ-123 · O SaaS guarda por código da pessoa o tipo de assento, as permissões e os grupos, sem nomes; o middleware os envia a cada mudança
+Situação: ✅ confirmada pelo dono em 08/11/2026, com a opção 1 (a recomendação do arquiteto) · Data: 08/11/2026 · Alcance: geral (`MF-121`) · Completa a `ARQ-109`
+**Quem decide:** dono (dados ligados à pessoa e segurança).
+**Decisão:** o **middleware envia ao SaaS, a cada mudança**, para cada **código de pessoa** (`ARQ-109`): o **tipo de assento**, o **conjunto de permissões** (o que as roles dela liberam, `D-050`) e os **identificadores dos grupos** e da **carteira do gestor**. **Os nomes das pessoas, dos grupos e das roles ficam no middleware.** O SaaS decide cada pedido sozinho, a partir dessa tabela, e conta os assentos ocupados sem chamar o middleware.
+**Atende a:** `D-029`, `D-050`, `D-069`, `D-075`, `D-261`, `D-274`; `ARQ-099`, `ARQ-102`, `ARQ-109`.
+**Opções:**
+1. **O SaaS guarda por código, sem nomes** (recomendada, escolhida). ✅ O SaaS decide cada pedido sozinho e conta os assentos ocupados sem o middleware. ⚠️ O SaaS passa a guardar, ligados ao código, dados que descrevem o que a pessoa pode fazer (não quem ela é).
+2. **O SaaS pergunta ao middleware a cada pedido.** ✅ O SaaS não guarda nada sobre o que a pessoa pode fazer. ⚠️ Cada pedido depende de uma chamada ao middleware, e o SaaS não conta os assentos sozinho.
+3. **As permissões vão na sessão.** ✅ Nada guardado no SaaS. ⚠️ Contraria a `ARQ-102`; uma mudança de role só vale na próxima sessão; a sessão fica maior.
+**Por que esta:** a escolha do dono, em 08/11/2026: o SaaS decide sozinho, sem saber quem é a pessoa. Abre-se mão de o SaaS não guardar nada sobre o que a pessoa pode fazer.
+**Consequências (decididas pelo arquiteto, 🟢):**
+- A mudança viaja pelo contrato (`ARQ-099`), com entrega repetível sem efeito em dobro; depois de uma queda do middleware, o SaaS pede uma reconciliação completa antes de voltar a aceitar mudanças.
+- Os nomes de grupos e roles, como os das pessoas, são pedidos ao middleware em lote na hora de exibir.
+- O inventário dos dados pessoais (`ARQ-045`) e o documento 06 passam a registrar que o SaaS tem só o código e as permissões ligadas a ele; ficam a refazer pela `P-028`.
+**Reabrir quando:** a reconciliação ou o atraso na chegada de uma mudança de role causarem permissão errada, ou a conferência jurídica (`P-044`) exigir menos ligado ao código.
+
+### ARQ-124 · O vínculo se faz pela criação da organização: o SaaS gera o certificado e a chave de instalação, o middleware devolve o arquivo assinado, e o handshake confirma; na Maind, sem passo manual
+Situação: 🟢 decidida pelo arquiteto · Data: 08/11/2026 · Alcance: geral (`MF-121`)
+**Quem decide:** arquiteto (o mecanismo; o fluxo é o do dono, `D-258`). A política do certificado (formato, rotação, revogação) é a `P-049`.
+**Decisão:** (1) A **criação da organização no SaaS** (`D-146`) gera o **certificado** e a **chave de instalação**, esta **cifrada com o certificado** e de **uso único**, com os dados de que o middleware precisa (`D-258`, passo 2). (2) **Na hospedagem da Maind**, o SaaS entrega o certificado ao middleware **pelo contrato** (`ARQ-099`) e o middleware **cria a organização** nele (a marca, a chave de cifra por organização, `ARQ-103`), **sem passo manual e sem subir outro middleware** (`D-272`). **Na casa do cliente**, a TI do cliente **importa o arquivo** no módulo de configuração do middleware (um passo manual, por natureza). (3) O middleware **devolve um arquivo de configuração assinado e cifrado com o mesmo certificado** (endereço, porta etc.); o SaaS o grava no **Registro de organizações** (`ARQ-102`), e as duas pontas **confirmam o handshake**. Só então a primeira das três condições da `D-277` se cumpre. (4) **Importar o mesmo certificado duas vezes não cria duas organizações**, e o middleware recusa um certificado cujo vínculo não confere com a organização que já tem.
+**Atende a:** `D-258`, `D-272`, `D-277`; `ARQ-099`, `ARQ-102`, `ARQ-103`, `ARQ-110`.
+**Opções:**
+1. **Pelo contrato na Maind, e a importação do arquivo na casa do cliente** (recomendada). ✅ A Maind cria uma organização sem passo manual; o cliente, que não deixa o SaaS entrar na rede dele, importa o arquivo. ⚠️ Dois caminhos para o mesmo resultado.
+2. **A importação do arquivo nos dois.** ✅ Um caminho só. ⚠️ A Maind teria um passo manual a cada organização, contra a `D-272`.
+3. **Um middleware novo por organização na Maind** (a `D-259`, substituída pela `D-272`). ✅ O isolamento mais forte. ⚠️ Uma máquina por organização.
+**Por que esta:** o fluxo é o do dono; o arquiteto só escolhe como cada hospedagem o percorre. Abre-se mão de um caminho único.
+**Consequências:**
+- Entra no catálogo de provas (`ARQ-079`) a prova de que o handshake falha com um certificado trocado e de que a importação repetida não duplica a organização.
+- O formato do certificado, a rotação e a revogação seguem na `P-049`.
+**Reabrir quando:** a Maind passar a criar muitas organizações com falhas no handshake, ou um cliente exigir um caminho só.
+
+### ARQ-125 · A exclusão de uma organização apaga as linhas e a chave dela no middleware, repetida até o middleware confirmar; a cópia da base segue a ARQ-086
+Situação: 🟢 decidida pelo arquiteto · Data: 08/11/2026 · Alcance: geral (`MF-121`)
+**Quem decide:** arquiteto (decorre da `D-278` e da `ARQ-103`); a conferência jurídica das cópias é a `P-044`.
+**Decisão:** (1) Excluir uma organização no SaaS manda ao middleware, pelo contrato (`ARQ-099`), apagar **as linhas com a marca dela e a chave de cifra dela** (`ARQ-103`, `D-278`). (2) O SaaS só marca a organização como excluída **depois da confirmação do middleware**; se o middleware não está alcançável, a exclusão fica **pendente e é repetida** até confirmar (o pedido é repetível sem efeito em dobro, `ARQ-005`), e a organização aparece "em exclusão" no painel da instância (`D-275`). (3) A **cópia da base de configuração** do middleware da Maind segue o contrato da cópia da instância (`ARQ-086`); como as **credenciais estão cifradas com a chave da organização**, apagá-la as **inutiliza também nas cópias**, e o resto da cópia expira pela guarda dela. (4) Na **casa do cliente**, a cópia é dele (`ARQ-086`); a exclusão vale no middleware dele, e a TI do cliente apaga as cópias dele.
+**Atende a:** `D-210`, `D-278`; `ARQ-005`, `ARQ-086`, `ARQ-103`.
+**Opções:**
+1. **Apagar linhas e chave, repetir até confirmar, e deixar as cópias expirarem** (recomendada). ✅ Nenhuma organização "meio excluída" sem aparecer; as credenciais morrem também nas cópias. ⚠️ O resto da cópia vive até expirar, o que a conferência jurídica (`P-044`) avalia.
+2. **Apagar também todas as cópias já feitas.** ✅ Nada sobra. ⚠️ Uma cópia de segurança não se edita por organização sem refazê-la inteira.
+3. **Marcar como excluída e apagar numa faxina periódica.** ✅ O mais simples. ⚠️ O dado fica por mais tempo, contra a `D-210`.
+**Por que esta:** a exclusão é imediata onde se pode, e as cópias seguem o próprio prazo. Abre-se mão de apagar o que já está numa cópia.
+**Reabrir quando:** a conferência jurídica (`P-044`) exigir apagar as cópias antes do prazo.
+
+### ARQ-126 · O que a TI do cliente precisa para rodar o middleware: uma máquina com Docker, o endereço liberado só ao SaaS, a saída aos bancos e à IA, e os segredos
+Situação: 🟢 decidida pelo arquiteto · Data: 08/11/2026 · Alcance: geral (`MF-121`)
+**Quem decide:** arquiteto (os requisitos mínimos; a hospedagem em si é do dono, `D-258`, `D-260`).
+**Decisão:** para hospedar o middleware, a TI do cliente precisa de: (1) **uma máquina com Docker e docker compose** (a solução roda em qualquer máquina com Docker e Postgres 17, `ARQ-096`), e a base de configuração do middleware, dentro do mesmo compose ou num Postgres 17 que a TI indicar 🔎; (2) **um endereço e uma porta públicos para o SaaS**, com **TLS**, liberados no firewall **só para o IP do SaaS** (`D-190`, `D-195`); (3) a **saída aos bancos e aos provedores de IA**, na lista de permitidos (`ARQ-116`); (4) o **arquivo de ambiente com os segredos**, só do root (`ARQ-115`); (5) o **relógio sincronizado** (o certificado depende dele); (6) a **cópia de segurança da base de configuração**, que é dela (`ARQ-086`).
+**Atende a:** `D-190`, `D-195`, `D-260`; `ARQ-086`, `ARQ-096`, `ARQ-115`, `ARQ-116`.
+**Opções:**
+1. **Essa lista mínima, de uma máquina com Docker** (recomendada). ✅ Cabe em qualquer TI, sem Kubernetes (`ARQ-100`). ⚠️ O firewall e o TLS dependem da TI.
+2. **Exigir também um Kubernetes.** ✅ Reinício e troca de versão prontos. ⚠️ Contra a `ARQ-100`, e poucos clientes têm.
+3. **A Maind monta a máquina no cliente.** ✅ O cliente não faz nada. ⚠️ A Maind teria acesso à rede do cliente, contra a promessa da `D-189`.
+**Por que esta:** o menor conjunto que a imagem precisa para rodar. Abre-se mão de reinício automático e de troca gradual de versão.
+**Consequências:** o documento 09 passa a trazer essa lista para o cliente (a refazer pela `P-028`); a lista final fica nas ADRs da `MF-121`.
+**Reabrir quando:** um cliente não tiver Docker, ou a TI de um cliente pedir um Kubernetes.
+
+### ARQ-127 · O SaaS e o middleware da Maind sobem em projetos, redes e bancos separados; só o contrato os liga
+Situação: 🟢 decidida pelo arquiteto, a confirmar com o dono (a separação é a do rascunho dele, `D-258`; o detalhe é meu) · Data: 08/11/2026 · Alcance: geral
+**Quem decide:** arquiteto (como a "infraestrutura lógica separada" do rascunho do dono se faz na VPS e na produção real).
+**Decisão:** o **SaaS** e o **middleware da Maind** são **infraestruturas lógicas separadas** (`D-258`, passo 1): na **VPS**, **projetos docker compose distintos, redes distintas e bancos distintos** (o Postgres do SaaS e o do middleware), com **nenhum acesso do SaaS ao banco do middleware nem do middleware ao banco do SaaS**; a única ligação é o **contrato gRPC com o certificado** (`ARQ-099`, `ARQ-124`). Os dois **podem dividir a mesma máquina** na VPS, o que é uma escolha de operação. Na **produção real**, ficam em **namespaces ou clusters separados** do Kubernetes gerenciado, com a rede entre eles restrita ao contrato (`ARQ-112`).
+**Atende a:** `D-258`, `D-272`; `ARQ-099`, `ARQ-112`, `ARQ-124`.
+**Opções:**
+1. **Projetos, redes e bancos separados; a máquina pode ser a mesma na VPS** (recomendada). ✅ A separação lógica que o dono pediu, sem dobrar a máquina na VPS. ⚠️ Na mesma máquina, a falha da máquina derruba os dois.
+2. **Máquinas separadas desde a VPS.** ✅ A falha de uma não derruba a outra. ⚠️ Dobra a infraestrutura na fase em que ela é mínima.
+3. **O middleware dentro do SaaS, como um módulo.** ✅ Uma peça só. ⚠️ Perde a separação, que é a razão do middleware (`D-258`).
+**Por que esta:** a separação é lógica, como o dono descreveu; a física é de operação. Abre-se mão de uma separação física na VPS.
+**Consequência em aberto:** onde mora a base do middleware da Maind na produção real (um Postgres gerenciado à parte do do SaaS, ou um serviço dentro do cluster) não está decidido; fica para o documento 09 e para as ADRs da `MF-121`.
+**Reabrir quando:** a falha de uma máquina derrubar os dois com frequência na VPS, ou um cliente exigir separação física.

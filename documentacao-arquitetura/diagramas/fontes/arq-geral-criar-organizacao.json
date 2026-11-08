@@ -2,7 +2,7 @@
   "schema_version": 1,
   "diagram_type": "sequence",
   "meta": {
-    "title": "Criar uma organização e adicioná-la ao middleware",
+    "title": "Criar uma organização, adicioná-la ao middleware e excluí-la",
     "locale": "pt-BR",
     "translations": {
       "page.title": "Diagrama {title}",
@@ -509,7 +509,7 @@
           "label": "cadastro e configuração"
         },
         "dashed": {
-          "label": "conforme a hospedagem ou aguarda o dono"
+          "label": "por fora do sistema ou aguarda o dono"
         }
       }
     }
@@ -552,28 +552,28 @@
   "segments": [
     {
       "from": 150,
-      "to": 312,
-      "label": "1 · A organização nasce em configuração"
+      "to": 424,
+      "label": "1 · Nasce e entra no middleware que já existe"
     },
     {
-      "from": 324,
-      "to": 552,
-      "label": "2 · Entra no middleware que já existe"
+      "from": 436,
+      "to": 776,
+      "label": "2 · O primeiro acesso do owner, banco e IA"
     },
     {
-      "from": 564,
-      "to": 724,
-      "label": "3 · O owner entra e configura banco e IA"
+      "from": 788,
+      "to": 1128,
+      "label": "3 · Ativa: assentos e pessoas"
     },
     {
-      "from": 736,
-      "to": 1000,
-      "label": "4 · Ativa: assentos e pessoas"
+      "from": 1140,
+      "to": 1480,
+      "label": "4 · A primeira pergunta"
     },
     {
-      "from": 1012,
-      "to": 1360,
-      "label": "5 · A primeira pergunta"
+      "from": 1492,
+      "to": 1700,
+      "label": "5 · Excluir: apaga também no middleware"
     }
   ],
   "messages": [
@@ -581,7 +581,7 @@
       "id": "cria-a-organizacao",
       "from": "admin",
       "to": "saas",
-      "y": 170,
+      "y": 172,
       "label": "cria a organização",
       "variant": "emphasis",
       "note": "Só o administrador cria (D-146); nasce em configuração (D-277)."
@@ -589,53 +589,71 @@
     {
       "id": "certificado-e-chave",
       "from": "saas",
-      "to": "admin",
+      "to": "middleware",
       "y": 238,
       "label": "certificado e chave de instalação",
-      "variant": "return",
-      "note": "A chave vai cifrada, com o que o middleware precisa (D-258)."
-    },
-    {
-      "id": "importa-o-certificado",
-      "from": "admin",
-      "to": "middleware",
-      "y": 346,
-      "label": "importa o certificado",
       "variant": "security",
-      "note": "Adiciona a organização ao middleware (D-258, D-272)."
+      "note": "Na Maind, pelo contrato; no cliente, a TI importa o arquivo (ARQ-124)."
     },
     {
       "id": "arquivo-assinado",
       "from": "middleware",
       "to": "saas",
-      "y": 414,
+      "y": 304,
       "label": "arquivo de configuração assinado",
       "variant": "security",
-      "note": "Endereço, porta etc., para o Registro de organizações (D-258)."
+      "note": "Cria a organização, com marca e chave dela; vai ao Registro (ARQ-103, ARQ-124)."
     },
     {
       "id": "handshake",
       "from": "saas",
       "to": "middleware",
-      "y": 482,
+      "y": 370,
       "label": "handshake",
       "variant": "security",
-      "note": "Middleware ligado: a primeira condição (D-277); formato: P-048."
+      "note": "1ª condição da D-277; importar de novo não duplica (ARQ-124)."
     },
     {
       "id": "usuario-do-owner",
       "from": "admin",
       "to": "middleware",
-      "y": 586,
+      "y": 458,
       "label": "cria o usuário do owner",
+      "variant": "default",
+      "note": "Na Maind, o administrador (D-271, D-280); no cliente, a TI (ARQ-110)."
+    },
+    {
+      "id": "link-primeiro-acesso",
+      "from": "middleware",
+      "to": "admin",
+      "y": 524,
+      "label": "link de primeiro acesso",
+      "variant": "security",
+      "note": "Uso único e validade curta, gerado pelo middleware (ARQ-110)."
+    },
+    {
+      "id": "entrega-o-link",
+      "from": "admin",
+      "to": "owner",
+      "y": 590,
+      "label": "entrega o link, por fora",
       "variant": "dashed",
-      "note": "Só na hospedagem da Maind (D-271), junto da criação (D-280)."
+      "note": "Pelo e-mail ou WhatsApp da Maind; nada passa pelo SaaS (ARQ-110)."
+    },
+    {
+      "id": "define-a-senha",
+      "from": "owner",
+      "to": "middleware",
+      "y": 656,
+      "label": "define a senha",
+      "variant": "security",
+      "note": "Nenhuma senha passa pela Maind (ARQ-110)."
     },
     {
       "id": "banco-e-ia",
       "from": "owner",
       "to": "middleware",
-      "y": 654,
+      "y": 722,
       "label": "configura banco e IA",
       "variant": "default",
       "note": "Ao menos um banco e a IA: as outras duas condições (D-273, D-277)."
@@ -644,7 +662,7 @@
       "id": "marca-ativa",
       "from": "admin",
       "to": "saas",
-      "y": 758,
+      "y": 810,
       "label": "marca como ativa",
       "variant": "dashed",
       "note": "Cumpridas as três condições (D-277); quem marca aguarda o dono."
@@ -653,7 +671,7 @@
       "id": "libera-os-assentos",
       "from": "admin",
       "to": "saas",
-      "y": 826,
+      "y": 876,
       "label": "libera os assentos",
       "variant": "default",
       "note": "Os assentos contratados, cada tipo à parte (D-068, D-194)."
@@ -662,7 +680,7 @@
       "id": "assentos",
       "from": "saas",
       "to": "middleware",
-      "y": 894,
+      "y": 942,
       "label": "assentos",
       "variant": "default",
       "note": "Vão ao middleware, onde as pessoas serão cadastradas (D-258)."
@@ -671,34 +689,43 @@
       "id": "cadastra-as-pessoas",
       "from": "owner",
       "to": "middleware",
-      "y": 962,
+      "y": 1008,
       "label": "cadastra as pessoas",
       "variant": "default",
-      "note": "Dados fora do SaaS (D-261); até mais dois owners (D-269)."
+      "note": "Nome e e-mail ficam no middleware (D-261, ARQ-109); até mais dois owners (D-269)."
+    },
+    {
+      "id": "permissoes-por-codigo",
+      "from": "middleware",
+      "to": "saas",
+      "y": 1074,
+      "label": "permissões por código",
+      "variant": "default",
+      "note": "Assento, permissões e grupos, sem nomes, a cada mudança (ARQ-123)."
     },
     {
       "id": "entra-pelo-endereco",
       "from": "pessoa",
       "to": "saas",
-      "y": 1034,
+      "y": 1162,
       "label": "entra pelo endereço da organização",
       "variant": "emphasis",
-      "note": "O token no endereço leva à organização certa (D-258)."
+      "note": "O token só identifica a organização (D-258, ARQ-102)."
     },
     {
       "id": "autenticacao",
       "from": "saas",
       "to": "middleware",
-      "y": 1102,
+      "y": 1228,
       "label": "autenticação",
       "variant": "security",
-      "note": "A autenticação fica no middleware; a sessão: P-048."
+      "note": "Pela mecânica da organização (ARQ-111); sessão só com a organização (ARQ-102)."
     },
     {
       "id": "primeira-pergunta",
       "from": "pessoa",
       "to": "saas",
-      "y": 1170,
+      "y": 1294,
       "label": "primeira pergunta",
       "variant": "emphasis",
       "note": "No front do Horus, como qualquer pergunta de análise."
@@ -707,7 +734,7 @@
       "id": "so-a-pergunta",
       "from": "saas",
       "to": "middleware",
-      "y": 1238,
+      "y": 1360,
       "label": "só a pergunta",
       "variant": "emphasis",
       "note": "O ciclo da análise roda no middleware (D-189, D-258)."
@@ -716,41 +743,74 @@
       "id": "resposta-pronta",
       "from": "middleware",
       "to": "saas",
-      "y": 1306,
+      "y": 1426,
       "label": "resposta pronta",
       "variant": "return",
       "note": "Só ela volta ao SaaS, e a pessoa a vê (D-189)."
+    },
+    {
+      "id": "exclui-a-organizacao",
+      "from": "admin",
+      "to": "saas",
+      "y": 1514,
+      "label": "exclui a organização",
+      "variant": "emphasis",
+      "note": "Fica “em exclusão” no painel da instância até confirmar (ARQ-125)."
+    },
+    {
+      "id": "apaga-linhas-e-chave",
+      "from": "saas",
+      "to": "middleware",
+      "y": 1580,
+      "label": "apaga linhas e chave",
+      "variant": "security",
+      "note": "Só as da organização; repetido até confirmar (ARQ-125, D-278)."
+    },
+    {
+      "id": "confirma-a-exclusao",
+      "from": "middleware",
+      "to": "saas",
+      "y": 1646,
+      "label": "confirmação",
+      "variant": "return",
+      "note": "Só então fica excluída; credenciais inúteis nas cópias (ARQ-125)."
     }
   ],
   "activations": [
     {
       "participant": "admin",
-      "from": 165,
-      "to": 832,
+      "from": 167,
+      "to": 882,
+      "type": "external"
+    },
+    {
+      "participant": "admin",
+      "from": 1509,
+      "to": 1520,
       "type": "external"
     },
     {
       "participant": "saas",
-      "from": 165,
-      "to": 1312,
+      "from": 167,
+      "to": 1652,
       "type": "backend"
     },
     {
       "participant": "middleware",
-      "from": 341,
-      "to": 1312,
+      "from": 233,
+      "to": 1652,
       "type": "backend"
     },
     {
       "participant": "owner",
-      "from": 649,
-      "to": 968,
+      "from": 585,
+      "to": 1014,
       "type": "external"
     },
     {
       "participant": "pessoa",
-      "from": 1029,
-      "to": 1176,
+      "from": 1157,
+      "to": 1300,
       "type": "external"
     }
   ],
@@ -759,11 +819,13 @@
       "dot": "cyan",
       "title": "O que o desenho mostra",
       "items": [
-        "O fluxo que o dono descreveu na D-258, corrigido pelas decisões de 07/11/2026: da organização criada à primeira pergunta, sem subir um middleware por organização. O middleware já existe: o da Maind, que atende todas as organizações do SaaS, ou o do cliente, que atende as organizações dele (D-272).",
-        "O administrador da instância cria a organização no SaaS (D-146), e ela nasce em configuração (D-277). A criação gera um certificado digital e uma chave de instalação cifrada; importar o certificado no middleware adiciona a organização a ele, que devolve um arquivo de configuração assinado e cifrado (endereço, porta etc.), e as duas pontas confirmam o handshake (D-258, D-272). É assim que o SaaS aprende a chegar ao middleware, e o Registro de organizações guarda onde ele mora.",
-        "Na hospedagem da Maind, a Maind cria o usuário com que o owner da organização entra no front do middleware (D-271); a D-280 põe esse passo na criação da organização, no painel da instância. Com esse usuário e a senha, o owner configura ao menos um banco e a IA (D-258, D-273).",
-        "A organização só passa a ativa com três condições: o middleware ligado (o handshake confirmado), ao menos um banco configurado e a IA configurada pelo owner (D-277). Depois, o administrador libera os assentos contratados (D-068), que vão ao middleware, onde o owner cadastra as pessoas (D-258, D-261).",
-        "A pessoa entra pelo endereço da organização, que leva um token, e a autenticação acontece no middleware. Ao SaaS chegam só a pergunta e a resposta pronta; o ciclo da análise roda dentro do middleware (D-189, D-258)."
+        "O fluxo que o dono descreveu na D-258, corrigido pelas decisões de 07 e 08/11/2026: da organização criada à primeira pergunta, e depois à exclusão, sem subir um middleware por organização. O middleware já existe: o da Maind atende todas as organizações do SaaS, e o do cliente, as organizações dele (D-272). O do cliente sobe com docker compose; o da Maind também, na VPS (v2.0), e passa a Kubernetes gerenciado com réplicas na Produção real (ARQ-100, ARQ-112).",
+        "O vínculo (ARQ-124): o administrador da instância cria a organização no SaaS (D-146), e ela nasce em configuração (D-277). A criação gera o certificado e a chave de instalação, cifrada com o certificado e de uso único. Na hospedagem da Maind, o SaaS os entrega ao middleware pelo contrato, sem passo manual, e o middleware cria a organização na mesma base das outras, com a marca e a chave de cifra dela (ARQ-103); na casa do cliente, a TI importa o arquivo no módulo de configuração do middleware. O middleware devolve o arquivo de configuração assinado e cifrado com o mesmo certificado (endereço, porta etc.), o SaaS o grava no Registro de organizações, no banco mestre (ARQ-102), e as duas pontas confirmam o handshake: é a primeira das três condições da D-277. Importar o mesmo certificado duas vezes não cria duas organizações.",
+        "O primeiro acesso do owner (ARQ-110): o administrador da instância cria o usuário do owner no front do middleware (D-271, D-280), e o middleware gera um link de primeiro acesso, de uso único e de validade curta. O administrador o entrega ao owner por fora, pelo e-mail ou pelo WhatsApp da própria Maind, e o owner o abre e define a própria senha. Nenhuma senha passa pela Maind, e nem o link nem o e-mail do owner passam pelo SaaS. Na casa do cliente vale o mesmo, com a TI do cliente no papel do administrador.",
+        "Com o usuário e a senha, o owner configura no front do middleware ao menos um banco e a IA (D-258, D-273), e é ali também que a organização escolhe a mecânica de login das pessoas (ARQ-111). As credenciais se cifram com a chave da organização (ARQ-103).",
+        "A organização só passa a ativa com três condições: o middleware ligado (o handshake confirmado), ao menos um banco configurado e a IA configurada pelo owner (D-277). Depois, o administrador libera os assentos contratados (D-068), que vão ao middleware, onde o owner cadastra as pessoas (D-258, D-261). O nome e o e-mail ficam no middleware, e o SaaS guarda de cada pessoa só um código (ARQ-109); a cada mudança, o middleware envia ao SaaS, por código, o tipo de assento, o conjunto de permissões e os identificadores dos grupos e da carteira do gestor, sem nomes, e o SaaS conta os assentos ocupados sem chamá-lo (ARQ-123).",
+        "A pessoa entra pelo endereço da organização, que leva um token, só um identificador, e a autenticação acontece no middleware, pela mecânica que a organização configurou (ARQ-111); ele emite a sessão, que leva só o identificador da organização, e o SaaS a confere com a chave pública do Registro (ARQ-102). Ao SaaS chegam só a pergunta e a resposta pronta; o ciclo da análise roda dentro do middleware (D-189, D-258).",
+        "A exclusão (ARQ-125): o administrador da instância exclui a organização (D-280), e o SaaS manda ao middleware, pelo contrato, apagar as linhas com a marca dela e a chave de cifra dela, e só o que é dela (D-278, ARQ-103). O SaaS só a marca excluída depois da confirmação do middleware; se ele estiver fora, o pedido fica pendente e é repetido, sem efeito em dobro, e a organização aparece \"em exclusão\" no painel da instância (D-275). Como as credenciais estão cifradas com a chave dela, apagá-la as inutiliza também nas cópias de segurança, e o resto da cópia expira pela guarda (ARQ-086); na casa do cliente, as cópias são dele, e a TI as apaga."
       ]
     },
     {
@@ -771,23 +833,26 @@
       "title": "Quem faz cada passo, e o que vale na v2.0",
       "items": [
         "Todo o fluxo é v2.0: a MF-121, Middleware da organização, está inteira na v2.0 (D-260, D-270), e o middleware é multi-organização em qualquer hospedagem (D-272).",
+        "Dois caminhos para o mesmo vínculo (ARQ-124): na hospedagem da Maind, o certificado vai pelo contrato, sem passo manual; na casa do cliente, a TI importa o arquivo, um passo manual por natureza, porque o cliente não deixa o SaaS entrar na rede dele. O primeiro acesso do owner também muda de mãos: na Maind, quem cria o usuário é o administrador da instância; no cliente, a TI dele (ARQ-110).",
         "A ordem segue a D-258 (os assentos chegam ao middleware antes de o owner cadastrar as pessoas) e a prova de valor da D-280 (o owner configura o banco e a IA, a organização vira ativa e a Maind libera os assentos). Cadastrar as pessoas não é condição para ativar (D-277).",
         "Em qualquer hospedagem, quem configura os bancos e a IA é o owner da organização, no front do middleware; o time da Maind só dá suporte, antes e depois da venda, e não configura por ele. A chave de IA que a Maind dá, e paga, também é o owner quem cadastra (D-264, D-267, D-273). Não há mais conexão de IA da instância (D-266).",
-        "Os passos tracejados dependem da hospedagem ou aguardam o dono: a Maind cria o usuário do owner na hospedagem dela (D-271); que a Maind marca a organização como ativa, cumpridas as condições, é leitura do PO a confirmar com o dono (D-277).",
-        "O owner e o administrador da instância entram sempre por usuário e senha. O owner cadastra até mais dois owners, cada um num assento de owner contratado (D-258, D-269); o login da empresa é v2.1 (D-118, D-184). Depois, o gestor cria o convite e pede a troca do tipo de assento pelo Horus, e o owner aprova no front do middleware (D-262)."
+        "Os passos tracejados: a entrega do link de primeiro acesso, que vai por fora do sistema (ARQ-110), e quem marca a organização como ativa, cumpridas as condições, leitura do PO a confirmar com o dono (D-277).",
+        "O owner e o administrador da instância entram sempre por usuário e senha. Para as pessoas, a mecânica de login é configuração da organização: na v2.0, usuário e senha e Google; o OpenID Connect, o login da empresa, entra na v2.1 como mais um mecanismo do mesmo módulo (ARQ-111). O owner cadastra até mais dois owners, cada um num assento de owner contratado (D-258, D-269). Depois, o gestor cria o convite e pede a troca do tipo de assento pelo Horus, o owner aprova no front do middleware (D-262), e o e-mail do convite só passa pelo SaaS, sem ser gravado (ARQ-109).",
+        "O que se repete em segundo plano: a exclusão, até o middleware confirmar (ARQ-005, ARQ-125); as permissões por código, a cada mudança, com reconciliação completa depois de uma queda do middleware (ARQ-123)."
       ]
     },
     {
       "dot": "amber",
       "title": "O que ficou de fora e o que aguarda o dono",
       "items": [
-        "Com o arquiteto (proposta 2, P-048): o formato, a rotação e a revogação do certificado, a chave de instalação, o handshake e a troca dos arquivos assinados; por onde o arquivo de configuração chega ao SaaS; e como se adiciona a organização ao middleware, que substitui a criação automática de um middleware por organização (D-272).",
-        "Sem fonte, por isso fora do desenho: quem importa o certificado quando o middleware está na casa do cliente (P-048) e quem cria o primeiro usuário do owner nesse caso, porque a D-271 só fecha a hospedagem da Maind.",
-        "Sem decisão: como o SaaS confere que o banco e a IA, que ficam no middleware, estão configurados, para destravar a ativação (D-277). Ainda não tem pendência própria; a proposta é levá-lo à P-048.",
-        "Proposta do arquiteto, aguarda o dono (proposta 3, P-048): a sessão da pessoa leva só o identificador da organização, sem endereço nem porta, e o SaaS guarda o endereço no Registro de organizações; o token no endereço é só um identificador, nunca uma credencial. Quem emite a sessão também está em aberto.",
-        "Também na P-048: o que a pessoa vê e o que o Horus faz com o middleware fora do ar, já que o login da organização cai junto (proposta 5); a atualização do middleware; o que o SaaS guarda de cada pessoa e se só repassa o e-mail do convite (D-262).",
-        "O protocolo entre o SaaS e o middleware segue em aberto, com gRPC de preferência (D-196, P-042); o desenho mostra o que trafega, e não por qual protocolo.",
-        "Fora deste fluxo: excluir a organização apaga também tudo o que há dela no middleware, e só o que é dela (D-278); a guarda do registro de acesso e as cópias passam a valer também para o middleware (P-044). A contagem de uso de IA (D-267) e o estado e a versão do middleware no painel da instância (D-275) estão no diagrama da infraestrutura separada."
+        "Adiada pelo dono: a política do certificado (o formato, a rotação e a revogação), que é escolha da organização e fica para as ADRs da MF-121 (P-049); o mecanismo do vínculo já está decidido (ARQ-124).",
+        "Aguarda o dono: quem marca a organização como ativa, cumpridas as três condições; a leitura do PO é que a trava é automática e o ato segue sendo da Maind (D-277).",
+        "Sem decisão: como o SaaS confere que o banco e a IA, que ficam no middleware, estão configurados, para destravar a ativação (D-277); a ARQ-124 cobre só a primeira condição, o handshake. Ainda não tem pendência própria; a proposta é levá-lo à P-048.",
+        "Sem fonte, por isso fora do desenho: por onde o arquivo de configuração assinado volta ao SaaS quando o middleware está na casa do cliente, e como o arquivo do certificado chega à TI dele; a ARQ-124 diz só que a TI importa o arquivo e que o SaaS grava o que o middleware devolve.",
+        "A calibrar 🔎: o prazo de validade do link de primeiro acesso do owner; se ele expira, o administrador gera outro (ARQ-110).",
+        "O jurídico (P-044): se o resto da cópia, que expira pela guarda, e o código da pessoa que sobra no SaaS depois de o middleware apagar o cadastro bastam para a exclusão (D-210) e para a LGPD (ARQ-109, ARQ-125).",
+        "O contrato entre o SaaS e o middleware é gRPC (ARQ-099). Fora deste fluxo: a organização poderá cadastrar servidores MCP próprios no front do middleware (D-281), na v2.1, com a MF-124 (D-282); o servidor só lê, só o owner o cadastra e libera as ferramentas uma a uma (D-286 a D-289); como o middleware aplica a lista segue na P-050.",
+        "Fora deste fluxo: o que a pessoa vê com o middleware fora do ar (o aviso próprio, o LED de status e a Página de status: ARQ-104, ARQ-106, ARQ-107) está no diagrama da segurança; a contagem de uso de IA (ARQ-117) e o estado e a versão do middleware no painel da instância (D-275, ARQ-114), no da infraestrutura separada."
       ]
     }
   ]

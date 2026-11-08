@@ -500,133 +500,173 @@
           "label": "SaaS do Horus: Atender e Trabalhar"
         },
         "database": {
-          "label": "Banco de dados"
-        },
-        "security": {
-          "label": "Registro de organizações"
+          "label": "Bancos e bases"
         },
         "messagebus": {
           "label": "Middleware"
         },
         "external": {
-          "label": "Fora do Horus: imagens da Maind"
+          "label": "Fora do Horus: CI/CD do GitHub"
         }
       }
     },
     "views": [
       {
-        "id": "onde-mora-o-middleware",
-        "label": "Onde mora o middleware",
+        "id": "as-duas-fases",
+        "label": "As duas fases da Maind",
         "focus": [
-          "mw_maind",
-          "mw_cliente",
-          "img_mw",
-          "registro",
-          "bancos"
+          "prd_vps",
+          "mw_vps",
+          "pg_vps",
+          "base_mw",
+          "saas_k8s",
+          "mw_k8s",
+          "pg_nuvem"
         ],
-        "note": "A Maind sobe um para as organizações do SaaS; o cliente, o dele, para as dele: a mesma imagem e o mesmo contrato (D-258, D-260, D-272)."
+        "note": "VPS (v2.0): SaaS e middleware da Maind em docker compose, um só cada; produção real: Kubernetes gerenciado com réplicas (ARQ-112)."
       },
       {
         "id": "como-a-versao-chega",
-        "label": "Como a versão do SaaS chega",
+        "label": "Como a versão chega",
         "focus": [
-          "imagem",
+          "cicd",
           "homolog",
           "prd_vps",
-          "nuvem"
+          "saas_k8s"
         ],
-        "note": "O CI compila uma vez, a homologação aprova e a PRD só aceita a imagem aprovada; muda só a configuração (ARQ-061, ARQ-094)."
+        "note": "O CI compila a imagem uma vez, a homologação aprova e o CI/CD escolhe a implantação: compose ou Kubernetes (ARQ-061, ARQ-113)."
+      },
+      {
+        "id": "casa-do-cliente",
+        "label": "A casa do cliente",
+        "focus": [
+          "mw_cliente",
+          "bancos",
+          "prd_vps",
+          "saas_k8s"
+        ],
+        "note": "A TI sobe o middleware com docker compose em qualquer fase, com TLS e o endereço liberado só ao IP do SaaS (ARQ-126)."
       }
     ]
   },
   "components": [
     {
-      "id": "imagem",
-      "type": "external",
-      "label": "Imagem e chart do SaaS",
-      "sublabel": "o CI compila uma vez · ARQ-094",
-      "tag": "registro do GitHub · ARQ-061",
+      "id": "homolog",
+      "type": "backend",
+      "label": "Homologação",
+      "sublabel": "aprova a imagem · ARQ-061",
+      "tag": "instância da VPS · ARQ-055",
       "pos": [
-        380,
-        60
+        350,
+        70
       ],
       "size": [
-        200,
+        190,
+        78
+      ]
+    },
+    {
+      "id": "cicd",
+      "type": "external",
+      "label": "CI/CD do GitHub",
+      "sublabel": "a mesma imagem em toda fase",
+      "tag": "imagem e segredos · ARQ-113, ARQ-115",
+      "pos": [
+        790,
+        70
+      ],
+      "size": [
+        190,
+        78
+      ]
+    },
+    {
+      "id": "mw_vps",
+      "type": "messagebus",
+      "label": "Middleware",
+      "sublabel": "da Maind · docker compose, um só",
+      "tag": "as organizações do SaaS · D-272",
+      "pos": [
+        40,
+        230
+      ],
+      "size": [
+        190,
         78
       ]
     },
     {
       "id": "prd_vps",
       "type": "backend",
-      "label": "PRD da v2.0 (VPS)",
-      "sublabel": "até a 1ª organização paga",
-      "tag": "subdomínio próprio · ARQ-065",
+      "label": "PRD da v2.0",
+      "sublabel": "Atender e Trabalhar, um só",
+      "tag": "docker compose · ARQ-098, ARQ-112",
+      "pos": [
+        350,
+        230
+      ],
+      "size": [
+        190,
+        78
+      ]
+    },
+    {
+      "id": "saas_k8s",
+      "type": "backend",
+      "label": "SaaS na produção real",
+      "sublabel": "Kubernetes gerenciado, réplicas",
+      "tag": "Atender e Trabalhar · ARQ-112",
+      "pos": [
+        790,
+        230
+      ],
+      "size": [
+        190,
+        78
+      ]
+    },
+    {
+      "id": "mw_k8s",
+      "type": "messagebus",
+      "label": "Middleware",
+      "sublabel": "da Maind · Kubernetes, réplicas",
+      "tag": "as organizações do SaaS · ARQ-112",
+      "pos": [
+        1100,
+        230
+      ],
+      "size": [
+        190,
+        78
+      ]
+    },
+    {
+      "id": "base_mw",
+      "type": "database",
+      "label": "Base de configuração",
+      "sublabel": "a base do middleware · ARQ-103",
+      "tag": "Postgres à parte: aguarda o dono",
       "pos": [
         40,
-        210
+        400
       ],
       "size": [
-        200,
-        78
-      ]
-    },
-    {
-      "id": "homolog",
-      "type": "backend",
-      "label": "Homologação da v2",
-      "sublabel": "aprova a imagem para todas",
-      "tag": "Atender e Trabalhar · ARQ-055",
-      "pos": [
-        380,
-        210
-      ],
-      "size": [
-        200,
-        78
-      ]
-    },
-    {
-      "id": "nuvem",
-      "type": "backend",
-      "label": "Kubernetes gerenciado",
-      "sublabel": "produção real · nuvem em SP",
-      "tag": "2+ réplicas por papel · ARQ-095",
-      "pos": [
-        760,
-        210
-      ],
-      "size": [
-        200,
+        190,
         78
       ]
     },
     {
       "id": "pg_vps",
       "type": "database",
-      "label": "Postgres 17 (container)",
-      "sublabel": "mestre, da organização e de log",
-      "tag": "fora do minikube · ARQ-093",
+      "label": "Postgres 17 do SaaS",
+      "sublabel": "em container na VPS · ARQ-056",
+      "tag": "mestre, organizações e log",
       "pos": [
-        40,
-        360
+        350,
+        400
       ],
       "size": [
-        200,
-        78
-      ]
-    },
-    {
-      "id": "registro",
-      "type": "security",
-      "label": "Registro de organizações",
-      "sublabel": "onde mora cada middleware",
-      "tag": "endereço e chave · D-258",
-      "pos": [
-        380,
-        360
-      ],
-      "size": [
-        200,
+        190,
         78
       ]
     },
@@ -635,43 +675,13 @@
       "type": "database",
       "label": "Postgres gerenciado",
       "sublabel": "réplica e troca automática",
-      "tag": "outra zona · ARQ-093",
+      "tag": "São Paulo · ARQ-093, ARQ-112",
       "pos": [
-        760,
-        360
+        790,
+        400
       ],
       "size": [
-        200,
-        78
-      ]
-    },
-    {
-      "id": "mw_maind",
-      "type": "messagebus",
-      "label": "Middleware",
-      "sublabel": "todas as organizações do SaaS",
-      "tag": "um só, a Maind opera · D-272",
-      "pos": [
-        40,
-        570
-      ],
-      "size": [
-        200,
-        78
-      ]
-    },
-    {
-      "id": "img_mw",
-      "type": "external",
-      "label": "Imagem do middleware",
-      "sublabel": "a mesma nas duas casas · D-195",
-      "tag": "empacotamento em aberto · P-048",
-      "pos": [
-        380,
-        570
-      ],
-      "size": [
-        200,
+        190,
         78
       ]
     },
@@ -679,14 +689,14 @@
       "id": "mw_cliente",
       "type": "messagebus",
       "label": "Middleware",
-      "sublabel": "as organizações do cliente",
-      "tag": "a TI governa IP e porta · D-196",
+      "sublabel": "do cliente · docker compose",
+      "tag": "a TI instala e atualiza · ARQ-126",
       "pos": [
-        760,
-        570
+        570,
+        600
       ],
       "size": [
-        200,
+        190,
         78
       ]
     },
@@ -695,13 +705,13 @@
       "type": "database",
       "label": "Bancos corporativos",
       "sublabel": "o middleware só lê · ARQ-052",
-      "tag": "a rede precisa alcançá-los",
+      "tag": "na rede da organização",
       "pos": [
-        760,
-        720
+        920,
+        600
       ],
       "size": [
-        200,
+        190,
         78
       ]
     }
@@ -709,26 +719,47 @@
   "boundaries": [
     {
       "kind": "region",
-      "label": "SaaS da Maind · os ambientes de sempre",
+      "label": "VPS (v2.0) · sem meta de disponibilidade",
       "wraps": [
-        "prd_vps",
         "homolog",
-        "nuvem",
-        "pg_vps",
-        "registro",
+        "mw_vps",
+        "prd_vps",
+        "base_mw",
+        "pg_vps"
+      ],
+      "pad": 22
+    },
+    {
+      "kind": "security-group",
+      "label": "docker compose do middleware",
+      "wraps": [
+        "mw_vps",
+        "base_mw"
+      ],
+      "pad": 12
+    },
+    {
+      "kind": "security-group",
+      "label": "docker compose do SaaS",
+      "wraps": [
+        "homolog",
+        "prd_vps",
+        "pg_vps"
+      ],
+      "pad": 12
+    },
+    {
+      "kind": "region",
+      "label": "Produção real · nuvem pública · 99,9% por mês",
+      "wraps": [
+        "saas_k8s",
+        "mw_k8s",
         "pg_nuvem"
       ]
     },
     {
       "kind": "region",
-      "label": "Hospedagem da Maind",
-      "wraps": [
-        "mw_maind"
-      ]
-    },
-    {
-      "kind": "region",
-      "label": "Casa do cliente",
+      "label": "Casa do cliente · docker compose · fora da meta",
       "wraps": [
         "mw_cliente",
         "bancos"
@@ -737,8 +768,8 @@
   ],
   "connections": [
     {
-      "id": "imagem-homolog",
-      "from": "imagem",
+      "id": "cicd-homolog",
+      "from": "cicd",
       "to": "homolog",
       "label": "1º a homologação",
       "variant": "emphasis"
@@ -747,15 +778,17 @@
       "id": "homolog-prd",
       "from": "homolog",
       "to": "prd_vps",
-      "label": "aprovada",
+      "label": "aprovada · compose",
       "variant": "emphasis"
     },
     {
-      "id": "homolog-nuvem",
+      "id": "homolog-k8s",
       "from": "homolog",
-      "to": "nuvem",
-      "label": "aprovada",
-      "variant": "emphasis"
+      "to": "saas_k8s",
+      "label": "aprovada · Kubernetes",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top"
     },
     {
       "id": "prd-pg",
@@ -764,54 +797,54 @@
       "label": "dados"
     },
     {
-      "id": "nuvem-pg",
-      "from": "nuvem",
+      "id": "prd-mwvps",
+      "from": "prd_vps",
+      "to": "mw_vps",
+      "label": "contrato gRPC",
+      "variant": "security"
+    },
+    {
+      "id": "mwvps-base",
+      "from": "mw_vps",
+      "to": "base_mw",
+      "label": "dados"
+    },
+    {
+      "id": "k8s-pg",
+      "from": "saas_k8s",
       "to": "pg_nuvem",
       "label": "dados"
     },
     {
-      "id": "registro-mwmaind",
-      "from": "registro",
-      "to": "mw_maind",
-      "label": "certificado e handshake",
+      "id": "k8s-mwk8s",
+      "from": "saas_k8s",
+      "to": "mw_k8s",
+      "label": "contrato gRPC",
+      "variant": "security"
+    },
+    {
+      "id": "prd-mwcliente",
+      "from": "prd_vps",
+      "to": "mw_cliente",
+      "label": "gRPC · TLS",
       "variant": "security",
-      "fromSide": "bottom",
+      "fromSide": "right",
       "toSide": "top"
     },
     {
-      "id": "registro-mwcliente",
-      "from": "registro",
+      "id": "k8s-mwcliente",
+      "from": "saas_k8s",
       "to": "mw_cliente",
-      "label": "certificado e handshake",
+      "label": "gRPC · TLS",
       "variant": "security",
-      "fromSide": "bottom",
+      "fromSide": "left",
       "toSide": "top"
-    },
-    {
-      "id": "imgmw-mwmaind",
-      "from": "img_mw",
-      "to": "mw_maind",
-      "label": "a Maind sobe"
-    },
-    {
-      "id": "imgmw-mwcliente",
-      "from": "img_mw",
-      "to": "mw_cliente",
-      "label": "a TI do cliente instala"
     },
     {
       "id": "mwcliente-bancos",
       "from": "mw_cliente",
       "to": "bancos",
-      "label": "dentro de casa"
-    },
-    {
-      "id": "mwmaind-bancos",
-      "from": "mw_maind",
-      "to": "bancos",
-      "label": "pela rede, só leitura",
-      "fromSide": "bottom",
-      "toSide": "left"
+      "label": "lista de permitidos"
     }
   ],
   "cards": [
@@ -819,34 +852,42 @@
       "dot": "cyan",
       "title": "O que o desenho mostra",
       "items": [
-        "Duas coisas rodam em lugares diferentes: o SaaS do Horus, nos ambientes de sempre, e o middleware, numa infraestrutura lógica separada do SaaS, que atende várias organizações (D-258, passo 1; D-272).",
-        "O SaaS: a mesma imagem de container e o mesmo chart do Helm em toda instância, e entre uma e outra muda só a configuração e o estado (ARQ-094). O CI compila uma vez, a homologação aprova e a produção só aceita a imagem aprovada (ARQ-061). Na construção, tudo no minikube da VPS de hoje, com o Postgres fora dele, e a v2.0 num subdomínio próprio, ao lado da v1.xx (ARQ-055, ARQ-065, ARQ-093). Com a primeira organização paga, um Kubernetes gerenciado e o Postgres gerenciado, em São Paulo (ARQ-092, ARQ-093).",
-        "O middleware: a mesma imagem da Maind e o mesmo contrato em qualquer hospedagem (D-195, D-258, D-260). A Maind sobe um só na infraestrutura dela, para todas as organizações do SaaS, cada uma isolada pelo seu certificado, e o opera (D-258, D-272); o cliente instala o dele na casa dele, para as organizações dele, e a TI governa o caminho por IP e porta (D-195, D-196, D-260, D-272). A diferença entre as hospedagens é só o local físico: para o produto, a localização é irrelevante, desde que a rede o alcance (D-258, D-272).",
-        "O Registro de organizações, no SaaS, guarda onde mora cada middleware e a chave pública dele. O administrador da instância cria a organização no SaaS, e a criação gera o certificado digital e a chave de instalação cifrada; o certificado é importado no middleware, que devolve um arquivo de configuração assinado e cifrado (endereço, porta), e as duas pontas confirmam o handshake (D-146; D-258, passos 2 e 3). Criar uma organização não sobe um middleware novo: importar o certificado adiciona a organização ao middleware que já existe (D-272).",
-        "Os bancos corporativos ficam onde a organização os tem, e o middleware os lê só para leitura: de dentro de casa ou, na hospedagem da Maind, pela rede (D-258, ARQ-052). Os provedores de IA, que o middleware também chama, ficam no diagrama das integrações."
+        "Duas fases (ARQ-112). Na VPS (v2.0), que reúne a construção, a homologação e a v2.0, o SaaS e o middleware da Maind sobem com docker compose, um só cada, e o ponto único de falha é aceito (ARQ-098, ARQ-100, ARQ-101). Na produção real, numa nuvem pública cuja escolha segue adiada (ARQ-085), o SaaS e o middleware da Maind passam a Kubernetes gerenciado com réplicas, e o SaaS usa o Postgres gerenciado, em São Paulo (ARQ-093); ali o ponto único de falha deixa de existir. O Kubernetes gerenciado e o chart voltam só para essa fase (ARQ-112), que começa com a primeira organização paga (ARQ-092).",
+        "Uma imagem só (ARQ-113). O CI compila cada imagem uma vez, a do SaaS e a do middleware, cada uma com o seu docker compose (ARQ-101), e a mesma imagem roda em toda fase e na casa do cliente: o que muda é a implantação, o orquestrador e o número de réplicas, que o CI/CD escolhe sem mexer na imagem. A homologação aprova a imagem, e a produção só aceita a aprovada (ARQ-061); antes da primeira organização paga, a homologação se refaz na nuvem (ARQ-092).",
+        "O código da v2.0 já nasce preparado para réplicas: a parada de uma resposta, os limites de taxa e o cache valem em todas as réplicas, pelo banco (o aviso do Postgres e a contagem dos limites no banco mestre), mesmo com um servidor só (ARQ-113, como a ARQ-095 pôs). Não há um caminho de código para a VPS e outro para a produção real.",
+        "Os segredos (ARQ-115). A origem são os Secrets do GitHub (ARQ-044). Na VPS, o CD grava o arquivo de ambiente da máquina, legível só pelo root, e o docker compose o lê; na produção real, o CD grava os Secrets do Kubernetes. A imagem não leva segredo nenhum, e o CI confere isso. Na casa do cliente, os segredos da instância ficam com a TI dele, num arquivo de ambiente só do root, e a Maind não os conhece.",
+        "O SaaS e o middleware da Maind ficam separados: cada um tem a sua imagem e o seu docker compose (ARQ-101), e só o contrato gRPC, com o certificado, os liga (ARQ-099, ARQ-124). A ARQ-127, que aguarda o dono, acrescenta as redes e os bancos distintos, sem acesso de um ao banco do outro, a máquina que os dois podem dividir na VPS e, na produção real, namespaces ou clusters separados.",
+        "O middleware da Maind atende todas as organizações do SaaS, e o da casa do cliente, as organizações dele, sempre em docker compose, em qualquer fase (D-272, ARQ-100, ARQ-112). Em qualquer hospedagem, as organizações dividem uma base só, separadas pela marca, por um filtro em toda consulta e por uma chave de cifra por organização (ARQ-103).",
+        "O que a TI do cliente precisa (ARQ-126): uma máquina com Docker e docker compose; a base de configuração no mesmo compose ou num Postgres 17 que ela indicar (🔎); um endereço e uma porta públicos, com TLS, liberados no firewall só ao IP do SaaS; a saída aos bancos e aos provedores de IA, numa lista de permitidos (ARQ-116); o arquivo de ambiente com os segredos, só do root; o relógio sincronizado, de que o certificado depende; e a cópia da base, que é dela (ARQ-086). Quem atualiza a imagem e reinicia é quem hospeda (ARQ-100, ARQ-114).",
+        "Os bancos corporativos ficam onde a organização os tem, e o middleware só os lê (ARQ-052): o do cliente, de dentro de casa, só pelo que a lista de permitidos deixa; o da Maind, pela rede, com a guarda que recusa os endereços da rede interna (ARQ-116). Esta última ligação fica só neste cartão, para o desenho caber."
       ]
     },
     {
       "dot": "emerald",
-      "title": "Imediato, segundo plano, v2.0 e v2.1",
+      "title": "Fases, disponibilidade e versões",
       "items": [
-        "Imediato: a publicação manual em cada instância e a leitura e a gravação no Postgres. Em segundo plano, e fora do desenho para caber: a telemetria para a stack de observabilidade da máquina (ARQ-069), as cópias de segurança, que a infra de cada instância faz fora do Horus (ARQ-086, ARQ-087), e a sonda de fora, de outro provedor, a partir da primeira produção real (ARQ-070, ARQ-071).",
-        "v2.0: o SaaS e o middleware, o da Maind para as organizações do SaaS e o da casa do cliente para as organizações dele (a MF-121, Middleware da organização; D-258, D-260, D-270, D-272). A v2.0 passa a ter 19 mfs.",
-        "v2.0, fora do desenho (o painel não é um ambiente): o painel da instância (MF-101) mostra, para cada organização, o estado do middleware que a atende, no ar ou fora, e a versão que ele informa, enquanto o SaaS o alcança; quando ele para, é avisado o dono do serviço: a Maind, no dela; o cliente, no dele (D-275, D-240).",
-        "v2.1: a segurança dos dados por pessoa, que roda no middleware e passa a depender da MF-121 (MF-106, D-263). A v2.1 fica com quatro mfs (MF-106, MF-119, MF-122 e MF-123), sem onda 2: leitura do PO, a confirmar.",
-        "Sem versão: a instalação completa do Horus no cliente (D-188), que o documento 09 e a ARQ-060 ainda tratam como entrega da v2.1. Não está desenhada."
+        "A disponibilidade (ARQ-122). Na VPS, sem meta numérica: a sonda de fora mede e registra (ARQ-070). Na produção real, 99,9% por mês para o SaaS e para o middleware da Maind, medidos pela sonda. O middleware que o cliente hospeda não entra na meta, porque quem o opera é ele.",
+        "Na VPS, com um servidor só, cada troca de versão e cada falha da máquina tiram o SaaS do ar por um tempo (🔎 até dois minutos de drenagem, mais a subida), que é uma medida, e não uma meta; nada se perde, porque a fila durável e a caixa de saída guardam o trabalho (ARQ-005, ARQ-063, ARQ-098, ARQ-122). Na produção real, a troca de versão é sem corte, com a drenagem e as réplicas (ARQ-063, ARQ-113).",
+        "Imediato: a publicação, a leitura e a gravação no Postgres e o contrato gRPC. Em segundo plano, e fora do desenho para caber: a telemetria (ARQ-069), as cópias de segurança, que cada dono de instância faz fora do Horus (ARQ-086, ARQ-087), e a sonda de fora (ARQ-070, ARQ-071).",
+        "As versões do middleware (ARQ-114): o SaaS fala com a versão atual do contrato e com a anterior, e recusa uma mais velha, com o LED de status vermelho e o texto \"Atualização necessária\"; o painel da instância mostra o motivo e a versão. Por isso a Maind atualiza o SaaS e o middleware dela em qualquer ordem, e o cliente atualiza o dele no tempo dele, dentro da janela.",
+        "v2.0: o SaaS, na VPS, e o middleware, o da Maind e o da casa do cliente (a MF-121, Middleware da organização; D-258, D-260, D-270, D-272). A v2.0 tem 19 mfs.",
+        "v2.0, fora do desenho (o painel não é um ambiente): o painel da instância (MF-101) mostra o Estado do middleware de cada organização, no ar, instável ou fora, e a versão (D-275, ARQ-107). Do middleware na casa do cliente, a Maind vê só o que o SaaS mede: o estado, a versão, o último contato, as quedas e a contagem de uso de IA; o diagnóstico de um erro é um pacote que a TI gera e envia sob pedido (ARQ-119).",
+        "v2.1: a segurança dos dados por pessoa, que roda no middleware (MF-106, D-263); a v2.1 tem cinco mfs (MF-106, MF-119, MF-122, MF-123 e MF-124, D-282). Sem versão: a instalação completa do Horus no cliente (D-188), que o documento 09 e a ARQ-060 ainda tratam como entrega; não está desenhada."
       ]
     },
     {
       "dot": "amber",
       "title": "O que ficou de fora e o que aguarda o dono",
       "items": [
-        "Em aberto (P-048, proposta 1): como o SaaS e o middleware sobem. O dono falou em docker compose para os dois; a arquitetura tinha o chart único do Helm para o SaaS (ARQ-094) e, para o cliente, a ARQ-060, que é do on-premises. Nada foi decidido: o desenho diz só que o middleware é uma imagem, sem dizer como ela é empacotada nem como sobe.",
-        "Em aberto (P-048, P-042, P-040): como cada organização nova é adicionada ao middleware sem trabalho manual, ao importar o certificado dela (D-272); o formato, a rotação e a revogação do certificado e da chave de instalação; a atualização do middleware, na Maind e no cliente (proposta 8); o que o Horus faz com o middleware fora do ar, já que o login da organização cai junto (proposta 5); a cópia de segurança e a observabilidade do middleware, e como as cópias convivem com a exclusão de uma organização, que apaga também o que é dela no middleware (D-278, P-044).",
-        "Aguarda o dono: a nuvem e o orçamento (ARQ-085, adiada para a primeira produção real), em que o custo do middleware muda: na Maind ele é um só, compartilhado pelas organizações do SaaS, e não soma mais um por organização (D-272); quem o paga, na Maind e na casa do cliente, segue sem fonte. Também a ARQ-060 e a ARQ-074, que perdem o objeto com a D-188, e a proposta do arquiteto de que o SaaS guarde onde mora cada middleware e a sessão da pessoa leve só o identificador da organização, sem endereço nem porta (proposta 3, P-048).",
-        "A promessa de que o funcionário da Maind não liga nem vê (D-189, D-196) só vale com o middleware na casa do cliente: na hospedagem da Maind, a Maind o opera, e quem o opera pode, tecnicamente, alcançar as credenciais, embora quem configura os bancos e a IA seja sempre o owner da organização (D-258, D-273).",
-        "Risco novo (D-272): o middleware da Maind é um ponto único na hospedagem dela; se for invadido, expõe as credenciais e as regras de todas as organizações do SaaS, e quem exigir mais isolamento usa o middleware na casa dele. Hipóteses 🔎 da D-272: que o isolamento por certificado baste entre as organizações do SaaS e que a Maind opere um middleware só sem ele virar ponto único de falha.",
-        "Fora do desenho, para caber: a v1.xx e a entrada da VPS, que separa as duas pelo nome (ARQ-065), as bases de demonstração e a ingestão contínua (ARQ-059), o executor do CI (ARQ-082), a sonda, a observabilidade e a cópia, e o painel da instância (D-275)."
+        "Aguarda o dono (ARQ-127): a separação do SaaS e do middleware da Maind em redes e bancos distintos, a máquina que eles podem dividir na VPS e os namespaces ou clusters separados na produção real. O desenho mostra os dois docker compose separados, que a ARQ-101 já decidiu, e a base de configuração à parte com essa ressalva.",
+        "Lacuna: onde mora a base de configuração do middleware da Maind na produção real. A ARQ-112 cita o Postgres gerenciado para o SaaS e o middleware da Maind, e a ARQ-127 pede bancos separados; por isso o desenho não liga o middleware da produção real a banco nenhum.",
+        "Aguardam o dono: a nuvem e o orçamento (ARQ-085, adiados para a produção real), aos quais voltam o cluster e as réplicas (ARQ-112); quem paga o middleware, na Maind e na casa do cliente, segue sem fonte. Também a ARQ-060 e a ARQ-074, que valem só para a instalação completa, sem versão (D-188, ARQ-119).",
+        "Adiado: a política do certificado (o formato, a rotação e a revogação), que é escolha da organização e fica para as ADRs da MF-121 (P-049). A lista final do que a TI do cliente precisa também fica nessas ADRs (ARQ-126).",
+        "Com o jurídico (P-044): as cópias de segurança depois da exclusão de uma organização. A exclusão apaga as linhas e a chave dela no middleware, o que inutiliza as credenciais também nas cópias, e o resto expira pela guarda da cópia (ARQ-125).",
+        "Risco (D-272): o middleware da Maind atende todas as organizações do SaaS; se for invadido, expõe as regras de todas, e a chave de cifra por organização existe para que a base invadida não entregue as credenciais de todas (ARQ-103). O ponto único de falha dele é aceito na v2.0 e deixa de existir na produção real (ARQ-112). Quem exigir mais isolamento usa o middleware na casa dele. 🔎 Que o isolamento baste entre as organizações do SaaS, com o teste de isolamento no CI como segunda trava (ARQ-103).",
+        "A promessa de que o funcionário da Maind não vê (D-189, D-196) só vale com o middleware na casa do cliente: na hospedagem da Maind, quem o opera pode, tecnicamente, alcançar as credenciais, embora quem configura os bancos e a IA seja sempre o owner da organização (D-258, D-273).",
+        "Os documentos 03, 07 e 09 a 13 ainda descrevem o Kubernetes sem as fases, as duas réplicas, os 99,9% sem fase e os segredos do systemd: ficam a refazer pela P-028 (ARQ-112, ARQ-115, ARQ-122).",
+        "Fora do desenho, para caber: a v1.xx e a entrada da VPS (ARQ-065), as bases de demonstração e a ingestão contínua (ARQ-059), o executor do CI (ARQ-082), a sonda, a observabilidade e a cópia; o Registro de organizações, no banco mestre (ARQ-102); os provedores de IA; o caminho da imagem do middleware até o middleware da Maind; e o painel da instância (D-275)."
       ]
     }
   ]

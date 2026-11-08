@@ -1,6 +1,6 @@
 # Documentação de arquitetura do Horus v2
 
-Situação: 🟡 proposta ao dono (a arquitetura geral da plataforma, em 10 diagramas, refeita em 07/11/2026 com a infraestrutura separada, `D-258` a `D-280`: o middleware atende várias organizações e o owner configura os bancos e a IA; ainda não foi revisada) · Data: 07/11/2026
+Situação: 🟡 proposta ao dono (a arquitetura geral da plataforma, em 10 diagramas, refeita em 08/11/2026 com a infraestrutura separada, `D-258` a `D-293`, e o registro até a `ARQ-127`: o middleware atende várias organizações, o owner configura os bancos e a IA, a infraestrutura tem duas fases, a VPS com um servidor só e a produção real com Kubernetes gerenciado e réplicas, e a pessoa vê o aviso, a página de status e o LED quando o middleware cai; ainda não foi revisada) · Data: 08/11/2026
 
 Esta pasta é a fonte do site de arquitetura descrito em [`../manuais/manual-geracao-doc-arq.md`](../manuais/manual-geracao-doc-arq.md). Por enquanto
 tem **um** documento: a **arquitetura geral da plataforma**. Os documentos por mf (`ARQ-xxx`, começando pela MF-101) vêm depois.

@@ -8,7 +8,7 @@
     "description": "A arquitetura da plataforma Horus v2: os componentes, as conexões e as decisões, em diagramas, com a infraestrutura separada do SaaS, o middleware.",
     "version": "2.0 e 2.1 em desenho, sem versão publicada",
     "owner": "Maind Tech",
-    "updated": "2026-11-07",
+    "updated": "2026-11-08",
     "eyebrow": "Maind Horus · Arquitetura",
     "hero_title": "A arquitetura do Horus v2"
   },
@@ -16,13 +16,13 @@
     {
       "id": "arq-geral-infra-separada",
       "title": "A infraestrutura separada do SaaS: o middleware",
-      "description": "As três zonas do rascunho do dono (o SaaS, o middleware, que atende várias organizações, e a casa do cliente) e o que trafega entre elas, pelas D-258 a D-280.",
+      "description": "As três zonas do rascunho do dono (o SaaS, com um servidor na VPS e réplicas na produção real; o middleware, que atende várias organizações, pelo contrato gRPC; e a casa do cliente, com os servidores MCP dela, da v2.1) e o que trafega entre elas.",
       "source": "diagramas/arq-geral-infra-separada.html"
     },
     {
       "id": "arq-geral-criar-organizacao",
-      "title": "Criar uma organização e adicioná-la ao middleware",
-      "description": "Da organização criada em configuração até a primeira pergunta: certificado, handshake, usuário do owner, banco e IA, ativação, assentos e pessoas (D-258, D-277).",
+      "title": "Criar uma organização, adicioná-la ao middleware e excluí-la",
+      "description": "Da organização criada em configuração à primeira pergunta e à exclusão: certificado pelo contrato ou importado, handshake, primeiro acesso do owner por link, banco e IA, ativação, assentos, permissões por código e a exclusão confirmada pelo middleware (D-258, D-277, ARQ-110, ARQ-124, ARQ-125).",
       "source": "diagramas/arq-geral-criar-organizacao.html"
     },
     {
@@ -34,43 +34,43 @@
     {
       "id": "arq-geral-execucao",
       "title": "Como roda: os dois papéis, a fila e os bancos",
-      "description": "Atender e Trabalhar, a caixa de saída e a fila, os três bancos do SaaS, o Registro de organizações e o middleware, que atende várias organizações, com a sua base.",
+      "description": "Atender e Trabalhar num servidor só na VPS (v2.0) e com réplicas na produção real, com a mesma imagem; a caixa de saída e a fila; os três bancos do SaaS; o Registro de organizações; o estado do middleware (no ar, instável, fora) e o middleware, que atende várias organizações.",
       "source": "diagramas/arq-geral-execucao.html"
     },
     {
       "id": "arq-geral-dados-e-historia",
       "title": "Onde mora cada dado e como a história chega",
-      "description": "O que fica no middleware, um só para várias organizações (pessoas, configuração e credenciais), e o que fica no SaaS (banco mestre, banco da organização e banco de log), o que cruza entre os dois, o caminho da história até o log e a pergunta do administrador à história, sem nome.",
+      "description": "O que fica no middleware, um só para várias organizações (as pessoas, a configuração do login e as credenciais), e o que fica no SaaS (só o código da pessoa e as permissões ligadas a ele, o banco mestre com o Registro de organizações e o Registro de quedas, o banco da organização e o banco de log), o caminho da história até o log e a pergunta do administrador à história, só com códigos.",
       "source": "diagramas/arq-geral-dados-e-historia.html"
     },
     {
       "id": "arq-geral-pergunta-resposta",
       "title": "Da pergunta à resposta",
-      "description": "O turno de uma pergunta de análise com a infraestrutura separada: o SaaS confere a permissão e manda só a pergunta, em nome da organização, ao middleware que atende várias organizações; o ciclo da análise roda nele e só a resposta pronta volta.",
+      "description": "O turno de uma pergunta de análise com a infraestrutura separada: o SaaS decide a permissão pelas permissões por código e manda só a pergunta ao middleware, que atende várias organizações; o ciclo da análise roda nele, voltam só a resposta pronta e a contagem de uso de IA, e, com o middleware fora, o app mostra o aviso próprio.",
       "source": "diagramas/arq-geral-pergunta-resposta.html"
     },
     {
       "id": "arq-geral-segundo-plano",
       "title": "O que roda sozinho: do agendamento à entrega",
-      "description": "Do agendamento à entrega, em segundo plano: fila durável, papel Trabalhar, o agente que analisa pelo middleware (um só para várias organizações), artefato, conectores, rastro, aviso de falha, corte e aviso de IA parada.",
+      "description": "Do agendamento à entrega, em segundo plano: fila durável, papel Trabalhar (com réplicas na produção real), o agente que analisa pelo middleware, a espera de até uma hora com o middleware fora, artefato, conectores, rastro, aviso ao autor, corte e aviso de IA parada.",
       "source": "diagramas/arq-geral-segundo-plano.html"
     },
     {
       "id": "arq-geral-seguranca",
       "title": "Segurança em camadas",
-      "description": "De fora para dentro: o endereço com token, o login da organização no middleware, o vínculo e o isolamento por certificado, o avaliador de permissões no SaaS e a segurança por pessoa no middleware (v2.1), o cofre das credenciais e o rastro e a telemetria sem conteúdo.",
+      "description": "De fora para dentro: a tela de entrada com o LED e a página de status sem login, o login configurável pela organização no middleware, o vínculo por certificado e o contrato versionado, a sessão só com o identificador da organização, o avaliador com as permissões por código, a segurança por pessoa no middleware (v2.1), o cofre, a guarda de rede e o rastro e a telemetria sem conteúdo.",
       "source": "diagramas/arq-geral-seguranca.html"
     },
     {
       "id": "arq-geral-integracoes",
       "title": "Com quem o Horus conversa fora",
-      "description": "O SaaS fala com a Meta, o e-mail e os conectores; os bancos, a IA e a web só pelo middleware, que atende várias organizações e guarda as credenciais; a chave de IA da instância só para a pergunta do administrador; quem paga, quem vê o consumo e quem é avisado (v2.0 e v2.1).",
+      "description": "O SaaS fala com a Meta, o e-mail (o endereço só em trânsito) e os conectores; os bancos, a IA, a web e o login (Google na v2.0, OIDC na v2.1) só pelo middleware, que atende várias organizações e guarda as credenciais; a chave de IA da instância só para a pergunta do administrador; quem paga, quem vê o consumo e quem é avisado.",
       "source": "diagramas/arq-geral-integracoes.html"
     },
     {
       "id": "arq-geral-implantacao",
       "title": "Onde roda: ambientes e instâncias",
-      "description": "O SaaS nos ambientes de sempre, com a mesma imagem e chart, e o middleware, que atende várias organizações: um só na Maind, para as do SaaS, e o do cliente, para as organizações dele.",
+      "description": "As duas fases da Maind (a VPS da v2.0, em docker compose, e a produção real, em Kubernetes gerenciado com réplicas), a mesma imagem em toda fase e o middleware do cliente, sempre em docker compose.",
       "source": "diagramas/arq-geral-implantacao.html"
     }
   ],
