@@ -580,12 +580,12 @@
       "label": "App web (front)",
       "sublabel": "tela de entrada com luz de estado · MF-108, MF-110",
       "pos": [
-        390,
-        60
+        270,
+        88
       ],
       "size": [
-        250,
-        100
+        340,
+        64
       ],
       "tag": "página de status · esconde o negado · ARQ-020, ARQ-106, ARQ-107"
     },
@@ -597,11 +597,11 @@
       "tag": "agendamentos e envios para fora",
       "pos": [
         40,
-        230
+        238
       ],
       "size": [
-        250,
-        100
+        190,
+        64
       ]
     },
     {
@@ -610,12 +610,12 @@
       "label": "Canais",
       "sublabel": "conversa: app, popup e WhatsApp · MF-110, MF-111",
       "pos": [
-        390,
-        230
+        270,
+        238
       ],
       "size": [
-        250,
-        100
+        340,
+        64
       ]
     },
     {
@@ -625,12 +625,12 @@
       "sublabel": "rastro, autonomia · MF-116, MF-117",
       "tag": "Home e rastro · nomes pedidos em lote (ARQ-109)",
       "pos": [
-        740,
-        230
+        650,
+        238
       ],
       "size": [
-        250,
-        100
+        190,
+        64
       ]
     },
     {
@@ -640,12 +640,12 @@
       "sublabel": "conduz a pergunta · MF-107 a MF-109",
       "tag": "divisão em aberto · MF-119 (v2.1): um modo novo de conduzir",
       "pos": [
-        390,
-        400
+        270,
+        388
       ],
       "size": [
-        250,
-        100
+        340,
+        64
       ]
     },
     {
@@ -655,12 +655,12 @@
       "sublabel": "Avaliador de permissões · assentos · MF-101 a 103",
       "tag": "Permissões por código (ARQ-123) · rastro (MF-116) · convite (D-262)",
       "pos": [
-        390,
-        570
+        270,
+        538
       ],
       "size": [
-        250,
-        100
+        340,
+        64
       ]
     },
     {
@@ -670,12 +670,12 @@
       "sublabel": "fila de tarefas e avisos · desenha imagens e PDFs",
       "tag": "filtro por organização · porta do WhatsApp (Meta)",
       "pos": [
-        390,
-        740
+        270,
+        688
       ],
       "size": [
-        250,
-        100
+        340,
+        64
       ]
     },
     {
@@ -685,12 +685,12 @@
       "sublabel": "acesso aos bancos e à IA · MF-104, MF-105",
       "tag": "vinha de Dados e IA, com as senhas · MF-106 (v2.1) · D-273",
       "pos": [
-        1090,
-        230
+        900,
+        238
       ],
       "size": [
-        250,
-        100
+        240,
+        64
       ]
     },
     {
@@ -700,12 +700,12 @@
       "sublabel": "modelo de IA e consultas · vinha do Motor",
       "tag": "D-189, D-258",
       "pos": [
-        1090,
-        400
+        900,
+        388
       ],
       "size": [
-        250,
-        100
+        240,
+        64
       ]
     },
     {
@@ -715,12 +715,12 @@
       "sublabel": "senha e Google; login da empresa na v2.1",
       "tag": "confere quem é a pessoa · vinha da Plataforma · D-261, ARQ-111",
       "pos": [
-        1090,
-        570
+        900,
+        538
       ],
       "size": [
-        250,
-        100
+        240,
+        64
       ]
     },
     {
@@ -730,12 +730,12 @@
       "sublabel": "base única · marca e filtro (ARQ-103)",
       "tag": "membros e detalhes de cada organização · D-258, D-272",
       "pos": [
-        1090,
-        740
+        900,
+        688
       ],
       "size": [
-        250,
-        100
+        240,
+        64
       ]
     },
     {
@@ -745,12 +745,12 @@
       "sublabel": "módulo de configuração: login e bancos",
       "tag": "só o owner da organização · D-271, D-273, ARQ-111",
       "pos": [
-        1440,
-        570
+        900,
+        838
       ],
       "size": [
-        250,
-        100
+        240,
+        64
       ]
     }
   ],

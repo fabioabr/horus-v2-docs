@@ -568,12 +568,12 @@
       "sublabel": "lista, assentos e cobrança",
       "tag": "sem pessoas nem login · D-261",
       "pos": [
-        1090,
-        60
+        690,
+        88
       ],
       "size": [
-        250,
-        100
+        180,
+        72
       ]
     },
     {
@@ -583,12 +583,12 @@
       "sublabel": "onde fica cada middleware",
       "tag": "no banco mestre · ARQ-102 · ARQ-124",
       "pos": [
-        1090,
-        230
+        690,
+        228
       ],
       "size": [
-        250,
-        100
+        180,
+        72
       ]
     },
     {
@@ -598,12 +598,12 @@
       "sublabel": "assento, permissões e grupos",
       "tag": "códigos, sem nomes · ARQ-123",
       "pos": [
-        1090,
-        400
+        690,
+        368
       ],
       "size": [
-        250,
-        100
+        180,
+        72
       ]
     },
     {
@@ -614,11 +614,11 @@
       "tag": "chave por organização · ARQ-103",
       "pos": [
         40,
-        570
+        508
       ],
       "size": [
-        250,
-        100
+        180,
+        72
       ]
     },
     {
@@ -628,12 +628,12 @@
       "sublabel": "atende várias organizações",
       "tag": "análise, pessoas e nomes · D-272 · v2.0",
       "pos": [
-        390,
-        570
+        330,
+        508
       ],
       "size": [
-        250,
-        100
+        180,
+        72
       ]
     },
     {
@@ -643,12 +643,12 @@
       "sublabel": "pede os nomes ao middleware",
       "tag": "o mesmo programa · ARQ-004 · ARQ-109",
       "pos": [
-        1090,
-        570
+        690,
+        508
       ],
       "size": [
-        250,
-        100
+        180,
+        72
       ]
     },
     {
@@ -658,12 +658,12 @@
       "sublabel": "no banco mestre · 90 dias",
       "tag": "sem pessoa · ARQ-106 · ARQ-121",
       "pos": [
-        1440,
-        570
+        960,
+        508
       ],
       "size": [
-        250,
-        100
+        180,
+        72
       ]
     },
     {
@@ -675,11 +675,11 @@
       "tag": "D-001 · D-189",
       "pos": [
         40,
-        740
+        648
       ],
       "size": [
-        250,
-        100
+        180,
+        72
       ]
     },
     {
@@ -689,12 +689,12 @@
       "sublabel": "conversas, painéis, respostas",
       "tag": "estado de hoje · senha dela + filtro · ARQ-010",
       "pos": [
-        1090,
-        740
+        690,
+        648
       ],
       "size": [
-        250,
-        100
+        180,
+        72
       ]
     },
     {
@@ -706,11 +706,11 @@
       "tag": "D-264 · D-266 · D-267",
       "pos": [
         40,
-        910
+        788
       ],
       "size": [
-        250,
-        100
+        180,
+        72
       ]
     },
     {
@@ -720,12 +720,12 @@
       "sublabel": "caixa na org., fila no mestre",
       "tag": "ARQ-005 · ARQ-088",
       "pos": [
-        1440,
-        740
+        685,
+        788
       ],
       "size": [
-        250,
-        100
+        190,
+        72
       ]
     },
     {
@@ -735,12 +735,12 @@
       "sublabel": "chave de IA só para a história",
       "tag": "Maind · D-276 · P-048",
       "pos": [
-        690,
-        910
+        330,
+        928
       ],
       "size": [
-        250,
-        100
+        200,
+        72
       ]
     },
     {
@@ -750,12 +750,12 @@
       "sublabel": "história, só o código da pessoa",
       "tag": "só acrescenta · ARQ-097 · ARQ-109",
       "pos": [
-        1090,
-        910
+        685,
+        928
       ],
       "size": [
-        250,
-        100
+        190,
+        72
       ]
     }
   ],

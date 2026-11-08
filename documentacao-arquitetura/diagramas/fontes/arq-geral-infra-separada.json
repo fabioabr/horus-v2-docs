@@ -564,12 +564,12 @@
       "sublabel": "cria a organização e o owner dela",
       "tag": "Maind · D-146, D-271, D-280",
       "pos": [
-        390,
+        330,
         60
       ],
       "size": [
-        250,
-        100
+        190,
+        78
       ]
     },
     {
@@ -579,12 +579,12 @@
       "sublabel": "módulo de configuração",
       "tag": "importa o certificado · ARQ-124",
       "pos": [
-        1090,
+        980,
         60
       ],
       "size": [
-        250,
-        100
+        190,
+        78
       ]
     },
     {
@@ -595,12 +595,12 @@
       "sublabel": "configura pessoas, bancos e IA",
       "tag": "em qualquer hospedagem · D-269, D-273",
       "pos": [
-        1440,
+        1295,
         60
       ],
       "size": [
-        250,
-        100
+        190,
+        78
       ]
     },
     {
@@ -610,12 +610,12 @@
       "sublabel": "uma só, com marca e filtro",
       "tag": "membros e detalhes · ARQ-103",
       "pos": [
-        1090,
-        230
+        980,
+        210
       ],
       "size": [
-        250,
-        100
+        190,
+        78
       ]
     },
     {
@@ -626,11 +626,11 @@
       "tag": "e a fila que guarda o trabalho",
       "pos": [
         40,
-        400
+        360
       ],
       "size": [
-        250,
-        100
+        210,
+        78
       ]
     },
     {
@@ -640,12 +640,12 @@
       "sublabel": "várias cópias só na produção real",
       "tag": "um só na VPS (v2.0) · ARQ-112",
       "pos": [
-        390,
-        400
+        330,
+        360
       ],
       "size": [
-        250,
-        100
+        190,
+        228
       ]
     },
     {
@@ -655,12 +655,12 @@
       "sublabel": "o canal com regras combinadas",
       "tag": "versão atual e anterior · ARQ-114",
       "pos": [
-        740,
-        400
+        720,
+        360
       ],
       "size": [
-        250,
-        100
+        190,
+        78
       ]
     },
     {
@@ -670,12 +670,12 @@
       "sublabel": "atende várias organizações",
       "tag": "guarda de rede · ARQ-112, ARQ-116",
       "pos": [
-        1090,
-        400
+        980,
+        360
       ],
       "size": [
-        250,
-        100
+        190,
+        228
       ]
     },
     {
@@ -685,12 +685,12 @@
       "sublabel": "as senhas ficam no middleware",
       "tag": "só leitura · D-258",
       "pos": [
-        1440,
-        400
+        1295,
+        360
       ],
       "size": [
-        250,
-        100
+        190,
+        78
       ]
     },
     {
@@ -701,11 +701,11 @@
       "tag": "página de status · ARQ-106, ARQ-107",
       "pos": [
         40,
-        570
+        510
       ],
       "size": [
-        250,
-        100
+        200,
+        78
       ]
     },
     {
@@ -715,12 +715,12 @@
       "sublabel": "a chave fica no middleware",
       "tag": "o owner da org. cadastra · D-264, D-273",
       "pos": [
-        1440,
-        570
+        1295,
+        510
       ],
       "size": [
-        250,
-        100
+        190,
+        78
       ]
     },
     {
@@ -730,12 +730,12 @@
       "sublabel": "endereço, porta e chave pública",
       "tag": "vínculo · ARQ-102, ARQ-124",
       "pos": [
-        390,
-        740
+        330,
+        660
       ],
       "size": [
-        250,
-        100
+        190,
+        78
       ]
     },
     {
@@ -746,12 +746,12 @@
       "sublabel": "usam o Horus pelo front do SaaS",
       "tag": "dados isolados no middleware · D-261",
       "pos": [
-        1440,
-        910
+        1295,
+        810
       ],
       "size": [
-        250,
-        100
+        190,
+        78
       ]
     },
     {
@@ -761,12 +761,12 @@
       "sublabel": "cadastrados no middleware",
       "tag": "v2.1 · MF-124 · D-282",
       "pos": [
-        1440,
-        230
+        1285,
+        210
       ],
       "size": [
-        250,
-        100
+        210,
+        78
       ]
     }
   ],

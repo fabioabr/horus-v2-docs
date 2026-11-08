@@ -13,8 +13,7 @@ documentacao-arquitetura/
 ├── content/<página>.html          ← um fragmento por página (ver a lista abaixo)
 ├── diagramas/
 │   ├── arq-geral-<tema>.html      ← a casca de cada diagrama (Archify + casca Maind, abas Diagrama e Explicações)
-│   ├── fontes/arq-geral-<tema>.json ← a fonte de cada diagrama (o que se edita: posições, ligações, cartões "Explicações")
-│   └── cartoes/arq-geral-<tema>.json ← o conteúdo do cartão de cada bloco (só nos 7 diagramas de arquitetura)
+│   └── fontes/arq-geral-<tema>.json ← a fonte de cada diagrama (o que se edita: posições, ligações, cartões "Explicações")
 └── .gitignore                    ← site/, *.archify.html e os recibos dos gates ficam fora do git
 ```
 
@@ -42,20 +41,23 @@ Para isolar a marca de qualquer configuração do usuário, aponte `CLAUDE_USER_
 
 ## Para mudar um diagrama
 
-Edite o JSON em `diagramas/fontes/` (e, nos de arquitetura, os cartões em `diagramas/cartoes/`), rode o `finalize` do Archify
-(saída `fontes/<tema>.archify.html`) e a casca `archify-maind` com `--cartoes cartoes/<tema>.json` (saída `diagramas/<tema>.html`), e gere o
-site de novo. A página de `diagramas/` é derivada; editá-la à mão se perde.
+Edite o JSON em `diagramas/fontes/`, rode o `finalize` do Archify (saída `fontes/<tema>.archify.html`) e a casca `archify-maind`
+(saída `diagramas/<tema>.html`), e gere o site de novo. A página de `diagramas/` é derivada; editá-la à mão se perde.
 
-**Formato do bloco (casca 0.6.0, cartão CLOUD-CARD-001):** cada componente de um diagrama `architecture` vira um cartão de 500×200 reduzido à
-caixa, então todo nó é declarado com `size` [250, 100] (proporção 2,5:1) e a largura total do desenho fica em até 1.794 px, desde que a
-proporção largura/altura seja de pelo menos 1,55 (abaixo disso o `finalize` limita a 1.240 px). Em cada cartão: nome, tecnologia (só a comprovada na
-`ARQ-001`), ícone, descrição com `**termo-chave**` (sem negrito colado em pontuação: a casca põe um espaço ali), nota e até 3 etiquetas. Os
-diagramas de sequência e de fluxo não usam cartão.
+**Formato do bloco: o clássico do Archify.** Os diagramas usam a casca da versão **0.5.1** do plugin DocX, a de antes do cartão de componente
+(CLOUD-CARD-001, que veio na 0.6.0). O cartão foi testado em 08/11/2026 e saiu por decisão do dono do Horus: dentro da largura máxima do desenho,
+o texto do cartão ficava miúdo perto do resto da página. A casca 0.5.1 sai da tag `docx--v0.5.1` do repositório `Maindtech-Plugins`:
+
+```bash
+git -C <Maindtech-Plugins> show docx--v0.5.1:plugins/docx/skills/archify-maind/scripts/skin.mjs > skin-0.5.1.mjs
+node skin-0.5.1.mjs --html fontes/<tema>.archify.html --spec fontes/<tema>.json --out <tema>.html
+```
+
+A casca de hoje (0.6 em diante) desenha o cartão em todo diagrama de arquitetura. Fora o cartão, a 0.5.1 é igual a ela.
 
 ## O que ainda não foi feito
 
 - O dono não revisou nada. Onde os documentos 01 a 14 e o backlog divergem, os diagramas seguem o backlog; as divergências estão na página
   (página `sobre`, seção "O que mudou") e alimentam a `P-028`.
 - A saída prevista é `docs/arquitetura/` (manual, seção 9), gerada com `--saida ../docs/arquitetura`; a publicação só sai com ordem do dono.
-- Nos 7 diagramas de arquitetura o texto do cartão é miúdo na visão geral e se lê ao dar zoom (a roda do mouse); é o limite do formato dentro dos 1.794 px.
 - Cada diagrama foi conferido pelos autores só por captura de tela; os cliques e popups da casca não foram testados um a um.

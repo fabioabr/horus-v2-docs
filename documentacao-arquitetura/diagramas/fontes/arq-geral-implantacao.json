@@ -557,12 +557,12 @@
       "sublabel": "testa e aprova a imagem",
       "tag": "na VPS · ARQ-055, ARQ-061",
       "pos": [
-        390,
-        230
+        350,
+        70
       ],
       "size": [
-        250,
-        100
+        190,
+        78
       ]
     },
     {
@@ -572,12 +572,12 @@
       "sublabel": "monta a imagem uma vez só",
       "tag": "imagem e segredos · ARQ-113, ARQ-115",
       "pos": [
-        390,
-        60
+        790,
+        70
       ],
       "size": [
-        250,
-        100
+        190,
+        78
       ]
     },
     {
@@ -588,11 +588,11 @@
       "tag": "as organizações do SaaS · D-272",
       "pos": [
         40,
-        400
+        230
       ],
       "size": [
-        250,
-        100
+        190,
+        78
       ]
     },
     {
@@ -602,12 +602,12 @@
       "sublabel": "o SaaS em uso real, um só",
       "tag": "docker compose · ARQ-098, ARQ-112",
       "pos": [
-        390,
-        400
+        350,
+        230
       ],
       "size": [
-        250,
-        100
+        190,
+        78
       ]
     },
     {
@@ -617,12 +617,12 @@
       "sublabel": "várias cópias, a nuvem cuida",
       "tag": "Kubernetes gerenciado · ARQ-112",
       "pos": [
-        1090,
-        400
+        790,
+        230
       ],
       "size": [
-        250,
-        100
+        190,
+        78
       ]
     },
     {
@@ -632,12 +632,12 @@
       "sublabel": "da Maind · várias cópias",
       "tag": "as organizações do SaaS · ARQ-112",
       "pos": [
-        1440,
-        400
+        1100,
+        230
       ],
       "size": [
-        250,
-        100
+        190,
+        78
       ]
     },
     {
@@ -648,11 +648,11 @@
       "tag": "à parte, a confirmar · ARQ-127",
       "pos": [
         40,
-        570
+        400
       ],
       "size": [
-        250,
-        100
+        190,
+        78
       ]
     },
     {
@@ -662,12 +662,12 @@
       "sublabel": "no próprio servidor",
       "tag": "mestre, organizações e log · ARQ-056",
       "pos": [
-        390,
-        570
+        350,
+        400
       ],
       "size": [
-        250,
-        100
+        190,
+        78
       ]
     },
     {
@@ -677,12 +677,12 @@
       "sublabel": "a nuvem cuida, com cópia reserva",
       "tag": "São Paulo · ARQ-093, ARQ-112",
       "pos": [
-        1090,
-        570
+        790,
+        400
       ],
       "size": [
-        250,
-        100
+        190,
+        78
       ]
     },
     {
@@ -692,12 +692,12 @@
       "sublabel": "do cliente · docker compose",
       "tag": "a TI do cliente cuida · ARQ-126",
       "pos": [
-        740,
-        740
+        570,
+        600
       ],
       "size": [
-        250,
-        100
+        190,
+        78
       ]
     },
     {
@@ -707,12 +707,12 @@
       "sublabel": "o middleware só lê",
       "tag": "na rede da organização · ARQ-052",
       "pos": [
-        1090,
-        740
+        920,
+        600
       ],
       "size": [
-        250,
-        100
+        190,
+        78
       ]
     }
   ],

@@ -576,12 +576,12 @@
       "label": "Conectores de saída",
       "sublabel": "MF-113 · só transporta · ARQ-022",
       "pos": [
-        40,
-        230
+        56,
+        176
       ],
       "size": [
-        250,
-        100
+        220,
+        64
       ]
     },
     {
@@ -590,12 +590,12 @@
       "label": "Canal WhatsApp",
       "sublabel": "MF-111 · põe a pergunta na fila",
       "pos": [
-        40,
-        400
+        56,
+        320
       ],
       "size": [
-        250,
-        100
+        220,
+        64
       ]
     },
     {
@@ -604,12 +604,12 @@
       "label": "Atender e Trabalhar",
       "sublabel": "servidor do Horus · pede ao middleware",
       "pos": [
-        40,
-        570
+        56,
+        480
       ],
       "size": [
-        250,
-        100
+        220,
+        64
       ]
     },
     {
@@ -618,12 +618,12 @@
       "label": "Envio de e-mail",
       "sublabel": "um serviço só · endereço não gravado",
       "pos": [
-        740,
-        230
+        456,
+        176
       ],
       "size": [
-        250,
-        100
+        230,
+        64
       ]
     },
     {
@@ -632,12 +632,12 @@
       "label": "Porta da Meta",
       "sublabel": "só ela fala com a Meta · ARQ-048",
       "pos": [
-        740,
-        400
+        456,
+        320
       ],
       "size": [
-        250,
-        100
+        230,
+        64
       ]
     },
     {
@@ -646,12 +646,12 @@
       "label": "Middleware",
       "sublabel": "atende várias organizações · v2.0",
       "pos": [
-        390,
-        740
+        456,
+        632
       ],
       "size": [
-        250,
-        100
+        280,
+        80
       ]
     },
     {
@@ -660,12 +660,12 @@
       "label": "Teams e Google Chat",
       "sublabel": "v2.1 · MF-122 · só recebem avisos",
       "pos": [
-        1440,
-        60
+        896,
+        64
       ],
       "size": [
-        250,
-        100
+        260,
+        64
       ]
     },
     {
@@ -674,12 +674,12 @@
       "label": "Servidor de e-mail (SMTP)",
       "sublabel": "Resend no SaaS · a Maind paga · ARQ-046",
       "pos": [
-        1440,
-        230
+        896,
+        176
       ],
       "size": [
-        250,
-        100
+        260,
+        64
       ]
     },
     {
@@ -688,12 +688,12 @@
       "label": "Meta: WhatsApp na nuvem",
       "sublabel": "conta da org. ou da Maind · quem usa paga",
       "pos": [
-        1440,
-        400
+        896,
+        320
       ],
       "size": [
-        250,
-        100
+        260,
+        64
       ]
     },
     {
@@ -702,12 +702,12 @@
       "label": "Provedores de IA",
       "sublabel": "chave da org., dada pela Maind ou da instância",
       "pos": [
-        1090,
-        570
+        896,
+        540
       ],
       "size": [
-        250,
-        100
+        260,
+        64
       ]
     },
     {
@@ -716,12 +716,12 @@
       "label": "Bancos corporativos",
       "sublabel": "só leitura · cinco na v2.0, Athena v2.1",
       "pos": [
-        1090,
-        740
+        896,
+        640
       ],
       "size": [
-        250,
-        100
+        260,
+        64
       ]
     },
     {
@@ -730,12 +730,12 @@
       "label": "Login: Google e OIDC",
       "sublabel": "Google v2.0 · login da empresa v2.1",
       "pos": [
-        1090,
-        910
+        896,
+        740
       ],
       "size": [
-        250,
-        100
+        260,
+        64
       ]
     }
   ],
@@ -829,12 +829,12 @@
       "toSide": "bottom",
       "via": [
         [
-          865,
-          533
+          571,
+          420
         ],
         [
-          1565,
-          533
+          1026,
+          420
         ]
       ]
     },

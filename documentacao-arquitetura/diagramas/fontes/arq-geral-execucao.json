@@ -588,12 +588,12 @@
       "sublabel": "onde achar o middleware de cada uma",
       "tag": "endereço e porta · no Banco mestre · ARQ-102 · v2.0",
       "pos": [
-        330,
-        60
+        40,
+        40
       ],
       "size": [
-        250,
-        100
+        200,
+        72
       ]
     },
     {
@@ -603,12 +603,12 @@
       "sublabel": "mapa, fila, limites e chaves",
       "tag": "Postgres · limites e quedas · ARQ-113, ARQ-121 · v2.0",
       "pos": [
-        740,
-        60
+        480,
+        40
       ],
       "size": [
-        250,
-        100
+        220,
+        72
       ]
     },
     {
@@ -619,11 +619,11 @@
       "tag": "a pessoa · o endereço só identifica · D-258",
       "pos": [
         40,
-        230
+        198
       ],
       "size": [
-        250,
-        100
+        170,
+        64
       ]
     },
     {
@@ -633,12 +633,12 @@
       "sublabel": "conversa e telas; parada e limites pelo banco",
       "tag": "luz, página e aviso · decide cada pedido · ARQ-004, 113, 123 · v2.0",
       "pos": [
-        740,
-        230
+        400,
+        190
       ],
       "size": [
-        250,
-        100
+        340,
+        80
       ]
     },
     {
@@ -648,12 +648,12 @@
       "sublabel": "no ar · instável · fora do ar",
       "tag": "Banco mestre, 90 dias · ARQ-106, 107, 114, 121",
       "pos": [
-        740,
-        400
+        530,
+        360
       ],
       "size": [
-        250,
-        100
+        200,
+        72
       ]
     },
     {
@@ -663,12 +663,12 @@
       "sublabel": "pela Porta da Meta, nos dois papéis",
       "tag": "MF-111, MF-113 · v2.0",
       "pos": [
-        1150,
-        400
+        980,
+        194
       ],
       "size": [
-        250,
-        100
+        190,
+        72
       ]
     },
     {
@@ -678,12 +678,12 @@
       "sublabel": "atende várias organizações",
       "tag": "contrato com versão · ARQ-099, ARQ-114 · D-272",
       "pos": [
-        330,
-        400
+        40,
+        340
       ],
       "size": [
-        250,
-        100
+        180,
+        72
       ]
     },
     {
@@ -693,12 +693,12 @@
       "sublabel": "estado de hoje + caixa de saída",
       "tag": "por organização, acesso só dela · ARQ-010 · v2.0",
       "pos": [
-        1480,
-        570
+        980,
+        320
       ],
       "size": [
-        250,
-        100
+        190,
+        72
       ]
     },
     {
@@ -708,12 +708,12 @@
       "sublabel": "da caixa de saída à fila",
       "tag": "Fundação, roteamento · ARQ-088 · v2.0",
       "pos": [
-        1480,
-        740
+        985,
+        440
       ],
       "size": [
-        250,
-        100
+        180,
+        72
       ]
     },
     {
@@ -723,12 +723,12 @@
       "sublabel": "no Banco mestre · nada em dobro",
       "tag": "sem conteúdo · vez por org. · ARQ-005 · v2.0",
       "pos": [
-        1150,
-        740
+        980,
+        560
       ],
       "size": [
-        250,
-        100
+        190,
+        72
       ]
     },
     {
@@ -739,11 +739,11 @@
       "tag": "membros e detalhes · ARQ-103 · v2.0",
       "pos": [
         40,
-        570
+        470
       ],
       "size": [
-        250,
-        100
+        180,
+        72
       ]
     },
     {
@@ -753,12 +753,12 @@
       "sublabel": "WhatsApp, agendamentos, agentes, PDFs, envios",
       "tag": "sem entrada de fora · espera até 1 h · ARQ-004, 108, 113 · v2.0",
       "pos": [
-        740,
-        570
+        480,
+        540
       ],
       "size": [
-        250,
-        100
+        300,
+        80
       ]
     },
     {
@@ -768,12 +768,12 @@
       "sublabel": "história por entidade, só de inclusão",
       "tag": "mesmo Postgres · ARQ-097 · v2.0",
       "pos": [
-        330,
-        740
+        40,
+        700
       ],
       "size": [
-        250,
-        100
+        220,
+        72
       ]
     },
     {
@@ -783,12 +783,12 @@
       "sublabel": "navegador sem tela desenha imagem e PDF",
       "tag": "Fundação · ARQ-007 · v2.0",
       "pos": [
-        740,
-        740
+        500,
+        700
       ],
       "size": [
-        250,
-        100
+        280,
+        72
       ]
     }
   ],
@@ -844,26 +844,34 @@
       "id": "atender-registro",
       "from": "atender",
       "to": "registro",
-      "label": "onde mora o middleware"
+      "label": "onde mora o middleware",
+      "fromSide": "top",
+      "toSide": "right"
     },
     {
       "id": "atender-org",
       "from": "atender",
       "to": "org",
-      "label": "mudança + caixa de saída"
+      "label": "mudança + caixa de saída",
+      "fromSide": "right",
+      "toSide": "left"
     },
     {
       "id": "atender-mw",
       "from": "atender",
       "to": "mw",
       "label": "pergunta → resposta, contagem de IA",
-      "variant": "emphasis"
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "right"
     },
     {
       "id": "atender-estado",
       "from": "atender",
       "to": "estado",
-      "label": "LED, página de status, aviso"
+      "label": "LED, página de status, aviso",
+      "fromSide": "bottom",
+      "toSide": "top"
     },
     {
       "id": "org-repassa",
@@ -884,25 +892,33 @@
       "from": "fila",
       "to": "trabalhar",
       "label": "pedido de trabalho · 2º plano",
-      "variant": "dashed"
+      "variant": "dashed",
+      "fromSide": "left",
+      "toSide": "right"
     },
     {
       "id": "trabalhar-org",
       "from": "trabalhar",
       "to": "org",
-      "label": "mudança + caixa de saída"
+      "label": "mudança + caixa de saída",
+      "fromSide": "top",
+      "toSide": "left"
     },
     {
       "id": "trabalhar-mw",
       "from": "trabalhar",
       "to": "mw",
-      "label": "pergunta → resposta, contagem de IA"
+      "label": "pergunta → resposta, contagem de IA",
+      "fromSide": "left",
+      "toSide": "right"
     },
     {
       "id": "trabalhar-estado",
       "from": "trabalhar",
       "to": "estado",
-      "label": "fora: a rodada espera até 1 h"
+      "label": "fora: a rodada espera até 1 h",
+      "fromSide": "top",
+      "toSide": "bottom"
     },
     {
       "id": "mw-base",
@@ -915,7 +931,9 @@
       "from": "trabalhar",
       "to": "log",
       "label": "grava a história · 2º plano",
-      "variant": "dashed"
+      "variant": "dashed",
+      "fromSide": "left",
+      "toSide": "top"
     },
     {
       "id": "trabalhar-desenho",
@@ -927,7 +945,9 @@
       "id": "trabalhar-meta",
       "from": "trabalhar",
       "to": "meta",
-      "label": "resposta e envios"
+      "label": "resposta e envios",
+      "fromSide": "bottom",
+      "toSide": "right"
     }
   ],
   "cards": [

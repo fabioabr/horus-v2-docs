@@ -567,11 +567,11 @@
       "tag": "Maind · cria e exclui a org. · D-146 · D-280",
       "pos": [
         40,
-        60
+        40
       ],
       "size": [
-        250,
-        100
+        180,
+        72
       ]
     },
     {
@@ -581,12 +581,12 @@
       "sublabel": "endereço, porta, chave pública",
       "tag": "mora no Banco mestre · ARQ-102 · ARQ-124",
       "pos": [
-        390,
-        60
+        360,
+        40
       ],
       "size": [
-        250,
-        100
+        180,
+        72
       ]
     },
     {
@@ -597,12 +597,12 @@
       "sublabel": "usuário e senha, sempre",
       "tag": "1º acesso: link de uso único · ARQ-110",
       "pos": [
-        1440,
-        60
+        1272,
+        40
       ],
       "size": [
-        250,
-        100
+        180,
+        72
       ]
     },
     {
@@ -614,11 +614,11 @@
       "tag": "o token só identifica · D-258 · ARQ-102",
       "pos": [
         40,
-        230
+        200
       ],
       "size": [
-        250,
-        100
+        180,
+        72
       ]
     },
     {
@@ -628,12 +628,12 @@
       "sublabel": "luz e status, antes do login",
       "tag": "luz e página de status · ARQ-106, ARQ-107",
       "pos": [
-        390,
-        230
+        360,
+        200
       ],
       "size": [
-        250,
-        100
+        180,
+        72
       ]
     },
     {
@@ -643,12 +643,12 @@
       "sublabel": "cópias só na produção real",
       "tag": "v2.0: um servidor só · ARQ-112, ARQ-113",
       "pos": [
-        740,
-        230
+        655,
+        200
       ],
       "size": [
-        250,
-        100
+        180,
+        72
       ]
     },
     {
@@ -658,12 +658,12 @@
       "sublabel": "atende várias organizações",
       "tag": "confere quem entra · ARQ-102, ARQ-114",
       "pos": [
-        1090,
-        230
+        957,
+        200
       ],
       "size": [
-        250,
-        100
+        180,
+        72
       ]
     },
     {
@@ -673,12 +673,12 @@
       "sublabel": "configurado pelo owner da org.",
       "tag": "login, bancos e IA · D-271 · D-273 · ARQ-111",
       "pos": [
-        1440,
-        230
+        1272,
+        200
       ],
       "size": [
-        250,
-        100
+        180,
+        72
       ]
     },
     {
@@ -688,12 +688,12 @@
       "sublabel": "sem o conteúdo das conversas",
       "tag": "ARQ-009 · ARQ-073 · ARQ-119 · D-091",
       "pos": [
-        390,
-        400
+        360,
+        360
       ],
       "size": [
-        250,
-        100
+        180,
+        72
       ]
     },
     {
@@ -703,12 +703,12 @@
       "sublabel": "lê as permissões por código",
       "tag": "assento, papel, permissões · ARQ-008, ARQ-123",
       "pos": [
-        740,
-        400
+        655,
+        360
       ],
       "size": [
-        250,
-        100
+        180,
+        72
       ]
     },
     {
@@ -718,12 +718,12 @@
       "sublabel": "dos dados · v2.1 · MF-106",
       "tag": "roda no middleware · D-263",
       "pos": [
-        1090,
-        400
+        957,
+        360
       ],
       "size": [
-        250,
-        100
+        180,
+        72
       ]
     },
     {
@@ -733,12 +733,12 @@
       "sublabel": "senhas dos bancos e da IA",
       "tag": "uma chave por org. · ARQ-103 · D-273",
       "pos": [
-        1440,
-        400
+        1272,
+        360
       ],
       "size": [
-        250,
-        100
+        180,
+        72
       ]
     },
     {
@@ -749,12 +749,12 @@
       "sublabel": "só leitura · D-001",
       "tag": "casa da organização · guarda de rede: ARQ-116",
       "pos": [
-        1440,
-        570
+        1272,
+        520
       ],
       "size": [
-        250,
-        100
+        180,
+        72
       ]
     }
   ],
