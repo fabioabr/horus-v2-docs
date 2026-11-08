@@ -540,7 +540,7 @@
           "desenho",
           "mestre"
         ],
-        "note": "Um servidor na VPS (v2.0), réplicas na produção real (ARQ-112); a parada, os limites e o cache já valem entre réplicas (ARQ-113)."
+        "note": "Uma cópia na VPS (v2.0), réplicas na produção real (ARQ-112); parada e limites valem entre réplicas, o cache fica em cada uma (ARQ-113)."
       },
       {
         "id": "estado",
@@ -585,30 +585,30 @@
       "id": "registro",
       "type": "database",
       "label": "Registro de organizações",
-      "sublabel": "endereço, porta e chave pública",
-      "tag": "mora no Banco mestre · ARQ-102 · v2.0",
+      "sublabel": "onde achar o middleware de cada uma",
+      "tag": "endereço e porta · no Banco mestre · ARQ-102 · v2.0",
       "pos": [
-        40,
-        40
+        330,
+        60
       ],
       "size": [
-        200,
-        72
+        250,
+        100
       ]
     },
     {
       "id": "mestre",
       "type": "database",
       "label": "Banco mestre",
-      "sublabel": "mapa, fila, limites, anel de chaves",
+      "sublabel": "mapa, fila, limites e chaves",
       "tag": "Postgres · limites e quedas · ARQ-113, ARQ-121 · v2.0",
       "pos": [
-        480,
-        40
+        740,
+        60
       ],
       "size": [
-        220,
-        72
+        250,
+        100
       ]
     },
     {
@@ -616,14 +616,14 @@
       "type": "external",
       "label": "Navegador",
       "sublabel": "pelo endereço da organização",
-      "tag": "a pessoa · token · D-258",
+      "tag": "a pessoa · o endereço só identifica · D-258",
       "pos": [
         40,
-        198
+        230
       ],
       "size": [
-        170,
-        64
+        250,
+        100
       ]
     },
     {
@@ -631,14 +631,14 @@
       "type": "backend",
       "label": "Atender",
       "sublabel": "conversa e telas; parada e limites pelo banco",
-      "tag": "LED, página e aviso · o pode? por código · ARQ-004, ARQ-113, ARQ-123 · v2.0",
+      "tag": "luz, página e aviso · decide cada pedido · ARQ-004, 113, 123 · v2.0",
       "pos": [
-        400,
-        190
+        740,
+        230
       ],
       "size": [
-        340,
-        80
+        250,
+        100
       ]
     },
     {
@@ -648,12 +648,12 @@
       "sublabel": "no ar · instável · fora do ar",
       "tag": "Banco mestre, 90 dias · ARQ-106, 107, 114, 121",
       "pos": [
-        530,
-        360
+        740,
+        400
       ],
       "size": [
-        200,
-        72
+        250,
+        100
       ]
     },
     {
@@ -663,12 +663,12 @@
       "sublabel": "pela Porta da Meta, nos dois papéis",
       "tag": "MF-111, MF-113 · v2.0",
       "pos": [
-        980,
-        194
+        1150,
+        400
       ],
       "size": [
-        190,
-        72
+        250,
+        100
       ]
     },
     {
@@ -676,14 +676,14 @@
       "type": "cloud",
       "label": "Middleware",
       "sublabel": "atende várias organizações",
-      "tag": "gRPC versionado · ARQ-099, ARQ-114 · D-272",
+      "tag": "contrato com versão · ARQ-099, ARQ-114 · D-272",
       "pos": [
-        40,
-        340
+        330,
+        400
       ],
       "size": [
-        180,
-        72
+        250,
+        100
       ]
     },
     {
@@ -691,14 +691,14 @@
       "type": "database",
       "label": "Banco da organização",
       "sublabel": "estado de hoje + caixa de saída",
-      "tag": "um por organização, login só dele · ARQ-010 · v2.0",
+      "tag": "por organização, acesso só dela · ARQ-010 · v2.0",
       "pos": [
-        980,
-        320
+        1480,
+        570
       ],
       "size": [
-        190,
-        72
+        250,
+        100
       ]
     },
     {
@@ -708,27 +708,27 @@
       "sublabel": "da caixa de saída à fila",
       "tag": "Fundação, roteamento · ARQ-088 · v2.0",
       "pos": [
-        985,
-        440
+        1480,
+        740
       ],
       "size": [
-        180,
-        72
+        250,
+        100
       ]
     },
     {
       "id": "fila",
       "type": "messagebus",
       "label": "Fila durável",
-      "sublabel": "no Banco mestre · trava por linha",
+      "sublabel": "no Banco mestre · nada em dobro",
       "tag": "sem conteúdo · vez por org. · ARQ-005 · v2.0",
       "pos": [
-        980,
-        560
+        1150,
+        740
       ],
       "size": [
-        190,
-        72
+        250,
+        100
       ]
     },
     {
@@ -739,11 +739,11 @@
       "tag": "membros e detalhes · ARQ-103 · v2.0",
       "pos": [
         40,
-        470
+        570
       ],
       "size": [
-        180,
-        72
+        250,
+        100
       ]
     },
     {
@@ -751,14 +751,14 @@
       "type": "backend",
       "label": "Trabalhar",
       "sublabel": "WhatsApp, agendamentos, agentes, PDFs, envios",
-      "tag": "sem entrada de fora · espera até 1 h · ARQ-004, ARQ-108, ARQ-113 · v2.0",
+      "tag": "sem entrada de fora · espera até 1 h · ARQ-004, 108, 113 · v2.0",
       "pos": [
-        480,
-        540
+        740,
+        570
       ],
       "size": [
-        300,
-        80
+        250,
+        100
       ]
     },
     {
@@ -768,27 +768,27 @@
       "sublabel": "história por entidade, só de inclusão",
       "tag": "mesmo Postgres · ARQ-097 · v2.0",
       "pos": [
-        40,
-        700
+        330,
+        740
       ],
       "size": [
-        220,
-        72
+        250,
+        100
       ]
     },
     {
       "id": "desenho",
       "type": "frontend",
       "label": "Desenho fora da tela",
-      "sublabel": "Chromium sem tela, pelo loopback · imagem e PDF",
+      "sublabel": "navegador sem tela desenha imagem e PDF",
       "tag": "Fundação · ARQ-007 · v2.0",
       "pos": [
-        500,
-        700
+        740,
+        740
       ],
       "size": [
-        280,
-        72
+        250,
+        100
       ]
     }
   ],
@@ -844,34 +844,26 @@
       "id": "atender-registro",
       "from": "atender",
       "to": "registro",
-      "label": "onde mora o middleware",
-      "fromSide": "top",
-      "toSide": "right"
+      "label": "onde mora o middleware"
     },
     {
       "id": "atender-org",
       "from": "atender",
       "to": "org",
-      "label": "mudança + caixa de saída",
-      "fromSide": "right",
-      "toSide": "left"
+      "label": "mudança + caixa de saída"
     },
     {
       "id": "atender-mw",
       "from": "atender",
       "to": "mw",
       "label": "pergunta → resposta, contagem de IA",
-      "variant": "emphasis",
-      "fromSide": "bottom",
-      "toSide": "right"
+      "variant": "emphasis"
     },
     {
       "id": "atender-estado",
       "from": "atender",
       "to": "estado",
-      "label": "LED, página de status, aviso",
-      "fromSide": "bottom",
-      "toSide": "top"
+      "label": "LED, página de status, aviso"
     },
     {
       "id": "org-repassa",
@@ -892,33 +884,25 @@
       "from": "fila",
       "to": "trabalhar",
       "label": "pedido de trabalho · 2º plano",
-      "variant": "dashed",
-      "fromSide": "left",
-      "toSide": "right"
+      "variant": "dashed"
     },
     {
       "id": "trabalhar-org",
       "from": "trabalhar",
       "to": "org",
-      "label": "mudança + caixa de saída",
-      "fromSide": "top",
-      "toSide": "left"
+      "label": "mudança + caixa de saída"
     },
     {
       "id": "trabalhar-mw",
       "from": "trabalhar",
       "to": "mw",
-      "label": "pergunta → resposta, contagem de IA",
-      "fromSide": "left",
-      "toSide": "right"
+      "label": "pergunta → resposta, contagem de IA"
     },
     {
       "id": "trabalhar-estado",
       "from": "trabalhar",
       "to": "estado",
-      "label": "fora: a rodada espera até 1 h",
-      "fromSide": "top",
-      "toSide": "bottom"
+      "label": "fora: a rodada espera até 1 h"
     },
     {
       "id": "mw-base",
@@ -931,9 +915,7 @@
       "from": "trabalhar",
       "to": "log",
       "label": "grava a história · 2º plano",
-      "variant": "dashed",
-      "fromSide": "left",
-      "toSide": "top"
+      "variant": "dashed"
     },
     {
       "id": "trabalhar-desenho",
@@ -945,9 +927,7 @@
       "id": "trabalhar-meta",
       "from": "trabalhar",
       "to": "meta",
-      "label": "resposta e envios",
-      "fromSide": "bottom",
-      "toSide": "right"
+      "label": "resposta e envios"
     }
   ],
   "cards": [
@@ -955,49 +935,36 @@
       "dot": "cyan",
       "title": "O que o desenho mostra",
       "items": [
-        "O servidor do Horus no SaaS é o mesmo executável nos dois papéis, Atender e Trabalhar (ARQ-004), a partir de uma imagem compilada uma vez e igual em toda fase: o que muda é a implantação, escolhida pelo CI/CD, sem mexer na imagem (ARQ-113). Na VPS (v2.0), que serve à construção, à homologação e à v2.0, ele é um só, em docker compose, e o ponto único de falha é aceito (ARQ-098, ARQ-101, ARQ-112). Na produção real, numa nuvem pública cuja escolha segue adiada (ARQ-085), os dois papéis passam a ter réplicas num Kubernetes gerenciado, com o Postgres gerenciado, na região de São Paulo (ARQ-093, ARQ-112). A meta de disponibilidade acompanha as fases: nenhuma na VPS, 99,9% por mês na produção real (ARQ-122).",
-        "O navegador e a Meta só chegam ao Atender; o Trabalhar não tem entrada de fora e só recebe trabalho pela fila (ARQ-004). A pessoa chega pelo endereço da organização: o endereço do SaaS é o mesmo para todas, e um token nele leva à organização e ao middleware certos (D-258, passo 5); o token é só um identificador, nunca uma credencial, e não fica nos registros nem no histórico (ARQ-102).",
-        "Os dois papéis falam com o Middleware, que roda fora do SaaS e atende várias organizações em qualquer hospedagem: o da Maind atende todas as organizações do SaaS, e o do cliente, as organizações dele (a MF-121, Middleware da organização, v2.0; D-258, D-260, D-272). O do cliente sobe com docker compose; o da Maind, com docker compose na VPS (v2.0) e com réplicas num Kubernetes gerenciado na produção real (ARQ-100, ARQ-112). Pelo contrato gRPC (ARQ-099), vai só a pergunta e volta a resposta pronta, os blocos que a pessoa vê, com a contagem do uso de IA: a hora, o modelo, os tokens e de quem é a chave, sem a pergunta nem a resposta (D-189, ARQ-117). O ciclo da análise, o modelo de IA e as consultas, roda dentro dele (D-258).",
-        "O contrato é versionado: o SaaS fala com a versão atual do middleware e com a anterior; com uma mais velha, recusa, e o LED fica vermelho com o texto \"Atualização necessária\", com o motivo na página de status e no painel da instância. Quem atualiza é quem hospeda: a Maind no dela, o cliente no dele (ARQ-114).",
-        "O Atender chama o middleware no turno da conversa do app e do popup; o Trabalhar, no turno do WhatsApp, nos agentes e nos agendamentos, que são os trabalhos dele (documento 04 §3.4, ARQ-024).",
-        "O SaaS acha, pelo Registro de organizações, o middleware que atende cada organização: o endereço, a porta e a chave pública que ele aprende no handshake do certificado, quando a organização é criada e adicionada ao middleware (D-258, passos 2 e 3; D-272; ARQ-124). O Registro aparece à parte para ser visto, mas mora no Banco mestre, como o resto do que é da instância (ARQ-102, ARQ-088). A sessão da pessoa é emitida pelo middleware, leva só o identificador da organização, sem endereço nem porta, e o SaaS a confere com a chave pública do Registro (ARQ-102); por isso a ligação do Atender ao Banco mestre não diz \"sessão\" (a ARQ-038 mantinha a sessão da v1.xx). O desenho liga só o Atender ao Registro; o Trabalhar o lê do mesmo jeito, porque também chama o middleware.",
-        "O Estado do middleware tem três valores: no ar; instável, quando o SaaS o alcança mas com falhas ou lentidão nos últimos minutos; e fora do ar, sem contato. O SaaS o decide sozinho, pela contagem de falhas e pelo tempo de resposta do contato que já faz com o middleware (ARQ-107). O Atender o mostra no LED de status da tela de entrada, sempre com texto ao lado da cor; na Página de status, no endereço da organização, sem login, que o SaaS responde sem consultar o middleware e que mostra o estado, desde quando, o último contato e as últimas quedas, sem versão nem nome de pessoa; e, com o vermelho, no Aviso próprio, que toma o lugar das respostas na tela de entrada e no app (ARQ-104, ARQ-106, ARQ-107). O último contato e o Registro de quedas, com o início, o fim e a duração de cada queda, moram no Banco mestre, guardados por 90 dias, sem conteúdo e sem pessoa (ARQ-106, ARQ-121); por isso o LED, a página e o aviso aparecem mesmo com o middleware fora. Com o middleware compartilhado da Maind, o estado é o mesmo para todas as organizações do SaaS.",
-        "A Base de configuração do middleware é uma só para todas as organizações que ele atende: cada linha leva a marca da organização, um filtro global, em toda consulta, separa uma da outra, e um teste de isolamento no CI é a segunda trava; as credenciais dos bancos e da IA se cifram com uma chave por organização (ARQ-103, D-272). Ela é um banco à parte do Postgres do SaaS: o SaaS não alcança a base do middleware, nem o middleware o banco do SaaS, e só o contrato com o certificado liga os dois (ARQ-127, decidida pelo arquiteto e a confirmar com o dono). As pessoas, a autenticação e a configuração dos bancos e da IA ficam no middleware, fora do SaaS, e quem configura os bancos e a IA é o owner da organização, no Front do middleware, em qualquer hospedagem (D-258, passo 6; D-261; D-273).",
-        "O SaaS guarda de cada pessoa só o Código da pessoa, sem nome nem e-mail (ARQ-109), e, por código, as Permissões por código: o tipo de assento, o conjunto de permissões e os identificadores dos grupos e da carteira do gestor, sem nomes, que o middleware envia a cada mudança, com uma reconciliação completa depois de uma queda (ARQ-123). Com elas, o SaaS decide cada pedido sozinho e conta os assentos ocupados sem chamar o middleware. Em que banco elas moram e por qual papel a mudança chega as fontes não dizem, e por isso elas não viram caixa no desenho.",
-        "O código da v2.0 nasce preparado para réplicas, mesmo rodando um servidor só (ARQ-113): a parada de uma resposta e a geração nova da mesma conversa chegam à réplica que transmite por um aviso do Postgres, sem gravação; os limites de taxa contam no Banco mestre, por janela, com a chave resumida e sem conteúdo; e o cache vale em todas as réplicas, como a ARQ-095 o pôs. O anel de chaves segue no Banco mestre, cifrado (ARQ-087, ARQ-095). Os tokens de renderização ficam no próprio servidor, servidos pelo loopback ao Chromium sem tela que o Trabalhar abre (ARQ-007, ARQ-095). Se o servidor cai no meio de uma transmissão, a resposta fica gravada como interrompida, como na troca de versão (ARQ-029, ARQ-063).",
-        "Três bancos no Postgres do SaaS: o Banco mestre, com o mapa; um Banco da organização por organização, com login só dele e o estado de hoje (a conversa, os boards, o rastro); e o Banco de log, com a história, só de inclusão (ARQ-010, ARQ-088, ARQ-097)."
+        "O servidor do SaaS, a parte do Horus que as pessoas usam, é um programa só em dois papéis. O Atender recebe o navegador e as mensagens do WhatsApp e responde na hora; o Trabalhar não recebe nada de fora e só pega tarefas da fila: o WhatsApp, os agendamentos, os agentes, os PDFs e os envios. (ARQ-004, ARQ-024)",
+        "O pacote do programa é o mesmo em toda fase e nunca leva as senhas; muda só o jeito de instalar, escolhido na publicação. (ARQ-113, ARQ-115) Na VPS, o servidor alugado da construção, dos testes e da v2.0, roda uma cópia só, em docker compose, um pacote isolado. (ARQ-098, ARQ-112) Na produção real, numa nuvem ainda a escolher, os dois papéis ganham réplicas, cópias rodando ao mesmo tempo, no Kubernetes gerenciado, um serviço de nuvem que cuida de vários servidores sozinho. (ARQ-085, ARQ-112)",
+        "Os dois papéis falam com o middleware, a parte que busca os dados no banco da empresa e que roda fora do SaaS. O da Maind atende todas as organizações do SaaS e segue as mesmas duas fases; o do cliente atende só as dele e fica sempre em docker compose. (D-258, D-272, ARQ-100, ARQ-112) Vai só a pergunta e volta a resposta pronta, com a contagem do uso de IA: a hora, o modelo, o quanto se usou e de quem é a chave, sem o conteúdo. (D-189, ARQ-099, ARQ-117)",
+        "O SaaS acha o middleware de cada organização pelo Registro de organizações, que aparece à parte só para ser visto, mas mora no Banco mestre. A entrada da pessoa leva só o código da organização, e o endereço do middleware nunca vai ao navegador. (ARQ-102) O SaaS fala com a versão atual do middleware e com a anterior; uma mais velha é recusada, com o aviso \"Atualização necessária\", e quem atualiza é quem hospeda. (ARQ-114)",
+        "O SaaS tem três bancos no mesmo Postgres, o programa de banco de dados. O Banco mestre guarda o mapa das organizações, a fila, os limites, as chaves que trancam os dados e as quedas do middleware; o Banco da organização, um por organização e com acesso só dela, guarda o estado de hoje e a caixa de saída. O Banco de log guarda a história, em que só se acrescenta. (ARQ-010, ARQ-088, ARQ-097)",
+        "A Base de configuração do middleware fica num banco à parte: nem o SaaS entra nela, nem o middleware nos bancos do SaaS, e só o contrato liga os dois. (ARQ-127) Ela é uma só para todas as organizações, separadas por uma marca, um filtro e uma chave de cada uma, que tranca as senhas; quem configura os bancos e a IA é o owner da organização, no Front do middleware. (ARQ-103, D-272, D-273) De cada pessoa, o SaaS guarda só um código, sem nome, e as permissões ligadas a ele, que o middleware envia a cada mudança. (ARQ-109, ARQ-123)"
       ]
     },
     {
       "dot": "emerald",
-      "title": "Imediato e em segundo plano",
+      "title": "Na hora e em segundo plano",
       "items": [
-        "Linha contínua: imediata, na hora do pedido. Linha tracejada: em segundo plano, pela fila.",
-        "Imediato: o turno da conversa no app e no popup roda no Atender, que leva a pergunta ao middleware e entrega a resposta pronta por SSE; no WhatsApp e no agente, o turno é trabalho da fila, no Trabalhar, e a ida ao middleware acontece dentro desse trabalho (ARQ-024, D-189).",
-        "Imediato: o LED, a página de status e o aviso próprio leem o estado que o SaaS já tem, sem chamar o middleware (ARQ-106, ARQ-107). Com o amarelo, a pessoa entra normalmente e o LED só avisa; com o vermelho, aparece o aviso próprio, com a hora do último contato e um botão para tentar de novo (ARQ-104, ARQ-107).",
-        "Imediato: a mensagem do WhatsApp é recebida, confirmada, gravada e enfileirada no Atender; a entrada só responde à Meta depois de gravar (documento 04 §3.4, ARQ-063).",
-        "Na transação da mudança, nos dois papéis, o pedido de trabalho e o evento vão para a caixa de saída do Banco da organização; o Repassador leva cada saída à Fila durável do Banco mestre (ARQ-005, ARQ-088).",
-        "Em segundo plano: o Trabalhar pega cada trabalho com trava por linha, com tentativas e motivo de desistência; a fila dá a vez por organização e por tipo, e o turno e a imagem do WhatsApp passam à frente dos agendamentos, agentes, PDFs e envios (ARQ-005, ARQ-095). Na produção real, a fila reparte o trabalho entre as réplicas do Trabalhar, com as mesmas regras (ARQ-095, ARQ-113).",
-        "Em segundo plano, com o middleware fora: a rodada de um agendamento, alerta ou agente fica na fila e espera até uma hora depois da hora marcada, ou até a próxima rodada da mesma agenda, se vier antes; o SaaS não insiste enquanto o estado está vermelho. Se o middleware volta, a rodada roda uma vez, atrasada, e diz que atrasou; senão, é pulada, com o motivo no rastro e o aviso só ao dono do agendamento, na área de avisos (ARQ-108, ARQ-120).",
-        "Em segundo plano: a história chega ao Banco de log segundos depois da mudança, gravada uma vez só (ARQ-097). A contagem de uso de IA que não chega com o middleware fora aparece com atraso e completa quando ele volta (ARQ-117).",
-        "Na VPS (v2.0), com um servidor só, cada troca de versão e cada falha da máquina tiram o SaaS do ar por um tempo, que é medida e não meta (ARQ-098, ARQ-122); no docker compose, reiniciar e trocar a versão são da Maind (ARQ-101). Na produção real, a troca drena com as réplicas, sem corte, como os 99,9% pedem (ARQ-063, ARQ-113, ARQ-122). Nos dois casos nada se perde: a troca drena o trabalho em curso e devolve o resto à fila, que é durável, e a caixa de saída grava junto com a mudança (ARQ-005, ARQ-063). A sonda de fora mede (ARQ-070).",
-        "Tudo o que o desenho mostra vale na v2.0, inclusive o middleware, que subiu da v2.1 (D-260); as réplicas e o Kubernetes gerenciado são da produção real, que ainda não tem nuvem nem data (ARQ-085, ARQ-112)."
+        "Linha contínua: na hora, durante o pedido. Linha tracejada: depois, pela fila, uma lista de tarefas esperando a vez, gravada no banco. (ARQ-005) Na conversa do app, o Atender leva a pergunta ao middleware e devolve a resposta aos pedaços, enquanto é escrita: é a seta \"resposta por SSE\"; no WhatsApp e no agente, a ida ao middleware acontece dentro de uma tarefa do Trabalhar. (ARQ-024, D-189)",
+        "Na hora: a mensagem do WhatsApp é recebida, gravada e posta na fila pelo Atender, que só confirma à Meta depois de gravar. (ARQ-063) Toda mudança grava, de uma vez, o estado de hoje e o pedido de trabalho na caixa de saída do Banco da organização; o Repassador leva o pedido à fila, no Banco mestre. (ARQ-005, ARQ-088)",
+        "Depois: o Trabalhar pega cada tarefa uma vez só, tenta de novo se falhar e registra o motivo se desistir. (ARQ-005) Cada organização tem a sua vez, e o que alguém espera, o turno e a imagem do WhatsApp, passa à frente dos agendamentos, agentes, PDFs e envios. (ARQ-095) A história chega ao Banco de log segundos depois da mudança, gravada uma vez só. (ARQ-097)",
+        "O SaaS dá ao middleware um de três estados, no ar, instável ou fora do ar, pelas falhas e pela demora do contato que já faz. (ARQ-107) O Atender mostra o estado numa luz da tela de entrada, sempre com texto, e numa página de status sem login; com o amarelo, a pessoa entra normalmente, e com o vermelho um aviso próprio toma o lugar das respostas. (ARQ-104, ARQ-106, ARQ-107) As quedas ficam noventa dias no Banco mestre, e por isso a luz, a página e o aviso funcionam com o middleware fora; a versão aparece só no painel da instância. (ARQ-106, ARQ-114, ARQ-121)",
+        "Com o middleware fora, a rodada de um agendamento, alerta ou agente espera na fila até uma hora, ou até a próxima rodada da mesma agenda, se vier antes. Se ele volta, a rodada roda uma vez e diz que atrasou; se não, é pulada, com o motivo no rastro, e só quem responde pelo agendamento é avisado. (ARQ-108, ARQ-120) A contagem de uso de IA que não chegou com o middleware fora aparece depois, quando ele volta. (ARQ-117)",
+        "O código já nasce pronto para réplicas: parar uma resposta e os limites de pedidos valem em todas as cópias, pelo banco, e o cache, uma cópia guardada perto para responder mais rápido, fica em cada réplica. (ARQ-095, ARQ-113) Na VPS, cada troca de versão e cada falha da máquina tiram o SaaS do ar por um tempo, que se mede, mas não se promete; na produção real, a fila reparte as tarefas entre as réplicas, a troca passa de cópia em cópia, sem corte, e a meta é 99,9% do mês no ar. (ARQ-063, ARQ-098, ARQ-112, ARQ-122) Nada se perde: a troca termina o que está em curso e devolve o resto à fila, e uma resposta cortada pela queda do servidor fica gravada como interrompida. (ARQ-005, ARQ-029, ARQ-063)"
       ]
     },
     {
       "dot": "amber",
-      "title": "O que ficou de fora e o que aguarda",
+      "title": "O que ficou de fora e o que falta decidir",
       "items": [
-        "Fora do desenho, para ele caber: os bancos corporativos e os provedores de IA, que o middleware alcança, os bancos só para leitura (D-258); o Front do middleware, o mesmo nas duas hospedagens, onde o owner da organização configura as pessoas, os bancos, a IA e a mecânica de login, e o time da Maind só dá suporte (D-261, D-271, D-273, ARQ-111); o servidor de e-mail, ao qual os dois papéis saem: os e-mails do Horus saem do SaaS, pelo e-mail do produto, com o endereço que o middleware entrega só na hora do envio e que o SaaS não grava (ARQ-118); e os servidores MCP que a organização poderá cadastrar no Front do middleware e manter na infraestrutura dela (D-281): a versão é a v2.1, na MF-124 (D-282), e eles não são peça do contrato entre o SaaS e o middleware (ARQ-099).",
-        "Também fora do desenho: o painel da instância (MF-101) mostra, para cada organização, o estado do middleware que a atende, nos mesmos três valores, e a versão que ele informa (D-275, ARQ-107); só ele mostra a versão (ARQ-106). Do middleware na casa do cliente, a Maind vê só o que o SaaS mede: o estado, a versão, o último contato, as quedas e a contagem de uso de IA; o diagnóstico de um erro é um pacote que o owner ou a TI do cliente gera no módulo de configuração e envia sob pedido (ARQ-119). O owner vê o consumo e o custo de toda a IA da organização no Horus; o painel da instância mostra só o das chaves que a Maind dá, e a chave de IA da instância numa linha à parte (ARQ-117).",
-        "As pessoas e o login, que a ARQ-088 punha no Banco mestre, e as fontes e as credenciais, que ela punha no Banco da organização, saem do SaaS e vão ao middleware (D-258, D-261, D-265). O login deixou de ser fixo: é configuração da organização no módulo de configuração do middleware; na v2.0, usuário e senha e Google, e o OpenID Connect na v2.1; o owner e o administrador entram sempre por usuário e senha (ARQ-111). Os nomes que as telas mostram vêm do middleware na hora de exibir, em lote (ARQ-109).",
-        "Divergência no registro: a ARQ-114 diz que, com a versão recusada, a página de status mostra o motivo e a versão; a ARQ-106 diz que a página não mostra versão, que fica só no painel da instância. O desenho põe a versão só no painel e deixa a dúvida ao arquiteto.",
-        "Sem fonte, por isso não desenhado: que papel faz o contato que mede o estado e em que banco mora o estado de três valores (as fontes dizem só que o último contato e o Registro de quedas ficam no Banco mestre); em que banco moram as Permissões por código e por qual papel a mudança chega (ARQ-123); se o servidor guarda em memória o endereço que lê do Registro de organizações (ARQ-102); e em que papel roda o Repassador (ARQ-088, documento 06 §3.6).",
-        "Em aberto (P-042, P-048): se a resposta pronta chega transmitida ou de uma vez, embora o gRPC permita a resposta em pedaços (ARQ-099); em que papel e por qual caminho os assentos liberados chegam ao middleware (D-258, passo 4); e o que a Base de configuração usa como tecnologia. A calibrar 🔎: o limite e a janela que separam o \"no ar\" do \"instável\" (ARQ-107), a janela de uma hora da rodada (ARQ-108) e o número de versões da janela de compatibilidade (ARQ-114). A política do certificado, o formato, a rotação e a revogação, ficou para as ADRs da MF-121 (P-049).",
-        "O administrador da instância continua perguntando ao próprio Horus sobre a história da instância, com uma chave de IA cadastrada no nível da instância só para isso, que a Maind paga; nenhuma organização usa essa chave (D-158, D-276, D-266). A pergunta lê a história guardada no SaaS, o Banco de log, e não passa por middleware de organização nenhum; como ela roda, em que papel e onde fica a chave, é do arquiteto (P-048), e por isso o desenho não traz esse caminho.",
-        "A tarefa das migrações, a observabilidade e a cópia fora do Horus são de outros diagramas (documentos 09, 10 e 11). A compilação de segurança, o pré-aquecimento e a conferência diária, que o documento 04 põe no Trabalhar, são da MF-106, na v2.1, que passa a rodar no middleware (D-263). O desenho técnico da exportação da conversa em PDF ou HTML (D-250) espera o arquiteto (P-047).",
-        "Seguem adiadas a nuvem e a data da produção real (ARQ-085). Os segredos já não estão em aberto: na VPS, o CD grava o arquivo de ambiente da máquina, só do root, que o docker compose lê; na produção real, os Secrets do Kubernetes; a imagem não leva segredo (ARQ-115). Os documentos 03, 09, 10, 11, 12 e 13 ainda não descrevem as duas fases (P-028).",
-        "Seguem como hipótese o pool pequeno de conexões por organização (ARQ-088); a drenagem de até dois minutos, mais a subida, como o tempo fora do ar em cada troca na VPS (ARQ-063, ARQ-098); e o isolamento entre as organizações do SaaS bastar, pela marca, pelo filtro e pela chave por organização (D-272, ARQ-103). O ponto único de falha do middleware da Maind deixou de ser hipótese: é aceito na VPS (v2.0) e deixa de existir na produção real (ARQ-112); o risco de, invadido, ele expor as credenciais e as regras de todas as organizações do SaaS segue (D-272)."
+        "Falta o dono do Horus confirmar uma decisão do arquiteto do Horus: o SaaS e o middleware da Maind ficam separados, cada um com a sua rede e o seu banco, e só conversam pelo contrato. Na VPS, podem dividir a máquina, como dois apartamentos do mesmo prédio; na produção real, ficam em áreas separadas da nuvem. (ARQ-127)",
+        "Falta o dono do Horus decidir a nuvem, a data e o orçamento da produção real. (ARQ-085) Falta o arquiteto do Horus decidir, com o dono do Horus, a política do certificado, a identidade digital do middleware: o formato, a troca e o cancelamento. (P-049)",
+        "Falta o arquiteto do Horus decidir como a conversa com o middleware funciona por dentro: se a resposta pronta chega aos pedaços ou de uma vez, e qual papel mede o estado, inclusive o do middleware do cliente. (P-042) Falta decidir também por qual papel os assentos liberados chegam ao middleware e a mudança das permissões e o aviso de IA parada chegam ao SaaS. (P-048, ARQ-117, ARQ-123) E falta decidir se o servidor guarda na memória o endereço lido no Registro. (ARQ-102)",
+        "Falta o arquiteto do Horus decidir onde moram e rodam algumas peças: o banco do estado do middleware e o das permissões de cada pessoa, que por isso não viram caixa no desenho; o papel em que roda o Repassador; e a tecnologia da Base de configuração. (ARQ-088, ARQ-107, ARQ-123, ARQ-127) Falta decidir também onde roda a pergunta do owner da instância, o funcionário da Maind que define a marca e as regras gerais, sobre a história da instalação. Ela lê o Banco de log, não passa por middleware nenhum e usa uma chave de IA só dela, paga pela Maind. (D-158, D-266, D-276, P-048)",
+        "Falta o arquiteto do Horus calibrar, com o uso, o ponto em que \"no ar\" vira \"instável\", a espera de uma hora da rodada e quantas versões do middleware o SaaS aceita. (ARQ-107, ARQ-108, ARQ-114) Falta o arquiteto do Horus confirmar na prática que poucas conexões por organização bastem, que a troca de versão na VPS pare o SaaS só por até dois minutos, mais a subida, e que preparar o código para réplicas não pese na v2.0. (ARQ-063, ARQ-088, ARQ-098, ARQ-113) Falta provar também que a marca, o filtro e a chave separem bem as organizações no middleware da Maind, que, se invadido, expõe as regras de todas; o ponto único dele é aceito na VPS e some na produção real. (D-272, ARQ-103, ARQ-112)",
+        "Falta o arquiteto do Horus desenhar a exportação da conversa em PDF ou HTML e decidir como o middleware chama os servidores MCP da organização, programas dela que só leem, a partir da v2.1. (D-250, P-047, D-281, D-282, P-050) Falta também atualizar os documentos técnicos que ainda não descrevem as duas fases. (P-028) Ficam fora do desenho os bancos das empresas e os provedores de IA, que o middleware só lê; o Front do middleware; o servidor de e-mail, por onde saem os e-mails do SaaS, com o endereço que o middleware entrega só na hora do envio; e o painel da instância, em que a Maind vê o estado e a versão de cada middleware e, do middleware do cliente, só o que o SaaS mede. (D-258, D-275, ARQ-111, ARQ-118, ARQ-119)"
       ]
     }
   ]

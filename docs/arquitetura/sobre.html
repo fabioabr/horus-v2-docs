@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-menu="vertical">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="DocX 0.4.0" />
+<meta name="description" content="Como o Horus v2 é construído por dentro, explicado sem jargão: dez desenhos, o que falta decidir e quem decide." />
+<link rel="icon" href="assets/logo-claro.svg" />
+<title>Sobre este documento — Horus v2</title>
+<script>
+(function () {
+  try {
+    var raiz = document.documentElement;
+    var tema = localStorage.getItem('kinto-theme');
+    var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    raiz.setAttribute('data-theme', tema || (escuro ? 'dark' : 'light'));
+    raiz.setAttribute('data-menu', localStorage.getItem('kinto-menu') || 'vertical');
+    var ws = parseInt(localStorage.getItem('kinto-side-w'), 10);
+    var wt = parseInt(localStorage.getItem('kinto-toc-w'), 10);
+    if (ws) raiz.style.setProperty('--side-w-user', ws + 'px');
+    if (wt) raiz.style.setProperty('--toc-w-user', wt + 'px');
+  } catch (e) { /* localStorage bloqueado: ficam os atributos do <html> */ }
+})();
+</script>
+<link rel="stylesheet" href="assets/docs.css" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="assets/docx-kbr.css" />
+</head>
+<body>
+<header class="hdr"><div class="hdr-brand"><a class="hdr-logo" href="index.html" aria-label="Horus v2"><img class="logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /></a><div class="div"></div><div class="doc-meta"><b>Horus v2 · Documentação</b><small>Maind Horus</small></div></div><div class="hdr-center"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-topo" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><div class="hdr-actions"><div class="menu-toggle" role="group" aria-label="Menu"><button data-set="vertical" aria-label="Menu vertical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button><button data-set="horizontal" aria-label="Menu horizontal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></button></div><div class="theme-toggle" role="group" aria-label="Tema"><button data-set="light" aria-label="Claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button><button data-set="dark" aria-label="Escuro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header>
+<div class="shell">
+<aside class="side"><nav aria-label="Páginas da documentação"><h6>Horus v2</h6><ul><li><a href="index.html">Início</a></li></ul><h6>Comece por aqui</h6><ul><li><a href="quem-e-quem.html">Quem é quem e como ler</a></li></ul><h6>A base: onde e como roda</h6><ul><li><a href="infra-separada.html">A infraestrutura separada</a></li><li><a href="modulos.html">Os módulos</a></li><li><a href="execucao.html">Como roda</a></li><li><a href="implantacao.html">Onde roda</a></li></ul><h6>O Horus em ação</h6><ul><li><a href="pergunta-resposta.html">Da pergunta à resposta</a></li><li><a href="segundo-plano.html">O que roda sozinho</a></li><li><a href="integracoes.html">Com quem conversa fora</a></li></ul><h6>Organizações, dados e segurança</h6><ul><li><a href="criar-organizacao.html">Criar uma organização</a></li><li><a href="dados.html">Onde mora cada dado</a></li><li><a href="seguranca.html">Segurança em camadas</a></li></ul><h6>Decisões e acompanhamento</h6><ul><li><a href="falta-decidir.html">O que falta decidir, por papel</a></li><li><a href="sobre.html" class="active">Sobre este documento</a></li></ul></nav></aside>
+<main class="content doc">
+<div class="dx-busca-movel"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-movel" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><nav class="crumbs" aria-label="Trilha"><a href="index.html">Horus v2</a><span class="sep">/</span><span>Decisões e acompanhamento</span><span class="sep">/</span><span class="now">Sobre este documento</span></nav><span class="doc-eyebrow">Decisões e acompanhamento</span><h1 class="doc-h1">Sobre este documento</h1><p class="doc-lead">O que mudou, o que a arquitetura ainda não cobre e como o documento foi feito.</p><section class="dx-assuntos" aria-labelledby="dx-assuntos-titulo"><h2 id="dx-assuntos-titulo">Explore os assuntos</h2><div class="dx-assuntos-grade"><div class="dx-assunto"><h3><a href="#sobre-frase">Em uma frase</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#sobre-mudou">O que mudou</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#sobre-cobre">O que a arquitetura ainda não cobre</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#sobre-feito">Como foi feito</a><small>1 tópico</small></h3><ul><li><a href="#sobre-nao-conferido">O que não foi conferido</a></li></ul></div></div></section><div id="dx-topo"><h2 class="doc-h2" id="sobre-frase">Em uma frase</h2>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Proposta para análise do dono do Horus</b><p>O dono do Horus ainda não revisou este documento por inteiro.</p></div>
+</div>
+<p>Este documento descreve a arquitetura geral do Horus v2 em dez desenhos. A última atualização é de 08/11/2026.</p>
+
+<h2 class="doc-h2" id="sobre-mudou">O que mudou</h2>
+<p>Os documentos técnicos 03 a 14 são do começo de novembro e ainda não citam o middleware. Os desenhos seguem o que foi decidido depois. Onde o backlog do produto, a lista de decisões e pendências do produto, diverge desses documentos, vale o backlog, que é mais novo. Em resumo:</p>
+<ul>
+  <li><strong>O middleware existe desde a v2.0</strong> e atende várias organizações, na Maind ou na casa do cliente, cada uma ligada ao SaaS pelo seu certificado. (<code>D-258</code>, <code>D-272</code>, <code>ARQ-103</code>)</li>
+  <li><strong>A conversa entre as duas partes</strong> usa um canal com regras combinadas, o gRPC, e o servidor MCP do rascunho saiu do contrato. (<code>ARQ-099</code>)</li>
+  <li><strong>A hospedagem tem duas fases:</strong> a VPS, um servidor alugado, que vale agora, e a produção real, numa nuvem pública com vários servidores e cópias do programa. (<code>ARQ-112</code>)</li>
+  <li><strong>Quando o middleware cai,</strong> a pessoa vê um aviso próprio, uma luz de estado e uma página de status sem login, e a rodada espera até uma hora. (<code>ARQ-104</code>, <code>ARQ-106</code>, <code>ARQ-107</code>, <code>ARQ-108</code>)</li>
+  <li><strong>O SaaS guarda de cada pessoa só um código,</strong> e o nome vem do middleware. (<code>ARQ-109</code>)</li>
+  <li><strong>O login virou uma configuração da organização,</strong> e o primeiro acesso do owner da organização é um link de uso único. (<code>ARQ-110</code>, <code>ARQ-111</code>)</li>
+  <li><strong>A instalação completa em casa do cliente</strong> ficou sem versão. O que vai ao cliente é o middleware. (<code>D-188</code>, <code>D-260</code>, <code>ARQ-100</code>)</li>
+</ul>
+
+<h2 class="doc-h2" id="sobre-cobre">O que a arquitetura ainda não cobre</h2>
+<p>Oito lacunas apareceram ao desenhar e não foram preenchidas, porque nenhuma decisão as resolve. Cada uma está listada, com o papel de quem decide, em <a href="falta-decidir.html">O que falta decidir, por papel</a>.</p>
+<ul>
+  <li><strong>O corte do motor de análise:</strong> quais peças ficam no SaaS e quais no middleware. (<code>P-040</code>, <code>P-048</code>)</li>
+  <li><strong>O módulo das macro funcionalidades novas:</strong> a MF-120, a MF-122, a MF-123 e a MF-124 seguem sem módulo. (<code>P-028</code>)</li>
+  <li><strong>O Registro de organizações,</strong> que guarda onde fica cada middleware, não tem lugar definido. (<code>ARQ-102</code>)</li>
+  <li><strong>O estado do middleware e as permissões por código:</strong> não se sabe em que banco moram nem por qual canal chegam. (<code>ARQ-107</code>, <code>ARQ-117</code>, <code>ARQ-123</code>)</li>
+  <li><strong>O repassador e o ponto onde a história é gravada:</strong> falta dizer em que papel rodam. (<code>ARQ-097</code>)</li>
+  <li><strong>O vínculo na casa do cliente:</strong> não se sabe por onde o arquivo assinado volta ao SaaS nem como o SaaS confere que o banco e a IA estão configurados. (<code>ARQ-124</code>, <code>D-277</code>)</li>
+  <li><strong>O banco do middleware da Maind na produção real:</strong> à parte do banco do SaaS ou dentro do serviço. (<code>ARQ-127</code>)</li>
+  <li><strong>O que os desenhos não mostram:</strong> o pedido em lote dos nomes das pessoas, a passagem do endereço ao envio de e-mail e quem paga o middleware. (<code>ARQ-109</code>, <code>ARQ-118</code>)</li>
+</ul>
+
+<h2 class="doc-h2" id="sobre-feito">Como foi feito</h2>
+<ul>
+  <li><strong>Os textos</strong> vieram de agentes de IA que leram os documentos de arquitetura e o backlog do produto. Cada decisão nova foi tomada com o dono do Horus, uma pergunta por vez.</li>
+  <li><strong>Os desenhos</strong> foram feitos no Archify, com a moldura da Maind (abas, zoom e grade). Todos passaram nas conferências automáticas da ferramenta: validação, entrega, conferência do arquivo e abertura no navegador.</li>
+  <li><strong>Cada alteração</strong> voltou com uma tabela da fonte de cada peça e de cada ligação nova. Peça sem fonte não entra no desenho.</li>
+  <li><strong>O arquiteto do Horus tomou sozinho sete decisões,</strong> e o dono do Horus pode revê-las. Só duas pedem confirmação expressa. (<code>ARQ-115</code>, <code>ARQ-116</code>, <code>ARQ-117</code>, <code>ARQ-124</code>, <code>ARQ-125</code>, <code>ARQ-126</code>, <code>ARQ-127</code>)</li>
+</ul>
+<h3 class="doc-h3" id="sobre-nao-conferido">O que não foi conferido</h3>
+<ul>
+  <li><strong>Os cliques, as janelas de detalhe, a roda e a mãozinha</strong> de cada desenho não foram testados por dentro da moldura da Maind, só por captura de tela.</li>
+  <li><strong>Nenhuma peça foi relida</strong> contra as fontes por quem não a desenhou. Na primeira versão, as mais delicadas foram conferidas por amostra.</li>
+  <li><strong>Três itens são inferência do arquiteto do Horus</strong> e estão marcados assim nos cartões: o aviso de IA parada saindo do middleware, o Registro de organizações guardando o endereço e a ligação “uso de IA”, e a linha da chave de IA da instância saindo do SaaS para os provedores de IA.</li>
+  <li><strong>Os documentos 03 a 14 não foram alterados.</strong> O 01 e o registro de decisões (02) estão atualizados até 08/11/2026.</li>
+</ul>
+</div><nav class="rel-grid dx-vizinhas" aria-label="Páginas vizinhas"><a class="rel-card dx-anterior" href="falta-decidir.html"><span class="cat">Anterior</span><h5>O que falta decidir, por papel</h5><span class="arrow">←</span></a></nav>
+<footer class="ds-footer"><div class="ftr-brand"><img class="ftr-logo logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="ftr-logo logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /><div class="ftr-divider"></div><div class="ftr-meta"><b>Maind Horus · Horus v2 · versões 2.0 e 2.1 em desenho</b></div></div><div class="ftr-center"><span class="ftr-tag">v2.0 e 2.1 em desenho, sem versão publicada · 08/11/2026</span></div><div class="ftr-author"><div class="avatar">MT</div><div class="ftr-author-info"><b>Maind Tech</b><span>Horus v2</span></div></div></footer>
+</main>
+<aside class="toc"><h6>Neste artigo</h6><ul><li><a href="#sobre-frase">Em uma frase</a></li><li><a href="#sobre-mudou">O que mudou</a></li><li><a href="#sobre-cobre">O que a arquitetura ainda não cobre</a></li><li><a href="#sobre-feito">Como foi feito</a></li><li class="lvl-3"><a href="#sobre-nao-conferido">O que não foi conferido</a></li></ul></aside>
+</div>
+<div class="toast" id="toast">Copiado ✓</div>
+<script src="assets/busca.js"></script>
+<script src="assets/docs.js"></script>
+<script src="assets/docx-kbr.js"></script>
+</body>
+</html>

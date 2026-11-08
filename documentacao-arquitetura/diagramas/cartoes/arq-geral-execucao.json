@@ -1,0 +1,144 @@
+{
+  "registro": {
+    "tecnologia": "Banco mestre",
+    "icone": "📒",
+    "descricao": "Anota o **endereço e a porta** do middleware de cada organização.",
+    "nota": "O endereço nunca chega ao navegador.",
+    "etiquetas": [
+      "Endereço",
+      "ARQ-102"
+    ]
+  },
+  "mestre": {
+    "tecnologia": "PostgreSQL 17",
+    "icone": "🗄️",
+    "descricao": "Guarda o **mapa das organizações** e a **fila** de tarefas, os limites e as chaves.",
+    "nota": "As quedas do middleware ficam 90 dias aqui.",
+    "etiquetas": [
+      "Mapa",
+      "Limites",
+      "Quedas"
+    ]
+  },
+  "nav": {
+    "tecnologia": "Navegador",
+    "icone": "🧑‍💻",
+    "descricao": "A **pessoa** entra pelo **endereço da organização** e recebe a resposta aos pedaços.",
+    "nota": "O endereço só diz qual é a organização.",
+    "etiquetas": [
+      "Pessoa",
+      "D-258"
+    ]
+  },
+  "atender": {
+    "tecnologia": "ASP.NET Core · .NET 10",
+    "icone": "🛎️",
+    "descricao": "Recebe o **navegador** e o **WhatsApp** e responde na hora.",
+    "nota": "Mostra a luz, a página de status e o aviso.",
+    "etiquetas": [
+      "Na hora",
+      "ARQ-004"
+    ]
+  },
+  "estado": {
+    "tecnologia": "Saúde do middleware",
+    "icone": "🚦",
+    "descricao": "O SaaS dá ao middleware um de três **estados** de saúde: no ar, instável ou fora do ar.",
+    "nota": "Medido pelas falhas e pela demora do contato.",
+    "etiquetas": [
+      "Luz",
+      "ARQ-107"
+    ]
+  },
+  "meta": {
+    "tecnologia": "WhatsApp da Meta",
+    "icone": "💬",
+    "descricao": "Traz as **mensagens do WhatsApp** e leva as **respostas** e os envios.",
+    "nota": "A confirmação sai só depois de gravar.",
+    "etiquetas": [
+      "MF-111",
+      "MF-113"
+    ]
+  },
+  "mw": {
+    "tecnologia": "Docker",
+    "icone": "🛡️",
+    "descricao": "Busca os **dados** no banco da empresa e devolve a **resposta** pronta.",
+    "nota": "Atende várias organizações, fora do SaaS.",
+    "etiquetas": [
+      "Contrato",
+      "ARQ-114"
+    ]
+  },
+  "org": {
+    "tecnologia": "PostgreSQL 17",
+    "icone": "🗃️",
+    "descricao": "Guarda o **estado de hoje** e a **caixa de saída** de cada mudança.",
+    "nota": "Um por organização, com acesso só dela.",
+    "etiquetas": [
+      "Por organização",
+      "ARQ-010"
+    ]
+  },
+  "repassador": {
+    "tecnologia": "Rotina do SaaS",
+    "icone": "📮",
+    "descricao": "Leva cada pedido da **caixa de saída** até a **fila** de tarefas.",
+    "nota": "O papel em que roda ainda falta decidir.",
+    "etiquetas": [
+      "2º plano",
+      "ARQ-088"
+    ]
+  },
+  "fila": {
+    "tecnologia": "Banco mestre",
+    "icone": "📋",
+    "descricao": "As **tarefas** esperam a vez aqui, **sem conteúdo** e sem repetir.",
+    "nota": "Cada organização tem a sua vez.",
+    "etiquetas": [
+      "Durável",
+      "ARQ-005"
+    ]
+  },
+  "base": {
+    "tecnologia": "Base do middleware",
+    "icone": "🗄️",
+    "descricao": "Separa as organizações por **marca, filtro e chave** numa base **só** para todas.",
+    "nota": "O SaaS não entra nela.",
+    "etiquetas": [
+      "Isolamento",
+      "ARQ-103"
+    ]
+  },
+  "trabalhar": {
+    "tecnologia": "ASP.NET Core · .NET 10",
+    "icone": "🛠️",
+    "descricao": "Pega as **tarefas** da fila: WhatsApp, agendamentos, agentes, PDFs e envios.",
+    "nota": "Não recebe nada de fora.",
+    "etiquetas": [
+      "2º plano",
+      "ARQ-004"
+    ]
+  },
+  "log": {
+    "tecnologia": "PostgreSQL 17",
+    "icone": "📜",
+    "descricao": "Guarda a **história** de cada mudança, e só se **acrescenta** nela.",
+    "nota": "Chega segundos depois da mudança.",
+    "etiquetas": [
+      "História",
+      "ARQ-097"
+    ]
+  },
+  "desenho": {
+    "tecnologia": "Chromium · Playwright",
+    "icone": "🖨️",
+    "descricao": "Um **navegador sem tela** desenha a **imagem** do WhatsApp e os PDFs.",
+    "nota": "Desenha igual à tela do app.",
+    "etiquetas": [
+      "Imagem",
+      "PDF",
+      "ARQ-007"
+    ]
+  }
+}

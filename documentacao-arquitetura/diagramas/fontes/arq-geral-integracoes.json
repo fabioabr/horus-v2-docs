@@ -533,7 +533,7 @@
           "provedores",
           "back"
         ],
-        "note": "Só contagem, sem conteúdo (ARQ-117). O owner vê o custo de toda a IA; a Maind, só o das chaves dela (D-267, D-279)."
+        "note": "Só contagem, sem conteúdo (ARQ-117). O owner da organização vê o custo de toda a IA; a Maind, só o das chaves dela (D-267, D-279)."
       },
       {
         "id": "email-endereco",
@@ -553,7 +553,7 @@
           "middleware",
           "idp"
         ],
-        "note": "No módulo do middleware: usuário e senha e Google na v2.0, OIDC na v2.1; owner e administrador sempre por senha (ARQ-111)."
+        "note": "No middleware: senha e Google na v2.0, OIDC na v2.1; o owner da organização e o owner da instância sempre por senha (ARQ-111)."
       },
       {
         "id": "o-que-chega-na-v21",
@@ -576,54 +576,54 @@
       "label": "Conectores de saída",
       "sublabel": "MF-113 · só transporta · ARQ-022",
       "pos": [
-        56,
-        176
+        40,
+        230
       ],
       "size": [
-        220,
-        64
+        250,
+        100
       ]
     },
     {
       "id": "canal",
       "type": "backend",
       "label": "Canal WhatsApp",
-      "sublabel": "MF-111 · a pergunta vira turno",
+      "sublabel": "MF-111 · põe a pergunta na fila",
       "pos": [
-        56,
-        320
+        40,
+        400
       ],
       "size": [
-        220,
-        64
+        250,
+        100
       ]
     },
     {
       "id": "back",
       "type": "backend",
       "label": "Atender e Trabalhar",
-      "sublabel": "o back do Horus · pede ao middleware",
+      "sublabel": "servidor do Horus · pede ao middleware",
       "pos": [
-        56,
-        480
+        40,
+        570
       ],
       "size": [
-        220,
-        64
+        250,
+        100
       ]
     },
     {
       "id": "email",
       "type": "backend",
       "label": "Envio de e-mail",
-      "sublabel": "um SMTP só · endereço não gravado",
+      "sublabel": "um serviço só · endereço não gravado",
       "pos": [
-        456,
-        176
+        740,
+        230
       ],
       "size": [
-        230,
-        64
+        250,
+        100
       ]
     },
     {
@@ -632,12 +632,12 @@
       "label": "Porta da Meta",
       "sublabel": "só ela fala com a Meta · ARQ-048",
       "pos": [
-        456,
-        320
+        740,
+        400
       ],
       "size": [
-        230,
-        64
+        250,
+        100
       ]
     },
     {
@@ -646,12 +646,12 @@
       "label": "Middleware",
       "sublabel": "atende várias organizações · v2.0",
       "pos": [
-        456,
-        632
+        390,
+        740
       ],
       "size": [
-        280,
-        80
+        250,
+        100
       ]
     },
     {
@@ -660,12 +660,12 @@
       "label": "Teams e Google Chat",
       "sublabel": "v2.1 · MF-122 · só recebem avisos",
       "pos": [
-        896,
-        64
+        1440,
+        60
       ],
       "size": [
-        260,
-        64
+        250,
+        100
       ]
     },
     {
@@ -674,12 +674,12 @@
       "label": "Servidor de e-mail (SMTP)",
       "sublabel": "Resend no SaaS · a Maind paga · ARQ-046",
       "pos": [
-        896,
-        176
+        1440,
+        230
       ],
       "size": [
-        260,
-        64
+        250,
+        100
       ]
     },
     {
@@ -688,12 +688,12 @@
       "label": "Meta: WhatsApp na nuvem",
       "sublabel": "conta da org. ou da Maind · quem usa paga",
       "pos": [
-        896,
-        320
+        1440,
+        400
       ],
       "size": [
-        260,
-        64
+        250,
+        100
       ]
     },
     {
@@ -702,12 +702,12 @@
       "label": "Provedores de IA",
       "sublabel": "chave da org., dada pela Maind ou da instância",
       "pos": [
-        896,
-        540
+        1090,
+        570
       ],
       "size": [
-        260,
-        64
+        250,
+        100
       ]
     },
     {
@@ -716,26 +716,26 @@
       "label": "Bancos corporativos",
       "sublabel": "só leitura · cinco na v2.0, Athena v2.1",
       "pos": [
-        896,
-        640
+        1090,
+        740
       ],
       "size": [
-        260,
-        64
+        250,
+        100
       ]
     },
     {
       "id": "idp",
       "type": "security",
       "label": "Login: Google e OIDC",
-      "sublabel": "Google v2.0 · OIDC v2.1 · ARQ-111",
+      "sublabel": "Google v2.0 · login da empresa v2.1",
       "pos": [
-        896,
-        740
+        1090,
+        910
       ],
       "size": [
-        260,
-        64
+        250,
+        100
       ]
     }
   ],
@@ -829,12 +829,12 @@
       "toSide": "bottom",
       "via": [
         [
-          571,
-          420
+          865,
+          533
         ],
         [
-          1026,
-          420
+          1565,
+          533
         ]
       ]
     },
@@ -906,7 +906,7 @@
       "id": "back-provedores-instancia",
       "from": "back",
       "to": "provedores",
-      "label": "só a pergunta do administrador",
+      "label": "só a pergunta do owner da instância",
       "variant": "security",
       "fromSide": "right",
       "toSide": "left"
@@ -917,42 +917,35 @@
       "dot": "cyan",
       "title": "O que o desenho mostra",
       "items": [
-        "Três infraestruturas, como no rascunho do dono (D-258): a do SaaS, da Maind; a separada, com o middleware, um só para várias organizações em qualquer hospedagem: o da Maind atende todas as organizações do SaaS, e o da casa do cliente, as organizações dele, numa base só, separadas pela marca da organização e por um filtro, com as credenciais cifradas por uma chave de cada uma (D-260, D-272, ARQ-103); e a da organização, com os bancos corporativos, os provedores de IA e o login. A mesma imagem do middleware vale em toda fase: na VPS (v2.0), o da Maind sobe com docker compose, um só; na produção real, em Kubernetes gerenciado com réplicas; o do cliente segue em docker compose (ARQ-112, ARQ-113).",
-        "Dados e IA: o SaaS manda ao middleware só a pergunta e recebe só a resposta pronta (D-189, D-258). O ciclo da análise, com o modelo de IA e as consultas, roda dentro do middleware, e as credenciais dos bancos e da IA ficam nele, fora do SaaS (D-258, D-273). O contrato entre o SaaS e o middleware é gRPC: de ida, a pergunta e os assentos liberados; de volta, a resposta pronta, a contagem de uso de IA e o estado e a versão do middleware (ARQ-099). O servidor MCP com ferramentas do rascunho do dono saiu do desenho: não é peça do contrato (ARQ-099, D-281).",
-        "Fontes: o SQL Server, o PostgreSQL, o Oracle, o MongoDB e o BigQuery continuam só lidos (ARQ-052); quem os lê agora é o middleware. A pesquisa na web é a busca nativa da conexão de IA (ARQ-027, D-215) e sai com a IA, pelo middleware (D-190).",
-        "Configuração: os bancos, a IA e a mecânica de login se configuram sempre no front do middleware, o módulo de configuração, pelo owner da organização, em qualquer hospedagem; na da Maind, ele entra com o usuário que a Maind cria (D-271, D-273, ARQ-111). O time da Maind só dá suporte, antes e depois da venda, e não configura por ele; a chave de IA que a Maind dá, o owner a cadastra (D-273). Não existe mais conexão de IA da instância para as organizações (D-266).",
-        "No SaaS ficam o WhatsApp, o e-mail e os conectores de saída, como antes: só a Porta da Meta fala com a Meta, e o Canal WhatsApp e o conector usam a mesma conta (ARQ-048, D-124); o Envio de e-mail manda tudo por um SMTP só, no SaaS o Resend (ARQ-046). A pergunta que chega pelo WhatsApp vira turno no back e segue para o middleware como a do app.",
-        "E-mail: os e-mails do Horus às pessoas da organização (os avisos por e-mail e os relatórios agendados) saem do SaaS, pelo e-mail do produto (ARQ-118, D-033, D-128, D-155). O SaaS não guarda e-mail de pessoa (ARQ-109): o middleware entrega o endereço só na hora do envio, ele vai no pedido de envio e some com ele, sem entrar em registro, histórico nem telemetria (ARQ-118). O e-mail do convite também só passa pelo SaaS, a caminho do middleware (D-262, ARQ-109). Com o middleware fora do ar, o SaaS não tem o endereço e não envia.",
-        "Quem paga: a organização paga a chave de IA dela, e a Maind paga a chave que dá (D-264, D-267) e a chave de IA da instância (D-276); a organização paga a Meta na conta própria, e quem usa o número da Maind paga as mensagens por repasse (D-097, D-160); a Maind paga o e-mail, como custo fixo (ARQ-084).",
-        "Quem vê o consumo: o middleware manda ao SaaS o uso de IA só como contagem, sem a pergunta nem a resposta: a hora, o modelo, os tokens e de quem é a chave, da organização ou da Maind (ARQ-117). O owner vê o consumo e o custo de toda a IA da organização no Horus, na tela que a v1.xx já tem (D-267, ARQ-117); o painel da instância mostra, por organização, só o consumo e o custo das chaves que a Maind dá, e o aviso de custo alcança só isso (D-153, D-279); a chave de IA da instância aparece numa linha à parte, fora das organizações (ARQ-117).",
-        "Quem é avisado: quando a IA de uma organização para (chave recusada ou falta de crédito), o middleware avisa o SaaS pelo mesmo contrato; o owner vê o aviso na área de avisos do Horus, e, se ele preferir, por e-mail, pelo caminho do SaaS; se a chave é da Maind, o time da Maind é avisado na área de avisos do painel da instância (ARQ-117, ARQ-118, D-268). Quando a fonte deixa de conectar ou o WhatsApp próprio para, o owner; no número da Maind e no e-mail da instância, o administrador da instância (D-240). A queda do middleware não gera e-mail: vale o LED de status e a Página de status, e, para o time da Maind, o painel da instância; quem hospeda o próprio middleware o monitora por conta própria (ARQ-106, ARQ-107, ARQ-118, D-275).",
-        "A chave de IA da instância: a Maind a cadastra no nível da instância e a paga, e ela serve só à pergunta do administrador sobre a história da instância, que lê o banco de log e não passa por middleware nenhum; nenhuma organização a usa (D-266, D-276). A linha vermelha tracejada mostra só que essa chamada sai do SaaS; como ela roda é do arquiteto (P-048).",
-        "Login: a autenticação e as pessoas ficam no middleware, a autoridade de identidade da organização (D-258, D-261). A mecânica de login é configuração da organização, com um interruptor por mecanismo no módulo do middleware: na v2.0, usuário e senha e Google (por padrão, com o cliente OAuth de quem opera o middleware; a organização pode cadastrar o dela); o OpenID Connect, o login da empresa, entra na v2.1 como mais um mecanismo do mesmo módulo; o owner e o administrador da instância entram sempre por usuário e senha (ARQ-111, D-184, D-258). A sessão da pessoa é emitida pelo middleware, qualquer que seja o mecanismo, e leva só o identificador da organização; o SaaS a confere com a chave pública guardada no Registro de organizações, no banco mestre, onde também ficam o endereço e a porta de cada middleware, e o token no endereço da organização é só um identificador (ARQ-102, ARQ-111)."
+        "O desenho tem três grupos: o SaaS, a parte do Horus que as pessoas usam, hospedada pela Maind; o middleware, a peça que busca os dados no banco da empresa, numa infraestrutura separada; e a infraestrutura da organização, com os bancos, a IA e o login (D-258). Um mesmo middleware atende várias organizações: o da Maind, todas as do SaaS; o do cliente, as dele, separadas por uma marca e um filtro, com as senhas embaralhadas (cifradas) por uma chave de cada uma (D-260, D-272, ARQ-103). O middleware é o mesmo pacote (imagem) em toda fase: o da Maind roda num servidor só na v2.0 e ganha cópias (réplicas) na produção real; o do cliente segue na instalação simples, com docker compose (ARQ-112, ARQ-113).",
+        "O SaaS manda ao middleware só a pergunta e recebe só a resposta pronta (D-189, D-258). O middleware consulta os bancos, sem alterar nada, e chama a IA, com a pesquisa na web da própria IA; as senhas dos bancos e da IA ficam com ele (ARQ-027, D-190, D-215, D-273). Os dois conversam pelo gRPC, um canal com regras combinadas: vão a pergunta e os assentos liberados; voltam a resposta, a contagem de uso de IA, o estado e a versão do middleware, que o SaaS acha no Registro de organizações (ARQ-099, ARQ-102).",
+        "O owner da organização, que administra a empresa cliente no Horus, cadastra os bancos, a IA e as formas de entrar na tela de configuração do middleware, em qualquer hospedagem; na Maind, entra com o usuário que a Maind cria (D-271, D-273, ARQ-111). Isso inclui a chave de IA que a Maind dá: a equipe da Maind só dá suporte, e não existe mais ligação de IA da instância para as organizações (D-266, D-273). Na v2.0, as formas de entrar são senha e Google, e o owner da organização e o owner da instância, o funcionário da Maind que define a marca e as regras gerais, entram sempre por senha (ARQ-111, D-258).",
+        "O WhatsApp, o e-mail e os conectores de saída ficam no SaaS: só a Porta da Meta fala com a Meta, a dona do WhatsApp, e o Canal WhatsApp e o conector usam a mesma conta (ARQ-048, D-124). Os e-mails às pessoas da organização, como os avisos e os relatórios agendados, saem por um serviço de envio só, o Resend (ARQ-046, ARQ-118, D-033, D-128, D-155). O SaaS não guarda e-mail de ninguém: o middleware entrega o endereço só na hora do envio, ele some com o pedido, como o do convite, e, com o middleware parado, o e-mail não sai (ARQ-109, ARQ-118, D-262).",
+        "A organização paga a chave de IA dela e a conta própria da Meta; a Maind paga a chave que dá, a chave da instância e o e-mail, e quem usa o número de WhatsApp da Maind paga as mensagens por repasse (D-097, D-160, D-264, D-267, D-276, ARQ-084). O middleware conta ao SaaS o uso de cada chave, sem a pergunta nem a resposta, e o owner da organização vê o custo de toda a IA dela, na tela que a versão de hoje já tem (ARQ-117, D-267). O painel da instância mostra, por organização, só o consumo das chaves da Maind, e o aviso de custo vale só para elas; a chave da instância aparece numa linha à parte (D-153, D-279, ARQ-117).",
+        "Se a IA de uma organização para, por chave recusada ou falta de crédito, o owner da organização vê um aviso no Horus e, se preferir, por e-mail; se a chave é da Maind, a equipe da Maind é avisada no painel da instância (ARQ-117, ARQ-118, D-268). Se a fonte deixa de conectar ou o WhatsApp próprio para, é avisado o owner da organização; no número da Maind e no e-mail da instância, o owner da instância (D-240). A queda do middleware não gera e-mail: valem a luz e a página de status, a Maind acompanha pelo painel, e quem hospeda o próprio middleware o vigia por conta própria (ARQ-106, ARQ-107, ARQ-118, D-275)."
       ]
     },
     {
       "dot": "emerald",
-      "title": "Imediato, segundo plano, v2.0 e v2.1",
+      "title": "O que é na hora, o que espera a fila e o que chega na v2.1",
       "items": [
-        "A linha roxa tracejada é segundo plano (2º plano): corre na fila durável, no papel Trabalhar: o turno do WhatsApp, os envios à Meta, os e-mails, com o endereço pedido ao middleware na hora do envio, e os envios dos conectores (ARQ-024, ARQ-048, ARQ-118, documento 04, 3.4). A notificação da Meta é imediata: a Porta confere a assinatura, grava a mensagem e o pedido de turno na mesma transação e responde na hora (ARQ-048). A linha vermelha tracejada não é segundo plano: marca o uso estreito da chave de IA da instância (D-276), e se ele é imediato depende de como roda (P-048).",
-        "A pergunta vai ao middleware de dentro do turno, que hoje é ao vivo na conversa do app (Atender) e na fila no WhatsApp e no agente (Trabalhar) (ARQ-024). A contagem de uso de IA chega depois da resposta e, com o middleware fora, com atraso, completando quando ele volta (ARQ-117). Que parte do motor de análise fica no SaaS e que parte vai ao middleware ainda não foi decidido (P-048): o desenho mostra só o que a D-189 e a D-258 dizem.",
-        "v2.0: o middleware, um só para várias organizações (a MF-121, Middleware da organização: D-258, D-260, D-270, D-272), as cinco fontes, o OpenRouter e o Amazon Bedrock (ARQ-051), o WhatsApp, o e-mail, os conectores de e-mail e de WhatsApp, o login por usuário e senha e pelo Google, configurável no módulo do middleware (ARQ-111), e a chave de IA da instância para a pergunta do administrador (D-276).",
-        "v2.1: o OpenID Connect, o login da empresa, como mais um mecanismo do módulo do middleware, só para quem tem convite, com a role do login e a sessão confirmada a cada 8 horas (ARQ-111, D-184, D-253 a D-255); o Teams e o Google Chat como conectores de saída, só a usuários do Horus (MF-122, D-198, D-201); o AWS Athena (MF-123, D-161); e a segurança dos dados por pessoa, que roda no middleware e passa a depender da MF-121 (MF-106, D-263)."
+        "A linha roxa tracejada é segundo plano: a tarefa espera a vez numa fila que não se perde, no papel Trabalhar (ARQ-024). Assim correm a resposta à pergunta do WhatsApp, os envios à Meta, os e-mails, com o endereço pedido ao middleware na hora, e os envios dos conectores (ARQ-048, ARQ-118). A notificação da Meta é imediata: a Porta confere a assinatura, grava a mensagem e o pedido de resposta juntos e responde na hora (ARQ-048).",
+        "A pergunta vai ao middleware de dentro do turno, a rodada que monta a resposta: ao vivo na conversa do app (Atender) e pela fila no WhatsApp e no agente (Trabalhar) (ARQ-024). A pergunta do WhatsApp segue para o middleware como a do app. A contagem de uso de IA chega depois da resposta; com o middleware parado, chega atrasada e se completa quando ele volta (ARQ-117).",
+        "A linha vermelha tracejada não é segundo plano: é a chave de IA da instância, que a Maind cadastra e paga (D-276). Ela serve só à pergunta do owner da instância sobre a história da instância, que lê o banco de log e não passa por middleware nenhum; nenhuma organização a usa (D-266, D-276). A linha mostra só que essa chamada sai do SaaS; como ela roda, e se é na hora, falta o arquiteto do Horus decidir (P-048).",
+        "Na v2.0: o middleware para várias organizações (MF-121), as cinco fontes (SQL Server, PostgreSQL, Oracle, MongoDB e BigQuery), a IA do OpenRouter e do Amazon Bedrock, o WhatsApp, o e-mail e os conectores de e-mail e de WhatsApp (D-258, D-260, D-270, D-272, ARQ-051, ARQ-052). Também na v2.0: o login por senha e pelo Google, configurável no middleware, e a chave de IA da instância (ARQ-111, D-276).",
+        "Na v2.1: o login da empresa (OpenID Connect), mais uma forma de entrar no middleware, só para quem tem convite, com o papel (role) que ele traz e a sessão confirmada a cada 8 horas (ARQ-111, D-184, D-253 a D-255). Chegam também o Teams e o Google Chat, que só levam avisos a usuários do Horus, e a fonte AWS Athena (MF-122, D-198, D-201, MF-123, D-161). E a segurança dos dados por pessoa, que roda no middleware e depende dele (MF-106, MF-121, D-263)."
       ]
     },
     {
       "dot": "amber",
-      "title": "O que ficou de fora e o que aguarda",
+      "title": "O que falta decidir e o que ficou de fora",
       "items": [
-        "Aguarda o dono: o caminho até o WhatsApp (ARQ-047); a API da Meta na nuvem, direto, com a Maind como provedora de tecnologia, é só a hipótese de trabalho.",
-        "Em aberto, com o arquiteto (P-048, P-042, P-040): o corte exato do motor de análise; onde e como roda a pergunta do administrador com a chave da instância (D-276); como o SaaS mede o estado do middleware do cliente, que a P-042 segue carregando, e o limite entre \"no ar\" e \"instável\", a calibrar com o uso (ARQ-106, ARQ-107).",
-        "Também em aberto: quem manda o e-mail da recuperação de senha, agora que a autenticação fica no middleware (P-048); a integração do Teams e do Google Chat (P-038); o conector do Athena (P-033). Da P-032, a chave que a Maind dá já tem caminho: o owner a cadastra no front do middleware (D-273); segue em aberto o que acontece com a conexão de IA que a organização já cadastra hoje.",
-        "Fora do desenho: os servidores MCP próprios que a organização poderá cadastrar para customizar a extração (D-281). Ficam na infraestrutura dela, e o cadastro de cada um é feito no front do middleware, como os bancos e a IA (D-273); v2.1, na MF-124 (D-282); o servidor só lê, só o owner o cadastra e libera as ferramentas uma a uma (D-286 a D-289); o modo de o middleware aplicar a lista e chamá-los durante a análise segue na P-050. Não ganharam nó porque este desenho não mostra o front do middleware, e uma ligação do middleware até eles seria lida como uso, que não está decidido.",
-        "Fora do desenho, por escolha de traçado: a passagem do endereço do back ao Envio de e-mail. O endereço chega ao SaaS (o back) na hora do envio e vai no pedido ao Envio de e-mail (ARQ-118); a ligação do back ao Envio de e-mail cruzaria as da Porta da Meta, e fica só neste cartão.",
-        "Seria decisão nova, por isso não está no desenho: um e-mail de contato da organização guardado no Registro de organizações, só para avisar a queda do middleware (ARQ-118).",
-        "O Google está na zona da organização, como o rascunho do dono põe os provedores de IA: é um serviço de fora, mas o cliente OAuth pode ser o da organização, que o cadastra no módulo (ARQ-111).",
-        "Sem fonte, não desenhado: quem paga o middleware, na Maind e na casa do cliente; quem é avisado quando os conectores de chat param.",
-        "O documento 08 é de 03/11/2026: põe as Conexões de IA e roteador, os Conectores das fontes e o login no SaaS, com as credenciais no cofre do banco da organização (ARQ-044, ARQ-051, ARQ-052, ARQ-053). Onde diverge, o desenho segue o backlog (D-258 a D-282) e as decisões novas do registro (ARQ-099, ARQ-100, ARQ-102, ARQ-103, ARQ-109, ARQ-111, ARQ-112, ARQ-117 e ARQ-118)."
+        "Falta o dono do Horus decidir por qual caminho o Horus chega ao WhatsApp; a hipótese de trabalho é a ligação oficial da Meta, na nuvem, direto, com a Maind como fornecedora de tecnologia (ARQ-047). Falta o dono do Horus decidir também quem paga o middleware, o da Maind e o da casa do cliente, e quem é avisado quando o Teams ou o Google Chat param; nenhum dos dois tem decisão registrada.",
+        "Falta o arquiteto do Horus decidir que partes da análise ficam no SaaS e quais vão ao middleware, e o que o middleware manda enquanto a resposta se forma (P-040, P-048). Até lá, o desenho mostra só o que já está decidido: vai a pergunta, volta a resposta pronta (D-189, D-258). Falta o arquiteto do Horus decidir também quem manda o e-mail de recuperação de senha, agora que a senha mora no middleware (P-048).",
+        "Falta o arquiteto do Horus decidir como o SaaS mede se o middleware do cliente está funcionando (P-042) e calibrar, com o uso, quando \"No ar\" vira \"Instável\" (ARQ-106, ARQ-107). O owner da organização já cadastra a chave de IA que a Maind dá (D-273). Falta o arquiteto do Horus decidir como essa chave chega a ele e o que acontece com a ligação de IA que a organização já tem (P-032).",
+        "Falta o arquiteto do Horus decidir como o Teams e o Google Chat se ligam ao Horus (P-038), como funciona a fonte AWS Athena (P-033) e se a fonte de páginas web da versão de hoje some ou continua (P-034).",
+        "Falta o arquiteto do Horus decidir como o middleware usa os servidores MCP, programas da organização, na infraestrutura dela, que dão à IA ferramentas extras de busca (P-050). Já se sabe que chegam na v2.1, que só leem e que só o owner da organização os cadastra no front do middleware e os libera por papel, ferramenta por ferramenta (MF-124, D-281, D-282, D-286 a D-289). Não ganharam caixa: o desenho não mostra o front do middleware, uma linha até eles pareceria uso já decidido, e eles não fazem parte do canal entre o SaaS e o middleware (ARQ-099).",
+        "Ficam só neste cartão o endereço que vai do servidor ao Envio de e-mail na hora do envio, porque a linha cruzaria as da Porta da Meta, e um e-mail de contato da organização no Registro, só para avisar a queda do middleware, que seria decisão nova (ARQ-118). O Google aparece com a organização porque ela pode cadastrar o próprio acesso Google (cliente OAuth); sem isso, vale o de quem opera o middleware (ARQ-111). O documento 08 ainda põe a IA, as fontes e o login no SaaS; onde ele diverge, vale este desenho, que segue as decisões mais novas (D-258 a D-282 e ARQ-099 em diante)."
       ]
     }
   ]

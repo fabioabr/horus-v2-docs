@@ -1,0 +1,54 @@
+<h3 id="segundo-plano-frase">Em uma frase</h3>
+<p>Esta parte mostra como o Horus faz sozinho, sem perder nada, os relatórios agendados, os alertas e os agentes. Quase tudo roda no <strong>SaaS</strong>, a parte do Horus que as pessoas usam, hospedada pela Maind. Só a análise vai ao <strong>middleware</strong>, a parte que busca os dados no banco de dados da organização. (<code>ARQ-005</code>, <code>D-189</code>)</p>
+
+<h3 id="segundo-plano-desenho">O desenho</h3>
+<p>O desenho mostra, da esquerda para a direita, o caminho de uma rodada, cada vez que um envio automático roda, até a entrega.</p>
+<dx-diagrama ref="arq-geral-segundo-plano"></dx-diagrama>
+<ul>
+  <li><strong>As colunas</strong> são as quatro etapas: a rodada, a execução, o arquivo e a entrega.</li>
+  <li><strong>As faixas</strong> dizem onde a peça fica: no servidor do SaaS, no middleware ou entre as pessoas avisadas.</li>
+  <li><strong>A legenda</strong> diz o tipo de cada caixa: peça do Horus, permissão, registro, fila, middleware ou quem é avisado.</li>
+  <li><strong>As setas destacadas</strong> são o caminho principal, do Agendador à Porta da Meta, a peça que fala com o WhatsApp. A tracejada é o corte dos assentos, as licenças da organização. A que volta à fila é a espera pelo middleware.</li>
+  <li><strong>Cinco recortes prontos</strong> acendem só as peças de um caso.</li>
+</ul>
+
+<h3 id="segundo-plano-como-funciona">Como funciona</h3>
+
+<h4 id="segundo-plano-da-rodada-a-entrega">Como uma rodada chega à entrega?</h4>
+<p>Na hora marcada, o Agendador põe um pedido na <strong>fila</strong>, uma lista de tarefas esperando a vez, gravada no banco para nada se perder nem se repetir. (<code>ARQ-005</code>)</p>
+<p>O <strong>Trabalhar</strong>, a parte do servidor que trabalha sem tela, pega o pedido na vez da organização. Antes, confere com o Avaliador de permissões se o autor, quem criou o agendamento, ainda pode fazer aquilo. (<code>ARQ-095</code>, <code>ARQ-008</code>)</p>
+<p>O resultado vira um arquivo, como o PDF de um painel, e sai por e-mail ou pela Porta da Meta. Cada entrega fica registrada, sem o conteúdo. (<code>ARQ-007</code>, <code>ARQ-048</code>, <code>ARQ-009</code>)</p>
+
+<h4 id="segundo-plano-middleware">O que o middleware faz aqui?</h4>
+<p>Os <strong>agentes</strong> são rotinas em que a IA faz várias perguntas e escreve um resumo. Cada pergunta é analisada no middleware: sai só a pergunta, e volta só a resposta. (<code>ARQ-030</code>, <code>D-189</code>)</p>
+<p>O endereço de e-mail vem do middleware só na hora do envio, sem ser guardado. Com o middleware fora, nenhum e-mail sai. (<code>ARQ-118</code>)</p>
+<p>Se a IA parar, o <strong>owner da organização</strong>, a pessoa que administra a organização no Horus, é avisado. A equipe da Maind também, se a chave da IA for da Maind. (<code>D-268</code>, <code>ARQ-117</code>)</p>
+
+<h4 id="segundo-plano-middleware-fora">E se o middleware estiver fora na hora marcada?</h4>
+<p>A rodada espera na fila até uma hora, ou até a próxima rodada da agenda. Se o middleware volta, a rodada roda uma vez, atrasada, e diz que atrasou. Se não, é pulada e a agenda segue. O motivo fica registrado, e nunca roda mais de uma atrasada por agenda. (<code>ARQ-108</code>, <code>D-285</code>)</p>
+<p>Da rodada pulada, só o autor é avisado, no Horus, e por e-mail só se já recebe avisos assim. Quem recebe o relatório não é avisado. (<code>ARQ-120</code>)</p>
+
+<h4 id="segundo-plano-quando-nada-sai">Quando nada sai?</h4>
+<ul>
+  <li><strong>Assentos cortados:</strong> quando a Maind os desativa, tudo para, e as rodadas perdidas não se refazem. (<code>D-075</code>)</li>
+  <li><strong>Falha ou arquivo grande demais para o canal:</strong> só o autor é avisado. (<code>D-226</code>, <code>D-227</code>)</li>
+  <li><strong>Aprovação ligada:</strong> o item espera o sim do owner da organização. (<code>D-244</code>)</li>
+  <li><strong>Autor excluído:</strong> perde o que criou. Quem perde o nível ouro, que permite criar relatórios, fica com os agendamentos desligados. (<code>D-206</code>, <code>D-207</code>)</li>
+</ul>
+
+<h4 id="segundo-plano-troca-de-versao">E na troca de versão?</h4>
+<p>Na v2.0, o SaaS roda num único servidor alugado. Na troca de versão, ele termina o trabalho em curso, devolve o resto à fila e fica fora do ar por um tempo, medido e não prometido. (<code>ARQ-063</code>, <code>ARQ-122</code>)</p>
+<p>Na <strong>produção real</strong>, a fase seguinte, numa nuvem pública, haverá <strong>réplicas</strong>, cópias do programa rodando ao mesmo tempo, e a troca será sem corte. O código já nasce pronto para isso. O middleware da Maind também ganha réplicas. (<code>ARQ-112</code>, <code>ARQ-113</code>)</p>
+
+<h3 id="segundo-plano-falta-decidir">O que falta decidir nesta parte</h3>
+<p>O arquiteto do Horus decide como o Horus é construído por dentro.</p>
+<ul>
+  <li><strong>Cabe ao arquiteto do Horus decidir:</strong>
+    <ul>
+      <li>onde roda o ciclo do agente, já que a IA agora só se alcança pelo middleware (<code>ARQ-030</code>, <code>P-040</code>, <code>P-048</code>);</li>
+      <li>se um alerta só de texto passa pela montagem do arquivo;</li>
+      <li>o texto do aviso de atraso (<code>ARQ-108</code>).</li>
+    </ul>
+  </li>
+  <li><strong>Também depende, e está explicado em outras páginas:</strong> o caminho até o WhatsApp (<a href="#integracoes">Com quem conversa fora</a>); a nuvem e a data da produção real (<a href="#implantacao">Onde roda</a>); que parte do SaaS recebe o aviso de IA parada e, a conferir com o uso, os limites do agente, a espera de uma hora e o tempo fora do ar na troca de versão (<a href="#execucao">Como roda</a>); a prova de que as organizações do middleware da Maind ficam separadas (<a href="#infra-separada">A infraestrutura separada</a>); e a conferência de que apagar tudo de quem é excluído convive com o registro de acesso e com as cópias de segurança (<a href="#criar-organizacao">Criar uma organização</a>).</li>
+</ul>

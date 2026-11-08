@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-menu="vertical">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="DocX 0.4.0" />
+<meta name="description" content="Como o Horus v2 é construído por dentro, explicado sem jargão: dez desenhos, o que falta decidir e quem decide." />
+<link rel="icon" href="assets/logo-claro.svg" />
+<title>Onde roda — Horus v2</title>
+<script>
+(function () {
+  try {
+    var raiz = document.documentElement;
+    var tema = localStorage.getItem('kinto-theme');
+    var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    raiz.setAttribute('data-theme', tema || (escuro ? 'dark' : 'light'));
+    raiz.setAttribute('data-menu', localStorage.getItem('kinto-menu') || 'vertical');
+    var ws = parseInt(localStorage.getItem('kinto-side-w'), 10);
+    var wt = parseInt(localStorage.getItem('kinto-toc-w'), 10);
+    if (ws) raiz.style.setProperty('--side-w-user', ws + 'px');
+    if (wt) raiz.style.setProperty('--toc-w-user', wt + 'px');
+  } catch (e) { /* localStorage bloqueado: ficam os atributos do <html> */ }
+})();
+</script>
+<link rel="stylesheet" href="assets/docs.css" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="assets/docx-kbr.css" />
+</head>
+<body>
+<header class="hdr"><div class="hdr-brand"><a class="hdr-logo" href="index.html" aria-label="Horus v2"><img class="logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /></a><div class="div"></div><div class="doc-meta"><b>Horus v2 · Documentação</b><small>Maind Horus</small></div></div><div class="hdr-center"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-topo" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><div class="hdr-actions"><div class="menu-toggle" role="group" aria-label="Menu"><button data-set="vertical" aria-label="Menu vertical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button><button data-set="horizontal" aria-label="Menu horizontal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></button></div><div class="theme-toggle" role="group" aria-label="Tema"><button data-set="light" aria-label="Claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button><button data-set="dark" aria-label="Escuro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header>
+<div class="shell">
+<aside class="side"><nav aria-label="Páginas da documentação"><h6>Horus v2</h6><ul><li><a href="index.html">Início</a></li></ul><h6>Comece por aqui</h6><ul><li><a href="quem-e-quem.html">Quem é quem e como ler</a></li></ul><h6>A base: onde e como roda</h6><ul><li><a href="infra-separada.html">A infraestrutura separada</a></li><li><a href="modulos.html">Os módulos</a></li><li><a href="execucao.html">Como roda</a></li><li><a href="implantacao.html" class="active">Onde roda</a></li></ul><h6>O Horus em ação</h6><ul><li><a href="pergunta-resposta.html">Da pergunta à resposta</a></li><li><a href="segundo-plano.html">O que roda sozinho</a></li><li><a href="integracoes.html">Com quem conversa fora</a></li></ul><h6>Organizações, dados e segurança</h6><ul><li><a href="criar-organizacao.html">Criar uma organização</a></li><li><a href="dados.html">Onde mora cada dado</a></li><li><a href="seguranca.html">Segurança em camadas</a></li></ul><h6>Decisões e acompanhamento</h6><ul><li><a href="falta-decidir.html">O que falta decidir, por papel</a></li><li><a href="sobre.html">Sobre este documento</a></li></ul></nav></aside>
+<main class="content doc">
+<div class="dx-busca-movel"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-movel" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><nav class="crumbs" aria-label="Trilha"><a href="index.html">Horus v2</a><span class="sep">/</span><span>A base: onde e como roda</span><span class="sep">/</span><span class="now">Onde roda</span></nav><span class="doc-eyebrow">A base: onde e como roda</span><h1 class="doc-h1">Onde roda</h1><p class="doc-lead">Os ambientes (teste e produção) e as instâncias.</p><section class="dx-assuntos" aria-labelledby="dx-assuntos-titulo"><h2 id="dx-assuntos-titulo">Explore os assuntos</h2><div class="dx-assuntos-grade"><div class="dx-assunto"><h3><a href="#implantacao-frase">Em uma frase</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#implantacao-desenho">O desenho</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#implantacao-como-funciona">Como funciona</a><small>4 tópicos</small></h3><ul><li><a href="#implantacao-duas-fases">O que muda da v2.0 para a produção real</a></li><li><a href="#implantacao-no-ar">Quanto tempo o Horus fica no ar</a></li><li><a href="#implantacao-versao-nova">Como uma versão nova chega</a></li><li><a href="#implantacao-no-cliente">O middleware na casa do cliente</a></li></ul></div><div class="dx-assunto"><h3><a href="#implantacao-falta-decidir">O que falta decidir nesta parte</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div></div></section><div id="dx-topo"><h2 class="doc-h2" id="implantacao-frase">Em uma frase</h2>
+<p>O Horus roda em duas fases. Na v2.0, o SaaS, a parte que as pessoas usam, e o middleware da Maind, que busca os dados da empresa, ficam num servidor alugado. Na produção real, vão para uma nuvem, em várias cópias.</p>
+
+<h2 class="doc-h2" id="implantacao-desenho">O desenho</h2>
+<p>O desenho mostra onde cada parte roda e como chega uma versão nova. Cada instalação que roda sozinha é uma instância.</p>
+<figure class="dx-diagrama"><figcaption><b>Onde roda: ambientes e instâncias</b> <span>Onde o Horus e o middleware rodam, nos ambientes de teste e de produção, e como uma versão nova chega lá.</span><a href="media/diagramas/arq-geral-implantacao.html" target="_blank" rel="noopener">Abrir em tela cheia ↗</a></figcaption><iframe src="media/diagramas/arq-geral-implantacao.html?embutido=1" title="Onde roda: ambientes e instâncias" loading="lazy"></iframe></figure>
+<ul>
+  <li><strong>Os grupos grandes são os lugares:</strong> a v2.0 à esquerda, a produção real à direita e a casa do cliente embaixo.</li>
+  <li><strong>Duas molduras menores</strong> separam, no servidor alugado, o pacote do SaaS e o do middleware.</li>
+  <li><strong>A cor diz o tipo da peça,</strong> conforme a legenda.</li>
+  <li><strong>As setas destacadas</strong> levam a versão nova ao teste e ao uso real.</li>
+  <li><strong>As setas de segurança</strong> são o canal entre o SaaS e cada middleware.</li>
+</ul>
+
+<h2 class="doc-h2" id="implantacao-como-funciona">Como funciona</h2>
+
+<h3 class="doc-h3" id="implantacao-duas-fases">O que muda da v2.0 para a produção real</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Peça</th><th>Na v2.0 (servidor alugado)</th><th>Na produção real (nuvem)</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td>SaaS e middleware da Maind</td><td>Um pacote de cada</td><td>Várias cópias de cada</td></tr>
+      <tr class="zebra"><td>Banco do SaaS</td><td>No próprio servidor</td><td>Cuidado pela nuvem, em São Paulo</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Na v2.0, o mesmo servidor serve à construção, ao teste e ao uso real. Ele tem um endereço próprio, ao lado da versão de hoje. Cada parte roda num pacote isolado (docker compose). Se a máquina para, tudo para, o que é aceito agora. (<code>ARQ-112</code>, <code>ARQ-055</code>, <code>ARQ-056</code>, <code>ARQ-065</code>, <code>ARQ-098</code>)</p>
+<p>A produção real começa com a primeira organização paga. Nela, um serviço da nuvem que cuida dos servidores sozinho (Kubernetes gerenciado) mantém várias cópias de cada parte. Se uma cai, outra atende. (<code>ARQ-092</code>, <code>ARQ-093</code>, <code>ARQ-112</code>)</p>
+
+<h3 class="doc-h3" id="implantacao-no-ar">Quanto tempo o Horus fica no ar</h3>
+<ul>
+  <li><strong>Na v2.0, sem promessa.</strong> Um serviço de fora testa o Horus a cada minuto. (<code>ARQ-122</code>, <code>ARQ-070</code>)</li>
+  <li><strong>Na produção real, 99,9% do mês,</strong> o que admite cerca de 43 minutos fora do ar, para o SaaS e o middleware da Maind. O middleware do cliente fica de fora, porque é o cliente quem cuida dele. (<code>ARQ-122</code>)</li>
+  <li><strong>Na v2.0, cada versão nova ou falha da máquina tira o SaaS do ar</strong> por alguns minutos, ainda a medir. Na produção real, a troca é sem corte. Nas duas fases, nenhum trabalho se perde. (<code>ARQ-063</code>, <code>ARQ-098</code>, <code>ARQ-005</code>)</li>
+</ul>
+
+<h3 class="doc-h3" id="implantacao-versao-nova">Como uma versão nova chega</h3>
+<ul>
+  <li>Cada parte é montada uma vez, como um pacote pronto que roda igual em todo lugar. (<code>ARQ-101</code>, <code>ARQ-113</code>)</li>
+  <li>O pacote passa pelo teste, e o uso real só aceita o aprovado. (<code>ARQ-061</code>)</li>
+  <li>A esteira automática de publicação escolhe como rodar e quantas cópias, sem mexer no pacote. Por isso, o código da v2.0 já nasce pronto para várias cópias. (<code>ARQ-113</code>)</li>
+  <li>As senhas nunca vão no pacote. Saem de um cofre no GitHub, onde fica o código do Horus, para um arquivo protegido no servidor ou para um cofre da nuvem. (<code>ARQ-044</code>, <code>ARQ-115</code>)</li>
+</ul>
+
+<h3 class="doc-h3" id="implantacao-no-cliente">O middleware na casa do cliente</h3>
+<p>O middleware na casa do cliente já vale na v2.0. Ele atende as organizações daquele cliente e roda sempre num pacote isolado. (<code>D-260</code>, <code>D-272</code>, <code>ARQ-100</code>)</p>
+<p>A TI do cliente, a equipe de tecnologia da empresa, precisa de:</p>
+<ul>
+  <li>uma máquina com Docker, o programa que roda os pacotes;</li>
+  <li>um endereço cifrado na internet, liberado só para o SaaS;</li>
+  <li>saída para os bancos e a IA, só para o que estiver numa lista de liberados;</li>
+  <li>um arquivo de senhas protegido;</li>
+  <li>o relógio certo, de que depende o certificado, a identidade digital do vínculo;</li>
+  <li>a própria cópia de segurança do banco do middleware. (<code>ARQ-126</code>, <code>ARQ-116</code>, <code>ARQ-115</code>, <code>ARQ-086</code>)</li>
+</ul>
+<p>O cliente atualiza o middleware no tempo dele, porque o SaaS aceita a versão atual e a anterior. (<code>ARQ-100</code>, <code>ARQ-114</code>)</p>
+
+<h2 class="doc-h2" id="implantacao-falta-decidir">O que falta decidir nesta parte</h2>
+<p>O dono do Horus decide infraestrutura, segurança, preço e o que as pessoas veem; o arquiteto do Horus decide como o Horus é construído por dentro.</p>
+<ul>
+  <li><strong>Falta o dono do Horus escolher:</strong> a nuvem pública da produção real, a data e o orçamento para operá-la. É a única fase com a meta de 99,9% do tempo no ar. (<code>ARQ-085</code>, <code>ARQ-122</code>)</li>
+  <li><strong>Falta o dono do Horus decidir:</strong> quem paga o middleware, o da Maind e o da casa do cliente. Ainda não há decisão registrada.</li>
+  <li><strong>Falta o dono do Horus decidir:</strong> o que fazer se um cliente pedir o Horus inteiro instalado em casa, pedido que hoje não tem versão.
+    <ul>
+      <li>Como seria essa instalação. (<code>ARQ-060</code>, <code>D-188</code>)</li>
+      <li>O que a Maind veria dela. (<code>ARQ-074</code>)</li>
+    </ul>
+  </li>
+  <li><strong>Falta o arquiteto do Horus fechar:</strong> a lista final do que a TI do cliente precisa, inclusive onde fica o banco do middleware dela. (<code>ARQ-126</code>)</li>
+  <li><strong>Também depende, e está explicado em outras páginas:</strong> a confirmação de que o SaaS e o middleware da Maind ficam separados em rede e em banco, também na nuvem (<a href="infra-separada.html">A infraestrutura separada</a>); onde fica, na nuvem, o banco do middleware da Maind, por isso ausente do desenho, e a atualização dos documentos técnicos para as duas fases (<a href="execucao.html">Como roda</a>); em que módulo fica cada peça nova (<a href="modulos.html">Os módulos</a>); e se apagar tudo de uma organização excluída convive com as cópias de segurança (<a href="criar-organizacao.html">Criar uma organização</a>).</li>
+</ul>
+</div><nav class="rel-grid dx-vizinhas" aria-label="Páginas vizinhas"><a class="rel-card dx-anterior" href="execucao.html"><span class="cat">Anterior</span><h5>Como roda</h5><span class="arrow">←</span></a><a class="rel-card dx-proxima" href="pergunta-resposta.html"><span class="cat">Próxima</span><h5>Da pergunta à resposta</h5><span class="arrow">→</span></a></nav>
+<footer class="ds-footer"><div class="ftr-brand"><img class="ftr-logo logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="ftr-logo logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /><div class="ftr-divider"></div><div class="ftr-meta"><b>Maind Horus · Horus v2 · versões 2.0 e 2.1 em desenho</b></div></div><div class="ftr-center"><span class="ftr-tag">v2.0 e 2.1 em desenho, sem versão publicada · 08/11/2026</span></div><div class="ftr-author"><div class="avatar">MT</div><div class="ftr-author-info"><b>Maind Tech</b><span>Horus v2</span></div></div></footer>
+</main>
+<aside class="toc"><h6>Neste artigo</h6><ul><li><a href="#implantacao-frase">Em uma frase</a></li><li><a href="#implantacao-desenho">O desenho</a></li><li><a href="#implantacao-como-funciona">Como funciona</a></li><li class="lvl-3"><a href="#implantacao-duas-fases">O que muda da v2.0 para a produção real</a></li><li class="lvl-3"><a href="#implantacao-no-ar">Quanto tempo o Horus fica no ar</a></li><li class="lvl-3"><a href="#implantacao-versao-nova">Como uma versão nova chega</a></li><li class="lvl-3"><a href="#implantacao-no-cliente">O middleware na casa do cliente</a></li><li><a href="#implantacao-falta-decidir">O que falta decidir nesta parte</a></li></ul></aside>
+</div>
+<div class="toast" id="toast">Copiado ✓</div>
+<script src="assets/busca.js"></script>
+<script src="assets/docs.js"></script>
+<script src="assets/docx-kbr.js"></script>
+</body>
+</html>

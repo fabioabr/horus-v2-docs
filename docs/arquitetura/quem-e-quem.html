@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-menu="vertical">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="DocX 0.4.0" />
+<meta name="description" content="Como o Horus v2 é construído por dentro, explicado sem jargão: dez desenhos, o que falta decidir e quem decide." />
+<link rel="icon" href="assets/logo-claro.svg" />
+<title>Quem é quem e como ler — Horus v2</title>
+<script>
+(function () {
+  try {
+    var raiz = document.documentElement;
+    var tema = localStorage.getItem('kinto-theme');
+    var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    raiz.setAttribute('data-theme', tema || (escuro ? 'dark' : 'light'));
+    raiz.setAttribute('data-menu', localStorage.getItem('kinto-menu') || 'vertical');
+    var ws = parseInt(localStorage.getItem('kinto-side-w'), 10);
+    var wt = parseInt(localStorage.getItem('kinto-toc-w'), 10);
+    if (ws) raiz.style.setProperty('--side-w-user', ws + 'px');
+    if (wt) raiz.style.setProperty('--toc-w-user', wt + 'px');
+  } catch (e) { /* localStorage bloqueado: ficam os atributos do <html> */ }
+})();
+</script>
+<link rel="stylesheet" href="assets/docs.css" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="assets/docx-kbr.css" />
+</head>
+<body>
+<header class="hdr"><div class="hdr-brand"><a class="hdr-logo" href="index.html" aria-label="Horus v2"><img class="logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /></a><div class="div"></div><div class="doc-meta"><b>Horus v2 · Documentação</b><small>Maind Horus</small></div></div><div class="hdr-center"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-topo" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><div class="hdr-actions"><div class="menu-toggle" role="group" aria-label="Menu"><button data-set="vertical" aria-label="Menu vertical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button><button data-set="horizontal" aria-label="Menu horizontal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></button></div><div class="theme-toggle" role="group" aria-label="Tema"><button data-set="light" aria-label="Claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button><button data-set="dark" aria-label="Escuro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header>
+<div class="shell">
+<aside class="side"><nav aria-label="Páginas da documentação"><h6>Horus v2</h6><ul><li><a href="index.html">Início</a></li></ul><h6>Comece por aqui</h6><ul><li><a href="quem-e-quem.html" class="active">Quem é quem e como ler</a></li></ul><h6>A base: onde e como roda</h6><ul><li><a href="infra-separada.html">A infraestrutura separada</a></li><li><a href="modulos.html">Os módulos</a></li><li><a href="execucao.html">Como roda</a></li><li><a href="implantacao.html">Onde roda</a></li></ul><h6>O Horus em ação</h6><ul><li><a href="pergunta-resposta.html">Da pergunta à resposta</a></li><li><a href="segundo-plano.html">O que roda sozinho</a></li><li><a href="integracoes.html">Com quem conversa fora</a></li></ul><h6>Organizações, dados e segurança</h6><ul><li><a href="criar-organizacao.html">Criar uma organização</a></li><li><a href="dados.html">Onde mora cada dado</a></li><li><a href="seguranca.html">Segurança em camadas</a></li></ul><h6>Decisões e acompanhamento</h6><ul><li><a href="falta-decidir.html">O que falta decidir, por papel</a></li><li><a href="sobre.html">Sobre este documento</a></li></ul></nav></aside>
+<main class="content doc">
+<div class="dx-busca-movel"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-movel" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><nav class="crumbs" aria-label="Trilha"><a href="index.html">Horus v2</a><span class="sep">/</span><span>Comece por aqui</span><span class="sep">/</span><span class="now">Quem é quem e como ler</span></nav><span class="doc-eyebrow">Comece por aqui</span><h1 class="doc-h1">Quem é quem e como ler</h1><p class="doc-lead">Os papéis, as palavras que mais aparecem e como ler os desenhos e as páginas.</p><section class="dx-assuntos" aria-labelledby="dx-assuntos-titulo"><h2 id="dx-assuntos-titulo">Explore os assuntos</h2><div class="dx-assuntos-grade"><div class="dx-assunto"><h3><a href="#quem-e-quem-frase">Em uma frase</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#quem-e-quem-papeis">Os papéis</a><small>3 tópicos</small></h3><ul><li><a href="#quem-e-quem-papeis-decide">Quem decide</a></li><li><a href="#quem-e-quem-papeis-usa">Quem usa e administra</a></li><li><a href="#quem-e-quem-papeis-bastidores">Quem ajuda nos bastidores</a></li></ul></div><div class="dx-assunto"><h3><a href="#quem-e-quem-palavras">As palavras que mais aparecem</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#quem-e-quem-desenhos">Como ler os desenhos</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#quem-e-quem-paginas">Como ler as páginas</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div></div></section><div id="dx-topo"><h2 class="doc-h2" id="quem-e-quem-frase">Em uma frase</h2>
+<p>Esta documentação conta como o Horus é construído por dentro e foi escrita para quem não é da área de tecnologia. Esta página diz quem decide o quê e o que significam as palavras que mais se repetem.</p>
+
+<h2 class="doc-h2" id="quem-e-quem-papeis">Os papéis</h2>
+<p>Cada pendência nas páginas diz de qual papel se espera uma ação. Os nomes são sempre estes, e um nunca troca de lugar com outro. A página <a href="falta-decidir.html">O que falta decidir, por papel</a> junta todas as pendências.</p>
+<h3 class="doc-h3" id="quem-e-quem-papeis-decide">Quem decide</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Papel</th><th>O que decide</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Dono do Horus</strong></td><td>Decide infraestrutura, segurança, preço e o que as pessoas veem.</td></tr>
+      <tr class="zebra"><td><strong>PO</strong> (responsável pelo produto)</td><td>Cuida do que o produto entrega e da ordem em que entrega.</td></tr>
+      <tr class="zebra"><td><strong>Arquiteto do Horus</strong></td><td>Decide como o Horus é construído por dentro.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="quem-e-quem-papeis-usa">Quem usa e administra</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Papel</th><th>O que faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>Administra uma organização, a empresa cliente, dentro do Horus.</td></tr>
+      <tr class="zebra"><td><strong>Owner da instância</strong></td><td>Funcionário da Maind que define a marca e as regras gerais de uma instalação do Horus.</td></tr>
+      <tr class="zebra"><td><strong>Gestor</strong></td><td>Cuida de um grupo de pessoas dentro de uma organização, por exemplo convidando gente.</td></tr>
+      <tr class="zebra"><td><strong>Pessoa que pergunta</strong></td><td>Usa o Horus para perguntar sobre os dados da empresa.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="quem-e-quem-papeis-bastidores">Quem ajuda nos bastidores</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Papel</th><th>O que faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>TI do cliente</strong></td><td>A equipe de tecnologia da empresa cliente, que cuida dos servidores e da rede dela.</td></tr>
+      <tr class="zebra"><td><strong>Equipe da Maind</strong></td><td>O time da Maind que dá suporte e acompanha as instalações.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>O <strong>dono do Horus</strong> e o <strong>owner da organização</strong> são pessoas diferentes. O primeiro decide como o Horus é. O segundo administra uma empresa cliente dentro dele.</p>
+
+<h2 class="doc-h2" id="quem-e-quem-palavras">As palavras que mais aparecem</h2>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Termo</th><th>O que é</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>SaaS</strong></td><td>A parte do Horus que as pessoas usam, hospedada pela Maind.</td></tr>
+      <tr class="zebra"><td><strong>Middleware</strong></td><td>A parte que fica entre o SaaS e os dados da empresa. Ela busca as informações no banco, guarda as senhas dos bancos e da IA e confere o login. Pode ficar na Maind ou na casa do cliente.</td></tr>
+      <tr class="zebra"><td><strong>Organização</strong></td><td>Uma empresa cliente, ou um setor dela, dentro do Horus, com as suas pessoas, os seus bancos e a sua IA.</td></tr>
+      <tr class="zebra"><td><strong>Instância</strong></td><td>Uma instalação do Horus com a marca de quem o contratou. Ela comporta várias organizações.</td></tr>
+      <tr class="zebra"><td><strong>Certificado</strong></td><td>Uma identidade digital que prova quem é quem na conversa entre o SaaS e o middleware.</td></tr>
+      <tr class="zebra"><td><strong>Assento</strong></td><td>A vaga contratada que uma pessoa ocupa para usar o Horus. Há tipos de assento.</td></tr>
+      <tr class="zebra"><td><strong>Servidor MCP</strong></td><td>Um programa da organização que dá à IA outras fontes e ferramentas de consulta. Chega na v2.1.</td></tr>
+      <tr class="zebra"><td><strong>Modelo semântico</strong></td><td>A descrição do que cada dado da empresa significa, como “receita” ou “cliente ativo”, para a IA entender.</td></tr>
+      <tr class="zebra"><td><strong>VPS e produção real</strong></td><td>As duas fases de hospedagem. A VPS é um servidor alugado, um só, que vale agora. A produção real é uma nuvem pública com vários servidores, que ainda não tem data.</td></tr>
+      <tr class="zebra"><td><strong>Réplica</strong></td><td>Uma cópia do mesmo programa rodando ao mesmo tempo, para aguentar mais gente e não parar se uma falhar.</td></tr>
+      <tr class="zebra"><td><strong>v2.0 e v2.1</strong></td><td>As duas primeiras entregas do Horus.</td></tr>
+      <tr class="zebra"><td><strong>MF</strong> (macro funcionalidade)</td><td>Cada grande capacidade do produto.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Para imaginar o middleware</b><p>É como a recepção de um prédio: o visitante não entra direto nos andares, e a recepção busca o que ele pediu. A comparação para aí, porque o middleware também faz a análise.</p></div>
+</div>
+
+<h2 class="doc-h2" id="quem-e-quem-desenhos">Como ler os desenhos</h2>
+<p>Cada página de assunto traz um desenho, e cada desenho tem duas abas.</p>
+<ul>
+  <li><strong>Diagrama:</strong> clique nas caixas e nas ligações para ver o detalhe. A roda do mouse dá zoom e dá para arrastar o desenho.</li>
+  <li><strong>Explicações:</strong> três cartões dizem o que o desenho mostra, o que acontece na hora e o que acontece em segundo plano, e o que ficou de fora.</li>
+  <li><strong>O rótulo de cada seta</strong> é o nome do combinado entre as duas peças que ela liga.</li>
+  <li><strong>Setas tracejadas</strong> valem só em certas situações, que a legenda de cada desenho explica.</li>
+  <li><strong>Tela cheia:</strong> todo desenho abre em tela cheia pelo link “Abrir em tela cheia”, junto dele.</li>
+</ul>
+
+<h2 class="doc-h2" id="quem-e-quem-paginas">Como ler as páginas</h2>
+<p>Todas as páginas de assunto têm a mesma ordem, para quem lê uma saber ler as outras.</p>
+<ul>
+  <li><strong>Em uma frase</strong> resume o assunto.</li>
+  <li><strong>O desenho</strong> explica o que cada forma, cor e seta significa.</li>
+  <li><strong>Como funciona</strong> conta o assunto em partes curtas.</li>
+  <li><strong>O que falta decidir nesta parte</strong> diz o que ainda está em aberto e de qual papel se espera a resposta.</li>
+  <li><strong>Os códigos entre parênteses</strong> apontam para a decisão ou a pendência registrada. O começo de cada um diz o tipo: <code>ARQ</code> é decisão de arquitetura, <code>D</code> é decisão de produto, <code>P</code> é pendência e <code>MF</code> é macro funcionalidade. Quem só quer entender pode ignorá-los.</li>
+</ul>
+</div><nav class="rel-grid dx-vizinhas" aria-label="Páginas vizinhas"><a class="rel-card dx-proxima" href="infra-separada.html"><span class="cat">Próxima</span><h5>A infraestrutura separada</h5><span class="arrow">→</span></a></nav>
+<footer class="ds-footer"><div class="ftr-brand"><img class="ftr-logo logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="ftr-logo logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /><div class="ftr-divider"></div><div class="ftr-meta"><b>Maind Horus · Horus v2 · versões 2.0 e 2.1 em desenho</b></div></div><div class="ftr-center"><span class="ftr-tag">v2.0 e 2.1 em desenho, sem versão publicada · 08/11/2026</span></div><div class="ftr-author"><div class="avatar">MT</div><div class="ftr-author-info"><b>Maind Tech</b><span>Horus v2</span></div></div></footer>
+</main>
+<aside class="toc"><h6>Neste artigo</h6><ul><li><a href="#quem-e-quem-frase">Em uma frase</a></li><li><a href="#quem-e-quem-papeis">Os papéis</a></li><li class="lvl-3"><a href="#quem-e-quem-papeis-decide">Quem decide</a></li><li class="lvl-3"><a href="#quem-e-quem-papeis-usa">Quem usa e administra</a></li><li class="lvl-3"><a href="#quem-e-quem-papeis-bastidores">Quem ajuda nos bastidores</a></li><li><a href="#quem-e-quem-palavras">As palavras que mais aparecem</a></li><li><a href="#quem-e-quem-desenhos">Como ler os desenhos</a></li><li><a href="#quem-e-quem-paginas">Como ler as páginas</a></li></ul></aside>
+</div>
+<div class="toast" id="toast">Copiado ✓</div>
+<script src="assets/busca.js"></script>
+<script src="assets/docs.js"></script>
+<script src="assets/docx-kbr.js"></script>
+</body>
+</html>

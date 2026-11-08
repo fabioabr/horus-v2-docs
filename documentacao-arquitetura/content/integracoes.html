@@ -1,0 +1,57 @@
+<h3 id="integracoes-frase">Em uma frase</h3>
+<p>O Horus depende de serviços de fora: os bancos de dados da empresa, a inteligência artificial (IA), o WhatsApp e o e-mail. Esta parte mostra quem fala com cada um e por onde passa cada informação. Disso depende onde ficam os dados e as senhas de cada cliente.</p>
+
+<h3 id="integracoes-desenho">O desenho</h3>
+<p>O desenho mostra cada serviço de fora e a peça do Horus que fala com ele.</p>
+<dx-diagrama ref="arq-geral-integracoes"></dx-diagrama>
+<ul>
+  <li><strong>Grupos.</strong> O SaaS é a parte do Horus que as pessoas usam, hospedada pela Maind. O middleware busca os dados no banco da empresa e conversa com o SaaS. Os outros grupos são "Fora do Horus" e a infraestrutura da organização, com os bancos, a IA e o login.</li>
+  <li><strong>Cores.</strong> Cada tipo de caixa tem a sua cor, explicada na legenda.</li>
+  <li><strong>Linhas.</strong> A roxa tracejada é tarefa de segundo plano, que espera a vez numa fila. A vermelha tracejada é a única chamada de IA que sai direto do SaaS.</li>
+  <li><strong>O Google</strong> aparece com a organização, que pode usar o cadastro Google dela para as pessoas entrarem (<code>ARQ-111</code>).</li>
+</ul>
+
+<h3 id="integracoes-como-funciona">Como funciona</h3>
+
+<h4 id="integracoes-dados-e-ia">Como o Horus chega aos dados e à IA?</h4>
+<p>O SaaS manda ao middleware só a pergunta da pessoa e recebe só a resposta pronta. O middleware consulta os bancos, sem alterar nada, e chama a IA, inclusive a pesquisa na web. As senhas ficam com ele (<code>D-189</code>, <code>D-190</code>, <code>D-258</code>).</p>
+<p>Um mesmo middleware atende várias organizações (<code>D-272</code>). Ele e o SaaS conversam por um canal com regras combinadas, o gRPC (<code>ARQ-099</code>). O SaaS acha o middleware certo no Registro de organizações (<code>ARQ-102</code>).</p>
+<p>Na v2.0, as fontes de dados são SQL Server, PostgreSQL, Oracle, MongoDB e BigQuery, e a IA vem do OpenRouter e do Amazon Bedrock (<code>ARQ-052</code>). Na v2.1 chega o AWS Athena (<code>D-161</code>).</p>
+<p>Incluir outro provedor de IA é decisão do <strong>dono do Horus</strong>, que decide infraestrutura, segurança, preço e o que as pessoas veem (<code>ARQ-051</code>).</p>
+
+<h4 id="integracoes-configuracao">Quem configura tudo isso?</h4>
+<p>Quem configura é o <strong>owner da organização</strong>, que administra uma organização (uma empresa cliente) no Horus. Na tela de configuração do middleware, ele cadastra os bancos, a IA e as formas de entrar.</p>
+<p>Isso vale em qualquer hospedagem e inclui a chave de IA que a Maind oferece. A Maind só dá suporte (<code>D-271</code>, <code>D-273</code>). As formas de entrar estão explicadas em <a href="#seguranca">Segurança em camadas</a> (<code>ARQ-111</code>).</p>
+<p>Na v2.1, o owner da organização também cadastra os servidores MCP, programas da organização que dão à IA ferramentas extras de busca. Eles só leem, e só ele os libera, ferramenta por ferramenta (<code>D-281</code>, <code>D-282</code>, <code>D-286</code> a <code>D-289</code>).</p>
+
+<h4 id="integracoes-whatsapp-email">Como saem o WhatsApp e o e-mail?</h4>
+<p>Os dois saem pelo SaaS. A Porta da Meta é a única peça que fala com a Meta, a empresa do WhatsApp. Ela responde na hora a cada mensagem que chega, e todo envio espera a vez na fila (<code>ARQ-048</code>).</p>
+<p>Os e-mails saem por um único serviço de envio (<code>ARQ-046</code>). O SaaS não guarda o e-mail de ninguém. O middleware entrega o endereço só na hora do envio, e o endereço some quando o pedido termina. Com o middleware parado, o e-mail não sai (<code>ARQ-109</code>, <code>ARQ-118</code>).</p>
+
+<h4 id="integracoes-custo-ia">Quem paga a IA e quem vê o consumo?</h4>
+<p>A organização paga a chave de IA dela. A Maind paga a chave que oferece (<code>D-267</code>). O middleware conta ao SaaS o uso de cada chave, sem a pergunta nem a resposta (<code>ARQ-117</code>).</p>
+<p>O owner da organização vê o custo de toda a IA da organização. O painel em que a Maind acompanha as organizações mostra o consumo e o aviso de custo só das chaves da Maind (<code>D-153</code>, <code>D-279</code>).</p>
+
+<h4 id="integracoes-avisos">Quem é avisado quando algo para?</h4>
+<p>Se a IA da organização para, o owner da organização vê um aviso no Horus. A equipe da Maind só é avisada se a chave é da Maind (<code>D-268</code>, <code>ARQ-117</code>).</p>
+<p>A queda do middleware não gera e-mail. Ela aparece na luz de estado da tela de entrada e na página de status, e a Maind a acompanha pelo painel dela. Quem hospeda o próprio middleware o vigia por conta própria (<code>ARQ-107</code>, <code>ARQ-118</code>, <code>D-275</code>).</p>
+
+<h4 id="integracoes-chave-instancia">A exceção: a chave de IA da instância</h4>
+<p>A Maind paga uma chave de IA só para o <strong>owner da instância</strong>, que define a marca e as regras gerais da instalação do Horus. Ele a usa para perguntar ao Horus sobre a história da instalação.</p>
+<p>Nenhuma organização usa essa chave. A pergunta não passa por middleware nenhum, e o consumo dela aparece à parte (<code>D-266</code>, <code>D-276</code>, <code>ARQ-117</code>).</p>
+
+<h3 id="integracoes-falta-decidir">O que falta decidir nesta parte</h3>
+<p>O arquiteto do Horus decide como o Horus é construído por dentro.</p>
+<ul>
+  <li><strong>Falta o dono do Horus decidir:</strong> por qual caminho o Horus chega ao WhatsApp. A hipótese de trabalho é falar direto com o serviço oficial da Meta, com a Maind como fornecedora de tecnologia. (<code>ARQ-047</code>)</li>
+  <li><strong>Falta o dono do Horus decidir:</strong> quem é avisado quando o Teams ou o Google Chat param. Ainda não há decisão registrada.</li>
+  <li><strong>Falta o arquiteto do Horus resolver quatro pontos:</strong>
+    <ul>
+      <li>Como a chave de IA da Maind chega ao owner da organização, e o que acontece com a ligação de IA que a organização já tem. (<code>P-032</code>)</li>
+      <li>Como o Teams e o Google Chat se ligam ao Horus. (<code>P-038</code>)</li>
+      <li>Como funciona a fonte AWS Athena. (<code>P-033</code>)</li>
+      <li>Se a fonte de páginas web da versão de hoje (v1.xx) some ou continua. (<code>P-034</code>)</li>
+    </ul>
+  </li>
+  <li><strong>Também depende, e está explicado em outras páginas:</strong> quem paga o middleware (<a href="#implantacao">Onde roda</a>); a divisão da análise entre o SaaS e o middleware (<a href="#pergunta-resposta">Da pergunta à resposta</a>); por onde chegam ao SaaS o aviso de IA parada e a medida do middleware do cliente, e quem manda o e-mail de recuperação de senha (<a href="#execucao">Como roda</a>); o uso dos servidores MCP na análise (<a href="#modulos">Os módulos</a>); e onde roda a pergunta do owner da instância (<a href="#dados">Onde mora cada dado</a>).</li>
+</ul>

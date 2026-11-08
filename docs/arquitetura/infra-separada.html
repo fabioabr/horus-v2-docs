@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-menu="vertical">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="DocX 0.4.0" />
+<meta name="description" content="Como o Horus v2 é construído por dentro, explicado sem jargão: dez desenhos, o que falta decidir e quem decide." />
+<link rel="icon" href="assets/logo-claro.svg" />
+<title>A infraestrutura separada — Horus v2</title>
+<script>
+(function () {
+  try {
+    var raiz = document.documentElement;
+    var tema = localStorage.getItem('kinto-theme');
+    var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    raiz.setAttribute('data-theme', tema || (escuro ? 'dark' : 'light'));
+    raiz.setAttribute('data-menu', localStorage.getItem('kinto-menu') || 'vertical');
+    var ws = parseInt(localStorage.getItem('kinto-side-w'), 10);
+    var wt = parseInt(localStorage.getItem('kinto-toc-w'), 10);
+    if (ws) raiz.style.setProperty('--side-w-user', ws + 'px');
+    if (wt) raiz.style.setProperty('--toc-w-user', wt + 'px');
+  } catch (e) { /* localStorage bloqueado: ficam os atributos do <html> */ }
+})();
+</script>
+<link rel="stylesheet" href="assets/docs.css" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="assets/docx-kbr.css" />
+</head>
+<body>
+<header class="hdr"><div class="hdr-brand"><a class="hdr-logo" href="index.html" aria-label="Horus v2"><img class="logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /></a><div class="div"></div><div class="doc-meta"><b>Horus v2 · Documentação</b><small>Maind Horus</small></div></div><div class="hdr-center"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-topo" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><div class="hdr-actions"><div class="menu-toggle" role="group" aria-label="Menu"><button data-set="vertical" aria-label="Menu vertical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button><button data-set="horizontal" aria-label="Menu horizontal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></button></div><div class="theme-toggle" role="group" aria-label="Tema"><button data-set="light" aria-label="Claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button><button data-set="dark" aria-label="Escuro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header>
+<div class="shell">
+<aside class="side"><nav aria-label="Páginas da documentação"><h6>Horus v2</h6><ul><li><a href="index.html">Início</a></li></ul><h6>Comece por aqui</h6><ul><li><a href="quem-e-quem.html">Quem é quem e como ler</a></li></ul><h6>A base: onde e como roda</h6><ul><li><a href="infra-separada.html" class="active">A infraestrutura separada</a></li><li><a href="modulos.html">Os módulos</a></li><li><a href="execucao.html">Como roda</a></li><li><a href="implantacao.html">Onde roda</a></li></ul><h6>O Horus em ação</h6><ul><li><a href="pergunta-resposta.html">Da pergunta à resposta</a></li><li><a href="segundo-plano.html">O que roda sozinho</a></li><li><a href="integracoes.html">Com quem conversa fora</a></li></ul><h6>Organizações, dados e segurança</h6><ul><li><a href="criar-organizacao.html">Criar uma organização</a></li><li><a href="dados.html">Onde mora cada dado</a></li><li><a href="seguranca.html">Segurança em camadas</a></li></ul><h6>Decisões e acompanhamento</h6><ul><li><a href="falta-decidir.html">O que falta decidir, por papel</a></li><li><a href="sobre.html">Sobre este documento</a></li></ul></nav></aside>
+<main class="content doc">
+<div class="dx-busca-movel"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-movel" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><nav class="crumbs" aria-label="Trilha"><a href="index.html">Horus v2</a><span class="sep">/</span><span>A base: onde e como roda</span><span class="sep">/</span><span class="now">A infraestrutura separada</span></nav><span class="doc-eyebrow">A base: onde e como roda</span><h1 class="doc-h1">A infraestrutura separada</h1><p class="doc-lead">Por que o Horus se divide em duas partes e como elas se falam.</p><section class="dx-assuntos" aria-labelledby="dx-assuntos-titulo"><h2 id="dx-assuntos-titulo">Explore os assuntos</h2><div class="dx-assuntos-grade"><div class="dx-assunto"><h3><a href="#infra-separada-frase">Em uma frase</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#infra-separada-desenho">O desenho</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#infra-separada-como-funciona">Como funciona</a><small>4 tópicos</small></h3><ul><li><a href="#infra-separada-cada-parte">O que fica em cada parte</a></li><li><a href="#infra-separada-como-se-falam">Como as duas partes se falam</a></li><li><a href="#infra-separada-quem-configura">Quem configura o middleware</a></li><li><a href="#infra-separada-preco">O preço de um middleware para muitas organizações</a></li></ul></div><div class="dx-assunto"><h3><a href="#infra-separada-falta-decidir">O que falta decidir nesta parte</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div></div></section><div id="dx-topo"><h2 class="doc-h2" id="infra-separada-frase">Em uma frase</h2>
+<p>O Horus tem duas partes separadas. O <strong>SaaS</strong> é a parte que as pessoas usam, hospedada pela Maind. O <strong>middleware</strong> busca os dados da empresa e guarda as senhas, e entre os dois só passam a pergunta e a resposta pronta. (<code>D-258</code>, <code>D-189</code>)</p>
+
+<h2 class="doc-h2" id="infra-separada-desenho">O desenho</h2>
+<p>O desenho mostra as três áreas e o caminho de uma pergunta entre elas.</p>
+<figure class="dx-diagrama"><figcaption><b>A infraestrutura separada do SaaS: o middleware</b> <span>As três áreas do Horus (o SaaS, o middleware e a organização) e o que passa de uma para a outra.</span><a href="media/diagramas/arq-geral-infra-separada.html" target="_blank" rel="noopener">Abrir em tela cheia ↗</a></figcaption><iframe src="media/diagramas/arq-geral-infra-separada.html?embutido=1" title="A infraestrutura separada do SaaS: o middleware" loading="lazy"></iframe></figure>
+<ul>
+  <li><strong>Os grupos são as áreas:</strong> o SaaS à esquerda, o middleware no meio e a organização, a empresa cliente, à direita.</li>
+  <li><strong>A cor diz o tipo da peça,</strong> conforme a legenda.</li>
+  <li><strong>As setas destacadas</strong> seguem a pergunta até o banco da empresa.</li>
+  <li><strong>As setas de segurança</strong> marcam o certificado e a senha de quem configura o middleware.</li>
+  <li><strong>As setas tracejadas</strong> valem só na Maind ou só a partir da v2.1.</li>
+</ul>
+
+<h2 class="doc-h2" id="infra-separada-como-funciona">Como funciona</h2>
+
+<h3 class="doc-h3" id="infra-separada-cada-parte">O que fica em cada parte</h3>
+<ul>
+  <li><strong>No SaaS:</strong> as telas, o servidor, os bancos e o Registro de organizações, que anota onde fica cada middleware. (<code>ARQ-102</code>)</li>
+  <li><strong>No middleware:</strong> o login, o cadastro das pessoas, as senhas dos bancos e da IA e o trabalho da análise. (<code>D-258</code>, <code>D-261</code>)</li>
+  <li><strong>Na organização:</strong> as pessoas, os bancos, a IA e, na v2.1, os servidores MCP, programas da empresa que dão à IA outras fontes de informação. (<code>D-281</code>, <code>D-282</code>)</li>
+</ul>
+<p>O middleware é o mesmo na Maind ou no cliente. O da Maind atende todas as organizações do SaaS, e o de um cliente, as dele. (<code>D-260</code>, <code>D-272</code>)</p>
+
+<h3 class="doc-h3" id="infra-separada-como-se-falam">Como as duas partes se falam</h3>
+<p>Criar uma organização gera um certificado, uma identidade digital. Com ele, as duas partes se reconhecem e passam a falar por um canal só, com regras combinadas. (<code>ARQ-124</code>, <code>ARQ-116</code>)</p>
+<ul>
+  <li><strong>Ao middleware vão</strong> a pergunta e os assentos, as vagas de uso contratadas.</li>
+  <li><strong>Ao SaaS voltam</strong> a resposta pronta, os números de uso da IA, sem conteúdo, e o estado e a versão do middleware. (<code>ARQ-099</code>)</li>
+</ul>
+<p>A identidade da pessoa é conferida no middleware. O endereço dele nunca chega ao navegador. Uma luz e uma página de status mostram se ele está no ar. (<code>ARQ-102</code>, <code>ARQ-106</code>, <code>ARQ-107</code>)</p>
+
+<h3 class="doc-h3" id="infra-separada-quem-configura">Quem configura o middleware</h3>
+<p>Quem configura é sempre o owner da organização, a pessoa que a administra no Horus, com usuário e senha. A Maind só dá suporte. (<code>D-273</code>)</p>
+<ul>
+  <li><strong>Com o middleware na Maind,</strong> o owner da instância, funcionário da Maind, cria o usuário do owner da organização, e o SaaS entrega o certificado sozinho. (<code>D-271</code>, <code>ARQ-110</code>)</li>
+  <li><strong>Com o middleware no cliente,</strong> a TI do cliente, a equipe de tecnologia da empresa, cria o usuário e importa o certificado. (<code>ARQ-110</code>, <code>ARQ-124</code>)</li>
+</ul>
+<p>Só o owner da organização cadastra os servidores MCP, escolhe quem os usa e libera as ferramentas, só as de leitura. (<code>D-286</code> a <code>D-289</code>)</p>
+<p>A Maind vê o estado e a versão de cada middleware. Do middleware no cliente, vê só o que o SaaS mede e um pacote de diagnóstico, sem conteúdo, enviado sob pedido. (<code>D-275</code>, <code>ARQ-119</code>)</p>
+<p>O middleware da Maind se recusa a acessar endereços da rede interna. O do cliente só alcança o que a TI do cliente liberou. (<code>ARQ-116</code>)</p>
+
+<h3 class="doc-h3" id="infra-separada-preco">O preço de um middleware para muitas organizações</h3>
+<ul>
+  <li><strong>Se o middleware da Maind for invadido,</strong> expõe as regras de todas as organizações do SaaS. As senhas ficam trancadas com uma chave por organização, apagada quando ela é excluída. (<code>D-272</code>, <code>ARQ-103</code>, <code>D-278</code>)</li>
+  <li><strong>Todas dividem o mesmo banco,</strong> separadas por uma marca e por um filtro que um teste automático confere. (<code>ARQ-103</code>)</li>
+  <li><strong>Se ele parar, todas param.</strong> Isso é aceito na v2.0 e some na produção real, com várias cópias. (<code>ARQ-112</code>)</li>
+  <li><strong>A promessa de que a Maind não vê as senhas</strong> só vale com o middleware no cliente, que é também a saída para quem quer mais isolamento. (<code>D-189</code>, <code>D-273</code>, <code>D-272</code>)</li>
+</ul>
+
+<h2 class="doc-h2" id="infra-separada-falta-decidir">O que falta decidir nesta parte</h2>
+<p>O dono do Horus decide infraestrutura, segurança, preço e o que as pessoas veem; o arquiteto do Horus decide como o Horus é construído por dentro.</p>
+<ul>
+  <li><strong>Falta o dono do Horus confirmar uma decisão do arquiteto do Horus:</strong> o SaaS e o middleware da Maind ficam separados, cada um com a sua rede e o seu banco. No começo, podem dividir o servidor, como dois apartamentos dividem um prédio, cada um com a sua chave. (<code>ARQ-127</code>)</li>
+  <li><strong>Falta o dono do Horus confirmar:</strong> quem liga as funções que soltam mais informação, como baixar o resultado em planilha. Elas vêm desligadas, e o arquiteto do Horus propõe que só o owner da organização as ligue. (<code>ARQ-116</code>)</li>
+  <li><strong>Falta o arquiteto do Horus comprovar:</strong> que a marca, o filtro e a chave bastam para uma organização não ver a outra no mesmo middleware. (<code>D-272</code>, <code>ARQ-103</code>)</li>
+  <li><strong>Também depende, e está explicado em outras páginas:</strong> a política do certificado, como a troca e o cancelamento (<a href="seguranca.html">Segurança em camadas</a>); que partes da análise ficam em cada lado (<a href="pergunta-resposta.html">Da pergunta à resposta</a>); onde ficam o modelo semântico, que descreve os dados para a IA, e a lista de modelos de IA, e como a IA usa os servidores MCP (<a href="modulos.html">Os módulos</a>); e onde roda a pergunta do owner da instância sobre a história da instalação (<a href="dados.html">Onde mora cada dado</a>).</li>
+</ul>
+</div><nav class="rel-grid dx-vizinhas" aria-label="Páginas vizinhas"><a class="rel-card dx-anterior" href="quem-e-quem.html"><span class="cat">Anterior</span><h5>Quem é quem e como ler</h5><span class="arrow">←</span></a><a class="rel-card dx-proxima" href="modulos.html"><span class="cat">Próxima</span><h5>Os módulos</h5><span class="arrow">→</span></a></nav>
+<footer class="ds-footer"><div class="ftr-brand"><img class="ftr-logo logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="ftr-logo logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /><div class="ftr-divider"></div><div class="ftr-meta"><b>Maind Horus · Horus v2 · versões 2.0 e 2.1 em desenho</b></div></div><div class="ftr-center"><span class="ftr-tag">v2.0 e 2.1 em desenho, sem versão publicada · 08/11/2026</span></div><div class="ftr-author"><div class="avatar">MT</div><div class="ftr-author-info"><b>Maind Tech</b><span>Horus v2</span></div></div></footer>
+</main>
+<aside class="toc"><h6>Neste artigo</h6><ul><li><a href="#infra-separada-frase">Em uma frase</a></li><li><a href="#infra-separada-desenho">O desenho</a></li><li><a href="#infra-separada-como-funciona">Como funciona</a></li><li class="lvl-3"><a href="#infra-separada-cada-parte">O que fica em cada parte</a></li><li class="lvl-3"><a href="#infra-separada-como-se-falam">Como as duas partes se falam</a></li><li class="lvl-3"><a href="#infra-separada-quem-configura">Quem configura o middleware</a></li><li class="lvl-3"><a href="#infra-separada-preco">O preço de um middleware para muitas organizações</a></li><li><a href="#infra-separada-falta-decidir">O que falta decidir nesta parte</a></li></ul></aside>
+</div>
+<div class="toast" id="toast">Copiado ✓</div>
+<script src="assets/busca.js"></script>
+<script src="assets/docs.js"></script>
+<script src="assets/docx-kbr.js"></script>
+</body>
+</html>

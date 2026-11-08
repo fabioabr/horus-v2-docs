@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-menu="vertical">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="DocX 0.4.0" />
+<meta name="description" content="Como o Horus v2 é construído por dentro, explicado sem jargão: dez desenhos, o que falta decidir e quem decide." />
+<link rel="icon" href="assets/logo-claro.svg" />
+<title>Como roda — Horus v2</title>
+<script>
+(function () {
+  try {
+    var raiz = document.documentElement;
+    var tema = localStorage.getItem('kinto-theme');
+    var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    raiz.setAttribute('data-theme', tema || (escuro ? 'dark' : 'light'));
+    raiz.setAttribute('data-menu', localStorage.getItem('kinto-menu') || 'vertical');
+    var ws = parseInt(localStorage.getItem('kinto-side-w'), 10);
+    var wt = parseInt(localStorage.getItem('kinto-toc-w'), 10);
+    if (ws) raiz.style.setProperty('--side-w-user', ws + 'px');
+    if (wt) raiz.style.setProperty('--toc-w-user', wt + 'px');
+  } catch (e) { /* localStorage bloqueado: ficam os atributos do <html> */ }
+})();
+</script>
+<link rel="stylesheet" href="assets/docs.css" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="assets/docx-kbr.css" />
+</head>
+<body>
+<header class="hdr"><div class="hdr-brand"><a class="hdr-logo" href="index.html" aria-label="Horus v2"><img class="logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /></a><div class="div"></div><div class="doc-meta"><b>Horus v2 · Documentação</b><small>Maind Horus</small></div></div><div class="hdr-center"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-topo" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><div class="hdr-actions"><div class="menu-toggle" role="group" aria-label="Menu"><button data-set="vertical" aria-label="Menu vertical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button><button data-set="horizontal" aria-label="Menu horizontal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></button></div><div class="theme-toggle" role="group" aria-label="Tema"><button data-set="light" aria-label="Claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button><button data-set="dark" aria-label="Escuro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header>
+<div class="shell">
+<aside class="side"><nav aria-label="Páginas da documentação"><h6>Horus v2</h6><ul><li><a href="index.html">Início</a></li></ul><h6>Comece por aqui</h6><ul><li><a href="quem-e-quem.html">Quem é quem e como ler</a></li></ul><h6>A base: onde e como roda</h6><ul><li><a href="infra-separada.html">A infraestrutura separada</a></li><li><a href="modulos.html">Os módulos</a></li><li><a href="execucao.html" class="active">Como roda</a></li><li><a href="implantacao.html">Onde roda</a></li></ul><h6>O Horus em ação</h6><ul><li><a href="pergunta-resposta.html">Da pergunta à resposta</a></li><li><a href="segundo-plano.html">O que roda sozinho</a></li><li><a href="integracoes.html">Com quem conversa fora</a></li></ul><h6>Organizações, dados e segurança</h6><ul><li><a href="criar-organizacao.html">Criar uma organização</a></li><li><a href="dados.html">Onde mora cada dado</a></li><li><a href="seguranca.html">Segurança em camadas</a></li></ul><h6>Decisões e acompanhamento</h6><ul><li><a href="falta-decidir.html">O que falta decidir, por papel</a></li><li><a href="sobre.html">Sobre este documento</a></li></ul></nav></aside>
+<main class="content doc">
+<div class="dx-busca-movel"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-movel" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><nav class="crumbs" aria-label="Trilha"><a href="index.html">Horus v2</a><span class="sep">/</span><span>A base: onde e como roda</span><span class="sep">/</span><span class="now">Como roda</span></nav><span class="doc-eyebrow">A base: onde e como roda</span><h1 class="doc-h1">Como roda</h1><p class="doc-lead">Os dois papéis de cada servidor, a fila de tarefas e os bancos de dados.</p><section class="dx-assuntos" aria-labelledby="dx-assuntos-titulo"><h2 id="dx-assuntos-titulo">Explore os assuntos</h2><div class="dx-assuntos-grade"><div class="dx-assunto"><h3><a href="#execucao-frase">Em uma frase</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#execucao-desenho">O desenho</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#execucao-como-funciona">Como funciona</a><small>6 tópicos</small></h3><ul><li><a href="#execucao-papeis">Os dois papéis: Atender e Trabalhar</a></li><li><a href="#execucao-fases">Um servidor agora, várias cópias depois</a></li><li><a href="#execucao-fila">Por que nenhum trabalho se perde</a></li><li><a href="#execucao-bancos">Onde ficam os bancos</a></li><li><a href="#execucao-registro">Como o SaaS acha o middleware</a></li><li><a href="#execucao-queda">O que acontece quando o middleware cai?</a></li></ul></div><div class="dx-assunto"><h3><a href="#execucao-falta-decidir">O que falta decidir nesta parte</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div></div></section><div id="dx-topo"><h2 class="doc-h2" id="execucao-frase">Em uma frase</h2>
+<p>O servidor do SaaS, a parte do Horus que as pessoas usam e que a Maind hospeda, é um programa só em dois papéis: um atende as pessoas na hora, o outro faz o trabalho que roda sozinho.</p>
+<p>O que não acontece na hora entra numa <strong>fila</strong>, uma lista de tarefas esperando a vez, gravada no banco. Por isso nada se perde quando o servidor para.</p>
+
+<h2 class="doc-h2" id="execucao-desenho">O desenho</h2>
+<p>O desenho mostra o servidor do SaaS no centro, os bancos ao redor e, à esquerda, o <strong>middleware</strong>, a parte que busca os dados no banco da empresa.</p>
+<figure class="dx-diagrama"><figcaption><b>Como roda: os dois papéis, a fila e os bancos</b> <span>Os dois papéis de cada servidor, a fila de tarefas e os bancos de dados.</span><a href="media/diagramas/arq-geral-execucao.html" target="_blank" rel="noopener">Abrir em tela cheia ↗</a></figcaption><iframe src="media/diagramas/arq-geral-execucao.html?embutido=1" title="Como roda: os dois papéis, a fila e os bancos" loading="lazy"></iframe></figure>
+<ul>
+  <li><strong>A área grande</strong> é o servidor do SaaS, com os dois papéis; <strong>a área "fora do SaaS"</strong> guarda o middleware e a base dele. Cada cor é um tipo de peça, explicado na legenda.</li>
+  <li><strong>Linha contínua:</strong> o que acontece na hora. <strong>Tracejada:</strong> o que acontece depois, pela fila. <strong>Destacada:</strong> o caminho de uma pergunta.</li>
+  <li><strong>O Registro de organizações</strong> aparece à parte só para ser visto, mas mora no Banco mestre. <strong>Cinco vistas prontas</strong> destacam uma parte de cada vez.</li>
+</ul>
+
+<h2 class="doc-h2" id="execucao-como-funciona">Como funciona</h2>
+
+<h3 class="doc-h3" id="execucao-papeis">Os dois papéis: Atender e Trabalhar</h3>
+<ul>
+  <li><strong>Atender</strong> recebe o navegador e o WhatsApp. No app, responde na hora, aos pedaços, enquanto escreve. A mensagem do WhatsApp ele grava e põe na fila. (<code>ARQ-004</code>, <code>ARQ-024</code>)</li>
+  <li><strong>Trabalhar</strong> não recebe nada de fora. Só pega tarefas da fila: o WhatsApp, os agendamentos, os agentes, os PDFs e os envios. (<code>ARQ-004</code>)</li>
+</ul>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Como num restaurante</b><p>O garçom atende a mesa; a cozinha só trabalha pelos pedidos pendurados. A comparação para aí, porque os dois papéis são o mesmo programa.</p></div>
+</div>
+
+<h3 class="doc-h3" id="execucao-fases">Um servidor agora, várias cópias depois</h3>
+<p>O pacote do programa é o mesmo em toda fase; muda só o jeito de instalar. (<code>ARQ-113</code>)</p>
+<ul>
+  <li><strong>Na VPS</strong>, o servidor alugado da construção, dos testes e da v2.0, roda uma cópia só, num pacote isolado, o docker compose. Cada troca de versão ou falha da máquina tira o SaaS do ar por um tempo que se mede, mas não se promete. (<code>ARQ-098</code>, <code>ARQ-112</code>, <code>ARQ-122</code>)</li>
+  <li><strong>Na produção real</strong>, numa nuvem ainda a escolher, os dois papéis ganham réplicas, cópias rodando ao mesmo tempo, num serviço que administra vários servidores sozinho, o Kubernetes gerenciado. A meta passa a 99,9% do mês no ar. (<code>ARQ-112</code>, <code>ARQ-122</code>)</li>
+  <li><strong>O middleware da Maind</strong> segue as duas fases, com a mesma meta. O que o cliente hospeda fica sempre em docker compose, fora da meta. (<code>ARQ-100</code>, <code>ARQ-112</code>, <code>ARQ-122</code>)</li>
+</ul>
+<p>Por isso o código já nasce pronto para réplicas. Parar uma resposta e os limites de pedidos passam pelo banco e valem em todas as cópias. O cache, a cópia guardada perto para responder mais rápido, fica em cada réplica. (<code>ARQ-113</code>)</p>
+<p>As senhas do programa nunca vão no pacote. (<code>ARQ-115</code>)</p>
+
+<h3 class="doc-h3" id="execucao-fila">Por que nenhum trabalho se perde</h3>
+<p>Uma <strong>organização</strong> é o cadastro de uma empresa cliente no Horus. Toda mudança grava, de uma vez, o estado de hoje e o pedido de trabalho na caixa de saída do banco da organização.</p>
+<p>O Repassador leva o pedido à fila, e o Trabalhar o atende, tentando de novo se falhar. Cada organização tem a sua vez, e o que alguém espera passa na frente. Na troca de versão, o servidor termina o que está em curso e devolve o resto à fila. (<code>ARQ-005</code>, <code>ARQ-063</code>, <code>ARQ-088</code>, <code>ARQ-095</code>)</p>
+
+<h3 class="doc-h3" id="execucao-bancos">Onde ficam os bancos</h3>
+<p>O SaaS tem três bancos. (<code>ARQ-010</code>, <code>ARQ-088</code>, <code>ARQ-097</code>)</p>
+<ul>
+  <li><strong>Banco mestre:</strong> o mapa das organizações, a fila, os limites, as chaves que trancam os dados, o Registro de organizações e as quedas do middleware.</li>
+  <li><strong>Banco da organização:</strong> um para cada uma, com acesso só dela, com o estado de hoje e a caixa de saída.</li>
+  <li><strong>Banco de log:</strong> a história, que chega segundos depois. Nele só se acrescenta.</li>
+</ul>
+<p>A <strong>Base de configuração</strong> do middleware fica num banco à parte. Nem o SaaS entra nela, nem o middleware nos bancos do SaaS. (<code>ARQ-103</code>, <code>ARQ-127</code>)</p>
+
+<h3 class="doc-h3" id="execucao-registro">Como o SaaS acha o middleware</h3>
+<p>Pelo Registro de organizações. A entrada da pessoa leva só o código da organização; o endereço do middleware nunca vai ao navegador. (<code>ARQ-102</code>)</p>
+<p>O SaaS fala com a versão atual do middleware e com a anterior. Uma mais velha é recusada, com o aviso "Atualização necessária". (<code>ARQ-114</code>)</p>
+
+<h3 class="doc-h3" id="execucao-queda">O que acontece quando o middleware cai?</h3>
+<ul>
+  <li>O SaaS dá a ele um de três estados, no ar, instável ou fora do ar, pelas falhas e pela demora dos contatos que já faz. (<code>ARQ-107</code>)</li>
+  <li>O estado aparece numa luz da tela de entrada, sempre com texto, e numa página de status sem login. No vermelho, um aviso próprio toma o lugar das respostas. A versão aparece só no painel da instância, a tela em que a Maind acompanha a instalação. (<code>ARQ-104</code>, <code>ARQ-106</code>, <code>ARQ-107</code>, <code>ARQ-114</code>)</li>
+  <li>As quedas ficam noventa dias no Banco mestre. Por isso a luz, a página e o aviso funcionam com o middleware fora. (<code>ARQ-106</code>, <code>ARQ-121</code>)</li>
+  <li>A rodada de um agendamento, alerta ou agente espera até uma hora. Se o middleware volta, roda uma vez e diz que atrasou. Se não, é pulada, com o motivo registrado, e só quem responde pelo agendamento é avisado. (<code>ARQ-108</code>, <code>ARQ-120</code>)</li>
+</ul>
+
+<h2 class="doc-h2" id="execucao-falta-decidir">O que falta decidir nesta parte</h2>
+<p>O arquiteto do Horus decide como o Horus é construído por dentro.</p>
+<ul>
+  <li><strong>Cabe ao arquiteto do Horus decidir por qual papel passa cada conversa com o middleware:</strong>
+    <ul>
+      <li>os assentos liberados, as vagas pagas da organização, a caminho do middleware (<code>P-048</code>);</li>
+      <li>a medida do estado, e como medir o do middleware da casa do cliente (<code>P-042</code>);</li>
+      <li>a mudança das permissões e o aviso de IA parada, a caminho do SaaS (<code>ARQ-117</code>, <code>ARQ-123</code>);</li>
+      <li>o e-mail de recuperação de senha, e quem o manda (<code>P-048</code>).</li>
+    </ul>
+  </li>
+  <li><strong>Cabe ao arquiteto do Horus decidir onde moram e rodam algumas peças:</strong>
+    <ul>
+      <li>o banco do estado do middleware e o das permissões de cada pessoa (<code>ARQ-107</code>, <code>ARQ-123</code>);</li>
+      <li>o papel do Repassador, e se o Banco mestre também usa caixa de saída (<code>ARQ-088</code>);</li>
+      <li>o ponto em que a história é gravada, que o modelo de dados da administração da instância descreve de outro jeito (<code>MF-101</code>, <code>ARQ-097</code>);</li>
+      <li>a tecnologia da Base de configuração e o lugar dela na produção real (<code>ARQ-127</code>);</li>
+      <li>se o servidor guarda na memória o endereço lido no Registro (<code>ARQ-102</code>).</li>
+    </ul>
+  </li>
+  <li><strong>Falta o arquiteto do Horus desenhar:</strong> a exportação da conversa em PDF ou HTML. (<code>D-250</code>, <code>P-047</code>)</li>
+  <li><strong>Falta o arquiteto do Horus atualizar:</strong> os documentos técnicos que ainda não descrevem as duas fases. (<code>P-028</code>)</li>
+  <li><strong>Falta o arquiteto do Horus calibrar, com o uso:</strong> o ponto em que "no ar" vira "instável", a espera de uma hora da rodada, quantas versões do middleware o SaaS aceita e os limites do agente. (<code>ARQ-107</code>, <code>ARQ-108</code>, <code>ARQ-114</code>, <code>ARQ-030</code>)</li>
+  <li><strong>Falta o arquiteto do Horus confirmar na prática:</strong>
+    <ul>
+      <li>que bastam poucas conexões abertas com o banco de cada organização (<code>ARQ-088</code>);</li>
+      <li>que a troca de versão na VPS tira o SaaS do ar por até dois minutos, mais a subida (<code>ARQ-063</code>, <code>ARQ-098</code>);</li>
+      <li>que preparar o código para réplicas não pesa na v2.0 (<code>ARQ-113</code>).</li>
+    </ul>
+  </li>
+  <li><strong>Também depende, e está explicado em outras páginas:</strong> a separação entre o SaaS e o middleware da Maind e a prova de que as organizações não se misturam nele (<a href="infra-separada.html">A infraestrutura separada</a>); a nuvem, a data e o orçamento da produção real (<a href="implantacao.html">Onde roda</a>); a política do certificado, a identidade digital do middleware (<a href="seguranca.html">Segurança em camadas</a>); se a resposta pronta chega aos pedaços ou de uma vez (<a href="pergunta-resposta.html">Da pergunta à resposta</a>); onde roda a pergunta da Maind sobre a história da instalação (<a href="dados.html">Onde mora cada dado</a>); e o uso dos servidores MCP da organização, programas dela que só leem (<a href="modulos.html">Os módulos</a>).</li>
+</ul>
+</div><nav class="rel-grid dx-vizinhas" aria-label="Páginas vizinhas"><a class="rel-card dx-anterior" href="modulos.html"><span class="cat">Anterior</span><h5>Os módulos</h5><span class="arrow">←</span></a><a class="rel-card dx-proxima" href="implantacao.html"><span class="cat">Próxima</span><h5>Onde roda</h5><span class="arrow">→</span></a></nav>
+<footer class="ds-footer"><div class="ftr-brand"><img class="ftr-logo logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="ftr-logo logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /><div class="ftr-divider"></div><div class="ftr-meta"><b>Maind Horus · Horus v2 · versões 2.0 e 2.1 em desenho</b></div></div><div class="ftr-center"><span class="ftr-tag">v2.0 e 2.1 em desenho, sem versão publicada · 08/11/2026</span></div><div class="ftr-author"><div class="avatar">MT</div><div class="ftr-author-info"><b>Maind Tech</b><span>Horus v2</span></div></div></footer>
+</main>
+<aside class="toc"><h6>Neste artigo</h6><ul><li><a href="#execucao-frase">Em uma frase</a></li><li><a href="#execucao-desenho">O desenho</a></li><li><a href="#execucao-como-funciona">Como funciona</a></li><li class="lvl-3"><a href="#execucao-papeis">Os dois papéis: Atender e Trabalhar</a></li><li class="lvl-3"><a href="#execucao-fases">Um servidor agora, várias cópias depois</a></li><li class="lvl-3"><a href="#execucao-fila">Por que nenhum trabalho se perde</a></li><li class="lvl-3"><a href="#execucao-bancos">Onde ficam os bancos</a></li><li class="lvl-3"><a href="#execucao-registro">Como o SaaS acha o middleware</a></li><li class="lvl-3"><a href="#execucao-queda">O que acontece quando o middleware cai?</a></li><li><a href="#execucao-falta-decidir">O que falta decidir nesta parte</a></li></ul></aside>
+</div>
+<div class="toast" id="toast">Copiado ✓</div>
+<script src="assets/busca.js"></script>
+<script src="assets/docs.js"></script>
+<script src="assets/docx-kbr.js"></script>
+</body>
+</html>

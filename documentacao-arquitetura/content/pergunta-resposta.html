@@ -1,0 +1,43 @@
+<h3 id="pergunta-resposta-frase">Em uma frase</h3>
+<p>Esta parte mostra o caminho de uma pergunta de análise, a pergunta que a pessoa faz ao Horus no chat. Só a pergunta sai do <strong>SaaS</strong>, a parte do Horus que as pessoas usam, hospedada pela Maind. A análise roda no <strong>middleware</strong>, a parte que busca os dados no banco de dados da organização, e só a resposta pronta volta. (<code>D-189</code>, <code>D-258</code>)</p>
+
+<h3 id="pergunta-resposta-desenho">O desenho</h3>
+<p>O desenho mostra, de cima para baixo, quem fala com quem e em que ordem.</p>
+<dx-diagrama ref="arq-geral-pergunta-resposta"></dx-diagrama>
+<ul>
+  <li><strong>Cada coluna é uma peça:</strong> no SaaS, o Atender, a parte que responde na hora, e o Avaliador de permissões; o middleware; o serviço de IA, de fora; e os bancos da organização.</li>
+  <li><strong>As faixas de 1 a 4</strong> são as etapas; as sem número, os desvios.</li>
+  <li><strong>A legenda dá o sentido das setas:</strong> caminho principal, resposta, permissão e tracejada. A tracejada só ocorre em alguns casos: web ligada, falha, sem contato ou segundo plano.</li>
+  <li><strong>O Registro de organizações</strong>, o cadastro em que o SaaS guarda o endereço de cada middleware, e <strong>o banco da organização</strong> estão nas notas das setas, que abrem ao clicar.</li>
+</ul>
+
+<h3 id="pergunta-resposta-como-funciona">Como funciona</h3>
+
+<h4 id="pergunta-resposta-quando-pergunta">O que acontece quando alguém pergunta?</h4>
+<p>O Atender recebe a pergunta. O <strong>Avaliador de permissões</strong> diz se a pessoa pode perguntar, sem consultar o middleware. Na dúvida, ele nega. (<code>ARQ-008</code>)</p>
+<p>Para isso, o SaaS guarda de cada pessoa só um código, sem nome. O código traz o tipo de assento, que é a licença dela, as permissões e os grupos, que o middleware atualiza. (<code>ARQ-109</code>, <code>ARQ-123</code>)</p>
+<p>Do acesso da pessoa, o SaaS só sabe qual é a organização. Com isso, acha o endereço do middleware no Registro de organizações, e esse endereço nunca aparece para quem usa. Ele foi combinado pelo <strong>certificado</strong>, uma identidade digital que prova quem é quem. (<code>ARQ-102</code>, <code>ARQ-124</code>)</p>
+
+<h4 id="pergunta-resposta-no-middleware">O que o middleware faz com a pergunta?</h4>
+<p>A análise roda toda no middleware, com a IA e os bancos da organização. As senhas de acesso ficam lá, cadastradas pelo <strong>owner da organização</strong>, a pessoa que administra a organização no Horus. (<code>D-189</code>, <code>D-273</code>)</p>
+<p>A IA escreve a consulta e o texto, mas <strong>os números vêm sempre do banco</strong>. A consulta que falha ou volta vazia ganha uma tentativa de conserto. Com a web ligada, cada fato traz link e data. (<code>D-022</code>, <code>D-215</code>)</p>
+<p>O middleware, na Maind ou na casa do cliente, atende várias organizações. Elas ficam separadas por uma etiqueta em cada registro, um filtro em toda consulta e uma chave própria, que tranca as senhas. (<code>D-272</code>, <code>ARQ-103</code>)</p>
+
+<h4 id="pergunta-resposta-o-que-volta">O que volta para a pessoa?</h4>
+<p>Volta só a resposta pronta, que o SaaS guarda e mostra ao vivo. Junto vem a contagem de uso da IA, sem o conteúdo, com que o owner da organização vê o consumo e o custo no Horus. (<code>ARQ-024</code>, <code>ARQ-117</code>)</p>
+<p>Se a IA parar, o owner da organização é avisado, e a equipe da Maind também, se a chave da IA for da Maind. Nomes de pessoas não passam por aqui. (<code>D-268</code>, <code>ARQ-109</code>)</p>
+
+<h4 id="pergunta-resposta-middleware-fora">E se o middleware cair?</h4>
+<p>O SaaS acompanha o middleware em três estados: no ar, instável e fora do ar. Fora do ar, a pergunta não chega. Um aviso manda procurar o owner da organização e diz que o resto do Horus segue no ar. Um botão tenta de novo. A queda do middleware da Maind alcança todas as organizações dele. (<code>ARQ-104</code>, <code>ARQ-107</code>)</p>
+
+<h3 id="pergunta-resposta-falta-decidir">O que falta decidir nesta parte</h3>
+<p>O arquiteto do Horus decide como o Horus é construído por dentro.</p>
+<ul>
+  <li><strong>Cabe ao arquiteto do Horus decidir:</strong>
+    <ul>
+      <li>onde ficam as etapas da análise além da IA e das consultas: no SaaS ou no middleware (<code>P-040</code>, <code>P-048</code>);</li>
+      <li>o que o middleware manda ao SaaS enquanto a resposta se forma (<code>P-042</code>, <code>P-048</code>).</li>
+    </ul>
+  </li>
+  <li><strong>Também depende, e está explicado em outras páginas:</strong> a separação entre as organizações de um mesmo middleware e quem liga as saídas extras, como baixar o resultado em planilha (<a href="#infra-separada">A infraestrutura separada</a>); a política do certificado e a chave única da proteção dos dados por pessoa, na v2.1 (<a href="#seguranca">Segurança em camadas</a>); onde ficam a explicação dos dados para a IA e a lista de modelos de IA, e como a IA chama, na v2.1, os programas da organização (<a href="#modulos">Os módulos</a>); onde ficam as permissões de cada código e como o SaaS mede o estado do middleware (<a href="#execucao">Como roda</a>); onde roda a pergunta sobre a história de uso do Horus (<a href="#dados">Onde mora cada dado</a>); se a fonte de páginas web continua (<a href="#integracoes">Com quem conversa fora</a>); e a conferência jurídica do código que sobra de quem é excluído (<a href="#criar-organizacao">Criar uma organização</a>).</li>
+</ul>

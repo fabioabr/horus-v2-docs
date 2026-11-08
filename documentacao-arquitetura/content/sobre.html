@@ -1,0 +1,46 @@
+<h3 id="sobre-frase">Em uma frase</h3>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Proposta para análise do dono do Horus</b><p>O dono do Horus ainda não revisou este documento por inteiro.</p></div>
+</div>
+<p>Este documento descreve a arquitetura geral do Horus v2 em dez desenhos. A última atualização é de 08/11/2026.</p>
+
+<h3 id="sobre-mudou">O que mudou</h3>
+<p>Os documentos técnicos 03 a 14 são do começo de novembro e ainda não citam o middleware. Os desenhos seguem o que foi decidido depois. Onde o backlog do produto, a lista de decisões e pendências do produto, diverge desses documentos, vale o backlog, que é mais novo. Em resumo:</p>
+<ul>
+  <li><strong>O middleware existe desde a v2.0</strong> e atende várias organizações, na Maind ou na casa do cliente, cada uma ligada ao SaaS pelo seu certificado. (<code>D-258</code>, <code>D-272</code>, <code>ARQ-103</code>)</li>
+  <li><strong>A conversa entre as duas partes</strong> usa um canal com regras combinadas, o gRPC, e o servidor MCP do rascunho saiu do contrato. (<code>ARQ-099</code>)</li>
+  <li><strong>A hospedagem tem duas fases:</strong> a VPS, um servidor alugado, que vale agora, e a produção real, numa nuvem pública com vários servidores e cópias do programa. (<code>ARQ-112</code>)</li>
+  <li><strong>Quando o middleware cai,</strong> a pessoa vê um aviso próprio, uma luz de estado e uma página de status sem login, e a rodada espera até uma hora. (<code>ARQ-104</code>, <code>ARQ-106</code>, <code>ARQ-107</code>, <code>ARQ-108</code>)</li>
+  <li><strong>O SaaS guarda de cada pessoa só um código,</strong> e o nome vem do middleware. (<code>ARQ-109</code>)</li>
+  <li><strong>O login virou uma configuração da organização,</strong> e o primeiro acesso do owner da organização é um link de uso único. (<code>ARQ-110</code>, <code>ARQ-111</code>)</li>
+  <li><strong>A instalação completa em casa do cliente</strong> ficou sem versão. O que vai ao cliente é o middleware. (<code>D-188</code>, <code>D-260</code>, <code>ARQ-100</code>)</li>
+</ul>
+
+<h3 id="sobre-cobre">O que a arquitetura ainda não cobre</h3>
+<p>Oito lacunas apareceram ao desenhar e não foram preenchidas, porque nenhuma decisão as resolve. Cada uma está listada, com o papel de quem decide, em <a href="#falta-decidir">O que falta decidir, por papel</a>.</p>
+<ul>
+  <li><strong>O corte do motor de análise:</strong> quais peças ficam no SaaS e quais no middleware. (<code>P-040</code>, <code>P-048</code>)</li>
+  <li><strong>O módulo das macro funcionalidades novas:</strong> a MF-120, a MF-122, a MF-123 e a MF-124 seguem sem módulo. (<code>P-028</code>)</li>
+  <li><strong>O Registro de organizações,</strong> que guarda onde fica cada middleware, não tem lugar definido. (<code>ARQ-102</code>)</li>
+  <li><strong>O estado do middleware e as permissões por código:</strong> não se sabe em que banco moram nem por qual canal chegam. (<code>ARQ-107</code>, <code>ARQ-117</code>, <code>ARQ-123</code>)</li>
+  <li><strong>O repassador e o ponto onde a história é gravada:</strong> falta dizer em que papel rodam. (<code>ARQ-097</code>)</li>
+  <li><strong>O vínculo na casa do cliente:</strong> não se sabe por onde o arquivo assinado volta ao SaaS nem como o SaaS confere que o banco e a IA estão configurados. (<code>ARQ-124</code>, <code>D-277</code>)</li>
+  <li><strong>O banco do middleware da Maind na produção real:</strong> à parte do banco do SaaS ou dentro do serviço. (<code>ARQ-127</code>)</li>
+  <li><strong>O que os desenhos não mostram:</strong> o pedido em lote dos nomes das pessoas, a passagem do endereço ao envio de e-mail e quem paga o middleware. (<code>ARQ-109</code>, <code>ARQ-118</code>)</li>
+</ul>
+
+<h3 id="sobre-feito">Como foi feito</h3>
+<ul>
+  <li><strong>Os textos</strong> vieram de agentes de IA que leram os documentos de arquitetura e o backlog do produto. Cada decisão nova foi tomada com o dono do Horus, uma pergunta por vez.</li>
+  <li><strong>Os desenhos</strong> foram feitos no Archify, com a moldura da Maind (abas, zoom e grade). Todos passaram nas conferências automáticas da ferramenta: validação, entrega, conferência do arquivo e abertura no navegador.</li>
+  <li><strong>Cada alteração</strong> voltou com uma tabela da fonte de cada peça e de cada ligação nova. Peça sem fonte não entra no desenho.</li>
+  <li><strong>O arquiteto do Horus tomou sozinho sete decisões,</strong> e o dono do Horus pode revê-las. Só duas pedem confirmação expressa. (<code>ARQ-115</code>, <code>ARQ-116</code>, <code>ARQ-117</code>, <code>ARQ-124</code>, <code>ARQ-125</code>, <code>ARQ-126</code>, <code>ARQ-127</code>)</li>
+</ul>
+<h4 id="sobre-nao-conferido">O que não foi conferido</h4>
+<ul>
+  <li><strong>Os cliques, as janelas de detalhe, a roda e a mãozinha</strong> de cada desenho não foram testados por dentro da moldura da Maind, só por captura de tela.</li>
+  <li><strong>Nenhuma peça foi relida</strong> contra as fontes por quem não a desenhou. Na primeira versão, as mais delicadas foram conferidas por amostra.</li>
+  <li><strong>Três itens são inferência do arquiteto do Horus</strong> e estão marcados assim nos cartões: o aviso de IA parada saindo do middleware, o Registro de organizações guardando o endereço e a ligação “uso de IA”, e a linha da chave de IA da instância saindo do SaaS para os provedores de IA.</li>
+  <li><strong>Os documentos 03 a 14 não foram alterados.</strong> O 01 e o registro de decisões (02) estão atualizados até 08/11/2026.</li>
+</ul>

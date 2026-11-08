@@ -1,0 +1,80 @@
+<h3 id="falta-decidir-frase">Em uma frase</h3>
+<p>Esta página junta, sem repetir, tudo o que as outras páginas deixam em aberto, agrupado por quem precisa agir. Cada item diz em qual página o assunto é explicado. As palavras técnicas estão explicadas em <a href="#quem-e-quem">Quem é quem e como ler</a>.</p>
+
+<h3 id="falta-decidir-dono-do-horus">Falta o dono do Horus confirmar ou decidir</h3>
+<p>O dono do Horus decide infraestrutura, segurança, preço e o que as pessoas veem. São dez itens.</p>
+<h4 id="falta-decidir-confirmar">Propostas para confirmar</h4>
+<ul>
+  <li><strong>Confirmar que o SaaS e o middleware da Maind ficam separados,</strong> cada um com a sua rede e o seu banco. No começo, podem dividir o servidor. (<code>ARQ-127</code>) Ver <a href="#infra-separada">A infraestrutura separada</a> e <a href="#implantacao">Onde roda</a>.</li>
+  <li><strong>Confirmar quem liga as saídas que exigem cuidado,</strong> como baixar o resultado em planilha (CSV). Elas vêm desligadas, e o arquiteto do Horus propõe que só o owner da organização as ligue. (<code>ARQ-116</code>) Ver <a href="#infra-separada">A infraestrutura separada</a> e <a href="#seguranca">Segurança em camadas</a>.</li>
+  <li><strong>Confirmar quem marca a organização como ativa.</strong> O sistema só libera a ativação quando as três condições se cumprem, e o PO propõe que quem marca continue sendo a Maind. (<code>D-277</code>) Ver <a href="#criar-organizacao">Criar uma organização</a>.</li>
+</ul>
+<h4 id="falta-decidir-infra-custo">Escolhas de infraestrutura e de custo</h4>
+<ul>
+  <li><strong>Decidir a nuvem, a data e o orçamento da produção real,</strong> a única fase com meta de 99,9% do tempo no ar. (<code>ARQ-085</code>, <code>ARQ-122</code>) Ver <a href="#implantacao">Onde roda</a> e <a href="#execucao">Como roda</a>.</li>
+  <li><strong>Decidir quem paga o middleware,</strong> o da Maind e o da casa do cliente. Ainda não há decisão registrada. Ver <a href="#implantacao">Onde roda</a>.</li>
+  <li><strong>Decidir, se um cliente pedir o Horus inteiro instalado em casa,</strong> como seria essa instalação e o que a Maind veria dela. Hoje isso não tem versão. (<code>ARQ-060</code>, <code>ARQ-074</code>, <code>D-188</code>) Ver <a href="#implantacao">Onde roda</a>.</li>
+</ul>
+<h4 id="falta-decidir-produto-integracao">Escolhas de produto e de integração</h4>
+<ul>
+  <li><strong>Decidir o caminho até o WhatsApp.</strong> A hipótese de trabalho é falar direto com o serviço oficial da Meta, com a Maind como fornecedora de tecnologia. (<code>ARQ-047</code>) Ver <a href="#integracoes">Com quem conversa fora</a> e <a href="#segundo-plano">O que roda sozinho</a>.</li>
+  <li><strong>Decidir quem é avisado quando o Teams ou o Google Chat param.</strong> Ainda não há decisão registrada. Ver <a href="#integracoes">Com quem conversa fora</a>.</li>
+  <li><strong>Decidir, na v2.1, se a segurança por pessoa terá uma chave só de liga e desliga,</strong> no lugar das duas de hoje. (<code>ARQ-040</code>) Ver <a href="#seguranca">Segurança em camadas</a>.</li>
+  <li><strong>Decidir, na v2.1, onde o owner da organização escreve as regras da segurança por pessoa.</strong> O PO propõe a tela. Ver <a href="#seguranca">Segurança em camadas</a>.</li>
+</ul>
+
+<h3 id="falta-decidir-arquiteto-do-horus">Falta o arquiteto do Horus decidir, comprovar ou conferir</h3>
+<p>O arquiteto do Horus decide como o Horus é construído por dentro. São vinte e quatro itens, em cinco grupos.</p>
+<h4 id="falta-decidir-como-se-falam">Como as partes se falam e se protegem</h4>
+<ul>
+  <li><strong>Definir, com o dono do Horus, a política do certificado:</strong> o formato, a troca e o cancelamento, com uma parte escolhida por cada organização. (<code>P-049</code>) Ver <a href="#seguranca">Segurança em camadas</a>.</li>
+  <li><strong>Decidir como o certificado chega à TI do cliente</strong> e por onde o arquivo assinado volta ao SaaS. (<code>ARQ-124</code>) Ver <a href="#criar-organizacao">Criar uma organização</a>.</li>
+  <li><strong>Decidir como o SaaS sabe que o banco e a IA estão configurados,</strong> sem ver as senhas, para liberar a ativação. (<code>D-277</code>, <code>P-048</code>) Ver <a href="#criar-organizacao">Criar uma organização</a>.</li>
+  <li><strong>Decidir onde o owner da instância faz o login</strong> e por quanto tempo vale o link de primeiro acesso. (<code>ARQ-110</code>, <code>ARQ-111</code>, <code>P-048</code>) Ver <a href="#criar-organizacao">Criar uma organização</a> e <a href="#seguranca">Segurança em camadas</a>.</li>
+  <li><strong>Decidir por qual canal chegam ao SaaS</strong> as mudanças de permissão, o aviso de IA parada e a medida do estado do middleware do cliente, e quem manda o e-mail de recuperação de senha. (<code>ARQ-117</code>, <code>ARQ-123</code>, <code>P-042</code>, <code>P-048</code>) Ver <a href="#execucao">Como roda</a> e <a href="#integracoes">Com quem conversa fora</a>.</li>
+</ul>
+<h4 id="falta-decidir-onde-ficam">Onde ficam as peças</h4>
+<ul>
+  <li><strong>Decidir que partes da análise ficam no SaaS e quais no middleware,</strong> e o que o middleware manda enquanto a resposta se forma. (<code>P-040</code>, <code>P-042</code>, <code>P-048</code>) Ver <a href="#pergunta-resposta">Da pergunta à resposta</a>.</li>
+  <li><strong>Decidir onde ficam o modelo semântico, a lista de modelos de IA e o modelo padrão.</strong> (<code>P-048</code>) Ver <a href="#modulos">Os módulos</a> e <a href="#dados">Onde mora cada dado</a>.</li>
+  <li><strong>Decidir como a IA usa os servidores MCP</strong> na análise, a partir da v2.1, e como a segurança por pessoa responde ao SaaS. (<code>P-050</code>, <code>D-281</code>, <code>D-286</code>, <code>D-263</code>) Ver <a href="#modulos">Os módulos</a> e <a href="#integracoes">Com quem conversa fora</a>.</li>
+  <li><strong>Decidir onde roda a pergunta do owner da instância</strong> sobre a história da instalação. (<code>D-276</code>, <code>P-048</code>) Ver <a href="#dados">Onde mora cada dado</a>.</li>
+  <li><strong>Decidir onde moram o estado do middleware, as permissões por código, a caixa de saída e o ponto onde a história é gravada,</strong> e onde fica o banco do middleware da Maind na nuvem. (<code>ARQ-107</code>, <code>ARQ-123</code>, <code>ARQ-088</code>, <code>ARQ-097</code>, <code>ARQ-127</code>) Ver <a href="#execucao">Como roda</a> e <a href="#dados">Onde mora cada dado</a>.</li>
+  <li><strong>Decidir onde roda o ciclo do agente,</strong> já que a IA agora só se alcança pelo middleware. (<code>ARQ-030</code>, <code>P-040</code>, <code>P-048</code>) Ver <a href="#segundo-plano">O que roda sozinho</a>.</li>
+  <li><strong>Decidir se um alerta só de texto passa pela montagem do arquivo,</strong> e o texto do aviso de atraso. (<code>ARQ-108</code>) Ver <a href="#segundo-plano">O que roda sozinho</a>.</li>
+</ul>
+<h4 id="falta-decidir-provar">Provar e conferir</h4>
+<ul>
+  <li><strong>Comprovar que a marca, o filtro e a chave bastam</strong> para uma organização não ver a outra no mesmo middleware. (<code>D-272</code>, <code>ARQ-103</code>) Ver <a href="#infra-separada">A infraestrutura separada</a>.</li>
+  <li><strong>Comprovar que a trava que barra endereços da rede interna aceita o banco de log</strong> como fonte de dados. (<code>D-158</code>) Ver <a href="#dados">Onde mora cada dado</a>.</li>
+  <li><strong>Conferir se apagar quem é excluído convive</strong> com as cópias de segurança, com o registro de acesso e com a LGPD, a lei de proteção de dados pessoais. A parte jurídica fica com o jurídico de cada cliente. (<code>P-044</code>, <code>D-210</code>, <code>D-247</code>) Ver <a href="#criar-organizacao">Criar uma organização</a>.</li>
+  <li><strong>Calibrar e confirmar com o uso</strong> o ponto em que “no ar” vira “instável”, a espera de uma hora da rodada, quantas versões do middleware o SaaS aceita, os limites do agente, o tempo fora do ar na troca de versão e o custo de preparar o código para réplicas. (<code>ARQ-107</code>, <code>ARQ-108</code>, <code>ARQ-114</code>, <code>ARQ-030</code>, <code>ARQ-063</code>, <code>ARQ-113</code>) Ver <a href="#execucao">Como roda</a> e <a href="#segundo-plano">O que roda sozinho</a>.</li>
+</ul>
+<h4 id="falta-decidir-fechar">Fechar e atualizar</h4>
+<ul>
+  <li><strong>Fechar a lista do que a TI do cliente precisa</strong> para hospedar o middleware, inclusive onde fica o banco dele. (<code>ARQ-126</code>) Ver <a href="#implantacao">Onde roda</a>.</li>
+  <li><strong>Dizer em que módulo entra cada peça nova</strong> do desenho. (<code>P-028</code>) Ver <a href="#modulos">Os módulos</a>.</li>
+  <li><strong>Atualizar os documentos técnicos</strong> que ainda não descrevem as duas fases de hospedagem. (<code>P-028</code>) Ver <a href="#execucao">Como roda</a> e <a href="#sobre">Sobre este documento</a>.</li>
+</ul>
+<h4 id="falta-decidir-integracoes-exportacao">Integrações e exportação</h4>
+<ul>
+  <li><strong>Decidir como o Teams e o Google Chat se ligam ao Horus.</strong> (<code>P-038</code>) Ver <a href="#integracoes">Com quem conversa fora</a>.</li>
+  <li><strong>Decidir como funciona a fonte AWS Athena,</strong> o serviço de consulta de dados da Amazon. (<code>P-033</code>) Ver <a href="#integracoes">Com quem conversa fora</a>.</li>
+  <li><strong>Decidir se a fonte de páginas web da versão de hoje some ou continua.</strong> (<code>P-034</code>) Ver <a href="#integracoes">Com quem conversa fora</a> e <a href="#pergunta-resposta">Da pergunta à resposta</a>.</li>
+  <li><strong>Decidir como a chave de IA da Maind chega ao owner da organização,</strong> e o que acontece com a ligação de IA que a organização já tem. (<code>P-032</code>) Ver <a href="#integracoes">Com quem conversa fora</a>.</li>
+  <li><strong>Desenhar a exportação da conversa</strong> em PDF ou HTML. (<code>D-250</code>, <code>P-047</code>) Ver <a href="#execucao">Como roda</a>.</li>
+</ul>
+
+<h3 id="falta-decidir-po">Falta o PO conferir ou definir</h3>
+<p>O PO cuida do que o produto entrega e da ordem em que entrega. São três itens.</p>
+<ul>
+  <li><strong>Definir a macro funcionalidade</strong> da luz de estado, do aviso de queda, da página de status e do registro das quedas, depois que a arquitetura fechar. (<code>D-283</code>, <code>D-284</code>) Ver <a href="#modulos">Os módulos</a>.</li>
+  <li><strong>Conferir com o uso</strong> que o owner da organização consegue configurar sozinho o banco e a IA, com o suporte da Maind. (<code>D-273</code>) Ver <a href="#criar-organizacao">Criar uma organização</a>.</li>
+  <li><strong>Conferir com o uso</strong> que a cobrança se confere só com números, sem nomes, e que a Maind usa a pergunta sobre a história o bastante para valer o custo da chave. (<code>D-274</code>, <code>D-276</code>) Ver <a href="#dados">Onde mora cada dado</a>.</li>
+</ul>
+
+<h3 id="falta-decidir-owner-da-organizacao">Falta o owner da organização consultar o jurídico da própria empresa</h3>
+<p>O owner da organização administra uma organização dentro do Horus. É um item, na implantação de cada cliente.</p>
+<ul>
+  <li><strong>Consultar o jurídico da empresa</strong> sobre as regras do Horus e a LGPD: a leitura das conversas de todos, a exclusão dos registros de quem sai e o código que sobra no SaaS. (<code>D-223</code>, <code>D-210</code>, <code>D-247</code>) Ver <a href="#seguranca">Segurança em camadas</a>.</li>
+</ul>

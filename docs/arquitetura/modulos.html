@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-menu="vertical">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="DocX 0.4.0" />
+<meta name="description" content="Como o Horus v2 é construído por dentro, explicado sem jargão: dez desenhos, o que falta decidir e quem decide." />
+<link rel="icon" href="assets/logo-claro.svg" />
+<title>Os módulos — Horus v2</title>
+<script>
+(function () {
+  try {
+    var raiz = document.documentElement;
+    var tema = localStorage.getItem('kinto-theme');
+    var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    raiz.setAttribute('data-theme', tema || (escuro ? 'dark' : 'light'));
+    raiz.setAttribute('data-menu', localStorage.getItem('kinto-menu') || 'vertical');
+    var ws = parseInt(localStorage.getItem('kinto-side-w'), 10);
+    var wt = parseInt(localStorage.getItem('kinto-toc-w'), 10);
+    if (ws) raiz.style.setProperty('--side-w-user', ws + 'px');
+    if (wt) raiz.style.setProperty('--toc-w-user', wt + 'px');
+  } catch (e) { /* localStorage bloqueado: ficam os atributos do <html> */ }
+})();
+</script>
+<link rel="stylesheet" href="assets/docs.css" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="assets/docx-kbr.css" />
+</head>
+<body>
+<header class="hdr"><div class="hdr-brand"><a class="hdr-logo" href="index.html" aria-label="Horus v2"><img class="logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /></a><div class="div"></div><div class="doc-meta"><b>Horus v2 · Documentação</b><small>Maind Horus</small></div></div><div class="hdr-center"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-topo" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><div class="hdr-actions"><div class="menu-toggle" role="group" aria-label="Menu"><button data-set="vertical" aria-label="Menu vertical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button><button data-set="horizontal" aria-label="Menu horizontal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></button></div><div class="theme-toggle" role="group" aria-label="Tema"><button data-set="light" aria-label="Claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button><button data-set="dark" aria-label="Escuro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header>
+<div class="shell">
+<aside class="side"><nav aria-label="Páginas da documentação"><h6>Horus v2</h6><ul><li><a href="index.html">Início</a></li></ul><h6>Comece por aqui</h6><ul><li><a href="quem-e-quem.html">Quem é quem e como ler</a></li></ul><h6>A base: onde e como roda</h6><ul><li><a href="infra-separada.html">A infraestrutura separada</a></li><li><a href="modulos.html" class="active">Os módulos</a></li><li><a href="execucao.html">Como roda</a></li><li><a href="implantacao.html">Onde roda</a></li></ul><h6>O Horus em ação</h6><ul><li><a href="pergunta-resposta.html">Da pergunta à resposta</a></li><li><a href="segundo-plano.html">O que roda sozinho</a></li><li><a href="integracoes.html">Com quem conversa fora</a></li></ul><h6>Organizações, dados e segurança</h6><ul><li><a href="criar-organizacao.html">Criar uma organização</a></li><li><a href="dados.html">Onde mora cada dado</a></li><li><a href="seguranca.html">Segurança em camadas</a></li></ul><h6>Decisões e acompanhamento</h6><ul><li><a href="falta-decidir.html">O que falta decidir, por papel</a></li><li><a href="sobre.html">Sobre este documento</a></li></ul></nav></aside>
+<main class="content doc">
+<div class="dx-busca-movel"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-movel" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><nav class="crumbs" aria-label="Trilha"><a href="index.html">Horus v2</a><span class="sep">/</span><span>A base: onde e como roda</span><span class="sep">/</span><span class="now">Os módulos</span></nav><span class="doc-eyebrow">A base: onde e como roda</span><h1 class="doc-h1">Os módulos</h1><p class="doc-lead">As peças do programa e quem pode chamar quem.</p><section class="dx-assuntos" aria-labelledby="dx-assuntos-titulo"><h2 id="dx-assuntos-titulo">Explore os assuntos</h2><div class="dx-assuntos-grade"><div class="dx-assunto"><h3><a href="#modulos-frase">Em uma frase</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#modulos-desenho">O desenho</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#modulos-como-funciona">Como funciona</a><small>5 tópicos</small></h3><ul><li><a href="#modulos-divisao">Como o programa se divide</a></li><li><a href="#modulos-eventos">Como um módulo avisa o de cima</a></li><li><a href="#modulos-middleware">O que foi para o middleware</a></li><li><a href="#modulos-contrato">O que passa entre os dois</a></li><li><a href="#modulos-telas">As duas telas</a></li></ul></div><div class="dx-assunto"><h3><a href="#modulos-falta-decidir">O que falta decidir nesta parte</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div></div></section><div id="dx-topo"><h2 class="doc-h2" id="modulos-frase">Em uma frase</h2>
+<p>O SaaS, a parte do Horus que as pessoas usam e que a Maind hospeda, é um programa só, dividido em peças chamadas <strong>módulos</strong>. Cada módulo só pede ajuda aos de baixo, e assim uma mudança num canto não quebra o resto.</p>
+<p>Parte do trabalho saiu dele para o <strong>middleware</strong>, a parte que busca os dados no banco da empresa e conversa com o SaaS.</p>
+
+<h2 class="doc-h2" id="modulos-desenho">O desenho</h2>
+<p>O desenho mostra os módulos do SaaS à esquerda, o middleware à direita e quem chama quem.</p>
+<figure class="dx-diagrama"><figcaption><b>Os módulos e a direção das dependências</b> <span>As peças do programa, chamadas módulos, e quem pode chamar quem.</span><a href="media/diagramas/arq-geral-modulos.html" target="_blank" rel="noopener">Abrir em tela cheia ↗</a></figcaption><iframe src="media/diagramas/arq-geral-modulos.html?embutido=1" title="Os módulos e a direção das dependências" loading="lazy"></iframe></figure>
+<ul>
+  <li><strong>Duas áreas cercadas</strong>, o SaaS e o middleware. Cada cor é um tipo de peça, explicado na legenda.</li>
+  <li><strong>Seta cheia, dentro do SaaS:</strong> "depende de". <strong>Destacada:</strong> o caminho de uma pergunta. <strong>Tracejada:</strong> um aviso que chega depois. O texto de cada seta diz o que passa por ela.</li>
+  <li><strong>Cinco vistas prontas</strong> destacam uma parte do desenho de cada vez.</li>
+</ul>
+
+<h2 class="doc-h2" id="modulos-como-funciona">Como funciona</h2>
+
+<h3 class="doc-h3" id="modulos-divisao">Como o programa se divide</h3>
+<p>Os módulos se empilham como andares, e cada um só chama os de baixo. (<code>ARQ-003</code>, <code>ARQ-018</code>)</p>
+<ul>
+  <li><strong>Fundação</strong>, embaixo: a fila de tarefas, os avisos entre módulos, o desenho de imagens e PDFs e a porta do WhatsApp.</li>
+  <li><strong>Plataforma</strong>: o que cada pessoa pode fazer e os assentos, as vagas pagas da organização.</li>
+  <li><strong>Motor de análise</strong>: conduz a pergunta que a pessoa faz ao Horus no chat.</li>
+  <li><strong>Em cima</strong>, Canais, Acompanhar e avisar e Prova e controle: a conversa, os painéis e agentes, a Auditoria e a Home da organização. Os três não se chamam entre si.</li>
+</ul>
+<p>O pacote do programa é sempre o mesmo: uma cópia só na VPS, o servidor alugado de agora, e réplicas, várias cópias ao mesmo tempo, na produção real. (<code>ARQ-112</code>, <code>ARQ-113</code>)</p>
+
+<h3 class="doc-h3" id="modulos-eventos">Como um módulo avisa o de cima</h3>
+<p>Um módulo não chama o de cima. Grava um bilhete, o <strong>evento</strong>, junto com o fato, e quem se interessa o pega na fila, uma lista de tarefas esperando a vez.</p>
+<p>Se os assentos são cortados, por exemplo, os agendamentos param. A reação demora um pouco e nunca sai em dobro. Testes automáticos reprovam o código que fura a regra. (<code>ARQ-019</code>)</p>
+
+<h3 class="doc-h3" id="modulos-middleware">O que foi para o middleware</h3>
+<p>Uma <strong>organização</strong> é o cadastro de uma empresa cliente no Horus. O middleware da Maind atende todas as do SaaS; o de um cliente, na casa dele, atende as dele. (<code>D-258</code>, <code>D-272</code>)</p>
+<p>Foram para o middleware:</p>
+<ul>
+  <li>o ciclo da análise, isto é, o modelo de IA e as consultas;</li>
+  <li>o acesso aos bancos e à IA, com as senhas;</li>
+  <li>a entrada e o cadastro das pessoas.</li>
+</ul>
+<p>Por isso o SaaS perdeu o módulo Dados e IA. (<code>D-189</code>, <code>D-261</code>, <code>D-273</code>)</p>
+<p>Lá dentro, cada organização se separa das outras por uma marca, um filtro e uma chave só dela, que tranca as senhas. (<code>ARQ-103</code>)</p>
+<p>Um middleware para todas é um ponto único. Se o da Maind for invadido, expõe as regras de todas, com as senhas ainda trancadas. Se cair na VPS, cai para todas; na produção real, as réplicas evitam isso. Quem quer mais isolamento hospeda o próprio middleware. (<code>D-272</code>, <code>ARQ-112</code>)</p>
+
+<h3 class="doc-h3" id="modulos-contrato">O que passa entre os dois</h3>
+<p>O <strong>contrato</strong> gRPC é o canal e as regras combinadas entre o SaaS e o middleware. (<code>ARQ-099</code>)</p>
+<ul>
+  <li>O Motor manda só a pergunta. Recebe a resposta pronta e a contagem do uso de IA, sem o conteúdo. (<code>D-189</code>, <code>ARQ-117</code>)</li>
+  <li>A Plataforma manda os assentos liberados e os convites e pedidos de troca de assento do gestor. (<code>D-262</code>)</li>
+  <li>No SaaS, a pessoa é só um código, sem nome. A cada mudança, o middleware devolve as permissões de cada código. Com elas, o Avaliador de permissões, a peça que diz se a pessoa pode, decide cada pedido sem chamar o middleware. (<code>ARQ-008</code>, <code>ARQ-123</code>)</li>
+  <li>Os nomes vêm do middleware na hora de mostrar. (<code>ARQ-109</code>)</li>
+</ul>
+
+<h3 class="doc-h3" id="modulos-telas">As duas telas</h3>
+<ul>
+  <li><strong>O app do Horus</strong> só esconde o que o servidor nega. Na entrada, uma luz verde, amarela ou vermelha, sempre com texto, mostra o estado do middleware. (<code>ARQ-020</code>, <code>ARQ-107</code>)</li>
+  <li><strong>O Front do middleware</strong> é a tela do <strong>owner da organização</strong>, a pessoa que administra uma organização dentro do Horus. Ali ele cuida das pessoas, dos bancos, da IA e do jeito de entrar: usuário e senha ou Google na v2.0, e o login da empresa na v2.1. Na hospedagem da Maind, a Maind cria o usuário dele e só dá suporte. (<code>D-271</code>, <code>D-273</code>, <code>ARQ-111</code>)</li>
+</ul>
+
+<h2 class="doc-h2" id="modulos-falta-decidir">O que falta decidir nesta parte</h2>
+<p>O arquiteto do Horus decide como o Horus é construído por dentro; o PO, o que o produto entrega e em que ordem.</p>
+<ul>
+  <li><strong>Falta o arquiteto do Horus decidir:</strong> onde ficam o modelo semântico, o texto que explica ao Horus os dados da empresa, a lista e o modelo padrão de IA e a memória das consultas dos painéis. (<code>P-048</code>)</li>
+  <li><strong>Falta o arquiteto do Horus decidir:</strong> como a segurança por pessoa, a que decide o que cada um vê dentro do banco, responde ao SaaS quando passar ao middleware, na v2.1. Até lá, a ligação fica fora do desenho. (<code>D-263</code>, <code>P-048</code>)</li>
+  <li><strong>Falta o arquiteto do Horus decidir:</strong> o módulo de cada peça nova. Estão sem módulo o Registro de organizações, as peças do estado do middleware, a tela do custo da IA e as permissões por código, que o desenho liga à Plataforma. (<code>ARQ-102</code>, <code>ARQ-107</code>, <code>ARQ-117</code>, <code>ARQ-123</code>)</li>
+  <li><strong>Falta o arquiteto do Horus decidir:</strong> o módulo de quatro macro funcionalidades novas, os blocos de funções do produto: a faixa de avisos, os conectores de chat corporativo, a fonte AWS Athena e os servidores MCP da organização, programas dela que só leem. (<code>MF-120</code>, <code>MF-122</code>, <code>MF-123</code>, <code>MF-124</code>, <code>P-028</code>)</li>
+  <li><strong>Falta o arquiteto do Horus decidir:</strong> como o middleware chama os servidores MCP e respeita as ferramentas liberadas pelo owner da organização, o único que os cadastra, a partir da v2.1. (<code>D-281</code>, <code>D-286</code>, <code>D-287</code>, <code>D-289</code>, <code>P-050</code>)</li>
+  <li><strong>Falta o PO definir:</strong> a macro funcionalidade da luz de estado, do aviso de queda, da página de status e do registro das quedas, depois que a arquitetura fechar. (<code>D-283</code>, <code>D-284</code>)</li>
+  <li><strong>Também depende, e está explicado em outras páginas:</strong> o caminho até o WhatsApp (<a href="integracoes.html">Com quem conversa fora</a>); a chave única de liga e desliga da segurança por pessoa e a política do certificado, a identidade digital do middleware (<a href="seguranca.html">Segurança em camadas</a>); a divisão do Motor de análise entre o SaaS e o middleware (<a href="pergunta-resposta.html">Da pergunta à resposta</a>); e a prova de que as organizações não se misturam no middleware (<a href="infra-separada.html">A infraestrutura separada</a>).</li>
+</ul>
+</div><nav class="rel-grid dx-vizinhas" aria-label="Páginas vizinhas"><a class="rel-card dx-anterior" href="infra-separada.html"><span class="cat">Anterior</span><h5>A infraestrutura separada</h5><span class="arrow">←</span></a><a class="rel-card dx-proxima" href="execucao.html"><span class="cat">Próxima</span><h5>Como roda</h5><span class="arrow">→</span></a></nav>
+<footer class="ds-footer"><div class="ftr-brand"><img class="ftr-logo logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="ftr-logo logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /><div class="ftr-divider"></div><div class="ftr-meta"><b>Maind Horus · Horus v2 · versões 2.0 e 2.1 em desenho</b></div></div><div class="ftr-center"><span class="ftr-tag">v2.0 e 2.1 em desenho, sem versão publicada · 08/11/2026</span></div><div class="ftr-author"><div class="avatar">MT</div><div class="ftr-author-info"><b>Maind Tech</b><span>Horus v2</span></div></div></footer>
+</main>
+<aside class="toc"><h6>Neste artigo</h6><ul><li><a href="#modulos-frase">Em uma frase</a></li><li><a href="#modulos-desenho">O desenho</a></li><li><a href="#modulos-como-funciona">Como funciona</a></li><li class="lvl-3"><a href="#modulos-divisao">Como o programa se divide</a></li><li class="lvl-3"><a href="#modulos-eventos">Como um módulo avisa o de cima</a></li><li class="lvl-3"><a href="#modulos-middleware">O que foi para o middleware</a></li><li class="lvl-3"><a href="#modulos-contrato">O que passa entre os dois</a></li><li class="lvl-3"><a href="#modulos-telas">As duas telas</a></li><li><a href="#modulos-falta-decidir">O que falta decidir nesta parte</a></li></ul></aside>
+</div>
+<div class="toast" id="toast">Copiado ✓</div>
+<script src="assets/busca.js"></script>
+<script src="assets/docs.js"></script>
+<script src="assets/docx-kbr.js"></script>
+</body>
+</html>

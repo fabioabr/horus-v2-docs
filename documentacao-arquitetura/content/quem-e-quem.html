@@ -1,0 +1,84 @@
+<h3 id="quem-e-quem-frase">Em uma frase</h3>
+<p>Esta documentação conta como o Horus é construído por dentro e foi escrita para quem não é da área de tecnologia. Esta página diz quem decide o quê e o que significam as palavras que mais se repetem.</p>
+
+<h3 id="quem-e-quem-papeis">Os papéis</h3>
+<p>Cada pendência nas páginas diz de qual papel se espera uma ação. Os nomes são sempre estes, e um nunca troca de lugar com outro. A página <a href="#falta-decidir">O que falta decidir, por papel</a> junta todas as pendências.</p>
+<h4 id="quem-e-quem-papeis-decide">Quem decide</h4>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Papel</th><th>O que decide</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Dono do Horus</strong></td><td>Decide infraestrutura, segurança, preço e o que as pessoas veem.</td></tr>
+      <tr class="zebra"><td><strong>PO</strong> (responsável pelo produto)</td><td>Cuida do que o produto entrega e da ordem em que entrega.</td></tr>
+      <tr class="zebra"><td><strong>Arquiteto do Horus</strong></td><td>Decide como o Horus é construído por dentro.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="quem-e-quem-papeis-usa">Quem usa e administra</h4>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Papel</th><th>O que faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>Administra uma organização, a empresa cliente, dentro do Horus.</td></tr>
+      <tr class="zebra"><td><strong>Owner da instância</strong></td><td>Funcionário da Maind que define a marca e as regras gerais de uma instalação do Horus.</td></tr>
+      <tr class="zebra"><td><strong>Gestor</strong></td><td>Cuida de um grupo de pessoas dentro de uma organização, por exemplo convidando gente.</td></tr>
+      <tr class="zebra"><td><strong>Pessoa que pergunta</strong></td><td>Usa o Horus para perguntar sobre os dados da empresa.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="quem-e-quem-papeis-bastidores">Quem ajuda nos bastidores</h4>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Papel</th><th>O que faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>TI do cliente</strong></td><td>A equipe de tecnologia da empresa cliente, que cuida dos servidores e da rede dela.</td></tr>
+      <tr class="zebra"><td><strong>Equipe da Maind</strong></td><td>O time da Maind que dá suporte e acompanha as instalações.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>O <strong>dono do Horus</strong> e o <strong>owner da organização</strong> são pessoas diferentes. O primeiro decide como o Horus é. O segundo administra uma empresa cliente dentro dele.</p>
+
+<h3 id="quem-e-quem-palavras">As palavras que mais aparecem</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Termo</th><th>O que é</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>SaaS</strong></td><td>A parte do Horus que as pessoas usam, hospedada pela Maind.</td></tr>
+      <tr class="zebra"><td><strong>Middleware</strong></td><td>A parte que fica entre o SaaS e os dados da empresa. Ela busca as informações no banco, guarda as senhas dos bancos e da IA e confere o login. Pode ficar na Maind ou na casa do cliente.</td></tr>
+      <tr class="zebra"><td><strong>Organização</strong></td><td>Uma empresa cliente, ou um setor dela, dentro do Horus, com as suas pessoas, os seus bancos e a sua IA.</td></tr>
+      <tr class="zebra"><td><strong>Instância</strong></td><td>Uma instalação do Horus com a marca de quem o contratou. Ela comporta várias organizações.</td></tr>
+      <tr class="zebra"><td><strong>Certificado</strong></td><td>Uma identidade digital que prova quem é quem na conversa entre o SaaS e o middleware.</td></tr>
+      <tr class="zebra"><td><strong>Assento</strong></td><td>A vaga contratada que uma pessoa ocupa para usar o Horus. Há tipos de assento.</td></tr>
+      <tr class="zebra"><td><strong>Servidor MCP</strong></td><td>Um programa da organização que dá à IA outras fontes e ferramentas de consulta. Chega na v2.1.</td></tr>
+      <tr class="zebra"><td><strong>Modelo semântico</strong></td><td>A descrição do que cada dado da empresa significa, como “receita” ou “cliente ativo”, para a IA entender.</td></tr>
+      <tr class="zebra"><td><strong>VPS e produção real</strong></td><td>As duas fases de hospedagem. A VPS é um servidor alugado, um só, que vale agora. A produção real é uma nuvem pública com vários servidores, que ainda não tem data.</td></tr>
+      <tr class="zebra"><td><strong>Réplica</strong></td><td>Uma cópia do mesmo programa rodando ao mesmo tempo, para aguentar mais gente e não parar se uma falhar.</td></tr>
+      <tr class="zebra"><td><strong>v2.0 e v2.1</strong></td><td>As duas primeiras entregas do Horus.</td></tr>
+      <tr class="zebra"><td><strong>MF</strong> (macro funcionalidade)</td><td>Cada grande capacidade do produto.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Para imaginar o middleware</b><p>É como a recepção de um prédio: o visitante não entra direto nos andares, e a recepção busca o que ele pediu. A comparação para aí, porque o middleware também faz a análise.</p></div>
+</div>
+
+<h3 id="quem-e-quem-desenhos">Como ler os desenhos</h3>
+<p>Cada página de assunto traz um desenho, e cada desenho tem duas abas.</p>
+<ul>
+  <li><strong>Diagrama:</strong> clique nas caixas e nas ligações para ver o detalhe. A roda do mouse dá zoom e dá para arrastar o desenho.</li>
+  <li><strong>Explicações:</strong> três cartões dizem o que o desenho mostra, o que acontece na hora e o que acontece em segundo plano, e o que ficou de fora.</li>
+  <li><strong>O rótulo de cada seta</strong> é o nome do combinado entre as duas peças que ela liga.</li>
+  <li><strong>Setas tracejadas</strong> valem só em certas situações, que a legenda de cada desenho explica.</li>
+  <li><strong>Tela cheia:</strong> todo desenho abre em tela cheia pelo link “Abrir em tela cheia”, junto dele.</li>
+</ul>
+
+<h3 id="quem-e-quem-paginas">Como ler as páginas</h3>
+<p>Todas as páginas de assunto têm a mesma ordem, para quem lê uma saber ler as outras.</p>
+<ul>
+  <li><strong>Em uma frase</strong> resume o assunto.</li>
+  <li><strong>O desenho</strong> explica o que cada forma, cor e seta significa.</li>
+  <li><strong>Como funciona</strong> conta o assunto em partes curtas.</li>
+  <li><strong>O que falta decidir nesta parte</strong> diz o que ainda está em aberto e de qual papel se espera a resposta.</li>
+  <li><strong>Os códigos entre parênteses</strong> apontam para a decisão ou a pendência registrada. O começo de cada um diz o tipo: <code>ARQ</code> é decisão de arquitetura, <code>D</code> é decisão de produto, <code>P</code> é pendência e <code>MF</code> é macro funcionalidade. Quem só quer entender pode ignorá-los.</li>
+</ul>

@@ -1,0 +1,58 @@
+<h3 id="infra-separada-frase">Em uma frase</h3>
+<p>O Horus tem duas partes separadas. O <strong>SaaS</strong> é a parte que as pessoas usam, hospedada pela Maind. O <strong>middleware</strong> busca os dados da empresa e guarda as senhas, e entre os dois só passam a pergunta e a resposta pronta. (<code>D-258</code>, <code>D-189</code>)</p>
+
+<h3 id="infra-separada-desenho">O desenho</h3>
+<p>O desenho mostra as três áreas e o caminho de uma pergunta entre elas.</p>
+<dx-diagrama ref="arq-geral-infra-separada"></dx-diagrama>
+<ul>
+  <li><strong>Os grupos são as áreas:</strong> o SaaS à esquerda, o middleware no meio e a organização, a empresa cliente, à direita.</li>
+  <li><strong>A cor diz o tipo da peça,</strong> conforme a legenda.</li>
+  <li><strong>As setas destacadas</strong> seguem a pergunta até o banco da empresa.</li>
+  <li><strong>As setas de segurança</strong> marcam o certificado e a senha de quem configura o middleware.</li>
+  <li><strong>As setas tracejadas</strong> valem só na Maind ou só a partir da v2.1.</li>
+</ul>
+
+<h3 id="infra-separada-como-funciona">Como funciona</h3>
+
+<h4 id="infra-separada-cada-parte">O que fica em cada parte</h4>
+<ul>
+  <li><strong>No SaaS:</strong> as telas, o servidor, os bancos e o Registro de organizações, que anota onde fica cada middleware. (<code>ARQ-102</code>)</li>
+  <li><strong>No middleware:</strong> o login, o cadastro das pessoas, as senhas dos bancos e da IA e o trabalho da análise. (<code>D-258</code>, <code>D-261</code>)</li>
+  <li><strong>Na organização:</strong> as pessoas, os bancos, a IA e, na v2.1, os servidores MCP, programas da empresa que dão à IA outras fontes de informação. (<code>D-281</code>, <code>D-282</code>)</li>
+</ul>
+<p>O middleware é o mesmo na Maind ou no cliente. O da Maind atende todas as organizações do SaaS, e o de um cliente, as dele. (<code>D-260</code>, <code>D-272</code>)</p>
+
+<h4 id="infra-separada-como-se-falam">Como as duas partes se falam</h4>
+<p>Criar uma organização gera um certificado, uma identidade digital. Com ele, as duas partes se reconhecem e passam a falar por um canal só, com regras combinadas. (<code>ARQ-124</code>, <code>ARQ-116</code>)</p>
+<ul>
+  <li><strong>Ao middleware vão</strong> a pergunta e os assentos, as vagas de uso contratadas.</li>
+  <li><strong>Ao SaaS voltam</strong> a resposta pronta, os números de uso da IA, sem conteúdo, e o estado e a versão do middleware. (<code>ARQ-099</code>)</li>
+</ul>
+<p>A identidade da pessoa é conferida no middleware. O endereço dele nunca chega ao navegador. Uma luz e uma página de status mostram se ele está no ar. (<code>ARQ-102</code>, <code>ARQ-106</code>, <code>ARQ-107</code>)</p>
+
+<h4 id="infra-separada-quem-configura">Quem configura o middleware</h4>
+<p>Quem configura é sempre o owner da organização, a pessoa que a administra no Horus, com usuário e senha. A Maind só dá suporte. (<code>D-273</code>)</p>
+<ul>
+  <li><strong>Com o middleware na Maind,</strong> o owner da instância, funcionário da Maind, cria o usuário do owner da organização, e o SaaS entrega o certificado sozinho. (<code>D-271</code>, <code>ARQ-110</code>)</li>
+  <li><strong>Com o middleware no cliente,</strong> a TI do cliente, a equipe de tecnologia da empresa, cria o usuário e importa o certificado. (<code>ARQ-110</code>, <code>ARQ-124</code>)</li>
+</ul>
+<p>Só o owner da organização cadastra os servidores MCP, escolhe quem os usa e libera as ferramentas, só as de leitura. (<code>D-286</code> a <code>D-289</code>)</p>
+<p>A Maind vê o estado e a versão de cada middleware. Do middleware no cliente, vê só o que o SaaS mede e um pacote de diagnóstico, sem conteúdo, enviado sob pedido. (<code>D-275</code>, <code>ARQ-119</code>)</p>
+<p>O middleware da Maind se recusa a acessar endereços da rede interna. O do cliente só alcança o que a TI do cliente liberou. (<code>ARQ-116</code>)</p>
+
+<h4 id="infra-separada-preco">O preço de um middleware para muitas organizações</h4>
+<ul>
+  <li><strong>Se o middleware da Maind for invadido,</strong> expõe as regras de todas as organizações do SaaS. As senhas ficam trancadas com uma chave por organização, apagada quando ela é excluída. (<code>D-272</code>, <code>ARQ-103</code>, <code>D-278</code>)</li>
+  <li><strong>Todas dividem o mesmo banco,</strong> separadas por uma marca e por um filtro que um teste automático confere. (<code>ARQ-103</code>)</li>
+  <li><strong>Se ele parar, todas param.</strong> Isso é aceito na v2.0 e some na produção real, com várias cópias. (<code>ARQ-112</code>)</li>
+  <li><strong>A promessa de que a Maind não vê as senhas</strong> só vale com o middleware no cliente, que é também a saída para quem quer mais isolamento. (<code>D-189</code>, <code>D-273</code>, <code>D-272</code>)</li>
+</ul>
+
+<h3 id="infra-separada-falta-decidir">O que falta decidir nesta parte</h3>
+<p>O dono do Horus decide infraestrutura, segurança, preço e o que as pessoas veem; o arquiteto do Horus decide como o Horus é construído por dentro.</p>
+<ul>
+  <li><strong>Falta o dono do Horus confirmar uma decisão do arquiteto do Horus:</strong> o SaaS e o middleware da Maind ficam separados, cada um com a sua rede e o seu banco. No começo, podem dividir o servidor, como dois apartamentos dividem um prédio, cada um com a sua chave. (<code>ARQ-127</code>)</li>
+  <li><strong>Falta o dono do Horus confirmar:</strong> quem liga as funções que soltam mais informação, como baixar o resultado em planilha. Elas vêm desligadas, e o arquiteto do Horus propõe que só o owner da organização as ligue. (<code>ARQ-116</code>)</li>
+  <li><strong>Falta o arquiteto do Horus comprovar:</strong> que a marca, o filtro e a chave bastam para uma organização não ver a outra no mesmo middleware. (<code>D-272</code>, <code>ARQ-103</code>)</li>
+  <li><strong>Também depende, e está explicado em outras páginas:</strong> a política do certificado, como a troca e o cancelamento (<a href="#seguranca">Segurança em camadas</a>); que partes da análise ficam em cada lado (<a href="#pergunta-resposta">Da pergunta à resposta</a>); onde ficam o modelo semântico, que descreve os dados para a IA, e a lista de modelos de IA, e como a IA usa os servidores MCP (<a href="#modulos">Os módulos</a>); e onde roda a pergunta do owner da instância sobre a história da instalação (<a href="#dados">Onde mora cada dado</a>).</li>
+</ul>

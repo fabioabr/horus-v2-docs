@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-menu="vertical">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="DocX 0.4.0" />
+<meta name="description" content="Como o Horus v2 é construído por dentro, explicado sem jargão: dez desenhos, o que falta decidir e quem decide." />
+<link rel="icon" href="assets/logo-claro.svg" />
+<title>O que falta decidir, por papel — Horus v2</title>
+<script>
+(function () {
+  try {
+    var raiz = document.documentElement;
+    var tema = localStorage.getItem('kinto-theme');
+    var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    raiz.setAttribute('data-theme', tema || (escuro ? 'dark' : 'light'));
+    raiz.setAttribute('data-menu', localStorage.getItem('kinto-menu') || 'vertical');
+    var ws = parseInt(localStorage.getItem('kinto-side-w'), 10);
+    var wt = parseInt(localStorage.getItem('kinto-toc-w'), 10);
+    if (ws) raiz.style.setProperty('--side-w-user', ws + 'px');
+    if (wt) raiz.style.setProperty('--toc-w-user', wt + 'px');
+  } catch (e) { /* localStorage bloqueado: ficam os atributos do <html> */ }
+})();
+</script>
+<link rel="stylesheet" href="assets/docs.css" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="assets/docx-kbr.css" />
+</head>
+<body>
+<header class="hdr"><div class="hdr-brand"><a class="hdr-logo" href="index.html" aria-label="Horus v2"><img class="logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /></a><div class="div"></div><div class="doc-meta"><b>Horus v2 · Documentação</b><small>Maind Horus</small></div></div><div class="hdr-center"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-topo" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><div class="hdr-actions"><div class="menu-toggle" role="group" aria-label="Menu"><button data-set="vertical" aria-label="Menu vertical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button><button data-set="horizontal" aria-label="Menu horizontal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></button></div><div class="theme-toggle" role="group" aria-label="Tema"><button data-set="light" aria-label="Claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button><button data-set="dark" aria-label="Escuro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header>
+<div class="shell">
+<aside class="side"><nav aria-label="Páginas da documentação"><h6>Horus v2</h6><ul><li><a href="index.html">Início</a></li></ul><h6>Comece por aqui</h6><ul><li><a href="quem-e-quem.html">Quem é quem e como ler</a></li></ul><h6>A base: onde e como roda</h6><ul><li><a href="infra-separada.html">A infraestrutura separada</a></li><li><a href="modulos.html">Os módulos</a></li><li><a href="execucao.html">Como roda</a></li><li><a href="implantacao.html">Onde roda</a></li></ul><h6>O Horus em ação</h6><ul><li><a href="pergunta-resposta.html">Da pergunta à resposta</a></li><li><a href="segundo-plano.html">O que roda sozinho</a></li><li><a href="integracoes.html">Com quem conversa fora</a></li></ul><h6>Organizações, dados e segurança</h6><ul><li><a href="criar-organizacao.html">Criar uma organização</a></li><li><a href="dados.html">Onde mora cada dado</a></li><li><a href="seguranca.html">Segurança em camadas</a></li></ul><h6>Decisões e acompanhamento</h6><ul><li><a href="falta-decidir.html" class="active">O que falta decidir, por papel</a></li><li><a href="sobre.html">Sobre este documento</a></li></ul></nav></aside>
+<main class="content doc">
+<div class="dx-busca-movel"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-movel" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><nav class="crumbs" aria-label="Trilha"><a href="index.html">Horus v2</a><span class="sep">/</span><span>Decisões e acompanhamento</span><span class="sep">/</span><span class="now">O que falta decidir, por papel</span></nav><span class="doc-eyebrow">Decisões e acompanhamento</span><h1 class="doc-h1">O que falta decidir, por papel</h1><p class="doc-lead">Quem precisa confirmar ou decidir o quê, sem repetição, com o link da página de cada assunto.</p><section class="dx-assuntos" aria-labelledby="dx-assuntos-titulo"><h2 id="dx-assuntos-titulo">Explore os assuntos</h2><div class="dx-assuntos-grade"><div class="dx-assunto"><h3><a href="#falta-decidir-frase">Em uma frase</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#falta-decidir-dono-do-horus">Falta o dono do Horus confirmar ou decidir</a><small>3 tópicos</small></h3><ul><li><a href="#falta-decidir-confirmar">Propostas para confirmar</a></li><li><a href="#falta-decidir-infra-custo">Escolhas de infraestrutura e de custo</a></li><li><a href="#falta-decidir-produto-integracao">Escolhas de produto e de integração</a></li></ul></div><div class="dx-assunto"><h3><a href="#falta-decidir-arquiteto-do-horus">Falta o arquiteto do Horus decidir, comprovar ou conferir</a><small>5 tópicos</small></h3><ul><li><a href="#falta-decidir-como-se-falam">Como as partes se falam e se protegem</a></li><li><a href="#falta-decidir-onde-ficam">Onde ficam as peças</a></li><li><a href="#falta-decidir-provar">Provar e conferir</a></li><li><a href="#falta-decidir-fechar">Fechar e atualizar</a></li><li><a href="#falta-decidir-integracoes-exportacao">Integrações e exportação</a></li></ul></div><div class="dx-assunto"><h3><a href="#falta-decidir-po">Falta o PO conferir ou definir</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#falta-decidir-owner-da-organizacao">Falta o owner da organização consultar o jurídico da própria empresa</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div></div></section><div id="dx-topo"><h2 class="doc-h2" id="falta-decidir-frase">Em uma frase</h2>
+<p>Esta página junta, sem repetir, tudo o que as outras páginas deixam em aberto, agrupado por quem precisa agir. Cada item diz em qual página o assunto é explicado. As palavras técnicas estão explicadas em <a href="quem-e-quem.html">Quem é quem e como ler</a>.</p>
+
+<h2 class="doc-h2" id="falta-decidir-dono-do-horus">Falta o dono do Horus confirmar ou decidir</h2>
+<p>O dono do Horus decide infraestrutura, segurança, preço e o que as pessoas veem. São dez itens.</p>
+<h3 class="doc-h3" id="falta-decidir-confirmar">Propostas para confirmar</h3>
+<ul>
+  <li><strong>Confirmar que o SaaS e o middleware da Maind ficam separados,</strong> cada um com a sua rede e o seu banco. No começo, podem dividir o servidor. (<code>ARQ-127</code>) Ver <a href="infra-separada.html">A infraestrutura separada</a> e <a href="implantacao.html">Onde roda</a>.</li>
+  <li><strong>Confirmar quem liga as saídas que exigem cuidado,</strong> como baixar o resultado em planilha (CSV). Elas vêm desligadas, e o arquiteto do Horus propõe que só o owner da organização as ligue. (<code>ARQ-116</code>) Ver <a href="infra-separada.html">A infraestrutura separada</a> e <a href="seguranca.html">Segurança em camadas</a>.</li>
+  <li><strong>Confirmar quem marca a organização como ativa.</strong> O sistema só libera a ativação quando as três condições se cumprem, e o PO propõe que quem marca continue sendo a Maind. (<code>D-277</code>) Ver <a href="criar-organizacao.html">Criar uma organização</a>.</li>
+</ul>
+<h3 class="doc-h3" id="falta-decidir-infra-custo">Escolhas de infraestrutura e de custo</h3>
+<ul>
+  <li><strong>Decidir a nuvem, a data e o orçamento da produção real,</strong> a única fase com meta de 99,9% do tempo no ar. (<code>ARQ-085</code>, <code>ARQ-122</code>) Ver <a href="implantacao.html">Onde roda</a> e <a href="execucao.html">Como roda</a>.</li>
+  <li><strong>Decidir quem paga o middleware,</strong> o da Maind e o da casa do cliente. Ainda não há decisão registrada. Ver <a href="implantacao.html">Onde roda</a>.</li>
+  <li><strong>Decidir, se um cliente pedir o Horus inteiro instalado em casa,</strong> como seria essa instalação e o que a Maind veria dela. Hoje isso não tem versão. (<code>ARQ-060</code>, <code>ARQ-074</code>, <code>D-188</code>) Ver <a href="implantacao.html">Onde roda</a>.</li>
+</ul>
+<h3 class="doc-h3" id="falta-decidir-produto-integracao">Escolhas de produto e de integração</h3>
+<ul>
+  <li><strong>Decidir o caminho até o WhatsApp.</strong> A hipótese de trabalho é falar direto com o serviço oficial da Meta, com a Maind como fornecedora de tecnologia. (<code>ARQ-047</code>) Ver <a href="integracoes.html">Com quem conversa fora</a> e <a href="segundo-plano.html">O que roda sozinho</a>.</li>
+  <li><strong>Decidir quem é avisado quando o Teams ou o Google Chat param.</strong> Ainda não há decisão registrada. Ver <a href="integracoes.html">Com quem conversa fora</a>.</li>
+  <li><strong>Decidir, na v2.1, se a segurança por pessoa terá uma chave só de liga e desliga,</strong> no lugar das duas de hoje. (<code>ARQ-040</code>) Ver <a href="seguranca.html">Segurança em camadas</a>.</li>
+  <li><strong>Decidir, na v2.1, onde o owner da organização escreve as regras da segurança por pessoa.</strong> O PO propõe a tela. Ver <a href="seguranca.html">Segurança em camadas</a>.</li>
+</ul>
+
+<h2 class="doc-h2" id="falta-decidir-arquiteto-do-horus">Falta o arquiteto do Horus decidir, comprovar ou conferir</h2>
+<p>O arquiteto do Horus decide como o Horus é construído por dentro. São vinte e quatro itens, em cinco grupos.</p>
+<h3 class="doc-h3" id="falta-decidir-como-se-falam">Como as partes se falam e se protegem</h3>
+<ul>
+  <li><strong>Definir, com o dono do Horus, a política do certificado:</strong> o formato, a troca e o cancelamento, com uma parte escolhida por cada organização. (<code>P-049</code>) Ver <a href="seguranca.html">Segurança em camadas</a>.</li>
+  <li><strong>Decidir como o certificado chega à TI do cliente</strong> e por onde o arquivo assinado volta ao SaaS. (<code>ARQ-124</code>) Ver <a href="criar-organizacao.html">Criar uma organização</a>.</li>
+  <li><strong>Decidir como o SaaS sabe que o banco e a IA estão configurados,</strong> sem ver as senhas, para liberar a ativação. (<code>D-277</code>, <code>P-048</code>) Ver <a href="criar-organizacao.html">Criar uma organização</a>.</li>
+  <li><strong>Decidir onde o owner da instância faz o login</strong> e por quanto tempo vale o link de primeiro acesso. (<code>ARQ-110</code>, <code>ARQ-111</code>, <code>P-048</code>) Ver <a href="criar-organizacao.html">Criar uma organização</a> e <a href="seguranca.html">Segurança em camadas</a>.</li>
+  <li><strong>Decidir por qual canal chegam ao SaaS</strong> as mudanças de permissão, o aviso de IA parada e a medida do estado do middleware do cliente, e quem manda o e-mail de recuperação de senha. (<code>ARQ-117</code>, <code>ARQ-123</code>, <code>P-042</code>, <code>P-048</code>) Ver <a href="execucao.html">Como roda</a> e <a href="integracoes.html">Com quem conversa fora</a>.</li>
+</ul>
+<h3 class="doc-h3" id="falta-decidir-onde-ficam">Onde ficam as peças</h3>
+<ul>
+  <li><strong>Decidir que partes da análise ficam no SaaS e quais no middleware,</strong> e o que o middleware manda enquanto a resposta se forma. (<code>P-040</code>, <code>P-042</code>, <code>P-048</code>) Ver <a href="pergunta-resposta.html">Da pergunta à resposta</a>.</li>
+  <li><strong>Decidir onde ficam o modelo semântico, a lista de modelos de IA e o modelo padrão.</strong> (<code>P-048</code>) Ver <a href="modulos.html">Os módulos</a> e <a href="dados.html">Onde mora cada dado</a>.</li>
+  <li><strong>Decidir como a IA usa os servidores MCP</strong> na análise, a partir da v2.1, e como a segurança por pessoa responde ao SaaS. (<code>P-050</code>, <code>D-281</code>, <code>D-286</code>, <code>D-263</code>) Ver <a href="modulos.html">Os módulos</a> e <a href="integracoes.html">Com quem conversa fora</a>.</li>
+  <li><strong>Decidir onde roda a pergunta do owner da instância</strong> sobre a história da instalação. (<code>D-276</code>, <code>P-048</code>) Ver <a href="dados.html">Onde mora cada dado</a>.</li>
+  <li><strong>Decidir onde moram o estado do middleware, as permissões por código, a caixa de saída e o ponto onde a história é gravada,</strong> e onde fica o banco do middleware da Maind na nuvem. (<code>ARQ-107</code>, <code>ARQ-123</code>, <code>ARQ-088</code>, <code>ARQ-097</code>, <code>ARQ-127</code>) Ver <a href="execucao.html">Como roda</a> e <a href="dados.html">Onde mora cada dado</a>.</li>
+  <li><strong>Decidir onde roda o ciclo do agente,</strong> já que a IA agora só se alcança pelo middleware. (<code>ARQ-030</code>, <code>P-040</code>, <code>P-048</code>) Ver <a href="segundo-plano.html">O que roda sozinho</a>.</li>
+  <li><strong>Decidir se um alerta só de texto passa pela montagem do arquivo,</strong> e o texto do aviso de atraso. (<code>ARQ-108</code>) Ver <a href="segundo-plano.html">O que roda sozinho</a>.</li>
+</ul>
+<h3 class="doc-h3" id="falta-decidir-provar">Provar e conferir</h3>
+<ul>
+  <li><strong>Comprovar que a marca, o filtro e a chave bastam</strong> para uma organização não ver a outra no mesmo middleware. (<code>D-272</code>, <code>ARQ-103</code>) Ver <a href="infra-separada.html">A infraestrutura separada</a>.</li>
+  <li><strong>Comprovar que a trava que barra endereços da rede interna aceita o banco de log</strong> como fonte de dados. (<code>D-158</code>) Ver <a href="dados.html">Onde mora cada dado</a>.</li>
+  <li><strong>Conferir se apagar quem é excluído convive</strong> com as cópias de segurança, com o registro de acesso e com a LGPD, a lei de proteção de dados pessoais. A parte jurídica fica com o jurídico de cada cliente. (<code>P-044</code>, <code>D-210</code>, <code>D-247</code>) Ver <a href="criar-organizacao.html">Criar uma organização</a>.</li>
+  <li><strong>Calibrar e confirmar com o uso</strong> o ponto em que “no ar” vira “instável”, a espera de uma hora da rodada, quantas versões do middleware o SaaS aceita, os limites do agente, o tempo fora do ar na troca de versão e o custo de preparar o código para réplicas. (<code>ARQ-107</code>, <code>ARQ-108</code>, <code>ARQ-114</code>, <code>ARQ-030</code>, <code>ARQ-063</code>, <code>ARQ-113</code>) Ver <a href="execucao.html">Como roda</a> e <a href="segundo-plano.html">O que roda sozinho</a>.</li>
+</ul>
+<h3 class="doc-h3" id="falta-decidir-fechar">Fechar e atualizar</h3>
+<ul>
+  <li><strong>Fechar a lista do que a TI do cliente precisa</strong> para hospedar o middleware, inclusive onde fica o banco dele. (<code>ARQ-126</code>) Ver <a href="implantacao.html">Onde roda</a>.</li>
+  <li><strong>Dizer em que módulo entra cada peça nova</strong> do desenho. (<code>P-028</code>) Ver <a href="modulos.html">Os módulos</a>.</li>
+  <li><strong>Atualizar os documentos técnicos</strong> que ainda não descrevem as duas fases de hospedagem. (<code>P-028</code>) Ver <a href="execucao.html">Como roda</a> e <a href="sobre.html">Sobre este documento</a>.</li>
+</ul>
+<h3 class="doc-h3" id="falta-decidir-integracoes-exportacao">Integrações e exportação</h3>
+<ul>
+  <li><strong>Decidir como o Teams e o Google Chat se ligam ao Horus.</strong> (<code>P-038</code>) Ver <a href="integracoes.html">Com quem conversa fora</a>.</li>
+  <li><strong>Decidir como funciona a fonte AWS Athena,</strong> o serviço de consulta de dados da Amazon. (<code>P-033</code>) Ver <a href="integracoes.html">Com quem conversa fora</a>.</li>
+  <li><strong>Decidir se a fonte de páginas web da versão de hoje some ou continua.</strong> (<code>P-034</code>) Ver <a href="integracoes.html">Com quem conversa fora</a> e <a href="pergunta-resposta.html">Da pergunta à resposta</a>.</li>
+  <li><strong>Decidir como a chave de IA da Maind chega ao owner da organização,</strong> e o que acontece com a ligação de IA que a organização já tem. (<code>P-032</code>) Ver <a href="integracoes.html">Com quem conversa fora</a>.</li>
+  <li><strong>Desenhar a exportação da conversa</strong> em PDF ou HTML. (<code>D-250</code>, <code>P-047</code>) Ver <a href="execucao.html">Como roda</a>.</li>
+</ul>
+
+<h2 class="doc-h2" id="falta-decidir-po">Falta o PO conferir ou definir</h2>
+<p>O PO cuida do que o produto entrega e da ordem em que entrega. São três itens.</p>
+<ul>
+  <li><strong>Definir a macro funcionalidade</strong> da luz de estado, do aviso de queda, da página de status e do registro das quedas, depois que a arquitetura fechar. (<code>D-283</code>, <code>D-284</code>) Ver <a href="modulos.html">Os módulos</a>.</li>
+  <li><strong>Conferir com o uso</strong> que o owner da organização consegue configurar sozinho o banco e a IA, com o suporte da Maind. (<code>D-273</code>) Ver <a href="criar-organizacao.html">Criar uma organização</a>.</li>
+  <li><strong>Conferir com o uso</strong> que a cobrança se confere só com números, sem nomes, e que a Maind usa a pergunta sobre a história o bastante para valer o custo da chave. (<code>D-274</code>, <code>D-276</code>) Ver <a href="dados.html">Onde mora cada dado</a>.</li>
+</ul>
+
+<h2 class="doc-h2" id="falta-decidir-owner-da-organizacao">Falta o owner da organização consultar o jurídico da própria empresa</h2>
+<p>O owner da organização administra uma organização dentro do Horus. É um item, na implantação de cada cliente.</p>
+<ul>
+  <li><strong>Consultar o jurídico da empresa</strong> sobre as regras do Horus e a LGPD: a leitura das conversas de todos, a exclusão dos registros de quem sai e o código que sobra no SaaS. (<code>D-223</code>, <code>D-210</code>, <code>D-247</code>) Ver <a href="seguranca.html">Segurança em camadas</a>.</li>
+</ul>
+</div><nav class="rel-grid dx-vizinhas" aria-label="Páginas vizinhas"><a class="rel-card dx-anterior" href="seguranca.html"><span class="cat">Anterior</span><h5>Segurança em camadas</h5><span class="arrow">←</span></a><a class="rel-card dx-proxima" href="sobre.html"><span class="cat">Próxima</span><h5>Sobre este documento</h5><span class="arrow">→</span></a></nav>
+<footer class="ds-footer"><div class="ftr-brand"><img class="ftr-logo logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="ftr-logo logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /><div class="ftr-divider"></div><div class="ftr-meta"><b>Maind Horus · Horus v2 · versões 2.0 e 2.1 em desenho</b></div></div><div class="ftr-center"><span class="ftr-tag">v2.0 e 2.1 em desenho, sem versão publicada · 08/11/2026</span></div><div class="ftr-author"><div class="avatar">MT</div><div class="ftr-author-info"><b>Maind Tech</b><span>Horus v2</span></div></div></footer>
+</main>
+<aside class="toc"><h6>Neste artigo</h6><ul><li><a href="#falta-decidir-frase">Em uma frase</a></li><li><a href="#falta-decidir-dono-do-horus">Falta o dono do Horus confirmar ou decidir</a></li><li class="lvl-3"><a href="#falta-decidir-confirmar">Propostas para confirmar</a></li><li class="lvl-3"><a href="#falta-decidir-infra-custo">Escolhas de infraestrutura e de custo</a></li><li class="lvl-3"><a href="#falta-decidir-produto-integracao">Escolhas de produto e de integração</a></li><li><a href="#falta-decidir-arquiteto-do-horus">Falta o arquiteto do Horus decidir, comprovar ou conferir</a></li><li class="lvl-3"><a href="#falta-decidir-como-se-falam">Como as partes se falam e se protegem</a></li><li class="lvl-3"><a href="#falta-decidir-onde-ficam">Onde ficam as peças</a></li><li class="lvl-3"><a href="#falta-decidir-provar">Provar e conferir</a></li><li class="lvl-3"><a href="#falta-decidir-fechar">Fechar e atualizar</a></li><li class="lvl-3"><a href="#falta-decidir-integracoes-exportacao">Integrações e exportação</a></li><li><a href="#falta-decidir-po">Falta o PO conferir ou definir</a></li><li><a href="#falta-decidir-owner-da-organizacao">Falta o owner da organização consultar o jurídico da própria empresa</a></li></ul></aside>
+</div>
+<div class="toast" id="toast">Copiado ✓</div>
+<script src="assets/busca.js"></script>
+<script src="assets/docs.js"></script>
+<script src="assets/docx-kbr.js"></script>
+</body>
+</html>

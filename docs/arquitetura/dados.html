@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-menu="vertical">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="DocX 0.4.0" />
+<meta name="description" content="Como o Horus v2 é construído por dentro, explicado sem jargão: dez desenhos, o que falta decidir e quem decide." />
+<link rel="icon" href="assets/logo-claro.svg" />
+<title>Onde mora cada dado — Horus v2</title>
+<script>
+(function () {
+  try {
+    var raiz = document.documentElement;
+    var tema = localStorage.getItem('kinto-theme');
+    var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    raiz.setAttribute('data-theme', tema || (escuro ? 'dark' : 'light'));
+    raiz.setAttribute('data-menu', localStorage.getItem('kinto-menu') || 'vertical');
+    var ws = parseInt(localStorage.getItem('kinto-side-w'), 10);
+    var wt = parseInt(localStorage.getItem('kinto-toc-w'), 10);
+    if (ws) raiz.style.setProperty('--side-w-user', ws + 'px');
+    if (wt) raiz.style.setProperty('--toc-w-user', wt + 'px');
+  } catch (e) { /* localStorage bloqueado: ficam os atributos do <html> */ }
+})();
+</script>
+<link rel="stylesheet" href="assets/docs.css" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="assets/docx-kbr.css" />
+</head>
+<body>
+<header class="hdr"><div class="hdr-brand"><a class="hdr-logo" href="index.html" aria-label="Horus v2"><img class="logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /></a><div class="div"></div><div class="doc-meta"><b>Horus v2 · Documentação</b><small>Maind Horus</small></div></div><div class="hdr-center"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-topo" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><div class="hdr-actions"><div class="menu-toggle" role="group" aria-label="Menu"><button data-set="vertical" aria-label="Menu vertical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button><button data-set="horizontal" aria-label="Menu horizontal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></button></div><div class="theme-toggle" role="group" aria-label="Tema"><button data-set="light" aria-label="Claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button><button data-set="dark" aria-label="Escuro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header>
+<div class="shell">
+<aside class="side"><nav aria-label="Páginas da documentação"><h6>Horus v2</h6><ul><li><a href="index.html">Início</a></li></ul><h6>Comece por aqui</h6><ul><li><a href="quem-e-quem.html">Quem é quem e como ler</a></li></ul><h6>A base: onde e como roda</h6><ul><li><a href="infra-separada.html">A infraestrutura separada</a></li><li><a href="modulos.html">Os módulos</a></li><li><a href="execucao.html">Como roda</a></li><li><a href="implantacao.html">Onde roda</a></li></ul><h6>O Horus em ação</h6><ul><li><a href="pergunta-resposta.html">Da pergunta à resposta</a></li><li><a href="segundo-plano.html">O que roda sozinho</a></li><li><a href="integracoes.html">Com quem conversa fora</a></li></ul><h6>Organizações, dados e segurança</h6><ul><li><a href="criar-organizacao.html">Criar uma organização</a></li><li><a href="dados.html" class="active">Onde mora cada dado</a></li><li><a href="seguranca.html">Segurança em camadas</a></li></ul><h6>Decisões e acompanhamento</h6><ul><li><a href="falta-decidir.html">O que falta decidir, por papel</a></li><li><a href="sobre.html">Sobre este documento</a></li></ul></nav></aside>
+<main class="content doc">
+<div class="dx-busca-movel"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-movel" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><nav class="crumbs" aria-label="Trilha"><a href="index.html">Horus v2</a><span class="sep">/</span><span>Organizações, dados e segurança</span><span class="sep">/</span><span class="now">Onde mora cada dado</span></nav><span class="doc-eyebrow">Organizações, dados e segurança</span><h1 class="doc-h1">Onde mora cada dado</h1><p class="doc-lead">O que se guarda, onde, e como a história se mantém.</p><section class="dx-assuntos" aria-labelledby="dx-assuntos-titulo"><h2 id="dx-assuntos-titulo">Explore os assuntos</h2><div class="dx-assuntos-grade"><div class="dx-assunto"><h3><a href="#dados-frase">Em uma frase</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#dados-desenho">O desenho</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#dados-como-funciona">Como funciona</a><small>5 tópicos</small></h3><ul><li><a href="#dados-middleware">O que fica no middleware?</a></li><li><a href="#dados-codigo">Como o SaaS reconhece alguém sem saber o nome?</a></li><li><a href="#dados-bancos-saas">Que bancos o SaaS tem?</a></li><li><a href="#dados-historia">Como a história chega ao banco de log?</a></li><li><a href="#dados-quem-le">Quem lê a história?</a></li></ul></div><div class="dx-assunto"><h3><a href="#dados-falta-decidir">O que falta decidir nesta parte</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div></div></section><div id="dx-topo"><h2 class="doc-h2" id="dados-frase">Em uma frase</h2>
+<p>Os dados do Horus moram em dois lugares. O <strong>middleware</strong>, a parte que busca os dados no banco da empresa e conversa com o SaaS, guarda as pessoas e as senhas dos bancos e da inteligência artificial (IA). O <strong>SaaS</strong>, a parte do Horus que as pessoas usam, hospedada pela Maind, guarda as conversas e a história, e conhece cada pessoa só por um código.</p>
+
+<h2 class="doc-h2" id="dados-desenho">O desenho</h2>
+<p>O desenho mostra onde cada dado fica e o que passa de um lugar a outro.</p>
+<figure class="dx-diagrama"><figcaption><b>Onde mora cada dado e como a história chega</b> <span>O que cada banco guarda, o que fica no middleware e como a história de uso é gravada.</span><a href="media/diagramas/arq-geral-dados-e-historia.html" target="_blank" rel="noopener">Abrir em tela cheia ↗</a></figcaption><iframe src="media/diagramas/arq-geral-dados-e-historia.html?embutido=1" title="Onde mora cada dado e como a história chega" loading="lazy"></iframe></figure>
+<ul>
+  <li><strong>As três áreas</strong> são as casas: a do middleware, na Maind ou no cliente; a da organização, a empresa cliente, com os bancos dela e a IA; e a do SaaS, da Maind.</li>
+  <li><strong>A cor de cada caixa</strong> diz o tipo da peça: banco de dados, segurança, programa, fila de tarefas ou algo "Fora do Horus".</li>
+  <li><strong>A cor de cada linha</strong> diz o que passa por ela: verde, o caminho principal; vermelha tracejada, dado pessoal ou da empresa; roxa tracejada, o que corre em segundo plano, sem ninguém esperando; cinza, o resto.</li>
+  <li><strong>Cinco vistas prontas</strong> destacam um assunto de cada vez, como "O caminho da história no SaaS".</li>
+</ul>
+
+<h2 class="doc-h2" id="dados-como-funciona">Como funciona</h2>
+<h3 class="doc-h3" id="dados-middleware">O que fica no middleware?</h3>
+<p>Numa <strong>base só</strong>, para todas as organizações que atende, o middleware guarda as pessoas, com nome e e-mail, o jeito de fazer login de cada organização e as senhas dos bancos e da IA. Quem cadastra tudo é o owner da organização, a pessoa que administra a organização no Horus. (<code>D-261</code>, <code>D-273</code>, <code>ARQ-109</code>, <code>ARQ-111</code>)</p>
+<p>Cada dado guardado leva a <strong>marca</strong> da organização, uma etiqueta que diz de quem ele é. Toda consulta passa por um filtro que só mostra os dados da organização em uso, e um teste automático falha se alguma consulta esquecer o filtro. As senhas ficam trancadas com uma chave por organização. (<code>ARQ-103</code>)</p>
+<p>Dos bancos da empresa, o middleware só lê. A IA recebe a pergunta e trechos enviados por ele, e ao SaaS chegam só a resposta pronta e a contagem de uso da IA, sem conteúdo. (<code>D-189</code>, <code>D-267</code>, <code>ARQ-117</code>)</p>
+<p>Excluir uma organização apaga, no middleware, só os dados e a chave dela, o que inutiliza as senhas também nas cópias de segurança. O passo a passo está em <a href="criar-organizacao.html">Criar uma organização</a>. (<code>D-278</code>, <code>ARQ-125</code>)</p>
+
+<h3 class="doc-h3" id="dados-codigo">Como o SaaS reconhece alguém sem saber o nome?</h3>
+<p>No SaaS, cada pessoa é só um <strong>código</strong>, como um crachá numerado sem o nome impresso.</p>
+<p>As telas que mostram nomes os pedem ao middleware na hora, todos de uma vez, sem gravá-los: a página inicial da organização, o registro da Auditoria e a contagem das perguntas respondidas. O e-mail de um convite, aviso ou relatório só passa pelo SaaS no envio. (<code>D-262</code>, <code>ARQ-109</code>, <code>ARQ-118</code>)</p>
+<p>Ligado ao código, o SaaS guarda o que o middleware manda a cada mudança, sem nomes:</p>
+<ul>
+  <li>o tipo de <strong>assento</strong>, a vaga contratada que a pessoa ocupa;</li>
+  <li>o que ela pode fazer;</li>
+  <li>os grupos dela;</li>
+  <li>as pessoas que cada gestor acompanha.</li>
+</ul>
+<p>Assim, o SaaS decide sozinho cada pedido e conta os assentos ocupados. (<code>ARQ-123</code>)</p>
+
+<h3 class="doc-h3" id="dados-bancos-saas">Que bancos o SaaS tem?</h3>
+<ul>
+  <li><strong>Banco mestre:</strong> o que vale para todas as organizações. Guarda a lista delas, os assentos contratados em números, a cobrança e o Registro de organizações, com o endereço de cada middleware e a chave que confere os passes de entrada dele. O passe de entrada é a prova temporária de que a pessoa fez login. (<code>ARQ-088</code>, <code>ARQ-102</code>, <code>ARQ-124</code>)</li>
+  <li><strong>Banco de cada organização:</strong> o estado de hoje das conversas, dos painéis e das respostas prontas, aberto só com a senha própria dela e protegido também pelo filtro. (<code>ARQ-010</code>, <code>ARQ-088</code>)</li>
+  <li><strong>Banco de log:</strong> a história, em que só se acrescenta. A história de uma organização some com ela. (<code>ARQ-097</code>)</li>
+</ul>
+<p>O banco mestre guarda também o <strong>Registro de quedas</strong>, com as vezes em que o SaaS perdeu e recuperou o contato com o middleware. Cada anotação fica noventa dias, sem dado de pessoa, e a limpeza automática diária apaga as mais antigas. A página de status e a luz da tela de entrada o leem, por isso abrem mesmo com o middleware fora do ar. (<code>ARQ-035</code>, <code>ARQ-106</code>, <code>ARQ-121</code>)</p>
+
+<h3 class="doc-h3" id="dados-historia">Como a história chega ao banco de log?</h3>
+<ol>
+  <li>Cada mudança grava, de uma vez, o estado de hoje e um pedido na <strong>caixa de saída</strong> do banco da organização, uma lista de tarefas esperando a vez.</li>
+  <li>Uma peça leva o pedido à <strong>fila</strong> do banco mestre.</li>
+  <li>Um trabalho em segundo plano grava a história segundos depois.</li>
+</ol>
+<p>Repetir a gravação não duplica nada. (<code>ARQ-005</code>, <code>ARQ-088</code>, <code>ARQ-097</code>)</p>
+
+<h3 class="doc-h3" id="dados-quem-le">Quem lê a história?</h3>
+<p>O relatório da organização mostra a história dos assentos mês a mês, em números, sem o nome de quem os ocupou. (<code>D-274</code>)</p>
+<p>O owner da instância, funcionário da Maind que opera o painel do Horus, pergunta ao próprio Horus sobre a história da instalação. Usa uma chave de IA própria, a senha de acesso ao serviço, que a Maind paga e nenhuma organização usa.</p>
+<p>A pergunta lê o banco de log, não passa por middleware nenhum e volta só com códigos. Como a peça que a responde ainda não foi escolhida, o desenho a liga direto ao banco de log. (<code>D-158</code>, <code>D-266</code>, <code>D-276</code>, <code>ARQ-109</code>)</p>
+
+<h2 class="doc-h2" id="dados-falta-decidir">O que falta decidir nesta parte</h2>
+<p>O arquiteto do Horus decide como o Horus é construído por dentro. O PO cuida do que o produto entrega e da ordem em que entrega.</p>
+<ul>
+  <li><strong>Falta o arquiteto do Horus decidir:</strong> onde e como roda a pergunta do owner da instância sobre a história da instalação. (<code>D-276</code>, <code>P-048</code>)</li>
+  <li><strong>Falta o arquiteto do Horus comprovar, nos testes:</strong> que a trava que barra os endereços da rede interna aceita o banco de log como fonte de dados dessa pergunta. (<code>D-158</code>)</li>
+  <li><strong>Falta o PO conferir, com o uso:</strong>
+    <ul>
+      <li>que a cobrança se confere só com números, sem nomes. (<code>D-274</code>)</li>
+      <li>que a Maind usa a pergunta sobre a história o bastante para valer o custo da chave. (<code>D-276</code>)</li>
+    </ul>
+  </li>
+  <li><strong>Também depende, e está explicado em outras páginas:</strong> a separação entre os bancos do SaaS e do middleware da Maind, e a prova de que a marca, o filtro e a chave separam as organizações (<a href="infra-separada.html">A infraestrutura separada</a>); onde moram o estado do middleware, as permissões por código, a caixa de saída do banco mestre e o banco do middleware da Maind na nuvem (<a href="execucao.html">Como roda</a>); onde ficam a descrição dos bancos da empresa, a lista dos modelos de IA e o modelo padrão (<a href="modulos.html">Os módulos</a>); e se a exclusão basta para a LGPD, a lei de proteção de dados pessoais (<a href="criar-organizacao.html">Criar uma organização</a>).</li>
+</ul>
+</div><nav class="rel-grid dx-vizinhas" aria-label="Páginas vizinhas"><a class="rel-card dx-anterior" href="criar-organizacao.html"><span class="cat">Anterior</span><h5>Criar uma organização</h5><span class="arrow">←</span></a><a class="rel-card dx-proxima" href="seguranca.html"><span class="cat">Próxima</span><h5>Segurança em camadas</h5><span class="arrow">→</span></a></nav>
+<footer class="ds-footer"><div class="ftr-brand"><img class="ftr-logo logo-light" src="assets/logo-claro.svg" alt="Horus v2" /><img class="ftr-logo logo-dark" src="assets/logo-escuro.svg" alt="Horus v2" /><div class="ftr-divider"></div><div class="ftr-meta"><b>Maind Horus · Horus v2 · versões 2.0 e 2.1 em desenho</b></div></div><div class="ftr-center"><span class="ftr-tag">v2.0 e 2.1 em desenho, sem versão publicada · 08/11/2026</span></div><div class="ftr-author"><div class="avatar">MT</div><div class="ftr-author-info"><b>Maind Tech</b><span>Horus v2</span></div></div></footer>
+</main>
+<aside class="toc"><h6>Neste artigo</h6><ul><li><a href="#dados-frase">Em uma frase</a></li><li><a href="#dados-desenho">O desenho</a></li><li><a href="#dados-como-funciona">Como funciona</a></li><li class="lvl-3"><a href="#dados-middleware">O que fica no middleware?</a></li><li class="lvl-3"><a href="#dados-codigo">Como o SaaS reconhece alguém sem saber o nome?</a></li><li class="lvl-3"><a href="#dados-bancos-saas">Que bancos o SaaS tem?</a></li><li class="lvl-3"><a href="#dados-historia">Como a história chega ao banco de log?</a></li><li class="lvl-3"><a href="#dados-quem-le">Quem lê a história?</a></li><li><a href="#dados-falta-decidir">O que falta decidir nesta parte</a></li></ul></aside>
+</div>
+<div class="toast" id="toast">Copiado ✓</div>
+<script src="assets/busca.js"></script>
+<script src="assets/docs.js"></script>
+<script src="assets/docx-kbr.js"></script>
+</body>
+</html>

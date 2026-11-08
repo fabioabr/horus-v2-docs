@@ -544,7 +544,7 @@
           "cofre",
           "bancos"
         ],
-        "note": "O owner cadastra as credenciais no cofre, cifradas por organização; dos bancos, só leitura, pela guarda de rede (ARQ-103, ARQ-116, D-001)."
+        "note": "O owner da organização cadastra as senhas no cofre, cifradas por organização; dos bancos, só leitura (ARQ-103, ARQ-116)."
       },
       {
         "id": "prova",
@@ -562,16 +562,16 @@
       "id": "admin",
       "type": "external",
       "icon": "person",
-      "label": "Administrador da instância",
+      "label": "Owner da instância",
       "sublabel": "usuário e senha, sempre",
       "tag": "Maind · cria e exclui a org. · D-146 · D-280",
       "pos": [
         40,
-        40
+        60
       ],
       "size": [
-        180,
-        72
+        250,
+        100
       ]
     },
     {
@@ -581,12 +581,12 @@
       "sublabel": "endereço, porta, chave pública",
       "tag": "mora no Banco mestre · ARQ-102 · ARQ-124",
       "pos": [
-        360,
-        40
+        390,
+        60
       ],
       "size": [
-        180,
-        72
+        250,
+        100
       ]
     },
     {
@@ -597,12 +597,12 @@
       "sublabel": "usuário e senha, sempre",
       "tag": "1º acesso: link de uso único · ARQ-110",
       "pos": [
-        1272,
-        40
+        1440,
+        60
       ],
       "size": [
-        180,
-        72
+        250,
+        100
       ]
     },
     {
@@ -614,41 +614,41 @@
       "tag": "o token só identifica · D-258 · ARQ-102",
       "pos": [
         40,
-        200
+        230
       ],
       "size": [
-        180,
-        72
+        250,
+        100
       ]
     },
     {
       "id": "tela",
       "type": "frontend",
       "label": "Tela de entrada",
-      "sublabel": "LED e status, antes do login",
-      "tag": "LED e Página de status · ARQ-106, ARQ-107",
+      "sublabel": "luz e status, antes do login",
+      "tag": "luz e página de status · ARQ-106, ARQ-107",
       "pos": [
-        360,
-        200
+        390,
+        230
       ],
       "size": [
-        180,
-        72
+        250,
+        100
       ]
     },
     {
       "id": "at",
       "type": "backend",
       "label": "Atender e Trabalhar",
-      "sublabel": "réplicas só na Produção real",
-      "tag": "VPS (v2.0): um só · ARQ-112, ARQ-113",
+      "sublabel": "cópias só na produção real",
+      "tag": "v2.0: um servidor só · ARQ-112, ARQ-113",
       "pos": [
-        655,
-        200
+        740,
+        230
       ],
       "size": [
-        180,
-        72
+        250,
+        100
       ]
     },
     {
@@ -656,29 +656,29 @@
       "type": "security",
       "label": "Middleware",
       "sublabel": "atende várias organizações",
-      "tag": "emite a sessão · ARQ-102, ARQ-114",
+      "tag": "confere quem entra · ARQ-102, ARQ-114",
       "pos": [
-        957,
-        200
+        1090,
+        230
       ],
       "size": [
-        180,
-        72
+        250,
+        100
       ]
     },
     {
       "id": "front",
       "type": "frontend",
       "label": "Front do middleware",
-      "sublabel": "login, bancos e IA, pelo owner",
-      "tag": "qualquer hospedagem · D-271 · D-273 · ARQ-111",
+      "sublabel": "configurado pelo owner da org.",
+      "tag": "login, bancos e IA · D-271 · D-273 · ARQ-111",
       "pos": [
-        1272,
-        200
+        1440,
+        230
       ],
       "size": [
-        180,
-        72
+        250,
+        100
       ]
     },
     {
@@ -688,12 +688,12 @@
       "sublabel": "sem o conteúdo das conversas",
       "tag": "ARQ-009 · ARQ-073 · ARQ-119 · D-091",
       "pos": [
-        360,
-        360
+        390,
+        400
       ],
       "size": [
-        180,
-        72
+        250,
+        100
       ]
     },
     {
@@ -701,14 +701,14 @@
       "type": "security",
       "label": "Avaliador de permissões",
       "sublabel": "lê as permissões por código",
-      "tag": "assento, papel, roles · ARQ-008, ARQ-123",
+      "tag": "assento, papel, permissões · ARQ-008, ARQ-123",
       "pos": [
-        655,
-        360
+        740,
+        400
       ],
       "size": [
-        180,
-        72
+        250,
+        100
       ]
     },
     {
@@ -718,27 +718,27 @@
       "sublabel": "dos dados · v2.1 · MF-106",
       "tag": "roda no middleware · D-263",
       "pos": [
-        957,
-        360
+        1090,
+        400
       ],
       "size": [
-        180,
-        72
+        250,
+        100
       ]
     },
     {
       "id": "cofre",
       "type": "security",
       "label": "Cofre do middleware",
-      "sublabel": "credenciais dos bancos e da IA",
+      "sublabel": "senhas dos bancos e da IA",
       "tag": "uma chave por org. · ARQ-103 · D-273",
       "pos": [
-        1272,
-        360
+        1440,
+        400
       ],
       "size": [
-        180,
-        72
+        250,
+        100
       ]
     },
     {
@@ -749,12 +749,12 @@
       "sublabel": "só leitura · D-001",
       "tag": "casa da organização · guarda de rede: ARQ-116",
       "pos": [
-        1272,
-        520
+        1440,
+        570
       ],
       "size": [
-        180,
-        72
+        250,
+        100
       ]
     }
   ],
@@ -899,49 +899,36 @@
       "dot": "cyan",
       "title": "O que o desenho mostra, de fora para dentro",
       "items": [
-        "A pessoa chega pela Tela de entrada, no endereço da organização, que leva um token, só um identificador e nunca uma credencial, fora dos registros e do histórico; o endereço do SaaS é o mesmo para todas as organizações (D-258, ARQ-102).",
-        "A Tela de entrada mostra o LED de status do middleware, sempre com texto ao lado da cor: verde \"No ar\", amarelo \"Instável\" (o SaaS o alcança, mas com falhas ou lentidão nos últimos minutos) e vermelho \"Fora do ar\" (ARQ-107). Clicar abre a Página de status, no mesmo endereço e sem login, que o SaaS responde sozinho, sem consultar o middleware: o estado, desde quando, o último contato e as quedas dos últimos noventa dias, sem versão nem nome de pessoa; o token só identifica, nunca autentica (ARQ-106, ARQ-121). Com o middleware fora, a tela e o app mostram, no lugar das respostas, um aviso próprio, sem endereço nem porta (ARQ-104).",
-        "No SaaS, o front e o back do Horus são o mesmo executável nos dois papéis, Atender e Trabalhar (ARQ-004): um servidor só, em docker compose, na VPS (v2.0), e réplicas em Kubernetes gerenciado na Produção real, com a mesma imagem nas duas fases e o código pronto para réplicas desde a v2.0 (ARQ-112, ARQ-113).",
-        "O login é da organização: o Middleware é a autoridade de identidade das organizações que ele atende, as pessoas ficam nele, fora do SaaS, e ele emite a sessão, que leva só o identificador da organização; o SaaS a confere com a chave pública guardada no Registro (D-258, D-261, D-272, ARQ-102). A mecânica de login é configuração da organização, que o owner faz no Front do middleware: na v2.0, usuário e senha e Google; o OpenID Connect entra na v2.1; o owner e o administrador da instância entram sempre por usuário e senha, e desligar os outros mecanismos nunca lhes tira essa entrada (ARQ-111). O primeiro acesso do owner é um link de uso único e validade curta, que o middleware gera e a Maind entrega por fora; nenhuma senha passa pela Maind, e nada disso passa pelo SaaS (ARQ-110).",
-        "O vínculo de confiança nasce com a organização: o administrador da instância a cria (D-146), e a criação gera o certificado e a chave de instalação, cifrada e de uso único; na Maind, o SaaS os entrega ao middleware pelo contrato, sem passo manual, e, na casa do cliente, a TI importa o arquivo; o middleware devolve um arquivo de configuração assinado e cifrado, o SaaS o grava no Registro de organizações, no Banco mestre, e as duas pontas confirmam o handshake; importar duas vezes não duplica a organização (ARQ-124). De fora, o SaaS só chega ao middleware pelo endereço e pela porta do Registro, com o certificado, e endereço e porta nunca vão ao navegador (ARQ-102, ARQ-116).",
-        "O contrato gRPC é versionado: o SaaS fala com a versão atual do middleware e com a anterior; com uma mais velha, recusa e mostra o aviso, com o LED vermelho \"Atualização necessária\", e a Página de status e o painel da instância dizem o motivo e a versão. Quem atualiza é quem hospeda (ARQ-099, ARQ-114).",
-        "O middleware atende várias organizações em qualquer hospedagem: o da Maind atende todas as organizações do SaaS, e o do cliente, as organizações dele (D-272); o do cliente sobe com docker compose, e o da Maind também, na VPS, passando a Kubernetes gerenciado com réplicas na Produção real (ARQ-100, ARQ-112). O certificado é o vínculo entre o SaaS e o middleware, e não a barreira entre as organizações: dentro do middleware, todas ficam numa base só, cada linha com a marca da organização, um filtro global em toda consulta e um teste de isolamento no CI como segunda trava, e as credenciais dos bancos e da IA se cifram com uma chave por organização (ARQ-103). Que esse isolamento baste é hipótese a validar (D-272).",
-        "O Avaliador de permissões segue sendo a porta única do pode?, no SaaS: toda tela, todo canal e todo trabalho perguntam a ele, a primeira leitura que nega encerra a conta, e a falha fecha (ARQ-008, ARQ-039). Ele decide sozinho, pela função, com as permissões por código que o middleware envia a cada mudança: o tipo de assento, o conjunto de permissões e os identificadores dos grupos e da carteira do gestor, sem nomes, com reconciliação completa depois de uma queda (ARQ-123). O SaaS guarda de cada pessoa só um código, sem nome nem e-mail; o nome vem do middleware, em lote, na hora de mostrar (ARQ-109).",
-        "A segurança dos dados por pessoa (MF-106) é a terceira camada, o quem vê o quê dentro do banco: chega na v2.1 e roda no middleware, e a MF-106 depende da MF-121 (D-263, ARQ-090).",
-        "O Cofre do middleware guarda as credenciais dos bancos e da IA, que o owner da organização configura no Front do middleware em qualquer hospedagem, inclusive a chave de IA que a Maind dá, cifradas com uma chave por organização (ARQ-103, D-264, D-273); o time da Maind só dá suporte. Dos bancos corporativos só se lê (D-001), e o middleware os alcança pela guarda de rede: na Maind, a da v1.xx, que recusa os endereços da rede interna; na casa do cliente, só o IP e a porta que a TI permite, numa lista de permitidos. As saídas extras (o comando da consulta, o CSV) são interruptores da organização, desligados por padrão (ARQ-116).",
-        "Os segredos saem dos Secrets do GitHub: na VPS, o CD grava o arquivo de ambiente da máquina, legível só pelo root, que o docker compose lê; na Produção real, os Secrets do Kubernetes; a imagem não leva segredo nenhum. No middleware da casa do cliente, os segredos da instância ficam com a TI dele, e a Maind não os conhece (ARQ-115).",
-        "O rastro registra cada entrega e cada abertura, sem conteúdo e só de acréscimo, e só o owner da organização o consulta (ARQ-009, D-091); a exportação da conversa também entra nele (D-252). A telemetria nunca carrega o conteúdo da conversa, pessoa nem conversa como rótulo, valor de claim, número de WhatsApp, e-mail nem segredo (ARQ-073). Do middleware na casa do cliente, a Maind vê só o que o SaaS mede (o estado, a versão, o último contato, as quedas e a contagem de uso de IA); o diagnóstico de um erro é um pacote que a TI gera e envia sob pedido, sem conteúdo, esquema nem credencial (ARQ-119).",
-        "A promessa de que o funcionário da Maind não liga nem vê (D-189, D-196) só vale no middleware do cliente. Na hospedagem da Maind, o time dela não configura os bancos e a IA, mas quem opera o middleware da Maind segue podendo, tecnicamente, alcançar as credenciais (D-258, D-273)."
+        "A pessoa entra pelo endereço da organização no SaaS, a parte do Horus que as pessoas usam, hospedada pela Maind. O código (token) do endereço só identifica a organização, nunca serve de senha e não fica gravado (D-258, ARQ-102). Antes do login, uma luz com texto diz \"No ar\", \"Instável\" ou \"Fora do ar\" e abre a página de status, sem login, com as quedas dos últimos noventa dias (ARQ-106, ARQ-107, ARQ-121).",
+        "Quem confere quem entra é o middleware, a peça que guarda as pessoas da organização fora do SaaS. Ele entrega a sessão, o passe de entrada, que leva só o identificador da organização, e o SaaS confere o passe com a chave guardada no Registro de organizações (D-258, D-261, ARQ-102). O owner da organização, que administra a empresa cliente no Horus, escolhe as formas de entrar, mas ele e o owner da instância, o funcionário da Maind que define a marca e as regras gerais, entram sempre por usuário e senha (ARQ-111).",
+        "O Avaliador de permissões, no SaaS, responde a todo \"esta pessoa pode fazer isto?\", de toda tela, canal e trabalho; a primeira regra que nega encerra a conta, e, se algo falha, a resposta é não (ARQ-008, ARQ-039). Ele decide sozinho, com o que o middleware manda a cada mudança, sem nomes: o tipo de assento, as permissões, os grupos e a carteira do gestor (ARQ-123). Para o SaaS, a pessoa é só um código, e o nome vem do middleware na hora de mostrar (ARQ-109).",
+        "O Cofre do middleware guarda as senhas dos bancos e da IA, embaralhadas (cifradas) com uma chave de cada organização, e quem as cadastra é o owner da organização, inclusive a chave de IA que a Maind dá (ARQ-103, D-264, D-273). A equipe da Maind só dá suporte, e a promessa de que ela não vê as senhas só vale no middleware do cliente: no da Maind, quem o opera ainda pode alcançá-las (D-189, D-258, D-273). Dos bancos, só se lê, e uma barreira de rede limita o alcance do middleware: na Maind, recusa a rede interna; no cliente, só passa o que a TI libera (D-001, ARQ-116).",
+        "O rastro, o registro de quem recebeu e abriu o quê, anota cada entrega e cada abertura, sem o conteúdo e só por acréscimo; só o owner da organização o consulta, e a exportação da conversa também entra nele (ARQ-009, D-091, D-252). As medições técnicas (telemetria) nunca levam a conversa, o nome da pessoa, o número de WhatsApp, o e-mail nem segredo (ARQ-073). Do middleware do cliente, a Maind vê só o que o SaaS mede, e o diagnóstico de um erro é um pacote sem conteúdo que a TI gera e envia quando a Maind pede (ARQ-119).",
+        "O middleware atende várias organizações: o da Maind, todas as do SaaS; o do cliente, as dele (D-272). Dentro dele, todas ficam numa base de dados só, separadas por uma marca em cada linha, um filtro em toda consulta e um teste automático que reprova a consulta sem filtro (ARQ-103). Se o middleware da Maind for invadido, ficam expostas as senhas e as regras de todas as organizações do SaaS; se só a base vazar, a chave de cada uma impede que as senhas de todas saiam juntas (D-272, ARQ-103)."
       ]
     },
     {
       "dot": "emerald",
-      "title": "Imediato e segundo plano; v2.0 e v2.1",
+      "title": "Uma vez, a cada pedido e em segundo plano; v2.0 e v2.1",
       "items": [
-        "As cores das linhas: verde, o caminho de cada pedido; vermelha tracejada, credencial, certificado, login ou acesso restrito; roxa tracejada, o que só chega na v2.1; cinza, o resto.",
-        "Uma vez, ao criar a organização: o certificado, a chave de instalação, o arquivo assinado e o handshake, pelo contrato na Maind e pela importação do arquivo na casa do cliente (ARQ-124).",
-        "A cada pedido, imediato: o endereço com o token, o LED, que lê o estado que o SaaS mantém, o login quando ainda não há sessão, a sessão conferida com a chave pública do Registro (ARQ-102, ARQ-107) e o pode? ao avaliador, com as permissões por código que o SaaS já guarda, sem chamar o middleware (ARQ-008, ARQ-123). O rastro grava na mesma transação da entrega ou da abertura, e nenhuma entrega escapa dele (ARQ-009).",
-        "A cada mudança, em segundo plano: o middleware envia ao SaaS as permissões por código, com entrega repetível sem efeito em dobro; depois de uma queda, o SaaS pede uma reconciliação completa antes de voltar a aceitar mudanças (ARQ-123). O SaaS mede o contato com o middleware, decide o estado em três valores e guarda o registro de quedas no Banco mestre por noventa dias (ARQ-106, ARQ-107, ARQ-121).",
-        "Uma vez, ao excluir a organização: o SaaS manda ao middleware apagar as linhas com a marca dela e a chave de cifra dela, e só a marca excluída depois da confirmação; com o middleware fora, o pedido se repete, e ela aparece \"em exclusão\" no painel da instância. Apagar a chave inutiliza as credenciais também nas cópias (D-278, ARQ-125).",
-        "v2.0: o middleware, que atende várias organizações (a MF-121, Middleware da organização: D-260, D-270, D-272), com o login (usuário e senha e Google, configuráveis pela organização, ARQ-111), o front e o cofre; o avaliador pela função. Na v2.0, a organização é a fronteira dos dados: quem pode perguntar alcança todos os bancos dela (D-145, ARQ-090).",
-        "v2.1: a segurança dos dados por pessoa, no middleware (MF-106, D-263), e o login da empresa por OpenID Connect, mais um mecanismo do mesmo módulo do middleware (ARQ-111, D-184), com os owners ligados a ele (D-258, D-269): só autentica quem foi convidado (D-253), vale a role que ele traz (D-254), e a sessão nascida por ele se confirma a cada 8 horas (D-255).",
-        "Sem versão: a instalação completa do Horus no cliente (D-188)."
+        "Verde é o caminho de cada pedido; vermelha tracejada é senha, login, acesso restrito ou certificado, a identidade digital que liga o SaaS ao middleware; roxa tracejada é o que só chega na v2.1; cinza é o resto. Para caber, a Tela de entrada junta a luz e a página de status, e o rastro, que mora no banco da organização, divide um nó com a telemetria, que vai ao monitoramento (D-091, ARQ-073). As permissões que o SaaS guarda aparecem na linha do middleware ao avaliador.",
+        "Quando o owner da instância cria a organização, o SaaS gera o certificado e uma chave de instalação de uso único (D-146, ARQ-124). Na Maind, o SaaS os entrega ao middleware sozinho; no cliente, a TI importa o arquivo; o middleware devolve um arquivo assinado, que o SaaS guarda no Registro, e os dois lados se confirmam num aperto de mão digital (ARQ-124). O owner da organização recebe o primeiro acesso por um link de uso único e curta validade, que o middleware gera e a Maind entrega por fora, e nenhuma senha passa pela Maind nem pelo SaaS (ARQ-110).",
+        "Ao excluir a organização, o SaaS manda o middleware apagar as linhas e a chave dela, e só a marca como excluída depois que ele confirma (D-278, ARQ-125). Com o middleware parado, o pedido se repete, e a organização aparece \"em exclusão\" no painel da instância. Apagar a chave inutiliza as senhas também nas cópias de segurança (ARQ-125).",
+        "A cada pedido, na hora: o endereço com o token, a luz, o login quando ainda não há sessão e a conferência da sessão no Registro (ARQ-102, ARQ-107). Depois vem o \"pode?\" ao avaliador, com as permissões que o SaaS já guarda, sem chamar o middleware, e, com o middleware parado, aparece um aviso próprio no lugar da resposta (ARQ-008, ARQ-104, ARQ-123). O rastro grava no mesmo passo da entrega ou da abertura, e nenhuma entrega escapa dele (ARQ-009).",
+        "Em segundo plano, a cada mudança, o middleware manda ao SaaS as permissões por código; repetir o envio não duplica nada, e, depois de uma queda, o SaaS pede tudo de novo antes de aceitar mudanças (ARQ-123). O SaaS mede o contato com o middleware, escolhe o estado da luz e guarda as quedas por noventa dias (ARQ-106, ARQ-107, ARQ-121). Um middleware mais velho que a versão anterior é recusado, com a luz vermelha \"Atualização necessária\", e quem o atualiza é quem o hospeda (ARQ-114).",
+        "Na v2.0: o middleware para várias organizações, com o login por senha e Google, o Front e o cofre, e o avaliador pela função; quem pode perguntar alcança todos os bancos da organização (MF-121, D-145, D-272, ARQ-090, ARQ-111). Na v2.1: a segurança dos dados por pessoa, no middleware, e o login da empresa (OpenID Connect), só para convidados, com o papel (role) que ele traz e a sessão confirmada a cada 8 horas (MF-106, D-263, ARQ-111, D-184, D-253 a D-255). Sem versão marcada: a instalação completa do Horus no cliente (D-188)."
       ]
     },
     {
       "dot": "amber",
-      "title": "O que ficou de fora e o que espera decisão",
+      "title": "O que falta decidir, os riscos aceitos e o que ficou de fora",
       "items": [
-        "Adiada pelo dono: a política do certificado (o formato, a rotação e a revogação), que é escolha da organização e fica para as ADRs da MF-121 (P-049); o mecanismo do vínculo já está decidido (ARQ-124).",
-        "A confirmar com o dono: que é o owner, no módulo de configuração do middleware, quem liga as saídas extras (a segunda parte da ARQ-116, leitura do PO na D-193); e a separação do SaaS e do middleware da Maind em projetos, redes e bancos distintos, ligados só pelo contrato com o certificado (ARQ-127), que está no diagrama da implantação.",
-        "Aguarda o dono: ARQ-040, a chave única da segurança por pessoa, adiada para a v2.1. A Semântica de Segurança por dentro (ARQ-032, ARQ-041, ARQ-042) é da v2.1 e não está desenhada; onde o owner escreverá as regras por pessoa não está decidido.",
-        "Risco: um ponto único na hospedagem da Maind. O ponto único de falha é aceito na v2.0 e deixa de existir na Produção real, com réplicas (ARQ-112); o de invasão segue: se o middleware da Maind for invadido, ficam expostas as credenciais e as regras de todas as organizações do SaaS, e quem exigir mais isolamento usa o middleware na casa dele (D-272). A base só junta todas num lugar, e um filtro esquecido numa consulta mistura organizações; a chave por organização existe para que a base invadida não entregue as credenciais de todas (ARQ-103).",
-        "Com o arquiteto (P-048): onde roda a pergunta do administrador sobre a história da instância, com a chave de IA da instância cadastrada só para ela, que não passa por middleware nenhum (D-276).",
-        "A calibrar 🔎: o limite e a janela entre \"No ar\" e \"Instável\" (ARQ-107); a validade do link de primeiro acesso do owner (ARQ-110); quantas versões do contrato a janela cobre (ARQ-114).",
-        "Lacuna: onde se autentica o administrador da instância, no SaaS ou no middleware; as decisões dizem só que ele entra sempre por usuário e senha (D-258, ARQ-111) e que cria o usuário do owner no front do middleware (ARQ-110).",
-        "A LGPD e o jurídico seguem como decididos (D-247): o owner lê as conversas (D-223), quem é excluído leva os registros dele (D-210), e a Maind não vê o nome de quem ocupa o assento (D-274). A parte técnica de apagar é a P-044, que alcança também o middleware (D-278): se o código de pessoa que sobra no SaaS e o resto da cópia que expira pela guarda bastam é a conferência jurídica (ARQ-109, ARQ-125).",
-        "Fora do desenho: os provedores de IA, cuja chave fica no cofre (D-264 a D-267); o isolamento por banco no SaaS e o banco de log, que guarda só o código da pessoa (ARQ-109), no diagrama dos dados; o e-mail dos avisos e dos relatórios, que só passa pelo SaaS na hora do envio (ARQ-118), no diagrama das integrações; e o gestor, que cria o convite pelo Horus, enquanto só o owner usa o Front do middleware (D-262).",
-        "Para caber: a Tela de entrada junta o LED de status e a Página de status, que ficam no mesmo endereço; as permissões por código, que o SaaS guarda, aparecem na ligação do middleware ao avaliador; e o rastro e a telemetria ficam num nó só (o rastro mora no banco da organização, D-091, e a telemetria vai para a observabilidade, ARQ-073)."
+        "Falta o dono do Horus confirmar que só o owner da organização liga as saídas extras, como o comando da consulta e a planilha CSV, que vêm desligadas (ARQ-116). Falta o dono do Horus confirmar também que o SaaS e o middleware da Maind rodam em projetos, redes e bancos separados, ligados só pelo canal com o certificado; o detalhe está no diagrama da implantação (ARQ-127).",
+        "Falta o dono do Horus decidir, para a v2.1, se a segurança por pessoa terá uma chave só de liga e desliga (ARQ-040). Falta o dono do Horus decidir também onde o owner da organização vai escrever as regras por pessoa. O funcionamento interno dessa segurança é da v2.1 e não está desenhado (ARQ-032, ARQ-041, ARQ-042).",
+        "Falta o arquiteto do Horus decidir, com o dono do Horus, o formato do certificado e como ele se troca e se cancela, à escolha de cada organização, quando o middleware for detalhado; o caminho do certificado está decidido, menos por onde o arquivo assinado volta ao SaaS quando o middleware fica na casa do cliente (P-049, MF-121, ARQ-124). Falta o arquiteto do Horus decidir onde o owner da instância faz o login e onde roda a pergunta dele sobre a história da instância, que usa a chave de IA da instância (P-048, D-276). Falta o arquiteto do Horus decidir também em que banco do SaaS ficam as permissões de cada pessoa (ARQ-109, ARQ-123).",
+        "Falta o arquiteto do Horus calibrar, com o uso, quando \"No ar\" vira \"Instável\", por quanto tempo vale o link de primeiro acesso e quantas versões do middleware o SaaS aceita (ARQ-107, ARQ-110, ARQ-114). Falta o arquiteto do Horus conferir se apagar quem é excluído convive com o registro de acesso e com as cópias, também no middleware (P-044, D-278, ARQ-125). Falta o owner da organização consultar o jurídico da própria empresa sobre a LGPD, a lei de dados pessoais: a leitura das conversas pelo owner da organização, a exclusão dos registros de quem sai e o código que sobra no SaaS (D-223, D-210, D-247, ARQ-109).",
+        "Riscos aceitos: na v2.0, o SaaS, um mesmo programa nos papéis Atender e Trabalhar, roda num servidor só, como o middleware da Maind, e uma falha para tudo (ARQ-004, ARQ-112). Na produção real, os dois ganham cópias (réplicas), e esse risco some; o código já nasce pronto para isso (ARQ-112, ARQ-113). A base única do middleware fica: ainda falta provar que essa separação basta, e quem quer mais isolamento hospeda o próprio middleware (D-272).",
+        "Ficam em outros diagramas: os provedores de IA, cuja chave mora no cofre (D-264 a D-267); o banco de cada organização e o banco de log, que guarda só o código da pessoa (ARQ-109); e o e-mail dos avisos, que só passa pelo SaaS na hora do envio (ARQ-118). Também ficam fora os segredos da própria instalação, que saem do cofre de segredos do GitHub, nunca entram no pacote do programa e, no cliente, ficam só com a TI dele (ARQ-115). O gestor cria o convite pelo Horus, e só o owner da organização usa o Front do middleware (D-262)."
       ]
     }
   ]

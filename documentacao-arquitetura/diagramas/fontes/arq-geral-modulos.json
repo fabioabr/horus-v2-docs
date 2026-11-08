@@ -557,7 +557,7 @@
           "mwfront",
           "base"
         ],
-        "note": "As pessoas usam o app web do SaaS; o owner usa o Front do middleware, o módulo de configuração do login e dos bancos (D-273, ARQ-111)."
+        "note": "As pessoas usam o app do SaaS; o owner da organização usa o Front do middleware, onde configura o login e os bancos (D-273, ARQ-111)."
       },
       {
         "id": "entrada",
@@ -578,44 +578,44 @@
       "id": "front",
       "type": "frontend",
       "label": "App web (front)",
-      "sublabel": "Tela de entrada com LED · Página de status · MF-108, MF-110",
+      "sublabel": "tela de entrada com luz de estado · MF-108, MF-110",
       "pos": [
-        270,
-        88
+        390,
+        60
       ],
       "size": [
-        340,
-        64
+        250,
+        100
       ],
-      "tag": "conversa única · permissões na tela (ARQ-020) · ARQ-106, ARQ-107"
+      "tag": "página de status · esconde o negado · ARQ-020, ARQ-106, ARQ-107"
     },
     {
       "id": "acompanhar",
       "type": "backend",
       "label": "Acompanhar e avisar",
-      "sublabel": "boards e agentes · MF-112 a MF-115",
-      "tag": "agendador e conectores de saída",
+      "sublabel": "painéis e agentes · MF-112 a MF-115",
+      "tag": "agendamentos e envios para fora",
       "pos": [
         40,
-        238
+        230
       ],
       "size": [
-        190,
-        64
+        250,
+        100
       ]
     },
     {
       "id": "canais",
       "type": "backend",
       "label": "Canais",
-      "sublabel": "conversa no app e no popup · WhatsApp · MF-110, MF-111",
+      "sublabel": "conversa: app, popup e WhatsApp · MF-110, MF-111",
       "pos": [
-        270,
-        238
+        390,
+        230
       ],
       "size": [
-        340,
-        64
+        250,
+        100
       ]
     },
     {
@@ -623,104 +623,104 @@
       "type": "backend",
       "label": "Prova e controle",
       "sublabel": "rastro, autonomia · MF-116, MF-117",
-      "tag": "Home, rastro · nomes em lote (ARQ-109)",
+      "tag": "Home e rastro · nomes pedidos em lote (ARQ-109)",
       "pos": [
-        650,
-        238
+        740,
+        230
       ],
       "size": [
-        190,
-        64
+        250,
+        100
       ]
     },
     {
       "id": "motor",
       "type": "backend",
       "label": "Motor de análise",
-      "sublabel": "Condutor do turno · MF-107 a MF-109 · corte em aberto",
-      "tag": "MF-119 (v2.1), um modo novo do condutor",
+      "sublabel": "conduz a pergunta · MF-107 a MF-109",
+      "tag": "divisão em aberto · MF-119 (v2.1): um modo novo de conduzir",
       "pos": [
-        270,
-        388
+        390,
+        400
       ],
       "size": [
-        340,
-        64
+        250,
+        100
       ]
     },
     {
       "id": "plataforma",
       "type": "backend",
       "label": "Plataforma",
-      "sublabel": "Avaliador de permissões · assentos · rastro · MF-101 a MF-103",
-      "tag": "Permissões por código (ARQ-123) · registro do rastro (MF-116) · convite do gestor (D-262)",
+      "sublabel": "Avaliador de permissões · assentos · MF-101 a 103",
+      "tag": "Permissões por código (ARQ-123) · rastro (MF-116) · convite (D-262)",
       "pos": [
-        270,
-        538
+        390,
+        570
       ],
       "size": [
-        340,
-        64
+        250,
+        100
       ]
     },
     {
       "id": "fundacao",
       "type": "backend",
       "label": "Fundação",
-      "sublabel": "Fila durável e caixa de saída · Desenho fora da tela",
-      "tag": "filtro por organização · Porta da Meta",
+      "sublabel": "fila de tarefas e avisos · desenha imagens e PDFs",
+      "tag": "filtro por organização · porta do WhatsApp (Meta)",
       "pos": [
-        270,
-        688
+        390,
+        740
       ],
       "size": [
-        340,
-        64
+        250,
+        100
       ]
     },
     {
       "id": "fontes",
       "type": "backend",
       "label": "Fontes e IA",
-      "sublabel": "era de Dados e IA · MF-104, MF-105 · D-273",
-      "tag": "acesso e credenciais · MF-106 (v2.1) roda aqui",
+      "sublabel": "acesso aos bancos e à IA · MF-104, MF-105",
+      "tag": "vinha de Dados e IA, com as senhas · MF-106 (v2.1) · D-273",
       "pos": [
-        900,
-        238
+        1090,
+        230
       ],
       "size": [
-        240,
-        64
+        250,
+        100
       ]
     },
     {
       "id": "ciclo",
       "type": "backend",
       "label": "Ciclo da análise",
-      "sublabel": "modelo de IA e consultas · era do Motor",
+      "sublabel": "modelo de IA e consultas · vinha do Motor",
       "tag": "D-189, D-258",
       "pos": [
-        900,
-        388
+        1090,
+        400
       ],
       "size": [
-        240,
-        64
+        250,
+        100
       ]
     },
     {
       "id": "auth",
       "type": "security",
       "label": "Autenticação e pessoas",
-      "sublabel": "usuário e senha e Google; OIDC v2.1",
-      "tag": "autoridade de identidade · era da Plataforma · D-261, ARQ-111",
+      "sublabel": "senha e Google; login da empresa na v2.1",
+      "tag": "confere quem é a pessoa · vinha da Plataforma · D-261, ARQ-111",
       "pos": [
-        900,
-        538
+        1090,
+        570
       ],
       "size": [
-        240,
-        64
+        250,
+        100
       ]
     },
     {
@@ -730,12 +730,12 @@
       "sublabel": "base única · marca e filtro (ARQ-103)",
       "tag": "membros e detalhes de cada organização · D-258, D-272",
       "pos": [
-        900,
-        688
+        1090,
+        740
       ],
       "size": [
-        240,
-        64
+        250,
+        100
       ]
     },
     {
@@ -743,14 +743,14 @@
       "type": "frontend",
       "label": "Front do middleware",
       "sublabel": "módulo de configuração: login e bancos",
-      "tag": "só o owner · D-271, D-273, ARQ-111",
+      "tag": "só o owner da organização · D-271, D-273, ARQ-111",
       "pos": [
-        900,
-        838
+        1440,
+        570
       ],
       "size": [
-        240,
-        64
+        250,
+        100
       ]
     }
   ],
@@ -877,41 +877,36 @@
       "dot": "cyan",
       "title": "O que o desenho mostra",
       "items": [
-        "O SaaS segue com os módulos do documento 04 num executável só (ARQ-003, ARQ-018): a Fundação embaixo, que não é de nenhuma mf e serve a todas; acima dela a Plataforma e o Motor de análise; e, em cima, Canais, Acompanhar e avisar e Prova e controle, que não se chamam entre si. Cada seta cheia quer dizer \"depende de\": um módulo só conhece os de baixo e os chama pela fachada (ARQ-018, ARQ-019).",
-        "Fora do SaaS fica o Middleware, a MF-121, Middleware da organização, que é da v2.0 (D-260, D-270). Ele atende várias organizações, cada uma ligada ao SaaS pelo seu certificado e separada das outras, dentro dele, pela marca da organização, por um filtro e por uma chave dela (D-258, ARQ-103): o da Maind atende todas as organizações do SaaS, e o do cliente, as organizações dele (D-272). A diferença entre as hospedagens é só o local físico, com o mesmo contrato e o mesmo front; onde ele mora é irrelevante para o produto, desde que a rede o alcance (D-258, D-271). Ele é a autoridade de identidade das organizações que atende e o lugar onde roda o ciclo da análise.",
-        "O que saiu do SaaS para o middleware: do Motor de análise, o ciclo da análise, isto é, o modelo de IA e as consultas (D-189, D-258); de Dados e IA, o acesso às fontes e à IA, com a configuração e as credenciais, que deixam também o cofre da Fundação (D-258, D-273); da Plataforma, a autenticação e as pessoas, que ficam isoladas fora do SaaS (D-258, passo 6; D-261).",
-        "O Motor de análise manda ao middleware só a pergunta e recebe a resposta pronta, os blocos que a pessoa vê, com a contagem do uso de IA, sem conteúdo, para o consumo e o custo (D-189, D-267, ARQ-117), pelo contrato entre o SaaS e o middleware, que é gRPC (ARQ-099). A Plataforma manda os assentos liberados (D-258, passo 4) e o convite e o pedido de troca de assento que o gestor faz pelo Horus, que o owner aprova no front do middleware (D-262). De volta, a cada mudança, o middleware manda à Plataforma as Permissões por código: para cada Código da pessoa, o tipo de assento, o conjunto de permissões e os identificadores dos grupos e da carteira do gestor, sem nomes; com elas o Avaliador de permissões decide cada pedido sozinho e o SaaS conta os assentos ocupados sem chamar o middleware (ARQ-008, ARQ-123).",
-        "Dentro do middleware, a Base de configuração é uma só para todas as organizações que ele atende e guarda os membros e os detalhes de cada uma (D-258, D-272, ARQ-103). Cada linha leva a marca da organização, e um filtro que vale em toda consulta separa uma da outra, com um teste de isolamento no CI como segunda trava; as credenciais dos bancos e da IA se cifram com uma chave por organização, e excluir a organização apaga as linhas e a chave dela (ARQ-103, D-278). O Front do middleware é o módulo de configuração da organização (ARQ-111): só o owner da organização o usa, em qualquer hospedagem, para gerir as pessoas, configurar os bancos e a IA, inclusive a chave de IA que a Maind dá, e definir a mecânica de login (D-261, D-262, D-273). Na hospedagem da Maind, a Maind cria o usuário com que o owner entra (D-271); o time da Maind só dá suporte, antes e depois da venda, e não configura por ele (D-273).",
-        "Para avisar quem está acima, o módulo grava um evento na Fila durável e caixa de saída, na transação do fato, e quem se interessa o consome pela fila, sem efeito em dobro: o evento \"assentos cortados\" nasce na Plataforma, e o agendador e os agentes, em Acompanhar e avisar, pausam a organização (ARQ-019, documento 04 §3.3).",
-        "O front do SaaS segue os mesmos módulos e só esconde o que o servidor nega, pelas permissões efetivas (ARQ-020). A Tela de entrada da organização mostra o LED de status do middleware, sempre com texto (verde \"No ar\", amarelo \"Instável\", vermelho \"Fora do ar\"), e clicar nele abre a Página de status, no endereço da organização e sem login, que o SaaS responde sozinho, sem consultar o middleware; com o vermelho, a pessoa vê o Aviso próprio (ARQ-104, ARQ-106, ARQ-107). Prova e controle lê os registros (rastro, uso e retorno) pelas fachadas de quem os grava (documento 04 §3.1) e mostra os nomes que pede ao middleware em lote, na hora de exibir, porque o SaaS guarda só o Código da pessoa (ARQ-109, ARQ-123)."
+        "O SaaS, a parte do Horus que as pessoas usam, é um programa só, dividido em módulos empilhados como andares. Cada seta cheia quer dizer \"depende de\": um módulo só chama os de baixo, pela fachada, a porta de entrada de cada módulo. (ARQ-003, ARQ-018, ARQ-019)",
+        "A Fundação, embaixo, serve a todos: a fila de tarefas, os avisos entre módulos, o desenho de imagens e PDFs e a porta do WhatsApp. Acima dela, a Plataforma cuida do que cada pessoa pode fazer e dos assentos, as vagas pagas da organização, e o Motor de análise conduz a pergunta. Em cima, Canais, Acompanhar e avisar e Prova e controle não se chamam entre si. (ARQ-018)",
+        "O middleware fica fora do SaaS e atende várias organizações: o da Maind, todas as do SaaS; o do cliente, só as dele. (D-258, D-272) Foram para ele o ciclo da análise, isto é, o modelo de IA e as consultas, o acesso aos bancos e à IA, com as senhas, e a entrada e o cadastro das pessoas. Por isso o SaaS perdeu o módulo Dados e IA. (D-189, D-261, D-273)",
+        "Pelo contrato gRPC, o canal e as regras combinadas entre os dois, o Motor manda só a pergunta e recebe a resposta pronta, com a contagem do uso de IA, sem o conteúdo. (D-189, ARQ-099, ARQ-117) A Plataforma manda os assentos liberados e os convites e pedidos de troca de assento do gestor, que o owner da organização aprova no Front do middleware. (D-258, D-262)",
+        "A cada mudança, o middleware devolve à Plataforma as permissões de cada pessoa, que no SaaS é só um código, sem nome. Com elas, o Avaliador de permissões, a peça que diz se a pessoa pode, decide cada pedido e conta os assentos sem chamar o middleware. (ARQ-008, ARQ-123) Prova e controle lê o rastro e o uso pela fachada de quem os grava e pede os nomes ao middleware, em lote, só na hora de mostrar. (ARQ-109)",
+        "Dentro do middleware, a Base de configuração é uma só para todas as organizações, e cada uma se separa das outras por uma marca, um filtro e uma chave só dela, que tranca as senhas. (D-272, ARQ-103) O Front do middleware é a tela do owner da organização, que ali cuida das pessoas, dos bancos, da IA e do jeito de entrar. Na hospedagem da Maind, a Maind cria o usuário dele e só dá suporte. (D-271, D-273, ARQ-111)"
       ]
     },
     {
       "dot": "emerald",
-      "title": "Imediato e em segundo plano; v2.0 e v2.1",
+      "title": "Na hora, depois e em que versão",
       "items": [
-        "Imediato: o pedido pela fachada (o pedido de turno, o \"pode?\", as permissões efetivas) e a gravação do evento, na mesma transação do fato (ARQ-005, ARQ-019). A ida do Motor de análise ao middleware acontece dentro do turno: na hora, na conversa do app; no WhatsApp e no agente, o turno já é trabalho da fila (ARQ-024).",
-        "Em segundo plano: o consumo do evento pela fila, no papel Trabalhar; a reação não é instantânea, e cada consumidor tolera o evento repetido (ARQ-005, ARQ-019).",
-        "O SaaS é um executável só, nos dois papéis, Atender e Trabalhar (ARQ-004), com a mesma imagem em toda fase; o que muda é a implantação, escolhida pelo CI/CD (ARQ-113). Na VPS (v2.0), ele sobe com docker compose, um servidor só, com o Postgres gerenciado fora da máquina (ARQ-098, ARQ-101, ARQ-112); na Produção real (nuvem pública, Kubernetes gerenciado, réplicas), ele passa a ter réplicas, e o código da v2.0 já nasce preparado para elas: a parada de uma resposta, os limites de taxa e o cache valem em todas as réplicas, pelo banco (ARQ-112, ARQ-113). O middleware é outra peça, numa infraestrutura separada da do SaaS (D-258, passo 1): o da Maind segue as mesmas duas fases, e o da casa do cliente sobe com docker compose (ARQ-100, ARQ-112); é um só para as organizações que atende, e criar uma organização não sobe um middleware novo (D-272).",
-        "O login: na v2.0, o módulo de configuração do middleware oferece usuário e senha e Google, que o owner liga ou desliga por organização; o OpenID Connect, o login da empresa, entra na v2.1 como mais um mecanismo do mesmo módulo; o owner e o administrador da instância entram sempre por usuário e senha (ARQ-111, D-258). As Permissões por código chegam à Plataforma a cada mudança, numa entrega repetível sem efeito em dobro, com uma reconciliação completa depois de uma queda do middleware (ARQ-123).",
-        "Tudo no desenho é da v2.0, que tem 19 mfs: MF-101 a MF-105, MF-107 a MF-118, MF-120 e, agora, MF-121 (D-260). O que diz v2.1 é a MF-119, Investigação guiada, um modo novo do Condutor do turno, e a MF-106, Segurança dos dados por pessoa, que passa a rodar no middleware e a depender da MF-121 (D-263). A v2.1 fica com cinco mfs, MF-106, MF-119, MF-122, MF-123 e MF-124 (D-282), e sem onda 2, leitura do PO a confirmar com o dono (06-versoes).",
-        "Na v2.0, o que cada pessoa vê nos dados segue como a v2.0 já decidiu: a organização é a fronteira, e o Avaliador de permissões tem duas camadas, o tipo de assento e as roles (ARQ-008, D-263)."
+        "Na hora: o pedido de um módulo ao de baixo, como o pedido de turno e o \"pode?\", e a gravação do evento junto com o fato. (ARQ-005, ARQ-019) Na conversa do app, a ida do Motor ao middleware também é na hora; no WhatsApp e no agente, o turno já é uma tarefa da fila. (ARQ-024)",
+        "Depois, pela fila: para avisar o de cima, o módulo grava um bilhete, o evento, e quem se interessa o pega na fila, uma lista de tarefas esperando a vez. Quando os assentos são cortados na Plataforma, por exemplo, Acompanhar e avisar pausa os agendamentos e os agentes da organização. A reação demora um pouco, nunca sai em dobro, e testes automáticos reprovam o código que fura a regra. (ARQ-019)",
+        "O app do Horus só esconde o que o servidor nega. (ARQ-020) Na entrada, uma luz verde, amarela ou vermelha, sempre com texto, mostra o estado do middleware e leva à página de status, que abre sem login e que o SaaS responde sozinho. Com o vermelho, a pessoa vê um aviso próprio no lugar das respostas. (ARQ-104, ARQ-106, ARQ-107)",
+        "O pacote do programa é o mesmo em toda fase: uma cópia só na VPS, o servidor alugado de agora, e réplicas, várias cópias ao mesmo tempo, na produção real. (ARQ-112, ARQ-113) Parar uma resposta e os limites de pedidos já valem em todas as cópias, pelo banco; o cache, uma cópia guardada perto para responder mais rápido, fica em cada réplica. (ARQ-095, ARQ-113) O middleware roda numa infraestrutura separada da do SaaS, e criar uma organização não sobe um middleware novo. (D-258, D-272)",
+        "Na v2.0, o Front do middleware oferece usuário e senha e Google, que o owner da organização liga ou desliga; o login da empresa entra na v2.1. O owner da organização e o owner da instância entram sempre por usuário e senha. (ARQ-111) As permissões chegam à Plataforma a cada mudança, sem efeito em dobro, e, depois de uma queda do middleware, o SaaS confere a lista inteira de novo. (ARQ-123)",
+        "Tudo no desenho é da v2.0, que tem 19 mfs, inclusive o middleware. (D-260) São da v2.1 a investigação guiada, um modo novo do Motor, e a segurança dos dados por pessoa, que passa a rodar no middleware. (MF-119, MF-106, D-263) Na v2.0, o que cada pessoa vê nos dados depende do tipo de assento e das roles, os papéis dela, sempre dentro da organização. (ARQ-008, D-263)"
       ]
     },
     {
       "dot": "amber",
-      "title": "O que ficou de fora e o que aguarda",
+      "title": "O que ficou de fora e o que falta decidir",
       "items": [
-        "O corte exato do Motor de análise entre o SaaS e o middleware não está decidido: as fontes só dizem que o ciclo, o modelo de IA e as consultas, roda no middleware, e que ao SaaS chegam a pergunta e a resposta pronta (D-189, D-258). O desenho não inventa subcomponentes além disso (P-040, P-048).",
-        "O que de Dados e IA ainda fica no SaaS também não está decidido: onde ficam o modelo semântico e quem o carrega, a curadoria dos modelos de IA e o modelo padrão, e o histórico das consultas que o board reaproveita. Por isso o SaaS deixou de ter um nó de Dados e IA (P-048).",
-        "A terceira camada do avaliador, que a ARQ-018 punha em Dados e IA e fazia a única ligação de sentido contrário, roda no middleware na v2.1 (D-263). Como ela volta ao Avaliador de permissões do SaaS está em aberto, e a ligação saiu do desenho (P-048).",
-        "O Registro de organizações mora no banco mestre do SaaS e guarda, para cada organização, o endereço, a porta e a chave pública do middleware que a atende, aprendidos no handshake do certificado; o SaaS acha o middleware certo consultando o registro (D-258, ARQ-088, ARQ-102). Em que módulo ele fica não está decidido; o desenho não o aloca.",
-        "Sem módulo decidido: o Aviso próprio, o LED de status, a Página de status, o Estado do middleware que eles leem e o Registro de quedas, no banco mestre por noventa dias (ARQ-104, ARQ-106, ARQ-107, ARQ-121): em qual mf moram fica para depois que a arquitetura fechar (D-283, D-284). As Permissões por código também não têm módulo no registro; o desenho as liga à Plataforma porque é nela que está o Avaliador de permissões, que decide cada pedido a partir delas (ARQ-008, ARQ-123). A tela do consumo e do custo da IA do owner é a que a v1.xx já tem (ARQ-117), sem módulo alocado.",
-        "O risco novo do middleware compartilhado: na hospedagem da Maind ele é um ponto único, e, se for invadido, expõe as credenciais e as regras de todas as organizações do SaaS; quem exigir mais isolamento usa o middleware na casa dele (D-272). Com a base única, um filtro esquecido mistura organizações e, se a base for invadida, todas vêm juntas, mas as credenciais seguem cifradas com a chave de cada uma (ARQ-103). Hipótese 🔎: que a marca, o filtro e a chave por organização bastem entre as organizações. O ponto único de falha do middleware da Maind é aceito na VPS (v2.0) e deixa de existir na Produção real, com réplicas (ARQ-112). Quem opera o middleware da Maind segue podendo, tecnicamente, alcançar as credenciais: a promessa \"a Maind não vê\" só vale na casa do cliente (D-189, D-273).",
-        "Fecharam desde a versão anterior deste desenho: o vínculo, em que a criação da organização no SaaS gera o certificado e a chave de instalação, entregues pelo contrato na hospedagem da Maind e importados pela TI na casa do cliente (ARQ-124); o que o SaaS guarda de cada pessoa, só o Código da pessoa, com os nomes das pessoas, dos grupos e das roles pedidos ao middleware em lote (ARQ-109, ARQ-123); o e-mail do convite, que só passa pelo SaaS (ARQ-109, D-262); e onde o owner vê o consumo e o custo de toda a IA, no Horus, com o painel da instância mostrando só as chaves que a Maind dá e a chave da instância numa linha à parte (ARQ-117). Segue adiada a política do certificado (formato, rotação e revogação), escolha da organização, para as ADRs da MF-121 (P-049).",
-        "A sessão, emitida pelo middleware e conferida pelo SaaS com a chave pública do Registro de organizações, leva só o identificador da organização, sem endereço nem porta, e o token do endereço é só um identificador, nunca uma credencial (ARQ-102). O login com o Google deixou de ser regra fixa: é um mecanismo que a organização liga no módulo de configuração (ARQ-111). Aguardam o dono a ARQ-047 (o caminho da Porta da Meta até o WhatsApp) e a ARQ-040 (a camada única das claims, v2.1).",
-        "Fora de propósito ou sem módulo: os componentes um a um (documento 04 §3.2); os bancos corporativos e os provedores de IA, que o middleware alcança (D-258); as bases de demonstração (MF-118), que, como toda organização, as organizações de demonstração passam a ler pelo middleware (D-258), sem fonte que trate o caso; os servidores MCP da organização, que ficam na infraestrutura dela, fora do contrato gRPC (D-281, ARQ-099), e que só o owner cadastra, no Front do middleware (D-287, ARQ-111), na v2.1, na MF-124 (D-282); como o middleware os chama e aplica a lista de ferramentas que o owner libera segue em aberto (D-289, P-050); e a MF-120 (v2.0), a MF-122 e a MF-123 (v2.1), que a arquitetura ainda não aloca (P-028).",
-        "O documento 04 está atrasado e vale o backlog: põe a autenticação e as pessoas na Plataforma, as fontes, a IA e as credenciais no SaaS e não tem middleware (D-258, D-261, D-273); diz quatro tipos de assento, e são cinco (D-194); e lista as mfs MF-101 a MF-119, sem a MF-120 e a MF-121, que hoje são da v2.0 (D-204, D-260)."
+        "Falta o dono do Horus decidir o caminho até o WhatsApp; a proposta, que vale enquanto ele estuda outras saídas, é falar direto com o serviço oficial da Meta. (ARQ-047) Falta o dono do Horus decidir também, para a v2.1, um interruptor só para a segurança por pessoa, no lugar das duas chaves de hoje. (ARQ-040) E falta ele confirmar que a v2.1, com cinco mfs, fica sem a segunda onda. (D-260, D-282)",
+        "Falta o arquiteto do Horus decidir como o Motor de análise se divide entre o SaaS e o middleware; o desenho não inventa peças além do que já se sabe. (P-040, P-048) Falta decidir também o que de Dados e IA fica no SaaS: o modelo semântico, o texto que explica ao Horus os dados da empresa, a lista e o modelo padrão de IA e a memória das consultas dos painéis. (P-048) Falta decidir ainda como a segurança por pessoa, que na v2.1 roda no middleware, responde ao SaaS; até lá, essa ligação fica fora do desenho. (D-263, P-048)",
+        "Falta o arquiteto do Horus decidir o módulo de cada peça nova: o Registro de organizações, no Banco mestre, onde o SaaS acha o middleware de cada uma; as peças do estado do middleware; a tela do custo da IA; e as permissões por código, que o desenho liga à Plataforma. (ARQ-102, ARQ-107, ARQ-117, ARQ-123) Estão sem módulo também a faixa de avisos, os conectores de chat corporativo, a fonte AWS Athena e os servidores MCP da organização. (MF-120, MF-122, MF-123, MF-124, P-028) Falta o PO definir, depois que a arquitetura fechar, em que mf moram a luz de estado, o aviso de queda, a página de status e o registro das quedas. (D-283, D-284)",
+        "Falta o arquiteto do Horus decidir como o middleware chama os servidores MCP da organização, programas dela que só leem, e respeita as ferramentas que o owner da organização liberou. (D-289, P-050) Esses servidores ficam na infraestrutura da organização, fora do contrato gRPC, e só o owner da organização os cadastra, no Front do middleware, a partir da v2.1. (D-281, D-286, D-287, ARQ-099) Falta o arquiteto do Horus decidir, com o dono do Horus, a política do certificado, a identidade digital do middleware: o formato, a troca e o cancelamento. (P-049)",
+        "Falta o arquiteto do Horus provar que a marca, o filtro e a chave bastam para uma organização não ver a outra. (D-272, ARQ-103) O middleware da Maind é um só para todas: se for invadido, expõe as regras de todas, com as senhas ainda trancadas; se cair na VPS, cai para todas, e na produção real as réplicas evitam isso. (ARQ-103, ARQ-112) Quem opera o middleware da Maind ainda pode, tecnicamente, chegar às senhas; quem quer mais isolamento hospeda o próprio middleware. (D-189, D-272, D-273)",
+        "Falta o arquiteto do Horus atualizar o documento técnico dos módulos, que ainda põe a entrada e as pessoas na Plataforma e as senhas no SaaS, não tem middleware, conta quatro tipos de assento em vez de cinco e não lista duas mfs da v2.0, a faixa de avisos e o middleware; até lá, vale o registro de decisões. (D-194, D-204, D-258, D-260, D-261, D-273, P-028) Ficam fora do desenho os componentes um a um, os bancos das empresas e os provedores de IA, que o middleware alcança, e as bases de demonstração, que o middleware passa a ler como as de qualquer organização. (D-258)"
       ]
     }
   ]

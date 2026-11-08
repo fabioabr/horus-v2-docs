@@ -1,0 +1,71 @@
+<h3 id="implantacao-frase">Em uma frase</h3>
+<p>O Horus roda em duas fases. Na v2.0, o SaaS, a parte que as pessoas usam, e o middleware da Maind, que busca os dados da empresa, ficam num servidor alugado. Na produção real, vão para uma nuvem, em várias cópias.</p>
+
+<h3 id="implantacao-desenho">O desenho</h3>
+<p>O desenho mostra onde cada parte roda e como chega uma versão nova. Cada instalação que roda sozinha é uma instância.</p>
+<dx-diagrama ref="arq-geral-implantacao"></dx-diagrama>
+<ul>
+  <li><strong>Os grupos grandes são os lugares:</strong> a v2.0 à esquerda, a produção real à direita e a casa do cliente embaixo.</li>
+  <li><strong>Duas molduras menores</strong> separam, no servidor alugado, o pacote do SaaS e o do middleware.</li>
+  <li><strong>A cor diz o tipo da peça,</strong> conforme a legenda.</li>
+  <li><strong>As setas destacadas</strong> levam a versão nova ao teste e ao uso real.</li>
+  <li><strong>As setas de segurança</strong> são o canal entre o SaaS e cada middleware.</li>
+</ul>
+
+<h3 id="implantacao-como-funciona">Como funciona</h3>
+
+<h4 id="implantacao-duas-fases">O que muda da v2.0 para a produção real</h4>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Peça</th><th>Na v2.0 (servidor alugado)</th><th>Na produção real (nuvem)</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td>SaaS e middleware da Maind</td><td>Um pacote de cada</td><td>Várias cópias de cada</td></tr>
+      <tr class="zebra"><td>Banco do SaaS</td><td>No próprio servidor</td><td>Cuidado pela nuvem, em São Paulo</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Na v2.0, o mesmo servidor serve à construção, ao teste e ao uso real. Ele tem um endereço próprio, ao lado da versão de hoje. Cada parte roda num pacote isolado (docker compose). Se a máquina para, tudo para, o que é aceito agora. (<code>ARQ-112</code>, <code>ARQ-055</code>, <code>ARQ-056</code>, <code>ARQ-065</code>, <code>ARQ-098</code>)</p>
+<p>A produção real começa com a primeira organização paga. Nela, um serviço da nuvem que cuida dos servidores sozinho (Kubernetes gerenciado) mantém várias cópias de cada parte. Se uma cai, outra atende. (<code>ARQ-092</code>, <code>ARQ-093</code>, <code>ARQ-112</code>)</p>
+
+<h4 id="implantacao-no-ar">Quanto tempo o Horus fica no ar</h4>
+<ul>
+  <li><strong>Na v2.0, sem promessa.</strong> Um serviço de fora testa o Horus a cada minuto. (<code>ARQ-122</code>, <code>ARQ-070</code>)</li>
+  <li><strong>Na produção real, 99,9% do mês,</strong> o que admite cerca de 43 minutos fora do ar, para o SaaS e o middleware da Maind. O middleware do cliente fica de fora, porque é o cliente quem cuida dele. (<code>ARQ-122</code>)</li>
+  <li><strong>Na v2.0, cada versão nova ou falha da máquina tira o SaaS do ar</strong> por alguns minutos, ainda a medir. Na produção real, a troca é sem corte. Nas duas fases, nenhum trabalho se perde. (<code>ARQ-063</code>, <code>ARQ-098</code>, <code>ARQ-005</code>)</li>
+</ul>
+
+<h4 id="implantacao-versao-nova">Como uma versão nova chega</h4>
+<ul>
+  <li>Cada parte é montada uma vez, como um pacote pronto que roda igual em todo lugar. (<code>ARQ-101</code>, <code>ARQ-113</code>)</li>
+  <li>O pacote passa pelo teste, e o uso real só aceita o aprovado. (<code>ARQ-061</code>)</li>
+  <li>A esteira automática de publicação escolhe como rodar e quantas cópias, sem mexer no pacote. Por isso, o código da v2.0 já nasce pronto para várias cópias. (<code>ARQ-113</code>)</li>
+  <li>As senhas nunca vão no pacote. Saem de um cofre no GitHub, onde fica o código do Horus, para um arquivo protegido no servidor ou para um cofre da nuvem. (<code>ARQ-044</code>, <code>ARQ-115</code>)</li>
+</ul>
+
+<h4 id="implantacao-no-cliente">O middleware na casa do cliente</h4>
+<p>O middleware na casa do cliente já vale na v2.0. Ele atende as organizações daquele cliente e roda sempre num pacote isolado. (<code>D-260</code>, <code>D-272</code>, <code>ARQ-100</code>)</p>
+<p>A TI do cliente, a equipe de tecnologia da empresa, precisa de:</p>
+<ul>
+  <li>uma máquina com Docker, o programa que roda os pacotes;</li>
+  <li>um endereço cifrado na internet, liberado só para o SaaS;</li>
+  <li>saída para os bancos e a IA, só para o que estiver numa lista de liberados;</li>
+  <li>um arquivo de senhas protegido;</li>
+  <li>o relógio certo, de que depende o certificado, a identidade digital do vínculo;</li>
+  <li>a própria cópia de segurança do banco do middleware. (<code>ARQ-126</code>, <code>ARQ-116</code>, <code>ARQ-115</code>, <code>ARQ-086</code>)</li>
+</ul>
+<p>O cliente atualiza o middleware no tempo dele, porque o SaaS aceita a versão atual e a anterior. (<code>ARQ-100</code>, <code>ARQ-114</code>)</p>
+
+<h3 id="implantacao-falta-decidir">O que falta decidir nesta parte</h3>
+<p>O dono do Horus decide infraestrutura, segurança, preço e o que as pessoas veem; o arquiteto do Horus decide como o Horus é construído por dentro.</p>
+<ul>
+  <li><strong>Falta o dono do Horus escolher:</strong> a nuvem pública da produção real, a data e o orçamento para operá-la. É a única fase com a meta de 99,9% do tempo no ar. (<code>ARQ-085</code>, <code>ARQ-122</code>)</li>
+  <li><strong>Falta o dono do Horus decidir:</strong> quem paga o middleware, o da Maind e o da casa do cliente. Ainda não há decisão registrada.</li>
+  <li><strong>Falta o dono do Horus decidir:</strong> o que fazer se um cliente pedir o Horus inteiro instalado em casa, pedido que hoje não tem versão.
+    <ul>
+      <li>Como seria essa instalação. (<code>ARQ-060</code>, <code>D-188</code>)</li>
+      <li>O que a Maind veria dela. (<code>ARQ-074</code>)</li>
+    </ul>
+  </li>
+  <li><strong>Falta o arquiteto do Horus fechar:</strong> a lista final do que a TI do cliente precisa, inclusive onde fica o banco do middleware dela. (<code>ARQ-126</code>)</li>
+  <li><strong>Também depende, e está explicado em outras páginas:</strong> a confirmação de que o SaaS e o middleware da Maind ficam separados em rede e em banco, também na nuvem (<a href="#infra-separada">A infraestrutura separada</a>); onde fica, na nuvem, o banco do middleware da Maind, por isso ausente do desenho, e a atualização dos documentos técnicos para as duas fases (<a href="#execucao">Como roda</a>); em que módulo fica cada peça nova (<a href="#modulos">Os módulos</a>); e se apagar tudo de uma organização excluída convive com as cópias de segurança (<a href="#criar-organizacao">Criar uma organização</a>).</li>
+</ul>

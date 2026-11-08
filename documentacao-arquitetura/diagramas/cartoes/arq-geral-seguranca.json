@@ -1,0 +1,140 @@
+{
+  "admin": {
+    "tecnologia": "Funcionário da Maind",
+    "icone": "🧑‍💼",
+    "descricao": "**Cria e exclui** a organização no SaaS. Usa **usuário e senha** para entrar.",
+    "nota": "Define a marca e as regras gerais.",
+    "etiquetas": [
+      "Maind",
+      "Instância"
+    ]
+  },
+  "reg": {
+    "tecnologia": "Banco mestre",
+    "icone": "📒",
+    "descricao": "Guarda **onde fica** o middleware de cada organização e a **chave** que confere o passe.",
+    "nota": "O endereço nunca chega ao navegador.",
+    "etiquetas": [
+      "Vínculo",
+      "ARQ-102",
+      "ARQ-124"
+    ]
+  },
+  "owner": {
+    "tecnologia": "Cliente",
+    "icone": "🧑",
+    "descricao": "**Administra** a organização e escolhe as **formas de entrar** no Horus.",
+    "nota": "1º acesso por um link de uso único.",
+    "etiquetas": [
+      "Owner",
+      "ARQ-110"
+    ]
+  },
+  "pessoa": {
+    "tecnologia": "Navegador",
+    "icone": "👤",
+    "descricao": "Usa o **endereço da organização** para entrar. O **código** dele só diz qual é a organização.",
+    "nota": "O código (token) nunca serve de senha.",
+    "etiquetas": [
+      "Usuário",
+      "D-258"
+    ]
+  },
+  "tela": {
+    "tecnologia": "Vue",
+    "icone": "💻",
+    "descricao": "Uma **luz com texto** diz se o middleware está no ar, instável ou fora, antes do login.",
+    "nota": "A página de status abre sem login.",
+    "etiquetas": [
+      "Status",
+      "ARQ-106",
+      "ARQ-107"
+    ]
+  },
+  "at": {
+    "tecnologia": "ASP.NET Core · .NET 10",
+    "icone": "⚙️",
+    "descricao": "O **programa do SaaS** leva o login ao middleware e pergunta ao **avaliador** se pode.",
+    "nota": "Um só na v2.0; várias cópias na produção real.",
+    "etiquetas": [
+      "SaaS",
+      "ARQ-112"
+    ]
+  },
+  "mw": {
+    "tecnologia": "Docker",
+    "icone": "🛡️",
+    "descricao": "**Confere quem entra** e entrega o **passe de entrada** (a sessão).",
+    "nota": "Se estiver desatualizado, o SaaS o recusa.",
+    "etiquetas": [
+      "Login",
+      "MF-121",
+      "ARQ-114"
+    ]
+  },
+  "front": {
+    "tecnologia": "Tela de configuração",
+    "icone": "🖥️",
+    "descricao": "Onde o **owner da organização** configura o login, os bancos e a IA.",
+    "nota": "Na v2.0, login por senha ou Google.",
+    "etiquetas": [
+      "Configuração",
+      "ARQ-111"
+    ]
+  },
+  "prova": {
+    "tecnologia": "PostgreSQL 17 · OpenTelemetry",
+    "icone": "📜",
+    "descricao": "Anota **quem recebeu e abriu** o quê, sem o **conteúdo** das conversas.",
+    "nota": "Só o owner da organização consulta o rastro.",
+    "etiquetas": [
+      "Auditoria",
+      "ARQ-009",
+      "ARQ-073"
+    ]
+  },
+  "avaliador": {
+    "tecnologia": "ASP.NET Core · .NET 10",
+    "icone": "⚖️",
+    "descricao": "Responde a todo **\"pode fazer isto?\"** do Horus. Se algo falha, **nega** o pedido.",
+    "nota": "Usa permissões por código, sem nomes.",
+    "etiquetas": [
+      "Permissões",
+      "ARQ-008",
+      "ARQ-123"
+    ]
+  },
+  "seg": {
+    "tecnologia": "Regras por pessoa · v2.1",
+    "icone": "🔐",
+    "descricao": "Decide **quem vê quais dados** dentro do banco, pessoa a pessoa.",
+    "nota": "Chega na v2.1 e roda no middleware.",
+    "etiquetas": [
+      "v2.1",
+      "MF-106",
+      "D-263"
+    ]
+  },
+  "cofre": {
+    "tecnologia": "Senhas cifradas",
+    "icone": "🔒",
+    "descricao": "Guarda as **senhas** dos bancos e da IA, **embaralhadas** com a chave de cada organização.",
+    "nota": "Só o owner da organização cadastra.",
+    "etiquetas": [
+      "Senhas",
+      "ARQ-103",
+      "D-273"
+    ]
+  },
+  "bancos": {
+    "tecnologia": "Bancos da empresa",
+    "icone": "🏢",
+    "descricao": "O Horus **só lê** os dados da empresa, atrás de uma **barreira de rede** no middleware.",
+    "nota": "No cliente, só passa o que a TI libera.",
+    "etiquetas": [
+      "Só leitura",
+      "D-001",
+      "ARQ-116"
+    ]
+  }
+}

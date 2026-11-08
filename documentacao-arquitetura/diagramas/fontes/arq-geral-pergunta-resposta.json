@@ -516,13 +516,13 @@
       "id": "atender",
       "type": "frontend",
       "label": "Atender",
-      "sublabel": "SaaS · conversa no app, SSE"
+      "sublabel": "SaaS · responde na tela, ao vivo"
     },
     {
       "id": "avaliador",
       "type": "security",
       "label": "Avaliador de permissões",
-      "sublabel": "SaaS · Permissões por código"
+      "sublabel": "SaaS · diz se a pessoa pode"
     },
     {
       "id": "middleware",
@@ -534,7 +534,7 @@
       "id": "ia",
       "type": "external",
       "label": "Provedor de IA",
-      "sublabel": "chave e conexão no middleware"
+      "sublabel": "a chave fica no middleware"
     },
     {
       "id": "bancos",
@@ -620,7 +620,7 @@
       "y": 464,
       "label": "sem contato · Aviso próprio",
       "variant": "dashed",
-      "note": "Estado do middleware fora (ARQ-107): no lugar das respostas, o Aviso próprio, fora do ar desde o último contato, o resto do Horus no ar, procure o owner, tentar de novo; sem endereço nem porta (ARQ-104)."
+      "note": "Estado do middleware fora (ARQ-107): no lugar das respostas, o Aviso próprio, fora do ar desde o último contato, o resto do Horus no ar, procure o owner da organização, tentar de novo; sem endereço nem porta (ARQ-104)."
     },
     {
       "id": "pesquisa-na-web",
@@ -647,7 +647,7 @@
       "y": 780,
       "label": "plano e consulta",
       "variant": "emphasis",
-      "note": "O ciclo da análise roda aqui, com a IA da organização, que o owner configura no front do middleware (D-258, D-273)."
+      "note": "O ciclo da análise roda aqui, com a IA da organização, que o owner da organização configura no front do middleware (D-258, D-273)."
     },
     {
       "id": "consulta-plano-prosa",
@@ -665,7 +665,7 @@
       "y": 928,
       "label": "consulta só de leitura",
       "variant": "emphasis",
-      "note": "Com a credencial que o owner cadastrou no middleware (D-258, D-273); tetos de 500 linhas e 30 s (doc. 05, §3.3)."
+      "note": "Com a credencial que o owner da organização cadastrou no middleware (D-258, D-273); tetos de 500 linhas e 30 s (doc. 05, §3.3)."
     },
     {
       "id": "linhas",
@@ -710,7 +710,7 @@
       "y": 1406,
       "label": "uso de IA, só contagem",
       "variant": "dashed",
-      "note": "Sem conteúdo: a hora, o modelo, os tokens e de quem é a chave (ARQ-117). O owner vê o consumo e o custo no Horus; a parada da IA chega pelo mesmo contrato."
+      "note": "Sem conteúdo: a hora, o modelo, os tokens e de quem é a chave (ARQ-117). O owner da organização vê o consumo e o custo no Horus; a parada da IA chega pelo mesmo contrato."
     }
   ],
   "activations": [
@@ -762,39 +762,36 @@
       "dot": "cyan",
       "title": "O que o desenho mostra",
       "items": [
-        "O turno de uma pergunta de análise com a infraestrutura separada (D-258): o SaaS confere a permissão e manda só a pergunta; o ciclo da análise, com o modelo de IA e as consultas, roda dentro do middleware; só a resposta pronta volta (D-189).",
-        "O middleware atende várias organizações, com o mesmo contrato, gRPC, em qualquer hospedagem: o da Maind, todas as do SaaS; o do cliente, as organizações dele (D-258, D-260, D-272, ARQ-099). A pergunta chega a ele em nome da organização da pessoa, cujo identificador a sessão leva (ARQ-102). Dentro do middleware, as organizações dividem uma base só, separadas pela marca da organização e por um filtro em toda consulta, e as credenciais se cifram com uma chave por organização; o certificado é o vínculo de confiança entre o SaaS e o middleware (D-258, ARQ-103).",
-        "O SaaS aprende o endereço, a porta e a chave pública do middleware no handshake feito ao criar a organização (D-258, ARQ-124) e os guarda no Registro de organizações, no banco mestre; acha o middleware certo consultando o registro, e confere com a chave pública dele a sessão que o middleware emite (ARQ-102).",
-        "O Avaliador de permissões responde \"pode?\" sozinho, sem chamar o middleware, pelas Permissões por código: para cada Código da pessoa, o tipo de assento, o conjunto de permissões e os identificadores dos grupos e da carteira do gestor, sem nomes, que o middleware envia a cada mudança, com uma reconciliação completa depois de uma queda (ARQ-123). A falha fecha (ARQ-008); o nível efetivo é o menor entre o pedido, as roles e o teto de cada fonte (ARQ-025, D-220).",
-        "No SaaS, a pessoa é só o Código da pessoa, sem nome nem e-mail (ARQ-109). O turno não mostra nomes de pessoas; as telas que os mostram (a Home da organização, o rastro da Auditoria, a medida de autonomia) os pedem ao middleware em lote, uma chamada por tela (ARQ-109), e os nomes dos grupos e das roles também (ARQ-123).",
-        "Com o Estado do middleware em fora do ar, a pergunta não chega: no lugar das respostas, o app mostra o Aviso próprio: a conexão da organização com o Horus está fora do ar desde o último contato, o restante do Horus segue no ar, a pessoa deve procurar o owner, e há um botão de tentar de novo; sem endereço nem porta (ARQ-104, ARQ-107). No middleware compartilhado da Maind, a queda alcança todas as organizações do SaaS de uma vez (ARQ-104, D-272).",
-        "A IA escreve a consulta, o plano e a prosa; os números da resposta vêm só das linhas dos bancos corporativos, lidos só para leitura, com a credencial que o owner da organização configura no middleware, fora do SaaS (D-022, D-258, D-273).",
-        "A pesquisa na web, se ligada, usa a busca nativa da conexão de IA, que mora no middleware: não há mais conexão de IA da instância para as organizações (ARQ-027, D-215, D-266). A consulta que falha ou vem vazia tem um reparo, uma vez."
+        "Uma pergunta de análise sai do chat e volta como resposta. O SaaS, a parte do Horus que as pessoas usam, confere a permissão e manda só a pergunta ao middleware, a parte que busca os dados da organização. A análise roda toda no middleware, e só a resposta pronta volta. (D-189, D-258)",
+        "O Avaliador de permissões diz se a pessoa pode perguntar, sem consultar o middleware. Na dúvida, ele nega. O nível de inferência, o quanto a IA pode interpretar, é o menor entre o pedido, o que as roles (os papéis da pessoa) liberam e o limite de cada fonte. (ARQ-008, ARQ-025, D-220)",
+        "Para decidir, o SaaS guarda de cada pessoa só um código, sem nome nem e-mail. O código traz o tipo de assento, que é a licença, as permissões, os grupos e a carteira do gestor; o middleware os atualiza a cada mudança e confere tudo de novo depois de uma queda. Os nomes de pessoas, grupos e roles ficam no middleware, e cada tela que os mostra os pede de uma vez só. (ARQ-109, ARQ-123)",
+        "Do acesso da pessoa, o SaaS só sabe qual é a organização. Com isso, acha o middleware certo no Registro de organizações, o cadastro com o endereço de cada middleware, no banco mestre; quem usa nunca vê esse endereço. O endereço foi combinado na criação da organização, pelo certificado, uma identidade digital que prova quem é quem. (ARQ-102, ARQ-124, D-258)",
+        "O middleware, na Maind ou na casa do cliente, atende várias organizações pelo mesmo contrato: o da Maind, todas as do SaaS; o do cliente, as dele. Elas ficam separadas por uma etiqueta em cada registro, um filtro em toda consulta e uma chave própria, que tranca as senhas. As senhas dos bancos e a chave da IA ficam ali, cadastradas pelo owner da organização, a pessoa que administra a organização no Horus. (D-260, D-272, D-273, ARQ-099, ARQ-103)",
+        "A IA escreve a consulta, o plano e o texto, mas os números vêm sempre do banco, que o middleware só lê. A consulta que falha ou volta vazia ganha uma tentativa de conserto. Com a web ligada, a busca é a do próprio serviço de IA, no middleware, e cada fato traz link e data; não há mais IA da instância para as organizações. (D-022, D-215, D-266, ARQ-026, ARQ-027)"
       ]
     },
     {
       "dot": "emerald",
-      "title": "Imediato e em segundo plano",
+      "title": "Na hora e em segundo plano",
       "items": [
-        "Imediato, no papel Atender: o \"pode?\", decidido no SaaS pelas Permissões por código (ARQ-123), a pergunta ao middleware, a resposta pronta, a gravação dela no Banco da organização antes do fim e a transmissão por SSE (ARQ-004, ARQ-024); ou, sem contato com o middleware, o Aviso próprio (ARQ-104).",
-        "No WhatsApp e no agente, o mesmo turno roda como trabalho da fila, no papel Trabalhar (ARQ-024); o agente, e a espera de até uma hora quando o middleware está fora, estão no diagrama do que roda sozinho (ARQ-108).",
-        "Em segundo plano: a contagem de uso de IA que o middleware devolve, só como contagem, sem a pergunta nem a resposta: a hora, o modelo, os tokens e de quem é a chave, da organização ou da Maind (ARQ-117). O owner vê o consumo e o custo de toda a IA da organização no Horus, na tela que a v1.xx já tem (D-267, ARQ-117). Com o middleware fora do ar, a contagem não chega: o uso aparece com atraso e completa quando ele volta (ARQ-117). O fato de uso do turno o SaaS grava em lote, sem a pergunta nem a resposta (ARQ-029).",
-        "Pelo mesmo contrato chega a parada da IA (chave recusada ou falta de crédito): o owner é avisado na área de avisos do Horus e, se a chave é da Maind, o time da Maind, na área de avisos do painel da instância (ARQ-117, D-268).",
-        "O retorno da pessoa (gostei, não gostei, reportar) continua no SaaS, gravado pela resposta, e o reporte guarda uma cópia dela para o owner (ARQ-028).",
-        "Versão: tudo o que o desenho mostra é v2.0, inclusive o middleware (a MF-121, Middleware da organização; D-260, D-270, D-272). Quem vê o quê dentro do banco (MF-106) é v2.1 e roda no middleware (D-263)."
+        "Na hora, o Atender, a parte do SaaS que responde na tela, cuida da permissão, da pergunta e da resposta pronta. Ele grava a resposta no banco da organização antes de terminar e a mostra ao vivo, à medida que chega. (ARQ-004, ARQ-024)",
+        "Com o middleware fora do ar, a pergunta não chega. No lugar da resposta, um aviso sem endereço nem porta diz desde quando a conexão caiu, que o resto do Horus segue no ar e que é preciso procurar o owner da organização; um botão tenta de novo. A queda do middleware da Maind alcança todas as organizações do SaaS. (ARQ-104, ARQ-107, D-272)",
+        "No WhatsApp e no agente, o mesmo caminho roda em segundo plano, no Trabalhar, a parte do SaaS que trabalha sem tela. O agente e a espera de até uma hora com o middleware fora estão no diagrama do que roda sozinho. (ARQ-024, ARQ-108)",
+        "Em segundo plano, o middleware devolve o uso da IA só como contagem, sem a pergunta nem a resposta: a hora, o modelo, os tokens (a medida do uso) e de quem é a chave, da organização ou da Maind. Com ela, o owner da organização vê o consumo e o custo no Horus, na tela que a versão atual já tem. Com o middleware fora, a contagem chega atrasada e se completa quando ele volta. (ARQ-117, D-267)",
+        "Se a IA parar, por chave recusada ou falta de crédito, o aviso chega pelo mesmo caminho. O owner da organização o vê na área de avisos do Horus; se a chave for da Maind, a equipe da Maind também, no painel da instância. (ARQ-117, D-268)",
+        "O retorno da pessoa (gostei, não gostei, reportar) fica no SaaS, e o reporte guarda uma cópia da resposta para o owner da organização. O SaaS também conta cada pergunta respondida, em lote e sem o conteúdo. Tudo o que o desenho mostra é da v2.0, inclusive o middleware. (ARQ-028, ARQ-029, MF-121, D-260, D-270, D-272)"
       ]
     },
     {
       "dot": "amber",
-      "title": "O que ficou de fora e o que aguarda o dono",
+      "title": "O que falta decidir e o que ficou de fora",
       "items": [
-        "O corte do motor: as decisões dizem só que o ciclo (o modelo de IA e as consultas) roda no middleware e que ao SaaS chegam a pergunta e a resposta pronta (D-189, D-258). Onde ficam o Condutor do turno e as outras etapas do Motor de análise segue em aberto, e por isso eles não aparecem (P-040, P-048).",
-        "Fica de fora: os servidores MCP da organização (D-281). Ela poderá cadastrar servidores MCP próprios, que ficam na infraestrutura dela, com o cadastro no front do middleware; a versão é a v2.1, na MF-124 (D-282); o servidor só lê, só o owner o cadastra e libera as ferramentas uma a uma (D-286 a D-289); como o middleware os chama durante a análise segue na P-050, por isso o turno não os mostra. O servidor MCP do rascunho não é peça do contrato, que é gRPC (ARQ-099).",
-        "Sem decisão (P-048): o que o middleware manda enquanto o ciclo roda; onde ficam o modelo semântico e a curadoria dos modelos de IA.",
-        "A conferir com o jurídico (P-044): se o código que sobra no SaaS depois que o middleware apaga o cadastro da pessoa basta para a exclusão e para a LGPD (ARQ-109).",
-        "Hipótese 🔎 da D-272: que o isolamento baste entre as organizações que dividem o mesmo middleware, com o teste de isolamento no CI como segunda trava (ARQ-103). A política do certificado (o formato, a rotação e a revogação) é escolha da organização e fica adiada para as ADRs da MF-121 (P-049, ARQ-124).",
-        "Não entra neste turno: a pergunta do administrador da instância sobre a história da instância (D-158, D-276). Ela lê a história guardada no SaaS, no banco de log, com uma chave de IA da instância só para isso, e não passa por middleware nenhum; como ela roda é da P-048.",
-        "Mais saídas além da resposta pronta (o comando da consulta, o CSV) são interruptores da organização, desligados por padrão (D-189, ARQ-116); que quem os liga é o owner, no módulo de configuração do middleware, aguarda o dono (ARQ-116, D-193). O modo conversa, sem fonte, e o retorno da pessoa ficaram fora do desenho."
+        "Falta o dono do Horus confirmar quem liga as saídas extras, como ver o comando da consulta ou baixar o resultado em planilha (CSV). Elas vêm desligadas. O arquiteto do Horus propõe que só o owner da organização as ligue, na configuração do middleware. (ARQ-116, D-189, D-193)",
+        "Cabe ao arquiteto do Horus decidir onde ficam as outras etapas do Motor de análise, além da IA e das consultas; por isso elas não aparecem. Cabe a ele também decidir o que o middleware manda enquanto analisa e onde ficam o modelo semântico, que explica à IA o que cada dado significa, e a seleção dos modelos de IA. (P-040, P-042, P-048)",
+        "Cabe ao arquiteto do Horus decidir onde roda a pergunta do owner da instância, funcionário da Maind, sobre a história de uso do Horus. Ela lê o banco de log do SaaS, com uma chave de IA só para isso, e não passa por middleware nenhum. Por isso fica fora deste desenho, como o modo conversa, que não usa fonte de dados. (D-158, D-276, P-048)",
+        "Fica para a v2.1 quem vê o quê dentro do banco, que vai rodar no middleware, e os servidores MCP, programas da organização que a IA consulta. Os servidores MCP só leem, e só o owner da organização os cadastra e libera as ferramentas, uma a uma. Cabe ao arquiteto do Horus decidir como o middleware os chama; por isso o desenho não os mostra. (MF-106, D-263, MF-124, D-281, D-282, D-286 a D-289, P-050)",
+        "Falta o arquiteto do Horus definir, com o dono do Horus, o formato, a troca e o cancelamento do certificado; uma parte é escolha de cada organização. Falta também ele comprovar que basta a separação entre as organizações de um mesmo middleware, com um teste automático de isolamento como segunda trava. (P-049, ARQ-124, D-272, ARQ-103)",
+        "Falta o arquiteto do Horus conferir se o código que sobra no SaaS, depois que o middleware apaga uma pessoa, basta para a LGPD, a lei de proteção de dados pessoais. A parte jurídica fica com o jurídico de cada cliente, consultado na implantação. (P-044, ARQ-109, D-247)"
       ]
     }
   ]

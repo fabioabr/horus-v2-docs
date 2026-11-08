@@ -1,0 +1,57 @@
+<h3 id="criar-organizacao-frase">Em uma frase</h3>
+<p>Uma <strong>organização</strong> é o cadastro de uma empresa cliente no Horus. Criá-la é ligá-la ao <strong>middleware</strong>, a parte que busca os dados no banco da empresa e conversa com o <strong>SaaS</strong>, a parte do Horus que as pessoas usam, hospedada pela Maind. Excluí-la apaga tudo o que é dela, também no middleware.</p>
+
+<h3 id="criar-organizacao-desenho">O desenho</h3>
+<p>O desenho é uma sequência: o tempo corre de cima para baixo, e cada seta é um passo.</p>
+<dx-diagrama ref="arq-geral-criar-organizacao"></dx-diagrama>
+<ul>
+  <li><strong>As colunas</strong> são quem participa: o owner da instância, funcionário da Maind que opera o painel do Horus; o SaaS; o middleware; o owner da organização, a pessoa que administra a organização no Horus; e a pessoa que pergunta.</li>
+  <li><strong>As cinco faixas numeradas</strong> são as etapas, da criação à exclusão.</li>
+  <li><strong>A cor da seta</strong> diz o tipo de passo, conforme a legenda: caminho principal, identidade, resposta ou cadastro.</li>
+  <li><strong>A seta tracejada</strong> é um passo feito por fora do sistema ou que ainda espera confirmação.</li>
+  <li><strong>Cada seta</strong> traz uma nota com o código da decisão.</li>
+</ul>
+
+<h3 id="criar-organizacao-como-funciona">Como funciona</h3>
+<h4 id="criar-organizacao-nasce">Como a organização nasce e se liga ao middleware?</h4>
+<p>Só o owner da instância cria organizações, e cada uma nasce <strong>em configuração</strong>. Ela entra no middleware que já existe: o da Maind atende todas as organizações do SaaS, e o de um cliente, as daquele cliente. (<code>D-146</code>, <code>D-272</code>, <code>D-277</code>)</p>
+<ol>
+  <li>A criação gera um <strong>certificado</strong>, uma identidade digital que prova quem é quem, e uma chave de instalação, de uso único.</li>
+  <li>Com o middleware na Maind, o SaaS os entrega sozinho, pelo canal combinado entre os dois. No cliente, a TI do cliente, a equipe de tecnologia da empresa, importa o arquivo, porque o cliente não deixa o SaaS entrar na rede dele.</li>
+  <li>O middleware cria a organização, com uma chave só dela para trancar as senhas dos bancos e da IA, o serviço de inteligência artificial que monta as respostas. Depois devolve um arquivo assinado e trancado, que prova a origem e leva o endereço do middleware. O SaaS anota esse endereço no Registro de organizações, a lista de onde fica cada middleware.</li>
+  <li>As duas partes fazem o <strong>aperto de mão</strong> em que se reconhecem. Repetir a importação não duplica a organização. (<code>ARQ-102</code>, <code>ARQ-103</code>, <code>ARQ-124</code>)</li>
+</ol>
+<p>Como cada middleware roda, na Maind ou no cliente, está em <a href="#implantacao">Onde roda</a>. (<code>ARQ-100</code>, <code>ARQ-112</code>)</p>
+
+<h4 id="criar-organizacao-primeiro-acesso">Como o owner da organização entra pela primeira vez?</h4>
+<p>O owner da instância cria o usuário do owner da organização, e o middleware gera um link que vale uma vez só e por pouco tempo. A Maind o entrega por e-mail ou WhatsApp, por fora do sistema.</p>
+<p>O owner da organização cria a própria senha, que não passa pela Maind, e o link não passa pelo SaaS. No cliente, a TI do cliente faz o papel do owner da instância. (<code>D-271</code>, <code>D-280</code>, <code>ARQ-110</code>)</p>
+
+<h4 id="criar-organizacao-ativa">Quando a organização passa a ativa?</h4>
+<p>O owner da organização configura, na tela do middleware, ao menos um banco e a IA, e escolhe como as pessoas fazem login. A Maind só dá suporte e não configura no lugar dele. (<code>D-273</code>, <code>ARQ-111</code>)</p>
+<p>A organização só passa a <strong>ativa</strong> com três condições: o aperto de mão, um banco configurado e a IA configurada. Cadastrar as pessoas não é condição. As organizações de exemplo, das demonstrações, seguem o mesmo caminho. (<code>D-277</code>, <code>ARQ-089</code>)</p>
+
+<h4 id="criar-organizacao-primeira-pergunta">Como as pessoas chegam à primeira pergunta?</h4>
+<p>O owner da instância libera os <strong>assentos</strong>, as vagas de uso que a empresa contratou, e eles vão ao middleware. Ali o owner da organização cadastra as pessoas, com o nome e o e-mail. O SaaS conhece cada pessoa só por um código e recebe, a cada mudança, o que ela pode fazer, sem nomes. (<code>D-261</code>, <code>ARQ-109</code>, <code>ARQ-123</code>)</p>
+<p>A pessoa entra pelo endereço da organização e faz login no middleware. O passe de entrada que recebe, a prova temporária de que fez login, leva só o código da organização. Ao SaaS chegam só a pergunta e a resposta pronta, porque a análise roda no middleware. (<code>D-189</code>, <code>ARQ-102</code>, <code>ARQ-111</code>)</p>
+
+<h4 id="criar-organizacao-exclusao">O que acontece quando a organização é excluída?</h4>
+<p>O owner da instância exclui a organização, e o SaaS manda o middleware apagar os dados e a chave dela, e só o que é dela. Até o middleware confirmar, o pedido se repete, sem apagar nada a mais, e o painel da instância mostra a organização "em exclusão". (<code>D-275</code>, <code>D-278</code>, <code>ARQ-125</code>)</p>
+<p>Sem a chave, as senhas ficam inúteis também nas cópias de segurança, e o resto da cópia some quando vence o prazo dela. No cliente, quem apaga as cópias é a TI do cliente. (<code>ARQ-086</code>, <code>ARQ-125</code>)</p>
+
+<h3 id="criar-organizacao-falta-decidir">O que falta decidir nesta parte</h3>
+<p>O dono do Horus decide infraestrutura, segurança, preço e o que as pessoas veem. O PO cuida do que o produto entrega e da ordem em que entrega. O arquiteto do Horus decide como o Horus é construído por dentro.</p>
+<ul>
+  <li><strong>Falta o dono do Horus confirmar:</strong> quem marca a organização como ativa, depois que o sistema libera a ativação pelas três condições. O PO propõe que continue sendo a Maind. (<code>D-277</code>)</li>
+  <li><strong>Falta o arquiteto do Horus decidir:</strong>
+    <ul>
+      <li><strong>Como o SaaS sabe que o banco e a IA estão configurados,</strong> sem ver as senhas, para liberar a ativação. (<code>D-277</code>, <code>P-048</code>)</li>
+      <li><strong>Como o certificado chega à TI do cliente</strong> e por onde o arquivo assinado volta ao SaaS. (<code>ARQ-124</code>, <code>P-048</code>)</li>
+      <li><strong>Onde o owner da instância faz login.</strong> Ele entra sempre por usuário e senha. (<code>ARQ-111</code>, <code>P-048</code>)</li>
+      <li><strong>Quanto tempo vale o link de primeiro acesso.</strong> Vencido o prazo, quem criou o usuário gera outro. (<code>ARQ-110</code>)</li>
+    </ul>
+  </li>
+  <li><strong>Falta o arquiteto do Horus conferir:</strong> se a exclusão basta para a LGPD, a lei brasileira de proteção de dados pessoais. Restam as cópias de segurança, até vencerem, e o código de cada pessoa no SaaS, que já não aponta para ninguém. A parte jurídica fica com o jurídico de cada cliente, consultado na implantação. (<code>P-044</code>, <code>D-210</code>, <code>D-247</code>, <code>ARQ-109</code>, <code>ARQ-125</code>)</li>
+  <li><strong>Falta o PO conferir, com o uso:</strong> que o owner da organização consegue configurar sozinho o banco e a IA, com o suporte da Maind. (<code>D-273</code>)</li>
+  <li><strong>Também depende, e está explicado em outras páginas:</strong> a política do certificado: o formato, a troca e o cancelamento (<a href="#seguranca">Segurança em camadas</a>).</li>
+</ul>

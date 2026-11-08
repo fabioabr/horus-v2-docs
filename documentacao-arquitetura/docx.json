@@ -5,7 +5,7 @@
   "design": "kbr",
   "project": {
     "name": "Horus v2",
-    "description": "A arquitetura da plataforma Horus v2: os componentes, as conexões e as decisões, em diagramas, com a infraestrutura separada do SaaS, o middleware.",
+    "description": "Como o Horus v2 é construído por dentro, explicado sem jargão: dez desenhos, o que falta decidir e quem decide.",
     "version": "2.0 e 2.1 em desenho, sem versão publicada",
     "owner": "Maind Tech",
     "updated": "2026-11-08",
@@ -16,71 +16,397 @@
     {
       "id": "arq-geral-infra-separada",
       "title": "A infraestrutura separada do SaaS: o middleware",
-      "description": "As três zonas do rascunho do dono (o SaaS, com um servidor na VPS e réplicas na produção real; o middleware, que atende várias organizações, pelo contrato gRPC; e a casa do cliente, com os servidores MCP dela, da v2.1) e o que trafega entre elas.",
+      "description": "As três áreas do Horus (o SaaS, o middleware e a organização) e o que passa de uma para a outra.",
       "source": "diagramas/arq-geral-infra-separada.html"
     },
     {
       "id": "arq-geral-criar-organizacao",
       "title": "Criar uma organização, adicioná-la ao middleware e excluí-la",
-      "description": "Da organização criada em configuração à primeira pergunta e à exclusão: certificado pelo contrato ou importado, handshake, primeiro acesso do owner por link, banco e IA, ativação, assentos, permissões por código e a exclusão confirmada pelo middleware (D-258, D-277, ARQ-110, ARQ-124, ARQ-125).",
+      "description": "Como uma organização é criada, ligada ao middleware e excluída, e quem faz cada passo.",
       "source": "diagramas/arq-geral-criar-organizacao.html"
     },
     {
       "id": "arq-geral-modulos",
       "title": "Os módulos e a direção das dependências",
-      "description": "Os módulos do executável do SaaS, quem pode chamar quem e o que foi para o middleware, que atende várias organizações (MF-121, v2.0).",
+      "description": "As peças do programa, chamadas módulos, e quem pode chamar quem.",
       "source": "diagramas/arq-geral-modulos.html"
     },
     {
       "id": "arq-geral-execucao",
       "title": "Como roda: os dois papéis, a fila e os bancos",
-      "description": "Atender e Trabalhar num servidor só na VPS (v2.0) e com réplicas na produção real, com a mesma imagem; a caixa de saída e a fila; os três bancos do SaaS; o Registro de organizações; o estado do middleware (no ar, instável, fora) e o middleware, que atende várias organizações.",
+      "description": "Os dois papéis de cada servidor, a fila de tarefas e os bancos de dados.",
       "source": "diagramas/arq-geral-execucao.html"
     },
     {
       "id": "arq-geral-dados-e-historia",
       "title": "Onde mora cada dado e como a história chega",
-      "description": "O que fica no middleware, um só para várias organizações (as pessoas, a configuração do login e as credenciais), e o que fica no SaaS (só o código da pessoa e as permissões ligadas a ele, o banco mestre com o Registro de organizações e o Registro de quedas, o banco da organização e o banco de log), o caminho da história até o log e a pergunta do administrador à história, só com códigos.",
+      "description": "O que cada banco guarda, o que fica no middleware e como a história de uso é gravada.",
       "source": "diagramas/arq-geral-dados-e-historia.html"
     },
     {
       "id": "arq-geral-pergunta-resposta",
       "title": "Da pergunta à resposta",
-      "description": "O turno de uma pergunta de análise com a infraestrutura separada: o SaaS decide a permissão pelas permissões por código e manda só a pergunta ao middleware, que atende várias organizações; o ciclo da análise roda nele, voltam só a resposta pronta e a contagem de uso de IA, e, com o middleware fora, o app mostra o aviso próprio.",
+      "description": "O caminho de uma pergunta até a resposta, passo a passo.",
       "source": "diagramas/arq-geral-pergunta-resposta.html"
     },
     {
       "id": "arq-geral-segundo-plano",
       "title": "O que roda sozinho: do agendamento à entrega",
-      "description": "Do agendamento à entrega, em segundo plano: fila durável, papel Trabalhar (com réplicas na produção real), o agente que analisa pelo middleware, a espera de até uma hora com o middleware fora, artefato, conectores, rastro, aviso ao autor, corte e aviso de IA parada.",
+      "description": "O que roda sozinho, do agendamento à entrega, sem ninguém olhando.",
       "source": "diagramas/arq-geral-segundo-plano.html"
     },
     {
       "id": "arq-geral-seguranca",
       "title": "Segurança em camadas",
-      "description": "De fora para dentro: a tela de entrada com o LED e a página de status sem login, o login configurável pela organização no middleware, o vínculo por certificado e o contrato versionado, a sessão só com o identificador da organização, o avaliador com as permissões por código, a segurança por pessoa no middleware (v2.1), o cofre, a guarda de rede e o rastro e a telemetria sem conteúdo.",
+      "description": "Como a plataforma se protege, de fora para dentro, em camadas.",
       "source": "diagramas/arq-geral-seguranca.html"
     },
     {
       "id": "arq-geral-integracoes",
       "title": "Com quem o Horus conversa fora",
-      "description": "O SaaS fala com a Meta, o e-mail (o endereço só em trânsito) e os conectores; os bancos, a IA, a web e o login (Google na v2.0, OIDC na v2.1) só pelo middleware, que atende várias organizações e guarda as credenciais; a chave de IA da instância só para a pergunta do administrador; quem paga, quem vê o consumo e quem é avisado.",
+      "description": "Os serviços de fora com que o Horus conversa e por onde cada um entra.",
       "source": "diagramas/arq-geral-integracoes.html"
     },
     {
       "id": "arq-geral-implantacao",
       "title": "Onde roda: ambientes e instâncias",
-      "description": "As duas fases da Maind (a VPS da v2.0, em docker compose, e a produção real, em Kubernetes gerenciado com réplicas), a mesma imagem em toda fase e o middleware do cliente, sempre em docker compose.",
+      "description": "Onde o Horus e o middleware rodam, nos ambientes de teste e de produção, e como uma versão nova chega lá.",
       "source": "diagramas/arq-geral-implantacao.html"
     }
   ],
   "sections": [
     {
-      "id": "arquitetura-geral",
-      "title": "Arquitetura geral da plataforma",
-      "summary": "Dez diagramas: a infraestrutura separada, como uma organização é criada e adicionada ao middleware, os módulos, como roda, os dados, a pergunta, o que roda sozinho, a segurança, as integrações e a implantação. Proposta para análise do dono.",
-      "category": "Arquitetura",
-      "source": "content/arquitetura-geral.html"
+      "id": "quem-e-quem",
+      "title": "Quem é quem e como ler",
+      "summary": "Os papéis, as palavras que mais aparecem e como ler os desenhos e as páginas.",
+      "category": "Comece por aqui",
+      "source": "content/quem-e-quem.html"
+    },
+    {
+      "id": "infra-separada",
+      "title": "A infraestrutura separada",
+      "summary": "Por que o Horus se divide em duas partes e como elas se falam.",
+      "category": "A base: onde e como roda",
+      "source": "content/infra-separada.html"
+    },
+    {
+      "id": "modulos",
+      "title": "Os módulos",
+      "summary": "As peças do programa e quem pode chamar quem.",
+      "category": "A base: onde e como roda",
+      "source": "content/modulos.html"
+    },
+    {
+      "id": "execucao",
+      "title": "Como roda",
+      "summary": "Os dois papéis de cada servidor, a fila de tarefas e os bancos de dados.",
+      "category": "A base: onde e como roda",
+      "source": "content/execucao.html"
+    },
+    {
+      "id": "implantacao",
+      "title": "Onde roda",
+      "summary": "Os ambientes (teste e produção) e as instâncias.",
+      "category": "A base: onde e como roda",
+      "source": "content/implantacao.html"
+    },
+    {
+      "id": "pergunta-resposta",
+      "title": "Da pergunta à resposta",
+      "summary": "O caminho de uma pergunta até o gráfico.",
+      "category": "O Horus em ação",
+      "source": "content/pergunta-resposta.html"
+    },
+    {
+      "id": "segundo-plano",
+      "title": "O que roda sozinho",
+      "summary": "Do agendamento à entrega, os envios automáticos.",
+      "category": "O Horus em ação",
+      "source": "content/segundo-plano.html"
+    },
+    {
+      "id": "integracoes",
+      "title": "Com quem conversa fora",
+      "summary": "E-mail, WhatsApp, provedores de IA e as fontes de dados.",
+      "category": "O Horus em ação",
+      "source": "content/integracoes.html"
+    },
+    {
+      "id": "criar-organizacao",
+      "title": "Criar uma organização",
+      "summary": "Criar, ligar ao middleware e excluir.",
+      "category": "Organizações, dados e segurança",
+      "source": "content/criar-organizacao.html"
+    },
+    {
+      "id": "dados",
+      "title": "Onde mora cada dado",
+      "summary": "O que se guarda, onde, e como a história se mantém.",
+      "category": "Organizações, dados e segurança",
+      "source": "content/dados.html"
+    },
+    {
+      "id": "seguranca",
+      "title": "Segurança em camadas",
+      "summary": "Quem entra, o que vê e como é protegido.",
+      "category": "Organizações, dados e segurança",
+      "source": "content/seguranca.html"
+    },
+    {
+      "id": "falta-decidir",
+      "title": "O que falta decidir, por papel",
+      "summary": "Quem precisa confirmar ou decidir o quê, sem repetição, com o link da página de cada assunto.",
+      "category": "Decisões e acompanhamento",
+      "source": "content/falta-decidir.html"
+    },
+    {
+      "id": "sobre",
+      "title": "Sobre este documento",
+      "summary": "O que mudou, o que a arquitetura ainda não cobre e como o documento foi feito.",
+      "category": "Decisões e acompanhamento",
+      "source": "content/sobre.html"
     }
-  ]
+  ],
+  "portal": {
+    "macros": {
+      "title": "Arquitetura geral",
+      "groups": [
+        {
+          "label": "Comece por aqui",
+          "text": "Os papéis e as palavras que mais aparecem.",
+          "items": [
+            {
+              "title": "Quem é quem e como ler",
+              "summary": "Os papéis, as palavras que mais aparecem e como ler os desenhos e as páginas.",
+              "href": "quem-e-quem.html",
+              "links": [
+                {
+                  "label": "Os papéis",
+                  "href": "#quem-e-quem-papeis"
+                },
+                {
+                  "label": "As palavras que mais aparecem",
+                  "href": "#quem-e-quem-palavras"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "A base: onde e como roda",
+          "text": "Como o Horus é dividido, organizado e hospedado.",
+          "items": [
+            {
+              "title": "A infraestrutura separada",
+              "summary": "Por que o Horus se divide em duas partes e como elas se falam.",
+              "href": "infra-separada.html",
+              "links": [
+                {
+                  "label": "Ver o desenho",
+                  "href": "#infra-separada-desenho"
+                },
+                {
+                  "label": "O que falta decidir aqui",
+                  "href": "#infra-separada-falta-decidir"
+                }
+              ],
+              "badge": "3 a decidir"
+            },
+            {
+              "title": "Os módulos",
+              "summary": "As peças do programa e quem pode chamar quem.",
+              "href": "modulos.html",
+              "links": [
+                {
+                  "label": "Ver o desenho",
+                  "href": "#modulos-desenho"
+                },
+                {
+                  "label": "O que falta decidir aqui",
+                  "href": "#modulos-falta-decidir"
+                }
+              ],
+              "badge": "6 a decidir"
+            },
+            {
+              "title": "Como roda",
+              "summary": "Os dois papéis de cada servidor, a fila de tarefas e os bancos de dados.",
+              "href": "execucao.html",
+              "links": [
+                {
+                  "label": "Ver o desenho",
+                  "href": "#execucao-desenho"
+                },
+                {
+                  "label": "O que falta decidir aqui",
+                  "href": "#execucao-falta-decidir"
+                }
+              ],
+              "badge": "6 a decidir"
+            },
+            {
+              "title": "Onde roda",
+              "summary": "Os ambientes (teste e produção) e as instâncias.",
+              "href": "implantacao.html",
+              "links": [
+                {
+                  "label": "Ver o desenho",
+                  "href": "#implantacao-desenho"
+                },
+                {
+                  "label": "O que falta decidir aqui",
+                  "href": "#implantacao-falta-decidir"
+                }
+              ],
+              "badge": "4 a decidir"
+            }
+          ]
+        },
+        {
+          "label": "O Horus em ação",
+          "text": "O caminho de uma pergunta, o que roda sozinho e com quem o Horus conversa.",
+          "items": [
+            {
+              "title": "Da pergunta à resposta",
+              "summary": "O caminho de uma pergunta até o gráfico.",
+              "href": "pergunta-resposta.html",
+              "links": [
+                {
+                  "label": "Ver o desenho",
+                  "href": "#pergunta-resposta-desenho"
+                },
+                {
+                  "label": "O que falta decidir aqui",
+                  "href": "#pergunta-resposta-falta-decidir"
+                }
+              ],
+              "badge": "1 a decidir"
+            },
+            {
+              "title": "O que roda sozinho",
+              "summary": "Do agendamento à entrega, os envios automáticos.",
+              "href": "segundo-plano.html",
+              "links": [
+                {
+                  "label": "Ver o desenho",
+                  "href": "#segundo-plano-desenho"
+                },
+                {
+                  "label": "O que falta decidir aqui",
+                  "href": "#segundo-plano-falta-decidir"
+                }
+              ],
+              "badge": "1 a decidir"
+            },
+            {
+              "title": "Com quem conversa fora",
+              "summary": "E-mail, WhatsApp, provedores de IA e as fontes de dados.",
+              "href": "integracoes.html",
+              "links": [
+                {
+                  "label": "Ver o desenho",
+                  "href": "#integracoes-desenho"
+                },
+                {
+                  "label": "O que falta decidir aqui",
+                  "href": "#integracoes-falta-decidir"
+                }
+              ],
+              "badge": "3 a decidir"
+            }
+          ]
+        },
+        {
+          "label": "Organizações, dados e segurança",
+          "text": "Como uma organização nasce, onde mora cada dado e como tudo é protegido.",
+          "items": [
+            {
+              "title": "Criar uma organização",
+              "summary": "Criar, ligar ao middleware e excluir.",
+              "href": "criar-organizacao.html",
+              "links": [
+                {
+                  "label": "Ver o desenho",
+                  "href": "#criar-organizacao-desenho"
+                },
+                {
+                  "label": "O que falta decidir aqui",
+                  "href": "#criar-organizacao-falta-decidir"
+                }
+              ],
+              "badge": "4 a decidir"
+            },
+            {
+              "title": "Onde mora cada dado",
+              "summary": "O que se guarda, onde, e como a história se mantém.",
+              "href": "dados.html",
+              "links": [
+                {
+                  "label": "Ver o desenho",
+                  "href": "#dados-desenho"
+                },
+                {
+                  "label": "O que falta decidir aqui",
+                  "href": "#dados-falta-decidir"
+                }
+              ],
+              "badge": "3 a decidir"
+            },
+            {
+              "title": "Segurança em camadas",
+              "summary": "Quem entra, o que vê e como é protegido.",
+              "href": "seguranca.html",
+              "links": [
+                {
+                  "label": "Ver o desenho",
+                  "href": "#seguranca-desenho"
+                },
+                {
+                  "label": "O que falta decidir aqui",
+                  "href": "#seguranca-falta-decidir"
+                }
+              ],
+              "badge": "4 a decidir"
+            }
+          ]
+        },
+        {
+          "label": "Decisões e acompanhamento",
+          "text": "O que falta decidir, por papel, e como este documento foi feito.",
+          "items": [
+            {
+              "title": "O que falta decidir, por papel",
+              "summary": "Quem precisa confirmar ou decidir o quê, sem repetição, com o link da página de cada assunto.",
+              "href": "falta-decidir.html",
+              "links": [
+                {
+                  "label": "Dono do Horus",
+                  "href": "#falta-decidir-dono-do-horus"
+                },
+                {
+                  "label": "Arquiteto do Horus",
+                  "href": "#falta-decidir-arquiteto-do-horus"
+                }
+              ]
+            },
+            {
+              "title": "Sobre este documento",
+              "summary": "O que mudou, o que a arquitetura ainda não cobre e como o documento foi feito.",
+              "href": "sobre.html",
+              "links": [
+                {
+                  "label": "O que mudou",
+                  "href": "#sobre-mudou"
+                },
+                {
+                  "label": "O que ainda não cobre",
+                  "href": "#sobre-cobre"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
 }

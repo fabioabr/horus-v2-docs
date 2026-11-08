@@ -556,7 +556,7 @@
           "log",
           "adm"
         ],
-        "note": "Em segundo plano, a fila leva a história ao log, só com o código da pessoa; o administrador a lê sem nomes (ARQ-097, ARQ-109, D-276)."
+        "note": "Em segundo plano, a fila leva a história ao log, só com o código da pessoa; o owner da instância a lê sem nomes (ARQ-097, ARQ-109, D-276)."
       }
     ]
   },
@@ -565,30 +565,30 @@
       "id": "master",
       "type": "database",
       "label": "Banco mestre",
-      "sublabel": "mapa, assentos e cobrança",
+      "sublabel": "lista, assentos e cobrança",
       "tag": "sem pessoas nem login · D-261",
       "pos": [
-        690,
-        88
+        1090,
+        60
       ],
       "size": [
-        180,
-        72
+        250,
+        100
       ]
     },
     {
       "id": "reg",
       "type": "security",
       "label": "Registro de organizações",
-      "sublabel": "endereço, porta, chave pública",
+      "sublabel": "onde fica cada middleware",
       "tag": "no banco mestre · ARQ-102 · ARQ-124",
       "pos": [
-        690,
-        228
+        1090,
+        230
       ],
       "size": [
-        180,
-        72
+        250,
+        100
       ]
     },
     {
@@ -596,29 +596,29 @@
       "type": "security",
       "label": "Permissões por código",
       "sublabel": "assento, permissões e grupos",
-      "tag": "ids, sem nomes · ARQ-123",
+      "tag": "códigos, sem nomes · ARQ-123",
       "pos": [
-        690,
-        368
+        1090,
+        400
       ],
       "size": [
-        180,
-        72
+        250,
+        100
       ]
     },
     {
       "id": "base",
       "type": "database",
       "label": "Base de configuração",
-      "sublabel": "uma só: marca da org. e filtro",
+      "sublabel": "uma só, com marca e filtro",
       "tag": "chave por organização · ARQ-103",
       "pos": [
         40,
-        508
+        570
       ],
       "size": [
-        180,
-        72
+        250,
+        100
       ]
     },
     {
@@ -628,27 +628,27 @@
       "sublabel": "atende várias organizações",
       "tag": "análise, pessoas e nomes · D-272 · v2.0",
       "pos": [
-        330,
-        508
+        390,
+        570
       ],
       "size": [
-        180,
-        72
+        250,
+        100
       ]
     },
     {
       "id": "at",
       "type": "backend",
       "label": "Atender e Trabalhar",
-      "sublabel": "nomes: do middleware, em lote",
-      "tag": "o mesmo executável · ARQ-004 · ARQ-109",
+      "sublabel": "pede os nomes ao middleware",
+      "tag": "o mesmo programa · ARQ-004 · ARQ-109",
       "pos": [
-        690,
-        508
+        1090,
+        570
       ],
       "size": [
-        180,
-        72
+        250,
+        100
       ]
     },
     {
@@ -658,12 +658,12 @@
       "sublabel": "no banco mestre · 90 dias",
       "tag": "sem pessoa · ARQ-106 · ARQ-121",
       "pos": [
-        960,
-        508
+        1440,
+        570
       ],
       "size": [
-        180,
-        72
+        250,
+        100
       ]
     },
     {
@@ -675,26 +675,26 @@
       "tag": "D-001 · D-189",
       "pos": [
         40,
-        648
+        740
       ],
       "size": [
-        180,
-        72
+        250,
+        100
       ]
     },
     {
       "id": "org",
       "type": "database",
       "label": "Banco da organização",
-      "sublabel": "conversas, boards, respostas",
-      "tag": "estado de hoje · login dela + filtro · ARQ-010",
+      "sublabel": "conversas, painéis, respostas",
+      "tag": "estado de hoje · senha dela + filtro · ARQ-010",
       "pos": [
-        690,
-        648
+        1090,
+        740
       ],
       "size": [
-        180,
-        72
+        250,
+        100
       ]
     },
     {
@@ -706,11 +706,11 @@
       "tag": "D-264 · D-266 · D-267",
       "pos": [
         40,
-        788
+        910
       ],
       "size": [
-        180,
-        72
+        250,
+        100
       ]
     },
     {
@@ -720,27 +720,27 @@
       "sublabel": "caixa na org., fila no mestre",
       "tag": "ARQ-005 · ARQ-088",
       "pos": [
-        685,
-        788
+        1440,
+        740
       ],
       "size": [
-        190,
-        72
+        250,
+        100
       ]
     },
     {
       "id": "adm",
       "type": "external",
-      "label": "Administrador da instância",
-      "sublabel": "chave de IA da instância (D-276)",
-      "tag": "Maind · como roda: P-048",
+      "label": "Owner da instância",
+      "sublabel": "chave de IA só para a história",
+      "tag": "Maind · D-276 · P-048",
       "pos": [
-        330,
-        928
+        690,
+        910
       ],
       "size": [
-        200,
-        72
+        250,
+        100
       ]
     },
     {
@@ -748,14 +748,14 @@
       "type": "database",
       "label": "Banco de log",
       "sublabel": "história, só o código da pessoa",
-      "tag": "só inclusão · ARQ-097 · ARQ-109",
+      "tag": "só acrescenta · ARQ-097 · ARQ-109",
       "pos": [
-        685,
-        928
+        1090,
+        910
       ],
       "size": [
-        190,
-        72
+        250,
+        100
       ]
     }
   ],
@@ -910,41 +910,36 @@
       "dot": "cyan",
       "title": "O que o desenho mostra",
       "items": [
-        "Três infraestruturas, como no rascunho do dono (D-258): a do SaaS, da Maind; a do middleware, um só para várias organizações em qualquer hospedagem, com o mesmo contrato: o da Maind atende todas as organizações do SaaS, e o da casa do cliente, as organizações dele (D-258, D-260, D-272); e a da organização, com os bancos corporativos e os provedores de IA.",
-        "O middleware guarda todas as organizações que atende numa Base de configuração só: cada linha leva a marca da organização, e um filtro global, em toda consulta, separa uma da outra, com um teste de isolamento no CI como segunda trava (ARQ-103, D-272). Na Base ficam as pessoas, com o nome e o e-mail, isoladas fora do SaaS (D-261, ARQ-109); a configuração do login da organização (ARQ-111); e as credenciais dos bancos e da IA, cifradas com uma chave por organização (ARQ-103). Quem as cadastra é o owner da organização, no Front do middleware, em qualquer hospedagem (D-271, D-273); o Front não aparece neste desenho, que trata de onde o dado mora.",
-        "Saiu do SaaS para o middleware: as pessoas e o login, que o banco mestre guardava, e os membros, as credenciais das fontes e as chaves de IA, que o banco da organização guardava (documento 06, 3.1 e 3.2; ARQ-088). Dos bancos corporativos, o middleware só lê (D-001); o ciclo da análise roda dentro dele: as linhas não saem, o provedor de IA recebe a pergunta e trechos do middleware, e ao SaaS chega só a resposta pronta, com a contagem de uso de IA, sem conteúdo (D-189, D-258, ARQ-117).",
-        "Do lado do SaaS, cada pessoa é só um Código da pessoa, sem nome nem e-mail (ARQ-109). O nome que a Home da organização, o rastro da Auditoria e a medida de autonomia mostram vem do middleware na hora de mostrar, em lote, uma chamada por tela, e não é gravado; o e-mail do convite e o dos avisos e relatórios só passam pelo SaaS, na hora do envio (ARQ-109, ARQ-118, D-262).",
-        "Permissões por código (ARQ-123): a cada mudança, o middleware manda ao SaaS, por Código da pessoa, o tipo de assento, o conjunto de permissões que as roles dela liberam (D-050) e os identificadores dos grupos e da carteira do gestor; os nomes das pessoas, dos grupos e das roles ficam no middleware. Com isso o SaaS decide cada pedido sozinho e conta os assentos ocupados sem chamar o middleware. Em que banco do SaaS essa tabela mora o registro não diz, e por isso ela aparece como peça própria, sem banco.",
-        "O banco mestre guarda o mapa das organizações, os assentos contratados por tipo, em contagem, e a cobrança (D-068, D-214, ARQ-088), além do Registro de organizações, com o endereço, a porta e a chave pública do middleware de cada organização, que vêm no arquivo assinado que o middleware devolve no vínculo (ARQ-102, ARQ-124); a sessão leva só o identificador da organização, e o SaaS acha o middleware pelo registro (ARQ-102).",
-        "O Registro de quedas também mora no banco mestre (ARQ-106): o SaaS grava quando deixou de alcançar o middleware e quando voltou (início, fim e duração), e guarda isso por noventa dias, apagados pela faxina da guarda de dados (ARQ-121, ARQ-035). É dado da instância, sem conteúdo e sem pessoa. A Página de status, no endereço da organização e sem login, e o LED de status da Tela de entrada leem esse registro e o último contato, por isso abrem mesmo com o middleware fora; o Estado do middleware tem três valores, no ar, instável e fora (ARQ-106, ARQ-107).",
-        "O banco de cada organização guarda o estado de hoje: as conversas, os boards, as respostas prontas, o rastro da Auditoria e os agendamentos (ARQ-009, ARQ-088). O banco de log guarda a história, uma tabela por entidade, só de inclusão (ARQ-097); a dimensão de pessoas dele guarda só o Código da pessoa, nunca o nome (ARQ-109, que revê em parte a ARQ-097).",
-        "A história dos assentos vai ao relatório da organização em números, sem nome, mês a mês (D-274), e o administrador da instância pergunta ao próprio Horus sobre a história da instância com uma chave de IA da instância, que a Maind paga e nenhuma organização usa (D-158, D-266, D-276): a pergunta lê o banco de log, não passa por middleware nenhum e volta só com códigos (ARQ-109). Como ela roda é do arquiteto (P-048), por isso a linha vai do administrador direto ao banco de log.",
-        "No SaaS, o isolamento segue em duas travas: o roteamento abre só o banco da organização em uso, pelo mapa do banco mestre e com o login dela, e a marca e o filtro global seguram o erro que escapar (ARQ-010, ARQ-034, ARQ-088). No middleware, as organizações dividem uma base, separadas pela marca e pelo filtro, e as credenciais se cifram com uma chave por organização (ARQ-103). O risco é o ponto único na hospedagem da Maind: um filtro esquecido mistura organizações, e, se a base for invadida, todas vêm juntas; quem exigir mais isolamento usa o middleware na casa dele (D-272, ARQ-103)."
+        "O desenho tem três casas: a do SaaS, da Maind; a do middleware, na Maind ou no cliente; e a da organização, a empresa cliente, com os bancos dela e a IA. Dos bancos da empresa, o middleware só lê, e as linhas lidas não vão ao SaaS. A IA recebe a pergunta e trechos enviados pelo middleware, e ao SaaS chegam só a resposta pronta e a contagem de uso da IA, sem conteúdo. (D-001, D-189, D-258, D-272, ARQ-117)",
+        "Numa base só, o middleware guarda as pessoas, com nome e e-mail, o jeito de fazer login de cada organização e as senhas dos bancos e da IA, que o owner da organização cadastra. Cada linha leva a marca da organização, um filtro em toda consulta só mostra as da organização em uso, e as senhas ficam trancadas com uma chave por organização. O risco é o ponto único na Maind, onde um filtro esquecido ou uma invasão da base expõe todas as organizações; quem quiser mais isolamento hospeda o middleware na própria casa. (D-261, D-272, D-273, ARQ-103, ARQ-109, ARQ-111)",
+        "No SaaS, cada pessoa é só um código, como um crachá numerado sem o nome impresso. As telas com nomes, como a página inicial da organização, o registro da Auditoria e a contagem das perguntas respondidas, os pedem ao middleware na hora, todos de uma vez, sem gravá-los. O e-mail de um convite, aviso ou relatório só passa pelo SaaS no envio. (D-262, ARQ-109, ARQ-118)",
+        "O owner da instância, funcionário da Maind que opera o painel do Horus, pergunta ao próprio Horus sobre a história da instalação. Usa uma chave de IA que a Maind paga só para isso e que nenhuma organização usa; a pergunta lê o banco de log, não passa por middleware nenhum e volta só com códigos. O relatório da organização, que o owner da instância baixa a qualquer momento, mostra a história dos assentos mês a mês, em números, sem nomes. (D-149, D-158, D-266, D-274, D-276, ARQ-109)",
+        "O banco mestre guarda o que vale para todas as organizações: a lista delas, os assentos contratados em números, a cobrança, o Registro de quedas e o Registro de organizações, com o endereço de cada middleware e a chave que confere os passes de entrada dele. O banco de cada organização guarda o estado de hoje das conversas, dos painéis, das respostas prontas, do registro da Auditoria e dos agendamentos, e abre só com a senha própria dela, protegido também pelo filtro. O banco de log guarda a história, em que só se acrescenta e com só o código da pessoa; o log de uma organização some com ela. (D-068, ARQ-009, ARQ-010, ARQ-034, ARQ-088, ARQ-097, ARQ-102, ARQ-106, ARQ-109)",
+        "Ficam fora deste desenho: a tela do middleware, onde o owner da organização cadastra tudo; a página de status e a luz da tela de entrada; o vínculo pelo certificado e as regras dele; a cópia de segurança do SaaS; e a telemetria, que nunca leva conteúdo nem pessoa. As organizações de exemplo, das demonstrações, também entram no middleware e seguem as mesmas três condições para ficar ativas. (D-273, D-277, ARQ-073, ARQ-089, ARQ-106, ARQ-107, ARQ-111, ARQ-124, P-049)"
       ]
     },
     {
       "dot": "emerald",
-      "title": "Imediato e segundo plano; v2.0 e v2.1",
+      "title": "Na hora e em segundo plano; v2.0 e v2.1",
       "items": [
-        "Imediatos: a pergunta, que vai ao middleware, e a resposta pronta, que volta (D-189); os nomes, que o SaaS pede ao middleware em lote na hora de mostrar a tela (ARQ-109). A mudança grava o estado de hoje e um pedido na caixa de saída do banco da organização na mesma transação (ARQ-005, ARQ-097).",
-        "As cores das linhas: verde, o caminho principal; vermelha tracejada, dado pessoal ou dado do cliente (as pessoas, as linhas dos bancos, os trechos que vão ao provedor de IA); roxa tracejada, segundo plano; cinza, o resto.",
-        "Em segundo plano (as linhas roxas tracejadas): o repassador leva o pedido à fila do banco mestre, e um trabalho no papel Trabalhar grava o banco de log com o papel que só insere; o atraso é de segundos, e o id nasce na origem, por isso repetir não duplica (ARQ-005, ARQ-088, ARQ-097).",
-        "As permissões por código chegam a cada mudança, numa entrega repetível sem efeito em dobro; depois de uma queda do middleware, o SaaS pede uma reconciliação completa antes de voltar a aceitar mudanças (ARQ-123). O uso de IA chega sem conteúdo e, com o middleware fora, chega atrasado e completa quando ele volta (ARQ-117). Se os assentos liberados viajam na hora ou em lote, o registro não diz.",
-        "A exclusão de uma organização vai ao middleware pelo contrato e é repetida até ele confirmar; enquanto isso, a organização aparece \"em exclusão\" no painel da instância, e o SaaS só a marca como excluída depois da confirmação (ARQ-125, D-275). O registro de quedas é gravado pelo SaaS ao perder e ao recuperar o contato, e a Página de status o lê sem consultar o middleware (ARQ-106).",
-        "A pergunta do administrador à história e o que volta dela: se é imediata ou em segundo plano não está decidido, porque como ela roda é do arquiteto (P-048). O relatório da organização se baixa a qualquer momento (D-149).",
-        "v2.0: o middleware, um só para várias organizações (a MF-121, Middleware da organização: D-260, D-270, D-272), o Código da pessoa e as permissões por código (ARQ-109, ARQ-123), o registro de quedas (ARQ-106, ARQ-121), a pergunta do administrador à história com a chave da instância (D-276) e tudo o que está no desenho. Na v2.0, a organização é a fronteira dos dados: quem pode perguntar alcança todos os bancos dela (D-145, ARQ-090).",
-        "v2.1: a segurança dos dados por pessoa (MF-106), que roda no middleware (D-263). Sem versão: a instalação completa do Horus no cliente (D-188)."
+        "Na hora, pelas linhas verdes, a pergunta vai ao middleware e a resposta pronta volta; os nomes também vêm na hora, todos de uma vez, quando a tela abre. As linhas vermelhas tracejadas levam dado pessoal ou da empresa: as pessoas, as linhas dos bancos e os trechos que vão à IA. As roxas tracejadas correm em segundo plano, sem ninguém esperando, e as cinzas são o resto. (D-189, ARQ-109)",
+        "Cada mudança grava, de uma vez, o estado de hoje e um pedido na caixa de saída do banco da organização, uma lista de tarefas esperando a vez. Em segundo plano, uma peça leva o pedido à fila do banco mestre, e um trabalho grava a história no banco de log segundos depois, com uma permissão que só deixa acrescentar. Cada pedido nasce com identidade própria, por isso repetir a gravação não duplica nada. (ARQ-005, ARQ-088, ARQ-097)",
+        "As permissões por código chegam a cada mudança, sem nomes: o tipo de assento, o que a pessoa pode fazer, os grupos dela e as pessoas que cada gestor acompanha. Com elas, o SaaS decide sozinho cada pedido e conta os assentos ocupados; repetir uma entrega não muda nada, e, depois de uma queda do middleware, o SaaS pede a lista completa antes de aceitar mudanças. O uso da IA chega sem conteúdo e, com o middleware fora, chega atrasado e se completa quando ele volta. (D-050, ARQ-117, ARQ-123)",
+        "Os assentos e a exclusão de uma organização vão do banco mestre ao middleware. A exclusão se repete até o middleware confirmar, e até lá o painel da instância mostra a organização \"em exclusão\". Se os assentos viajam na hora ou em lote, o registro de decisões ainda não diz. (D-275, ARQ-125)",
+        "O SaaS grava no Registro de quedas quando perde e quando recupera o contato com o middleware: início, fim e duração. Guarda noventa dias, sem dado de pessoa, e a limpeza automática diária apaga o resto. A página de status e a luz da tela de entrada leem esse registro, por isso abrem mesmo com o middleware fora; o estado dele tem três valores: no ar, instável e fora do ar. (ARQ-035, ARQ-106, ARQ-107, ARQ-121)",
+        "Na v2.0 vale tudo o que está no desenho: o middleware para várias organizações, o código da pessoa, as permissões por código, o Registro de quedas e a pergunta do owner da instância à história. Na v2.0, a organização é a fronteira dos dados: quem pode perguntar alcança todos os bancos dela. Na v2.1 chega a segurança dos dados por pessoa, que roda no middleware; a instalação completa do Horus no cliente segue sem versão. (MF-106, MF-121, D-145, D-188, D-260, D-263, D-270, D-272, D-276, ARQ-090, ARQ-106, ARQ-109, ARQ-121, ARQ-123)"
       ]
     },
     {
       "dot": "amber",
-      "title": "O que ficou de fora e o que segue aberto",
+      "title": "O que falta decidir, e por quem",
       "items": [
-        "Com o arquiteto (P-048): onde e como roda a pergunta do administrador à história (D-276). Fecharam desde a versão anterior deste desenho: o que o SaaS guarda de cada pessoa e como mostra o nome (ARQ-109), o e-mail do convite só em trânsito (ARQ-109, D-262), onde o owner vê o consumo e o custo da IA, no Horus (ARQ-117), a dimensão de pessoas do banco de log, só com o código (ARQ-109), e como o SaaS conta os assentos em uso, pelas permissões por código (ARQ-123).",
-        "Sem decisão: em que banco do SaaS moram as permissões por código (a ARQ-123 não diz); onde moram o modelo semântico, a curadoria dos modelos de IA e o modelo padrão.",
-        "A exclusão de uma organização apaga no middleware as linhas com a marca dela e a chave que cifra as credenciais dela, e só o que é dela (D-278, ARQ-103, ARQ-125). A cópia da base de configuração do middleware da Maind segue o contrato da cópia da instância (ARQ-086): como as credenciais estão cifradas com a chave apagada, ficam inutilizadas também nas cópias, e o resto da cópia expira pela guarda dela; na casa do cliente, a cópia é dele, e a TI dele a apaga (ARQ-125). Segue aberta a conferência jurídica (P-044): se o resto da cópia pode esperar o prazo, e se o Código da pessoa que sobra no SaaS, sem apontar mais para ninguém, basta para a exclusão da D-210 e para a LGPD (ARQ-109).",
-        "Fora do desenho: o Front do middleware, onde o owner cadastra as pessoas, o login, os bancos e a IA (D-273, ARQ-111), que está nos diagramas de módulos e da infraestrutura separada; o roteamento e o filtro do SaaS como peça própria, que saíram do desenho para caber e seguem nos cartões (ARQ-010, ARQ-034, ARQ-088); a Página de status e o LED, que leem o registro de quedas e estão nos diagramas de módulos e de segurança; as organizações de exemplo do semeador (ARQ-089), que também são adicionadas ao middleware e cumprem as mesmas três condições para ficar ativas (D-272, D-277); o vínculo, em que a criação da organização gera o certificado e o middleware devolve o arquivo assinado (ARQ-124), que está no diagrama de criar uma organização; a política do certificado (P-049); e a cópia de segurança do SaaS.",
-        "A telemetria nunca carrega conteúdo nem pessoa como rótulo (ARQ-073): está no diagrama de segurança."
+        "Falta o dono do Horus confirmar que o banco do middleware da Maind fica separado do banco do SaaS, sem que um leia o do outro; a proposta é do arquiteto do Horus. Para a fase definitiva, numa nuvem pública, falta o arquiteto do Horus decidir se esse banco fica à parte do banco do SaaS ou dentro do próprio serviço. (ARQ-127)",
+        "Falta o arquiteto do Horus decidir onde e como roda a pergunta do owner da instância sobre a história, e se ela é imediata ou em segundo plano; por isso o desenho a liga direto ao banco de log. Falta decidir também em que banco do SaaS ficam as permissões por código, que por isso aparecem como peça própria, e o estado do middleware: no ar, instável ou fora do ar. (D-276, P-048, ARQ-107, ARQ-123)",
+        "Falta o arquiteto do Horus decidir onde ficam três peças da IA: a descrição do que há em cada banco da empresa (o modelo semântico), a lista dos modelos de IA aprovados e o modelo padrão. Falta decidir também se as mudanças do banco mestre passam pela caixa de saída, ponto que o modelo de dados da administração da instância descreve de outro jeito. (P-048, ARQ-088, ARQ-097)",
+        "Falta o arquiteto do Horus conferir se a exclusão basta para a LGPD, a lei brasileira de proteção de dados pessoais. Restam as cópias de segurança, até vencerem, e o código de cada pessoa no SaaS, que já não aponta para ninguém. A parte jurídica fica com o jurídico de cada cliente, consultado na implantação. (P-044, D-210, D-247, ARQ-109, ARQ-125)",
+        "Falta o arquiteto do Horus comprovar, nos testes, que a marca, o filtro e a chave bastam para separar as organizações na base única do middleware; um teste automático já falha se uma consulta esquecer o filtro. Falta comprovar também que a trava que barra endereços da rede interna aceita o banco de log como fonte de dados. (D-158, D-272, ARQ-103)",
+        "Falta o PO conferir, com o uso, que a cobrança se confere só com números, sem nomes. Falta o PO conferir também que a Maind usa a pergunta sobre a história o bastante para valer o custo da chave. (D-274, D-276)"
       ]
     }
   ]

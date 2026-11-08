@@ -560,7 +560,7 @@
           "middleware",
           "avisados"
         ],
-        "note": "O middleware avisa o SaaS; o owner vê na área de avisos e, se a chave é da Maind, o time dela no painel (ARQ-117, D-268)."
+        "note": "O middleware avisa o SaaS; o owner da organização vê na área de avisos, e a Maind, no painel, se a chave é dela (ARQ-117, D-268)."
       },
       {
         "id": "quandoNadaSai",
@@ -640,7 +640,7 @@
       "type": "backend",
       "icon": "stop",
       "label": "Assentos",
-      "sublabel": "corte vira evento; tudo pausa (D-075)"
+      "sublabel": "licenças cortadas: tudo pausa (D-075)"
     },
     {
       "id": "avaliador",
@@ -698,7 +698,7 @@
       "col": 1,
       "type": "backend",
       "label": "Trabalhar",
-      "sublabel": "agente, PDF; réplicas (ARQ-113)"
+      "sublabel": "trabalha sem tela: agentes e PDFs"
     },
     {
       "id": "desenho",
@@ -715,7 +715,7 @@
       "yOffset": -36,
       "type": "backend",
       "label": "Envio de e-mail",
-      "sublabel": "SMTP da instância (ARQ-046)"
+      "sublabel": "pelo e-mail do produto (ARQ-046)"
     },
     {
       "id": "porta",
@@ -724,7 +724,7 @@
       "yOffset": 36,
       "type": "backend",
       "label": "Porta da Meta",
-      "sublabel": "Meta: aguarda o dono (ARQ-047)"
+      "sublabel": "fala com o WhatsApp (ARQ-047)"
     },
     {
       "id": "middleware",
@@ -732,7 +732,7 @@
       "col": 1,
       "type": "cloud",
       "label": "Middleware",
-      "sublabel": "análise · várias organizações (D-272)"
+      "sublabel": "análise de várias organizações (D-272)"
     },
     {
       "id": "avisados",
@@ -740,8 +740,8 @@
       "col": 1,
       "type": "external",
       "icon": "person",
-      "label": "Owner e time da Maind",
-      "sublabel": "Maind, se a chave é dela (ARQ-117)"
+      "label": "Owner da organização",
+      "sublabel": "e a Maind, se a chave for dela"
     }
   ],
   "edges": [
@@ -850,38 +850,36 @@
       "dot": "cyan",
       "title": "O que o desenho mostra",
       "items": [
-        "A ordem do que roda sem ninguém olhando, da esquerda para a direita: o Agendador decide a rodada e grava um pedido de trabalho na Fila durável e caixa de saída (ARQ-005); o papel Trabalhar o pega na vez da organização, pela regra da fila (ARQ-095).",
-        "Trabalhar pergunta \"pode?\" ao Avaliador de permissões em nome de quem criou o agendamento ou o agente, com as permissões lidas na hora da execução (ARQ-008, ARQ-030, D-060). O SaaS decide sozinho, pelas Permissões por código que o middleware envia a cada mudança, sem chamá-lo (ARQ-123).",
-        "O agente pergunta em ciclo, e a análise de cada pergunta roda no Middleware, um só para várias organizações, cada uma separada das outras pela marca, pelo filtro e pela chave dela (ARQ-103), com o modelo de IA e os bancos da organização: do SaaS sai só a pergunta, e volta só a resposta pronta (ARQ-030, D-189, D-258, D-272). O PDF de um board é a mesma montagem da tela, pelo Desenho fora da tela (ARQ-007, D-064).",
-        "Com o middleware fora na hora marcada, a rodada do agendamento, do alerta ou do agente volta à fila e espera até uma hora depois da hora marcada, ou até a próxima rodada da mesma agenda, se vier antes; o SaaS não insiste enquanto o estado do middleware está vermelho e tenta de novo quando ele sai dele (ARQ-107, ARQ-108). Se o middleware volta no prazo, a rodada roda uma vez, atrasada, e o relatório ou o aviso diz que atrasou (\"Gerado às 08h20, previsto 08h00\"); passado o prazo, a rodada é pulada e a agenda segue. Nos dois casos o Registro do rastro guarda o motivo, e nunca roda mais de uma rodada atrasada por agenda (ARQ-108, D-285).",
-        "Quando a rodada é pulada, só o autor, o dono do agendamento, é avisado, na Área de avisos, com a hora e o motivo; por e-mail, só se ele já recebe avisos por e-mail. Os destinatários do relatório não são avisados (ARQ-120). É a mesma regra da falha, que também avisa só o autor (D-226, D-227).",
-        "O artefato, os Conectores de saída, o rastro e o aviso de falha seguem no SaaS: o e-mail sai pelo SMTP da instância, o e-mail do produto (ARQ-046, ARQ-118), e o WhatsApp pela Porta da Meta, por modelo aprovado (ARQ-048, D-124); cada destino grava um registro do rastro, sem conteúdo (ARQ-009, D-090).",
-        "Quando a IA da organização para (chave recusada ou falta de crédito), o middleware avisa o SaaS pelo mesmo contrato; o SaaS mostra o aviso ao owner da organização na área de avisos do Horus e, se a chave é a que a Maind dá, avisa o time da Maind pela área de avisos do painel da instância (ARQ-117, D-264, D-268). O desenho resume esse caminho numa ligação só, do Middleware a quem é avisado, passando pelo SaaS."
+        "Tudo começa no SaaS, a parte do Horus que as pessoas usam: na hora marcada, o Agendador põe um pedido na fila, uma lista de tarefas gravada no banco para nada se perder nem se repetir. O Trabalhar, a parte do SaaS que trabalha sem tela, pega o pedido na vez da organização. Antes, confere com o Avaliador de permissões se o autor, quem criou o agendamento ou o agente, ainda pode fazer aquilo, sem chamar o middleware. (ARQ-005, ARQ-095, ARQ-008, ARQ-030, ARQ-123, D-060)",
+        "Os agentes são rotinas em que a IA faz várias perguntas e escreve um resumo. Cada pergunta é analisada no middleware, a parte que busca os dados da organização e atende várias delas, separadas umas das outras: sai só a pergunta, e volta só a resposta pronta. Do autor e de quem recebe, o SaaS guarda só um código; o e-mail vem do middleware na hora do envio, sem ser guardado, e com ele fora nenhum e-mail sai. (ARQ-030, ARQ-103, ARQ-109, ARQ-118, D-189, D-258, D-272)",
+        "O resultado vira um arquivo, como o PDF de um painel, igual ao que se vê na tela. Ele sai pelos Conectores de saída: por e-mail, pelo e-mail do produto, ou pelo WhatsApp, pela Porta da Meta, com mensagem modelo aprovada. Cada entrega fica no Registro do rastro, sem o conteúdo. (ARQ-007, D-064, ARQ-046, ARQ-048, D-124, ARQ-009, D-090)",
+        "Com o middleware fora na hora marcada, a rodada volta à fila e espera até uma hora, ou até a próxima rodada da agenda, se vier antes. Se ele volta a tempo, a rodada roda uma vez, atrasada, e diz que atrasou (\"Gerado às 08h20, previsto 08h00\"); se não, é pulada e a agenda segue. O motivo fica no rastro, e nunca roda mais de uma atrasada por agenda. (ARQ-108, D-285)",
+        "Da rodada pulada, como da falha, só o autor é avisado, na Área de avisos, com a hora e o motivo. Por e-mail, só se ele já recebe avisos assim. Quem recebe o relatório não é avisado. (ARQ-120, D-226, D-227)",
+        "Se a IA da organização parar, por chave recusada ou falta de crédito, o middleware avisa o SaaS. O owner da organização vê o aviso na área de avisos do Horus; se a chave for da Maind, a equipe da Maind também, no painel da instância. O desenho resume esse caminho numa ligação só, do middleware a quem é avisado. (ARQ-117, D-264, D-268)"
       ]
     },
     {
       "dot": "emerald",
-      "title": "Imediato e em segundo plano",
+      "title": "Em segundo plano e em que versão",
       "items": [
-        "Tudo aqui é em segundo plano, no papel Trabalhar, o mesmo executável do Atender (ARQ-004): ninguém espera na tela. Na VPS (v2.0) ele roda num servidor só; na produção real, com réplicas, num Kubernetes gerenciado (ARQ-112). O código já nasce preparado para as réplicas, e a fila reparte o trabalho entre elas, com a vez por organização e por tipo (ARQ-095, ARQ-113).",
-        "A troca de versão drena o trabalho em curso, devolve o resto à fila, o agente continua da última volta gravada e a rodada marcada para a hora da troca começa quando o servidor novo sobe (ARQ-063). Na VPS, com um servidor só, a cada troca e a cada falha da máquina o SaaS fica fora do ar por um tempo, que é medida e não meta (ARQ-098, ARQ-122; 🔎 até dois minutos de drenagem, mais a subida); na produção real, a troca é sem corte, com as réplicas (ARQ-113, ARQ-122).",
-        "Na transação: o pedido de trabalho e o evento nascem na caixa de saída do Banco da organização, junto com a mudança, e um repassador os leva à fila do Banco mestre (ARQ-005, ARQ-088); o registro do rastro grava na transação da entrega, no Banco da organização (ARQ-009).",
-        "Pela fila, na vez de cada organização: o que alguém espera (o turno do WhatsApp) passa à frente; agendamentos, agentes, PDFs e envios vão em lote (ARQ-095). Cada envio pelo WhatsApp é um trabalho da fila, com nova tentativa na falha passageira e desistência com o motivo na definitiva (ARQ-048).",
-        "A espera pelo middleware usa a mesma fila: o trabalho fica pendente, com as tentativas contadas, e, ao desistir, deixa o motivo; a entrega segue repetível sem efeito em dobro, e uma rodada atrasada nunca roda duas vezes (ARQ-005, ARQ-108). O aviso da rodada pulada é gravado no SaaS, sem conteúdo (ARQ-120).",
-        "O corte é um evento: os Assentos o gravam na transação do corte, e o Agendador e os agentes pausam a organização; nada roda nem sai, e as rodadas perdidas não se refazem (D-075). A pausa por assentos não muda com a espera pelo middleware (ARQ-108).",
-        "Versão: tudo o que o desenho mostra é v2.0, inclusive o Middleware (a MF-121, Middleware da organização: D-260, D-270, D-272), a espera de uma hora (ARQ-108, D-285) e o aviso de IA parada (D-268, ARQ-117); as réplicas são da produção real (ARQ-112). Os tetos do agente (até 8 perguntas, 16 voltas e 15 minutos) são hipótese a calibrar (ARQ-030), como a janela de uma hora (ARQ-108)."
+        "Aqui, tudo roda em segundo plano, no Trabalhar, o mesmo programa do Atender: ninguém espera na tela. Tudo o que o desenho mostra é da v2.0, num único servidor alugado, inclusive o middleware, a espera de uma hora e o aviso de IA parada. Na produção real, numa nuvem pública, o programa roda em réplicas, cópias dele ao mesmo tempo, e a fila reparte o trabalho entre elas; o código já nasce pronto para isso. (ARQ-004, MF-121, D-272, D-285, D-268, ARQ-095, ARQ-112, ARQ-113)",
+        "Na troca de versão, o SaaS termina o trabalho em curso e devolve o resto à fila; o agente continua da última volta gravada. A rodada marcada para aquela hora começa quando o servidor novo sobe. Na v2.0, cada troca ou falha da máquina deixa o SaaS fora do ar por um tempo medido, e não prometido (🔎 até dois minutos, mais o tempo de religar); na produção real, a troca é sem corte. (ARQ-063, ARQ-098, ARQ-113, ARQ-122)",
+        "O pedido de trabalho e o evento, o aviso de uma mudança como o corte dos assentos, nascem na caixa de saída do banco da organização, junto com a mudança. Um repassador os leva à fila, no banco mestre. O registro do rastro é gravado junto com a entrega, também no banco da organização. (ARQ-005, ARQ-088, ARQ-009)",
+        "Na fila, cada organização tem a sua vez, e o que alguém espera, como a resposta no WhatsApp, passa à frente. Agendamentos, agentes, PDFs e envios vão em lote. Cada envio pelo WhatsApp tenta de novo na falha passageira e, na definitiva, desiste e deixa o motivo. (ARQ-095, ARQ-048)",
+        "A espera pelo middleware usa a mesma fila: o trabalho fica pendente, com as tentativas contadas. O SaaS não insiste enquanto o middleware está fora do ar e tenta de novo quando ele deixa esse estado; a entrega pode se repetir sem efeito em dobro. O aviso da rodada pulada é gravado no SaaS, sem conteúdo. (ARQ-005, ARQ-107, ARQ-108, ARQ-120)",
+        "O corte dos assentos, as licenças da organização, é gravado como um evento, junto com o próprio corte. O Agendador e os agentes pausam a organização: nada roda nem sai, e as rodadas perdidas não se refazem. A espera pelo middleware não muda essa pausa. (D-075, ARQ-108)"
       ]
     },
     {
       "dot": "amber",
-      "title": "O que ficou de fora e o que aguarda o dono",
+      "title": "O que falta decidir e o que ficou de fora",
       "items": [
-        "Em aberto (P-040, P-048): onde roda o ciclo do agente. A ARQ-030 põe o modelo do agente no papel Trabalhar, mas a IA agora só se alcança pelo middleware, com a chave guardada nele (D-258, D-266, D-273); o corte do Motor de análise entre o SaaS e o middleware não está decidido, e por isso o motor não aparece.",
-        "Fora do desenho: o Estado do middleware, que o SaaS mantém em três valores (no ar, instável, fora do ar) e que decide quando a rodada espera (ARQ-107, ARQ-108), aparece no diagrama de como roda. Fica fora também a queda do middleware como aviso: ela não gera e-mail ao owner; a pessoa a vê no LED de status e na página de status, e a Maind, no painel da instância (ARQ-106, ARQ-107, ARQ-118, D-275).",
-        "O artefato que não cabe no canal não sai por ele, nem cortado, e o autor é avisado como numa falha (D-227). Com a aprovação do owner ligada, o item fica \"aguardando aprovação do owner\" e não roda até o sim (D-038, D-039, D-244).",
-        "Quem é excluído perde o que criou e deixa de ser destino; quem é rebaixado de ouro tem os agendamentos e os agentes desabilitados (D-206, D-207, D-209). Do autor e dos destinatários, o SaaS guarda só o Código da pessoa (ARQ-109); o endereço de e-mail chega do middleware só na hora do envio e não é gravado, e por isso, com o middleware fora, não sai e-mail (ARQ-118).",
-        "Aguarda o dono: o caminho até a Meta (ARQ-047). Ficaram fora: a contagem de uso de IA que o middleware devolve (ARQ-117, no diagrama da pergunta), o serviço de e-mail e a Meta como nós, e o texto do aviso de atraso, que segue em aberto (ARQ-108).",
-        "Hipóteses 🔎: que uma hora cubra a maioria das quedas e que um relatório atrasado seja bem-vindo e não confunda (D-285); e que o isolamento entre as organizações do SaaS, que dividem o middleware da Maind, baste (D-272). O ponto único de falha do middleware da Maind deixou de ser hipótese: é aceito na VPS (v2.0) e deixa de existir na produção real (ARQ-112)."
+        "Falta o dono do Horus decidir como o Horus chega ao WhatsApp. A hipótese de trabalho é o canal oficial da Meta, direto, com a Maind como fornecedora de tecnologia. (ARQ-047)",
+        "Falta o dono do Horus escolher a nuvem e a data da produção real. Só nela vale a meta de 99,9% do tempo no ar. Até lá, aceita-se que a queda do middleware da Maind pare todas as organizações dele; na produção real, as réplicas acabam com isso. (ARQ-085, ARQ-112, ARQ-122)",
+        "Cabe ao arquiteto do Horus decidir onde roda o ciclo do agente, já que a IA agora só se alcança pelo middleware, que guarda a chave; por isso o Motor de análise não aparece. Cabe a ele também decidir se um alerta só de texto passa pela montagem do arquivo, que parte do SaaS recebe o aviso de IA parada e o texto do aviso de atraso. (ARQ-030, P-040, P-048, D-266, D-273, ARQ-117, ARQ-108)",
+        "Falta o arquiteto do Horus conferir, com o uso, os limites do agente (até 8 perguntas, 16 voltas e 15 minutos) e se a espera de uma hora cobre a maioria das quedas e o relatório atrasado ajuda. Falta também ele comprovar que basta a separação entre as organizações que dividem o middleware da Maind. (ARQ-030, ARQ-108, D-285, D-272)",
+        "Ficam fora do desenho os casos em que nada sai. O arquivo grande demais para o canal não sai, nem cortado, e o autor é avisado como numa falha; com a aprovação ligada, o item espera o sim do owner da organização. Quem é excluído perde o que criou e deixa de receber; quem perde o nível ouro, que permite criar relatórios, fica com os agendamentos e os agentes desligados. (D-227, D-038, D-039, D-244, D-206, D-207, D-209)",
+        "Ficam em outros diagramas o estado do middleware (no ar, instável, fora do ar), que decide quando a rodada espera, e a contagem de uso da IA. A queda do middleware não gera e-mail ao owner da organização: quem usa a vê no sinal de status e na página de status, e a Maind, no painel da instância. O serviço de e-mail e a Meta também não aparecem como peças. (ARQ-106, ARQ-107, ARQ-108, ARQ-117, ARQ-118, D-275)"
       ]
     }
   ]

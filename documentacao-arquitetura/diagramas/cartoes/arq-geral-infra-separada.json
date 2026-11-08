@@ -1,0 +1,141 @@
+{
+  "admin_instancia": {
+    "tecnologia": "Funcionário da Maind",
+    "icone": "🧑‍💼",
+    "descricao": "**Cria a organização** no SaaS e o usuário do owner da organização no middleware.",
+    "nota": "Define a marca e as regras gerais.",
+    "etiquetas": [
+      "Maind",
+      "Instância"
+    ]
+  },
+  "front_mw": {
+    "tecnologia": "Tela de configuração",
+    "icone": "🖥️",
+    "descricao": "Onde o owner da organização configura login, pessoas, bancos e IA.",
+    "nota": "No cliente, a TI importa o certificado aqui.",
+    "etiquetas": [
+      "Configuração",
+      "MF-121"
+    ]
+  },
+  "owner": {
+    "tecnologia": "Cliente",
+    "icone": "🧑",
+    "descricao": "**Configura** pessoas, bancos e IA, em qualquer hospedagem.",
+    "nota": "A Maind só dá suporte.",
+    "etiquetas": [
+      "Cliente",
+      "Owner"
+    ]
+  },
+  "base_config": {
+    "tecnologia": "Base do middleware",
+    "icone": "🗄️",
+    "descricao": "Uma base só, com as organizações separadas por marca, **filtro** e chave.",
+    "nota": "Uma chave de cifra por organização.",
+    "etiquetas": [
+      "Isolamento",
+      "ARQ-103"
+    ]
+  },
+  "mcp_org": {
+    "tecnologia": "MCP · v2.1",
+    "icone": "🔌",
+    "descricao": "Programas da organização que dão à **IA** outras ferramentas, só de leitura.",
+    "nota": "Só o owner da organização cadastra e libera.",
+    "etiquetas": [
+      "v2.1",
+      "MF-124"
+    ]
+  },
+  "bancos_saas": {
+    "tecnologia": "PostgreSQL 17",
+    "icone": "🗄️",
+    "descricao": "Banco mestre, **da organização** e de log, mais a fila do trabalho.",
+    "nota": "Pessoas só por código, sem nome.",
+    "etiquetas": [
+      "Mestre",
+      "Organização",
+      "Log"
+    ]
+  },
+  "atender": {
+    "tecnologia": "ASP.NET Core · .NET 10",
+    "icone": "⚙️",
+    "descricao": "**Atender** responde na hora; **Trabalhar** cuida do que roda sozinho.",
+    "nota": "Um só na VPS; várias cópias na produção real.",
+    "etiquetas": [
+      "SaaS",
+      "v2.0"
+    ]
+  },
+  "grpc": {
+    "tecnologia": "gRPC",
+    "icone": "🔗",
+    "descricao": "O **canal** entre o SaaS e o middleware, com regras combinadas.",
+    "nota": "Aceita a versão atual e a anterior.",
+    "etiquetas": [
+      "Contrato",
+      "Certificado"
+    ]
+  },
+  "middleware": {
+    "tecnologia": "Docker",
+    "icone": "🛡️",
+    "descricao": "Busca os **dados** no banco da empresa, guarda as **senhas** e confere o login.",
+    "nota": "Fica na Maind ou na casa do cliente.",
+    "etiquetas": [
+      "MF-121",
+      "Várias organizações"
+    ]
+  },
+  "bancos_corp": {
+    "tecnologia": "Bancos da empresa",
+    "icone": "🏢",
+    "descricao": "Os **dados** da empresa, lidos só para leitura.",
+    "nota": "As senhas ficam no middleware.",
+    "etiquetas": [
+      "Só leitura"
+    ]
+  },
+  "front_horus": {
+    "tecnologia": "Vue",
+    "icone": "💻",
+    "descricao": "A **tela** das pessoas, com a luz de estado: verde, amarelo ou vermelho.",
+    "nota": "A página de status abre sem login.",
+    "etiquetas": [
+      "Telas",
+      "Status"
+    ]
+  },
+  "provedores": {
+    "tecnologia": "Serviços de IA",
+    "icone": "🤖",
+    "descricao": "Os **modelos de IA** que respondem. A **chave** fica no middleware.",
+    "nota": "O owner da organização cadastra.",
+    "etiquetas": [
+      "IA",
+      "Chave"
+    ]
+  },
+  "registro": {
+    "tecnologia": "Banco mestre",
+    "icone": "📒",
+    "descricao": "Anota **onde fica** o middleware de cada organização: endereço, porta e chave pública.",
+    "nota": "O endereço nunca chega ao navegador.",
+    "etiquetas": [
+      "Vínculo",
+      "ARQ-102"
+    ]
+  },
+  "pessoas": {
+    "tecnologia": "Navegador",
+    "icone": "👥",
+    "descricao": "**Perguntam** ao Horus pela tela, num endereço com token.",
+    "nota": "Os dados ficam isolados no middleware.",
+    "etiquetas": [
+      "Usuários"
+    ]
+  }
+}
