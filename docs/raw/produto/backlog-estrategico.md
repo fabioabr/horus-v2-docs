@@ -55,6 +55,7 @@ Tudo o que está aberto, num lugar só. A skill **lista esta seção no início 
 | `P-048` | 🕓 Pendência | **Para o arquiteto de soluções:** o fluxo do dono (`D-258`): como o SaaS e o middleware sobem em infraestruturas separadas e como isso convive com o chart único e a `ARQ-060`; a chave de instalação, o handshake e a troca dos arquivos assinados (o formato, a rotação e a revogação do certificado passaram à `P-049`); o endereço da organização com token (o que ele carrega e como não vaza em registro e histórico) e o que vai na sessão (só o necessário para encaminhar, sem endereço nem porta da infraestrutura); quem emite a sessão; o que o Horus faz com o middleware fora do ar (o que a pessoa vê já está decidido: `D-283`, `ARQ-104`, `ARQ-106`); a atualização do middleware; como se adiciona uma organização nova ao middleware que já atende as outras, ao importar o certificado (a `D-272` trocou a criação automática de um middleware por organização, da `D-259`); o que o SaaS guarda de cada pessoa (`D-261`), se ele só repassa o e-mail do convite sem guardá-lo (`D-262`) e como mostra o nome dela sem guardá-lo (a Home da organização, o rastro da Auditoria, a medida de autonomia); a revisão da `ARQ-097`, cuja dimensão de pessoas do banco de log não pode guardar o nome (`D-274`; decidido na `ARQ-109`: o SaaS guarda de cada pessoa só um código); onde roda a pergunta do administrador sobre a história da instância (`D-276`), que lê o banco de log e não passa por middleware; e o que muda na `P-040` e na `P-042` | `D-258`, `P-040`, `P-042`, `ARQ-060` | Arquiteto de soluções | 07/11/2026 |
 | `P-049` | 🕓 Pendência | **Para o arquiteto de soluções, com o dono:** a política de segurança do certificado do vínculo entre o SaaS e o middleware: o formato, a rotação e a revogação, e o que a organização escolhe em cada um. *O dono disse que isso é **escolha da organização** e adiou o assunto em 08/11/2026 ("não faz sentido falar sobre isso agora"): decide-se ao escrever as ADRs da `MF-121` (seção 15 do documento de arquitetura da mf).* Parte da `P-048` | `D-258`, `P-048`, `P-042` | Arquiteto de soluções, com o dono | 08/11/2026 |
 | `P-050` | 🕓 Pendência | **Para o arquiteto de soluções:** como o middleware aplica a lista de ferramentas que o owner liberou em cada servidor MCP da organização (`D-289`): mostrar ao modelo só as liberadas, recusar as outras, bloquear a ferramenta nova que o servidor passar a oferecer depois do cadastro, registrar cada chamada no rastro e fazer o resultado entrar na resposta com origem e período. Parte da `MF-124` | `D-289`, `D-286`, `D-281`, `ARQ-099` | Arquiteto de soluções | 08/11/2026 |
+| `P-051` | 🕓 Pendência | **Levar o Maind AI Gateway para a documentação do Horus** (`D-294` a `D-297`): primeiro a arquitetura (o contrato entre o app Horus e o mAIg; a arquitetura geral publicada, que fala do "middleware"; as pendências do middleware, `P-040`, `P-042` e `P-048` a `P-050`, que passam ao mAIg ou ao contrato), e depois o produto: o mapa das mfs sem a `MF-121`, o que da `MF-102`, da `MF-104`, da `MF-105` e da `MF-124` passa ao mAIg, os documentos `04` a `07` e as páginas de leitura. *Nada muda antes da ordem do dono* | `D-294` a `D-297` | Arquiteto de soluções e PO, com a ordem do dono | 08/11/2026 |
 
 ### Fechados
 
@@ -192,6 +193,58 @@ Tudo o que está aberto, num lugar só. A skill **lista esta seção no início 
 Mais recente no topo. Formato de cada entrada:
 
 ```markdown
+### D-000 · Título curto da decisão
+Situação: proposta | decidida | substituída por D-nnn | revogada · Data: dd/mm/aaaa · Versão: v2.n ou “geral”
+
+**Decisão:** uma frase.
+**Contexto:** o problema e o objetivo da versão contra o qual foi pontuado.
+**Opções avaliadas:** quadro com nota total de cada uma (as 3 melhores detalhadas com prós e contras; eliminadas com o motivo).
+**Por que esta:** critério que decidiu e o que se abre mão.
+**Fica de fora / adiado:** o que saiu e por quê.
+**Hipóteses a validar:** o que ainda não é fato e como validar.
+**Prova de valor:** sinal observável que mostrará se acertamos.
+**Reabrir quando:** condição que justifica rever.
+```
+
+### D-297 · Por enquanto, o desenho não considera o Horus vendido com a marca de outra empresa; o mAIg leva a marca Maind
+Situação: 🟢 decidida (pedido do dono em 08/11/2026) · Data: 08/11/2026 · Versão: geral
+
+**Decisão:** "para facilitar o pensamento", o dono pôs de lado, **por enquanto**, a venda do Horus com a marca de quem o contrata (white label, `D-007`). O Maind AI Gateway (`D-294`) leva a **marca Maind**. A `D-007` não é revogada nem substituída: fica fora do desenho até o dono a retomar.
+**Contexto:** o PO perguntou se o mAIg, que a TI do cliente e o owner da organização veem, levaria a marca Maind também quando o Horus fosse vendido com a marca de outra empresa.
+**Afeta:** `D-007`, `D-294`.
+**Reabrir quando:** o dono retomar o white label, ou um parceiro quiser revender o Horus com a marca dele.
+
+### D-296 · O mAIg liga para fora: o cliente não abre porta de entrada
+Situação: 🟢 decidida (resposta do dono em 08/11/2026, com a opção recomendada pelo PO) · Data: 08/11/2026 · Versão: geral
+
+**Decisão:** o Maind AI Gateway (`D-294`) **abre a conexão com a Maind e a mantém aberta**, e as partes de fora dos apps (no Horus, o SaaS) respondem por ela. O cliente **não abre porta de entrada**: só libera a saída para o endereço da Maind. O certificado do handshake vale dentro dessa conexão. Se ela cair, o mAIg reconecta sozinho e guarda o que estava em andamento. O Horus deixa de cadastrar o endereço e a porta do middleware de cada organização.
+**Contexto:** no desenho do middleware, o SaaS ligava para ele: o cadastro guardava o endereço, a porta e a chave pública (`D-195`; a `ARQ-102` e a `ARQ-124`), e o cliente abria uma porta de entrada, que muitas TIs recusam. Com o mAIg servindo vários apps, a escolha passou a valer para todos.
+**Opções avaliadas** (sem pontuação): **A. o mAIg liga para fora (recomendação do PO, escolhida pelo dono)** · B. os apps ligam para o mAIg, como no desenho do middleware · C. os dois modos, escolhidos por cliente.
+**Por que esta:** quase toda TI aprova liberar uma saída, e o mAIg funciona sem IP fixo e atrás de qualquer rede; é o argumento de venda do mAIg. Abre-se mão de: ⚠️ a Maind mantém sempre de pé o ponto onde os mAIg se conectam; ⚠️ o mAIg precisa reconectar sozinho e não perder o que estava em andamento.
+**Afeta:** `D-195`, `D-258`, `D-283` a `D-285` (o middleware fora do ar), `P-040`, `P-042`, `P-048`; a `ARQ-102`, a `ARQ-124`.
+**Reabrir quando:** um cliente proibir também a conexão de saída.
+
+### D-295 · Um app do mAIg tem duas partes; dados, IA e servidores MCP são serviços nativos do mAIg
+Situação: 🟢 decidida (respostas do dono em 08/11/2026: o núcleo, dele; as duas partes e os serviços de dados e de IA, com as opções recomendadas pelo PO) · Data: 08/11/2026 · Versão: geral
+
+**Decisão:** o Maind AI Gateway (`D-294`) traz de forma nativa o que é comum a todo app: as configurações de segurança, a autenticação e a autorização, o log e a auditoria, os certificados do handshake dos apps, a gestão dos apps, **as conexões com os dados** (o cofre das senhas dos bancos e o acesso só de leitura), **a governança da IA** (as chaves dos provedores, os modelos permitidos, os limites e o custo por app) e **os servidores MCP do cliente**. Cada **app tem duas partes**: uma fora do mAIg, registrada com certificado e permissões (no Horus, a que roda no SaaS da Maind), e um **módulo que roda isolado dentro do mAIg** e só usa os serviços nativos. Instalar um app é registrar a parte de fora e implantar o módulo. No Horus, o ciclo da análise (o modelo de IA e as consultas) roda no módulo do app Horus, e ao SaaS continuam chegando só a pergunta e a resposta pronta (`D-189`, `D-196`). Nenhum app toca uma senha de banco ou uma chave de IA: pede ao mAIg, que confere a permissão e registra no log.
+**Contexto:** o dono listou o núcleo nativo (segurança, autenticação e autorização, log e auditoria, certificados, gestão dos apps) e o PO perguntou o que é instalar um app e se os dados, a IA e os servidores MCP também entravam no núcleo.
+**Opções avaliadas** (sem pontuação): o que é instalar um app: **A. duas partes (recomendação do PO, escolhida pelo dono)** · B. só registrar o app, que roda inteiro fora · C. o app inteiro dentro do mAIg. O que mais entra no núcleo: **A. dados, IA e servidores MCP (recomendação do PO, escolhida pelo dono)** · B. só os dados · C. nenhum.
+**Por que esta:** os dados nunca saem crus da casa do cliente, e a TI dele controla num lugar só o que é mais sensível, para todos os apps. Abre-se mão de: ⚠️ o mAIg precisa rodar e isolar módulos de apps; ⚠️ o núcleo fica maior antes do primeiro app sair.
+**Afeta:** `D-189`, `D-196`, `D-258`, `D-261` (as pessoas isoladas no middleware), `D-264` a `D-267` e `D-273` (a IA), `D-281` a `D-289` (os servidores MCP), `D-291` (o login), `MF-104`, `MF-105`, `MF-124`.
+**Reabrir quando:** isolar os módulos dos apps se mostrar inviável, ou um app precisar de um serviço que o núcleo não dá.
+
+### D-294 · O middleware sai do Horus e vira um produto da Maind, o Maind AI Gateway (mAIg); o Horus é o primeiro app dele
+Situação: 🟢 decidida (pedido do dono em 08/11/2026, fora das opções do PO) · Data: 08/11/2026 · Versão: geral
+
+**Decisão:** o middleware da organização deixa de ser uma mf do Horus e vira um **produto à parte da Maind, o Maind AI Gateway (mAIg)**, com código, documentação, versões e decisões próprios: o código no repositório privado `maind-ai-gateway` e a documentação no repositório público `maind-ai-gateway-docs`. O mAIg é uma **plataforma de apps** (`D-295`): os produtos da Maind entram nele como apps, e o **Horus é o primeiro**. A `MF-121:Middleware da organização` sai do mapa das mfs do Horus, e o número não se reaproveita. O que já se decidiu sobre o middleware (`D-258` a `D-293`) vale como ponto de partida do mAIg.
+**Contexto:** o dono percebeu que o middleware é mais estratégico do que foi planejado. A maioria das empresas não deixa um banco visível de fora, nem atrás de firewall ou VPN, e ter o componente na casa do cliente decide se a Maind entra ou não como prestadora de serviço. Com a IA, os dados viraram o combustível dos projetos, e o mesmo componente serve a outros produtos da Maind, como o Maind Doc (assistente para gerar documentos de projetos corporativos com IA). A venda difícil, a aprovação de segurança da TI do cliente, se faz uma vez; cada produto seguinte entra como app no mAIg que já está instalado.
+**Opções avaliadas** (sem pontuação): A. produto da Maind com contrato genérico, construído só com o que o Horus usa (recomendação do PO) · B. parte do Horus por enquanto · C. plataforma completa já · **o dono respondeu fora das opções: um produto à parte, com repositórios próprios, como plataforma de apps**.
+**Por que esta:** o mAIg vira a porta de entrada da Maind no cliente, e não só uma peça do Horus. Abre-se mão de: ⚠️ a v2.0 do Horus passa a depender de um produto à parte, com versões próprias; ⚠️ a documentação do Horus que fala do middleware precisa ser revista (`P-051`).
+**Fica de fora / adiado:** o que do mAIg fica pronto antes da v2.0 do Horus; o mapa das mfs do Horus sem a `MF-121` (`P-051`).
+**Afeta:** `MF-121`, `D-196`, `D-260`, `D-270`, `D-258` a `D-293`, `MF-101`, `MF-102`, `MF-104`, `MF-105`, `MF-106`, `MF-124`; `P-040`, `P-042`, `P-048`, `P-049`, `P-050`.
+**Reabrir quando:** o mAIg não tiver um segundo app em vista, ou o prazo da v2.0 do Horus não comportar um produto à parte.
+
 ### D-293 · Quando uma rodada é pulada com o middleware fora do ar, só o dono do agendamento é avisado
 Situação: 🟢 decidida (resposta do dono em 08/11/2026, com a opção recomendada pelo arquiteto) · Data: 08/11/2026 · Versão: v2.0
 
@@ -233,19 +286,6 @@ Situação: 🟢 decidida (resposta do dono em 08/11/2026, com a opção recomen
 **Afeta:** `D-271`, `D-280`, `MF-101`, `MF-121`; a `ARQ-110`.
 **Prova de valor:** a Maind cria uma organização, entrega o link, e o owner entra e define a senha sem a Maind conhecê-la.
 **Reabrir quando:** a Maind criar tantas organizações que a entrega manual pese.
-
-### D-000 · Título curto da decisão
-Situação: proposta | decidida | substituída por D-nnn | revogada · Data: dd/mm/aaaa · Versão: v2.n ou “geral”
-
-**Decisão:** uma frase.
-**Contexto:** o problema e o objetivo da versão contra o qual foi pontuado.
-**Opções avaliadas:** quadro com nota total de cada uma (as 3 melhores detalhadas com prós e contras; eliminadas com o motivo).
-**Por que esta:** critério que decidiu e o que se abre mão.
-**Fica de fora / adiado:** o que saiu e por quê.
-**Hipóteses a validar:** o que ainda não é fato e como validar.
-**Prova de valor:** sinal observável que mostrará se acertamos.
-**Reabrir quando:** condição que justifica rever.
-```
 
 ### D-289 · O Horus só deixa o modelo chamar as ferramentas dos servidores MCP que o owner liberou, uma a uma; a garantia de que elas só leem é da organização
 Situação: 🟢 decidida (resposta do dono em 08/11/2026, com a opção recomendada pelo PO, ao ver que o Horus não controla o que um servidor MCP faz por dentro) · Data: 08/11/2026 · Versão: v2.1 (`MF-124`) · Substitui em parte a `D-286`
